@@ -487,3 +487,172 @@ export async function syncKnowledgeBaseApi(force: boolean = false): Promise<Migr
     return { success: false, message: 'Network error', imported: 0, errors: [] };
   }
 }
+
+// ─── New Map API ─────────────────────────────────────────────────────────────
+
+export interface MapInfo {
+  id?: number;
+  name: string;
+  styleUrl?: string;
+  zoom?: number;
+  center?: number[];
+  isDefault?: boolean;
+}
+
+export interface RouteInfo {
+  id?: number;
+  mapId: number;
+  name: string;
+  points: { lat: number; lng: number }[];
+  color?: string;
+  weight?: number;
+}
+
+export interface MarkerInfo {
+  id?: number;
+  mapId: number;
+  name: string;
+  lat: string;
+  lng: string;
+  description?: string;
+  type?: string;
+}
+
+export async function fetchAllMaps(): Promise<MapInfo[]> {
+  try {
+    const response = await fetch('/api/maps');
+    const result = await response.json();
+    return result.success ? result.data : [];
+  } catch (error) {
+    console.error('Error fetching all maps:', error);
+    return [];
+  }
+}
+
+export async function fetchMap(id: number): Promise<MapInfo | null> {
+  try {
+    const response = await fetch(`/api/maps/${id}`);
+    const result = await response.json();
+    return result.success ? result.data : null;
+  } catch (error) {
+    console.error('Error fetching map:', error);
+    return null;
+  }
+}
+
+export async function fetchMapRoutes(id: number): Promise<RouteInfo[]> {
+  try {
+    const response = await fetch(`/api/maps/${id}/routes`);
+    const result = await response.json();
+    return result.success ? result.data : [];
+  } catch (error) {
+    console.error('Error fetching map routes:', error);
+    return [];
+  }
+}
+
+export async function fetchMapMarkers(id: number): Promise<MarkerInfo[]> {
+  try {
+    const response = await fetch(`/api/maps/${id}/markers`);
+    const result = await response.json();
+    return result.success ? result.data : [];
+  } catch (error) {
+    console.error('Error fetching map markers:', error);
+    return [];
+  }
+}
+
+export async function saveMap(mapData: MapInfo): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/maps`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(mapData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error saving map:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function deleteMap(id: number): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/maps/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error deleting map:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function saveRoute(mapId: number, routeData: RouteInfo): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/maps/${mapId}/routes`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(routeData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error saving route:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function deleteRoute(id: number): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/routes/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error deleting route:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function saveMarker(mapId: number, markerData: MarkerInfo): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/maps/${mapId}/markers`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(markerData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error saving marker:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function deleteMarker(id: number): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/markers/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error deleting marker:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function importMap(mapData: { map: MapInfo, markers: MarkerInfo[], routes: RouteInfo[] }): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/maps/import`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(mapData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error importing map:', error);
+    return { success: false, message: 'Network error' };
+  }
+}

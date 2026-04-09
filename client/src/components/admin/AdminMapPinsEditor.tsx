@@ -2,134 +2,127 @@
  * AdminMapPinsEditor
  * ──────────────────
  * A reusable map+pins editor component for admin modals.
- * Left: canvas map with overlaid controls (zoom in/out, place pin, reset)
- * Right: pins sidebar (list + add/remove)
+ * Supports placing pins, drawing routes, and EDITING everything interactively.
  *
- * Coordinates use [y, x] format in 0–1000 scale (same as chatbot)
+ * Coordinates use [y, x] format in 0–1000 scale.
  */
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Trash2, PlusCircle, MapPin, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { 
+  Trash2, 
+  PlusCircle, 
+  MapPin, 
+  ZoomIn, 
+  ZoomOut, 
+  RotateCcw,
+  Navigation,
+  Move,
+  Check,
+  Edit2
+} from "lucide-react";
+import { toast } from "sonner";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface AdminPin {
   name: string;
-  /** [y, x] format — matches chatbot display */
+  /** [y, x] format */
   coordinates: [number, number];
 }
 
+export interface AdminRoute {
+  name: string;
+  points: [number, number][];
+  color?: string;
+  isDefault?: boolean;
+  id: string | number;
+}
+
 interface AdminMapPinsEditorProps {
-  /** [y, x] main pin coordinate */
-  mainCoords: [number, number];
-  /** All named pins */
   pins: AdminPin[];
-  onMainCoordsChange: (c: [number, number]) => void;
+  routes?: AdminRoute[];
   onPinsChange: (pins: AdminPin[]) => void;
-  /** Show the main single-pin controls (for General / Super Intent — one location per topic) */
-  showMainPin?: boolean;
-  /** Map display size (canvas) */
+  onRoutesChange?: (routes: AdminRoute[]) => void;
   mapSize?: number;
 }
 
 // ─── Colour helpers ───────────────────────────────────────────────────────────
 
-const PIN_COLOURS = [
-  "#2563eb","#dc2626","#16a34a","#ea580c","#9333ea",
-  "#0891b2","#be185d","#ca8a04","#4f46e5","#0f766e",
-];
+const PIN_COLOURS = ["#2563eb","#dc2626","#16a34a","#ea580c","#9333ea","#0891b2","#be185d","#ca8a04","#4f46e5","#0f766e"];
 
 function pinColour(idx: number) {
   return PIN_COLOURS[idx % PIN_COLOURS.length];
 }
 
-// ─── Canvas drawing ───────────────────────────────────────────────────────────
-
-function drawPin(
-  ctx: CanvasRenderingContext2D,
-  sx: number, sy: number,
-  colour: string,
-  label?: string
-) {
-  // Shadow
+function drawPin(ctx: CanvasRenderingContext2D, sx: number, sy: number, colour: string, label?: string) {
   ctx.fillStyle = "rgba(0,0,0,0.25)";
   ctx.beginPath();
   ctx.ellipse(sx + 1, sy + 13, 8, 4, 0, 0, Math.PI * 2);
   ctx.fill();
-
-  // Head
   ctx.fillStyle = colour;
   ctx.beginPath();
   ctx.arc(sx, sy - 7, 9, 0, Math.PI * 2);
   ctx.fill();
-
-  // Body
   ctx.beginPath();
-  ctx.moveTo(sx - 9, sy - 7);
-  ctx.lineTo(sx, sy + 12);
-  ctx.lineTo(sx + 9, sy - 7);
-  ctx.closePath();
-  ctx.fill();
-
-  // White centre dot
+  ctx.moveTo(sx - 9, sy - 7); ctx.lineTo(sx, sy + 12); ctx.lineTo(sx + 9, sy - 7);
+  ctx.closePath(); ctx.fill();
   ctx.fillStyle = "#ffffff";
-  ctx.beginPath();
-  ctx.arc(sx, sy - 7, 3, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Label badge
+  ctx.beginPath(); ctx.arc(sx, sy - 7, 3, 0, Math.PI * 2); ctx.fill();
   if (label) {
     ctx.font = "bold 9px system-ui";
+    ctx.fillStyle = "rgba(0,0,0,0.85)";
     const w = ctx.measureText(label).width + 8;
-    ctx.fillStyle = "rgba(0,0,0,0.65)";
-    const bx = sx + 12;
-    const by = sy - 14;
-    ctx.beginPath();
-    ctx.roundRect(bx, by, w, 13, 3);
-    ctx.fill();
-    ctx.fillStyle = "#fff";
-    ctx.fillText(label, bx + 4, by + 10);
+    ctx.beginPath(); ctx.roundRect(sx + 10, sy - 14, w, 12, 3); ctx.fill();
+    ctx.fillStyle = "#fff"; ctx.fillText(label, sx + 14, sy - 5);
   }
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Main Component ───────────────────────────────────────────────────────────
 
 export function AdminMapPinsEditor({
-  mainCoords,
   pins,
-  onMainCoordsChange,
+  routes = [],
   onPinsChange,
-  showMainPin = true,
+  onRoutesChange,
   mapSize = 420,
 }: AdminMapPinsEditorProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mapImgRef = useRef<HTMLImageElement | null>(null);
   const [imgLoaded, setImgLoaded] = useState(false);
 
-  // Zoom / pan
   const [zoom, setZoom] = useState(1);
   const [tx, setTx] = useState(0);
   const [ty, setTy] = useState(0);
-  const isDragging = useRef(false);
-  const dragOrigin = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
-
-  // Interaction mode
-  const [mode, setMode] = useState<"view" | "place-main" | "place-pin">("view");
-
-  // Pending-pin name (typed before placing)
+  
+  // Interaction State
+  const [mode, setMode] = useState<"view" | "place-pin" | "draw-route" | "edit-route" | "edit-pin">("view");
   const [pendingPinName, setPendingPinName] = useState("");
+  const [activeRoutePoints, setActiveRoutePoints] = useState<[number, number][]>([]);
+  const [selectedRouteId, setSelectedRouteId] = useState<string | number | null>(null);
+  const [selectedPinIdx, setSelectedPinIdx] = useState<number | null>(null);
+  
+  // Dragging state
+  const isDraggingMap = useRef(false);
+  const dragOrigin = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
+  const [draggingPointIdx, setDraggingPointIdx] = useState<number | null>(null);
+  const [draggingPinIdx, setDraggingPinIdx] = useState<number | null>(null);
 
-  // Load map image once
+  // Connection selection
+  const [connStart, setConnStart] = useState("");
+  const [connEnd, setConnEnd] = useState("");
+
   useEffect(() => {
     const img = new Image();
     img.onload = () => { mapImgRef.current = img; setImgLoaded(true); };
-    img.onerror = () => setImgLoaded(true); // draw grid as fallback
     img.src = "/nobackHD.png";
   }, []);
 
-  // ── Draw ──────────────────────────────────────────────────────────────────
+  const toScreen = useCallback((coords: [number, number]) => ({
+    sx: tx + (coords[1] / 1000) * mapSize * zoom,
+    sy: ty + (coords[0] / 1000) * mapSize * zoom,
+  }), [tx, ty, zoom, mapSize]);
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -137,312 +130,278 @@ export function AdminMapPinsEditor({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const W = mapSize;
-    const H = mapSize;
-    canvas.width = W;
-    canvas.height = H;
-
-    ctx.clearRect(0, 0, W, H);
-
-    // Pan+zoom context
+    ctx.clearRect(0, 0, mapSize, mapSize);
     ctx.save();
     ctx.translate(tx, ty);
     ctx.scale(zoom, zoom);
-
-    // Map image or grid fallback
-    if (mapImgRef.current) {
-      ctx.drawImage(mapImgRef.current, 0, 0, W, H);
-    } else {
-      ctx.fillStyle = "#f3f4f6";
-      ctx.fillRect(0, 0, W, H);
-      ctx.strokeStyle = "#d1d5db";
-      ctx.lineWidth = 0.5 / zoom;
-      for (let x = 0; x <= W; x += W / 10) {
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-      }
-      for (let y = 0; y <= H; y += H / 10) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-      }
-    }
-
+    if (mapImgRef.current) { ctx.drawImage(mapImgRef.current, 0, 0, mapSize, mapSize); }
     ctx.restore();
 
-    // Helper: convert [y, x] 0-1000 → screen coords (accounts for zoom+pan)
-    const toScreen = (coords: [number, number]) => ({
-      sx: tx + (coords[1] / 1000) * W * zoom,
-      sy: ty + (coords[0] / 1000) * H * zoom,
-    });
-
-    // Draw named pins
-    pins.forEach((pin, i) => {
-      if (!pin.coordinates) return;
-      const { sx, sy } = toScreen(pin.coordinates);
-      drawPin(ctx, sx, sy, pinColour(i + 1), pin.name || `Pin ${i + 1}`);
-    });
-
-    // Draw main pin (blue) on top
-    if (showMainPin) {
-      const { sx, sy } = toScreen(mainCoords);
-      drawPin(ctx, sx, sy, "#2563eb");
-      // small "Main" label
-      ctx.font = "bold 9px system-ui";
-      ctx.fillStyle = "rgba(37,99,235,0.85)";
+    // Draw Routes
+    routes.forEach(route => {
+      const isSelected = selectedRouteId === route.id;
+      const isMain = route.isDefault;
       ctx.beginPath();
-      ctx.roundRect(sx + 12, sy - 14, 38, 13, 3);
-      ctx.fill();
-      ctx.fillStyle = "#fff";
-      ctx.fillText("Main", sx + 16, sy - 5);
+      ctx.strokeStyle = isMain ? "#2563eb" : (isSelected ? "#3b82f6" : (route.color || "#10b981"));
+      ctx.lineWidth = (isSelected || isMain ? 6 : 4) * zoom;
+      ctx.lineJoin = "round"; ctx.lineCap = "round";
+      
+      route.points.forEach((p, i) => {
+        const { sx, sy } = toScreen(p);
+        if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
+      });
+      ctx.stroke();
+
+      if (isSelected && mode === "edit-route") {
+        route.points.forEach((p, i) => {
+          const { sx, sy } = toScreen(p);
+          ctx.fillStyle = draggingPointIdx === i ? "#ef4444" : "#ffffff";
+          ctx.strokeStyle = "#3b82f6"; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(sx, sy, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        });
+      }
+    });
+
+    // Draw Active Drawing Route
+    if (activeRoutePoints.length > 0) {
+      ctx.beginPath(); ctx.strokeStyle = "#fb923c"; ctx.setLineDash([5, 5]); ctx.lineWidth = 3 * zoom;
+      activeRoutePoints.forEach((p, i) => {
+        const { sx, sy } = toScreen(p);
+        if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
+      });
+      ctx.stroke(); ctx.setLineDash([]);
     }
-  }, [mainCoords, pins, zoom, tx, ty, imgLoaded, showMainPin, mapSize]);
+
+    // Draw Pins
+    pins.forEach((pin, i) => {
+      const { sx, sy } = toScreen(pin.coordinates);
+      const isDragging = draggingPinIdx === i;
+      const isSelected = selectedPinIdx === i;
+      drawPin(ctx, sx, sy, (isDragging || isSelected) ? "#ef4444" : pinColour(i + 1), pin.name);
+      
+      if (isDragging || isSelected) {
+        ctx.strokeStyle = isSelected ? "#3b82f6" : "#ffffff"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(sx, sy - 7, 12, 0, Math.PI * 2); ctx.stroke();
+      }
+    });
+  }, [pins, routes, zoom, tx, ty, imgLoaded, mapSize, activeRoutePoints, toScreen, selectedRouteId, mode, draggingPointIdx, draggingPinIdx, selectedPinIdx]);
 
   useEffect(() => { draw(); }, [draw]);
 
-  // ── Zoom helpers ──────────────────────────────────────────────────────────
-
-  const doZoom = useCallback((factor: number, mx = mapSize / 2, my = mapSize / 2) => {
-    setZoom(prev => {
-      const next = Math.min(8, Math.max(0.5, prev * factor));
-      setTx(prevTx => mx - (mx - prevTx) * (next / prev));
-      setTy(prevTy => my - (my - prevTy) * (next / prev));
-      return next;
-    });
-  }, [mapSize]);
-
-  // Ctrl+Scroll zoom
-  const handleWheel = useCallback((e: React.WheelEvent<HTMLCanvasElement>) => {
-    if (!e.ctrlKey) return;
-    e.preventDefault();
-    const rect = canvasRef.current!.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
-    doZoom(e.deltaY < 0 ? 1.15 : 0.87, mx, my);
-  }, [doZoom]);
-
-  // ── Mouse interactions ────────────────────────────────────────────────────
-
   const toMapCoords = (clientX: number, clientY: number): [number, number] => {
     const rect = canvasRef.current!.getBoundingClientRect();
-    const cx = clientX - rect.left;
-    const cy = clientY - rect.top;
-    const mapX = (cx - tx) / zoom / mapSize * 1000;
-    const mapY = (cy - ty) / zoom / mapSize * 1000;
-    return [Math.round(Math.max(0, Math.min(1000, mapY))), Math.round(Math.max(0, Math.min(1000, mapX)))];
+    return [
+      Math.round(Math.max(0, Math.min(1000, (clientY - rect.top - ty) / zoom / mapSize * 1000))),
+      Math.round(Math.max(0, Math.min(1000, (clientX - rect.left - tx) / zoom / mapSize * 1000)))
+    ];
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    if (mode !== "view") return;
-    isDragging.current = true;
-    dragOrigin.current = { x: e.clientX, y: e.clientY, tx, ty };
+    const coords = toMapCoords(e.clientX, e.clientY);
+    
+    const clickedPinIdx = pins.findIndex(p => {
+      const dist = Math.sqrt(Math.pow(p.coordinates[0] - coords[0], 2) + Math.pow(p.coordinates[1] - coords[1], 2));
+      return dist < (25 / zoom);
+    });
+
+    if (clickedPinIdx !== -1 && (mode === "view" || (mode === "edit-pin" && selectedPinIdx === clickedPinIdx))) {
+      setDraggingPinIdx(clickedPinIdx);
+      if (mode !== "edit-pin") setSelectedPinIdx(clickedPinIdx);
+      return;
+    }
+
+    if (mode === "edit-route" && selectedRouteId !== null) {
+      const route = routes.find(r => r.id === selectedRouteId);
+      if (route) {
+        const pointIdx = route.points.findIndex(p => {
+          const dist = Math.sqrt(Math.pow(p[0] - coords[0], 2) + Math.pow(p[1] - coords[1], 2));
+          return dist < (15 / zoom);
+        });
+        if (pointIdx !== -1) { setDraggingPointIdx(pointIdx); return; }
+      }
+    }
+
+    if (mode === "view") { isDraggingMap.current = true; dragOrigin.current = { x: e.clientX, y: e.clientY, tx, ty }; }
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    if (!isDragging.current) return;
-    const dx = e.clientX - dragOrigin.current.x;
-    const dy = e.clientY - dragOrigin.current.y;
-    setTx(dragOrigin.current.tx + dx);
-    setTy(dragOrigin.current.ty + dy);
-  };
-
-  const handleMouseUp = () => { isDragging.current = false; };
-
-  const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const coords = toMapCoords(e.clientX, e.clientY);
-    if (mode === "place-main") {
-      onMainCoordsChange(coords);
-      setMode("view");
-    } else if (mode === "place-pin") {
-      const newPin: AdminPin = {
-        name: pendingPinName.trim() || `Pin ${pins.length + 1}`,
-        coordinates: coords,
-      };
-      onPinsChange([...pins, newPin]);
-      setPendingPinName("");
-      setMode("view");
+
+    if (draggingPinIdx !== null && onPinsChange) {
+      const nextPins = [...pins];
+      nextPins[draggingPinIdx].coordinates = coords;
+      onPinsChange(nextPins);
+      return;
+    }
+
+    if (draggingPointIdx !== null && selectedRouteId !== null && onRoutesChange) {
+      const nextRoutes = [...routes];
+      const rIdx = nextRoutes.findIndex(r => r.id === selectedRouteId);
+      if (rIdx !== -1) { nextRoutes[rIdx].points[draggingPointIdx] = coords; onRoutesChange(nextRoutes); }
+      return;
+    }
+
+    if (isDraggingMap.current) {
+      setTx(dragOrigin.current.tx + e.clientX - dragOrigin.current.x);
+      setTy(dragOrigin.current.ty + e.clientY - dragOrigin.current.y);
     }
   };
 
-  const handleReset = () => {
-    setZoom(1); setTx(0); setTy(0);
+  const handleMouseUp = () => { isDraggingMap.current = false; setDraggingPointIdx(null); setDraggingPinIdx(null); };
+
+  const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    const coords = toMapCoords(e.clientX, e.clientY);
+    if (mode === "place-pin") {
+      onPinsChange([...pins, { name: pendingPinName || `Pin ${pins.length + 1}`, coordinates: coords }]);
+      setPendingPinName(""); setMode("view");
+    } else if (mode === "edit-pin" && selectedPinIdx !== null && onPinsChange) {
+      const nextPins = [...pins]; nextPins[selectedPinIdx].coordinates = coords; onPinsChange(nextPins);
+      toast.success("Pin relocated!");
+    } else if (mode === "draw-route") {
+      setActiveRoutePoints([...activeRoutePoints, coords]);
+    } else if (mode === "view" || mode === "edit-route") {
+      const nearRoute = routes.find(r => {
+        return r.points.some((p, i) => {
+           if (i === 0) return false;
+           const p1 = r.points[i-1]; const p2 = p;
+           const dx = p2[1] - p1[1]; const dy = p2[0] - p1[0];
+           const l2 = dx*dx + dy*dy; if (l2 === 0) return false;
+           let t = ((coords[1] - p1[1]) * dx + (coords[0] - p1[0]) * dy) / l2;
+           t = Math.max(0, Math.min(1, t));
+           const dist = Math.sqrt(Math.pow(coords[1] - (p1[1] + t * dx), 2) + Math.pow(coords[0] - (p1[0] + t * dy), 2));
+           return dist < (10 / zoom);
+        });
+      });
+      if (nearRoute) { setSelectedRouteId(nearRoute.id); setMode("edit-route"); }
+      else { setSelectedRouteId(null); setMode("view"); }
+    }
   };
 
-  // ── Cursor ──────────────────────────────────────────────────────────────
+  const addWaypoint = () => {
+    if (selectedRouteId === null || !onRoutesChange) return;
+    const rIdx = routes.findIndex(r => r.id === selectedRouteId);
+    if (rIdx !== -1) {
+      const nextRoutes = [...routes]; const pts = nextRoutes[rIdx].points;
+      if (pts.length >= 2) {
+        const last = pts[pts.length-1]; const prev = pts[pts.length-2];
+        const newPt: [number, number] = [Math.round((last[0]+prev[0])/2), Math.round((last[1]+prev[1])/2)];
+        pts.splice(pts.length-1, 0, newPt); onRoutesChange(nextRoutes);
+        toast.success("Waypoint added!");
+      }
+    }
+  };
 
-  const cursor = mode !== "view" ? "crosshair" : isDragging.current ? "grabbing" : "grab";
+  const quickConnect = () => {
+    const p1 = pins.find(p => p.name === connStart);
+    const p2 = pins.find(p => p.name === connEnd);
+    if (p1 && p2 && onRoutesChange) {
+      onRoutesChange([...routes, { name: `${p1.name} to ${p2.name}`, points: [p1.coordinates, p2.coordinates], id: Date.now() }]);
+      toast.success("Connected!");
+    } else toast.error("Select both pins");
+  };
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  const setAsMain = (id: string | number) => {
+    if (!onRoutesChange) return;
+    const nextRoutes = routes.map(r => ({ ...r, isDefault: r.id === id, color: r.id === id ? "#2563eb" : "#10b981" }));
+    onRoutesChange(nextRoutes);
+    toast.success("Set as Main Route");
+  };
 
   return (
-    <div className="flex gap-3 h-full">
-      {/* ── LEFT: Map canvas ── */}
-      <div className="relative rounded-lg overflow-hidden border border-gray-200 bg-gray-100 shrink-0" style={{ width: mapSize, height: mapSize }}>
-        {/* Canvas */}
+    <div className="flex gap-4 h-full">
+      <div className="relative rounded-lg overflow-hidden border border-gray-200 bg-gray-100 shrink-0 shadow-lg" style={{ width: mapSize, height: mapSize }}>
         <canvas
           ref={canvasRef}
-          width={mapSize}
-          height={mapSize}
-          style={{ width: mapSize, height: mapSize, display: "block", cursor }}
+          width={mapSize} height={mapSize}
+          className="block touch-none"
+          style={{ cursor: mode === "draw-route" || mode === "place-pin" ? "crosshair" : mode === "edit-route" || mode === "edit-pin" ? "move" : "grab" }}
           onClick={handleClick}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
-          onWheel={handleWheel}
         />
 
-        {/* ──── Overlaid HUD — LEFT side ──── */}
-        <div className="absolute left-2 top-2 flex flex-col gap-1.5">
-          {/* Zoom In */}
-          <button
-            onClick={() => doZoom(1.25)}
-            className="w-8 h-8 rounded-lg bg-white/90 backdrop-blur shadow flex items-center justify-center hover:bg-white transition-colors border border-gray-200"
-            title="Zoom In (Ctrl+Scroll)"
-          >
-            <ZoomIn className="h-4 w-4 text-gray-700" />
-          </button>
-          {/* Zoom Out */}
-          <button
-            onClick={() => doZoom(0.8)}
-            className="w-8 h-8 rounded-lg bg-white/90 backdrop-blur shadow flex items-center justify-center hover:bg-white transition-colors border border-gray-200"
-            title="Zoom Out (Ctrl+Scroll)"
-          >
-            <ZoomOut className="h-4 w-4 text-gray-700" />
-          </button>
-
-          {/* Divider */}
+        <div className="absolute left-2 top-2 flex flex-col gap-1.5 HUD">
+          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => {setZoom(z => Math.min(8, z*1.2))}}><ZoomIn className="h-4 w-4" /></Button>
+          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => {setZoom(z => Math.max(0.2, z/1.2))}}><ZoomOut className="h-4 w-4" /></Button>
           <div className="h-px bg-gray-300 mx-1" />
-
-          {/* Place Main Pin — only when showMainPin */}
-          {showMainPin && (
-            <button
-              onClick={() => setMode(mode === "place-main" ? "view" : "place-main")}
-              className={`w-8 h-8 rounded-lg shadow flex items-center justify-center transition-colors border ${
-                mode === "place-main"
-                  ? "bg-blue-600 border-blue-700 text-white"
-                  : "bg-white/90 backdrop-blur border-gray-200 hover:bg-white text-gray-700"
-              }`}
-              title={mode === "place-main" ? "Click map to place Main pin" : "Place Main Pin"}
-            >
-              📍
-            </button>
-          )}
-
-          {/* Place Named Pin */}
-          <button
-            onClick={() => setMode(mode === "place-pin" ? "view" : "place-pin")}
-            className={`w-8 h-8 rounded-lg shadow flex items-center justify-center transition-colors border ${
-              mode === "place-pin"
-                ? "bg-orange-500 border-orange-600 text-white"
-                : "bg-white/90 backdrop-blur border-gray-200 hover:bg-white text-gray-700"
-            }`}
-            title={mode === "place-pin" ? "Click map to place named pin" : "Place Named Pin"}
-          >
-            📌
-          </button>
+          <Button size="icon" variant={mode === "place-pin" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => setMode(mode === "place-pin" ? "view" : "place-pin")}>📌</Button>
+          <Button size="icon" variant={mode === "draw-route" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => {
+            if (mode === "draw-route") { if (activeRoutePoints.length >= 2) { const name = prompt("Name:"); if(name && onRoutesChange) onRoutesChange([...routes, {name, points: activeRoutePoints, id: Date.now()}]); } setActiveRoutePoints([]); setMode("view"); }
+            else setMode("draw-route");
+          }}>
+            <Navigation className="h-4 w-4" />
+          </Button>
         </div>
 
-        {/* ──── Reset — TOP RIGHT ──── */}
-        <button
-          onClick={handleReset}
-          className="absolute top-2 right-2 w-8 h-8 rounded-lg bg-white/90 backdrop-blur shadow flex items-center justify-center hover:bg-white transition-colors border border-gray-200"
-          title="Reset zoom & pan"
-        >
-          <RotateCcw className="h-3.5 w-3.5 text-gray-700" />
-        </button>
+        <button onClick={() => { setZoom(1); setTx(0); setTy(0); }} className="absolute top-2 right-2 p-1.5 bg-white/80 rounded-full border shadow hover:bg-white"><RotateCcw className="h-3.5 w-3.5" /></button>
 
-        {/* ──── Mode HUD banner ──── */}
-        {mode !== "view" && (
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-2 pointer-events-none">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            {mode === "place-main" ? "Click to place main pin" : "Click to place named pin"}
+        {(mode === "edit-route" || mode === "edit-pin") && (
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-blue-600 text-white text-[10px] px-4 py-2 rounded-full shadow-xl font-bold">
+            <Edit2 className="w-3 h-3" /> {mode === "edit-route" ? "Editing Route: DRAG waypoints" : `Relocating: ${pins[selectedPinIdx!]?.name}`}
+            <button onClick={() => { setMode("view"); setSelectedPinIdx(null); setSelectedRouteId(null); }} className="ml-2 bg-white/20 p-1 rounded-full"><Check className="h-3 w-3" /></button>
           </div>
         )}
-
-        {/* Zoom indicator */}
-        <div className="absolute bottom-2 right-2 bg-black/40 text-white text-[10px] px-1.5 py-0.5 rounded font-mono pointer-events-none">
-          {Math.round(zoom * 100)}%
-        </div>
       </div>
 
-      {/* ── RIGHT: Pins sidebar ── */}
-      <div className="flex-1 flex flex-col gap-2 min-h-0 overflow-hidden">
-        <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Named Pins</p>
-          <span className="text-[10px] bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">{pins.length}</span>
-        </div>
-
-        {/* Pin name input before placing */}
-        {mode === "place-pin" && (
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-2 space-y-1">
-            <Label className="text-[10px] text-orange-700 font-medium">Pin Name (optional)</Label>
-            <Input
-              value={pendingPinName}
-              onChange={e => setPendingPinName(e.target.value)}
-              placeholder="e.g. Main entrance"
-              className="h-7 text-xs"
-              autoFocus
-            />
-            <p className="text-[10px] text-orange-600">Then click on the map to place</p>
+      <div className="flex-1 flex flex-col gap-3 min-w-0 overflow-hidden pr-1">
+        <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3 space-y-2 shadow-sm">
+          <Label className="text-[10px] uppercase font-bold text-emerald-700 tracking-wider">Connect Two Pins</Label>
+          <div className="grid grid-cols-2 gap-2">
+            <select className="text-[10px] border p-1 rounded bg-white" value={connStart} onChange={e => setConnStart(e.target.value)}>
+              <option value="">Start...</option>
+              {pins.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
+            </select>
+            <select className="text-[10px] border p-1 rounded bg-white" value={connEnd} onChange={e => setConnEnd(e.target.value)}>
+              <option value="">End...</option>
+              {pins.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
+            </select>
           </div>
-        )}
-
-        {/* Add pin button */}
-        {mode === "view" && (
-          <button
-            onClick={() => setMode("place-pin")}
-            className="flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 border border-dashed border-blue-300 rounded-lg px-3 py-1.5 hover:bg-blue-50 transition-colors"
-          >
-            <PlusCircle className="h-3.5 w-3.5" /> Add pin
-          </button>
-        )}
-
-        {/* Pin list */}
-        <div className="flex-1 overflow-y-auto space-y-2 pr-0.5" style={{ scrollbarWidth: "thin" }}>
-          {pins.length === 0 ? (
-            <div className="text-center py-6 text-muted-foreground text-xs border-2 border-dashed rounded-lg">
-              <MapPin className="h-5 w-5 mx-auto mb-1 opacity-30" />
-              No pins yet
-            </div>
-          ) : (
-            pins.map((pin, i) => (
-              <div key={i} className="border rounded-lg p-2 bg-gray-50 space-y-1.5">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded-full shrink-0" style={{ background: pinColour(i + 1) }} />
-                    <span className="text-xs font-medium text-gray-700 truncate">{pin.name || `Pin ${i + 1}`}</span>
-                  </div>
-                  <button onClick={() => onPinsChange(pins.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 shrink-0">
-                    <Trash2 className="h-3.5 w-3.5" />
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 gap-1.5">
-                  <div>
-                    <Label className="text-[10px] text-muted-foreground block mb-0.5">Name</Label>
-                    <Input value={pin.name} onChange={e => { const n = [...pins]; n[i] = { ...n[i], name: e.target.value }; onPinsChange(n); }} className="h-6 text-xs px-2" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-1">
-                    <div>
-                      <Label className="text-[10px] text-muted-foreground block mb-0.5">Y</Label>
-                      <Input type="number" value={pin.coordinates[0]}
-                        onChange={e => { const n = [...pins]; n[i] = { ...n[i], coordinates: [Number(e.target.value), n[i].coordinates[1]] }; onPinsChange(n); }}
-                        className="h-6 text-xs px-1.5" min={0} max={1000} />
-                    </div>
-                    <div>
-                      <Label className="text-[10px] text-muted-foreground block mb-0.5">X</Label>
-                      <Input type="number" value={pin.coordinates[1]}
-                        onChange={e => { const n = [...pins]; n[i] = { ...n[i], coordinates: [n[i].coordinates[0], Number(e.target.value)] }; onPinsChange(n); }}
-                        className="h-6 text-xs px-1.5" min={0} max={1000} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))
-          )}
+          <Button size="sm" className="w-full text-[10px] h-7 bg-emerald-600 hover:bg-emerald-700" onClick={quickConnect}>Create Route</Button>
         </div>
 
-        {/* Bottom info note */}
-        <p className="text-[10px] text-muted-foreground border-t pt-1.5 leading-relaxed">
-          📍 Coords: <code className="font-mono">[y, x]</code> · 0–1000 scale · Ctrl+Scroll to zoom · Drag map to pan
-        </p>
+        <div className="flex-1 overflow-y-auto space-y-4" style={{ scrollbarWidth: "thin" }}>
+          <div>
+            <Label className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 block">Connections ({routes.length})</Label>
+            <div className="space-y-1.5">
+              {routes.map((r, i) => (
+                <div key={r.id} className={`flex flex-col gap-1 bg-white border rounded-lg p-2 hover:border-blue-300 transition-all ${selectedRouteId === r.id ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 min-w-0 flex-1 text-xs font-semibold">
+                      <span className="truncate">{r.name}</span>
+                      {r.isDefault && <span className="bg-blue-100 text-blue-700 text-[8px] px-1 rounded">MAIN</span>}
+                    </div>
+                    <div className="flex gap-1">
+                      <button onClick={() => setAsMain(r.id)} className={`p-1 rounded ${r.isDefault ? 'text-blue-600 bg-blue-50' : 'text-gray-400'}`}><Check className="h-3 w-3" /></button>
+                      <button onClick={() => { setSelectedRouteId(r.id); setMode("edit-route"); }} className="p-1 text-blue-500"><Edit2 className="h-3 w-3" /></button>
+                      <button onClick={() => onRoutesChange?.(routes.filter((_, j) => j !== i))} className="p-1 text-red-400"><Trash2 className="h-3 w-3" /></button>
+                    </div>
+                  </div>
+                  {selectedRouteId === r.id && <Button variant="outline" size="sm" className="h-6 text-[9px] w-full border-dashed" onClick={addWaypoint}>+ Add Waypoint</Button>}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t pt-3">
+            <Label className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 block">Pins ({pins.length})</Label>
+            <div className="space-y-1.5">
+              {pins.map((pin, i) => (
+                <div key={i} className={`bg-gray-50 border rounded-lg p-2 flex flex-col gap-1 ${selectedPinIdx === i ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
+                  <div className="flex items-center justify-between">
+                    <Input value={pin.name} onChange={e => { const n = [...pins]; n[i].name = e.target.value; onPinsChange(n); }} className="h-6 text-xs border-none bg-transparent p-0 font-bold" />
+                    <div className="flex gap-1">
+                      <button onClick={() => { setSelectedPinIdx(i); setMode("edit-pin"); }} className={`p-1 ${selectedPinIdx === i ? 'text-blue-600' : 'text-gray-300'}`}><Edit2 className="h-3 w-3" /></button>
+                      <button onClick={() => onPinsChange(pins.filter((_, j) => j !== i))} className="p-1 text-red-300"><Trash2 className="h-3 w-3" /></button>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 text-[9px] text-gray-400 italic"><span>Y: {pin.coordinates[0]}</span><span>X: {pin.coordinates[1]}</span></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

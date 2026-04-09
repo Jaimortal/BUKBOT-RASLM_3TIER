@@ -10,7 +10,6 @@ export const users = pgTable("users", {
   role: text("role").default("admin"),
   createdAt: timestamp("created_at").defaultNow(),
 });
-
 // Table for responses.json data
 export const botResponses = pgTable("bot_responses", {
   id: serial("id").primaryKey(),
@@ -46,6 +45,7 @@ export const locationResponses = pgTable("location_responses", {
   responsesCeb: jsonb("responses_ceb").$type<string[]>().default([]),
   // Additional map data
   pins: jsonb("pins").$type<{name: string, coordinates: number[]}[]>().default([]),
+  routes: jsonb("routes").$type<{name: string, points: [number, number][], color?: string, isDefault?: boolean}[]>().default([]),
   imageUrls: jsonb("image_urls").$type<string[]>().default([]),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
@@ -153,7 +153,54 @@ export const images = pgTable("images", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// Table for tracking JSON file migrations
+export const maps = pgTable("maps", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  styleUrl: text("style_url").default("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
+  zoom: integer("zoom").default(13),
+  center: jsonb("center").$type<number[]>().default([10.3157, 123.8854]),
+  isDefault: boolean("is_default").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const routes = pgTable("routes", {
+  id: serial("id").primaryKey(),
+  mapId: integer("map_id").references(() => maps.id),
+  name: text("name").notNull(),
+  points: jsonb("points").$type<{lat: number, lng: number}[]>().notNull(),
+  color: text("color").default("#3b82f6"),
+  weight: integer("weight").default(5),
+  isDefault: boolean("is_default").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const mapMarkers = pgTable("map_markers", {
+  id: serial("id").primaryKey(),
+  mapId: integer("map_id").references(() => maps.id),
+  name: text("name").notNull(),
+  lat: text("lat").notNull(), // Use text for precision
+  lng: text("lng").notNull(),
+  description: text("description"),
+  type: text("type").default("generic"), // e.g., 'building', 'office'
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+
+export const insertMapSchema = createInsertSchema(maps).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertRouteSchema = createInsertSchema(routes).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertMapMarkerSchema = createInsertSchema(mapMarkers).omit({
+  id: true,
+  createdAt: true,
+});
+
 export const migrationTracking = pgTable("migration_tracking", {
   fileName: text("file_name").primaryKey(),
   lastMtime: bigint("last_mtime", { mode: "number" }).notNull(),
@@ -252,3 +299,12 @@ export const insertImageSchema = createInsertSchema(images).omit({
 
 export type InsertImage = z.infer<typeof insertImageSchema>;
 export type Image = typeof images.$inferSelect;
+
+export type InsertMap = z.infer<typeof insertMapSchema>;
+export type Map = typeof maps.$inferSelect;
+
+export type InsertRoute = z.infer<typeof insertRouteSchema>;
+export type Route = typeof routes.$inferSelect;
+
+export type InsertMapMarker = z.infer<typeof insertMapMarkerSchema>;
+export type MapMarker = typeof mapMarkers.$inferSelect;

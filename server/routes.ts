@@ -5,6 +5,7 @@ import { AdminController } from "./controllers/adminController";
 import { AuthController } from "./controllers/authController";
 import { FaqController } from "./controllers/faqController";
 import { AdminBotTopicsController } from "./controllers/adminBotTopicsController";
+import { MapController } from "./controllers/mapController";
 import emailRoutes from "./routes/emailRoutes";
 import adminMigrationRoutes from "./routes/admin-migration.js";
 import jwt from "jsonwebtoken";
@@ -191,6 +192,21 @@ export async function registerRoutes(
 
   // Delete a location
   app.delete("/api/admin/locations/:id", requireAuth, AdminController.deleteLocation);
+
+  // MAP ROUTES
+  app.get("/api/maps", MapController.getMaps);
+  app.get("/api/maps/:id", MapController.getMap);
+  app.get("/api/maps/:id/routes", MapController.getRoutes);
+  app.get("/api/maps/:id/markers", MapController.getMarkers);
+
+  // ADMIN MAP ROUTES
+  app.post("/api/admin/maps", requireAuth, MapController.upsertMap);
+  app.delete("/api/admin/maps/:id", requireAuth, MapController.deleteMap);
+  app.post("/api/admin/maps/:id/routes", requireAuth, MapController.upsertRoute);
+  app.delete("/api/admin/routes/:id", requireAuth, MapController.deleteRoute);
+  app.post("/api/admin/maps/:id/markers", requireAuth, MapController.upsertMarker);
+  app.delete("/api/admin/markers/:id", requireAuth, MapController.deleteMarker);
+  app.post("/api/admin/maps/import", requireAuth, MapController.importMap);
 
   // FAQs (ADMIN)
   app.get("/api/admin/faqs", requireAuth, FaqController.getAllFaqs);

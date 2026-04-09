@@ -16,6 +16,14 @@
         "googleId": null,
         "enabled": true,
         "password": "$2b$12$vqUt3ojH8f9LwO7n99MLXeGC24Z6MiNZhYLVT.wz1R.NEOjVkzyBe"
+      },
+      {
+        "email": "admin@example.com",
+        "name": "Dummy Admin",
+        "role": "admin",
+        "googleId": null,
+        "enabled": true,
+        "password": "$2b$10$bwroaD.89SrWLpuVPbFgiusCOCwBO2355Q.a5CEJPH6VJPB86dfd2"
       }
     ],
     "settings": {

@@ -69,6 +69,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
       coordinates: (p.coordinates?.length === 2 ? [p.coordinates[0], p.coordinates[1]] : [500, 500]) as [number, number],
     }))
   );
+  const [routes, setRoutes] = useState<any[]>(location.routes ?? []);
   const [deleteImg, setDeleteImg] = useState<number | null>(null);
 
   useEffect(() => {
@@ -81,6 +82,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
       name: p.name,
       coordinates: (p.coordinates?.length === 2 ? [p.coordinates[0], p.coordinates[1]] : [500, 500]) as [number, number],
     })));
+    setRoutes(location.routes ?? []);
   }, [open, location]);
 
   const saveMutation = useMutation({
@@ -93,6 +95,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
           name: p.name,
           coordinates: p.coordinates,
         })),
+        routes: routes,
         responses: {
           en: enLines.filter(l => l.trim()),
           ceb: cebLines.filter(l => l.trim()),
@@ -202,11 +205,10 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
               {/* Map & Pins — merged */}
               <TabsContent value="map" className="p-3 mt-0">
                 <AdminMapPinsEditor
-                  mainCoords={coords}
                   pins={pins}
-                  onMainCoordsChange={setCoords}
+                  routes={routes}
                   onPinsChange={setPins}
-                  showMainPin={true}
+                  onRoutesChange={setRoutes}
                   mapSize={420}
                 />
               </TabsContent>

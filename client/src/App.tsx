@@ -10,12 +10,14 @@ import Home from "@/pages/Home";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
 import Login from "@/pages/admin/Login";
 import EmbedChat from "@/pages/EmbedChat";
+import MapPage from "@/pages/MapPage";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/embed/chat" component={EmbedChat} />
+      <Route path="/map" component={MapPage} />
       <Route path="/admin/login" component={Login} />
       <Route path="/admin">
         {() => (

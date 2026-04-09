@@ -20,6 +20,11 @@ export interface Location {
     name: string;
     coordinates: [number, number];
   }>;
+  routes?: Array<{
+    name: string;
+    points: [number, number][];
+    color?: string;
+  }>;
   responses?: {
     en?: string[];
     ceb?: string[];
