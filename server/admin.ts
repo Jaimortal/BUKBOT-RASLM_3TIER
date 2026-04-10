@@ -128,6 +128,11 @@ type LocationFileShape = {
       mapId?: string;
       responses?: Record<string, any>;
       imageUrls?: string[];
+      routes?: Array<{
+        name: string;
+        points: [number, number][];
+        color?: string;
+      }>;
     }
   >;
 };
@@ -223,10 +228,58 @@ export async function getLocations(): Promise<Location[]> {
         pins,
         responses,
         imageUrls,
+        routes: Array.isArray((value as any)?.routes) ? (value as any).routes : [],
       };
     });
   } catch (error) {
     console.error('Error reading locations:', error);
+    return [];
+  }
+}
+
+// Lightweight public version — returns only name, coordinates, pins, routes (no response text)
+export async function getMapLocationsList(): Promise<Array<{
+  name: string;
+  coordinates: [number, number];
+  pins: Array<{ name: string; coordinates: [number, number] }>;
+  routes: Array<{ name: string; points: [number, number][]; color?: string }>;
+}>> {
+  try {
+    const file = await readLocationFile();
+    const locationsMap = file.locations || {};
+    return Object.entries(locationsMap).map(([name, value]) => {
+      const coordsRaw: any = (value as any)?.coordinates;
+      const coords: [number, number] =
+        Array.isArray(coordsRaw) && coordsRaw.length === 2
+          ? [Number(coordsRaw[0]), Number(coordsRaw[1])]
+          : [500, 500];
+
+      const pinsRaw: any = (value as any)?.pins;
+      const pins = Array.isArray(pinsRaw)
+        ? pinsRaw
+            .map((p: any, idx: number) => {
+              const c: any = p?.coordinates;
+              const tuple: [number, number] | null = Array.isArray(c) && c.length === 2
+                ? [Number(c[0]), Number(c[1])]
+                : null;
+              if (!tuple) return null;
+              return { name: String(p?.name || "").trim() || `Pin ${idx + 1}`, coordinates: tuple };
+            })
+            .filter(Boolean) as Array<{ name: string; coordinates: [number, number] }>
+        : [];
+
+      const routes = Array.isArray((value as any)?.routes)
+        ? (value as any).routes.map((r: any) => ({
+            name: String(r?.name || "Route"),
+            points: Array.isArray(r?.points) ? r.points : [],
+            color: String(r?.color || "#dc2626"),
+          }))
+        : [];
+
+      return { name, coordinates: coords, pins, routes };
+    });
+  } catch (error) {
+    console.error('Error reading map locations list:', error);
     return [];
   }
 }
@@ -436,6 +489,14 @@ export async function upsertLocation(location: Location): Promise<ApiResponse> {
       ? ([Number(nextPins[0].coordinates[0]), Number(nextPins[0].coordinates[1])] as [number, number])
       : null;
 
+    const nextRoutes = Array.isArray((location as any)?.routes)
+      ? (location as any).routes.map((r: any) => ({
+          name: String(r?.name || "Route"),
+          points: Array.isArray(r?.points) ? r.points : [],
+          color: String(r?.color || "#dc2626"), // Default to red as requested
+        }))
+      : (Array.isArray(existing.routes) ? existing.routes : []);
+
     next[key] = {
       ...existing,
       type: (location as any)?.type || existing.type,
@@ -446,7 +507,11 @@ export async function upsertLocation(location: Location): Promise<ApiResponse> {
       map_id: location.mapImage || existing.map_id || existing.mapId || 'main_map',
       responses: nextResponses,
       imageUrls: nextImageUrls,
+      routes: nextRoutes,
     };
+
+    // Remove old redundant keys if they exist
+    delete next[key].coordinate; 
 
     const success = await writeLocationFile({ locations: next });
     return {

@@ -10,12 +10,12 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { 
-  Trash2, 
-  PlusCircle, 
-  MapPin, 
-  ZoomIn, 
-  ZoomOut, 
+import {
+  Trash2,
+  PlusCircle,
+  MapPin,
+  ZoomIn,
+  ZoomOut,
   RotateCcw,
   Navigation,
   Move,
@@ -50,7 +50,7 @@ interface AdminMapPinsEditorProps {
 
 // ─── Colour helpers ───────────────────────────────────────────────────────────
 
-const PIN_COLOURS = ["#2563eb","#dc2626","#16a34a","#ea580c","#9333ea","#0891b2","#be185d","#ca8a04","#4f46e5","#0f766e"];
+const PIN_COLOURS = ["#2563eb", "#dc2626", "#16a34a", "#ea580c", "#9333ea", "#0891b2", "#be185d", "#ca8a04", "#4f46e5", "#0f766e"];
 
 function pinColour(idx: number) {
   return PIN_COLOURS[idx % PIN_COLOURS.length];
@@ -95,14 +95,14 @@ export function AdminMapPinsEditor({
   const [zoom, setZoom] = useState(1);
   const [tx, setTx] = useState(0);
   const [ty, setTy] = useState(0);
-  
+
   // Interaction State
   const [mode, setMode] = useState<"view" | "place-pin" | "draw-route" | "edit-route" | "edit-pin">("view");
   const [pendingPinName, setPendingPinName] = useState("");
   const [activeRoutePoints, setActiveRoutePoints] = useState<[number, number][]>([]);
   const [selectedRouteId, setSelectedRouteId] = useState<string | number | null>(null);
   const [selectedPinIdx, setSelectedPinIdx] = useState<number | null>(null);
-  
+
   // Dragging state
   const isDraggingMap = useRef(false);
   const dragOrigin = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
@@ -124,6 +124,18 @@ export function AdminMapPinsEditor({
     sy: ty + (coords[0] / 1000) * mapSize * zoom,
   }), [tx, ty, zoom, mapSize]);
 
+  const [dashOffset, setDashOffset] = useState(0);
+
+  useEffect(() => {
+    let frameId: number;
+    const animate = () => {
+      setDashOffset(prev => (prev - 0.5) % 20);
+      frameId = requestAnimationFrame(animate);
+    };
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -139,18 +151,39 @@ export function AdminMapPinsEditor({
 
     // Draw Routes
     routes.forEach(route => {
+      if (!route.points || route.points.length < 2) return;
       const isSelected = selectedRouteId === route.id;
-      const isMain = route.isDefault;
+
+      // Zoom-based styling: thinner with more visible dashes when zoomed out
+      const isZoomedOut = zoom < 0.5;
+      const lineWidth = (isSelected ? (isZoomedOut ? 2 : 3) : (isZoomedOut ? 1.5 : 2)) * zoom;
+      const dashPattern = isZoomedOut ? [6, 6] : [8, 8];
+      const animSpeed = isZoomedOut ? 1 : 0.5; // faster animation when zoomed out
+
+      ctx.save();
       ctx.beginPath();
-      ctx.strokeStyle = isMain ? "#2563eb" : (isSelected ? "#3b82f6" : (route.color || "#10b981"));
-      ctx.lineWidth = (isSelected || isMain ? 6 : 4) * zoom;
-      ctx.lineJoin = "round"; ctx.lineCap = "round";
-      
-      route.points.forEach((p, i) => {
-        const { sx, sy } = toScreen(p);
-        if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
-      });
+      // Design: red, thin, dashed
+      ctx.strokeStyle = "#dc2626";
+      ctx.lineWidth = lineWidth;
+      ctx.setLineDash(dashPattern);
+      ctx.lineDashOffset = dashOffset * (isZoomedOut ? 2 : 1);
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+
+      // Logic for Curved Turns - smaller radius for tighter, more controllable bends
+      const pts = route.points.map(p => toScreen(p));
+      const radius = 1 * zoom; // reduced curvature radius for sharper bends
+
+      ctx.moveTo(pts[0].sx, pts[0].sy);
+      for (let i = 1; i < pts.length - 1; i++) {
+        const p1 = pts[i];
+        const p2 = pts[i + 1];
+        ctx.arcTo(p1.sx, p1.sy, p2.sx, p2.sy, radius);
+      }
+      ctx.lineTo(pts[pts.length - 1].sx, pts[pts.length - 1].sy);
+
       ctx.stroke();
+      ctx.restore();
 
       if (isSelected && mode === "edit-route") {
         route.points.forEach((p, i) => {
@@ -164,7 +197,8 @@ export function AdminMapPinsEditor({
 
     // Draw Active Drawing Route
     if (activeRoutePoints.length > 0) {
-      ctx.beginPath(); ctx.strokeStyle = "#fb923c"; ctx.setLineDash([5, 5]); ctx.lineWidth = 3 * zoom;
+      const isZoomedOut = zoom < 0.5;
+      ctx.beginPath(); ctx.strokeStyle = "#dc2626"; ctx.setLineDash(isZoomedOut ? [4, 4] : [5, 5]); ctx.lineWidth = (isZoomedOut ? 1.5 : 2) * zoom;
       activeRoutePoints.forEach((p, i) => {
         const { sx, sy } = toScreen(p);
         if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
@@ -178,13 +212,13 @@ export function AdminMapPinsEditor({
       const isDragging = draggingPinIdx === i;
       const isSelected = selectedPinIdx === i;
       drawPin(ctx, sx, sy, (isDragging || isSelected) ? "#ef4444" : pinColour(i + 1), pin.name);
-      
+
       if (isDragging || isSelected) {
         ctx.strokeStyle = isSelected ? "#3b82f6" : "#ffffff"; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(sx, sy - 7, 12, 0, Math.PI * 2); ctx.stroke();
       }
     });
-  }, [pins, routes, zoom, tx, ty, imgLoaded, mapSize, activeRoutePoints, toScreen, selectedRouteId, mode, draggingPointIdx, draggingPinIdx, selectedPinIdx]);
+  }, [pins, routes, zoom, tx, ty, imgLoaded, mapSize, activeRoutePoints, toScreen, selectedRouteId, mode, draggingPointIdx, draggingPinIdx, selectedPinIdx, dashOffset]);
 
   useEffect(() => { draw(); }, [draw]);
 
@@ -198,7 +232,7 @@ export function AdminMapPinsEditor({
 
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const coords = toMapCoords(e.clientX, e.clientY);
-    
+
     const clickedPinIdx = pins.findIndex(p => {
       const dist = Math.sqrt(Math.pow(p.coordinates[0] - coords[0], 2) + Math.pow(p.coordinates[1] - coords[1], 2));
       return dist < (25 / zoom);
@@ -262,14 +296,14 @@ export function AdminMapPinsEditor({
     } else if (mode === "view" || mode === "edit-route") {
       const nearRoute = routes.find(r => {
         return r.points.some((p, i) => {
-           if (i === 0) return false;
-           const p1 = r.points[i-1]; const p2 = p;
-           const dx = p2[1] - p1[1]; const dy = p2[0] - p1[0];
-           const l2 = dx*dx + dy*dy; if (l2 === 0) return false;
-           let t = ((coords[1] - p1[1]) * dx + (coords[0] - p1[0]) * dy) / l2;
-           t = Math.max(0, Math.min(1, t));
-           const dist = Math.sqrt(Math.pow(coords[1] - (p1[1] + t * dx), 2) + Math.pow(coords[0] - (p1[0] + t * dy), 2));
-           return dist < (10 / zoom);
+          if (i === 0) return false;
+          const p1 = r.points[i - 1]; const p2 = p;
+          const dx = p2[1] - p1[1]; const dy = p2[0] - p1[0];
+          const l2 = dx * dx + dy * dy; if (l2 === 0) return false;
+          let t = ((coords[1] - p1[1]) * dx + (coords[0] - p1[0]) * dy) / l2;
+          t = Math.max(0, Math.min(1, t));
+          const dist = Math.sqrt(Math.pow(coords[1] - (p1[1] + t * dx), 2) + Math.pow(coords[0] - (p1[0] + t * dy), 2));
+          return dist < (10 / zoom);
         });
       });
       if (nearRoute) { setSelectedRouteId(nearRoute.id); setMode("edit-route"); }
@@ -283,9 +317,9 @@ export function AdminMapPinsEditor({
     if (rIdx !== -1) {
       const nextRoutes = [...routes]; const pts = nextRoutes[rIdx].points;
       if (pts.length >= 2) {
-        const last = pts[pts.length-1]; const prev = pts[pts.length-2];
-        const newPt: [number, number] = [Math.round((last[0]+prev[0])/2), Math.round((last[1]+prev[1])/2)];
-        pts.splice(pts.length-1, 0, newPt); onRoutesChange(nextRoutes);
+        const last = pts[pts.length - 1]; const prev = pts[pts.length - 2];
+        const newPt: [number, number] = [Math.round((last[0] + prev[0]) / 2), Math.round((last[1] + prev[1]) / 2)];
+        pts.splice(pts.length - 1, 0, newPt); onRoutesChange(nextRoutes);
         toast.success("Waypoint added!");
       }
     }
@@ -323,12 +357,12 @@ export function AdminMapPinsEditor({
         />
 
         <div className="absolute left-2 top-2 flex flex-col gap-1.5 HUD">
-          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => {setZoom(z => Math.min(8, z*1.2))}}><ZoomIn className="h-4 w-4" /></Button>
-          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => {setZoom(z => Math.max(0.2, z/1.2))}}><ZoomOut className="h-4 w-4" /></Button>
+          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => { setZoom(z => Math.min(8, z * 1.2)) }}><ZoomIn className="h-4 w-4" /></Button>
+          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => { setZoom(z => Math.max(0.2, z / 1.2)) }}><ZoomOut className="h-4 w-4" /></Button>
           <div className="h-px bg-gray-300 mx-1" />
           <Button size="icon" variant={mode === "place-pin" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => setMode(mode === "place-pin" ? "view" : "place-pin")}>📌</Button>
           <Button size="icon" variant={mode === "draw-route" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => {
-            if (mode === "draw-route") { if (activeRoutePoints.length >= 2) { const name = prompt("Name:"); if(name && onRoutesChange) onRoutesChange([...routes, {name, points: activeRoutePoints, id: Date.now()}]); } setActiveRoutePoints([]); setMode("view"); }
+            if (mode === "draw-route") { if (activeRoutePoints.length >= 2) { const name = prompt("Name:"); if (name && onRoutesChange) onRoutesChange([...routes, { name, points: activeRoutePoints, id: Date.now() }]); } setActiveRoutePoints([]); setMode("view"); }
             else setMode("draw-route");
           }}>
             <Navigation className="h-4 w-4" />

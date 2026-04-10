@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { MapContainer, ImageOverlay, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { MapContainer, ImageOverlay, Marker, Popup, useMap, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Maximize2, Minimize2 } from "lucide-react";
@@ -27,12 +27,12 @@ interface MapMessageProps {
   locationName: string;
   coordinates: CoordArray | CoordObject | null | undefined;
   pins?: Array<{ name: string; coordinates: CoordArray | CoordObject }>;
-  // optional props to tune bounds if needed
   imageBounds?: L.LatLngBoundsExpression;
   maxClamp?: number;
   // fullscreen props
   isFullscreen?: boolean;
   onToggleFullscreen?: () => void;
+  routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
 }
 
 const DefaultBounds: L.LatLngBoundsExpression = [
@@ -45,32 +45,71 @@ const MapController = ({ coords }: { coords: CoordArray }) => {
   const map = useMap();
   useEffect(() => {
     if (!coords || coords.length !== 2) return;
-    // Pan to new location while keeping current zoom level
-    // This maintains the zoomed-out view so users can see surrounding area
     try {
       map.flyTo(coords, map.getZoom(), { duration: 1.2 });
     } catch (err) {
-      // fallback
       map.setView(coords, map.getZoom());
     }
   }, [coords, map]);
   return null;
 };
 
+// Hook to track zoom level for dynamic styling
+function useMapZoom() {
+  const map = useMap();
+  const [zoom, setZoom] = useState(map.getZoom());
+  useEffect(() => {
+    const handleZoom = () => setZoom(map.getZoom());
+    map.on('zoom', handleZoom);
+    return () => { map.off('zoom', handleZoom); };
+  }, [map]);
+  return zoom;
+}
+
+// Component that renders route with zoom-based styling
+function RouteWithZoom({ route }: { route: { points: CoordArray[]; color?: string; name?: string } }) {
+  const zoom = useMapZoom();
+  const isZoomedOut = zoom < 0;
+
+  // Thinner weight and faster animation when zoomed out
+  const weight = isZoomedOut ? 3 : 6;
+  const dashArray = isZoomedOut ? "6, 6" : "8, 8";
+  const animationDuration = isZoomedOut ? "0.5s" : "1s";
+
+  return (
+    <Polyline
+      positions={route.points}
+      pathOptions={{
+        color: route.color || "#dc2626",
+        weight,
+        opacity: 1,
+        dashArray,
+        lineJoin: "round",
+        lineCap: "round",
+      }}
+      eventHandlers={{
+        add: (e) => {
+          const path = e.target.getElement();
+          if (path) {
+            path.classList.add('animated-route');
+            path.style.strokeDasharray = dashArray;
+            path.style.animation = `marchingAnts ${animationDuration} linear infinite`;
+          }
+        }
+      }}
+    />
+  );
+}
+
 function normalizeToTuple(raw: any, maxClamp = 3000): CoordArray | null {
   if (!raw) return null;
-
-  // if already an array [y,x] or [lat,lng]
   if (Array.isArray(raw) && raw.length >= 2) {
     const a = Number(raw[0]);
     const b = Number(raw[1]);
     if (Number.isFinite(a) && Number.isFinite(b)) {
       return [clamp(a, 0, maxClamp), clamp(b, 0, maxClamp)];
     }
-    return null;
   }
-
-  // object shapes: {lat,lng} or {latitude,longitude} or {x,y}
   if (typeof raw === "object") {
     const lat = Number((raw.lat ?? raw.latitude ?? raw.y) as any);
     const lng = Number((raw.lng ?? raw.longitude ?? raw.x) as any);
@@ -78,15 +117,12 @@ function normalizeToTuple(raw: any, maxClamp = 3000): CoordArray | null {
       return [clamp(lat, 0, maxClamp), clamp(lng, 0, maxClamp)];
     }
   }
-
-  // if it's two numeric args packed in string "10,20"
   if (typeof raw === "string" && raw.includes(",")) {
     const parts = raw.split(",").map((s) => Number(s.trim()));
     if (parts.length >= 2 && Number.isFinite(parts[0]) && Number.isFinite(parts[1])) {
       return [clamp(parts[0], 0, maxClamp), clamp(parts[1], 0, maxClamp)];
     }
   }
-
   return null;
 }
 
@@ -102,7 +138,25 @@ export default function MapMessage({
   maxClamp = 3000,
   isFullscreen = false,
   onToggleFullscreen,
+  routes,
 }: MapMessageProps) {
+
+  // Extract dynamic image height from bounds (Default: 1000)
+  const imageHeight = useMemo(() => {
+    try {
+      const b = imageBounds as any;
+      if (Array.isArray(b) && b.length >= 2) {
+        // [ [y0, x0], [y1, x1] ]
+        const y0 = Number(b[0][0]);
+        const y1 = Number(b[1][0]);
+        return Math.max(y0, y1) || 1000;
+      }
+    } catch (e) {
+      console.error("[MapMessage] Error parsing imageBounds for height:", e);
+    }
+    return 1000;
+  }, [imageBounds]);
+
   const normalizedPins = useMemo(() => {
     if (Array.isArray(pins) && pins.length > 0) {
       return pins
@@ -113,44 +167,52 @@ export default function MapMessage({
         })
         .filter(Boolean) as Array<{ name: string; coordinates: CoordArray }>;
     }
-
     const tuple = normalizeToTuple(coordinates, maxClamp);
     return tuple ? [{ name: locationName, coordinates: tuple }] : [];
   }, [pins, coordinates, maxClamp, locationName]);
 
-  // use first pin for centering
-  const tuple = normalizedPins[0]?.coordinates || null;
-
-  // debug logs to help see what was passed
-  useEffect(() => {
-    console.debug("[MapMessage] raw coords:", coordinates, "pins:", pins, "normalized pins:", normalizedPins);
-  }, [coordinates, pins, normalizedPins]);
-
-  // fallback center if coords invalid — choose center of image bounds
-  const fallbackCenter: CoordArray = (() => {
-    try {
-      const b = imageBounds as L.LatLngBoundsExpression;
-      if (Array.isArray(b) && b.length >= 2) {
-        const y0 = Number((b[0] as any)[0]);
-        const x0 = Number((b[0] as any)[1]);
-        const y1 = Number((b[1] as any)[0]);
-        const x1 = Number((b[1] as any)[1]);
-        const cy = Number.isFinite(y0) && Number.isFinite(y1) ? (y0 + y1) / 2 : 500;
-        const cx = Number.isFinite(x0) && Number.isFinite(x1) ? (x0 + x1) / 2 : 500;
-        return [cy, cx];
-      }
-    } catch (err) {
-      // ignore
-    }
-    return [500, 500];
-  })();
-
-  const flippedMarkers = normalizedPins
-    .map((p) => ({
+  const flippedMarkers = useMemo(() => {
+    const markers = normalizedPins.map((p) => ({
       name: p.name,
-      coordinates: [1000 - p.coordinates[0], p.coordinates[1]] as CoordArray,
-    }))
-    .filter((p) => Array.isArray(p.coordinates) && p.coordinates.length === 2);
+      coordinates: [imageHeight - p.coordinates[0], p.coordinates[1]] as CoordArray,
+    })).filter((p) => Array.isArray(p.coordinates) && p.coordinates.length === 2);
+
+    console.debug("[MapMessage] imageHeight:", imageHeight, "flippedMarkers:", markers);
+    return markers;
+  }, [normalizedPins, imageHeight]);
+
+  const normalizedRoutes = useMemo(() => {
+    if (!Array.isArray(routes)) return [];
+
+    const offsetX = 4; // Small shift to the right
+    const processed = routes.map(r => {
+      const validPoints = (r.points || [])
+        .map(p => normalizeToTuple(p, maxClamp))
+        .filter((p): p is CoordArray => !!p && p.length === 2)
+        // Flip vertically and shift right slightly
+        .map(p => [imageHeight - p[0], p[1] + offsetX] as CoordArray);
+
+      return { ...r, points: validPoints };
+    }).filter(r => r.points.length >= 2);
+
+    console.debug("[MapMessage] raw routes:", routes, "normalized routes:", processed);
+    return processed;
+  }, [routes, imageHeight, maxClamp]);
+
+  // Fallback center if coords invalid — choose center of image bounds
+  const fallbackCenter: CoordArray = useMemo(() => {
+    try {
+      const b = imageBounds as any;
+      if (Array.isArray(b) && b.length >= 2) {
+        const y0 = Number(b[0][0]);
+        const x0 = Number(b[0][1]);
+        const y1 = Number(b[1][0]);
+        const x1 = Number(b[1][1]);
+        return [(y0 + y1) / 2, (x0 + x1) / 2];
+      }
+    } catch (err) { }
+    return [imageHeight / 2, 500];
+  }, [imageBounds, imageHeight]);
 
   const center = flippedMarkers[0]?.coordinates ?? fallbackCenter;
 
@@ -188,13 +250,11 @@ export default function MapMessage({
     });
 
   const [activeMapUrl, setActiveMapUrl] = useState<string>('/nobackHD.png');
-  
   const { data: mapSettings } = useMapSettings();
 
-  // Update map URL when settings load
   useEffect(() => {
     if (mapSettings?.maps && mapSettings.maps.length > 0) {
-      const active = mapSettings.maps.find((m: {active?: boolean}) => m.active) || mapSettings.maps[0];
+      const active = mapSettings.maps.find((m: { active?: boolean }) => m.active) || mapSettings.maps[0];
       if (active?.url) {
         setActiveMapUrl(active.url);
       }
@@ -203,20 +263,24 @@ export default function MapMessage({
 
   return (
     <div className={`rounded-lg overflow-hidden border border-border mt-2 relative z-2 ${isFullscreen ? 'w-full h-full' : 'w-60 h-48'}`}>
-      {/* Fullscreen Toggle Button */}
       {onToggleFullscreen && (
         <button
           onClick={onToggleFullscreen}
           className="absolute top-2 right-2 z-[1000] bg-white/90 hover:bg-white text-gray-700 p-1.5 rounded-md shadow-md transition-all duration-200 backdrop-blur-sm"
           title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
         >
-          {isFullscreen ? (
-            <Minimize2 className="h-4 w-4" />
-          ) : (
-            <Maximize2 className="h-4 w-4" />
-          )}
+          {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
         </button>
       )}
+      <style>{`
+        @keyframes marchingAnts {
+          from { stroke-dashoffset: 0; }
+          to { stroke-dashoffset: 20; }
+        }
+        .animated-route {
+          animation: marchingAnts 1s linear infinite;
+        }
+      `}</style>
       <MapContainer
         crs={L.CRS.Simple}
         bounds={imageBounds}
@@ -224,11 +288,16 @@ export default function MapMessage({
         zoom={-1}
         minZoom={-2}
         maxZoom={4}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
         className="w-full h-full bg-slate-100"
         attributionControl={false}
       >
         <ImageOverlay url={activeMapUrl} bounds={imageBounds} />
+
+        {normalizedRoutes.map((route, idx) => (
+          <RouteWithZoom key={`route-${idx}`} route={route} />
+        ))}
+
         {flippedMarkers.map((p, idx) => (
           <Marker key={`pin-${idx}`} position={p.coordinates} icon={labeledIcon(p.name)}>
             <Popup>{p.name}</Popup>

@@ -4,10 +4,6 @@
       "type": "comlab",
       "building": "Finance Building",
       "floor": "3rd Floor",
-      "coordinates": [
-        692,
-        644
-      ],
       "map_id": "main_map",
       "responses": {
         "en": [
@@ -20,7 +16,84 @@
           "Pwede ka mogamit sa elevator o stairs para sa floor.",
           "Kung moabot ka, ComLab 1 mao ang una makita nga computer laboratory."
         ]
-      }
+      },
+      "pins": [
+        {
+          "name": "You are here",
+          "coordinates": [
+            879,
+            629
+          ]
+        },
+        {
+          "name": "Comlab 1",
+          "coordinates": [
+            684,
+            634
+          ]
+        }
+      ],
+      "imageUrls": [],
+      "coordinates": [
+        879,
+        629
+      ],
+      "routes": [
+        {
+          "name": "You are here to Comlab 1",
+          "points": [
+            [
+              879,
+              629
+            ],
+            [
+              784,
+              630
+            ],
+            [
+              783,
+              584
+            ],
+            [
+              757,
+              585
+            ],
+            [
+              757,
+              622
+            ],
+            [
+              718,
+              623
+            ],
+            [
+              678,
+              625
+            ],
+            [
+              679,
+              606
+            ],
+            [
+              672,
+              607
+            ],
+            [
+              672,
+              624
+            ],
+            [
+              684,
+              625
+            ],
+            [
+              684,
+              634
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
     },
     "ComLab 2": {
       "type": "comlab",
@@ -348,7 +421,7 @@
     },
     "Smart Classroom": {
       "type": "room",
-      "building": "Finance",
+      "building": "Finance Building",
       "floor": "3rd Floor",
       "coordinates": [
         729,
@@ -518,7 +591,7 @@
     },
     "Fitness Gym": {
       "type": "building",
-      "building": "Oval",
+      "building": "Campus Building & Area",
       "floor": "N/A",
       "coordinates": [
         457,
@@ -602,7 +675,7 @@
     },
     "Oval": {
       "type": "building",
-      "building": "Oval",
+      "building": "Campus Building & Area",
       "floor": "N/A",
       "coordinates": [
         363,
@@ -1190,7 +1263,7 @@
     },
     "Library": {
       "type": "building",
-      "building": "Library",
+      "building": "Library Building",
       "floor": "N/A",
       "coordinates": [
         573,
@@ -1218,7 +1291,7 @@
     },
     "Research Extension": {
       "type": "building",
-      "building": "Research Extension",
+      "building": "Campus Building & Area",
       "floor": "N/A",
       "coordinates": [
         522,
@@ -1421,7 +1494,7 @@
     },
     "NSTP Office": {
       "type": "office",
-      "building": "NSTP Building",
+      "building": "Campus Building & Area",
       "floor": "N/A",
       "coordinates": [
         611,
@@ -1672,7 +1745,7 @@
     },
     "Computer Laboratories": {
       "type": "room",
-      "building": "Comlab",
+      "building": "Finance Building",
       "floor": "Third Floor (Finance Building)",
       "coordinates": [
         731,
@@ -2752,7 +2825,7 @@
     },
     "Alumni Building": {
       "type": "building",
-      "building": "Campus Area",
+      "building": "Campus Building & Area",
       "floor": "Ground Floor",
       "coordinates": [
         100,
@@ -2770,7 +2843,7 @@
     },
     "Power Building": {
       "type": "building",
-      "building": "Campus Area",
+      "building": "Campus Building & Area",
       "floor": "Ground Floor",
       "coordinates": [
         100,
@@ -2823,7 +2896,7 @@
     },
     "OSS": {
       "type": "office",
-      "building": "Student Services Building",
+      "building": "Campus Building & Area",
       "floor": "Ground Floor",
       "map_id": "main_map",
       "responses": {
@@ -3826,7 +3899,7 @@
     },
     "I Love BukSU": {
       "type": "facility",
-      "building": "University Frontage",
+      "building": "Campus Building & Area",
       "floor": "Ground",
       "map_id": "main_map",
       "responses": {
@@ -4296,7 +4369,7 @@
     },
     "Project Management Unit": {
       "type": "office",
-      "building": "Finance",
+      "building": "Finance Building",
       "floor": "2nd Floor",
       "coordinates": [
         760,
@@ -4324,7 +4397,7 @@
     },
     "Planning Office": {
       "type": "office",
-      "building": "Finance",
+      "building": "Finance Building",
       "floor": "2nd Floor",
       "coordinates": [
         756,

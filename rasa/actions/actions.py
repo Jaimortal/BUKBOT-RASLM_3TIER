@@ -743,23 +743,28 @@ class ActionReplyFromJsonHelper:
                 if coords:
                     pins_out.append({"name": name, "coordinates": coords})
 
+        routes_raw = location_info.get("routes")
+        routes_out = []
+        if isinstance(routes_raw, list):
+            for r in routes_raw:
+                if isinstance(r, dict) and isinstance(r.get("points"), list):
+                    routes_out.append({
+                        "name": r.get("name") or "Route",
+                        "points": r.get("points"),
+                        "color": r.get("color") or "#dc2626"
+                    })
+
         if map_id:
-            if pins_out:
-                result["custom"] = {
-                    "mapData": {
-                        "locationName": normalized_name,
-                        "pins": pins_out,
-                        "mapId": map_id,
-                    }
+            result["custom"] = {
+                "mapData": {
+                    "locationName": normalized_name,
+                    "pins": pins_out,
+                    "routes": routes_out,
+                    "mapId": map_id,
                 }
-            elif location_info.get("coordinates"):
-                result["custom"] = {
-                    "mapData": {
-                        "locationName": normalized_name,
-                        "coordinates": location_info["coordinates"],
-                        "mapId": map_id,
-                    }
-                }
+            }
+            if not pins_out and location_info.get("coordinates"):
+                result["custom"]["mapData"]["coordinates"] = location_info["coordinates"]
         
         return result
     def _normalize_lab_number(self, raw_value: Any) -> Optional[str]:
@@ -797,6 +802,17 @@ class ActionReplyFromJsonHelper:
     def _get_lab_location_response(self, lab_number: str, user_message: str) -> dict:
         """Get location response for specific ComLab from the new JSON structure"""
 
+        # First, try to get it from the unified responses_location.json managed by the admin panel
+        location_name = f"ComLab {lab_number}"
+        location_dict = self.location_responses.get("locations", {})
+        
+        # Checking case-insensitively
+        target_key = next((k for k in location_dict.keys() if k.lower() == location_name.lower()), None)
+        
+        if target_key:
+            return self.get_location_response(target_key, user_message)
+
+        # Fallback to the old responses.json legacy structure
         entry = next((e for e in self.responses if e.get("intent") == "locate_comlab"), None)
         laboratories = (entry or {}).get("laboratories", {})
         lab_info = laboratories.get(str(lab_number))
@@ -860,6 +876,17 @@ class ActionReplyFromJsonHelper:
     def _get_faculty_room_response(self, college: str, user_message: str) -> dict:
         """Get location response for specific faculty room from JSON structure"""
         
+        # First, try to get it from the unified responses_location.json managed by the admin panel
+        location_name = f"{college.upper()} Faculty Room"
+        location_dict = self.location_responses.get("locations", {})
+        
+        # Checking case-insensitively
+        target_key = next((k for k in location_dict.keys() if k.lower() == location_name.lower()), None)
+        
+        if target_key:
+            return self.get_location_response(target_key, user_message)
+
+        # Fallback to the old responses.json legacy structure
         entry = next((e for e in self.responses if e.get("intent") == "ask_faculty_room_location"), None)
         faculty_rooms = (entry or {}).get("faculty_rooms", {})
         college_info = faculty_rooms.get(college.upper())
@@ -1385,6 +1412,7 @@ class ActionReplyFromJson(Action):
                 
                 processed_count = 0
                 all_map_pins = []  # Collect all pins for combined map
+                all_map_routes = [] # Collect all routes
                 first_map_id = None  # Use the first map_id found
                 
                 # First pass: send all text and images, collect map data
@@ -1417,16 +1445,11 @@ class ActionReplyFromJson(Action):
                             if first_map_id is None and map_data.get("mapId"):
                                 first_map_id = map_data["mapId"]
                             
-                            # Collect pins with location name prefix
+                            # Collect pins with their custom names
                             if map_data.get("pins"):
                                 for pin in map_data["pins"]:
                                     pin_copy = dict(pin)  # Copy to avoid modifying original
-                                    # Prefix pin name with location for clarity
-                                    location_prefix = str(map_data.get("locationName", location_name))
-                                    if "name" in pin_copy:
-                                        pin_copy["name"] = f"{location_prefix}: {pin_copy['name']}"
-                                    else:
-                                        pin_copy["name"] = location_prefix
+                                    # Keep pin name as defined in JSON
                                     all_map_pins.append(pin_copy)
                             elif map_data.get("coordinates"):
                                 # If no pins but has coordinates, create a pin
@@ -1434,6 +1457,11 @@ class ActionReplyFromJson(Action):
                                     "name": str(map_data.get("locationName", location_name)),
                                     "coordinates": map_data["coordinates"]
                                 })
+                            
+                            # Collect routes
+                            if map_data.get("routes"):
+                                for route in map_data["routes"]:
+                                    all_map_routes.append(dict(route))
                         
                         processed_count += 1
 
@@ -1446,6 +1474,7 @@ class ActionReplyFromJson(Action):
                         
                         # Reset collections for new search results
                         all_map_pins = []
+                        all_map_routes = []
                         first_map_id = None
                         
                         for i, location_name in enumerate(guessed_locations):
@@ -1477,21 +1506,22 @@ class ActionReplyFromJson(Action):
                                     if first_map_id is None and map_data.get("mapId"):
                                         first_map_id = map_data["mapId"]
                                     
-                                    # Collect pins with location name prefix
+                                    # Collect pins with their custom names
                                     if map_data.get("pins"):
                                         for pin in map_data["pins"]:
                                             pin_copy = dict(pin)
-                                            location_prefix = str(map_data.get("locationName", location_name))
-                                            if "name" in pin_copy:
-                                                pin_copy["name"] = f"{location_prefix}: {pin_copy['name']}"
-                                            else:
-                                                pin_copy["name"] = location_prefix
+                                            # Keep pin name as defined in JSON
                                             all_map_pins.append(pin_copy)
                                     elif map_data.get("coordinates"):
                                         all_map_pins.append({
                                             "name": str(map_data.get("locationName", location_name)),
                                             "coordinates": map_data["coordinates"]
                                         })
+                                    
+                                    # Collect routes
+                                    if map_data.get("routes"):
+                                        for route in map_data["routes"]:
+                                            all_map_routes.append(dict(route))
                                 
                                 processed_count += 1
 
@@ -1505,15 +1535,17 @@ class ActionReplyFromJson(Action):
                 
                 # Send combined map with all pins if we have any
                 if all_map_pins and first_map_id:
+                    loc_name = f"Multiple Locations ({processed_count})" if len(location_entities) > 1 else str(location_entities[0])
                     combined_map = {
                         "mapData": {
-                            "locationName": f"Multiple Locations ({processed_count})",
+                            "locationName": loc_name,
                             "pins": all_map_pins,
+                            "routes": all_map_routes,
                             "mapId": first_map_id
                         }
                     }
                     dispatcher.utter_message(json_message=combined_map)
-                    print(f"DEBUG - Sent combined map with {len(all_map_pins)} pins")
+                    print(f"DEBUG - Sent combined map with {len(all_map_pins)} pins and {len(all_map_routes)} routes")
 
                 if processed_count == 0:
                     dispatcher.utter_message(text="Sorry, I couldn't find information about those locations.")
@@ -1550,6 +1582,7 @@ class ActionReplyFromJson(Action):
                 print(f"DEBUG - Processing {len(college_entities)} colleges: {college_entities}")
                 
                 all_map_pins = []  # Collect all pins for combined map
+                all_map_routes = [] # Collect all routes
                 first_map_id = None  # Use the first map_id found
                 processed_count = 0
                 
@@ -1588,6 +1621,11 @@ class ActionReplyFromJson(Action):
                                     "name": str(map_data.get("locationName", f"{college} Faculty Room")),
                                     "coordinates": map_data["coordinates"]
                                 })
+                            
+                            # Collect routes
+                            if map_data.get("routes"):
+                                for route in map_data["routes"]:
+                                    all_map_routes.append(dict(route))
                         
                         processed_count += 1
                 
@@ -1598,15 +1636,17 @@ class ActionReplyFromJson(Action):
                 
                 # Send combined map with all pins if we have any
                 if all_map_pins and first_map_id:
+                    loc_name = f"Multiple Faculty Rooms ({processed_count})" if len(college_entities) > 1 else str(college_entities[0]) + " Faculty Room"
                     combined_map = {
                         "mapData": {
-                            "locationName": f"Multiple Faculty Rooms ({processed_count})",
+                            "locationName": loc_name,
                             "pins": all_map_pins,
+                            "routes": all_map_routes,
                             "mapId": first_map_id
                         }
                     }
                     dispatcher.utter_message(json_message=combined_map)
-                    print(f"DEBUG - Sent combined map with {len(all_map_pins)} pins")
+                    print(f"DEBUG - Sent combined map with {len(all_map_pins)} pins and {len(all_map_routes)} routes")
                 
                 return []
 

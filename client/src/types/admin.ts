@@ -42,11 +42,15 @@ export interface ResponseData {
     imageUrls?: string[];
     mapData?: {
       locationName: string;
-      coordinates: [number, number];
+      coordinates?: [number, number];
+      pins?: Array<{ name: string; coordinates: [number, number] }>;
+      routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
       mapId: string;
     } | Array<{
       locationName: string;
-      coordinates: [number, number];
+      coordinates?: [number, number];
+      pins?: Array<{ name: string; coordinates: [number, number] }>;
+      routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
       mapId: string;
     }>;
     follow_up?: string[];

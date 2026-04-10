@@ -161,6 +161,7 @@ export class ChatController {
           ...(coords ? { coordinates: coords } : {}),
           ...(raw.mapId ? { mapId: raw.mapId } : {}),
           ...(Array.isArray(pins) ? { pins } : {}),
+          ...(Array.isArray(raw.routes) ? { routes: raw.routes } : {}),
         });
       }
 

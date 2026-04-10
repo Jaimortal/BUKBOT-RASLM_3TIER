@@ -3,8 +3,14 @@
     {
       "id": "default_map",
       "url": "/nobackHD.png",
-      "active": true,
+      "active": false,
       "name": "Default Map (Local)"
+    },
+    {
+      "id": "58684dfa-ae48-47c6-9c72-74fcef469c83",
+      "url": "/api/images/58684dfa-ae48-47c6-9c72-74fcef469c83",
+      "active": true,
+      "name": "MAp image with legend.png"
     }
   ]
 }

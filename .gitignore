@@ -11,6 +11,7 @@ attached_assets/
 rasa/models/
 rasa/.rasa
 rasa/venv/
+**/__pycache__/
 
 # This will be used on production
 

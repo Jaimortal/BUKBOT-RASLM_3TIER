@@ -17,7 +17,8 @@ import {
   getUserPrivileges,
   upsertUserPrivileges,
   getMapSettings,
-  saveMapSettings
+  saveMapSettings,
+  getMapLocationsList
 } from "../admin";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -320,6 +321,17 @@ export class AdminController {
     } catch (error) {
       console.error("Error fetching locations:", error);
       res.status(500).json({ success: false, message: "Failed to fetch locations" });
+    }
+  }
+
+  // Public: lightweight map locations (name, pins, routes only — no responses text)
+  static async getMapLocations(req: Request, res: Response) {
+    try {
+      const locations = await getMapLocationsList();
+      res.json({ success: true, data: locations });
+    } catch (error) {
+      console.error("Error fetching map locations:", error);
+      res.status(500).json({ success: false, message: "Failed to fetch map locations" });
     }
   }
 

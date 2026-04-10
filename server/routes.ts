@@ -167,6 +167,9 @@ export async function registerRoutes(
   // MAP SETTINGS PUBLIC
   app.get("/api/map-settings", AdminController.getMapSettings);
 
+  // PUBLIC: lightweight map locations for map quick access (no auth required)
+  app.get("/api/map-locations", AdminController.getMapLocations);
+
   // ADMIN ROUTES
   app.post("/api/admin/map-settings", requireAuth, AdminController.updateMapSettings);
   

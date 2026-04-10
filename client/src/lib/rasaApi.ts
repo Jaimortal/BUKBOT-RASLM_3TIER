@@ -28,6 +28,7 @@ export interface ChatMessage {
     coordinates: { lat: number; lng: number }; // Changed from [number, number]
     mapId?: string;
     pins?: Array<{ name: string; coordinates: { lat: number; lng: number } }>;
+    routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
   };
   faqs?: import("../types/admin").FaqConfig[];
 }
@@ -42,12 +43,14 @@ interface BackendResponse {
     coordinates: { lat: number; lng: number };
     mapId?: string;
     pins?: Array<{ name: string; coordinates: { lat: number; lng: number } }>;
+    routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
   };
   mapDataList?: Array<{
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
     pins?: Array<{ name: string; coordinates: { lat: number; lng: number } }>;
+    routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
   }>;
 }
 
@@ -135,6 +138,7 @@ class RasaBackend {
                           })
                           .filter(Boolean)
                       : undefined,
+                    routes: Array.isArray(item?.routes) ? item.routes : undefined,
                   };
                 })
                 .filter((item: any) => item?.coordinates);
@@ -164,11 +168,10 @@ class RasaBackend {
 
               mapData = {
                 locationName: r.custom.mapData.locationName || "Location",
-                coordinates: Array.isArray(r.custom.mapData.coordinates) 
-                  ? { lat: r.custom.mapData.coordinates[0], lng: r.custom.mapData.coordinates[1] }
-                  : r.custom.mapData.coordinates,
+                coordinates: r.custom.mapData.coordinates,
                 mapId: r.custom.mapData.mapId,
                 pins,
+                routes: r.custom.mapData.routes,
               };
             }
           }

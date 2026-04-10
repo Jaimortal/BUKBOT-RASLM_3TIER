@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Mic, Send, Minimize2, ChevronUp } from "lucide-react";
+import { Mic, Send, Minimize2, ChevronUp, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { rasaBackend, generateId, type ChatMessage } from "@/lib/rasaApi";
 import type { UserPrivileges } from "@/types/admin";
 import { QuickAccessBar } from "./QuickAccessBar";
+import { MapQuickAccess } from "./MapQuickAccess";
 import { fetchActiveFaqs } from "@/lib/adminApi";
 
 // Helper for Web Speech API
@@ -132,6 +133,9 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   // Fullscreen map state - stores the message ID of the map currently in fullscreen
   const [fullscreenMapId, setFullscreenMapId] = useState<string | null>(null);
   
+  // Map Quick Access modal state
+  const [showMapQuickAccess, setShowMapQuickAccess] = useState(false);
+  
   const [showQuickAccess, setShowQuickAccess] = useState(true);
 
   // Generate or retrieve session ID for conversation tracking
@@ -182,6 +186,35 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const [isListening, setIsListening] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+
+  // Quick Access Drag-to-Scroll State
+  const quickAccessScrollRef = useRef<HTMLDivElement>(null);
+  const [isDraggingFAQ, setIsDraggingFAQ] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragScrollLeft, setDragScrollLeft] = useState(0);
+  const [draggedDistance, setDraggedDistance] = useState(0);
+
+  const handleDragStart = (e: React.MouseEvent) => {
+    setIsDraggingFAQ(true);
+    setDragStartX(e.pageX - (quickAccessScrollRef.current?.offsetLeft || 0));
+    setDragScrollLeft(quickAccessScrollRef.current?.scrollLeft || 0);
+    setDraggedDistance(0);
+  };
+
+  const handleDragEnd = () => {
+    setIsDraggingFAQ(false);
+  };
+
+  const handleDragMove = (e: React.MouseEvent) => {
+    if (!isDraggingFAQ) return;
+    e.preventDefault(); // prevents text selection highlighting
+    const x = e.pageX - (quickAccessScrollRef.current?.offsetLeft || 0);
+    const walk = (x - dragStartX) * 1.5;
+    if (quickAccessScrollRef.current) {
+      quickAccessScrollRef.current.scrollLeft = dragScrollLeft - walk;
+    }
+    setDraggedDistance(Math.abs(x - dragStartX));
+  };
 
   useEffect(() => {
     if ((!privileges.chatEnabled || !privileges.audioInputEnabled) && isListening) {
@@ -424,9 +457,17 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             locationName={fullscreenMapMessage.mapData.locationName}
             coordinates={(fullscreenMapMessage.mapData as any).coordinates}
             pins={(fullscreenMapMessage.mapData as any).pins}
+            routes={(fullscreenMapMessage.mapData as any).routes}
             isFullscreen={true}
             onToggleFullscreen={() => setFullscreenMapId(null)}
           />
+        </div>
+      )}
+
+      {/* Map Quick Access Modal - Fills the chatbox area */}
+      {showMapQuickAccess && (
+        <div className="absolute inset-0 z-30 flex flex-col">
+          <MapQuickAccess onClose={() => setShowMapQuickAccess(false)} />
         </div>
       )}
 
@@ -498,6 +539,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                         locationName={msg.mapData.locationName}
                         coordinates={(msg.mapData as any).coordinates}
                         pins={(msg.mapData as any).pins}
+                        routes={(msg.mapData as any).routes}
                         isFullscreen={false}
                         onToggleFullscreen={() => {
                           setFullscreenMapId(msg.id);
@@ -539,28 +581,81 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         <div className="flex flex-col shrink-0 bg-background border-t">
           
           {/* Collapse/Expand Quick Access */}
-          {activeFaqs && activeFaqs.length > 0 && !showQuickAccess && (
-            <div className="flex justify-center -mt-3 z-20">
-              <button 
-                onClick={() => setShowQuickAccess(true)}
-                className="bg-white border rounded-full p-1 shadow-sm hover:bg-gray-50 text-gray-400 group"
-                title="Show Quick Access"
-              >
-                <ChevronUp className="h-4 w-4 group-hover:text-gray-600 transition-colors" />
-              </button>
+          {activeFaqs && activeFaqs.length > 0 && (
+            <div className="relative z-20">
+              {/* Dissolve top effect when closed */}
+              {!showQuickAccess && (
+                <div className="absolute bottom-full left-0 w-full h-8 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+              )}
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex justify-center">
+                <button 
+                  onClick={() => setShowQuickAccess(!showQuickAccess)}
+                  className="bg-background border rounded-full p-1 shadow-sm hover:bg-muted text-muted-foreground group flex items-center justify-center transition-all duration-300"
+                  title={showQuickAccess ? "Close Quick Access" : "Show Quick Access"}
+                >
+                  {showQuickAccess ? (
+                    <X className="h-3.5 w-3.5 group-hover:text-foreground transition-colors" />
+                  ) : (
+                    <ChevronUp className="h-3.5 w-3.5 group-hover:text-foreground transition-colors" />
+                  )}
+                </button>
+              </div>
             </div>
           )}
 
           {/* Quick Access Bar */}
-          {activeFaqs?.length ? (
-            <div className={cn("transition-all duration-300 ease-in-out origin-bottom", showQuickAccess ? "max-h-[60px] opacity-100" : "max-h-0 opacity-0 overflow-hidden")}>
-              <QuickAccessBar 
-                faqs={activeFaqs} 
-                onSelect={(payload, label) => handleSend(label, payload)}
-                onClose={() => setShowQuickAccess(false)}
-              />
+          <div className={cn("transition-all duration-300 ease-in-out origin-bottom", showQuickAccess ? "max-h-[76px] opacity-100" : "max-h-0 opacity-0 overflow-hidden")}>
+            <div className="relative w-full bg-background border-t border-border flex items-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pt-5 pb-2 px-2 z-10 transition-all">
+              {/* Map Quick Access Button */}
+              {privileges.mapAccessEnabled && (
+                <button
+                  onClick={() => setShowMapQuickAccess(true)}
+                  className="flex-shrink-0 flex items-center gap-2 bg-blue-50 hover:bg-blue-100 border border-blue-200 hover:border-blue-300 text-blue-700 rounded-full px-3 py-1.5 shadow-sm transition-all duration-200 whitespace-nowrap h-9 mx-1"
+                >
+                  <span className="text-[13px]">🗺️</span>
+                  <span className="font-medium text-[13px] truncate">Map</span>
+                </button>
+              )}
+              
+              {/* FAQ Quick Access - scrollable area with fade edges */}
+              {activeFaqs?.length ? (
+                <div 
+                  ref={quickAccessScrollRef}
+                  onMouseDown={handleDragStart}
+                  onMouseLeave={handleDragEnd}
+                  onMouseUp={handleDragEnd}
+                  onMouseMove={handleDragMove}
+                  className={cn("flex-1 overflow-x-auto py-1 pl-1 pr-1 [&::-webkit-scrollbar]:hidden", isDraggingFAQ ? "cursor-grabbing" : "cursor-grab")}
+                  style={{ 
+                    maskImage: "linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent)", 
+                    WebkitMaskImage: "-webkit-linear-gradient(left, transparent, black 16px, black calc(100% - 16px), transparent)",
+                    msOverflowStyle: "none",
+                    scrollbarWidth: "none"
+                  }}
+                >
+                  <div className="flex gap-2">
+                    {activeFaqs.map((faq, idx) => (
+                      <button
+                        key={faq.id || idx}
+                        onClick={(e) => {
+                          if (draggedDistance > 5) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return;
+                          }
+                          handleSend(faq.displayLabel, faq.payload);
+                        }}
+                        className="flex-shrink-0 flex items-center gap-1.5 bg-muted hover:bg-accent border border-border text-foreground rounded-full px-3 py-1.5 shadow-sm transition-all duration-200 whitespace-nowrap h-9 pointer-events-auto"
+                      >
+                        <span className="text-[13px]">{faq.icon || "✨"}</span>
+                        <span className="font-medium text-[13px] truncate max-w-[140px]">{faq.displayLabel}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
-          ) : null}
+          </div>
 
           {/* Chat Input Field */}
           <div className="p-3 pb-1">
