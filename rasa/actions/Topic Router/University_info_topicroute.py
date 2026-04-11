@@ -77,10 +77,11 @@ UNIVERSITY_TOPIC_PATTERNS = {
             "president of bukidnon state university"
         ],
         "strong_keywords": [
-            "president", "presidente", "mirasol", "joy", "Buksu president",
+            "presidente", "mirasol", "joy", "current", "current president",
         ],
         "weak_keywords": [
-            "who", "buksu", "kinsa", "ang", "current", "nato", "university", "is", 'the'
+            "who", "buksu", "kinsa", "ang", "nato", "university",
+            "is", "president"
         ],
         "required_context": []
     },
@@ -145,11 +146,11 @@ UNIVERSITY_TOPIC_PATTERNS = {
             "kinsa mga niaging presidente"
         ],
         "strong_keywords": [
-            "list", "past", "niaging"
+            "list", "past", "niaging", "presidents", "buksu presidents", "pass", "are", "were", "all"
         ],
         "weak_keywords": [
-            "buksu", "mga", "kinsa", "sa", "university",
-            "years", "few", "are", 'who', 'the', 'presidents', 'president'
+            "buksu", "mga", "kinsa", "sa", "university", "the",
+            "years", "few", "who", "president"
         ],
         "required_context": []
     },

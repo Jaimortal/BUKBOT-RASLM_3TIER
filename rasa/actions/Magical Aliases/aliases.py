@@ -361,7 +361,7 @@ LOCATION_ALIASES = {
     "registrar building": "Registrar Office",
     "office of the registrar": "Registrar Office",
     "office of registrar": "Registrar Office",
-
+    "registrar": "Registrar Office",
     # "old college of nursing": "Old College of Nursing",
     # "old nursing building": "Old College of Nursing",
     
@@ -421,10 +421,11 @@ LOCATION_ALIASES = {
     "kilala's dormitory": "Kilala Dorm",
 
     # === Facility Aliases ===
-    "library": "Library",
-    "university library": "Library",
-    "main library": "Library",
-    "buksu library": "Library",
+    "library": "Library Building",
+    "university library": "Library Building",
+    "main library": "Library Building",
+    "buksu library": "Library Building",
+    "library building": "Library Building",
     
     "auditorium": "Auditorium",
     "main auditorium": "Auditorium",
@@ -472,6 +473,12 @@ LOCATION_ALIASES = {
     "admission office": "Admission Office",
     "admission and testing office": "Admission Office",
     "admissions office": "Admission Office",
+    "admission unit": "Admission Office",
+    "admissions and testing unit": "Admission Office",
+    "admissions testing": "Admission Office",
+    "atu office": "Admission Office",
+    "atu": "Admission Office",
+    "admission testing unit": "Admission Office",
     
     "nstp office": "NSTP Office",
     "nstp faculty": "NSTP Office",
@@ -756,6 +763,7 @@ LOCATION_ALIASES = {
 
     # COLLEGE OF NURSING BUILDING
     "college of nursing building": "College of Nursing Building",
+    "college of nursing": "College of Nursing Building",
     "nursing building": "College of Nursing Building",
     "nursing college building": "College of Nursing Building",
     "nursing bldg": "College of Nursing Building",

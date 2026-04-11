@@ -143,37 +143,25 @@ export async function upsertUserPrivileges(privileges: UserPrivileges): Promise<
   }
 }
 
-// Add or update a response in database
+// Add or update a response in JSON file
 export async function upsertResponse(responseData: ResponseData): Promise<ApiResponse> {
   try {
-    const answer = responseData.responses?.answer;
-    let answerEn: string[] = [];
-    let answerCeb: string[] = [];
-    let simpleAnswer: string[] = [];
-
-    if (Array.isArray(answer)) {
-      simpleAnswer = answer;
-    } else if (typeof answer === 'object' && answer !== null) {
-      answerEn = answer.en || [];
-      answerCeb = answer.ceb || [];
+    // Read current responses from JSON file
+    const responses = await getResponses();
+    
+    // Find if response already exists
+    const idx = responses.findIndex(r => r.intent === responseData.intent);
+    
+    if (idx >= 0) {
+      // Update existing response
+      responses[idx] = responseData;
+    } else {
+      // Add new response
+      responses.push(responseData);
     }
-
-    const dbData = {
-      intent: responseData.intent,
-      category: responseData.category || '',
-      subCategory: responseData.sub_category || '',
-      answerEn,
-      answerCeb,
-      answer: simpleAnswer,
-      followUp: responseData.responses?.follow_up || [],
-      contextSlots: responseData.responses?.context_slots || {},
-      imageUrl: responseData.responses?.imageUrl || '',
-      imageUrls: responseData.responses?.imageUrls || [],
-      mapData: responseData.responses?.mapData || null,
-      metadata: responseData.metadata || {},
-    };
-
-    await dbResponses.upsertResponse(dbData);
+    
+    // Write back to JSON file
+    await saveResponsesToFile(responses);
 
     return {
       success: true,
@@ -186,6 +174,19 @@ export async function upsertResponse(responseData: ResponseData): Promise<ApiRes
       message: 'Error saving response: ' + error
     };
   }
+}
+
+// Write responses directly to JSON file
+async function saveResponsesToFile(responses: ResponseData[]): Promise<void> {
+  const fs = await import('fs/promises');
+  const path = await import('path');
+  const { fileURLToPath } = await import('url');
+  
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const RESPONSES_FILE = path.join(__dirname, '..', 'rasa', 'actions', 'responses.json');
+  
+  await fs.writeFile(RESPONSES_FILE, JSON.stringify(responses, null, 2), 'utf-8');
 }
 
 // Delete a response from database

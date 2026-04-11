@@ -200,7 +200,7 @@ ADMISSIONS_TOPIC_PATTERNS = {
             "atu contact details"
         ],
         "strong_keywords": [
-            "atu", "testing"
+            "atu", "to contact", "contact"
         ],
         "weak_keywords": [
             "contact", "number", "email", "chat", "admission", "unit", "how"
@@ -529,17 +529,15 @@ ADMISSIONS_TOPIC_PATTERNS = {
     },
     "buksu_admission_contact": {
         "phrases": [
-            "unsaon pag adto sa admission office",
-            "asa ang opisina sa admission",
-            "where is the testing unit located",
-            "how to visit the atu office",
-            "asa dapit ang office para moadto ko"
+            "unsaon nako pag contact sa admission unit",
+            "contact sa admission unit",
+            "Admission and testing unit contacts",
         ],
         "strong_keywords": [
-            "visit", "located", "adto", "opisina", "dapit"
+            "buksu admission contact", "admission contacts", "contacts", "pag-contact"
         ],
         "weak_keywords": [
-            "office", "admission", "where", "asa", "testing", "unit", "contact"
+            "office", "admission", "testing", "unit", "contact", "provide", "concerns"
         ],
         "required_context": []
     },
@@ -640,10 +638,11 @@ ADMISSIONS_TOPIC_PATTERNS = {
             "how to ask assistance sa test"
         ],
         "strong_keywords": [
-            "help", "desk", "tabang", "assist", "assistance", "problem"
+            "help", "desk", "tabang", "assist", "assistance", "problem", "concerns"
         ],
         "weak_keywords": [
-            "admission", "contact", "where", "asa", "who"
+            "admission", "contact", "where", "asa", "who", "office", "admission", 
+            "testing", "unit", "info"
         ],
         "required_context": []
     },
@@ -656,10 +655,14 @@ ADMISSIONS_TOPIC_PATTERNS = {
             "where to verify my admission outcome"
         ],
         "strong_keywords": [
-            "rating", "ratings", "pass", "pasar", "failed", "bagsak"
+            "rating", "ratings", "pass", "pasar", "failed", "bagsak",
+            "if i pass the exam", 
+            "if i failed the exam",
+            "if i pass the buksu cat"
         ],
         "weak_keywords": [
-            "exam", "result", "resulta", "cat", "how", "unsaon", "see", "makita"
+            "exam", "result", "resulta", "cat", "how", "unsaon", "see", "makita", 
+            "test", "examination", "admission", "testing"
         ],
         "required_context": []
     },
@@ -740,6 +743,23 @@ ADMISSIONS_TOPIC_PATTERNS = {
         ],
         "weak_keywords": [
             "account", "find", "asa", "how", "makita", "unsaon", "check", "open"
+        ],
+        "required_context": []
+    },
+    "where_get_cor": {
+        "phrases": [
+            "how to get my cor",
+            "where can i get my cor",
+            "what is the process of getting my cor",
+            "can you help me to get my cor",
+            "where could i find my cor"
+        ],
+        "strong_keywords": [
+            "find my cor", "get my cor", "cor", "get"
+        ],
+        "weak_keywords": [
+            "where", "find", "my", "process", "how", "unsaon", "getting",
+            "kuha", "unsaon", "pag kuha" "step"
         ],
         "required_context": []
     }

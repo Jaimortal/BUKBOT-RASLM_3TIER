@@ -7,6 +7,7 @@ import {
   type SuperIntentMeta,
   type TopicData,
   type TopicPin,
+  type TopicRoute,
 } from "@/lib/adminApi";
 import {
   Dialog,
@@ -123,6 +124,7 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
   const [pins, setPins] = useState<AdminPin[]>(
     (topic.pins || []).map(p => ({ name: p.name, coordinates: [p.lat ?? 500, p.lng ?? 500] as [number, number] }))
   );
+  const [mapRoutes, setMapRoutes] = useState<any[]>([]);
   const [deleteImageTarget, setDeleteImageTarget] = useState<number | null>(null);
 
   // Reset when topic changes
@@ -134,6 +136,13 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
     setMapCoords(topic.map ? [topic.map.lat ?? 500, topic.map.lng ?? 500] : [500, 500]);
     setHasMap(!!topic.map);
     setPins((topic.pins || []).map(p => ({ name: p.name, coordinates: [p.lat ?? 500, p.lng ?? 500] as [number, number] })));
+    // Load routes from topic - convert to AdminRoute format
+    setMapRoutes((topic.routes || []).map((r: any, idx: number) => ({
+      id: idx,
+      name: r.name || "Route",
+      points: r.points || [],
+      color: r.color || "#dc2626",
+    })));
   }, [topic]);
 
   const updateMutation = useMutation({
@@ -149,6 +158,12 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
         map: hasMap ? { lat: mapCoords[0], lng: mapCoords[1] } : null,
         // Convert AdminPin back to TopicPin format
         pins: pins.filter(p => p.name.trim()).map(p => ({ name: p.name, lat: p.coordinates[0], lng: p.coordinates[1] })),
+        // Include routes - convert from AdminRoute format
+        routes: mapRoutes.map(r => ({
+          name: r.name,
+          points: r.points,
+          color: r.color || "#dc2626",
+        })),
       }),
     onSuccess: (result) => {
       if (result.success) {
@@ -282,11 +297,10 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
                 </div>
                 {hasMap ? (
                   <AdminMapPinsEditor
-                    mainCoords={mapCoords}
                     pins={pins}
-                    onMainCoordsChange={setMapCoords}
+                    routes={mapRoutes}
                     onPinsChange={setPins}
-                    showMainPin={true}
+                    onRoutesChange={setMapRoutes}
                     mapSize={420}
                   />
                 ) : (
@@ -401,6 +415,7 @@ function TopicCard({ topic, onClick }: TopicCardProps) {
   const hasImages = topic.images.length > 0;
   const hasMap = !!topic.map;
   const hasPins = topic.pins.length > 0;
+  const hasRoutes = (topic.routes || []).length > 0;
 
   return (
     <button
@@ -424,7 +439,7 @@ function TopicCard({ topic, onClick }: TopicCardProps) {
       <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 relative">{preview}</p>
 
       {/* badges */}
-      {(hasImages || hasMap || hasPins) && (
+      {(hasImages || hasMap || hasPins || hasRoutes) && (
         <div className="flex gap-1 flex-wrap relative">
           {hasImages && (
             <span className="text-[10px] bg-purple-50 text-purple-600 border border-purple-200 rounded-full px-2 py-0.5">
@@ -439,6 +454,11 @@ function TopicCard({ topic, onClick }: TopicCardProps) {
           {hasPins && (
             <span className="text-[10px] bg-amber-50 text-amber-600 border border-amber-200 rounded-full px-2 py-0.5">
               📌 {topic.pins.length} pin{topic.pins.length > 1 ? "s" : ""}
+            </span>
+          )}
+          {hasRoutes && (
+            <span className="text-[10px] bg-red-50 text-red-600 border border-red-200 rounded-full px-2 py-0.5">
+              🛣️ {(topic.routes || []).length} route{(topic.routes || []).length > 1 ? "s" : ""}
             </span>
           )}
         </div>

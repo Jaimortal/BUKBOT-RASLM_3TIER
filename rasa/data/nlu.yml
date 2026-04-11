@@ -1,4 +1,4 @@
-﻿version: "3.1"
+version: "3.1"
 
 nlu:
 
@@ -663,14 +663,14 @@ nlu:
     - pwede nimo ilista ang requirements para sa second coursers sa buksu
     - unsa ang kinahanglan sa second courser para maka-apply sa buksu
     - how can i contact the buksu admission office directly
-    - where is the buksu admission and testing unit office located
+    - send me the buksu admission unit contact
     - how do i reach the admission office for my concerns
-    - can i visit the buksu admission office in person for inquiries
+    - can you provide me the contacts of buksu admission and testing unit
+    - can you help me to find the admission testing unit contacts
     - what is the best way to contact the buksu admission and testing unit
     - unsaon nako pag-contact diretso ang buksu admission office
-    - asa dapit ang buksu admission and testing unit office
-    - unsaon nako pag-adto o pag-reach sa admission office para sa akong concerns
-    - pwede ba ko moadto sa buksu admission office para mangutana
+    - hatagi dawkog contact sa admission unit
+    - unsaon pag contact sa admission unit
     - unsa ang pinakamaayong paagi sa pag-contact sa buksu admission and testing unit
     - what are the requirements to apply for the law program at buksu
     - what do i need to submit for the juris doctor program admission
@@ -802,6 +802,19 @@ nlu:
     - step by step unsaon pag-check sa sias account
     - unsaon nako pagtan-aw sa sias username ug password
     - unsaon nako pag-access ang sias account pinaagi sa admission
+    - how to get my cor
+    - where can i get my cor
+    - what is the process of getting my cor
+    - can you help me to get my cor
+    - where could i find my cor
+    - what is the step by step process of getting my cor
+    - unsaon nako pag kuha sa akong cor
+    - asa dapita nako makuha akong cor
+    - unsay process sa pag kuhsa akong cor
+    - pwedi ko nimo tabangan sa pag kuha sa akon cor
+    - asa nako makita akong cor
+    - unsa ang step by step process sapag kuha sa akong cor
+
 
 - intent: ask_classroom_policy
   examples: |
@@ -2462,8 +2475,27 @@ nlu:
     - Asa dapit makita ang [Mahogany dorm](location_name) nga duol sa Library Building sa campus
     - I need directions going to [Rubia dorm](location_name) beside the Automotive Building
     - Unsay dalan padulong sa [Rubia dorm](location_name) nga naa dapit sa Automotive Building
+    - where can i find the [male dormitory](location_name)
+    - where can i find the [male dorm](location_name)
+    - where is the [female dormitory](location_name) located
+    - where is the [female dorm](location_name)
+    - how can i get to the [Mahogany Dorm](location_name)
+    - asa ko makita ang [male dormitory](location_name)
+    - asa dapit ang [female dorm](location_name)
     - Where inside the Registrars Office Building can I find the [Auditorium](location_name)
     - Asa sulod sa Registrars Office Building makita ang [Auditorium](location_name)
+    - where can i find the Registrars office
+    - where is the registrar's office located
+    - where do i find the registrar office  
+    - can you tell me where the registrar office is
+    - how can i get to the registrar office
+    - pwede nimo isulti asa ang registrar office
+    - asa ko makita ang registrar office
+    - where can i find the [library building](location_name)
+    - where is the [university library](location_name) located
+    - could you tell me where the [library](location_name) is
+    - asa dapit ang [library building](location_name)
+    - asa makita ang [university library](location_name)
     - What floor of the CPAG Building is the [AVC](location_name) located
     - Sa unsang andana sa CPAG Building nahimutang ang [AVC](location_name)
     - I would like to know the exact area of the [Fitness Gym](location_name) in the Oval
@@ -4894,109 +4926,6 @@ nlu:
     - pwede ba ang guest makasulod sa campus
     - gi allow ba ang visitors sa BukSU campus
     - pwede ba ang bisita mosulod para mo visit og estudyante
-
-- intent: enrollment_documents
-  examples: |
-    - what documents do I need to enroll at buksu
-    - what documents do I need to present during enrollment
-    - what do i bring during the first enrollment
-    - documents need during the enrollment interview
-    - papers need during first year enrollment
-    - enrolling first year first sem documents needed
-    - what should I bring for enrollment in buksu
-    - what are the requirements during enrollment
-    - what documents are required for enrollment
-    - what should I prepare for enrollment
-    - what are the needed documents for enrolling
-    - what do I need to submit during enrollment
-    - what are the files needed for enrollment
-    - what documents should I show during enrollment
-    - what do freshmen need to bring for enrollment
-    - what documents are needed for first year enrollment
-    - what papers should I bring when enrolling
-    - what are the enrollment requirements for students
-    - what should I prepare before enrollment
-    - what are the required documents for enrolling
-    - what do I need for first semester enrollment
-    - what documents are needed for buksu enrollment
-    - what are the necessary papers for enrollment
-    - what should I submit for enrollment
-    - what do I bring when enrolling in buksu
-    - what are the requirements for first year students
-    - what are the documents needed for admission and enrollment
-    - what do I need to show during enrollment
-    - what should I have for enrollment process
-    - what documents do I need for second semester enrollment
-    - enrollment documents buksu
-    - documents needed enrollment
-    - what needed for enrollment
-    - enrollment requirements list
-    - papers for enrollment
-    - bring for enrollment
-    - enrollment docs
-    - requirements enrollment
-    - what to bring enroll
-    - needed documents enroll
-    - first year enrollment docs
-    - second sem enrollment requirements
-    - enrollment files needed
-    - documents for school enrollment
-    - enrollment papers needed
-    - what documents needed enroll
-    - what bring enrollment
-    - enroll requirements buksu
-    - docs for enrollment
-    - enrollment requirement buksu
-    - unsa ang documents kinahanglan para enrollment sa buksu
-    - unsa akong dad on during enrollment
-    - unsa ang kinahanglan ipakita sa enrollment
-    - unsa ang papers kinahanglan sa first year enrollment
-    - unsa ang documents para sa first sem enrollment
-    - unsa akong ihanda para sa enrollment
-    - unsa ang requirements during enrollment
-    - unsa ang kinahanglan nga documents para enrollment
-    - unsa akong ipasa sa enrollment
-    - unsa ang files kinahanglan para enrollment
-    - unsa ang ipakita nga documents during enrollment
-    - unsa ang dad on sa freshmen para enrollment
-    - unsa ang documents kinahanglan sa first year
-    - unsa ang papers dad on kung mag enroll
-    - unsa ang enrollment requirements sa students
-    - unsa akong ihanda before enrollment
-    - unsa ang required documents para enrollment
-    - unsa ang kinahanglan sa first semester enrollment
-    - unsa ang documents sa buksu enrollment
-    - unsa ang necessary papers para enrollment
-    - unsa akong ipasa para enrollment
-    - unsa akong dad on kung mag enroll sa buksu
-    - unsa ang requirements sa first year students
-    - unsa ang documents para admission ug enrollment
-    - unsa akong ipakita during enrollment
-    - unsa akong kinahanglan para enrollment process
-    - unsa ang documents para second sem enrollment
-    - enrollment documents buksu
-    - documents kinahanglan enrollment
-    - unsa kinahanglan enrollment
-    - enrollment requirements list
-    - papers para enrollment
-    - dad on para enrollment
-    - enrollment docs
-    - requirements enrollment
-    - unsa dad on enroll
-    - documents kinahanglan enroll
-    - first year enrollment docs
-    - second sem enrollment requirements
-    - enrollment files kinahanglan
-    - documents para school enrollment
-    - enrollment papers kinahanglan
-    - unsa documents kinahanglan enroll
-    - unsa dad on enrollment
-    - enroll requirements buksu
-    - docs para enrollment
-    - enrollment requirement buksu
-    - unsa dad on first sem
-    - papers kinahanglan enroll
-    - unsa files para enrollment
 
 - intent: Bot_creator
   examples: |

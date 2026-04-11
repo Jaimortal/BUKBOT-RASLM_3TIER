@@ -9,8 +9,6 @@ import { hashPassword, verifyPassword } from "../utils/passwordUtils";
 import jwt from "jsonwebtoken";
 import {
   getResponses,
-  upsertResponse,
-  deleteResponse,
   getLocations,
   upsertLocation,
   deleteLocation,
@@ -20,6 +18,10 @@ import {
   saveMapSettings,
   getMapLocationsList
 } from "../admin";
+import {
+  upsertResponse,
+  deleteResponse
+} from "../admin-db";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

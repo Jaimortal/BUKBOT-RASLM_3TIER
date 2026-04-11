@@ -168,7 +168,13 @@ def _calculate_topic_score(text: str, topic_data: Dict[str, Any]) -> float:
     # Check exact phrases first - return max score if found
     phrases = topic_data.get("phrases", [])
     for phrase in phrases:
-        if phrase.lower() in text_lower:
+        phrase_lower = phrase.lower()
+        # Use word boundaries for phrase matching to avoid substring matches
+        # Escape special regex characters in the phrase
+        escaped_phrase = re.escape(phrase_lower)
+        # Match as whole phrase with word boundaries at start and end
+        pattern = rf'(?:^|\s){escaped_phrase}(?:$|\s|[^\w])'
+        if re.search(pattern, text_lower):
             return 100.0  # Exact phrase match = highest score
     
     # Calculate keyword-based score
@@ -1058,6 +1064,53 @@ class ActionReplyFromJsonHelper:
             result["images"] = images
             result["image"] = images[0]  # backward compatibility
         
+        # Extract map data (map, pins, routes) from topic entry
+        map_data = topic_entry.get("map")
+        pins_raw = topic_entry.get("pins")
+        routes_raw = topic_entry.get("routes")
+        
+        if map_data or pins_raw or routes_raw:
+            map_data_payload: Dict[str, Any] = {
+                "locationName": topic_entry.get("ui_name") or topic_entry.get("topic", "Location"),
+            }
+            
+            # Add coordinates from map data
+            if map_data and isinstance(map_data, dict):
+                if "lat" in map_data and "lng" in map_data:
+                    map_data_payload["coordinates"] = [map_data["lat"], map_data["lng"]]
+            
+            # Process pins
+            pins_out = []
+            if isinstance(pins_raw, list):
+                for p in pins_raw:
+                    if isinstance(p, dict):
+                        name = str(p.get("name", "")).strip() or "Pin"
+                        lat = p.get("lat")
+                        lng = p.get("lng")
+                        if lat is not None and lng is not None:
+                            pins_out.append({"name": name, "coordinates": [lat, lng]})
+            
+            if pins_out:
+                map_data_payload["pins"] = pins_out
+            
+            # Process routes
+            routes_out = []
+            if isinstance(routes_raw, list):
+                for r in routes_raw:
+                    if isinstance(r, dict) and isinstance(r.get("points"), list):
+                        routes_out.append({
+                            "name": r.get("name") or "Route",
+                            "points": r.get("points"),
+                            "color": r.get("color") or "#dc2626"
+                        })
+            
+            if routes_out:
+                map_data_payload["routes"] = routes_out
+            
+            # Only add custom mapData if we have meaningful data
+            if pins_out or routes_out or map_data:
+                result["custom"] = {"mapData": map_data_payload}
+        
         return result
 
     def get_library_response(self, user_message: str) -> Dict[str, Any]:
@@ -1548,7 +1601,7 @@ class ActionReplyFromJson(Action):
                     print(f"DEBUG - Sent combined map with {len(all_map_pins)} pins and {len(all_map_routes)} routes")
 
                 if processed_count == 0:
-                    dispatcher.utter_message(text="Sorry, I couldn't find information about those locations.")
+                    dispatcher.utter_message(text="Sorry, I couldn't find information about those locations. Please add some (Building or Office) word on the last part of your questions so that we can accuratly send you the location of that spacific building or office for example is (where is the library building)")
                 
                 return []
 
@@ -1670,6 +1723,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Academic Policy info lookup with topic detection
@@ -1678,6 +1744,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Administrators info lookup with topic detection
@@ -1686,6 +1765,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Admissions info lookup with topic detection
@@ -1694,6 +1786,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Classroom Policy info lookup with topic detection
@@ -1702,6 +1807,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Clinic info lookup with topic detection
@@ -1710,6 +1828,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Courses info lookup with topic detection
@@ -1718,6 +1849,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Departamentals Faculty Staff info lookup with topic detection
@@ -1726,6 +1870,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Department info lookup with topic detection
@@ -1734,22 +1891,41 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Enrollment info lookup with topic detection
         if intent == "ask_enrollment_info":
-            # Check if topic entity was provided (e.g., from quick access payload)
+            # 1. First priority: Check if topic entity was provided in THIS specific message (e.g., from quick access)
             topic_entity = None
-            for entity in tracker.latest_message.get("entities", []):
+            latest_entities = tracker.latest_message.get("entities", [])
+            for entity in latest_entities:
                 if entity.get("entity") == "topic":
                     topic_entity = entity.get("value")
                     break
             
-            # If no topic entity from this message, check slot
+            # 2. Second priority: If no direct entity, perform fresh "Smart Detection" from the current message text
+            # This ensures "how to enroll online" overrides a "general enrollment" slot in memory.
+            if not topic_entity:
+                topic_entity = detect_topic(user_msg, ENROLLMENT_INFO_TOPIC_PATTERNS)
+            
+            # 3. Third priority: If still no topic, check the sticky slot from Rasa memory
             if not topic_entity:
                 topic_entity = tracker.get_slot("topic")
             
-            # Use entity if available, otherwise detect from message
+            # Use final topic_entity if found, otherwise let the helper do one last fallback attempt
             if topic_entity:
                 response = self.helper.get_structured_response_with_topic(
                     topic_entity,
@@ -1761,6 +1937,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # ICT info lookup with topic detection
@@ -1769,6 +1958,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # OSS Services info lookup with topic detection
@@ -1777,6 +1979,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # University info lookup with topic detection
@@ -1794,22 +2009,31 @@ class ActionReplyFromJson(Action):
             elif response.get("image"):
                 dispatcher.utter_message(image=response["image"])
             
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # Dormitory info lookup with topic detection
         if intent == "ask_dormitory_info":
-            # Check if topic entity was provided (e.g., from quick access payload)
+            # 1. First priority: Check if topic entity was provided in THIS specific message (e.g., from quick access)
             topic_entity = None
-            for entity in tracker.latest_message.get("entities", []):
+            latest_entities = tracker.latest_message.get("entities", [])
+            for entity in latest_entities:
                 if entity.get("entity") == "topic":
                     topic_entity = entity.get("value")
                     break
             
-            # If no topic entity from this message, check slot
+            # 2. Second priority: If no direct entity, perform fresh "Smart Detection" from the current message text
+            if not topic_entity:
+                topic_entity = detect_topic(user_msg, DORMITORY_INFO_TOPIC_PATTERNS)
+            
+            # 3. Third priority: If still no topic, check the sticky slot from Rasa memory
             if not topic_entity:
                 topic_entity = tracker.get_slot("topic")
             
-            # Use entity if available, otherwise detect from message
+            # Use final topic_entity if found, otherwise let the helper do one last fallback attempt
             if topic_entity:
                 response = self.helper.get_structured_response_with_topic(
                     topic_entity,
@@ -1821,6 +2045,19 @@ class ActionReplyFromJson(Action):
             
             if response.get("text"):
                 dispatcher.utter_message(text=response["text"])
+            
+            # Send images if available
+            if isinstance(response.get("images"), list):
+                for img in response.get("images"):
+                    if img:
+                        dispatcher.utter_message(image=img)
+            elif response.get("image"):
+                dispatcher.utter_message(image=response["image"])
+            
+            # Send map data if available
+            if response.get("custom"):
+                dispatcher.utter_message(json_message=response["custom"])
+            
             return []
 
         # ✨ FIX: if intent == ask_more → DO NOT call main response

@@ -163,7 +163,6 @@
       "topic": "online_application_schedule",
       "responses": {
         "en": [
-          "Where can I find the BukSU-CAT online application schedule for AY 2026-2027?",
           "Please refer to the official announcement posted through this link: https://www.facebook.com/share/p/19fuWqGGe3/",
           "For updates and further announcements, follow the official BukSU Facebook page.",
           "For additional inquiries, you may contact the BukSU Admission and Testing Unit (ATU):",
@@ -600,10 +599,10 @@
       "topic": "buksu_admission_contact",
       "responses": {
         "en": [
-          "You can contact the Admission and Testing Unit through their official Facebook page BukSU Admission and Testing Unit or visit their office at the main campus in Malaybalay City."
+          "You can contact the Admission and Testing Unit through their official Facebook page BukSU Admission and Testing Unit or visit their office at the CPAG building."
         ],
         "ceb": [
-          "Mahimo nimong makontak ang Admission and Testing Unit pinaagi sa ilang Facebook page BukSU Admission and Testing Unit o bisitaha ang ilang opisina sa main campus sa Malaybalay City."
+          "Mahimo nimong makontak ang Admission and Testing Unit pinaagi sa ilang Facebook page BukSU Admission and Testing Unit o bisitaha ang ilang opisina sa CPAG building."
         ]
       }
     },
@@ -707,7 +706,8 @@
       "topic": "cat_exam_result",
       "responses": {
         "en": [
-          "The only way to know if you passed the BukSU Admission CAT Examination is to log in to your BukSU Admission account and go to the Admission tab. You can also quickly access it through notifications from BukSU Admissions. Once you see your Report of Ratings, as shown in the photo I provided, click <b>Show Exam Result</b> to check if you passed or failed.",
+          "The only way to know if you passed the BukSU Admission CAT Examination is to log in to your BukSU Admission account and go to the Admission tab.",
+          "You can also quickly access it through notifications from BukSU Admissions. Once you see your Report of Ratings, as shown in the photo I provided, click <b>Show Exam Result</b> to check if you passed or failed.",
           "You can also watch this video for step by step guid:",
           "https://www.facebook.com/share/v/1CRFdU3vM5/"
         ],
@@ -716,7 +716,13 @@
           "Pwede pud nimo tan-awon kini nga video para sa step by step guide:",
           "https://www.facebook.com/share/v/1CRFdU3vM5/"
         ]
-      }
+      },
+      "images": [
+        "/api/images/5e659665-afe3-40c5-b2fd-7f5e99af51fd"
+      ],
+      "map": null,
+      "pins": [],
+      "routes": []
     },
     {
       "topic": "Cat_score_for_nonboard",
@@ -790,7 +796,15 @@
           "Naghatag usab sila og link sa pag-ilis og password aron mahimo nimo kini dayon human nimo makuha ang password ug users sa imong account",
           "Makita usab nimo ang imong Sias account pinaagi lang sa pag-scroll down aron makita ang ubang mga detalye."
         ]
-      }
+      },
+      "images": [
+        "/api/images/b6928dbc-23f6-4288-954d-357ea79468e4",
+        "/api/images/7c838a58-0622-45b4-a324-95b169283c26",
+        "/api/images/e0d96c1f-be99-4cc8-bebd-71773a714c28"
+      ],
+      "map": null,
+      "pins": [],
+      "routes": []
     },
     {
       "topic": "Find_Sias_Account",
@@ -810,6 +824,29 @@
           "2. Makita na nimo ang imong Sias account",
           "3. I-click ang <b>Show</b> button aron makita ang password sa imong Sias account ug uban pang detalye",
           "Naghatag usab sila og link sa pag-ilis og password aron mahimo nimo kini dayon human nimo makuha ang password ug users sa imong account"
+        ]
+      }
+    },
+    {
+      "topic": "where_get_cor",
+      "responses": {
+        "en": [
+          "You can get your COR on the Buksu admission website, here is the step by step process of getting your COR",
+          "Step1: Go to your Buksu admission, Login using your credentials",
+          "Step2: Click on the Enrollment tab, in mobile you can usually found it by clicking the 3 line menu tab at the top left of your screen",
+          "Step3: Click the <b>Application History</b> to see all history of your applications",
+          "Step4: Click the Details button located on the bottom right corner of every application history",
+          "Step5: You can now download it by clicking the <b>Certificate of Registration (COR)</b>",
+          "you can now proceed to your validation if you're not yet validated."
+        ],
+        "ceb": [
+          "Makakuha ka sa imong COR sa Admission website, ania ang step by step process sa pagkuha sa imong COR",
+          "Step1: Adto sa imong Buksu admission, Login gamit ang imong credentials",
+          "Step2: I-click ang Enrollment tab, sa mobile kasagaran makit-an nimo kini pinaagi sa pag-klik sa 3 line menu tab sa ibabaw nga wala nga bahin sa imong screen",
+          "Step3: I-click ang <b>Application History</b> aron makita ang tanan nga History sa imong mga aplikasyon",
+          "Step4: I-click ang Details button nga nahimutang sa ubos nga tuo nga suok sa matag application history",
+          "Step5: Mahimo na nimo kini i-download pinaagi sa pag-klik sa <b>Certificate of Registration (COR)</b>",
+          "pwede ka na magpadayon sa imong validation kung wala ka pa na-validate."
         ]
       }
     }

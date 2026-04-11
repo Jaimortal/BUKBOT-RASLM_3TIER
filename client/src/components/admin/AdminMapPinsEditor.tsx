@@ -52,6 +52,14 @@ interface AdminMapPinsEditorProps {
 
 const PIN_COLOURS = ["#2563eb", "#dc2626", "#16a34a", "#ea580c", "#9333ea", "#0891b2", "#be185d", "#ca8a04", "#4f46e5", "#0f766e"];
 
+// Route color palette - cycles through: red, green, yellow, orange, blue
+const ROUTE_COLORS = ["#dc2626", "#16a34a", "#eab308", "#f97316", "#2563eb"];
+
+const getNextRouteColor = (existingRoutes: AdminRoute[]): string => {
+  const colorIndex = existingRoutes.length % ROUTE_COLORS.length;
+  return ROUTE_COLORS[colorIndex];
+};
+
 function pinColour(idx: number) {
   return PIN_COLOURS[idx % PIN_COLOURS.length];
 }
@@ -283,6 +291,30 @@ export function AdminMapPinsEditor({
 
   const handleMouseUp = () => { isDraggingMap.current = false; setDraggingPointIdx(null); setDraggingPinIdx(null); };
 
+  const handleMouseWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent wheel events from bubbling to parent modal
+    const rect = canvasRef.current!.getBoundingClientRect();
+    const mouseScreenX = e.clientX - rect.left;
+    const mouseScreenY = e.clientY - rect.top;
+    
+    // Calculate map coordinates before zoom
+    const mapXBefore = (mouseScreenX - tx) / zoom / mapSize;
+    const mapYBefore = (mouseScreenY - ty) / zoom / mapSize;
+    
+    // Apply zoom (deltaY < 0 means scroll up = zoom in)
+    const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+    const newZoom = Math.max(0.2, Math.min(8, zoom * zoomFactor));
+    
+    // Calculate new translation to keep cursor in same position
+    const newTx = mouseScreenX - mapXBefore * newZoom * mapSize;
+    const newTy = mouseScreenY - mapYBefore * newZoom * mapSize;
+    
+    setZoom(newZoom);
+    setTx(newTx);
+    setTy(newTy);
+  };
+
   const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const coords = toMapCoords(e.clientX, e.clientY);
     if (mode === "place-pin") {
@@ -329,7 +361,13 @@ export function AdminMapPinsEditor({
     const p1 = pins.find(p => p.name === connStart);
     const p2 = pins.find(p => p.name === connEnd);
     if (p1 && p2 && onRoutesChange) {
-      onRoutesChange([...routes, { name: `${p1.name} to ${p2.name}`, points: [p1.coordinates, p2.coordinates], id: Date.now() }]);
+      const newColor = getNextRouteColor(routes);
+      onRoutesChange([...routes, { 
+        name: `${p1.name} to ${p2.name}`, 
+        points: [p1.coordinates, p2.coordinates], 
+        color: newColor,
+        id: Date.now() 
+      }]);
       toast.success("Connected!");
     } else toast.error("Select both pins");
   };
@@ -354,6 +392,7 @@ export function AdminMapPinsEditor({
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
+          onWheel={handleMouseWheel}
         />
 
         <div className="absolute left-2 top-2 flex flex-col gap-1.5 HUD">

@@ -144,11 +144,12 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
             "how to enroll", "enrollment process",
             "how does enrollment work", "start enrollment",
             "unsaon pag enroll", "proseso sa enrollment",
-            "general enrollment"
+            "general enrollment", "process of enrollment",
+            "process of the enrollment"
         ],
         "weak_keywords": [
             "enrollment", "process", "guide", "registration",
-            "college", "department", "online", "onsite", "buksu"
+            "college", "department", "buksu"
         ],
         "required_context": []
     },
@@ -165,10 +166,11 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
             "how to use BukSU admissions for enrollment",
             "where do I apply for enrollment",
             "Online Enrollment",
-            "Online Enrollment Steps"
+            "Online Enrollment Steps",
+            "how to enroll online"
         ],
         "strong_keywords": [
-            "online enrollment", "enroll online",
+            "online enrollment", "enroll online", "online", "internet",
             "online procedure", "online steps",
             "step by step", "apply online",
             "buksu admissions", "apply enrollment",
@@ -191,7 +193,8 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
             "physical enrollment process",
             "face to face human sa online",
             "what to do after online enrollment",
-            "do I still need to go to the department"
+            "do I still need to go to the department",
+            "how to enroll face to face"
         ],
         "strong_keywords": [
             "face to face enrollment", "onsite enrollment",
@@ -199,7 +202,9 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
             "physical enrollment", "after online enrollment",
             "go to department", "pending online enrollment",
             "queue system", "faculty staff", "scan queue",
-            "enroll face to face"
+            "enroll face to face",
+            "face-to-face",
+            "face-to-face enrollment"
         ],
         "weak_keywords": [
             "department", "queue", "scan", "faculty", "enroll",
@@ -232,6 +237,21 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
         "weak_keywords": [
             "freshman", "continuing", "enrollment", "student",
             "required", "school", "buksu", "2nd semester"
+        ],
+        "required_context": []
+    },
+    "late_enrollment": {
+        "phrases": [
+            "is the late enrollment allowed",
+            "late enrollment",
+            "is late enrollment allowed"
+        ],
+        "strong_keywords": 
+        [
+            "late enrollment", "enrolled late"
+        ],
+        "weak_keywords": [
+            "allowed", "enrollment", "student", "school", "buksu", "even"
         ],
         "required_context": []
     },

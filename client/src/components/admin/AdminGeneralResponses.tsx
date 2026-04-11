@@ -93,7 +93,8 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
   const [cebLines, setCebLines] = useState<string[]>(initAnswer.ceb);
   const [images, setImages] = useState<string[]>(initImages);
   const [hasMap, setHasMap] = useState(!!initMap);
-  const [mapPins, setMapPins] = useState<AdminPin[]>([]);
+  const [mapPins, setMapPins] = useState<AdminPin[]>(initMap?.pins ?? []);
+  const [mapRoutes, setMapRoutes] = useState<any[]>(initMap?.routes ?? []);
   const [mapCoords, setMapCoords] = useState<[number, number]>(
     initMap?.coordinates ? [initMap.coordinates[0], initMap.coordinates[1]] : [500, 500]
   );
@@ -115,7 +116,8 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
     setHasMap(!!first);
     setMapCoords(first?.coordinates ? [first.coordinates[0], first.coordinates[1]] : [500, 500]);
     setMapLocName(first?.locationName || response.intent);
-    setMapPins([]);
+    setMapRoutes(first?.routes ?? []);
+    setMapPins(first?.pins ?? []);
     setUiName((response as any).ui_name || "");
   }, [open, response]);
 
@@ -133,7 +135,7 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
           imageUrls: images.filter(u => u.trim()),
           imageUrl: images[0] || "",
           mapData: hasMap
-            ? { locationName: mapLocName || response.intent, coordinates: mapCoords, mapId: "main_map" }
+            ? { locationName: mapLocName || response.intent, coordinates: mapCoords, pins: mapPins, routes: mapRoutes, mapId: "main_map" }
             : undefined,
         },
       };
@@ -261,11 +263,10 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
                 </div>
                 {hasMap ? (
                   <AdminMapPinsEditor
-                    mainCoords={mapCoords}
                     pins={mapPins}
-                    onMainCoordsChange={setMapCoords}
+                    routes={mapRoutes}
                     onPinsChange={setMapPins}
-                    showMainPin={true}
+                    onRoutesChange={setMapRoutes}
                     mapSize={420}
                   />
                 ) : (

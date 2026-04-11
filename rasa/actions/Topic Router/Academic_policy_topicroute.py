@@ -65,7 +65,7 @@ ACADEMIC_POLICY_TOPIC_PATTERNS = {
             "INC requirements",
             "pag complete INC"
         ],
-        "strong_keywords": ["INC", "should", "help", "inc", "solve", "steps", "complete", "process", "steps"],
+        "strong_keywords": ["inc", "should", "help", "inc", "solve", "steps", "complete", "process", "steps"],
         "weak_keywords": ["complete", "solve", "requirements", "grade", "i", "do", "what"],
         "required_context": []
     },
@@ -89,8 +89,8 @@ ACADEMIC_POLICY_TOPIC_PATTERNS = {
             "FDA grade explanation",
             "FDA absence count"
         ],
-        "strong_keywords": ["FDA", "meaning", "mean", "absences", "given", "absence", "get fda", ""],
-        "weak_keywords": ["absences", "failure", "due"],
+        "strong_keywords": ["fda", "meaning", "mean", "absences", "given", "absence"],
+        "weak_keywords": ["fda", "absences", "failure", "due", "get"],
         "required_context": []
     },
     "fda_solution": {
@@ -101,8 +101,8 @@ ACADEMIC_POLICY_TOPIC_PATTERNS = {
             "FDA actions",
             "nakadawat FDA"
         ],
-        "strong_keywords": ["FDA", "should", "buhaton", "sulotion", "do", "need", "should i", "unsay buhaton"],
-        "weak_keywords": ["after", "next", "steps", "what", "unsa", "buhaton"],
+        "strong_keywords": ["fda", "should", "buhaton", "sulotion", "do", "need", "should i", "unsay buhaton", "process"],
+        "weak_keywords": ["fda", "after", "next", "steps", "what", "unsa", "buhaton", "process", "could", "how"],
         "required_context": []
     },
     "overload_units_policy": {
@@ -113,7 +113,10 @@ ACADEMIC_POLICY_TOPIC_PATTERNS = {
             "sobra units",
             "pwede daghang units"
         ],
-        "strong_keywords": ["units", "regular", "load" ],
+        "strong_keywords": 
+        [
+            "units", "regular", "load", "mag overload", "policy"
+        ],
         "weak_keywords": 
         [
             "maximum", "sobra", "pwede", "add", "load", "more", "daghang", "pwede", "sobra", "allowed"
@@ -221,8 +224,14 @@ ACADEMIC_POLICY_TOPIC_PATTERNS = {
             "last day add drop"
             "how to add a subject for this semester"
         ],
-        "strong_keywords": ["add", "drop", "adding", "dropping", "dungag", "kulang"],
-        "weak_keywords": ["subject", "period", "deadline", "semester"],
+        "strong_keywords": 
+        [
+            "add", "drop", "adding", "dropping", "dungag", "kulang", "pag drop", "pag add",
+        ],
+        "weak_keywords": 
+        [
+            "subject", "period", "deadline", "semester", "unsaon", "pag", "pamaagi",
+        ],
         "required_context": []
     },
     "request_cor": {

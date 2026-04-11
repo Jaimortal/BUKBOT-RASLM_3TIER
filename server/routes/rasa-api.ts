@@ -148,6 +148,7 @@ router.get("/locations/:name", async (req, res) => {
         ceb: location.responsesCeb || [],
       },
       pins: location.pins || [],
+      routes: location.routes || [],
       imageUrls: location.imageUrls || [],
     };
 
@@ -184,6 +185,7 @@ router.get("/locations", async (_req, res) => {
         ceb: location.responsesCeb || [],
       },
       pins: location.pins || [],
+      routes: location.routes || [],
       imageUrls: location.imageUrls || [],
     }));
 
@@ -244,6 +246,7 @@ router.get("/super-intents/:superIntent", async (req, res) => {
       imageUrls: topic.imageUrls || [],
       mapData: topic.mapData,
       pins: topic.pins || [],
+      routes: topic.routes || [],
     }));
 
     res.json({
@@ -287,6 +290,7 @@ router.get("/super-intents/:superIntent/:topic", async (req, res) => {
       imageUrls: response.imageUrls || [],
       mapData: response.mapData,
       pins: response.pins || [],
+      routes: response.routes || [],
     };
 
     res.json({

@@ -326,6 +326,12 @@ If you need to switch back to JSON files:
 | `rasa/actions/api_client.py` | Python client for API |
 | `shared/schema.ts` | Database schema definitions |
 
+
+dont forget to install the 2nd ai
+
+
+
+
 ## Support
 
 For issues:

@@ -512,8 +512,12 @@ COURSES_TOPIC_PATTERNS = {
             "pwede ko nimo hatagan sa listahan sa mga courses nga gi offer sa buksu",
             "listahan sa mga courses nga gi offer sa bukidnon state university para sa mga incoming first year",
         ],
-        "strong_keywords": ['first', 'gina', 'give', 'hatagan', 'incoming', 'list', 'listahan', 'para', 'year'],
-        "weak_keywords": ['bukidnon', 'buksu', 'courses', 'offer', 'offered', 'state', 'university'],
+        "strong_keywords": 
+        [
+            'first', 'gina', 'give', 'hatagan', 'incoming', 'list', 'listahan', 'para', 'year',
+            "all courses", "list of courses", "courses"
+        ],
+        "weak_keywords": ['bukidnon', 'buksu', 'offer', 'offered', 'state', 'university', "all"],
         "required_context": []
     },
     "buksu_non_board_courses": {
@@ -525,7 +529,7 @@ COURSES_TOPIC_PATTERNS = {
         ],
         "strong_keywords": 
         [
-            "non_board_token"
+            "non_board_token",
         ],
         "weak_keywords": 
         [

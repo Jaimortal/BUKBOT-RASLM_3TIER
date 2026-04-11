@@ -261,8 +261,17 @@ export default function MapMessage({
     }
   }, [mapSettings]);
 
+  const handleWheel = (e: React.WheelEvent) => {
+    // Prevent wheel events from propagating to parent modal/scrollable containers
+    // This allows map zooming without scrolling the entire modal
+    e.stopPropagation();
+  };
+
   return (
-    <div className={`rounded-lg overflow-hidden border border-border mt-2 relative z-2 ${isFullscreen ? 'w-full h-full' : 'w-60 h-48'}`}>
+    <div 
+      className={`rounded-lg overflow-hidden border border-border mt-2 relative z-2 ${isFullscreen ? 'w-full h-full' : 'w-60 h-48'}`}
+      onWheel={handleWheel}
+    >
       {onToggleFullscreen && (
         <button
           onClick={onToggleFullscreen}
@@ -280,6 +289,9 @@ export default function MapMessage({
         .animated-route {
           animation: marchingAnts 1s linear infinite;
         }
+        .leaflet-container {
+          background: #ffffff !important;
+        }
       `}</style>
       <MapContainer
         crs={L.CRS.Simple}
@@ -289,7 +301,7 @@ export default function MapMessage({
         minZoom={-2}
         maxZoom={4}
         scrollWheelZoom={true}
-        className="w-full h-full bg-slate-100"
+        className="w-full h-full bg-white"
         attributionControl={false}
       >
         <ImageOverlay url={activeMapUrl} bounds={imageBounds} />

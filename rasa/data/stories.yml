@@ -407,11 +407,6 @@ stories:
     - intent: visitor_campus_access
     - action: action_reply_from_json
 
-- story: ask about enrollment documents
-  steps:
-    - intent: enrollment_documents
-    - action: action_reply_from_json
-
 - story: asking who is the developer created you
   steps:
     - intent: Bot_creator

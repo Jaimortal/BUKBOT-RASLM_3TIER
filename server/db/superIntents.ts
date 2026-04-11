@@ -139,7 +139,7 @@ export async function getSuperIntentWithLanguage(
   superIntent: string,
   topic: string,
   language: "en" | "ceb" = "en"
-): Promise<{ text: string; imageUrls: string[]; mapData?: any; pins?: any[] } | null> {
+): Promise<{ text: string; imageUrls: string[]; mapData?: any; pins?: any[]; routes?: any[] } | null> {
   const response = await getSuperIntentTopic(superIntent, topic);
   if (!response) return null;
 
@@ -151,5 +151,6 @@ export async function getSuperIntentWithLanguage(
     imageUrls: (response.imageUrls || []).filter(url => url && url.trim()),
     mapData: response.mapData,
     pins: response.pins || [],
+    routes: response.routes || [],
   };
 }

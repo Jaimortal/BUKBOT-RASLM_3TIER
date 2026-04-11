@@ -1,0 +1,186 @@
+BUKSU CITIZEN’S CHARTER 2026 (STRUCTURED DATA FOR LLAMA AI)
+
+[GENERAL INFORMATION] University: Bukidnon State University Mandate:
+Provides higher education in fields such as education, IT, law, arts,
+sciences, and more. Also focuses on research, extension services, and
+leadership development.
+
+Vision: A premier institution producing innovative and ethical leaders
+for sustainable development.
+
+Mission: Develop competitive professionals through instruction,
+research, extension, and production.
+
+Core Values: - Excellence - Professionalism - Integrity - Commitment -
+Cultural Sensitivity
+
+Quality Policy: BukSU ensures continuous improvement in education,
+research, and services while meeting stakeholder needs.
+
+------------------------------------------------------------------------
+
+[MAIN SERVICE STRUCTURE FORMAT]
+
+Each service follows this format:
+
+Service Name: Description: Who May Avail: Requirements: Steps:
+Processing Time: Fees:
+
+------------------------------------------------------------------------
+
+[KEY SERVICES - SIMPLIFIED BUT DETAILED]
+
+1.  TEST PERMIT REQUEST Description: Allows students to take exams after
+    completing requirements.
+
+Requirements: - School ID - Official Receipt - Clearance (for finals)
+
+Steps: 1. Go to Accounting Window 2. Present requirements 3. Wait for
+verification 4. Receive permit
+
+Processing Time: ~8 minutes Fees: None
+
+------------------------------------------------------------------------
+
+2.  STATEMENT OF ACCOUNT (SOA) Description: Shows student balance,
+    payments, and financial status.
+
+Requirements: - Valid ID
+
+Steps: 1. Request at Accounting 2. Wait for system verification 3.
+Receive printed SOA
+
+Processing Time: ~8 minutes Fees: None
+
+------------------------------------------------------------------------
+
+3.  ADMISSION TEST APPLICATION (LAW / GRADUATE) Description: Application
+    process for admission exams.
+
+Requirements: - 2x2 photo - Transcript of Records - Honorable
+Dismissal - Payment Receipt
+
+Steps: 1. Register online 2. Upload documents 3. Schedule exam 4. Pay
+fee 5. Attend exam
+
+Processing Time: ~47 minutes (excluding waiting) Fees: - Law: ₱775 -
+Graduate: ₱675
+
+------------------------------------------------------------------------
+
+4.  EXAM RESULT REQUEST Description: Allows students to obtain exam
+    results.
+
+Requirements: - Valid ID
+
+Steps: 1. Present ID 2. Request result 3. Receive result
+
+Processing Time: ~10 minutes Fees: None
+
+------------------------------------------------------------------------
+
+5.  BOTANICAL GARDEN VISIT Description: Educational visits for students
+    and researchers.
+
+Requirements: - Letter request - Payment receipt
+
+Steps: 1. Submit request 2. Wait for approval 3. Pay fee 4. Attend visit
+
+Processing Time: ~2 days Fees: - Students: ₱20 - Adults: ₱30
+
+------------------------------------------------------------------------
+
+6.  HERBARIUM SERVICES (IDENTIFICATION) Description: Identifies plant
+    species.
+
+Requirements: - Letter request - Payment
+
+Processing Time: - Up to 2 weeks
+
+Fees: - Internal: ₱50–₱85 - External: ₱100–₱155
+
+------------------------------------------------------------------------
+
+7.  DENTAL SERVICES Types:
+
+-   Tooth Extraction
+-   Consultation
+-   Oral Examination
+-   Fluoride Treatment
+-   Medicine Dispensing
+
+Requirements: - School/Employee ID - Study load (students) - Waiver (if
+minor)
+
+Steps: 1. Submit requirements 2. Vital signs check 3.
+Consultation/treatment 4. Receive medicine
+
+Processing Time: 30 mins – 1.5 hours
+
+Fees: Usually free
+
+------------------------------------------------------------------------
+
+8.  STUDENT ASSISTANT APPLICATION Description: Application for student
+    assistantship.
+
+Requirements: - Application Form - Endorsement Letter - Grades -
+Registration
+
+Steps: 1. Fill forms 2. Get endorsements 3. Submit documents
+
+Processing Time: ~30 minutes Fees: None
+
+------------------------------------------------------------------------
+
+9.  RADIO SERVICES (DXBU 104.5 FM) Services:
+
+-   Public Information Broadcast
+-   Guesting
+-   Radio Program Slot
+-   Audio Recording
+
+Requirements: - Letter request - Script
+
+Processing Time: - Simple: 40 mins – 1 hour - Program slot: up to 16
+days
+
+Fees: - Audio Recording: ₱250
+
+------------------------------------------------------------------------
+
+10. MERCHANDISE PURCHASE Description: Buy university products.
+
+Steps: 1. Choose item 2. Pay cashier 3. Receive item
+
+Processing Time: ~25 minutes Fees: Depends on item
+
+------------------------------------------------------------------------
+
+11. SPACE RENTAL Description: Rent university space for business.
+
+Requirements: - Business permits - Letter of intent
+
+Processing Time: ~2 hours+ Fees: - ₱500 per sq. meter
+
+------------------------------------------------------------------------
+
+12. STUDENT RECORD (SF10) Description: Official academic record
+    issuance.
+
+Requirements: - ID - Authorization (if representative)
+
+Steps: 1. Request document 2. Verify identity 3. Receive record
+
+Processing Time: ~10 minutes Fees: None
+
+------------------------------------------------------------------------
+
+[NOT INCLUDED] Removed for chatbot optimization: - Cover pages -
+Complaint forms - Long legal text - Repetitive internal processes
+
+------------------------------------------------------------------------
+
+[NOTES FOR LLAMA AI] - Data is structured for Q&A chatbot usage - Focus
+on actionable steps and requirements - Avoid unnecessary legal or
+formatting noise

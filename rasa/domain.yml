@@ -88,7 +88,6 @@ intents:
   - ask_guidance_schedule
   - freshmen_application_period
   - visitor_campus_access
-  - enrollment_documents
   - Bot_creator
 
 

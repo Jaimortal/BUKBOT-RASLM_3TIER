@@ -20,10 +20,24 @@
       "topic": "Requirement_get_id",
       "responses": {
         "en": [
-          "The requirements for getting a BukSU student ID are: you need to bring your validated COR and a digital 1x1 picture. Note: this is for freshmen or new students of BukSU. For those who have lost their ID, you need to ask the OSS, as they may require additional documents for you to get a replacement ID. For payment, if you are a freshman or a new student, it is free. However, if it is your second time getting an ID, you will need to pay. The exact amount is not specified, so please ask the OSS staff for more information."
+          "The requirements for getting a BukSU student ID:",
+          "You need to go to the University Press building bring your validated COR and a digital 1x1 picture. <b> Note: </b>  this is for freshmen or new students of BukSU, there is no payment for the first ID you will get.",
+          "For those who have lost their ID:",
+          "Step 1: Go to <b> OVPCAS </b> Present </b> affidavit of loss </b> for lost ID",
+          "Step 2: Sign the Logbook",
+          "Step 3: Proceed to the Cashiers Office for payment",
+          "Step 4: Proceed to University Press for ID printing",
+          "cost will be 200 Pesos, process time will be 30 minutes. I will provide a complete Map navigation for you."
         ],
         "ceb": [
-          "Ang mga kinahanglanon para makakuha og BukSU student ID mao ang mosunod: kinahanglan nimo dad-on ang imong validated COR ug digital nga 1x1 nga litrato. Note: para kini sa mga freshmen o bag-ong estudyante sa BukSU. Para sa mga nawad-an og ID, kinahanglan nimo mangutana sa OSS, kay posible mangayo sila og dugang nga mga dokumento para makakuha ka og replacement ID. Bahin sa bayad, kung freshman o bag-ong estudyante ka, libre ra kini. Apan kung ikaduha na nimo nga pagkuha og ID, kinahanglan na ka mubayad. Ang eksaktong kantidad wala gi-specify, mao nga pangutan-a lang ang OSS staff para sa dugang impormasyon."
+          "Ang mga kinahanglanon sa pagkuha og BukSU student ID:",
+          "Kinahanglan ka nga moadto sa University Press building dala ang imong validated COR ug digital 1x1 picture. <b> Note: </b> kini para sa freshmen o bag-ong estudyante sa BukSU, walay bayad sa unang ID nga imong makuha.",
+          "Para sa mga nakawala sa ilang ID:",
+          "Step 1: Adto sa <b> OVPCAS </b> ipresent ang </b> affidavit of loss </b> para sa nawala nga ID",
+          "Step 2: Mopirma sa Logbook",
+          "Step 3: Moadto sa Cashier's Office para sa bayad",
+          "Step 4: Moadto sa University Press para sa pag-print sa ID",
+          "Ang gasto kay 200 Pesos, ang oras sa proseso kay 30 minutos. Hatagan tika og kompleto nga mapa sa navigation para nimo."
         ]
       }
     },
@@ -53,18 +67,318 @@
           "Ang mga estudyante pwede mangayo og Good Moral Certificate sa Office of Student Services.",
           "Ang bayad sa certificate kay singkwenta pesos."
         ]
-      }
+      },
+      "images": [],
+      "map": {
+        "lat": 500,
+        "lng": 500
+      },
+      "pins": [
+        {
+          "name": "You are Here",
+          "lat": 893,
+          "lng": 632
+        },
+        {
+          "name": "OVPCAS",
+          "lat": 833,
+          "lng": 770
+        },
+        {
+          "name": "University Press",
+          "lat": 791,
+          "lng": 928
+        },
+        {
+          "name": "Cashier Finance",
+          "lat": 705,
+          "lng": 631
+        }
+      ],
+      "routes": [
+        {
+          "name": "You are Here to OVPCAS",
+          "points": [
+            [
+              893,
+              632
+            ],
+            [
+              818,
+              630
+            ],
+            [
+              820,
+              768
+            ],
+            [
+              827,
+              769
+            ],
+            [
+              833,
+              770
+            ]
+          ],
+          "color": "#dc2626"
+        },
+        {
+          "name": "OVPCAS to Cashier Finance",
+          "points": [
+            [
+              833,
+              770
+            ],
+            [
+              820,
+              769
+            ],
+            [
+              819,
+              628
+            ],
+            [
+              785,
+              628
+            ],
+            [
+              783,
+              578
+            ],
+            [
+              757,
+              582
+            ],
+            [
+              757,
+              623
+            ],
+            [
+              706,
+              625
+            ],
+            [
+              705,
+              631
+            ]
+          ],
+          "color": "#16a34a"
+        },
+        {
+          "name": "Cashier Finance to University Press",
+          "points": [
+            [
+              705,
+              631
+            ],
+            [
+              703,
+              621
+            ],
+            [
+              678,
+              623
+            ],
+            [
+              680,
+              673
+            ],
+            [
+              788,
+              672
+            ],
+            [
+              794,
+              705
+            ],
+            [
+              799,
+              872
+            ],
+            [
+              807,
+              921
+            ],
+            [
+              793,
+              921
+            ],
+            [
+              791,
+              928
+            ]
+          ],
+          "color": "#eab308"
+        }
+      ]
     },
     {
       "topic": "student_id_process",
       "responses": {
         "en": [
-          "Go to the OSS to ask how to get a student ID, since the process may change every year. It’s better to ask directly at the Office of Student Services (OSS)."
+          "Here is the process of getting student ID:",
+          "You need to go to the University Press building bring your validated COR and a digital 1x1 picture. <b> Note: </b>  this is for freshmen or new students of BukSU, there is no payment for the first ID you will get.",
+          "For those who have lost their ID:",
+          "Step 1: Go to <b> OVPCAS </b> Present </b> affidavit of loss </b> for lost ID",
+          "Step 2: Sign the Logbook",
+          "Step 3: Proceed to the Cashiers Office for payment",
+          "Step 4: Proceed to University Press for ID printing",
+          "cost will be 200 Pesos, process time will be 30 minutes. I will provide a complete Map navigation for you."
         ],
         "ceb": [
-          "Adtoa ang OSS aron mangutana kung giunsa pagkuha og student ID, kay ang proseso mahimo usab mausab matag tuig. Mas maayo nga mangutana diretso sa Office of Student Services (OSS)."
+          "Niara ang prosiso sapag kuha og student ID",
+          "Kinahanglan ka nga moadto sa University Press building dala ang imong validated COR ug digital 1x1 picture. <b> Note: </b> kini para sa freshmen o bag-ong estudyante sa BukSU, walay bayad sa unang ID nga imong makuha.",
+          "Para sa mga nakawala sa ilang ID:",
+          "Step 1: Adto sa <b> OVPCAS </b> ipresent ang </b> affidavit of loss </b> para sa nawala nga ID",
+          "Step 2: Mopirma sa Logbook",
+          "Step 3: Moadto sa Cashier's Office para sa bayad",
+          "Step 4: Moadto sa University Press para sa pag-print sa ID",
+          "Ang gasto kay 200 Pesos, ang oras sa proseso kay 30 minutos. Hatagan tika og kompleto nga mapa sa navigation para nimo."
         ]
-      }
+      },
+      "images": [],
+      "map": {
+        "lat": 500,
+        "lng": 500
+      },
+      "pins": [
+        {
+          "name": "You are Here",
+          "lat": 893,
+          "lng": 632
+        },
+        {
+          "name": "OVPCAS",
+          "lat": 833,
+          "lng": 770
+        },
+        {
+          "name": "University Press",
+          "lat": 791,
+          "lng": 928
+        },
+        {
+          "name": "Cashier Finance",
+          "lat": 705,
+          "lng": 631
+        }
+      ],
+      "routes": [
+        {
+          "name": "You are Here to OVPCAS",
+          "points": [
+            [
+              893,
+              632
+            ],
+            [
+              818,
+              630
+            ],
+            [
+              820,
+              768
+            ],
+            [
+              827,
+              769
+            ],
+            [
+              833,
+              770
+            ]
+          ],
+          "color": "#dc2626"
+        },
+        {
+          "name": "OVPCAS to Cashier Finance",
+          "points": [
+            [
+              833,
+              770
+            ],
+            [
+              820,
+              769
+            ],
+            [
+              819,
+              628
+            ],
+            [
+              785,
+              628
+            ],
+            [
+              783,
+              578
+            ],
+            [
+              757,
+              582
+            ],
+            [
+              757,
+              623
+            ],
+            [
+              706,
+              625
+            ],
+            [
+              705,
+              631
+            ]
+          ],
+          "color": "#16a34a"
+        },
+        {
+          "name": "Cashier Finance to University Press",
+          "points": [
+            [
+              705,
+              631
+            ],
+            [
+              703,
+              621
+            ],
+            [
+              678,
+              623
+            ],
+            [
+              680,
+              673
+            ],
+            [
+              788,
+              672
+            ],
+            [
+              794,
+              705
+            ],
+            [
+              799,
+              872
+            ],
+            [
+              807,
+              921
+            ],
+            [
+              793,
+              921
+            ],
+            [
+              791,
+              928
+            ]
+          ],
+          "color": "#eab308"
+        }
+      ]
     }
   ]
 }

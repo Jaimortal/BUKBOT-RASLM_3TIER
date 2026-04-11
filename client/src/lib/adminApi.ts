@@ -357,6 +357,12 @@ export interface TopicPin {
   lng: number;
 }
 
+export interface TopicRoute {
+  name: string;
+  points: [number, number][];
+  color?: string;
+}
+
 export interface TopicData {
   topic: string;
   ui_name: string | null;
@@ -365,6 +371,7 @@ export interface TopicData {
   images: string[];
   map: { lat: number; lng: number } | null;
   pins: TopicPin[];
+  routes?: TopicRoute[];
 }
 
 export interface SuperIntentTopicsResult {
@@ -408,6 +415,7 @@ export async function updateSuperIntentTopic(
     images?: string[];
     map?: { lat: number; lng: number } | null;
     pins?: TopicPin[];
+    routes?: TopicRoute[];
   }
 ): Promise<ApiResponse> {
   try {

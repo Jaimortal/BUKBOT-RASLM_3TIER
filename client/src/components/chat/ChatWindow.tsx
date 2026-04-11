@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Mic, Send, Minimize2, ChevronUp, X } from "lucide-react";
+import { Mic, Send, Minimize2, ChevronUp, X, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -37,76 +37,102 @@ interface ChatWindowProps {
 function convertResponseToMessages(response: any): ChatMessage[] {
   const messages: ChatMessage[] = [];
 
-  const hasText = typeof response.answer === "string" ? response.answer.length > 0 : Array.isArray(response.answer);
+  // answer is now string[] from RasaBackend
+  const answerParts: string[] = Array.isArray(response.answer) ? response.answer : [];
   const hasImages = Boolean(response.imageUrl) || (Array.isArray(response.imageUrls) && response.imageUrls.length > 0);
 
-  // Get answer text for filtering
-  const answerText = Array.isArray(response.answer)
-    ? response.answer.join("\n")
-    : (typeof response.answer === "string" ? response.answer : "");
-
   // Frontend filter: Clear mapData if answer contains error messages
+  // We check the full concatenated text for keywords
+  const fullText = answerParts.join(" ");
   let filteredMapData = response.mapData;
   let filteredMapDataList = response.mapDataList;
   
   if (
-    !answerText ||
-    answerText.includes("cannot understand") ||
-    answerText.includes("try again") ||
-    answerText.includes("I'm not sure I understand") ||
-    answerText.includes("Could you rephrase")
+    !fullText ||
+    fullText.includes("cannot understand") ||
+    fullText.includes("try again") ||
+    fullText.includes("I'm not sure I understand") ||
+    fullText.includes("Could you rephrase")
   ) {
     filteredMapData = null;
     filteredMapDataList = null;
   }
 
-  // Text (and/or images) message
-  if (hasText || hasImages) {
+  // Create separate messages for each text part
+  answerParts.forEach((text, index) => {
+    const isLastTextPart = index === answerParts.length - 1;
+    const hasMapData = filteredMapData || (Array.isArray(filteredMapDataList) && filteredMapDataList.length > 0);
+    
     messages.push({
-      id: generateId(),
-      text: answerText,
+      id: generateId() + "-t-" + index,
+      text: text,
+      sender: "bot",
+      type: "text",
+      // Attach images to the last text bubble
+      imageUrl: isLastTextPart ? response.imageUrl : undefined,
+      imageUrls: isLastTextPart ? response.imageUrls : undefined,
+      timestamp: new Date(),
+      // Hide timestamp if it's not the last message in the sequence
+      hideTimestamp: true 
+    });
+  });
+
+  // Handle case where there are only images and no text
+  if (answerParts.length === 0 && hasImages) {
+    messages.push({
+      id: generateId() + "-img",
+      text: "",
       sender: "bot",
       type: "text",
       imageUrl: response.imageUrl,
       imageUrls: response.imageUrls,
       timestamp: new Date(),
+      hideTimestamp: true
     });
   }
 
   // Map message(s) - use filtered data
   if (Array.isArray(filteredMapDataList) && filteredMapDataList.length > 0) {
-    filteredMapDataList.forEach((md: any) => {
+    filteredMapDataList.forEach((md: any, idx: number) => {
       if (!md) return;
       messages.push({
-        id: generateId(),
+        id: generateId() + "-m-list-" + idx,
         text: "",
         sender: "bot",
         type: "map",
         mapData: md,
         timestamp: new Date(),
+        hideTimestamp: true
       });
     });
   } else if (Array.isArray(response.mapData) && response.mapData.length > 0) {
-    response.mapData.forEach((md: any) => {
+    response.mapData.forEach((md: any, idx: number) => {
       if (!md) return;
       messages.push({
-        id: generateId(),
+        id: generateId() + "-m-data-" + idx,
         text: "",
         sender: "bot",
         type: "map",
         mapData: md,
         timestamp: new Date(),
+        hideTimestamp: true
       });
     });
   } else if (filteredMapData) {
     messages.push({
-      id: generateId(),
+      id: generateId() + "-m-single",
       text: "",
       sender: "bot",
       type: "map",
       mapData: filteredMapData,
       timestamp: new Date(),
+      hideTimestamp: true
     });
+  }
+
+  // Final pass: Ensure the VERY LAST message in the group shows the timestamp
+  if (messages.length > 0) {
+    messages[messages.length - 1].hideTimestamp = false;
   }
 
   return messages;
@@ -132,6 +158,13 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
   // Fullscreen map state - stores the message ID of the map currently in fullscreen
   const [fullscreenMapId, setFullscreenMapId] = useState<string | null>(null);
+  
+  // Fullscreen image state
+  const [fullscreenImageUrl, setFullscreenImageUrl] = useState<string | null>(null);
+  const [imageZoom, setImageZoom] = useState(1);
+  const [imagePan, setImagePan] = useState({ x: 0, y: 0 });
+  const [isDraggingImage, setIsDraggingImage] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   
   // Map Quick Access modal state
   const [showMapQuickAccess, setShowMapQuickAccess] = useState(false);
@@ -503,7 +536,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                             /(https?:\/\/[^\s]+)/g,
                             (match) => {
                               const display = match.length > 40 ? match.slice(0, 37) + "..." : match;
-                              return `<a href="${match}" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80 break-all">${display}</a>`;
+                              return `<a href="${match}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; background-color: #dbeafe; padding: 2px 6px; border-radius: 4px; text-decoration: underline; font-weight: 500; word-break: break-all;" onmouseover="this.style.backgroundColor='#bfdbfe'" onmouseout="this.style.backgroundColor='#dbeafe'">${display}</a>`;
                             }
                           ),
                         }}
@@ -517,7 +550,12 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                               src={url}
                               alt="Chatbot response"
                               loading="lazy"
-                              className="w-full max-w-[320px] rounded-lg border border-border object-contain"
+                              onClick={() => {
+                                setFullscreenImageUrl(url);
+                                setImageZoom(0.5);
+                                setImagePan({ x: 0, y: 0 });
+                              }}
+                              className="w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
                             />
                           ))}
                         </div>
@@ -526,7 +564,14 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                           src={msg.imageUrl}
                           alt="Chatbot response"
                           loading="lazy"
-                          className="mt-2 w-full max-w-[320px] rounded-lg border border-border object-contain"
+                          onClick={() => {
+                            if (msg.imageUrl) {
+                              setFullscreenImageUrl(msg.imageUrl);
+                              setImageZoom(0.5);
+                              setImagePan({ x: 0, y: 0 });
+                            }
+                          }}
+                          className="mt-2 w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
                         />
                       ) : null}
                     </div>
@@ -553,9 +598,11 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   )}
                 </div>
 
-                <div className="text-xs opacity-60 mt-1 text-center">
-                  {msg.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                </div>
+                {!msg.hideTimestamp && (
+                  <div className="text-xs opacity-60 mt-1 text-center">
+                    {msg.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                  </div>
+                )}
               </motion.div>
             ))}
 
@@ -707,6 +754,108 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       <a className="text-xs text-muted-foreground/60 hover:text-muted-foreground text-center mt-0 mb-0" href="#" target="_blank" rel="noopener noreferrer">
         Chatbot might also make mistakes
       </a>
+
+      {/* Fullscreen Image View - Contained within chatbox */}
+      {fullscreenImageUrl && (
+        <div
+          className="absolute inset-0 z-40 bg-black/95 flex flex-col"
+          onClick={() => setFullscreenImageUrl(null)}
+        >
+          {/* Header with close button */}
+          <div className="flex items-center justify-between px-4 py-3 shrink-0" style={{backgroundColor: '#001C38'}}>
+            <span className="text-white/80 text-sm font-medium">Image Viewer</span>
+            <button
+              onClick={() => setFullscreenImageUrl(null)}
+              className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Image container with pan/zoom (mouse + touch support) */}
+          <div
+            className="flex-1 overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing relative touch-none"
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => {
+              setIsDraggingImage(true);
+              setDragStart({ x: e.clientX - imagePan.x, y: e.clientY - imagePan.y });
+            }}
+            onMouseMove={(e) => {
+              if (!isDraggingImage) return;
+              setImagePan({
+                x: e.clientX - dragStart.x,
+                y: e.clientY - dragStart.y
+              });
+            }}
+            onMouseUp={() => setIsDraggingImage(false)}
+            onMouseLeave={() => setIsDraggingImage(false)}
+            // Mobile touch support
+            onTouchStart={(e) => {
+              const touch = e.touches[0];
+              setIsDraggingImage(true);
+              setDragStart({ x: touch.clientX - imagePan.x, y: touch.clientY - imagePan.y });
+            }}
+            onTouchMove={(e) => {
+              if (!isDraggingImage) return;
+              e.preventDefault(); // Prevent scrolling while panning image
+              const touch = e.touches[0];
+              setImagePan({
+                x: touch.clientX - dragStart.x,
+                y: touch.clientY - dragStart.y
+              });
+            }}
+            onTouchEnd={() => setIsDraggingImage(false)}
+            onTouchCancel={() => setIsDraggingImage(false)}
+          >
+            <img
+              src={fullscreenImageUrl}
+              alt="Fullscreen view"
+              className="max-w-none select-none"
+              style={{
+                transform: `translate(${imagePan.x}px, ${imagePan.y}px) scale(${imageZoom})`,
+                transition: isDraggingImage ? 'none' : 'transform 0.1s ease-out',
+                cursor: isDraggingImage ? 'grabbing' : 'grab'
+              }}
+              draggable={false}
+            />
+          </div>
+
+          {/* Zoom controls at bottom */}
+          <div className="flex items-center justify-center gap-2 px-4 py-3 shrink-0"  style={{backgroundColor: '#001C38'}}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setImageZoom(z => Math.max(0.25, z - 0.25));
+              }}
+              className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+            >
+              <ZoomOut className="h-5 w-5" />
+            </button>
+            <span className="text-white text-sm min-w-[60px] text-center">
+              {Math.round(imageZoom * 100)}%
+            </span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setImageZoom(z => Math.min(1, z + 0.25));
+              }}
+              className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+            >
+              <ZoomIn className="h-5 w-5" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setImageZoom(0.5);
+                setImagePan({ x: 0, y: 0 });
+              }}
+              className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+            >
+              <RotateCcw className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

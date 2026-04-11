@@ -139,6 +139,7 @@ export const superIntentResponses = pgTable("super_intent_responses", {
   // Map slots
   mapData: jsonb("map_data").$type<{lat: number, lng: number} | null>().default(null),
   pins: jsonb("pins").$type<{name: string, lat: number, lng: number}[]>().default([]),
+  routes: jsonb("routes").$type<{name: string, points: [number, number][], color?: string}[]>().default([]),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });

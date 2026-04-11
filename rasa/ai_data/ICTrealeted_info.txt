@@ -1,0 +1,47 @@
+[INTENT] ask_ict_info
+[TITLE] About ICT Services
+
+[KEYWORDS]
+ICT, ICT-SU, ICT services, information technology, computer labs, technical support
+
+[ANSWER - EN]
+The Information & Communications Technology Services Unit (ICT-SU) of Bukidnon State University handles the technical aspects of university processes including information systems, network services, technical services, and web development. ICT-SU is responsible for maintaining computers in the computer laboratories and ensuring that any issues or damages are addressed promptly. Students may approach ICT-SU for technical assistance regarding computer facilities.
+
+[ANSWER - CEB]
+Ang Information & Communications Technology Services Unit (ICT-SU) sa Bukidnon State University mao ang ga-atiman sa teknikal nga bahin sa mga proseso sa unibersidad lakip ang information systems, network, technical services, ug web development. Sila usab ang ga-mentinar sa mga computer sulod sa computer laboratory ug naga-ayo sa mga problema niini. Pwede ka mo-doul sa ila alang sa technical nga tabang.
+
+
+[INTENT] ask_ict_info
+[TITLE] How to Get WiFi Access
+
+[KEYWORDS]
+wifi, internet access, ICT wifi, connect wifi, ICT office location, wifi access
+
+[ANSWER - EN]
+Here is how to get WiFi access from ICT:
+1. Go to the Finance Building, 3rd floor.
+2. Locate the Audio Laboratory.
+3. In front of it, you will find the ICT office.
+4. Look for Computer Laboratory 6 (ComLab 6).
+5. The ICT office is located on the right side of ComLab 6.
+
+[ANSWER - CEB]
+Ani ang paagi aron makakuha og WiFi:
+1. Adto sa Finance Building, ikatulong andana.
+2. Pangitaa ang Audio Laboratory.
+3. Atubangan niini makita ang ICT office.
+4. Pangitaa ang Computer Laboratory 6 (ComLab 6).
+5. Ang ICT office naa sa tuo nga bahin sa ComLab 6.
+
+
+[INTENT] ask_ict_info
+[TITLE] ICT Mission
+
+[KEYWORDS]
+ICT mission, purpose of ICT, ICT goal
+
+[ANSWER - EN]
+To provide reliable and secure ICT infrastructure and services framework that enables the academic community to utilize innovative information technologies supporting instruction, research, extension, and production.
+
+[ANSWER - CEB]
+To provide reliable and secure ICT infrastructure and services framework nga makatabang sa academic community sa paggamit sa innovative information technologies para sa instruction, research, extension, ug production.

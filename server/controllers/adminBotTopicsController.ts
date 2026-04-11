@@ -15,6 +15,12 @@ export interface BotTopic {
   previewResponse?: string;
 }
 
+export interface TopicRoute {
+  name: string;
+  points: [number, number][];
+  color?: string;
+}
+
 export interface BotCategory {
   id: string; 
   displayName: string;
@@ -151,6 +157,7 @@ export class AdminBotTopicsController {
           images: Array.isArray(t.images) ? t.images : [],
           map: t.map || null,
           pins: Array.isArray(t.pins) ? t.pins : [],
+          routes: Array.isArray(t.routes) ? t.routes : [],
         }));
 
       res.json({ success: true, intent, displayName: formatIntentDisplayName(intent), topics });
@@ -162,7 +169,7 @@ export class AdminBotTopicsController {
 
   // -----------------------------------------------------------------------
   // POST /api/admin/super-intents/:file/topic
-  // Body: { topic: string, ui_name?, responses?, images?, map?, pins? }
+  // Body: { topic: string, ui_name?, responses?, images?, map?, pins?, routes? }
   // Updates ONLY the matching topic object — never changes the `topic` key
   // -----------------------------------------------------------------------
   static async updateTopic(req: Request, res: Response) {
@@ -172,7 +179,7 @@ export class AdminBotTopicsController {
         return res.status(400).json({ success: false, message: 'Invalid file name' });
       }
 
-      const { topic: topicKey, ui_name, responses, images, map, pins } = req.body;
+      const { topic: topicKey, ui_name, responses, images, map, pins, routes } = req.body;
       if (!topicKey) {
         return res.status(400).json({ success: false, message: 'topic key is required' });
       }
@@ -235,6 +242,16 @@ export class AdminBotTopicsController {
 
       if (pins !== undefined) {
         updated.pins = Array.isArray(pins) ? pins : (existing.pins || []);
+      }
+
+      if (routes !== undefined) {
+        updated.routes = Array.isArray(routes) 
+          ? routes.map((r: any) => ({
+              name: String(r.name || "Route"),
+              points: Array.isArray(r.points) ? r.points : [],
+              color: String(r.color || "#dc2626"),
+            }))
+          : (existing.routes || []);
       }
 
       // Clean up undefined ui_name

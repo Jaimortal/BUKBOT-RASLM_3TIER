@@ -21,11 +21,12 @@ export interface ChatMessage {
   sender: "user" | "bot";
   type: MessageType;
   timestamp: Date;
+  hideTimestamp?: boolean; // Controls timestamp visibility
   imageUrl?: string;
   imageUrls?: string[];
   mapData?: {
     locationName: string;
-    coordinates: { lat: number; lng: number }; // Changed from [number, number]
+    coordinates: { lat: number; lng: number };
     mapId?: string;
     pins?: Array<{ name: string; coordinates: { lat: number; lng: number } }>;
     routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
@@ -35,7 +36,7 @@ export interface ChatMessage {
 
 // Interface for the response format expected by ChatWindow
 interface BackendResponse {
-  answer?: string | string[];
+  answer?: string[]; // Always an array of strings
   imageUrl?: string;
   imageUrls?: string[];
   mapData?: {
@@ -64,17 +65,22 @@ class RasaBackend {
       const session = getSessionData();
       const preferredLanguage = session.userPreferences?.language;
       const responses = await sendMessageToRasa(text, preferredLanguage, sessionId);
-      
-      // Combine all text responses
-      let combinedText = "";
+
+      // Collect text parts separately
+      const textParts: string[] = [];
       const imageUrls: string[] = [];
       let mapData: any = null;
       const mapDataList: any[] = [];
 
       responses.forEach((r: any) => {
-        // Extract text
-        if (typeof r.text === "string" && r.text.trim()) {
-          combinedText += r.text.trim() + "\n";
+        // Extract text and split by newlines to separate JSON array elements
+        if (typeof r.text === "string" && r.text.length > 0) {
+          // Split by newline and add to textParts
+          const split = r.text.split('\n');
+          split.forEach((part: string) => {
+            // Keep the part even if it is " " (user specifically asked for this)
+            textParts.push(part);
+          });
         }
 
         // Extract image (standard Rasa REST field)
@@ -94,18 +100,20 @@ class RasaBackend {
             });
           }
           if (typeof r.custom.image === "string" && r.custom.image.trim()) {
-             imageUrls.push(r.custom.image.trim());
+            imageUrls.push(r.custom.image.trim());
           }
           if (Array.isArray(r.custom.images)) {
-             r.custom.images.forEach((img: unknown) => {
-                if (typeof img === "string" && img.trim()) imageUrls.push(img.trim());
-             });
+            r.custom.images.forEach((img: unknown) => {
+              if (typeof img === "string" && img.trim()) imageUrls.push(img.trim());
+            });
           }
 
-          if (r.custom.follow_up) {
-            combinedText += "\n" + r.custom.follow_up.join("\n") + "\n";
+          if (r.custom.follow_up && Array.isArray(r.custom.follow_up)) {
+            r.custom.follow_up.forEach((part: string) => {
+              if (typeof part === "string") textParts.push(part);
+            });
           }
-          
+
           // Check for map data in custom response
           if (r.custom.mapData) {
             if (Array.isArray(r.custom.mapData)) {
@@ -120,23 +128,23 @@ class RasaBackend {
                     mapId: item?.mapId,
                     pins: Array.isArray(item?.pins)
                       ? item.pins
-                          .map((p: any) => {
-                            const c = p?.coordinates;
-                            if (Array.isArray(c) && c.length === 2) {
-                              return {
-                                name: String(p?.name || "").trim() || "Pin",
-                                coordinates: { lat: c[0], lng: c[1] },
-                              };
-                            }
-                            if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
-                              return {
-                                name: String(p?.name || "").trim() || "Pin",
-                                coordinates: c,
-                              };
-                            }
-                            return null;
-                          })
-                          .filter(Boolean)
+                        .map((p: any) => {
+                          const c = p?.coordinates;
+                          if (Array.isArray(c) && c.length === 2) {
+                            return {
+                              name: String(p?.name || "").trim() || "Pin",
+                              coordinates: { lat: c[0], lng: c[1] },
+                            };
+                          }
+                          if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
+                            return {
+                              name: String(p?.name || "").trim() || "Pin",
+                              coordinates: c,
+                            };
+                          }
+                          return null;
+                        })
+                        .filter(Boolean)
                       : undefined,
                     routes: Array.isArray(item?.routes) ? item.routes : undefined,
                   };
@@ -147,23 +155,23 @@ class RasaBackend {
             } else {
               const pins = Array.isArray(r.custom.mapData.pins)
                 ? r.custom.mapData.pins
-                    .map((p: any) => {
-                      const c = p?.coordinates;
-                      if (Array.isArray(c) && c.length === 2) {
-                        return {
-                          name: String(p?.name || "").trim() || "Pin",
-                          coordinates: { lat: c[0], lng: c[1] },
-                        };
-                      }
-                      if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
-                        return {
-                          name: String(p?.name || "").trim() || "Pin",
-                          coordinates: c,
-                        };
-                      }
-                      return null;
-                    })
-                    .filter(Boolean)
+                  .map((p: any) => {
+                    const c = p?.coordinates;
+                    if (Array.isArray(c) && c.length === 2) {
+                      return {
+                        name: String(p?.name || "").trim() || "Pin",
+                        coordinates: { lat: c[0], lng: c[1] },
+                      };
+                    }
+                    if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
+                      return {
+                        name: String(p?.name || "").trim() || "Pin",
+                        coordinates: c,
+                      };
+                    }
+                    return null;
+                  })
+                  .filter(Boolean)
                 : undefined;
 
               mapData = {
@@ -175,12 +183,12 @@ class RasaBackend {
               };
             }
           }
-          
+
           // Also check for direct map property
           if (r.custom.map) {
             mapData = {
               locationName: r.custom.map.locationName || "Location",
-              coordinates: Array.isArray(r.custom.map.coordinates) 
+              coordinates: Array.isArray(r.custom.map.coordinates)
                 ? { lat: r.custom.map.coordinates[0], lng: r.custom.map.coordinates[1] }
                 : r.custom.map.coordinates
             };
@@ -198,19 +206,15 @@ class RasaBackend {
         }
       });
 
-      // Clean up text
-      combinedText = combinedText.trim();
-
       // Deduplicate images while preserving order
       const uniqueImageUrls = Array.from(new Set(imageUrls));
 
       // Build response object
       const response: BackendResponse = {
-        answer:
-          combinedText ||
+        answer: textParts.length > 0 ? textParts :
           (uniqueImageUrls.length > 0 || mapData || mapDataList.length > 0
-            ? ""
-            : "I received your message but got an empty response.")
+            ? []
+            : ["I received your message but got an empty response."])
       };
 
       if (uniqueImageUrls.length > 0) {
@@ -244,7 +248,7 @@ class RasaBackend {
       'parking', 'car', 'vehicle', 'atm', 'bank', 'money',
       'information', 'help desk', 'concierge', 'security'
     ];
-    
+
     const lowerText = text.toLowerCase();
     return locationKeywords.some(keyword => lowerText.includes(keyword));
   }
@@ -256,14 +260,14 @@ export const rasaBackend = new RasaBackend();
 // Helper function for ChatWindow to convert responses
 export function convertRasaResponseToMessages(rasaResponses: any[]): ChatMessage[] {
   const messages: ChatMessage[] = [];
-  
+
   rasaResponses.forEach((response) => {
     let text = response.text || "";
-    
+
     if (response.custom?.follow_up) {
       text += "\n\n" + response.custom.follow_up.join("\n");
     }
-    
+
     messages.push({
       id: generateId(),
       text: text,
@@ -271,7 +275,7 @@ export function convertRasaResponseToMessages(rasaResponses: any[]): ChatMessage
       type: "text",
       timestamp: new Date()
     });
-    
+
     // Handle map data if present
     if (response.custom?.map) {
       messages.push({
@@ -289,6 +293,6 @@ export function convertRasaResponseToMessages(rasaResponses: any[]): ChatMessage
       });
     }
   });
-  
+
   return messages;
 }

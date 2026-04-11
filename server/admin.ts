@@ -5,6 +5,7 @@ import type { ResponseData, Location, ApiResponse, UserPrivileges } from '../cli
 import * as dbResponses from './db/responses.js';
 import * as dbLocations from './db/locations.js';
 import { deleteImage } from './db/images.js';
+import { upsertResponse } from './admin-db.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -78,26 +79,17 @@ const DEFAULT_PRIVILEGES: UserPrivileges = {
   autoTranslateEnabled: true
 };
 
-// Read responses from database (primary source)
+// Read responses from JSON file (primary source)
 export async function getResponses(): Promise<ResponseData[]> {
   try {
-    const dbResults = await dbResponses.getAllResponses();
-    return dbResults.map(row => ({
-      intent: row.intent,
-      category: row.category || '',
-      sub_category: row.subCategory || '',
-      responses: {
-        answer: row.answerEn?.length ? { en: row.answerEn, ceb: row.answerCeb || [] } : row.answer || [],
-        follow_up: row.followUp || [],
-        context_slots: row.contextSlots || {},
-        imageUrl: row.imageUrl || undefined,
-        imageUrls: row.imageUrls || undefined,
-        mapData: row.mapData || undefined,
-      },
-      metadata: row.metadata || {},
-    }));
+    const data = await fs.readFile(RESPONSES_FILE, 'utf-8');
+    const parsed = JSON.parse(data);
+    if (Array.isArray(parsed)) {
+      return parsed;
+    }
+    return [];
   } catch (error) {
-    console.error('Error fetching responses from database:', error);
+    console.error('Error reading responses.json:', error);
     return [];
   }
 }
@@ -321,108 +313,6 @@ export async function upsertUserPrivileges(privileges: UserPrivileges): Promise<
     return {
       success: false,
       message: 'Error saving privileges: ' + error
-    };
-  }
-}
-
-import { deleteImage } from './db/images.js';
-
-// Add or update a response in database
-export async function upsertResponse(responseData: ResponseData): Promise<ApiResponse> {
-  try {
-    const answer = responseData.responses?.answer;
-    let answerEn: string[] = [];
-    let answerCeb: string[] = [];
-    let simpleAnswer: string[] = [];
-
-    if (Array.isArray(answer)) {
-      simpleAnswer = answer;
-    } else if (typeof answer === 'object' && answer !== null) {
-      answerEn = answer.en || [];
-      answerCeb = answer.ceb || [];
-    }
-
-    // Check if images were removed by fetching existing record
-    const existing = await dbResponses.getResponseByIntent(responseData.intent);
-    if (existing) {
-      const oldImages = existing.imageUrls || [];
-      const newImages = responseData.responses?.imageUrls || [];
-      
-      const removedImages = oldImages.filter(url => !newImages.includes(url));
-      for (const url of removedImages) {
-        if (typeof url === 'string' && url.startsWith('/api/images/')) {
-          const id = url.split('/').pop();
-          if (id) {
-            console.log(`[Database Sync] Deleting image ${id} removed from intent ${existing.intent}`);
-            await deleteImage(id).catch(err => console.error("Failed to delete image from DB:", err));
-          }
-        }
-      }
-    }
-
-    const dbData = {
-      intent: responseData.intent,
-      category: responseData.category || '',
-      subCategory: responseData.sub_category || '',
-      answerEn,
-      answerCeb,
-      answer: simpleAnswer,
-      followUp: responseData.responses?.follow_up || [],
-      contextSlots: responseData.responses?.context_slots || {},
-      imageUrl: responseData.responses?.imageUrl || '',
-      imageUrls: responseData.responses?.imageUrls || [],
-      mapData: responseData.responses?.mapData || null,
-      metadata: responseData.metadata || {},
-    };
-
-    await dbResponses.upsertResponse(dbData);
-
-    return {
-      success: true,
-      message: 'Response saved successfully',
-      data: responseData
-    };
-  } catch (error) {
-    return {
-      success: false,
-      message: 'Error saving response: ' + error
-    };
-  }
-}
-
-// Delete a response from database
-export async function deleteResponse(intent: string): Promise<ApiResponse> {
-  try {
-    const existing = await dbResponses.getResponseByIntent(intent);
-    
-    if (!existing) {
-      return { success: false, message: 'Intent not found' };
-    }
-    
-    const imagesToPurge = existing.imageUrls || [];
-    
-    // Purge images from DB
-    for (const url of imagesToPurge) {
-      if (typeof url === 'string' && url.startsWith('/api/images/')) {
-        const id = url.split('/').pop();
-        if (id) {
-          console.log(`[Database Sync] Deleting image ${id} associated with deleted intent ${intent}`);
-          await deleteImage(id).catch(err => console.error("Failed to delete image from DB:", err));
-        }
-      }
-    }
-    
-    // Delete from database
-    const success = await dbResponses.deleteResponse(intent);
-    
-    return {
-      success,
-      message: success ? 'Intent deleted successfully' : 'Failed to delete intent'
-    };
-  } catch (error) {
-    return {
-      success: false,
-      message: 'Error deleting intent: ' + error
     };
   }
 }

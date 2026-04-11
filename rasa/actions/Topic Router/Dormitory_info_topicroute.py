@@ -16,7 +16,7 @@ DORMITORY_INFO_TOPIC_PATTERNS = {
         "strong_keywords": [
             "dormitory", "dormitories", "dorm", "accommodation", 
             "campus dorm", "university dorm", "student dorm",
-            "male female dorm", "separate dormitories"
+            "separate dormitories"
         ],
         "weak_keywords": [
             "available", "facilities", "inside campus", "on-campus",
@@ -35,8 +35,8 @@ DORMITORY_INFO_TOPIC_PATTERNS = {
             "pila kabuok dormitory sa Bukidnon State University"
         ],
         "strong_keywords": [
-            "how many", "number of", "total", "count", "pila ka", "many dorm"
-            "pila kabuok", "dormitories", "dorm", "dorm buildings", "dorm",
+            "how many", "number of", "total", "count", "pila ka", "many dorm",
+            "pila kabuok", "dorm buildings"
         ],
         "weak_keywords": [
             "BukSU", "main campus", "exist", "available", "found"
@@ -100,10 +100,10 @@ DORMITORY_INFO_TOPIC_PATTERNS = {
         ],
         "strong_keywords": [
             "male dorm", "Mahogany", "male students dorm", "dormitory for male",
-            "lalaki", "male only", "boys dorm"
+            "lalaki", "male only", "boys dorm", "male"
         ],
         "weak_keywords": [
-            "stay", "exist", "available", "provide", "student dorm"
+            "stay", "exist", "available", "provide", "student dorm", "has", "have", "dorm"
         ],
         "required_context": ["dormitory", "male"]
     },
@@ -122,10 +122,10 @@ DORMITORY_INFO_TOPIC_PATTERNS = {
         ],
         "strong_keywords": [
             "female dorm", "Rubia", "female students dorm", "dormitory for female",
-            "babae", "female only", "girls dorm"
+            "babae", "female only", "girls dorm", "female"
         ],
         "weak_keywords": [
-            "stay", "exist", "available", "provide", "student dorm"
+            "stay", "exist", "available", "provide", "student dorm", "has", "have", "dorm"
         ],
         "required_context": ["dormitory", "female"]
     }

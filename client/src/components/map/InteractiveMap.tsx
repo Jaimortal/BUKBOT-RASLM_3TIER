@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { 
   MapContainer, 
   TileLayer, 
@@ -52,6 +52,14 @@ interface InteractiveMapProps {
   initialMarkers?: any[];
   initialRoutes?: any[];
 }
+
+// Route color palette - cycles through: red, green, yellow, orange, blue
+const ROUTE_COLORS = ["#dc2626", "#16a34a", "#eab308", "#f97316", "#2563eb"];
+
+const getNextRouteColor = (existingRoutes: any[]): string => {
+  const colorIndex = existingRoutes.length % ROUTE_COLORS.length;
+  return ROUTE_COLORS[colorIndex];
+};
 
 const MapEvents = ({ onMapClick }: { onMapClick: (e: L.LeafletMouseEvent) => void }) => {
   useMapEvents({
@@ -125,10 +133,11 @@ export default function InteractiveMap({
     }
     const name = prompt("Enter route name:");
     if (name) {
+      const newColor = getNextRouteColor(routes);
       setRoutes([...routes, {
         name,
         points: activeRoutePoints,
-        color: "#3b82f6",
+        color: newColor,
         weight: 5,
         id: Date.now()
       }]);
@@ -148,10 +157,11 @@ export default function InteractiveMap({
       
       const name = prompt("Enter connection name (e.g., 'Entrance to Registrar'):", `${startM.name} to ${endM.name}`);
       if (name) {
+        const newColor = getNextRouteColor(routes);
         setRoutes([...routes, {
           name,
           points: [startPoint, endPoint],
-          color: "#059669", // Use a distinct color for connections
+          color: newColor,
           weight: 6,
           id: Date.now()
         }]);
@@ -349,12 +359,16 @@ export default function InteractiveMap({
         )}
       </div>
 
-      <div className="flex-1 rounded-xl overflow-hidden shadow-inner border border-gray-200">
+      <div 
+        className="flex-1 rounded-xl overflow-hidden shadow-inner border border-gray-200"
+        onWheel={(e) => e.stopPropagation()}
+      >
         <MapContainer
           center={initialCenter}
           zoom={initialZoom}
           className="w-full h-full"
           style={{ background: '#f8fafc' }}
+          scrollWheelZoom={true}
         >
           <TileLayer url={styleUrl} />
           

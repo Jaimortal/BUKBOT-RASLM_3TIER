@@ -271,6 +271,7 @@ export async function migrateSuperIntentsFromJSON(force: boolean = false): Promi
               imageUrls: topic.images || [],
               mapData: topic.map || null,
               pins: topic.pins || [],
+              routes: topic.routes || [],
             };
 
             await db.delete(superIntentResponses).where(
