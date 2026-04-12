@@ -24,7 +24,8 @@ ADMISSIONS_TOPIC_PATTERNS = {
             "when mogawas ang exam result"
         ],
         "strong_keywords": [
-            "mogawas", "gawas", "release", "releasing"
+            "mogawas", "gawas", "release", "releasing", "cat result", "buksu examination result",
+            "examination result", "testing result", "cat score result"
         ],
         "weak_keywords": [
             "result", "results", "resulta", "exam", "when", "kanus", "know", "check"

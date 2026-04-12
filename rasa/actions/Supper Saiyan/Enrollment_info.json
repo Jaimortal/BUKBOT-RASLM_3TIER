@@ -94,7 +94,7 @@
       "responses": {
         "en": [
           "For your online enrollment.",
-          "Step 1: Go to BUKSU Admissions:<div>https://admissions.buksu.edu.ph/</div>",
+          "Step 1: Go to BUKSU Admissions:https://admissions.buksu.edu.ph/",
           "Step 2: Go to the Enrollment tab. On a PC, it’s on the left-side navigation bar. On a mobile phone, click the three-line menu icon at the top left to see the Enrollment tab.",
           "Step 3: Click Apply Enrollment and fill in all the details such as your course, year, and semester.",
           "Step 4: You don’t need to upload documents like your LRN number, student card, or others, as these were already provided during the admission testing process, so you can skip them.",
@@ -104,7 +104,7 @@
         ],
         "ceb": [
           "Para sa imong online enrollment:",
-          "Step 1: Adto sa BUKSU Admissions:<div>https://admissions.buksu.edu.ph/</div>",
+          "Step 1: Adto sa BUKSU Admissions:https://admissions.buksu.edu.ph/",
           "Step 2: Adto sa Enrollment tab. Kung PC imong gamit, naa kini sa left-side navigation bar. Kung mobile phone, i-click ang three-line menu icon sa taas nga left aron makita ang Enrollment tab.",
           "Step 3: I-click ang Apply Enrollment ug pun-a tanan nga detalye sama sa imong course, year, ug semester.",
           "Step 4: Dili na kinahanglan mag-upload og mga dokumento sama sa imong LRN number, student card, ug uban pa, kay na-submit na kini sa admission testing process, mao nga pwede ra nimo sila i-skip.",
@@ -122,7 +122,7 @@
       "topic": "mixed_enrollment_process",
       "responses": {
         "en": [
-          "For mixed enrollment, the process is similar to online enrollment fill up all the requirements on bukSU Admission, for the process just ask about online enrollment. but this time you need to go to your department to process your pending online enrollment. There are specific faculty staff who handle enrollment in your department. Sometimes there is a queue system that you need to scan to know your number in line for your turn.",
+          "For Face to face enrollment or mixed enrollment, the process is similar to online enrollment fill up all the requirements on bukSU Admission, for the process just ask about online enrollment. but this time you need to go to your department to process your pending online enrollment. There are specific faculty staff who handle enrollment in your department. Sometimes there is a queue system that you need to scan to know your number in line for your turn.",
           "but this is for <b>2nd year student</b> only since they already has a record on their department. <b>for freshman and transferees follow this steps</b>",
           "1. Attend the Pre-enrolment Orientation.",
           "2. Proceed to the preferred college of choice for personal interview and present documents in a long <b>brown envelope for evaluation</b>.",
@@ -130,7 +130,7 @@
           "<b>Requirements for Transferees:</b><div>Admission Exam Results</div><div>Medical Certificate</div><div>Birth Certificate</div><div>Honorable Dismissal</div><div>Transcript of Records&nbsp;</div><div>Individual Inventory Record</div>"
         ],
         "ceb": [
-          "For mixed enrollment, parehas ra ang proseso sa online enrollment—pun-a tanan nga requirements sa BukSU Admission. Para sa proseso, pwede ka mangutana bahin sa online enrollment. Apan karon, kinahanglan ka moadto sa inyong department aron iproseso ang imong pending online enrollment. Adunay mga specific nga faculty staff nga nag-handle sa enrollment sa inyong department. Usahay, adunay queue system nga kinahanglan nimo i-scan aron mahibal-an ang imong numero sa linya para sa imong turno.",
+          "For face to face or mixed enrollment, parehas ra ang proseso sa online enrollment—pun-a tanan nga requirements sa BukSU Admission. Para sa proseso, pwede ka mangutana bahin sa online enrollment. Apan karon, kinahanglan ka moadto sa inyong department aron iproseso ang imong pending online enrollment. Adunay mga specific nga faculty staff nga nag-handle sa enrollment sa inyong department. Usahay, adunay queue system nga kinahanglan nimo i-scan aron mahibal-an ang imong numero sa linya para sa imong turno.",
           "Apan kini para lamang sa <b>2nd year student</b> kay naa na silay record sa ilang department. <b>Para sa freshmen ug transferees, sundan kini nga mga lakang</b>:",
           "1. Motambong sa Pre-enrolment Orientation.",
           "2. Moadto sa napiling college para sa personal interview ug ipresent ang mga dokumento sulod sa long <b>brown envelope para sa evaluation</b>.",

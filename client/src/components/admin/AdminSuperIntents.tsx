@@ -543,8 +543,8 @@ function IntentPanel({ intentMeta }: IntentPanelProps) {
           {search ? `No topics match "${search}"` : "No topics found in this Super Intent."}
         </div>
       ) : (
-        // Fixed-height scrollable grid — shows 3 rows (≈500px), rest scroll
-        <div className="overflow-y-auto max-h-[500px] pr-1"
+        // Fixed-height scrollable grid — fits within 540px container
+        <div className="overflow-y-auto max-h-[420px] pr-1"
           style={{ scrollbarWidth: "thin", scrollbarColor: "#cbd5e1 transparent" }}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -615,8 +615,8 @@ export function AdminSuperIntents() {
   const activeIntentMeta = superIntents.find((s) => s.file === activeIntent);
 
   return (
-    // Fixed height 640px — left & right panels scroll independently
-    <div className="flex gap-0 h-[640px] rounded-xl border bg-white overflow-hidden shadow-sm">
+    // Fixed height 540px — left & right panels
+    <div className="flex gap-0 h-[540px] rounded-xl border bg-white overflow-hidden shadow-sm">
       {/* ── LEFT: Super Intent vertical nav ── */}
       <div className="w-56 shrink-0 border-r bg-gray-50 flex flex-col">
         <div
@@ -663,7 +663,7 @@ export function AdminSuperIntents() {
         </nav>
       </div>
 
-      {/* ── RIGHT: Topic panel — scrolls independently ── */}
+      {/* ── RIGHT: Topic panel ── */}
       <div
         className="flex-1 min-w-0 p-6 overflow-y-auto"
         style={{ scrollbarWidth: "thin", scrollbarColor: "#cbd5e1 transparent" }}

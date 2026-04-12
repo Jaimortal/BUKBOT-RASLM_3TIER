@@ -429,29 +429,37 @@
       "topic": "cat_requirement_nursing_program",
       "responses": {
         "en": [
-          "To qualify for the College of Nursing at Bukidnon State University, applicants must pass the BukSU College Admission Test.",
-          "The expected CAT score is usually around 80 to 90 or above because the program has limited slots and high demand.",
-          "However, the required CAT score may vary depending on the number of applicants, available slots, and the admission policies set by the university for that academic year."
+          "Unfortunately, we are not allowed to release the exact CAT score required to qualify for specific programs (non-board or board courses), since this may change every year. We can only provide a percentage range.",
+          "NOTE: This range is based only on past BukSU CAT examinations. This may change over the years. It is much better to ask the BukSU Admission Testing Unit (ATU) for specific qualification information:<div>https://www.facebook.com/BukSUATU</div>",
+          "Or you can view your BukSU Admission Examination CAT score to know if you are qualified for non-board or board courses.",
+          "For board courses, the range is 70% to 90% <b> Again, this is only a range </b> and it may change in the long run. For non-board courses, the range is 45% to 69%. Below that is considered as failed to pass the Buksu CAT examination."
         ],
         "ceb": [
-          "Aron makasulod sa College of Nursing sa Bukidnon State University, kinahanglan makapasar ang aplikante sa BukSU College Admission Test.",
-          "Kasagaran ang gikinahanglan nga score kay mga 80 to 90 pataas tungod kay limitado ang slots ug daghan ang aplikante.",
-          "Apan ang required nga CAT score mahimong mag-usab depende sa kadaghan sa aplikante, available nga slots, ug sa admission policy sa unibersidad matag tuig."
+          "Sa pagkakaron, dili namo pwede i-release ang eksaktong CAT score nga kinahanglan aron ma-qualify sa specific nga mga programa (non-board o board courses), tungod kay kini mahimong mausab matag tuig. Makahatag lamang mi og percentage range.",
+          "NOTE: Kini nga range gibase lamang sa mga nangaging BukSU CAT examinations. Mahimong mausab kini sa umaabot nga mga tuig. Mas maayo nga mangutana diretso sa BukSU Admission Testing Unit (ATU) para sa eksaktong qualification information:<div>https://www.facebook.com/BukSUATU</div>",
+          "O pwede pud nimo tan-awon ang imong BukSU Admission Examination CAT score aron mahibal-an kung qualified ka para sa non-board o board courses.",
+          "Para sa board courses, ang range kay 70% hangtod 90% <b> Hinumdumi, range lamang kini </b> ug mahimong mausab sa kadugayan. Para sa non-board courses, ang range kay 45% hangtod 69%. Kung ubos pa niini, giisip nga wala nakapasar sa BukSU CAT examination."
         ]
-      }
+      },
+      "images": [],
+      "map": null,
+      "pins": [],
+      "routes": []
     },
     {
       "topic": "cat_requirement_education_program",
       "responses": {
         "en": [
-          "To qualify for the College of Education at Bukidnon State University, applicants must pass the BukSU College Admission Test.",
-          "The typical expected CAT score is around 80 or above.",
-          "However the final requirement may vary depending on the number of applicants, available slots, and the admission policies set by the university for that academic year."
+          "Unfortunately, we are not allowed to release the exact CAT score required to qualify for specific programs (non-board or board courses), since this may change every year. We can only provide a percentage range.",
+          "NOTE: This range is based only on past BukSU CAT examinations. This may change over the years. It is much better to ask the BukSU Admission Testing Unit (ATU) for specific qualification information:<div>https://www.facebook.com/BukSUATU</div>",
+          "Or you can view your BukSU Admission Examination CAT score to know if you are qualified for non-board or board courses.",
+          "For board courses, the range is 70% to 90% <b> Again, this is only a range </b> and it may change in the long run. For non-board courses, the range is 45% to 69%. Below that is considered as failed to pass the Buksu CAT examination."
         ],
         "ceb": [
-          "Aron makasulod sa College of Education sa Bukidnon State University, kinahanglan makapasar ang aplikante sa BukSU College Admission Test.",
-          "Kasagaran ang gikinahanglan nga score kay mga 80 pataas.",
-          "Apan mahimo gihapon kini mag-usab depende sa kadaghan sa aplikante, available nga slots, ug sa admission policy sa unibersidad matag tuig."
+          "Sa pagkakaron, dili namo pwede i-release ang eksaktong CAT score nga kinahanglan aron ma-qualify sa specific nga mga programa (non-board o board courses), tungod kay kini mahimong mausab matag tuig. Makahatag lamang mi og percentage range.",
+          "NOTE: Kini nga range gibase lamang sa mga nangaging BukSU CAT examinations. Mahimong mausab kini sa umaabot nga mga tuig. Mas maayo nga mangutana diretso sa BukSU Admission Testing Unit (ATU) para sa eksaktong qualification information:<div>https://www.facebook.com/BukSUATU</div>",
+          "O pwede pud nimo tan-awon ang imong BukSU Admission Examination CAT score aron mahibal-an kung qualified ka para sa non-board o board courses.",
+          "Para sa board courses, ang range kay 70% hangtod 90% <b> Hinumdumi, range lamang kini </b> ug mahimong mausab sa kadugayan. Para sa non-board courses, ang range kay 45% hangtod 69%. Kung ubos pa niini, giisip nga wala nakapasar sa BukSU CAT examination."
         ]
       }
     },

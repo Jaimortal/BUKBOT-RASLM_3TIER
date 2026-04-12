@@ -79,7 +79,7 @@ export default function AdminDashboard() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
   const [showSyncDialog, setShowSyncDialog] = useState(false);
-  const [responsesSubTab, setResponsesSubTab] = useState<"general" | "locations" | "super-intents">("general");
+  const [responsesSubTab, setResponsesSubTab] = useState<"general" | "locations" | "super-intents">("super-intents");
   
   const DEFAULT_PRIVILEGES: UserPrivileges = {
     chatEnabled: true,
@@ -354,9 +354,8 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between w-full">
                     <Tabs value={responsesSubTab} onValueChange={(v) => setResponsesSubTab(v as any)} className="w-full sm:w-auto">
                       <TabsList className="bg-slate-100 p-1">
-                        <TabsTrigger value="general" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">General</TabsTrigger>
-                        <TabsTrigger value="locations" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Locations</TabsTrigger>
                         <TabsTrigger value="super-intents" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Super Intents</TabsTrigger>
+                        <TabsTrigger value="locations" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Locations</TabsTrigger>
                       </TabsList>
                     </Tabs>
                     
@@ -373,8 +372,6 @@ export default function AdminDashboard() {
                 <CardContent className="p-0">
                   {responsesSubTab === "super-intents" ? (
                     <div className="p-4"><AdminSuperIntents /></div>
-                  ) : responsesSubTab === "general" ? (
-                    <div className="p-4"><AdminGeneralResponses /></div>
                   ) : (
                     <div className="p-4"><AdminLocations /></div>
                   )}

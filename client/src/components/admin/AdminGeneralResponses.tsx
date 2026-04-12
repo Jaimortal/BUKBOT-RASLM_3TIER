@@ -383,7 +383,7 @@ function CategoryPanel({ category, responses }: { category: string; responses: R
 
       {filtered.length === 0
         ? <div className="text-center py-16 text-sm text-muted-foreground border-2 border-dashed rounded-xl">{search ? `No intents match "${search}"` : "No intents found."}</div>
-        : <div className="overflow-y-auto max-h-[500px] pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: "#cbd5e1 transparent" }}>
+        : <div className="overflow-y-auto max-h-[420px] pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: "#cbd5e1 transparent" }}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {filtered.map(r => <ResponseCard key={r.intent} response={r} onClick={() => setSelected(r)} />)}
           </div>
@@ -429,7 +429,7 @@ export function AdminGeneralResponses() {
   );
 
   return (
-    <div className="flex h-[640px] rounded-xl border bg-white overflow-hidden shadow-sm">
+    <div className="flex h-[540px] rounded-xl border bg-white overflow-hidden shadow-sm">
       {/* LEFT: Category nav */}
       <div className="w-56 shrink-0 border-r bg-gray-50 flex flex-col">
         <div className="px-4 py-3 border-b shrink-0" style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}>

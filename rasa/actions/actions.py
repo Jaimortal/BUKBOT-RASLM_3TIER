@@ -1583,7 +1583,6 @@ class ActionReplyFromJson(Action):
                 
                 # Send helper text before the combined map (only if multiple pins)
                 if all_map_pins and first_map_id and len(all_map_pins) > 1:
-                    dispatcher.utter_message(text="Please press the zoom out button to see the other pinpoint of the map")
                     print(f"DEBUG - Sent zoom out helper text")
                 
                 # Send combined map with all pins if we have any
@@ -1684,7 +1683,6 @@ class ActionReplyFromJson(Action):
                 
                 # Send helper text before the combined map (only if multiple pins)
                 if all_map_pins and first_map_id and len(all_map_pins) > 1:
-                    dispatcher.utter_message(text="Please press the zoom out button to see the other pinpoint of the map")
                     print(f"DEBUG - Sent zoom out helper text")
                 
                 # Send combined map with all pins if we have any

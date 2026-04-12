@@ -58,14 +58,15 @@ function convertResponseToMessages(response: any): ChatMessage[] {
     filteredMapDataList = null;
   }
 
-  // Create separate messages for each text part
-  answerParts.forEach((text, index) => {
-    const isLastTextPart = index === answerParts.length - 1;
+  // Create separate messages for each text part (skip empty/whitespace-only)
+  const nonEmptyParts = answerParts.filter(text => text && text.trim());
+  nonEmptyParts.forEach((text, index) => {
+    const isLastTextPart = index === nonEmptyParts.length - 1;
     const hasMapData = filteredMapData || (Array.isArray(filteredMapDataList) && filteredMapDataList.length > 0);
     
     messages.push({
       id: generateId() + "-t-" + index,
-      text: text,
+      text: text.trim(),
       sender: "bot",
       type: "text",
       // Attach images to the last text bubble
@@ -91,7 +92,10 @@ function convertResponseToMessages(response: any): ChatMessage[] {
     });
   }
 
-  // Map message(s) - use filtered data
+  // Collect all images to attach to map messages
+  const allImages = response.imageUrls?.length ? response.imageUrls : (response.imageUrl ? [response.imageUrl] : []);
+  
+  // Map message(s) - use filtered data (attach images to first map message)
   if (Array.isArray(filteredMapDataList) && filteredMapDataList.length > 0) {
     filteredMapDataList.forEach((md: any, idx: number) => {
       if (!md) return;
@@ -102,7 +106,9 @@ function convertResponseToMessages(response: any): ChatMessage[] {
         type: "map",
         mapData: md,
         timestamp: new Date(),
-        hideTimestamp: true
+        hideTimestamp: true,
+        // Attach images to the first map message
+        imageUrls: idx === 0 ? allImages : undefined
       });
     });
   } else if (Array.isArray(response.mapData) && response.mapData.length > 0) {
@@ -115,7 +121,9 @@ function convertResponseToMessages(response: any): ChatMessage[] {
         type: "map",
         mapData: md,
         timestamp: new Date(),
-        hideTimestamp: true
+        hideTimestamp: true,
+        // Attach images to the first map message
+        imageUrls: idx === 0 ? allImages : undefined
       });
     });
   } else if (filteredMapData) {
@@ -126,7 +134,9 @@ function convertResponseToMessages(response: any): ChatMessage[] {
       type: "map",
       mapData: filteredMapData,
       timestamp: new Date(),
-      hideTimestamp: true
+      hideTimestamp: true,
+      // Attach images to the map message
+      imageUrls: allImages.length > 0 ? allImages : undefined
     });
   }
 
@@ -580,16 +590,49 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   {/* Map message */}
                   {msg.type === "map" && msg.mapData && (
                     privileges.mapAccessEnabled ? (
-                      <MapMessage
-                        locationName={msg.mapData.locationName}
-                        coordinates={(msg.mapData as any).coordinates}
-                        pins={(msg.mapData as any).pins}
-                        routes={(msg.mapData as any).routes}
-                        isFullscreen={false}
-                        onToggleFullscreen={() => {
-                          setFullscreenMapId(msg.id);
-                        }}
-                      />
+                      <>
+                        <MapMessage
+                          locationName={msg.mapData.locationName}
+                          coordinates={(msg.mapData as any).coordinates}
+                          pins={(msg.mapData as any).pins}
+                          routes={(msg.mapData as any).routes}
+                          isFullscreen={false}
+                          onToggleFullscreen={() => {
+                            setFullscreenMapId(msg.id);
+                          }}
+                        />
+                        {/* Display images attached to map message */}
+                        {msg.imageUrls && msg.imageUrls.length > 0 ? (
+                          <div className="mt-2 flex flex-col gap-2">
+                            {msg.imageUrls.map((url, i) => (
+                              <img
+                                key={i}
+                                src={url}
+                                alt={`Location image ${i + 1}`}
+                                loading="lazy"
+                                onClick={() => {
+                                  setFullscreenImageUrl(url);
+                                  setImageZoom(0.5);
+                                  setImagePan({ x: 0, y: 0 });
+                                }}
+                                className="w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                              />
+                            ))}
+                          </div>
+                        ) : msg.imageUrl ? (
+                          <img
+                            src={msg.imageUrl}
+                            alt="Location image"
+                            loading="lazy"
+                            onClick={() => {
+                              setFullscreenImageUrl(msg.imageUrl ?? null);
+                              setImageZoom(0.5);
+                              setImagePan({ x: 0, y: 0 });
+                            }}
+                            className="mt-2 w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                          />
+                        ) : null}
+                      </>
                     ) : (
                       <div className="mt-2 rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-xs font-medium text-destructive">
                         Map access is disabled by the administrator.

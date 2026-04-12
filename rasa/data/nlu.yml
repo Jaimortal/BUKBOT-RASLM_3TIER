@@ -903,6 +903,46 @@ nlu:
     - pwedi ko nimo sultian kong ang buksu clinic ga offer og free nga medical and dental services
     - libre raba ang pag pa check up diri sa buksu clinic
     - ang mga estudyante ba sa buksu pwede magpa check up sa clinic
+    - what is the process for dental consultation
+    - how can i request dental consultation in buksu
+    - steps for dental check up consultation
+    - what to do if i want dental consultation
+    - how does dental consultation work in school clinic
+    - unsa ang proseso sa dental consultation
+    - unsaon nako pag-request og dental consultation sa BukSU
+    - mga lakang sa dental check up consultation
+    - unsaon kung gusto ko magpa dental consultation
+    - unsaon paglihok ang dental consultation sa school clinic
+    - what are the requirements for dental consultation
+    - dental consultation requirements checklist
+    - what do i need for dental consult
+    - documents needed for dental consultation
+    - tell me the documents i need for dental consultation
+    - unsa ang mga requirements sa dental consultation
+    - checklist sa requirements sa dental consultation
+    - unsa akong kinahanglan para sa dental consult
+    - mga dokumento nga kinahanglan sa dental consultation
+    - isulti ang mga dokumento nga kinahanglan nako para sa dental consultation
+    - what is the process for dental oral examination
+    - how to request dental oral examination in buksu
+    - steps for dental oral exam
+    - what happens during dental oral examination
+    - how does dental oral examination work
+    - unsa ang proseso sa dental oral examination
+    - unsaon pag-request og dental oral examination sa BukSU
+    - mga lakang sa dental oral exam
+    - unsa mahitabo sa dental oral examination
+    - unsaon paglihok ang dental oral examination
+    - what are the requirements for dental oral examination
+    - dental oral exam requirements checklist
+    - what do i need for dental oral examination
+    - documents needed for dental oral exam
+    - can you tell me what do i need to bring for dental oral examination
+    - unsa ang mga requirements sa dental oral examination
+    - checklist sa requirements sa dental oral exam
+    - unsa akong kinahanglan para sa dental oral examination
+    - mga dokumento nga kinahanglan sa dental oral exam
+    - pwede nimo isulti unsa akong kinahanglan dad-on para sa dental oral examination
 
 - intent: ask_courses_info
   examples: |
@@ -1044,6 +1084,38 @@ nlu:
     - pwede nimo ipadala ang tanang board degree programs
     - pwede nimo ihatag ang kumpletong listahan sa mga board courses
     - ihatag ang listahan sa mga board courses
+
+    - what are the masters degree that buksu offer
+    - what masters courses are available in buksu
+    - can you give me the list of masters programs in buksu
+    - what graduate programs does buksu offer
+    - list all masters degree in buksu
+    - does buksu offer masters courses
+    - what are the available masters programs in bukidnon state university
+    - i want to know the masters degrees offered in buksu
+    - unsa nga mga masters degree ang available sa buksu
+    - naa bay masters courses ang buksu unsa man
+    - what graduate programs are offered in buksu
+    - can you list all graduate programs in bukidnon state university
+    - what are the available graduate studies in buksu
+    - does buksu have graduate programs what are they
+    - unsa nga mga graduate programs ang naa sa buksu
+    - unsa ang mga masters degree nga gitanyag sa BukSU
+    - unsa nga mga masters courses ang available sa BukSU
+    - pwede nimo ihatag ang listahan sa masters programs sa BukSU
+    - unsa nga mga graduate programs ang gitanyag sa BukSU
+    - lista sa tanang masters degree sa BukSU
+    - naa bay masters courses ang BukSU
+    - unsa ang mga available nga masters programs sa Bukidnon State University
+    - gusto ko mahibal-an ang mga masters degree nga gitanyag sa BukSU
+    - unsa nga mga masters degree ang available sa BukSU
+    - naa bay masters courses ang BukSU, unsa man
+    - unsa nga mga graduate programs ang gitanyag sa BukSU
+    - pwede nimo ilista ang tanang graduate programs sa Bukidnon State University
+    - unsa ang mga available nga graduate studies sa BukSU
+    - naa bay graduate programs ang BukSU, unsa man sila
+    - unsa nga mga graduate programs ang naa sa BukSU
+
     - What is the National Service Training Program at Bukidnon State University
     - Can you explain the purpose of the NSTP program for students
     - can you tell me what is nstp for?
@@ -1727,7 +1799,38 @@ nlu:
     - asa ko moadto para makakuha og student id sa buksu
     - pwede nimo i-explain ang steps sa pagkuha og buksu student id
     - unsang opisina ang naghandle sa student id processing sa buksu
-
+    - what if i fail the buksu cat exam can i still enroll
+    - can i still study at buksu even if i didnt pass the cat
+    - i failed the buksu cat exam is there another way to enroll
+    - is there a chance to enroll even if i did not pass the buksu cat
+    - what should i do if i didnt pass the buksu entrance exam
+    - do student can apply for affirmative program
+    - can i apply for affirmative action program if i failed the cat
+    - do i still have a chance if i fail the buksu cat exam
+    - is affirmative action available for students who did not pass the cat
+    - if i fail the exam can i still get into buksu
+    - are there other options if i didnt pass the buksu cat
+    - can i still enroll through aap if i didnt pass the exam
+    - what are my options if i failed the buksu cat exam
+    - does buksu allow students who failed the cat to enroll
+    - can i enter buksu even if i didnt pass the entrance test
+    - is it possible to enroll even if i failed the buksu admission test
+    - unsa kung mapakyas ko sa BukSU CAT exam, pwede pa ba ko maka-enroll
+    - pwede pa ba ko maka-eskwela sa BukSU bisan wala ko nakapasar sa CAT
+    - napakyas ko sa BukSU CAT exam, naa pa bay laing paagi para maka-enroll
+    - naa pa bay chance maka-enroll bisan wala ko nakapasar sa BukSU CAT
+    - unsa akong buhaton kung wala ko nakapasar sa BukSU entrance exam
+    - pwede ba ang estudyante mo-apply sa affirmative program
+    - pwede ba ko mo-apply sa affirmative action program kung napakyas ko sa CAT
+    - naa pa ba koy chance kung mapakyas ko sa BukSU CAT exam
+    - available ba ang affirmative action para sa mga estudyante nga wala nakapasar sa CAT
+    - kung mapakyas ko sa exam, makasulod pa ba ko sa BukSU
+    - naa pa bay laing option kung wala ko nakapasar sa BukSU CAT
+    - pwede pa ba ko maka-enroll pinaagi sa AAP bisan wala ko nakapasar sa exam
+    - unsa akong mga kapilian kung napakyas ko sa BukSU CAT exam
+    - tugotan ba sa BukSU ang mga estudyante nga napakyas sa CAT nga maka-enroll
+    - makasulod ba ko sa BukSU bisan wala ko nakapasar sa entrance test
+    - posible ba maka-enroll bisan napakyas ko sa BukSU admission test
 
 - intent: ask_library_info
   examples: |
@@ -2677,6 +2780,8 @@ nlu:
     - Pwede nimo ipakita ang mapa para sa [New COT Building](location_name)
     - How do I go to [Old COT Building](location_name)
     - Unsaon pag adto sa [Old COT Building](location_name)
+    - help me find this office [language and literature department](location_name)
+    - tabangi kog pangita ani na office be [language and literature department](location_name)
     - Can you guide me to the [Philosophy Faculty Office](location_name)
     - Tabangi ko pag navigate padulong sa [Philosophy Faculty Office](location_name)
     - I need directions going to [CAS Buildings](location_name)
@@ -3594,28 +3699,26 @@ nlu:
 
 - intent: reset_portal_password_buksu
   examples: |
-    - How can I reset my Bukidnon State University portal password
-    - I forgot my BukSU portal password how can I recover it
-    - Is there any way to forgot my password on buksu admission website
-    - What should I do if I cannot remember my student portal password
-    - Can you guide me on resetting my BukSU portal account password
-    - how can i reset my password in buksu admission
-    - Where can I change my password for the BukSU student portal
-    - How do students create a new password for the university portal
-    - What is the process to recover a lost BukSU portal password
-    - I cannot access my portal because I forgot my password what should I do
-    - How can I request a password reset for my BukSU account
-    - What steps should I follow to make a new portal password
-    - Unsaon nako pag reset sa akong BukSU portal password
-    - Nakalimot ko sa akong portal password unsaon nako pag recover niini
-    - Unsa ang angay buhaton kung dili nako mahinumduman ang akong student portal password
-    - Pwede ba nimo ko tudluan unsaon pag reset sa BukSU portal account password
-    - Asa nako mabag o ang akong password sa BukSU student portal
-    - Giunsa paghimo og bag ong password para sa university portal
-    - Unsa ang proseso sa pag recover sa nakalimtan nga BukSU portal password
-    - Dili ko maka access sa portal kay nakalimot ko sa password unsa akong buhaton
-    - Giunsa pag request og password reset sa BukSU account
-    - Unsa nga mga lakang ang sundon aron makahimo og bag ong portal password
+    - i forgot my buksu admission account password what should i do
+    - how can i recover my buksu admission account if i forgot the password
+    - i cannot remember my buksu admission password how to recover it
+    - what to do if i forgot my password in buksu admission account
+    - is there a way to recover forgotten password in buksu admission
+    - i forgot my password in buksu admission how can i get it back
+    - how to recover buksu admission account password if forgotten
+    - i cant access my buksu admission account because i forgot my password
+    - what steps should i follow if i forgot my buksu admission password
+    - can i still access my account if i forgot my admission password
+    - nakalimot ko sa akong buksu admission account password unsaon nako
+    - unsaon pag recover sa nakalimtan nga buksu admission password
+    - dili nako mahinumduman akong password sa admission account unsa buhaton
+    - unsa ang angay buhaton kung nakalimot ko sa akong admission password
+    - pwede pa ba nako ma recover akong buksu admission account kung nakalimot ko sa password
+    - i forgot my admission account password sa buksu unsaon pag recover
+    - how to retrieve forgotten password sa buksu admission account
+    - buksu admission account forgot password help
+    - i lost my buksu admission password how can i recover it
+    - unsaon nako pagkuha balik sa akong nakalimtan nga admission password
 
 - intent: portal_account_locked_issue
   examples: |

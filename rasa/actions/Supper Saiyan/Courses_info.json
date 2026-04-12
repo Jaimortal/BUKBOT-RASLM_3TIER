@@ -832,6 +832,56 @@
       }
     },
     {
+      "topic": "buksu_masters_courses",
+      "responses": {
+        "en": [
+          "This is all the graduate programs that BukSU can offer to us. First is the <b>Masters Degree</b>",
+          "Master of Arts in Education Major in English Language Teaching (MAED-ELT)",
+          "Master of Public Administration (MPA)",
+          "Master of Arts in Guidance and Counseling (MAGC)",
+          "Master of Arts in English Language (MAEL)",
+          "Master of Business Administration (MBA)",
+          "Master of Arts in Education Major in Educational Administration (MAEA)",
+          "Master of Arts in Science Education Major in General Science (MSE-GS)",
+          "Master of Arts in Education Major in Mathematics Education (MAED-ME)",
+          "Master of Arts in Education Major in Mathematics Teaching (MAMT)",
+          "Master of Arts in Sociology (MAS)",
+          "Master of Management Major in Business Management (MMBM)",
+          "And for <b>Doctoral Degree</b>",
+          "Doctor of Philosophy in English Language (PHD-EL)",
+          "Doctor of Public Administration (DPA)",
+          "Doctor of Philosophy in Science Education Major in Biology (PHDSE-BIO)",
+          "Doctor of Philosophy in Educational Administration (PHD-EA)",
+          "Doctor of Medicine (DM)",
+          "Doctor of Philosophy in Science Education Major in Mathematics (PHDSE-MATH)",
+          "Doctor of Philosophy in Education Major in Instructional Systems Design (PHD-ISD)"
+        ],
+        "ceb": [
+          "Mao kini ang mga graduate programs nga gina offer ni BukSU sa atoa, una ang <b>Masters Degree</b>",
+          "Master of Arts in Education Major in English Language Teaching (MAED-ELT)",
+          "Master of Public Administration (MPA)",
+          "Master of Arts in Guidance and Counseling (MAGC)",
+          "Master of Arts in English Language (MAEL)",
+          "Master of Business Administration (MBA)",
+          "Master of Arts in Education Major in Educational Administration (MAEA)",
+          "Master of Arts in Science Education Major in General Science (MSE-GS)",
+          "Master of Arts in Education Major in Mathematics Education (MAED-ME)",
+          "Master of Arts in Education Major in Mathematics Teaching (MAMT)",
+          "Master of Arts in Sociology (MAS)",
+          "Master of Management Major in Business Management (MMBM)",
+          "And for <b>Doctoral Degree</b>",
+          "Doctor of Philosophy in English Language (PHD-EL)",
+          "Doctor of Public Administration (DPA)",
+          "Doctor of Philosophy in Science Education Major in Biology (PHDSE-BIO)",
+          "Doctor of Philosophy in Educational Administration (PHD-EA)",
+          "Doctor of Medicine (DM)",
+          "Doctor of Philosophy in Science Education Major in Mathematics (PHDSE-MATH)",
+          "Doctor of Philosophy in Education Major in Instructional Systems Design (PHD-ISD)"
+          
+        ]
+      }
+    },
+    {
       "topic": "about_nstp",
       "responses": {
         "en": [

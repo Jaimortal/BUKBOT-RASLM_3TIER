@@ -58,6 +58,116 @@
           "Oo ang University Health Services Unit nagtanyag og libre nga basic medical ug dental consultations first aid ug emergency treatment para sa officially enrolled students basta ipakita ang valid ID."
         ]
       }
+    },
+    {
+      "topic": "request_dental_consult",
+      "responses": {
+        "en": [
+          "This is the process that allow the patients to consult with the dentist regarding the condition of their teeth and gums. During the consultation, the dentist examines the patient's oral health and discusses the findings from the dental examination",
+          "For Students: Step 1: Submit <b>photocopies</b> of <b>validated school ID and validated study load.</b>",
+          "For Employees: Step 1: Submit <b>photocopies </b>of <b>Employee's ID</b> and Vaccination Card for faculty and staff.",
+          "Step 2: Client proceeds to the waiting area.",
+          "Step 3: Client proceeds to the vital signs taking area.",
+          "Step 4: Receive medicines.",
+          "Step 5: Fill out medicine ledger and monthly dental report form.",
+          "The Total Cost for this service is None. The Time to Process the Request takes about 45 minutes. The dentist may recommend appropriate treatments and provide guidance on oral care."
+        ],
+        "ceb": [
+          "Kini nga proseso nagtugot sa mga pasyente nga mokonsulta sa dentista bahin sa kahimtang sa ilang ngipon ug lagos. Atol sa konsultasyon, susihon sa dentista ang oral health sa pasyente ug hisgutan ang resulta sa dental examination.",
+          "Para sa Students: Step 1: I-submit ang <b>photocopies</b> sa <b>validated school ID ug validated study load.</b>",
+          "Para sa Employees: Step 1: I-submit ang <b>photocopies </b>sa <b>Employee's ID</b> ug Vaccination Card para sa faculty ug staff.",
+          "Step 2: Ang kliyente moadto sa waiting area.",
+          "Step 3: Ang kliyente moadto sa area sa pagkuha sa vital signs.",
+          "Step 4: Dawata ang mga tambal.",
+          "Step 5: Punan ang medicine ledger ug monthly dental report form.",
+          "Ang total nga gasto para niini nga serbisyo kay wala. Ang oras sa pagproseso sa request kay mga 45 minutos. Ang dentista mahimong morekomenda og angay nga mga treatment ug maghatag og giya sa pag-atiman sa oral care."
+        ]
+      },
+      "images": [],
+      "map": null,
+      "pins": [],
+      "routes": []
+    },
+    {
+      "topic": "requirement_for_dental_consultation",
+      "responses": {
+        "en": [
+          "CHECKLIST OF REQUIREMENTS FOR DENTAL CONSULTATION",
+          "1. Photocopy of validated school ID",
+          "2. Photocopy of validated study load",
+          "3. Photocopy of Employee's ID for faculty & staff.",
+          "4. Complied waiver from parents/guardian.",
+          "Note: If below 18 year-old, patient must need parent/guardian's permission. If 18 year-old and above, no need to present waiver."
+        ],
+        "ceb": [
+          "CHECKLIST SA MGA REQUIREMENTS PARA SA DENTAL CONSULTATION",
+          "1. Photocopy sa validated school ID",
+          "2. Photocopy sa validated study load",
+          "3. Photocopy sa Employee's ID para sa faculty & staff.",
+          "4. Napirmahan nga waiver gikan sa parents/guardian.",
+          "Note: Kung ubos sa 18 anyos, kinahanglan og permiso sa parents/guardian ang pasyente. Kung 18 anyos pataas, dili na kinahanglan magpresenta og waiver."
+        ]
+      },
+      "images": [],
+      "map": null,
+      "pins": [],
+      "routes": []
+    },
+    {
+      "topic": "request_dental_oral_examination",
+      "responses": {
+        "en": [
+          "This Process allows patients to undergo a comprehensive evaluation of a patient's oral health. This service includes inspecting the teeth, gums, mouth, and surrounding tissues for signs of decay, gum disease, infections, or other abnormalities.",
+          "For Students: Step 1: Submit photocopies of validated school ID and validated study load.",
+          "For Employees: Step 1: Submit photocopies of Employee's ID and Vaccination Card for faculty and staff.",
+          "Step 2: Client proceeds to the waiting area.",
+          "Step 3: Client proceeds to the vital signs taking area.",
+          "Step 4: Prepare for Dental Oral Examination.",
+          "Step 5: Fill out medicine ledger and monthly dental report form.",
+          "The Total Cost for this service is None. The Time to Process the Request takes about 45 minutes.",
+          "It may involve diagnostic tools such as X-rays to assess underlying conditions. The goal is to identify potential oral health issues early and recommend appropriate treatments or preventive measures for maintaining overall dental hygiene."
+        ],
+        "ceb": [
+          "Kini nga proseso nagtugot sa mga pasyente nga moagi sa usa ka komprehensibong evaluation sa oral health. Apil niini ang pag-inspeksyon sa ngipon, lagos, baba, ug mga palibot nga tisyu aron makit-an kung adunay tooth decay, sakit sa lagos, impeksyon, o uban pang abnormalidad.",
+          "Para sa Students: Step 1: I-submit ang photocopies sa validated school ID ug validated study load.",
+          "Para sa Employees: Step 1: I-submit ang photocopies sa Employee's ID ug Vaccination Card para sa faculty ug staff.",
+          "Step 2: Ang kliyente moadto sa waiting area.",
+          "Step 3: Ang kliyente moadto sa area sa pagkuha sa vital signs.",
+          "Step 4: Mangandam para sa Dental Oral Examination.",
+          "Step 5: Punan ang medicine ledger ug monthly dental report form.",
+          "Ang total nga gasto para niini nga serbisyo kay wala. Ang oras sa pagproseso sa request kay mga 45 minutos.",
+          "Mahimong mogamit og diagnostic tools sama sa X-rays aron ma-assess ang mga kondisyon sa sulod. Ang tumong mao ang sayo nga pag-ila sa posibleng problema sa oral health ug pagrekomenda sa angay nga treatment o preventive measures aron mapadayon ang maayong dental hygiene."
+        ]
+      },
+      "images": [],
+      "map": null,
+      "pins": [],
+      "routes": []
+    },
+    {
+      "topic": "dental_oral_examination_requirement",
+      "responses": {
+        "en": [
+          "CHECKLIST OF REQUIREMENTS FOR DENTAL ORAL EXAMINATION",
+          "1. Photocopy of validated school ID",
+          "2. Photocopy of validated study load",
+          "3. Photocopy of Employee's ID for faculty & staff.",
+          "4. Complied waiver from parents/guardian.",
+          "Note: If below 18 year-old, patient must need parent/guardian's permission. If 18 year-old and above, no need to present waiver."
+        ],
+        "ceb": [
+          "CHECKLIST SA MGA REQUIREMENTS PARA SA DENTAL ORAL EXAMINATION",
+          "1. Photocopy sa validated school ID",
+          "2. Photocopy sa validated study load",
+          "3. Photocopy sa Employee's ID para sa faculty & staff.",
+          "4. Napirmahan nga waiver gikan sa parents/guardian.",
+          "Note: Kung ubos sa 18 anyos, kinahanglan og permiso sa parents/guardian ang pasyente. Kung 18 anyos pataas, dili na kinahanglan magpresenta og waiver."
+        ]
+      },
+      "images": [],
+      "map": null,
+      "pins": [],
+      "routes": []
     }
   ]
 }

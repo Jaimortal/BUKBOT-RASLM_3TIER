@@ -145,7 +145,9 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
             "how does enrollment work", "start enrollment",
             "unsaon pag enroll", "proseso sa enrollment",
             "general enrollment", "process of enrollment",
-            "process of the enrollment"
+            "process of the enrollment", "process my enrollment",
+            "process of my enrollment", "how to process my enrollment"
+
         ],
         "weak_keywords": [
             "enrollment", "process", "guide", "registration",
@@ -174,7 +176,8 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
             "online procedure", "online steps",
             "step by step", "apply online",
             "buksu admissions", "apply enrollment",
-            "enrollment tab", "fill in details", "download cor"
+            "enrollment tab", "fill in details", "download cor", "online process",
+            "process of online enrollment"
         ],
         "weak_keywords": [
             "website", "portal", "fill up", "upload",

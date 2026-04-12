@@ -1814,7 +1814,7 @@
     },
     "COB Faculty Room": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         894,
@@ -4640,7 +4640,7 @@
     },
     "College of Business Building": {
       "type": "building",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "N/A",
       "coordinates": [
         887,
@@ -4703,7 +4703,7 @@
     },
     "B-1-01": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         884,
@@ -4766,7 +4766,7 @@
     },
     "B-1-02": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         880,
@@ -4833,7 +4833,7 @@
     },
     "B-1-03": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         884,
@@ -4900,7 +4900,7 @@
     },
     "B-1-04": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         884,
@@ -4967,7 +4967,7 @@
     },
     "B-1-05": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         877,
@@ -5034,7 +5034,7 @@
     },
     "B-1-06": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         884,
@@ -5101,7 +5101,7 @@
     },
     "B-1-08": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         884,
@@ -5168,7 +5168,7 @@
     },
     "B-1-09": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Ground Floor",
       "coordinates": [
         880,
@@ -5235,7 +5235,7 @@
     },
     "B-2-10": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         885,
@@ -5302,7 +5302,7 @@
     },
     "B-2-07": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         885,
@@ -5369,7 +5369,7 @@
     },
     "B-2-06": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         885,
@@ -5436,7 +5436,7 @@
     },
     "B-2-05": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         878,
@@ -5499,7 +5499,7 @@
     },
     "B-2-04": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         885,
@@ -5566,7 +5566,7 @@
     },
     "B-2-03": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         887,
@@ -5633,7 +5633,7 @@
     },
     "B-2-02": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         880,
@@ -5700,7 +5700,7 @@
     },
     "B-2-01": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Second Floor",
       "coordinates": [
         882,
@@ -5767,7 +5767,7 @@
     },
     "B-3-01": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         885,
@@ -5830,7 +5830,7 @@
     },
     "B-3-02": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         875,
@@ -5897,7 +5897,7 @@
     },
     "B-3-03": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         892,
@@ -5964,7 +5964,7 @@
     },
     "B-3-04": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         882,
@@ -6031,7 +6031,7 @@
     },
     "B-3-05": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         885,
@@ -6098,7 +6098,7 @@
     },
     "B-3-06": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         875,
@@ -6165,7 +6165,7 @@
     },
     "B-3-07": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         885,
@@ -6232,7 +6232,7 @@
     },
     "B-3-09": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Third Floor",
       "coordinates": [
         882,
@@ -6299,7 +6299,7 @@
     },
     "B-4-09": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         885,
@@ -6366,7 +6366,7 @@
     },
     "B-4-08": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         882,
@@ -6433,7 +6433,7 @@
     },
     "B-4-07": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         880,
@@ -6500,7 +6500,7 @@
     },
     "B-4-06": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         878,
@@ -6567,7 +6567,7 @@
     },
     "B-4-05": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         885,
@@ -6634,7 +6634,7 @@
     },
     "B-4-04": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         882,
@@ -6701,7 +6701,7 @@
     },
     "B-4-03": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         875,
@@ -6764,7 +6764,7 @@
     },
     "B-4-02": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         882,
@@ -6827,7 +6827,7 @@
     },
     "B-4-01": {
       "type": "room",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         866,
@@ -6890,7 +6890,7 @@
     },
     "COB 4th Floor Students Organization": {
       "type": "office",
-      "building": "College of Business Building",
+      "building": "COB Building",
       "floor": "Fourth Floor",
       "coordinates": [
         653,
@@ -6945,6 +6945,97 @@
             [
               653,
               408
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
+    },
+    "food technology laboratory": {
+      "type": "Laboratory",
+      "building": "New COT Building",
+      "floor": "2nd Floor",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Food technology laboratory located on the 2nd floor of new COT building"
+        ],
+        "ceb": [
+          "Food technology Laboratory kay nahimotang sa 2nd floor sa new COT Building"
+        ]
+      },
+      "coordinates": [
+        892,
+        628
+      ],
+      "pins": [
+        {
+          "name": "Start From Here - Main Entrance",
+          "coordinates": [
+            892,
+            628
+          ]
+        },
+        {
+          "name": "Food Tech Laboratory - C1-2-01",
+          "coordinates": [
+            482,
+            756
+          ]
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here - Main Entrance to Food Tech Laboratory - C1-2-01",
+          "points": [
+            [
+              892,
+              628
+            ],
+            [
+              781,
+              631
+            ],
+            [
+              779,
+              674
+            ],
+            [
+              579,
+              676
+            ],
+            [
+              565,
+              649
+            ],
+            [
+              504,
+              651
+            ],
+            [
+              503,
+              721
+            ],
+            [
+              472,
+              721
+            ],
+            [
+              473,
+              732
+            ],
+            [
+              492,
+              731
+            ],
+            [
+              492,
+              757
+            ],
+            [
+              482,
+              756
             ]
           ],
           "color": "#dc2626"
@@ -7099,6 +7190,117 @@
             [
               599,
               761
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
+    },
+    "NC4-A4-401": {
+      "type": "office",
+      "building": "New CAS Building",
+      "floor": "Ground Floor",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "language and literature department is on the ground floor of the new CAS building"
+        ],
+        "ceb": [
+          "Ang language and literature department makita sa ground floor sa new CAS building"
+        ]
+      }
+    },
+    "NC4-A4-402": {
+      "type": "office",
+      "building": "New CAS Building",
+      "floor": "Ground Floor",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "language and literature department is on the ground floor of the new CAS building"
+        ],
+        "ceb": [
+          "Ang language and literature department makita sa ground floor sa new CAS building"
+        ]
+      }
+    },
+    "language and literature department": {
+      "type": "office",
+      "building": "New CAS Building",
+      "floor": "Ground Floor",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "language and literature department is on the ground floor of the new CAS building"
+        ],
+        "ceb": [
+          "Ang language and literature department makita sa ground floor sa new CAS building"
+        ]
+      },
+      "coordinates": [
+        890,
+        634
+      ],
+      "pins": [
+        {
+          "name": "Start From Here - Main entrance",
+          "coordinates": [
+            890,
+            634
+          ]
+        },
+        {
+          "name": "language & literature department",
+          "coordinates": [
+            423,
+            771
+          ]
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here - Main entrance to language & literature department",
+          "points": [
+            [
+              890,
+              634
+            ],
+            [
+              783,
+              635
+            ],
+            [
+              783,
+              669
+            ],
+            [
+              582,
+              673
+            ],
+            [
+              568,
+              650
+            ],
+            [
+              456,
+              653
+            ],
+            [
+              457,
+              714
+            ],
+            [
+              416,
+              715
+            ],
+            [
+              416,
+              772
+            ],
+            [
+              423,
+              771
             ]
           ],
           "color": "#dc2626"
@@ -7463,7 +7665,7 @@
     },
     "Health and Services Building": {
       "type": "building",
-      "building": "Health & Services",
+      "building": "Health & Services Building",
       "floor": "Ground Floor",
       "coordinates": [
         296,
@@ -7977,29 +8179,84 @@
         }
       ]
     },
-    "OVPCAS Office": {
+    "OVPAA Office": {
       "type": "office",
       "building": "Administrative Building",
       "floor": "Ground Floor",
-      "coordinates": [
-        817,
-        697
-      ],
-      "map_id": "main_map",
       "responses": {
         "en": [
           "The Office of the Vice President of Academic Affairs (OVPAA) is found in the Administrative Building, to be exact. This building position on the side of the Client Care Center Office, which is the first office, can be found on the right side of the Administrative Building when you're facing it from the main entrance of Buksu."
         ],
         "ceb": [
-          "Ang Opisina sa Bise Presidente sa Akademikong mga Butang (OVPAA) makita sa Administrative Building, sa tukmang dapit. Kini nga building nahimutang sa kilid sa Client Care Center Office, nga mao ang unang opisina, makit-an sa tuo nga kilid sa Administrative Building kung nag-atubang ka niini gikan sa main entrance sa Buksu."
+          "Ang Office of the Vice President of Academic Affairs (OVPAA) makita sa Administrative Building, sa tukmang dapit. Kini nga building nahimutang sa kilid sa Client Care Center Office, nga mao ang unang opisina, makit-an sa tuo nga kilid sa Administrative Building kung nag-atubang ka niini gikan sa main entrance sa Buksu."
+        ]
+      },
+      "coordinates": [
+        892,
+        632
+      ],
+      "pins": [
+        {
+          "name": "Start From Here",
+          "coordinates": [
+            892,
+            632
+          ]
+        },
+        {
+          "name": "OVPAA",
+          "coordinates": [
+            820,
+            746
+          ]
+        }
+      ],
+      "map_id": "main_map",
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to OVPAA",
+          "points": [
+            [
+              892,
+              632
+            ],
+            [
+              818,
+              633
+            ],
+            [
+              820,
+              746
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
+    },
+    "OVPCAS Office": {
+      "type": "office",
+      "building": "Administrative Building",
+      "floor": "Ground Floor",
+      "coordinates": [
+        822,
+        786
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The Office of the Vice President for Cultural Arts, Sports, and Student Services (OVPCAS) is found in the Administrative Building, to be exact. This building position on the side of the Client Care Center Office, which is the first office, can be found on the right side of the Administrative Building when you're facing it from the main entrance of Buksu."
+        ],
+        "ceb": [
+          "Ang Office of the Vice President for Cultural Arts, Sports, and Student Services (OVPCAS) makita sa Administrative Building, sa tukmang dapit. Kini nga building nahimutang sa kilid sa Client Care Center Office, nga mao ang unang opisina, makit-an sa tuo nga kilid sa Administrative Building kung nag-atubang ka niini gikan sa main entrance sa Buksu."
         ]
       },
       "pins": [
         {
-          "name": "OVPAA Office",
+          "name": "OVPCASS",
           "coordinates": [
-            817,
-            697
+            822,
+            786
           ]
         },
         {
@@ -8013,19 +8270,23 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "You are here! to OVPAA Office",
+          "name": "You are here! to OVPCASS Office",
           "points": [
             [
               883,
               634
             ],
             [
-              819,
-              637
+              818,
+              634
             ],
             [
-              817,
-              697
+              820,
+              784
+            ],
+            [
+              822,
+              786
             ]
           ],
           "color": "#dc2626"
@@ -10657,7 +10918,7 @@
     },
     "Medical clinic": {
       "type": "office",
-      "building": "Health & Services",
+      "building": "Health & Services Building",
       "floor": "Ground Floor",
       "coordinates": [
         273,
@@ -10826,15 +11087,15 @@
         ]
       },
       "coordinates": [
-        716,
-        638
+        712,
+        627
       ],
       "pins": [
         {
           "name": "Finance Building",
           "coordinates": [
-            716,
-            638
+            712,
+            627
           ]
         },
         {
@@ -10867,12 +11128,12 @@
               583
             ],
             [
-              744,
-              629
+              749,
+              624
             ],
             [
-              716,
-              638
+              720,
+              627
             ]
           ],
           "color": "#dc2626"
@@ -11397,8 +11658,10 @@
         }
       ]
     },
-    "Buksu Clinic (general)": {
-      "type": "facility",
+    "Buksu Clinic": {
+      "type": "Clinic",
+      "building": "Health & Services Building",
+      "floor": "Ground Floor",
       "map_id": "main_map",
       "responses": {
         "en": [
@@ -11409,24 +11672,79 @@
         ]
       },
       "coordinates": [
-        268,
-        648
+        891,
+        633
       ],
       "pins": [
         {
-          "name": "Main Pin",
+          "name": "Start From Here - Main Entrance",
           "coordinates": [
-            268,
-            648
+            891,
+            633
+          ]
+        },
+        {
+          "name": "Medical & Dental Clinic",
+          "coordinates": [
+            293,
+            666
           ]
         }
       ],
-      "imageUrls": []
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here - Main Entrance to Medical & Dental Clinic",
+          "points": [
+            [
+              891,
+              633
+            ],
+            [
+              783,
+              635
+            ],
+            [
+              783,
+              666
+            ],
+            [
+              580,
+              669
+            ],
+            [
+              565,
+              647
+            ],
+            [
+              390,
+              652
+            ],
+            [
+              390,
+              678
+            ],
+            [
+              295,
+              680
+            ],
+            [
+              293,
+              666
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
     },
     "Dental Clinic": {
       "type": "clinic",
-      "building": "Health and Services Center",
+      "building": "Health & Services Building",
       "floor": "Ground Floor",
+      "coordinates": [
+        279,
+        647
+      ],
       "map_id": "main_map",
       "responses": {
         "en": [
@@ -11436,10 +11754,6 @@
           "Ang Dental clinic nahimutang sa health and Services Center ground floor."
         ]
       },
-      "coordinates": [
-        279,
-        647
-      ],
       "pins": [
         {
           "name": "Dental Clinic",
@@ -11595,7 +11909,7 @@
     },
     "CON Dean's Office": {
       "type": "office",
-      "building": "Health and Services Building",
+      "building": "Health & Services Building",
       "floor": "Ground Floor",
       "coordinates": [
         287,
@@ -13147,6 +13461,138 @@
             [
               569,
               392
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
+    },
+    "diversity and inclusion unit": {
+      "type": "Office",
+      "building": "CPAG Building",
+      "floor": "Ground",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Diversity and inclusion unit located on CPAG parking space, its hard to find but i will provide an image"
+        ],
+        "ceb": [
+          "Diversity and inclusion unit kay makita ra kini sa CPAG parking space, lisod kini pangitaon pero hatagan takag image"
+        ]
+      },
+      "coordinates": [
+        890,
+        629
+      ],
+      "pins": [
+        {
+          "name": "Start From Here - Main Entrance",
+          "coordinates": [
+            890,
+            629
+          ]
+        },
+        {
+          "name": "Diversity and inclusion unit",
+          "coordinates": [
+            628,
+            478
+          ]
+        }
+      ],
+      "imageUrls": [
+        "/api/images/9976086b-7bd3-437e-9646-40d99a9b0745"
+      ],
+      "routes": [
+        {
+          "name": "Start From Here - Main Entrance to Diversity and inclusion unit",
+          "points": [
+            [
+              890,
+              629
+            ],
+            [
+              784,
+              628
+            ],
+            [
+              781,
+              504
+            ],
+            [
+              792,
+              495
+            ],
+            [
+              791,
+              448
+            ],
+            [
+              628,
+              455
+            ],
+            [
+              628,
+              478
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
+    },
+    "university press": {
+      "type": "building",
+      "building": "University Press Building",
+      "floor": "Ground",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Here 👀."
+        ],
+        "ceb": [
+          "Nara 👀."
+        ]
+      },
+      "coordinates": [
+        893,
+        633
+      ],
+      "pins": [
+        {
+          "name": "Start From Here",
+          "coordinates": [
+            893,
+            633
+          ]
+        },
+        {
+          "name": "University Press",
+          "coordinates": [
+            803,
+            925
+          ]
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to University Press",
+          "points": [
+            [
+              893,
+              633
+            ],
+            [
+              810,
+              634
+            ],
+            [
+              814,
+              907
+            ],
+            [
+              803,
+              925
             ]
           ],
           "color": "#dc2626"

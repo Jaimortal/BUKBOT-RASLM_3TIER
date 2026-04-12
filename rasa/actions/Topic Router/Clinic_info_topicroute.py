@@ -68,4 +68,105 @@ CLINIC_TOPIC_PATTERNS = {
         ],
         "required_context": []
     },
+    "dental_consultation_process": {
+        "phrases": [
+            "what is the process for dental consultation",
+            "how can i request dental consultation in buksu",
+            "steps for dental check up consultation",
+            "what to do if i want dental consultation",
+            "how does dental consultation work in school clinic",
+            "unsa ang proseso sa dental consultation",
+            "unsaon nako pag-request og dental consultation sa BukSU",
+            "mga lakang sa dental check up consultation",
+            "unsaon kung gusto ko magpa dental consultation",
+            "unsaon paglihok ang dental consultation sa school clinic"
+        ],
+        "strong_keywords": [
+            "process", "steps", "procedure", "request",
+            "how to", "unsaon", "unsa ang proseso",
+            "clinic", "school clinic", "consultation",
+            "check up", "checkup"
+        ],
+        "weak_keywords": [
+            "dental", "dentist", "oral", "bukSU",
+            "appointment", "visit", "pa-consult", "magpa"
+        ],
+        "required_context": []
+    },
+
+    "requirement_for_dental_consultation": {
+        "phrases": [
+            "what are the requirements for dental consultation",
+            "dental consultation requirements checklist",
+            "what do i need for dental consult",
+            "documents needed for dental consultation",
+            "tell me the documents i need for dental consultation",
+            "unsa ang mga requirements sa dental consultation",
+            "checklist sa requirements sa dental consultation",
+            "unsa akong kinahanglan para sa dental consult",
+            "mga dokumento nga kinahanglan sa dental consultation",
+            "isulti ang mga dokumento nga kinahanglan nako para sa dental consultation"
+        ],
+        "strong_keywords": [
+            "requirements", "requirement", "documents",
+            "checklist", "bring", "needed",
+            "kinahanglan", "dalahon", "dal-on"
+        ],
+        "weak_keywords": [
+            "dental", "consultation", "clinic",
+            "what", "unsa", "need", "get", "kuhaa"
+        ],
+        "required_context": []
+    },
+
+    "dental_oral_examination_process": {
+        "phrases": [
+            "what is the process for dental oral examination",
+            "how to request dental oral examination in buksu",
+            "steps for dental oral exam",
+            "what happens during dental oral examination",
+            "how does dental oral examination work",
+            "unsa ang proseso sa dental oral examination",
+            "unsaon pag-request og dental oral examination sa BukSU",
+            "mga lakang sa dental oral exam",
+            "unsa mahitabo sa dental oral examination",
+            "unsaon paglihok ang dental oral examination"
+        ],
+        "strong_keywords": [
+            "oral examination", "oral exam", "dental exam",
+            "process", "steps", "procedure",
+            "what happens", "how does"
+        ],
+        "weak_keywords": [
+            "dental", "oral", "exam", "clinic",
+            "request", "check up", "bukSU"
+        ],
+        "required_context": []
+    },
+
+    "dental_oral_examination_requirement": {
+        "phrases": [
+            "what are the requirements for dental oral examination",
+            "dental oral exam requirements checklist",
+            "what do i need for dental oral examination",
+            "documents needed for dental oral exam",
+            "can you tell me what do i need to bring for dental oral examination",
+            "unsa ang mga requirements sa dental oral examination",
+            "checklist sa requirements sa dental oral exam",
+            "unsa akong kinahanglan para sa dental oral examination",
+            "mga dokumento nga kinahanglan sa dental oral exam",
+            "pwede nimo isulti unsa akong kinahanglan dad-on para sa dental oral examination"
+        ],
+        "strong_keywords": [
+            "requirements", "requirement", "documents",
+            "checklist", "bring", "needed",
+            "kinahanglan", "dalahon", "dal-on"
+        ],
+        "weak_keywords": [
+            "dental", "oral", "exam", "examination",
+            "clinic", "bukSU", "what", "unsa", "need"
+        ],
+        "required_context": []
+    },
+    
 }

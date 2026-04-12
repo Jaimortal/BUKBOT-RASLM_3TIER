@@ -564,6 +564,26 @@ COURSES_TOPIC_PATTERNS = {
         ],
         "required_context": []
     },
+    "buksu_masters_courses": {
+        "phrases": [
+            "what are the masters degree",
+            "list of all graduate programs",
+            "all of the graduate programs"
+        ],
+        "strong_keywords": 
+        [
+            "masters degree","masters courses", "masters", "master course",
+            "master courses", "master", "graduate programs", "graduate courses",
+            "graduate"
+        ],
+        "weak_keywords": 
+        [
+            'bukidnon', 'offer', 'programs', 'state', 'university', "mga", "korso",
+            'list', 'listahan', 'courses', "are", "what", "can", "you", "provide", "the", 
+            "all", "by", "listahan", "sa", "tanang", "nga", "gi", "offer", "sa"
+        ],
+        "required_context": []
+    },
     "about_nstp": {
         "phrases": [
             "What is the National Service Training Program at Bukidnon State University",

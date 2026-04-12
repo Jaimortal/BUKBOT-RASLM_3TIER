@@ -156,8 +156,9 @@ LOCATION_ALIASES = {
     
 
     # === Buksu Clinic (general) ===
-    "buksu clinic": "Buksu Clinic (general)",
-    "clinic": "Buksu Clinic (general)",
+    "buksu clinic": "Buksu Clinic",
+    "clinic": "Buksu Clinic",
+    "bukidnon state univeristy clinic": "Buksu Clinic",
 
     # === Dental Clinic ===
     "dental clinic": "Dental Clinic",
@@ -344,6 +345,11 @@ LOCATION_ALIASES = {
     "new cot building": "New COT Building",
     "college of technology building": "New COT Building",
     "cot building": "Old COT Building",
+
+    # footech lab
+    "food tech laboratory": "food technology laboratory",
+    "food technology laboratory": "food technology laboratory",
+    "ft laboratory": "food technology laboratory",
     
     "college of business building": "College of Business Building",
     "cob buildin": "College of Business Building",
@@ -740,6 +746,16 @@ LOCATION_ALIASES = {
     "old technology building": "Old COT Building",
     "cot building old": "Old COT Building",
 
+    "language and literature office": "language and literature department",
+    "language & literature department": "language and literature department",
+    "language & letterature department": "language and literature department",
+    "language letterature office": "language and literature department",
+    "language letterature department": "language and literature department",
+    "l&l department": "language and literature department",
+    "ll department": "language and literature department",
+    "language literature office": "language and literature department",
+    "language literature department": "language and literature department",
+
     # PHILOSOPHY FACULTY OFFICE
     "philosophy faculty office": "Philosophy Faculty Office",
     "philosophy office": "Philosophy Faculty Office",
@@ -847,9 +863,20 @@ LOCATION_ALIASES = {
     "ias office": "IAS Office",
     "ias": "IAS Office",
 
+    # ===OVPAA Office ====
+
+    "ovpaa Office":"OVPAA Office",
+    "ovpa Office":"OVPAA Office",
+    "ovpa":"OVPAA Office",
+    "ovpaa":"OVPAA Office",
+    "office of the vice president of academic affairs":"OVPAA Office",
+
     # === OVPCAS Office Aliases ===
     "ovpcas office": "OVPCAS Office",
     "ovpcas": "OVPCAS Office",
+    "ovpcass": "OVPCAS Office",
+    "office of the vice president for cultural arts sports and student services": "OVPCAS Office",
+    "office of the vice president of cultural arts sports and student services": "OVPCAS Office",
 
     # === Client Care Center Aliases ===
     "client care center": "Client Care Center",
@@ -1200,6 +1227,25 @@ LOCATION_ALIASES = {
     "cpag guidance office": "CPAG Guidance Office",
     "guidance office cpag": "CPAG Guidance Office",
     "cpag guidance": "CPAG Guidance Office",
-    "cpag guidance office": "CPAG Guidance Office"
+    "cpag guidance office": "CPAG Guidance Office",
+
+    "diversity and inclusion unit": "diversity and inclusion unit",
+    "diversity and inclusion": "diversity and inclusion unit",
+    "diversity & inclusion unit": "diversity and inclusion unit",
+    "diu office": "diversity and inclusion unit",
+    "diversity and inclusion office": "diversity and inclusion unit",
+    "diversity and inclusion unit office": "diversity and inclusion unit",
+    "diversity inclusion unit office": "diversity and inclusion unit",
+    "diversity inclusion office": "diversity and inclusion unit",
+    
+    "university pres":"university press",
+    "university press building":"university press",
+    "university press bldg":"university press",
+    "university press office":"university press",
+    "uni press building":"university press",
+    "uni press bldg":"university press",
+    "uni press office":"university press",
+    "uni press":"university press",
+    "uni pres":"university press"
 
 }

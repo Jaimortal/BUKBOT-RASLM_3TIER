@@ -229,10 +229,11 @@ export async function getLocations(): Promise<Location[]> {
   }
 }
 
-// Lightweight public version — returns only name, coordinates, pins, routes (no response text)
+// Lightweight public version — returns only name, coordinates, pins, routes, building (no response text)
 export async function getMapLocationsList(): Promise<Array<{
   name: string;
   coordinates: [number, number];
+  building: string;
   pins: Array<{ name: string; coordinates: [number, number] }>;
   routes: Array<{ name: string; points: [number, number][]; color?: string }>;
 }>> {
@@ -268,7 +269,9 @@ export async function getMapLocationsList(): Promise<Array<{
           }))
         : [];
 
-      return { name, coordinates: coords, pins, routes };
+      const building = String((value as any)?.building || "").trim() || "Other";
+
+      return { name, coordinates: coords, building, pins, routes };
     });
   } catch (error) {
     console.error('Error reading map locations list:', error);

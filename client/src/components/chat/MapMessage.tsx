@@ -101,6 +101,71 @@ function RouteWithZoom({ route }: { route: { points: CoordArray[]; color?: strin
   );
 }
 
+// Component that animates a pulsing dot traveling along the route
+function AnimatedRouteDot({ route, speed = 2000 }: { route: { points: CoordArray[]; color?: string }; speed?: number }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (route.points.length < 2) return;
+
+    const totalSegments = route.points.length - 1;
+    const segmentDuration = speed / totalSegments;
+
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        const newProgress = prev + 0.02; // 2% progress per tick
+        if (newProgress >= 1) {
+          // Move to next segment or loop back to start
+          setCurrentIndex(idx => {
+            if (idx >= totalSegments - 1) {
+              return 0; // Loop back to start
+            }
+            return idx + 1;
+          });
+          return 0;
+        }
+        return newProgress;
+      });
+    }, segmentDuration / 50);
+
+    return () => clearInterval(interval);
+  }, [route.points, speed]);
+
+  // Calculate current position based on segment index and progress
+  const position = useMemo(() => {
+    if (route.points.length < 2) return route.points[0] || [0, 0];
+
+    const start = route.points[currentIndex];
+    const end = route.points[currentIndex + 1] || route.points[0];
+
+    const lat = start[0] + (end[0] - start[0]) * progress;
+    const lng = start[1] + (end[1] - start[1]) * progress;
+
+    return [lat, lng] as CoordArray;
+  }, [route.points, currentIndex, progress]);
+
+  const dotIcon = useMemo(() =>
+    L.divIcon({
+      className: "",
+      html: `
+        <div class="traveling-dot" style="
+          width: 12px;
+          height: 12px;
+          background: ${route.color || "#dc2626"};
+          border-radius: 50%;
+          border: 2px solid white;
+          box-shadow: 0 0 8px ${route.color || "#dc2626"}, 0 0 16px ${route.color || "#dc2626"};
+          animation: dotPulse 1s ease-in-out infinite;
+        "></div>
+      `,
+      iconSize: [12, 12],
+      iconAnchor: [6, 6],
+    }), [route.color]);
+
+  return <Marker position={position} icon={dotIcon} zIndexOffset={1000} />;
+}
+
 function normalizeToTuple(raw: any, maxClamp = 3000): CoordArray | null {
   if (!raw) return null;
   if (Array.isArray(raw) && raw.length >= 2) {
@@ -289,6 +354,13 @@ export default function MapMessage({
         .animated-route {
           animation: marchingAnts 1s linear infinite;
         }
+        @keyframes dotPulse {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.8; }
+        }
+        .traveling-dot {
+          pointer-events: none;
+        }
         .leaflet-container {
           background: #ffffff !important;
         }
@@ -308,6 +380,9 @@ export default function MapMessage({
 
         {normalizedRoutes.map((route, idx) => (
           <RouteWithZoom key={`route-${idx}`} route={route} />
+        ))}
+        {normalizedRoutes.map((route, idx) => (
+          <AnimatedRouteDot key={`dot-${idx}`} route={route} speed={3000} />
         ))}
 
         {flippedMarkers.map((p, idx) => (

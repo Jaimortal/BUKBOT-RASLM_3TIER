@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from "react";
-import { MapPin, X, ChevronDown, Building2, Map as MapIcon, Search } from "lucide-react";
+import { MapPin, X, ChevronDown, Building2, Map as MapIcon, Search, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MapMessage from "./MapMessage";
 import { cn } from "@/lib/utils";
@@ -7,8 +7,24 @@ import { cn } from "@/lib/utils";
 interface MapLocation {
   name: string;
   coordinates: [number, number];
+  building: string;
   pins: Array<{ name: string; coordinates: [number, number] }>;
   routes: Array<{ name: string; points: [number, number][]; color?: string }>;
+}
+
+// Group locations by building
+function groupByBuilding(locations: MapLocation[]): Record<string, MapLocation[]> {
+  const groups: Record<string, MapLocation[]> = {};
+  for (const loc of locations) {
+    const building = loc.building?.trim() || "Other";
+    if (!groups[building]) groups[building] = [];
+    groups[building].push(loc);
+  }
+  // Sort locations within each building alphabetically
+  for (const building of Object.keys(groups)) {
+    groups[building].sort((a, b) => a.name.localeCompare(b.name));
+  }
+  return groups;
 }
 
 interface MapQuickAccessProps {
@@ -33,7 +49,9 @@ async function fetchMapLocations(): Promise<MapLocation[]> {
 export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
   const [locations, setLocations] = useState<MapLocation[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  const [selectedBuilding, setSelectedBuilding] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [expandedBuildings, setExpandedBuildings] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -50,17 +68,29 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
     }
   }, [showDropdown]);
 
-  // Sort location names alphabetically
-  const sortedLocations = useMemo(() => {
-    return [...locations].sort((a, b) => a.name.localeCompare(b.name));
-  }, [locations]);
+  // Group locations by building
+  const groupedByBuilding = useMemo(() => groupByBuilding(locations), [locations]);
+  const buildings = useMemo(() => Object.keys(groupedByBuilding).sort(), [groupedByBuilding]);
 
-  // Filter locations based on search query
-  const filteredLocations = useMemo(() => {
-    if (!searchQuery.trim()) return sortedLocations;
+  // Filter locations and buildings based on search query
+  const filteredBuildings = useMemo(() => {
+    if (!searchQuery.trim()) return buildings;
     const query = searchQuery.toLowerCase();
-    return sortedLocations.filter((loc) => loc.name.toLowerCase().includes(query));
-  }, [sortedLocations, searchQuery]);
+    return buildings.filter(building => {
+      // Include building if its name matches
+      if (building.toLowerCase().includes(query)) return true;
+      // Include building if any location within it matches
+      return groupedByBuilding[building].some(loc => loc.name.toLowerCase().includes(query));
+    });
+  }, [buildings, groupedByBuilding, searchQuery]);
+
+  const getFilteredLocationsForBuilding = (building: string) => {
+    if (!searchQuery.trim()) return groupedByBuilding[building] || [];
+    const query = searchQuery.toLowerCase();
+    return (groupedByBuilding[building] || []).filter(loc =>
+      loc.name.toLowerCase().includes(query) || building.toLowerCase().includes(query)
+    );
+  };
 
   // Find selected location data
   const currentLocationData = useMemo(() => {
@@ -157,6 +187,7 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                 <button
                   onClick={() => {
                     setSelectedLocation(null);
+                    setSelectedBuilding(null);
                     setShowDropdown(false);
                   }}
                   className={cn(
@@ -166,37 +197,96 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                 >
                   <span className="w-2 h-2 rounded-full bg-blue-500"></span>
                   <span className="font-medium">All Buildings</span>
-                  <span className="ml-auto text-xs text-gray-400">{sortedLocations.length}</span>
+                  <span className="ml-auto text-xs text-gray-400">{locations.length}</span>
                 </button>
-                {/* Location list — show 5 visible, rest scrollable */}
-                <div className="max-h-[220px] overflow-y-auto overscroll-contain">
-                  {filteredLocations.length === 0 ? (
+                {/* Building groups */}
+                <div className="max-h-[280px] overflow-y-auto overscroll-contain">
+                  {filteredBuildings.length === 0 ? (
                     <div className="px-4 py-6 text-center text-sm text-gray-400">
                       No locations found
                     </div>
                   ) : (
-                    filteredLocations.map((loc) => {
-                      const isActive = selectedLocation === loc.name;
+                    filteredBuildings.map((building) => {
+                      const isExpanded = expandedBuildings.has(building) || searchQuery.trim().length > 0;
+                      const buildingLocs = getFilteredLocationsForBuilding(building);
+                      const isActiveBuilding = selectedBuilding === building && !selectedLocation;
+
                       return (
-                        <button
-                          key={loc.name}
-                          onClick={() => {
-                            setSelectedLocation(loc.name);
-                            setShowDropdown(false);
-                          }}
-                          className={cn(
-                            "w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center gap-2.5",
-                            isActive
-                              ? "bg-blue-50 text-blue-700"
-                              : "hover:bg-gray-50 text-gray-700"
+                        <div key={building} className="border-b border-gray-50 last:border-b-0">
+                          {/* Building header */}
+                          <button
+                            onClick={() => {
+                              if (buildingLocs.length === 1) {
+                                // If only one location, select it directly
+                                setSelectedLocation(buildingLocs[0].name);
+                                setSelectedBuilding(building);
+                                setShowDropdown(false);
+                              } else {
+                                // Toggle expansion
+                                const newExpanded = new Set(expandedBuildings);
+                                if (newExpanded.has(building)) {
+                                  newExpanded.delete(building);
+                                } else {
+                                  newExpanded.add(building);
+                                }
+                                setExpandedBuildings(newExpanded);
+                              }
+                            }}
+                            className={cn(
+                              "w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center gap-2",
+                              isActiveBuilding
+                                ? "bg-blue-50 text-blue-700"
+                                : "hover:bg-gray-50 text-gray-800"
+                            )}
+                          >
+                            <Building2 className={cn(
+                              "h-3.5 w-3.5 shrink-0",
+                              isActiveBuilding ? "text-blue-500" : "text-blue-600"
+                            )} />
+                            <span className="font-semibold truncate flex-1">{building}</span>
+                            {buildingLocs.length > 1 && (
+                              <>
+                                <span className="text-[10px] text-gray-400 px-1.5 py-0.5 bg-gray-100 rounded-full">
+                                  {buildingLocs.length}
+                                </span>
+                                <ChevronRight className={cn(
+                                  "h-3.5 w-3.5 text-gray-400 transition-transform",
+                                  isExpanded && "rotate-90"
+                                )} />
+                              </>
+                            )}
+                          </button>
+                          {/* Locations under this building */}
+                          {isExpanded && buildingLocs.length > 1 && (
+                            <div className="bg-gray-50/50">
+                              {buildingLocs.map((loc) => {
+                                const isActive = selectedLocation === loc.name;
+                                return (
+                                  <button
+                                    key={loc.name}
+                                    onClick={() => {
+                                      setSelectedLocation(loc.name);
+                                      setSelectedBuilding(building);
+                                      setShowDropdown(false);
+                                    }}
+                                    className={cn(
+                                      "w-full text-left pl-10 pr-4 py-2 text-sm transition-colors flex items-center gap-2",
+                                      isActive
+                                        ? "bg-blue-50 text-blue-700"
+                                        : "hover:bg-gray-100 text-gray-600"
+                                    )}
+                                  >
+                                    <MapPin className={cn(
+                                      "h-3 w-3 shrink-0",
+                                      isActive ? "text-blue-500" : "text-gray-400"
+                                    )} />
+                                    <span className="truncate">{loc.name}</span>
+                                  </button>
+                                );
+                              })}
+                            </div>
                           )}
-                        >
-                          <MapPin className={cn(
-                            "h-3.5 w-3.5 shrink-0",
-                            isActive ? "text-blue-500" : "text-gray-400"
-                          )} />
-                          <span className="font-medium truncate">{loc.name}</span>
-                        </button>
+                        </div>
                       );
                     })
                   )}

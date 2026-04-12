@@ -2271,7 +2271,7 @@
     "responses": {
       "answer": {
         "en": [
-          "If you forgot your BukSU portal password go to the BukSU Admission login page and click the Forgot Password option.",
+          "If you forgot your BukSU Admission password go to the BukSU Admission login page and click the Forgot Password option.",
           "Enter the email address registered with your BukSU account.",
           "The system will send instructions to your email so you can create a new password."
         ],
