@@ -63,7 +63,8 @@ UNIVERSITY_TOPIC_PATTERNS = {
             "core", "values", "value", "Buksu core values",
         ],
         "weak_keywords": [
-            "buksu", "what", "are", "mga", "nato", "unsa", "university"
+            "buksu", "what", "are", "mga", "nato", "university",
+            "unsa", "ang", 
         ],
         "required_context": []
     },
@@ -80,8 +81,10 @@ UNIVERSITY_TOPIC_PATTERNS = {
             "presidente", "mirasol", "joy", "current", "current president",
         ],
         "weak_keywords": [
-            "who", "buksu", "kinsa", "ang", "nato", "university",
-            "is", "president"
+            "who", "buksu", "nato", "university",
+            "is", "president",
+
+            "kinsay", "kinsa", "kinsa", "ang", "sa"
         ],
         "required_context": []
     },

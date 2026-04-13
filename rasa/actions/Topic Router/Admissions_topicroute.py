@@ -606,11 +606,12 @@ ADMISSIONS_TOPIC_PATTERNS = {
             "unsa ang kailangan para mo apply sa buksu admission testing"
         ],
         "strong_keywords": [
-            "freshman", "incoming", "freshmen", "documentary", "documents"
+            "freshman", "incoming", "freshmen", "documentary", "documents", "requirements",
+            "requirement"
         ],
         "weak_keywords": [
             "requirements", "first", "year", "application", "account", "what", "unsa",
-            "apply", "admission", "examination", "testing", "need"
+            "apply", "admission", "examination", "testing", "need", "applyting"
         ],
         "required_context": []
     },

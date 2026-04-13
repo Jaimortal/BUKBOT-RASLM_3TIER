@@ -2055,7 +2055,7 @@
     },
     "CAS Deans Office": {
       "type": "office",
-      "building": "Pink Building",
+      "building": "CAS Building",
       "floor": "Ground Floor",
       "coordinates": [
         515,
@@ -4015,12 +4015,12 @@
               640
             ],
             [
-              685,
-              639
+              682,
+              638
             ],
             [
-              684,
-              644
+              681,
+              646
             ]
           ],
           "color": "#dc2626"
@@ -4528,7 +4528,7 @@
     },
     "COT Buildings": {
       "type": "building",
-      "building": "COT Building",
+      "building": "New COT Building",
       "floor": "Ground Floor",
       "coordinates": [
         457,
@@ -12138,7 +12138,7 @@
     },
     "CAS SBO Office": {
       "type": "sbo_office",
-      "building": "Pink Building",
+      "building": "CAS Building",
       "floor": "Ground Floor",
       "coordinates": [
         501,
@@ -12213,6 +12213,7 @@
     },
     "CON SBO Office (no data)": {
       "type": "sbo_office",
+      "building": "CON Building",
       "map_id": "main_map",
       "responses": {
         "en": [
@@ -12225,6 +12226,7 @@
     },
     "COA SBO Office (no data)": {
       "type": "sbo_office",
+      "building": "CPAG Building",
       "map_id": "main_map",
       "responses": {
         "en": [
@@ -12237,7 +12239,7 @@
     },
     "ICT Service Unit": {
       "type": "office",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "2nd Floor",
       "coordinates": [
         633,
@@ -12316,7 +12318,7 @@
     },
     "CPAG 2-01": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "2nd Floor",
       "coordinates": [
         634,
@@ -12391,7 +12393,7 @@
     },
     "CPAG 2-02": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "2nd Floor",
       "coordinates": [
         663,
@@ -12466,7 +12468,7 @@
     },
     "CPAG 2-03": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "2nd Floor",
       "coordinates": [
         680,
@@ -12549,7 +12551,7 @@
     },
     "CPAG 2-04": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "2nd Floor",
       "coordinates": [
         688,
@@ -12628,7 +12630,7 @@
     },
     "CPAG 2-05": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "2nd Floor",
       "coordinates": [
         694,
@@ -12703,7 +12705,7 @@
     },
     "Office of the Chairperson CPAG": {
       "type": "office",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "2nd Floor",
       "coordinates": [
         727,
@@ -12928,7 +12930,7 @@
     },
     "CPAG 3-09": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "3rd Floor",
       "coordinates": [
         708,
@@ -12995,7 +12997,7 @@
     },
     "CPAG 3-08": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "3rd Floor",
       "coordinates": [
         691,
@@ -13070,7 +13072,7 @@
     },
     "CPAG 3-07": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "3rd Floor",
       "coordinates": [
         672,
@@ -13149,7 +13151,7 @@
     },
     "CPAG 3-06": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "3rd Floor",
       "coordinates": [
         666,
@@ -13232,7 +13234,7 @@
     },
     "Speech Laboratory": {
       "type": "room",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "3rd Floor",
       "coordinates": [
         640,
@@ -13315,7 +13317,7 @@
     },
     "CPAG Guidance Office": {
       "type": "office",
-      "building": "CPAG",
+      "building": "CPAG Building",
       "floor": "3rd Floor",
       "coordinates": [
         629,

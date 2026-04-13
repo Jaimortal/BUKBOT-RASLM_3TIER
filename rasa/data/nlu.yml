@@ -1084,7 +1084,6 @@ nlu:
     - pwede nimo ipadala ang tanang board degree programs
     - pwede nimo ihatag ang kumpletong listahan sa mga board courses
     - ihatag ang listahan sa mga board courses
-
     - what are the masters degree that buksu offer
     - what masters courses are available in buksu
     - can you give me the list of masters programs in buksu
@@ -1115,7 +1114,6 @@ nlu:
     - unsa ang mga available nga graduate studies sa BukSU
     - naa bay graduate programs ang BukSU, unsa man sila
     - unsa nga mga graduate programs ang naa sa BukSU
-
     - What is the National Service Training Program at Bukidnon State University
     - Can you explain the purpose of the NSTP program for students
     - can you tell me what is nstp for?
@@ -2629,6 +2627,10 @@ nlu:
     - Asa nahimutang ang [Registrar Office](location_name) sa tunga sa CPAG Building ug Finance Building
     - Which floor of the CPAG Building contains the [Admission Office](location_name)
     - Asa nga andana sa CPAG Building makita ang [Admission Office](location_name)
+    - where can i find the buksu admission office
+    - where can i find the [Admission Office](location_name)
+    - where is the admission office located
+    - asa dapit ang admission office
     - I want to eat on campus where can I find the [Cafeteria](location_name) beside Rubia Dorm
     - Asa dapit ang [Cafeteria](location_name) nga naa tapad sa Rubia Dorm
     - Can you guide me to the nearest [Vehicle Parking Area](location_name) inside the campus

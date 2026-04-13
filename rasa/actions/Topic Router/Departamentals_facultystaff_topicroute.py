@@ -42,7 +42,7 @@ DEPARTMENTS_FACULTY_STAFF_TOPIC_PATTERNS = {
             "pangalan sa dean sa cas"
         ],
         "strong_keywords": [
-            "CAS", "arts", "sciences", "college", "dean", "Dean's"
+            "CAS", "arts", "sciences", "college", "dean", "Dean's", "art"
         ],
         "weak_keywords": [
             "dean", "who", "kinsa", "pangalan", "sino", "college", "arts", "sciences"
@@ -154,7 +154,7 @@ DEPARTMENTS_FACULTY_STAFF_TOPIC_PATTERNS = {
             "department head sa economics"
         ],
         "strong_keywords": [
-            "CAS", "arts", "sciences", "college", "head"
+            "CAS", "arts", "sciences", "college", "head", "art"
         ],
         "weak_keywords": [
             "head", "chair", "program", "department", "chairperson", "cas", "arts", "sciences", "general"
