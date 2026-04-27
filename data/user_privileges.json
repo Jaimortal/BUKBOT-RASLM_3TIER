@@ -2,5 +2,5 @@
   "chatEnabled": true,
   "audioInputEnabled": true,
   "mapAccessEnabled": true,
-  "autoTranslateEnabled": true
+  "autoTranslateEnabled": false
 }

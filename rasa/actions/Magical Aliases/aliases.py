@@ -282,11 +282,12 @@ LOCATION_ALIASES = {
     
     # === Faculty Room Aliases ===
     "college of information technology faculty": "COT Faculty Room",
-    "cit faculty": "COT Faculty Room",
+    "cot faculty": "COT Faculty Room",
     "college it faculty": "COT Faculty Room",
     "cot faculty": "COT Faculty Room",
     "cot faculty room": "COT Faculty Room",
-    "COT faculty room": "COT Faculty Room",
+    "faculty office of cot": "COT Faculty Room",
+    "faculty office sa cot": "COT Faculty Room",
     "college of technology faculty": "COT Faculty Room",
     
     "cob faculty": "COB Faculty Room",
@@ -1229,6 +1230,8 @@ LOCATION_ALIASES = {
     "cpag guidance": "CPAG Guidance Office",
     "cpag guidance office": "CPAG Guidance Office",
 
+    # No NLU
+    # diver and inclu unit
     "diversity and inclusion unit": "diversity and inclusion unit",
     "diversity and inclusion": "diversity and inclusion unit",
     "diversity & inclusion unit": "diversity and inclusion unit",
@@ -1238,6 +1241,7 @@ LOCATION_ALIASES = {
     "diversity inclusion unit office": "diversity and inclusion unit",
     "diversity inclusion office": "diversity and inclusion unit",
     
+    # uni pres
     "university pres":"university press",
     "university press building":"university press",
     "university press bldg":"university press",
@@ -1246,6 +1250,21 @@ LOCATION_ALIASES = {
     "uni press bldg":"university press",
     "uni press office":"university press",
     "uni press":"university press",
-    "uni pres":"university press"
+    "uni pres":"university press",
+
+    # EP department
+    "pe department":"pe department",
+    "pe faculty":"pe department",
+    "pe faculty office":"pe department",
+    "pe office":"pe department",
+    "faculty sa pe":"pe department",
+    "faculty office sa pe":"pe department",
+    "pe departmental office":"pe department",
+
+    # ICTU Office
+    "ictu office": "ICTU Office",
+    "office sa ictu": "ICTU Office",
+    "Office of ictu": "ICTU Office",
+    "ictu Office": "ICTU Office",
 
 }

@@ -535,10 +535,12 @@ ADMISSIONS_TOPIC_PATTERNS = {
             "Admission and testing unit contacts",
         ],
         "strong_keywords": [
-            "buksu admission contact", "admission contacts", "contacts", "pag-contact"
+            "buksu admission contact", "admission contacts", "contacts", "pag-contact", "concerns about admission",
+            "conserns", "reklamo"
         ],
         "weak_keywords": [
-            "office", "admission", "testing", "unit", "contact", "provide", "concerns"
+            "office", "admission", "testing", "unit", "contact", "provide", "concerns", "should", 
+            "kong", "naa koy", "reklamo"
         ],
         "required_context": []
     },
@@ -762,6 +764,61 @@ ADMISSIONS_TOPIC_PATTERNS = {
         "weak_keywords": [
             "where", "find", "my", "process", "how", "unsaon", "getting",
             "kuha", "unsaon", "pag kuha" "step"
+        ],
+        "required_context": []
+    },
+    "affirmative_action": {
+        "phrases": [
+            "what if i fail the buksu cat exam can i still enroll",
+            "can i still study at buksu even if i didnt pass the cat",
+            "i failed the buksu cat exam is there another way to enroll",
+            "is there a chance to enroll even if i did not pass the buksu cat",
+            "what should i do if i didnt pass the buksu entrance exam",
+            "do student can apply for affirmative program",
+            "can i apply for affirmative action program if i failed the cat",
+            "do i still have a chance if i fail the buksu cat exam",
+            "is affirmative action available for students who did not pass the cat",
+            "if i fail the exam can i still get into buksu",
+            "are there other options if i didnt pass the buksu cat",
+            "can i still enroll through aap if i didnt pass the exam",
+            "what are my options if i failed the buksu cat exam",
+            "does buksu allow students who failed the cat to enroll",
+            "can i enter buksu even if i didnt pass the entrance test",
+            "is it possible to enroll even if i failed the buksu admission test",
+
+            "unsa kung mapakyas ko sa BukSU CAT exam, pwede pa ba ko maka-enroll",
+            "pwede pa ba ko maka-eskwela sa BukSU bisan wala ko nakapasar sa CAT",
+            "napakyas ko sa BukSU CAT exam, naa pa bay laing paagi para maka-enroll",
+            "naa pa bay chance maka-enroll bisan wala ko nakapasar sa BukSU CAT",
+            "unsa akong buhaton kung wala ko nakapasar sa BukSU entrance exam",
+            "pwede ba ang estudyante mo-apply sa affirmative program",
+            "pwede ba ko mo-apply sa affirmative action program kung napakyas ko sa CAT",
+            "naa pa ba koy chance kung mapakyas ko sa BukSU CAT exam",
+            "available ba ang affirmative action para sa mga estudyante nga wala nakapasar sa CAT",
+            "kung mapakyas ko sa exam, makasulod pa ba ko sa BukSU",
+            "naa pa bay laing option kung wala ko nakapasar sa BukSU CAT",
+            "pwede pa ba ko maka-enroll pinaagi sa AAP bisan wala ko nakapasar sa exam",
+            "unsa akong mga kapilian kung napakyas ko sa BukSU CAT exam",
+            "tugotan ba sa BukSU ang mga estudyante nga napakyas sa CAT nga maka-enroll",
+            "makasulod ba ko sa BukSU bisan wala ko nakapasar sa entrance test",
+            "posible ba maka-enroll bisan napakyas ko sa BukSU admission test"
+        ],
+        "strong_keywords": [
+            "fail", "failed", "didnt pass", "did not pass", "not pass",
+            "napakyas", "wala nakapasar", "mapakyas",
+
+            "affirmative", "aap", "affirmative action",
+
+            "chance", "another way", "options", "possible",
+            "laing paagi", "chance", "kapilian"
+        ],
+        "weak_keywords": [
+            "buksu", "cat", "exam", "entrance", "admission", "test",
+            "enroll", "enrollment", "study", "enter", "sulod",
+            "eskwela", "maka-enroll", "makasulod",
+
+            "program", "apply", "mo-apply",
+            "unsa", "what", "if", "kung", "pwede"
         ],
         "required_context": []
     }

@@ -430,7 +430,7 @@ export default function AdminDashboard() {
 
           {activeTab === "admin-settings" && (
             <div className="space-y-6">
-              <Card>
+              <Card className="hidden">
                 <CardHeader>
                   <CardTitle className="text-lg sm:text-xl">Translation Settings</CardTitle>
                   <CardDescription className="text-sm">Manage translation and content settings</CardDescription>

@@ -846,12 +846,12 @@
       "responses": {
         "en": [
           "This is the Audio Laboratory located on the 3rd floor of the CPAG Building.",
-          "Situated beside the ICTU Room and the Networking Laboratory.",
+          "Situated beside the ICTSU Room and the Networking Laboratory.",
           "Once you reach the area, the laboratory is easy to identify."
         ],
         "ceb": [
           "Kini ang Audio Laboratory nahimutang sa 3rd floor sa CPAG Building.",
-          "Nahimutang tapad sa ICTU Room ug Networking Laboratory.",
+          "Nahimutang tapad sa ICTSU Room ug Networking Laboratory.",
           "Kung moabot ka sa area, sayon makita ang laboratory."
         ]
       },
@@ -13595,6 +13595,152 @@
             [
               803,
               925
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
+    },
+    "pe department": {
+      "type": "Pe department",
+      "building": "Others",
+      "floor": "Ground",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Here 👀."
+        ],
+        "ceb": [
+          "Nara 👀."
+        ]
+      },
+      "coordinates": [
+        887,
+        634
+      ],
+      "pins": [
+        {
+          "name": "Start From Here",
+          "coordinates": [
+            887,
+            634
+          ]
+        },
+        {
+          "name": "PE faculty office",
+          "coordinates": [
+            209,
+            839
+          ]
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to PE faculty office",
+          "points": [
+            [
+              891,
+              634
+            ],
+            [
+              781,
+              634
+            ],
+            [
+              778,
+              672
+            ],
+            [
+              586,
+              674
+            ],
+            [
+              586,
+              704
+            ],
+            [
+              302,
+              708
+            ],
+            [
+              306,
+              836
+            ],
+            [
+              209,
+              839
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
+    },
+    "ictu office": {
+      "type": "ICTU Office",
+      "building": "Others",
+      "floor": "Ground",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "You can find it besid on the Health & Services Building👀."
+        ],
+        "ceb": [
+          "Makita ni nimo kilid lang sa Health & Services Building👀."
+        ]
+      },
+      "coordinates": [
+        891,
+        634
+      ],
+      "pins": [
+        {
+          "name": "Start From Here",
+          "coordinates": [
+            891,
+            634
+          ]
+        },
+        {
+          "name": "ICTU",
+          "coordinates": [
+            347,
+            660
+          ]
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to ICTU",
+          "points": [
+            [
+              891,
+              634
+            ],
+            [
+              784,
+              636
+            ],
+            [
+              784,
+              675
+            ],
+            [
+              590,
+              676
+            ],
+            [
+              591,
+              691
+            ],
+            [
+              349,
+              694
+            ],
+            [
+              347,
+              660
             ]
           ],
           "color": "#dc2626"

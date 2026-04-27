@@ -607,12 +607,69 @@
       "topic": "buksu_admission_contact",
       "responses": {
         "en": [
-          "You can contact the Admission and Testing Unit through their official Facebook page BukSU Admission and Testing Unit or visit their office at the CPAG building."
+          "You can contact the Admission and Testing Unit through their official Facebook page BukSU Admission and Testing Unit or visit their office at the CPAG building.",
+          "🖥️ Facebook Page: https://www.facebook.com/BukSUATU.<div>📱 Contact Number: 0968 568 1435.</div><div>✉️ Email: admissionandtesting@buksu.edu.ph</div>"
         ],
         "ceb": [
-          "Mahimo nimong makontak ang Admission and Testing Unit pinaagi sa ilang Facebook page BukSU Admission and Testing Unit o bisitaha ang ilang opisina sa CPAG building."
+          "Mahimo nimong makontak ang Admission and Testing Unit pinaagi sa ilang Facebook page BukSU Admission and Testing Unit o bisitaha ang ilang opisina sa CPAG building.",
+          "<span style=\"color: rgb(15, 23, 41);\">🖥️ Facebook Page: https://www.facebook.com/BukSUATU.</span><div style=\"border-color: rgb(226, 232, 240); color: rgb(15, 23, 41);\">📱 Contact Number: 0968 568 1435.</div><div style=\"border-color: rgb(226, 232, 240); color: rgb(15, 23, 41);\">✉️ Email: admissionandtesting@buksu.edu.ph</div>"
         ]
-      }
+      },
+      "images": [
+        "/api/images/f2f0ba16-bf56-44ef-a172-779cee5d92cc"
+      ],
+      "map": {
+        "lat": 500,
+        "lng": 500
+      },
+      "pins": [
+        {
+          "name": "Start From Here",
+          "lat": 892,
+          "lng": 634
+        },
+        {
+          "name": "Admission Testing Unit",
+          "lat": 654,
+          "lng": 496
+        }
+      ],
+      "routes": [
+        {
+          "name": "Start From Here to Admission Testing Unit",
+          "points": [
+            [
+              892,
+              634
+            ],
+            [
+              782,
+              634
+            ],
+            [
+              780,
+              578
+            ],
+            [
+              685,
+              581
+            ],
+            [
+              679,
+              519
+            ],
+            [
+              656,
+              518
+            ],
+            [
+              654,
+              496
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
     },
     {
       "topic": "law_admission_requirements",
@@ -857,6 +914,88 @@
           "pwede ka na magpadayon sa imong validation kung wala ka pa na-validate."
         ]
       }
+    },
+    {
+      "topic": "affirmative_action",
+      "responses": {
+        "en": [
+          "If you failed your buksu cat examination you still have a choice, you can apply for Affirmative Action Program (AAP) but please note that you cannot choose the courses you want to enroll in, they will be the one choosing your program depends on your capability.",
+          "here how you can apply the AAP",
+          "1. Monitor Your Results: Check your Report of Rating (ROR) via the BukSU Admissions Portal. Even if you are not on the list of <b>Qualifiers</b>, keep your account credentials. https://admissions.buksu.edu.ph/",
+          "2 Go to the Diversity and Inclusion Unit located at the BukSU Main Campus in Malaybalay City. This unit manages the AAP selection.",
+          "3. Submit Supporting Documents: You will need to provide proof of your eligibility, such as:<div><span style=\"color: rgb(15, 23, 41);\"><b>For IPs</b>: Certificate of Tribal Membership or NCIP Certificate.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>For PWDs:</b> Valid PWD ID.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>For Low-Income: </b>Certificate of Indigency from your Barangay or ITR of parents.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Academic Records:</b> Your Senior High School Report Card (Form 138).</span></div>",
+          "4. Interview/Evaluation: The Diversity and Inclusion Unit may conduct an interview to assess your <b>academic potential</b> and commitment to finishing the degree.",
+          "5. Placement: If approved, you may be offered a slot in a program that still has available capacity (note that highly competitive board courses like Nursing or Accountancy often have stricter cut-offs that AAP cannot always bypass)."
+        ],
+        "ceb": [
+          "Kung wala ka nakapasar sa BukSU CAT examination, naa gihapon kay laing kapilian—pwede ka mo-apply sa Affirmative Action Program (AAP), apan palihug hinumdumi nga dili ikaw ang mopili sa kurso nga imong enrollan, sila ang mopili base sa imong kapasidad.",
+          "Ania kung giunsa pag-apply sa AAP:",
+          "1. Bantayi ang imong Resulta: Tan-awa ang imong Report of Rating (ROR) pinaagi sa BukSU Admissions Portal. Bisan dili ka apil sa listahan sa <b>Qualifiers</b>, i-keep ang imong account credentials. https://admissions.buksu.edu.ph/",
+          "2. Adto sa Diversity and Inclusion Unit nga nahimutang sa BukSU Main Campus sa Malaybalay City. Kini nga unit ang nagdumala sa AAP selection.",
+          "3. I-submit ang Supporting Documents: Kinahanglan nimo ipakita ang pruweba sa imong eligibility, sama sa:<div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa IPs:</b> Certificate of Tribal Membership o NCIP Certificate.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa PWDs:</b> Valid PWD ID.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa Low-Income:</b> Certificate of Indigency gikan sa inyong Barangay o ITR sa ginikanan.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Academic Records:</b> Senior High School Report Card (Form 138).</span></div>",
+          "4. Interview/Evaluation: Ang Diversity and Inclusion Unit mahimong mag-conduct og interview aron masusi ang imong <b>academic potential</b> ug commitment sa paghuman sa degree.",
+          "5. Placement: Kung ma-aprubahan, mahimo kang hatagan og slot sa usa ka programa nga naa pay available nga kapasidad (hinumdumi nga ang highly competitive nga board courses sama sa Nursing o Accountancy kasagaran adunay mas istrikto nga cut-offs nga dili permi malabwan sa AAP)."
+        ]
+      },
+      "images": [
+        "/api/images/bbdb0d42-ece1-4265-9527-bff52f8d4a9d"
+      ],
+      "map": {
+        "lat": 500,
+        "lng": 500
+      },
+      "pins": [
+        {
+          "name": "Start From Here - Main Entrance",
+          "lat": 895,
+          "lng": 634
+        },
+        {
+          "name": "Diversity and Inclusion Unit",
+          "lat": 628,
+          "lng": 483
+        }
+      ],
+      "routes": [
+        {
+          "name": "Start From Here - Main Entrance to Diversity and Inclusion Unit",
+          "points": [
+            [
+              895,
+              634
+            ],
+            [
+              786,
+              633
+            ],
+            [
+              782,
+              505
+            ],
+            [
+              794,
+              501
+            ],
+            [
+              794,
+              447
+            ],
+            [
+              628,
+              453
+            ],
+            [
+              628,
+              469
+            ],
+            [
+              628,
+              483
+            ]
+          ],
+          "color": "#dc2626"
+        }
+      ]
     }
   ]
 }

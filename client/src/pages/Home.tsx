@@ -90,7 +90,7 @@ export default function Home() {
       </header>
 
       {/* Navigation Bar */}
-      <nav className={`transition-all duration-300 ${isScrolled ? 'sticky top-0 z-50 shadow-lg' : ''}`} style={{backgroundColor: '#001C38'}}>
+      <nav className={`transition-all duration-300 bg-white md:bg-[#001C38] ${isScrolled ? 'sticky top-0 z-50 shadow-lg' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             {/* Desktop Navigation */}
@@ -110,18 +110,31 @@ export default function Home() {
               ))}
             </div>
 
+            {/* Mobile Header Branding */}
+            <div className="md:hidden flex items-center space-x-3">
+              <img 
+                src="/LOGO.png" 
+                alt="BukSU Logo"
+                className="w-10 h-10 object-cover"
+              />
+              <div className="flex flex-col">
+                <span className="font-bold text-[#001C38] leading-tight" style={{fontSize: '12px'}}>BUKIDNON STATE UNIVERSITY</span>
+                <span className="text-gray-600 leading-tight text-bold" style={{fontSize: '7px', color: '#001C38'}}>Malaybalay City, Bukidnon 8700, Philippines</span>
+              </div>
+            </div>
+
             {/* Search Icon */}
-            <div className="flex items-center space-x-4">
-              <button className="p-2 text-white hover:bg-blue-800 rounded-lg transition-colors">
-                <Search className="w-4 h-4" />
+            <div className="flex items-center space-x-0">
+              <button className="p-2 text-[#001C38] md:text-white hover:bg-gray-200 md:hover:bg-blue-800 rounded-lg transition-colors">
+                <Search className="w-6 h-6" />
               </button>
               
               {/* Mobile Menu Toggle */}
               <button 
-                className="md:hidden p-2 text-white hover:bg-blue-800 rounded-lg transition-colors"
+                className="md:hidden p-2 text-[#001C38] hover:bg-gray-200 rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>

@@ -109,7 +109,12 @@
           "Sa kasagaran, mga pito ka absences nga walay excuse mahimong mosangpot sa FDA.",
           "Ang pagka-late og tulo ka beses mahimo usab ma-count nga usa ka absence depende sa department rules."
         ]
-      }
+      },
+      "ui_name": "meaning of the fda",
+      "images": [],
+      "map": null,
+      "pins": [],
+      "routes": []
     },
     {
       "topic": "fda_solution",

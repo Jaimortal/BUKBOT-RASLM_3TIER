@@ -77,11 +77,6 @@ stories:
     - intent: ask_university_info
     - action: action_reply_from_json
 
-- story: greetings 
-  steps:
-    - intent: greet
-    - action: utter_greet
-
 - story: ask more follow-up
   steps:
     - intent: ask_more
@@ -411,3 +406,23 @@ stories:
   steps:
     - intent: Bot_creator
     - action: action_reply_from_json
+
+- story: greetings 
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: morning greeting path
+  steps:
+  - intent: mroning_greater
+  - action: action_reply_from_json
+
+- story: afternoon greeting path
+  steps:
+  - intent: afternoon_greater
+  - action: action_reply_from_json
+
+- story: evening greeting path
+  steps:
+  - intent: evening_greater
+  - action: action_reply_from_json

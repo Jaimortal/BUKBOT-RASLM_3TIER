@@ -6126,5 +6126,74 @@
     "metadata": {
       "source": "RegistrarProcess"
     }
+  },
+  {
+    "intent": "mroning_greater",
+    "category": "Guidance Info",
+    "sub_category": "fees",
+    "responses": {
+      "answer": {
+        "en": [
+          "Good morning! How can I assist you today?"
+        ],
+        "ceb": [
+          "Maayong buntag! Unsa akong matabang nimo karon?"
+        ]
+      },
+      "follow_up": [],
+      "context_slots": {
+        "last_topic": "guidance_fees"
+      },
+      "imageUrls": []
+    },
+    "metadata": {
+      "source": "BukSU Guidance Center"
+    }
+  },
+  {
+    "intent": "afternoon_greater",
+    "category": "Guidance Info",
+    "sub_category": "fees",
+    "responses": {
+      "answer": {
+        "en": [
+          "Good afternoon! How may I help you?"
+        ],
+        "ceb": [
+          "Maayong hapon! Unsa akong ikatabang nimo?"
+        ]
+      },
+      "follow_up": [],
+      "context_slots": {
+        "last_topic": "guidance_fees"
+      },
+      "imageUrls": []
+    },
+    "metadata": {
+      "source": "BukSU Guidance Center"
+    }
+  },
+  {
+    "intent": "evening_greater",
+    "category": "Guidance Info",
+    "sub_category": "fees",
+    "responses": {
+      "answer": {
+        "en": [
+          "Good evening! How can I help you today?"
+        ],
+        "ceb": [
+          "Maayong gabii! Unsa akong matabang nimo karon?"
+        ]
+      },
+      "follow_up": [],
+      "context_slots": {
+        "last_topic": "guidance_fees"
+      },
+      "imageUrls": []
+    },
+    "metadata": {
+      "source": "BukSU Guidance Center"
+    }
   }
 ]

@@ -2436,7 +2436,6 @@ nlu:
   examples: |
     - hi
     - hello
-    - good morning
 
 - intent: goodbye
   examples: |
@@ -5046,6 +5045,45 @@ nlu:
     - kinsay nag develop sa imoha
     - palihog dawkog sulti kong kinsa nag buhat sa imoha
     - kinsa may mga developer nimo
+
+- intent: mroning_greater
+  examples: |
+    - good morning
+    - good morning chatbot
+    - hello good morning
+    - hi good morning
+    - morning
+    - maayong buntag jud kanimo diha
+    - maayong buntag chatbot
+    - hello maayong buntag
+    - hi maayong buntag
+    - buntag
+
+- intent: afternoon_greater
+  examples: |
+    - good afternoon
+    - good afternoon chatbot
+    - hello good afternoon
+    - hi good afternoon
+    - afternoon
+    - maayong hapon diha kanimo
+    - maayong hapon chatbot
+    - hello maayong hapon
+    - hi maayong hapon
+    - hapon
+
+- intent: evening_greater
+  examples: |
+    - good evening
+    - good evening chatbot
+    - hello good evening
+    - hi good evening
+    - evening
+    - maayong gabii kanimo diha
+    - maayong gabii chatbot
+    - hello maayong gabii
+    - hi maayong gabii kanimo
+    - gabii
 
 - synonym: board courses
   examples: |

@@ -91,6 +91,9 @@ intents:
   - Bot_creator
 
 
+  - mroning_greater
+  - afternoon_greater
+  - evening_greater
 
 entities:
   - lab_number

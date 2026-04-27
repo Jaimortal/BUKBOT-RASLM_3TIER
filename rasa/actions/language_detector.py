@@ -13,7 +13,9 @@ BISAYA_WORDS = [
     "gamay", "dako", "mao", "ug", "uy", "man", "gani", "diay", "sige",
     "kinahanglan", "bisan", "sab", "gud", "pod", "wala", "naa", "ikaw", "ako",
     "Pwedi", "unsaon", "onsaon", "palihog", "tabangi", "tabang", "taba", "tabange",
-    "pag", "sa", "ka", "ako", "ikaw", "kita", "kami", "kinsay"
+    "pag", "sa", "ka", "ako", "ikaw", "kita", "kami", "kinsay", "aha", 
+    "nako", "makita", "akong", "maayong", "gabii", "kanimo", "hapon", "buntag", "bontag",
+    "maayo", "kaninyo", "kanimo", "diha", "jud", "mani", "kini"
 ]
 
 
