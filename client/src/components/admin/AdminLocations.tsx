@@ -67,6 +67,9 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
     (location.pins ?? []).map(p => ({
       name: p.name,
       coordinates: (p.coordinates?.length === 2 ? [p.coordinates[0], p.coordinates[1]] : [500, 500]) as [number, number],
+      floor: (p as any)?.floor as AdminPin["floor"],
+      access: (p as any)?.access as AdminPin["access"],
+      pinType: (p as any)?.pinType as AdminPin["pinType"],
     }))
   );
   const [routes, setRoutes] = useState<any[]>(location.routes ?? []);
@@ -81,6 +84,9 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
     setPins((location.pins ?? []).map(p => ({
       name: p.name,
       coordinates: (p.coordinates?.length === 2 ? [p.coordinates[0], p.coordinates[1]] : [500, 500]) as [number, number],
+      floor: p.floor as AdminPin["floor"],
+      access: (p as any).access as AdminPin["access"],
+      pinType: (p as any).pinType as AdminPin["pinType"],
     })));
     setRoutes(location.routes ?? []);
   }, [open, location]);
@@ -90,11 +96,14 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
       const payload: Location = {
         ...location,
         coordinates: coords,
-        // Convert AdminPin back to Location pin format
+        // Convert AdminPin back to Location pin format, preserving floor data
         pins: pins.filter(p => p.name.trim()).map(p => ({
           name: p.name,
           coordinates: p.coordinates,
-        })),
+          ...(p.floor && { floor: p.floor }),
+          ...(p.access && { access: p.access }),
+          ...(p.pinType && { pinType: p.pinType }),
+        } as any)),
         routes: routes,
         responses: {
           en: enLines.filter(l => l.trim()),

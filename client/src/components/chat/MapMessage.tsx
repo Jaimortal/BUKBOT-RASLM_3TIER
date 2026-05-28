@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, ImageOverlay, Marker, Popup, useMap, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Maximize2, Minimize2 } from "lucide-react";
+import { ArrowUpDown, Footprints, Maximize2, Minimize2 } from "lucide-react";
 import { useMapSettings } from "@/hooks/useMapSettings";
 
 // Fix for default marker icon in React Leaflet
@@ -26,7 +26,7 @@ type CoordObject = { lat: number; lng: number } | { latitude?: number; longitude
 interface MapMessageProps {
   locationName: string;
   coordinates: CoordArray | CoordObject | null | undefined;
-  pins?: Array<{ name: string; coordinates: CoordArray | CoordObject }>;
+  pins?: Array<{ name: string; coordinates: CoordArray | CoordObject; floor?: string; access?: string; pinType?: string }>;
   imageBounds?: L.LatLngBoundsExpression;
   maxClamp?: number;
   // fullscreen props
@@ -39,6 +39,26 @@ const DefaultBounds: L.LatLngBoundsExpression = [
   [0, 0],
   [1000, 1000],
 ];
+
+type IndicatorKind = "staircase" | "elevator";
+
+function normalizeIndicatorKind(pin: { name?: string; access?: string; pinType?: string }): IndicatorKind | null {
+  const pinType = String(pin.pinType || "").trim().toLowerCase();
+  if (pinType === "staircase") return "staircase";
+  if (pinType === "elevator") return "elevator";
+
+  const access = String(pin.access || "").trim().toLowerCase();
+  if (access === "staircase" || access === "staircase_indicator") return "staircase";
+  if (access === "elevator" || access === "elevator_staircase" || access === "elevator_with_staircase") return "elevator";
+
+  const name = String(pin.name || "").trim().toLowerCase();
+  if (!name) return null;
+  if (name.includes("elevator")) return "elevator";
+  if (name.includes("staircase indecator pin") || name.includes("staircase indicator pin") || name.includes("staircase")) {
+    return "staircase";
+  }
+  return null;
+}
 
 // controller to recenter when coords change
 const MapController = ({ coords }: { coords: CoordArray }) => {
@@ -102,7 +122,7 @@ function RouteWithZoom({ route }: { route: { points: CoordArray[]; color?: strin
 }
 
 // Component that animates a pulsing dot traveling along the route
-function AnimatedRouteDot({ route, speed = 2000 }: { route: { points: CoordArray[]; color?: string }; speed?: number }) {
+function AnimatedRouteDot({ route, speed = 3000 }: { route: { points: CoordArray[]; color?: string }; speed?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -114,7 +134,7 @@ function AnimatedRouteDot({ route, speed = 2000 }: { route: { points: CoordArray
 
     const interval = setInterval(() => {
       setProgress(prev => {
-        const newProgress = prev + 0.02; // 2% progress per tick
+        const newProgress = prev + 0.005; // Slower: 0.5% progress per tick
         if (newProgress >= 1) {
           // Move to next segment or loop back to start
           setCurrentIndex(idx => {
@@ -138,6 +158,11 @@ function AnimatedRouteDot({ route, speed = 2000 }: { route: { points: CoordArray
 
     const start = route.points[currentIndex];
     const end = route.points[currentIndex + 1] || route.points[0];
+
+    // Safety check to prevent undefined errors
+    if (!start || !end || !Array.isArray(start) || !Array.isArray(end)) {
+      return route.points[0] || [0, 0];
+    }
 
     const lat = start[0] + (end[0] - start[0]) * progress;
     const lng = start[1] + (end[1] - start[1]) * progress;
@@ -205,7 +230,6 @@ export default function MapMessage({
   onToggleFullscreen,
   routes,
 }: MapMessageProps) {
-
   // Extract dynamic image height from bounds (Default: 1000)
   const imageHeight = useMemo(() => {
     try {
@@ -224,13 +248,16 @@ export default function MapMessage({
 
   const normalizedPins = useMemo(() => {
     if (Array.isArray(pins) && pins.length > 0) {
-      return pins
+      const result = pins
         .map((p) => {
           const tuple = normalizeToTuple((p as any)?.coordinates, maxClamp);
           const name = String((p as any)?.name || "").trim() || "Pin";
-          return tuple ? { name, coordinates: tuple as CoordArray } : null;
+          const floor = (p as any)?.floor;
+          const pinType = normalizeIndicatorKind({ name, access: (p as any)?.access, pinType: (p as any)?.pinType });
+          return tuple ? { name, coordinates: tuple as CoordArray, floor, pinType } : null;
         })
-        .filter(Boolean) as Array<{ name: string; coordinates: CoordArray }>;
+        .filter(Boolean) as Array<{ name: string; coordinates: CoordArray; floor?: string; pinType?: IndicatorKind | null }>;
+      return result;
     }
     const tuple = normalizeToTuple(coordinates, maxClamp);
     return tuple ? [{ name: locationName, coordinates: tuple }] : [];
@@ -240,9 +267,10 @@ export default function MapMessage({
     const markers = normalizedPins.map((p) => ({
       name: p.name,
       coordinates: [imageHeight - p.coordinates[0], p.coordinates[1]] as CoordArray,
+      floor: p.floor,
+      pinType: p.pinType,
     })).filter((p) => Array.isArray(p.coordinates) && p.coordinates.length === 2);
 
-    console.debug("[MapMessage] imageHeight:", imageHeight, "flippedMarkers:", markers);
     return markers;
   }, [normalizedPins, imageHeight]);
 
@@ -260,7 +288,6 @@ export default function MapMessage({
       return { ...r, points: validPoints };
     }).filter(r => r.points.length >= 2);
 
-    console.debug("[MapMessage] raw routes:", routes, "normalized routes:", processed);
     return processed;
   }, [routes, imageHeight, maxClamp]);
 
@@ -281,7 +308,15 @@ export default function MapMessage({
 
   const center = flippedMarkers[0]?.coordinates ?? fallbackCenter;
 
-  const labeledIcon = (label: string) =>
+  const labeledIcon = (label: string, pinType?: IndicatorKind | null) => {
+    const isStaircase = pinType === "staircase";
+    const isElevator = pinType === "elevator";
+    const markerColor = isStaircase ? "#7c3aed" : isElevator ? "#0f766e" : "#2563eb";
+    const markerText = isStaircase ? "ST" : isElevator ? "EV" : "";
+    const textHtml = markerText
+      ? `<span style="color:#fff;font-size:9px;font-weight:900;line-height:16px;display:block;text-align:center;transform:rotate(45deg);">${markerText}</span>`
+      : "";
+    return (
     L.divIcon({
       className: "",
       html: `
@@ -302,17 +337,19 @@ export default function MapMessage({
           <div style="
             width: 16px;
             height: 16px;
-            background: #2563eb;
+            background: ${markerColor};
             border: 2px solid #ffffff;
             border-radius: 50% 50% 50% 0;
             transform: rotate(-45deg);
             box-shadow: 0 2px 6px rgba(0,0,0,0.35);
-          "></div>
+          ">${textHtml}</div>
         </div>
       `,
       iconSize: [1, 1],
       iconAnchor: [0, 0],
-    });
+    })
+    );
+  };
 
   const [activeMapUrl, setActiveMapUrl] = useState<string>('/nobackHD.png');
   const { data: mapSettings } = useMapSettings();
@@ -333,10 +370,63 @@ export default function MapMessage({
   };
 
   return (
-    <div 
+    <div
       className={`rounded-lg overflow-hidden border border-border mt-2 relative z-2 ${isFullscreen ? 'w-full h-full' : 'w-60 h-48'}`}
       onWheel={handleWheel}
     >
+      {/* Map guidance indicators - shown only inside this map */}
+      {(() => {
+        const markerWithFloor = flippedMarkers?.find(m => m.floor);
+        const indicatorKinds = Array.from(
+          new Set(flippedMarkers.map(m => m.pinType).filter(Boolean))
+        ) as IndicatorKind[];
+        if (!markerWithFloor && indicatorKinds.length === 0) return null;
+
+        return (
+          <div className={`absolute z-[1000] flex flex-col items-start gap-1 transition-all ${
+            isFullscreen
+              ? "top-2 left-12 text-sm"
+              : "bottom-2 left-2 text-[9px]"
+          }`}>
+            {markerWithFloor && (
+              <div className={`bg-yellow-400/70 backdrop-blur-md text-gray-900 border border-yellow-500/80 rounded shadow-md flex items-center gap-2 ${
+                isFullscreen ? "px-3 py-1.5" : "px-2.5 py-1"
+              }`}>
+                <span className="font-black">[{markerWithFloor.floor}]</span>
+                <span className="hidden sm:inline font-semibold">
+                  {markerWithFloor.floor === 'GF' ? 'Ground Floor' :
+                    markerWithFloor.floor === '2F' ? '2nd Floor' :
+                      markerWithFloor.floor === '3F' ? '3rd Floor' :
+                        markerWithFloor.floor === '4F' ? '4th Floor' :
+                          markerWithFloor.floor === '5F' ? '5th Floor' :
+                            markerWithFloor.floor === '1F' ? '1st Floor' :
+                              markerWithFloor.floor === 'BS' ? 'Basement' : ''}
+                </span>
+              </div>
+            )}
+            {indicatorKinds.map(kind => (
+              <div
+                key={kind}
+                className={`bg-white/80 backdrop-blur-md text-gray-900 border border-gray-200/80 rounded shadow-md flex items-center gap-1.5 font-semibold ${
+                  isFullscreen ? "px-3 py-1.5" : "px-2 py-1"
+                }`}
+              >
+                {kind === "staircase" ? (
+                  <>
+                    <Footprints className={isFullscreen ? "h-4 w-4" : "h-3 w-3"} />
+                    <span>Staircase</span>
+                  </>
+                ) : (
+                  <>
+                    <ArrowUpDown className={isFullscreen ? "h-4 w-4" : "h-3 w-3"} />
+                    <span>Elevator</span>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      })()}
       {onToggleFullscreen && (
         <button
           onClick={onToggleFullscreen}
@@ -386,7 +476,7 @@ export default function MapMessage({
         ))}
 
         {flippedMarkers.map((p, idx) => (
-          <Marker key={`pin-${idx}`} position={p.coordinates} icon={labeledIcon(p.name)}>
+          <Marker key={`pin-${idx}`} position={p.coordinates} icon={labeledIcon(p.name, p.pinType)}>
             <Popup>{p.name}</Popup>
           </Marker>
         ))}

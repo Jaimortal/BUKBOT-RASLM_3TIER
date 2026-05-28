@@ -145,7 +145,10 @@ export class ChatController {
                   : null;
                 if (!tuple) return null;
                 const name = String(p?.name || "").trim() || `Pin ${idx + 1}`;
-                return { name, coordinates: tuple };
+                const floor = typeof p?.floor === "string" ? p.floor.trim() : "";
+                const access = typeof p?.access === "string" ? p.access.trim() : "";
+                const pinType = typeof p?.pinType === "string" ? p.pinType.trim() : "";
+                return { name, coordinates: tuple, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
               })
               .filter(Boolean)
           : null;

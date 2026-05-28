@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import {
+  ArrowUpDown,
+  Footprints,
   Trash2,
   PlusCircle,
   MapPin,
@@ -30,6 +32,9 @@ export interface AdminPin {
   name: string;
   /** [y, x] format */
   coordinates: [number, number];
+  floor?: string;
+  access?: "staircase" | "elevator_staircase" | string;
+  pinType?: "normal" | "staircase" | "elevator" | string;
 }
 
 export interface AdminRoute {
@@ -87,6 +92,36 @@ function drawPin(ctx: CanvasRenderingContext2D, sx: number, sy: number, colour: 
   }
 }
 
+function drawIndicatorPin(ctx: CanvasRenderingContext2D, sx: number, sy: number, type: string, label?: string) {
+  const isElevator = type === "elevator";
+  ctx.fillStyle = "rgba(0,0,0,0.25)";
+  ctx.beginPath();
+  ctx.ellipse(sx + 1, sy + 13, 8, 4, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = isElevator ? "#0f766e" : "#7c3aed";
+  ctx.beginPath();
+  ctx.arc(sx, sy - 7, 10, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(sx - 9, sy - 2); ctx.lineTo(sx, sy + 13); ctx.lineTo(sx + 9, sy - 2);
+  ctx.closePath(); ctx.fill();
+
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 9px system-ui";
+  ctx.textAlign = "center";
+  ctx.fillText(isElevator ? "EV" : "ST", sx, sy - 4);
+  ctx.textAlign = "start";
+
+  if (label) {
+    ctx.font = "bold 9px system-ui";
+    ctx.fillStyle = "rgba(0,0,0,0.85)";
+    const w = ctx.measureText(label).width + 8;
+    ctx.beginPath(); ctx.roundRect(sx + 10, sy - 14, w, 12, 3); ctx.fill();
+    ctx.fillStyle = "#fff"; ctx.fillText(label, sx + 14, sy - 5);
+  }
+}
+
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export function AdminMapPinsEditor({
@@ -105,7 +140,7 @@ export function AdminMapPinsEditor({
   const [ty, setTy] = useState(0);
 
   // Interaction State
-  const [mode, setMode] = useState<"view" | "place-pin" | "draw-route" | "edit-route" | "edit-pin">("view");
+  const [mode, setMode] = useState<"view" | "place-pin" | "place-staircase" | "place-elevator" | "draw-route" | "edit-route" | "edit-pin">("view");
   const [pendingPinName, setPendingPinName] = useState("");
   const [activeRoutePoints, setActiveRoutePoints] = useState<[number, number][]>([]);
   const [selectedRouteId, setSelectedRouteId] = useState<string | number | null>(null);
@@ -219,7 +254,11 @@ export function AdminMapPinsEditor({
       const { sx, sy } = toScreen(pin.coordinates);
       const isDragging = draggingPinIdx === i;
       const isSelected = selectedPinIdx === i;
-      drawPin(ctx, sx, sy, (isDragging || isSelected) ? "#ef4444" : pinColour(i + 1), pin.name);
+      if (pin.pinType === "staircase" || pin.pinType === "elevator") {
+        drawIndicatorPin(ctx, sx, sy, pin.pinType, pin.name);
+      } else {
+        drawPin(ctx, sx, sy, (isDragging || isSelected) ? "#ef4444" : pinColour(i + 1), pin.name);
+      }
 
       if (isDragging || isSelected) {
         ctx.strokeStyle = isSelected ? "#3b82f6" : "#ffffff"; ctx.lineWidth = 2;
@@ -320,6 +359,14 @@ export function AdminMapPinsEditor({
     if (mode === "place-pin") {
       onPinsChange([...pins, { name: pendingPinName || `Pin ${pins.length + 1}`, coordinates: coords }]);
       setPendingPinName(""); setMode("view");
+    } else if (mode === "place-staircase") {
+      onPinsChange([...pins, { name: "Staircase", coordinates: coords, pinType: "staircase" }]);
+      setMode("view");
+      toast.success("Staircase indicator placed");
+    } else if (mode === "place-elevator") {
+      onPinsChange([...pins, { name: "Elevator", coordinates: coords, pinType: "elevator" }]);
+      setMode("view");
+      toast.success("Elevator indicator placed");
     } else if (mode === "edit-pin" && selectedPinIdx !== null && onPinsChange) {
       const nextPins = [...pins]; nextPins[selectedPinIdx].coordinates = coords; onPinsChange(nextPins);
       toast.success("Pin relocated!");
@@ -386,7 +433,7 @@ export function AdminMapPinsEditor({
           ref={canvasRef}
           width={mapSize} height={mapSize}
           className="block touch-none"
-          style={{ cursor: mode === "draw-route" || mode === "place-pin" ? "crosshair" : mode === "edit-route" || mode === "edit-pin" ? "move" : "grab" }}
+          style={{ cursor: mode === "draw-route" || mode === "place-pin" || mode === "place-staircase" || mode === "place-elevator" ? "crosshair" : mode === "edit-route" || mode === "edit-pin" ? "move" : "grab" }}
           onClick={handleClick}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
@@ -399,7 +446,22 @@ export function AdminMapPinsEditor({
           <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => { setZoom(z => Math.min(8, z * 1.2)) }}><ZoomIn className="h-4 w-4" /></Button>
           <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => { setZoom(z => Math.max(0.2, z / 1.2)) }}><ZoomOut className="h-4 w-4" /></Button>
           <div className="h-px bg-gray-300 mx-1" />
-          <Button size="icon" variant={mode === "place-pin" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => setMode(mode === "place-pin" ? "view" : "place-pin")}>📌</Button>
+          <button
+            type="button"
+            title="Place staircase indicator"
+            className={`w-8 h-8 rounded-full shadow border text-[10px] font-black ${mode === "place-staircase" ? "bg-purple-600 text-white border-purple-700" : "bg-white/90 text-purple-700 border-purple-200 hover:bg-purple-50"}`}
+            onClick={() => setMode(mode === "place-staircase" ? "view" : "place-staircase")}
+          >
+            <Footprints className="h-4 w-4 mx-auto" />
+          </button>
+          <button
+            type="button"
+            title="Place elevator indicator"
+            className={`w-8 h-8 rounded-full shadow border text-[10px] font-black ${mode === "place-elevator" ? "bg-teal-600 text-white border-teal-700" : "bg-white/90 text-teal-700 border-teal-200 hover:bg-teal-50"}`}
+            onClick={() => setMode(mode === "place-elevator" ? "view" : "place-elevator")}
+          >
+            <ArrowUpDown className="h-4 w-4 mx-auto" />
+          </button>
           <Button size="icon" variant={mode === "draw-route" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => {
             if (mode === "draw-route") { if (activeRoutePoints.length >= 2) { const name = prompt("Name:"); if (name && onRoutesChange) onRoutesChange([...routes, { name, points: activeRoutePoints, id: Date.now() }]); } setActiveRoutePoints([]); setMode("view"); }
             else setMode("draw-route");
@@ -461,7 +523,7 @@ export function AdminMapPinsEditor({
             <Label className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 block">Pins ({pins.length})</Label>
             <div className="space-y-1.5">
               {pins.map((pin, i) => (
-                <div key={i} className={`bg-gray-50 border rounded-lg p-2 flex flex-col gap-1 ${selectedPinIdx === i ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
+                <div key={i} className={`bg-gray-50 border rounded-lg p-2 flex flex-col gap-1.5 ${selectedPinIdx === i ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
                   <div className="flex items-center justify-between">
                     <Input value={pin.name} onChange={e => { const n = [...pins]; n[i].name = e.target.value; onPinsChange(n); }} className="h-6 text-xs border-none bg-transparent p-0 font-bold" />
                     <div className="flex gap-1">
@@ -470,6 +532,29 @@ export function AdminMapPinsEditor({
                     </div>
                   </div>
                   <div className="flex gap-2 text-[9px] text-gray-400 italic"><span>Y: {pin.coordinates[0]}</span><span>X: {pin.coordinates[1]}</span></div>
+                  {pin.pinType !== "staircase" && pin.pinType !== "elevator" && <div className="flex items-center gap-2">
+                    <span className="text-[9px] font-semibold text-gray-500">Floor:</span>
+                    <select 
+                      value={pin.floor || ""} 
+                      onChange={e => { const n = [...pins]; n[i].floor = (e.target.value as any) || undefined; onPinsChange(n); }}
+                      className="h-5 text-xs px-2 py-0.5 border border-gray-300 rounded bg-white"
+                    >
+                      <option value="">None</option>
+                      <option value="GF">Ground Floor (GF)</option>
+                      <option value="1F">1st Floor (1F)</option>
+                      <option value="2F">2nd Floor (2F)</option>
+                      <option value="3F">3rd Floor (3F)</option>
+                      <option value="4F">4th Floor (4F)</option>
+                      <option value="5F">5th Floor (5F)</option>
+                      <option value="BS">Basement (BS)</option>
+                    </select>
+                    {pin.floor && <span className="ml-auto text-[10px] font-bold text-white bg-yellow-500 px-1.5 py-0.5 rounded">{pin.floor}</span>}
+                  </div>}
+                  {(pin.pinType === "staircase" || pin.pinType === "elevator") && (
+                    <div className="text-[10px] font-bold text-gray-600">
+                      {pin.pinType === "staircase" ? "Staircase indicator pin" : "Elevator indicator pin"}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

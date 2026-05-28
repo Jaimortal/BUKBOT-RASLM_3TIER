@@ -115,7 +115,7 @@ type LocationFileShape = {
       building?: string;
       floor?: string;
       coordinates?: [number, number] | number[];
-      pins?: Array<{ name?: string; coordinates?: [number, number] | number[] }>;
+      pins?: Array<{ name?: string; coordinates?: [number, number] | number[]; floor?: string; access?: string; pinType?: string }>;
       map_id?: string;
       mapId?: string;
       responses?: Record<string, any>;
@@ -182,7 +182,7 @@ export async function getLocations(): Promise<Location[]> {
           : [500, 500];
 
       const pinsRaw: any = (value as any)?.pins;
-      const pins: Array<{ name: string; coordinates: [number, number] }> = Array.isArray(pinsRaw)
+      const pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }> = Array.isArray(pinsRaw)
         ? pinsRaw
             .map((p: any, idx: number) => {
               const c: any = p?.coordinates;
@@ -190,7 +190,10 @@ export async function getLocations(): Promise<Location[]> {
                 ? [Number(c[0]), Number(c[1])]
                 : coords;
               const n = String(p?.name || "").trim() || `Pin ${idx + 1}`;
-              return { name: n, coordinates: tuple };
+              const floor = p?.floor ? String(p.floor) : undefined;
+              const access = p?.access ? String(p.access) : undefined;
+              const pinType = p?.pinType ? String(p.pinType) : undefined;
+              return { name: n, coordinates: tuple, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
             })
             .filter((p: any) => Array.isArray(p.coordinates) && p.coordinates.length === 2)
         : [];
@@ -234,7 +237,7 @@ export async function getMapLocationsList(): Promise<Array<{
   name: string;
   coordinates: [number, number];
   building: string;
-  pins: Array<{ name: string; coordinates: [number, number] }>;
+  pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
   routes: Array<{ name: string; points: [number, number][]; color?: string }>;
 }>> {
   try {
@@ -256,9 +259,12 @@ export async function getMapLocationsList(): Promise<Array<{
                 ? [Number(c[0]), Number(c[1])]
                 : null;
               if (!tuple) return null;
-              return { name: String(p?.name || "").trim() || `Pin ${idx + 1}`, coordinates: tuple };
+              const floor = p?.floor ? String(p.floor) : undefined;
+              const access = p?.access ? String(p.access) : undefined;
+              const pinType = p?.pinType ? String(p.pinType) : undefined;
+              return { name: String(p?.name || "").trim() || `Pin ${idx + 1}`, coordinates: tuple, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
             })
-            .filter(Boolean) as Array<{ name: string; coordinates: [number, number] }>
+            .filter(Boolean) as Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>
         : [];
 
       const routes = Array.isArray((value as any)?.routes)
@@ -365,7 +371,10 @@ export async function upsertLocation(location: Location): Promise<ApiResponse> {
               ? [Number(c[0]), Number(c[1])]
               : null;
             if (!coords) return null;
-            return { name, coordinates: coords };
+            const floor = p?.floor ? String(p.floor) : undefined;
+            const access = p?.access ? String(p.access) : undefined;
+            const pinType = p?.pinType ? String(p.pinType) : undefined;
+            return { name, coordinates: coords, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
           })
           .filter(Boolean)
       : (Array.isArray(existing.pins) ? existing.pins : []);

@@ -355,6 +355,9 @@ export interface TopicPin {
   name: string;
   lat: number;
   lng: number;
+  floor?: string;
+  access?: string;
+  pinType?: string;
 }
 
 export interface TopicRoute {

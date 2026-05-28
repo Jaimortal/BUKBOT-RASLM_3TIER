@@ -28,7 +28,7 @@ export interface ChatMessage {
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
-    pins?: Array<{ name: string; coordinates: { lat: number; lng: number } }>;
+    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
     routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
   };
   faqs?: import("../types/admin").FaqConfig[];
@@ -43,14 +43,14 @@ interface BackendResponse {
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
-    pins?: Array<{ name: string; coordinates: { lat: number; lng: number } }>;
+    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
     routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
   };
   mapDataList?: Array<{
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
-    pins?: Array<{ name: string; coordinates: { lat: number; lng: number } }>;
+    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
     routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
   }>;
 }
@@ -130,22 +130,41 @@ class RasaBackend {
                       ? item.pins
                         .map((p: any) => {
                           const c = p?.coordinates;
+                          const floor = p?.floor;
+                          const access = p?.access;
+                          const pinType = p?.pinType;
                           if (Array.isArray(c) && c.length === 2) {
                             return {
                               name: String(p?.name || "").trim() || "Pin",
                               coordinates: { lat: c[0], lng: c[1] },
+                              floor,
+                              access,
+                              pinType
                             };
                           }
                           if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
                             return {
                               name: String(p?.name || "").trim() || "Pin",
                               coordinates: c,
+                              floor,
+                              access,
+                              pinType
                             };
                           }
                           return null;
                         })
                         .filter(Boolean)
-                      : undefined,
+                      : (item?.floor || item?.access || item?.pinType) && coords
+                        ? [{
+                          name: item?.locationName || "Location",
+                          coordinates: Array.isArray(coords)
+                            ? { lat: coords[0], lng: coords[1] }
+                            : coords,
+                          floor: item.floor,
+                          access: item.access,
+                          pinType: item.pinType
+                        }]
+                        : undefined,
                     routes: Array.isArray(item?.routes) ? item.routes : undefined,
                   };
                 })
@@ -157,16 +176,25 @@ class RasaBackend {
                 ? r.custom.mapData.pins
                   .map((p: any) => {
                     const c = p?.coordinates;
+                    const floor = p?.floor;
+                    const access = p?.access;
+                    const pinType = p?.pinType;
                     if (Array.isArray(c) && c.length === 2) {
                       return {
                         name: String(p?.name || "").trim() || "Pin",
                         coordinates: { lat: c[0], lng: c[1] },
+                        floor,
+                        access,
+                        pinType
                       };
                     }
                     if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
                       return {
                         name: String(p?.name || "").trim() || "Pin",
                         coordinates: c,
+                        floor,
+                        access,
+                        pinType
                       };
                     }
                     return null;
@@ -178,7 +206,17 @@ class RasaBackend {
                 locationName: r.custom.mapData.locationName || "Location",
                 coordinates: r.custom.mapData.coordinates,
                 mapId: r.custom.mapData.mapId,
-                pins,
+                pins: pins ?? ((r.custom.mapData.floor || r.custom.mapData.access || r.custom.mapData.pinType) && r.custom.mapData.coordinates
+                  ? [{
+                    name: r.custom.mapData.locationName || "Location",
+                    coordinates: Array.isArray(r.custom.mapData.coordinates)
+                      ? { lat: r.custom.mapData.coordinates[0], lng: r.custom.mapData.coordinates[1] }
+                      : r.custom.mapData.coordinates,
+                    floor: r.custom.mapData.floor,
+                    access: r.custom.mapData.access,
+                    pinType: r.custom.mapData.pinType
+                  }]
+                  : undefined),
                 routes: r.custom.mapData.routes,
               };
             }

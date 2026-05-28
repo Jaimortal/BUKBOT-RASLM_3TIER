@@ -122,7 +122,7 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
   const [hasMap, setHasMap] = useState(!!topic.map);
   // Convert TopicPin[] { lat, lng } → AdminPin[] { coordinates: [y, x] }
   const [pins, setPins] = useState<AdminPin[]>(
-    (topic.pins || []).map(p => ({ name: p.name, coordinates: [p.lat ?? 500, p.lng ?? 500] as [number, number] }))
+    (topic.pins || []).map(p => ({ name: p.name, coordinates: [p.lat ?? 500, p.lng ?? 500] as [number, number], floor: (p as any).floor, access: (p as any).access, pinType: (p as any).pinType }))
   );
   const [mapRoutes, setMapRoutes] = useState<any[]>([]);
   const [deleteImageTarget, setDeleteImageTarget] = useState<number | null>(null);
@@ -135,7 +135,7 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
     setImages(topic.images || []);
     setMapCoords(topic.map ? [topic.map.lat ?? 500, topic.map.lng ?? 500] : [500, 500]);
     setHasMap(!!topic.map);
-    setPins((topic.pins || []).map(p => ({ name: p.name, coordinates: [p.lat ?? 500, p.lng ?? 500] as [number, number] })));
+    setPins((topic.pins || []).map(p => ({ name: p.name, coordinates: [p.lat ?? 500, p.lng ?? 500] as [number, number], floor: (p as any).floor, access: (p as any).access, pinType: (p as any).pinType })));
     // Load routes from topic - convert to AdminRoute format
     setMapRoutes((topic.routes || []).map((r: any, idx: number) => ({
       id: idx,
@@ -157,7 +157,14 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
         images: images.filter((u) => u.trim()),
         map: hasMap ? { lat: mapCoords[0], lng: mapCoords[1] } : null,
         // Convert AdminPin back to TopicPin format
-        pins: pins.filter(p => p.name.trim()).map(p => ({ name: p.name, lat: p.coordinates[0], lng: p.coordinates[1] })),
+        pins: pins.filter(p => p.name.trim()).map(p => ({
+          name: p.name,
+          lat: p.coordinates[0],
+          lng: p.coordinates[1],
+          ...(p.floor && { floor: p.floor }),
+          ...(p.access && { access: p.access }),
+          ...(p.pinType && { pinType: p.pinType }),
+        })),
         // Include routes - convert from AdminRoute format
         routes: mapRoutes.map(r => ({
           name: r.name,

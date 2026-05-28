@@ -23,14 +23,24 @@
           "coordinates": [
             879,
             629
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "Comlab 1",
           "coordinates": [
+            682,
+            637
+          ],
+          "floor": "3F"
+        },
+        {
+          "name": "Staircase",
+          "coordinates": [
             674,
-            645
-          ]
+            609
+          ],
+          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
@@ -120,14 +130,16 @@
           "coordinates": [
             695,
             641
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "Your are here!",
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -209,14 +221,16 @@
           "coordinates": [
             718,
             641
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -300,14 +314,16 @@
           "coordinates": [
             750,
             645
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             888,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -391,14 +407,16 @@
           "coordinates": [
             750,
             615
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -484,14 +502,16 @@
           "coordinates": [
             739,
             598
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -563,14 +583,16 @@
           "coordinates": [
             740,
             590
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             882,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -646,14 +668,16 @@
           "coordinates": [
             667,
             945
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             879,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -713,14 +737,16 @@
           "coordinates": [
             710,
             948
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             634
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -778,14 +804,16 @@
           "coordinates": [
             891,
             632
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "Comlab 10",
           "coordinates": [
             722,
             942
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -861,14 +889,16 @@
           "coordinates": [
             733,
             493
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             634
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -940,14 +970,16 @@
           "coordinates": [
             714,
             493
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             872,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -1019,14 +1051,16 @@
           "coordinates": [
             709,
             527
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -1104,14 +1138,16 @@
           "coordinates": [
             747,
             628
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             634
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -1361,14 +1397,16 @@
           "coordinates": [
             632,
             554
-          ]
+          ],
+          "floor": "1F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             878,
             632
-          ]
+          ],
+          "floor": "1F"
         }
       ],
       "imageUrls": [],
@@ -1428,14 +1466,16 @@
           "coordinates": [
             630,
             547
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             634
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -1835,14 +1875,16 @@
           "coordinates": [
             894,
             632
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "All COB Faculty Offices - Ground floor",
           "coordinates": [
             625,
             274
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -1910,14 +1952,16 @@
           "coordinates": [
             479,
             751
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             632
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -1997,14 +2041,16 @@
           "coordinates": [
             888,
             632
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "CON faculty",
           "coordinates": [
             252,
             725
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -2076,14 +2122,16 @@
           "coordinates": [
             515,
             547
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -2151,14 +2199,16 @@
           "coordinates": [
             737,
             494
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -2222,14 +2272,16 @@
           "coordinates": [
             736,
             496
-          ]
+          ],
+          "floor": "1F"
         },
         {
           "name": "You ae here!",
           "coordinates": [
             881,
             633
-          ]
+          ],
+          "floor": "1F"
         }
       ],
       "imageUrls": [],
@@ -2285,14 +2337,16 @@
           "coordinates": [
             746,
             531
-          ]
+          ],
+          "floor": "BS"
         },
         {
           "name": "You are here!",
           "coordinates": [
             882,
             630
-          ]
+          ],
+          "floor": "BS"
         }
       ],
       "imageUrls": [],
@@ -2474,14 +2528,16 @@
           "coordinates": [
             643,
             499
-          ]
+          ],
+          "floor": "1F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             632
-          ]
+          ],
+          "floor": "1F"
         }
       ],
       "imageUrls": [],
@@ -3487,28 +3543,32 @@
           "coordinates": [
             723,
             493
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "Multimedia Com lab 7 -3rd floor",
           "coordinates": [
             753,
             578
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "Multimedia Lab",
           "coordinates": [
             628,
             522
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             888,
             632
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -3698,14 +3758,16 @@
           "coordinates": [
             472,
             793
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             864,
             634
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -3785,14 +3847,16 @@
           "coordinates": [
             476,
             849
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             879,
             637
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -3872,14 +3936,16 @@
           "coordinates": [
             469,
             787
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             871,
             634
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -3963,14 +4029,16 @@
           "coordinates": [
             679,
             647
-          ]
+          ],
+          "floor": "5F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "5F"
         }
       ],
       "imageUrls": [],
@@ -4050,14 +4118,16 @@
           "coordinates": [
             731,
             636
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "CL 8 - 10",
           "coordinates": [
             689,
             944
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": []
@@ -4087,14 +4157,16 @@
           "coordinates": [
             596,
             756
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             881,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -4166,14 +4238,16 @@
           "coordinates": [
             601,
             793
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             882,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -4245,14 +4319,16 @@
           "coordinates": [
             597,
             833
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             632
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -4324,14 +4400,16 @@
           "coordinates": [
             600,
             859
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -4403,14 +4481,16 @@
           "coordinates": [
             610,
             859
-          ]
+          ],
+          "floor": "1F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             631
-          ]
+          ],
+          "floor": "1F"
         }
       ],
       "imageUrls": [],
@@ -4478,14 +4558,16 @@
           "coordinates": [
             600,
             831
-          ]
+          ],
+          "floor": "1F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "1F"
         }
       ],
       "imageUrls": [],
@@ -4549,21 +4631,24 @@
           "coordinates": [
             457,
             797
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Old COT - Classrooms",
           "coordinates": [
             594,
             795
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             879,
             631
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -4724,14 +4809,16 @@
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-01",
           "coordinates": [
             625,
             375
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -4787,14 +4874,16 @@
           "coordinates": [
             880,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-02",
           "coordinates": [
             625,
             303
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -4854,14 +4943,16 @@
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-03",
           "coordinates": [
             622,
             286
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -4921,14 +5012,16 @@
           "coordinates": [
             884,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-04",
           "coordinates": [
             599,
             265
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -4988,14 +5081,16 @@
           "coordinates": [
             877,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-05",
           "coordinates": [
             551,
             265
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -5055,14 +5150,16 @@
           "coordinates": [
             884,
             636
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-06",
           "coordinates": [
             565,
             272
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -5122,14 +5219,16 @@
           "coordinates": [
             884,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-08",
           "coordinates": [
             537,
             275
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -5189,14 +5288,16 @@
           "coordinates": [
             880,
             639
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "B-1-09",
           "coordinates": [
             534,
             272
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -5256,14 +5357,16 @@
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-10",
           "coordinates": [
             625,
             378
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5323,14 +5426,16 @@
           "coordinates": [
             885,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-07",
           "coordinates": [
             619,
             343
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5390,14 +5495,16 @@
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-06",
           "coordinates": [
             611,
             278
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5457,14 +5564,16 @@
           "coordinates": [
             878,
             633
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-05",
           "coordinates": [
             584,
             267
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5520,14 +5629,16 @@
           "coordinates": [
             885,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-04",
           "coordinates": [
             625,
             312
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5587,14 +5698,16 @@
           "coordinates": [
             887,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-03",
           "coordinates": [
             620,
             319
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5654,14 +5767,16 @@
           "coordinates": [
             880,
             631
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-02",
           "coordinates": [
             625,
             336
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5721,14 +5836,16 @@
           "coordinates": [
             882,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "B-2-01",
           "coordinates": [
             615,
             386
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -5788,14 +5905,16 @@
           "coordinates": [
             885,
             643
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-01 - 3rd floor",
           "coordinates": [
             627,
             390
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -5851,14 +5970,16 @@
           "coordinates": [
             875,
             636
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-02 - 3rd Floor",
           "coordinates": [
             636,
             344
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -5918,14 +6039,16 @@
           "coordinates": [
             892,
             636
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-03 - 3rd floor",
           "coordinates": [
             621,
             286
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -5985,14 +6108,16 @@
           "coordinates": [
             882,
             638
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-04 - 3rd floor",
           "coordinates": [
             586,
             264
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -6052,14 +6177,16 @@
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-05 - 3rd floor",
           "coordinates": [
             565,
             264
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -6119,14 +6246,16 @@
           "coordinates": [
             875,
             636
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-06 - 3rd floor",
           "coordinates": [
             558,
             267
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -6186,14 +6315,16 @@
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-07  - 3rd floor",
           "coordinates": [
             554,
             269
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -6253,14 +6384,16 @@
           "coordinates": [
             882,
             633
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "B-3-09 - 3rd floor",
           "coordinates": [
             522,
             267
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -6320,14 +6453,16 @@
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-09 - 4th floor",
           "coordinates": [
             538,
             274
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6387,14 +6522,16 @@
           "coordinates": [
             882,
             631
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-08 - 4th floor",
           "coordinates": [
             551,
             267
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6454,14 +6591,16 @@
           "coordinates": [
             880,
             631
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-07 - 4th floor",
           "coordinates": [
             560,
             271
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6521,14 +6660,16 @@
           "coordinates": [
             878,
             638
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-06 - 4th floor",
           "coordinates": [
             602,
             269
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6588,14 +6729,16 @@
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-05 - 4th floor",
           "coordinates": [
             623,
             312
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6655,14 +6798,16 @@
           "coordinates": [
             882,
             633
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-04 - 4th floor",
           "coordinates": [
             620,
             336
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6722,14 +6867,16 @@
           "coordinates": [
             875,
             633
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-03 - 4th floor",
           "coordinates": [
             628,
             355
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6785,14 +6932,16 @@
           "coordinates": [
             882,
             636
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-02 - 4th floor",
           "coordinates": [
             630,
             369
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6848,14 +6997,16 @@
           "coordinates": [
             866,
             636
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "B-4-01 - 4th floor",
           "coordinates": [
             632,
             395
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6911,14 +7062,16 @@
           "coordinates": [
             653,
             408
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "Entrance",
           "coordinates": [
             887,
             631
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -6974,14 +7127,16 @@
           "coordinates": [
             892,
             628
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "Food Tech Laboratory - C1-2-01",
           "coordinates": [
             482,
             756
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -7065,14 +7220,16 @@
           "coordinates": [
             476,
             786
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             867,
             634
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7148,14 +7305,16 @@
           "coordinates": [
             599,
             761
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             869,
             636
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7247,14 +7406,16 @@
           "coordinates": [
             890,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "language & literature department",
           "coordinates": [
             423,
             771
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7330,14 +7491,16 @@
           "coordinates": [
             425,
             787
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "Your are here!",
           "coordinates": [
             883,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -7421,28 +7584,32 @@
           "coordinates": [
             425,
             782
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             878,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Pink Building",
           "coordinates": [
             528,
             557
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Old CAS",
           "coordinates": [
             468,
             641
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7582,21 +7749,24 @@
           "coordinates": [
             890,
             631
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "College of Nursing",
           "coordinates": [
             258,
             719
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Health & Service bldg",
           "coordinates": [
             294,
             671
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7686,14 +7856,16 @@
           "coordinates": [
             296,
             661
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             866,
             634
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7765,14 +7937,16 @@
           "coordinates": [
             278,
             897
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7832,14 +8006,16 @@
           "coordinates": [
             517,
             415
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             879,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7899,14 +8075,16 @@
           "coordinates": [
             484,
             442
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -7966,14 +8144,16 @@
           "coordinates": [
             822,
             606
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             868,
             636
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8026,14 +8206,16 @@
           "coordinates": [
             577,
             632
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "routes": [
@@ -8092,14 +8274,16 @@
           "coordinates": [
             819,
             572
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             882,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8147,14 +8331,16 @@
           "coordinates": [
             823,
             819
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             881,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8201,14 +8387,16 @@
           "coordinates": [
             892,
             632
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "OVPAA",
           "coordinates": [
             820,
             746
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "map_id": "main_map",
@@ -8257,14 +8445,16 @@
           "coordinates": [
             822,
             786
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             634
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8316,14 +8506,16 @@
           "coordinates": [
             824,
             669
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             880,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8371,14 +8563,16 @@
           "coordinates": [
             829,
             614
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8430,14 +8624,16 @@
           "coordinates": [
             816,
             554
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8485,14 +8681,16 @@
           "coordinates": [
             815,
             470
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             880,
             634
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8544,14 +8742,16 @@
           "coordinates": [
             825,
             657
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             632
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -8603,14 +8803,16 @@
           "coordinates": [
             824,
             629
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             631
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -8670,14 +8872,16 @@
           "coordinates": [
             827,
             633
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -8733,14 +8937,16 @@
           "coordinates": [
             825,
             608
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -8796,14 +9002,16 @@
           "coordinates": [
             826,
             619
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -8859,14 +9067,16 @@
           "coordinates": [
             512,
             943
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Entrance",
           "coordinates": [
             892,
             636
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8922,14 +9132,16 @@
           "coordinates": [
             563,
             940
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Entance",
           "coordinates": [
             892,
             631
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -8985,14 +9197,16 @@
           "coordinates": [
             564,
             940
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Entrance",
           "coordinates": [
             882,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -9048,14 +9262,16 @@
           "coordinates": [
             870,
             638
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "HS-04",
           "coordinates": [
             558,
             947
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -9115,14 +9331,16 @@
           "coordinates": [
             581,
             940
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Entrance",
           "coordinates": [
             877,
             638
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -9178,14 +9396,16 @@
           "coordinates": [
             551,
             940
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "HS-06",
           "coordinates": [
             887,
             638
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -9241,14 +9461,16 @@
           "coordinates": [
             447,
             940
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-01",
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9308,14 +9530,16 @@
           "coordinates": [
             880,
             633
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-02",
           "coordinates": [
             489,
             940
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9375,14 +9599,16 @@
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-03",
           "coordinates": [
             502,
             936
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9442,14 +9668,16 @@
           "coordinates": [
             875,
             633
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-04",
           "coordinates": [
             539,
             943
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9505,14 +9733,16 @@
           "coordinates": [
             877,
             631
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-05",
           "coordinates": [
             573,
             945
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9572,14 +9802,16 @@
           "coordinates": [
             892,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-06",
           "coordinates": [
             577,
             940
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9639,14 +9871,16 @@
           "coordinates": [
             889,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-07",
           "coordinates": [
             706,
             945
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9706,14 +9940,16 @@
           "coordinates": [
             885,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "EMC",
           "coordinates": [
             737,
             943
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9773,14 +10009,16 @@
           "coordinates": [
             882,
             631
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "HS-2-06",
           "coordinates": [
             742,
             940
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9840,14 +10078,16 @@
           "coordinates": [
             880,
             636
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "BSO",
           "coordinates": [
             670,
             945
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -9907,14 +10147,16 @@
           "coordinates": [
             682,
             651
-          ]
+          ],
+          "floor": "1F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             634
-          ]
+          ],
+          "floor": "1F"
         }
       ],
       "imageUrls": [],
@@ -9970,14 +10212,16 @@
           "coordinates": [
             681,
             642
-          ]
+          ],
+          "floor": "1F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "1F"
         }
       ],
       "imageUrls": [],
@@ -10033,14 +10277,16 @@
           "coordinates": [
             680,
             639
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             631
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10096,14 +10342,16 @@
           "coordinates": [
             682,
             637
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10159,14 +10407,16 @@
           "coordinates": [
             684,
             628
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10222,14 +10472,16 @@
           "coordinates": [
             686,
             631
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             631
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10289,14 +10541,16 @@
           "coordinates": [
             693,
             630
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             634
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10356,14 +10610,16 @@
           "coordinates": [
             695,
             629
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             881,
             635
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10423,14 +10679,16 @@
           "coordinates": [
             710,
             630
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10490,14 +10748,16 @@
           "coordinates": [
             719,
             628
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             631
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10557,14 +10817,16 @@
           "coordinates": [
             723,
             632
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             878,
             635
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10624,14 +10886,16 @@
           "coordinates": [
             748,
             640
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10691,14 +10955,16 @@
           "coordinates": [
             709,
             525
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10758,14 +11024,16 @@
           "coordinates": [
             742,
             552
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10821,14 +11089,16 @@
           "coordinates": [
             822,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             885,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10872,14 +11142,16 @@
           "coordinates": [
             716,
             519
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -10939,14 +11211,16 @@
           "coordinates": [
             273,
             660
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             882,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11022,14 +11296,16 @@
           "coordinates": [
             720,
             630
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             631
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -11225,14 +11501,16 @@
           "coordinates": [
             630,
             390
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             881,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11297,14 +11575,16 @@
           "coordinates": [
             632,
             368
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11361,14 +11641,16 @@
           "coordinates": [
             625,
             316
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             635
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11425,14 +11707,16 @@
           "coordinates": [
             629,
             301
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             882,
             634
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11488,14 +11772,16 @@
           "coordinates": [
             802,
             939
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             874,
             632
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -11543,14 +11829,16 @@
           "coordinates": [
             854,
             534
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             881,
             634
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11598,14 +11886,16 @@
           "coordinates": [
             553,
             364
-          ]
+          ],
+          "floor": "4F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             881,
             633
-          ]
+          ],
+          "floor": "4F"
         }
       ],
       "imageUrls": [],
@@ -11681,14 +11971,16 @@
           "coordinates": [
             891,
             633
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Medical & Dental Clinic",
           "coordinates": [
             293,
             666
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11760,14 +12052,16 @@
           "coordinates": [
             279,
             647
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             633
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -11839,14 +12133,16 @@
           "coordinates": [
             457,
             833
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -11930,14 +12226,16 @@
           "coordinates": [
             287,
             663
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Your here!",
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -12088,14 +12386,16 @@
           "coordinates": [
             603,
             787
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -12159,14 +12459,16 @@
           "coordinates": [
             501,
             550
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             630
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -12260,14 +12562,16 @@
           "coordinates": [
             633,
             532
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12339,14 +12643,16 @@
           "coordinates": [
             634,
             526
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             632
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12414,14 +12720,16 @@
           "coordinates": [
             663,
             527
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             882,
             631
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12489,14 +12797,16 @@
           "coordinates": [
             680,
             529
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             887,
             633
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12572,14 +12882,16 @@
           "coordinates": [
             688,
             525
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             879,
             630
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12651,14 +12963,16 @@
           "coordinates": [
             694,
             525
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             883,
             632
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12726,14 +13040,16 @@
           "coordinates": [
             727,
             496
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12797,14 +13113,16 @@
           "coordinates": [
             738,
             612
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12876,14 +13194,16 @@
           "coordinates": [
             742,
             620
-          ]
+          ],
+          "floor": "2F"
         },
         {
           "name": "Your here!",
           "coordinates": [
             885,
             631
-          ]
+          ],
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
@@ -12951,14 +13271,16 @@
           "coordinates": [
             708,
             530
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -13018,14 +13340,16 @@
           "coordinates": [
             691,
             522
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             632
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -13093,14 +13417,16 @@
           "coordinates": [
             672,
             525
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "Your are here!",
           "coordinates": [
             886,
             633
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -13172,14 +13498,16 @@
           "coordinates": [
             666,
             519
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             886,
             632
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -13255,14 +13583,16 @@
           "coordinates": [
             640,
             523
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             880,
             631
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -13338,14 +13668,16 @@
           "coordinates": [
             629,
             528
-          ]
+          ],
+          "floor": "3F"
         },
         {
           "name": "You are here!",
           "coordinates": [
             880,
             632
-          ]
+          ],
+          "floor": "3F"
         }
       ],
       "imageUrls": [],
@@ -13492,14 +13824,16 @@
           "coordinates": [
             890,
             629
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "Diversity and inclusion unit",
           "coordinates": [
             628,
             478
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [
@@ -13565,14 +13899,16 @@
           "coordinates": [
             893,
             633
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "University Press",
           "coordinates": [
             803,
             925
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -13624,14 +13960,16 @@
           "coordinates": [
             887,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "PE faculty office",
           "coordinates": [
             209,
             839
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -13699,14 +14037,16 @@
           "coordinates": [
             891,
             634
-          ]
+          ],
+          "floor": "GF"
         },
         {
           "name": "ICTU",
           "coordinates": [
             690,
             632
-          ]
+          ],
+          "floor": "GF"
         }
       ],
       "imageUrls": [],

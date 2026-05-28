@@ -8,7 +8,7 @@ interface MapLocation {
   name: string;
   coordinates: [number, number];
   building: string;
-  pins: Array<{ name: string; coordinates: [number, number] }>;
+  pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
   routes: Array<{ name: string; points: [number, number][]; color?: string }>;
 }
 
@@ -121,7 +121,7 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
   return (
     <div className="absolute inset-0 z-40 bg-white flex flex-col">
       {/* Matched Header */}
-      <div className="bg-primary p-4 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{backgroundColor: '#001C38'}}>
+      <div className="bg-primary p-4 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{ backgroundColor: '#001C38' }}>
         <div className="flex items-center gap-4" >
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse mt-1" />
           <div className="flex flex-col leading-tight">
@@ -159,7 +159,7 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
           <div className="relative">
             <button
               onClick={() => setShowDropdown(!showDropdown)}
-              className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-4 py-2.5 rounded-xl text-sm shadow-lg border border-gray-200 transition-colors"
+              className="flex items-center gap-2 bg-white/75 backdrop-blur-md hover:bg-white/90 text-gray-800 px-4 py-2.5 rounded-xl text-sm shadow-lg border border-white/40 transition-colors"
             >
               <Building2 className="h-4 w-4 text-blue-600" />
               <span className="font-medium max-w-[140px] truncate">
@@ -169,8 +169,8 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
             </button>
 
             {showDropdown && (
-              <div className="absolute bottom-full left-0 mb-2 w-72 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50">
-                <div className="p-2 border-b border-gray-100 bg-gray-50/50">
+              <div className="absolute bottom-full left-0 mb-2 w-72 bg-white/75 backdrop-blur-md rounded-xl shadow-xl border border-white/40 overflow-hidden z-50">
+                <div className="p-2 border-b border-gray-100/50 bg-gray-50/30">
                   <div className="relative">
                     <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-gray-400" />
                     <input
@@ -179,7 +179,7 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                       placeholder="Search location..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-8 pr-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-gray-400"
+                      className="w-full pl-8 pr-3 py-1.5 text-sm bg-white/60 border border-gray-200/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-gray-400"
                     />
                   </div>
                 </div>
@@ -191,8 +191,8 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                     setShowDropdown(false);
                   }}
                   className={cn(
-                    "w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 border-b border-gray-100",
-                    !selectedLocation && "bg-blue-50 text-blue-600"
+                    "w-full text-left px-4 py-2.5 text-sm hover:bg-white/50 transition-colors flex items-center gap-2 border-b border-gray-100/50",
+                    !selectedLocation ? "bg-blue-50/60 text-blue-600" : "bg-transparent"
                   )}
                 >
                   <span className="w-2 h-2 rounded-full bg-blue-500"></span>
@@ -216,8 +216,8 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                           {/* Building header */}
                           <button
                             onClick={() => {
-                              if (buildingLocs.length === 1) {
-                                // If only one location, select it directly
+                              if (buildingLocs.length === 1 && !searchQuery.trim()) {
+                                // Only auto-select if there's exactly one location AND no active search
                                 setSelectedLocation(buildingLocs[0].name);
                                 setSelectedBuilding(building);
                                 setShowDropdown(false);
@@ -235,8 +235,8 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                             className={cn(
                               "w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center gap-2",
                               isActiveBuilding
-                                ? "bg-blue-50 text-blue-700"
-                                : "hover:bg-gray-50 text-gray-800"
+                                ? "bg-blue-50/60 text-blue-700"
+                                : "hover:bg-white/50 text-gray-800 bg-transparent"
                             )}
                           >
                             <Building2 className={cn(
@@ -244,7 +244,7 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                               isActiveBuilding ? "text-blue-500" : "text-blue-600"
                             )} />
                             <span className="font-semibold truncate flex-1">{building}</span>
-                            {buildingLocs.length > 1 && (
+                            {(buildingLocs.length > 1 || searchQuery.trim()) && (
                               <>
                                 <span className="text-[10px] text-gray-400 px-1.5 py-0.5 bg-gray-100 rounded-full">
                                   {buildingLocs.length}
@@ -257,10 +257,11 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                             )}
                           </button>
                           {/* Locations under this building */}
-                          {isExpanded && buildingLocs.length > 1 && (
-                            <div className="bg-gray-50/50">
+                          {isExpanded && (buildingLocs.length > 1 || searchQuery.trim()) && (
+                            <div className="bg-gray-50/30">
                               {buildingLocs.map((loc) => {
                                 const isActive = selectedLocation === loc.name;
+                                const floorTag = loc.pins?.find((p: any) => p.floor)?.floor;
                                 return (
                                   <button
                                     key={loc.name}
@@ -272,15 +273,20 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
                                     className={cn(
                                       "w-full text-left pl-10 pr-4 py-2 text-sm transition-colors flex items-center gap-2",
                                       isActive
-                                        ? "bg-blue-50 text-blue-700"
-                                        : "hover:bg-gray-100 text-gray-600"
+                                        ? "bg-blue-50/60 text-blue-700"
+                                        : "hover:bg-white/50 text-gray-600 bg-transparent"
                                     )}
                                   >
                                     <MapPin className={cn(
                                       "h-3 w-3 shrink-0",
                                       isActive ? "text-blue-500" : "text-gray-400"
                                     )} />
-                                    <span className="truncate">{loc.name}</span>
+                                    <span className="truncate flex-1">{loc.name}</span>
+                                    {floorTag && (
+                                      <span className="ml-auto text-[10px] font-black text-gray-900 bg-yellow-400/65 backdrop-blur-sm border border-yellow-500/50 px-1.5 py-0.5 rounded">
+                                        [{floorTag}]
+                                      </span>
+                                    )}
                                   </button>
                                 );
                               })}

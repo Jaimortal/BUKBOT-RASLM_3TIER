@@ -738,7 +738,14 @@ class ActionReplyFromJsonHelper:
                 if not name:
                     name = f"Pin {idx + 1}"
                 if coords:
-                    pins_out.append({"name": name, "coordinates": coords})
+                    pin_data = {"name": name, "coordinates": coords}
+                    if isinstance(p, dict) and p.get("floor"):
+                        pin_data["floor"] = str(p.get("floor"))
+                    if isinstance(p, dict) and p.get("access"):
+                        pin_data["access"] = str(p.get("access"))
+                    if isinstance(p, dict) and p.get("pinType"):
+                        pin_data["pinType"] = str(p.get("pinType"))
+                    pins_out.append(pin_data)
 
         routes_raw = location_info.get("routes")
         routes_out = []
@@ -762,6 +769,8 @@ class ActionReplyFromJsonHelper:
             }
             if not pins_out and location_info.get("coordinates"):
                 result["custom"]["mapData"]["coordinates"] = location_info["coordinates"]
+                if location_info.get("floor"):
+                    result["custom"]["mapData"]["floor"] = str(location_info.get("floor"))
         
         return result
     def _normalize_lab_number(self, raw_value: Any) -> Optional[str]:
@@ -912,7 +921,14 @@ class ActionReplyFromJsonHelper:
                 if not name:
                     name = f"Pin {idx + 1}"
                 if coords:
-                    pins_out.append({"name": name, "coordinates": coords})
+                    pin_data = {"name": name, "coordinates": coords}
+                    if isinstance(p, dict) and p.get("floor"):
+                        pin_data["floor"] = str(p.get("floor"))
+                    if isinstance(p, dict) and p.get("access"):
+                        pin_data["access"] = str(p.get("access"))
+                    if isinstance(p, dict) and p.get("pinType"):
+                        pin_data["pinType"] = str(p.get("pinType"))
+                    pins_out.append(pin_data)
 
         if map_id:
             if pins_out:
@@ -931,6 +947,8 @@ class ActionReplyFromJsonHelper:
                         "mapId": map_id,
                     }
                 }
+                if college_info.get("floor"):
+                    result["custom"]["mapData"]["floor"] = str(college_info.get("floor"))
         
         return result
 
@@ -1051,6 +1069,12 @@ class ActionReplyFromJsonHelper:
                         lng = p.get("lng")
                         if lat is not None and lng is not None:
                             pins_out.append({"name": name, "coordinates": [lat, lng]})
+                            if p.get("floor"):
+                                pins_out[-1]["floor"] = str(p.get("floor"))
+                            if p.get("access"):
+                                pins_out[-1]["access"] = str(p.get("access"))
+                            if p.get("pinType"):
+                                pins_out[-1]["pinType"] = str(p.get("pinType"))
             
             if pins_out:
                 map_data_payload["pins"] = pins_out
@@ -1468,10 +1492,13 @@ class ActionReplyFromJson(Action):
                                     all_map_pins.append(pin_copy)
                             elif map_data.get("coordinates"):
                                 # If no pins but has coordinates, create a pin
-                                all_map_pins.append({
+                                pin_data = {
                                     "name": str(map_data.get("locationName", location_name)),
                                     "coordinates": map_data["coordinates"]
-                                })
+                                }
+                                if map_data.get("floor"):
+                                    pin_data["floor"] = str(map_data.get("floor"))
+                                all_map_pins.append(pin_data)
                             
                             # Collect routes
                             if map_data.get("routes"):
@@ -1528,10 +1555,13 @@ class ActionReplyFromJson(Action):
                                             # Keep pin name as defined in JSON
                                             all_map_pins.append(pin_copy)
                                     elif map_data.get("coordinates"):
-                                        all_map_pins.append({
+                                        pin_data = {
                                             "name": str(map_data.get("locationName", location_name)),
                                             "coordinates": map_data["coordinates"]
-                                        })
+                                        }
+                                        if map_data.get("floor"):
+                                            pin_data["floor"] = str(map_data.get("floor"))
+                                        all_map_pins.append(pin_data)
                                     
                                     # Collect routes
                                     if map_data.get("routes"):
@@ -1631,10 +1661,13 @@ class ActionReplyFromJson(Action):
                                         pin_copy["name"] = college_prefix
                                     all_map_pins.append(pin_copy)
                             elif map_data.get("coordinates"):
-                                all_map_pins.append({
+                                pin_data = {
                                     "name": str(map_data.get("locationName", f"{college} Faculty Room")),
                                     "coordinates": map_data["coordinates"]
-                                })
+                                }
+                                if map_data.get("floor"):
+                                    pin_data["floor"] = str(map_data.get("floor"))
+                                all_map_pins.append(pin_data)
                             
                             # Collect routes
                             if map_data.get("routes"):
