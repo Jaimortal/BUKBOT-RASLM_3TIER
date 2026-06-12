@@ -63,10 +63,12 @@ export async function callRasaAPI(message: string, language?: string, sessionId?
   try {
     console.log(`[Rasa] Calling Rasa API: "${message}"`);
     
+    const sender = sessionId || "user";
+
     const response = await fetch(RASA_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sender: "user", message, language, sessionId }),
+      body: JSON.stringify({ sender, message, language, sessionId }),
     });
 
     if (!response.ok) {

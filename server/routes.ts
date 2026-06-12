@@ -5,6 +5,7 @@ import { AdminController } from "./controllers/adminController";
 import { AuthController } from "./controllers/authController";
 import { FaqController } from "./controllers/faqController";
 import { AdminBotTopicsController } from "./controllers/adminBotTopicsController";
+import { AdminKnowledgeController } from "./controllers/adminKnowledgeController";
 import { MapController } from "./controllers/mapController";
 import emailRoutes from "./routes/emailRoutes";
 import adminMigrationRoutes from "./routes/admin-migration.js";
@@ -218,6 +219,12 @@ export async function registerRoutes(
 
   // BOT TOPICS (ADMIN)
   app.get("/api/admin/bot-topics", requireAuth, AdminBotTopicsController.getTopics);
+
+  // KNOWLEDGE MANAGER (ADMIN) - structured nested JSON browser/editor
+  app.get("/api/admin/knowledge", requireAuth, AdminKnowledgeController.list);
+  app.post("/api/admin/knowledge/:file/parent", requireAuth, AdminKnowledgeController.createParent);
+  app.post("/api/admin/knowledge/:file/subtopic", requireAuth, AdminKnowledgeController.createSubtopic);
+  app.post("/api/admin/knowledge/:file/topic", requireAuth, AdminKnowledgeController.update);
 
   // SUPER INTENTS (ADMIN) - list, topics, update
   app.get("/api/admin/super-intents", requireAuth, AdminBotTopicsController.getSuperIntents);

@@ -1,0 +1,626 @@
+DAY-BY-DAY FULL CHATBOT BUILD PROMPT
+Project: BukSU Rasa Chatbot
+Architecture Target: Context-Aware Structured Retrieval + Local Retrieval Layer
+Core Rule: Keep Rasa as the NLU layer. Do not use LLM or paid AI unless explicitly approved later.
+
+Use this prompt when continuing the project:
+
+You are a senior AI software architect, Rasa expert, full-stack engineer, and debugging partner.
+
+We are continuing an existing chatbot system built with Rasa, React, Express, and PostgreSQL. The system currently has:
+
+- Rasa NLU as the main intent/entity layer
+- React frontend chat UI
+- Express backend
+- PostgreSQL-backed image/admin systems
+- JSON knowledge files in rasa/actions/Supper Saiyan/
+- responses.json and responses_location.json
+- Custom location aliases
+- Leaflet/map-style frontend map display
+- Admin panel for responses, images, maps, locations, FAQs, and super-intent topics
+- A newer action architecture using:
+  - main_router.py
+  - query_interpreter.py
+  - entity_resolver.py
+  - knowledge_router.py
+  - response_builder.py
+  - data_loader.py
+  - context_manager.py
+
+Main objective:
+Fully rebuild the chatbot architecture so it can scale to 350+ topics, 300+ locations, and 800-1000 total knowledge records without relying on fragile topic routing or global keyword scoring.
+
+Important rules:
+
+- Do not rewrite everything at once.
+- Do not remove the map system.
+- Do not remove the admin system.
+- Do not remove Rasa.
+- Do not introduce an LLM.
+- Do not introduce unnecessary libraries.
+- Keep current frontend/backend compatibility.
+- Keep admin panel as the main way admins modify responses, maps, images, and display formatting.
+- Convert old data carefully, batch by batch.
+- Test after every major day/phase.
+- If a bug appears, debug from actual logs and test cases, not guesses.
+
+
+DAY 1: FULL AUDIT + FINAL ARCHITECTURE MAP
+
+Phase 1: Project Audit
+
+Tasks:
+- Scan all Rasa action modules.
+- Scan all JSON data files:
+  - rasa/actions/responses.json
+  - rasa/actions/responses_location.json
+  - rasa/actions/Supper Saiyan/*.json
+- Classify each data file as:
+  - already structured
+  - partially structured
+  - old flat format
+  - duplicated/outdated
+  - map-sensitive
+  - admin-sensitive
+- Identify duplicated topics between responses.json and Supper Saiyan JSON files.
+- Identify files still depending on old topic-router style data.
+- Identify all map formats:
+  - mapData
+  - map + pins + routes
+  - mapRef
+  - responses_location.json location maps
+
+Output:
+- Create or update documentation explaining current data state.
+- List which files should be converted first.
+- List which files should not be touched yet.
+
+Phase 2: Architecture Confirmation
+
+Tasks:
+- Confirm final architecture name:
+  Context-Aware Structured Retrieval with Local Retrieval Layer
+- Confirm data model:
+  - subject_key
+  - subject_type
+  - subject_terms
+  - subtopics
+  - topic
+  - intent
+  - context_topic
+  - responses.en
+  - responses.ceb
+  - metadata.phrases
+  - metadata.strong_keywords only when highly specific
+  - metadata.weak_keywords only when safe
+  - images/imageUrls
+  - mapData/mapRef/map/pins/routes
+- Confirm memory behavior:
+  - explicit subject overrides memory
+  - follow-up questions can use short-lived subject memory
+  - ambiguous bare terms like "id" should trigger clarification
+  - memory must expire after a few turns
+  - new browser/session should not inherit old memory
+
+Output:
+- Update docs with final architecture rules.
+
+Testing:
+- JSON parse all files.
+- Run existing Python unit tests.
+- Run rasa data validate.
+
+
+DAY 2: DATA RESTRUCTURING BATCH 1
+
+Phase 1: Student Services + Library
+
+Tasks:
+- Fully restructure Library_info.json.
+- Fully restructure Oss_services.json.
+- Merge connected records only:
+  - library ID location + requirements + payment
+  - student ID process + requirements + payment/lost ID if related
+  - good moral process + requirements + location if available
+  - scholarship/affirmative action only if clearly related
+- Remove duplicate outdated records from responses.json only when Supper Saiyan has the better structured source.
+- Ensure student ID and library ID do not conflict.
+- Avoid generic subject_terms like "id" unless inside a clarification system.
+- Add metadata.phrases for common user questions.
+- Add mapRef where a subtopic should reuse another subtopic map.
+
+Phase 2: Router Compatibility
+
+Tasks:
+- Update knowledge_router.py only where direct disambiguation is needed.
+- Do not add many hardcoded topic rules unless necessary.
+- Use structured lookup first.
+- Use clarification when subject is ambiguous.
+
+Testing:
+- Test:
+  - where can i get library id
+  - what are the requirements
+  - how much
+  - how to get student id
+  - how to get id
+  - student id
+  - where do i get the id
+  - how much is the student id
+  - how much is the library id
+- Confirm maps display where map data exists.
+- Confirm no false library ID response for generic "id".
+
+
+DAY 3: DATA RESTRUCTURING BATCH 2
+
+Phase 1: Admissions + Enrollment
+
+Tasks:
+- Restructure Admissions_info.json.
+- Restructure Enrollment_info.json.
+- Merge connected admission records:
+  - CAT requirements
+  - CAT fees
+  - CAT schedule/deadline
+  - CAT result
+  - admission contact
+  - freshman requirements
+  - transferee requirements
+  - masters/GPAT requirements
+  - second courser requirements
+- Merge connected enrollment records:
+  - enrollment process
+  - enrollment documents
+  - late enrollment
+  - online enrollment
+  - SIAS access
+  - student fees
+- Keep admissions and enrollment separate unless the data is truly the same.
+- Add specific subject_terms and phrases.
+- Avoid global words like "apply", "requirements", "schedule" as strong keywords by themselves.
+
+Phase 2: NLU Check
+
+Tasks:
+- Add only necessary NLU examples for new purpose/entity coverage.
+- Do not create a new intent for every topic.
+- Keep broad purpose intents:
+  - ask_location
+  - ask_schedule
+  - ask_fee
+  - ask_requirement
+  - ask_process
+  - ask_general_info
+  - smalltalk
+
+Testing:
+- Test short questions:
+  - enrollment when
+  - fees?
+  - masters?
+  - requirements for CAT
+  - how to apply for admission
+  - when is admission deadline
+  - what is GPAT
+  - where to get COR
+- Run rasa train only if NLU/domain changed.
+
+
+DAY 4: DATA RESTRUCTURING BATCH 3
+
+Phase 1: Courses + Departments
+
+Tasks:
+- Restructure Courses_info.json.
+- Restructure Department_info.json.
+- Merge related course records:
+  - program overview
+  - course availability
+  - board/non-board category
+  - masters courses
+  - shifting policy
+  - internship/OJT
+  - prerequisites
+  - NSTP/ROTC/PE if needed
+- Remove duplicate program entries where possible.
+- Use subject_key per course/program.
+- Use subject_type:
+  - program
+  - college
+  - policy
+  - service
+- Ensure "masters" and "does BukSU have masters" can be answered.
+
+Phase 2: Department/College Routing
+
+Tasks:
+- Ensure college acronyms and aliases resolve:
+  - CAS
+  - COT
+  - COB
+  - CON
+  - COE
+  - CPAG
+  - LAW
+  - COA
+- Do not allow college/course terms to conflict with location lookups.
+
+Testing:
+- Test:
+  - do buksu has masters
+  - what courses are offered
+  - does buksu have IT
+  - what courses in CAS
+  - what is board course
+  - can i shift course
+  - what is prerequisite
+
+
+DAY 5: DATA RESTRUCTURING BATCH 4
+
+Phase 1: University + Administrators + Faculty/Staff
+
+Tasks:
+- Restructure University_info.json.
+- Restructure Administrators.json.
+- Restructure Departamentals_facultystaff.json.
+- Merge connected university records:
+  - about BukSU
+  - mission
+  - vision
+  - core values
+  - history
+  - seal
+  - presidents
+  - current president
+  - location
+- Merge connected administrator/faculty records by person or role.
+- Clean empty topic records.
+
+Phase 2: Person/Role Retrieval
+
+Tasks:
+- Support questions like:
+  - who is the president
+  - who is the dean of COT
+  - who is the head of BSIT
+  - what is BukSU mission
+  - what is BukSU vision
+
+Testing:
+- Confirm no conflict between "president" history and current president.
+- Confirm dean/head questions route correctly.
+
+
+DAY 6: DATA RESTRUCTURING BATCH 5
+
+Phase 1: Clinic + ICT + Dormitory + Classroom Policy
+
+Tasks:
+- Restructure Clinic_info.json.
+- Restructure Ict_info.json.
+- Restructure Dormitory_info.json.
+- Restructure Classroom_policy.json.
+- Merge connected records:
+  - clinic service + requirements + process
+  - dental consultation + requirements
+  - oral examination + requirements
+  - ICT overview + WiFi access
+  - dormitory info + male/female dorm + pros/cons
+  - classroom concerns + policy items
+
+Testing:
+- Test:
+  - how to get wifi access
+  - where is the clinic
+  - dental consultation requirements
+  - does buksu have dormitory
+  - can i eat in classroom
+  - can i use phone in class
+
+
+DAY 7: LOCAL RETRIEVAL LAYER WITHOUT LLM
+
+Phase 1: Retrieval Design
+
+Tasks:
+- Build local retrieval support without LLM.
+- Keep Rasa intent/entity as first layer.
+- Add a retrieval layer that scores knowledge records using:
+  - normalized text
+  - subject_terms
+  - metadata.phrases
+  - topic/context_topic
+  - intent purpose
+  - exact phrase bonus
+  - token overlap
+  - synonym/alias expansion where already available
+- Avoid global keyword scoring as the main method.
+- Avoid new heavy libraries unless truly needed.
+
+Preferred files:
+- retrieval_index.py
+- retrieval_scorer.py
+- retrieval_result.py if useful
+- integrate through knowledge_router.py or data_loader.py
+
+Phase 2: Soft Integration
+
+Tasks:
+- Use structured direct lookup first.
+- Use local retrieval only when:
+  - entity is missing
+  - direct lookup is uncertain
+  - user phrase is paraphrased
+  - no exact subject match exists
+- Add confidence thresholds:
+  - high confidence: answer
+  - medium confidence: ask clarification
+  - low confidence: fallback
+- Log top candidate scores for debugging.
+
+Testing:
+- Test paraphrases:
+  - tell me how could i apply for graduation application
+  - what do i need for admission test
+  - where can i process my school id
+  - do they offer masteral
+  - how can i get clearance for graduation
+- Confirm retrieval does not override explicit location requests.
+
+
+DAY 8: ADMIN KNOWLEDGE MANAGER UI
+
+Phase 1: Read-Only Knowledge Browser
+
+Tasks:
+- Add a new admin section or upgrade the Super Intents section into:
+  Knowledge Manager
+- It must show:
+  - source JSON file
+  - parent subject/topic
+  - subtopics
+  - subject_key
+  - subject_type
+  - subject_terms
+  - responses.en
+  - responses.ceb
+  - metadata.phrases
+  - images
+  - map status
+  - mapRef status
+
+Phase 2: Edit Existing Structured Data
+
+Tasks:
+- Allow admin to edit:
+  - English response
+  - Cebuano response
+  - subject_terms
+  - metadata.phrases
+  - images
+  - map/pins/routes
+  - mapRef
+- Preserve unknown JSON fields when saving.
+- Do not flatten grouped data.
+- Do not rename topic keys accidentally.
+- Validate before save.
+
+Phase 3: Safe Text Formatting
+
+Tasks:
+- Support bold text safely.
+- Preferred format:
+  - save bold as markdown: **text**
+  - render markdown bold in chat frontend
+- Avoid unsafe raw HTML rendering.
+- If existing admin editor produces <b>, convert safe tags to markdown before saving or before emitting.
+
+Testing:
+- Admin edits library ID response.
+- Admin adds image to a topic.
+- Admin adds mapRef to a subtopic.
+- Admin updates subject_terms.
+- Chatbot reflects changes after action reload or hot reload.
+
+
+DAY 9: ADMIN CREATE NEW DATA FLOW
+
+Phase 1: Create Parent Subject
+
+Tasks:
+- Admin can create a new subject group:
+  - topic
+  - subject_key
+  - subject_type
+  - subject_terms
+
+Phase 2: Create Subtopic
+
+Tasks:
+- Admin can create a new subtopic:
+  - topic
+  - intent
+  - context_topic
+  - responses.en
+  - responses.ceb
+  - metadata.phrases
+  - images
+  - map/mapRef
+
+Phase 3: Validation Warnings
+
+Tasks:
+- Warn admin if:
+  - subject_key already exists
+  - topic key already exists inside file
+  - subject_terms are too generic
+  - phrases duplicate another topic heavily
+  - mapRef points to a missing topic
+  - responses are empty
+
+Testing:
+- Add a small test topic through UI.
+- Ask chatbot about it.
+- Confirm no Rasa retrain needed for pure JSON response changes.
+
+
+DAY 10: HOT RELOAD + OPERATIONAL SAFETY
+
+Phase 1: JSON Hot Reload
+
+Tasks:
+- Make Rasa action/data loader detect file changes by modified time.
+- Reload JSON safely when admin updates data.
+- Avoid reloading on every message if not needed.
+- Log reload event clearly.
+
+Phase 2: Backup Before Save
+
+Tasks:
+- Before admin writes JSON, create timestamped backup copy.
+- Keep backups in a safe local backup folder.
+- Add rollback notes in documentation.
+
+Phase 3: Sync/Restart Guidance
+
+Tasks:
+- Document when retraining is required:
+  - NLU/domain/rules/stories changed
+- Document when only action restart or hot reload is enough:
+  - JSON response changes
+  - map changes
+  - image changes
+
+Testing:
+- Edit JSON from admin.
+- Ask chatbot without manual restart if hot reload is implemented.
+- Confirm new answer appears.
+
+
+DAY 11: FULL REGRESSION TESTING
+
+Phase 1: Automated Tests
+
+Tasks:
+- Expand unit tests for:
+  - context memory
+  - clarification
+  - retrieval fallback
+  - map payload
+  - image payload
+  - old/new data format compatibility
+  - admin save compatibility
+
+Commands:
+- python -m unittest discover -s test
+- python -m py_compile rasa/actions/*.py
+- rasa data validate --domain rasa/domain.yml --data rasa/data
+- rasa train if NLU/domain changed
+
+Phase 2: Manual Test Checklist
+
+Tasks:
+- Create a manual testing checklist for the user.
+- Include:
+  - short questions
+  - follow-up questions
+  - ambiguous questions
+  - map questions
+  - image questions
+  - Cebuano questions
+  - admin-edited questions
+
+Output:
+- Save checklist in docs.
+
+
+DAY 12: FINAL CLEANUP + DEFENSE DOCUMENTATION
+
+Phase 1: Code Cleanup
+
+Tasks:
+- Remove unused old topic router dependencies only if confirmed unused.
+- Do not delete old files unless backup exists.
+- Clean duplicate logic.
+- Keep comments short and useful.
+
+Phase 2: Architecture Documentation
+
+Tasks:
+- Update documentation:
+  - architecture overview
+  - how Rasa NLU works
+  - how structured retrieval works
+  - why no LLM is needed
+  - how context memory works
+  - how admin updater works
+  - how maps/images are attached
+  - how to add new data
+  - how to debug common problems
+
+Phase 3: Final Validation
+
+Tasks:
+- Run full validation.
+- Run frontend build if possible.
+- Run backend checks if possible.
+- Prepare final "ready for user testing" notes.
+
+
+FINAL ACCEPTANCE CRITERIA
+
+The build is considered complete when:
+
+- Rasa remains the NLU layer.
+- No LLM is required.
+- Old topic routing is no longer needed for normal answers.
+- Most or all Supper Saiyan data is structured.
+- The bot can answer paraphrased questions better using local retrieval.
+- Follow-up questions work through short-lived context memory.
+- Ambiguous questions trigger clarification instead of wrong answers.
+- Maps display for both old and new data formats.
+- Images display from admin-uploaded URLs.
+- Admin can edit structured knowledge safely.
+- Admin can add new structured data.
+- Bold text formatting works safely.
+- JSON validation passes.
+- Rasa validation passes.
+- Python tests pass.
+- User can manually test the bot and report remaining bugs.
+
+
+IMPORTANT DEBUGGING RULES
+
+When a bug is reported:
+
+1. Reproduce with the same question.
+2. Check Rasa intent/entity result if needed.
+3. Check structured lookup result.
+4. Check retrieval top candidates and scores.
+5. Check context slots.
+6. Check response payload.
+7. Check frontend map/image rendering.
+8. Fix the smallest layer responsible.
+9. Add or update a test for the bug.
+
+
+DO NOT DO
+
+- Do not replace Rasa with an LLM.
+- Do not create one intent per topic again.
+- Do not depend on generic global keywords as the main router.
+- Do not remove admin panel features.
+- Do not break map responses.
+- Do not flatten structured data during admin save.
+- Do not edit NLU/domain unless the change really needs retraining.
+- Do not migrate everything to PostgreSQL until JSON-based behavior is stable.
+
+
+STARTING COMMAND FOR TOMORROW
+
+Start with Day 1:
+
+"Continue from docs/Day-by-Day Full Chatbot Build Prompt.txt. Start Day 1 only. Audit all data files and architecture state. Do not restructure data yet until the audit is complete."
+

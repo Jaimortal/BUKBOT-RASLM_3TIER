@@ -3,6 +3,19 @@ import path from 'path';
 import { Request, Response } from 'express';
 import { promises as fsPromises } from 'fs';
 import { deleteImage } from '../db/images.js';
+import { backupJsonFile } from '../utils/jsonBackup';
+
+const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
+
+function normalizeRoutes(routes: any[]): any[] {
+  return (Array.isArray(routes) ? routes : []).map((route: any, index: number) => ({
+    name: String(route?.name || `Route ${index + 1}`),
+    points: Array.isArray(route?.points) ? route.points : [],
+    color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+    route_order: Number(route?.route_order) || index + 1,
+    route_label: String(route?.route_label || `Route ${index + 1}`),
+  }));
+}
 
 // Define the TS structures matching the frontend expectations
 export interface BotTopic {
@@ -83,6 +96,35 @@ function formatIntentDisplayName(intent: string): string {
     .trim();
 }
 
+function firstResponseText(item: any): string {
+  if (Array.isArray(item?.responses?.en)) {
+    return item.responses.en.join(" ");
+  }
+  if (Array.isArray(item?.responses?.answer?.en)) {
+    return item.responses.answer.en.join(" ");
+  }
+  if (Array.isArray(item?.responses?.answer)) {
+    return item.responses.answer.join(" ");
+  }
+  if (typeof item?.responses?.answer === "string") {
+    return item.responses.answer;
+  }
+  return "";
+}
+
+function firstPhrase(item: any, fallback: string): string {
+  const phrase = item?.metadata?.phrases?.find((value: unknown) => typeof value === "string" && value.trim());
+  return phrase ? String(phrase).trim() : fallback;
+}
+
+function buildKnowledgePayload(topicKey: string, item: any): string {
+  return firstPhrase(item, formatLabel(topicKey));
+}
+
+function buildLocationPayload(locationName: string): string {
+  return `where is ${formatLabel(locationName)}`;
+}
+
 export class AdminBotTopicsController {
 
   // -----------------------------------------------------------------------
@@ -149,7 +191,7 @@ export class AdminBotTopicsController {
         .map((t: any) => ({
           topic: t.topic,
           ui_name: t.ui_name || null,
-          displayName: t.ui_name || formatLabel(t.topic),
+          displayName: t.display_name || t.ui_name || formatLabel(t.intent || t.topic),
           responses: {
             en: Array.isArray(t.responses?.en) ? t.responses.en : [],
             ceb: Array.isArray(t.responses?.ceb) ? t.responses.ceb : [],
@@ -245,13 +287,7 @@ export class AdminBotTopicsController {
       }
 
       if (routes !== undefined) {
-        updated.routes = Array.isArray(routes) 
-          ? routes.map((r: any) => ({
-              name: String(r.name || "Route"),
-              points: Array.isArray(r.points) ? r.points : [],
-              color: String(r.color || "#dc2626"),
-            }))
-          : (existing.routes || []);
+        updated.routes = Array.isArray(routes) ? normalizeRoutes(routes) : normalizeRoutes(existing.routes || []);
       }
 
       // Clean up undefined ui_name
@@ -259,6 +295,7 @@ export class AdminBotTopicsController {
 
       data.topics[idx] = updated;
 
+      await backupJsonFile(filePath, 'super-intents');
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
 
       res.json({ success: true, message: 'Topic updated successfully', topic: updated });
@@ -291,23 +328,39 @@ export class AdminBotTopicsController {
             if (data.topics && Array.isArray(data.topics)) {
               const botTopics: BotTopic[] = [];
               for (const top of data.topics) {
-                if (top.topic) { // Ensure topicKey isn't empty
-                  const topicKey = top.topic;
-                  let preview = "";
-                  if (top.responses?.en && Array.isArray(top.responses.en)) {
-                    preview = top.responses.en.join(" ");
+                if (!top.topic) continue;
+
+                const parentKey = top.topic;
+                if (Array.isArray(top.subtopics) && top.subtopics.length > 0) {
+                  for (const sub of top.subtopics) {
+                    const subKey = sub.intent || sub.topic;
+                    if (!subKey) continue;
+                    const topicKey = `${parentKey}.${subKey}`;
+                    const labelSource = sub.display_name || sub.ui_name;
+                    const fallbackLabelSource = sub.intent || sub.topic || parentKey;
+                    botTopics.push({
+                      topicKey,
+                      payload: buildKnowledgePayload(subKey, sub),
+                      superIntent,
+                      defaultLabel: labelSource || formatLabel(fallbackLabelSource),
+                      defaultIcon: guessIcon(`${labelSource || fallbackLabelSource} ${parentKey} ${file}`),
+                      routingType: 'supper_saiyan_subtopic',
+                      previewResponse: firstResponseText(sub)
+                    });
                   }
-                  
-                  botTopics.push({
-                    topicKey: topicKey,
-                    payload: `/${superIntent}{"topic": "${topicKey}"}`,
-                    superIntent: superIntent,
-                    defaultLabel: formatLabel(topicKey),
-                    defaultIcon: guessIcon(topicKey + ' ' + file),
-                    routingType: 'supper_saiyan',
-                    previewResponse: preview
-                  });
+                  continue;
                 }
+
+                const topicKey = parentKey;
+                botTopics.push({
+                  topicKey,
+                  payload: buildKnowledgePayload(topicKey, top),
+                  superIntent,
+                  defaultLabel: top.display_name || top.ui_name || formatLabel(topicKey),
+                  defaultIcon: guessIcon((top.display_name || top.ui_name || topicKey) + ' ' + file),
+                  routingType: 'supper_saiyan',
+                  previewResponse: firstResponseText(top)
+                });
               }
               
               if (botTopics.length > 0) {
@@ -341,8 +394,8 @@ export class AdminBotTopicsController {
               }
               locTopics.push({
                 topicKey: key,
-                payload: `/ask_locations{"location_name": "${key}"}`,
-                superIntent: 'ask_locations',
+                payload: buildLocationPayload(key),
+                superIntent: 'ask_location',
                 defaultLabel: formatLabel(key),
                 defaultIcon: guessIcon(key + ' location map building'),
                 routingType: 'location',
@@ -381,7 +434,7 @@ export class AdminBotTopicsController {
                 }
                 resTopics.push({
                   topicKey: item.intent,
-                  payload: `/${item.intent}`,
+                  payload: formatLabel(item.intent),
                   superIntent: item.intent,
                   defaultLabel: formatLabel(item.intent),
                   defaultIcon: guessIcon(item.intent + ' ' + (item.category || '')),

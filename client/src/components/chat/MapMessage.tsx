@@ -22,6 +22,7 @@ L.Icon.Default.mergeOptions({
 
 type CoordArray = [number, number];
 type CoordObject = { lat: number; lng: number } | { latitude?: number; longitude?: number } | { x?: number; y?: number };
+type RoutePayload = { name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string };
 
 interface MapMessageProps {
   locationName: string;
@@ -32,7 +33,7 @@ interface MapMessageProps {
   // fullscreen props
   isFullscreen?: boolean;
   onToggleFullscreen?: () => void;
-  routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
+  routes?: RoutePayload[];
 }
 
 const DefaultBounds: L.LatLngBoundsExpression = [
@@ -87,37 +88,54 @@ function useMapZoom() {
 }
 
 // Component that renders route with zoom-based styling
-function RouteWithZoom({ route }: { route: { points: CoordArray[]; color?: string; name?: string } }) {
+const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
+
+function RouteWithZoom({ route, index }: { route: { points: CoordArray[]; color?: string; name?: string; route_label?: string; route_order?: number }; index: number }) {
   const zoom = useMapZoom();
   const isZoomedOut = zoom < 0;
+  const routeColor = route.color || ROUTE_COLORS[index % ROUTE_COLORS.length];
 
-  // Thinner weight and faster animation when zoomed out
-  const weight = isZoomedOut ? 3 : 6;
-  const dashArray = isZoomedOut ? "6, 6" : "8, 8";
+  // Mobile-friendly route style: a paper-thin route over a subtle same-color glow.
+  const weight = isZoomedOut ? 1.4 : 2.2;
+  const glowWeight = weight + 6.2;
+  const dashArray = isZoomedOut ? "5, 7" : "7, 9";
   const animationDuration = isZoomedOut ? "0.5s" : "1s";
 
   return (
-    <Polyline
-      positions={route.points}
-      pathOptions={{
-        color: route.color || "#dc2626",
-        weight,
-        opacity: 1,
-        dashArray,
-        lineJoin: "round",
-        lineCap: "round",
-      }}
-      eventHandlers={{
-        add: (e) => {
-          const path = e.target.getElement();
-          if (path) {
-            path.classList.add('animated-route');
-            path.style.strokeDasharray = dashArray;
-            path.style.animation = `marchingAnts ${animationDuration} linear infinite`;
+    <>
+      <Polyline
+        positions={route.points}
+        pathOptions={{
+          color: routeColor,
+          weight: glowWeight,
+          opacity: 0.70,
+          lineJoin: "round",
+          lineCap: "round",
+        }}
+        interactive={false}
+      />
+      <Polyline
+        positions={route.points}
+        pathOptions={{
+          color: routeColor,
+          weight,
+          opacity: 0.98,
+          dashArray,
+          lineJoin: "round",
+          lineCap: "round",
+        }}
+        eventHandlers={{
+          add: (e) => {
+            const path = e.target.getElement();
+            if (path) {
+              path.classList.add('animated-route');
+              path.style.strokeDasharray = dashArray;
+              path.style.animation = `marchingAnts ${animationDuration} linear infinite`;
+            }
           }
-        }
-      }}
-    />
+        }}
+      />
+    </>
   );
 }
 
@@ -175,17 +193,17 @@ function AnimatedRouteDot({ route, speed = 3000 }: { route: { points: CoordArray
       className: "",
       html: `
         <div class="traveling-dot" style="
-          width: 12px;
-          height: 12px;
+          width: 9px;
+          height: 9px;
           background: ${route.color || "#dc2626"};
           border-radius: 50%;
-          border: 2px solid white;
-          box-shadow: 0 0 8px ${route.color || "#dc2626"}, 0 0 16px ${route.color || "#dc2626"};
+          border: 1.5px solid white;
+          box-shadow: 0 0 5px ${route.color || "#dc2626"}, 0 0 10px ${route.color || "#dc2626"};
           animation: dotPulse 1s ease-in-out infinite;
         "></div>
       `,
-      iconSize: [12, 12],
-      iconAnchor: [6, 6],
+      iconSize: [9, 9],
+      iconAnchor: [4.5, 4.5],
     }), [route.color]);
 
   return <Marker position={position} icon={dotIcon} zIndexOffset={1000} />;
@@ -278,14 +296,20 @@ export default function MapMessage({
     if (!Array.isArray(routes)) return [];
 
     const offsetX = 4; // Small shift to the right
-    const processed = routes.map(r => {
+    const processed = routes.map((r, index) => {
       const validPoints = (r.points || [])
         .map(p => normalizeToTuple(p, maxClamp))
         .filter((p): p is CoordArray => !!p && p.length === 2)
         // Flip vertically and shift right slightly
         .map(p => [imageHeight - p[0], p[1] + offsetX] as CoordArray);
 
-      return { ...r, points: validPoints };
+      return {
+        ...r,
+        points: validPoints,
+        color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+        route_order: r.route_order || index + 1,
+        route_label: r.route_label || `Route ${index + 1}`,
+      };
     }).filter(r => r.points.length >= 2);
 
     return processed;
@@ -436,6 +460,19 @@ export default function MapMessage({
           {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
         </button>
       )}
+      {isFullscreen && normalizedRoutes.length > 0 && (
+        <div className="absolute top-12 right-2 z-[1000] max-w-[180px] rounded-lg border border-white/50 bg-white/85 p-2 text-xs text-slate-800 shadow-md backdrop-blur">
+          <div className="mb-1 font-bold">Routes</div>
+          <div className="space-y-1">
+            {normalizedRoutes.map((route, index) => (
+              <div key={`legend-${index}`} className="flex items-center gap-2">
+                <span className="h-2 w-6 rounded-full shadow-sm" style={{ backgroundColor: route.color || ROUTE_COLORS[index % ROUTE_COLORS.length] }} />
+                <span className="truncate">{route.route_label || `Route ${index + 1}`}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       <style>{`
         @keyframes marchingAnts {
           from { stroke-dashoffset: 0; }
@@ -469,7 +506,7 @@ export default function MapMessage({
         <ImageOverlay url={activeMapUrl} bounds={imageBounds} />
 
         {normalizedRoutes.map((route, idx) => (
-          <RouteWithZoom key={`route-${idx}`} route={route} />
+          <RouteWithZoom key={`route-${idx}`} route={route} index={idx} />
         ))}
         {normalizedRoutes.map((route, idx) => (
           <AnimatedRouteDot key={`dot-${idx}`} route={route} speed={3000} />

@@ -101,7 +101,9 @@
               634
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -192,7 +194,9 @@
               637
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -283,7 +287,9 @@
               638
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -376,7 +382,9 @@
               645
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -473,7 +481,9 @@
               615
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -552,7 +562,9 @@
               594
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -637,7 +649,9 @@
               589
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -706,7 +720,9 @@
               945
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -775,7 +791,9 @@
               948
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -858,7 +876,9 @@
               942
             ]
           ],
-          "color": "#16a34a"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -939,7 +959,9 @@
               493
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1024,7 +1046,9 @@
               493
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1109,7 +1133,9 @@
               527
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1188,7 +1214,9 @@
               628
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1271,7 +1299,9 @@
               340
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1370,7 +1400,9 @@
               259
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1439,7 +1471,9 @@
               554
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1520,7 +1554,9 @@
               547
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1599,7 +1635,9 @@
               323
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1686,7 +1724,9 @@
               854
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1757,7 +1797,9 @@
               498
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1848,7 +1890,9 @@
               265
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -1925,7 +1969,9 @@
               273
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2014,7 +2060,9 @@
               751
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2095,7 +2143,9 @@
               725
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2172,7 +2222,9 @@
               547
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2245,7 +2297,9 @@
               494
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2310,7 +2364,9 @@
               496
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2379,7 +2435,9 @@
               531
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2438,7 +2496,9 @@
               937
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2501,7 +2561,9 @@
               559
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2570,7 +2632,9 @@
               499
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2673,7 +2737,9 @@
               397
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -2989,7 +3055,9 @@
               392
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -3060,7 +3128,9 @@
               502
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -3155,7 +3225,9 @@
               666
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -3366,7 +3438,9 @@
               653
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -3517,7 +3591,9 @@
               121
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -3609,7 +3685,9 @@
               522
             ]
           ],
-          "color": "#10b981"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         },
         {
           "name": "You are here! to Multimedia Com lab 7 -3rd floor",
@@ -3647,7 +3725,9 @@
               578
             ]
           ],
-          "color": "#10b981"
+          "color": "#ffea00",
+          "route_order": 2,
+          "route_label": "Route 2"
         },
         {
           "name": "You are here! to Audio Lab - 3rd floor",
@@ -3689,7 +3769,9 @@
               493
             ]
           ],
-          "color": "#2563eb"
+          "color": "#00b0ff",
+          "route_order": 3,
+          "route_label": "Route 3"
         }
       ]
     },
@@ -3820,7 +3902,9 @@
               793
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -3909,7 +3993,9 @@
               849
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4002,7 +4088,9 @@
               787
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4091,7 +4179,9 @@
               646
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4211,7 +4301,9 @@
               756
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4292,7 +4384,9 @@
               793
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4373,7 +4467,9 @@
               833
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4454,7 +4550,9 @@
               859
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4531,7 +4629,9 @@
               859
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4604,7 +4704,9 @@
               831
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4681,7 +4783,9 @@
               795
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         },
         {
           "name": "You are here! to New COT - Where Faculty room Dean office located",
@@ -4719,7 +4823,9 @@
               797
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ffea00",
+          "route_order": 2,
+          "route_label": "Route 2"
         }
       ]
     },
@@ -4782,7 +4888,9 @@
               415
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4847,7 +4955,9 @@
               375
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4916,7 +5026,9 @@
               308
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -4985,7 +5097,9 @@
               286
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5054,7 +5168,9 @@
               265
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5123,7 +5239,9 @@
               265
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5192,7 +5310,9 @@
               272
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5261,7 +5381,9 @@
               275
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5330,7 +5452,9 @@
               272
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5399,7 +5523,9 @@
               378
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5468,7 +5594,9 @@
               343
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5537,7 +5665,9 @@
               278
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5602,7 +5732,9 @@
               271
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5671,7 +5803,9 @@
               312
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5740,7 +5874,9 @@
               319
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5809,7 +5945,9 @@
               336
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5878,7 +6016,9 @@
               386
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -5943,7 +6083,9 @@
               390
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6012,7 +6154,9 @@
               345
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6081,7 +6225,9 @@
               286
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6150,7 +6296,9 @@
               264
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6219,7 +6367,9 @@
               264
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6288,7 +6438,9 @@
               267
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6357,7 +6509,9 @@
               269
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6426,7 +6580,9 @@
               267
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6495,7 +6651,9 @@
               274
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6564,7 +6722,9 @@
               267
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6633,7 +6793,9 @@
               271
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6702,7 +6864,9 @@
               269
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6771,7 +6935,9 @@
               312
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6840,7 +7006,9 @@
               336
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6905,7 +7073,9 @@
               355
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -6970,7 +7140,9 @@
               369
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7035,7 +7207,9 @@
               395
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7100,7 +7274,9 @@
               408
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7193,7 +7369,9 @@
               756
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7278,7 +7456,9 @@
               786
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7351,7 +7531,9 @@
               761
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7464,7 +7646,9 @@
               771
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7557,7 +7741,9 @@
               787
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7654,7 +7840,9 @@
               782
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         },
         {
           "name": "You are here! to Pink Building",
@@ -7688,7 +7876,9 @@
               557
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ffea00",
+          "route_order": 2,
+          "route_label": "Route 2"
         },
         {
           "name": "You are here! to Old CAS",
@@ -7722,7 +7912,9 @@
               641
             ]
           ],
-          "color": "#dc2626"
+          "color": "#00b0ff",
+          "route_order": 3,
+          "route_label": "Route 3"
         }
       ]
     },
@@ -7803,7 +7995,9 @@
               671
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         },
         {
           "name": "Health & Service bldg to College of Nursing",
@@ -7829,7 +8023,9 @@
               719
             ]
           ],
-          "color": "#16a34a"
+          "color": "#ffea00",
+          "route_order": 2,
+          "route_label": "Route 2"
         }
       ]
     },
@@ -7910,7 +8106,9 @@
               661
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -7979,7 +8177,9 @@
               897
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8048,7 +8248,9 @@
               415
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8117,7 +8319,9 @@
               442
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8178,7 +8382,9 @@
               606
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8247,7 +8453,9 @@
               632
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8304,7 +8512,9 @@
               572
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8361,7 +8571,9 @@
               819
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8418,7 +8630,9 @@
               746
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8479,7 +8693,9 @@
               786
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8536,7 +8752,9 @@
               669
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8597,7 +8815,9 @@
               614
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8654,7 +8874,9 @@
               554
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8715,7 +8937,9 @@
               476
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8776,7 +9000,9 @@
               657
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8845,7 +9071,9 @@
               631
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8910,7 +9138,9 @@
               633
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -8975,7 +9205,9 @@
               612
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9040,7 +9272,9 @@
               619
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9105,7 +9339,9 @@
               636
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9170,7 +9406,9 @@
               631
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9235,7 +9473,9 @@
               633
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9304,7 +9544,9 @@
               936
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9369,7 +9611,9 @@
               638
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9434,7 +9678,9 @@
               940
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9503,7 +9749,9 @@
               940
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9572,7 +9820,9 @@
               940
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9641,7 +9891,9 @@
               936
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9706,7 +9958,9 @@
               943
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9775,7 +10029,9 @@
               945
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9844,7 +10100,9 @@
               940
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9913,7 +10171,9 @@
               940
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -9982,7 +10242,9 @@
               943
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10051,7 +10313,9 @@
               940
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10120,7 +10384,9 @@
               945
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10185,7 +10451,9 @@
               651
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10250,7 +10518,9 @@
               642
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10315,7 +10585,9 @@
               639
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10380,7 +10652,9 @@
               637
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10445,7 +10719,9 @@
               628
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10514,7 +10790,9 @@
               631
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10583,7 +10861,9 @@
               630
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10652,7 +10932,9 @@
               629
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10721,7 +11003,9 @@
               630
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10790,7 +11074,9 @@
               628
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10859,7 +11145,9 @@
               632
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10928,7 +11216,9 @@
               640
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -10997,7 +11287,9 @@
               525
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11062,7 +11354,9 @@
               552
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11115,7 +11409,9 @@
               634
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11184,7 +11480,9 @@
               519
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11269,7 +11567,9 @@
               660
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11346,7 +11646,9 @@
               629
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11412,7 +11714,9 @@
               627
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11474,7 +11778,9 @@
               501
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11547,7 +11853,9 @@
               390
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11613,7 +11921,9 @@
               368
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11679,7 +11989,9 @@
               316
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11745,7 +12057,9 @@
               301
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11802,7 +12116,9 @@
               939
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11859,7 +12175,9 @@
               534
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -11944,7 +12262,9 @@
               365
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12025,7 +12345,9 @@
               666
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12106,7 +12428,9 @@
               647
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12199,7 +12523,9 @@
               834
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12280,7 +12606,9 @@
               663
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12359,7 +12687,9 @@
               385
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12432,7 +12762,9 @@
               787
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12509,7 +12841,9 @@
               550
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12616,7 +12950,9 @@
               532
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12693,7 +13029,9 @@
               526
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12770,7 +13108,9 @@
               527
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12855,7 +13195,9 @@
               529
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -12936,7 +13278,9 @@
               525
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13013,7 +13357,9 @@
               525
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13086,7 +13432,9 @@
               496
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13167,7 +13515,9 @@
               612
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13244,7 +13594,9 @@
               617
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13313,7 +13665,9 @@
               530
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13390,7 +13744,9 @@
               522
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13471,7 +13827,9 @@
               525
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13556,7 +13914,9 @@
               519
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13641,7 +14001,9 @@
               523
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13726,7 +14088,9 @@
               528
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13797,7 +14161,9 @@
               392
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13872,7 +14238,9 @@
               478
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -13933,7 +14301,9 @@
               925
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -14010,7 +14380,9 @@
               839
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     },
@@ -14099,7 +14471,9 @@
               632
             ]
           ],
-          "color": "#dc2626"
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
         }
       ]
     }

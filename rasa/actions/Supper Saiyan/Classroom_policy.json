@@ -6,62 +6,142 @@
   ],
   "topics": [
     {
-      "topic": "phone_use_in_class",
-      "responses": {
-        "en": [
-          "The use of mobile phones during class depends on the classroom rules set by the instructor."
-        ],
-        "ceb": [
-          "Ang paggamit sa cellphone sulod sa klase depende sa classroom rules nga gi-set sa instructor."
-        ]
-      }
-    },
-    {
-      "topic": "class_concerns",
-      "responses": {
-        "en": [
-          "For class-related concerns, you should talk to your instructor first."
-        ],
-        "ceb": [
-          "Para sa mga concern sa klase, makigstorya una sa imong instructor."
-        ]
-      }
-    },
-    {
-      "topic": "eating_in_classroom",
-      "responses": {
-        "en": [
-          "Eating inside classrooms depends on the rules set by the instructor."
-        ],
-        "ceb": [
-          "Ang pagkaon sulod sa classroom depende sa rules sa instructor."
-        ]
-      }
-    },
-    {
-      "topic": "submit_assignments_online",
-      "responses": {
-        "en": [
-          "Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:",
-          "<b>1</b>. Open the specific subject with the pending assignment.",
-          "",
-          "<b>2</b>. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'",
-          "",
-          "<b>3</b>. Select the assignment, attach your file, and click 'Turn in.",
-          "",
-          "<b>4</b>. Once the status changes to 'Turned in,' your submission is complete."
-        ],
-        "ceb": [
-          "Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:",
-          "<b>1</b>. Ablihi ang specific nga subject nga naay pending nga assignment.",
-          "",
-          "<b>2</b>. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.",
-          "",
-          "<b>3</b>. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.",
-          "",
-          "<b>4</b>. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission."
-        ]
-      }
+      "topic": "classroom_policies",
+      "subject_key": "classroom_policies",
+      "subject_type": "policy",
+      "subject_terms": [
+        "classroom policy",
+        "class rules",
+        "phone in class",
+        "eating in classroom",
+        "class concerns",
+        "online assignments"
+      ],
+      "subtopics": [
+        {
+          "topic": "phone_use_in_class",
+          "responses": {
+            "en": [
+              "The use of mobile phones during class depends on the classroom rules set by the instructor."
+            ],
+            "ceb": [
+              "Ang paggamit sa cellphone sulod sa klase depende sa classroom rules nga gi-set sa instructor."
+            ]
+          },
+          "intent": "phone_use_in_class",
+          "context_topic": "policy",
+          "metadata": {
+            "phrases": [
+              "can i use phone in class",
+              "phone use in class"
+            ]
+          },
+          "subject_key": "classroom_phone_policy",
+          "subject_type": "policy",
+          "subject_terms": [
+            "phone in class",
+            "mobile phone in class",
+            "cellphone in class"
+          ],
+          "display_name": "Phone Use In Class"
+        },
+        {
+          "topic": "class_concerns",
+          "responses": {
+            "en": [
+              "For class-related concerns, you should talk to your instructor first."
+            ],
+            "ceb": [
+              "Para sa mga concern sa klase, makigstorya una sa imong instructor."
+            ]
+          },
+          "intent": "class_concerns",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "class concerns",
+              "who to talk to about class concerns"
+            ]
+          },
+          "subject_key": "class_concerns",
+          "subject_type": "policy",
+          "subject_terms": [
+            "class concerns",
+            "class concern",
+            "instructor concern"
+          ],
+          "display_name": "Class Concerns"
+        },
+        {
+          "topic": "eating_in_classroom",
+          "responses": {
+            "en": [
+              "Eating inside classrooms depends on the rules set by the instructor."
+            ],
+            "ceb": [
+              "Ang pagkaon sulod sa classroom depende sa rules sa instructor."
+            ]
+          },
+          "intent": "eating_in_classroom",
+          "context_topic": "policy",
+          "metadata": {
+            "phrases": [
+              "can i eat in classroom",
+              "eating in classroom"
+            ]
+          },
+          "subject_key": "classroom_food_policy",
+          "subject_type": "policy",
+          "subject_terms": [
+            "eating in classroom",
+            "eat in classroom",
+            "food in class"
+          ],
+          "display_name": "Eating In Classroom"
+        },
+        {
+          "topic": "submit_assignments_online",
+          "responses": {
+            "en": [
+              "Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:",
+              "<b>1</b>. Open the specific subject with the pending assignment.",
+              "",
+              "<b>2</b>. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'",
+              "",
+              "<b>3</b>. Select the assignment, attach your file, and click 'Turn in.",
+              "",
+              "<b>4</b>. Once the status changes to 'Turned in,' your submission is complete."
+            ],
+            "ceb": [
+              "Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:",
+              "<b>1</b>. Ablihi ang specific nga subject nga naay pending nga assignment.",
+              "",
+              "<b>2</b>. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.",
+              "",
+              "<b>3</b>. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.",
+              "",
+              "<b>4</b>. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission."
+            ]
+          },
+          "intent": "submit_assignments_online",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "submit assignments online",
+              "can i submit assignments online"
+            ]
+          },
+          "subject_key": "online_assignment_submission",
+          "subject_type": "policy",
+          "subject_terms": [
+            "submit assignments online",
+            "google classroom assignment",
+            "online assignment"
+          ],
+          "display_name": "Submit Assignments Online"
+        }
+      ],
+      "display_name": "Classroom Policies"
     }
   ]
 }

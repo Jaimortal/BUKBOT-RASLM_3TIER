@@ -6,43 +6,129 @@
   ],
   "topics": [
     {
-      "topic": "about_ict",
-      "responses": {
-        "en": [
-          "The Information & Communications Technology Services Unit (ICT-SU) of Bukidnon State University. It handles the technical aspect of university processes involving information systems, network, technical services, and web development. ICT-SU is also responsible for maintaining all computers in the computer laboratories, and ensures that any issues or damages in the labs are addressed promptly. You may also approach them for technical assistance regarding computer facilities."
-        ],
-        "ceb": [
-          "Ang Information & Communications Technology Services Unit (ICT-SU) sa Bukidnon State University. Mao sila ang ga-atiman sa teknikal nga bahin sa mga proseso sa unibersidad lakip ang information systems, network, technical services, ug web development. Sila usab ang ga-mentinar sa mga computer sulod sa computer laboratory, ug kung naay mga posibleng damage sa mga computers, sila usab ang ga-ayo niini. Pwede ka mo-doul sa ila alang sa tabang sa technical nga aspeto sa computer facilities."
-        ]
-      }
-    },
-    {
-      "topic": "get_wifi_access",
-      "responses": {
-        "en": [
-          "Heres how you could get any wifi connection that ICT could offer to you.",
-          "Go to <b>Finance Building 3rd floor</b>.",
-          "In front of Audio laboratory you could See ICT office",
-          "You can see all of those numbers computer laboratory? if you see Comlab 6 Computer Laboratory 6, then you sould see the ICT office which is located on the right side of comlab 6 - Computer Laboratory 6"
-        ],
-        "ceb": [
-          "Ani ang paagi aron makakuha ka og bisan unsang wifi connection nga gi-offer sa ICT.",
-          "Adto sa ikatulong andana (3rd floor) sa Finance Building.",
-          "Atubangan sa Audio Laboratory, makit-an nimo ang ICT office.",
-          "Makita nimo ang tanan nga numero sa mga computer laboratory? Kung makita nimo ang ComLab 6 (Computer Laboratory 6), dapat makita nimo ang ICT office nga nahimutang sa tuo nga bahin sa ComLab 6."
-        ]
-      }
-    },
-    {
-      "topic": "ict_mission",
-      "responses": {
-        "en": [
-          "To provide reliable and secure ICT infrastructure and services framework enable for the academic community to exploit innovative information technologies that will support instruction, research, extension and production"
-        ],
-        "ceb": [
-          "To provide reliable and secure ICT infrastructure and services framework enable for the academic community to exploit innovative information technologies that will support instruction, research, extension and production"
-        ]
-      }
+      "topic": "ict_services",
+      "subject_key": "ict_services",
+      "subject_type": "service",
+      "subject_terms": [
+        "ict",
+        "ict services",
+        "information communications technology",
+        "wifi access",
+        "campus wifi",
+        "internet access"
+      ],
+      "subtopics": [
+        {
+          "topic": "about_ict",
+          "responses": {
+            "en": [
+              "The Information & Communications Technology Services Unit (ICT-SU) of Bukidnon State University. It handles the technical aspect of university processes involving information systems, network, technical services, and web development. ICT-SU is also responsible for maintaining all computers in the computer laboratories, and ensures that any issues or damages in the labs are addressed promptly. You may also approach them for technical assistance regarding computer facilities."
+            ],
+            "ceb": [
+              "Ang Information & Communications Technology Services Unit (ICT-SU) sa Bukidnon State University. Mao sila ang ga-atiman sa teknikal nga bahin sa mga proseso sa unibersidad lakip ang information systems, network, technical services, ug web development. Sila usab ang ga-mentinar sa mga computer sulod sa computer laboratory, ug kung naay mga posibleng damage sa mga computers, sila usab ang ga-ayo niini. Pwede ka mo-doul sa ila alang sa tabang sa technical nga aspeto sa computer facilities."
+            ]
+          },
+          "intent": "about_ict",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "about ict",
+              "what is ict",
+              "about ict services"
+            ]
+          },
+          "subject_key": "ict_services",
+          "subject_type": "service",
+          "subject_terms": [
+            "ict",
+            "ict services",
+            "ictsu",
+            "ict su",
+            "information communications technology",
+            "wifi access",
+            "campus wifi",
+            "internet access"
+          ],
+          "display_name": "About ICT"
+        },
+        {
+          "topic": "get_wifi_access",
+          "responses": {
+            "en": [
+              "Heres how you could get any wifi connection that ICT could offer to you.",
+              "Go to <b>Finance Building 3rd floor</b>.",
+              "In front of Audio laboratory you could See ICT office",
+              "You can see all of those numbers computer laboratory? if you see Comlab 6 Computer Laboratory 6, then you sould see the ICT office which is located on the right side of comlab 6 - Computer Laboratory 6"
+            ],
+            "ceb": [
+              "Ani ang paagi aron makakuha ka og bisan unsang wifi connection nga gi-offer sa ICT.",
+              "Adto sa ikatulong andana (3rd floor) sa Finance Building.",
+              "Atubangan sa Audio Laboratory, makit-an nimo ang ICT office.",
+              "Makita nimo ang tanan nga numero sa mga computer laboratory? Kung makita nimo ang ComLab 6 (Computer Laboratory 6), dapat makita nimo ang ICT office nga nahimutang sa tuo nga bahin sa ComLab 6."
+            ]
+          },
+          "intent": "get_wifi_access",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "get wifi access",
+              "how to get wifi access",
+              "campus wifi access",
+              "how to connect to wifi"
+            ]
+          },
+          "mapData": {
+            "mapId": "main_map",
+            "coordinates": [
+              750,
+              581
+            ],
+            "locationName": "Heres how you could get any wifi connection that ICT could offer to you."
+          },
+          "subject_key": "campus_wifi_access",
+          "subject_type": "service",
+          "subject_terms": [
+            "wifi access",
+            "campus wifi",
+            "internet access",
+            "ict wifi"
+          ],
+          "display_name": "Get Wi-Fi Access"
+        },
+        {
+          "topic": "ict_mission",
+          "responses": {
+            "en": [
+              "To provide reliable and secure ICT infrastructure and services framework enable for the academic community to exploit innovative information technologies that will support instruction, research, extension and production"
+            ],
+            "ceb": [
+              "To provide reliable and secure ICT infrastructure and services framework enable for the academic community to exploit innovative information technologies that will support instruction, research, extension and production"
+            ]
+          },
+          "intent": "ict_mission",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "ict mission",
+              "mission of ict services"
+            ]
+          },
+          "subject_key": "ict_services",
+          "subject_type": "service",
+          "subject_terms": [
+            "ict",
+            "ict services",
+            "ictsu",
+            "ict su",
+            "information communications technology",
+            "wifi access",
+            "campus wifi",
+            "internet access"
+          ],
+          "display_name": "ICT Mission"
+        }
+      ],
+      "display_name": "ICT Services"
     }
   ]
 }

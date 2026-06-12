@@ -96,10 +96,10 @@ LOCATION_ALIASES = {
     "airport": "Finance Building",
 
     # === CPAG Building ===
+    "cpag": "CPAG building",
     "cpag building": "CPAG building",
-    "cpag building": "CPAG Building",
-    "building sa cpag": "CPAG Building",
-    "building cpag": "CPAG Building",
+    "building sa cpag": "CPAG building",
+    "building cpag": "CPAG building",
 
     # === COB Accreditation Room ===
     "cob accreditation room": "COB Accreditation Room",
@@ -156,9 +156,9 @@ LOCATION_ALIASES = {
     
 
     # === Buksu Clinic (general) ===
-    "buksu clinic": "Buksu Clinic",
-    "clinic": "Buksu Clinic",
-    "bukidnon state univeristy clinic": "Buksu Clinic",
+    "buksu clinic": "Medical clinic",
+    "clinic": "Medical clinic",
+    "bukidnon state univeristy clinic": "Medical clinic",
 
     # === Dental Clinic ===
     "dental clinic": "Dental Clinic",
@@ -312,34 +312,34 @@ LOCATION_ALIASES = {
     "nursing faculty": "BSN Faculty Room",
     
     # === CAS Dean's Office ===
-    "cas dean's office": "CAS Dean's Office",
-    "cas deans office": "CAS Dean's Office",
-    "college of arts and sciences deans office": "CAS Dean's Office",
-    "college of arts and sciences dean office": "CAS Dean's Office",
-    "college of arts and sciences office of the dean": "CAS Dean's Office",
-    "cas office of dean's": "CAS Dean's Office",
-    "cas office of the dean's": "CAS Dean's Office",
-    "cas office of deans": "CAS Dean's Office",
-    "cas office of the deans": "CAS Dean's Office",
-    "cas dean office": "CAS Dean's Office",
-    "cas office of dean": "CAS Dean's Office",
-    "cas office of the dean": "CAS Dean's Office",
+    "cas dean's office": "CAS Deans Office",
+    "cas deans office": "CAS Deans Office",
+    "college of arts and sciences deans office": "CAS Deans Office",
+    "college of arts and sciences dean office": "CAS Deans Office",
+    "college of arts and sciences office of the dean": "CAS Deans Office",
+    "cas office of dean's": "CAS Deans Office",
+    "cas office of the dean's": "CAS Deans Office",
+    "cas office of deans": "CAS Deans Office",
+    "cas office of the deans": "CAS Deans Office",
+    "cas dean office": "CAS Deans Office",
+    "cas office of dean": "CAS Deans Office",
+    "cas office of the dean": "CAS Deans Office",
     
     # === CPAG Dean's Office ===
-    "cpag dean's office": "CPAG Dean's Office",
-    "cpag deans office": "CPAG Dean's Office",
-    "cpag dean office": "CPAG Dean's Office",
-    "cpag office of the dean": "CPAG Dean's Office",
-    "college of public administration and governance deans office": "CPAG Dean's Office",
-    "college of public administration and governance dean office": "CPAG Dean's Office",
-    "college of public administration and governance office of the dean": "CPAG Dean's Office",
-    "cpag office of dean's": "CPAG Dean's Office",
-    "cpag office of the dean's": "CPAG Dean's Office",
-    "cpag office of deans": "CPAG Dean's Office",
-    "cpag office of the deans": "CPAG Dean's Office",
-    "cpag dean office": "CPAG Dean's Office",
-    "cpag office of dean": "CPAG Dean's Office",
-    "cpag office of the dean": "CPAG Dean's Office",
+    "cpag dean's office": "CPAG Deans Office",
+    "cpag deans office": "CPAG Deans Office",
+    "cpag dean office": "CPAG Deans Office",
+    "cpag office of the dean": "CPAG Deans Office",
+    "college of public administration and governance deans office": "CPAG Deans Office",
+    "college of public administration and governance dean office": "CPAG Deans Office",
+    "college of public administration and governance office of the dean": "CPAG Deans Office",
+    "cpag office of dean's": "CPAG Deans Office",
+    "cpag office of the dean's": "CPAG Deans Office",
+    "cpag office of deans": "CPAG Deans Office",
+    "cpag office of the deans": "CPAG Deans Office",
+    "cpag dean office": "CPAG Deans Office",
+    "cpag office of dean": "CPAG Deans Office",
+    "cpag office of the dean": "CPAG Deans Office",
 
     # === Building Aliases ===
     "old cot building": "Old COT Building",
@@ -350,9 +350,14 @@ LOCATION_ALIASES = {
     # footech lab
     "food tech laboratory": "food technology laboratory",
     "food technology laboratory": "food technology laboratory",
+    "food technology center": "food technology laboratory",
+    "ftc": "food technology laboratory",
     "ft laboratory": "food technology laboratory",
     
     "college of business building": "College of Business Building",
+    "cba": "College of Business Building",
+    "cba building": "College of Business Building",
+    "college of business administration": "College of Business Building",
     "cob buildin": "College of Business Building",
     "cob building": "College of Business Building",
     "cob na building": "College of Business Building",
@@ -471,8 +476,11 @@ LOCATION_ALIASES = {
     "audio visual center": "AVC",
     
     "dxbu": "DXBU",
+    "dxul": "DXBU",
     "dxbu office": "DXBU",
+    "university radio station": "DXBU",
     
+    "law": "Law Office",
     "law office": "Law Office",
     "college law office": "Law Office",
     "legal office": "Law Office",
@@ -510,6 +518,8 @@ LOCATION_ALIASES = {
     "guard house": "Guard House",
     "security office": "Guard House",
     "entrance gate": "Guard House",
+    "main gate": "Guard House",
+    "campus gate": "Guard House",
     "security post": "Guard House",
     "guard post": "Guard House",
     "security guard house": "Guard House",
@@ -543,6 +553,10 @@ LOCATION_ALIASES = {
     "university press": "University Press Building",
     "press building": "University Press Building",
     
+    "cot": "COT Buildings",
+    "cit": "COT Buildings",
+    "cit building": "COT Buildings",
+    "college of information technology building": "COT Buildings",
     "cot buildings": "COT Buildings",
     "college of technology buildings": "COT Buildings",
     "cot building": "COT Buildings",
@@ -551,6 +565,7 @@ LOCATION_ALIASES = {
     "cot bldg": "COT Buildings",
     "room cot": "COT Buildings",
 
+    "cob": "College of Business Building",
      "college of business building": "College of Business Building",
     "cob building": "College of Business Building",
 
@@ -768,6 +783,7 @@ LOCATION_ALIASES = {
     "philosophy faculty room": "Philosophy Faculty Office",
 
     # CAS BUILDINGS
+    "cas": "CAS Buildings",
     "cas buildings": "CAS Buildings",
     "cas building": "CAS Buildings",
     "college of arts and sciences building": "CAS Buildings",
@@ -779,6 +795,7 @@ LOCATION_ALIASES = {
     "college arts sciences": "CAS Buildings",
 
     # COLLEGE OF NURSING BUILDING
+    "con": "College of Nursing Building",
     "college of nursing building": "College of Nursing Building",
     "college of nursing": "College of Nursing Building",
     "nursing building": "College of Nursing Building",
@@ -843,6 +860,9 @@ LOCATION_ALIASES = {
     "information unit": "Information Unit Office",
 
     # OSS
+    "osas": "OSS",
+    "osas office": "OSS",
+    "office of student affairs and services": "OSS",
     "oss": "OSS",
     "office of student services": "OSS",
     "office of student services building": "OSS",
@@ -855,6 +875,9 @@ LOCATION_ALIASES = {
 
     # === BUKSU President Office Aliases ===
     "buksu president office": "BUKSU President Office",
+    "presidential office": "BUKSU President Office",
+    "president office in ob": "BUKSU President Office",
+    "presidential office in ob": "BUKSU President Office",
     "president office": "BUKSU President Office",
     "buksu pres office": "BUKSU President Office",
     "pres office": "BUKSU President Office",
@@ -1024,17 +1047,26 @@ LOCATION_ALIASES = {
     "window 3": "Windows 3 Assessment",
     "window three": "Windows 3 Assessment",
     "finance window 3": "Windows 3 Assessment",
+    "window 3 assessment": "Windows 3 Assessment",
+    "windows 3 assessment": "Windows 3 Assessment",
+    "finance window 3 assessment": "Windows 3 Assessment",
     "assessment window": "Windows 3 Assessment",
 
     # Window 4
     "window 4": "Windows 4 Assessment",
     "window four": "Windows 4 Assessment",
     "finance window 4": "Windows 4 Assessment",
+    "window 4 assessment": "Windows 4 Assessment",
+    "windows 4 assessment": "Windows 4 Assessment",
+    "finance window 4 assessment": "Windows 4 Assessment",
 
     # Window 5
     "window 5": "Windows 5 Assessment",
     "window five": "Windows 5 Assessment",
     "finance window 5": "Windows 5 Assessment",
+    "window 5 assessment": "Windows 5 Assessment",
+    "windows 5 assessment": "Windows 5 Assessment",
+    "finance window 5 assessment": "Windows 5 Assessment",
 
     # Window 6
     "window 6": "Window 6 Payroll Regular Satellite Campus",
@@ -1050,6 +1082,10 @@ LOCATION_ALIASES = {
     "window 8": "Window 8 Payroll Regular and Casual",
     "finance window 8": "Window 8 Payroll Regular and Casual",
     "Window 8 Payroll Regular & Casual": "Window 8 Payroll Regular and Casual",
+    "window 8 payroll regular and casual": "Window 8 Payroll Regular and Casual",
+    "windows 8 payroll regular and casual": "Window 8 Payroll Regular and Casual",
+    "window 8 payroll regular & casual": "Window 8 Payroll Regular and Casual",
+    "windows 8 payroll regular & casual": "Window 8 Payroll Regular and Casual",
     "payroll regular and casual": "Window 8 Payroll Regular and Casual",
 
     # Window 9
@@ -1063,6 +1099,10 @@ LOCATION_ALIASES = {
     "Window 03": "Window 03 Cashiers Office",
     "cashier": "Window 03 Cashiers Office",
     "cashier office": "Window 03 Cashiers Office",
+    "cashiers desk": "Window 03 Cashiers Office",
+    "cashier desk": "Window 03 Cashiers Office",
+    "cashier window": "Window 03 Cashiers Office",
+    "payment window": "Window 03 Cashiers Office",
 
     # Budget
     "budget office": "Window 02 Budget Office",
@@ -1072,6 +1112,8 @@ LOCATION_ALIASES = {
     # Finance / Admin
     "Finance and Management Division": "Window 01 Finance and Management Division and Administrative Office",
     "administrative office": "Window 01 Finance and Management Division and Administrative Office",
+    "finance office": "Window 01 Finance and Management Division and Administrative Office",
+    "finance management office": "Window 01 Finance and Management Division and Administrative Office",
     "admin office": "Window 01 Finance and Management Division and Administrative Office",
     "admin": "Window 01 Finance and Management Division and Administrative Office",
     "Window 01": "Window 01 Finance and Management Division and Administrative Office",
@@ -1089,6 +1131,7 @@ LOCATION_ALIASES = {
     "general education courses department": "GE Department",
 
     "main administration building": "Main Administration Building",
+    "administrative building": "Main Administration Building",
     "administration building": "Main Administration Building",
     "admin building": "Main Administration Building",
     "admin bldg": "Main Administration Building",
@@ -1107,6 +1150,9 @@ LOCATION_ALIASES = {
     "buksu med clinic": "Medical clinic",
     "bukidnon state university medical clinic": "Medical clinic",
     "medical clinic office": "Medical clinic",
+    "pme": "Medical clinic",
+    "physical medical exam clinic": "Medical clinic",
+    "physical medical exam": "Medical clinic",
     
     # ICT Service Unit
     "ict service unit": "ICT Service Unit",
@@ -1115,6 +1161,14 @@ LOCATION_ALIASES = {
     "ict office": "ICT Service Unit",
     "ict unit": "ICT Service Unit",
     "ict": "ICT Service Unit",
+
+    # Human Resource Management Unit
+    "hrmo": "HRDU",
+    "hrmu": "HRDU",
+    "hr office": "HRDU",
+    "human resource office": "HRDU",
+    "human resource management office": "HRDU",
+    "human resource management unit": "HRDU",
     
     # CPAG Rooms 2nd Floor
     "cpag 2-02": "CPAG 2-02", 

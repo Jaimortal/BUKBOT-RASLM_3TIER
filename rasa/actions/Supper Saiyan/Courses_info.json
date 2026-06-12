@@ -3,1058 +3,2078 @@
   "category": "Courses Info Form",
   "topics": [
     {
-      "topic": "buksu_IT",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Information Technology program includes the study of the utilization of both hardware and software technologies involving planning, installing, customizing, operating, managing and administering, and maintaining information technology infrastructure that provides computing solutions to address the needs of an organization.",
-          " ",
-          "The program prepares graduates to address various user needs involving the selection, development, application, integration and management of computing technologies within an organization."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Information Technology nga programa naglakip sa pagtuon sa paggamit sa hardware ug software nga teknolohiya, sama sa pagplano, pag-install, pag-customize, pag-operate, pag-manage, ug pag-maintain sa IT infrastructure nga naghatag og solusyon para sa panginahanglan sa usa ka organisasyon.",
-          " ",
-          "Ang programa nag-andam sa mga graduates aron matubag ang lain-laing panginahanglan sa users, sama sa pagpili, pag-develop, paggamit, pag-integrate, ug pag-manage sa computing technologies sulod sa organisasyon."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_FT",
-      "responses": {
-        "en": [
-          "Bachelor of Science in Food Technology is a four-year degree program design to develop professionals in food technology. The program focuses on a mix of pure and applied science, engineering, business, and entrepreneurial skills. It aims to produce professionals who have the capacity to apply the science and technology and related fields of study in post-harvest handling, preparation, processing, packaging, storage, distribution, and marketing of food to ensure food and nutrition security, quality, environmental sustainability and the well-being of individuals, families and communities. The program also aims to promote continued excellence in food science education."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Food Technology usa ka upat ka tuig nga degree program nga gidisenyo aron mag-develop og mga propesyonal sa food technology. Ang programa nagpunting sa kombinasyon sa pure ug applied science, engineering, business, ug entrepreneurial skills. Tumong niini ang pag-produce og mga propesyonal nga adunay kapasidad sa paggamit sa siyensya ug teknolohiya ug uban pang may kalabotan nga larangan sa post-harvest handling, preparation, processing, packaging, storage, distribution, ug marketing sa pagkaon aron masiguro ang food ug nutrition security, kalidad, environmental sustainability, ug kaayohan sa mga indibidwal, pamilya, ug komunidad. Ang programa usab nagtumong sa pagpalambo sa padayon nga kahusayan sa food science education."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_ET",
-      "responses": {
-        "en": [
-          "The Bachelor of Science and Electronics Technology program offers opportunities for students to learn and apply the scientific knowledge and methods in modern technology to support electronics technology activities in the field of industrial technology. Students are provided a focus on classroom instruction and hands-on laboratory and testing experiences. Moreover, the program prepares the students to become professionals, and be qualified for the positions in the field of electronics technology such as electronic systems analysis and design, technical sales and the service, and engineering operations and maintenance."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Electronics Technology nga programa naghatag og oportunidad sa mga estudyante nga makat-on ug magamit ang siyentipikong kahibalo ug mga pamaagi sa modernong teknolohiya aron suportahan ang mga kalihokan sa electronics technology sa larangan sa industrial technology. Ang mga estudyante gihatagan og pagtagad sa classroom instruction ug hands-on nga laboratory ug testing experiences. Dugang pa, ang programa nag-andam sa mga estudyante aron mahimong propesyonal ug kwalipikado para sa mga posisyon sa larangan sa electronics technology sama sa electronic systems analysis ug design, technical sales ug service, ug engineering operations ug maintenance."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_EMC",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Entertainment and Multimedia Computing is the study and use of concepts, principles, and techniques of computing in the design and development of multimedia products and solutions. It includes various applications such as in science, entertainment, education, simulations and advertising.",
-          " ",
-          "The program enables the students to be knowledgeable of the whole pipeline of Digital Animation projects. The students will acquire the independence and creative competencies to articulate project design and requirements of new projects, not necessarily based on standard templates.",
-          " ",
-          "The Digital Animation Technology major is the study and application of fundamental and advanced theories and techniques in 2D and 3D animation, use and development for advancement of animation technologies and production of commercially acceptable content and viable solutions for different platforms such as broadcast, web and mobile cast."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Entertainment and Multimedia Computing mao ang pagtuon ug paggamit sa mga konsepto, prinsipyo, ug teknik sa computing sa pagdesinyo ug pag-develop sa multimedia products ug solutions. Naglakip kini og lain-laing aplikasyon sama sa science, entertainment, education, simulations, ug advertising.",
-          " ",
-          "Ang programa naghatag sa estudyante og kahibalo sa tibuok proseso sa Digital Animation projects. Ang mga estudyante makabaton og independence ug creative competencies aron ma-articulate ang project design ug requirements sa bag-ong proyekto, dili lang base sa standard templates.",
-          " ",
-          "Ang Digital Animation Technology major mao ang pagtuon ug aplikasyon sa fundamental ug advanced nga teorya ug teknik sa 2D ug 3D animation, paggamit ug pag-develop alang sa pag-uswag sa animation technologies ug paghimo sa commercially acceptable content ug viable solutions para sa lain-laing platforms sama sa broadcast, web, ug mobile cast."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS-BIO",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Biology major in Biotechnology is a four-year program focusing on biological sciences with an emphasis on biotechnology applications.",
-          "It prepares students for research, laboratory work, and technology-driven biological fields by exploring the intersection of living organisms and industrial processes."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Biology major in Biotechnology usa ka upat ka tuig nga programa nga nagpunting sa biological sciences nga adunay gibug-aton sa biotechnology applications.",
-          "Nag-andam kini sa mga estudyante alang sa research, laboratory work, ug technology-driven biological fields pinaagi sa pag-eksplorar sa interseksyon sa buhing organismo ug industrial processes."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB_SocSci",
-      "responses": {
-        "en": [
-          "The Bachelor of Arts in Social Science is an interdisciplinary study of human society and social relationships.",
-          "It develops skills in social research, critical analysis, and community engagement, preparing graduates for careers in research, advocacy, and social services."
-        ],
-        "ceb": [
-          "Ang Bachelor of Arts in Social Science usa ka interdisciplinary nga pagtuon sa human society ug social relationships.",
-          "Nag-develop kini og kahanas sa social research, critical analysis, ug community engagement, nga nag-andam sa mga graduate alang sa mga karera sa research, advocacy, ug social services."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED_FIL",
-      "responses": {
-        "en": [
-          "The Bachelor of Secondary Education major in Filipino is a teacher education program designed to equip students with the pedagogical skills and linguistic competencies required to teach Filipino language and literature at the secondary level."
-        ],
-        "ceb": [
-          "Ang Bachelor of Secondary Education major in Filipino usa ka teacher education program nga gidisenyo aron paghatag sa mga estudyante og pedagogical skills ug linguistic competencies nga kinahanglanon sa pagtudlo sa Filipino language ug literature sa secondary level."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED_MATH",
-      "responses": {
-        "en": [
-          "The Bachelor of Secondary Education major in Mathematics focuses on the mastery of mathematical concepts and effective teaching methodologies.",
-          "It prepares future educators to instruct high school students in various branches of mathematics."
-        ],
-        "ceb": [
-          "Ang Bachelor of Secondary Education major in Mathematics nagpunting sa pag-master sa mathematical concepts ug effective teaching methodologies.",
-          "Nag-andam kini sa mga future educators aron pagtudlo sa mga high school students sa lain-laing branches sa mathematics."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSN",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Nursing is a clinical and theoretical program centered on patient care, health promotion, and disease prevention.",
-          "It combines classroom instruction with hospital and community-based training to prepare students for professional nursing practice."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Nursing usa ka clinical ug theoretical program nga gitubo sa patient care, health promotion, ug disease prevention.",
-          "Nagkombinasyon kini sa classroom instruction uban sa hospital ug community-based training aron pag-andam sa mga estudyante alang sa professional nursing practice."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB_PHILO",
-      "responses": {
-        "en": [
-          "The Bachelor of Arts in Philosophy engages with fundamental questions of existence, ethics, knowledge, and logic.",
-          "It hones critical thinking, analytical reasoning, and the ability to evaluate complex philosophical arguments."
-        ],
-        "ceb": [
-          "Ang Bachelor of Arts in Philosophy nag-engage sa fundamental questions sa existence, ethics, knowledge, ug logic.",
-          "Nag-hone kini sa critical thinking, analytical reasoning, ug abilidad sa pag-evaluate sa complex philosophical arguments."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS_ES",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Environmental Science major in Environmental Heritage Studies uses an interdisciplinary approach to study environmental protection.",
-          "It highlights the role of heritage and culture in sustainable development, focusing on the conservation of natural resources."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Environmental Science major in Environmental Heritage Studies naggamit og interdisciplinary approach sa pagtuon sa environmental protection.",
-          "Nag-highlight kini sa role sa heritage ug culture sa sustainable development, nga nagpunting sa conservation sa natural resources."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB_SOCIO",
-      "responses": {
-        "en": [
-          "The Bachelor of Arts in Sociology examines social structures, human behavior, and institutional dynamics.",
-          "It aims to produce professionals capable of participating in socio-political processes, human rights protection, and community advocacy."
-        ],
-        "ceb": [
-          "Ang Bachelor of Arts in Sociology nag-examine sa social structures, human behavior, ug institutional dynamics.",
-          "Tumong niini ang pag-produce og mga propesyonal nga capable sa pag-partisipate sa socio-political processes, human rights protection, ug community advocacy."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB_ENG",
-      "responses": {
-        "en": [
-          "The Bachelor of Arts in English Language focuses on the structure, development, and social functions of the English language.",
-          "It prepares students for careers in communication, linguistics, editing, and language analysis."
-        ],
-        "ceb": [
-          "Ang Bachelor of Arts in English Language nagpunting sa structure, development, ug social functions sa English language.",
-          "Nag-andam kini sa mga estudyante alang sa mga karera sa communication, linguistics, editing, ug language analysis."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BPED",
-      "responses": {
-        "en": [
-          "The Bachelor of Physical Education focuses on sports science, health, and fitness.",
-          "It prepares students to become PE teachers, coaches, and fitness specialists by emphasizing the promotion of active and healthy lifestyles."
-        ],
-        "ceb": [
-          "Ang Bachelor of Physical Education nagpunting sa sports science, health, ug fitness.",
-          "Nag-andam kini sa mga estudyante aron mahimong PE teachers, coaches, ug fitness specialists pinaagi sa pag-emphasize sa promotion sa active ug healthy lifestyles."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS_COMDEV",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Community Development prepares professionals to work directly with communities to address social issues.",
-          "The program focuses on project management, community organizing, and fostering sustainable local development."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Community Development nag-andam sa mga propesyonal aron magtrabaho direkta uban sa mga komunidad aron matubag ang social issues.",
-          "Ang programa nagpunting sa project management, community organizing, ug fostering sa sustainable local development."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB_ECON",
-      "responses": {
-        "en": [
-          "The Bachelor of Arts in Economics studies the production, distribution, and consumption of goods and services.",
-          "It focuses on resource management, market analysis, and the formulation of economic policies."
-        ],
-        "ceb": [
-          "Ang Bachelor of Arts in Economics nagtuon sa production, distribution, ug consumption sa goods ug services.",
-          "Nagpunting kini sa resource management, market analysis, ug formulation sa economic policies."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BECED",
-      "responses": {
-        "en": [
-          "The Bachelor of Early Childhood Education specializes in the teaching and care of children from birth to age eight.",
-          "It emphasizes play-based learning, early childhood development milestones, and foundational literacy and numeracy."
-        ],
-        "ceb": [
-          "Ang Bachelor of Early Childhood Education nag-espesyalize sa teaching ug care sa mga bata gikan sa birth hangtud sa edad eight.",
-          "Nag-emphasize kini sa play-based learning, early childhood development milestones, ug foundational literacy ug numeracy."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSDC",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Development Communication trains \"communicators for development\" to use media platforms—print, broadcast, and online—to share information that promotes social progress and community welfare."
-        ],
-        "ceb": [
-          "\"communicators for development\" ang giandam sa Bachelor of Science in Development Communication aron paggamit sa media platforms—print, broadcast, ug online—aron i-share ang information nga nag-promote sa social progress ug community welfare."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSHM",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Hospitality Management provides technical and managerial training for the service industry.",
-          "It covers hotel and restaurant operations, culinary arts, front-office management, and event planning."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Hospitality Management naghatag og technical ug managerial training alang sa service industry.",
-          "Naglakip kini sa hotel ug restaurant operations, culinary arts, front-office management, ug event planning."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSAT",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Automotive Technology is a competency-based program focusing on technical skills and diagnostics.",
-          "It prepares students for entry-level employment in automotive servicing, repair, and industry-standard maintenance."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Automotive Technology usa ka competency-based program nga nagpunting sa technical skills ug diagnostics.",
-          "Nag-andam kini sa mga estudyante alang sa entry-level employment sa automotive servicing, repair, ug industry-standard maintenance."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BPA",
-      "responses": {
-        "en": [
-          "The Bachelor of Public Administration focuses on the management of government programs, public policy formulation, and administrative ethics.",
-          "It prepares students for leadership roles in local and national government agencies."
-        ],
-        "ceb": [
-          "Ang Bachelor of Public Administration nagpunting sa management sa government programs, public policy formulation, ug administrative ethics.",
-          "Nag-andam kini sa mga estudyante alang sa leadership roles sa local ug national government agencies."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS_MATH",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Mathematics is a specialized study of abstract and applied mathematical structures.",
-          "It prepares students for technical careers in data analysis, research, and mathematical modeling."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Mathematics usa ka specialized study sa abstract ug applied mathematical structures.",
-          "Nag-andam kini sa mga estudyante alang sa technical careers sa data analysis, research, ug mathematical modeling."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSA",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Accountancy provides rigorous training in financial reporting, auditing, taxation, and management services.",
-          "It is designed to prepare students for the CPA licensure exam and professional careers in finance."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Accountancy naghatag og rigorous training sa financial reporting, auditing, taxation, ug management services.",
-          "Gidisenyo kini aron pag-andam sa mga estudyante alang sa CPA licensure exam ug professional careers sa finance."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSBA_FM",
-      "responses": {
-        "en": [
-          "The Bachelor of Science in Business Administration major in Financial Management focuses on corporate finance, investment analysis, and financial planning.",
-          "It prepares students for careers in banking, financial analysis, and organizational management."
-        ],
-        "ceb": [
-          "Ang Bachelor of Science in Business Administration major in Financial Management nagpunting sa corporate finance, investment analysis, ug financial planning.",
-          "Nag-andam kini sa mga estudyante alang sa mga karera sa banking, financial analysis, ug organizational management."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED_ENG",
-      "responses": {
-        "en": [
-          "The Bachelor of Secondary Education major in English equips future secondary teachers with the skills to teach English language arts, literature, and communication through modern pedagogical techniques."
-        ],
-        "ceb": [
-          "Ang Bachelor of Secondary Education major in English naghatag sa mga future secondary teachers og skills aron pagtudlo sa English language arts, literature, ug communication pinaagi sa modern pedagogical techniques."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED_SCI",
-      "responses": {
-        "en": [
-          "The Bachelor of Secondary Education major in Science provides pedagogical and scientific training for high school educators.",
-          "It covers the core concepts of biology, chemistry, and physics to ensure effective science instruction."
-        ],
-        "ceb": [
-          "Ang Bachelor of Secondary Education major in Science naghatag og pedagogical ug scientific training alang sa high school educators.",
-          "Naglakip kini sa core concepts sa biology, chemistry, ug physics aron masiguro ang effective science instruction."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED_SOCSTUD",
-      "responses": {
-        "en": [
-          "The Bachelor of Secondary Education major in Social Studies prepares secondary teachers to instruct in history, geography, and social sciences, with a strong focus on civic education and historical awareness."
-        ],
-        "ceb": [
-          "Ang Bachelor of Secondary Education major in Social Studies nag-andam sa secondary teachers aron pagtudlo sa history, geography, ug social sciences, nga adunay strong focus sa civic education ug historical awareness."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS-BIO_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Biology major in Biotechnology which focuses on biological sciences and biotechnology applications in research and industrial processes."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Biology major in Biotechnology nga nagpunting sa biological sciences ug biotechnology applications sa research ug industrial processes."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB SocSci_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Arts in Social Science focusing on the study of human society, social relationships, and community engagement."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Arts in Social Science nga nagpunting sa pagtuon sa human society, social relationships, ug community engagement."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED-FIL_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Secondary Education major in Filipino, designed to develop linguistic competencies and pedagogical skills for teaching Filipino language and literature."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Filipino, gidisenyo aron pag-develop og linguistic competencies ug pedagogical skills alang sa pagtudlo sa Filipino language ug literature."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED-MATH_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Secondary Education major in Mathematics focusing on mastery of mathematical concepts and effective teaching methodologies for secondary education."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Mathematics nga nagpunting sa pag-master sa mathematical concepts ug effective teaching methodologies alang sa secondary education."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BEED_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Elementary Education which prepares educators for primary and intermediate levels through child development and multi-subject pedagogy."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Elementary Education nga nag-andam sa mga educators alang sa primary ug intermediate levels pinaagi sa child development ug multi-subject pedagogy."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSN_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Nursing focusing on clinical patient care, health promotion, and disease prevention through intensive classroom and hospital training."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Nursing nga nagpunting sa clinical patient care, health promotion, ug disease prevention pinaagi sa intensive classroom ug hospital training."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB-PHILO_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Arts in Philosophy which focuses on critical thinking, ethics, logic, and the exploration of fundamental questions regarding existence."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Arts in Philosophy nga nagpunting sa critical thinking, ethics, logic, ug pag-eksplorar sa fundamental questions bahin sa existence."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS-ES_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Environmental Science major in Environmental Heritage Studies, focusing on resource conservation and the role of culture in sustainable development."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Environmental Science major in Environmental Heritage Studies, nga nagpunting sa resource conservation ug role sa culture sa sustainable development."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSET_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Electronics Technology which focuses on the technical aspects of electronic systems, circuitry, and modern technological infrastructure."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Electronics Technology nga nagpunting sa technical aspects sa electronic systems, circuitry, ug modern technological infrastructure."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB-SOCIO_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Arts in Sociology focusing on the analysis of social structures, human behavior, and institutional dynamics for community advocacy."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Arts in Sociology nga nagpunting sa analysis sa social structures, human behavior, ug institutional dynamics alang sa community advocacy."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB-ENG_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Arts in English Language focusing on the structure, social functions, and professional applications of the English language."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Arts in English Language nga nagpunting sa structure, social functions, ug professional applications sa English language."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BPED_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Physical Education focusing on sports science, health promotion, and the pedagogical skills needed for fitness instruction."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Physical Education nga nagpunting sa sports science, health promotion, ug pedagogical skills nga kinahanglanon alang sa fitness instruction."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS COMDEV_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Community Development which focuses on project management, community organizing, and sustainable social development."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Community Development nga nagpunting sa project management, community organizing, ug sustainable social development."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_AB-ECON_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Arts in Economics focusing on market analysis, resource management, and the study of production and consumption systems."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Arts in Economics nga nagpunting sa market analysis, resource management, ug pagtuon sa production ug consumption systems."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BECED_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Early Childhood Education focusing on the care and teaching of children from birth to age eight through play-based learning."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Early Childhood Education nga nagpunting sa care ug teaching sa mga bata gikan sa birth hangtud sa edad eight pinaagi sa play-based learning."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSDC_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Development Communication focusing on using various media platforms to promote social progress and community welfare."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Development Communication nga nagpunting sa paggamit sa lain-laing media platforms aron i-promote ang social progress ug community welfare."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSHM_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Hospitality Management focusing on hotel and restaurant operations, culinary arts, and event management."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Hospitality Management nga nagpunting sa hotel ug restaurant operations, culinary arts, ug event management."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSAT_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Automotive Technology focusing on technical diagnostics, vehicle servicing, and industry-standard maintenance."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Automotive Technology nga nagpunting sa technical diagnostics, vehicle servicing, ug industry-standard maintenance."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BPA_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Public Administration focusing on government program management, public policy formulation, and administrative ethics."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Public Administration nga nagpunting sa government program management, public policy formulation, ug administrative ethics."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BS-MATH_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Mathematics focusing on abstract and applied mathematical structures, data analysis, and technical modeling."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Mathematics nga nagpunting sa abstract ug applied mathematical structures, data analysis, ug technical modeling."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSEMC-DAT_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Entertainment and Multimedia Computing major in Digital Animation Technology, focusing on digital arts, 2D/3D animation, and multimedia production."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Entertainment and Multimedia Computing major in Digital Animation Technology, nga nagpunting sa digital arts, 2D/3D animation, ug multimedia production."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSA_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Accountancy focusing on financial reporting, auditing, taxation, and professional management services."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Accountancy nga nagpunting sa financial reporting, auditing, taxation, ug professional management services."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSBA-FM_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Business Administration major in Financial Management focusing on corporate finance, investment analysis, and banking operations."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Business Administration major in Financial Management nga nagpunting sa corporate finance, investment analysis, ug banking operations."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED-ENG_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Secondary Education major in English focusing on language arts, literature instruction, and modern pedagogical techniques for high school."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in English nga nagpunting sa language arts, literature instruction, ug modern pedagogical techniques alang sa high school."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED-SCI_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Secondary Education major in Science focusing on the scientific and pedagogical training required to teach biology, chemistry, and physics."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Science nga nagpunting sa scientific ug pedagogical training nga kinahanglanon aron pagtudlo sa biology, chemistry, ug physics."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSED-SOCSTUD_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Secondary Education major in Social Studies focusing on history, geography, and civic education instruction for secondary levels."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Social Studies nga nagpunting sa history, geography, ug civic education instruction alang sa secondary levels."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_BSFT_program",
-      "responses": {
-        "en": [
-          "Yes, BukSU offers a Bachelor of Science in Food Technology focusing on food science, post-harvest handling, packaging, and ensuring food quality and security."
-        ],
-        "ceb": [
-          "Oo, nagtanyag ang BukSU og Bachelor of Science in Food Technology nga nagpunting sa food science, post-harvest handling, packaging, ug pag-siguro sa food quality ug security."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_bsit_program",
-      "responses": {
-        "en": [
-          "Yes BukSU offers a Bachelor of Science in Information Technology under the College of Technologies focusing on software development network management and modern computing solutions."
-        ],
-        "ceb": [
-          "Oo ang BukSU nagtanyag og Bachelor of Science in Information Technology ubos sa College of Technologies nga nagtutok sa software development network management ug modernong computing solutions."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_mpa_program",
-      "responses": {
-        "en": [
-          "Yes BukSU offers a Master in Public Administration under the College of Public Administration and Governance designed for professionals in government and non profit sectors."
-        ],
-        "ceb": [
-          "Oo ang BukSU nagtanyag og Master in Public Administration ubos sa College of Public Administration and Governance para sa mga propesyonal sa gobyerno ug non profit organizations."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_courses_offered",
-      "responses": {
-        "en": [
-          "Bukidnon State University (BukSU) provides an extensive selection of college programs, empowering students to pursue their passions and build their future with confidence. Here are the programs that they can offer to us",
-          "Bachelor of Science in Environmental Science Major in Environmental Heritage Studies",
-          "Bachelor of Science in Automotive Technology",
-          "Bachelor of Arts in Philosophy",
-          "Bachelor of Secondary Education Major in Filipino",
-          "Bachelor of Science in Nursing",
-          "Bachelor of Secondary Education Major in Mathematics",
-          "Bachelor of Arts in English Language",
-          "Bachelor of Elementary Education",
-          "Bachelor of Science in Information Technology",
-          "Bachelor of Arts in Social Science",
-          "Bachelor of Science in Electronics Technology",
-          "Bachelor of Science in Development Communication",
-          "Bachelor of Science in Biology Major in Biotechnology",
-          "Bachelor of Arts in Economics",
-          "Bachelor of Early Childhood Education",
-          "Bachelor of Science in Community Development",
-          "Bachelor of Arts in Sociology",
-          "Bachelor of Science in Hospitality Management",
-          "Bachelor of Science in Mathematics",
-          "Bachelor of Science in Food Technology",
-          "Bachelor of Physical Education",
-          "Bachelor of Public Administration",
-          "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
-          "Bachelor of Science in Accountancy",
-          "Bachelor of Secondary Education Major in Science",
-          "Bachelor of Secondary Education Major in English",
-          "Bachelor of Science in Business Administration major in Financial Management",
-          "Bachelor of Secondary Education Major in Social Studies",
-          "And those are the only courses that Buksu Main campus can provide as of 2025, for more information you can check the buksu admission list of courses",
-          "https://admissions.buksu.edu.ph/courses"
-        ],
-        "ceb": [
-          "Ang Bukidnon State University (BukSU) naghatag og halapad nga kapilian sa mga kurso sa kolehiyo, nga nagtugot sa mga estudyante nga sundon ang ilang mga hilig ug tukuron ang ilang kaugmaon nga may pagsalig. Mao kini ang mga programa nga ilang ma-offer kanato:",
-          "Bachelor of Science in Environmental Science Major in Environmental Heritage Studies",
-          "Bachelor of Science in Automotive Technology",
-          "Bachelor of Arts in Philosophy",
-          "Bachelor of Secondary Education Major in Filipino",
-          "Bachelor of Science in Nursing",
-          "Bachelor of Secondary Education Major in Mathematics",
-          "Bachelor of Arts in English Language",
-          "Bachelor of Elementary Education",
-          "Bachelor of Science in Information Technology",
-          "Bachelor of Arts in Social Science",
-          "Bachelor of Science in Electronics Technology",
-          "Bachelor of Science in Development Communication",
-          "Bachelor of Science in Biology Major in Biotechnology",
-          "Bachelor of Arts in Economics",
-          "Bachelor of Early Childhood Education",
-          "Bachelor of Science in Community Development",
-          "Bachelor of Arts in Sociology",
-          "Bachelor of Science in Hospitality Management",
-          "Bachelor of Science in Mathematics",
-          "Bachelor of Science in Food Technology",
-          "Bachelor of Physical Education",
-          "Bachelor of Public Administration",
-          "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
-          "Bachelor of Science in Accountancy",
-          "Bachelor of Secondary Education Major in Science",
-          "Bachelor of Secondary Education Major in English",
-          "Bachelor of Science in Business Administration major in Financial Management",
-          "Bachelor of Secondary Education Major in Social Studies",
-          "Ug mao ra kana ang mga kurso nga ma-offer sa BukSU Main Campus as of 2025. Para sa dugang impormasyon, pwede nimo tan-awon ang BukSU admission list sa mga kurso.",
-          "https://admissions.buksu.edu.ph/courses"
-        ]
-      }
-    },
-    {
-      "topic": "buksu_non_board_courses",
-      "responses": {
-        "en": [
-          "here are the non-board courses that BukSU Offers.",
-          "COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE",
-          "Bachelor of Public Administration",
-          "COLLEGE OF ARTS AND SCIENCES",
-          "Bachelor of Arts in Economics",
-          "Bachelor of Arts in English Language",
-          "Bachelor of Arts in Philosophy",
-          "Bachelor of Arts in Sociology",
-          "Bachelor of Science in Community Development",
-          "Bachelor of Science in Development Communication",
-          "Bachelor of Science in Mathematics",
-          "Bachelor of Science in Biology major in Biotechnology",
-          "Bachelor of Science in Environmental Science major in Environmental Heritage Studies",
-          "COLLEGE OF BUSINESS",
-          "Bachelor of Science in Business Administration major in Financial Management",
-          "Bachelor of Science in Hospitality Management",
-          "COLLEGE OF TECHNOLOGIES",
-          "Bachelor of Science in Automotive Technology",
-          "Bachelor of Science in Electronics Technology",
-          "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
-          "Bachelor of Science in Information Technology"
-        ],
-        "ceb": [
-          "Ania ang mga non-board courses nga gi-offer sa BukSU.",
-          "COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE",
-          "Bachelor of Public Administration",
-          "COLLEGE OF ARTS AND SCIENCES",
-          "Bachelor of Arts in Economics",
-          "Bachelor of Arts in English Language",
-          "Bachelor of Arts in Philosophy",
-          "Bachelor of Arts in Sociology",
-          "Bachelor of Science in Community Development",
-          "Bachelor of Science in Development Communication",
-          "Bachelor of Science in Mathematics",
-          "Bachelor of Science in Biology major in Biotechnology",
-          "Bachelor of Science in Environmental Science major in Environmental Heritage Studies",
-          "COLLEGE OF BUSINESS",
-          "Bachelor of Science in Business Administration major in Financial Management",
-          "Bachelor of Science in Hospitality Management",
-          "COLLEGE OF TECHNOLOGIES",
-          "Bachelor of Science in Automotive Technology",
-          "Bachelor of Science in Electronics Technology",
-          "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
-          "Bachelor of Science in Information Technology"
-        ]
-      }
-    },
-    {
-      "topic": "buksu_board_courses",
-      "responses": {
-        "en": [
-          "here are the board courses that BukSU Offers.",
-          "COLLEGE OF BUSINESS",
-          "Bachelor of Science in Accountancy",
-          "COLLEGE OF EDUCATION",
-          "Bachelor of Early Childhood Education",
-          "Bachelor of Elementary Education",
-          "Bachelor of Physical Education",
-          "Bachelor of Secondary Education Major in English",
-          "Bachelor of Secondary Education Major in Filipino",
-          "Bachelor of Secondary Education Major in Mathematics",
-          "Bachelor of Secondary Education Major in Social Studies",
-          "Bachelor of Secondary Education Major in Science",
-          "COLLEGE OF TECHNOLOGIES",
-          "Bachelor of Science in Food Technology",
-          "COLLEGE OF NURSING",
-          "Bachelor of Science in Nursing"
-        ],
-        "ceb": [
-          "Ania ang mga board courses nga gi-offer sa BukSU.",
-          "COLLEGE OF BUSINESS",
-          "Bachelor of Science in Accountancy",
-          "COLLEGE OF EDUCATION",
-          "Bachelor of Early Childhood Education",
-          "Bachelor of Elementary Education",
-          "Bachelor of Physical Education",
-          "Bachelor of Secondary Education Major in English",
-          "Bachelor of Secondary Education Major in Filipino",
-          "Bachelor of Secondary Education Major in Mathematics",
-          "Bachelor of Secondary Education Major in Social Studies",
-          "Bachelor of Secondary Education Major in Science",
-          "COLLEGE OF TECHNOLOGIES",
-          "Bachelor of Science in Food Technology",
-          "COLLEGE OF NURSING",
-          "Bachelor of Science in Nursing"
-        ]
-      }
-    },
-    {
-      "topic": "buksu_masters_courses",
-      "responses": {
-        "en": [
-          "This is all the graduate programs that BukSU can offer to us. First is the <b>Masters Degree</b>",
-          "Master of Arts in Education Major in English Language Teaching (MAED-ELT)",
-          "Master of Public Administration (MPA)",
-          "Master of Arts in Guidance and Counseling (MAGC)",
-          "Master of Arts in English Language (MAEL)",
-          "Master of Business Administration (MBA)",
-          "Master of Arts in Education Major in Educational Administration (MAEA)",
-          "Master of Arts in Science Education Major in General Science (MSE-GS)",
-          "Master of Arts in Education Major in Mathematics Education (MAED-ME)",
-          "Master of Arts in Education Major in Mathematics Teaching (MAMT)",
-          "Master of Arts in Sociology (MAS)",
-          "Master of Management Major in Business Management (MMBM)",
-          "And for <b>Doctoral Degree</b>",
-          "Doctor of Philosophy in English Language (PHD-EL)",
-          "Doctor of Public Administration (DPA)",
-          "Doctor of Philosophy in Science Education Major in Biology (PHDSE-BIO)",
-          "Doctor of Philosophy in Educational Administration (PHD-EA)",
-          "Doctor of Medicine (DM)",
-          "Doctor of Philosophy in Science Education Major in Mathematics (PHDSE-MATH)",
-          "Doctor of Philosophy in Education Major in Instructional Systems Design (PHD-ISD)"
-        ],
-        "ceb": [
-          "Mao kini ang mga graduate programs nga gina offer ni BukSU sa atoa, una ang <b>Masters Degree</b>",
-          "Master of Arts in Education Major in English Language Teaching (MAED-ELT)",
-          "Master of Public Administration (MPA)",
-          "Master of Arts in Guidance and Counseling (MAGC)",
-          "Master of Arts in English Language (MAEL)",
-          "Master of Business Administration (MBA)",
-          "Master of Arts in Education Major in Educational Administration (MAEA)",
-          "Master of Arts in Science Education Major in General Science (MSE-GS)",
-          "Master of Arts in Education Major in Mathematics Education (MAED-ME)",
-          "Master of Arts in Education Major in Mathematics Teaching (MAMT)",
-          "Master of Arts in Sociology (MAS)",
-          "Master of Management Major in Business Management (MMBM)",
-          "And for <b>Doctoral Degree</b>",
-          "Doctor of Philosophy in English Language (PHD-EL)",
-          "Doctor of Public Administration (DPA)",
-          "Doctor of Philosophy in Science Education Major in Biology (PHDSE-BIO)",
-          "Doctor of Philosophy in Educational Administration (PHD-EA)",
-          "Doctor of Medicine (DM)",
-          "Doctor of Philosophy in Science Education Major in Mathematics (PHDSE-MATH)",
-          "Doctor of Philosophy in Education Major in Instructional Systems Design (PHD-ISD)"
-          
-        ]
-      }
-    },
-    {
-      "topic": "about_nstp",
-      "responses": {
-        "en": [
-          "The National Service Training Program (NSTP) (R.A. 9163) aims to enhance civic consciousness and defense preparedness in youth by developing ethics of service and patriotism. It mandates training to promote national development, encourage youth involvement in public affairs, and cultivate a pro-God, pro-people, pro-country, and pro-environment",
-          "NSTP Components:",
-          "ROTC (Reserve Officers' Training Corps)",
-          "CWTS (Civic Welfare Training Service)",
-          "LTS (Literacy Training Service)"
-        ],
-        "ceb": [
-          "Ang National Service Training Program (NSTP) (R.A. 9163) nagtumong sa pagpalambo sa civic consciousness ug depensa preparedness sa mga batan-on pinaagi sa pagpalambo sa ethics of service ug patriotism. Kini nagmando sa pagbansay aron mapalambo ang nasudnong kalamboan, pag-awhag sa pag-apil sa mga batan-on sa mga kalihokan sa publiko, ug pagpalambo sa usa ka pro-God, pro-people, pro-country, ug pro-environment",
-          "NSTP Components:",
-          "ROTC (Reserve Officers' Training Corps)",
-          "CWTS (Civic Welfare Training Service)",
-          "LTS (Literacy Training Service)"
-        ]
-      }
-    },
-    {
-      "topic": "about_pe",
-      "responses": {
-        "en": [
-          "Yes, Physical Education is part of BukSU's general curriculum.",
-          "Physical Education (PE) at Bukidnon State University (BukSU) functions as a crucial component for holistic student development, focusing on enhancing physical fitness, promoting active lifestyles, and fostering cultural preservation through sports and indigenous games. It emphasizes skill development, teamwork, and mental well-being in university academic life."
-        ],
-        "ceb": [
-          "Oo, apil ang Physical Education (PE) sa general curriculum sa BukSU.",
-          "Ang Physical Education (PE) sa Bukidnon State University (BukSU) nagsilbing importante nga bahin sa holistic student development, nga nagtutok sa pagpalambo sa physical fitness, pag-promote sa active lifestyles, ug pagpreserbar sa kultura pinaagi sa sports ug indigenous games. Naghatag kini og emphasis sa skill development, teamwork, ug mental well-being sa kinabuhi sa unibersidad."
-        ]
-      }
-    },
-    {
-      "topic": "course_shifting",
-      "responses": {
-        "en": [
-          "Yes, course shifting is allowed at BukSU, especially after finishing your first year course.",
-          "However, please note that usually only minor subjects are credited.",
-          "This means you will not need to retake those specific classes in your new program.",
-          "It is rare for major subjects to be credited, so it is recommended to check with the Registrar\u2019s Office for more details.",
-          "Please also keep in mind that for certain specific courses, you are not permitted to shift during the second semester. In these cases, you must complete your entire first year in your current program before you are eligible to transfer to a different course."
-        ],
-        "ceb": [
-          "Oo, pwede ra mag-shift og course sa BukSU, labi na kung first year pa.",
-          "Apan palihog timan-i nga kasagaran mga minor subjects ra ang ma-credit.",
-          "Pasabot niini nga dili na nimo kinahanglan kuhaon balik ang mga maong subject sa imong bag-ong kurso.",
-          "Talagsa ra kaayo nga ma-credit ang major subjects, mao nga mas maayo mangutana ka sa Registrar\u2019s Office para sa mas klaro nga detalye.",
-          "Palihog hinumdumi usab nga para sa pipila ka espesipikong kurso, dili tugotan ang pag-shift sa ikaduhang semester. Sa ing-ani nga mga kaso, kinahanglan nimo tapuson ang tibuok first year sa imong current nga programa usa ka pa mahimong eligible nga mobalhin sa lain nga kurso."
-        ]
-      }
-    },
-    {
-      "topic": "course_shifting_later_years",
-      "responses": {
-        "en": [
-          "Shifting courses in the third year is possible, but it may delay graduation."
-        ],
-        "ceb": [
-          "Pwede mag-shift pero basin ma-delay ang graduation."
-        ]
-      }
-    },
-    {
-      "topic": "internship_requirement",
-      "responses": {
-        "en": [
-          "Not all courses require an internship; it depends on the curriculum."
-        ],
-        "ceb": [
-          "Dili tanan kurso naay internship, depende sa curriculum."
-        ]
-      }
-    },
-    {
-      "topic": "minor_subject",
-      "responses": {
-        "en": [
-          "A minor subject supports your major field of study and helps build general knowledge."
-        ],
-        "ceb": [
-          "Ang minor subject kay support sa imong major ug naghatag ug dugang kahibalo."
-        ]
-      }
-    },
-    {
-      "topic": "on_the_job_training",
-      "responses": {
-        "en": [
-          "On-the-job training (OJT) provides students with real-world work experience related to their course."
-        ],
-        "ceb": [
-          "Ang on-the-job training (OJT) naghatag ug real-world nga work experience nga konektado sa imong kurso."
-        ]
-      }
-    },
-    {
-      "topic": "prerequisite_subjects_purpose",
-      "responses": {
-        "en": [
-          "Prerequisite subjects are foundational courses that must be completed before enrolling in more advanced or specialized classes.",
-          "Their main purpose is to ensure that students have the necessary knowledge, skills, and preparation to succeed in higher-level courses."
-        ],
-        "ceb": [
-          "Ang prerequisite subjects mao ang mga batakang kurso nga kinahanglan una mahuman sa estudyante sa dili pa maka-enroll sa mas advanced o specialized nga mga klase.",
-          "Ang ilang tumong mao ang pagsiguro nga ang estudyante adunay igo nga kahibalo, kahanas, ug kahanduraw aron magmalampuson sa mas taas nga lebel sa kurso."
-        ]
-      }
-    },
-    {
-      "topic": "rotc_meaning",
-      "responses": {
-        "en": [
-          "ROTC stands for Reserve Officers' Training Corps.",
-          "It is a college-based program that provides military training and leadership education to students who may later serve in the armed forces."
-        ],
-        "ceb": [
-          "Ang ROTC nagpasabot og Reserve Officers' Training Corps.",
-          "Kini usa ka programa sa kolehiyo nga naghatag og military training ug leadership education sa mga estudyante nga mahimong mosilbi sa armed forces sa umaabot."
-        ]
-      }
-    },
-    {
-      "topic": "evening_classes_working_students",
-      "responses": {
-        "en": [
-          "Yes BukSU offers evening programs specifically for working individuals particularly in the Graduate School including Masters and Doctorate degrees and in the College of Law.",
-          "Some undergraduate programs may also offer late afternoon or evening schedules depending on the department."
-        ],
-        "ceb": [
-          "Oo ang BukSU nagtanyag og mga klase sa gabii para sa mga nagtrabaho ilabina sa Graduate School sama sa Masters ug Doctorate ug sa College of Law.",
-          "Ang uban nga undergraduate programs mahimo usab adunay klase sa hapon o gabii depende sa departamento."
-        ]
-      }
-    },
-    {
-      "topic": "program_shifting_policy",
-      "responses": {
-        "en": [
-          "Students who wish to shift to another program must meet the grade requirements of the new college.",
-          "They must also obtain approval from both the current department and the receiving department.",
-          "Shifting is usually processed during the enrollment period for the next semester."
-        ],
-        "ceb": [
-          "Ang mga estudyante nga gusto mag shift sa laing kurso kinahanglan makab ot sa grade requirements sa bag ong kolehiyo.",
-          "Kinahanglan usab makakuha og approval gikan sa karaan ug bag ong departamento.",
-          "Kasagaran ginaproseso ang shifting sa panahon sa enrollment sa sunod nga semester."
-        ]
-      }
-    },
-    {
-      "topic": "meaning_of_nonboard_course",
-      "responses": {
-        "en": [
-          "In the context of Bukidnon State University (BukSU) and the Philippine education system, non-board courses are degree programs that <b>do not require</b> a graduate to pass a national licensure examination (commonly known as a Board Exam) to legally practice their profession.",
-          "While Board Courses (like Nursing, Teacher Education, or Accountancy) require passing an exam conducted by the Professional Regulation Commission (PRC), graduates of non-board programs are considered profession-ready upon receiving their college diploma."
-        ],
-        "ceb": [
-          "Sa konteksto sa Bukidnon State University (BukSU) ug sa sistema sa edukasyon sa Pilipinas, ang non-board courses mao ang mga degree program nga dili na kinahanglan nga makapasar ang usa ka graduate sa national licensure examination (kasagarang gitawag og Board Exam) aron legal nga makapraktis sa ilang propesyon.",
-          "Samtang ang Board Courses (sama sa Nursing, Teacher Education, o Accountancy) nagkinahanglan nga makapasar sa exam nga gipahigayon sa Professional Regulation Commission (PRC), ang mga graduate sa non-board programs giisip nga andam na sa propesyon pagkadawat nila sa ilang college diploma."
-        ]
-      }
-    },
-    {
-      "topic": "meaning_of_board_course",
-      "responses": {
-        "en": [
-          "At Bukidnon State University (BukSU), board courses are degree programs that require graduates to pass a national licensure examination before they can legally practice their profession. These exams are regulated by the Professional Regulation Commission (PRC) or other government bodies.",
-          "Unlike non-board courses, completing the degree is only the first step; the Board Exam serves as the final gateway to becoming a registered professional."
-        ],
-        "ceb": [
-          "Sa Bukidnon State University (BukSU), ang board courses mao ang mga degree program nga nagkinahanglan nga makapasar ang mga graduate sa national licensure examination sa dili pa sila legal nga makapraktis sa ilang propesyon. Kini nga mga exam ginadumala sa Professional Regulation Commission (PRC) o uban pang ahensya sa gobyerno.",
-          "Kalahi sa non-board courses, ang paghuman sa degree mao pa lang ang unang lakang; ang <b>Board Exam</b> maoy katapusang agianan aron mahimong rehistradong propesyonal."
-        ]
-      }
+      "topic": "bsit",
+      "subject_key": "bsit",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsit",
+        "information technology",
+        "bachelor of science in information technology",
+        "bachelor of science in information technology"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_IT",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Information Technology program includes the study of the utilization of both hardware and software technologies involving planning, installing, customizing, operating, managing and administering, and maintaining information technology infrastructure that provides computing solutions to address the needs of an organization.",
+              " ",
+              "The program prepares graduates to address various user needs involving the selection, development, application, integration and management of computing technologies within an organization."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Information Technology nga programa naglakip sa pagtuon sa paggamit sa hardware ug software nga teknolohiya, sama sa pagplano, pag-install, pag-customize, pag-operate, pag-manage, ug pag-maintain sa IT infrastructure nga naghatag og solusyon para sa panginahanglan sa usa ka organisasyon.",
+              " ",
+              "Ang programa nag-andam sa mga graduates aron matubag ang lain-laing panginahanglan sa users, sama sa pagpili, pag-develop, paggamit, pag-integrate, ug pag-manage sa computing technologies sulod sa organisasyon."
+            ]
+          },
+          "intent": "buksu_IT",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu it"
+            ]
+          },
+          "display_name": "BukSU It"
+        },
+        {
+          "topic": "buksu_bsit_program",
+          "responses": {
+            "en": [
+              "Yes BukSU offers a Bachelor of Science in Information Technology under the College of Technologies focusing on software development network management and modern computing solutions."
+            ],
+            "ceb": [
+              "Oo ang BukSU nagtanyag og Bachelor of Science in Information Technology ubos sa College of Technologies nga nagtutok sa software development network management ug modernong computing solutions."
+            ]
+          },
+          "intent": "buksu_bsit_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsit program"
+            ]
+          },
+          "display_name": "BukSU BSIT Program"
+        }
+      ],
+      "display_name": "BSIT"
+    },
+    {
+      "topic": "bsft",
+      "subject_key": "bsft",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsft",
+        "food technology",
+        "bachelor of science in food technology",
+        "bachelor of science in food technology"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_FT",
+          "responses": {
+            "en": [
+              "Bachelor of Science in Food Technology is a four-year degree program design to develop professionals in food technology. The program focuses on a mix of pure and applied science, engineering, business, and entrepreneurial skills. It aims to produce professionals who have the capacity to apply the science and technology and related fields of study in post-harvest handling, preparation, processing, packaging, storage, distribution, and marketing of food to ensure food and nutrition security, quality, environmental sustainability and the well-being of individuals, families and communities. The program also aims to promote continued excellence in food science education."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Food Technology usa ka upat ka tuig nga degree program nga gidisenyo aron mag-develop og mga propesyonal sa food technology. Ang programa nagpunting sa kombinasyon sa pure ug applied science, engineering, business, ug entrepreneurial skills. Tumong niini ang pag-produce og mga propesyonal nga adunay kapasidad sa paggamit sa siyensya ug teknolohiya ug uban pang may kalabotan nga larangan sa post-harvest handling, preparation, processing, packaging, storage, distribution, ug marketing sa pagkaon aron masiguro ang food ug nutrition security, kalidad, environmental sustainability, ug kaayohan sa mga indibidwal, pamilya, ug komunidad. Ang programa usab nagtumong sa pagpalambo sa padayon nga kahusayan sa food science education."
+            ]
+          },
+          "intent": "buksu_FT",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu ft"
+            ]
+          },
+          "display_name": "BukSU Ft"
+        },
+        {
+          "topic": "buksu_BSFT_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Food Technology focusing on food science, post-harvest handling, packaging, and ensuring food quality and security."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Food Technology nga nagpunting sa food science, post-harvest handling, packaging, ug pag-siguro sa food quality ug security."
+            ]
+          },
+          "intent": "buksu_BSFT_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsft program"
+            ]
+          },
+          "display_name": "BukSU Bsft Program"
+        }
+      ],
+      "display_name": "Bsft"
+    },
+    {
+      "topic": "bset",
+      "subject_key": "bset",
+      "subject_type": "program",
+      "subject_terms": [
+        "bset",
+        "electronics technology",
+        "bachelor of science in electronics technology",
+        "bachelor of science in electronics technology"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_ET",
+          "responses": {
+            "en": [
+              "The Bachelor of Science and Electronics Technology program offers opportunities for students to learn and apply the scientific knowledge and methods in modern technology to support electronics technology activities in the field of industrial technology. Students are provided a focus on classroom instruction and hands-on laboratory and testing experiences. Moreover, the program prepares the students to become professionals, and be qualified for the positions in the field of electronics technology such as electronic systems analysis and design, technical sales and the service, and engineering operations and maintenance."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Electronics Technology nga programa naghatag og oportunidad sa mga estudyante nga makat-on ug magamit ang siyentipikong kahibalo ug mga pamaagi sa modernong teknolohiya aron suportahan ang mga kalihokan sa electronics technology sa larangan sa industrial technology. Ang mga estudyante gihatagan og pagtagad sa classroom instruction ug hands-on nga laboratory ug testing experiences. Dugang pa, ang programa nag-andam sa mga estudyante aron mahimong propesyonal ug kwalipikado para sa mga posisyon sa larangan sa electronics technology sama sa electronic systems analysis ug design, technical sales ug service, ug engineering operations ug maintenance."
+            ]
+          },
+          "intent": "buksu_ET",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu et"
+            ]
+          },
+          "display_name": "BukSU Et"
+        },
+        {
+          "topic": "buksu_BSET_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Electronics Technology which focuses on the technical aspects of electronic systems, circuitry, and modern technological infrastructure."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Electronics Technology nga nagpunting sa technical aspects sa electronic systems, circuitry, ug modern technological infrastructure."
+            ]
+          },
+          "intent": "buksu_BSET_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bset program"
+            ]
+          },
+          "display_name": "BukSU BSET Program"
+        }
+      ],
+      "display_name": "BSET"
+    },
+    {
+      "topic": "bsemc_dat",
+      "subject_key": "bsemc_dat",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsemc",
+        "bsemc dat",
+        "entertainment and multimedia computing",
+        "digital animation technology",
+        "bachelor of science in entertainment and multimedia computing"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_EMC",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Entertainment and Multimedia Computing is the study and use of concepts, principles, and techniques of computing in the design and development of multimedia products and solutions. It includes various applications such as in science, entertainment, education, simulations and advertising.",
+              " ",
+              "The program enables the students to be knowledgeable of the whole pipeline of Digital Animation projects. The students will acquire the independence and creative competencies to articulate project design and requirements of new projects, not necessarily based on standard templates.",
+              " ",
+              "The Digital Animation Technology major is the study and application of fundamental and advanced theories and techniques in 2D and 3D animation, use and development for advancement of animation technologies and production of commercially acceptable content and viable solutions for different platforms such as broadcast, web and mobile cast."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Entertainment and Multimedia Computing mao ang pagtuon ug paggamit sa mga konsepto, prinsipyo, ug teknik sa computing sa pagdesinyo ug pag-develop sa multimedia products ug solutions. Naglakip kini og lain-laing aplikasyon sama sa science, entertainment, education, simulations, ug advertising.",
+              " ",
+              "Ang programa naghatag sa estudyante og kahibalo sa tibuok proseso sa Digital Animation projects. Ang mga estudyante makabaton og independence ug creative competencies aron ma-articulate ang project design ug requirements sa bag-ong proyekto, dili lang base sa standard templates.",
+              " ",
+              "Ang Digital Animation Technology major mao ang pagtuon ug aplikasyon sa fundamental ug advanced nga teorya ug teknik sa 2D ug 3D animation, paggamit ug pag-develop alang sa pag-uswag sa animation technologies ug paghimo sa commercially acceptable content ug viable solutions para sa lain-laing platforms sama sa broadcast, web, ug mobile cast."
+            ]
+          },
+          "intent": "buksu_EMC",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu emc"
+            ]
+          },
+          "display_name": "BukSU Emc"
+        },
+        {
+          "topic": "buksu_BSEMC-DAT_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Entertainment and Multimedia Computing major in Digital Animation Technology, focusing on digital arts, 2D/3D animation, and multimedia production."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Entertainment and Multimedia Computing major in Digital Animation Technology, nga nagpunting sa digital arts, 2D/3D animation, ug multimedia production."
+            ]
+          },
+          "intent": "buksu_BSEMC-DAT_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsemc dat program"
+            ]
+          },
+          "display_name": "BukSU Bsemc Dat Program"
+        }
+      ],
+      "display_name": "Bsemc Dat"
+    },
+    {
+      "topic": "bs_bio",
+      "subject_key": "bs_bio",
+      "subject_type": "program",
+      "subject_terms": [
+        "bs biology",
+        "bs bio",
+        "biology",
+        "bachelor of science in biology"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BS-BIO",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Biology major in Biotechnology is a four-year program focusing on biological sciences with an emphasis on biotechnology applications.",
+              "It prepares students for research, laboratory work, and technology-driven biological fields by exploring the intersection of living organisms and industrial processes."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Biology major in Biotechnology usa ka upat ka tuig nga programa nga nagpunting sa biological sciences nga adunay gibug-aton sa biotechnology applications.",
+              "Nag-andam kini sa mga estudyante alang sa research, laboratory work, ug technology-driven biological fields pinaagi sa pag-eksplorar sa interseksyon sa buhing organismo ug industrial processes."
+            ]
+          },
+          "intent": "buksu_BS-BIO",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bs bio"
+            ]
+          },
+          "display_name": "BukSU Bs Bio"
+        },
+        {
+          "topic": "buksu_BS-BIO_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Biology major in Biotechnology which focuses on biological sciences and biotechnology applications in research and industrial processes."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Biology major in Biotechnology nga nagpunting sa biological sciences ug biotechnology applications sa research ug industrial processes."
+            ]
+          },
+          "intent": "buksu_BS-BIO_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bs bio program"
+            ]
+          },
+          "display_name": "BukSU Bs Bio Program"
+        }
+      ],
+      "display_name": "Bs Bio"
+    },
+    {
+      "topic": "ab_socsci",
+      "subject_key": "ab_socsci",
+      "subject_type": "program",
+      "subject_terms": [
+        "ab social science",
+        "ab socsci",
+        "social science",
+        "bachelor of arts in social science"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_AB_SocSci",
+          "responses": {
+            "en": [
+              "The Bachelor of Arts in Social Science is an interdisciplinary study of human society and social relationships.",
+              "It develops skills in social research, critical analysis, and community engagement, preparing graduates for careers in research, advocacy, and social services."
+            ],
+            "ceb": [
+              "Ang Bachelor of Arts in Social Science usa ka interdisciplinary nga pagtuon sa human society ug social relationships.",
+              "Nag-develop kini og kahanas sa social research, critical analysis, ug community engagement, nga nag-andam sa mga graduate alang sa mga karera sa research, advocacy, ug social services."
+            ]
+          },
+          "intent": "buksu_AB_SocSci",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu ab socsci"
+            ]
+          },
+          "display_name": "BukSU Ab Soc Sci"
+        },
+        {
+          "topic": "buksu_AB SocSci_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Arts in Social Science focusing on the study of human society, social relationships, and community engagement."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Arts in Social Science nga nagpunting sa pagtuon sa human society, social relationships, ug community engagement."
+            ]
+          },
+          "intent": "buksu_AB SocSci_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu ab socsci program"
+            ]
+          },
+          "display_name": "BukSU Ab Soc Sci Program"
+        }
+      ],
+      "display_name": "Ab Socsci"
+    },
+    {
+      "topic": "bsed_fil",
+      "subject_key": "bsed_fil",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsed filipino",
+        "filipino education",
+        "bachelor of secondary education major in filipino"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSED_FIL",
+          "responses": {
+            "en": [
+              "The Bachelor of Secondary Education major in Filipino is a teacher education program designed to equip students with the pedagogical skills and linguistic competencies required to teach Filipino language and literature at the secondary level."
+            ],
+            "ceb": [
+              "Ang Bachelor of Secondary Education major in Filipino usa ka teacher education program nga gidisenyo aron paghatag sa mga estudyante og pedagogical skills ug linguistic competencies nga kinahanglanon sa pagtudlo sa Filipino language ug literature sa secondary level."
+            ]
+          },
+          "intent": "buksu_BSED_FIL",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsed fil"
+            ]
+          },
+          "display_name": "BukSU Bsed Fil"
+        },
+        {
+          "topic": "buksu_BSED-FIL_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Secondary Education major in Filipino, designed to develop linguistic competencies and pedagogical skills for teaching Filipino language and literature."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Filipino, gidisenyo aron pag-develop og linguistic competencies ug pedagogical skills alang sa pagtudlo sa Filipino language ug literature."
+            ]
+          },
+          "intent": "buksu_BSED-FIL_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsed fil program"
+            ]
+          },
+          "display_name": "BukSU Bsed Fil Program"
+        }
+      ],
+      "display_name": "Bsed Fil"
+    },
+    {
+      "topic": "bsed_math",
+      "subject_key": "bsed_math",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsed math",
+        "mathematics education",
+        "bachelor of secondary education major in mathematics"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSED_MATH",
+          "responses": {
+            "en": [
+              "The Bachelor of Secondary Education major in Mathematics focuses on the mastery of mathematical concepts and effective teaching methodologies.",
+              "It prepares future educators to instruct high school students in various branches of mathematics."
+            ],
+            "ceb": [
+              "Ang Bachelor of Secondary Education major in Mathematics nagpunting sa pag-master sa mathematical concepts ug effective teaching methodologies.",
+              "Nag-andam kini sa mga future educators aron pagtudlo sa mga high school students sa lain-laing branches sa mathematics."
+            ]
+          },
+          "intent": "buksu_BSED_MATH",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsed math"
+            ]
+          },
+          "display_name": "BukSU Bsed Math"
+        },
+        {
+          "topic": "buksu_BSED-MATH_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Secondary Education major in Mathematics focusing on mastery of mathematical concepts and effective teaching methodologies for secondary education."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Mathematics nga nagpunting sa pag-master sa mathematical concepts ug effective teaching methodologies alang sa secondary education."
+            ]
+          },
+          "intent": "buksu_BSED-MATH_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsed math program"
+            ]
+          },
+          "display_name": "BukSU Bsed Math Program"
+        }
+      ],
+      "display_name": "Bsed Math"
+    },
+    {
+      "topic": "beed",
+      "subject_key": "beed",
+      "subject_type": "program",
+      "subject_terms": [
+        "beed",
+        "elementary education",
+        "bachelor of elementary education"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BEED_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Elementary Education which prepares educators for primary and intermediate levels through child development and multi-subject pedagogy."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Elementary Education nga nag-andam sa mga educators alang sa primary ug intermediate levels pinaagi sa child development ug multi-subject pedagogy."
+            ]
+          },
+          "intent": "buksu_BEED_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu beed program"
+            ]
+          },
+          "display_name": "BukSU Beed Program"
+        }
+      ],
+      "display_name": "Beed"
+    },
+    {
+      "topic": "bsn",
+      "subject_key": "bsn",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsn",
+        "nursing",
+        "bachelor of science in nursing",
+        "bachelor of science in nursing"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSN",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Nursing is a clinical and theoretical program centered on patient care, health promotion, and disease prevention.",
+              "It combines classroom instruction with hospital and community-based training to prepare students for professional nursing practice."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Nursing usa ka clinical ug theoretical program nga gitubo sa patient care, health promotion, ug disease prevention.",
+              "Nagkombinasyon kini sa classroom instruction uban sa hospital ug community-based training aron pag-andam sa mga estudyante alang sa professional nursing practice."
+            ]
+          },
+          "intent": "buksu_BSN",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsn"
+            ]
+          },
+          "display_name": "BukSU Bsn"
+        },
+        {
+          "topic": "buksu_BSN_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Nursing focusing on clinical patient care, health promotion, and disease prevention through intensive classroom and hospital training."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Nursing nga nagpunting sa clinical patient care, health promotion, ug disease prevention pinaagi sa intensive classroom ug hospital training."
+            ]
+          },
+          "intent": "buksu_BSN_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsn program"
+            ]
+          },
+          "display_name": "BukSU Bsn Program"
+        }
+      ],
+      "display_name": "Bsn"
+    },
+    {
+      "topic": "ab_philo",
+      "subject_key": "ab_philo",
+      "subject_type": "program",
+      "subject_terms": [
+        "ab philosophy",
+        "philosophy",
+        "bachelor of arts in philosophy"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_AB_PHILO",
+          "responses": {
+            "en": [
+              "The Bachelor of Arts in Philosophy engages with fundamental questions of existence, ethics, knowledge, and logic.",
+              "It hones critical thinking, analytical reasoning, and the ability to evaluate complex philosophical arguments."
+            ],
+            "ceb": [
+              "Ang Bachelor of Arts in Philosophy nag-engage sa fundamental questions sa existence, ethics, knowledge, ug logic.",
+              "Nag-hone kini sa critical thinking, analytical reasoning, ug abilidad sa pag-evaluate sa complex philosophical arguments."
+            ]
+          },
+          "intent": "buksu_AB_PHILO",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu ab philo"
+            ]
+          },
+          "display_name": "BukSU Ab Philo"
+        },
+        {
+          "topic": "buksu_AB-PHILO_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Arts in Philosophy which focuses on critical thinking, ethics, logic, and the exploration of fundamental questions regarding existence."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Arts in Philosophy nga nagpunting sa critical thinking, ethics, logic, ug pag-eksplorar sa fundamental questions bahin sa existence."
+            ]
+          },
+          "intent": "buksu_AB-PHILO_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu ab philo program"
+            ]
+          },
+          "display_name": "BukSU Ab Philo Program"
+        }
+      ],
+      "display_name": "Ab Philo"
+    },
+    {
+      "topic": "bs_es",
+      "subject_key": "bs_es",
+      "subject_type": "program",
+      "subject_terms": [
+        "bs environmental science",
+        "environmental science",
+        "bachelor of science in environmental science"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BS_ES",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Environmental Science major in Environmental Heritage Studies uses an interdisciplinary approach to study environmental protection.",
+              "It highlights the role of heritage and culture in sustainable development, focusing on the conservation of natural resources."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Environmental Science major in Environmental Heritage Studies naggamit og interdisciplinary approach sa pagtuon sa environmental protection.",
+              "Nag-highlight kini sa role sa heritage ug culture sa sustainable development, nga nagpunting sa conservation sa natural resources."
+            ]
+          },
+          "intent": "buksu_BS_ES",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bs es"
+            ]
+          },
+          "display_name": "BukSU Bs Es"
+        },
+        {
+          "topic": "buksu_BS-ES_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Environmental Science major in Environmental Heritage Studies, focusing on resource conservation and the role of culture in sustainable development."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Environmental Science major in Environmental Heritage Studies, nga nagpunting sa resource conservation ug role sa culture sa sustainable development."
+            ]
+          },
+          "intent": "buksu_BS-ES_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bs es program"
+            ]
+          },
+          "display_name": "BukSU Bs Es Program"
+        }
+      ],
+      "display_name": "Bs Es"
+    },
+    {
+      "topic": "ab_socio",
+      "subject_key": "ab_socio",
+      "subject_type": "program",
+      "subject_terms": [
+        "ab sociology",
+        "sociology",
+        "bachelor of arts in sociology"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_AB_SOCIO",
+          "responses": {
+            "en": [
+              "The Bachelor of Arts in Sociology examines social structures, human behavior, and institutional dynamics.",
+              "It aims to produce professionals capable of participating in socio-political processes, human rights protection, and community advocacy."
+            ],
+            "ceb": [
+              "Ang Bachelor of Arts in Sociology nag-examine sa social structures, human behavior, ug institutional dynamics.",
+              "Tumong niini ang pag-produce og mga propesyonal nga capable sa pag-partisipate sa socio-political processes, human rights protection, ug community advocacy."
+            ]
+          },
+          "intent": "buksu_AB_SOCIO",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu ab socio"
+            ]
+          },
+          "display_name": "BukSU Ab Socio"
+        },
+        {
+          "topic": "buksu_AB-SOCIO_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Arts in Sociology focusing on the analysis of social structures, human behavior, and institutional dynamics for community advocacy."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Arts in Sociology nga nagpunting sa analysis sa social structures, human behavior, ug institutional dynamics alang sa community advocacy."
+            ]
+          },
+          "intent": "buksu_AB-SOCIO_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu ab socio program"
+            ]
+          },
+          "display_name": "BukSU Ab Socio Program"
+        }
+      ],
+      "display_name": "Ab Socio"
+    },
+    {
+      "topic": "ab_eng",
+      "subject_key": "ab_eng",
+      "subject_type": "program",
+      "subject_terms": [
+        "ab english",
+        "english language",
+        "bachelor of arts in english"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_AB_ENG",
+          "responses": {
+            "en": [
+              "The Bachelor of Arts in English Language focuses on the structure, development, and social functions of the English language.",
+              "It prepares students for careers in communication, linguistics, editing, and language analysis."
+            ],
+            "ceb": [
+              "Ang Bachelor of Arts in English Language nagpunting sa structure, development, ug social functions sa English language.",
+              "Nag-andam kini sa mga estudyante alang sa mga karera sa communication, linguistics, editing, ug language analysis."
+            ]
+          },
+          "intent": "buksu_AB_ENG",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu ab eng"
+            ]
+          },
+          "display_name": "BukSU Ab Eng"
+        },
+        {
+          "topic": "buksu_AB-ENG_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Arts in English Language focusing on the structure, social functions, and professional applications of the English language."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Arts in English Language nga nagpunting sa structure, social functions, ug professional applications sa English language."
+            ]
+          },
+          "intent": "buksu_AB-ENG_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu ab eng program"
+            ]
+          },
+          "display_name": "BukSU Ab Eng Program"
+        }
+      ],
+      "display_name": "Ab Eng"
+    },
+    {
+      "topic": "bped",
+      "subject_key": "bped",
+      "subject_type": "program",
+      "subject_terms": [
+        "bped",
+        "physical education",
+        "bachelor of physical education"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BPED",
+          "responses": {
+            "en": [
+              "The Bachelor of Physical Education focuses on sports science, health, and fitness.",
+              "It prepares students to become PE teachers, coaches, and fitness specialists by emphasizing the promotion of active and healthy lifestyles."
+            ],
+            "ceb": [
+              "Ang Bachelor of Physical Education nagpunting sa sports science, health, ug fitness.",
+              "Nag-andam kini sa mga estudyante aron mahimong PE teachers, coaches, ug fitness specialists pinaagi sa pag-emphasize sa promotion sa active ug healthy lifestyles."
+            ]
+          },
+          "intent": "buksu_BPED",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bped"
+            ]
+          },
+          "display_name": "BukSU Bped"
+        },
+        {
+          "topic": "buksu_BPED_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Physical Education focusing on sports science, health promotion, and the pedagogical skills needed for fitness instruction."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Physical Education nga nagpunting sa sports science, health promotion, ug pedagogical skills nga kinahanglanon alang sa fitness instruction."
+            ]
+          },
+          "intent": "buksu_BPED_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bped program"
+            ]
+          },
+          "display_name": "BukSU Bped Program"
+        }
+      ],
+      "display_name": "Bped"
+    },
+    {
+      "topic": "bs_comdev",
+      "subject_key": "bs_comdev",
+      "subject_type": "program",
+      "subject_terms": [
+        "bs community development",
+        "comdev",
+        "community development",
+        "bachelor of science in community development"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BS_COMDEV",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Community Development prepares professionals to work directly with communities to address social issues.",
+              "The program focuses on project management, community organizing, and fostering sustainable local development."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Community Development nag-andam sa mga propesyonal aron magtrabaho direkta uban sa mga komunidad aron matubag ang social issues.",
+              "Ang programa nagpunting sa project management, community organizing, ug fostering sa sustainable local development."
+            ]
+          },
+          "intent": "buksu_BS_COMDEV",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bs comdev"
+            ]
+          },
+          "display_name": "BukSU Bs Comdev"
+        },
+        {
+          "topic": "buksu_BS COMDEV_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Community Development which focuses on project management, community organizing, and sustainable social development."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Community Development nga nagpunting sa project management, community organizing, ug sustainable social development."
+            ]
+          },
+          "intent": "buksu_BS COMDEV_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bs comdev program"
+            ]
+          },
+          "display_name": "BukSU Bs Comdev Program"
+        }
+      ],
+      "display_name": "Bs Comdev"
+    },
+    {
+      "topic": "ab_econ",
+      "subject_key": "ab_econ",
+      "subject_type": "program",
+      "subject_terms": [
+        "ab economics",
+        "economics",
+        "bachelor of arts in economics"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_AB_ECON",
+          "responses": {
+            "en": [
+              "The Bachelor of Arts in Economics studies the production, distribution, and consumption of goods and services.",
+              "It focuses on resource management, market analysis, and the formulation of economic policies."
+            ],
+            "ceb": [
+              "Ang Bachelor of Arts in Economics nagtuon sa production, distribution, ug consumption sa goods ug services.",
+              "Nagpunting kini sa resource management, market analysis, ug formulation sa economic policies."
+            ]
+          },
+          "intent": "buksu_AB_ECON",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu ab econ"
+            ]
+          },
+          "display_name": "BukSU Ab Econ"
+        },
+        {
+          "topic": "buksu_AB-ECON_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Arts in Economics focusing on market analysis, resource management, and the study of production and consumption systems."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Arts in Economics nga nagpunting sa market analysis, resource management, ug pagtuon sa production ug consumption systems."
+            ]
+          },
+          "intent": "buksu_AB-ECON_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu ab econ program"
+            ]
+          },
+          "display_name": "BukSU Ab Econ Program"
+        }
+      ],
+      "display_name": "Ab Econ"
+    },
+    {
+      "topic": "beced",
+      "subject_key": "beced",
+      "subject_type": "program",
+      "subject_terms": [
+        "beced",
+        "early childhood education",
+        "bachelor of early childhood education"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BECED",
+          "responses": {
+            "en": [
+              "The Bachelor of Early Childhood Education specializes in the teaching and care of children from birth to age eight.",
+              "It emphasizes play-based learning, early childhood development milestones, and foundational literacy and numeracy."
+            ],
+            "ceb": [
+              "Ang Bachelor of Early Childhood Education nag-espesyalize sa teaching ug care sa mga bata gikan sa birth hangtud sa edad eight.",
+              "Nag-emphasize kini sa play-based learning, early childhood development milestones, ug foundational literacy ug numeracy."
+            ]
+          },
+          "intent": "buksu_BECED",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu beced"
+            ]
+          },
+          "display_name": "BukSU Beced"
+        },
+        {
+          "topic": "buksu_BECED_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Early Childhood Education focusing on the care and teaching of children from birth to age eight through play-based learning."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Early Childhood Education nga nagpunting sa care ug teaching sa mga bata gikan sa birth hangtud sa edad eight pinaagi sa play-based learning."
+            ]
+          },
+          "intent": "buksu_BECED_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu beced program"
+            ]
+          },
+          "display_name": "BukSU Beced Program"
+        }
+      ],
+      "display_name": "Beced"
+    },
+    {
+      "topic": "bsdc",
+      "subject_key": "bsdc",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsdc",
+        "development communication",
+        "bachelor of science in development communication"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSDC",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Development Communication trains \"communicators for development\" to use media platforms—print, broadcast, and online—to share information that promotes social progress and community welfare."
+            ],
+            "ceb": [
+              "\"communicators for development\" ang giandam sa Bachelor of Science in Development Communication aron paggamit sa media platforms—print, broadcast, ug online—aron i-share ang information nga nag-promote sa social progress ug community welfare."
+            ]
+          },
+          "intent": "buksu_BSDC",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsdc"
+            ]
+          },
+          "display_name": "BukSU Bsdc"
+        },
+        {
+          "topic": "buksu_BSDC_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Development Communication focusing on using various media platforms to promote social progress and community welfare."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Development Communication nga nagpunting sa paggamit sa lain-laing media platforms aron i-promote ang social progress ug community welfare."
+            ]
+          },
+          "intent": "buksu_BSDC_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsdc program"
+            ]
+          },
+          "display_name": "BukSU Bsdc Program"
+        }
+      ],
+      "display_name": "Bsdc"
+    },
+    {
+      "topic": "bshm",
+      "subject_key": "bshm",
+      "subject_type": "program",
+      "subject_terms": [
+        "bshm",
+        "hospitality management",
+        "bachelor of science in hospitality management"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSHM",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Hospitality Management provides technical and managerial training for the service industry.",
+              "It covers hotel and restaurant operations, culinary arts, front-office management, and event planning."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Hospitality Management naghatag og technical ug managerial training alang sa service industry.",
+              "Naglakip kini sa hotel ug restaurant operations, culinary arts, front-office management, ug event planning."
+            ]
+          },
+          "intent": "buksu_BSHM",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bshm"
+            ]
+          },
+          "display_name": "BukSU Bshm"
+        },
+        {
+          "topic": "buksu_BSHM_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Hospitality Management focusing on hotel and restaurant operations, culinary arts, and event management."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Hospitality Management nga nagpunting sa hotel ug restaurant operations, culinary arts, ug event management."
+            ]
+          },
+          "intent": "buksu_BSHM_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bshm program"
+            ]
+          },
+          "display_name": "BukSU Bshm Program"
+        }
+      ],
+      "display_name": "Bshm"
+    },
+    {
+      "topic": "bsat",
+      "subject_key": "bsat",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsat",
+        "automotive technology",
+        "bachelor of science in automotive technology"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSAT",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Automotive Technology is a competency-based program focusing on technical skills and diagnostics.",
+              "It prepares students for entry-level employment in automotive servicing, repair, and industry-standard maintenance."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Automotive Technology usa ka competency-based program nga nagpunting sa technical skills ug diagnostics.",
+              "Nag-andam kini sa mga estudyante alang sa entry-level employment sa automotive servicing, repair, ug industry-standard maintenance."
+            ]
+          },
+          "intent": "buksu_BSAT",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsat"
+            ]
+          },
+          "display_name": "BukSU BSAT"
+        },
+        {
+          "topic": "buksu_BSAT_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Automotive Technology focusing on technical diagnostics, vehicle servicing, and industry-standard maintenance."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Automotive Technology nga nagpunting sa technical diagnostics, vehicle servicing, ug industry-standard maintenance."
+            ]
+          },
+          "intent": "buksu_BSAT_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsat program"
+            ]
+          },
+          "display_name": "BukSU BSAT Program"
+        }
+      ],
+      "display_name": "BSAT"
+    },
+    {
+      "topic": "bpa",
+      "subject_key": "bpa",
+      "subject_type": "program",
+      "subject_terms": [
+        "bpa",
+        "public administration",
+        "bachelor of public administration"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BPA",
+          "responses": {
+            "en": [
+              "The Bachelor of Public Administration focuses on the management of government programs, public policy formulation, and administrative ethics.",
+              "It prepares students for leadership roles in local and national government agencies."
+            ],
+            "ceb": [
+              "Ang Bachelor of Public Administration nagpunting sa management sa government programs, public policy formulation, ug administrative ethics.",
+              "Nag-andam kini sa mga estudyante alang sa leadership roles sa local ug national government agencies."
+            ]
+          },
+          "intent": "buksu_BPA",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bpa"
+            ]
+          },
+          "display_name": "BukSU Bpa"
+        },
+        {
+          "topic": "buksu_BPA_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Public Administration focusing on government program management, public policy formulation, and administrative ethics."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Public Administration nga nagpunting sa government program management, public policy formulation, ug administrative ethics."
+            ]
+          },
+          "intent": "buksu_BPA_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bpa program"
+            ]
+          },
+          "display_name": "BukSU Bpa Program"
+        }
+      ],
+      "display_name": "Bpa"
+    },
+    {
+      "topic": "bs_math",
+      "subject_key": "bs_math",
+      "subject_type": "program",
+      "subject_terms": [
+        "bs mathematics",
+        "bs math",
+        "bachelor of science in mathematics"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BS_MATH",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Mathematics is a specialized study of abstract and applied mathematical structures.",
+              "It prepares students for technical careers in data analysis, research, and mathematical modeling."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Mathematics usa ka specialized study sa abstract ug applied mathematical structures.",
+              "Nag-andam kini sa mga estudyante alang sa technical careers sa data analysis, research, ug mathematical modeling."
+            ]
+          },
+          "intent": "buksu_BS_MATH",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bs math"
+            ]
+          },
+          "display_name": "BukSU Bs Math"
+        },
+        {
+          "topic": "buksu_BS-MATH_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Mathematics focusing on abstract and applied mathematical structures, data analysis, and technical modeling."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Mathematics nga nagpunting sa abstract ug applied mathematical structures, data analysis, ug technical modeling."
+            ]
+          },
+          "intent": "buksu_BS-MATH_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bs math program"
+            ]
+          },
+          "display_name": "BukSU Bs Math Program"
+        }
+      ],
+      "display_name": "Bs Math"
+    },
+    {
+      "topic": "bsa",
+      "subject_key": "bsa",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsa",
+        "accountancy",
+        "bs accountancy",
+        "bachelor of science in accountancy"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSA",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Accountancy provides rigorous training in financial reporting, auditing, taxation, and management services.",
+              "It is designed to prepare students for the CPA licensure exam and professional careers in finance."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Accountancy naghatag og rigorous training sa financial reporting, auditing, taxation, ug management services.",
+              "Gidisenyo kini aron pag-andam sa mga estudyante alang sa CPA licensure exam ug professional careers sa finance."
+            ]
+          },
+          "intent": "buksu_BSA",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsa"
+            ]
+          },
+          "display_name": "BukSU BSA"
+        },
+        {
+          "topic": "buksu_BSA_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Accountancy focusing on financial reporting, auditing, taxation, and professional management services."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Accountancy nga nagpunting sa financial reporting, auditing, taxation, ug professional management services."
+            ]
+          },
+          "intent": "buksu_BSA_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsa program"
+            ]
+          },
+          "display_name": "BukSU BSA Program"
+        }
+      ],
+      "display_name": "BSA"
+    },
+    {
+      "topic": "bsba_fm",
+      "subject_key": "bsba_fm",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsba fm",
+        "financial management",
+        "business administration financial management",
+        "bachelor of science in business administration major in financial management"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSBA_FM",
+          "responses": {
+            "en": [
+              "The Bachelor of Science in Business Administration major in Financial Management focuses on corporate finance, investment analysis, and financial planning.",
+              "It prepares students for careers in banking, financial analysis, and organizational management."
+            ],
+            "ceb": [
+              "Ang Bachelor of Science in Business Administration major in Financial Management nagpunting sa corporate finance, investment analysis, ug financial planning.",
+              "Nag-andam kini sa mga estudyante alang sa mga karera sa banking, financial analysis, ug organizational management."
+            ]
+          },
+          "intent": "buksu_BSBA_FM",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsba fm"
+            ]
+          },
+          "display_name": "BukSU Bsba Fm"
+        },
+        {
+          "topic": "buksu_BSBA-FM_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Science in Business Administration major in Financial Management focusing on corporate finance, investment analysis, and banking operations."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Science in Business Administration major in Financial Management nga nagpunting sa corporate finance, investment analysis, ug banking operations."
+            ]
+          },
+          "intent": "buksu_BSBA-FM_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsba fm program"
+            ]
+          },
+          "display_name": "BukSU Bsba Fm Program"
+        }
+      ],
+      "display_name": "Bsba Fm"
+    },
+    {
+      "topic": "bsed_eng",
+      "subject_key": "bsed_eng",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsed english",
+        "english education",
+        "bachelor of secondary education major in english"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSED_ENG",
+          "responses": {
+            "en": [
+              "The Bachelor of Secondary Education major in English equips future secondary teachers with the skills to teach English language arts, literature, and communication through modern pedagogical techniques."
+            ],
+            "ceb": [
+              "Ang Bachelor of Secondary Education major in English naghatag sa mga future secondary teachers og skills aron pagtudlo sa English language arts, literature, ug communication pinaagi sa modern pedagogical techniques."
+            ]
+          },
+          "intent": "buksu_BSED_ENG",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsed eng"
+            ]
+          },
+          "display_name": "BukSU Bsed Eng"
+        },
+        {
+          "topic": "buksu_BSED-ENG_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Secondary Education major in English focusing on language arts, literature instruction, and modern pedagogical techniques for high school."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in English nga nagpunting sa language arts, literature instruction, ug modern pedagogical techniques alang sa high school."
+            ]
+          },
+          "intent": "buksu_BSED-ENG_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsed eng program"
+            ]
+          },
+          "display_name": "BukSU Bsed Eng Program"
+        }
+      ],
+      "display_name": "Bsed Eng"
+    },
+    {
+      "topic": "bsed_sci",
+      "subject_key": "bsed_sci",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsed science",
+        "science education",
+        "bachelor of secondary education major in science"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSED_SCI",
+          "responses": {
+            "en": [
+              "The Bachelor of Secondary Education major in Science provides pedagogical and scientific training for high school educators.",
+              "It covers the core concepts of biology, chemistry, and physics to ensure effective science instruction."
+            ],
+            "ceb": [
+              "Ang Bachelor of Secondary Education major in Science naghatag og pedagogical ug scientific training alang sa high school educators.",
+              "Naglakip kini sa core concepts sa biology, chemistry, ug physics aron masiguro ang effective science instruction."
+            ]
+          },
+          "intent": "buksu_BSED_SCI",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsed sci"
+            ]
+          },
+          "display_name": "BukSU Bsed Sci"
+        },
+        {
+          "topic": "buksu_BSED-SCI_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Secondary Education major in Science focusing on the scientific and pedagogical training required to teach biology, chemistry, and physics."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Science nga nagpunting sa scientific ug pedagogical training nga kinahanglanon aron pagtudlo sa biology, chemistry, ug physics."
+            ]
+          },
+          "intent": "buksu_BSED-SCI_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsed sci program"
+            ]
+          },
+          "display_name": "BukSU Bsed Sci Program"
+        }
+      ],
+      "display_name": "Bsed Sci"
+    },
+    {
+      "topic": "bsed_socstud",
+      "subject_key": "bsed_socstud",
+      "subject_type": "program",
+      "subject_terms": [
+        "bsed social studies",
+        "social studies education",
+        "bachelor of secondary education major in social studies"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_BSED_SOCSTUD",
+          "responses": {
+            "en": [
+              "The Bachelor of Secondary Education major in Social Studies prepares secondary teachers to instruct in history, geography, and social sciences, with a strong focus on civic education and historical awareness."
+            ],
+            "ceb": [
+              "Ang Bachelor of Secondary Education major in Social Studies nag-andam sa secondary teachers aron pagtudlo sa history, geography, ug social sciences, nga adunay strong focus sa civic education ug historical awareness."
+            ]
+          },
+          "intent": "buksu_BSED_SOCSTUD",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu bsed socstud"
+            ]
+          },
+          "display_name": "BukSU Bsed Socstud"
+        },
+        {
+          "topic": "buksu_BSED-SOCSTUD_program",
+          "responses": {
+            "en": [
+              "Yes, BukSU offers a Bachelor of Secondary Education major in Social Studies focusing on history, geography, and civic education instruction for secondary levels."
+            ],
+            "ceb": [
+              "Oo, nagtanyag ang BukSU og Bachelor of Secondary Education major in Social Studies nga nagpunting sa history, geography, ug civic education instruction alang sa secondary levels."
+            ]
+          },
+          "intent": "buksu_BSED-SOCSTUD_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu bsed socstud program"
+            ]
+          },
+          "display_name": "BukSU Bsed Socstud Program"
+        }
+      ],
+      "display_name": "Bsed Socstud"
+    },
+    {
+      "topic": "mpa",
+      "subject_key": "mpa",
+      "subject_type": "program",
+      "subject_terms": [
+        "mpa",
+        "master in public administration",
+        "master in public administration"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_mpa_program",
+          "responses": {
+            "en": [
+              "Yes BukSU offers a Master in Public Administration under the College of Public Administration and Governance designed for professionals in government and non profit sectors."
+            ],
+            "ceb": [
+              "Oo ang BukSU nagtanyag og Master in Public Administration ubos sa College of Public Administration and Governance para sa mga propesyonal sa gobyerno ug non profit organizations."
+            ]
+          },
+          "intent": "buksu_mpa_program",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu mpa program"
+            ]
+          },
+          "display_name": "BukSU Mpa Program"
+        }
+      ],
+      "display_name": "Mpa"
+    },
+    {
+      "topic": "course_catalog",
+      "subject_key": "course_catalog",
+      "subject_type": "course_catalog",
+      "subject_terms": [
+        "courses offered",
+        "course catalog",
+        "program list",
+        "buksu courses"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_courses_offered",
+          "responses": {
+            "en": [
+              "Here are the undergraduate courses offered by Bukidnon State University (BukSU) Main Campus. These are the college programs currently listed in the BukSU course catalog:",
+              "Bachelor of Science in Environmental Science Major in Environmental Heritage Studies",
+              "Bachelor of Science in Automotive Technology",
+              "Bachelor of Arts in Philosophy",
+              "Bachelor of Secondary Education Major in Filipino",
+              "Bachelor of Science in Nursing",
+              "Bachelor of Secondary Education Major in Mathematics",
+              "Bachelor of Arts in English Language",
+              "Bachelor of Elementary Education",
+              "Bachelor of Science in Information Technology",
+              "Bachelor of Arts in Social Science",
+              "Bachelor of Science in Electronics Technology",
+              "Bachelor of Science in Development Communication",
+              "Bachelor of Science in Biology Major in Biotechnology",
+              "Bachelor of Arts in Economics",
+              "Bachelor of Early Childhood Education",
+              "Bachelor of Science in Community Development",
+              "Bachelor of Arts in Sociology",
+              "Bachelor of Science in Hospitality Management",
+              "Bachelor of Science in Mathematics",
+              "Bachelor of Science in Food Technology",
+              "Bachelor of Physical Education",
+              "Bachelor of Public Administration",
+              "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
+              "Bachelor of Science in Accountancy",
+              "Bachelor of Secondary Education Major in Science",
+              "Bachelor of Secondary Education Major in English",
+              "Bachelor of Science in Business Administration major in Financial Management",
+              "Bachelor of Secondary Education Major in Social Studies",
+              "And those are the only courses that Buksu Main campus can provide as of 2025, for more information you can check the buksu admission list of courses",
+              "https://admissions.buksu.edu.ph/courses"
+            ],
+            "ceb": [
+              "Mao kini ang undergraduate courses nga gi-offer sa Bukidnon State University (BukSU) Main Campus:",
+              "Bachelor of Science in Environmental Science Major in Environmental Heritage Studies",
+              "Bachelor of Science in Automotive Technology",
+              "Bachelor of Arts in Philosophy",
+              "Bachelor of Secondary Education Major in Filipino",
+              "Bachelor of Science in Nursing",
+              "Bachelor of Secondary Education Major in Mathematics",
+              "Bachelor of Arts in English Language",
+              "Bachelor of Elementary Education",
+              "Bachelor of Science in Information Technology",
+              "Bachelor of Arts in Social Science",
+              "Bachelor of Science in Electronics Technology",
+              "Bachelor of Science in Development Communication",
+              "Bachelor of Science in Biology Major in Biotechnology",
+              "Bachelor of Arts in Economics",
+              "Bachelor of Early Childhood Education",
+              "Bachelor of Science in Community Development",
+              "Bachelor of Arts in Sociology",
+              "Bachelor of Science in Hospitality Management",
+              "Bachelor of Science in Mathematics",
+              "Bachelor of Science in Food Technology",
+              "Bachelor of Physical Education",
+              "Bachelor of Public Administration",
+              "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
+              "Bachelor of Science in Accountancy",
+              "Bachelor of Secondary Education Major in Science",
+              "Bachelor of Secondary Education Major in English",
+              "Bachelor of Science in Business Administration major in Financial Management",
+              "Bachelor of Secondary Education Major in Social Studies",
+              "Ug mao ra kana ang mga kurso nga ma-offer sa BukSU Main Campus as of 2025. Para sa dugang impormasyon, pwede nimo tan-awon ang BukSU admission list sa mga kurso.",
+              "https://admissions.buksu.edu.ph/courses"
+            ]
+          },
+          "intent": "buksu_courses_offered",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu courses offered",
+              "all courses offered by buksu",
+              "courses offered by buksu",
+              "courses offerd by buksu",
+              "course list buksu",
+              "programs offered by buksu"
+            ]
+          },
+          "display_name": "BukSU Courses Offered"
+        },
+        {
+          "topic": "buksu_non_board_courses",
+          "responses": {
+            "en": [
+              "here are the non-board courses that BukSU Offers.",
+              "COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE",
+              "Bachelor of Public Administration",
+              "COLLEGE OF ARTS AND SCIENCES",
+              "Bachelor of Arts in Economics",
+              "Bachelor of Arts in English Language",
+              "Bachelor of Arts in Philosophy",
+              "Bachelor of Arts in Sociology",
+              "Bachelor of Science in Community Development",
+              "Bachelor of Science in Development Communication",
+              "Bachelor of Science in Mathematics",
+              "Bachelor of Science in Biology major in Biotechnology",
+              "Bachelor of Science in Environmental Science major in Environmental Heritage Studies",
+              "COLLEGE OF BUSINESS",
+              "Bachelor of Science in Business Administration major in Financial Management",
+              "Bachelor of Science in Hospitality Management",
+              "COLLEGE OF TECHNOLOGIES",
+              "Bachelor of Science in Automotive Technology",
+              "Bachelor of Science in Electronics Technology",
+              "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
+              "Bachelor of Science in Information Technology"
+            ],
+            "ceb": [
+              "Ania ang mga non-board courses nga gi-offer sa BukSU.",
+              "COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE",
+              "Bachelor of Public Administration",
+              "COLLEGE OF ARTS AND SCIENCES",
+              "Bachelor of Arts in Economics",
+              "Bachelor of Arts in English Language",
+              "Bachelor of Arts in Philosophy",
+              "Bachelor of Arts in Sociology",
+              "Bachelor of Science in Community Development",
+              "Bachelor of Science in Development Communication",
+              "Bachelor of Science in Mathematics",
+              "Bachelor of Science in Biology major in Biotechnology",
+              "Bachelor of Science in Environmental Science major in Environmental Heritage Studies",
+              "COLLEGE OF BUSINESS",
+              "Bachelor of Science in Business Administration major in Financial Management",
+              "Bachelor of Science in Hospitality Management",
+              "COLLEGE OF TECHNOLOGIES",
+              "Bachelor of Science in Automotive Technology",
+              "Bachelor of Science in Electronics Technology",
+              "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
+              "Bachelor of Science in Information Technology"
+            ]
+          },
+          "intent": "buksu_non_board_courses",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu non board courses"
+            ]
+          },
+          "display_name": "BukSU Non Board Courses"
+        },
+        {
+          "topic": "buksu_board_courses",
+          "responses": {
+            "en": [
+              "here are the board courses that BukSU Offers.",
+              "COLLEGE OF BUSINESS",
+              "Bachelor of Science in Accountancy",
+              "COLLEGE OF EDUCATION",
+              "Bachelor of Early Childhood Education",
+              "Bachelor of Elementary Education",
+              "Bachelor of Physical Education",
+              "Bachelor of Secondary Education Major in English",
+              "Bachelor of Secondary Education Major in Filipino",
+              "Bachelor of Secondary Education Major in Mathematics",
+              "Bachelor of Secondary Education Major in Social Studies",
+              "Bachelor of Secondary Education Major in Science",
+              "COLLEGE OF TECHNOLOGIES",
+              "Bachelor of Science in Food Technology",
+              "COLLEGE OF NURSING",
+              "Bachelor of Science in Nursing"
+            ],
+            "ceb": [
+              "Ania ang mga board courses nga gi-offer sa BukSU.",
+              "COLLEGE OF BUSINESS",
+              "Bachelor of Science in Accountancy",
+              "COLLEGE OF EDUCATION",
+              "Bachelor of Early Childhood Education",
+              "Bachelor of Elementary Education",
+              "Bachelor of Physical Education",
+              "Bachelor of Secondary Education Major in English",
+              "Bachelor of Secondary Education Major in Filipino",
+              "Bachelor of Secondary Education Major in Mathematics",
+              "Bachelor of Secondary Education Major in Social Studies",
+              "Bachelor of Secondary Education Major in Science",
+              "COLLEGE OF TECHNOLOGIES",
+              "Bachelor of Science in Food Technology",
+              "COLLEGE OF NURSING",
+              "Bachelor of Science in Nursing"
+            ]
+          },
+          "intent": "buksu_board_courses",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu board courses"
+            ]
+          },
+          "display_name": "BukSU Board Courses"
+        },
+        {
+          "topic": "buksu_masters_courses",
+          "responses": {
+            "en": [
+              "This is all the graduate programs that BukSU can offer to us. First is the <b>Masters Degree</b>",
+              "Master of Arts in Education Major in English Language Teaching (MAED-ELT)",
+              "Master of Public Administration (MPA)",
+              "Master of Arts in Guidance and Counseling (MAGC)",
+              "Master of Arts in English Language (MAEL)",
+              "Master of Business Administration (MBA)",
+              "Master of Arts in Education Major in Educational Administration (MAEA)",
+              "Master of Arts in Science Education Major in General Science (MSE-GS)",
+              "Master of Arts in Education Major in Mathematics Education (MAED-ME)",
+              "Master of Arts in Education Major in Mathematics Teaching (MAMT)",
+              "Master of Arts in Sociology (MAS)",
+              "Master of Management Major in Business Management (MMBM)",
+              "And for <b>Doctoral Degree</b>",
+              "Doctor of Philosophy in English Language (PHD-EL)",
+              "Doctor of Public Administration (DPA)",
+              "Doctor of Philosophy in Science Education Major in Biology (PHDSE-BIO)",
+              "Doctor of Philosophy in Educational Administration (PHD-EA)",
+              "Doctor of Medicine (DM)",
+              "Doctor of Philosophy in Science Education Major in Mathematics (PHDSE-MATH)",
+              "Doctor of Philosophy in Education Major in Instructional Systems Design (PHD-ISD)"
+            ],
+            "ceb": [
+              "Mao kini ang mga graduate programs nga gina offer ni BukSU sa atoa, una ang <b>Masters Degree</b>",
+              "Master of Arts in Education Major in English Language Teaching (MAED-ELT)",
+              "Master of Public Administration (MPA)",
+              "Master of Arts in Guidance and Counseling (MAGC)",
+              "Master of Arts in English Language (MAEL)",
+              "Master of Business Administration (MBA)",
+              "Master of Arts in Education Major in Educational Administration (MAEA)",
+              "Master of Arts in Science Education Major in General Science (MSE-GS)",
+              "Master of Arts in Education Major in Mathematics Education (MAED-ME)",
+              "Master of Arts in Education Major in Mathematics Teaching (MAMT)",
+              "Master of Arts in Sociology (MAS)",
+              "Master of Management Major in Business Management (MMBM)",
+              "And for <b>Doctoral Degree</b>",
+              "Doctor of Philosophy in English Language (PHD-EL)",
+              "Doctor of Public Administration (DPA)",
+              "Doctor of Philosophy in Science Education Major in Biology (PHDSE-BIO)",
+              "Doctor of Philosophy in Educational Administration (PHD-EA)",
+              "Doctor of Medicine (DM)",
+              "Doctor of Philosophy in Science Education Major in Mathematics (PHDSE-MATH)",
+              "Doctor of Philosophy in Education Major in Instructional Systems Design (PHD-ISD)"
+            ]
+          },
+          "intent": "buksu_masters_courses",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu masters courses"
+            ]
+          },
+          "display_name": "BukSU Masters Courses"
+        },
+        {
+          "topic": "meaning_of_nonboard_course",
+          "responses": {
+            "en": [
+              "In the context of Bukidnon State University (BukSU) and the Philippine education system, non-board courses are degree programs that <b>do not require</b> a graduate to pass a national licensure examination (commonly known as a Board Exam) to legally practice their profession.",
+              "While Board Courses (like Nursing, Teacher Education, or Accountancy) require passing an exam conducted by the Professional Regulation Commission (PRC), graduates of non-board programs are considered profession-ready upon receiving their college diploma."
+            ],
+            "ceb": [
+              "Sa konteksto sa Bukidnon State University (BukSU) ug sa sistema sa edukasyon sa Pilipinas, ang non-board courses mao ang mga degree program nga dili na kinahanglan nga makapasar ang usa ka graduate sa national licensure examination (kasagarang gitawag og Board Exam) aron legal nga makapraktis sa ilang propesyon.",
+              "Samtang ang Board Courses (sama sa Nursing, Teacher Education, o Accountancy) nagkinahanglan nga makapasar sa exam nga gipahigayon sa Professional Regulation Commission (PRC), ang mga graduate sa non-board programs giisip nga andam na sa propesyon pagkadawat nila sa ilang college diploma."
+            ]
+          },
+          "intent": "meaning_of_nonboard_course",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "meaning of nonboard course"
+            ]
+          },
+          "display_name": "Meaning Of Nonboard Course"
+        },
+        {
+          "topic": "meaning_of_board_course",
+          "responses": {
+            "en": [
+              "At Bukidnon State University (BukSU), board courses are degree programs that require graduates to pass a national licensure examination before they can legally practice their profession. These exams are regulated by the Professional Regulation Commission (PRC) or other government bodies.",
+              "Unlike non-board courses, completing the degree is only the first step; the Board Exam serves as the final gateway to becoming a registered professional."
+            ],
+            "ceb": [
+              "Sa Bukidnon State University (BukSU), ang board courses mao ang mga degree program nga nagkinahanglan nga makapasar ang mga graduate sa national licensure examination sa dili pa sila legal nga makapraktis sa ilang propesyon. Kini nga mga exam ginadumala sa Professional Regulation Commission (PRC) o uban pang ahensya sa gobyerno.",
+              "Kalahi sa non-board courses, ang paghuman sa degree mao pa lang ang unang lakang; ang <b>Board Exam</b> maoy katapusang agianan aron mahimong rehistradong propesyonal."
+            ]
+          },
+          "intent": "meaning_of_board_course",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "meaning of board course"
+            ]
+          },
+          "display_name": "Meaning Of Board Course"
+        },
+        {
+          "topic": "evening_classes_working_students",
+          "responses": {
+            "en": [
+              "Yes BukSU offers evening programs specifically for working individuals particularly in the Graduate School including Masters and Doctorate degrees and in the College of Law.",
+              "Some undergraduate programs may also offer late afternoon or evening schedules depending on the department."
+            ],
+            "ceb": [
+              "Oo ang BukSU nagtanyag og mga klase sa gabii para sa mga nagtrabaho ilabina sa Graduate School sama sa Masters ug Doctorate ug sa College of Law.",
+              "Ang uban nga undergraduate programs mahimo usab adunay klase sa hapon o gabii depende sa departamento."
+            ]
+          },
+          "intent": "evening_classes_working_students",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "evening classes working students"
+            ]
+          },
+          "display_name": "Evening Classes Working Students"
+        }
+      ],
+      "display_name": "Course Catalog"
+    },
+    {
+      "topic": "general_curriculum_subjects",
+      "subject_key": "general_curriculum_subjects",
+      "subject_type": "subject",
+      "subject_terms": [
+        "nstp",
+        "rotc",
+        "pe",
+        "minor subject",
+        "prerequisite subject"
+      ],
+      "subtopics": [
+        {
+          "topic": "about_nstp",
+          "responses": {
+            "en": [
+              "The National Service Training Program (NSTP) (R.A. 9163) aims to enhance civic consciousness and defense preparedness in youth by developing ethics of service and patriotism. It mandates training to promote national development, encourage youth involvement in public affairs, and cultivate a pro-God, pro-people, pro-country, and pro-environment",
+              "NSTP Components:",
+              "ROTC (Reserve Officers' Training Corps)",
+              "CWTS (Civic Welfare Training Service)",
+              "LTS (Literacy Training Service)"
+            ],
+            "ceb": [
+              "Ang National Service Training Program (NSTP) (R.A. 9163) nagtumong sa pagpalambo sa civic consciousness ug depensa preparedness sa mga batan-on pinaagi sa pagpalambo sa ethics of service ug patriotism. Kini nagmando sa pagbansay aron mapalambo ang nasudnong kalamboan, pag-awhag sa pag-apil sa mga batan-on sa mga kalihokan sa publiko, ug pagpalambo sa usa ka pro-God, pro-people, pro-country, ug pro-environment",
+              "NSTP Components:",
+              "ROTC (Reserve Officers' Training Corps)",
+              "CWTS (Civic Welfare Training Service)",
+              "LTS (Literacy Training Service)"
+            ]
+          },
+          "intent": "about_nstp",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "about nstp"
+            ]
+          },
+          "display_name": "About Nstp"
+        },
+        {
+          "topic": "about_pe",
+          "responses": {
+            "en": [
+              "Yes, Physical Education is part of BukSU's general curriculum.",
+              "Physical Education (PE) at Bukidnon State University (BukSU) functions as a crucial component for holistic student development, focusing on enhancing physical fitness, promoting active lifestyles, and fostering cultural preservation through sports and indigenous games. It emphasizes skill development, teamwork, and mental well-being in university academic life."
+            ],
+            "ceb": [
+              "Oo, apil ang Physical Education (PE) sa general curriculum sa BukSU.",
+              "Ang Physical Education (PE) sa Bukidnon State University (BukSU) nagsilbing importante nga bahin sa holistic student development, nga nagtutok sa pagpalambo sa physical fitness, pag-promote sa active lifestyles, ug pagpreserbar sa kultura pinaagi sa sports ug indigenous games. Naghatag kini og emphasis sa skill development, teamwork, ug mental well-being sa kinabuhi sa unibersidad."
+            ]
+          },
+          "intent": "about_pe",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "about pe"
+            ]
+          },
+          "display_name": "About PE"
+        },
+        {
+          "topic": "minor_subject",
+          "responses": {
+            "en": [
+              "A minor subject supports your major field of study and helps build general knowledge."
+            ],
+            "ceb": [
+              "Ang minor subject kay support sa imong major ug naghatag ug dugang kahibalo."
+            ]
+          },
+          "intent": "minor_subject",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "minor subject"
+            ]
+          },
+          "display_name": "Minor Subject"
+        },
+        {
+          "topic": "prerequisite_subjects_purpose",
+          "responses": {
+            "en": [
+              "Prerequisite subjects are foundational courses that must be completed before enrolling in more advanced or specialized classes.",
+              "Their main purpose is to ensure that students have the necessary knowledge, skills, and preparation to succeed in higher-level courses."
+            ],
+            "ceb": [
+              "Ang prerequisite subjects mao ang mga batakang kurso nga kinahanglan una mahuman sa estudyante sa dili pa maka-enroll sa mas advanced o specialized nga mga klase.",
+              "Ang ilang tumong mao ang pagsiguro nga ang estudyante adunay igo nga kahibalo, kahanas, ug kahanduraw aron magmalampuson sa mas taas nga lebel sa kurso."
+            ]
+          },
+          "intent": "prerequisite_subjects_purpose",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "prerequisite subjects purpose"
+            ]
+          },
+          "display_name": "Prerequisite Subjects Purpose"
+        },
+        {
+          "topic": "rotc_meaning",
+          "responses": {
+            "en": [
+              "ROTC stands for Reserve Officers' Training Corps.",
+              "It is a college-based program that provides military training and leadership education to students who may later serve in the armed forces."
+            ],
+            "ceb": [
+              "Ang ROTC nagpasabot og Reserve Officers' Training Corps.",
+              "Kini usa ka programa sa kolehiyo nga naghatag og military training ug leadership education sa mga estudyante nga mahimong mosilbi sa armed forces sa umaabot."
+            ]
+          },
+          "intent": "rotc_meaning",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "rotc meaning"
+            ]
+          },
+          "display_name": "Rotc Meaning"
+        }
+      ],
+      "display_name": "General Curriculum Subjects"
+    },
+    {
+      "topic": "course_shifting_and_training",
+      "subject_key": "course_shifting_and_training",
+      "subject_type": "policy",
+      "subject_terms": [
+        "course shifting",
+        "program shifting",
+        "internship",
+        "ojt",
+        "on the job training"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_shifting",
+          "responses": {
+            "en": [
+              "Yes, course shifting is allowed at BukSU, especially after finishing your first year course.",
+              "However, please note that usually only minor subjects are credited.",
+              "This means you will not need to retake those specific classes in your new program.",
+              "It is rare for major subjects to be credited, so it is recommended to check with the Registrar’s Office for more details.",
+              "Please also keep in mind that for certain specific courses, you are not permitted to shift during the second semester. In these cases, you must complete your entire first year in your current program before you are eligible to transfer to a different course."
+            ],
+            "ceb": [
+              "Oo, pwede ra mag-shift og course sa BukSU, labi na kung first year pa.",
+              "Apan palihog timan-i nga kasagaran mga minor subjects ra ang ma-credit.",
+              "Pasabot niini nga dili na nimo kinahanglan kuhaon balik ang mga maong subject sa imong bag-ong kurso.",
+              "Talagsa ra kaayo nga ma-credit ang major subjects, mao nga mas maayo mangutana ka sa Registrar’s Office para sa mas klaro nga detalye.",
+              "Palihog hinumdumi usab nga para sa pipila ka espesipikong kurso, dili tugotan ang pag-shift sa ikaduhang semester. Sa ing-ani nga mga kaso, kinahanglan nimo tapuson ang tibuok first year sa imong current nga programa usa ka pa mahimong eligible nga mobalhin sa lain nga kurso."
+            ]
+          },
+          "intent": "course_shifting",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "course shifting"
+            ]
+          },
+          "display_name": "Course Shifting"
+        },
+        {
+          "topic": "course_shifting_later_years",
+          "responses": {
+            "en": [
+              "Shifting courses in the third year is possible, but it may delay graduation."
+            ],
+            "ceb": [
+              "Pwede mag-shift pero basin ma-delay ang graduation."
+            ]
+          },
+          "intent": "course_shifting_later_years",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "course shifting later years"
+            ]
+          },
+          "display_name": "Course Shifting Later Years"
+        },
+        {
+          "topic": "internship_requirement",
+          "responses": {
+            "en": [
+              "Not all courses require an internship; it depends on the curriculum."
+            ],
+            "ceb": [
+              "Dili tanan kurso naay internship, depende sa curriculum."
+            ]
+          },
+          "intent": "internship_requirement",
+          "context_topic": "requirements",
+          "metadata": {
+            "phrases": [
+              "internship requirement"
+            ]
+          },
+          "display_name": "Internship Requirement"
+        },
+        {
+          "topic": "on_the_job_training",
+          "responses": {
+            "en": [
+              "On-the-job training (OJT) provides students with real-world work experience related to their course."
+            ],
+            "ceb": [
+              "Ang on-the-job training (OJT) naghatag ug real-world nga work experience nga konektado sa imong kurso."
+            ]
+          },
+          "intent": "on_the_job_training",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "on the job training"
+            ]
+          },
+          "display_name": "On The Job Training"
+        },
+        {
+          "topic": "program_shifting_policy",
+          "responses": {
+            "en": [
+              "Students who wish to shift to another program must meet the grade requirements of the new college.",
+              "They must also obtain approval from both the current department and the receiving department.",
+              "Shifting is usually processed during the enrollment period for the next semester."
+            ],
+            "ceb": [
+              "Ang mga estudyante nga gusto mag shift sa laing kurso kinahanglan makab ot sa grade requirements sa bag ong kolehiyo.",
+              "Kinahanglan usab makakuha og approval gikan sa karaan ug bag ong departamento.",
+              "Kasagaran ginaproseso ang shifting sa panahon sa enrollment sa sunod nga semester."
+            ]
+          },
+          "intent": "program_shifting_policy",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "program shifting policy"
+            ]
+          },
+          "display_name": "Program Shifting Policy"
+        }
+      ],
+      "display_name": "Course Shifting And Training"
     }
   ]
 }

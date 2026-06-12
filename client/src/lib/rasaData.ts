@@ -21,7 +21,9 @@ export async function sendMessageToRasa(message: string, language?: string, sess
       custom: {
         mapData: data.mapData,
         follow_up: data.follow_up || [],
-        imageUrls: data.imageUrls
+        imageUrls: data.imageUrls,
+        suggestions: data.suggestions || [],
+        choiceGroups: data.choiceGroups || []
       }
     }];
   } catch (error) {

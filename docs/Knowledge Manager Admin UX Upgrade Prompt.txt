@@ -1,0 +1,494 @@
+Knowledge Manager Admin UX Upgrade Prompt
+=========================================
+
+Role:
+You are a senior full-stack AI chatbot engineer working on a Rasa + React + Express + JSON knowledge-base chatbot.
+
+Main goal:
+Improve the admin editing experience so non-technical admins can safely maintain knowledge data without accidentally breaking chatbot routing, memory, or retrieval.
+
+Important rule:
+Do this phase by phase. Do not proceed to the next phase until the current phase is implemented, debugged, and approved by the user.
+
+Critical safety rules:
+- Do not expose or allow normal admins to edit critical routing keys directly:
+  - intent
+  - context_topic
+  - subject_key
+  - subject_type
+  - topic machine IDs
+  - internal response object structure
+- Admins should edit only human-safe content:
+  - English response lines
+  - Cebuano/Bisaya response lines
+  - display_name
+  - metadata phrases if intentionally exposed as "example questions"
+  - images
+  - map pins
+  - map routes
+  - choice labels/payloads only through safe UI controls
+- Keep existing chatbot functionality working.
+- Keep the old Super Intent JSON files as the storage layer for now.
+- Do not remove the Super Intents system yet.
+- Rename UI labels from "Super Intent" to admin-friendly names where possible, such as "Knowledge Category".
+- Always create backups before JSON write operations.
+- Always run tests after each phase.
+
+
+Architecture direction
+======================
+
+Use this admin-facing hierarchy:
+
+Knowledge Manager
+  Knowledge Category
+    Topic Group
+      Answer Topic
+
+Map this to JSON like this:
+
+Knowledge Category:
+  A JSON file inside rasa/actions/Supper Saiyan/
+  Example: Oss_services.json
+
+Topic Group:
+  A parent object inside topics[]
+  Example: PE Uniform
+
+Answer Topic:
+  A subtopic inside subtopics[]
+  Example: PE uniform process
+
+Machine-safe JSON should look like:
+
+{
+  "topic": "pe_uniform_process",
+  "display_name": "PE uniform process",
+  "intent": "pe_uniform_process",
+  "context_topic": "process",
+  "responses": {
+    "en": [],
+    "ceb": []
+  }
+}
+
+Admin UI should display:
+  display_name || formatted intent || formatted topic
+
+Backend/router should continue using:
+  intent
+  subject_key
+  context_topic
+  topic machine ID
+
+
+DAY 1 / PHASE 1 - Audit Current Knowledge Manager Editing
+=========================================================
+
+Goal:
+Understand the current admin Knowledge Manager, Super Intents editor, location editor, and map editor before modifying behavior.
+
+Tasks:
+1. Inspect:
+   - client/src/components/admin/AdminKnowledgeManager.tsx
+   - client/src/components/admin/AdminSuperIntents.tsx
+   - client/src/components/admin/AdminLocations.tsx
+   - client/src/components/admin/AdminGeneralResponses.tsx
+   - client/src/components/admin/AdminMapPinsEditor.tsx
+   - server/controllers/adminKnowledgeController.ts
+   - server/controllers/adminBotTopicsController.ts
+2. Document what each editor can currently edit.
+3. Identify whether Knowledge Manager currently lists:
+   - parent topics
+   - subtopics
+   - flat response records
+   - responses.json records
+4. Identify which fields are currently editable and which are dangerous.
+5. Confirm if all Supper Saiyan JSON files appear in Knowledge Manager.
+6. Confirm if responses.json appears in Knowledge Manager.
+
+Output:
+- Create docs/Knowledge Manager UX Audit.md
+- Include:
+  - Current file/API flow
+  - Which data sources are visible
+  - Which fields are editable
+  - Known gaps
+  - Recommended implementation order
+
+Testing:
+- Run npm.cmd run check if possible.
+- If TypeScript fails due to existing unrelated errors, document them.
+- Do not make major UI changes in this phase.
+
+Stop condition:
+Ask user approval before proceeding to Phase 2.
+
+
+DAY 1 / PHASE 2 - Add display_name Support Safely
+=================================================
+
+Goal:
+Add human-readable names to JSON records without changing routing IDs.
+
+Tasks:
+1. Create a script or controlled migration that adds display_name to:
+   - all JSON files in rasa/actions/Supper Saiyan/
+   - rasa/actions/responses.json
+2. For each parent topic:
+   - If display_name is missing, generate one from topic, subject_key, or category.
+3. For each subtopic:
+   - If display_name is missing, generate one from intent first.
+   - If intent is missing, generate from topic.
+4. Do not rename existing topic or intent values.
+5. Make display names unique enough for admins.
+
+Examples:
+  topic: "process"
+  intent: "pe_uniform_process"
+  display_name: "PE uniform process"
+
+  topic: "requirements"
+  intent: "library_id_card_requirements"
+  display_name: "Library ID card requirements"
+
+  topic: "location"
+  intent: "library_id_card_location"
+  display_name: "Library ID card location"
+
+Output:
+- Updated JSON files with display_name fields.
+- Add or update documentation explaining:
+  - topic is machine ID
+  - display_name is admin label
+  - intent is router target
+
+Testing:
+- Validate JSON:
+  python -m json.tool "<file>" > $null
+- Run:
+  python -m unittest discover -s test -p "test_context_aware_retrieval.py"
+- Run:
+  rasa data validate --config rasa/config.yml --domain rasa/domain.yml --data rasa/data
+
+Stop condition:
+User tests Knowledge Manager labels before Phase 3.
+
+
+DAY 2 / PHASE 3 - Redesign Knowledge Manager Navigation
+=======================================================
+
+Goal:
+Make nested data visible and understandable to admins.
+
+Tasks:
+1. Update Knowledge Manager UI to show:
+   - Knowledge Category
+   - Topic Group
+   - Answer Topic
+2. Display display_name wherever available.
+3. Add breadcrumbs:
+   Knowledge Category > Topic Group > Answer Topic
+4. Add search that searches:
+   - display_name
+   - topic
+   - intent
+   - English response text
+   - Cebuano response text
+   - metadata phrases
+5. For subtopics named generic values like process, requirements, payment, location:
+   - show display_name prominently
+   - show generic topic only in a small technical detail area, or hide it from normal admins
+6. Do not allow normal admins to rename topic, intent, context_topic, subject_key, or subject_type.
+7. Add an optional developer-only details accordion if needed, but keep it read-only.
+
+Output:
+- Knowledge Manager can browse and select nested subtopics.
+- Admin can clearly see the exact data they are editing.
+
+Testing:
+- Confirm parent topics and subtopics appear for:
+  - Oss_services.json
+  - Library_info.json
+  - Clinic_info.json
+  - Academic_policy.json
+  - Admissions_info.json
+  - responses.json
+- Confirm clicking PE Uniform shows PE uniform process, not just "process".
+- Confirm no critical keys are editable in normal edit mode.
+
+Stop condition:
+User approves navigation before Phase 4.
+
+
+DAY 2 / PHASE 4 - Safe Content Editing UI
+=========================================
+
+Goal:
+Allow admins to edit natural content safely.
+
+Tasks:
+1. Update the Knowledge Manager edit screen to match the safer style of existing location/super-intent editing.
+2. Editable fields:
+   - display_name
+   - English response lines
+   - Cebuano/Bisaya response lines
+   - example questions/phrases
+   - image uploads
+   - choice groups if present
+   - map and pins if present
+3. Non-editable/read-only fields:
+   - intent
+   - topic machine ID
+   - context_topic
+   - subject_key
+   - subject_type
+4. Add response line controls:
+   - Add line
+   - Remove line
+   - Reorder line if easy and safe
+5. Add rich text support:
+   - Ctrl+B should wrap selected text in <b>...</b> or toggle bold using the existing rich-text approach.
+   - This should work for English and Cebuano response text editors.
+6. Preserve existing HTML safely.
+
+Output:
+- Admin can edit response content without touching routing fields.
+- Ctrl+B bold shortcut works.
+
+Testing:
+- Edit one test response in Knowledge Manager.
+- Confirm JSON updates correctly.
+- Confirm chatbot still answers the same intent.
+- Confirm bold text renders correctly in chat UI.
+- Confirm backup file is created before save.
+
+Stop condition:
+User approves content editing before Phase 5.
+
+
+DAY 3 / PHASE 5 - Restore and Standardize Map & Pins Editor
+===========================================================
+
+Goal:
+Fix the map pin editing bug and make the same map editor available across Locations, Knowledge Manager, and Super Intents.
+
+Tasks:
+1. Inspect current AdminMapPinsEditor behavior.
+2. Fix issue where admins cannot place pins on the map.
+3. Replace the airplane icon on the left side of the map, below the elevator icon, with a pin icon.
+4. Change that tool's function to pin placement.
+5. Remember:
+   - Pins are special because routes connect through pins.
+   - Do not break existing route editing.
+6. Reuse the same Map & Pins component in:
+   - Locations tab
+   - Knowledge Manager
+   - Super Intents editor
+   - General responses if applicable
+7. Existing coordinates saved in JSON must appear when opening the editor.
+8. Admin must be able to:
+   - Add pins
+   - Move pins
+   - Delete pins
+   - Add routes
+   - Edit routes
+   - Save map data back into JSON
+
+Output:
+- One consistent Map & Pins editing experience across all admin data editors.
+
+Testing:
+- Add a pin to a location record.
+- Add a pin to a Knowledge Manager record.
+- Add a pin to a Super Intent record if still visible.
+- Save and reload admin page.
+- Confirm pins persist.
+- Ask chatbot for that data and confirm map payload displays.
+
+Stop condition:
+User verifies pins can be placed before Phase 6.
+
+
+DAY 3 / PHASE 6 - Multi-route Color Coding and Labels
+=====================================================
+
+Goal:
+Allow multiple routes per record with clear color coding and visible route labels.
+
+Tasks:
+1. Update route save behavior:
+   - Each route can have its own color.
+   - Auto-assign colors by order if no custom color is selected.
+2. Default neon route color order:
+   - 1st route: neon red
+   - 2nd route: neon yellow
+   - 3rd route: neon blue
+   - 4th route: neon green
+   - 5th route: neon purple
+   - Continue with distinct bright colors if needed.
+3. Save each route color in JSON.
+4. Add route label metadata:
+   - route_order: 1
+   - route_label: "Route 1"
+   - route_label: "Route 2"
+5. Client map display:
+   - In response map and quick access map, route colors must render correctly.
+   - In fullscreen map only, show a route legend at top-right.
+6. Legend should show:
+   - colored line or dot
+   - Route 1
+   - Route 2
+   - Route 3
+7. Legend should not clutter normal non-fullscreen chat map.
+
+Output:
+- Multiple routes are easy to understand for students.
+- Admin can visually distinguish saved routes.
+
+Testing:
+- Create a record with 3 routes.
+- Confirm JSON saves all routes and colors.
+- Confirm chat map shows colored routes.
+- Open fullscreen map and confirm top-right route legend appears.
+- Confirm legend is hidden in normal small map view.
+
+Stop condition:
+User approves route color/legend behavior before Phase 7.
+
+
+DAY 4 / PHASE 7 - Knowledge Manager Map Integration
+===================================================
+
+Goal:
+Make map editing inside Knowledge Manager as capable as the Locations editor.
+
+Tasks:
+1. Add Map & Pins tab to Knowledge Manager record editor if not already present.
+2. If selected knowledge record already has:
+   - map
+   - pins
+   - routes
+   - mapData
+   then load it into the editor.
+3. If selected record has no map data:
+   - allow admin to create it.
+4. Keep old and new map data formats compatible.
+5. Do not remove current frontend map compatibility logic.
+6. Saving from Knowledge Manager should preserve:
+   - text responses
+   - images
+   - suggestions/choiceGroups
+   - map
+   - pins
+   - routes
+
+Output:
+- Knowledge Manager can edit maps for structured knowledge records.
+
+Testing:
+- Open a structured data record with existing map.
+- Confirm coordinates/pins/routes appear.
+- Add a new pin.
+- Save.
+- Reload.
+- Confirm pin remains.
+- Ask chatbot question and confirm map appears.
+
+Stop condition:
+User approves Knowledge Manager map editing before Phase 8.
+
+
+DAY 4 / PHASE 8 - Clean Up Admin Labels and Hide Legacy Complexity
+==================================================================
+
+Goal:
+Make the admin UI beginner-friendly.
+
+Tasks:
+1. Replace visible label "Super Intents" with "Knowledge Categories" where safe.
+2. Keep old route/file/API names internally if changing them risks breaking logic.
+3. Add small helper text:
+   - "Edit only the answer content shown here. Routing fields are protected."
+   - "Display name is the admin label. It does not affect chatbot routing."
+4. Hide technical fields from normal view.
+5. If technical fields are needed for debugging:
+   - put them in a read-only Developer Details accordion.
+6. Add warning before deleting any topic/subtopic.
+7. Add better empty states:
+   - "No answer topics found under this topic group."
+   - "Select a topic group to edit its answer topics."
+
+Output:
+- Admin UI is understandable without knowing Rasa or JSON internals.
+
+Testing:
+- Non-technical admin simulation:
+  - Find PE uniform process.
+  - Edit English response.
+  - Add image.
+  - Add map pin.
+  - Save.
+  - Test chatbot.
+
+Stop condition:
+User approves admin usability before Phase 9.
+
+
+DAY 5 / PHASE 9 - Regression Testing and Safety Checks
+======================================================
+
+Goal:
+Confirm the admin upgrade did not break chatbot behavior.
+
+Tasks:
+1. Run Python/Rasa tests:
+   python -m unittest discover -s test -p "test_context_aware_retrieval.py"
+   rasa data validate --config rasa/config.yml --domain rasa/domain.yml --data rasa/data
+2. Run frontend check:
+   npm.cmd run check
+3. If npm check still fails due to known unrelated errors:
+   - document the errors
+   - confirm no new errors are from files touched in this upgrade
+4. Manual admin tests:
+   - Edit response text
+   - Add bold text with Ctrl+B
+   - Upload image
+   - Add pin
+   - Add multiple routes
+   - Save and reload
+   - Confirm backup created
+5. Manual chatbot tests:
+   - Ask PE uniform process
+   - Ask library ID process
+   - Ask clinic services
+   - Ask admission result
+   - Ask a record with map
+   - Open fullscreen map and check route legend
+
+Output:
+- Create docs/Knowledge Manager Admin UX Upgrade Test Report.md
+- Include:
+  - Tests run
+  - Passed checks
+  - Known remaining issues
+  - User testing checklist
+
+Stop condition:
+Final user approval.
+
+
+Final expected result
+=====================
+
+After all phases:
+- Admins can safely edit answer content without touching critical routing fields.
+- Admins can clearly see parent topics and subtopics.
+- Generic subtopic names like "process" no longer confuse admins because display_name is shown.
+- Knowledge Manager supports text, images, maps, pins, and routes.
+- Locations, Super Intents, and Knowledge Manager use the same map/pins editor behavior.
+- Pin placement works again.
+- Multiple routes have clear neon colors.
+- Fullscreen map shows route legend.
+- JSON remains compatible with Rasa and existing chatbot frontend.
+- Super Intent storage remains intact, but admin-facing wording becomes easier to understand.

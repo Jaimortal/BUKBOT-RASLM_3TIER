@@ -9,7 +9,7 @@ interface MapLocation {
   coordinates: [number, number];
   building: string;
   pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
-  routes: Array<{ name: string; points: [number, number][]; color?: string }>;
+  routes: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
 }
 
 // Group locations by building

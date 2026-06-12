@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
 import MapMessage from "./MapMessage";
 import { cn } from "@/lib/utils";
-import { rasaBackend, generateId, type ChatMessage } from "@/lib/rasaApi";
+import { rasaBackend, generateId, type ChatChoiceGroup, type ChatMessage, type ChatSuggestion } from "@/lib/rasaApi";
 import type { UserPrivileges } from "@/types/admin";
 import { QuickAccessBar } from "./QuickAccessBar";
 import { MapQuickAccess } from "./MapQuickAccess";
@@ -23,6 +23,44 @@ interface ChatWindowProps {
   isOpen: boolean;
 }
 
+const MAX_CHAT_MESSAGES = 80;
+const MAX_PERSISTED_MESSAGES = 50;
+const MAX_INLINE_MAPS = 1;
+const MAX_PERSISTED_MAP_PAYLOADS = 8;
+
+function trimChatMessages(items: ChatMessage[], limit = MAX_CHAT_MESSAGES): ChatMessage[] {
+  if (items.length <= limit) return items;
+  const welcome = items.find((message) => message.id === "welcome");
+  const recent = items.filter((message) => message.id !== "welcome").slice(-(limit - (welcome ? 1 : 0)));
+  return welcome ? [welcome, ...recent] : recent;
+}
+
+function lightweightMessagesForStorage(items: ChatMessage[]): ChatMessage[] {
+  const trimmed = trimChatMessages(items, MAX_PERSISTED_MESSAGES);
+  const mapIdsToKeep = new Set(
+    trimmed
+      .filter((message) => message.type === "map" && message.mapData)
+      .slice(-MAX_PERSISTED_MAP_PAYLOADS)
+      .map((message) => message.id)
+  );
+
+  return trimmed.map((message) => {
+    if (message.type !== "map" || mapIdsToKeep.has(message.id)) {
+      return message;
+    }
+    return {
+      ...message,
+      mapData: undefined,
+      imageUrl: undefined,
+      imageUrls: undefined,
+      text: message.mapData?.locationName
+        ? `Map preview removed to keep the chat lightweight: ${message.mapData.locationName}`
+        : "Map preview removed to keep the chat lightweight.",
+      type: "text",
+    };
+  });
+}
+
  async function fetchUserPrivileges(): Promise<UserPrivileges> {
    try {
      const res = await fetch("/api/privileges");
@@ -33,6 +71,28 @@ interface ChatWindowProps {
    }
    return { chatEnabled: true, audioInputEnabled: true, mapAccessEnabled: true, autoTranslateEnabled: true };
  }
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderSafeMessageHtml(value: string): string {
+  const escaped = escapeHtml(value || "");
+  const withBold = escaped.replace(/\*\*([^*\n][\s\S]*?[^*\n])\*\*/g, "<strong>$1</strong>");
+  return withBold.replace(
+    /(https?:\/\/[^\s<]+)/g,
+    (match) => {
+      const cleanHref = match.replace(/&amp;/g, "&");
+      const display = match.length > 40 ? `${match.slice(0, 37)}...` : match;
+      return `<a href="${cleanHref}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; background-color: #dbeafe; padding: 2px 6px; border-radius: 4px; text-decoration: underline; font-weight: 500; word-break: break-all;">${display}</a>`;
+    }
+  );
+}
 
 function convertResponseToMessages(response: any): ChatMessage[] {
   const messages: ChatMessage[] = [];
@@ -72,6 +132,8 @@ function convertResponseToMessages(response: any): ChatMessage[] {
       // Attach images to the last text bubble
       imageUrl: isLastTextPart ? response.imageUrl : undefined,
       imageUrls: isLastTextPart ? response.imageUrls : undefined,
+      suggestions: isLastTextPart ? response.suggestions : undefined,
+      choiceGroups: isLastTextPart ? response.choiceGroups : undefined,
       timestamp: new Date(),
       // Hide timestamp if it's not the last message in the sequence
       hideTimestamp: true 
@@ -87,6 +149,8 @@ function convertResponseToMessages(response: any): ChatMessage[] {
       type: "text",
       imageUrl: response.imageUrl,
       imageUrls: response.imageUrls,
+      suggestions: response.suggestions,
+      choiceGroups: response.choiceGroups,
       timestamp: new Date(),
       hideTimestamp: true
     });
@@ -180,6 +244,10 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const [showMapQuickAccess, setShowMapQuickAccess] = useState(false);
   
   const [showQuickAccess, setShowQuickAccess] = useState(true);
+  const [choiceModal, setChoiceModal] = useState<ChatChoiceGroup | null>(null);
+  const [stickyChoiceMessageId, setStickyChoiceMessageId] = useState<string | null>(null);
+  const [dismissedStickyChoiceIds, setDismissedStickyChoiceIds] = useState<string[]>([]);
+  const choiceBoardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   // Generate or retrieve session ID for conversation tracking
   const [sessionId] = useState(() => {
@@ -196,10 +264,10 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       if (saved) {
         const parsed = JSON.parse(saved);
         // Remove time-based expiration since sessionStorage clears on reload
-        return parsed.messages.map((msg: any) => ({
+        return trimChatMessages(parsed.messages.map((msg: any) => ({
           ...msg,
           timestamp: new Date(msg.timestamp)
-        }));
+        })));
       }
     } catch (error) {
       console.error('Failed to load messages from sessionStorage:', error);
@@ -236,6 +304,26 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const [dragStartX, setDragStartX] = useState(0);
   const [dragScrollLeft, setDragScrollLeft] = useState(0);
   const [draggedDistance, setDraggedDistance] = useState(0);
+  const [isDraggingStickyChoices, setIsDraggingStickyChoices] = useState(false);
+  const [stickyDragStartX, setStickyDragStartX] = useState(0);
+  const [stickyDragScrollLeft, setStickyDragScrollLeft] = useState(0);
+  const [stickyDraggedDistance, setStickyDraggedDistance] = useState(0);
+
+  const latestChoiceGroupMessage = useMemo(() => {
+    return [...messages].reverse().find(
+      (message) => message.sender === "bot" && message.choiceGroups && message.choiceGroups.length > 0
+    ) || null;
+  }, [messages]);
+
+  const liveInlineMapIds = useMemo(() => {
+    if (MAX_INLINE_MAPS <= 0) return new Set<string>();
+    return new Set(
+      messages
+        .filter((message) => message.type === "map" && message.mapData)
+        .slice(-MAX_INLINE_MAPS)
+        .map((message) => message.id)
+    );
+  }, [messages]);
 
   const handleDragStart = (e: React.MouseEvent) => {
     setIsDraggingFAQ(true);
@@ -257,6 +345,27 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       quickAccessScrollRef.current.scrollLeft = dragScrollLeft - walk;
     }
     setDraggedDistance(Math.abs(x - dragStartX));
+  };
+
+  const handleStickyChoiceDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!stickyChoiceMessageId) return;
+    setIsDraggingStickyChoices(true);
+    setStickyDragStartX(e.pageX - e.currentTarget.offsetLeft);
+    setStickyDragScrollLeft(e.currentTarget.scrollLeft);
+    setStickyDraggedDistance(0);
+  };
+
+  const handleStickyChoiceDragEnd = () => {
+    setIsDraggingStickyChoices(false);
+  };
+
+  const handleStickyChoiceDragMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDraggingStickyChoices) return;
+    e.preventDefault();
+    const x = e.pageX - e.currentTarget.offsetLeft;
+    const walk = (x - stickyDragStartX) * 1.4;
+    e.currentTarget.scrollLeft = stickyDragScrollLeft - walk;
+    setStickyDraggedDistance(Math.abs(x - stickyDragStartX));
   };
 
   useEffect(() => {
@@ -295,6 +404,38 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     }
   }, [messages, isTyping]);
 
+  useEffect(() => {
+    const activeMessage = latestChoiceGroupMessage;
+    if (!activeMessage || dismissedStickyChoiceIds.includes(activeMessage.id)) {
+      setStickyChoiceMessageId(null);
+      return;
+    }
+
+    const viewport = scrollRef.current?.querySelector("[data-radix-scroll-area-viewport]");
+    const updateStickyState = () => {
+      const board = choiceBoardRefs.current[activeMessage.id];
+      const shell = scrollRef.current;
+      if (!board || !shell) {
+        setStickyChoiceMessageId(null);
+        return;
+      }
+
+      const boardRect = board.getBoundingClientRect();
+      const shellRect = shell.getBoundingClientRect();
+      const isBoardVisible = boardRect.top >= shellRect.top + 8 && boardRect.bottom <= shellRect.bottom - 8;
+      setStickyChoiceMessageId(isBoardVisible ? null : activeMessage.id);
+    };
+
+    updateStickyState();
+    viewport?.addEventListener("scroll", updateStickyState);
+    window.addEventListener("resize", updateStickyState);
+
+    return () => {
+      viewport?.removeEventListener("scroll", updateStickyState);
+      window.removeEventListener("resize", updateStickyState);
+    };
+  }, [latestChoiceGroupMessage, dismissedStickyChoiceIds]);
+
   // Auto-scroll to bottom when exiting fullscreen mode
   useEffect(() => {
     if (!fullscreenMapId && scrollRef.current) {
@@ -315,7 +456,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     if (messages.length > 1) { // Only save if there are actual conversation messages
       try {
         const toSave = {
-          messages: messages.map(msg => ({
+          messages: lightweightMessagesForStorage(messages).map(msg => ({
             ...msg,
             timestamp: msg.timestamp.toISOString()
           })),
@@ -421,6 +562,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     if (!trimmedDisplay) return;
 
     const payloadToSend = payloadStr || trimmedDisplay;
+    setChoiceModal(null);
 
     // User message
     const userMsg: ChatMessage = {
@@ -431,7 +573,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev, userMsg]);
+    setMessages((prev) => trimChatMessages([...prev, userMsg]));
     setInputValue("");
     setIsTyping(true);
 
@@ -443,7 +585,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       
       // Add a small delay to simulate typing
       setTimeout(() => {
-        setMessages((prev) => [...prev, ...botMessages]);
+        setMessages((prev) => trimChatMessages([...prev, ...botMessages]));
         setIsTyping(false);
       }, 800);
       
@@ -458,7 +600,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         timestamp: new Date(),
       };
       
-      setMessages((prev) => [...prev, errorMsg]);
+      setMessages((prev) => trimChatMessages([...prev, errorMsg]));
       setIsTyping(false);
     }
   };
@@ -469,6 +611,97 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       handleSend(inputValue);
     }
   };
+
+  const regularChoiceButtonClass =
+    "flex min-h-[64px] w-full items-center rounded-xl border border-sky-200 bg-white px-3.5 py-1 text-left text-[13px] font-semibold leading-snug text-[#003B63] shadow-[0_3px_10px_rgba(14,74,122,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-[0_6px_16px_rgba(14,74,122,0.18)] focus:outline-none focus:ring-2 focus:ring-sky-200";
+  const compactChoiceButtonClass =
+    "flex h-9 items-center rounded-full border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20";
+
+  const renderSuggestionBoard = (messageId: string, suggestions?: ChatSuggestion[]) => {
+    if (!suggestions || suggestions.length === 0) return null;
+
+    return (
+      <div className="mt-2 grid w-full max-w-[96%] grid-cols-2 gap-2 px-1 py-1">
+        {suggestions.map((suggestion, idx) => (
+          <button
+            key={`${messageId}-suggestion-${idx}`}
+            type="button"
+            onClick={() => handleSend(suggestion.label, suggestion.payload || suggestion.label)}
+            className={regularChoiceButtonClass}
+          >
+            {suggestion.label}
+          </button>
+        ))}
+      </div>
+    );
+  };
+
+  const renderChoiceGroupBoard = (msg: ChatMessage, sticky = false) => {
+    if (!msg.choiceGroups || msg.choiceGroups.length === 0) return null;
+
+    return (
+      <div
+        ref={!sticky ? (node) => {
+          choiceBoardRefs.current[msg.id] = node;
+        } : undefined}
+        className={cn(
+          "relative mt-2 w-full max-w-[96%] px-1 py-1",
+          sticky && "m-0 max-w-none bg-background px-2 py-2 shadow-md ring-1 ring-border"
+        )}
+      >
+        <div
+          onWheel={sticky ? (event) => {
+            const target = event.currentTarget;
+            if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+              target.scrollLeft += event.deltaY;
+              event.preventDefault();
+            }
+          } : undefined}
+          onMouseDown={sticky ? handleStickyChoiceDragStart : undefined}
+          onMouseLeave={sticky ? handleStickyChoiceDragEnd : undefined}
+          onMouseUp={sticky ? handleStickyChoiceDragEnd : undefined}
+          onMouseMove={sticky ? handleStickyChoiceDragMove : undefined}
+          className={cn(
+            "grid grid-cols-2 gap-2",
+            sticky && "flex cursor-grab select-none overflow-x-auto pb-1 pr-8 active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+          )}
+        >
+          {msg.choiceGroups.map((group, groupIdx) => (
+            <button
+              key={`${msg.id}-choice-group-${groupIdx}`}
+              type="button"
+              onClick={() => {
+                if (sticky && stickyDraggedDistance > 5) return;
+                setChoiceModal(group);
+              }}
+              className={sticky
+                ? "flex h-9 min-w-[116px] shrink-0 items-center justify-center rounded-full border border-border bg-white px-2.5 py-1.5 text-center text-[12px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20"
+                : regularChoiceButtonClass}
+            >
+              {group.title}
+            </button>
+          ))}
+        </div>
+        {sticky && (
+          <button
+            type="button"
+            onClick={() => {
+              setDismissedStickyChoiceIds((prev) => Array.from(new Set([...prev, msg.id])));
+              setStickyChoiceMessageId(null);
+            }}
+            className="absolute bottom-1 right-2 rounded-full bg-background p-1 text-muted-foreground shadow-sm ring-1 ring-border transition-colors hover:text-foreground"
+            aria-label="Hide service category shortcut"
+          >
+            <X className="h-3.5 w-3.5" />
+          </button>
+        )}
+      </div>
+    );
+  };
+
+  const stickyChoiceMessage = stickyChoiceMessageId
+    ? messages.find((message) => message.id === stickyChoiceMessageId)
+    : null;
 
   return (
     <div className="flex flex-col h-full bg-background relative overflow-hidden">
@@ -493,6 +726,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         </div>
       </div>
 
+      {stickyChoiceMessage && renderChoiceGroupBoard(stickyChoiceMessage, true)}
+
       {/* Fullscreen Map View - Only visible when a map is in fullscreen */}
       {fullscreenMapMessage && fullscreenMapMessage.mapData && (
         <div className="flex-1 relative bg-slate-100">
@@ -516,8 +751,39 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
       {/* Messages - Hidden when in fullscreen map mode */}
       {!fullscreenMapId && (
-        <ScrollArea className="flex-1 p-4" ref={scrollRef}>
-          <div className="space-y-4 pb-4">
+        <div className="relative min-h-0 flex-1 overflow-hidden">
+          <ScrollArea className="h-full p-4" ref={scrollRef}>
+          <div
+            className={cn(
+              "space-y-4 pb-4 transition duration-200",
+              choiceModal && "pointer-events-none blur-[2px]"
+            )}
+          >
+            {messages.length === 1 && messages[0]?.id === "welcome" && (
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mx-auto flex max-w-[92%] flex-col items-center gap-3 px-4 py-4 text-center text-foreground"
+              >
+                <p className="text-sm font-semibold">What can this bot help you with?</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleSend("Chatbot Help menu", "chatbot help menu")}
+                    className={compactChoiceButtonClass}
+                  >
+                    Chatbot Help menu
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSend("BukSU student services", "what are the student services")}
+                    className={compactChoiceButtonClass}
+                  >
+                    BukSU student services
+                  </button>
+                </div>
+              </motion.div>
+            )}
             {messages.map((msg) => (
               <motion.div
                 key={msg.id}
@@ -525,7 +791,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
                   "flex flex-col w-full",
-                  msg.sender === "user" ? "items-end" : "items-start"
+                  msg.sender === "user" ? "items-end" : "items-start pl-1"
                 )}
               >
                 <div
@@ -533,7 +799,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                     "max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-sm",
                     msg.sender === "user"
                       ? "bg-primary text-primary-foreground rounded-br-none"
-                      : "bg-muted text-foreground rounded-bl-none"
+                      : "bg-white text-foreground rounded-bl-none shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5"
                   )}
                 >
                   {/* Normal text */}
@@ -542,13 +808,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                       <p
                         className="leading-relaxed whitespace-pre-line"
                         dangerouslySetInnerHTML={{
-                          __html: msg.text.replace(
-                            /(https?:\/\/[^\s]+)/g,
-                            (match) => {
-                              const display = match.length > 40 ? match.slice(0, 37) + "..." : match;
-                              return `<a href="${match}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; background-color: #dbeafe; padding: 2px 6px; border-radius: 4px; text-decoration: underline; font-weight: 500; word-break: break-all;" onmouseover="this.style.backgroundColor='#bfdbfe'" onmouseout="this.style.backgroundColor='#dbeafe'">${display}</a>`;
-                            }
-                          ),
+                          __html: renderSafeMessageHtml(msg.text),
                         }}
                       />
 
@@ -591,16 +851,27 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   {msg.type === "map" && msg.mapData && (
                     privileges.mapAccessEnabled ? (
                       <>
-                        <MapMessage
-                          locationName={msg.mapData.locationName}
-                          coordinates={(msg.mapData as any).coordinates}
-                          pins={(msg.mapData as any).pins}
-                          routes={(msg.mapData as any).routes}
-                          isFullscreen={false}
-                          onToggleFullscreen={() => {
-                            setFullscreenMapId(msg.id);
-                          }}
-                        />
+                        {liveInlineMapIds.has(msg.id) ? (
+                          <MapMessage
+                            locationName={msg.mapData.locationName}
+                            coordinates={(msg.mapData as any).coordinates}
+                            pins={(msg.mapData as any).pins}
+                            routes={(msg.mapData as any).routes}
+                            isFullscreen={false}
+                            onToggleFullscreen={() => {
+                              setFullscreenMapId(msg.id);
+                            }}
+                          />
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => setFullscreenMapId(msg.id)}
+                            className="mt-2 flex w-60 items-center justify-between rounded-lg border border-sky-100 bg-sky-50/70 px-3 py-2 text-left text-xs font-semibold text-[#003B63] shadow-sm transition-colors hover:bg-sky-100"
+                          >
+                            <span className="truncate">{msg.mapData.locationName || "Open map"}</span>
+                            <span className="ml-2 shrink-0 text-[11px] font-bold">Open map</span>
+                          </button>
+                        )}
                         {/* Display images attached to map message */}
                         {msg.imageUrls && msg.imageUrls.length > 0 ? (
                           <div className="mt-2 flex flex-col gap-2">
@@ -641,6 +912,13 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   )}
                 </div>
 
+                {msg.sender === "bot" && (
+                  <>
+                    {renderSuggestionBoard(msg.id, msg.suggestions)}
+                    {renderChoiceGroupBoard(msg)}
+                  </>
+                )}
+
                 {!msg.hideTimestamp && (
                   <div className="text-xs opacity-60 mt-1 text-center">
                     {msg.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
@@ -655,7 +933,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 animate={{ opacity: 1 }}
                 className="flex justify-start w-full"
               >
-                <div className="bg-muted px-4 py-3 rounded-2xl rounded-bl-none flex gap-1.5 items-center">
+                <div className="rounded-2xl rounded-bl-none bg-white px-4 py-3 shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5 flex gap-1.5 items-center">
                   <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce [animation-delay:-0.3s]" />
                   <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce [animation-delay:-0.15s]" />
                   <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" />
@@ -664,6 +942,45 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             )}
           </div>
         </ScrollArea>
+
+        {choiceModal && (
+          <div
+            className="absolute inset-0 z-20 flex items-start justify-center bg-slate-900/10 px-4 pb-4 pt-12 backdrop-blur-[1px]"
+            onClick={() => setChoiceModal(null)}
+          >
+            <div
+              className="flex max-h-full w-full flex-col overflow-hidden rounded-2xl bg-background shadow-2xl ring-1 ring-black/10"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="flex shrink-0 items-center justify-between bg-[#001C38] px-4 py-3 text-white shadow-sm">
+                <h4 className="text-sm font-semibold">{choiceModal.title}</h4>
+                <button
+                  type="button"
+                  onClick={() => setChoiceModal(null)}
+                  className="rounded-full p-1 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                  aria-label="Close choices"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain p-3">
+                <div className="grid grid-cols-1 gap-2">
+                  {choiceModal.items.map((item, idx) => (
+                    <button
+                      key={`${choiceModal.title}-${idx}`}
+                      type="button"
+                      onClick={() => handleSend(item.label, item.payload || item.label)}
+                      className={regularChoiceButtonClass}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        </div>
       )}
 
       {/* Input - Hidden when in fullscreen map mode */}

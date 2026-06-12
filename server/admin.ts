@@ -15,6 +15,7 @@ const RESPONSES_FILE = path.join(__dirname, '..', 'rasa', 'actions', 'responses.
 const RESPONSES_LOCATION_FILE = path.join(__dirname, '..', 'rasa', 'actions', 'responses_location.json');
 const PRIVILEGES_FILE = path.join(DATA_DIR, 'user_privileges.json');
 const MAP_SETTINGS_FILE = path.join(DATA_DIR, 'map_settings.json');
+const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
 
 export interface MapData {
   id: string;
@@ -129,6 +130,16 @@ type LocationFileShape = {
   >;
 };
 
+function normalizeRoutes(routes: any[]): Array<{ name: string; points: [number, number][]; color: string; route_order: number; route_label: string }> {
+  return (Array.isArray(routes) ? routes : []).map((r: any, index: number) => ({
+    name: String(r?.name || `Route ${index + 1}`),
+    points: Array.isArray(r?.points) ? r.points : [],
+    color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+    route_order: Number(r?.route_order) || index + 1,
+    route_label: String(r?.route_label || `Route ${index + 1}`),
+  }));
+}
+
 async function readLocationFile(): Promise<LocationFileShape> {
   try {
     const data = await fs.readFile(RESPONSES_LOCATION_FILE, 'utf-8');
@@ -223,7 +234,7 @@ export async function getLocations(): Promise<Location[]> {
         pins,
         responses,
         imageUrls,
-        routes: Array.isArray((value as any)?.routes) ? (value as any).routes : [],
+        routes: normalizeRoutes((value as any)?.routes),
       };
     });
   } catch (error) {
@@ -267,13 +278,7 @@ export async function getMapLocationsList(): Promise<Array<{
             .filter(Boolean) as Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>
         : [];
 
-      const routes = Array.isArray((value as any)?.routes)
-        ? (value as any).routes.map((r: any) => ({
-            name: String(r?.name || "Route"),
-            points: Array.isArray(r?.points) ? r.points : [],
-            color: String(r?.color || "#dc2626"),
-          }))
-        : [];
+      const routes = normalizeRoutes((value as any)?.routes);
 
       const building = String((value as any)?.building || "").trim() || "Other";
 
@@ -391,13 +396,11 @@ export async function upsertLocation(location: Location): Promise<ApiResponse> {
       ? ([Number(nextPins[0].coordinates[0]), Number(nextPins[0].coordinates[1])] as [number, number])
       : null;
 
-    const nextRoutes = Array.isArray((location as any)?.routes)
-      ? (location as any).routes.map((r: any) => ({
-          name: String(r?.name || "Route"),
-          points: Array.isArray(r?.points) ? r.points : [],
-          color: String(r?.color || "#dc2626"), // Default to red as requested
-        }))
-      : (Array.isArray(existing.routes) ? existing.routes : []);
+    const nextRoutes = normalizeRoutes(
+      Array.isArray((location as any)?.routes)
+        ? (location as any).routes
+        : (Array.isArray(existing.routes) ? existing.routes : [])
+    );
 
     next[key] = {
       ...existing,

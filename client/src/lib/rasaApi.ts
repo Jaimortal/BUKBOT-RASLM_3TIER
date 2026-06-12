@@ -14,6 +14,15 @@ export const generateId = () => Math.random().toString(36).substr(2, 9);
 // --- Types ---
 export type MessageType = "text" | "map" | "faq_carousel";
 
+export interface ChatSuggestion {
+  label: string;
+  payload: string;
+}
+
+export interface ChatChoiceGroup {
+  title: string;
+  items: ChatSuggestion[];
+}
 
 export interface ChatMessage {
   id: string;
@@ -29,9 +38,11 @@ export interface ChatMessage {
     coordinates: { lat: number; lng: number };
     mapId?: string;
     pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
-    routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
+    routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
   };
   faqs?: import("../types/admin").FaqConfig[];
+  suggestions?: ChatSuggestion[];
+  choiceGroups?: ChatChoiceGroup[];
 }
 
 // Interface for the response format expected by ChatWindow
@@ -44,15 +55,17 @@ interface BackendResponse {
     coordinates: { lat: number; lng: number };
     mapId?: string;
     pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
-    routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
+    routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
   };
   mapDataList?: Array<{
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
     pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
-    routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
+    routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
   }>;
+  suggestions?: ChatSuggestion[];
+  choiceGroups?: ChatChoiceGroup[];
 }
 
 // --- Backend Adapter for Rasa ---
@@ -69,6 +82,8 @@ class RasaBackend {
       // Collect text parts separately
       const textParts: string[] = [];
       const imageUrls: string[] = [];
+      const suggestions: ChatSuggestion[] = [];
+      const choiceGroups: ChatChoiceGroup[] = [];
       let mapData: any = null;
       const mapDataList: any[] = [];
 
@@ -111,6 +126,34 @@ class RasaBackend {
           if (r.custom.follow_up && Array.isArray(r.custom.follow_up)) {
             r.custom.follow_up.forEach((part: string) => {
               if (typeof part === "string") textParts.push(part);
+            });
+          }
+
+          if (Array.isArray(r.custom.suggestions)) {
+            r.custom.suggestions.forEach((suggestion: any) => {
+              const label = typeof suggestion?.label === "string" ? suggestion.label.trim() : "";
+              const payload = typeof suggestion?.payload === "string" ? suggestion.payload.trim() : label;
+              if (label) {
+                suggestions.push({ label, payload });
+              }
+            });
+          }
+
+          if (Array.isArray(r.custom.choiceGroups)) {
+            r.custom.choiceGroups.forEach((group: any) => {
+              const title = typeof group?.title === "string" ? group.title.trim() : "";
+              const items = Array.isArray(group?.items)
+                ? group.items
+                    .map((item: any) => {
+                      const label = typeof item?.label === "string" ? item.label.trim() : "";
+                      const payload = typeof item?.payload === "string" ? item.payload.trim() : label;
+                      return label ? { label, payload } : null;
+                    })
+                    .filter(Boolean)
+                : [];
+              if (title && items.length > 0) {
+                choiceGroups.push({ title, items });
+              }
             });
           }
 
@@ -260,6 +303,14 @@ class RasaBackend {
         response.imageUrl = uniqueImageUrls[0];
       }
 
+      if (suggestions.length > 0) {
+        response.suggestions = suggestions;
+      }
+
+      if (choiceGroups.length > 0) {
+        response.choiceGroups = choiceGroups;
+      }
+
       // Add map data if available
       if (mapDataList.length > 0) {
         response.mapDataList = mapDataList;
@@ -334,3 +385,4 @@ export function convertRasaResponseToMessages(rasaResponses: any[]): ChatMessage
 
   return messages;
 }
+

@@ -6,180 +6,360 @@
   ],
   "topics": [
     {
-      "topic": "buksu_academic_colleges",
-      "responses": {
-        "en": [
-          "BukSU is composed of several colleges including the:",
-          "- College of Arts and Sciences",
-          "- College of Education",
-          "- College of Business",
-          "- College of Nursing",
-          "- College of Technologies",
-          "- College of Public Administration and Governance",
-          "- College of Law"
-        ],
-        "ceb": [
-          "Ang BukSU gilangkuban sa pipila ka mga kolehiyo lakip ang:",
-          "- College of Arts and Sciences",
-          "- College of Education",
-          "- College of Business",
-          "- College of Nursing",
-          "- College of Technologies",
-          "- College of Public Administration and Governance",
-          "- College of Law"
-        ]
-      }
+      "topic": "academic_colleges",
+      "subject_key": "academic_colleges",
+      "subject_type": "college_catalog",
+      "subject_terms": [
+        "academic colleges",
+        "buksu colleges",
+        "colleges in buksu"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_academic_colleges",
+          "responses": {
+            "en": [
+              "BukSU is composed of several colleges including the:",
+              "- College of Arts and Sciences",
+              "- College of Education",
+              "- College of Business",
+              "- College of Nursing",
+              "- College of Technologies",
+              "- College of Public Administration and Governance",
+              "- College of Law"
+            ],
+            "ceb": [
+              "Ang BukSU gilangkuban sa pipila ka mga kolehiyo lakip ang:",
+              "- College of Arts and Sciences",
+              "- College of Education",
+              "- College of Business",
+              "- College of Nursing",
+              "- College of Technologies",
+              "- College of Public Administration and Governance",
+              "- College of Law"
+            ]
+          },
+          "intent": "buksu_academic_colleges",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "what are the colleges in buksu",
+              "buksu academic colleges"
+            ]
+          },
+          "display_name": "BukSU Academic Colleges"
+        }
+      ],
+      "display_name": "Academic Colleges"
     },
     {
-      "topic": "course_offer_CAS",
-      "responses": {
-        "en": [
-          "The College of Arts and Sciences (CAS) offers a variety of courses that you can choose from. Here is the list of courses under CAS:",
-          "Bachelor of Science in Biology, Major in Biotechnology (BS-BIO)",
-          "Bachelor of Arts in Social Science (AB SocSci)",
-          "Bachelor of Arts in Philosophy (AB-PHILO)",
-          "Bachelor of Science in Environmental Science, Major in Environmental Heritage Studies (BS-ES)",
-          "Bachelor of Arts in Sociology (AB-SOCIO)",
-          "Bachelor of Arts in English Language (AB-ENG)",
-          "Bachelor of Science in Community Development (BS COMDEV)",
-          "Bachelor of Arts in Economics (AB-ECON)",
-          "Bachelor of Science in Development Communication (BSDC)",
-          "Bachelor of Science in Mathematics (BS-MATH)",
-          "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
-          "https://admissions.buksu.edu.ph/courses"
-        ],
-        "ceb": [
-          "Ang College of Arts and Sciences (CAS) nag-offer og nagkalain-laing mga kurso nga imong mapilian. Mao kini ang listahan sa mga kurso ubos sa CAS:",
-          "Bachelor of Science in Biology, Major in Biotechnology (BS-BIO)",
-          "Bachelor of Arts in Social Science (AB SocSci)",
-          "Bachelor of Arts in Philosophy (AB-PHILO)",
-          "Bachelor of Science in Environmental Science, Major in Environmental Heritage Studies (BS-ES)",
-          "Bachelor of Arts in Sociology (AB-SOCIO)",
-          "Bachelor of Arts in English Language (AB-ENG)",
-          "Bachelor of Science in Community Development (BS COMDEV)",
-          "Bachelor of Arts in Economics (AB-ECON)",
-          "Bachelor of Science in Development Communication (BSDC)",
-          "Bachelor of Science in Mathematics (BS-MATH)",
-          "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
-          "https://admissions.buksu.edu.ph/courses "
-        ]
-      }
+      "topic": "college_cas",
+      "subject_key": "college_cas",
+      "subject_type": "college",
+      "subject_terms": [
+        "cas",
+        "college of arts and sciences",
+        "arts and sciences"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_offer_CAS",
+          "responses": {
+            "en": [
+              "The College of Arts and Sciences (CAS) offers a variety of courses that you can choose from. Here is the list of courses under CAS:",
+              "Bachelor of Science in Biology, Major in Biotechnology (BS-BIO)",
+              "Bachelor of Arts in Social Science (AB SocSci)",
+              "Bachelor of Arts in Philosophy (AB-PHILO)",
+              "Bachelor of Science in Environmental Science, Major in Environmental Heritage Studies (BS-ES)",
+              "Bachelor of Arts in Sociology (AB-SOCIO)",
+              "Bachelor of Arts in English Language (AB-ENG)",
+              "Bachelor of Science in Community Development (BS COMDEV)",
+              "Bachelor of Arts in Economics (AB-ECON)",
+              "Bachelor of Science in Development Communication (BSDC)",
+              "Bachelor of Science in Mathematics (BS-MATH)",
+              "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
+              "https://admissions.buksu.edu.ph/courses"
+            ],
+            "ceb": [
+              "Ang College of Arts and Sciences (CAS) nag-offer og nagkalain-laing mga kurso nga imong mapilian. Mao kini ang listahan sa mga kurso ubos sa CAS:",
+              "Bachelor of Science in Biology, Major in Biotechnology (BS-BIO)",
+              "Bachelor of Arts in Social Science (AB SocSci)",
+              "Bachelor of Arts in Philosophy (AB-PHILO)",
+              "Bachelor of Science in Environmental Science, Major in Environmental Heritage Studies (BS-ES)",
+              "Bachelor of Arts in Sociology (AB-SOCIO)",
+              "Bachelor of Arts in English Language (AB-ENG)",
+              "Bachelor of Science in Community Development (BS COMDEV)",
+              "Bachelor of Arts in Economics (AB-ECON)",
+              "Bachelor of Science in Development Communication (BSDC)",
+              "Bachelor of Science in Mathematics (BS-MATH)",
+              "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
+              "https://admissions.buksu.edu.ph/courses "
+            ]
+          },
+          "intent": "course_offer_CAS",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "course offer cas",
+              "courses offered in cas",
+              "cas courses"
+            ]
+          },
+          "display_name": "Course Offer CAS"
+        }
+      ],
+      "display_name": "College CAS"
     },
     {
-      "topic": "course_offer_COB",
-      "responses": {
-        "en": [
-          "The College of Business (COB) offers a variety of courses that you can choose from. Here is the list of courses under COB:",
-          "Bachelor of Science in Hospitality Management (BSHM)",
-          "Bachelor of Science in Accountancy (BSA)",
-          "Bachelor of Science in Business Administration major in Financial Management (BSBA-FM)",
-          "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
-          "https://admissions.buksu.edu.ph/courses"
-        ],
-        "ceb": [
-          "The College of Business (COB) offers a variety of courses that you can choose from. Here is the list of courses under COB:",
-          "Bachelor of Science in Hospitality Management (BSHM)",
-          "Bachelor of Science in Accountancy (BSA)",
-          "Bachelor of Science in Business Administration major in Financial Management (BSBA-FM)",
-          "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
-          "https://admissions.buksu.edu.ph/courses "
-        ]
-      }
+      "topic": "college_cob",
+      "subject_key": "college_cob",
+      "subject_type": "college",
+      "subject_terms": [
+        "cob",
+        "college of business",
+        "business"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_offer_COB",
+          "responses": {
+            "en": [
+              "The College of Business (COB) offers a variety of courses that you can choose from. Here is the list of courses under COB:",
+              "Bachelor of Science in Hospitality Management (BSHM)",
+              "Bachelor of Science in Accountancy (BSA)",
+              "Bachelor of Science in Business Administration major in Financial Management (BSBA-FM)",
+              "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
+              "https://admissions.buksu.edu.ph/courses"
+            ],
+            "ceb": [
+              "The College of Business (COB) offers a variety of courses that you can choose from. Here is the list of courses under COB:",
+              "Bachelor of Science in Hospitality Management (BSHM)",
+              "Bachelor of Science in Accountancy (BSA)",
+              "Bachelor of Science in Business Administration major in Financial Management (BSBA-FM)",
+              "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
+              "https://admissions.buksu.edu.ph/courses "
+            ]
+          },
+          "intent": "course_offer_COB",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "course offer cob",
+              "courses offered in cob",
+              "cob courses"
+            ]
+          },
+          "display_name": "Course Offer COB"
+        }
+      ],
+      "display_name": "College COB"
     },
     {
-      "topic": "course_offer_COT",
-      "responses": {
-        "en": [
-          "The College of Technology (COT) offers a variety of courses that you can choose from. Here is the list of courses under COT:",
-          "Bachelor of Science in Food Technology (BSFT)",
-          "Bachelor of Science in Electronics Technology (BSET)",
-          "Bachelor of Science in Information Technology (BSIT)",
-          "Bachelor of Science in Automotive Technology (BSAT)",
-          "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology (BSEMC-DAT)",
-          "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
-          "https://admissions.buksu.edu.ph/courses"
-        ],
-        "ceb": [
-          "The College of Technology (COT) offers a variety of courses that you can choose from. Here is the list of courses under COT:",
-          " ",
-          "Bachelor of Science in Food Technology (BSFT)",
-          " ",
-          "Bachelor of Science in Electronics Technology (BSET)",
-          " ",
-          "Bachelor of Science in Information Technology (BSIT)",
-          " ",
-          "Bachelor of Science in Automotive Technology (BSAT)",
-          " ",
-          "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology (BSEMC-DAT)",
-          " ",
-          "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
-          "https://admissions.buksu.edu.ph/courses "
-        ]
-      }
+      "topic": "college_cot",
+      "subject_key": "college_cot",
+      "subject_type": "college",
+      "subject_terms": [
+        "cot",
+        "college of technologies",
+        "college of technology",
+        "technology"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_offer_COT",
+          "responses": {
+            "en": [
+              "The College of Technology (COT) offers a variety of courses that you can choose from. Here is the list of courses under COT:",
+              "Bachelor of Science in Food Technology (BSFT)",
+              "Bachelor of Science in Electronics Technology (BSET)",
+              "Bachelor of Science in Information Technology (BSIT)",
+              "Bachelor of Science in Automotive Technology (BSAT)",
+              "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology (BSEMC-DAT)",
+              "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
+              "https://admissions.buksu.edu.ph/courses"
+            ],
+            "ceb": [
+              "The College of Technology (COT) offers a variety of courses that you can choose from. Here is the list of courses under COT:",
+              " ",
+              "Bachelor of Science in Food Technology (BSFT)",
+              " ",
+              "Bachelor of Science in Electronics Technology (BSET)",
+              " ",
+              "Bachelor of Science in Information Technology (BSIT)",
+              " ",
+              "Bachelor of Science in Automotive Technology (BSAT)",
+              " ",
+              "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology (BSEMC-DAT)",
+              " ",
+              "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
+              "https://admissions.buksu.edu.ph/courses "
+            ]
+          },
+          "intent": "course_offer_COT",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "course offer cot",
+              "courses offered in cot",
+              "cot courses"
+            ]
+          },
+          "display_name": "Course Offer COT"
+        }
+      ],
+      "display_name": "College COT"
     },
     {
-      "topic": "course_offer_CON",
-      "responses": {
-        "en": [
-          "The College of Nursing (CON) Naturally its nursing course but since you ask here is the list",
-          " ",
-          "Bachelor of Science in Nursing (BSN)🙃",
-          " ",
-          "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
-          "https://admissions.buksu.edu.ph/courses"
-        ],
-        "ceb": [
-          "Ang College of Nursing (CON) natural nga nagtanyag ra og kursong Nursing, apan kay nangutana ka, mao kini ang listahan.",
-          " ",
-          "Bachelor of Science in Nursing (BSN)🙃",
-          " ",
-          "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
-          "https://admissions.buksu.edu.ph/courses "
-        ]
-      }
+      "topic": "college_con",
+      "subject_key": "college_con",
+      "subject_type": "college",
+      "subject_terms": [
+        "con",
+        "college of nursing",
+        "nursing"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_offer_CON",
+          "responses": {
+            "en": [
+              "The College of Nursing (CON) offers the Bachelor of Science in Nursing (BSN).",
+              "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
+              "https://admissions.buksu.edu.ph/courses"
+            ],
+            "ceb": [
+              "Ang College of Nursing (CON) nagtanyag sa Bachelor of Science in Nursing (BSN).",
+              "Para sa dugang impormasyon, pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
+              "https://admissions.buksu.edu.ph/courses "
+            ]
+          },
+          "intent": "course_offer_CON",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "course offer con",
+              "courses offered in con",
+              "nursing course"
+            ]
+          },
+          "display_name": "Course Offer CON"
+        }
+      ],
+      "display_name": "College CON"
     },
     {
-      "topic": "course_offer_COE",
-      "responses": {
-        "en": [
-          "The College of Education (COE) offers a variety of courses that you can choose from, but it is not part of my data since COE is no longer located on the main campus. I will provide a direct link for more details:",
-          "https://admissions.buksu.edu.ph/courses?campus=1&department_id=6&level=7"
-        ],
-        "ceb": [
-          "Ang College of Education (COE) nag-offer og nagkalain-laing mga kurso nga imong mapilian, apan dili kini sakop sa akong datos tungod kay ang COE wala na nahimutang sa main campus. Hatagan tika og direct link para sa dugang detalye:",
-          "https://admissions.buksu.edu.ph/courses?campus=1&department_id=6&level=7"
-        ]
-      }
+      "topic": "college_coe",
+      "subject_key": "college_coe",
+      "subject_type": "college",
+      "subject_terms": [
+        "coe",
+        "college of education",
+        "education"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_offer_COE",
+          "responses": {
+            "en": [
+              "The College of Education (COE) offers a variety of courses that you can choose from, but it is not part of my data since COE is no longer located on the main campus. I will provide a direct link for more details:",
+              "https://admissions.buksu.edu.ph/courses?campus=1&department_id=6&level=7"
+            ],
+            "ceb": [
+              "Ang College of Education (COE) nag-offer og nagkalain-laing mga kurso nga imong mapilian, apan dili kini sakop sa akong datos tungod kay ang COE wala na nahimutang sa main campus. Hatagan tika og direct link para sa dugang detalye:",
+              "https://admissions.buksu.edu.ph/courses?campus=1&department_id=6&level=7"
+            ]
+          },
+          "intent": "course_offer_COE",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "course offer coe",
+              "courses offered in coe",
+              "education courses"
+            ]
+          },
+          "display_name": "Course Offer COE"
+        }
+      ],
+      "display_name": "College COE"
     },
     {
-      "topic": "course_offer_LAW",
-      "responses": {
-        "en": [
-          "The Law program offers only one course, which is Juris Doctor. You must already be a degree holder to enroll in this program. For your information, this is not under the undergraduate college courses. You can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
-          "https://admissions.buksu.edu.ph/courses"
-        ],
-        "ceb": [
-          "Ang Law program nag-offer og usa ra ka kurso, nga mao ang Juris Doctor. Kinahanglan usa ka na ka degree holder aron maka-enroll niini nga programa. Para sa imong kasayuran, dili kini apil sa undergraduate college courses. Pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
-          "https://admissions.buksu.edu.ph/courses "
-        ]
-      }
+      "topic": "college_law",
+      "subject_key": "college_law",
+      "subject_type": "college",
+      "subject_terms": [
+        "law",
+        "college of law",
+        "juris doctor"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_offer_LAW",
+          "responses": {
+            "en": [
+              "The Law program offers only one course, which is Juris Doctor. You must already be a degree holder to enroll in this program. For your information, this is not under the undergraduate college courses. You can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
+              "https://admissions.buksu.edu.ph/courses"
+            ],
+            "ceb": [
+              "Ang Law program nag-offer og usa ra ka kurso, nga mao ang Juris Doctor. Kinahanglan usa ka na ka degree holder aron maka-enroll niini nga programa. Para sa imong kasayuran, dili kini apil sa undergraduate college courses. Pwede nimo bisitahon ang BukSU Admissions page, diin makita nimo ang kompleto nga listahan sa mga kurso nga gi-offer:",
+              "https://admissions.buksu.edu.ph/courses "
+            ]
+          },
+          "intent": "course_offer_LAW",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "course offer law",
+              "law course offered",
+              "juris doctor course"
+            ]
+          },
+          "display_name": "Course Offer Law"
+        }
+      ],
+      "display_name": "College Law"
     },
     {
-      "topic": "course_offer_COA",
-      "responses": {
-        "en": [
-          "The College of Administration offer only one course which is the:",
-          "Bachelor of Public Administration (BPA)",
-          "You can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
-          "https://admissions.buksu.edu.ph/courses"
-        ],
-        "ceb": [
-          "The College of Public Administration offers only one course, which is:",
-          "Bachelor of Public Administration (BPA)",
-          "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
-          "https://admissions.buksu.edu.ph/courses "
-        ]
-      }
+      "topic": "college_coa_cpag",
+      "subject_key": "college_coa_cpag",
+      "subject_type": "college",
+      "subject_terms": [
+        "coa",
+        "cpag",
+        "college of administration",
+        "public administration",
+        "governance"
+      ],
+      "subtopics": [
+        {
+          "topic": "course_offer_COA",
+          "responses": {
+            "en": [
+              "The College of Administration offer only one course which is the:",
+              "Bachelor of Public Administration (BPA)",
+              "You can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
+              "https://admissions.buksu.edu.ph/courses"
+            ],
+            "ceb": [
+              "The College of Public Administration offers only one course, which is:",
+              "Bachelor of Public Administration (BPA)",
+              "For more information, you can visit the BukSU Admissions page, where you can find the complete list of courses offered:",
+              "https://admissions.buksu.edu.ph/courses "
+            ]
+          },
+          "intent": "course_offer_COA",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "course offer coa",
+              "courses offered in coa",
+              "public administration course"
+            ]
+          },
+          "display_name": "Course Offer COA"
+        }
+      ],
+      "display_name": "College COA CPAG"
     }
   ]
 }

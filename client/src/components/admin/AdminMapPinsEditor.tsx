@@ -43,6 +43,8 @@ export interface AdminRoute {
   color?: string;
   isDefault?: boolean;
   id: string | number;
+  route_order?: number;
+  route_label?: string;
 }
 
 interface AdminMapPinsEditorProps {
@@ -57,12 +59,25 @@ interface AdminMapPinsEditorProps {
 
 const PIN_COLOURS = ["#2563eb", "#dc2626", "#16a34a", "#ea580c", "#9333ea", "#0891b2", "#be185d", "#ca8a04", "#4f46e5", "#0f766e"];
 
-// Route color palette - cycles through: red, green, yellow, orange, blue
-const ROUTE_COLORS = ["#dc2626", "#16a34a", "#eab308", "#f97316", "#2563eb"];
+// Neon route palette: red, yellow, blue, green, purple, then bright accents.
+export const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
 
 const getNextRouteColor = (existingRoutes: AdminRoute[]): string => {
   const colorIndex = existingRoutes.length % ROUTE_COLORS.length;
   return ROUTE_COLORS[colorIndex];
+};
+
+const getRouteColor = (route: AdminRoute, index: number): string => {
+  return ROUTE_COLORS[index % ROUTE_COLORS.length];
+};
+
+const withRouteMetadata = (routes: AdminRoute[]): AdminRoute[] => {
+  return routes.map((route, index) => ({
+    ...route,
+    color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+    route_order: index + 1,
+    route_label: route.route_label || `Route ${index + 1}`,
+  }));
 };
 
 function pinColour(idx: number) {
@@ -156,6 +171,10 @@ export function AdminMapPinsEditor({
   const [connStart, setConnStart] = useState("");
   const [connEnd, setConnEnd] = useState("");
 
+  const emitRoutes = (nextRoutes: AdminRoute[]) => {
+    onRoutesChange?.(withRouteMetadata(nextRoutes));
+  };
+
   useEffect(() => {
     const img = new Image();
     img.onload = () => { mapImgRef.current = img; setImgLoaded(true); };
@@ -197,34 +216,47 @@ export function AdminMapPinsEditor({
       if (!route.points || route.points.length < 2) return;
       const isSelected = selectedRouteId === route.id;
 
-      // Zoom-based styling: thinner with more visible dashes when zoomed out
+      // Mobile-friendly route styling: thin foreground with a subtle transparent glow.
       const isZoomedOut = zoom < 0.5;
-      const lineWidth = (isSelected ? (isZoomedOut ? 2 : 3) : (isZoomedOut ? 1.5 : 2)) * zoom;
-      const dashPattern = isZoomedOut ? [6, 6] : [8, 8];
-      const animSpeed = isZoomedOut ? 1 : 0.5; // faster animation when zoomed out
+      const lineWidth = (isSelected ? (isZoomedOut ? 1.6 : 2.4) : (isZoomedOut ? 1.4 : 2.2)) * zoom;
+      const glowWidth = lineWidth + (6.2 * zoom);
+      const dashPattern = isZoomedOut ? [5, 7] : [7, 9];
+      const routeColor = getRouteColor(route, routes.indexOf(route));
+      const pts = route.points.map(p => toScreen(p));
+      const radius = 1 * zoom;
+
+      const drawRoutePath = () => {
+        if (pts.length < 2) return;
+        ctx.moveTo(pts[0].sx, pts[0].sy);
+        for (let i = 1; i < pts.length - 1; i++) {
+          const p1 = pts[i];
+          const p2 = pts[i + 1];
+          ctx.arcTo(p1.sx, p1.sy, p2.sx, p2.sy, radius);
+        }
+        ctx.lineTo(pts[pts.length - 1].sx, pts[pts.length - 1].sy);
+      };
 
       ctx.save();
       ctx.beginPath();
-      // Design: red, thin, dashed
-      ctx.strokeStyle = "#dc2626";
+      ctx.strokeStyle = routeColor;
+      ctx.globalAlpha = 0.7;
+      ctx.lineWidth = glowWidth;
+      ctx.setLineDash([]);
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      drawRoutePath();
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.strokeStyle = routeColor;
       ctx.lineWidth = lineWidth;
       ctx.setLineDash(dashPattern);
       ctx.lineDashOffset = dashOffset * (isZoomedOut ? 2 : 1);
       ctx.lineJoin = "round";
       ctx.lineCap = "round";
-
-      // Logic for Curved Turns - smaller radius for tighter, more controllable bends
-      const pts = route.points.map(p => toScreen(p));
-      const radius = 1 * zoom; // reduced curvature radius for sharper bends
-
-      ctx.moveTo(pts[0].sx, pts[0].sy);
-      for (let i = 1; i < pts.length - 1; i++) {
-        const p1 = pts[i];
-        const p2 = pts[i + 1];
-        ctx.arcTo(p1.sx, p1.sy, p2.sx, p2.sy, radius);
-      }
-      ctx.lineTo(pts[pts.length - 1].sx, pts[pts.length - 1].sy);
-
+      drawRoutePath();
       ctx.stroke();
       ctx.restore();
 
@@ -241,12 +273,35 @@ export function AdminMapPinsEditor({
     // Draw Active Drawing Route
     if (activeRoutePoints.length > 0) {
       const isZoomedOut = zoom < 0.5;
-      ctx.beginPath(); ctx.strokeStyle = "#dc2626"; ctx.setLineDash(isZoomedOut ? [4, 4] : [5, 5]); ctx.lineWidth = (isZoomedOut ? 1.5 : 2) * zoom;
+      const previewColor = getNextRouteColor(routes);
+      const previewLineWidth = (isZoomedOut ? 1.4 : 2.2) * zoom;
+      const previewGlowWidth = previewLineWidth + (6.2 * zoom);
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.strokeStyle = previewColor;
+      ctx.globalAlpha = 0.7;
+      ctx.setLineDash([]);
+      ctx.lineWidth = previewGlowWidth;
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
       activeRoutePoints.forEach((p, i) => {
         const { sx, sy } = toScreen(p);
         if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
       });
-      ctx.stroke(); ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.save();
+      ctx.beginPath(); ctx.strokeStyle = previewColor; ctx.setLineDash(isZoomedOut ? [5, 7] : [7, 9]); ctx.lineWidth = previewLineWidth;
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      activeRoutePoints.forEach((p, i) => {
+        const { sx, sy } = toScreen(p);
+        if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
+      });
+      ctx.stroke();
+      ctx.restore();
     }
 
     // Draw Pins
@@ -318,7 +373,7 @@ export function AdminMapPinsEditor({
     if (draggingPointIdx !== null && selectedRouteId !== null && onRoutesChange) {
       const nextRoutes = [...routes];
       const rIdx = nextRoutes.findIndex(r => r.id === selectedRouteId);
-      if (rIdx !== -1) { nextRoutes[rIdx].points[draggingPointIdx] = coords; onRoutesChange(nextRoutes); }
+      if (rIdx !== -1) { nextRoutes[rIdx].points[draggingPointIdx] = coords; emitRoutes(nextRoutes); }
       return;
     }
 
@@ -398,7 +453,7 @@ export function AdminMapPinsEditor({
       if (pts.length >= 2) {
         const last = pts[pts.length - 1]; const prev = pts[pts.length - 2];
         const newPt: [number, number] = [Math.round((last[0] + prev[0]) / 2), Math.round((last[1] + prev[1]) / 2)];
-        pts.splice(pts.length - 1, 0, newPt); onRoutesChange(nextRoutes);
+        pts.splice(pts.length - 1, 0, newPt); emitRoutes(nextRoutes);
         toast.success("Waypoint added!");
       }
     }
@@ -409,7 +464,7 @@ export function AdminMapPinsEditor({
     const p2 = pins.find(p => p.name === connEnd);
     if (p1 && p2 && onRoutesChange) {
       const newColor = getNextRouteColor(routes);
-      onRoutesChange([...routes, { 
+      emitRoutes([...routes, { 
         name: `${p1.name} to ${p2.name}`, 
         points: [p1.coordinates, p2.coordinates], 
         color: newColor,
@@ -421,14 +476,17 @@ export function AdminMapPinsEditor({
 
   const setAsMain = (id: string | number) => {
     if (!onRoutesChange) return;
-    const nextRoutes = routes.map(r => ({ ...r, isDefault: r.id === id, color: r.id === id ? "#2563eb" : "#10b981" }));
-    onRoutesChange(nextRoutes);
+    const nextRoutes = routes.map((r, index) => ({ ...r, isDefault: r.id === id, color: getRouteColor(r, index) }));
+    emitRoutes(nextRoutes);
     toast.success("Set as Main Route");
   };
 
   return (
     <div className="flex gap-4 h-full">
       <div className="relative rounded-lg overflow-hidden border border-gray-200 bg-gray-100 shrink-0 shadow-lg" style={{ width: mapSize, height: mapSize }}>
+        <div className="pointer-events-none absolute bottom-2 left-2 z-20 rounded-md bg-white/90 px-2 py-1 text-[10px] font-semibold text-blue-700 shadow-sm ring-1 ring-black/10">
+          Hold Shift + Scroll to zoom in & out
+        </div>
         <canvas
           ref={canvasRef}
           width={mapSize} height={mapSize}
@@ -462,8 +520,17 @@ export function AdminMapPinsEditor({
           >
             <ArrowUpDown className="h-4 w-4 mx-auto" />
           </button>
+          <Button
+            size="icon"
+            variant={mode === "place-pin" ? "default" : "secondary"}
+            className="w-8 h-8 rounded-full shadow"
+            title="Place normal pin"
+            onClick={() => setMode(mode === "place-pin" ? "view" : "place-pin")}
+          >
+            <MapPin className="h-4 w-4" />
+          </Button>
           <Button size="icon" variant={mode === "draw-route" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => {
-            if (mode === "draw-route") { if (activeRoutePoints.length >= 2) { const name = prompt("Name:"); if (name && onRoutesChange) onRoutesChange([...routes, { name, points: activeRoutePoints, id: Date.now() }]); } setActiveRoutePoints([]); setMode("view"); }
+            if (mode === "draw-route") { if (activeRoutePoints.length >= 2) { const name = prompt("Name:"); if (name && onRoutesChange) emitRoutes([...routes, { name, points: activeRoutePoints, color: getNextRouteColor(routes), id: Date.now() }]); } setActiveRoutePoints([]); setMode("view"); }
             else setMode("draw-route");
           }}>
             <Navigation className="h-4 w-4" />
@@ -504,13 +571,14 @@ export function AdminMapPinsEditor({
                 <div key={r.id} className={`flex flex-col gap-1 bg-white border rounded-lg p-2 hover:border-blue-300 transition-all ${selectedRouteId === r.id ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1.5 min-w-0 flex-1 text-xs font-semibold">
-                      <span className="truncate">{r.name}</span>
+                      <span className="h-2.5 w-2.5 rounded-full border border-white shadow" style={{ backgroundColor: getRouteColor(r, i) }} />
+                      <span className="truncate">{r.route_label || `Route ${i + 1}`}: {r.name}</span>
                       {r.isDefault && <span className="bg-blue-100 text-blue-700 text-[8px] px-1 rounded">MAIN</span>}
                     </div>
                     <div className="flex gap-1">
                       <button onClick={() => setAsMain(r.id)} className={`p-1 rounded ${r.isDefault ? 'text-blue-600 bg-blue-50' : 'text-gray-400'}`}><Check className="h-3 w-3" /></button>
                       <button onClick={() => { setSelectedRouteId(r.id); setMode("edit-route"); }} className="p-1 text-blue-500"><Edit2 className="h-3 w-3" /></button>
-                      <button onClick={() => onRoutesChange?.(routes.filter((_, j) => j !== i))} className="p-1 text-red-400"><Trash2 className="h-3 w-3" /></button>
+                      <button onClick={() => emitRoutes(routes.filter((_, j) => j !== i))} className="p-1 text-red-400"><Trash2 className="h-3 w-3" /></button>
                     </div>
                   </div>
                   {selectedRouteId === r.id && <Button variant="outline" size="sm" className="h-6 text-[9px] w-full border-dashed" onClick={addWaypoint}>+ Add Waypoint</Button>}

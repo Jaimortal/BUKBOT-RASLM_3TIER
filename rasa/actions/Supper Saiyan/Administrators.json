@@ -6,107 +6,211 @@
   ],
   "topics": [
     {
-      "topic": "Buksu_vice_pres",
-      "responses": {
-        "en": [
-          "As of 2026, Bukidnon State University (BukSU) has a team of vice presidents specializing in different areas rather than a single vice president. Key officials include:",
-          " ",
-          "Vice President for Academic Affairs: Dr. Hazel Jean M. Abejuela ",
-          " ",
-          "Vice President for Research, Extension and Innovations: Dr. Carina Joane V. Barroso",
-          " ",
-          "Vice President for Administration and Finance: Mr. Dante S. Victoria, Jr.",
-          " ",
-          "Vice President for Culture, Arts, Sports and Student Services: Dr. Lincoln V. Tan",
-          " ",
-          "Dr. Joy M. Mirasol serves as the University President.",
-          "for more Information you can visit the Official BukSU Website",
-          "https://buksu.edu.ph/board-of-regents/"
-        ],
-        "ceb": [
-          "As of 2026, ang Bukidnon State University (BukSU) adunay team sa mga vice presidents nga nag-specialize sa lain-laing mga natad imbes usa ra ka vice president. Ang mga key officials mao ang mosunod:",
-          " ",
-          "Vice President for Academic Affairs: Dr. Hazel Jean M. Abejuela",
-          " ",
-          "Vice President for Research, Extension and Innovations: Dr. Carina Joane V. Barroso",
-          " ",
-          "Vice President for Administration and Finance: Mr. Dante S. Victoria, Jr.",
-          " ",
-          "Vice President for Culture, Arts, Sports and Student Services: Dr. Lincoln V. Tan",
-          " ",
-          "Si Dr. Joy M. Mirasol nagsilbi isip University President.",
-          "para sa dungag nga ipormasyon bisitaha anng official website sa buksu",
-          "https://buksu.edu.ph/board-of-regents/"
-        ]
-      }
-    },
-    {
-      "topic": "vicepres_academic_affairs",
-      "responses": {
-        "en": [
-          "The Vice President for Academic Affairs: Dr. Hazel Jean M. Abejuela."
-        ],
-        "ceb": [
-          "Ang Vice President for Academic Affairs kay si: Dr. Hazel Jean M. Abejuela."
-        ]
-      }
-    },
-    {
-      "topic": "vicepres_research_extension_innovations",
-      "responses": {
-        "en": [
-          "The Vice President for Research, Extension and Innovations: Dr. Carina Joane V. Barroso"
-        ],
-        "ceb": [
-          "Ang Vice President for Research, Extension and Innovations kay si: Dr. Carina Joane V. Barroso"
-        ]
-      }
-    },
-    {
-      "topic": "vicepres_administration_finance",
-      "responses": {
-        "en": [
-          "Vice President for Administration and Finance: Mr. Dante S. Victoria, Jr."
-        ],
-        "ceb": [
-          "Ang Vice President for Administration and Finance kay si: Mr. Dante S. Victoria, Jr."
-        ]
-      }
-    },
-    {
-      "topic": "vicepres_culture_arts_sports_student_services",
-      "responses": {
-        "en": [
-          "Vice President for Culture, Arts, Sports and Student Services: Dr. Lincoln V. Tan "
-        ],
-        "ceb": [
-          "Ang Vice President for Culture, Arts, Sports and Student Services Kay si: Dr. Lincoln V. Tan "
-        ]
-      }
-    },
-    {
-      "topic": "buksu_secretary",
-      "responses": {
-        "en": [
-          "Mr. Dante S. Victoria, Jr. serves as the Board Secretary and concurrently the Vice President for Administration and Finance at Bukidnon State University. He holds a key role in the university's board of regents. For more information you can visit the Buksu official website",
-          "https://buksu.edu.ph/board-of-regents/"
-        ],
-        "ceb": [
-          "Si Mr. Dante S. Victoria, Jr. nagsilbi isip Board Secretary ug concurrently ang Vice President for Administration and Finance sa Bukidnon State University. Siya adunay importante nga papel sa board of regents sa unibersidad. Para sa dugang nga impormasyon, bisitaha ang opisyal nga website sa Buksu",
-          "https://buksu.edu.ph/board-of-regents/"
-        ]
-      }
-    },
-    {
-      "topic": "",
-      "responses": {
-        "en": [
-          ""
-        ],
-        "ceb": [
-          ""
-        ]
-      }
+      "topic": "university_administrators",
+      "subject_key": "university_administrators",
+      "subject_type": "person",
+      "subject_terms": [
+        "administrator",
+        "administrators",
+        "vice president",
+        "vice presidents",
+        "board secretary",
+        "academic affairs",
+        "administration and finance"
+      ],
+      "subtopics": [
+        {
+          "topic": "Buksu_vice_pres",
+          "responses": {
+            "en": [
+              "As of 2026, Bukidnon State University (BukSU) has a team of vice presidents specializing in different areas rather than a single vice president. Key officials include:",
+              " ",
+              "Vice President for Academic Affairs: Dr. Hazel Jean M. Abejuela ",
+              " ",
+              "Vice President for Research, Extension and Innovations: Dr. Carina Joane V. Barroso",
+              " ",
+              "Vice President for Administration and Finance: Mr. Dante S. Victoria, Jr.",
+              " ",
+              "Vice President for Culture, Arts, Sports and Student Services: Dr. Lincoln V. Tan",
+              " ",
+              "Dr. Joy M. Mirasol serves as the University President.",
+              "for more Information you can visit the Official BukSU Website",
+              "https://buksu.edu.ph/board-of-regents/"
+            ],
+            "ceb": [
+              "As of 2026, ang Bukidnon State University (BukSU) adunay team sa mga vice presidents nga nag-specialize sa lain-laing mga natad imbes usa ra ka vice president. Ang mga key officials mao ang mosunod:",
+              " ",
+              "Vice President for Academic Affairs: Dr. Hazel Jean M. Abejuela",
+              " ",
+              "Vice President for Research, Extension and Innovations: Dr. Carina Joane V. Barroso",
+              " ",
+              "Vice President for Administration and Finance: Mr. Dante S. Victoria, Jr.",
+              " ",
+              "Vice President for Culture, Arts, Sports and Student Services: Dr. Lincoln V. Tan",
+              " ",
+              "Si Dr. Joy M. Mirasol nagsilbi isip University President.",
+              "para sa dungag nga ipormasyon bisitaha anng official website sa buksu",
+              "https://buksu.edu.ph/board-of-regents/"
+            ]
+          },
+          "intent": "Buksu_vice_pres",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "buksu vice pres",
+              "who are the vice presidents of buksu",
+              "buksu vice presidents"
+            ]
+          },
+          "subject_key": "Buksu_vice_pres",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "vice presidents",
+            "buksu vice presidents",
+            "university vice presidents"
+          ],
+          "display_name": "BukSU Vice Pres"
+        },
+        {
+          "topic": "vicepres_academic_affairs",
+          "responses": {
+            "en": [
+              "The Vice President for Academic Affairs: Dr. Hazel Jean M. Abejuela."
+            ],
+            "ceb": [
+              "Ang Vice President for Academic Affairs kay si: Dr. Hazel Jean M. Abejuela."
+            ]
+          },
+          "intent": "vicepres_academic_affairs",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "vicepres academic affairs",
+              "vice president for academic affairs"
+            ]
+          },
+          "subject_key": "vicepres_academic_affairs",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "vice president academic affairs",
+            "academic affairs vice president",
+            "hazel jean abejuela"
+          ],
+          "display_name": "Vicepres Academic Affairs"
+        },
+        {
+          "topic": "vicepres_research_extension_innovations",
+          "responses": {
+            "en": [
+              "The Vice President for Research, Extension and Innovations: Dr. Carina Joane V. Barroso"
+            ],
+            "ceb": [
+              "Ang Vice President for Research, Extension and Innovations kay si: Dr. Carina Joane V. Barroso"
+            ]
+          },
+          "intent": "vicepres_research_extension_innovations",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "vicepres research extension innovations",
+              "vice president for research extension and innovations"
+            ]
+          },
+          "subject_key": "vicepres_research_extension_innovations",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "vice president research extension innovations",
+            "research extension innovations vice president",
+            "carina joane barroso"
+          ],
+          "display_name": "Vicepres Research Extension Innovations"
+        },
+        {
+          "topic": "vicepres_administration_finance",
+          "responses": {
+            "en": [
+              "Vice President for Administration and Finance: Mr. Dante S. Victoria, Jr."
+            ],
+            "ceb": [
+              "Ang Vice President for Administration and Finance kay si: Mr. Dante S. Victoria, Jr."
+            ]
+          },
+          "intent": "vicepres_administration_finance",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "vicepres administration finance",
+              "vice president for administration and finance"
+            ]
+          },
+          "subject_key": "vicepres_administration_finance",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "vice president administration finance",
+            "administration finance vice president",
+            "dante victoria"
+          ],
+          "display_name": "Vicepres Administration Finance"
+        },
+        {
+          "topic": "vicepres_culture_arts_sports_student_services",
+          "responses": {
+            "en": [
+              "Vice President for Culture, Arts, Sports and Student Services: Dr. Lincoln V. Tan "
+            ],
+            "ceb": [
+              "Ang Vice President for Culture, Arts, Sports and Student Services Kay si: Dr. Lincoln V. Tan "
+            ]
+          },
+          "intent": "vicepres_culture_arts_sports_student_services",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "vicepres culture arts sports student services",
+              "vice president for culture arts sports and student services"
+            ]
+          },
+          "subject_key": "vicepres_culture_arts_sports_student_services",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "vice president culture arts sports student services",
+            "student services vice president",
+            "lincoln tan"
+          ],
+          "display_name": "Vicepres Culture Arts Sports Student Services"
+        },
+        {
+          "topic": "buksu_secretary",
+          "responses": {
+            "en": [
+              "Mr. Dante S. Victoria, Jr. serves as the Board Secretary and concurrently the Vice President for Administration and Finance at Bukidnon State University. He holds a key role in the university's board of regents. For more information you can visit the Buksu official website",
+              "https://buksu.edu.ph/board-of-regents/"
+            ],
+            "ceb": [
+              "Si Mr. Dante S. Victoria, Jr. nagsilbi isip Board Secretary ug concurrently ang Vice President for Administration and Finance sa Bukidnon State University. Siya adunay importante nga papel sa board of regents sa unibersidad. Para sa dugang nga impormasyon, bisitaha ang opisyal nga website sa Buksu",
+              "https://buksu.edu.ph/board-of-regents/"
+            ]
+          },
+          "intent": "buksu_secretary",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "buksu secretary",
+              "who is buksu secretary",
+              "board secretary"
+            ]
+          },
+          "subject_key": "buksu_secretary",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "board secretary",
+            "buksu secretary",
+            "dante victoria"
+          ],
+          "display_name": "BukSU Secretary"
+        }
+      ],
+      "display_name": "University Administrators"
     }
   ]
 }

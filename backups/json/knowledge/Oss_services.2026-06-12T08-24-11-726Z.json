@@ -1,0 +1,863 @@
+{
+  "intent": "ask_oss_services",
+  "category": "OSS Services",
+  "entities": [
+    "topic",
+    "document",
+    "service"
+  ],
+  "topics": [
+    {
+      "topic": "student_id",
+      "subject_key": "student_id",
+      "subject_type": "document",
+      "subject_terms": [
+        "student id",
+        "school id",
+        "buksu student id",
+        "student identification card"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "intent": "student_id_process",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "Here is the process of getting student ID:",
+              "You need to go to the University Press building bring your validated COR and a digital 1x1 picture. <b> Note: </b>  this is for freshmen or new students of BukSU, there is no payment for the first ID you will get.",
+              "For those who have lost their ID:",
+              "Step 1: Go to <b> OVPCAS </b> Present </b> affidavit of loss </b> for lost ID",
+              "Step 2: Sign the Logbook",
+              "Step 3: Proceed to the Cashiers Office for payment",
+              "Step 4: Proceed to University Press for ID printing",
+              "cost will be 200 Pesos, process time will be 30 minutes. I will provide a complete Map navigation for you."
+            ],
+            "ceb": [
+              "Niara ang prosiso sapag kuha og student ID",
+              "Kinahanglan ka nga moadto sa University Press building dala ang imong validated COR ug digital 1x1 picture. <b> Note: </b> kini para sa freshmen o bag-ong estudyante sa BukSU, walay bayad sa unang ID nga imong makuha.",
+              "Para sa mga nakawala sa ilang ID:",
+              "Step 1: Adto sa <b> OVPCAS </b> ipresent ang </b> affidavit of loss </b> para sa nawala nga ID",
+              "Step 2: Mopirma sa Logbook",
+              "Step 3: Moadto sa Cashier's Office para sa bayad",
+              "Step 4: Moadto sa University Press para sa pag-print sa ID",
+              "Ang gasto kay 200 Pesos, ang oras sa proseso kay 30 minutos. Hatagan tika og kompleto nga mapa sa navigation para nimo."
+            ]
+          },
+          "images": [],
+          "map": {
+            "lat": 500,
+            "lng": 500
+          },
+          "pins": [
+            {
+              "name": "You are Here",
+              "lat": 893,
+              "lng": 632
+            },
+            {
+              "name": "OVPCAS",
+              "lat": 833,
+              "lng": 770
+            },
+            {
+              "name": "University Press",
+              "lat": 791,
+              "lng": 928
+            },
+            {
+              "name": "Cashier Finance",
+              "lat": 705,
+              "lng": 631
+            }
+          ],
+          "routes": [
+            {
+              "name": "You are Here to OVPCAS",
+              "points": [
+                [
+                  893,
+                  632
+                ],
+                [
+                  818,
+                  630
+                ],
+                [
+                  820,
+                  768
+                ],
+                [
+                  827,
+                  769
+                ],
+                [
+                  833,
+                  770
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            },
+            {
+              "name": "OVPCAS to Cashier Finance",
+              "points": [
+                [
+                  833,
+                  770
+                ],
+                [
+                  820,
+                  769
+                ],
+                [
+                  819,
+                  628
+                ],
+                [
+                  785,
+                  628
+                ],
+                [
+                  783,
+                  578
+                ],
+                [
+                  757,
+                  582
+                ],
+                [
+                  757,
+                  623
+                ],
+                [
+                  706,
+                  625
+                ],
+                [
+                  705,
+                  631
+                ]
+              ],
+              "color": "#ffea00",
+              "route_order": 2,
+              "route_label": "Route 2"
+            },
+            {
+              "name": "Cashier Finance to University Press",
+              "points": [
+                [
+                  705,
+                  631
+                ],
+                [
+                  703,
+                  621
+                ],
+                [
+                  678,
+                  623
+                ],
+                [
+                  680,
+                  673
+                ],
+                [
+                  788,
+                  672
+                ],
+                [
+                  794,
+                  705
+                ],
+                [
+                  799,
+                  872
+                ],
+                [
+                  807,
+                  921
+                ],
+                [
+                  793,
+                  921
+                ],
+                [
+                  791,
+                  928
+                ]
+              ],
+              "color": "#00b0ff",
+              "route_order": 3,
+              "route_label": "Route 3"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how to get student id",
+              "where to get student id",
+              "how do i process student id",
+              "student id process",
+              "unsaon pagkuha og student id"
+            ]
+          },
+          "display_name": "Student ID Process"
+        },
+        {
+          "topic": "requirements",
+          "intent": "student_id_requirements",
+          "context_topic": "requirements",
+          "mapRef": "student_id_process",
+          "responses": {
+            "en": [
+              "The requirements for getting a BukSU student ID:",
+              "You need to go to the University Press building bring your validated COR and a digital 1x1 picture. <b> Note: </b>  this is for freshmen or new students of BukSU, there is no payment for the first ID you will get.",
+              "For those who have lost their ID:",
+              "Step 1: Go to <b> OVPCAS </b> Present </b> affidavit of loss </b> for lost ID",
+              "Step 2: Sign the Logbook",
+              "Step 3: Proceed to the Cashiers Office for payment",
+              "Step 4: Proceed to University Press for ID printing",
+              "cost will be 200 Pesos, process time will be 30 minutes. I will provide a complete Map navigation for you."
+            ],
+            "ceb": [
+              "Ang mga kinahanglanon sa pagkuha og BukSU student ID:",
+              "Kinahanglan ka nga moadto sa University Press building dala ang imong validated COR ug digital 1x1 picture. <b> Note: </b> kini para sa freshmen o bag-ong estudyante sa BukSU, walay bayad sa unang ID nga imong makuha.",
+              "Para sa mga nakawala sa ilang ID:",
+              "Step 1: Adto sa <b> OVPCAS </b> ipresent ang </b> affidavit of loss </b> para sa nawala nga ID",
+              "Step 2: Mopirma sa Logbook",
+              "Step 3: Moadto sa Cashier's Office para sa bayad",
+              "Step 4: Moadto sa University Press para sa pag-print sa ID",
+              "Ang gasto kay 200 Pesos, ang oras sa proseso kay 30 minutos. Hatagan tika og kompleto nga mapa sa navigation para nimo."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "student id requirements",
+              "requirements for student id",
+              "what do i need for student id",
+              "what should i bring for school id",
+              "requirements sa student id"
+            ]
+          },
+          "display_name": "Student ID Requirements"
+        },
+        {
+          "topic": "payment",
+          "intent": "Student_id_fee",
+          "context_topic": "payment",
+          "responses": {
+            "en": [
+              "Yes and no. Yes, if you are someone who frequently loses your ID and ends up getting a new one. But no, if you are a freshman or a newly enrolled student at BukSU Note that you can only get a free ID in first time, in 2nd time you need to pay for it."
+            ],
+            "ceb": [
+              "Oo ug dili. Oo, kung ikaw usa ka tawo nga kanunay mawalaan og ID ug magkuha na usab og bag-o. Apan dili, kung ikaw usa ka freshman o bag-ong enrolled nga estudyante sa BukSU. Hinumdomi nga makakuha ra ka og libre nga ID sa unang higayon; sa ikaduhang higayon, kinahanglan na ka mubayad para niini."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how much is student id",
+              "student id fee",
+              "student id payment",
+              "do i need to pay for student id",
+              "pila ang student id"
+            ]
+          },
+          "display_name": "Student ID Fee"
+        },
+        {
+          "topic": "replacement",
+          "intent": "lost_student_id_replacement_process",
+          "context_topic": "process",
+          "mapRef": "student_id_process",
+          "responses": {
+            "en": [
+              "If you lose your BukSU student ID you must first secure an affidavit of loss.",
+              "Then go to the Office of Student Services for an ID reissuance slip.",
+              "Pay the required fee at the University Cashier and bring the receipt to the University Press for a new ID."
+            ],
+            "ceb": [
+              "Kung mawala ang imong student ID kinahanglan una ka og affidavit of loss.",
+              "Dayon adto sa Office of Student Services para sa reissuance slip.",
+              "Bayad sa cashier ug dad a ang resibo sa University Press para sa bag ong ID."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "lost student id replacement",
+              "how to replace lost student id",
+              "i lost my student id",
+              "student id replacement process",
+              "nawala akong student id"
+            ]
+          },
+          "display_name": "Lost Student ID Replacement Process"
+        },
+        {
+          "topic": "id_validation_process",
+          "intent": "id_validation_process",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "To validate your student ID, go to OVPCASSS and ask a staff member in that office for ID validation assistance.",
+              "Bring your validated COR, and remove your ID from its ID case before presenting it for validation.",
+              "ID validation is only done during the official ID validation period. For the specific schedule, visit the OVPCASSS official page: https://www.facebook.com/buksuOSS",
+              "Usually, ID validation happens from August to September for the first semester and from January to February for the second semester.",
+              "Students who did not comply during the official validation period may need to bring a letter of request explaining the reason for late validation. Ask OVPCASSS for the exact late-validation requirements."
+            ],
+            "ceb": [
+              "Para ma-validate ang imong student ID, adto sa OVPCASSS ug pangutana sa staff sa maong opisina bahin sa ID validation.",
+              "Dad-a ang imong validated COR, ug kuhaa ang imong ID gikan sa ID case before nimo ipresent para sa validation.",
+              "Ang ID validation ginahimo lamang sulod sa opisyal nga ID validation period. Para sa specific schedule, bisitaha ang OVPCASSS official page: https://www.facebook.com/buksuOSS",
+              "Kasagaran, ang ID validation mahitabo from August to September para sa first semester ug January to February para sa second semester.",
+              "Ang mga estudyante nga wala naka-comply sulod sa official validation period mahimong kinahanglan magdala og letter of request nga nagpasabot sa rason sa late validation. Pangutana sa OVPCASSS para sa exact late-validation requirements."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how to validate id",
+              "id validation process",
+              "student id validation process",
+              "process of id validation",
+              "how do i validate my student id",
+              "validate student id",
+              "validate school id"
+            ]
+          },
+          "display_name": "ID Validation Process"
+        },
+        {
+          "topic": "id_validation_day",
+          "intent": "id_validation_day",
+          "context_topic": "schedule",
+          "responses": {
+            "en": [
+              "There is a specific day or period for student ID validation. For the official schedule, visit the OVPCASSS official page: https://www.facebook.com/buksuOSS",
+              "Usually, ID validation happens from August to September for the first semester and from January to February for the second semester.",
+              "Always check the official page because the exact validation dates may change depending on the academic year."
+            ],
+            "ceb": [
+              "Adunay specific nga adlaw o period para sa student ID validation. Para sa official schedule, bisitaha ang OVPCASSS official page: https://www.facebook.com/buksuOSS",
+              "Kasagaran, ang ID validation mahitabo from August to September para sa first semester ug January to February para sa second semester.",
+              "Kanunay tan-awa ang official page kay mahimong mausab ang exact validation dates depende sa academic year."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "when is id validation",
+              "date of id validation",
+              "time for id validation",
+              "id validation day",
+              "student id validation schedule",
+              "school id validation date"
+            ]
+          },
+          "display_name": "ID Validation Day"
+        }
+      ],
+      "display_name": "Student ID"
+    },
+    {
+      "topic": "pe_uniform",
+      "subject_key": "pe_uniform",
+      "subject_type": "service",
+      "subject_terms": [
+        "pe uniform",
+        "physical education uniform",
+        "pe clothes",
+        "pe uniform request"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "intent": "pe_uniform_process",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "To get your PE uniform, go to the University Press and ask the staff inside the office about requesting a PE uniform.",
+              "Ask the staff how much the PE uniform costs.",
+              "After that, go to the Finance Office to pay for your PE uniform.",
+              "Then go back to the University Press to get your PE uniform.",
+              "I will provide a map for your navigation."
+            ],
+            "ceb": [
+              "Aron makakuha sa imong PE uniform, adto sa University Press ug pangutana sa staff sulod sa office bahin sa pag-request og PE uniform.",
+              "Pangutana sa staff pila ang presyo sa PE uniform.",
+              "Human ana, adto sa Finance Office para mubayad sa imong PE uniform.",
+              "Pagkahuman, balik sa University Press aron makuha ang imong PE uniform.",
+              "Hatagan tika og mapa para sa imong navigation."
+            ]
+          },
+          "images": [],
+          "map": {
+            "lat": 500,
+            "lng": 500
+          },
+          "pins": [
+            {
+              "name": "You are Here",
+              "lat": 893,
+              "lng": 632
+            },
+            {
+              "name": "University Press",
+              "lat": 791,
+              "lng": 928
+            },
+            {
+              "name": "Finance Office",
+              "lat": 705,
+              "lng": 631
+            }
+          ],
+          "routes": [
+            {
+              "name": "You are Here to University Press",
+              "points": [
+                [
+                  893,
+                  632
+                ],
+                [
+                  818,
+                  630
+                ],
+                [
+                  819,
+                  927
+                ],
+                [
+                  791,
+                  928
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            },
+            {
+              "name": "University Press to Finance Office",
+              "points": [
+                [
+                  791,
+                  928
+                ],
+                [
+                  819,
+                  927
+                ],
+                [
+                  819,
+                  628
+                ],
+                [
+                  785,
+                  628
+                ],
+                [
+                  783,
+                  578
+                ],
+                [
+                  757,
+                  582
+                ],
+                [
+                  757,
+                  623
+                ],
+                [
+                  706,
+                  625
+                ],
+                [
+                  705,
+                  631
+                ]
+              ],
+              "color": "#ffea00",
+              "route_order": 2,
+              "route_label": "Route 2"
+            },
+            {
+              "name": "Finance Office back to University Press",
+              "points": [
+                [
+                  705,
+                  631
+                ],
+                [
+                  706,
+                  625
+                ],
+                [
+                  757,
+                  623
+                ],
+                [
+                  757,
+                  582
+                ],
+                [
+                  783,
+                  578
+                ],
+                [
+                  785,
+                  628
+                ],
+                [
+                  819,
+                  628
+                ],
+                [
+                  819,
+                  927
+                ],
+                [
+                  791,
+                  928
+                ]
+              ],
+              "color": "#00b0ff",
+              "route_order": 3,
+              "route_label": "Route 3"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how to get pe uniform",
+              "where to get pe uniform",
+              "how get pe uniform",
+              "pe uniform where to get",
+              "where can i buy pe uniform",
+              "how to request physical education uniform"
+            ]
+          },
+          "display_name": "PE Uniform Process"
+        }
+      ],
+      "display_name": "PE Uniform"
+    },
+    {
+      "topic": "good_moral_certificate",
+      "subject_key": "good_moral_certificate",
+      "subject_type": "document",
+      "subject_terms": [
+        "good moral",
+        "good moral certificate",
+        "certificate of good moral",
+        "oss certificate"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "intent": "request_good_moral_certificate_oss",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "Students can request a Good Moral Certificate from the Office of Student Services.",
+              "The standard fee for issuing the certificate is fifty pesos."
+            ],
+            "ceb": [
+              "Ang mga estudyante pwede mangayo og Good Moral Certificate sa Office of Student Services.",
+              "Ang bayad sa certificate kay singkwenta pesos."
+            ]
+          },
+          "images": [],
+          "map": {
+            "lat": 500,
+            "lng": 500
+          },
+          "pins": [
+            {
+              "name": "You are Here",
+              "lat": 893,
+              "lng": 632
+            },
+            {
+              "name": "OVPCAS",
+              "lat": 833,
+              "lng": 770
+            },
+            {
+              "name": "University Press",
+              "lat": 791,
+              "lng": 928
+            },
+            {
+              "name": "Cashier Finance",
+              "lat": 705,
+              "lng": 631
+            }
+          ],
+          "routes": [
+            {
+              "name": "You are Here to OVPCAS",
+              "points": [
+                [
+                  893,
+                  632
+                ],
+                [
+                  818,
+                  630
+                ],
+                [
+                  820,
+                  768
+                ],
+                [
+                  827,
+                  769
+                ],
+                [
+                  833,
+                  770
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            },
+            {
+              "name": "OVPCAS to Cashier Finance",
+              "points": [
+                [
+                  833,
+                  770
+                ],
+                [
+                  820,
+                  769
+                ],
+                [
+                  819,
+                  628
+                ],
+                [
+                  785,
+                  628
+                ],
+                [
+                  783,
+                  578
+                ],
+                [
+                  757,
+                  582
+                ],
+                [
+                  757,
+                  623
+                ],
+                [
+                  706,
+                  625
+                ],
+                [
+                  705,
+                  631
+                ]
+              ],
+              "color": "#ffea00",
+              "route_order": 2,
+              "route_label": "Route 2"
+            },
+            {
+              "name": "Cashier Finance to University Press",
+              "points": [
+                [
+                  705,
+                  631
+                ],
+                [
+                  703,
+                  621
+                ],
+                [
+                  678,
+                  623
+                ],
+                [
+                  680,
+                  673
+                ],
+                [
+                  788,
+                  672
+                ],
+                [
+                  794,
+                  705
+                ],
+                [
+                  799,
+                  872
+                ],
+                [
+                  807,
+                  921
+                ],
+                [
+                  793,
+                  921
+                ],
+                [
+                  791,
+                  928
+                ]
+              ],
+              "color": "#00b0ff",
+              "route_order": 3,
+              "route_label": "Route 3"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how to request good moral certificate",
+              "where to get good moral",
+              "good moral certificate fee",
+              "request good moral from oss",
+              "kuha good moral certificate"
+            ]
+          },
+          "display_name": "Request Good Moral Certificate OSS"
+        },
+        {
+          "topic": "payment",
+          "intent": "good_moral_certificate_fee",
+          "context_topic": "payment",
+          "mapRef": "request_good_moral_certificate_oss",
+          "responses": {
+            "en": [
+              "The standard fee for issuing a Good Moral Certificate is fifty pesos. You can request it from the Office of Student Services."
+            ],
+            "ceb": [
+              "Ang bayad sa pagkuha og Good Moral Certificate kay singkwenta pesos. Pwede nimo kini i-request sa Office of Student Services."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how much is good moral certificate",
+              "good moral certificate fee",
+              "good moral payment",
+              "do i need to pay for good moral",
+              "pila ang good moral certificate"
+            ]
+          },
+          "display_name": "Good Moral Certificate Fee"
+        }
+      ],
+      "display_name": "Good Moral Certificate"
+    },
+    {
+      "topic": "affirmative_action_program",
+      "subject_key": "affirmative_action_program",
+      "subject_type": "program",
+      "subject_terms": [
+        "affirmative action",
+        "affirmative action program",
+        "aap",
+        "diversity and inclusion"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "intent": "affirmative_action",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "If you failed your buksu cat examination you still have a choice, you can apply for Affirmative Action Program (AAP) but please note that you cannot choose the courses you want to enroll in, they will be the one choosing your program depends on your capability.",
+              "here how you can apply the AAP",
+              "1. Monitor Your Results: Check your Report of Rating (ROR) via the BukSU Admissions Portal. Even if you are not on the list of <b>Qualifiers</b>, keep your account credentials. https://admissions.buksu.edu.ph/",
+              "2 Go to the Diversity and Inclusion Unit located at the BukSU Main Campus in Malaybalay City. This unit manages the AAP selection.",
+              "3. Submit Supporting Documents: You will need to provide proof of your eligibility, such as:<div><span style=\"color: rgb(15, 23, 41);\"><b>For IPs</b>: Certificate of Tribal Membership or NCIP Certificate.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>For PWDs:</b> Valid PWD ID.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>For Low-Income: </b>Certificate of Indigency from your Barangay or ITR of parents.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Academic Records:</b> Your Senior High School Report Card (Form 138).</span></div>",
+              "4. Interview/Evaluation: The Diversity and Inclusion Unit may conduct an interview to assess your <b>academic potential</b> and commitment to finishing the degree.",
+              "5. Placement: If approved, you may be offered a slot in a program that still has available capacity (note that highly competitive board courses like Nursing or Accountancy often have stricter cut-offs that AAP cannot always bypass)."
+            ],
+            "ceb": [
+              "Kung wala ka nakapasar sa BukSU CAT examination, naa gihapon kay laing kapilianâ€”pwede ka mo-apply sa Affirmative Action Program (AAP), apan palihug hinumdumi nga dili ikaw ang mopili sa kurso nga imong enrollan, sila ang mopili base sa imong kapasidad.",
+              "Ania kung giunsa pag-apply sa AAP:",
+              "1. Bantayi ang imong Resulta: Tan-awa ang imong Report of Rating (ROR) pinaagi sa BukSU Admissions Portal. Bisan dili ka apil sa listahan sa <b>Qualifiers</b>, i-keep ang imong account credentials. https://admissions.buksu.edu.ph/",
+              "2. Adto sa Diversity and Inclusion Unit nga nahimutang sa BukSU Main Campus sa Malaybalay City. Kini nga unit ang nagdumala sa AAP selection.",
+              "3. I-submit ang Supporting Documents: Kinahanglan nimo ipakita ang pruweba sa imong eligibility, sama sa:<div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa IPs:</b> Certificate of Tribal Membership o NCIP Certificate.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa PWDs:</b> Valid PWD ID.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa Low-Income:</b> Certificate of Indigency gikan sa inyong Barangay o ITR sa ginikanan.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Academic Records:</b> Senior High School Report Card (Form 138).</span></div>",
+              "4. Interview/Evaluation: Ang Diversity and Inclusion Unit mahimong mag-conduct og interview aron masusi ang imong <b>academic potential</b> ug commitment sa paghuman sa degree.",
+              "5. Placement: Kung ma-aprubahan, mahimo kang hatagan og slot sa usa ka programa nga naa pay available nga kapasidad (hinumdumi nga ang highly competitive nga board courses sama sa Nursing o Accountancy kasagaran adunay mas istrikto nga cut-offs nga dili permi malabwan sa AAP)."
+            ]
+          },
+          "images": [],
+          "map": {
+            "lat": 500,
+            "lng": 500
+          },
+          "pins": [
+            {
+              "name": "Start From Here - Main Entrance",
+              "lat": 895,
+              "lng": 634
+            },
+            {
+              "name": "Diversity and Inclusion Unit",
+              "lat": 628,
+              "lng": 483
+            }
+          ],
+          "routes": [
+            {
+              "name": "Start From Here - Main Entrance to Diversity and Inclusion Unit",
+              "points": [
+                [
+                  895,
+                  634
+                ],
+                [
+                  786,
+                  633
+                ],
+                [
+                  782,
+                  505
+                ],
+                [
+                  794,
+                  501
+                ],
+                [
+                  794,
+                  447
+                ],
+                [
+                  628,
+                  453
+                ],
+                [
+                  628,
+                  469
+                ],
+                [
+                  628,
+                  483
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how to apply for affirmative action",
+              "what is aap",
+              "affirmative action program process",
+              "where is diversity and inclusion unit",
+              "failed buksu cat affirmative action"
+            ]
+          },
+          "display_name": "Affirmative Action"
+        }
+      ],
+      "display_name": "Affirmative Action Program"
+    }
+  ]
+}

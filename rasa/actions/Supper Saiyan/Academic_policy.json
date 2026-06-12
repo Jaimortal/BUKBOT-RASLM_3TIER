@@ -6,448 +6,934 @@
   ],
   "topics": [
     {
-      "topic": "failed_subject_policy",
-      "responses": {
-        "en": [
-          "According to BukSU academic policies, you may retake a subject if it is your first time failing it.",
-          "However, please note that failing a subject multiple times, up to three total attempts, may lead to serious consequences.",
-          "In some cases, this may include being advised to transfer to another school.",
-          "For more specific details and proper guidance, it is recommended to consult your college faculty."
-        ],
-        "ceb": [
-          "Sumala sa academic policies sa BukSU, pwede ka mokuha balik og subject kung first time pa nimo nga nabagsak.",
-          "Apan palihog timan-i nga kung mabagsak nimo ang usa ka subject ug makadaghang beses, hangtod tulo ka attempts, mahimo kini magdala og seryosong mga resulta.",
-          "Lakip niini ang posibilidad nga marekomenda ka nga mobalhin og laing eskwelahan.",
-          "Mas maayo nga mokonsulta ka sa imong college faculty para sa mas klaro nga detalye ug hustong giya."
-        ]
-      }
+      "topic": "academic_standing",
+      "subject_key": "academic_standing",
+      "subject_type": "policy",
+      "subject_terms": [
+        "academic standing",
+        "failed subject",
+        "failing subject",
+        "retake subject",
+        "academic probation"
+      ],
+      "subtopics": [
+        {
+          "topic": "failed_subject_policy",
+          "responses": {
+            "en": [
+              "According to BukSU academic policies, you may retake a subject if it is your first time failing it.",
+              "However, please note that failing a subject multiple times, up to three total attempts, may lead to serious consequences.",
+              "In some cases, this may include being advised to transfer to another school.",
+              "For more specific details and proper guidance, it is recommended to consult your college faculty."
+            ],
+            "ceb": [
+              "Sumala sa academic policies sa BukSU, pwede ka mokuha balik og subject kung first time pa nimo nga nabagsak.",
+              "Apan palihog timan-i nga kung mabagsak nimo ang usa ka subject ug makadaghang beses, hangtod tulo ka attempts, mahimo kini magdala og seryosong mga resulta.",
+              "Lakip niini ang posibilidad nga marekomenda ka nga mobalhin og laing eskwelahan.",
+              "Mas maayo nga mokonsulta ka sa imong college faculty para sa mas klaro nga detalye ug hustong giya."
+            ]
+          },
+          "intent": "failed_subject_policy",
+          "metadata": {
+            "phrases": [
+              "failed a subject",
+              "what if i fail a subject",
+              "can i retake a failed subject",
+              "failed subject policy"
+            ]
+          },
+          "display_name": "Failed Subject Policy"
+        },
+        {
+          "topic": "probation",
+          "responses": {
+            "en": [
+              "Academic probation is given to students with low academic performance."
+            ],
+            "ceb": [
+              "Ang academic probation ihatag sa students nga ubos ug performance."
+            ]
+          },
+          "intent": "academic_probation",
+          "context_topic": "policy",
+          "metadata": {
+            "phrases": [
+              "academic probation",
+              "what is academic probation",
+              "low academic performance probation"
+            ]
+          },
+          "display_name": "Academic Probation"
+        }
+      ],
+      "display_name": "Academic Standing"
     },
     {
-      "topic": "deans_list",
-      "responses": {
-        "en": [
-          "To qualify for the Dean's Honor List at Bukidnon State University, a student must meet these main requirements: a General Weighted Average (GWA) of 1.75 or better, no grade lower than 2.00, a semestral load of at least 18 units, no dropped subjects after the registration period, and exemplary conduct (no disciplinary or substance‑abuse disqualifications). These are the standard guidelines published by the Office of the Registrar."
-        ],
-        "ceb": [
-          "Aron maka qualify sa Dean's Honor List sa Bukidnon State University, kinahanglan nimo ang mosunod: GWA nga 1.75 o mas maayo pa, walay grado nga ubos sa 2.00, nag‑carry og labing menos 18 ka units sa semestro, wala mag‑drop og subject human sa registration period, ug maayong pamatasan (walay disciplinary case o substance‑abuse nga makapawala sa kwalipikasyon)."
-        ]
-      }
+      "topic": "grading_system",
+      "subject_key": "grading_system",
+      "subject_type": "policy",
+      "subject_terms": [
+        "grading system",
+        "grade system",
+        "grades",
+        "gwa",
+        "sias grades"
+      ],
+      "subtopics": [
+        {
+          "topic": "meaning",
+          "responses": {
+            "en": [
+              "BukSU uses a numerical grading system where 1.0 is the highest grade and 3.0 is the passing mark.",
+              "A grade of 5.0 means a failing mark while INC means the requirements for the subject are incomplete."
+            ],
+            "ceb": [
+              "Ang BukSU naggamit og numerical grading system diin ang 1.0 ang pinakataas ug 3.0 ang passing mark.",
+              "Ang grado nga 5.0 nagpasabot nga wala kapasar samtang ang INC nagpasabot nga kulang ang requirements sa subject."
+            ]
+          },
+          "intent": "buksu_grading_system",
+          "metadata": {
+            "phrases": [
+              "buksu grading system",
+              "what is the passing grade",
+              "what does 5.0 mean",
+              "what does inc mean in grades"
+            ]
+          },
+          "display_name": "BukSU Grading System"
+        },
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "Grades can be viewed once they are officially released.",
+              "However, your previous grades remain accessible anytime through the SIAS portal. you can access it using this link:",
+              "<b>https://sias.buksu.edu.ph/</b>"
+            ],
+            "ceb": [
+              "Makita ang grades kung officially released na.",
+              "Apan ang imong previous grades pwede gihapon ma-access anytime pinaagi sa SIAS portal. Pwede nimo i-access pinaagi sa link:",
+              "<b>https://sias.buksu.edu.ph/</b>"
+            ]
+          },
+          "intent": "access_grades",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "where can i see my grades",
+              "how to access grades",
+              "view grades in sias",
+              "sias grades"
+            ]
+          },
+          "display_name": "Access Grades"
+        },
+        {
+          "topic": "schedule",
+          "responses": {
+            "en": [
+              "At the end of the semester, final examinations are conducted, grades are submitted, and clearance processing takes place."
+            ],
+            "ceb": [
+              "Sa katapusan sa semester, naay final exams, pag-submit sa grades, ug clearance processing."
+            ]
+          },
+          "intent": "end_of_semester",
+          "context_topic": "schedule",
+          "metadata": {
+            "phrases": [
+              "end of semester process",
+              "what happens at end of semester",
+              "final exams and grade submission"
+            ]
+          },
+          "display_name": "End Of Semester"
+        }
+      ],
+      "display_name": "Grading System"
     },
     {
-      "topic": "academic_probation",
-      "responses": {
-        "en": [
-          "Academic probation is given to students with low academic performance."
-        ],
-        "ceb": [
-          "Ang academic probation ihatag sa students nga ubos ug performance."
-        ]
-      }
+      "topic": "inc_grade",
+      "subject_key": "inc_grade",
+      "subject_type": "academic_record",
+      "subject_terms": [
+        "inc grade",
+        "incomplete grade",
+        "incomplete subject",
+        "inc completion",
+        "inc form"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "An INC (Incomplete) grade means you still have <b>missing requirements</b> for the subject.",
+              "You can complete it by submitting the required activities or outputs requested by your instructor.",
+              "You must also submit an INC form to process your completion.",
+              "Students are usually given up to one year to complete their INC requirements.",
+              "You can download the INC form here: https://drive.google.com/uc?export=download&id=1Au7gJutn9daoM7dJB82IBr20pBjJVrl8"
+            ],
+            "ceb": [
+              "Ang INC (Incomplete) nga grado nagpasabot nga adunay kulang nga requirements sa usa ka subject.",
+              "Mahimo nimo kini makompleto pinaagi sa pag-submit sa mga kulang nga activities o requirements nga gipangayo sa imong instructor.",
+              "Kinahanglan usab ka mo-submit og INC form aron maproseso ang imong completion.",
+              "Kasagaran hatagan ang estudyante og hangtod usa ka tuig aron makompleto ang ilang INC requirements.",
+              "Mahimo nimo i-download ang INC form dinhi: https://drive.google.com/uc?export=download&id=1Au7gJutn9daoM7dJB82IBr20pBjJVrl8"
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "intent": "inc_grade_solution",
+          "metadata": {
+            "phrases": [
+              "how to complete inc grade",
+              "how to fix inc grade",
+              "complete incomplete grade",
+              "inc completion process"
+            ]
+          },
+          "display_name": "INC Grade Solution"
+        },
+        {
+          "topic": "consequences",
+          "responses": {
+            "en": [
+              "If you receive an INC grade, it means you still need to complete the missing requirements for that subject.",
+              "If the subject is a prerequisite, you may not be allowed to enroll in the next subject until it is completed.",
+              "If the INC is not completed within the allowed period, you may become an irregular student."
+            ],
+            "ceb": [
+              "Kung adunay ka INC nga grado, nagpasabot kini nga adunay pa kay kulang nga requirements sa maong subject.",
+              "Kung ang subject nga adunay INC mao ang prerequisite, dili ka maka-enroll sa sunod nga subject hangtod makompleto kini.",
+              "Kung dili makompleto ang requirements sa tukmang oras, mahimo ka mahimong irregular nga estudyante."
+            ]
+          },
+          "intent": "inc_grade_consequences",
+          "metadata": {
+            "phrases": [
+              "what happens if i have inc",
+              "inc grade consequences",
+              "what if inc is not completed"
+            ]
+          },
+          "display_name": "INC Grade Consequences"
+        },
+        {
+          "topic": "form",
+          "responses": {
+            "en": [
+              "You can find all the forms, including the INC form, on the BukSU main website. You can access them directly using this link: https://buksu.edu.ph/downloadable-forms/"
+            ],
+            "ceb": [
+              "Naa ra sa main website sa BukSU ang tanang forms, apil na ang INC form. I-click lang ni nga link para makuha nimo sila: https://buksu.edu.ph/downloadable-forms/"
+            ]
+          },
+          "intent": "get_inc_form",
+          "metadata": {
+            "phrases": [
+              "where can i get inc form",
+              "download inc form",
+              "get incomplete grade form",
+              "inc form link"
+            ]
+          },
+          "display_name": "Get INC Form"
+        }
+      ],
+      "display_name": "INC Grade"
     },
     {
-      "topic": "buksu_grading_system",
-      "responses": {
-        "en": [
-          "BukSU uses a numerical grading system where 1.0 is the highest grade and 3.0 is the passing mark.",
-          "A grade of 5.0 means a failing mark while INC means the requirements for the subject are incomplete."
-        ],
-        "ceb": [
-          "Ang BukSU naggamit og numerical grading system diin ang 1.0 ang pinakataas ug 3.0 ang passing mark.",
-          "Ang grado nga 5.0 nagpasabot nga wala kapasar samtang ang INC nagpasabot nga kulang ang requirements sa subject."
-        ]
-      }
-    },
-    {
-      "topic": "inc_grade_solution",
-      "responses": {
-        "en": [
-          "An INC (Incomplete) grade means you still have <b>missing requirements</b> for the subject.",
-          "You can complete it by submitting the required activities or outputs requested by your instructor.",
-          "You must also submit an INC form to process your completion.",
-          "Students are usually given up to one year to complete their INC requirements.",
-          "You can download the INC form here: https://drive.google.com/uc?export=download&id=1Au7gJutn9daoM7dJB82IBr20pBjJVrl8"
-        ],
-        "ceb": [
-          "Ang INC (Incomplete) nga grado nagpasabot nga adunay kulang nga requirements sa usa ka subject.",
-          "Mahimo nimo kini makompleto pinaagi sa pag-submit sa mga kulang nga activities o requirements nga gipangayo sa imong instructor.",
-          "Kinahanglan usab ka mo-submit og INC form aron maproseso ang imong completion.",
-          "Kasagaran hatagan ang estudyante og hangtod usa ka tuig aron makompleto ang ilang INC requirements.",
-          "Mahimo nimo i-download ang INC form dinhi: https://drive.google.com/uc?export=download&id=1Au7gJutn9daoM7dJB82IBr20pBjJVrl8"
-        ]
-      },
-      "images": [],
-      "map": null,
-      "pins": []
-    },
-    {
-      "topic": "inc_grade_consequences",
-      "responses": {
-        "en": [
-          "If you receive an INC grade, it means you still need to complete the missing requirements for that subject.",
-          "If the subject is a prerequisite, you may not be allowed to enroll in the next subject until it is completed.",
-          "If the INC is not completed within the allowed period, you may become an irregular student."
-        ],
-        "ceb": [
-          "Kung adunay ka INC nga grado, nagpasabot kini nga adunay pa kay kulang nga requirements sa maong subject.",
-          "Kung ang subject nga adunay INC mao ang prerequisite, dili ka maka-enroll sa sunod nga subject hangtod makompleto kini.",
-          "Kung dili makompleto ang requirements sa tukmang oras, mahimo ka mahimong irregular nga estudyante."
-        ]
-      }
-    },
-    {
-      "topic": "fda_meaning",
-      "responses": {
-        "en": [
-          "FDA stands for Failure Due to Absences, and there are only 7 absences is allowed for students per semester",
-          "This happens when a student exceeds the allowed number of absences without valid excuses.",
-          "In many cases, around seven unexcused absences may lead to an FDA.",
-          "Being late three times may also count as one absence, depending on department rules."
-        ],
-        "ceb": [
-          "Ang FDA nagpasabot og Failure Due to Absences, ug pito ra ka absences ang gitugotan sa mga estudyante kada semester.",
-          "Kini mahitabo kung ang estudyante makalapas sa gitugot nga gidaghanon sa absences nga walay valid nga rason.",
-          "Sa kasagaran, mga pito ka absences nga walay excuse mahimong mosangpot sa FDA.",
-          "Ang pagka-late og tulo ka beses mahimo usab ma-count nga usa ka absence depende sa department rules."
-        ]
-      },
-      "ui_name": "meaning of the fda",
-      "images": [],
-      "map": null,
-      "pins": [],
-      "routes": []
-    },
-    {
-      "topic": "fda_solution",
-      "responses": {
-        "en": [
-          "If you receive an FDA, you should immediately approach your instructor and discuss your situation.",
-          "Ask about possible options or actions you can take regarding the subject.",
-          "Some instructors may allow discussions or provide guidance depending on the circumstances."
-        ],
-        "ceb": [
-          "Kung makadawat ka og FDA, kinahanglan nimo dayon duolon ang imong instructor ug istoryahan ang imong sitwasyon.",
-          "Pangutan-a sila kung unsa ang posible nimong mahimo bahin sa imong subject.",
-          "Ang ubang instructor mahimong mohatag og tambag o guidance depende sa sitwasyon."
-        ]
-      }
-    },
-    {
-      "topic": "overload_units_policy",
-      "responses": {
-        "en": [
-          "Overloading of units is generally only allowed for graduating students in their final year provided they have good academic standing and approval from the Dean and Registrar."
-        ],
-        "ceb": [
-          "Ang overload sa units gitugotan kasagaran sa mga graduating students sa ilang katapusang tuig basta adunay maayo nga academic standing ug adunay approval gikan sa Dean ug Registrar."
-        ]
-      }
+      "topic": "attendance_fda",
+      "subject_key": "attendance_fda",
+      "subject_type": "policy",
+      "subject_terms": [
+        "fda",
+        "failure due to absences",
+        "attendance policy",
+        "absences",
+        "seven absences",
+        "7 absences"
+      ],
+      "subtopics": [
+        {
+          "topic": "requirements",
+          "responses": {
+            "en": [
+              "Regular attendance is required and strictly recorded.",
+              "If you need to be absent, you must provide a valid reason and supporting documentation for approval.",
+              "Please remember that accumulating 7 absences will result in an FDA (Failure Due to Absences)."
+            ],
+            "ceb": [
+              "kinahanglan gyud ang regular nga pag-attend ug strictly kining ginarecord.",
+              "Kung kinahanglan ka mag-absent, kinahanglan maghatag ka ug valid nga rason ug supporting documents para ma-approve.",
+              "Timan-i nga kung maka-accumulate ka ug 7 ka absences, moresulta kini sa FDA (Failure Due to Absences)."
+            ]
+          },
+          "intent": "attendance_requirement",
+          "metadata": {
+            "phrases": [
+              "attendance requirement",
+              "how many absences allowed",
+              "7 absences policy",
+              "absence requirement"
+            ]
+          },
+          "display_name": "Attendance Requirement"
+        },
+        {
+          "topic": "meaning",
+          "responses": {
+            "en": [
+              "FDA stands for Failure Due to Absences, and there are only 7 absences is allowed for students per semester",
+              "This happens when a student exceeds the allowed number of absences without valid excuses.",
+              "In many cases, around seven unexcused absences may lead to an FDA.",
+              "Being late three times may also count as one absence, depending on department rules."
+            ],
+            "ceb": [
+              "Ang FDA nagpasabot og Failure Due to Absences, ug pito ra ka absences ang gitugotan sa mga estudyante kada semester.",
+              "Kini mahitabo kung ang estudyante makalapas sa gitugot nga gidaghanon sa absences nga walay valid nga rason.",
+              "Sa kasagaran, mga pito ka absences nga walay excuse mahimong mosangpot sa FDA.",
+              "Ang pagka-late og tulo ka beses mahimo usab ma-count nga usa ka absence depende sa department rules."
+            ]
+          },
+          "ui_name": "meaning of the fda",
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "fda_meaning",
+          "metadata": {
+            "phrases": [
+              "what is fda",
+              "meaning of fda",
+              "failure due to absences meaning"
+            ]
+          },
+          "display_name": "Meaning Of The FDA"
+        },
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "If you receive an FDA, you should immediately approach your instructor and discuss your situation.",
+              "Ask about possible options or actions you can take regarding the subject.",
+              "Some instructors may allow discussions or provide guidance depending on the circumstances."
+            ],
+            "ceb": [
+              "Kung makadawat ka og FDA, kinahanglan nimo dayon duolon ang imong instructor ug istoryahan ang imong sitwasyon.",
+              "Pangutan-a sila kung unsa ang posible nimong mahimo bahin sa imong subject.",
+              "Ang ubang instructor mahimong mohatag og tambag o guidance depende sa sitwasyon."
+            ]
+          },
+          "intent": "fda_solution",
+          "metadata": {
+            "phrases": [
+              "what to do if i get fda",
+              "how to solve fda",
+              "received fda what should i do"
+            ]
+          },
+          "display_name": "FDA Solution"
+        }
+      ],
+      "display_name": "Attendance FDA"
     },
     {
       "topic": "subject_overload",
-      "responses": {
-        "en": [
-          "Overload refers to taking more subjects than the regular academic load."
-        ],
-        "ceb": [
-          "Ang overload kay pagkuha ug mas daghang subjects kaysa sa normal nga academic load."
-        ]
-      }
+      "subject_key": "subject_overload",
+      "subject_type": "policy",
+      "subject_terms": [
+        "overload subject",
+        "subject overload",
+        "overloading units",
+        "overload units",
+        "academic overload"
+      ],
+      "subtopics": [
+        {
+          "topic": "meaning",
+          "responses": {
+            "en": [
+              "Overload refers to taking more subjects than the regular academic load."
+            ],
+            "ceb": [
+              "Ang overload kay pagkuha ug mas daghang subjects kaysa sa normal nga academic load."
+            ]
+          },
+          "intent": "subject_overload",
+          "metadata": {
+            "phrases": [
+              "what is subject overload",
+              "meaning of overload subject",
+              "overload meaning"
+            ]
+          },
+          "display_name": "Subject Overload Answer Topic"
+        },
+        {
+          "topic": "policy",
+          "responses": {
+            "en": [
+              "Overloading of units is generally only allowed for graduating students in their final year provided they have good academic standing and approval from the Dean and Registrar."
+            ],
+            "ceb": [
+              "Ang overload sa units gitugotan kasagaran sa mga graduating students sa ilang katapusang tuig basta adunay maayo nga academic standing ug adunay approval gikan sa Dean ug Registrar."
+            ]
+          },
+          "intent": "overload_units_policy",
+          "metadata": {
+            "phrases": [
+              "who can overload units",
+              "overload units policy",
+              "can graduating students overload"
+            ]
+          },
+          "display_name": "Overload Units Policy"
+        }
+      ],
+      "display_name": "Subject Overload Topic Group"
     },
     {
-      "topic": "attendance_requirement",
-      "responses": {
-        "en": [
-          "Regular attendance is required and strictly recorded.",
-          "If you need to be absent, you must provide a valid reason and supporting documentation for approval.",
-          "Please remember that accumulating 7 absences will result in an FDA (Failure Due to Absences)."
-        ],
-        "ceb": [
-          "kinahanglan gyud ang regular nga pag-attend ug strictly kining ginarecord.",
-          "Kung kinahanglan ka mag-absent, kinahanglan maghatag ka ug valid nga rason ug supporting documents para ma-approve.",
-          "Timan-i nga kung maka-accumulate ka ug 7 ka absences, moresulta kini sa FDA (Failure Due to Absences)."
-        ]
-      }
+      "topic": "academic_honors",
+      "subject_key": "academic_honors",
+      "subject_type": "academic_record",
+      "subject_terms": [
+        "deans list",
+        "dean honor list",
+        "college honors",
+        "university scholar",
+        "academic honors",
+        "gwa honors"
+      ],
+      "subtopics": [
+        {
+          "topic": "requirements",
+          "responses": {
+            "en": [
+              "To qualify for the Dean's Honor List at Bukidnon State University, a student must meet these main requirements: a General Weighted Average (GWA) of 1.75 or better, no grade lower than 2.00, a semestral load of at least 18 units, no dropped subjects after the registration period, and exemplary conduct (no disciplinary or substance‑abuse disqualifications). These are the standard guidelines published by the Office of the Registrar."
+            ],
+            "ceb": [
+              "Aron maka qualify sa Dean's Honor List sa Bukidnon State University, kinahanglan nimo ang mosunod: GWA nga 1.75 o mas maayo pa, walay grado nga ubos sa 2.00, nag‑carry og labing menos 18 ka units sa semestro, wala mag‑drop og subject human sa registration period, ug maayong pamatasan (walay disciplinary case o substance‑abuse nga makapawala sa kwalipikasyon)."
+            ]
+          },
+          "intent": "deans_list",
+          "metadata": {
+            "phrases": [
+              "deans list requirements",
+              "dean honor list qualification",
+              "how to qualify for deans list"
+            ]
+          },
+          "display_name": "Deans List"
+        },
+        {
+          "topic": "college_honors",
+          "responses": {
+            "en": [
+              "To be qualified for College Honors, you need to have at least a GWA of 1.50 above to 1.25, lower than 1.50 will automatically move to departmental honors, Usually you need to maintain a grades of 1.75 above if possible and at least 2 to 3 2.00 grades in specific semester"
+            ],
+            "ceb": [
+              "Para ma qualified sa College Honors, kinahanglan nimo ang GWA nga 1.50 pataas hangtod 1.25, kung ubos sa 1.50 awtomatikong ma-move sa departmental honors, kasagaran kinahanglan mag maintain og grades nga 1.75 pataas kung posible ug alteast 2 to 3 ka 2.00 grades sa specific nga semister"
+            ]
+          },
+          "intent": "College_Honors_gpa",
+          "context_topic": "requirements",
+          "metadata": {
+            "phrases": [
+              "college honors gwa",
+              "college honors qualification",
+              "gwa for college honors"
+            ]
+          },
+          "display_name": "College Honors Gpa"
+        },
+        {
+          "topic": "university_scholar",
+          "responses": {
+            "en": [
+              "To be qualified as a University Scholar, you need to have a GWA of 1.25 or higher with no grade lower than 1.50 or 1.75 depending on the specific requirements set by the university."
+            ],
+            "ceb": [
+              "Para ma qualified nga University Scholar, kinahanglan nimo ang GWA nga 1.25 o mas taas pa nga walay grado nga mas ubos sa 1.50 o 1.75 depende sa specific nga requirements nga gi-set sa unibersidad."
+            ]
+          },
+          "intent": "University_Scholar_gpa",
+          "context_topic": "requirements",
+          "metadata": {
+            "phrases": [
+              "university scholar gwa",
+              "university scholar qualification",
+              "gwa for university scholar"
+            ]
+          },
+          "display_name": "University Scholar Gpa"
+        }
+      ],
+      "display_name": "Academic Honors"
     },
     {
-      "topic": "thesis_defense_failure",
-      "responses": {
-        "en": [
-          "Students may be required to revise and re-defend their thesis within a specified timeframe.",
-          "If the second defense is unsuccessful, the student may need to retake the thesis or capstone subject."
-        ],
-        "ceb": [
-          "Ang mga estudyante mahimo nga kinahanglan mag-revise ug mag-redefend sa ilang thesis sulod sa gihatag nga oras.",
-          "Kung mapakyas sa ikaduhang defense, mahimo nga kinahanglan nila kuhaon pag-usab ang thesis o capstone subject."
-        ]
-      }
-    },
-    {
-      "topic": "thesis_topic_selection",
-      "responses": {
-        "en": [
-          "Yes, thesis topics are usually proposed by students and approved by advisers."
-        ],
-        "ceb": [
-          "Oo, ang topic gi-propose sa students ug i-approve sa adviser."
-        ]
-      }
-    },
-    {
-      "topic": "College_Honors_gpa",
-      "responses": {
-        "en": [
-          "To be qualified for College Honors, you need to have at least a GWA of 1.50 above to 1.25, lower than 1.50 will automatically move to departmental honors, Usually you need to maintain a grades of 1.75 above if possible and at least 2 to 3 2.00 grades in specific semester"
-        ],
-        "ceb": [
-          "Para ma qualified sa College Honors, kinahanglan nimo ang GWA nga 1.50 pataas hangtod 1.25, kung ubos sa 1.50 awtomatikong ma-move sa departmental honors, kasagaran kinahanglan mag maintain og grades nga 1.75 pataas kung posible ug alteast 2 to 3 ka 2.00 grades sa specific nga semister"
-        ]
-      }
-    },
-    {
-      "topic": "University_Scholar_gpa",
-      "responses": {
-        "en": [
-          "To be qualified as a University Scholar, you need to have a GWA of 1.25 or higher with no grade lower than 1.50 or 1.75 depending on the specific requirements set by the university."
-        ],
-        "ceb": [
-          "Para ma qualified nga University Scholar, kinahanglan nimo ang GWA nga 1.25 o mas taas pa nga walay grado nga mas ubos sa 1.50 o 1.75 depende sa specific nga requirements nga gi-set sa unibersidad."
-        ]
-      }
-    },
-    {
-      "topic": "registrar_office_schedule",
-      "responses": {
-        "en": [
-          "The Registrar's Office is open from Monday to Friday, 8:00 AM to 5:00 PM.",
-          "It is closed during weekends and university holidays.",
-          "For urgent concerns outside office hours, you may email registrar@buksu.edu.ph"
-        ],
-        "ceb": [
-          "Ang Opisina sa Registrar abri gikan Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM.",
-          "Sira kini sa mga Sabado ug Domingo ug sa mga holiday sa unibersidad.",
-          "Alang sa mga urgenteng butang gawas sa oras sa trabaho, pwede ka mag-email sa registrar@buksu.edu.ph"
-        ]
-      },
-      "metadata": {
-        "source": "BukSU Student Handbook 2024",
-        "last_updated": "2024-01-15"
-      }
+      "topic": "thesis_capstone",
+      "subject_key": "thesis_capstone",
+      "subject_type": "academic_requirement",
+      "subject_terms": [
+        "thesis defense",
+        "capstone defense",
+        "thesis topic",
+        "defense panelists",
+        "research defense"
+      ],
+      "subtopics": [
+        {
+          "topic": "topic_selection",
+          "responses": {
+            "en": [
+              "Yes, thesis topics are usually proposed by students and approved by advisers."
+            ],
+            "ceb": [
+              "Oo, ang topic gi-propose sa students ug i-approve sa adviser."
+            ]
+          },
+          "intent": "thesis_topic_selection",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "can students choose thesis topic",
+              "thesis topic selection",
+              "who approves thesis topic"
+            ]
+          },
+          "display_name": "Thesis Topic Selection"
+        },
+        {
+          "topic": "panelists",
+          "responses": {
+            "en": [
+              "The thesis defense usually consists of a three-member panel and one secretary, though this may vary depending on the specific course."
+            ],
+            "ceb": [
+              "Kasagaran ang defense adunay tulo ka panel members ug usa ka secretary, apan mahimong lahi-lahi depende sa kurso."
+            ]
+          },
+          "intent": "thesis_defense_panelists",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "how many panelists in thesis defense",
+              "thesis defense panelists",
+              "defense panel members"
+            ]
+          },
+          "display_name": "Thesis Defense Panelists"
+        },
+        {
+          "topic": "consequences",
+          "responses": {
+            "en": [
+              "Students may be required to revise and re-defend their thesis within a specified timeframe.",
+              "If the second defense is unsuccessful, the student may need to retake the thesis or capstone subject."
+            ],
+            "ceb": [
+              "Ang mga estudyante mahimo nga kinahanglan mag-revise ug mag-redefend sa ilang thesis sulod sa gihatag nga oras.",
+              "Kung mapakyas sa ikaduhang defense, mahimo nga kinahanglan nila kuhaon pag-usab ang thesis o capstone subject."
+            ]
+          },
+          "intent": "thesis_defense_failure",
+          "metadata": {
+            "phrases": [
+              "what if thesis defense fails",
+              "failed thesis defense",
+              "failed capstone defense"
+            ]
+          },
+          "display_name": "Thesis Defense Failure"
+        }
+      ],
+      "display_name": "Thesis Capstone"
     },
     {
       "topic": "add_drop_subject",
-      "responses": {
-        "en": [
-          "Adding subjects is allowed during the first two weeks of the semester.",
-          "Dropping subjects is allowed until the midterm period with proper approval.",
-          "To add/drop, you must secure an Add/Drop Form from the Registrar's Office. or download it right here:",
-          "Adding: https://drive.google.com/uc?export=download&id=1Gkc7oLA-gfrRNiO0eTYjfBdy51PqD7Ou",
-          "Dropping: https://drive.google.com/uc?export=download&id=1Zobe5O1IRoXXl4UBcCS_UI_R2YqRdczU",
-          "You can also see other forms that you can download in this link: https://buksu.edu.ph/downloadable-forms/",
-          "The form must be signed by your program coordinator and the instructor of the subject.",
-          "Late dropping (after midterms) will result in a failing grade of 5.0."
-        ],
-        "ceb": [
-          "Ang pag-add og subjects gitugotan sa unang duha ka semana sa semester.",
-          "Ang pag-drop og subjects gitugotan hangtod sa midterm period nga adunay proper approval.",
-          "Aron mag-add/drop, kinahanglan nimong kuhaon ang Add/Drop Form sa Opisina sa Registrar, or i download kini pinagi ani nga mga links",
-          "Adding: https://drive.google.com/uc?export=download&id=1Gkc7oLA-gfrRNiO0eTYjfBdy51PqD7Ou",
-          "Dropping: https://drive.google.com/uc?export=download&id=1Zobe5O1IRoXXl4UBcCS_UI_R2YqRdczU",
-          "Makit nimo usab ang ubang form na pwedi nimo ma download diri nga link: https://buksu.edu.ph/downloadable-forms/",
-          "Ang form kinahanglan pirmaan sa imong program coordinator ug sa instructor sa subject.",
-          "Ang late dropping (human sa midterms) maresulta sa failing grade nga 5.0."
-        ]
-      },
-      "metadata": {
-        "source": "BukSU Registrar Procedures",
-        "last_updated": "2024-02-15"
-      }
+      "subject_key": "add_drop_subject",
+      "subject_type": "academic_process",
+      "subject_terms": [
+        "add drop subject",
+        "add subject",
+        "drop subject",
+        "adding form",
+        "dropping form"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "Adding subjects is allowed during the first two weeks of the semester.",
+              "Dropping subjects is allowed until the midterm period with proper approval.",
+              "To add/drop, you must secure an Add/Drop Form from the Registrar's Office. or download it right here:",
+              "Adding: https://drive.google.com/uc?export=download&id=1Gkc7oLA-gfrRNiO0eTYjfBdy51PqD7Ou",
+              "Dropping: https://drive.google.com/uc?export=download&id=1Zobe5O1IRoXXl4UBcCS_UI_R2YqRdczU",
+              "You can also see other forms that you can download in this link: https://buksu.edu.ph/downloadable-forms/",
+              "The form must be signed by your program coordinator and the instructor of the subject.",
+              "Late dropping (after midterms) will result in a failing grade of 5.0."
+            ],
+            "ceb": [
+              "Ang pag-add og subjects gitugotan sa unang duha ka semana sa semester.",
+              "Ang pag-drop og subjects gitugotan hangtod sa midterm period nga adunay proper approval.",
+              "Aron mag-add/drop, kinahanglan nimong kuhaon ang Add/Drop Form sa Opisina sa Registrar, or i download kini pinagi ani nga mga links",
+              "Adding: https://drive.google.com/uc?export=download&id=1Gkc7oLA-gfrRNiO0eTYjfBdy51PqD7Ou",
+              "Dropping: https://drive.google.com/uc?export=download&id=1Zobe5O1IRoXXl4UBcCS_UI_R2YqRdczU",
+              "Makit nimo usab ang ubang form na pwedi nimo ma download diri nga link: https://buksu.edu.ph/downloadable-forms/",
+              "Ang form kinahanglan pirmaan sa imong program coordinator ug sa instructor sa subject.",
+              "Ang late dropping (human sa midterms) maresulta sa failing grade nga 5.0."
+            ]
+          },
+          "metadata": {
+            "source": "BukSU Registrar Procedures",
+            "last_updated": "2024-02-15",
+            "phrases": [
+              "how to add subject",
+              "how to drop subject",
+              "add drop form",
+              "adding and dropping subject process"
+            ]
+          },
+          "intent": "add_drop_subject",
+          "display_name": "Add Drop Subject Answer Topic"
+        }
+      ],
+      "display_name": "Add Drop Subject Topic Group"
     },
     {
-      "topic": "request_cor",
-      "responses": {
-        "en": [
-          "To request a Certificate of Registration (COR), you may visit the Registrar's Office during office hours.",
-          "You may also download a digital copy through the BukSU Student admission.",
-          "For lost COR replacement, submit an affidavit of loss and pay the replacement fee.",
-          "Processing time is usually 1-3 working days."
-        ],
-        "ceb": [
-          "Aron mo-request og Certificate of Registration (COR), mahimo kang mobisita sa Opisina sa Registrar sa oras sa trabaho.",
-          "Mahimo usab ka mag-download og digital copy pinaagi sa BukSU Student admission.",
-          "Alang sa replacement sa nawala nga COR, i-submit ang affidavit of loss ug bayari ang replacement fee.",
-          "Ang processing time kasagaran 1-3 ka adlaw nga trabaho."
-        ]
-      },
-      "metadata": {
-        "source": "BukSU Registrar Procedures",
-        "last_updated": "2024-01-25"
-      }
+      "topic": "withdrawal",
+      "subject_key": "enrollment_withdrawal",
+      "subject_type": "academic_process",
+      "subject_terms": [
+        "withdraw enrollment",
+        "withdrawal form",
+        "drop enrollment",
+        "voluntary withdrawal"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "To withdraw enrollment, you must submit a Withdrawal Form to the Registrar's Office.",
+              "Voluntary withdrawal before midterms results in 'DRP' (Dropped) on your transcript.",
+              "Withdrawal after midterms results in a failing grade of 5.0.",
+              "You must settle all financial obligations before withdrawal is processed.",
+              "The deadline for withdrawal is two weeks before the final examination period."
+            ],
+            "ceb": [
+              "Aron mo-withdraw ang enrollment, kinahanglan nimong i-submit ang Withdrawal Form sa Opisina sa Registrar.",
+              "Ang boluntaryong withdrawal sa wala pa ang midterms maresulta sa 'DRP' (Dropped) sa imong transcript.",
+              "Ang withdrawal human sa midterms maresulta sa failing grade nga 5.0.",
+              "Kinahanglan nimong bayaran ang tanan nga financial obligations sa wala pa ma-process ang withdrawal.",
+              "Ang deadline sa withdrawal kay duha ka semana sa wala pa ang final examination period."
+            ]
+          },
+          "metadata": {
+            "source": "BukSU Academic Policies",
+            "last_updated": "2024-02-20",
+            "phrases": [
+              "how to withdraw enrollment",
+              "withdraw enrollment policy",
+              "withdrawal form process"
+            ]
+          },
+          "intent": "withdraw_enrollment_policy",
+          "display_name": "Withdraw Enrollment Policy"
+        }
+      ],
+      "display_name": "Enrollment Withdrawal"
     },
     {
-      "topic": "withdraw_enrollment_policy",
-      "responses": {
-        "en": [
-          "To withdraw enrollment, you must submit a Withdrawal Form to the Registrar's Office.",
-          "Voluntary withdrawal before midterms results in 'DRP' (Dropped) on your transcript.",
-          "Withdrawal after midterms results in a failing grade of 5.0.",
-          "You must settle all financial obligations before withdrawal is processed.",
-          "The deadline for withdrawal is two weeks before the final examination period."
-        ],
-        "ceb": [
-          "Aron mo-withdraw ang enrollment, kinahanglan nimong i-submit ang Withdrawal Form sa Opisina sa Registrar.",
-          "Ang boluntaryong withdrawal sa wala pa ang midterms maresulta sa 'DRP' (Dropped) sa imong transcript.",
-          "Ang withdrawal human sa midterms maresulta sa failing grade nga 5.0.",
-          "Kinahanglan nimong bayaran ang tanan nga financial obligations sa wala pa ma-process ang withdrawal.",
-          "Ang deadline sa withdrawal kay duha ka semana sa wala pa ang final examination period."
-        ]
-      },
-      "metadata": {
-        "source": "BukSU Academic Policies",
-        "last_updated": "2024-02-20"
-      }
+      "topic": "registrar_documents",
+      "subject_key": "registrar_documents",
+      "subject_type": "document",
+      "subject_terms": [
+        "cor",
+        "certificate of registration",
+        "transcript of records",
+        "tor",
+        "registrar documents",
+        "registrar form"
+      ],
+      "subtopics": [
+        {
+          "topic": "cor_request",
+          "responses": {
+            "en": [
+              "To request a Certificate of Registration (COR), you may visit the Registrar's Office during office hours.",
+              "You may also download a digital copy through the BukSU Student admission.",
+              "For lost COR replacement, submit an affidavit of loss and pay the replacement fee.",
+              "Processing time is usually 1-3 working days."
+            ],
+            "ceb": [
+              "Aron mo-request og Certificate of Registration (COR), mahimo kang mobisita sa Opisina sa Registrar sa oras sa trabaho.",
+              "Mahimo usab ka mag-download og digital copy pinaagi sa BukSU Student admission.",
+              "Alang sa replacement sa nawala nga COR, i-submit ang affidavit of loss ug bayari ang replacement fee.",
+              "Ang processing time kasagaran 1-3 ka adlaw nga trabaho."
+            ]
+          },
+          "metadata": {
+            "source": "BukSU Registrar Procedures",
+            "last_updated": "2024-01-25",
+            "phrases": [
+              "how to request cor",
+              "certificate of registration request",
+              "lost cor replacement"
+            ]
+          },
+          "intent": "request_cor",
+          "context_topic": "process",
+          "display_name": "Request COR"
+        },
+        {
+          "topic": "schedule",
+          "responses": {
+            "en": [
+              "The Registrar's Office is open from Monday to Friday, 8:00 AM to 5:00 PM.",
+              "It is closed during weekends and university holidays.",
+              "For urgent concerns outside office hours, you may email registrar@buksu.edu.ph"
+            ],
+            "ceb": [
+              "Ang Opisina sa Registrar abri gikan Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM.",
+              "Sira kini sa mga Sabado ug Domingo ug sa mga holiday sa unibersidad.",
+              "Alang sa mga urgenteng butang gawas sa oras sa trabaho, pwede ka mag-email sa registrar@buksu.edu.ph"
+            ]
+          },
+          "metadata": {
+            "source": "BukSU Student Handbook 2024",
+            "last_updated": "2024-01-15",
+            "phrases": [
+              "registrar office schedule",
+              "registrar office hours",
+              "when is registrar open"
+            ]
+          },
+          "intent": "registrar_office_schedule",
+          "display_name": "Registrar Office Schedule"
+        },
+        {
+          "topic": "contact",
+          "responses": {
+            "en": [
+              "You can visit the Registrar Office at the BukSU Main Campus to request your Transcript of Records.",
+              "You may also send an inquiry through their official email or contact numbers.",
+              "📱 Contact Number: 0975 758 3157",
+              "✉️ Email: registrar@buksu.edu.ph",
+              "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ],
+            "ceb": [
+              "Mahimo nimong bisitahon ang Registrar Office sa BukSU Main Campus para sa pag request sa Transcript of Records.",
+              "Pwede usab ka magpadala og email o inquiry gamit ang contact details.",
+              "📱 Contact Number: 0975 758 3157",
+              "✉️ Email: registrar@buksu.edu.ph",
+              "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ]
+          },
+          "intent": "contact_registrar_for_tor",
+          "metadata": {
+            "phrases": [
+              "contact registrar for tor",
+              "registrar contact number",
+              "registrar email"
+            ]
+          },
+          "display_name": "Contact Registrar For TOR"
+        },
+        {
+          "topic": "tor_request",
+          "responses": {
+            "en": [
+              "Graduates can request their Transcript of Records at the University Registrar.",
+              "Applicants must fill out a request form pay the corresponding fee at the Cashier and present their clearance.",
+              "And for non graduate who want to Request some Transcript of Record, you can still visit the Registrar office for more information"
+            ],
+            "ceb": [
+              "Ang mga gradwar mahimong mo request og Transcript of Records sa University Registrar.",
+              "Kinahanglan sulatan ang request form bayad sa Cashier ug ipakita ang clearance.",
+              "Para sa mga wapa ka graduate nga gusto mag kuha sa ilang Transcript of Record, adtoa lang japun ang registrar office para sa uban pang information"
+            ]
+          },
+          "intent": "tor_request_for_graduates",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "how to request tor",
+              "transcript of records request",
+              "tor for graduates"
+            ]
+          },
+          "display_name": "TOR Request For Graduates"
+        }
+      ],
+      "display_name": "Registrar Documents"
     },
     {
-      "topic": "thesis_defense_panelists",
-      "responses": {
-        "en": [
-          "The thesis defense usually consists of a three-member panel and one secretary, though this may vary depending on the specific course."
-        ],
-        "ceb": [
-          "Kasagaran ang defense adunay tulo ka panel members ug usa ka secretary, apan mahimong lahi-lahi depende sa kurso."
-        ]
-      }
+      "topic": "cor_validation",
+      "subject_key": "cor_validation",
+      "subject_type": "academic_process",
+      "subject_terms": [
+        "cor validation",
+        "validate cor",
+        "validated cor",
+        "certificate of registration validation"
+      ],
+      "subtopics": [
+        {
+          "topic": "schedule",
+          "intent": "cor_validation_day",
+          "context_topic": "schedule",
+          "responses": {
+            "en": [
+              "You can validate your COR right after your enrollment because your COR will be uploaded to your BukSU Admission account.",
+              "COR validation is available only for one month. If you fail to validate your COR, you may technically be considered not officially enrolled.",
+              "Tip: After enrollment, make sure to validate your COR as soon as possible."
+            ],
+            "ceb": [
+              "Pwede nimo i-validate ang imong COR pagkahuman sa imong enrollment kay ang imong COR i-upload sa imong BukSU Admission account.",
+              "Ang COR validation available lang sulod sa usa ka bulan. Kung dili nimo ma-validate ang imong COR, posible nga technically dili ka matawag nga officially enrolled.",
+              "Tip: Human sa enrollment, siguruha nga ma-validate dayon nimo ang imong COR."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "COR validation process",
+              "payload": "how to validate COR"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "when is the cor validation",
+              "when is cor validation",
+              "cor validation day",
+              "cor validation schedule",
+              "date of cor validation",
+              "time for cor validation"
+            ]
+          },
+          "display_name": "COR Validation Day"
+        },
+        {
+          "topic": "process",
+          "intent": "cor_validation_steps",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "Step 1: Download your COR from https://admissions.buksu.edu.ph/",
+              "Step 2: Print your COR.",
+              "Step 3: Go to the Finance Building and find Window 7 to validate your COR.",
+              "Step 4: Go to the Registrar to seal and confirm your validation.",
+              "Step 5: After a few days, check your SIAS account to confirm that you are validated."
+            ],
+            "ceb": [
+              "Step 1: I-download ang imong COR gikan sa https://admissions.buksu.edu.ph/",
+              "Step 2: I-print ang imong COR.",
+              "Step 3: Adto sa Finance Building ug pangitaa ang Window 7 aron ma-validate ang imong COR.",
+              "Step 4: Adto sa Registrar aron ma-seal ug ma-confirm ang imong validation.",
+              "Step 5: Pagkahuman sa pipila ka adlaw, tan-awa ang imong SIAS account aron makompirma nga validated ka na."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how to validate cor",
+              "cor validation process",
+              "cor validation steps",
+              "validate cor",
+              "how do i validate my cor"
+            ]
+          },
+          "display_name": "COR Validation Steps"
+        }
+      ],
+      "display_name": "COR Validation"
     },
     {
-      "topic": "end_of_semester",
-      "responses": {
-        "en": [
-          "At the end of the semester, final examinations are conducted, grades are submitted, and clearance processing takes place."
-        ],
-        "ceb": [
-          "Sa katapusan sa semester, naay final exams, pag-submit sa grades, ug clearance processing."
-        ]
-      }
-    },
-    {
-      "topic": "access_grades",
-      "responses": {
-        "en": [
-          "Grades can be viewed once they are officially released.",
-          "However, your previous grades remain accessible anytime through the SIAS portal. you can access it using this link:",
-          "<b>https://sias.buksu.edu.ph/</b>"
-        ],
-        "ceb": [
-          "Makita ang grades kung officially released na.",
-          "Apan ang imong previous grades pwede gihapon ma-access anytime pinaagi sa SIAS portal. Pwede nimo i-access pinaagi sa link:",
-          "<b>https://sias.buksu.edu.ph/</b>"
-        ]
-      }
-    },
-    {
-      "topic": "get_inc_form",
-      "responses": {
-        "en": [
-          "You can find all the forms, including the INC form, on the BukSU main website. You can access them directly using this link: https://buksu.edu.ph/downloadable-forms/"
-        ],
-        "ceb": [
-          "Naa ra sa main website sa BukSU ang tanang forms, apil na ang INC form. I-click lang ni nga link para makuha nimo sila: https://buksu.edu.ph/downloadable-forms/"
-        ]
-      }
-    },
-    {
-      "topic": "contact_registrar_for_tor",
-      "responses": {
-        "en": [
-          "You can visit the Registrar Office at the BukSU Main Campus to request your Transcript of Records.",
-          "You may also send an inquiry through their official email or contact numbers.",
-          "📱 Contact Number: 0975 758 3157",
-          "✉️ Email: registrar@buksu.edu.ph",
-          "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
-          "📞 BukSU Contact Number: 088-813-5661"
-        ],
-        "ceb": [
-          "Mahimo nimong bisitahon ang Registrar Office sa BukSU Main Campus para sa pag request sa Transcript of Records.",
-          "Pwede usab ka magpadala og email o inquiry gamit ang contact details.",
-          "📱 Contact Number: 0975 758 3157",
-          "✉️ Email: registrar@buksu.edu.ph",
-          "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
-          "📞 BukSU Contact Number: 088-813-5661"
-        ]
-      }
-    },
-    {
-      "topic": "tor_request_for_graduates",
-      "responses": {
-        "en": [
-          "Graduates can request their Transcript of Records at the University Registrar.",
-          "Applicants must fill out a request form pay the corresponding fee at the Cashier and present their clearance.",
-          "And for non graduate who want to Request some Transcript of Record, you can still visit the Registrar office for more information"
-        ],
-        "ceb": [
-          "Ang mga gradwar mahimong mo request og Transcript of Records sa University Registrar.",
-          "Kinahanglan sulatan ang request form bayad sa Cashier ug ipakita ang clearance.",
-          "Para sa mga wapa ka graduate nga gusto mag kuha sa ilang Transcript of Record, adtoa lang japun ang registrar office para sa uban pang information"
-        ]
-      }
-    },
-    {
-      "topic": "graduation_application_process",
-      "responses": {
-        "en": [
-          "Students must undergo a pre evaluation of grades by the Registrar.",
-          "They must settle all financial obligations.",
-          "Finally they must file a formal Application for Graduation during their final semester.",
-          "You can apply through the buksu Admission for graduation program, here is the link:",
-          "https://buksu.edu.ph/admission/"
-        ],
-        "ceb": [
-          "Ang estudyante kinahanglan moagi og pre evaluation sa mga grado sa Registrar.",
-          "Kinahanglan impasahon ang tanang bayranan.",
-          "Human niini mag file og formal Application for Graduation sa huling semester.",
-          "Pwede ka mag-apply pinaagi sa buksu Admission for graduation program, ania ang link:",
-          "https://buksu.edu.ph/admission/"
-        ]
-      }
-    },
-    {
-      "topic": "graduating_clearance_requirements",
-      "responses": {
-        "en": [
-          "To clear your enrollment for graduation, you must first secure a University Clearance Form from the Office of the Registrar or your respective College Dean.",
-          "This form requires official signatures from key offices, including the University Library (to confirm all borrowed books are returned), the Office of the Student Services (OSS), and the Cashier or Accounting Office to ensure all tuition and graduation fees (such as diploma, alumni, and legacy fees) are fully paid.",
-          "Additionally, you must submit vital documents to the Registrar, such as your PSA Birth Certificate, original High School Report Card (Form 138/137) or Transcript of Records (for transferees), and an Affidavit of Loss if you cannot surrender your Student ID.",
-          "Once all signatures are collected and requirements are submitted, your name will be included in the final list of candidates for graduation."
-        ],
-        "ceb": [
-          "Aron ma-clear ang imong enrollment para sa graduation sa BukSU, kinahanglan nimo nga makompleto ang University Clearance.",
-          "Sugdan kini pinaagi sa pagkuha og clearance form gikan sa Office of the Registrar o sa opisina sa imong Dean.",
-          "Kinahanglan nimo kining papirmahan sa nagkalain-lain nga mga opisina sama sa Library (siguruha nga wala kay wala na-uli nga libro), sa Office of the Student Services (OSS), ug sa Cashier o Accounting aron pamatud-an nga bayad na ang imong tuition ug graduation fees (sama sa diploma fee ug alumni fee).",
-          "Kinahanglan usab nimo isumite sa Registrar ang mga dokumento sama sa imong PSA Birth Certificate, orihinal nga Report Card o TOR, ug Affidavit of Loss kung nawala ang imong Student ID.",
-          "Kon makompleto na ang tanang pirma ug requirements, ang imong ngalan opisyal na nga i-apil sa listahan sa mga mo-graduate."
-        ]
-      }
-    },
-    {
-      "topic": "",
-      "responses": {
-        "en": [
-          ""
-        ],
-        "ceb": [
-          ""
-        ]
-      }
-    },
-    {
-      "topic": "",
-      "responses": {
-        "en": [
-          ""
-        ],
-        "ceb": [
-          ""
-        ]
-      }
+      "topic": "graduation_clearance",
+      "subject_key": "graduation_clearance",
+      "subject_type": "academic_process",
+      "subject_terms": [
+        "graduation application",
+        "graduation clearance",
+        "graduating clearance",
+        "university clearance",
+        "clearance form"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "Students must undergo a pre evaluation of grades by the Registrar.",
+              "They must settle all financial obligations.",
+              "Finally they must file a formal Application for Graduation during their final semester.",
+              "You can apply through the buksu Admission for graduation program, here is the link:",
+              "https://buksu.edu.ph/admission/"
+            ],
+            "ceb": [
+              "Ang estudyante kinahanglan moagi og pre evaluation sa mga grado sa Registrar.",
+              "Kinahanglan impasahon ang tanang bayranan.",
+              "Human niini mag file og formal Application for Graduation sa huling semester.",
+              "Pwede ka mag-apply pinaagi sa buksu Admission for graduation program, ania ang link:",
+              "https://buksu.edu.ph/admission/"
+            ]
+          },
+          "intent": "graduation_application_process",
+          "metadata": {
+            "phrases": [
+              "how to apply for graduation",
+              "graduation application process",
+              "application for graduation"
+            ]
+          },
+          "display_name": "Graduation Application Process"
+        },
+        {
+          "topic": "requirements",
+          "responses": {
+            "en": [
+              "You can request your University Clearance Form through the BukSU online clearance system.",
+              "For your clearance, I suggest completing the process online since an online clearance system is available. First, go to this website:",
+              "https://clearance.buksu.edu.ph/",
+              "Then, choose student, alumni, or employee depending on your current status.",
+              "Log in using your institutional BukSU Gmail account.",
+              "Then, click 'Add New Request' located on the top right of the screen and fill out all the details.",
+              "Make sure that your clearance details are correct. Note that for the course selection, if you do not see your course immediately, just search for it and it will appear.",
+              "After that, click 'Create Request' on the bottom right of your screen.",
+              "Please check the portal daily because accountability issues especially unpaid books and other obligations will only be visible on this website.",
+              "Make sure to comply with all the requirements. You can click the Request ID to see all pending parts of your clearance, and you may ask the Registrar for more information."
+            ],
+            "ceb": [
+              "Mahimo nimo i-request ang imong University Clearance Form pinaagi sa BukSU online clearance system.",
+              "Para sa imong clearance, mas maayo kung i-online nalang nimo kay naa naman tay online clearance system. Una, adto lang ani nga website:",
+              "https://clearance.buksu.edu.ph/",
+              "Dayon, pili-a ang student, alumni, o employee depende sa imong kahimtang o status karon.",
+              "Log in gamit ang imong institutional BukSU Gmail account.",
+              "Pagkahuman, i-click ang 'Add New Request' nga makit-an sa babaw dapit sa tuo sa imong screen, ug pil-api ang tanang gikinahanglan nga detalye.",
+              "Siguroha nga husto ang mga detalye sa imong clearance. Pahinumdom lang sa pagpili sa kurso, kung dili nimo makit-an dayon imong kurso, i-search lang kini ug mugawas ra na.",
+              "Unya, i-click ang 'Create Request' sa ubos dapit sa tuo sa imong screen.",
+              "Palihog ug check niini adlaw-adlaw kay ang mga accountabilities o tulubagon sama sa wala mabayari nga libro ug uban pa makit-an ra exclusive ani nga website.",
+              "Siguroha nga matuman ug ma-comply nimo ang tanang gikinahanglan. Mahimo nimong i-click ang Request ID aron makita ang mga pending nga parte sa imong clearance, ug pwede sad ka mangutana sa Registrar para sa dugang nga impormasyon."
+            ]
+          },
+          "intent": "graduating_clearance_requirements",
+          "metadata": {
+            "phrases": [
+              "graduation clearance requirements",
+              "graduating clearance requirements",
+              "university clearance form for graduation"
+            ]
+          },
+          "display_name": "Graduating Clearance Requirements"
+        }
+      ],
+      "display_name": "Graduation Clearance"
     }
   ]
 }

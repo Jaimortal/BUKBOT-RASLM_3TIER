@@ -6,168 +6,621 @@
   ],
   "topics": [
     {
-      "topic": "medic_clinic",
-      "responses": {
-        "en": [
-          "The University Medical Clinic is a primary health care facility that is available to render primary health care services and selected specialized services to the Bukidnon State University community. The health service unit is staffed with trained registered professional health personnel. The clinic is responsible in documenting all consulted health cases, collaborative care is practiced for cases that need extended evaluation and apt referral is done for further management.."
-        ],
-        "ceb": [
-          "Ang University Medical Clinic usa ka pasilidad sa pag-atiman sa panglawas nga magamit aron maghatag mga serbisyo sa pag-atiman sa panglawas ug gipili nga mga espesyalista nga serbisyo sa komunidad sa Bukidnon State University. Ang yunit sa serbisyo sa kahimsog adunay kawani sa nabansay nga narehistro nga propesyonal nga mga kawani sa kahimsog. Ang klinika mao ang responsable sa pagdokumento sa tanan nga mga kaso sa kahimsog sa panglawas, ang pag-atiman sa pagtinabangay gihimo alang sa mga kaso nga kinahanglan ang dugang nga pagsusi ug tukma nga referral gihimo alang sa dugang nga pagdumala .."
-        ]
-      }
+      "topic": "university_clinic",
+      "subject_key": "university_clinic",
+      "subject_type": "service",
+      "subject_terms": [
+        "clinic",
+        "medical clinic",
+        "university clinic",
+        "medical services",
+        "dental services",
+        "health services"
+      ],
+      "subtopics": [
+        {
+          "topic": "medic_clinic",
+          "responses": {
+            "en": [
+              "The University Medical Clinic is a primary health care facility that is available to render primary health care services and selected specialized services to the Bukidnon State University community. The health service unit is staffed with trained registered professional health personnel. The clinic is responsible in documenting all consulted health cases, collaborative care is practiced for cases that need extended evaluation and apt referral is done for further management.."
+            ],
+            "ceb": [
+              "Ang University Medical Clinic usa ka pasilidad sa pag-atiman sa panglawas nga magamit aron maghatag mga serbisyo sa pag-atiman sa panglawas ug gipili nga mga espesyalista nga serbisyo sa komunidad sa Bukidnon State University. Ang yunit sa serbisyo sa kahimsog adunay kawani sa nabansay nga narehistro nga propesyonal nga mga kawani sa kahimsog. Ang klinika mao ang responsable sa pagdokumento sa tanan nga mga kaso sa kahimsog sa panglawas, ang pag-atiman sa pagtinabangay gihimo alang sa mga kaso nga kinahanglan ang dugang nga pagsusi ug tukma nga referral gihimo alang sa dugang nga pagdumala .."
+            ]
+          },
+          "intent": "medic_clinic",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "medic clinic",
+              "where is clinic",
+              "about university clinic",
+              "what is the university clinic",
+              "where is the clinic",
+              "buksu clinic information"
+            ]
+          },
+          "subject_key": "university_clinic",
+          "subject_type": "service",
+          "subject_terms": [
+            "clinic",
+            "medical clinic",
+            "university clinic",
+            "health services",
+            "medical services",
+            "dental services",
+            "buksu clinic"
+          ],
+          "display_name": "Medic Clinic"
+        },
+        {
+          "topic": "med_mission",
+          "responses": {
+            "en": [
+              "Bukidnon State University Medical Clinic Mission",
+              "MISSION",
+              "We commit ourselves to:",
+              "Proficient and eminent health services to students, faculty and non-teaching personnel. Participate actively in activities which will sustain the wellness and health of the students."
+            ],
+            "ceb": [
+              "Bukidnon State University Medical Clinic Mission",
+              "MISSION",
+              "Gisaad namo nga:",
+              "Naghatag og hanas ug de-kalidad nga serbisyong panglawas para sa mga estudyante, magtutudlo, ug mga kawani sa tunghaan. Aktibo sab nga nagpartisipar sa mga kalihokan nga magmentinar sa maayong panglawas ug kaayuhan sa mga estudyante."
+            ]
+          },
+          "intent": "med_mission",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "med mission",
+              "clinic mission",
+              "medical clinic mission"
+            ]
+          },
+          "subject_key": "university_clinic",
+          "subject_type": "service",
+          "subject_terms": [
+            "clinic",
+            "medical clinic",
+            "university clinic",
+            "health services",
+            "medical services",
+            "dental services",
+            "buksu clinic"
+          ],
+          "display_name": "Med Mission"
+        },
+        {
+          "topic": "med_vision",
+          "responses": {
+            "en": [
+              "Bukidnon State University Medical Clinic Vision",
+              "VISION",
+              "The University Medical Clinic is a part of the primary health care delivery system that provides holistic health services to ensure optimal well-being of the students, faculty and non-teaching personnel."
+            ],
+            "ceb": [
+              "Bukidnon State University Medical Clinic Vision",
+              "VISION",
+              "Ang University Medical Clinic kay kabahin sa sistema sa paghatag og serbisyo sa panglawas nga nagtanyag og kompleto nga tabang-medikal aron masiguro ang kaayuhan sa mga estudyante, mga magtutudlo, ug sa mga kawani sa tunghaan."
+            ]
+          },
+          "intent": "med_vision",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "med vision",
+              "clinic vision",
+              "medical clinic vision"
+            ]
+          },
+          "subject_key": "university_clinic",
+          "subject_type": "service",
+          "subject_terms": [
+            "clinic",
+            "medical clinic",
+            "university clinic",
+            "health services",
+            "medical services",
+            "dental services",
+            "buksu clinic"
+          ],
+          "display_name": "Med Vision"
+        },
+        {
+          "topic": "buksu_medical_dental_services",
+          "responses": {
+            "en": [
+              "Yes the University Health Services Unit offers free basic medical and dental consultations first aid and emergency treatment for officially enrolled students upon presentation of a valid ID."
+            ],
+            "ceb": [
+              "Oo ang University Health Services Unit nagtanyag og libre nga basic medical ug dental consultations first aid ug emergency treatment para sa officially enrolled students basta ipakita ang valid ID."
+            ]
+          },
+          "intent": "buksu_medical_dental_services",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "buksu medical dental services",
+              "medical dental services",
+              "free medical dental consultation",
+              "clinic services"
+            ]
+          },
+          "subject_key": "university_clinic",
+          "subject_type": "service",
+          "subject_terms": [
+            "clinic services",
+            "medical services",
+            "dental services",
+            "free consultation",
+            "health services unit"
+          ],
+          "display_name": "BukSU Medical Dental Services"
+        }
+      ],
+      "display_name": "University Clinic"
     },
     {
-      "topic": "med_mission",
-      "responses": {
-        "en": [
-          "Bukidnon State University Medical Clinic Mission",
-          "MISSION",
-          "We commit ourselves to:",
-          "Proficient and eminent health services to students, faculty and non-teaching personnel. Participate actively in activities which will sustain the wellness and health of the students."
-        ],
-        "ceb": [
-          "Bukidnon State University Medical Clinic Mission",
-          "MISSION",
-          "Gisaad namo nga:",
-          "Naghatag og hanas ug de-kalidad nga serbisyong panglawas para sa mga estudyante, magtutudlo, ug mga kawani sa tunghaan. Aktibo sab nga nagpartisipar sa mga kalihokan nga magmentinar sa maayong panglawas ug kaayuhan sa mga estudyante."
-        ]
-      }
+      "topic": "medical_certificate",
+      "subject_key": "medical_certificate",
+      "subject_type": "document",
+      "subject_terms": [
+        "medical certificate",
+        "clinic certificate",
+        "certificate for ojt",
+        "certificate for intramural"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "intent": "clinic_medical_certificate_process",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "Go to the Clinic and present your validated School ID.",
+              "Client logs in the designated logbook, presents his or her complaints, and fills up the Medical Record Form if this is their first visit at the clinic.",
+              "For OJT, trainings, and field trips, a letter from the chairperson and the list of students must be provided.",
+              "For Intramural players and school representation, no letter will be asked.",
+              "Receive the Medical Certificate.",
+              "Total duration is 28 minutes, with zero cost."
+            ],
+            "ceb": [
+              "Adto sa Clinic ug ipakita ang imong validated School ID.",
+              "Ang client mag-log in sa designated logbook, magsulti sa iyang complaint, ug mo-fill up sa Medical Record Form kung first visit niya sa clinic.",
+              "Para sa OJT, trainings, ug field trips, kinahanglan ang letter gikan sa chairperson ug listahan sa students.",
+              "Para sa Intramural players ug school representation, dili na mangayo og letter.",
+              "Dawata ang Medical Certificate.",
+              "Ang total duration kay 28 minutos, ug walay bayad."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how to get medical certificate on clinic",
+              "process for medical certificate",
+              "do clinic provide medical certificate",
+              "how to get medical certificate for intramural",
+              "process of getting certificate for ojt"
+            ]
+          },
+          "display_name": "Clinic Medical Certificate Process"
+        },
+        {
+          "topic": "payment",
+          "intent": "clinic_medical_certificate_cost",
+          "context_topic": "payment",
+          "responses": {
+            "en": [
+              "You don't need to pay for Medical Certificate when getting medical certificate at the BukSU Clinic."
+            ],
+            "ceb": [
+              "Dili kinahanglan mubayad para sa Medical Certificate kung mokuha ka niini sa BukSU Clinic."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how much is getting medical certificate",
+              "cost for medical certificate",
+              "medical certificate cost"
+            ]
+          },
+          "display_name": "Clinic Medical Certificate Cost"
+        },
+        {
+          "topic": "duration",
+          "intent": "clinic_medical_certificate_duration",
+          "context_topic": "schedule",
+          "responses": {
+            "en": [
+              "Total duration for getting a medical certificate is 28 minutes. This does not include the waiting time if many people are also getting a medical certificate; it only refers to your own transaction duration."
+            ],
+            "ceb": [
+              "Ang total duration sa pagkuha og medical certificate kay 28 minutos. Wala pa apil ani ang waiting time kung daghan ang nagakuha og medical certificate; para ra ni sa imong kaugalingong transaction duration."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "duration for getting medical certificate",
+              "how many hours needed to get medical certificate",
+              "how many minutes needed to get medical certificate",
+              "time for getting medical certificate"
+            ]
+          },
+          "display_name": "Clinic Medical Certificate Duration"
+        }
+      ],
+      "display_name": "Medical Certificate"
     },
     {
-      "topic": "med_vision",
-      "responses": {
-        "en": [
-          "Bukidnon State University Medical Clinic Vision",
-          "VISION",
-          "The University Medical Clinic is a part of the primary health care delivery system that provides holistic health services to ensure optimal well-being of the students, faculty and non-teaching personnel."
-        ],
-        "ceb": [
-          "Bukidnon State University Medical Clinic Vision",
-          "VISION",
-          "Ang University Medical Clinic kay kabahin sa sistema sa paghatag og serbisyo sa panglawas nga nagtanyag og kompleto nga tabang-medikal aron masiguro ang kaayuhan sa mga estudyante, mga magtutudlo, ug sa mga kawani sa tunghaan."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_medical_dental_services",
-      "responses": {
-        "en": [
-          "Yes the University Health Services Unit offers free basic medical and dental consultations first aid and emergency treatment for officially enrolled students upon presentation of a valid ID."
-        ],
-        "ceb": [
-          "Oo ang University Health Services Unit nagtanyag og libre nga basic medical ug dental consultations first aid ug emergency treatment para sa officially enrolled students basta ipakita ang valid ID."
-        ]
-      }
-    },
-    {
-      "topic": "request_dental_consult",
-      "responses": {
-        "en": [
-          "This is the process that allow the patients to consult with the dentist regarding the condition of their teeth and gums. During the consultation, the dentist examines the patient's oral health and discusses the findings from the dental examination",
-          "For Students: Step 1: Submit <b>photocopies</b> of <b>validated school ID and validated study load.</b>",
-          "For Employees: Step 1: Submit <b>photocopies </b>of <b>Employee's ID</b> and Vaccination Card for faculty and staff.",
-          "Step 2: Client proceeds to the waiting area.",
-          "Step 3: Client proceeds to the vital signs taking area.",
-          "Step 4: Receive medicines.",
-          "Step 5: Fill out medicine ledger and monthly dental report form.",
-          "The Total Cost for this service is None. The Time to Process the Request takes about 45 minutes. The dentist may recommend appropriate treatments and provide guidance on oral care."
-        ],
-        "ceb": [
-          "Kini nga proseso nagtugot sa mga pasyente nga mokonsulta sa dentista bahin sa kahimtang sa ilang ngipon ug lagos. Atol sa konsultasyon, susihon sa dentista ang oral health sa pasyente ug hisgutan ang resulta sa dental examination.",
-          "Para sa Students: Step 1: I-submit ang <b>photocopies</b> sa <b>validated school ID ug validated study load.</b>",
-          "Para sa Employees: Step 1: I-submit ang <b>photocopies </b>sa <b>Employee's ID</b> ug Vaccination Card para sa faculty ug staff.",
-          "Step 2: Ang kliyente moadto sa waiting area.",
-          "Step 3: Ang kliyente moadto sa area sa pagkuha sa vital signs.",
-          "Step 4: Dawata ang mga tambal.",
-          "Step 5: Punan ang medicine ledger ug monthly dental report form.",
-          "Ang total nga gasto para niini nga serbisyo kay wala. Ang oras sa pagproseso sa request kay mga 45 minutos. Ang dentista mahimong morekomenda og angay nga mga treatment ug maghatag og giya sa pag-atiman sa oral care."
-        ]
-      },
-      "images": [],
-      "map": null,
-      "pins": [],
-      "routes": []
-    },
-    {
-      "topic": "requirement_for_dental_consultation",
-      "responses": {
-        "en": [
-          "CHECKLIST OF REQUIREMENTS FOR DENTAL CONSULTATION",
-          "1. Photocopy of validated school ID",
-          "2. Photocopy of validated study load",
-          "3. Photocopy of Employee's ID for faculty & staff.",
-          "4. Complied waiver from parents/guardian.",
-          "Note: If below 18 year-old, patient must need parent/guardian's permission. If 18 year-old and above, no need to present waiver."
-        ],
-        "ceb": [
-          "CHECKLIST SA MGA REQUIREMENTS PARA SA DENTAL CONSULTATION",
-          "1. Photocopy sa validated school ID",
-          "2. Photocopy sa validated study load",
-          "3. Photocopy sa Employee's ID para sa faculty & staff.",
-          "4. Napirmahan nga waiver gikan sa parents/guardian.",
-          "Note: Kung ubos sa 18 anyos, kinahanglan og permiso sa parents/guardian ang pasyente. Kung 18 anyos pataas, dili na kinahanglan magpresenta og waiver."
-        ]
-      },
-      "images": [],
-      "map": null,
-      "pins": [],
-      "routes": []
-    },
-    {
-      "topic": "request_dental_oral_examination",
-      "responses": {
-        "en": [
-          "This Process allows patients to undergo a comprehensive evaluation of a patient's oral health. This service includes inspecting the teeth, gums, mouth, and surrounding tissues for signs of decay, gum disease, infections, or other abnormalities.",
-          "For Students: Step 1: Submit photocopies of validated school ID and validated study load.",
-          "For Employees: Step 1: Submit photocopies of Employee's ID and Vaccination Card for faculty and staff.",
-          "Step 2: Client proceeds to the waiting area.",
-          "Step 3: Client proceeds to the vital signs taking area.",
-          "Step 4: Prepare for Dental Oral Examination.",
-          "Step 5: Fill out medicine ledger and monthly dental report form.",
-          "The Total Cost for this service is None. The Time to Process the Request takes about 45 minutes.",
-          "It may involve diagnostic tools such as X-rays to assess underlying conditions. The goal is to identify potential oral health issues early and recommend appropriate treatments or preventive measures for maintaining overall dental hygiene."
-        ],
-        "ceb": [
-          "Kini nga proseso nagtugot sa mga pasyente nga moagi sa usa ka komprehensibong evaluation sa oral health. Apil niini ang pag-inspeksyon sa ngipon, lagos, baba, ug mga palibot nga tisyu aron makit-an kung adunay tooth decay, sakit sa lagos, impeksyon, o uban pang abnormalidad.",
-          "Para sa Students: Step 1: I-submit ang photocopies sa validated school ID ug validated study load.",
-          "Para sa Employees: Step 1: I-submit ang photocopies sa Employee's ID ug Vaccination Card para sa faculty ug staff.",
-          "Step 2: Ang kliyente moadto sa waiting area.",
-          "Step 3: Ang kliyente moadto sa area sa pagkuha sa vital signs.",
-          "Step 4: Mangandam para sa Dental Oral Examination.",
-          "Step 5: Punan ang medicine ledger ug monthly dental report form.",
-          "Ang total nga gasto para niini nga serbisyo kay wala. Ang oras sa pagproseso sa request kay mga 45 minutos.",
-          "Mahimong mogamit og diagnostic tools sama sa X-rays aron ma-assess ang mga kondisyon sa sulod. Ang tumong mao ang sayo nga pag-ila sa posibleng problema sa oral health ug pagrekomenda sa angay nga treatment o preventive measures aron mapadayon ang maayong dental hygiene."
-        ]
-      },
-      "images": [],
-      "map": null,
-      "pins": [],
-      "routes": []
-    },
-    {
-      "topic": "dental_oral_examination_requirement",
-      "responses": {
-        "en": [
-          "CHECKLIST OF REQUIREMENTS FOR DENTAL ORAL EXAMINATION",
-          "1. Photocopy of validated school ID",
-          "2. Photocopy of validated study load",
-          "3. Photocopy of Employee's ID for faculty & staff.",
-          "4. Complied waiver from parents/guardian.",
-          "Note: If below 18 year-old, patient must need parent/guardian's permission. If 18 year-old and above, no need to present waiver."
-        ],
-        "ceb": [
-          "CHECKLIST SA MGA REQUIREMENTS PARA SA DENTAL ORAL EXAMINATION",
-          "1. Photocopy sa validated school ID",
-          "2. Photocopy sa validated study load",
-          "3. Photocopy sa Employee's ID para sa faculty & staff.",
-          "4. Napirmahan nga waiver gikan sa parents/guardian.",
-          "Note: Kung ubos sa 18 anyos, kinahanglan og permiso sa parents/guardian ang pasyente. Kung 18 anyos pataas, dili na kinahanglan magpresenta og waiver."
-        ]
-      },
-      "images": [],
-      "map": null,
-      "pins": [],
-      "routes": []
+      "topic": "dental_services",
+      "subject_key": "dental_services",
+      "subject_type": "service",
+      "subject_terms": [
+        "dental consultation",
+        "dental oral examination",
+        "dental services",
+        "oral examination",
+        "dentist"
+      ],
+      "subtopics": [
+        {
+          "topic": "dental_clinic_direct_ask",
+          "responses": {
+            "en": [
+              "Directly ask the dental clinic about that."
+            ],
+            "ceb": [
+              "Pangutana diretso sa dental clinic bahin ana."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "dental_clinic_direct_ask",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "directly ask the dental clinic"
+            ]
+          },
+          "subject_key": "dental_services",
+          "subject_type": "service",
+          "subject_terms": [
+            "dental services"
+          ],
+          "display_name": "Dental Clinic Direct Ask"
+        },
+        {
+          "topic": "dental_services_menu",
+          "responses": {
+            "en": [
+              "Here are the dental services, and please remember to prepare for Photocopy of validated school ID, and Photocopy of validated study load."
+            ],
+            "ceb": [
+              "Ani ang dental services, ug palihog pag-andam og photocopy sa validated school ID ug photocopy sa validated study load."
+            ]
+          },
+          "choiceGroups": [
+            {
+              "title": "Dental Services",
+              "items": [
+                {
+                  "label": "Request for dental oral examination",
+                  "payload": "request for dental oral examination"
+                },
+                {
+                  "label": "Request for Tooth Extraction",
+                  "payload": "request for tooth extraction"
+                },
+                {
+                  "label": "Request for dental Consultation",
+                  "payload": "request for dental consultation"
+                },
+                {
+                  "label": "Request for Referral/Dispensing of Medicine",
+                  "payload": "request for referral dispensing of medicine"
+                }
+              ]
+            }
+          ],
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "dental_services_menu",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "dental services",
+              "dental servicing",
+              "what dental clinic can offer",
+              "dental clinic services",
+              "dental can offer to student",
+              "what do dental offer to us",
+              "services dental can offer"
+            ]
+          },
+          "subject_key": "dental_services",
+          "subject_type": "service",
+          "subject_terms": [
+            "dental services",
+            "dental clinic services",
+            "dental servicing"
+          ],
+          "display_name": "Dental Services Menu"
+        },
+        {
+          "topic": "request_dental_consult",
+          "responses": {
+            "en": [
+              "Here is the process of Request for dental Consultation.",
+              "Submit photocopies of validated school ID and validated study load.",
+              "Client proceeds to the waiting area.",
+              "Client proceeds to the vital signs taking area.",
+              "consult with the dentist regarding the condition of your teeth and gums.",
+              "Receive medicines and fill out the medicine ledger and monthly dental report form.",
+              "Total duration is 45 minutes, with zero cost."
+            ],
+            "ceb": [
+              "Kini nga proseso nagtugot sa mga pasyente nga mokonsulta sa dentista bahin sa kahimtang sa ilang ngipon ug lagos. Atol sa konsultasyon, susihon sa dentista ang oral health sa pasyente ug hisgutan ang resulta sa dental examination.",
+              "Para sa Students: Step 1: I-submit ang <b>photocopies</b> sa <b>validated school ID ug validated study load.</b>",
+              "Para sa Employees: Step 1: I-submit ang <b>photocopies </b>sa <b>Employee's ID</b> ug Vaccination Card para sa faculty ug staff.",
+              "Step 2: Ang kliyente moadto sa waiting area.",
+              "Step 3: Ang kliyente moadto sa area sa pagkuha sa vital signs.",
+              "Step 4: Dawata ang mga tambal.",
+              "Step 5: Punan ang medicine ledger ug monthly dental report form.",
+              "Ang total nga gasto para niini nga serbisyo kay wala. Ang oras sa pagproseso sa request kay mga 45 minutos. Ang dentista mahimong morekomenda og angay nga mga treatment ug maghatag og giya sa pag-atiman sa oral care."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "request_dental_consult",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "request dental consult",
+              "how to request dental consultation",
+              "dental consultation process",
+              "request for dental consultation"
+            ]
+          },
+          "subject_key": "dental_consultation",
+          "subject_type": "service",
+          "subject_terms": [
+            "dental consultation",
+            "dental consult",
+            "dentist consultation",
+            "request for dental consultation"
+          ],
+          "display_name": "Request Dental Consult"
+        },
+        {
+          "topic": "requirement_for_dental_consultation",
+          "responses": {
+            "en": [
+              "CHECKLIST OF REQUIREMENTS FOR DENTAL CONSULTATION",
+              "1. Photocopy of validated school ID",
+              "2. Photocopy of validated study load",
+              "3. Photocopy of Employee's ID for faculty & staff.",
+              "4. Complied waiver from parents/guardian.",
+              "Note: If below 18 year-old, patient must need parent/guardian's permission. If 18 year-old and above, no need to present waiver."
+            ],
+            "ceb": [
+              "CHECKLIST SA MGA REQUIREMENTS PARA SA DENTAL CONSULTATION",
+              "1. Photocopy sa validated school ID",
+              "2. Photocopy sa validated study load",
+              "3. Photocopy sa Employee's ID para sa faculty & staff.",
+              "4. Napirmahan nga waiver gikan sa parents/guardian.",
+              "Note: Kung ubos sa 18 anyos, kinahanglan og permiso sa parents/guardian ang pasyente. Kung 18 anyos pataas, dili na kinahanglan magpresenta og waiver."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "requirement_for_dental_consultation",
+          "context_topic": "requirements",
+          "metadata": {
+            "phrases": [
+              "requirement for dental consultation",
+              "dental consultation requirements"
+            ]
+          },
+          "subject_key": "dental_consultation",
+          "subject_type": "service",
+          "subject_terms": [
+            "dental consultation",
+            "dental consult",
+            "dentist consultation"
+          ],
+          "display_name": "Requirement For Dental Consultation"
+        },
+        {
+          "topic": "request_dental_oral_examination",
+          "responses": {
+            "en": [
+              "Here is the process of Request for dental oral examination.",
+              "Submit photocopies of validated school ID and validated study load.",
+              "Client proceeds to the waiting area.",
+              "Client proceeds to the vital signs taking area.",
+              "Prepare for Dental Oral Examination.",
+              "Receive medicines and fill out medicine ledger and monthly dental report form.",
+              "Total duration is 45 minutes, with zero cost."
+            ],
+            "ceb": [
+              "Kini nga proseso nagtugot sa mga pasyente nga moagi sa usa ka komprehensibong evaluation sa oral health. Apil niini ang pag-inspeksyon sa ngipon, lagos, baba, ug mga palibot nga tisyu aron makit-an kung adunay tooth decay, sakit sa lagos, impeksyon, o uban pang abnormalidad.",
+              "Para sa Students: Step 1: I-submit ang photocopies sa validated school ID ug validated study load.",
+              "Para sa Employees: Step 1: I-submit ang photocopies sa Employee's ID ug Vaccination Card para sa faculty ug staff.",
+              "Step 2: Ang kliyente moadto sa waiting area.",
+              "Step 3: Ang kliyente moadto sa area sa pagkuha sa vital signs.",
+              "Step 4: Mangandam para sa Dental Oral Examination.",
+              "Step 5: Punan ang medicine ledger ug monthly dental report form.",
+              "Ang total nga gasto para niini nga serbisyo kay wala. Ang oras sa pagproseso sa request kay mga 45 minutos.",
+              "Mahimong mogamit og diagnostic tools sama sa X-rays aron ma-assess ang mga kondisyon sa sulod. Ang tumong mao ang sayo nga pag-ila sa posibleng problema sa oral health ug pagrekomenda sa angay nga treatment o preventive measures aron mapadayon ang maayong dental hygiene."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "request_dental_oral_examination",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "request dental oral examination",
+              "how to request dental oral examination",
+              "oral examination process",
+              "request for dental oral examination"
+            ]
+          },
+          "subject_key": "dental_oral_examination",
+          "subject_type": "service",
+          "subject_terms": [
+            "oral examination",
+            "dental oral examination",
+            "oral exam"
+          ],
+          "display_name": "Request Dental Oral Examination"
+        },
+        {
+          "topic": "dental_oral_examination_requirement",
+          "responses": {
+            "en": [
+              "CHECKLIST OF REQUIREMENTS FOR DENTAL ORAL EXAMINATION",
+              "1. Photocopy of validated school ID",
+              "2. Photocopy of validated study load",
+              "3. Photocopy of Employee's ID for faculty & staff.",
+              "4. Complied waiver from parents/guardian.",
+              "Note: If below 18 year-old, patient must need parent/guardian's permission. If 18 year-old and above, no need to present waiver."
+            ],
+            "ceb": [
+              "CHECKLIST SA MGA REQUIREMENTS PARA SA DENTAL ORAL EXAMINATION",
+              "1. Photocopy sa validated school ID",
+              "2. Photocopy sa validated study load",
+              "3. Photocopy sa Employee's ID para sa faculty & staff.",
+              "4. Napirmahan nga waiver gikan sa parents/guardian.",
+              "Note: Kung ubos sa 18 anyos, kinahanglan og permiso sa parents/guardian ang pasyente. Kung 18 anyos pataas, dili na kinahanglan magpresenta og waiver."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "dental_oral_examination_requirement",
+          "context_topic": "requirements",
+          "metadata": {
+            "phrases": [
+              "dental oral examination requirement",
+              "dental oral examination requirements",
+              "oral examination requirements"
+            ]
+          },
+          "subject_key": "dental_oral_examination",
+          "subject_type": "service",
+          "subject_terms": [
+            "oral examination",
+            "dental oral examination",
+            "oral exam"
+          ],
+          "display_name": "Dental Oral Examination Requirement"
+        },
+        {
+          "topic": "request_tooth_extraction",
+          "responses": {
+            "en": [
+              "Ask the clinic for the cost first since I don't have data for the tooth extraction cost.",
+              "Here is the process of Request for Tooth Extraction.",
+              "Submit photocopies of validated school ID and validated study load.",
+              "Submit complied waiver from parents or guardian. Note: If below 18 years old, the patient needs parent or guardian permission. If 18 years old and above, no need to present waiver.",
+              "Client proceeds to the vital signs taking area.",
+              "Client shares his or her case history to the Administrative Aide III.",
+              "Client proceeds to the dental chair for tooth extraction procedure.",
+              "Receive medicines and fill out the medicine ledger and monthly dental report form.",
+              "Total duration is 1 hour and 8 minutes to 1 hour and 38 minutes."
+            ],
+            "ceb": [
+              "Pangutana una sa clinic sa cost kay wala koy data sa bayad para sa tooth extraction.",
+              "Ani ang proseso sa Request for Tooth Extraction.",
+              "I-submit ang photocopies sa validated school ID ug validated study load.",
+              "I-submit ang complied waiver gikan sa parents o guardian. Note: Kung ubos sa 18 anyos, kinahanglan ang permission sa parent o guardian. Kung 18 anyos pataas, dili na kinahanglan ang waiver.",
+              "Ang client moadto sa vital signs taking area.",
+              "Ang client mosulti sa iyang case history ngadto sa Administrative Aide III.",
+              "Ang client moadto sa dental chair para sa tooth extraction procedure.",
+              "Dawata ang medicines ug pun-i ang medicine ledger ug monthly dental report form.",
+              "Ang total duration kay 1 hour and 8 minutes hangtod 1 hour and 38 minutes."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "request_tooth_extraction",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "request for tooth extraction",
+              "tooth extraction process",
+              "how to request tooth extraction",
+              "dental tooth extraction"
+            ]
+          },
+          "subject_key": "dental_tooth_extraction",
+          "subject_type": "service",
+          "subject_terms": [
+            "tooth extraction",
+            "dental tooth extraction",
+            "request for tooth extraction"
+          ],
+          "display_name": "Request Tooth Extraction"
+        },
+        {
+          "topic": "request_referral_dispensing_medicine",
+          "responses": {
+            "en": [
+              "Here is the process of Request for Referral/Dispensing of Medicine.",
+              "Submit original copy of prescription slip.",
+              "Client proceeds to receiving area.",
+              "Receive medicines and fill out medicine ledger and monthly dental report form.",
+              "Total duration is 32 minutes. Ask the dental clinic for the cost."
+            ],
+            "ceb": [
+              "Ani ang proseso sa Request for Referral/Dispensing of Medicine.",
+              "I-submit ang original copy sa prescription slip.",
+              "Ang client moadto sa receiving area.",
+              "Dawata ang medicines ug pun-i ang medicine ledger ug monthly dental report form.",
+              "Ang total duration kay 32 minutos. Pangutana sa dental clinic para sa cost."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "request_referral_dispensing_medicine",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "request for referral dispensing of medicine",
+              "referral dispensing of medicine",
+              "dental medicine dispensing",
+              "dental referral medicine",
+              "request for dispensing of medicine"
+            ]
+          },
+          "subject_key": "dental_referral_medicine",
+          "subject_type": "service",
+          "subject_terms": [
+            "referral dispensing of medicine",
+            "dispensing of medicine",
+            "dental medicine",
+            "dental referral"
+          ],
+          "display_name": "Request Referral Dispensing Medicine"
+        }
+      ],
+      "display_name": "Dental Services"
     }
   ]
 }

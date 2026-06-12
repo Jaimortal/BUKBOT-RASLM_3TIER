@@ -27,6 +27,8 @@ export interface Location {
     name: string;
     points: [number, number][];
     color?: string;
+    route_order?: number;
+    route_label?: string;
   }>;
   responses?: {
     en?: string[];
@@ -47,13 +49,13 @@ export interface ResponseData {
       locationName: string;
       coordinates?: [number, number];
       pins?: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
-      routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
+      routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
       mapId: string;
     } | Array<{
       locationName: string;
       coordinates?: [number, number];
       pins?: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
-      routes?: Array<{ name: string; points: [number, number][]; color?: string }>;
+      routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
       mapId: string;
     }>;
     follow_up?: string[];

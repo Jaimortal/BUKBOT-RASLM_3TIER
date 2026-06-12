@@ -30,7 +30,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { AdminMapPinsEditor, type AdminPin } from "@/components/admin/AdminMapPinsEditor";
+import { AdminMapPinsEditor, ROUTE_COLORS, type AdminPin } from "@/components/admin/AdminMapPinsEditor";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
 import { AdminRichTextEditor } from "@/components/admin/AdminRichTextEditor";
 import {
@@ -141,7 +141,9 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
       id: idx,
       name: r.name || "Route",
       points: r.points || [],
-      color: r.color || "#dc2626",
+      color: ROUTE_COLORS[idx % ROUTE_COLORS.length],
+      route_order: r.route_order || idx + 1,
+      route_label: r.route_label || `Route ${idx + 1}`,
     })));
   }, [topic]);
 
@@ -166,10 +168,12 @@ function TopicModal({ file, topic, open, onClose, onSaved }: TopicModalProps) {
           ...(p.pinType && { pinType: p.pinType }),
         })),
         // Include routes - convert from AdminRoute format
-        routes: mapRoutes.map(r => ({
+        routes: mapRoutes.map((r, idx) => ({
           name: r.name,
           points: r.points,
-          color: r.color || "#dc2626",
+          color: ROUTE_COLORS[idx % ROUTE_COLORS.length],
+          route_order: r.route_order || idx + 1,
+          route_label: r.route_label || `Route ${idx + 1}`,
         })),
       }),
     onSuccess: (result) => {
@@ -547,7 +551,7 @@ function IntentPanel({ intentMeta }: IntentPanelProps) {
 
       {filtered.length === 0 ? (
         <div className="text-center py-16 text-sm text-muted-foreground border-2 border-dashed rounded-xl">
-          {search ? `No topics match "${search}"` : "No topics found in this Super Intent."}
+          {search ? `No topics match "${search}"` : "No topics found in this knowledge category."}
         </div>
       ) : (
         // Fixed-height scrollable grid — fits within 540px container
@@ -605,7 +609,7 @@ export function AdminSuperIntents() {
     return (
       <div className="flex items-center justify-center py-24">
         <Loader2 className="h-7 w-7 animate-spin text-blue-500 mr-3" />
-        <span className="text-muted-foreground">Loading Super Intents…</span>
+        <span className="text-muted-foreground">Loading knowledge categories...</span>
       </div>
     );
   }
@@ -614,7 +618,7 @@ export function AdminSuperIntents() {
     return (
       <div className="text-center py-20 text-muted-foreground text-sm">
         <AlertCircle className="h-8 w-8 mx-auto mb-3 opacity-40" />
-        No Super Intent JSON files found in <code className="font-mono">rasa/actions/Supper Saiyan/</code>.
+        No knowledge category JSON files found in <code className="font-mono">rasa/actions/Supper Saiyan/</code>.
       </div>
     );
   }
@@ -624,13 +628,13 @@ export function AdminSuperIntents() {
   return (
     // Fixed height 540px — left & right panels
     <div className="flex gap-0 h-[540px] rounded-xl border bg-white overflow-hidden shadow-sm">
-      {/* ── LEFT: Super Intent vertical nav ── */}
+      {/* LEFT: Knowledge category navigation */}
       <div className="w-56 shrink-0 border-r bg-gray-50 flex flex-col">
         <div
           className="px-4 py-3 border-b shrink-0"
           style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}
         >
-          <p className="text-white font-semibold text-xs uppercase tracking-wider">Super Intents</p>
+          <p className="text-white font-semibold text-xs uppercase tracking-wider">Knowledge Categories</p>
           <p className="text-blue-200 text-[10px] mt-0.5">{superIntents.length} categories</p>
         </div>
 
@@ -679,7 +683,7 @@ export function AdminSuperIntents() {
           <IntentPanel intentMeta={activeIntentMeta} />
         ) : (
           <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
-            Select a Super Intent from the left panel.
+            Select a knowledge category from the left panel.
           </div>
         )}
       </div>

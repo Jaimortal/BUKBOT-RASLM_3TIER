@@ -3,99 +3,29 @@ import os
 import random
 import re
 import sys
-import importlib.util
 from typing import Any, Text, Dict, List, Optional
 
 from rasa_sdk import Action, Tracker
+from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
-# Load Topic Router modules (handling space in folder name)
+# Add current directory to path for imports
 current_dir = os.path.dirname(os.path.abspath(__file__))
-topic_router_dir = os.path.join(current_dir, "Topic Router")
-magical_aliases_dir = os.path.join(current_dir, "Magical Aliases")
-sys.path.insert(0, topic_router_dir)
-sys.path.insert(0, magical_aliases_dir)
-sys.path.insert(0, current_dir)  # Add current dir for language_detector
+sys.path.insert(0, current_dir)
 
 # Import Language Detector
 from language_detector import detect_language, is_bisaya, BISAYA_WORDS
 
-# Import LOCATION_ALIASES from Magical Aliases
+# Import from Magical Aliases
+import importlib.util
+magical_aliases_dir = os.path.join(current_dir, "Magical Aliases")
 spec = importlib.util.spec_from_file_location("aliases", os.path.join(magical_aliases_dir, "aliases.py"))
 aliases_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(aliases_module)
 LOCATION_ALIASES = aliases_module.LOCATION_ALIASES
 
-# Import all topic pattern modules
-spec = importlib.util.spec_from_file_location("Library_info_topicroute", os.path.join(topic_router_dir, "Library_info_topicroute.py"))
-Library_info_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Library_info_topicroute)
-LIBRARY_TOPIC_PATTERNS = Library_info_topicroute.LIBRARY_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Academic_policy_topicroute", os.path.join(topic_router_dir, "Academic_policy_topicroute.py"))
-Academic_policy_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Academic_policy_topicroute)
-ACADEMIC_POLICY_TOPIC_PATTERNS = Academic_policy_topicroute.ACADEMIC_POLICY_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Administrators_topicroute", os.path.join(topic_router_dir, "Administrators_topicroute.py"))
-Administrators_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Administrators_topicroute)
-ADMINISTRATORS_NAMES_TOPIC_PATTERNS = Administrators_topicroute.ADMINISTRATORS_NAMES_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Admissions_topicroute", os.path.join(topic_router_dir, "Admissions_topicroute.py"))
-Admissions_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Admissions_topicroute)
-ADMISSIONS_TOPIC_PATTERNS = Admissions_topicroute.ADMISSIONS_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Classroom_topicroute", os.path.join(topic_router_dir, "Classroom_topicroute.py"))
-Classroom_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Classroom_topicroute)
-CLASSROOM_TOPICS_PATTERNS = Classroom_topicroute.CLASSROOM_TOPICS_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Clinic_info_topicroute", os.path.join(topic_router_dir, "Clinic_info_topicroute.py"))
-Clinic_info_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Clinic_info_topicroute)
-CLINIC_TOPIC_PATTERNS = Clinic_info_topicroute.CLINIC_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Courses_info_topicroute", os.path.join(topic_router_dir, "Courses_info_topicroute.py"))
-Courses_info_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Courses_info_topicroute)
-COURSES_TOPIC_PATTERNS = Courses_info_topicroute.COURSES_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Departamentals_facultystaff_topicroute", os.path.join(topic_router_dir, "Departamentals_facultystaff_topicroute.py"))
-Departamentals_facultystaff_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Departamentals_facultystaff_topicroute)
-DEPARTMENTS_FACULTY_STAFF_TOPIC_PATTERNS = Departamentals_facultystaff_topicroute.DEPARTMENTS_FACULTY_STAFF_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Department_info_topicroute", os.path.join(topic_router_dir, "Department_info_topicroute.py"))
-Department_info_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Department_info_topicroute)
-DEPARTMENT_INFO_TOPIC_PATTERNS = Department_info_topicroute.DEPARTMENT_INFO_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Enrollment_topicroute", os.path.join(topic_router_dir, "Enrollment_topicroute.py"))
-Enrollment_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Enrollment_topicroute)
-ENROLLMENT_INFO_TOPIC_PATTERNS = Enrollment_topicroute.ENROLLMENT_INFO_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Ict_info_topicroute", os.path.join(topic_router_dir, "Ict_info_topicroute.py"))
-Ict_info_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Ict_info_topicroute)
-ICT_TOPIC_PATTERNS = Ict_info_topicroute.ICT_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Oss_services_topicroute", os.path.join(topic_router_dir, "Oss_services_topicroute.py"))
-Oss_services_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Oss_services_topicroute)
-OSS_SERVICES_TOPIC_PATTERNS = Oss_services_topicroute.OSS_SERVICES_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("University_info_topicroute", os.path.join(topic_router_dir, "University_info_topicroute.py"))
-University_info_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(University_info_topicroute)
-UNIVERSITY_TOPIC_PATTERNS = University_info_topicroute.UNIVERSITY_TOPIC_PATTERNS
-
-spec = importlib.util.spec_from_file_location("Dormitory_info_topicroute", os.path.join(topic_router_dir, "Dormitory_info_topicroute.py"))
-Dormitory_info_topicroute = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(Dormitory_info_topicroute)
-DORMITORY_INFO_TOPIC_PATTERNS = Dormitory_info_topicroute.DORMITORY_INFO_TOPIC_PATTERNS
+from main_router import MainRouterService
+from response_builder import ResponseBuilder
 
 # Weak/common words that should score lower to avoid false matches
 WEAK_COMMON_WORDS = {
@@ -118,176 +48,6 @@ WEAK_COMMON_WORDS = {
     "ug", "sa", "ng", "ang", "si", "ni", "kay", "nga", "mga", "pag",
     "ako", "ikaw", "siya", "kita", "kami", "sila", "mao", "diay"
 }
-
-# Strong context identifiers for library ID subtopics (must be present for ID card topics)
-LIBRARY_ID_CONTEXT = {"library", "id", "card", "libraryid", "schoolid"}
-
-
-def _has_library_id_context(text: str) -> bool:
-    """Check if text contains library ID context (both 'library' and 'id' nearby)."""
-    text_lower = text.lower()
-    # Check for compound forms first
-    if "libraryid" in text_lower or "library id" in text_lower or "schoolid" in text_lower:
-        return True
-    # Check for both words in close proximity (within 5 words)
-    words = re.findall(r'\b\w+\b', text_lower)
-    for i, word in enumerate(words):
-        if word in ("library", "school"):
-            # Look for "id" or "card" within next 3 words
-            window = words[i:min(i+4, len(words))]
-            if any(w in ("id", "card") for w in window):
-                return True
-        if word in ("id", "card"):
-            # Look for "library" or "school" within previous 3 words
-            start = max(0, i-3)
-            window = words[start:i+1]
-            if any(w in ("library", "school") for w in window):
-                return True
-    return False
-
-
-def _check_required_context(text: str, required_context: List[str]) -> bool:
-    """Check if text contains all required context markers."""
-    if not required_context:
-        return True
-    
-    for context in required_context:
-        if context == "library_id":
-            if not _has_library_id_context(text):
-                return False
-    return True
-
-
-def _calculate_topic_score(text: str, topic_data: Dict[str, Any]) -> float:
-    """
-    Calculate a matching score for a topic based on:
-    - Exact phrase matches (highest priority)
-    - Strong keyword matches (high weight)
-    - Weak keyword matches (low weight)
-    - Penalty for weak/common words
-    """
-    text_lower = text.lower()
-    words = set(re.findall(r'\b\w+\b', text_lower))
-    
-    # Check exact phrases first - return max score if found
-    phrases = topic_data.get("phrases", [])
-    for phrase in phrases:
-        phrase_lower = phrase.lower()
-        # Use word boundaries for phrase matching to avoid substring matches
-        # Escape special regex characters in the phrase
-        escaped_phrase = re.escape(phrase_lower)
-        # Match as whole phrase with word boundaries at start and end
-        pattern = rf'(?:^|\s){escaped_phrase}(?:$|\s|[^\w])'
-        if re.search(pattern, text_lower):
-            return 100.0  # Exact phrase match = highest score
-    
-    # Calculate keyword-based score
-    score = 0.0
-    
-    # Strong keywords: +3 points each (these are topic-specific)
-    strong_keywords = topic_data.get("strong_keywords", [])
-    for keyword in strong_keywords:
-        keyword_lower = keyword.lower()
-        if re.search(rf'\b{re.escape(keyword_lower)}\b', text_lower):
-            score += 3.0
-        # Also check if any word contains this keyword (only if it's long enough to avoid false positives)
-        elif len(keyword_lower) > 3 and any(keyword_lower in word for word in words):
-            score += 2.5
-    
-    # Weak keywords: +1 point each (common across topics)
-    weak_keywords = topic_data.get("weak_keywords", [])
-    for keyword in weak_keywords:
-        keyword_lower = keyword.lower()
-        if re.search(rf'\b{re.escape(keyword_lower)}\b', text_lower):
-            score += 1.0
-    
-    # Penalty for weak/common words (they dilute specificity)
-    common_word_count = sum(1 for word in words if word in WEAK_COMMON_WORDS)
-    if common_word_count > 0:
-        score -= common_word_count * 0.1
-    
-    return max(0, score)
-
-
-def detect_topic(text: str, topic_patterns: Dict[str, Any]) -> Optional[str]:
-    """
-    Detects the topic from user text using smart scoring.
-    
-    Scoring system:
-    - Exact phrase match: 100 (immediate return)
-    - Strong keywords: +3 each (topic-specific words)
-    - Weak keywords: +1 each (common words)
-    - Common words penalty: -0.1 each
-    - Required context must be present for certain topics
-    
-    Returns the topic key with highest score above threshold, or None.
-    """
-    if not text or not text.strip():
-        return None
-    
-    text_lower = text.lower()
-    best_topic = None
-    best_score = 0.0
-    min_score_threshold = 2.0  # Minimum score to be considered a match
-    
-    # Collect all scores for potential tie-breaking
-    topic_scores = []
-    
-    for topic, topic_data in topic_patterns.items():
-        # Check required context first (e.g., must have "library id" for ID topics)
-        required_context = topic_data.get("required_context", [])
-        if not _check_required_context(text_lower, required_context):
-            continue
-        
-        # Calculate score for this topic
-        score = _calculate_topic_score(text_lower, topic_data)
-        
-        if score > 0:
-            topic_scores.append((topic, score))
-        
-        # Track best match
-        if score > best_score:
-            best_score = score
-            best_topic = topic
-    
-    # Debug logging (remove in production if desired)
-    if topic_scores:
-        sorted_scores = sorted(topic_scores, key=lambda x: x[1], reverse=True)
-        print(f"DEBUG - Topic scores: {sorted_scores[:3]}")  # Top 3
-    
-    # Return best topic if it meets threshold
-    if best_score >= min_score_threshold:
-        return best_topic
-    
-    return None
-
-
-def normalize_board_phrases(text: str) -> str:
-    """
-    SAFE NON-BOARD PRIORITY DETECTION & PHRASE NORMALIZATION
-    Normalizes all non-board variants into a protected internal token 'non_board_token'.
-    This ensures 'non board' is NEVER incorrectly classified as 'board courses'
-    by preventing the ambiguous word 'board' from triggering.
-    This must happen BEFORE topic scoring.
-    """
-    if not text:
-        return text
-        
-    normalized = text.lower()
-    
-    # Normalize non-board variants into a protected token
-    non_board_patterns = [
-        r'\bnon[-\s]board\b',
-        r'\bwithout\s+board\b',
-        r'\bwalay\s+board\b',
-        r'\bdili\s+board\b',
-        r'\bno\s+board\b'
-    ]
-    
-    for pattern in non_board_patterns:
-        normalized = re.sub(pattern, 'non_board_token', normalized)
-        
-    return normalized
 
 
 # -------------------------
@@ -340,64 +100,142 @@ class ActionReplyFromJsonHelper:
         self.location_responses_path = os.path.join(os.path.dirname(responses_path), "responses_location.json")
         self.location_responses = self._load_location_responses()
         # Load structured knowledge bases from Supper Saiyan folder
-        supper_saiyan_dir = os.path.join(os.path.dirname(responses_path), "Supper Saiyan")
+        self.supper_saiyan_dir = os.path.join(os.path.dirname(responses_path), "Supper Saiyan")
         
         # Library and Academic Policy (already exist at root level too)
-        self.library_info_path = os.path.join(supper_saiyan_dir, "Library_info.json")
+        self.library_info_path = os.path.join(self.supper_saiyan_dir, "Library_info.json")
         self.library_info = self._load_json_file(self.library_info_path)
         
-        self.academic_policy_path = os.path.join(supper_saiyan_dir, "Academic_policy.json")
+        self.academic_policy_path = os.path.join(self.supper_saiyan_dir, "Academic_policy.json")
         self.academic_policy = self._load_json_file(self.academic_policy_path)
         
         # Administrators
-        self.administrators_path = os.path.join(supper_saiyan_dir, "Administrators.json")
+        self.administrators_path = os.path.join(self.supper_saiyan_dir, "Administrators.json")
         self.administrators_info = self._load_json_file(self.administrators_path)
         
         # Admissions
-        self.admissions_path = os.path.join(supper_saiyan_dir, "Admissions_info.json")
+        self.admissions_path = os.path.join(self.supper_saiyan_dir, "Admissions_info.json")
         self.admissions_info = self._load_json_file(self.admissions_path)
         
         # Classroom Policy
-        self.classroom_policy_path = os.path.join(supper_saiyan_dir, "Classroom_policy.json")
+        self.classroom_policy_path = os.path.join(self.supper_saiyan_dir, "Classroom_policy.json")
         self.classroom_policy = self._load_json_file(self.classroom_policy_path)
         
         # Clinic Info
-        self.clinic_info_path = os.path.join(supper_saiyan_dir, "Clinic_info.json")
+        self.clinic_info_path = os.path.join(self.supper_saiyan_dir, "Clinic_info.json")
         self.clinic_info = self._load_json_file(self.clinic_info_path)
         
         # Courses Info
-        self.courses_info_path = os.path.join(supper_saiyan_dir, "Courses_info.json")
+        self.courses_info_path = os.path.join(self.supper_saiyan_dir, "Courses_info.json")
         self.courses_info = self._load_json_file(self.courses_info_path)
         
         # Departmentals Faculty Staff
-        self.departamentals_path = os.path.join(supper_saiyan_dir, "Departamentals_facultystaff.json")
+        self.departamentals_path = os.path.join(self.supper_saiyan_dir, "Departamentals_facultystaff.json")
         self.departamentals_faculty_staff = self._load_json_file(self.departamentals_path)
         
         # Department Info
-        self.department_info_path = os.path.join(supper_saiyan_dir, "Department_info.json")
+        self.department_info_path = os.path.join(self.supper_saiyan_dir, "Department_info.json")
         self.department_info = self._load_json_file(self.department_info_path)
         
         # Enrollment Info
-        self.enrollment_info_path = os.path.join(supper_saiyan_dir, "Enrollment_info.json")
+        self.enrollment_info_path = os.path.join(self.supper_saiyan_dir, "Enrollment_info.json")
         self.enrollment_info = self._load_json_file(self.enrollment_info_path)
         
         # ICT Info
-        self.ict_info_path = os.path.join(supper_saiyan_dir, "Ict_info.json")
+        self.ict_info_path = os.path.join(self.supper_saiyan_dir, "Ict_info.json")
         self.ict_info = self._load_json_file(self.ict_info_path)
         
         # OSS Services
-        self.oss_services_path = os.path.join(supper_saiyan_dir, "Oss_services.json")
+        self.oss_services_path = os.path.join(self.supper_saiyan_dir, "Oss_services.json")
         self.oss_services = self._load_json_file(self.oss_services_path)
         
         # University Info
-        self.university_info_path = os.path.join(supper_saiyan_dir, "University_info.json")
+        self.university_info_path = os.path.join(self.supper_saiyan_dir, "University_info.json")
         self.university_info = self._load_json_file(self.university_info_path)
         
         # Dormitory Info
-        self.dormitory_info_path = os.path.join(supper_saiyan_dir, "Dormitory_info.json")
+        self.dormitory_info_path = os.path.join(self.supper_saiyan_dir, "Dormitory_info.json")
         self.dormitory_info = self._load_json_file(self.dormitory_info_path)
         
+        self._json_mtimes = self._snapshot_json_mtimes()
         self.context = ConversationContext()
+
+    def _tracked_json_paths(self) -> List[str]:
+        paths = [
+            self.responses_path,
+            self.location_responses_path,
+            self.library_info_path,
+            self.academic_policy_path,
+            self.administrators_path,
+            self.admissions_path,
+            self.classroom_policy_path,
+            self.clinic_info_path,
+            self.courses_info_path,
+            self.departamentals_path,
+            self.department_info_path,
+            self.enrollment_info_path,
+            self.ict_info_path,
+            self.oss_services_path,
+            self.university_info_path,
+            self.dormitory_info_path,
+        ]
+        try:
+            supper_saiyan_paths = [
+                os.path.join(self.supper_saiyan_dir, filename)
+                for filename in os.listdir(self.supper_saiyan_dir)
+                if filename.endswith(".json")
+            ]
+            paths.extend(supper_saiyan_paths)
+        except OSError:
+            pass
+        return list(dict.fromkeys(path for path in paths if path))
+
+    def _snapshot_json_mtimes(self) -> Dict[str, float]:
+        mtimes: Dict[str, float] = {}
+        for filepath in self._tracked_json_paths():
+            try:
+                mtimes[filepath] = os.path.getmtime(filepath)
+            except OSError:
+                mtimes[filepath] = -1.0
+        return mtimes
+
+    def reload_if_changed(self) -> bool:
+        """
+        Reload JSON knowledge files when admin edits changed their modified time.
+
+        This keeps action responses fresh without reading all JSON files on every
+        message. If a file has invalid JSON, the existing safe loader falls back
+        to an empty source for that file and logs the problem.
+        """
+        current_mtimes = self._snapshot_json_mtimes()
+        if current_mtimes == getattr(self, "_json_mtimes", {}):
+            return False
+
+        changed_files = [
+            os.path.basename(path)
+            for path, mtime in current_mtimes.items()
+            if getattr(self, "_json_mtimes", {}).get(path) != mtime
+        ]
+
+        self.responses = self._load_responses()
+        self.location_responses = self._load_location_responses()
+        self.library_info = self._load_json_file(self.library_info_path)
+        self.academic_policy = self._load_json_file(self.academic_policy_path)
+        self.administrators_info = self._load_json_file(self.administrators_path)
+        self.admissions_info = self._load_json_file(self.admissions_path)
+        self.classroom_policy = self._load_json_file(self.classroom_policy_path)
+        self.clinic_info = self._load_json_file(self.clinic_info_path)
+        self.courses_info = self._load_json_file(self.courses_info_path)
+        self.departamentals_faculty_staff = self._load_json_file(self.departamentals_path)
+        self.department_info = self._load_json_file(self.department_info_path)
+        self.enrollment_info = self._load_json_file(self.enrollment_info_path)
+        self.ict_info = self._load_json_file(self.ict_info_path)
+        self.oss_services = self._load_json_file(self.oss_services_path)
+        self.university_info = self._load_json_file(self.university_info_path)
+        self.dormitory_info = self._load_json_file(self.dormitory_info_path)
+        self._json_mtimes = current_mtimes
+        print(f"[Knowledge Hot Reload] Reloaded JSON sources: {', '.join(changed_files)}")
+        return True
 
     def _load_location_responses(self) -> Dict[str, Any]:
         try:
@@ -589,9 +427,11 @@ class ActionReplyFromJsonHelper:
         fallback_entry = next((entry for entry in self.responses if entry.get("intent") == "nlu_fallback"), None)
         if fallback_entry:
             fallback = fallback_entry.get("responses", {}).get("answer", "I'm not sure how to respond.")
+            if isinstance(fallback, dict):
+                fallback = fallback.get("en") or next((value for value in fallback.values() if value), None)
             if isinstance(fallback, list):
                 return random.choice(fallback)
-            return fallback
+            return str(fallback or "I'm not sure how to respond. Could you rephrase your question?")
         return "I'm not sure how to respond. Could you rephrase your question?"
 
     # Helpers
@@ -704,6 +544,10 @@ class ActionReplyFromJsonHelper:
             response_text = "\n".join(responses)
         else:
             response_text = str(responses)
+
+        directory = self.get_building_directory_for_location(normalized_name, user_message=user_message)
+        if directory and self._should_attach_building_directory(normalized_name, location_info, user_message):
+            response_text = f"{response_text}\nThere's also other offices can be found in {directory['building']}."
         
         result = {"text": response_text}
 
@@ -771,8 +615,196 @@ class ActionReplyFromJsonHelper:
                 result["custom"]["mapData"]["coordinates"] = location_info["coordinates"]
                 if location_info.get("floor"):
                     result["custom"]["mapData"]["floor"] = str(location_info.get("floor"))
+
+        if directory and self._should_attach_building_directory(normalized_name, location_info, user_message):
+            result.setdefault("custom", {})
+            result["custom"]["suggestions"] = directory["suggestions"]
         
         return result
+
+    def _normalize_building_name(self, value: Any) -> str:
+        text = re.sub(r"\s+", " ", str(value or "").lower()).strip()
+        text = text.replace("college of business building", "cob building")
+        text = text.replace("college of business administration building", "cob building")
+        text = text.replace("administration building", "administrative building")
+        text = text.replace("main administration building", "administrative building")
+        text = text.replace("admin building", "administrative building")
+        text = text.replace("finance bldg", "finance building")
+        return text
+
+    def _building_from_text(self, user_message: str) -> Optional[str]:
+        text = self._normalize_building_name(user_message)
+        building_terms = {
+            "cob building": "COB Building",
+            "cob": "COB Building",
+            "new cot building": "New COT Building",
+            "new cot": "New COT Building",
+            "old cot building": "Old COT Building",
+            "old cot": "Old COT Building",
+            "cot buildings": "New COT Building",
+            "cot building": "New COT Building",
+            "cot": "New COT Building",
+            "cpag building": "CPAG Building",
+            "cpag": "CPAG Building",
+            "college of public administration and governance": "CPAG Building",
+            "administrative building": "Administrative Building",
+            "finance building": "Finance Building",
+        }
+        for term, building in sorted(building_terms.items(), key=lambda item: len(item[0]), reverse=True):
+            if re.search(rf"(?<!\w){re.escape(term)}(?!\w)", text):
+                return building
+        return None
+
+    def _canonical_building_from_location(self, location_name: str) -> Optional[str]:
+        locations = self.location_responses.get("locations", {})
+        location_info = locations.get(location_name) or {}
+        building = location_info.get("building")
+        if building:
+            normalized = self._normalize_building_name(building)
+            if normalized in {"cob building", "college of business building"}:
+                return "COB Building"
+            if normalized in {"administrative building"}:
+                return "Administrative Building"
+            if normalized in {"finance building"}:
+                return "Finance Building"
+            if normalized in {"new cot building"}:
+                return "New COT Building"
+            if normalized in {"old cot building"}:
+                return "Old COT Building"
+            if normalized in {"cpag building"}:
+                return "CPAG Building"
+            return str(building)
+        return self._building_from_text(location_name)
+
+    def _display_location_label(self, name: str) -> str:
+        replacements = {
+            "COB 4th Floor Students Organization": "Students Organization",
+        }
+        return replacements.get(name, name)
+
+    def _preferred_building_order(self, building: str) -> List[str]:
+        preferred = {
+            "COB Building": [
+                "Hospitality Management Faculty Room",
+                "Business Administration Faculty Room",
+                "Accountancy Faculty Department Room",
+                "COB Accreditation Room",
+                "COB 4th Floor Students Organization",
+            ],
+            "New COT Building": [
+                "COT Faculty Room",
+                "COT Dean's Office",
+                "Electronics Faculty Room",
+                "food technology laboratory",
+                "Electronics Laboratories",
+                "DXBU",
+            ],
+            "Old COT Building": [
+                "Old COT Building",
+                "C2-2-01",
+                "C2-2-02",
+                "C2-2-03",
+                "Electronics Laboratory 1",
+                "Electronics Laboratory 2",
+            ],
+            "Finance Building": [
+                "Window 1 Scholarship and Financial Assistance",
+                "Window 2 Scholarship and Financial Assistance",
+                "Windows 3 Assessment",
+                "Windows 4 Assessment",
+                "Windows 5 Assessment",
+                "Window 6 Payroll Regular Satellite Campus",
+                "Window 7 Payroll Regular",
+                "Window 8 Payroll Regular and Casual",
+                "Window 9 Information",
+                "Cashiers Office Window 03",
+                "Budget Office Window 02",
+                "Window 01 Finance and Management Division and Administrative Office",
+            ],
+            "CPAG Building": [
+                "CPAG Faculty Room",
+                "CPAG Deans Office",
+                "GE Department",
+                "CPAG Guidance Office",
+                "Admission Office",
+                "Registrar Office",
+                "AVC",
+                "Canteen",
+            ],
+        }
+        return preferred.get(building, [])
+
+    def _building_directory_items(self, building: str, exclude_location: Optional[str] = None) -> List[Dict[str, str]]:
+        locations = self.location_responses.get("locations", {})
+        normalized_building = self._normalize_building_name(building)
+        candidates: List[str] = []
+
+        for name, info in locations.items():
+            if name == exclude_location:
+                continue
+            if not isinstance(info, dict):
+                continue
+            info_building = self._normalize_building_name(info.get("building"))
+            if info_building != normalized_building:
+                continue
+            location_type = str(info.get("type") or "").lower()
+            if location_type == "building" and self._normalize_building_name(name) == normalized_building:
+                continue
+            candidates.append(str(name))
+
+        preferred = [name for name in self._preferred_building_order(building) if name in candidates]
+        remaining = sorted([name for name in candidates if name not in preferred])
+        ordered = [*preferred, *remaining]
+
+        suggestions = []
+        seen = set()
+        for name in ordered:
+            label = self._display_location_label(name)
+            key = label.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            suggestions.append({
+                "label": label,
+                "payload": f"where is {name}",
+            })
+            if len(suggestions) >= 8:
+                break
+        return suggestions
+
+    def _should_attach_building_directory(self, location_name: str, location_info: Dict[str, Any], user_message: str) -> bool:
+        directory_terms = ["office", "offices", "room", "rooms", "inside", "found", "faculty", "building", "list"]
+        text = self._normalize_building_name(user_message)
+        is_building = str(location_info.get("type") or "").lower() == "building"
+        is_faculty_room = "faculty room" in str(location_name).lower()
+        asked_directory = any(term in text for term in directory_terms)
+        return is_building or is_faculty_room or asked_directory
+
+    def get_building_directory_for_location(self, location_name: str, user_message: str = "") -> Optional[Dict[str, Any]]:
+        building = self._canonical_building_from_location(location_name) or self._building_from_text(user_message)
+        if not building:
+            return None
+        suggestions = self._building_directory_items(building, exclude_location=location_name)
+        if not suggestions:
+            return None
+        return {
+            "building": building,
+            "suggestions": suggestions,
+        }
+
+    def get_building_directory_response(self, user_message: str) -> Optional[Dict[str, Any]]:
+        building = self._building_from_text(user_message)
+        if not building:
+            return None
+        suggestions = self._building_directory_items(building)
+        if not suggestions:
+            return None
+        return {
+            "text": f"These are some offices and rooms that can be found in {building}. Choose one if you want the exact location and map.",
+            "custom": {
+                "suggestions": suggestions
+            },
+        }
     def _normalize_lab_number(self, raw_value: Any) -> Optional[str]:
         if raw_value is None:
             return None
@@ -1354,6 +1386,73 @@ class ActionReplyFromJsonHelper:
 # -------------------------
 # Rasa Actions
 # -------------------------
+class ActionMainRouter(Action):
+    """
+    Thin Rasa action entrypoint for the current structured retrieval stack.
+
+    Rasa predicts broad purpose intents, then MainRouterService handles query
+    interpretation, entity resolution, context memory, retrieval, and response
+    formatting.
+    """
+
+    def __init__(self):
+        self.helper = ActionReplyFromJsonHelper()
+        self.router = MainRouterService(self.helper, LOCATION_ALIASES)
+        self.response_builder = ResponseBuilder()
+
+    def name(self) -> str:
+        return "action_main_router"
+
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
+        intent = tracker.latest_message.get("intent", {}).get("name")
+        user_msg = tracker.latest_message.get("text", "")
+        slot_updates: Dict[str, Any] = {}
+        tracker_slots = tracker.current_slot_values()
+
+        if intent == "ask_follow_up":
+            last_topic = self.helper.get_dynamic_slot("last_topic") or tracker.get_slot("last_topic")
+            follow_ups = self.router.handle_follow_up(last_topic)
+            for line in follow_ups:
+                dispatcher.utter_message(text=line)
+            return []
+
+        # Phase 2 Enhancement: Multi-question handling
+        # Detect if user asked multiple questions and process each one
+        interpreted = self.router.interpreter.interpret(user_msg)
+        
+        if interpreted.is_multi_question and len(interpreted.sub_queries) > 1:
+            # Process each sub-query and collect responses
+            responses = []
+            for sub_query in interpreted.sub_queries:
+                sub_message = {
+                    **tracker.latest_message,
+                    "text": sub_query,
+                    "entities": [],
+                }
+                response, context_slots = self.router.route_with_context(
+                    intent or "",
+                    sub_message,
+                    sub_query,
+                    {**tracker_slots, **slot_updates},
+                )
+                slot_updates.update(context_slots)
+                responses.append(response)
+            # Emit merged response with deduplication and map combination
+            self.response_builder.emit_multi_response(dispatcher, responses)
+        else:
+            # Single question: use standard flow
+            response, context_slots = self.router.route_with_context(
+                intent or "",
+                tracker.latest_message,
+                user_msg,
+                tracker_slots,
+            )
+            slot_updates.update(context_slots)
+            self.response_builder.emit_response(dispatcher, response)
+        
+        return [SlotSet(name, value) for name, value in slot_updates.items()]
+
+
 class ActionReplyFromJson(Action):
     def __init__(self):
         self.helper = ActionReplyFromJsonHelper()
@@ -1710,411 +1809,13 @@ class ActionReplyFromJson(Action):
             
             return []
 
-        # Library info lookup with topic detection
-        if intent == "ask_library_info":
-            response = self.helper.get_library_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Academic Policy info lookup with topic detection
-        if intent == "ask_academic_policy":
-            response = self.helper.get_academic_policy_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Administrators info lookup with topic detection
-        if intent == "ask_buksuadmin_info":
-            response = self.helper.get_administrators_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Admissions info lookup with topic detection
-        if intent == "ask_admissions_info":
-            response = self.helper.get_admissions_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Classroom Policy info lookup with topic detection
-        if intent == "ask_classroom_policy":
-            response = self.helper.get_classroom_policy_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Clinic info lookup with topic detection
-        if intent == "ask_clinic_info":
-            response = self.helper.get_clinic_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Courses info lookup with topic detection
-        if intent == "ask_courses_info":
-            response = self.helper.get_courses_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Departamentals Faculty Staff info lookup with topic detection
-        if intent == "departments_faculty_staff":
-            response = self.helper.get_departamentals_faculty_staff_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Department info lookup with topic detection
-        if intent == "ask_department_info":
-            response = self.helper.get_department_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Enrollment info lookup with topic detection
-        if intent == "ask_enrollment_info":
-            # 1. First priority: Check if topic entity was provided in THIS specific message (e.g., from quick access)
-            topic_entity = None
-            latest_entities = tracker.latest_message.get("entities", [])
-            for entity in latest_entities:
-                if entity.get("entity") == "topic":
-                    topic_entity = entity.get("value")
-                    break
-            
-            # 2. Second priority: If no direct entity, perform fresh "Smart Detection" from the current message text
-            # This ensures "how to enroll online" overrides a "general enrollment" slot in memory.
-            if not topic_entity:
-                topic_entity = detect_topic(user_msg, ENROLLMENT_INFO_TOPIC_PATTERNS)
-            
-            # 3. Third priority: If still no topic, check the sticky slot from Rasa memory
-            if not topic_entity:
-                topic_entity = tracker.get_slot("topic")
-            
-            # Use final topic_entity if found, otherwise let the helper do one last fallback attempt
-            if topic_entity:
-                response = self.helper.get_structured_response_with_topic(
-                    topic_entity,
-                    self.helper.enrollment_info,
-                    fallback_message="I'm sorry, I don't have information about that enrollment topic."
-                )
-            else:
-                response = self.helper.get_enrollment_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # ICT info lookup with topic detection
-        if intent == "ask_ict_info":
-            response = self.helper.get_ict_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # OSS Services info lookup with topic detection
-        if intent == "ask_oss_services":
-            response = self.helper.get_oss_services_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # University info lookup with topic detection
-        if intent == "ask_university_info":
-            response = self.helper.get_university_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # Dormitory info lookup with topic detection
-        if intent == "ask_dormitory_info":
-            # 1. First priority: Check if topic entity was provided in THIS specific message (e.g., from quick access)
-            topic_entity = None
-            latest_entities = tracker.latest_message.get("entities", [])
-            for entity in latest_entities:
-                if entity.get("entity") == "topic":
-                    topic_entity = entity.get("value")
-                    break
-            
-            # 2. Second priority: If no direct entity, perform fresh "Smart Detection" from the current message text
-            if not topic_entity:
-                topic_entity = detect_topic(user_msg, DORMITORY_INFO_TOPIC_PATTERNS)
-            
-            # 3. Third priority: If still no topic, check the sticky slot from Rasa memory
-            if not topic_entity:
-                topic_entity = tracker.get_slot("topic")
-            
-            # Use final topic_entity if found, otherwise let the helper do one last fallback attempt
-            if topic_entity:
-                response = self.helper.get_structured_response_with_topic(
-                    topic_entity,
-                    self.helper.dormitory_info,
-                    fallback_message="I'm sorry, I don't have information about that dormitory topic."
-                )
-            else:
-                response = self.helper.get_dormitory_response(user_msg)
-            
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-            
-            # Send images if available
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-            
-            # Send map data if available
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-            
-            return []
-
-        # ✨ FIX: if intent == ask_more → DO NOT call main response
-        if intent == "ask_more":
-            last_topic = self.helper.get_dynamic_slot("last_topic")
-            follow_ups = self.helper.get_follow_up(last_topic)
-
-            for line in follow_ups:
-                dispatcher.utter_message(text=line)
-            return []
-
-        # Otherwise → normal answer
-        response = self.helper.get_response(
-            intent, category=category,
-            sub_category=sub_category,
-            user_message=user_msg
-        )
-
-        # If NLU intent is not ask_locations but the text clearly contains a known location alias,
-        # answer with location response instead of generic fallback.
-        # BUT: Skip this override if the user is asking about ID cards, enrollment, or services
-        # to prevent confusing service questions with location questions.
-        SERVICE_KEYWORDS = [
-            "id card", "library id", "library card", "library id card",
-            "school id", "get id", "how to get", "apply for",
-            "enroll", "enrollment", "application", "register", "registration",
-            "requirement", "requirements", "what do i need", "what should i bring",
-            "pay", "payment", "how much", "fee", "cost", "price",
-            "borrow", "return", "book", "thesis", "research", "contact registrar",
-            "contact the registrar", "contact", "how to contact", "created you",
-            "who created", "who created you"
-        ]
-        
-        if intent not in {"ask_locations", "locate_comlab", "ask_faculty_room_location", "ask_more", "Bot_creator"}:
-            # Check if it's actually a service question, not a location question
-            text_lower = user_msg.lower()
-            is_service_question = any(keyword in text_lower for keyword in SERVICE_KEYWORDS)
-            
-            if not is_service_question:
-                guessed = self.helper._guess_location_from_text(user_msg)
-                if guessed:
-                    loc_resp = self.helper.get_location_response(guessed, user_msg)
-                    if loc_resp and loc_resp.get("text") and not loc_resp["text"].startswith("Sorry, I don't have information"):
-                        dispatcher.utter_message(text=loc_resp["text"])
-                        if loc_resp.get("custom"):
-                            dispatcher.utter_message(json_message=loc_resp["custom"])
-                        return []
-        
-        if isinstance(response, dict):
-            if response.get("text"):
-                dispatcher.utter_message(text=response["text"])
-
-            if isinstance(response.get("images"), list):
-                for img in response.get("images"):
-                    if img:
-                        dispatcher.utter_message(image=img)
-            elif response.get("image"):
-                dispatcher.utter_message(image=response["image"])
-                
-            if response.get("custom"):
-                dispatcher.utter_message(json_message=response["custom"])
-        else:
-            dispatcher.utter_message(text=response)
-        
+        # ==================================================
+        # CONSOLIDATED: All other intents delegate to Phase 2
+        # ==================================================
+        # Delegate all intent-based handling to ActionMainRouter for unified Phase 2 routing.
+        # This consolidates all specialized intent handlers and removes technical debt.
+        action_main_router = ActionMainRouter()
+        await action_main_router.run(dispatcher, tracker, domain)
         return []
 
 

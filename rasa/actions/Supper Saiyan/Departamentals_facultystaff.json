@@ -6,262 +6,575 @@
   ],
   "topics": [
     {
-      "topic": "Dean_0f_COT",
-      "responses": {
-        "en": [
-          "The Dean of the College of Technologies (COT) at Bukidnon State University is Dr. Marilou O. Espina"
-        ],
-        "ceb": [
-          "Ang dean sa College of Technologies (COT) sa Bukidnon State University kay si Dr. Marilou O. Espina"
-        ]
-      }
+      "topic": "college_deans",
+      "subject_key": "college_deans",
+      "subject_type": "person",
+      "subject_terms": [
+        "college dean",
+        "dean of cot",
+        "dean of cob",
+        "dean of cas",
+        "dean of cpag",
+        "dean of con",
+        "dean of coe",
+        "dean of law"
+      ],
+      "subtopics": [
+        {
+          "topic": "Dean_0f_COT",
+          "responses": {
+            "en": [
+              "The Dean of the College of Technologies (COT) at Bukidnon State University is Dr. Marilou O. Espina"
+            ],
+            "ceb": [
+              "Ang dean sa College of Technologies (COT) sa Bukidnon State University kay si Dr. Marilou O. Espina"
+            ]
+          },
+          "intent": "Dean_0f_COT",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "dean 0f cot",
+              "dean of cot"
+            ]
+          },
+          "subject_key": "Dean_0f_COT",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "dean of cot",
+            "dean cot",
+            "cot",
+            "college of technologies",
+            "college of technology"
+          ],
+          "display_name": "Dean 0f COT"
+        },
+        {
+          "topic": "Dean_0f_COB",
+          "responses": {
+            "en": [
+              "The Dean of the College of Business (COB) at Bukidnon State University is Dr. Donna G. Tilanduca."
+            ],
+            "ceb": [
+              "Ang Dean sa College of Business (COB) sa Bukidnon State University mao si Dr. Donna G. Tilanduca."
+            ]
+          },
+          "intent": "Dean_0f_COB",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "dean 0f cob",
+              "dean of cob"
+            ]
+          },
+          "subject_key": "Dean_0f_COB",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "dean of cob",
+            "dean cob",
+            "cob",
+            "college of business"
+          ],
+          "display_name": "Dean 0f COB"
+        },
+        {
+          "topic": "Dean_0f_CAS",
+          "responses": {
+            "en": [
+              "The Dean of the College of Arts and Sciences (CAS) at Bukidnon State University is Dr. Maribel G. Valdez."
+            ],
+            "ceb": [
+              "Ang Dean sa College of Arts and Sciences (CAS) sa Bukidnon State University mao si Dr. Maribel G. Valdez."
+            ]
+          },
+          "intent": "Dean_0f_CAS",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "dean 0f cas",
+              "dean of cas"
+            ]
+          },
+          "subject_key": "Dean_0f_CAS",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "dean of cas",
+            "dean cas",
+            "cas",
+            "college of arts and sciences"
+          ],
+          "display_name": "Dean 0f CAS"
+        },
+        {
+          "topic": "Dean_0f_CPAG",
+          "responses": {
+            "en": [
+              "The Dean of the College of Public Administration and Governance (CPAG) at Bukidnon State University (BukSU) is Dr. Lalevie C. Lubos.",
+              "As of the current 2026 academic year, she continues to represent the college in major university events, such as the contract signing for academic heads in March 2026."
+            ],
+            "ceb": [
+              "Ang Dean sa College of Public Administration and Governance (CPAG) sa Bukidnon State University (BukSU) mao si Dr. Lalevie C. Lubos.",
+              "Sa kasamtangang academic year 2026, siya nagpadayon sa pagrepresenta sa kolehiyo sa dagkong kalihokan sa unibersidad, sama sa contract signing para sa mga academic heads niadtong Marso 2026."
+            ]
+          },
+          "intent": "Dean_0f_CPAG",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "dean 0f cpag",
+              "dean of cpag"
+            ]
+          },
+          "subject_key": "Dean_0f_CPAG",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "dean of cpag",
+            "dean cpag",
+            "cpag",
+            "college of public administration and governance",
+            "public administration and governance"
+          ],
+          "display_name": "Dean 0f CPAG"
+        },
+        {
+          "topic": "Dean_0f_CON",
+          "responses": {
+            "en": [
+              "The Dean of the College of Nursing (CON) at Bukidnon State University is Dr. Ma. Algerica T. Cuenco.",
+              "She assumed the role after the former dean, Dr. Carina Joane V. Barroso, transitioned to the position of Vice President for Research, Extension, and Innovation. As of early 2026, Dr. Cuenco continues to lead the college, recently overseeing faculty development and operational planning sessions for the current academic year."
+            ],
+            "ceb": [
+              "Ang Dean sa College of Nursing (CON) sa Bukidnon State University mao si Dr. Ma. Algerica T. Cuenco.",
+              "Siya misalo sa posisyon human ang miaging dean, si Dr. Carina Joane V. Barroso, mibalhin sa posisyon nga Vice President for Research, Extension, and Innovation. Sa sayong bahin sa 2026, nagpadayon si Dr. Cuenco sa pagdumala sa kolehiyo, ug bag-ohay lang iyang gi-oversee ang faculty development ug operational planning sessions para sa kasamtangang academic year."
+            ]
+          },
+          "intent": "Dean_0f_CON",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "dean 0f con",
+              "dean of con"
+            ]
+          },
+          "subject_key": "Dean_0f_CON",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "dean of con",
+            "dean con",
+            "con",
+            "college of nursing"
+          ],
+          "display_name": "Dean 0f CON"
+        },
+        {
+          "topic": "Dean_0f_COE",
+          "responses": {
+            "en": [
+              "The Dean of the College of Education (COE) at Bukidnon State University is Dr. Ann Sheila C. Del Rosario."
+            ],
+            "ceb": [
+              "Ang Dean sa College of Education (COE) sa Bukidnon State University mao si Dr. Ann Sheila C. Del Rosario."
+            ]
+          },
+          "intent": "Dean_0f_COE",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "dean 0f coe",
+              "dean of coe"
+            ]
+          },
+          "subject_key": "Dean_0f_COE",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "dean of coe",
+            "dean coe",
+            "coe",
+            "college of education"
+          ],
+          "display_name": "Dean 0f COE"
+        },
+        {
+          "topic": "Dean_0f_LAW",
+          "responses": {
+            "en": [
+              "The Dean of the College of Law (COL) at Bukidnon State University is Atty. Ophelia Pilar E. Rubio-Zamora.",
+              "She is currently serving in this role as of the 2025–2026 academic year. In addition to her duties as Dean, she serves as the Concurrent Legal Consultant to the University President. Recently, in February 2026, she represented BukSU at the Philippine Association of Law Schools (PALS) National Convention to discuss innovations in legal education.",
+              "Key personnel and faculty within the College of Law include:",
+              "Atty. Sherrymae O. Velos-Decang: Former Dean who now serves as a Gender and Development (GAD) Coordinator for the university.",
+              "Atty. Micah Stefan B. Dagaerag: Coach for the BukSU Jessup Moot Court Team.",
+              "Atty. Alberto R. Lagamon: An esteemed professor in the college recently appointed as a Commissioner for the National Commission on Indigenous Peoples (NCIP).",
+              "The college continues to offer the Juris Doctor (JD) program and recently produced 19 new lawyers in the 2024 Bar Exams under Dean Rubio-Zamora's leadership"
+            ],
+            "ceb": [
+              "Ang Dean sa College of Law (COL) sa Bukidnon State University mao si Atty. Ophelia Pilar E. Rubio-Zamora.",
+              "Sa kasamtangang academic year 2025–2026, siya nagpadayon sa pagserbisyo sa maong posisyon. Gawas sa iyang mga katungdanan isip Dean, nagsilbi usab siya isip Concurrent Legal Consultant sa University President. Bag-ohay lang, niadtong Pebrero 2026, iya gihapon gi-representa ang BukSU sa Philippine Association of Law Schools (PALS) National Convention aron hisgutan ang mga innovations sa legal education.",
+              "Ang mga key personnel ug faculty sulod sa College of Law mao ang mosunod:",
+              "Atty. Sherrymae O. Velos-Decang: Miaging Dean nga karon nagsilbi isip Gender and Development (GAD) Coordinator sa unibersidad.",
+              "Atty. Micah Stefan B. Dagaerag: Coach sa BukSU Jessup Moot Court Team.",
+              "Atty. Alberto R. Lagamon: Usa ka respetado nga propesor sa kolehiyo nga bag-ohay lang gi-appoint isip Commissioner sa National Commission on Indigenous Peoples (NCIP).",
+              "Ang kolehiyo nagpadayon sa pag-offer sa Juris Doctor (JD) program ug bag-ohay lang nakaproduce og 19 ka bag-ong abogado sa 2024 Bar Exams ubos sa liderato ni Dean Rubio-Zamora."
+            ]
+          },
+          "intent": "Dean_0f_LAW",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "dean 0f law",
+              "dean of law"
+            ]
+          },
+          "subject_key": "Dean_0f_LAW",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "dean of law",
+            "dean law",
+            "law",
+            "college of law",
+            "juris doctor"
+          ],
+          "display_name": "Dean 0f Law"
+        }
+      ],
+      "display_name": "College Deans"
     },
     {
-      "topic": "Dean_0f_COB",
-      "responses": {
-        "en": [
-          "The Dean of the College of Business (COB) at Bukidnon State University is Dr. Donna G. Tilanduca."
-        ],
-        "ceb": [
-          "Ang Dean sa College of Business (COB) sa Bukidnon State University mao si Dr. Donna G. Tilanduca."
-        ]
-      }
-    },
-    {
-      "topic": "Dean_0f_CAS",
-      "responses": {
-        "en": [
-          "The Dean of the College of Arts and Sciences (CAS) at Bukidnon State University is Dr. Maribel G. Valdez."
-        ],
-        "ceb": [
-          "Ang Dean sa College of Arts and Sciences (CAS) sa Bukidnon State University mao si Dr. Maribel G. Valdez."
-        ]
-      }
-    },
-    {
-      "topic": "Dean_0f_CPAG",
-      "responses": {
-        "en": [
-          "The Dean of the College of Public Administration and Governance (CPAG) at Bukidnon State University (BukSU) is Dr. Lalevie C. Lubos.",
-          "As of the current 2026 academic year, she continues to represent the college in major university events, such as the contract signing for academic heads in March 2026."
-        ],
-        "ceb": [
-          "Ang Dean sa College of Public Administration and Governance (CPAG) sa Bukidnon State University (BukSU) mao si Dr. Lalevie C. Lubos.",
-          "Sa kasamtangang academic year 2026, siya nagpadayon sa pagrepresenta sa kolehiyo sa dagkong kalihokan sa unibersidad, sama sa contract signing para sa mga academic heads niadtong Marso 2026."
-        ]
-      }
-    },
-    {
-      "topic": "Dean_0f_CON",
-      "responses": {
-        "en": [
-          "The Dean of the College of Nursing (CON) at Bukidnon State University is Dr. Ma. Algerica T. Cuenco.",
-          "She assumed the role after the former dean, Dr. Carina Joane V. Barroso, transitioned to the position of Vice President for Research, Extension, and Innovation. As of early 2026, Dr. Cuenco continues to lead the college, recently overseeing faculty development and operational planning sessions for the current academic year."
-        ],
-        "ceb": [
-          "Ang Dean sa College of Nursing (CON) sa Bukidnon State University mao si Dr. Ma. Algerica T. Cuenco.",
-          "Siya misalo sa posisyon human ang miaging dean, si Dr. Carina Joane V. Barroso, mibalhin sa posisyon nga Vice President for Research, Extension, and Innovation. Sa sayong bahin sa 2026, nagpadayon si Dr. Cuenco sa pagdumala sa kolehiyo, ug bag-ohay lang iyang gi-oversee ang faculty development ug operational planning sessions para sa kasamtangang academic year."
-        ]
-      }
-    },
-    {
-      "topic": "Dean_0f_COE",
-      "responses": {
-        "en": [
-          "The Dean of the College of Education (COE) at Bukidnon State University is Dr. Ann Sheila C. Del Rosario."
-        ],
-        "ceb": [
-          "Ang Dean sa College of Education (COE) sa Bukidnon State University mao si Dr. Ann Sheila C. Del Rosario."
-        ]
-      }
-    },
-    {
-      "topic": "Dean_0f_LAW",
-      "responses": {
-        "en": [
-          "The Dean of the College of Law (COL) at Bukidnon State University is Atty. Ophelia Pilar E. Rubio-Zamora.",
-          "She is currently serving in this role as of the 2025–2026 academic year. In addition to her duties as Dean, she serves as the Concurrent Legal Consultant to the University President. Recently, in February 2026, she represented BukSU at the Philippine Association of Law Schools (PALS) National Convention to discuss innovations in legal education.",
-          "Key personnel and faculty within the College of Law include:",
-          "Atty. Sherrymae O. Velos-Decang: Former Dean who now serves as a Gender and Development (GAD) Coordinator for the university.",
-          "Atty. Micah Stefan B. Dagaerag: Coach for the BukSU Jessup Moot Court Team.",
-          "Atty. Alberto R. Lagamon: An esteemed professor in the college recently appointed as a Commissioner for the National Commission on Indigenous Peoples (NCIP).",
-          "The college continues to offer the Juris Doctor (JD) program and recently produced 19 new lawyers in the 2024 Bar Exams under Dean Rubio-Zamora's leadership"
-        ],
-        "ceb": [
-          "Ang Dean sa College of Law (COL) sa Bukidnon State University mao si Atty. Ophelia Pilar E. Rubio-Zamora.",
-          "Sa kasamtangang academic year 2025–2026, siya nagpadayon sa pagserbisyo sa maong posisyon. Gawas sa iyang mga katungdanan isip Dean, nagsilbi usab siya isip Concurrent Legal Consultant sa University President. Bag-ohay lang, niadtong Pebrero 2026, iya gihapon gi-representa ang BukSU sa Philippine Association of Law Schools (PALS) National Convention aron hisgutan ang mga innovations sa legal education.",
-          "Ang mga key personnel ug faculty sulod sa College of Law mao ang mosunod:",
-          "Atty. Sherrymae O. Velos-Decang: Miaging Dean nga karon nagsilbi isip Gender and Development (GAD) Coordinator sa unibersidad.",
-          "Atty. Micah Stefan B. Dagaerag: Coach sa BukSU Jessup Moot Court Team.",
-          "Atty. Alberto R. Lagamon: Usa ka respetado nga propesor sa kolehiyo nga bag-ohay lang gi-appoint isip Commissioner sa National Commission on Indigenous Peoples (NCIP).",
-          "Ang kolehiyo nagpadayon sa pag-offer sa Juris Doctor (JD) program ug bag-ohay lang nakaproduce og 19 ka bag-ong abogado sa 2024 Bar Exams ubos sa liderato ni Dean Rubio-Zamora."
-        ]
-      }
-    },
-    {
-      "topic": "Head_of_BSIT",
-      "responses": {
-        "en": [
-          "The College of Technologies (COT) at Bukidnon State University is <b> organized into four primary departments </b>, each led by its own Department Head or Program Chair.",
-          "Under the leadership of the current Dean, Dr. Marilou O. Espina, the following officials are designated as the heads of their respective departments as of 2026:",
-          "Information Technology Department:<b> Headed by Dr. Sales G. Aribe Jr. </b>",
-          "Electronics Technology Department:<b> Headed by Dr. Manuel Chad G. Agurob. </b>",
-          "Note: Recent departmental documentation also lists Ms. Robmarychris Agnes V. Candano as a department head within this unit.",
-          "Food Technology Department:<b> Headed by Ms. Genessa Jesy T. Pagote. </b>",
-          "Automotive Technology Department:<b> Headed by Dr. Rene M. Chavez. </b>",
-          "Additionally,<b> Dr. Jovelin M. </b>Lapates serves as the<b> Program Chair </b>for the Bachelor of Science in Entertainment and Multimedia Computing <b> (BSEMC) </b>. The administrative support for the entire college is handled by Mr. Raul D. Lecaros, who serves as the College Secretary."
-        ],
-        "ceb": [
-          "Ang College of Technologies (COT) sa Bukidnon State University gihan-ay ngadto sa<b> upat ka pangunang departamento </b>, nga ang matag usa gipangulohan sa kaugalingong Department Head o Program Chair.",
-          "Ubos sa liderato sa kasamtangang Dean, si Dr. Marilou O. Espina, mao kini ang mga opisyal nga gipili isip mga ulo sa ilang tagsa-tagsa ka departamento as of 2026:",
-          "Information Technology Department:<b> Gipangulohan ni Dr. Sales G. Aribe Jr. </b> ",
-          "Electronics Technology Department:<b> Gipangulohan ni Dr. Manuel Chad G. Agurob. </b>",
-          "Nota: Ang pinakabag-ong departmental documentation naglista usab kang Ms. Robmarychris Agnes V. Candano isip usa sa mga department head niini nga unit.",
-          "Food Technology Department:<b> Gipangulohan ni Ms. Genessa Jesy T. Pagote. </b>",
-          "Automotive Technology Department:<b> Gipangulohan ni Dr. Rene M. Chavez. </b>",
-          "Dugang pa, si<b> Dr. Jovelin M. Lapates </b> nagsilbi isip <b> Program Chair </b> sa Bachelor of Science in Entertainment and Multimedia Computing <b> (BSEMC) </b>. Ang administrative support sa tibuok kolehiyo gidumala ni Mr. Raul D. Lecaros, nga nagsilbi isip College Secretary."
-        ]
-      }
-    },
-    {
-      "topic": "Head_of_COB",
-      "responses": {
-        "en": [
-          "The College of Business (COB) at Bukidnon State University is organized into several departments, each led by a designated Department Head or Chairperson:",
-          "Accountancy Department: Headed by Ms. Jiffamae C. Gelacio, CPA.",
-          "Business Administration Department: Headed by Dr. Annie Leah Roxann L. Emata.",
-          "Hospitality Management Department: Headed by Dr. Catherine C. Salvo.",
-          "Master in Business Administration (MBA) Program: Chaired by Dr. Gem Aiah B. Blanco. ",
-          "These officials work under the leadership of the current Dean, Dr. Donna G. Tilanduca."
-        ],
-        "ceb": [
-          "Ang College of Business (COB) sa Bukidnon State University gihan-ay ngadto sa pipila ka mga departamento, nga ang matag usa gipangulohan sa usa ka gitudlo nga Department Head o Chairperson:",
-          "Accountancy Department: Gipangulohan ni Ms. Jiffamae C. Gelacio, CPA.",
-          "Business Administration Department: Gipangulohan ni Dr. Annie Leah Roxann L. Emata.",
-          "Hospitality Management Department: Gipangulohan ni Dr. Catherine C. Salvo.",
-          "Master in Business Administration (MBA) Program: Gipangulohan ni Dr. Gem Aiah B. Blanco.",
-          "Kining mga opisyal nagtrabaho ubos sa liderato sa kasamtangang Dean, si Dr. Donna G. Tilanduca."
-        ]
-      }
-    },
-    {
-      "topic": "Head_of_CAS",
-      "responses": {
-        "en": [
-          "The College of Arts and Sciences (CAS) is divided into several specific departments, each with its own chairperson or head.",
-          "Based on the latest official designations at Bukidnon State University, here are the leaders for each unit under the supervision of Dean Dr. Maribel G. Valdez:",
-          "Community Development: Mr. Jose Benito C. Ronolo",
-          "Development Communication: Ms. Maria Efrelij J. Cuadra",
-          "Economics: Dr. Cleopas Bette R. Jacutin",
-          "General Education: Mr. Jan Daniel P. Ching",
-          "Language and Letters: Dr. Grenna Marie Joy Simene",
-          "Mathematics: Dr. Lezel M. Tutanes",
-          "Natural Sciences: Dr. Marites M. Egar",
-          "Philosophy: Dr. James Russo A. Taga (OIC)",
-          "Social Sciences (Sociology): Ms. Jennyleigh A. Mangubat",
-          "Biology Program: Mr. Daryl M. de Asis",
-          "Environmental Science Program: Ms. Eva Joie G. Amestoso",
-          "The administrative coordinator for these departments is the College Secretary, Ms. Elaine May M. Echavez."
-        ],
-        "ceb": [
-          "Ang College of Arts and Sciences (CAS) gibahin ngadto sa pipila ka espesipikong mga departamento, nga ang matag usa adunay kaugalingong chairperson o head.",
-          "Base sa pinakabag-ong opisyal nga mga designation sa Bukidnon State University, mao kini ang mga lider sa matag unit ubos sa pagdumala ni Dean Dr. Maribel G. Valdez:",
-          "Community Development: Mr. Jose Benito C. Ronolo",
-          "Development Communication: Ms. Maria Efrelij J. Cuadra",
-          "Economics: Dr. Cleopas Bette R. Jacutin",
-          "General Education: Mr. Jan Daniel P. Ching",
-          "Language and Letters: Dr. Grenna Marie Joy Simene",
-          "Mathematics: Dr. Lezel M. Tutanes",
-          "Natural Sciences: Dr. Marites M. Egar",
-          "Philosophy: Dr. James Russo A. Taga (OIC)",
-          "Social Sciences (Sociology): Ms. Jennyleigh A. Mangubat",
-          "Biology Program: Mr. Daryl M. de Asis",
-          "Environmental Science Program: Ms. Eva Joie G. Amestoso",
-          "Ang administrative coordinator sa mga departamento mao ang College Secretary, si Ms. Elaine May M. Echavez."
-        ]
-      }
-    },
-    {
-      "topic": "Head_of_CPAG",
-      "responses": {
-        "en": [
-          "The leadership of the College of Public Administration and Governance (CPAG) at Bukidnon State University is as follows:",
-          "Dean of CPAG: Dr. Lalevie C. Lubos. She has served as the dean since the college was established as a separate entity from the College of Business.",
-          "Head of Public Administration Department: Dr. Rona Celeste V. Pasamonte. She is also referred to as the Chairperson for the Public Administration Department (PAD).",
-          "Other key officials within the college include:",
-          "Program Chair (Master in Public Administration): Dr. Yammie P. Daud.",
-          "Program Chair (Doctor of Public Administration): Dr. Christine B. Tenorio.",
-          "College Secretary: Ms. Jolly Nelly E. Mamon."
-        ],
-        "ceb": [
-          "Ang liderato sa College of Public Administration and Governance (CPAG) sa Bukidnon State University mao ang mosunod:",
-          "Dean sa CPAG: si Dr. Lalevie C. Lubos. Siya nagsilbi isip dean sukad natukod ang kolehiyo isip lahi nga entidad gikan sa College of Business.",
-          "Head sa Public Administration Department: si Dr. Rona Celeste V. Pasamonte. Nailhan usab siya isip Chairperson sa Public Administration Department (PAD).",
-          "Ang uban pang key officials sulod sa kolehiyo mao ang:",
-          "Program Chair (Master in Public Administration): si Dr. Yammie P. Daud.",
-          "Program Chair (Doctor of Public Administration): si Dr. Christine B. Tenorio.",
-          "College Secretary: si Ms. Jolly Nelly E. Mamon."
-        ]
-      }
-    },
-    {
-      "topic": "Head_of_CON",
-      "responses": {
-        "en": [
-          "The Department Head (or Chairperson) of the College of Nursing (CON) at Bukidnon State University is Dr. Fatima C. Tanzo.",
-          "She manages the department's academic operations under the leadership of the Dean, Dr. Ma. Algerica T. Cuenco.",
-          "Other key personnel supporting the department include:",
-          "Dr. Christine Joy B. Cainday: College Secretary.",
-          "Dr. Lharra Postrano: International Affairs Coordinator.",
-          "Dr. Beulah Joy K. Damasco: Research and Extension Coordinator."
-        ],
-        "ceb": [
-          "Ang Department Head (o Chairperson) sa College of Nursing (CON) sa Bukidnon State University mao si Dr. Fatima C. Tanzo.",
-          "Siya nagdumala sa academic operations sa departamento ubos sa liderato sa Dean, si Dr. Ma. Algerica T. Cuenco.",
-          "Ang uban pang key personnel nga nagsuporta sa departamento mao ang:",
-          "Dr. Christine Joy B. Cainday: College Secretary.",
-          "Dr. Lharra Postrano: International Affairs Coordinator.",
-          "Dr. Beulah Joy K. Damasco: Research and Extension Coordinator."
-        ]
-      }
-    },
-    {
-      "topic": "Head_of_COE",
-      "responses": {
-        "en": [
-          "The College of Education (COE) at Bukidnon State University is structured into several departments and laboratory schools. Under the leadership of Dean Dr. Ann Sheila C. Del Rosario, the following officials are the designated heads:",
-          "Secondary Education Department: Dr. Rodolfo O. Alcordo (Program Chair)",
-          "Elementary Education Department: Dr. Ritchel R. Villamayor (Program Chair)",
-          "Physical Education Department: Mr. Bond Ryan B. Acosta (Program Chair)",
-          "Secondary Laboratory School (SLS): Ms. Desiree A. Barroso (Principal)",
-          "Elementary Laboratory School (ELS): Ms. Rachel Joan T. Toledo (Principal/Head)",
-          "Supporting these units is the College Secretary, Ms. Rachel Joan T. Toledo."
-        ],
-        "ceb": [
-          "Ang College of Education (COE) sa Bukidnon State University gibahin ngadto sa pipila ka departamento ug laboratory schools. Ubos sa liderato ni Dean Dr. Ann Sheila C. Del Rosario, mao kini ang mga opisyal nga gipili isip mga ulo:",
-          "Secondary Education Department: Dr. Rodolfo O. Alcordo (Program Chair)",
-          "Elementary Education Department: Dr. Ritchel R. Villamayor (Program Chair)",
-          "Physical Education Department: Mr. Bond Ryan B. Acosta (Program Chair)",
-          "Secondary Laboratory School (SLS): Ms. Desiree A. Barroso (Principal)",
-          "Elementary Laboratory School (ELS): Ms. Rachel Joan T. Toledo (Principal/Head)",
-          "Ang College Secretary, si Ms. Rachel Joan T. Toledo, nagsuporta sa tanan nga units."
-        ]
-      }
-    },
-    {
-      "topic": "Head_of_LAW",
-      "responses": {
-        "en": [
-          "The College of Law (COL) at Bukidnon State University is primarily led by the Dean, and unlike larger colleges (like the College of Arts and Sciences), it is not typically divided into smaller departments with their own separate heads.",
-          "Instead, administrative and academic leadership is concentrated in these key roles:",
-          "Dean of the College of Law: Atty. Ophelia Pilar E. Rubio-Zamora. She is the overall head of the college and also serves as the Concurrent Legal Consultant to the University President."
-        ],
-        "ceb": [
-          "Ang College of Law (COL) sa Bukidnon State University gipangulohan sa Dean, ug dili sama sa mas dagkong kolehiyo (sama sa College of Arts and Sciences), kasagaran kini wala gibahin ngadto sa gagmay nga 'departments' nga adunay kaugalingong mga ulo.",
-          "Sa baylo, ang administrative ug academic leadership naka-focus sa mosunod nga key roles:",
-          "Dean sa College of Law: si Atty. Ophelia Pilar E. Rubio-Zamora. Siya ang kinatibuk-ang ulo sa kolehiyo ug nagsilbi usab isip Concurrent Legal Consultant sa University President."
-        ]
-      }
+      "topic": "department_heads",
+      "subject_key": "department_heads",
+      "subject_type": "person",
+      "subject_terms": [
+        "department head",
+        "program head",
+        "head of bsit",
+        "head of cot",
+        "head of cob",
+        "head of cas",
+        "head of cpag",
+        "head of con",
+        "head of coe",
+        "head of law"
+      ],
+      "subtopics": [
+        {
+          "topic": "Head_of_BSIT",
+          "responses": {
+            "en": [
+              "The Department Head of the Information Technology Department / BSIT program under the College of Technologies (COT) is <b>Dr. Sales G. Aribe Jr.</b>"
+            ],
+            "ceb": [
+              "Ang Department Head sa Information Technology Department / BSIT program ubos sa College of Technologies (COT) kay si <b>Dr. Sales G. Aribe Jr.</b>"
+            ]
+          },
+          "intent": "Head_of_BSIT",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of bsit",
+              "bsit head",
+              "head of information technology",
+              "information technology department head",
+              "kinsa ang head sa bsit"
+            ]
+          },
+          "subject_key": "Head_of_BSIT",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of bsit",
+            "bsit head",
+            "information technology department head",
+            "it department head",
+            "kinsa ang head sa bsit"
+          ],
+          "display_name": "Head Of BSIT"
+        },
+        {
+          "topic": "Head_of_COT",
+          "responses": {
+            "en": [
+              "The College of Technologies (COT) at Bukidnon State University is <b>organized into four primary departments</b>, each led by its own Department Head or Program Chair.",
+              "Under the leadership of the current Dean, Dr. Marilou O. Espina, the following officials are designated as the heads of their respective departments as of 2026:",
+              "Information Technology Department: <b>Headed by Dr. Sales G. Aribe Jr.</b>",
+              "Electronics Technology Department: <b>Headed by Dr. Manuel Chad G. Agurob.</b>",
+              "Food Technology Department: <b>Headed by Ms. Genessa Jesy T. Pagote.</b>",
+              "Automotive Technology Department: <b>Headed by Dr. Rene M. Chavez.</b>",
+              "Bachelor of Science in Entertainment and Multimedia Computing (BSEMC): <b>Program Chair Dr. Jovelin M. Lapates.</b>",
+              "The administrative support for the college is handled by Mr. Raul D. Lecaros, the College Secretary."
+            ],
+            "ceb": [
+              "Ang College of Technologies (COT) sa Bukidnon State University gihan-ay ngadto sa <b>upat ka pangunang departamento</b>, nga ang matag usa gipangulohan sa Department Head o Program Chair.",
+              "Ubos sa liderato sa Dean nga si Dr. Marilou O. Espina, mao kini ang mga ulo sa matag departamento as of 2026:",
+              "Information Technology Department: <b>Gipangulohan ni Dr. Sales G. Aribe Jr.</b>",
+              "Electronics Technology Department: <b>Gipangulohan ni Dr. Manuel Chad G. Agurob.</b>",
+              "Food Technology Department: <b>Gipangulohan ni Ms. Genessa Jesy T. Pagote.</b>",
+              "Automotive Technology Department: <b>Gipangulohan ni Dr. Rene M. Chavez.</b>",
+              "Bachelor of Science in Entertainment and Multimedia Computing (BSEMC): <b>Program Chair si Dr. Jovelin M. Lapates.</b>",
+              "Ang administrative support sa kolehiyo gidumala ni Mr. Raul D. Lecaros, ang College Secretary."
+            ]
+          },
+          "intent": "Head_of_COT",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of cot",
+              "cot heads",
+              "who are the heads of cot",
+              "college of technologies heads",
+              "department heads of cot"
+            ]
+          },
+          "subject_key": "Head_of_COT",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of cot",
+            "head cot",
+            "cot heads",
+            "department heads of cot",
+            "college of technologies heads",
+            "college of technologies",
+            "college of technology"
+          ],
+          "display_name": "Head Of COT"
+        },
+        {
+          "topic": "Head_of_COB",
+          "responses": {
+            "en": [
+              "The College of Business (COB) at Bukidnon State University is organized into several departments, each led by a designated Department Head or Chairperson:",
+              "Accountancy Department: Headed by Ms. Jiffamae C. Gelacio, CPA.",
+              "Business Administration Department: Headed by Dr. Annie Leah Roxann L. Emata.",
+              "Hospitality Management Department: Headed by Dr. Catherine C. Salvo.",
+              "Master in Business Administration (MBA) Program: Chaired by Dr. Gem Aiah B. Blanco. ",
+              "These officials work under the leadership of the current Dean, Dr. Donna G. Tilanduca."
+            ],
+            "ceb": [
+              "Ang College of Business (COB) sa Bukidnon State University gihan-ay ngadto sa pipila ka mga departamento, nga ang matag usa gipangulohan sa usa ka gitudlo nga Department Head o Chairperson:",
+              "Accountancy Department: Gipangulohan ni Ms. Jiffamae C. Gelacio, CPA.",
+              "Business Administration Department: Gipangulohan ni Dr. Annie Leah Roxann L. Emata.",
+              "Hospitality Management Department: Gipangulohan ni Dr. Catherine C. Salvo.",
+              "Master in Business Administration (MBA) Program: Gipangulohan ni Dr. Gem Aiah B. Blanco.",
+              "Kining mga opisyal nagtrabaho ubos sa liderato sa kasamtangang Dean, si Dr. Donna G. Tilanduca."
+            ]
+          },
+          "intent": "Head_of_COB",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of cob"
+            ]
+          },
+          "subject_key": "Head_of_COB",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of cob",
+            "head cob",
+            "cob",
+            "college of business"
+          ],
+          "display_name": "Head Of COB"
+        },
+        {
+          "topic": "Head_of_CAS",
+          "responses": {
+            "en": [
+              "The College of Arts and Sciences (CAS) is divided into several specific departments, each with its own chairperson or head.",
+              "Based on the latest official designations at Bukidnon State University, here are the leaders for each unit under the supervision of Dean Dr. Maribel G. Valdez:",
+              "Community Development: Mr. Jose Benito C. Ronolo",
+              "Development Communication: Ms. Maria Efrelij J. Cuadra",
+              "Economics: Dr. Cleopas Bette R. Jacutin",
+              "General Education: Mr. Jan Daniel P. Ching",
+              "Language and Letters: Dr. Grenna Marie Joy Simene",
+              "Mathematics: Dr. Lezel M. Tutanes",
+              "Natural Sciences: Dr. Marites M. Egar",
+              "Philosophy: Dr. James Russo A. Taga (OIC)",
+              "Social Sciences (Sociology): Ms. Jennyleigh A. Mangubat",
+              "Biology Program: Mr. Daryl M. de Asis",
+              "Environmental Science Program: Ms. Eva Joie G. Amestoso",
+              "The administrative coordinator for these departments is the College Secretary, Ms. Elaine May M. Echavez."
+            ],
+            "ceb": [
+              "Ang College of Arts and Sciences (CAS) gibahin ngadto sa pipila ka espesipikong mga departamento, nga ang matag usa adunay kaugalingong chairperson o head.",
+              "Base sa pinakabag-ong opisyal nga mga designation sa Bukidnon State University, mao kini ang mga lider sa matag unit ubos sa pagdumala ni Dean Dr. Maribel G. Valdez:",
+              "Community Development: Mr. Jose Benito C. Ronolo",
+              "Development Communication: Ms. Maria Efrelij J. Cuadra",
+              "Economics: Dr. Cleopas Bette R. Jacutin",
+              "General Education: Mr. Jan Daniel P. Ching",
+              "Language and Letters: Dr. Grenna Marie Joy Simene",
+              "Mathematics: Dr. Lezel M. Tutanes",
+              "Natural Sciences: Dr. Marites M. Egar",
+              "Philosophy: Dr. James Russo A. Taga (OIC)",
+              "Social Sciences (Sociology): Ms. Jennyleigh A. Mangubat",
+              "Biology Program: Mr. Daryl M. de Asis",
+              "Environmental Science Program: Ms. Eva Joie G. Amestoso",
+              "Ang administrative coordinator sa mga departamento mao ang College Secretary, si Ms. Elaine May M. Echavez."
+            ]
+          },
+          "intent": "Head_of_CAS",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of cas"
+            ]
+          },
+          "subject_key": "Head_of_CAS",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of cas",
+            "head cas",
+            "cas",
+            "college of arts and sciences"
+          ],
+          "display_name": "Head Of CAS"
+        },
+        {
+          "topic": "Head_of_CPAG",
+          "responses": {
+            "en": [
+              "The leadership of the College of Public Administration and Governance (CPAG) at Bukidnon State University is as follows:",
+              "Dean of CPAG: Dr. Lalevie C. Lubos. She has served as the dean since the college was established as a separate entity from the College of Business.",
+              "Head of Public Administration Department: Dr. Rona Celeste V. Pasamonte. She is also referred to as the Chairperson for the Public Administration Department (PAD).",
+              "Other key officials within the college include:",
+              "Program Chair (Master in Public Administration): Dr. Yammie P. Daud.",
+              "Program Chair (Doctor of Public Administration): Dr. Christine B. Tenorio.",
+              "College Secretary: Ms. Jolly Nelly E. Mamon."
+            ],
+            "ceb": [
+              "Ang liderato sa College of Public Administration and Governance (CPAG) sa Bukidnon State University mao ang mosunod:",
+              "Dean sa CPAG: si Dr. Lalevie C. Lubos. Siya nagsilbi isip dean sukad natukod ang kolehiyo isip lahi nga entidad gikan sa College of Business.",
+              "Head sa Public Administration Department: si Dr. Rona Celeste V. Pasamonte. Nailhan usab siya isip Chairperson sa Public Administration Department (PAD).",
+              "Ang uban pang key officials sulod sa kolehiyo mao ang:",
+              "Program Chair (Master in Public Administration): si Dr. Yammie P. Daud.",
+              "Program Chair (Doctor of Public Administration): si Dr. Christine B. Tenorio.",
+              "College Secretary: si Ms. Jolly Nelly E. Mamon."
+            ]
+          },
+          "intent": "Head_of_CPAG",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of cpag"
+            ]
+          },
+          "subject_key": "Head_of_CPAG",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of cpag",
+            "head cpag",
+            "cpag",
+            "college of public administration and governance",
+            "public administration and governance"
+          ],
+          "display_name": "Head Of CPAG"
+        },
+        {
+          "topic": "Head_of_CON",
+          "responses": {
+            "en": [
+              "The Department Head (or Chairperson) of the College of Nursing (CON) at Bukidnon State University is Dr. Fatima C. Tanzo.",
+              "She manages the department's academic operations under the leadership of the Dean, Dr. Ma. Algerica T. Cuenco.",
+              "Other key personnel supporting the department include:",
+              "Dr. Christine Joy B. Cainday: College Secretary.",
+              "Dr. Lharra Postrano: International Affairs Coordinator.",
+              "Dr. Beulah Joy K. Damasco: Research and Extension Coordinator."
+            ],
+            "ceb": [
+              "Ang Department Head (o Chairperson) sa College of Nursing (CON) sa Bukidnon State University mao si Dr. Fatima C. Tanzo.",
+              "Siya nagdumala sa academic operations sa departamento ubos sa liderato sa Dean, si Dr. Ma. Algerica T. Cuenco.",
+              "Ang uban pang key personnel nga nagsuporta sa departamento mao ang:",
+              "Dr. Christine Joy B. Cainday: College Secretary.",
+              "Dr. Lharra Postrano: International Affairs Coordinator.",
+              "Dr. Beulah Joy K. Damasco: Research and Extension Coordinator."
+            ]
+          },
+          "intent": "Head_of_CON",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of con"
+            ]
+          },
+          "subject_key": "Head_of_CON",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of con",
+            "head con",
+            "con",
+            "college of nursing"
+          ],
+          "display_name": "Head Of CON"
+        },
+        {
+          "topic": "Head_of_COE",
+          "responses": {
+            "en": [
+              "The College of Education (COE) at Bukidnon State University is structured into several departments and laboratory schools. Under the leadership of Dean Dr. Ann Sheila C. Del Rosario, the following officials are the designated heads:",
+              "Secondary Education Department: Dr. Rodolfo O. Alcordo (Program Chair)",
+              "Elementary Education Department: Dr. Ritchel R. Villamayor (Program Chair)",
+              "Physical Education Department: Mr. Bond Ryan B. Acosta (Program Chair)",
+              "Secondary Laboratory School (SLS): Ms. Desiree A. Barroso (Principal)",
+              "Elementary Laboratory School (ELS): Ms. Rachel Joan T. Toledo (Principal/Head)",
+              "Supporting these units is the College Secretary, Ms. Rachel Joan T. Toledo."
+            ],
+            "ceb": [
+              "Ang College of Education (COE) sa Bukidnon State University gibahin ngadto sa pipila ka departamento ug laboratory schools. Ubos sa liderato ni Dean Dr. Ann Sheila C. Del Rosario, mao kini ang mga opisyal nga gipili isip mga ulo:",
+              "Secondary Education Department: Dr. Rodolfo O. Alcordo (Program Chair)",
+              "Elementary Education Department: Dr. Ritchel R. Villamayor (Program Chair)",
+              "Physical Education Department: Mr. Bond Ryan B. Acosta (Program Chair)",
+              "Secondary Laboratory School (SLS): Ms. Desiree A. Barroso (Principal)",
+              "Elementary Laboratory School (ELS): Ms. Rachel Joan T. Toledo (Principal/Head)",
+              "Ang College Secretary, si Ms. Rachel Joan T. Toledo, nagsuporta sa tanan nga units."
+            ]
+          },
+          "intent": "Head_of_COE",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of coe"
+            ]
+          },
+          "subject_key": "Head_of_COE",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of coe",
+            "head coe",
+            "coe",
+            "college of education"
+          ],
+          "display_name": "Head Of COE"
+        },
+        {
+          "topic": "Head_of_LAW",
+          "responses": {
+            "en": [
+              "The College of Law (COL) at Bukidnon State University is primarily led by the Dean, and unlike larger colleges (like the College of Arts and Sciences), it is not typically divided into smaller departments with their own separate heads.",
+              "Instead, administrative and academic leadership is concentrated in these key roles:",
+              "Dean of the College of Law: Atty. Ophelia Pilar E. Rubio-Zamora. She is the overall head of the college and also serves as the Concurrent Legal Consultant to the University President."
+            ],
+            "ceb": [
+              "Ang College of Law (COL) sa Bukidnon State University gipangulohan sa Dean, ug dili sama sa mas dagkong kolehiyo (sama sa College of Arts and Sciences), kasagaran kini wala gibahin ngadto sa gagmay nga 'departments' nga adunay kaugalingong mga ulo.",
+              "Sa baylo, ang administrative ug academic leadership naka-focus sa mosunod nga key roles:",
+              "Dean sa College of Law: si Atty. Ophelia Pilar E. Rubio-Zamora. Siya ang kinatibuk-ang ulo sa kolehiyo ug nagsilbi usab isip Concurrent Legal Consultant sa University President."
+            ]
+          },
+          "intent": "Head_of_LAW",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "head of law"
+            ]
+          },
+          "subject_key": "Head_of_LAW",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "head of law",
+            "head law",
+            "law",
+            "college of law",
+            "juris doctor"
+          ],
+          "display_name": "Head Of Law"
+        }
+      ],
+      "display_name": "Department Heads"
     }
   ]
 }

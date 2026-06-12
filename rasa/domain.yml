@@ -1,131 +1,99 @@
 version: "3.1"
 
 intents:
-  - ask_locations
-  - ask_academic_policy
-  - ask_buksuadmin_info
-  - ask_admissions_info
-  - ask_classroom_policy
-  - ask_clinic_info
-  - ask_courses_info
-  - departments_faculty_staff
-  - ask_department_info
-  - ask_dormitory_info
-  - ask_enrollment_info
-  - ask_ict_info
-  - ask_library_info
-  - ask_oss_services
-  - ask_university_info
-
-  
-  - greet
+  - ask_location
+  - ask_schedule
+  - ask_fee
+  - ask_requirement
+  - ask_process
+  - ask_general_info
+  - ask_contact
+  - ask_availability
+  - ask_document
+  - ask_follow_up
+  - smalltalk
   - goodbye
-  - ask_more
-  - nlu_fallback
   - bot_challenge
-  - student_organizations
-  - campus_safety
-  - lost_on_campus
-  - peer_mentoring
-  - graduation_attendance
-  - graduation_rehearsal_attendance
-  - tracer_study
-  - early_document_request
-  - inactive_group_member
-  - student_stress_support
-  - freshmen_intramurals
-  - about_intramurals
-  - institutional_email_info
-  - cannot_upload_2x2_picture
-  - application_always_denied
-  - test_permit_corrupted
-  - application_pending
-  - intramurals_week_classes
-  - tes_release_delay
-  - tes_with_other_scholarships
-  - wear_civilian_attire
-  - cancel_tabuk_assistance
-  - shorts_on_campus
-
-  - college_shirt_allowed
-  - reset_portal_password_buksu
-  - portal_account_locked_issue
-  - portal_login_problem
-  - check_portal_enrollment_status
-  - change_portal_password_buksu
-  - continuing_students_enrollment_process
-  - campus_dress_code_policy
-  - change_program_after_application
-  - pwd_student_assistance_services
-  - free_tuition_undergraduate_buksu
-  - join_student_organizations_process
-  - sports_facilities_for_students
-  - student_assistant_application_process
-  - guidance_counseling_services_buksu
-  - buksu_establishment_year
-  - law_author_buksu_university_conversion
-  - significance_year_1924_buksu
-  - previous_name_buksu_college
-  - dasig_spirit_animal_buksu
-  - smart_buksu_vision
-  - buksu_satellite_campuses
-  - buksu_alumni_association
-  - update_student_portal_information
-  - university_code_definition
-  - student_assistant_application
-  - no_noon_break_policy
-  - buksu_official_anthem
-  - buksu_gymnasium_facility
-  - new_student_orientation_purpose
-  - buksu_mandates
-  - lost_and_found_buksu
-  - accounting_office_location
-  - cor_validation_location
-  - cor_validation_steps
-  - ask_guidance_services
-  - ask_how_to_avail_guidance
-  - ask_guidance_eligibility
-  - ask_guidance_schedule
-  - freshmen_application_period
-  - visitor_campus_access
-  - Bot_creator
-
-
-  - mroning_greater
-  - afternoon_greater
-  - evening_greater
+  - nlu_fallback
 
 entities:
-  - lab_number
   - location_name
-  - category
-  - sub_category
-  - slot_name
-  - slot_value
+  - service
+  - office
+  - document
+  - program
+  - organization
+  - time_period
   - topic
+  - lab_number
 
 slots:
-  category:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: custom
-
-  sub_category:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: custom
-
-  slot_name:
+  location_name:
     type: text
     influence_conversation: false
     mappings:
-      - type: custom
+      - type: from_entity
+        entity: location_name
 
-  slot_value:
+  service:
     type: text
     influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: service
+
+  office:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: office
+
+  document:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: document
+
+  program:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: program
+
+  organization:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: organization
+
+  time_period:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: time_period
+
+  topic:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: topic
+
+  lab_number:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: lab_number
+
+  last_query_subject:
+    type: text
+    influence_conversation: true
     mappings:
       - type: custom
 
@@ -135,23 +103,57 @@ slots:
     mappings:
       - type: custom
 
-  lab_number:
+  conversation_subject:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: lab_number
+      - type: custom
+
+  conversation_subject_type:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_category:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_last_topic:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_last_intent:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_turns_remaining:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_context_updated_at:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
 
 responses:
-  utter_greet:
-    - text: "Hello! How can I assist you today?"
   utter_goodbye:
-    - text: "Welcome as always 😊"
-    - text: "You can ask me anytime you like"
+    - text: "You can ask me anytime."
+
   utter_iamabot:
-    - text: "Obviously I am a bot 😏, you cant tell? will anyways im here to help."
+    - text: "I am BukSU's chatbot assistant."
 
 actions:
+  - action_main_router
   - action_reply_from_json
   - action_set_dynamic_slot
 

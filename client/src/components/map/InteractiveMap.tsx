@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { Fragment, useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { 
   MapContainer, 
   TileLayer, 
@@ -53,13 +53,21 @@ interface InteractiveMapProps {
   initialRoutes?: any[];
 }
 
-// Route color palette - cycles through: red, green, yellow, orange, blue
-const ROUTE_COLORS = ["#dc2626", "#16a34a", "#eab308", "#f97316", "#2563eb"];
+// Neon route palette: red, yellow, blue, green, purple, then bright accents.
+const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
 
 const getNextRouteColor = (existingRoutes: any[]): string => {
   const colorIndex = existingRoutes.length % ROUTE_COLORS.length;
   return ROUTE_COLORS[colorIndex];
 };
+
+const normalizeRouteColors = (items: any[]) =>
+  (Array.isArray(items) ? items : []).map((route, index) => ({
+    ...route,
+    color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+    route_order: route.route_order || index + 1,
+    route_label: route.route_label || `Route ${index + 1}`,
+  }));
 
 const MapEvents = ({ onMapClick }: { onMapClick: (e: L.LeafletMouseEvent) => void }) => {
   useMapEvents({
@@ -78,7 +86,7 @@ export default function InteractiveMap({
   initialRoutes = []
 }: InteractiveMapProps) {
   const [markers, setMarkers] = useState<any[]>(initialMarkers);
-  const [routes, setRoutes] = useState<any[]>(initialRoutes);
+  const [routes, setRoutes] = useState<any[]>(normalizeRouteColors(initialRoutes));
   const [activeRoutePoints, setActiveRoutePoints] = useState<Point[]>([]);
   const [mode, setMode] = useState<'view' | 'add-marker' | 'draw-route'>('view');
   const [styleUrl, setStyleUrl] = useState(initialStyleUrl);
@@ -86,7 +94,7 @@ export default function InteractiveMap({
   // Update state when initial values changed
   useEffect(() => {
     setMarkers(initialMarkers);
-    setRoutes(initialRoutes);
+    setRoutes(normalizeRouteColors(initialRoutes));
   }, [initialMarkers, initialRoutes]);
 
   const handleMapClick = (e: L.LeafletMouseEvent) => {
@@ -397,36 +405,73 @@ export default function InteractiveMap({
             </Marker>
           ))}
 
-          {routes.map((route) => (
-            <Polyline 
-              key={route.id} 
-              positions={route.points} 
-              color={route.color || "#3b82f6"} 
-              weight={route.weight || 5}
-            >
-              <Popup>
-                <div className="p-1">
-                  <h4 className="font-bold">{route.name}</h4>
-                  <Button 
-                    size="sm" 
-                    variant="ghost" 
-                    className="text-red-500 mt-2 h-6"
-                    onClick={() => deleteRoute(route.id)}
-                  >
-                    <Trash2 className="w-3 h-3 mr-1" />
-                    Delete
-                  </Button>
-                </div>
-              </Popup>
-            </Polyline>
+          {routes.map((route, index) => (
+            <Fragment key={route.id}>
+              <Polyline
+                positions={route.points}
+                pathOptions={{
+                  color: route.color || ROUTE_COLORS[index % ROUTE_COLORS.length],
+                  weight: 8.4,
+                  opacity: 0.7,
+                  lineJoin: "round",
+                  lineCap: "round",
+                }}
+                interactive={false}
+              />
+              <Polyline
+                positions={route.points}
+                pathOptions={{
+                  color: route.color || ROUTE_COLORS[index % ROUTE_COLORS.length],
+                  weight: 2.2,
+                  opacity: 0.98,
+                  dashArray: "7, 9",
+                  lineJoin: "round",
+                  lineCap: "round",
+                }}
+              >
+                <Popup>
+                  <div className="p-1">
+                    <h4 className="font-bold">{route.name}</h4>
+                    <Button 
+                      size="sm" 
+                      variant="ghost" 
+                      className="text-red-500 mt-2 h-6"
+                      onClick={() => deleteRoute(route.id)}
+                    >
+                      <Trash2 className="w-3 h-3 mr-1" />
+                      Delete
+                    </Button>
+                  </div>
+                </Popup>
+              </Polyline>
+            </Fragment>
           ))}
 
           {activeRoutePoints.length > 0 && (
-            <Polyline 
-              positions={activeRoutePoints} 
-              color="#fb923c" 
-              dashArray="5, 10" 
-            />
+            <>
+              <Polyline
+                positions={activeRoutePoints}
+                pathOptions={{
+                  color: "#fb923c",
+                  weight: 8.4,
+                  opacity: 0.7,
+                  lineJoin: "round",
+                  lineCap: "round",
+                }}
+                interactive={false}
+              />
+              <Polyline
+                positions={activeRoutePoints}
+                pathOptions={{
+                  color: "#fb923c",
+                  weight: 2.2,
+                  opacity: 0.98,
+                  dashArray: "7, 9",
+                  lineJoin: "round",
+                  lineCap: "round",
+                }}
+              />
+            </>
           )}
 
           {/* Show temporary markers for active route points */}

@@ -7,92 +7,238 @@
   "topics": [
     {
       "topic": "campus_dormitories",
-      "responses": {
-        "en": [
-          "BukSU provides on-campus dormitory facilities for students.",
-          "Separate dormitories are available for male and female students.",
-          "Dormitory policies are strictly implemented to ensure safety and proper accommodation.",
-          "I recommend contacting the dormitory office for availability and application requirements."
-        ],
-        "ceb": [
-          "Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.",
-          "Adunay separate dormitories alang sa lalaki ug babae.",
-          "Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.",
-          "Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements."
-        ]
-      }
-    },
-    {
-      "topic": "number_of_dormitories",
-      "responses": {
-        "en": [
-          "Bukidnon State University currently has 3 existing dormitories, 2 for males, which are the Mahogany and Kilala dorms, and 1 for females, which is the Rubia dorm."
-        ],
-        "ceb": [
-          "Ang Bukidnon State University karon adunay tulo 3 ka dormitoryo: duha 2 para sa lalaki, mao ang Mahogany ug Kilala dorms, ug usa 1 para sa babaye, mao ang Rubia dorm."
-        ]
-      }
-    },
-    {
-      "topic": "dormitory_pros_cons",
-      "responses": {
-        "en": [
-          "Living in BukSU dormitories provides several benefits, including affordable housing, campus security, and convenient access to university facilities.",
-          "Dormitories often include basic utilities such as electricity and internet access.",
-          "However, residents must follow dormitory rules, including curfew policies and participation in required activities.",
-          "Certain restrictions may also apply depending on dormitory regulations.",
-          "Dormitory living is recommended for students who prefer convenience and campus accessibility."
-        ],
-        "ceb": [
-          "Ang pagpuyo sa BukSU dormitories adunay daghang benepisyo sama sa affordable housing, campus security, ug dali nga access sa university facilities.",
-          "Kasagaran apil na ang basic utilities sama sa kuryente ug internet access.",
-          "Apan, kinahanglan sundon sa mga residente ang dormitory rules, lakip ang curfew ug required activities.",
-          "Adunay usab restrictions depende sa dormitory regulations.",
-          "Ang dormitory living maayo para sa mga estudyante nga gusto ug convenience ug duol sa campus."
-        ]
-      }
-    },
-    {
-      "topic": "buksu_dormitory_information",
-      "responses": {
-        "en": [
-          "BukSU has limited dormitory slots primarily for athletes and specific student groups.",
-          "Most students stay in private boarding houses or dormitories near the university.",
-          "Currently there are three dormitories inside BukSU known as Kilala Rubia and Mahogany."
-        ],
-        "ceb": [
-          "Naay limitado nga slots sa dormitoryo sulod sa BukSU kasagaran para sa mga atleta ug pinili nga grupo sa estudyante.",
-          "Kadaghanan sa estudyante nagpuyo sa pribado nga boarding house o dormitoryo duol sa unibersidad.",
-          "Sa karon adunay tulo ka dormitoryo sa BukSU nga Kilala Rubia ug Mahogany."
-        ]
-      }
-    },
-    {
-      "topic": "male_dorm",
-      "responses": {
-        "en": [
-          "Yes, Bukidnon State Univeristy has a Male dormitory also know as Mahogany dorm, can be found on the side of library building",
-          "I dont know why they called it mahogany its sounds like magic from japanese word, mahou = magic 🤔 but i think its from the three called magonay tree.😊"
-        ],
-        "ceb": [
-          "Oo, ang Bukidnon State University adunay male dormitory nga nailhan usab nga Mahogany dorm, makit-an sa kilid sa library building",
-          "Wala ko kahibalo nganong gitawag kini og Mahogany, murag magic gikan sa Japanese word nga mahou = magic 🤔 pero siguro gikan kini sa kahoy nga gitawag og magonay tree.😊"
-        ]
-      }
-    },
-    {
-      "topic": "female_dorm",
-      "responses": {
-        "en": [
-         "Bukidnon State University female dorm, also known as Rubia Dormitory this dorm only intended for FEMALES no other than that.",
-         "I don’t know why they call it Rubia. The word 'Rubia' is from Spanish; it refers to a girl with blonde hair, so I think that’s why they called it Rubia, since the building has a blonde color 🙃. But those are just my opinions 😊"
-        ],
-        "ceb": [
-          "Bukidnon State University female dorm, nailhan usab nga Rubia Dormitory kani nga dorm paralamang sa mga BABAE wala nay lain.",
-          "Wala ko kahibalo nganong gitawag kini og Rubia. Ang pulong nga 'Rubia' gikan sa Spanish; nagpasabot kini og babaye nga adunay blonde nga buhok, mao siguro nganong gitawag kini og Rubia, kay ang building blonde ang kolor 🙃. Pero kana ra akong opinyon 😊"
-        ]
-      }
+      "subject_key": "campus_dormitories",
+      "subject_type": "facility",
+      "subject_terms": [
+        "dormitory",
+        "dormitories",
+        "dorm",
+        "dorms",
+        "buksu dormitory",
+        "campus dormitory",
+        "mahogany dorm",
+        "kilala dorm",
+        "rubia dorm",
+        "male dorm",
+        "female dorm",
+        "boarding house"
+      ],
+      "subtopics": [
+        {
+          "responses": {
+            "en": [
+              "BukSU provides on-campus dormitory facilities for students.",
+              "Separate dormitories are available for male and female students.",
+              "Dormitory policies are strictly implemented to ensure safety and proper accommodation.",
+              "I recommend contacting the dormitory office for availability and application requirements."
+            ],
+            "ceb": [
+              "Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.",
+              "Adunay separate dormitories alang sa lalaki ug babae.",
+              "Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.",
+              "Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements."
+            ]
+          },
+          "topic": "campus_dormitories",
+          "intent": "campus_dormitories",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "does buksu have dormitory",
+              "buksu dormitory information",
+              "campus dormitories",
+              "dormitory info"
+            ]
+          },
+          "subject_type": "facility",
+          "subject_key": "campus_dormitories",
+          "subject_terms": [
+            "dormitory",
+            "dormitories",
+            "dorm",
+            "dorms",
+            "campus dormitory",
+            "buksu dormitory",
+            "mahogany dorm",
+            "rubia dorm",
+            "kilala dorm"
+          ],
+          "display_name": "Campus Dormitories Answer Topic"
+        },
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University currently has 3 existing dormitories, 2 for males, which are the Mahogany and Kilala dorms, and 1 for females, which is the Rubia dorm."
+            ],
+            "ceb": [
+              "Ang Bukidnon State University karon adunay tulo 3 ka dormitoryo: duha 2 para sa lalaki, mao ang Mahogany ug Kilala dorms, ug usa 1 para sa babaye, mao ang Rubia dorm."
+            ]
+          },
+          "topic": "number_of_dormitories",
+          "intent": "number_of_dormitories",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "how many dormitories does buksu have",
+              "number of dormitories",
+              "how many dorms are in buksu"
+            ]
+          },
+          "subject_type": "facility",
+          "subject_key": "campus_dormitories",
+          "subject_terms": [
+            "dormitory",
+            "dormitories",
+            "dorm",
+            "dorms",
+            "campus dormitory",
+            "buksu dormitory",
+            "mahogany dorm",
+            "rubia dorm",
+            "kilala dorm"
+          ],
+          "display_name": "Number Of Dormitories"
+        },
+        {
+          "responses": {
+            "en": [
+              "Living in BukSU dormitories provides several benefits, including affordable housing, campus security, and convenient access to university facilities.",
+              "Dormitories often include basic utilities such as electricity and internet access.",
+              "However, residents must follow dormitory rules, including curfew policies and participation in required activities.",
+              "Certain restrictions may also apply depending on dormitory regulations.",
+              "Dormitory living is recommended for students who prefer convenience and campus accessibility."
+            ],
+            "ceb": [
+              "Ang pagpuyo sa BukSU dormitories adunay daghang benepisyo sama sa affordable housing, campus security, ug dali nga access sa university facilities.",
+              "Kasagaran apil na ang basic utilities sama sa kuryente ug internet access.",
+              "Apan, kinahanglan sundon sa mga residente ang dormitory rules, lakip ang curfew ug required activities.",
+              "Adunay usab restrictions depende sa dormitory regulations.",
+              "Ang dormitory living maayo para sa mga estudyante nga gusto ug convenience ug duol sa campus."
+            ]
+          },
+          "topic": "dormitory_pros_cons",
+          "intent": "dormitory_pros_cons",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "pros and cons of dormitory",
+              "benefits of buksu dormitory",
+              "is dormitory good"
+            ]
+          },
+          "subject_type": "facility",
+          "subject_key": "campus_dormitories",
+          "subject_terms": [
+            "dormitory",
+            "dormitories",
+            "dorm",
+            "dorms",
+            "campus dormitory",
+            "buksu dormitory",
+            "mahogany dorm",
+            "rubia dorm",
+            "kilala dorm"
+          ],
+          "display_name": "Dormitory Pros Cons"
+        },
+        {
+          "responses": {
+            "en": [
+              "BukSU has limited dormitory slots primarily for athletes and specific student groups.",
+              "Most students stay in private boarding houses or dormitories near the university.",
+              "Currently there are three dormitories inside BukSU known as Kilala Rubia and Mahogany."
+            ],
+            "ceb": [
+              "Naay limitado nga slots sa dormitoryo sulod sa BukSU kasagaran para sa mga atleta ug pinili nga grupo sa estudyante.",
+              "Kadaghanan sa estudyante nagpuyo sa pribado nga boarding house o dormitoryo duol sa unibersidad.",
+              "Sa karon adunay tulo ka dormitoryo sa BukSU nga Kilala Rubia ug Mahogany."
+            ]
+          },
+          "topic": "buksu_dormitory_information",
+          "intent": "buksu_dormitory_information",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "who can stay in buksu dormitory",
+              "buksu dormitory slots",
+              "dormitory availability"
+            ]
+          },
+          "subject_type": "facility",
+          "subject_key": "campus_dormitories",
+          "subject_terms": [
+            "dormitory",
+            "dormitories",
+            "dorm",
+            "dorms",
+            "campus dormitory",
+            "buksu dormitory",
+            "mahogany dorm",
+            "rubia dorm",
+            "kilala dorm"
+          ],
+          "display_name": "BukSU Dormitory Information"
+        },
+        {
+          "responses": {
+            "en": [
+              "Yes, Bukidnon State University has a male dormitory known as Mahogany Dorm. It is located beside the Library Building."
+            ],
+            "ceb": [
+              "Oo, ang Bukidnon State University adunay male dormitory nga nailhan nga Mahogany Dorm. Nahimutang kini sa kilid sa Library Building."
+            ]
+          },
+          "topic": "male_dorm",
+          "intent": "male_dorm",
+          "context_topic": "location",
+          "metadata": {
+            "phrases": [
+              "where is the male dorm",
+              "where is mahogany dorm",
+              "buksu male dormitory"
+            ]
+          },
+          "subject_type": "facility",
+          "subject_key": "male_dormitory",
+          "subject_terms": [
+            "male dorm",
+            "male dormitory",
+            "mahogany dorm",
+            "mahogany dormitory"
+          ],
+          "display_name": "Male Dorm"
+        },
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University has a female dormitory known as Rubia Dormitory. This dormitory is intended for female students."
+            ],
+            "ceb": [
+              "Ang Bukidnon State University adunay female dormitory nga nailhan nga Rubia Dormitory. Kini nga dormitoryo para sa mga babaye nga estudyante."
+            ]
+          },
+          "topic": "female_dorm",
+          "intent": "female_dorm",
+          "context_topic": "location",
+          "metadata": {
+            "phrases": [
+              "where is the female dorm",
+              "where is rubia dorm",
+              "buksu female dormitory"
+            ]
+          },
+          "subject_type": "facility",
+          "subject_key": "female_dormitory",
+          "subject_terms": [
+            "female dorm",
+            "female dormitory",
+            "rubia dorm",
+            "rubia dormitory"
+          ],
+          "display_name": "Female Dorm"
+        }
+      ],
+      "display_name": "Campus Dormitories Topic Group"
     }
-    
   ]
 }

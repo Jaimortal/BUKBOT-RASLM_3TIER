@@ -2,17 +2,67 @@ version: "3.1"
 
 rules:
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Route location questions
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+    - intent: ask_location
+    - action: action_main_router
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: Route schedule questions
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+    - intent: ask_schedule
+    - action: action_main_router
 
-- rule: follow-up rule
+- rule: Route fee questions
   steps:
-    - intent: ask_more
-    - action: action_reply_from_json
+    - intent: ask_fee
+    - action: action_main_router
+
+- rule: Route requirement questions
+  steps:
+    - intent: ask_requirement
+    - action: action_main_router
+
+- rule: Route process questions
+  steps:
+    - intent: ask_process
+    - action: action_main_router
+
+- rule: Route general info questions
+  steps:
+    - intent: ask_general_info
+    - action: action_main_router
+
+- rule: Route contact questions
+  steps:
+    - intent: ask_contact
+    - action: action_main_router
+
+- rule: Route availability questions
+  steps:
+    - intent: ask_availability
+    - action: action_main_router
+
+- rule: Route document questions
+  steps:
+    - intent: ask_document
+    - action: action_main_router
+
+- rule: Route follow-up questions
+  steps:
+    - intent: ask_follow_up
+    - action: action_main_router
+
+- rule: Route smalltalk
+  steps:
+    - intent: smalltalk
+    - action: action_main_router
+
+- rule: Say goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: Answer bot challenge
+  steps:
+    - intent: bot_challenge
+    - action: utter_iamabot

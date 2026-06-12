@@ -4,9 +4,21 @@ import { storage } from "../storage";
 import type { InsertConversationLog } from "@shared/schema";
 
 type AnswerValue = string | string[] | Record<string, unknown> | undefined;
+const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   Boolean(value) && typeof value === "object" && !Array.isArray(value);
+
+const normalizeRoutes = (routes: unknown) =>
+  Array.isArray(routes)
+    ? routes.map((route: any, index: number) => ({
+        name: String(route?.name || `Route ${index + 1}`),
+        points: Array.isArray(route?.points) ? route.points : [],
+        color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+        route_order: Number(route?.route_order) || index + 1,
+        route_label: String(route?.route_label || `Route ${index + 1}`),
+      }))
+    : [];
 
 const pickStringFromValue = (
   value: unknown,
@@ -100,10 +112,38 @@ export class ChatController {
       
       // Extract ALL images from all responses
       const allImageUrls: string[] = [];
+      const allSuggestions: Array<{ label: string; payload: string }> = [];
+      const allChoiceGroups: Array<{ title: string; items: Array<{ label: string; payload: string }> }> = [];
       
       for (const response of result) {
         if (!isFallback && response.custom?.mapData) {
           allMapDataFromRasa.push(response.custom.mapData);
+        }
+        if (Array.isArray(response.custom?.suggestions)) {
+          response.custom.suggestions.forEach((suggestion: any) => {
+            const label = typeof suggestion?.label === "string" ? suggestion.label.trim() : "";
+            const payload = typeof suggestion?.payload === "string" ? suggestion.payload.trim() : label;
+            if (label) {
+              allSuggestions.push({ label, payload });
+            }
+          });
+        }
+        if (Array.isArray(response.custom?.choiceGroups)) {
+          response.custom.choiceGroups.forEach((group: any) => {
+            const title = typeof group?.title === "string" ? group.title.trim() : "";
+            const items = Array.isArray(group?.items)
+              ? group.items
+                  .map((item: any) => {
+                    const label = typeof item?.label === "string" ? item.label.trim() : "";
+                    const payload = typeof item?.payload === "string" ? item.payload.trim() : label;
+                    return label ? { label, payload } : null;
+                  })
+                  .filter(Boolean)
+              : [];
+            if (title && items.length > 0) {
+              allChoiceGroups.push({ title, items });
+            }
+          });
         }
         // Extract images from response
         if (response.image) {
@@ -164,7 +204,7 @@ export class ChatController {
           ...(coords ? { coordinates: coords } : {}),
           ...(raw.mapId ? { mapId: raw.mapId } : {}),
           ...(Array.isArray(pins) ? { pins } : {}),
-          ...(Array.isArray(raw.routes) ? { routes: raw.routes } : {}),
+          ...(Array.isArray(raw.routes) ? { routes: normalizeRoutes(raw.routes) } : {}),
         });
       }
 
@@ -177,7 +217,9 @@ export class ChatController {
         mapData: formattedMapData,
         mapDataList: formattedMapDataList.length > 0 ? formattedMapDataList : undefined,
         imageUrls: allImageUrls.length > 0 ? allImageUrls : undefined,
-        imageUrl: allImageUrls.length > 0 ? allImageUrls[0] : undefined
+        imageUrl: allImageUrls.length > 0 ? allImageUrls[0] : undefined,
+        suggestions: allSuggestions.length > 0 ? allSuggestions : undefined,
+        choiceGroups: allChoiceGroups.length > 0 ? allChoiceGroups : undefined
       });
     } catch (error) {
       console.error("Chat controller error:", error);

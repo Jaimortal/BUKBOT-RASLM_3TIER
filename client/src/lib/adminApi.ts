@@ -344,6 +344,123 @@ export async function fetchBotTopics(): Promise<BotCategory[]> {
 
 // ─── Super Intents API ────────────────────────────────────────────────────────
 
+// Knowledge Manager API
+export interface KnowledgeRecord {
+  id: string;
+  file: string;
+  path: number[];
+  parentTopic: string | null;
+  parentSubjectKey: string | null;
+  topic: string;
+  intent: string | null;
+  contextTopic: string | null;
+  displayName: string;
+  subjectKey: string | null;
+  subjectType: string | null;
+  subjectTerms: string[];
+  responses: { en: string[]; ceb: string[] };
+  phrases: string[];
+  images: string[];
+  map: any;
+  mapData: any;
+  pins: any[];
+  routes: any[];
+  mapRef: string;
+  hasResponses: boolean;
+  hasMap: boolean;
+  hasMapRef: boolean;
+  subtopicCount: number;
+}
+
+export interface KnowledgeListResult {
+  records: KnowledgeRecord[];
+  files: { file: string; count: number }[];
+}
+
+export async function fetchKnowledgeRecords(): Promise<KnowledgeListResult> {
+  try {
+    const response = await fetch(`${API_BASE}/knowledge`, {
+      headers: getAuthHeaders(),
+    });
+    const result = await response.json();
+    return result.success ? { records: result.records || [], files: result.files || [] } : { records: [], files: [] };
+  } catch (error) {
+    console.error('Error fetching knowledge records:', error);
+    return { records: [], files: [] };
+  }
+}
+
+export async function updateKnowledgeRecord(
+  file: string,
+  recordData: Partial<KnowledgeRecord> & { path: number[]; topic: string }
+): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/knowledge/${encodeURIComponent(file)}/topic`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(recordData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error updating knowledge record:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function createKnowledgeParent(
+  file: string,
+  parentData: {
+    topic: string;
+    displayName?: string;
+    subjectKey: string;
+    subjectType?: string;
+    subjectTerms?: string[];
+  }
+): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/knowledge/${encodeURIComponent(file)}/parent`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(parentData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating parent subject:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function createKnowledgeSubtopic(
+  file: string,
+  subtopicData: {
+    parentPath: number[];
+    topic: string;
+    displayName?: string;
+    intent?: string;
+    contextTopic?: string;
+    responses: { en: string[]; ceb: string[] };
+    phrases?: string[];
+    images?: string[];
+    mapRef?: string;
+    map?: any;
+    mapData?: any;
+    pins?: any[];
+    routes?: any[];
+  }
+): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/knowledge/${encodeURIComponent(file)}/subtopic`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(subtopicData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating subtopic:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
 export interface SuperIntentMeta {
   file: string;
   intent: string;
@@ -364,6 +481,8 @@ export interface TopicRoute {
   name: string;
   points: [number, number][];
   color?: string;
+  route_order?: number;
+  route_label?: string;
 }
 
 export interface TopicData {
