@@ -8,7 +8,17 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Edit2, Plus, Trash2, Search, Zap, ZapOff } from "lucide-react";
@@ -23,6 +33,9 @@ export function AdminFAQs() {
   const [searchTerm, setSearchTerm] = useState("");
   const [editingFaq, setEditingFaq] = useState<Partial<FaqConfig> | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isPayloadDialogOpen, setIsPayloadDialogOpen] = useState(false);
+  const [showPayloadConfirm, setShowPayloadConfirm] = useState(false);
+  const [payloadDraft, setPayloadDraft] = useState("");
   const [activeTab, setActiveTab] = useState<string>("responses.json");
 
   // Fetch Faq Configs (DB)
@@ -56,6 +69,21 @@ export function AdminFAQs() {
     onError: () => toast({ title: "Failed to remove FAQ", variant: "destructive" })
   });
 
+  const payloadMutation = useMutation({
+    mutationFn: saveFaq,
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["adminFaqs"] });
+      setEditingFaq(prev => prev ? { ...prev, payload: variables.payload } : prev);
+      setIsPayloadDialogOpen(false);
+      setShowPayloadConfirm(false);
+      toast({ title: "Payload updated" });
+    },
+    onError: () => {
+      toast({ title: "Failed to update payload", variant: "destructive" });
+      setShowPayloadConfirm(false);
+    }
+  });
+
   const toggleEnabled = (faq: FaqConfig, checked: boolean) => {
     saveMutation.mutate({ ...faq, enabled: checked });
   };
@@ -76,6 +104,37 @@ export function AdminFAQs() {
       });
     }
     setIsDialogOpen(true);
+  };
+
+  const openPayloadEditor = () => {
+    if (!editingFaq) return;
+    setPayloadDraft(editingFaq.payload || "");
+    setIsPayloadDialogOpen(true);
+  };
+
+  const confirmPayloadUpdate = () => {
+    if (!editingFaq) return;
+    const nextPayload = payloadDraft.trim();
+    if (!nextPayload) {
+      toast({ title: "Payload cannot be empty", variant: "destructive" });
+      return;
+    }
+
+    const updatedFaq = {
+      ...editingFaq,
+      payload: nextPayload,
+      subtitle: editingFaq.subtitle || "",
+      sortOrder: editingFaq.sortOrder ?? 0,
+    } as FaqConfig;
+
+    if (editingFaq.id) {
+      payloadMutation.mutate(updatedFaq);
+    } else {
+      setEditingFaq(updatedFaq);
+      setIsPayloadDialogOpen(false);
+      setShowPayloadConfirm(false);
+      toast({ title: "Payload updated locally" });
+    }
   };
 
   const handleDelete = (id: string) => {
@@ -259,6 +318,9 @@ export function AdminFAQs() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>{editingFaq?.id ? 'Customize FAQ Card' : 'Add to FAQ'}</DialogTitle>
+            <DialogDescription>
+              Edit the visible quick chat card. Payload editing is hidden under the footer for advanced fixes only.
+            </DialogDescription>
           </DialogHeader>
           
           {editingFaq && (
@@ -273,65 +335,103 @@ export function AdminFAQs() {
                   <p className="text-xs text-muted-foreground mt-1">What users will see on the button.</p>
                </div>
                
-               <div>
-                  <Label>Subtitle (Optional)</Label>
-                  <Input 
-                    value={editingFaq.subtitle || ""} 
-                    onChange={e => setEditingFaq({...editingFaq, subtitle: e.target.value})}
-                    placeholder="e.g., How to apply for admissions"
-                  />
-               </div>
                
-               <div className="flex gap-4">
-                 <div className="flex-1">
+               <div>
                     <Label>Icon / Emoji</Label>
                     <Input 
                       value={editingFaq.icon || ""} 
                       onChange={e => setEditingFaq({...editingFaq, icon: e.target.value})}
                       placeholder="e.g., 🎓"
                     />
-                 </div>
-                 <div className="flex-1">
-                    <Label>Sort Order</Label>
-                    <Input 
-                      type="number"
-                      value={editingFaq.sortOrder || 0} 
-                      onChange={e => setEditingFaq({...editingFaq, sortOrder: parseInt(e.target.value) || 0})}
-                    />
-                 </div>
                </div>
                
                <div className="mt-4 bg-muted p-4 rounded-xl border border-primary/10">
-                 <Label className="text-xs text-muted-foreground mb-2 block uppercase tracking-wider font-semibold">Live Carousel Preview:</Label>
-                 <div className="flex flex-col bg-card border text-card-foreground rounded-2xl p-3 shadow-sm text-left items-start max-w-[160px] mx-auto">
-                    <div className="h-10 w-10 flex shrink-0 items-center justify-center rounded-full bg-primary/10 mb-3">
-                      <span className="text-xl">{editingFaq.icon || "📄"}</span>
+                 <Label className="text-xs text-muted-foreground mb-3 block uppercase tracking-wider font-semibold">Client quick chat preview</Label>
+                 <div className="flex justify-center">
+                    <div className="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 text-gray-700 rounded-full px-3 py-1.5 shadow-sm whitespace-nowrap h-9 max-w-full">
+                      <span className="text-[13px]">{editingFaq.icon || "✨"}</span>
+                      <span className="font-medium text-[13px] truncate max-w-[220px]">{editingFaq.displayLabel || "Label"}</span>
                     </div>
-                    <p className="font-semibold text-sm leading-tight text-primary">
-                      {editingFaq.displayLabel || "Label"}
-                    </p>
-                    {editingFaq.subtitle && (
-                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2 leading-relaxed">
-                        {editingFaq.subtitle}
-                      </p>
-                    )}
                  </div>
-               </div>
+                 </div>
 
                <Button 
-                onClick={() => saveMutation.mutate(editingFaq as FaqConfig)}
+                onClick={() => saveMutation.mutate({ ...editingFaq, subtitle: editingFaq.subtitle || "", sortOrder: editingFaq.sortOrder ?? 0 } as FaqConfig)}
                 className="w-full mt-4"
                 disabled={!editingFaq.displayLabel}
                >
                  {editingFaq.id ? "Save Changes" : "Save to FAQs"}
                </Button>
-               <p className="text-center text-[10px] text-muted-foreground">
-                 System Payload Bound securely to: <code className="bg-muted px-1 py-0.5 rounded text-[9px]">{editingFaq.payload}</code>
-               </p>
+               <button
+                type="button"
+                onDoubleClick={openPayloadEditor}
+                title="Double-click to edit payload"
+                className="block w-full text-center text-[10px] text-muted-foreground hover:text-blue-700 transition-colors"
+               >
+                 payload: <code className="bg-muted px-1 py-0.5 rounded text-[9px]">{editingFaq.payload}</code>
+               </button>
              </div>
           )}
         </DialogContent>
       </Dialog>
+
+      <Dialog open={isPayloadDialogOpen} onOpenChange={setIsPayloadDialogOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Edit FAQ payload</DialogTitle>
+            <DialogDescription>
+              The payload is the exact message sent to Rasa when users click this FAQ. Use the default unless the current payload is wrong.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            <div>
+              <Label>Payload</Label>
+              <Input
+                value={payloadDraft}
+                onChange={(event) => setPayloadDraft(event.target.value)}
+                placeholder="where is OVPCAS Office"
+                className="font-mono text-xs"
+              />
+              <p className="mt-1 text-xs text-amber-700">
+                Incorrect payloads can route the button to the wrong answer.
+              </p>
+            </div>
+
+            <div className="flex justify-end gap-2">
+              <Button variant="outline" onClick={() => setIsPayloadDialogOpen(false)}>Cancel</Button>
+              <Button
+                className="bg-blue-600 hover:bg-blue-700"
+                onClick={() => setShowPayloadConfirm(true)}
+                disabled={!payloadDraft.trim() || payloadMutation.isPending}
+              >
+                Save payload
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <AlertDialog open={showPayloadConfirm} onOpenChange={setShowPayloadConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Modify this FAQ payload?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to modify the payload? If the payload is incorrect, this FAQ may send users to the wrong chatbot answer.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={payloadMutation.isPending}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmPayloadUpdate}
+              disabled={payloadMutation.isPending}
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              Confirm and save
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

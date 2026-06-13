@@ -897,8 +897,12 @@ LOCATION_ALIASES = {
 
     # === OVPCAS Office Aliases ===
     "ovpcas office": "OVPCAS Office",
-    "ovpcas": "OVPCAS Office",
+    "ovpcasss": "OVPCAS Office",
+    "ovpcasss office": "OVPCAS Office",
     "ovpcass": "OVPCAS Office",
+    "o v p c a s office": "OVPCAS Office",
+    "o v p c a s s s office": "OVPCAS Office",
+    "ovpcas": "OVPCAS Office",
     "office of the vice president for cultural arts sports and student services": "OVPCAS Office",
     "office of the vice president of cultural arts sports and student services": "OVPCAS Office",
 

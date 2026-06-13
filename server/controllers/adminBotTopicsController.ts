@@ -46,10 +46,12 @@ function formatLabel(topicKey: string): string {
   if (!topicKey) return "Unknown Topic";
   return topicKey
     .replace(/[_-]/g, ' ')
-    .replace(/([A-Z])/g, ' $1')
     .split(' ')
     .filter(word => word.length > 0)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map(word => {
+      if (/^[A-Z0-9]{2,}$/.test(word)) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
     .join(' ')
     .trim();
 }
@@ -122,7 +124,7 @@ function buildKnowledgePayload(topicKey: string, item: any): string {
 }
 
 function buildLocationPayload(locationName: string): string {
-  return `where is ${formatLabel(locationName)}`;
+  return `where is ${locationName}`;
 }
 
 export class AdminBotTopicsController {

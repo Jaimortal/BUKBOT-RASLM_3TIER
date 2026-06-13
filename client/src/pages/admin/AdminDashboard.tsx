@@ -65,7 +65,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import InteractiveMap from "@/components/InteractiveMap";
 import { AdminFAQs } from "@/components/admin/AdminFAQs";
-import { AdminSuperIntents } from "@/components/admin/AdminSuperIntents";
 import { AdminGeneralResponses } from "@/components/admin/AdminGeneralResponses";
 import { AdminKnowledgeManager } from "@/components/admin/AdminKnowledgeManager";
 import { AdminLocations } from "@/components/admin/AdminLocations";
@@ -80,7 +79,7 @@ export default function AdminDashboard() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
   const [showSyncDialog, setShowSyncDialog] = useState(false);
-  const [responsesSubTab, setResponsesSubTab] = useState<"knowledge" | "locations" | "super-intents">("knowledge");
+  const [responsesSubTab, setResponsesSubTab] = useState<"knowledge" | "locations">("knowledge");
   
   const DEFAULT_PRIVILEGES: UserPrivileges = {
     chatEnabled: true,
@@ -357,7 +356,6 @@ export default function AdminDashboard() {
                     <Tabs value={responsesSubTab} onValueChange={(v) => setResponsesSubTab(v as any)} className="w-full sm:w-auto">
                       <TabsList className="bg-slate-100 p-1">
                         <TabsTrigger value="knowledge" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Knowledge Manager</TabsTrigger>
-                        <TabsTrigger value="super-intents" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Super Intents</TabsTrigger>
                         <TabsTrigger value="locations" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Locations</TabsTrigger>
                       </TabsList>
                     </Tabs>
@@ -375,8 +373,6 @@ export default function AdminDashboard() {
                 <CardContent className="p-0">
                   {responsesSubTab === "knowledge" ? (
                     <div className="p-4"><AdminKnowledgeManager /></div>
-                  ) : responsesSubTab === "super-intents" ? (
-                    <div className="p-4"><AdminSuperIntents /></div>
                   ) : (
                     <div className="p-4"><AdminLocations /></div>
                   )}

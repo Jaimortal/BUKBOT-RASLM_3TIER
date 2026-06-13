@@ -1666,9 +1666,9 @@
           "responses": {
             "en": [
               "here are the board courses that BukSU Offers.",
-              "<b>COLLEGE OF BUSINESS</b>",
+              "COLLEGE OF BUSINESS",
               "Bachelor of Science in Accountancy",
-              "<b>COLLEGE OF EDUCATION</b>",
+              "COLLEGE OF EDUCATION",
               "Bachelor of Early Childhood Education",
               "Bachelor of Elementary Education",
               "Bachelor of Physical Education",
@@ -1677,16 +1677,16 @@
               "Bachelor of Secondary Education Major in Mathematics",
               "Bachelor of Secondary Education Major in Social Studies",
               "Bachelor of Secondary Education Major in Science",
-              "<b>COLLEGE OF TECHNOLOGIES</b>",
+              "COLLEGE OF TECHNOLOGIES",
               "Bachelor of Science in Food Technology",
-              "<b>COLLEGE OF NURSING</b>",
+              "COLLEGE OF NURSING",
               "Bachelor of Science in Nursing"
             ],
             "ceb": [
               "Ania ang mga board courses nga gi-offer sa BukSU.",
-              "<b>COLLEGE OF BUSINESS</b>",
+              "COLLEGE OF BUSINESS",
               "Bachelor of Science in Accountancy",
-              "<b>COLLEGE OF EDUCATION</b>",
+              "COLLEGE OF EDUCATION",
               "Bachelor of Early Childhood Education",
               "Bachelor of Elementary Education",
               "Bachelor of Physical Education",
@@ -1695,9 +1695,9 @@
               "Bachelor of Secondary Education Major in Mathematics",
               "Bachelor of Secondary Education Major in Social Studies",
               "Bachelor of Secondary Education Major in Science",
-              "<b>COLLEGE OF TECHNOLOGIES</b>",
+              "COLLEGE OF TECHNOLOGIES",
               "Bachelor of Science in Food Technology",
-              "<b>COLLEGE OF NURSING</b>",
+              "COLLEGE OF NURSING",
               "Bachelor of Science in Nursing"
             ]
           },
@@ -1708,10 +1708,7 @@
               "buksu board courses"
             ]
           },
-          "display_name": "BukSU Board Courses",
-          "images": [],
-          "pins": [],
-          "routes": []
+          "display_name": "BukSU Board Courses"
         },
         {
           "topic": "buksu_masters_courses",

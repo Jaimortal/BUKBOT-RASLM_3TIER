@@ -162,22 +162,29 @@ function breadcrumb(record: KnowledgeRecord, byId: Map<string, KnowledgeRecord>)
   return crumbs;
 }
 
-function useTextareaBoldShortcut(value: string, setValue: (value: string) => void) {
-  return (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (!event.ctrlKey || event.key.toLowerCase() !== "b") return;
-    event.preventDefault();
-    const target = event.currentTarget;
-    const start = target.selectionStart;
-    const end = target.selectionEnd;
-    const selected = value.slice(start, end) || "bold text";
-    const nextValue = `${value.slice(0, start)}<b>${selected}</b>${value.slice(end)}`;
-    setValue(nextValue);
-    window.requestAnimationFrame(() => {
-      target.focus();
-      target.selectionStart = start + 3;
-      target.selectionEnd = start + 3 + selected.length;
-    });
-  };
+function splitEditableLines(value: string): string[] {
+  const lines = value.split("\n");
+  return lines.length ? lines : [""];
+}
+
+function normalizeRichLine(value: string): string {
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = value
+    .replace(/<strong\b[^>]*>/gi, "<b>")
+    .replace(/<\/strong>/gi, "</b>")
+    .replace(/<span\b[^>]*style=["'][^"']*font-weight:\s*(bold|700)[^"']*["'][^>]*>/gi, "<b>")
+    .replace(/<\/span>/gi, "</b>");
+
+  wrapper.querySelectorAll("*").forEach((node) => {
+    if (node.tagName.toLowerCase() !== "b") {
+      node.replaceWith(document.createTextNode(node.textContent || ""));
+    }
+  });
+
+  return wrapper.innerHTML
+    .replace(/&nbsp;/g, " ")
+    .replace(/<br\s*\/?>/gi, "")
+    .trim();
 }
 
 function ResponseLinesEditor({
@@ -189,16 +196,43 @@ function ResponseLinesEditor({
   value: string;
   onChange: (value: string) => void;
 }) {
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const handleBold = useTextareaBoldShortcut(value, onChange);
+  const editorRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const lines = splitEditableLines(value);
+
+  function updateLine(index: number, nextLine: string) {
+    const next = [...lines];
+    next[index] = normalizeRichLine(nextLine);
+    onChange(next.join("\n"));
+  }
 
   function addLine() {
-    onChange(value ? `${value}\n` : "");
-    window.requestAnimationFrame(() => textareaRef.current?.focus());
+    const next = [...lines, ""];
+    onChange(next.join("\n"));
+    window.requestAnimationFrame(() => editorRefs.current[next.length - 1]?.focus());
+  }
+
+  function removeLine(index: number) {
+    const next = lines.filter((_, lineIndex) => lineIndex !== index);
+    onChange((next.length ? next : [""]).join("\n"));
   }
 
   function removeEmptyLines() {
-    onChange(toLines(value).join("\n"));
+    const next = lines.map((line) => normalizeRichLine(line)).filter(Boolean);
+    onChange((next.length ? next : [""]).join("\n"));
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>, index: number) {
+    if (event.ctrlKey && event.key.toLowerCase() === "b") {
+      event.preventDefault();
+      document.execCommand("bold");
+      updateLine(index, event.currentTarget.innerHTML);
+      return;
+    }
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addLine();
+    }
   }
 
   return (
@@ -210,14 +244,40 @@ function ResponseLinesEditor({
           <Button type="button" size="sm" variant="outline" onClick={removeEmptyLines}>Clean empty</Button>
         </div>
       </div>
-      <Textarea
-        ref={textareaRef}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        onKeyDown={handleBold}
-        className="min-h-72 font-mono text-xs"
-      />
-      <p className="text-[11px] text-muted-foreground">Each line becomes one chatbot bubble. Press Ctrl+B to wrap selected text in &lt;b&gt;bold&lt;/b&gt;.</p>
+      <div className="max-h-72 space-y-2 overflow-y-auto rounded-md border bg-slate-50 p-2">
+        {lines.map((line, index) => (
+          <div key={`${label}-${index}`} className="rounded-md border bg-white p-2 shadow-sm">
+            <div className="mb-1 flex items-center justify-between gap-2">
+              <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Line {index + 1}</span>
+              {lines.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeLine(index)}
+                  className="text-[10px] text-red-500 hover:text-red-700"
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+            <div
+              ref={(node) => { editorRefs.current[index] = node; }}
+              contentEditable
+              suppressContentEditableWarning
+              className="min-h-16 rounded border border-slate-200 bg-white px-3 py-2 text-sm leading-relaxed outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 [&_b]:font-bold"
+              onBlur={(event) => updateLine(index, event.currentTarget.innerHTML)}
+              onKeyDown={(event) => handleKeyDown(event, index)}
+              onPaste={(event) => {
+                event.preventDefault();
+                const text = event.clipboardData.getData("text/plain");
+                document.execCommand("insertText", false, text);
+                updateLine(index, event.currentTarget.innerHTML);
+              }}
+              dangerouslySetInnerHTML={{ __html: line }}
+            />
+          </div>
+        ))}
+      </div>
+      <p className="text-[11px] text-muted-foreground">Each box becomes one chatbot bubble. Select text and press Ctrl+B to bold or unbold it.</p>
     </div>
   );
 }

@@ -1603,10 +1603,10 @@
           "topic": "buksu_non_board_courses",
           "responses": {
             "en": [
-              "Here are the non-board courses that BukSU Offers.",
-              "<b>COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE</b>",
+              "here are the non-board courses that BukSU Offers.",
+              "COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE",
               "Bachelor of Public Administration",
-              "<b>COLLEGE OF ARTS AND SCIENCES</b>",
+              "COLLEGE OF ARTS AND SCIENCES",
               "Bachelor of Arts in Economics",
               "Bachelor of Arts in English Language",
               "Bachelor of Arts in Philosophy",
@@ -1616,10 +1616,10 @@
               "Bachelor of Science in Mathematics",
               "Bachelor of Science in Biology major in Biotechnology",
               "Bachelor of Science in Environmental Science major in Environmental Heritage Studies",
-              "<b>COLLEGE OF BUSINESS</b>",
+              "COLLEGE OF BUSINESS",
               "Bachelor of Science in Business Administration major in Financial Management",
               "Bachelor of Science in Hospitality Management",
-              "<b>COLLEGE OF TECHNOLOGIES</b>",
+              "COLLEGE OF TECHNOLOGIES",
               "Bachelor of Science in Automotive Technology",
               "Bachelor of Science in Electronics Technology",
               "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
@@ -1627,9 +1627,9 @@
             ],
             "ceb": [
               "Ania ang mga non-board courses nga gi-offer sa BukSU.",
-              "<b>COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE</b>",
+              "COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE",
               "Bachelor of Public Administration",
-              "<b>COLLEGE OF ARTS AND SCIENCES</b>",
+              "COLLEGE OF ARTS AND SCIENCES",
               "Bachelor of Arts in Economics",
               "Bachelor of Arts in English Language",
               "Bachelor of Arts in Philosophy",
@@ -1639,10 +1639,10 @@
               "Bachelor of Science in Mathematics",
               "Bachelor of Science in Biology major in Biotechnology",
               "Bachelor of Science in Environmental Science major in Environmental Heritage Studies",
-              "<b>COLLEGE OF BUSINESS</b>",
+              "COLLEGE OF BUSINESS",
               "Bachelor of Science in Business Administration major in Financial Management",
               "Bachelor of Science in Hospitality Management",
-              "<b>COLLEGE OF TECHNOLOGIES</b>",
+              "COLLEGE OF TECHNOLOGIES",
               "Bachelor of Science in Automotive Technology",
               "Bachelor of Science in Electronics Technology",
               "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
@@ -1656,19 +1656,16 @@
               "buksu non board courses"
             ]
           },
-          "display_name": "BukSU Non Board Courses",
-          "images": [],
-          "pins": [],
-          "routes": []
+          "display_name": "BukSU Non Board Courses"
         },
         {
           "topic": "buksu_board_courses",
           "responses": {
             "en": [
               "here are the board courses that BukSU Offers.",
-              "<b>COLLEGE OF BUSINESS</b>",
+              "COLLEGE OF BUSINESS",
               "Bachelor of Science in Accountancy",
-              "<b>COLLEGE OF EDUCATION</b>",
+              "COLLEGE OF EDUCATION",
               "Bachelor of Early Childhood Education",
               "Bachelor of Elementary Education",
               "Bachelor of Physical Education",
@@ -1677,16 +1674,16 @@
               "Bachelor of Secondary Education Major in Mathematics",
               "Bachelor of Secondary Education Major in Social Studies",
               "Bachelor of Secondary Education Major in Science",
-              "<b>COLLEGE OF TECHNOLOGIES</b>",
+              "COLLEGE OF TECHNOLOGIES",
               "Bachelor of Science in Food Technology",
-              "<b>COLLEGE OF NURSING</b>",
+              "COLLEGE OF NURSING",
               "Bachelor of Science in Nursing"
             ],
             "ceb": [
               "Ania ang mga board courses nga gi-offer sa BukSU.",
-              "<b>COLLEGE OF BUSINESS</b>",
+              "COLLEGE OF BUSINESS",
               "Bachelor of Science in Accountancy",
-              "<b>COLLEGE OF EDUCATION</b>",
+              "COLLEGE OF EDUCATION",
               "Bachelor of Early Childhood Education",
               "Bachelor of Elementary Education",
               "Bachelor of Physical Education",
@@ -1695,9 +1692,9 @@
               "Bachelor of Secondary Education Major in Mathematics",
               "Bachelor of Secondary Education Major in Social Studies",
               "Bachelor of Secondary Education Major in Science",
-              "<b>COLLEGE OF TECHNOLOGIES</b>",
+              "COLLEGE OF TECHNOLOGIES",
               "Bachelor of Science in Food Technology",
-              "<b>COLLEGE OF NURSING</b>",
+              "COLLEGE OF NURSING",
               "Bachelor of Science in Nursing"
             ]
           },
@@ -1708,10 +1705,7 @@
               "buksu board courses"
             ]
           },
-          "display_name": "BukSU Board Courses",
-          "images": [],
-          "pins": [],
-          "routes": []
+          "display_name": "BukSU Board Courses"
         },
         {
           "topic": "buksu_masters_courses",

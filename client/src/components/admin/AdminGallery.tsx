@@ -5,10 +5,9 @@ import {
   fetchLocations, 
   saveResponse, 
   saveLocation, 
-  fetchSuperIntents, 
-  fetchSuperIntentTopics, 
-  updateSuperIntentTopic,
-  type TopicData
+  fetchKnowledgeRecords,
+  updateKnowledgeRecord,
+  type KnowledgeRecord
 } from "@/lib/adminApi";
 import type { ResponseData, Location } from "@/types/admin";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,11 +30,11 @@ import {
 } from "@/components/ui/alert-dialog";
 
 interface GalleryTopic {
-  type: "response" | "location" | "super-intent";
-  id: string; // intent, location id, or topic key
+  type: "response" | "location" | "knowledge";
+  id: string; // intent, location id, or knowledge record id
   displayName: string;
   imageUrls: string[];
-  original: ResponseData | Location | { file: string; topic: TopicData };
+  original: ResponseData | Location | KnowledgeRecord;
 }
 
 export function AdminGallery() {
@@ -58,24 +57,9 @@ export function AdminGallery() {
     queryFn: fetchLocations,
   });
 
-  const { data: superIntentsMeta = [] } = useQuery({
-    queryKey: ["superIntentsMeta"],
-    queryFn: fetchSuperIntents,
-  });
-
-  const { data: allSuperIntentTopics = [], isLoading: loadingSuperTopics } = useQuery({
-    queryKey: ["allSuperIntentTopics", superIntentsMeta],
-    queryFn: async () => {
-      if (superIntentsMeta.length === 0) return [];
-      const results = await Promise.all(
-        superIntentsMeta.map(async (meta) => {
-          const data = await fetchSuperIntentTopics(meta.file);
-          return data ? { file: meta.file, topics: data.topics } : null;
-        })
-      );
-      return (results as any[]).filter(Boolean);
-    },
-    enabled: superIntentsMeta.length > 0,
+  const { data: knowledgeData = { records: [], files: [] }, isLoading: loadingKnowledge } = useQuery({
+    queryKey: ["knowledgeRecords"],
+    queryFn: fetchKnowledgeRecords,
   });
 
   const saveResponseMutation = useMutation({
@@ -100,10 +84,14 @@ export function AdminGallery() {
     }
   });
 
-  const updateSuperIntentMutation = useMutation({
-    mutationFn: (vars: { file: string, data: any }) => updateSuperIntentTopic(vars.file, vars.data),
+  const updateKnowledgeMutation = useMutation({
+    mutationFn: (vars: { file: string, record: KnowledgeRecord, images: string[] }) => updateKnowledgeRecord(vars.file, {
+      path: vars.record.path,
+      topic: vars.record.topic,
+      images: vars.images,
+    }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["allSuperIntentTopics"] });
+      queryClient.invalidateQueries({ queryKey: ["knowledgeRecords"] });
       toast({ title: "Updated successfully" });
     },
     onError: () => {
@@ -149,23 +137,21 @@ export function AdminGallery() {
       }
     });
 
-    allSuperIntentTopics.forEach((fileGroup: any) => {
-      fileGroup.topics.forEach((topic: TopicData) => {
-        const urls = topic.images || [];
-        if (urls.length > 0) {
-          topics.push({
-            type: "super-intent",
-            id: `${fileGroup.file}:${topic.topic}`,
-            displayName: topic.displayName || topic.topic,
-            imageUrls: urls,
-            original: { file: fileGroup.file, topic }
-          });
-        }
-      });
+    knowledgeData.records.forEach((record) => {
+      const urls = record.images || [];
+      if (urls.length > 0) {
+        topics.push({
+          type: "knowledge",
+          id: record.id,
+          displayName: record.displayName || record.topic,
+          imageUrls: urls,
+          original: record
+        });
+      }
     });
 
     return topics.sort((a, b) => a.displayName.localeCompare(b.displayName));
-  }, [responses, locations, allSuperIntentTopics]);
+  }, [responses, locations, knowledgeData.records]);
 
   const filteredTopics = useMemo(() => {
     return galleryTopics.filter(t => t.displayName.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -220,19 +206,17 @@ export function AdminGallery() {
       if (newImageUrls.length === 0) {
         setSelectedTopic(null);
       }
-    } else if (topic.type === "super-intent") {
-      const { file, topic: topicData } = topic.original as { file: string; topic: TopicData };
-      updateSuperIntentMutation.mutate({
-        file,
-        data: {
-          topic: topicData.topic,
-          images: newImageUrls
-        }
+    } else if (topic.type === "knowledge") {
+      const record = topic.original as KnowledgeRecord;
+      updateKnowledgeMutation.mutate({
+        file: record.file,
+        record,
+        images: newImageUrls,
       });
       setSelectedTopic({ 
         ...topic, 
         imageUrls: newImageUrls, 
-        original: { file, topic: { ...topicData, images: newImageUrls } } 
+        original: { ...record, images: newImageUrls } 
       });
       
       if (newImageUrls.length === 0) {
@@ -289,7 +273,7 @@ export function AdminGallery() {
     }
   };
 
-  const isLoading = loadingResponses || loadingLocations || (superIntentsMeta.length > 0 && loadingSuperTopics);
+  const isLoading = loadingResponses || loadingLocations || loadingKnowledge;
 
   if (isLoading) {
     return (
@@ -419,13 +403,13 @@ export function AdminGallery() {
                       className="hidden"
                       id={`gallery-upload-${selectedTopic.id.replace(/[:\\.]/g, '-')}`}
                       onChange={(e) => handleFileUpload(selectedTopic, e)}
-                      disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateSuperIntentMutation.isPending}
+                      disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateKnowledgeMutation.isPending}
                     />
                     <Button 
                       variant="ghost" 
                       className="w-full h-full flex flex-col items-center justify-center space-y-2 hover:bg-transparent"
                       onClick={() => document.getElementById(`gallery-upload-${selectedTopic.id.replace(/[:\\.]/g, '-')}`)?.click()}
-                      disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateSuperIntentMutation.isPending}
+                      disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateKnowledgeMutation.isPending}
                     >
                       {isUploading ? (
                         <>
@@ -448,16 +432,16 @@ export function AdminGallery() {
                 <Button 
                   variant="outline" 
                   onClick={() => setSelectedTopic(null)}
-                  disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateSuperIntentMutation.isPending}
+                  disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateKnowledgeMutation.isPending}
                 >
                   Discard Changes
                 </Button>
                 <Button 
                   onClick={handleCommitChanges}
-                  disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateSuperIntentMutation.isPending}
+                  disabled={isUploading || saveResponseMutation.isPending || saveLocationMutation.isPending || updateKnowledgeMutation.isPending}
                   className="bg-blue-600 hover:bg-blue-700"
                 >
-                  {(saveResponseMutation.isPending || saveLocationMutation.isPending || updateSuperIntentMutation.isPending) ? (
+                  {(saveResponseMutation.isPending || saveLocationMutation.isPending || updateKnowledgeMutation.isPending) ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin mr-2" />
                       Saving...

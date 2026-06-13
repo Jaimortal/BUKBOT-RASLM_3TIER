@@ -533,7 +533,7 @@ class KnowledgeRouter:
             "services ni buksu", "services sa buksu", "available services for students",
             "buksu can provide", "buksu provide", "buksu can give",
             "what do buksu can provide", "what can buksu provide",
-            "what does buksu provide", "what buksu can provide",
+            "what does buksu provide", "what buksu can provide", "services do buksu",
         ]
 
         if self._has_any(text, buksu_terms):
