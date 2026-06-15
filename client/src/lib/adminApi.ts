@@ -183,6 +183,188 @@ export async function saveMapSettings(settings: MapSettings): Promise<ApiRespons
   }
 }
 
+export interface ChatbotReportGroup {
+  ipHash: string;
+  ipAddress: string;
+  count: number;
+  latestAt: string;
+  reports: Array<{
+    id: string;
+    email: string;
+    report: string;
+    reportKind?: string;
+    question?: string;
+    botResponse?: string;
+    userAgent?: string;
+    createdAt: string;
+  }>;
+}
+
+export async function submitChatbotReport(payload: { email: string; report: string }): Promise<ApiResponse & { remainingDays?: number; limited?: boolean }> {
+  try {
+    const response = await fetch('/api/reports', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error submitting chatbot report:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function submitChatbotResponseReport(payload: {
+  email: string;
+  report: string;
+  question: string;
+  botResponse: string;
+}): Promise<ApiResponse & { remainingDays?: number; limited?: boolean }> {
+  try {
+    const response = await fetch('/api/reports/response', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error submitting chatbot response report:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function fetchChatbotReports(): Promise<ChatbotReportGroup[]> {
+  try {
+    const response = await fetch(`${API_BASE}/reports`, {
+      headers: getAuthHeaders(),
+    });
+    const result: ApiResponse = await response.json();
+    return result.success ? result.data : [];
+  } catch (error) {
+    console.error('Error fetching chatbot reports:', error);
+    return [];
+  }
+}
+
+export async function deleteChatbotReport(reportId: string): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/reports/${encodeURIComponent(reportId)}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error deleting chatbot report:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export interface ChatWidgetSettings {
+  inactiveIcon: string;
+  inactiveImageUrl: string;
+  activeIcon: string;
+  activeImageUrl: string;
+  inactiveCustomImages: string[];
+  activeCustomImages: string[];
+  chatheadBgColor: string;
+  chatheadOpacity: number;
+  audioResponseEnabled: boolean;
+}
+
+const DEFAULT_CHAT_WIDGET_SETTINGS: ChatWidgetSettings = {
+  inactiveIcon: '💬',
+  inactiveImageUrl: '',
+  activeIcon: '✕',
+  activeImageUrl: '',
+  inactiveCustomImages: [],
+  activeCustomImages: [],
+  chatheadBgColor: '#001C38',
+  chatheadOpacity: 1,
+  audioResponseEnabled: true,
+};
+
+export async function fetchChatWidgetSettings(): Promise<ChatWidgetSettings> {
+  try {
+    const response = await fetch('/api/chat-widget-settings');
+    const result: ApiResponse = await response.json();
+    return result.success ? { ...DEFAULT_CHAT_WIDGET_SETTINGS, ...result.data } : DEFAULT_CHAT_WIDGET_SETTINGS;
+  } catch (error) {
+    console.error('Error fetching chat widget settings:', error);
+    return DEFAULT_CHAT_WIDGET_SETTINGS;
+  }
+}
+
+export async function saveChatWidgetSettings(settings: ChatWidgetSettings): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/chat-widget-settings`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(settings),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error saving chat widget settings:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function deleteUploadedImageByUrl(url: string): Promise<ApiResponse> {
+  const match = url.match(/^\/api\/images\/([^/?#]+)/);
+  if (!match) return { success: true, message: 'External image URL removed from settings.' };
+
+  try {
+    const response = await fetch(`${API_BASE}/images/${encodeURIComponent(match[1])}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error deleting uploaded image:', error);
+    return { success: false, message: 'Failed to delete uploaded image' };
+  }
+}
+
+export interface NormalizationRules {
+  phrases: Record<string, string>;
+  tokens: Record<string, string>;
+  roots: Record<string, string>;
+  fuzzy_roots: Record<string, string>;
+}
+
+export const EMPTY_NORMALIZATION_RULES: NormalizationRules = {
+  phrases: {},
+  tokens: {},
+  roots: {},
+  fuzzy_roots: {},
+};
+
+export async function fetchNormalizationRules(): Promise<NormalizationRules> {
+  try {
+    const response = await fetch(`${API_BASE}/normalization-rules`, {
+      headers: getAuthHeaders(),
+    });
+    const result: ApiResponse = await response.json();
+    return result.success ? { ...EMPTY_NORMALIZATION_RULES, ...result.data } : EMPTY_NORMALIZATION_RULES;
+  } catch (error) {
+    console.error('Error fetching normalization rules:', error);
+    return EMPTY_NORMALIZATION_RULES;
+  }
+}
+
+export async function saveNormalizationRules(rules: NormalizationRules): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/normalization-rules`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify(rules),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error saving normalization rules:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
 // Email verification API functions
 export async function sendVerificationCode(email: string): Promise<ApiResponse> {
   try {
@@ -366,10 +548,22 @@ export interface KnowledgeRecord {
   pins: any[];
   routes: any[];
   mapRef: string;
+  items: KnowledgeChildItem[];
+  itemGroups: Record<string, any>;
+  itemDisclaimer: string;
   hasResponses: boolean;
   hasMap: boolean;
   hasMapRef: boolean;
   subtopicCount: number;
+}
+
+export interface KnowledgeChildItem {
+  key?: string;
+  group?: string;
+  name?: string;
+  value?: string;
+  text?: string;
+  aliases?: string[];
 }
 
 export interface KnowledgeListResult {

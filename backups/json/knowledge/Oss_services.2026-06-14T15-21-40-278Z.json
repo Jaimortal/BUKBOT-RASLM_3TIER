@@ -440,24 +440,18 @@
           "pins": [
             {
               "name": "You are Here",
-              "coordinates": [
-                893,
-                632
-              ]
+              "lat": 893,
+              "lng": 632
             },
             {
               "name": "University Press",
-              "coordinates": [
-                791,
-                928
-              ]
+              "lat": 791,
+              "lng": 928
             },
             {
               "name": "Finance Office",
-              "coordinates": [
-                705,
-                631
-              ]
+              "lat": 705,
+              "lng": 631
             }
           ],
           "routes": [
@@ -521,10 +515,6 @@
                   625
                 ],
                 [
-                  706,
-                  628
-                ],
-                [
                   705,
                   631
                 ]
@@ -545,36 +535,28 @@
                   625
                 ],
                 [
-                  677,
-                  627
+                  757,
+                  623
                 ],
                 [
-                  679,
-                  672
+                  757,
+                  582
                 ],
                 [
-                  739,
-                  669
+                  783,
+                  578
                 ],
                 [
-                  793,
-                  669
+                  785,
+                  628
                 ],
                 [
-                  795,
-                  788
+                  819,
+                  628
                 ],
                 [
-                  797,
-                  878
-                ],
-                [
-                  805,
-                  905
-                ],
-                [
-                  805,
-                  930
+                  819,
+                  927
                 ],
                 [
                   791,
@@ -596,8 +578,7 @@
               "how to request physical education uniform"
             ]
           },
-          "display_name": "PE Uniform Process",
-          "items": []
+          "display_name": "PE Uniform Process"
         }
       ],
       "display_name": "PE Uniform"
@@ -921,81 +902,6 @@
         }
       ],
       "display_name": "Affirmative Action Program"
-    },
-    {
-      "topic": "student_organizations",
-      "subject_key": "student_organizations",
-      "subject_type": "service",
-      "subject_terms": [
-        "student organizations",
-        "clubs",
-        "student clubs",
-        "sbo",
-        "student body organization"
-      ],
-      "subtopics": [
-        {
-          "topic": "active_student_organizations_guidance",
-          "intent": "active_student_organizations_guidance",
-          "context_topic": "general_info",
-          "responses": {
-            "en": [
-              "I do not have live data for which student clubs or organizations are active right now.",
-              "You may start by joining or asking the Student Body Organization (SBO) of your specific college or department. Visit your college SBO office and ask the staff or officers about the process of joining."
-            ],
-            "ceb": [
-              "Wala koy live data kung unsang student clubs o organizations ang active karon.",
-              "Pwede ka magsugod pinaagi sa pagpangutana o pag-apil sa Student Body Organization (SBO) sa imong specific nga college o department. Adtoa ang inyong college SBO office ug pangutana sa staff o officers bahin sa proseso sa pag-apil."
-            ]
-          },
-          "metadata": {
-            "phrases": [
-              "active student organizations",
-              "student organizations i can join",
-              "clubs i can join",
-              "active clubs in buksu",
-              "join student organization",
-              "join student organizations process",
-              "student body organization process",
-              "sbo office",
-              "clubs right now"
-            ]
-          },
-          "suggestions": [
-            {
-              "label": "COT SBO Office",
-              "payload": "where is COT SBO Office"
-            },
-            {
-              "label": "COB SBO Office",
-              "payload": "where is COB SBO Office"
-            },
-            {
-              "label": "CAS SBO Office",
-              "payload": "where is CAS SBO Office"
-            },
-            {
-              "label": "CON SBO Office",
-              "payload": "where is CON SBO Office"
-            },
-            {
-              "label": "COA SBO Office",
-              "payload": "where is COA SBO Office"
-            }
-          ],
-          "subject_key": "student_organizations",
-          "subject_type": "service",
-          "subject_terms": [
-            "student organizations",
-            "clubs",
-            "student clubs",
-            "sbo",
-            "student body organization"
-          ],
-          "display_name": "Active Student Organizations Guidance"
-        }
-      ],
-      "display_name": "Student Organizations"
     }
   ]
 }

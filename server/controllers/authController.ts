@@ -3,16 +3,13 @@ import { OAuth2Client } from "google-auth-library";
 import jwt from "jsonwebtoken";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import { verifyPassword } from "../utils/passwordUtils.js";
 
-// Get __dirname equivalent in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const SERVER_DIR = path.join(process.cwd(), "server");
 
 // Load admin users from JSON file
 let adminUsers: any = null;
-const adminUsersPath = path.join(__dirname, "../account/admin-users.json");
+const adminUsersPath = path.join(SERVER_DIR, "account", "admin-users.json");
 
 function loadAdminUsers() {
   try {

@@ -139,6 +139,162 @@
             "online assignment"
           ],
           "display_name": "Submit Assignments Online"
+        },
+        {
+          "topic": "class_schedule_help",
+          "intent": "class_schedule_help",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "For checking your class schedule, you can view it on your Certificate of Registration (COR). Download your COR from the BukSU admission website if it is already available in your account.",
+              "For changing or adjusting your class schedule, ask the faculty staff in your department faculty office so they can guide you on possible schedule adjustments."
+            ],
+            "ceb": [
+              "Para ma-check ang imong class schedule, makita nimo kini sa imong Certificate of Registration (COR). I-download ang imong COR sa BukSU admission website kung available na kini sa imong account.",
+              "Para sa pag-change o pag-adjust sa imong class schedule, pangutana sa faculty staff sa inyong department faculty office aron matabangan ka sa possible schedule adjustment."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how do i check or change my class schedule",
+              "check class schedule",
+              "change class schedule",
+              "adjust class schedule",
+              "where to check my class schedule",
+              "how to change my schedule",
+              "class schedule concern"
+            ]
+          },
+          "choiceGroups": [
+            {
+              "title": "Class schedule help",
+              "items": [
+                {
+                  "label": "How to get COR",
+                  "payload": "how to get COR"
+                },
+                {
+                  "label": "COT Faculty Room",
+                  "payload": "where is COT Faculty Room"
+                },
+                {
+                  "label": "COB Faculty Room",
+                  "payload": "where is COB Faculty Room"
+                },
+                {
+                  "label": "CAS Dean's Office",
+                  "payload": "where is CAS Deans Office"
+                },
+                {
+                  "label": "CPAG Faculty Room",
+                  "payload": "where is CPAG Faculty Room"
+                },
+                {
+                  "label": "BSN Faculty Room",
+                  "payload": "where is BSN Faculty Room"
+                }
+              ]
+            }
+          ],
+          "subject_key": "class_schedule_help",
+          "subject_type": "academic_process",
+          "subject_terms": [
+            "class schedule",
+            "schedule adjustment",
+            "change schedule",
+            "check schedule",
+            "cor schedule"
+          ],
+          "display_name": "Class Schedule Check And Change"
+        },
+        {
+          "topic": "check_class_schedule",
+          "intent": "check_class_schedule",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "You can check your class schedule on your Certificate of Registration (COR). Download your COR from the BukSU admission website if it is already available in your account."
+            ],
+            "ceb": [
+              "Makita nimo ang imong class schedule sa imong Certificate of Registration (COR). I-download ang imong COR sa BukSU admission website kung available na kini sa imong account."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "check class schedule",
+              "where to check class schedule",
+              "where can i see my schedule"
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "How to get COR",
+              "payload": "how to get COR"
+            }
+          ],
+          "subject_key": "class_schedule_help",
+          "subject_type": "academic_process",
+          "subject_terms": [
+            "class schedule",
+            "check schedule",
+            "cor schedule"
+          ],
+          "display_name": "Check Class Schedule"
+        },
+        {
+          "topic": "change_class_schedule",
+          "intent": "change_class_schedule",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "If you have a concern about your class schedule, ask the faculty staff in your department faculty office so they can guide you on possible schedule adjustments."
+            ],
+            "ceb": [
+              "Kung naa kay concern sa imong class schedule, pangutana sa faculty staff sa inyong department faculty office aron matabangan ka sa possible schedule adjustment."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "change class schedule",
+              "adjust class schedule",
+              "how to change my schedule"
+            ]
+          },
+          "choiceGroups": [
+            {
+              "title": "Faculty offices",
+              "items": [
+                {
+                  "label": "COT Faculty Room",
+                  "payload": "where is COT Faculty Room"
+                },
+                {
+                  "label": "COB Faculty Room",
+                  "payload": "where is COB Faculty Room"
+                },
+                {
+                  "label": "CPAG Faculty Room",
+                  "payload": "where is CPAG Faculty Room"
+                },
+                {
+                  "label": "BSN Faculty Room",
+                  "payload": "where is BSN Faculty Room"
+                },
+                {
+                  "label": "PE Faculty Room",
+                  "payload": "where is PE Faculty Room"
+                }
+              ]
+            }
+          ],
+          "subject_key": "class_schedule_help",
+          "subject_type": "academic_process",
+          "subject_terms": [
+            "change schedule",
+            "adjust schedule",
+            "class schedule concern"
+          ],
+          "display_name": "Change Class Schedule"
         }
       ],
       "display_name": "Classroom Policies"

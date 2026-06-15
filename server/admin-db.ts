@@ -8,12 +8,10 @@ import * as dbResponses from './db/responses.js';
 import * as dbLocations from './db/locations.js';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const PROJECT_ROOT = process.cwd();
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
+const DATA_DIR = path.join(PROJECT_ROOT, 'data');
 const PRIVILEGES_FILE = path.join(DATA_DIR, 'user_privileges.json');
 
 const DEFAULT_PRIVILEGES: UserPrivileges = {
@@ -180,11 +178,7 @@ export async function upsertResponse(responseData: ResponseData): Promise<ApiRes
 async function saveResponsesToFile(responses: ResponseData[]): Promise<void> {
   const fs = await import('fs/promises');
   const path = await import('path');
-  const { fileURLToPath } = await import('url');
-  
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  const RESPONSES_FILE = path.join(__dirname, '..', 'rasa', 'actions', 'responses.json');
+  const RESPONSES_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses.json');
   
   await fs.writeFile(RESPONSES_FILE, JSON.stringify(responses, null, 2), 'utf-8');
 }

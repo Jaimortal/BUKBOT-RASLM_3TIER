@@ -2,6 +2,8 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+from query_normalizer import QueryNormalizer
+
 
 @dataclass
 class InterpretedQuery:
@@ -29,6 +31,12 @@ class QueryInterpreter:
     )
 
     PROTECTED_CONJUNCTION_PHRASES = (
+        "add and drop subject",
+        "add and drop subjects",
+        "adding and dropping subject",
+        "adding and dropping subjects",
+        "add drop subject",
+        "add drop subjects",
         "payroll regular and casual",
         "finance and management",
         "scholarship and financial assistance",
@@ -45,13 +53,17 @@ class QueryInterpreter:
     _AND_SENTINEL = "__AND__"
     _UG_SENTINEL = "__UG__"
 
-    def normalize(self, text: str) -> str:
-        text = str(text or "").lower()
-        text = re.sub(r"[^\w\s?'-]", " ", text)
-        return re.sub(r"\s+", " ", text).strip()
+    def __init__(self):
+        self.query_normalizer = QueryNormalizer()
 
-    def tokens(self, text: str) -> List[str]:
-        normalized = self.normalize(text)
+    def normalize(self, text: str) -> str:
+        return self.query_normalizer.normalize_basic(text)
+
+    def normalize_for_search(self, text: str) -> str:
+        return self.query_normalizer.expand(text)
+
+    def tokens(self, text: str, expand: bool = True) -> List[str]:
+        normalized = self.normalize_for_search(text) if expand else self.normalize(text)
         return [
             token for token in re.findall(r"\b[\w'-]+\b", normalized)
             if len(token) > 1 and token not in self.WEAK_WORDS
@@ -116,9 +128,9 @@ class QueryInterpreter:
 
     def interpret(self, text: str) -> InterpretedQuery:
         normalized = self.normalize(text)
-        # Extract tokens from already-normalized text to avoid re-normalizing
+        search_text = self.normalize_for_search(text)
         tokens_list = [
-            token for token in re.findall(r"\b[\w'-]+\b", normalized)
+            token for token in re.findall(r"\b[\w'-]+\b", search_text)
             if len(token) > 1 and token not in self.WEAK_WORDS
         ]
         sub_queries = self.split_multi_question(text)

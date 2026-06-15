@@ -1055,32 +1055,32 @@
           "topic": "program_cutoff_scores",
           "responses": {
             "en": [
-              "For the school year 2020-2021, BukSU-CAT has two rating status: “Passed” or “Failed”.",
-              "In order to be enrolled in BukSU, the exam taker must obtain at least 40% (passing rate).",
-              "Exam takers who obtained rating below the passing rate will not be admitted.",
-              "For board courses like Education, Nursing and Accountancy, their colleges require 50% and above BukSU-CAT rating.",
-              "The validity of the exam is for one year.",
-              "No retake is allowed within a year from the date of the exam.",
-              "HOWEVER this are old data so it might be change in every year, you can directly ask the Public Help Disk which is located on the entrance of BukSU."
+              "For BukSU-CAT qualification, non-board courses usually require at least 50% CAT score.",
+              "Board courses usually require 80% and above CAT score.",
+              "This may still change depending on the official admission guidelines for the current academic year, so always confirm with the BukSU Admission and Testing Unit if you need final qualification details."
             ],
             "ceb": [
-              "Para sa school year 2020-2021, ang BukSU-CAT adunay duha ka rating status: “Passed” o “Failed”.",
-              "Aron maka-enroll sa BukSU, ang exam taker kinahanglan makakuha og labing menos 40% (passing rate).",
-              "Ang mga exam taker nga nakakuha og rating ubos sa passing rate dili pasudlon.",
-              "Para sa board courses sama sa Education, Nursing, ug Accountancy, ang ilang kolehiyo nagkinahanglan og 50% ug pataas nga BukSU-CAT rating.",
-              "Ang validity sa exam kay usa ka tuig lamang.",
-              "Dili pwede mag-retake sulod sa usa ka tuig gikan sa petsa sa exam.",
-              "BISAN PA, kini daan nga datos ug posibleng mausab matag tuig, mao nga mas maayo nga mangutana diretso sa Public Help Desk nga naa sa entrance sa BukSU."
+              "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score.",
+              "Ang board courses kasagaran nagkinahanglan og 80% pataas nga CAT score.",
+              "Mahimo gihapon kini mausab depende sa opisyal nga admission guidelines sa current academic year, busa mas maayo nga i-confirm sa BukSU Admission and Testing Unit kung kinahanglan nimo ang final qualification details."
             ]
           },
           "intent": "program_cutoff_scores",
           "context_topic": "score",
           "metadata": {
             "phrases": [
-              "program cutoff scores"
+              "program cutoff scores",
+              "what is the cut off of the cot department",
+              "cut off score",
+              "cutoff score",
+              "buksu cat score",
+              "cat score in buksu",
+              "cut score for non board courses",
+              "cut off for bsit",
+              "cutoff for board courses"
             ]
           },
-          "display_name": "Program Cutoff Scores"
+          "display_name": "BukSU CAT Cutoff Scores"
         },
         {
           "topic": "cat_requirement_nursing_program",
@@ -1189,6 +1189,62 @@
             ]
           },
           "display_name": "Exam Location Vs Campus"
+        },
+        {
+          "topic": "non_board_cutoff_score",
+          "responses": {
+            "en": [
+              "For non-board courses, 50% and above CAT score is usually the passing qualification. This may change depending on official admission guidelines for the current academic year."
+            ],
+            "ceb": [
+              "Para sa non-board courses, 50% pataas nga CAT score ang kasagarang passing qualification. Mahimo kini mausab depende sa opisyal nga admission guidelines sa current academic year."
+            ]
+          },
+          "intent": "non_board_cutoff_score",
+          "context_topic": "score",
+          "metadata": {
+            "phrases": [
+              "cut off score for non board courses",
+              "non board cat score",
+              "non board cutoff"
+            ]
+          },
+          "subject_key": "program_qualification_scores",
+          "subject_type": "policy",
+          "subject_terms": [
+            "non board cat score",
+            "non-board cutoff score",
+            "non board cut off"
+          ],
+          "display_name": "Non Board Cutoff Score"
+        },
+        {
+          "topic": "board_course_cutoff_score",
+          "responses": {
+            "en": [
+              "For board courses, 80% and above CAT score is usually the passing qualification. This may change depending on official admission guidelines for the current academic year."
+            ],
+            "ceb": [
+              "Para sa board courses, 80% pataas nga CAT score ang kasagarang passing qualification. Mahimo kini mausab depende sa opisyal nga admission guidelines sa current academic year."
+            ]
+          },
+          "intent": "board_course_cutoff_score",
+          "context_topic": "score",
+          "metadata": {
+            "phrases": [
+              "cut off score for board courses",
+              "board course cat score",
+              "board course cutoff"
+            ]
+          },
+          "subject_key": "program_qualification_scores",
+          "subject_type": "policy",
+          "subject_terms": [
+            "board course cat score",
+            "board course cutoff score",
+            "board cut off"
+          ],
+          "display_name": "Board Course Cutoff Score"
         }
       ],
       "display_name": "Program Qualification Scores"

@@ -23,5 +23,7 @@ packages/
 server/privateAPI/models
 
 
+experimental_llm_layer/
+
 .env
 client/.env

@@ -50,6 +50,41 @@ WEAK_COMMON_WORDS = {
 }
 
 
+def normalize_map_pin(pin: Any, index: int = 0) -> Optional[Dict[str, Any]]:
+    """
+    Normalize old and new admin pin shapes into the map payload expected by
+    the frontend. Supports:
+    - {"coordinates": [y, x]}  (new Knowledge Manager format)
+    - {"lat": y, "lng": x}     (older format)
+    - {"y": y, "x": x}         (canvas-style fallback)
+    """
+    if not isinstance(pin, dict):
+        return None
+
+    coords = None
+    raw_coords = pin.get("coordinates")
+    if isinstance(raw_coords, list) and len(raw_coords) >= 2:
+        coords = [raw_coords[0], raw_coords[1]]
+    else:
+        lat = pin.get("lat", pin.get("y"))
+        lng = pin.get("lng", pin.get("x"))
+        if lat is not None and lng is not None:
+            coords = [lat, lng]
+
+    if not coords:
+        return None
+
+    name = str(pin.get("name") or "").strip() or f"Pin {index + 1}"
+    pin_data: Dict[str, Any] = {"name": name, "coordinates": coords}
+    if pin.get("floor"):
+        pin_data["floor"] = str(pin.get("floor"))
+    if pin.get("access"):
+        pin_data["access"] = str(pin.get("access"))
+    if pin.get("pinType"):
+        pin_data["pinType"] = str(pin.get("pinType"))
+    return pin_data
+
+
 # -------------------------
 # Conversation Context
 # -------------------------
@@ -573,22 +608,8 @@ class ActionReplyFromJsonHelper:
         pins_out = []
         if isinstance(pins_raw, list):
             for idx, p in enumerate(pins_raw):
-                coords = None
-                if isinstance(p, dict) and isinstance(p.get("coordinates"), list) and len(p.get("coordinates")) == 2:
-                    coords = p.get("coordinates")
-                name = None
-                if isinstance(p, dict):
-                    name = str(p.get("name") or "").strip()
-                if not name:
-                    name = f"Pin {idx + 1}"
-                if coords:
-                    pin_data = {"name": name, "coordinates": coords}
-                    if isinstance(p, dict) and p.get("floor"):
-                        pin_data["floor"] = str(p.get("floor"))
-                    if isinstance(p, dict) and p.get("access"):
-                        pin_data["access"] = str(p.get("access"))
-                    if isinstance(p, dict) and p.get("pinType"):
-                        pin_data["pinType"] = str(p.get("pinType"))
+                pin_data = normalize_map_pin(p, idx)
+                if pin_data:
                     pins_out.append(pin_data)
 
         routes_raw = location_info.get("routes")
@@ -944,22 +965,8 @@ class ActionReplyFromJsonHelper:
         pins_out = []
         if isinstance(pins_raw, list):
             for idx, p in enumerate(pins_raw):
-                coords = None
-                if isinstance(p, dict) and isinstance(p.get("coordinates"), list) and len(p.get("coordinates")) == 2:
-                    coords = p.get("coordinates")
-                name = None
-                if isinstance(p, dict):
-                    name = str(p.get("name") or "").strip()
-                if not name:
-                    name = f"Pin {idx + 1}"
-                if coords:
-                    pin_data = {"name": name, "coordinates": coords}
-                    if isinstance(p, dict) and p.get("floor"):
-                        pin_data["floor"] = str(p.get("floor"))
-                    if isinstance(p, dict) and p.get("access"):
-                        pin_data["access"] = str(p.get("access"))
-                    if isinstance(p, dict) and p.get("pinType"):
-                        pin_data["pinType"] = str(p.get("pinType"))
+                pin_data = normalize_map_pin(p, idx)
+                if pin_data:
                     pins_out.append(pin_data)
 
         if map_id:
@@ -1094,19 +1101,10 @@ class ActionReplyFromJsonHelper:
             # Process pins
             pins_out = []
             if isinstance(pins_raw, list):
-                for p in pins_raw:
-                    if isinstance(p, dict):
-                        name = str(p.get("name", "")).strip() or "Pin"
-                        lat = p.get("lat")
-                        lng = p.get("lng")
-                        if lat is not None and lng is not None:
-                            pins_out.append({"name": name, "coordinates": [lat, lng]})
-                            if p.get("floor"):
-                                pins_out[-1]["floor"] = str(p.get("floor"))
-                            if p.get("access"):
-                                pins_out[-1]["access"] = str(p.get("access"))
-                            if p.get("pinType"):
-                                pins_out[-1]["pinType"] = str(p.get("pinType"))
+                for idx, p in enumerate(pins_raw):
+                    pin_data = normalize_map_pin(p, idx)
+                    if pin_data:
+                        pins_out.append(pin_data)
             
             if pins_out:
                 map_data_payload["pins"] = pins_out

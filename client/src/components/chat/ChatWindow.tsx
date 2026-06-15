@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Mic, Send, Minimize2, ChevronUp, X, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { Flag, Mic, Send, Minimize2, ChevronUp, X, ZoomIn, ZoomOut, RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import MapMessage from "./MapMessage";
 import { cn } from "@/lib/utils";
@@ -11,7 +12,8 @@ import { rasaBackend, generateId, type ChatChoiceGroup, type ChatMessage, type C
 import type { UserPrivileges } from "@/types/admin";
 import { QuickAccessBar } from "./QuickAccessBar";
 import { MapQuickAccess } from "./MapQuickAccess";
-import { fetchActiveFaqs } from "@/lib/adminApi";
+import { fetchActiveFaqs, fetchChatWidgetSettings, submitChatbotReport, submitChatbotResponseReport } from "@/lib/adminApi";
+import { useToast } from "@/hooks/use-toast";
 
 // Helper for Web Speech API
 const SpeechRecognition =
@@ -92,6 +94,14 @@ function renderSafeMessageHtml(value: string): string {
       return `<a href="${cleanHref}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; background-color: #dbeafe; padding: 2px 6px; border-radius: 4px; text-decoration: underline; font-weight: 500; word-break: break-all;">${display}</a>`;
     }
   );
+}
+
+function textForSpeech(value: string): string {
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = renderSafeMessageHtml(value || "");
+  return (wrapper.textContent || wrapper.innerText || "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function convertResponseToMessages(response: any): ChatMessage[] {
@@ -213,6 +223,7 @@ function convertResponseToMessages(response: any): ChatMessage[] {
 }
 
 export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
+  const { toast } = useToast();
   const { data: privileges = { chatEnabled: true, audioInputEnabled: true, mapAccessEnabled: true, autoTranslateEnabled: true } } = useQuery({
     queryKey: ["privileges"],
     queryFn: fetchUserPrivileges,
@@ -227,6 +238,15 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     queryKey: ["activeFaqs"],
     queryFn: fetchActiveFaqs,
     staleTime: 5 * 60 * 1000,
+    enabled: isOpen
+  });
+
+  const { data: widgetSettings } = useQuery({
+    queryKey: ["chatWidgetSettings"],
+    queryFn: fetchChatWidgetSettings,
+    staleTime: 60 * 1000,
+    refetchInterval: 30000,
+    refetchOnWindowFocus: false,
     enabled: isOpen
   });
 
@@ -295,8 +315,17 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isListening, setIsListening] = useState(false);
+  const [isReportOpen, setIsReportOpen] = useState(false);
+  const [responseReportContext, setResponseReportContext] = useState<{ question: string; botResponse: string } | null>(null);
+  const [reportEmail, setReportEmail] = useState("");
+  const [reportText, setReportText] = useState("");
+  const [isSubmittingReport, setIsSubmittingReport] = useState(false);
+  const [audioResponseEnabled, setAudioResponseEnabled] = useState(false);
+  const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const lastAutoSpokenMessageIdRef = useRef<string | null>(null);
+  const speakingMessageIdRef = useRef<string | null>(null);
 
   // Quick Access Drag-to-Scroll State
   const quickAccessScrollRef = useRef<HTMLDivElement>(null);
@@ -323,6 +352,16 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         .slice(-MAX_INLINE_MAPS)
         .map((message) => message.id)
     );
+  }, [messages]);
+
+  const latestReportableBotMessageId = useMemo(() => {
+    for (let i = messages.length - 1; i >= 0; i -= 1) {
+      const message = messages[i];
+      if (message.sender !== "bot" || message.hideTimestamp) continue;
+      const hasPreviousUserMessage = messages.slice(0, i).some((item) => item.sender === "user");
+      if (hasPreviousUserMessage) return message.id;
+    }
+    return undefined;
   }, [messages]);
 
   const handleDragStart = (e: React.MouseEvent) => {
@@ -368,12 +407,202 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     setStickyDraggedDistance(Math.abs(x - stickyDragStartX));
   };
 
+  const resetReportForm = () => {
+    setReportEmail("");
+    setReportText("");
+    setResponseReportContext(null);
+  };
+
+  const messageReportText = (message: ChatMessage) => {
+    if (message.type === "map" && message.mapData) {
+      return `Map: ${message.mapData.locationName || "Location map"}`;
+    }
+    return message.text || "";
+  };
+
+  const getResponseReportContext = (messageIndex: number) => {
+    let userIndex = -1;
+    for (let i = messageIndex - 1; i >= 0; i -= 1) {
+      if (messages[i]?.sender === "user") {
+        userIndex = i;
+        break;
+      }
+    }
+    if (userIndex < 0) return null;
+
+    const botResponse = messages
+      .slice(userIndex + 1, messageIndex + 1)
+      .filter((message) => message.sender === "bot")
+      .map(messageReportText)
+      .filter(Boolean)
+      .join("\n\n");
+
+    if (!botResponse.trim()) return null;
+    return {
+      question: messages[userIndex].text,
+      botResponse,
+    };
+  };
+
+  const openResponseReport = (messageIndex: number) => {
+    const context = getResponseReportContext(messageIndex);
+    if (!context) {
+      toast({ title: "Cannot report this response", description: "No matching question and response were found.", variant: "destructive" });
+      return;
+    }
+    setResponseReportContext(context);
+    setIsReportOpen(true);
+  };
+
+  const audioFeatureAvailable = Boolean(widgetSettings?.audioResponseEnabled) && typeof window !== "undefined" && "speechSynthesis" in window;
+
+  const looksCebuanoOrFilipino = (value: string) => {
+    return /\b(unsa|asa|aha|kanus|kinsa|ngano|giunsa|pwede|nako|nimo|imong|akong|adto|makuha|makita|kuha|dad-a|dala|kinahanglan|palihug|ug|sa|ang|mga|para|walay|naa|adtoon|pangutana)\b/i.test(value);
+  };
+
+  const pickSpeechVoice = (value: string) => {
+    const voices = window.speechSynthesis.getVoices();
+    if (!voices.length) return undefined;
+
+    const wantsFilipinoVoice = looksCebuanoOrFilipino(value) || /[^\x00-\x7F]/.test(value);
+    const preferredLangs = wantsFilipinoVoice
+      ? ["ceb", "fil-ph", "fil", "tl-ph", "tl", "en-ph", "en-us"]
+      : ["en-ph", "en-us", "en-gb", "en"];
+
+    return preferredLangs
+      .map((lang) => voices.find((voice) => voice.lang.toLowerCase().startsWith(lang)))
+      .find(Boolean);
+  };
+
+  const stopSpeaking = () => {
+    if (!audioFeatureAvailable) return;
+    window.speechSynthesis.cancel();
+    speakingMessageIdRef.current = null;
+    setSpeakingMessageId(null);
+  };
+
+  const speakText = (value: string, messageId?: string) => {
+    if (!audioFeatureAvailable) return;
+    const clean = textForSpeech(value);
+    if (!clean) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(clean.slice(0, 3000));
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    utterance.lang = looksCebuanoOrFilipino(clean) || /[^\x00-\x7F]/.test(clean) ? "fil-PH" : "en-US";
+    const voice = pickSpeechVoice(clean);
+    if (voice) {
+      utterance.voice = voice;
+      utterance.lang = voice.lang;
+    }
+    speakingMessageIdRef.current = messageId || null;
+    setSpeakingMessageId(messageId || null);
+    utterance.onend = () => {
+      if (speakingMessageIdRef.current === messageId) {
+        speakingMessageIdRef.current = null;
+        setSpeakingMessageId(null);
+      }
+    };
+    utterance.onerror = utterance.onend;
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const speakBotResponseAt = (messageIndex: number) => {
+    const message = messages[messageIndex];
+    if (!message) return;
+    if (speakingMessageIdRef.current === message.id && window.speechSynthesis.speaking) {
+      stopSpeaking();
+      return;
+    }
+
+    const context = getResponseReportContext(messageIndex);
+    if (!context) {
+      if (message.text) speakText(message.text, message.id);
+      return;
+    }
+    speakText(context.botResponse, message.id);
+  };
+
+  const toggleAudioResponse = () => {
+    if (!audioFeatureAvailable) {
+      toast({ title: "Audio response unavailable", description: "This browser does not support text-to-speech or the feature is disabled by the administrator.", variant: "destructive" });
+      return;
+    }
+    setAudioResponseEnabled((current) => {
+      const next = !current;
+      if (!next) stopSpeaking();
+      toast({ title: next ? "Audio response is enabled" : "Audio response is disabled" });
+      return next;
+    });
+  };
+
+  const handleSubmitReport = async () => {
+    const email = reportEmail.trim();
+    const report = reportText.trim();
+    if (!/^[^\s@]+@gmail\.com$/.test(email)) {
+      toast({ title: "Gmail required", description: "Please enter a valid Gmail address.", variant: "destructive" });
+      return;
+    }
+    if (!report) {
+      toast({ title: "Report required", description: "Please describe what went wrong.", variant: "destructive" });
+      return;
+    }
+    if (report.length > 1000) {
+      toast({ title: "Report too long", description: "Reports are limited to 1000 characters.", variant: "destructive" });
+      return;
+    }
+
+    setIsSubmittingReport(true);
+    const result = responseReportContext
+      ? await submitChatbotResponseReport({
+        email,
+        report,
+        question: responseReportContext.question,
+        botResponse: responseReportContext.botResponse,
+      })
+      : await submitChatbotReport({ email, report });
+    setIsSubmittingReport(false);
+
+    if (!result.success) {
+      if (result.limited && result.remainingDays) {
+        toast({
+          title: "Report limit reached",
+          description: `You will be able to submit another report in about ${result.remainingDays} day${result.remainingDays === 1 ? "" : "s"}.`,
+          variant: "destructive",
+        });
+      } else {
+        toast({ title: "Report not sent", description: result.message || "Please try again later.", variant: "destructive" });
+      }
+      return;
+    }
+
+    toast({ title: "Report sent", description: "Thank you. Your report was saved for future updates." });
+    setIsReportOpen(false);
+    resetReportForm();
+  };
+
   useEffect(() => {
     if ((!privileges.chatEnabled || !privileges.audioInputEnabled) && isListening) {
       recognitionRef.current?.stop?.();
       setIsListening(false);
     }
   }, [privileges.chatEnabled, privileges.audioInputEnabled, isListening]);
+
+  useEffect(() => {
+    if (!audioFeatureAvailable && audioResponseEnabled) {
+      setAudioResponseEnabled(false);
+      stopSpeaking();
+    }
+  }, [audioFeatureAvailable, audioResponseEnabled]);
+
+  useEffect(() => {
+    if (!audioFeatureAvailable || !audioResponseEnabled || isTyping || !latestReportableBotMessageId) return;
+    if (lastAutoSpokenMessageIdRef.current === latestReportableBotMessageId) return;
+    const messageIndex = messages.findIndex((message) => message.id === latestReportableBotMessageId);
+    if (messageIndex < 0) return;
+    lastAutoSpokenMessageIdRef.current = latestReportableBotMessageId;
+    speakBotResponseAt(messageIndex);
+  }, [audioFeatureAvailable, audioResponseEnabled, isTyping, latestReportableBotMessageId, messages]);
 
   // Test backend on mount
   useEffect(() => {
@@ -711,10 +940,21 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse mt-1" />
           <div className="flex flex-col leading-tight">
             <h3 className="font-semibold text-sm text-white">Buksu Chatbot</h3>
-            <p className="text-xs text-white/90 font-light">Ask me about BukSU</p>
+            {/* <p className="text-xs text-white/90 font-light">Ask me about BukSU</p> */}
           </div>
         </div>
         <div className="flex gap-1">
+          {audioFeatureAvailable && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleAudioResponse}
+              className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+              title={audioResponseEnabled ? "Disable audio response" : "Enable audio response"}
+            >
+              {audioResponseEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+            </Button>
+          )}
           <Button
             variant="ghost"
             size="icon"
@@ -755,7 +995,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           <ScrollArea className="h-full p-4" ref={scrollRef}>
           <div
             className={cn(
-              "space-y-4 pb-4 transition duration-200",
+              "pb-4 transition duration-200",
               choiceModal && "pointer-events-none blur-[2px]"
             )}
           >
@@ -784,22 +1024,39 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 </div>
               </motion.div>
             )}
-            {messages.map((msg) => (
-              <motion.div
-                key={msg.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={cn(
-                  "flex flex-col w-full",
-                  msg.sender === "user" ? "items-end" : "items-start pl-1"
-                )}
-              >
+            {messages.map((msg, msgIndex) => {
+              const previousMessage = messages[msgIndex - 1];
+              const nextMessage = messages[msgIndex + 1];
+              const isMapMessage = msg.type === "map";
+              const isTextMessage = msg.type === "text";
+              const isSameSenderGroup = previousMessage?.sender === msg.sender && previousMessage?.type === msg.type;
+              const isBotTextBubble = msg.sender === "bot" && isTextMessage;
+              const isPreviousBotTextBubble = previousMessage?.sender === "bot" && previousMessage?.type === "text";
+              const isNextBotTextBubble = nextMessage?.sender === "bot" && nextMessage?.type === "text";
+              const isSingleBotBubble = isBotTextBubble && !isPreviousBotTextBubble && !isNextBotTextBubble;
+              return (
+                <motion.div
+                  key={msg.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={cn(
+                    "flex flex-col w-full",
+                    msgIndex === 0 ? "mt-0" : isSameSenderGroup ? "mt-1" : "mt-4",
+                    msg.sender === "user" ? "items-end" : "items-start pl-1"
+                  )}
+                >
                 <div
                   className={cn(
-                    "max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-sm",
-                    msg.sender === "user"
+                    isMapMessage
+                      ? "w-[94%] max-w-[94%] overflow-visible rounded-2xl text-sm"
+                      : "max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-sm",
+                    msg.sender === "user" && !isMapMessage
                       ? "bg-primary text-primary-foreground rounded-br-none"
-                      : "bg-white text-foreground rounded-bl-none shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5"
+                      : !isMapMessage && cn(
+                        "bg-white text-foreground shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5",
+                        (isNextBotTextBubble || isSingleBotBubble) && "rounded-bl-none",
+                        isPreviousBotTextBubble && "rounded-tl-none"
+                      )
                   )}
                 >
                   {/* Normal text */}
@@ -852,21 +1109,23 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                     privileges.mapAccessEnabled ? (
                       <>
                         {liveInlineMapIds.has(msg.id) ? (
-                          <MapMessage
-                            locationName={msg.mapData.locationName}
-                            coordinates={(msg.mapData as any).coordinates}
-                            pins={(msg.mapData as any).pins}
-                            routes={(msg.mapData as any).routes}
-                            isFullscreen={false}
-                            onToggleFullscreen={() => {
-                              setFullscreenMapId(msg.id);
-                            }}
-                          />
+                          <div className="overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(14,74,122,0.24)] transition-all duration-200 hover:shadow-[0_8px_22px_rgba(14,74,122,0.30)]">
+                            <MapMessage
+                              locationName={msg.mapData.locationName}
+                              coordinates={(msg.mapData as any).coordinates}
+                              pins={(msg.mapData as any).pins}
+                              routes={(msg.mapData as any).routes}
+                              isFullscreen={false}
+                              onToggleFullscreen={() => {
+                                setFullscreenMapId(msg.id);
+                              }}
+                            />
+                          </div>
                         ) : (
                           <button
                             type="button"
                             onClick={() => setFullscreenMapId(msg.id)}
-                            className="mt-2 flex w-60 items-center justify-between rounded-lg border border-sky-100 bg-sky-50/70 px-3 py-2 text-left text-xs font-semibold text-[#003B63] shadow-sm transition-colors hover:bg-sky-100"
+                            className="flex w-full items-center justify-between rounded-2xl border border-sky-100 bg-sky-50/70 px-3 py-2 text-left text-xs font-semibold text-[#003B63] shadow-sm transition-colors hover:bg-sky-100"
                           >
                             <span className="truncate">{msg.mapData.locationName || "Open map"}</span>
                             <span className="ml-2 shrink-0 text-[11px] font-bold">Open map</span>
@@ -920,12 +1179,35 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 )}
 
                 {!msg.hideTimestamp && (
-                  <div className="text-xs opacity-60 mt-1 text-center">
+                  <div className="mt-1 flex items-center justify-center gap-1.5 text-xs opacity-60">
                     {msg.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                    {msg.sender === "bot" && msg.id === latestReportableBotMessageId && (
+                      <>
+                        {audioFeatureAvailable && (
+                          <button
+                            type="button"
+                            onClick={() => speakBotResponseAt(msgIndex)}
+                            className="rounded-full p-0.5 transition hover:bg-slate-200 hover:opacity-100"
+                            title={speakingMessageId === msg.id ? "Stop reading" : "Read this response"}
+                          >
+                            {speakingMessageId === msg.id ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => openResponseReport(msgIndex)}
+                          className="rounded-full p-0.5 transition hover:bg-slate-200 hover:opacity-100"
+                          title="Report this response"
+                        >
+                          <Flag className="h-3.5 w-3.5" />
+                        </button>
+                      </>
+                    )}
                   </div>
                 )}
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
 
             {isTyping && (
               <motion.div
@@ -1111,9 +1393,96 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           </div>
         </div>
       )}
-      <a className="text-xs text-muted-foreground/60 hover:text-muted-foreground text-center mt-0 mb-0" href="#" target="_blank" rel="noopener noreferrer">
+      <button
+        type="button"
+        onClick={() => {
+          setResponseReportContext(null);
+          setIsReportOpen(true);
+        }}
+        className="text-xs text-muted-foreground/60 hover:text-muted-foreground text-center mt-0 mb-0"
+      >
         Chatbot might also make mistakes
-      </a>
+      </button>
+
+      {isReportOpen && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-transparent px-4">
+          <div className="w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10">
+            <div className="flex items-center justify-between px-4 py-3 text-white" style={{ backgroundColor: "#001C38" }}>
+              <div>
+                <h3 className="text-sm font-semibold">{responseReportContext ? "Report this response" : "Report chatbot issue"}</h3>
+                <p className="text-[11px] text-white/70">
+                  {responseReportContext ? "You can report up to ten responses every 30 days." : "You can report up to five times every 30 days."}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsReportOpen(false);
+                  resetReportForm();
+                }}
+                className="rounded-full p-1 text-white/80 hover:bg-white/10 hover:text-white"
+                disabled={isSubmittingReport}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="space-y-3 p-4">
+              {responseReportContext && (
+                <div className="max-h-48 overflow-y-auto rounded-xl border bg-slate-50 p-3 text-xs text-slate-700">
+                  <div className="mb-3">
+                    <p className="mb-1 font-semibold text-slate-900">Question</p>
+                    <p className="whitespace-pre-wrap">{responseReportContext.question}</p>
+                  </div>
+                  <div>
+                    <p className="mb-1 font-semibold text-slate-900">Chatbot response</p>
+                    <p className="whitespace-pre-wrap">{responseReportContext.botResponse}</p>
+                  </div>
+                </div>
+              )}
+              <p className="text-xs text-muted-foreground">Please keep your report clear and under 1000 characters.</p>
+              <div className="space-y-1">
+                <label className="text-xs font-medium text-slate-700">Gmail</label>
+                <Input
+                  type="email"
+                  value={reportEmail}
+                  onChange={(event) => setReportEmail(event.target.value)}
+                  placeholder="your.email@gmail.com"
+                  disabled={isSubmittingReport}
+                />
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-medium text-slate-700">Report</label>
+                  <span className="text-[11px] text-muted-foreground">{reportText.length}/1000</span>
+                </div>
+                <Textarea
+                  value={reportText}
+                  onChange={(event) => setReportText(event.target.value.slice(0, 1000))}
+                  placeholder="Tell us what answer or feature was wrong..."
+                  className="min-h-32 resize-none"
+                  disabled={isSubmittingReport}
+                  maxLength={1000}
+                />
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setIsReportOpen(false);
+                    resetReportForm();
+                  }}
+                  disabled={isSubmittingReport}
+                >
+                  Cancel
+                </Button>
+                <Button onClick={handleSubmitReport} disabled={isSubmittingReport}>
+                  {isSubmittingReport ? "Sending..." : "Send report"}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Fullscreen Image View - Contained within chatbox */}
       {fullscreenImageUrl && (

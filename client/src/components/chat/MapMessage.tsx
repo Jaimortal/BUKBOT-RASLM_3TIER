@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { MapContainer, ImageOverlay, Marker, Popup, useMap, Polyline } from "react-leaflet";
+import { MapContainer, ImageOverlay, Marker, Popup, useMap, Polyline, CircleMarker } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { ArrowUpDown, Footprints, Maximize2, Minimize2 } from "lucide-react";
@@ -188,25 +188,20 @@ function AnimatedRouteDot({ route, speed = 3000 }: { route: { points: CoordArray
     return [lat, lng] as CoordArray;
   }, [route.points, currentIndex, progress]);
 
-  const dotIcon = useMemo(() =>
-    L.divIcon({
-      className: "",
-      html: `
-        <div class="traveling-dot" style="
-          width: 9px;
-          height: 9px;
-          background: ${route.color || "#dc2626"};
-          border-radius: 50%;
-          border: 1.5px solid white;
-          box-shadow: 0 0 5px ${route.color || "#dc2626"}, 0 0 10px ${route.color || "#dc2626"};
-          animation: dotPulse 1s ease-in-out infinite;
-        "></div>
-      `,
-      iconSize: [9, 9],
-      iconAnchor: [4.5, 4.5],
-    }), [route.color]);
-
-  return <Marker position={position} icon={dotIcon} zIndexOffset={1000} />;
+  return (
+    <CircleMarker
+      center={position}
+      radius={4.5}
+      pathOptions={{
+        color: "#ffffff",
+        weight: 1.5,
+        fillColor: route.color || "#dc2626",
+        fillOpacity: 1,
+        opacity: 1,
+      }}
+      interactive={false}
+    />
+  );
 }
 
 function normalizeToTuple(raw: any, maxClamp = 3000): CoordArray | null {
@@ -378,6 +373,16 @@ export default function MapMessage({
   const [activeMapUrl, setActiveMapUrl] = useState<string>('/nobackHD.png');
   const { data: mapSettings } = useMapSettings();
 
+  const mapInstanceKey = useMemo(() => {
+    const routeKey = normalizedRoutes
+      .map((route) => `${route.route_label || route.name || "route"}:${route.points.length}`)
+      .join("|");
+    const markerKey = flippedMarkers
+      .map((marker) => `${marker.name}:${marker.coordinates[0]},${marker.coordinates[1]}`)
+      .join("|");
+    return `${activeMapUrl}|${locationName}|${isFullscreen ? "full" : "inline"}|${markerKey}|${routeKey}`;
+  }, [activeMapUrl, locationName, isFullscreen, flippedMarkers, normalizedRoutes]);
+
   useEffect(() => {
     if (mapSettings?.maps && mapSettings.maps.length > 0) {
       const active = mapSettings.maps.find((m: { active?: boolean }) => m.active) || mapSettings.maps[0];
@@ -395,7 +400,7 @@ export default function MapMessage({
 
   return (
     <div
-      className={`rounded-lg overflow-hidden border border-border mt-2 relative z-2 ${isFullscreen ? 'w-full h-full' : 'w-60 h-48'}`}
+      className={`overflow-hidden rounded-2xl relative z-2 ${isFullscreen ? 'w-full h-full' : 'w-full h-48'}`}
       onWheel={handleWheel}
     >
       {/* Map guidance indicators - shown only inside this map */}
@@ -493,6 +498,7 @@ export default function MapMessage({
         }
       `}</style>
       <MapContainer
+        key={mapInstanceKey}
         crs={L.CRS.Simple}
         bounds={imageBounds}
         center={center}

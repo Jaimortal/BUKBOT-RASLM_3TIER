@@ -144,6 +144,18 @@ class ResponseBuilder:
                 location_name = str(map_data.get("locationName")).strip()
                 if location_name and location_name not in location_names:
                     location_names.append(location_name)
+            if map_data.get("coordinates") and not map_data.get("pins"):
+                coordinate_pin = {
+                    "name": map_data.get("locationName") or "Location",
+                    "coordinates": map_data.get("coordinates"),
+                }
+                if map_data.get("floor"):
+                    coordinate_pin["floor"] = map_data.get("floor")
+                if map_data.get("access"):
+                    coordinate_pin["access"] = map_data.get("access")
+                if map_data.get("pinType"):
+                    coordinate_pin["pinType"] = map_data.get("pinType")
+                map_data = {**map_data, "pins": [coordinate_pin]}
             for pin in map_data.get("pins") or []:
                 key = (
                     str(pin.get("name") or "").strip().lower(),

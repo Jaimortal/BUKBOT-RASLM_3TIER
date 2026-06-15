@@ -303,7 +303,7 @@ class ContextManager:
         if memory.subject in {"library_id_card", "student_id"} and memory.turns_remaining > 0:
             return False
 
-        text = self.interpreter.normalize(user_message)
+        text = self.interpreter.normalize_for_search(user_message)
         if any(term in text for term in ["validate", "validation"]):
             return False
         if not self._has_bare_id(text):
@@ -404,7 +404,7 @@ class ContextManager:
             "schedule", "process", "steps", "location", "where",
             "document", "documents", "how", "when", "what", "whats",
             "what's", "and", "ug", "much", "id", "form", "forms",
-            "validate", "validation",
+            "validate", "validation", "slot", "slots", "available", "availability", "open",
         }
         explicit_values = [
             value for value in resolved.values
@@ -414,6 +414,10 @@ class ContextManager:
             return True
 
         text = self.interpreter.normalize(user_message)
+        text_tokens = self._word_tokens(text)
+        if text_tokens and all(token in generic_values for token in text_tokens):
+            return False
+
         return any(
             any(self._term_matches_text(term, text) for term in pattern["terms"])
             for pattern in self._subject_patterns()
@@ -445,7 +449,7 @@ class ContextManager:
             "replace", "replacement",
             "many", "number", "count", "benefit", "benefits", "pros",
             "cons", "advantage", "rules", "curfew", "slot", "slots",
-            "available", "availability", "male", "female",
+            "available", "availability", "open", "male", "female",
             "do", "does", "did", "can", "could", "would", "should",
             "unsa", "asa", "pila", "bayad", "kinahanglan", "kailangan",
         }

@@ -2109,8 +2109,6 @@
           "key": "ba_philosophy_slots",
           "group": "CAS",
           "name": "Bachelor of Arts in Philosophy",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "ba philo",
             "baphilo",
@@ -2118,27 +2116,25 @@
             "ab philosophy",
             "ba philosophy",
             "philosophy"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_development_communication_slots",
           "group": "CAS",
           "name": "Bachelor of Science in Development Communication",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bsdc",
             "devcom",
             "development communication",
             "bs development communication"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "ba_economics_slots",
           "group": "CAS",
           "name": "Bachelor of Arts in Economics",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "ba eco",
             "ab eco",
@@ -2146,14 +2142,13 @@
             "ab economics",
             "economics",
             "econ"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "ba_sociology_slots",
           "group": "CAS",
           "name": "Bachelor of Arts in Sociology",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "ba sociology",
             "ab sociology",
@@ -2161,107 +2156,99 @@
             "ab socio",
             "sociology",
             "socio"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "ba_english_language_slots",
           "group": "CAS",
           "name": "Bachelor of Arts in English Language",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "ba english",
             "ab english",
             "english language",
             "ba eng",
             "ab eng"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_biology_biotechnology_slots",
           "group": "CAS",
           "name": "Bachelor of Science in Biology Major in Biotechnology",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bs bio",
             "bs biology",
             "bsbio",
             "biology",
             "biotechnology"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_community_development_slots",
           "group": "CAS",
           "name": "Bachelor of Science in Community Development",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bs comdev",
             "bscomdev",
             "community development",
             "comdev"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_environmental_science_slots",
           "group": "CAS",
           "name": "Bachelor of Science in Environmental Science Major in Environmental Heritage Studies",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bs es",
             "bses",
             "environmental science",
             "environmental heritage",
             "environmental heritage studies"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_mathematics_slots",
           "group": "CAS",
           "name": "Bachelor of Science in Mathematics",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bs math",
             "bsmath",
             "mathematics",
             "math"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_information_technology_slots",
           "group": "COT",
           "name": "Bachelor of Science in Information Technology",
-          "value": "2 slots",
-          "text": "",
           "aliases": [
             "bsit",
             "it",
             "information technology",
             "bs information technology"
-          ]
+          ],
+          "value": "2 slots"
         },
         {
           "key": "bs_automotive_technology_slots",
           "group": "COT",
           "name": "Bachelor of Science in Automotive Technology",
-          "value": "3 slots",
-          "text": "",
           "aliases": [
             "bsat",
             "automotive technology",
             "bs automotive technology"
-          ]
+          ],
+          "value": "3 slots"
         },
         {
           "key": "bs_electronics_technology_slots",
           "group": "COT",
           "name": "Bachelor of Science in Electronics Technology",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bset",
             "et",
@@ -2269,27 +2256,25 @@
             "electronic technology",
             "bs electronics technology",
             "bachelor of science in electronic technology"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_food_technology_slots",
           "group": "COT",
           "name": "Bachelor of Science in Food Technology",
-          "value": "12 slots",
-          "text": "",
           "aliases": [
             "bsft",
             "ft",
             "food technology",
             "bs food technology"
-          ]
+          ],
+          "value": "12 slots"
         },
         {
           "key": "bs_entertainment_multimedia_computing_slots",
           "group": "COT",
           "name": "Bachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology",
-          "value": "32 slots",
-          "text": "",
           "aliases": [
             "bsemc",
             "bsemc-dat",
@@ -2299,38 +2284,35 @@
             "multimedia",
             "digital animation",
             "entertainment and multimedia computing"
-          ]
+          ],
+          "value": "32 slots"
         },
         {
           "key": "bs_hospitality_management_slots",
           "group": "COB",
           "name": "Bachelor of Science in Hospitality Management",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bshm",
             "hospitality management",
             "bs hospitality management"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_accountancy_slots",
           "group": "COB",
           "name": "Bachelor of Science in Accountancy",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bsa",
             "accountancy",
             "bs accountancy"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_business_administration_financial_management_slots",
           "group": "COB",
           "name": "Bachelor of Science in Business Administration major in Financial Management",
-          "value": "0 slots",
-          "text": "",
           "aliases": [
             "bsba",
             "bsba fm",
@@ -2338,42 +2320,40 @@
             "business administration",
             "financial management",
             "bs business administration"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "bs_nursing_slots",
           "group": "CON",
           "name": "Bachelor of Science in Nursing",
-          "value": "Please refer to Bachelor of Science in Nursing for slot information since we do not have data from their department, particularly on course slots.",
-          "text": "",
           "aliases": [
             "bsn",
             "nursing",
             "bs nursing"
-          ]
+          ],
+          "value": "0 slots"
         },
         {
           "key": "coe_slots",
           "group": "COE",
           "name": "College of Education course slots",
-          "value": "Currently, I do not have slots data for this department because COE is already in a separate campus. This chatbot data is specifically focused on the main campus.",
-          "text": "",
           "aliases": [
             "education courses"
-          ]
+          ],
+          "value": "Currently, I do not have slots data for this department because COE is already in a separate campus. This chatbot data is specifically focused on the main campus."
         },
         {
           "key": "bpa_slots",
           "group": "COA",
           "name": "Bachelor of Public Administration",
-          "value": "Currently, I do not have slots data for this program.",
-          "text": "",
           "aliases": [
             "coa",
             "bpa",
             "public administration",
             "bachelor of public administration"
-          ]
+          ],
+          "value": "Currently, I do not have slots data for this program."
         }
       ],
       "itemGroups": {
@@ -2452,10 +2432,7 @@
           "unsa may mga course nga naay available slots diris cob and cot"
         ]
       },
-      "display_name": "Course Slots",
-      "images": [],
-      "pins": [],
-      "routes": []
+      "display_name": "Course Slots"
     }
   ]
 }

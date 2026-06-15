@@ -1,3 +1,4 @@
+import re
 from typing import Any, Dict, List, Optional
 
 
@@ -148,6 +149,9 @@ class KnowledgeDataLoader:
                     "mapData": self._map_data_for_topic(topic, full_topic, topic_lookup or {}),
                     "suggestions": topic.get("suggestions") or [],
                     "choiceGroups": topic.get("choiceGroups") or topic.get("choice_groups") or [],
+                    "items": topic.get("items") or [],
+                    "itemGroups": topic.get("itemGroups") or topic.get("item_groups") or {},
+                    "itemDisclaimer": topic.get("itemDisclaimer") or topic.get("item_disclaimer") or "",
                 },
                 "metadata": metadata,
             })
@@ -259,6 +263,15 @@ class KnowledgeDataLoader:
         if not isinstance(value, dict):
             return None
 
+        raw_coordinates = value.get("coordinates")
+        if isinstance(raw_coordinates, list) and len(raw_coordinates) >= 2:
+            try:
+                y_number = float(raw_coordinates[0])
+                x_number = float(raw_coordinates[1])
+                return [y_number, x_number]
+            except (TypeError, ValueError):
+                return None
+
         lat = value.get("lat", value.get("latitude", value.get("y")))
         lng = value.get("lng", value.get("longitude", value.get("x")))
         try:
@@ -336,6 +349,9 @@ class KnowledgeDataLoader:
 
     def _format_entry_response(self, entry: Dict[str, Any], user_message: str = "") -> Dict[str, Any]:
         responses_data = entry.get("responses", {})
+        if responses_data.get("items"):
+            return self._format_item_level_response(responses_data, user_message)
+
         answer = responses_data.get("answer", {})
 
         preferred_lang = self.helper.detect_language(user_message)
@@ -370,3 +386,163 @@ class KnowledgeDataLoader:
             result["custom"] = custom
 
         return result
+
+    def _format_item_level_response(self, responses_data: Dict[str, Any], user_message: str = "") -> Dict[str, Any]:
+        answer = responses_data.get("answer", {})
+        items = [item for item in responses_data.get("items") or [] if isinstance(item, dict)]
+        item_groups = responses_data.get("itemGroups") or {}
+        disclaimer = str(responses_data.get("itemDisclaimer") or "").strip()
+        preferred_lang = self.helper.detect_language(user_message)
+        selected_answer = answer.get(preferred_lang) if isinstance(answer, dict) else answer
+        if not selected_answer and isinstance(answer, dict):
+            selected_answer = answer.get("en") or next(iter(answer.values()), [])
+
+        selected_items = self._matching_items(items, user_message)
+        matched_groups = self._matching_item_groups(items, item_groups, user_message)
+
+        if selected_items:
+            text_parts = (
+                [self._item_line(selected_items[0])]
+                if len(selected_items) == 1
+                else self._item_lines_by_group(selected_items, item_groups, generic_header="Here are the matching course slots:")
+            )
+        elif matched_groups:
+            grouped_items = [item for item in items if str(item.get("group") or "").upper() in matched_groups]
+            text_parts = self._item_lines_by_group(grouped_items, item_groups, include_group_headers=True)
+        else:
+            text_parts = self._answer_parts(selected_answer)
+            text_parts.extend(self._item_lines_by_group(items, item_groups, include_group_headers=True))
+
+        if disclaimer:
+            text_parts.append(disclaimer)
+
+        text_parts = [part for part in text_parts if str(part).strip()]
+        result: Dict[str, Any] = {"text": "\n".join(text_parts)}
+        if len(text_parts) > 1:
+            result["textParts"] = text_parts
+
+        custom: Dict[str, Any] = {}
+        if responses_data.get("suggestions"):
+            custom["suggestions"] = responses_data["suggestions"]
+        if responses_data.get("choiceGroups"):
+            custom["choiceGroups"] = responses_data["choiceGroups"]
+        if custom:
+            result["custom"] = custom
+        return result
+
+    def _answer_parts(self, selected_answer: Any) -> List[str]:
+        if isinstance(selected_answer, list):
+            return [str(line).strip() for line in selected_answer if str(line).strip()]
+        if selected_answer:
+            return [str(selected_answer).strip()]
+        return []
+
+    def _item_lines_by_group(
+        self,
+        items: List[Dict[str, Any]],
+        item_groups: Dict[str, Any],
+        generic_header: str = "",
+        include_group_headers: bool = False,
+    ) -> List[str]:
+        if not items:
+            return []
+
+        if len(items) == 1 and not include_group_headers and not generic_header:
+            return [self._item_line(items[0])]
+
+        lines: List[str] = []
+        if generic_header:
+            lines.append(generic_header)
+
+        grouped: Dict[str, List[Dict[str, Any]]] = {}
+        group_order: List[str] = []
+        for item in items:
+            group = str(item.get("group") or "Other").upper()
+            if group not in grouped:
+                grouped[group] = []
+                group_order.append(group)
+            grouped[group].append(item)
+
+        for group in group_order:
+            header = self._group_header(group, item_groups)
+            if include_group_headers or len(group_order) > 1 or not generic_header:
+                if header:
+                    lines.append(header)
+            lines.extend(self._item_line(item) for item in grouped[group])
+        return lines
+
+    def _item_line(self, item: Dict[str, Any]) -> str:
+        text = str(item.get("text") or "").strip()
+        if text:
+            return text
+        name = str(item.get("name") or item.get("key") or "").strip()
+        value = str(item.get("value") or "").strip()
+        return f"{name}: {value}" if value else name
+
+    def _group_header(self, group: str, item_groups: Dict[str, Any]) -> str:
+        group_data = item_groups.get(group) or item_groups.get(group.lower()) or {}
+        if isinstance(group_data, dict):
+            return str(group_data.get("header") or group_data.get("name") or group).strip()
+        return str(group_data or group).strip()
+
+    def _matching_items(self, items: List[Dict[str, Any]], user_message: str) -> List[Dict[str, Any]]:
+        query = self._normalize_item_text(user_message)
+        query_tokens = set(self._item_tokens(query))
+        matches: List[Dict[str, Any]] = []
+        for item in items:
+            aliases = [
+                item.get("key"),
+                item.get("name"),
+                *(item.get("aliases") or []),
+            ]
+            if self._matches_any_alias(query, query_tokens, aliases):
+                matches.append(item)
+        return matches
+
+    def _matching_item_groups(
+        self,
+        items: List[Dict[str, Any]],
+        item_groups: Dict[str, Any],
+        user_message: str,
+    ) -> List[str]:
+        query = self._normalize_item_text(user_message)
+        matched: List[str] = []
+        groups = {str(item.get("group") or "").upper() for item in items if item.get("group")}
+        for group in groups:
+            group_data = item_groups.get(group) or item_groups.get(group.lower()) or {}
+            aliases = [group]
+            if isinstance(group_data, dict):
+                aliases.extend(group_data.get("aliases") or [])
+                aliases.append(group_data.get("name"))
+            elif group_data:
+                aliases.append(group_data)
+            if self._matches_any_alias(query, set(self._item_tokens(query)), aliases):
+                matched.append(group)
+        return matched
+
+    def _matches_any_alias(self, query: str, query_tokens: set, aliases: List[Any]) -> bool:
+        for alias in aliases:
+            normalized_alias = self._normalize_item_text(str(alias or ""))
+            if not normalized_alias:
+                continue
+            if re.search(rf"(?<!\w){re.escape(normalized_alias)}(?!\w)", query):
+                return True
+            alias_tokens = set(self._item_tokens(normalized_alias))
+            if len(alias_tokens) >= 2 and alias_tokens.issubset(query_tokens):
+                return True
+        return False
+
+    def _normalize_item_text(self, text: str) -> str:
+        normalized = str(text or "").lower()
+        normalized = normalized.replace("&", " and ")
+        normalized = re.sub(r"[^a-z0-9\s'-]", " ", normalized)
+        normalized = re.sub(r"\s+", " ", normalized).strip()
+        return normalized
+
+    def _item_tokens(self, text: str) -> List[str]:
+        weak = {
+            "the", "is", "are", "under", "course", "courses", "slot", "slots",
+            "available", "availability", "left", "open", "sa", "ang", "nga",
+            "naay", "naa", "paba", "pa", "may", "mga", "diris", "for", "in",
+        }
+        return [token for token in re.findall(r"\b[\w'-]+\b", text) if len(token) > 1 and token not in weak]

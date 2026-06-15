@@ -3,12 +3,30 @@ import { MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import ChatWindow from "./ChatWindow";
+import { useQuery } from "@tanstack/react-query";
+import { fetchChatWidgetSettings } from "@/lib/adminApi";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: widgetSettings = {
+    inactiveIcon: "💬",
+    inactiveImageUrl: "",
+    activeIcon: "✕",
+    activeImageUrl: "",
+    inactiveCustomImages: [],
+    activeCustomImages: [],
+    chatheadBgColor: "#001C38",
+    chatheadOpacity: 1,
+  } } = useQuery({
+    queryKey: ["chatWidgetSettings"],
+    queryFn: fetchChatWidgetSettings,
+    staleTime: 60_000,
+  });
+  const currentIcon = isOpen ? widgetSettings.activeIcon : widgetSettings.inactiveIcon;
+  const currentImage = isOpen ? widgetSettings.activeImageUrl : widgetSettings.inactiveImageUrl;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
+    <div className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50 flex flex-col items-end pointer-events-none">
       <AnimatePresence>
         {isOpen && (
           <>
@@ -19,7 +37,7 @@ export default function ChatWidget() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="mb-4 w-[90vw] sm:w-[400px] h-[700px] max-h-[80vh] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border/50 pointer-events-auto origin-bottom-center sm:origin-bottom-right sm:mr-0 mr-auto"
+              className="mb-3 h-[calc(100vh-5.5rem)] max-h-[calc(100vh-5.5rem)] w-[calc(100vw-1.5rem)] sm:w-[400px] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border/50 pointer-events-auto origin-bottom-center sm:origin-bottom-right sm:mr-0 mr-auto"
             >
               <ChatWindow onClose={() => setIsOpen(false)} isOpen={isOpen} />
             </motion.div>
@@ -31,18 +49,39 @@ export default function ChatWidget() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="pointer-events-auto h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center relative overflow-hidden group"
+        className="pointer-events-auto h-11 w-11 sm:h-12 sm:w-12 rounded-full text-white shadow-lg flex items-center justify-center relative overflow-hidden group"
+        style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}
       >
         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
         <AnimatePresence mode="wait">
-          {isOpen ? (
+          {currentImage ? (
+            <motion.img
+              key={`chat-image-${isOpen ? "active" : "inactive"}`}
+              src={currentImage}
+              alt="Chatbot"
+              className="h-full w-full object-cover"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+            />
+          ) : currentIcon ? (
+            <motion.span
+              key={`chat-icon-${isOpen ? "active" : "inactive"}-${currentIcon}`}
+              className="text-xl sm:text-2xl"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+            >
+              {currentIcon}
+            </motion.span>
+          ) : isOpen ? (
             <motion.div
               key="close"
               initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             </motion.div>
           ) : (
             <motion.div
@@ -51,7 +90,7 @@ export default function ChatWidget() {
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
             >
-              <MessageCircle className="h-7 w-7" />
+              <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
             </motion.div>
           )}
         </AnimatePresence>

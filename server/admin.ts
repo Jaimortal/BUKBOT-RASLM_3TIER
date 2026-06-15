@@ -1,18 +1,16 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import type { ResponseData, Location, ApiResponse, UserPrivileges } from '../client/src/types/admin';
 import * as dbResponses from './db/responses.js';
 import * as dbLocations from './db/locations.js';
 import { deleteImage } from './db/images.js';
 import { upsertResponse } from './admin-db.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const PROJECT_ROOT = process.cwd();
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
-const RESPONSES_FILE = path.join(__dirname, '..', 'rasa', 'actions', 'responses.json');
-const RESPONSES_LOCATION_FILE = path.join(__dirname, '..', 'rasa', 'actions', 'responses_location.json');
+const DATA_DIR = path.join(PROJECT_ROOT, 'data');
+const RESPONSES_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses.json');
+const RESPONSES_LOCATION_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses_location.json');
 const PRIVILEGES_FILE = path.join(DATA_DIR, 'user_privileges.json');
 const MAP_SETTINGS_FILE = path.join(DATA_DIR, 'map_settings.json');
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];

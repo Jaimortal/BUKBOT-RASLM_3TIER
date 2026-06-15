@@ -1,6 +1,8 @@
 import sys
 import unittest
 import os
+import json
+import tempfile
 from pathlib import Path
 
 
@@ -10,6 +12,7 @@ sys.path.insert(0, str(ROOT / "rasa" / "actions"))
 from actions import ActionReplyFromJsonHelper, LOCATION_ALIASES  # noqa: E402
 from main_router import MainRouterService  # noqa: E402
 from response_builder import ResponseBuilder  # noqa: E402
+from query_normalizer import QueryNormalizer  # noqa: E402
 
 
 class ContextAwareRetrievalTests(unittest.TestCase):
@@ -225,6 +228,324 @@ class ContextAwareRetrievalTests(unittest.TestCase):
         self.assertGreaterEqual(len(response["custom"]["mapData"]["pins"]), 3)
         self.assertGreaterEqual(len(response["custom"]["mapData"]["routes"]), 2)
         self.assertEqual(slots["conversation_subject"], "student_id")
+
+    def test_transferred_student_acceptance_routes_to_transferee_admission(self):
+        response, slots = self.route(
+            "ask_availability",
+            "do buksu accept transferred student",
+        )
+
+        text = self.text_of(response).lower()
+        self.assertIn("accepts transferees", text)
+        self.assertNotIn("student id", text)
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_misspelled_transfered_students_routes_to_transferee_admission(self):
+        response, slots = self.route(
+            "ask_availability",
+            "Is buksu accept transfered students",
+        )
+
+        text = self.text_of(response).lower()
+        self.assertIn("accepts transferees", text)
+        self.assertNotIn("borrow books", text)
+        self.assertNotIn("inc grade", text)
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_bisaya_transfer_root_routes_to_transferee_admission(self):
+        response, slots = self.route(
+            "ask_availability",
+            "mudawat mo ug mamalhinay nga student sa buksu",
+        )
+
+        text = self.text_of(response).lower()
+        self.assertIn("transferees", text)
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_bisaya_payment_word_routes_to_student_id_fee(self):
+        response, slots = self.route(
+            "ask_fee",
+            "pila bayad sa student id",
+        )
+
+        self.assertIn("id", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "Student_id_fee")
+
+    def test_bisaya_process_word_routes_to_id_validation(self):
+        response, slots = self.route(
+            "ask_process",
+            "unsaon pag validate id",
+        )
+
+        self.assertIn("validate", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "id_validation_process")
+
+    def test_day2_phase1_bisaya_where_routes_location(self):
+        response, slots = self.route("ask_location", "asa ang library")
+
+        self.assertIn("library", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "location")
+
+    def test_day2_phase1_bisaya_when_routes_enrollment_schedule(self):
+        response, slots = self.route("ask_schedule", "kanus-a enrollment")
+
+        self.assertIn("enrollment", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "enrollment_time_schedule")
+
+    def test_day2_phase1_bisaya_who_routes_cot_dean(self):
+        response, slots = self.route("ask_general_info", "kinsa dean sa cot")
+
+        self.assertIn("dean", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "Dean_0f_COT")
+
+    def test_day2_phase1_bisaya_requirements_transferee(self):
+        response, slots = self.route("ask_requirement", "unsa requirements sa transferee")
+
+        self.assertIn("transferee", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_day2_phase2_gapamalhin_routes_transfer(self):
+        response, slots = self.route("ask_availability", "gapamalhin ko gikan laing school")
+
+        self.assertIn("transferees", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_day2_phase2_mobalhin_unta_routes_transfer(self):
+        response, slots = self.route("ask_availability", "mobalhin unta ko sa buksu")
+
+        self.assertIn("transferees", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_day2_phase2_dawaton_transfer_student_routes_transfer(self):
+        response, slots = self.route("ask_availability", "dawaton ba ang transfer student")
+
+        self.assertIn("transferees", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_day2_phase2_unsay_kinahanglan_mamalhin_routes_transfer(self):
+        response, slots = self.route("ask_requirement", "unsay kinahanglan para mamalhin")
+
+        self.assertIn("transferee", self.text_of(response).lower())
+        self.assertEqual(slots["conversation_last_intent"], "transferee_admission_requirements")
+
+    def test_day3_phase1_service_and_document_normalization(self):
+        cases = [
+            ("ask_process", "unsaon pag validate id", "id_validation_process", "validate"),
+            ("ask_location", "asa kuha library card", "library_id_card_location", "library id card"),
+            ("ask_schedule", "kanus-a cor validation", "cor_validation_day", "cor"),
+            ("ask_document", "test permit corrupted", "test_permit_issue", "test permit"),
+            ("ask_fee", "medical cert pila", "clinic_medical_certificate_cost", "medical certificate"),
+        ]
+
+        for intent, text, expected_intent, expected_text in cases:
+            with self.subTest(text=text):
+                response, slots = self.route(intent, text)
+                self.assertIn(expected_text, self.text_of(response).lower())
+                self.assertEqual(slots["conversation_last_intent"], expected_intent)
+
+    def test_day3_phase1_pe_without_uniform_clarifies(self):
+        response, slots = self.route("ask_process", "how get pe")
+
+        self.assertIn("Did you mean PE uniform", self.text_of(response))
+        self.assertEqual(response["custom"]["suggestions"][0]["label"], "PE uniform")
+        self.assertEqual(slots, {})
+
+    def test_day3_phase2_course_acronym_and_bisaya_normalization(self):
+        cases = [
+            ("do buksu offer ba philo", "buksu_AB-PHILO_program", "philosophy"),
+            ("naa moy bsat", "buksu_BSAT_program", "automotive"),
+            ("how about bset", "buksu_BSET_program", "electronics"),
+            ("masteral courses", "buksu_masters_courses", "masters degree"),
+        ]
+
+        for text, expected_intent, expected_text in cases:
+            with self.subTest(text=text):
+                response, slots = self.route("ask_availability", text)
+                self.assertIn(expected_text, self.text_of(response).lower())
+                self.assertEqual(slots["conversation_last_intent"], expected_intent)
+
+    def test_day3_phase2_bisaya_generic_courses_show_course_menu(self):
+        response, slots = self.route("ask_availability", "unsay courses sa buksu")
+        labels = [item["label"] for item in response["custom"]["suggestions"]]
+
+        self.assertIn("Which course list", self.text_of(response))
+        self.assertIn("All courses offered", labels)
+        self.assertIn("Board courses", labels)
+        self.assertIn("Non-board courses", labels)
+        self.assertEqual(slots, {})
+
+    def test_structured_item_level_course_slots_group(self):
+        response, slots = self.route("ask_availability", "ask slot left for CAS courses?")
+        text = self.text_of(response)
+
+        self.assertIn("course slots under CAS", text)
+        self.assertIn("Bachelor of Arts in Philosophy: 0 slots", text)
+        self.assertIn("Bachelor of Science in Mathematics: 0 slots", text)
+        self.assertIn("not accurate", text)
+        self.assertEqual(slots["conversation_last_intent"], "course_slots")
+
+    def test_structured_item_level_course_slots_single_child(self):
+        response, slots = self.route("ask_availability", "slot left for BA Philo")
+        text = self.text_of(response)
+
+        self.assertIn("Bachelor of Arts in Philosophy: 0 slots", text)
+        self.assertNotIn("Bachelor of Science in Development Communication", text)
+        self.assertEqual(slots["conversation_last_intent"], "course_slots")
+
+    def test_structured_item_level_course_slots_multiple_children(self):
+        response, slots = self.route("ask_availability", "Tell me the slots left in BSIT and BSET")
+        text = self.text_of(response)
+
+        self.assertIn("Bachelor of Science in Information Technology: 2 slots", text)
+        self.assertIn("Bachelor of Science in Electronics Technology: 0 slots", text)
+        self.assertNotIn("Bachelor of Science in Food Technology", text)
+        self.assertEqual(slots["conversation_last_intent"], "course_slots")
+
+    def test_structured_item_level_course_slots_multiple_groups(self):
+        response, slots = self.route("ask_availability", "Available slots for COT and CAS")
+        text = self.text_of(response)
+
+        self.assertIn("course slots under CAS", text)
+        self.assertIn("current slots available under COT", text)
+        self.assertIn("Bachelor of Science in Information Technology: 2 slots", text)
+        self.assertIn("Bachelor of Arts in Economics: 0 slots", text)
+        self.assertEqual(slots["conversation_last_intent"], "course_slots")
+
+    def test_structured_item_level_course_slots_coa_means_public_administration(self):
+        coa, coa_slots = self.route("ask_availability", "slots for COA")
+        bpa, bpa_slots = self.route("ask_availability", "slots left for BPA")
+
+        self.assertIn("Bachelor of Public Administration", self.text_of(coa))
+        self.assertIn("Bachelor of Public Administration", self.text_of(bpa))
+        self.assertNotIn("Agriculture", self.text_of(coa))
+        self.assertEqual(coa_slots["conversation_last_intent"], "course_slots")
+        self.assertEqual(bpa_slots["conversation_last_intent"], "course_slots")
+
+    def test_day4_phase1_location_wording_and_acronym_guardrails(self):
+        cases = [
+            ("ask_location", "asa ang cot dean office", "location", "cot dean"),
+            ("ask_location", "hain dapit ang registrar", "location", "registrar"),
+            ("ask_location", "diin dapit ang registrar", "location", "registrar"),
+            ("ask_location", "locate cpag building", "location", "cpag"),
+            ("ask_general_info", "who is dean of cot", "Dean_0f_COT", "dean"),
+            ("ask_availability", "courses under cot", "course_offer_COT", "course"),
+        ]
+
+        for intent, text, expected_intent, expected_text in cases:
+            with self.subTest(text=text):
+                response, slots = self.route(intent, text)
+                self.assertIn(expected_text, self.text_of(response).lower())
+                self.assertEqual(slots["conversation_last_intent"], expected_intent)
+
+    def test_day4_phase2_clarification_safety(self):
+        student_id, student_id_slots = self.route("ask_general_info", "student id")
+        borrow, borrow_slots = self.route("ask_process", "borrow books")
+        transfer, transfer_slots = self.route("ask_availability", "transfered students")
+        validate, validate_slots = self.route("ask_process", "how validate")
+
+        self.assertNotIn("clarify if you mean student id", self.text_of(student_id).lower())
+        self.assertIn("student id", self.text_of(student_id).lower())
+        self.assertEqual(student_id_slots["conversation_last_intent"], "student_id_process")
+
+        self.assertIn("borrow", self.text_of(borrow).lower())
+        self.assertNotIn("inc", self.text_of(borrow).lower())
+        self.assertEqual(borrow_slots["conversation_last_intent"], "library_borrow_books_process")
+
+        self.assertIn("transferees", self.text_of(transfer).lower())
+        self.assertNotIn("borrow books", self.text_of(transfer).lower())
+        self.assertNotIn("inc grade", self.text_of(transfer).lower())
+        self.assertEqual(transfer_slots["conversation_last_intent"], "transferee_admission_requirements")
+
+        labels = [item["label"] for item in validate["custom"]["suggestions"]]
+        self.assertIn("Which validation", self.text_of(validate))
+        self.assertEqual(labels, ["ID validation", "COR validation"])
+        self.assertEqual(validate_slots, {})
+
+    def test_day5_phase1_admin_normalization_rules_load_and_validate(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            rules_path = Path(tmpdir) / "normalization_rules.json"
+            rules_path.write_text(
+                json.dumps({
+                    "phrases": {
+                        "med cert": "medical certificate clinic certificate",
+                        "": "ignored",
+                    },
+                    "tokens": {
+                        "unsaononon": "how process steps",
+                        "id": "dangerous override ignored",
+                    },
+                    "roots": {
+                        "paenroll": "enrollment enroll",
+                        "course": "dangerous override ignored",
+                    },
+                    "fuzzy_roots": {
+                        "admisssion": "admission application",
+                        "pay": "dangerous override ignored",
+                    },
+                }),
+                encoding="utf-8",
+            )
+
+            normalizer = QueryNormalizer(rules_path=rules_path)
+
+        self.assertIn("medical certificate", normalizer.expand("med cert"))
+        self.assertIn("how process steps", normalizer.expand("unsaononon id validation"))
+        self.assertIn("enrollment enroll", normalizer.expand("magpaenroll ko"))
+        self.assertIn("admission application", normalizer.expand("admisssion requirements"))
+        self.assertNotIn("dangerous override ignored", normalizer.expand("id course pay"))
+
+    def test_day5_phase1_bad_admin_normalization_file_is_ignored(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            rules_path = Path(tmpdir) / "normalization_rules.json"
+            rules_path.write_text("{bad json", encoding="utf-8")
+
+            normalizer = QueryNormalizer(rules_path=rules_path)
+
+        self.assertIn("transferee transfer", normalizer.expand("transfered student"))
+
+    def test_day1_phase2_admisson_requirements_typo(self):
+        response, slots = self.route("ask_requirement", "admisson requirements")
+
+        self.assertIn("Test Permit", self.text_of(response))
+        self.assertEqual(slots["conversation_last_intent"], "exam_requirements")
+
+    def test_day1_phase2_enrolment_when_typo(self):
+        response, slots = self.route("ask_schedule", "enrolment when")
+
+        self.assertIn("June", self.text_of(response))
+        self.assertEqual(slots["conversation_last_intent"], "enrollment_time_schedule")
+
+    def test_day1_phase2_cor_validaton_typo(self):
+        response, slots = self.route("ask_process", "cor validaton")
+
+        self.assertIn("COR", self.text_of(response))
+        self.assertEqual(slots["conversation_last_intent"], "cor_validation_steps")
+
+    def test_day1_phase2_libary_id_typo(self):
+        response, slots = self.route("ask_location", "libary id asa kuha")
+
+        self.assertIn("library ID card", self.text_of(response))
+        self.assertEqual(slots["conversation_last_intent"], "library_id_card_location")
+
+    def test_day1_phase2_cources_offered_typo(self):
+        response, _ = self.route("ask_availability", "cources offered")
+
+        self.assertIn("Which course list", self.text_of(response))
+        self.assertIn("custom", response)
+
+    def test_day1_phase2_sched_typo(self):
+        response, slots = self.route("ask_schedule", "enrollment sched")
+
+        self.assertIn("June", self.text_of(response))
+        self.assertEqual(slots["conversation_last_intent"], "enrollment_time_schedule")
+
+    def test_student_id_selection_does_not_clarify_itself(self):
+        response, slots = self.route("ask_general_info", "student id")
+
+        text = self.text_of(response).lower()
+        self.assertNotIn("clarify if you mean student id", text)
+        self.assertIn("student id", text)
+        self.assertEqual(slots["conversation_last_intent"], "student_id_process")
 
     def test_student_id_follow_up_payment(self):
         _, slots = self.route(
@@ -993,6 +1314,20 @@ class ContextAwareRetrievalTests(unittest.TestCase):
 
         self.assertIn("Examination results", self.text_of(response))
         self.assertEqual(slots["conversation_last_intent"], "exam_results")
+
+    def test_bisaya_admission_result_follow_up_does_not_trigger_location_fallback(self):
+        first, first_slots = self.route("ask_process", "unsaon nako pag lantaws akong admissiont test result")
+        follow_up, follow_up_slots = self.route(
+            "ask_location",
+            "aha manako na makita akong result sa examination?",
+            slots=first_slots,
+        )
+
+        self.assertIn("examination", self.text_of(first).lower())
+        self.assertEqual(first_slots["conversation_last_intent"], "exam_results")
+        self.assertIn("examination", self.text_of(follow_up).lower())
+        self.assertNotIn("don't have location information", self.text_of(follow_up).lower())
+        self.assertEqual(follow_up_slots["conversation_last_intent"], "exam_results")
 
     def test_library_services_menu(self):
         services, slots = self.route("ask_general_info", "library services")

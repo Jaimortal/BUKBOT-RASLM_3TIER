@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { spawn } from "child_process";
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from "url";
 import crypto from "crypto";
 import PhraseTranslator from "../../rulebaseTranslation/phraseTranslator";
 import { hashPassword, verifyPassword } from "../utils/passwordUtils";
@@ -23,8 +22,7 @@ import {
   deleteResponse
 } from "../admin-db";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const SERVER_DIR = path.join(process.cwd(), "server");
 
 // Initialize phrase-based translator
 const phraseTranslator = new PhraseTranslator();
@@ -64,9 +62,9 @@ function newJobId() {
 }
 
 async function translateToCebuanoViaPython(text: string): Promise<string> {
-  const pythonScript = path.join(__dirname, "..", "privateAPI", "translator_service.py");
-  const modelPath = process.env.CTRANSLATE2_MODEL_PATH || path.join(__dirname, "..", "privateAPI", "models", "ctranslate2");
-  const spmPath = process.env.SENTENCEPIECE_MODEL || path.join(__dirname, "..", "privateAPI", "models", "spm.model");
+  const pythonScript = path.join(SERVER_DIR, "privateAPI", "translator_service.py");
+  const modelPath = process.env.CTRANSLATE2_MODEL_PATH || path.join(SERVER_DIR, "privateAPI", "models", "ctranslate2");
+  const spmPath = process.env.SENTENCEPIECE_MODEL || path.join(SERVER_DIR, "privateAPI", "models", "spm.model");
   const backend = process.env.TRANSLATOR_BACKEND || "auto";
 
   const candidates: Array<{ cmd: string; argsPrefix: string[] }> = [];
@@ -488,7 +486,7 @@ export class AdminController {
       const userEmail = decoded.username as string;
 
       // Load admin users from file (fresh read)
-      const adminUsersPath = path.join(__dirname, "../account/admin-users.json");
+      const adminUsersPath = path.join(SERVER_DIR, "account", "admin-users.json");
       const adminUsersData = JSON.parse(fs.readFileSync(adminUsersPath, "utf8"));
       
       // Find user

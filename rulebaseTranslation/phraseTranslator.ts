@@ -1,9 +1,7 @@
 import { spawn } from "child_process";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const PROJECT_ROOT = process.cwd();
 
 interface TranslationResult {
   success: boolean;
@@ -16,7 +14,7 @@ class PhraseTranslator {
 
   constructor() {
     // Path to rulebaseTranslation folder
-    this.pythonScript = path.join(__dirname, "..", "rulebaseTranslation", "phraseTranslator.py");
+    this.pythonScript = path.join(PROJECT_ROOT, "rulebaseTranslation", "phraseTranslator.py");
   }
 
   async translateToCebuano(text: string): Promise<string> {

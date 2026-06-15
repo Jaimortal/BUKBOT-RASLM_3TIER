@@ -1,0 +1,475 @@
+RASA STRUCTURED RETRIEVAL STABILIZATION PROMPT
+Architecture: Rasa NLU + Query Normalization + Structured Retrieval + Context Memory + Clarification + Response Builder + Optional LLM Reranker
+
+Use this prompt to continue building the chatbot phase by phase. Do not jump to the next phase until the current phase is implemented, debugged, and manually approved.
+
+IMPORTANT RULES
+
+1. Do not rewrite the whole chatbot at once.
+2. Keep Rasa as the official NLU layer.
+3. Keep JSON/database data as the source of truth.
+4. Do not let an LLM generate official answers. If used later, it can only choose/rerank official JSON records.
+5. Preserve the admin panel, map system, image upload, choices buttons, reports, audio response, and Knowledge Manager features.
+6. Avoid redundant data when one structured record can handle the answer.
+7. If a question is ambiguous, show clarification choices instead of guessing.
+8. Test each phase before continuing.
+
+
+DAY 1 - PHASE 1: CURRENT FLOW AUDIT
+
+Goal:
+Understand exactly how a user message moves through the current system before changing more logic.
+
+Tasks:
+1. Trace the current message flow:
+   - frontend chatbox
+   - Express /api/chat
+   - Rasa API
+   - action_main_router
+   - query_normalizer
+   - entity_resolver
+   - knowledge_router
+   - context memory
+   - response_builder
+   - frontend rendering
+
+2. Identify the active files responsible for:
+   - intent handling
+   - query normalization
+   - retrieval scoring
+   - clarification choices
+   - map payload generation
+   - suggestions/choice payloads
+   - context slots
+
+3. Check if old topic router files are still being called.
+
+Expected output:
+1. A short audit document in docs.
+2. A list of files that are safe to edit.
+3. A list of files that should be treated as legacy/reference only.
+
+Before continuing to Day 1 Phase 2, the user must:
+1. Read the audit summary.
+2. Confirm that the identified live files are correct.
+3. Run the bot with a few basic questions:
+   - where is the library?
+   - how to enroll freshman?
+   - courses offered?
+   - how to get student id?
+   - what services can you provide?
+
+
+DAY 1 - PHASE 2: BASELINE TEST DATASET
+
+Goal:
+Create a stable test set so future changes can be measured instead of guessed.
+
+Tasks:
+1. Create or update a QA regression file in docs/test data.
+2. Include at least these categories:
+   - campus locations
+   - enrollment/admission
+   - courses and departments
+   - student services
+   - clinic/dental services
+   - academic policy
+   - follow-up questions
+   - ambiguous questions
+   - Bisaya questions
+   - typo/misspelled questions
+
+3. Mark each test as:
+   - expected exact record/display name
+   - expected clarification choices
+   - expected map/no map
+   - expected follow-up behavior
+
+Expected output:
+1. A reusable QA checklist.
+2. A smaller smoke test list of 20 questions.
+3. A larger regression list of 100+ questions.
+
+Before continuing to Day 2, the user must:
+1. Approve the test categories.
+2. Run or allow Codex to run the smoke tests.
+3. Report any obviously wrong answers.
+
+
+DAY 2 - PHASE 1: RASA NLU STABILIZATION
+
+Goal:
+Keep Rasa simple and reduce intent confusion.
+
+Tasks:
+1. Confirm the main intents are broad purpose intents only:
+   - ask_location
+   - ask_process
+   - ask_requirement
+   - ask_fee
+   - ask_schedule
+   - ask_document
+   - ask_contact
+   - ask_availability
+   - ask_general_info
+   - ask_follow_up
+   - smalltalk
+   - out_of_scope
+
+2. Remove or avoid relying on old super-intent prediction.
+3. Add only necessary NLU examples for broad intent improvement.
+4. Do not add hundreds of topic-specific intents.
+5. Make sure domain.yml, rules.yml, and stories.yml route main intents to action_main_router.
+
+Expected output:
+1. Updated Rasa files only if needed.
+2. Rasa validation/training check.
+3. Notes about which intent confusions were reduced.
+
+Before continuing to Day 2 Phase 2, the user must:
+1. Run rasa train if Rasa files changed.
+2. Restart rasa run and rasa action server.
+3. Test 10 broad-intent questions.
+
+
+DAY 2 - PHASE 2: QUERY NORMALIZATION HARDENING
+
+Goal:
+Improve messy user wording before retrieval.
+
+Tasks:
+1. Improve English typo normalization:
+   - transfered -> transferred
+   - offerd -> offered
+   - admision -> admission
+   - enrollmen -> enrollment
+   - vallidate -> validate
+
+2. Improve Bisaya normalization:
+   - asa / aha -> where
+   - unsaon -> how
+   - pila -> how much
+   - kanus-a / kanusa -> when
+   - mobalhin / mamalhin / balhin / gapamalhin -> transferee
+   - lantaw / makita -> view/check
+   - resulta / resulta sa exam -> exam result
+
+3. Improve acronym normalization:
+   - COR
+   - ID
+   - COT
+   - CAS
+   - COB
+   - COE
+   - CON
+   - CPAG
+   - OSAS / OVPCASSS
+
+4. Make normalization conservative:
+   - Do not rewrite words when the meaning is uncertain.
+   - Preserve original text for fallback/debug logs.
+
+Expected output:
+1. Updated query_normalizer.py or related normalization files.
+2. Test results for typo, Bisaya, and acronym questions.
+
+Before continuing to Day 3, the user must:
+1. Test at least 20 typo/Bisaya questions.
+2. Confirm that normalization does not create wrong answers.
+
+
+DAY 3 - PHASE 1: STRUCTURED RETRIEVAL SCORING CLEANUP
+
+Goal:
+Make retrieval choose the right official JSON record more often.
+
+Tasks:
+1. Review scoring in knowledge_router.py / retrieval modules.
+2. Make score components understandable:
+   - exact display name match
+   - exact subject term match
+   - phrase match
+   - child row match
+   - intent-purpose match
+   - context match
+   - alias match
+   - negative/conflict keywords
+
+3. Reduce dangerous global keywords.
+4. Add tie handling:
+   - if top candidates are close, ask clarification instead of guessing.
+   - if one has exact subject + exact purpose, select it.
+
+5. Protect known ambiguous terms:
+   - id
+   - validation
+   - admission
+   - services
+   - courses
+   - office
+   - dean/head
+
+Expected output:
+1. Clear retrieval scoring rules.
+2. Regression tests showing fewer wrong answers.
+
+Before continuing to Day 3 Phase 2, the user must:
+1. Test ambiguous questions.
+2. Confirm that wrong guessing decreased.
+
+
+DAY 3 - PHASE 2: SEARCHABLE CHILD ROW SUPPORT
+
+Goal:
+Allow one structured record to answer both full-list and specific-row questions.
+
+Example:
+One course slot record can answer:
+1. "slot left for CAS courses" -> full CAS list
+2. "slot left for BA Philosophy" -> only BA Philosophy row
+
+Tasks:
+1. Confirm child row format in JSON:
+   - display_name
+   - search_terms
+   - value / answer detail
+   - status or message
+
+2. Make retrieval search child rows.
+3. Make response_builder return only the matched child row when the user asks specific row.
+4. Keep full parent response when the user asks the general list.
+5. Admin should edit child values but should not create/delete critical child rows unless explicitly allowed.
+
+Expected output:
+1. Searchable child-row retrieval working.
+2. Admin edit behavior remains safe.
+
+Before continuing to Day 4, the user must:
+1. Test at least 10 parent-list questions.
+2. Test at least 10 specific child-row questions.
+
+
+DAY 4 - PHASE 1: CONTEXT MEMORY SAFETY
+
+Goal:
+Make follow-up questions work without causing old-topic bugs.
+
+Tasks:
+1. Review context slots:
+   - conversation_subject
+   - conversation_subject_type
+   - conversation_category
+   - conversation_last_topic
+   - conversation_last_intent
+   - conversation_turns_remaining
+   - any timestamp/TTL logic
+
+2. Add safe context rules:
+   - Use memory for follow-ups like "requirements?", "how much?", "how about COT?"
+   - Clear or ignore memory when the new query has a strong new subject.
+   - Do not let "library id" memory hijack "where is the library?"
+   - Do not let course memory hijack location/office questions.
+
+3. Use short TTL where needed:
+   - common follow-ups: 3 to 5 minutes
+   - sensitive service-specific follow-up: 5 minutes
+
+Expected output:
+1. Safer follow-up behavior.
+2. No repeated context loop.
+
+Before continuing to Day 4 Phase 2, the user must:
+1. Test multi-turn conversations.
+2. Open a new tab/session and confirm old memory does not leak.
+
+
+DAY 4 - PHASE 2: CLARIFICATION BUTTONS
+
+Goal:
+Ask the user only when the question is genuinely unclear.
+
+Tasks:
+1. Improve clarification choices for:
+   - ID: student ID, library ID
+   - validation: COR validation, ID validation
+   - admission: application, exam/result, enrollment
+   - services: BukSU student services, chatbot help menu
+   - courses: all courses, board courses, non-board courses, graduate programs
+
+2. Make button payloads precise.
+3. Avoid loops where clicking a suggestion returns the same clarification.
+4. Ensure chosen button routes to the exact official record.
+
+Expected output:
+1. Better choices.
+2. No suggestion loop.
+
+Before continuing to Day 5, the user must:
+1. Click every common clarification button.
+2. Confirm each button returns a real answer.
+
+
+DAY 5 - PHASE 1: RESPONSE BUILDER HARDENING
+
+Goal:
+Make final output clean, structured, and compatible with the frontend.
+
+Tasks:
+1. Ensure multiple JSON response lines become separate bubbles only when intended.
+2. Ensure choices are sent as custom suggestions, not plain text instructions.
+3. Ensure map payloads are normalized for old and new formats.
+4. Ensure pins and routes display after admin edits.
+5. Ensure images and uploaded assets display correctly.
+6. Ensure audio/report icons only appear on valid response messages.
+
+Expected output:
+1. Cleaner response bubbles.
+2. Stable map/image/choice behavior.
+
+Before continuing to Day 5 Phase 2, the user must:
+1. Test text-only answers.
+2. Test answers with choices.
+3. Test answers with map.
+4. Test answers with image.
+5. Test long multi-bubble answers.
+
+
+DAY 5 - PHASE 2: ADMIN KNOWLEDGE MANAGER SAFETY
+
+Goal:
+Make admin editing safe for non-technical maintainers.
+
+Tasks:
+1. Show only editable fields:
+   - English response
+   - Bisaya response
+   - child row value/detail
+   - image upload
+   - map pins/routes
+   - display labels where safe
+
+2. Hide or protect critical fields:
+   - intent
+   - context_topic
+   - subject_key
+   - internal IDs
+   - scoring metadata unless intentionally exposed
+
+3. Prevent accidental delete/create if the system is intended to be RU only.
+4. Preserve unknown JSON fields on save.
+5. Keep Knowledge Manager as the main admin editing area.
+
+Expected output:
+1. Safer admin editing.
+2. Less risk of breaking retrieval.
+
+Before continuing to Day 6, the user must:
+1. Edit one normal answer.
+2. Edit one child-row value.
+3. Edit one map route/pin.
+4. Confirm the bot still answers correctly after saving.
+
+
+DAY 6 - PHASE 1: OPTIONAL LLM RERANKER DRY RUN
+
+Goal:
+Use LLM only as a local optional reranker, not as the official answer generator.
+
+Tasks:
+1. Keep experimental_llm_layer separate.
+2. Load candidates from official JSON records.
+3. Let the LLM choose among top candidates only.
+4. Do not allow the LLM to write a new official answer.
+5. Return:
+   - selected record ID
+   - confidence
+   - reason
+   - official JSON answer
+
+6. Add safe fallback:
+   - if LLM is unavailable, use normal retrieval.
+   - if confidence is low, ask clarification.
+
+Expected output:
+1. Dry-run script works.
+2. No live bot integration yet.
+
+Before continuing to Day 6 Phase 2, the user must:
+1. Run at least 30 dry-run questions.
+2. Compare LLM choice vs current retrieval.
+3. Decide if LLM reranker is worth connecting.
+
+
+DAY 6 - PHASE 2: OPTIONAL LLM INTEGRATION GATE
+
+Goal:
+Connect LLM reranker only if it improves accuracy safely.
+
+Tasks:
+1. Add feature flag:
+   - LLM_RERANKER_ENABLED=false by default
+
+2. Only call LLM when:
+   - top scores are close
+   - retrieval confidence is low/medium
+   - question is long/messy
+   - multiple candidates are plausible
+
+3. Never call LLM when:
+   - there is an exact location match
+   - there is an exact display_name match
+   - there is a precise child row match
+   - the system already knows the answer confidently
+
+4. Log LLM decisions for debugging.
+5. Keep official response from JSON.
+
+Expected output:
+1. LLM can be turned on/off safely.
+2. Bot still works without LLM.
+
+Before finishing:
+1. Run full smoke test.
+2. Run ambiguity tests.
+3. Run Bisaya/typo tests.
+4. Run map and admin edit tests.
+5. Confirm memory usage is acceptable.
+
+
+FINAL ACCEPTANCE CHECKLIST
+
+The architecture is considered stable only when:
+
+1. Rasa train succeeds.
+2. Rasa action server has no slot/action errors.
+3. Express server does not crash.
+4. Frontend builds successfully.
+5. Admin can edit knowledge data safely.
+6. Maps show pins and routes after admin edits.
+7. Choices do not cause loops.
+8. Follow-up memory works and expires safely.
+9. Typos and common Bisaya forms improve retrieval.
+10. Wrong-answer cases are logged and fixed through data or scoring.
+11. LLM, if enabled, only reranks official records.
+
+
+USER RESPONSIBILITY BEFORE EACH NEW PHASE
+
+Before allowing Codex to proceed to a new phase, the user should:
+
+1. Confirm the previous phase is fully implemented.
+2. Run the bot locally if required:
+   - rasa run actions
+   - rasa run --enable-api --cors "*"
+   - npm run dev
+
+3. Test the requested sample questions.
+4. Send any wrong responses or server errors.
+5. Approve moving to the next phase.
+
+
+START COMMAND FOR CODEX
+
+Use this when starting:
+
+"Proceed to Day X Phase Y from docs/Rasa Structured Retrieval Stabilization Prompt.txt. Implement only that phase, then debug and test before stopping. Do not proceed to the next phase until I approve."

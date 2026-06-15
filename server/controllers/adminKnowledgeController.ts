@@ -58,9 +58,9 @@ function mapDataObject(topic: JsonObject): JsonObject | null {
 }
 
 function pinsForTopic(topic: JsonObject): any[] {
-  if (Array.isArray(topic.pins)) return topic.pins;
+  if (Array.isArray(topic.pins)) return normalizePins(topic.pins);
   const mapData = mapDataObject(topic);
-  return Array.isArray(mapData?.pins) ? mapData.pins : [];
+  return Array.isArray(mapData?.pins) ? normalizePins(mapData.pins) : [];
 }
 
 function routesForTopic(topic: JsonObject): any[] {
@@ -78,6 +78,24 @@ function normalizeRoutes(routes: any[]): any[] {
     route_order: Number(route?.route_order) || index + 1,
     route_label: String(route?.route_label || `Route ${index + 1}`),
   }));
+}
+
+function normalizePins(pins: any[]): any[] {
+  return (Array.isArray(pins) ? pins : [])
+    .map((pin: any) => {
+      const coords = Array.isArray(pin?.coordinates) && pin.coordinates.length >= 2
+        ? [Number(pin.coordinates[0]), Number(pin.coordinates[1])]
+        : null;
+      const lat = Number(pin?.lat ?? pin?.y);
+      const lng = Number(pin?.lng ?? pin?.x);
+      const coordinates = coords || (Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null);
+      if (!coordinates || !Number.isFinite(coordinates[0]) || !Number.isFinite(coordinates[1])) return null;
+      return {
+        ...pin,
+        coordinates,
+      };
+    })
+    .filter(Boolean);
 }
 
 function safeParseJson(value: any, fallback: any): any {
@@ -127,6 +145,9 @@ function collectRecords(
       pins: pinsForTopic(topic),
       routes: routesForTopic(topic),
       mapRef: topic.mapRef || topic.map_ref || "",
+      items: Array.isArray(topic.items) ? topic.items : [],
+      itemGroups: topic.itemGroups || topic.item_groups || {},
+      itemDisclaimer: topic.itemDisclaimer || topic.item_disclaimer || "",
       hasResponses,
       hasMap: hasMapPayload(topic),
       hasMapRef: Boolean(topic.mapRef || topic.map_ref),
@@ -180,7 +201,7 @@ function validateUpdate(body: JsonObject): string[] {
       errors.push("Responses must include en and ceb arrays.");
     }
   }
-  for (const key of ["subjectTerms", "phrases", "images", "pins", "routes"]) {
+  for (const key of ["subjectTerms", "phrases", "images", "pins", "routes", "items"]) {
     if (body[key] !== undefined && !Array.isArray(body[key])) {
       errors.push(`${key} must be an array.`);
     }
@@ -190,6 +211,9 @@ function validateUpdate(body: JsonObject): string[] {
   }
   if (body.displayName !== undefined && typeof body.displayName !== "string") {
     errors.push("displayName must be a string.");
+  }
+  if (body.itemDisclaimer !== undefined && typeof body.itemDisclaimer !== "string") {
+    errors.push("itemDisclaimer must be a string.");
   }
   return errors;
 }
@@ -316,6 +340,29 @@ export class AdminKnowledgeController {
 
       if (req.body.images !== undefined) {
         target.images = req.body.images.map((image: any) => String(image).trim()).filter(Boolean);
+      }
+
+      if (req.body.items !== undefined) {
+        target.items = req.body.items
+          .filter((item: any) => item && typeof item === "object")
+          .map((item: any, index: number) => ({
+            key: keyValue(item.key) || `item_${index + 1}`,
+            group: keyValue(item.group),
+            name: keyValue(item.name),
+            value: keyValue(item.value),
+            text: keyValue(item.text),
+            aliases: cleanStringArray(item.aliases),
+          }))
+          .filter((item: any) => item.name || item.value || item.text);
+      }
+
+      if (req.body.itemDisclaimer !== undefined) {
+        const itemDisclaimer = keyValue(req.body.itemDisclaimer);
+        if (itemDisclaimer) target.itemDisclaimer = itemDisclaimer;
+        else {
+          delete target.itemDisclaimer;
+          delete target.item_disclaimer;
+        }
       }
 
       if (req.body.map !== undefined) {

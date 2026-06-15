@@ -70,7 +70,8 @@ class KnowledgeRouter:
 
     def direct_intent_override(self, intent: str, user_message: str, entity_values: List[str]) -> Optional[str]:
         raw_text = " ".join([user_message, *entity_values])
-        text = self.interpreter.normalize(raw_text)
+        raw_normalized = self.interpreter.normalize(raw_text)
+        text = self.interpreter.normalize_for_search(raw_text)
         tokens = set(self.interpreter.tokens(text))
 
         has_enrollment = self._has_any(text, ["enroll", "enrollment"])
@@ -80,12 +81,53 @@ class KnowledgeRouter:
         )
         has_admission = self._has_any(text, ["admission", "application"]) or has_cat
         has_freshman = self._has_any(text, ["freshman", "freshmen", "incoming first year", "first year"])
-        has_transferee = self._has_any(text, ["transferee", "transfer student"])
+        has_transferee = self._has_any(
+            text,
+            [
+                "transferee",
+                "transferees",
+                "transfer student",
+                "transfer students",
+                "transferred student",
+                "transferred students",
+                "transfered student",
+                "transfered students",
+                "transfer applicant",
+                "transfer applicants",
+            ],
+        )
+        has_transfer_acceptance = has_transferee and self._has_any(
+            text,
+            ["accept", "accepted", "admit", "admitted", "allow", "allowed", "modawat", "dawat"],
+        )
         has_second_courser = self._has_any(text, ["second courser", "second course"])
         has_law = self._has_any(text, ["law", "juris doctor"])
+        has_medicine = self._has_any(text, ["medicine", "college of medicine"])
+        has_graduate_enrollment = has_enrollment and self._has_any(text, ["graduate", "post graduate", "post-graduate", "law"])
         has_gpat = self._has_any(text, ["gpat", "graduate program admission test"])
         has_deadline = self._has_any(text, ["deadline", "until when", "last day"])
-        has_result = self._has_any(text, ["result", "results", "passed", "pass", "ror", "rating"])
+        has_result = (
+            self._has_any(text, ["result", "results", "ror", "rating"]) or
+            self._has_any_token(text, ["passed", "pass"])
+        )
+        has_exam_result = has_result and self._has_any(
+            text,
+            [
+                "admission",
+                "buksu cat",
+                "cat",
+                "college admission test",
+                "admission test",
+                "entrance exam",
+                "exam",
+                "examination",
+                "test",
+            ],
+        )
+        has_add_drop_subject = (
+            self._has_any(text, ["add drop subject", "add and drop subject", "adding and dropping subject"]) or
+            (self._has_any(text, ["add subject", "adding subject"]) and self._has_any(text, ["drop subject", "dropping subject"]))
+        )
         has_late_enrollment = has_enrollment and self._has_any(text, ["late", "allowed late", "still enroll", "first week"])
         has_enrollment_time = has_enrollment and self._has_any(text, ["time", "when", "schedule", "day", "date", "deadline"])
         has_enrollment_process = has_enrollment and self._has_any(
@@ -109,6 +151,21 @@ class KnowledgeRouter:
             self._has_any_token(text, ["id"]) or self._has_any(text, ["student id", "school id"])
         )
         has_cor_validation = has_validation and has_cor
+        has_non_paying_student = self._has_any(text, ["non paying student", "non-paying student", "nonpaying student", "non paying students", "non-paying students", "nonpaying students"])
+        has_paying_student = bool(re.search(r"(?<!non )(?<!non-)\bpaying students?\b", text))
+        has_institutional_email = self._has_any(
+            text,
+            [
+                "institutional email",
+                "institutional gmail",
+                "student email",
+                "official student email",
+                "buksu email",
+                "buksu gmail",
+                "email login",
+                "gmail account",
+            ],
+        )
         has_admission_account = self._has_any(text, ["admission account", "institutional account", "admission password", "change password", "find account"])
         has_test_permit = self._has_any(text, ["test permit", "exam permit", "permit"])
         has_test_permit_issue = has_test_permit and self._has_any(text, ["corrupt", "corrupted", "broken", "error", "invalid", "not opening", "cannot open", "can't open", "missing", "download"])
@@ -130,6 +187,24 @@ class KnowledgeRouter:
         has_library_books = self._has_any(text, ["borrow books", "borrow book", "return books", "late books", "late book", "unreturned book", "library resources"])
         has_book_penalty = self._has_any(text, ["penalty", "fine", "fines", "late return", "unreturned"])
         has_good_moral = self._has_any(text, ["good moral", "good moral certificate", "certificate of good moral"])
+        has_student_organization = self._has_any(
+            text,
+            [
+                "student organization",
+                "student organizations",
+                "student club",
+                "student clubs",
+                "clubs i can join",
+                "organization i can join",
+                "organizations i can join",
+                "active clubs",
+                "active student organizations",
+                "join student organization",
+                "join student organizations",
+                "sbo",
+                "student body organization",
+            ],
+        )
         has_affirmative_action = self._has_any(text, ["affirmative action", "aap", "diversity and inclusion"])
         has_masters = self._has_any(text, ["master", "masters", "master's", "masteral", "graduate program", "graduate studies"])
         has_inc = self._has_any(text, ["inc form", "inc grade", "incomplete"])
@@ -142,7 +217,7 @@ class KnowledgeRouter:
         has_ict = self._has_any(text, ["ict", "information communications technology", "wifi", "wi-fi"])
         has_clinic = self._has_any(text, ["clinic", "medical clinic", "health services"])
         has_dental = self._has_any(text, ["dental", "oral examination", "oral exam", "dentist"])
-        has_medical_certificate = self._has_any(text, ["medical certificate", "clinic certificate", "certificate for ojt", "certificate for intramural"])
+        has_medical_certificate = self._has_any(text, ["medical certificate", "medical cert", "clinic certificate", "certificate for ojt", "certificate for intramural"])
         has_tooth_extraction = self._has_any(text, ["tooth extraction", "extract tooth", "extract a tooth"])
         has_dental_referral_medicine = self._has_any(text, ["referral dispensing", "dispensing of medicine", "dental medicine", "prescription slip", "referral medicine"])
         has_location_wording = self._has_any(text, ["where", "location", "located", "find", "go to", "get to", "direction", "directions"])
@@ -161,10 +236,88 @@ class KnowledgeRouter:
             self._has_any(text, ["college", "colleges"]) or
             self._has_any_token(text, ["cas", "cob", "cot", "con", "coe", "cpag", "coa", "law"])
         )
+        has_slot_word = (
+            self._has_any_token(text, ["slot", "slots", "bakanti", "bakante"]) or
+            self._has_any(text, ["slot left", "slots left", "available slot", "available slots", "open slots", "slots available", "pilay bakanti"])
+        )
+        has_course_slot_subject = (
+            has_college or
+            self._has_any_token(text, ["ba", "ab", "bs"]) or
+            self._has_any_token(text, ["cas", "cot", "cob", "con", "coe", "coa"]) or
+            self._has_any(text, [
+                "course slot",
+                "course slots",
+                "course nga naay available",
+                "ba philo",
+                "ba eco",
+                "bsit",
+                "bset",
+                "bsat",
+                "bsft",
+                "bsemc",
+                "bs multimedia",
+                "bsn",
+                "bshm",
+                "bpa",
+                "public administration",
+                "bachelor of public administration",
+            ])
+        )
+        has_course_slot_query = has_slot_word and has_course_slot_subject
         has_dormitory = self._has_any(text, ["dormitory", "dormitories", "dorm", "dorms", "mahogany", "rubia", "kilala"])
         has_classroom = self._has_any(text, ["classroom", "class", "phone", "assignment", "assignments", "instructor"])
+        has_class_schedule = self._has_any(
+            text,
+            [
+                "class schedule",
+                "schedule of class",
+                "schedule for class",
+                "change my class schedule",
+                "change class schedule",
+                "check my class schedule",
+                "check class schedule",
+                "adjust class schedule",
+                "class schedule concern",
+            ],
+        )
+        has_cutoff_score = (
+            self._has_any(text, ["cut off", "cutoff", "cut score", "cat score", "buksu cat score"]) and
+            not self._has_any(text, ["result", "results", "ror"])
+        )
         has_admin_person = self._has_any(text, ["vice president", "vice presidents", "secretary", "board secretary"])
         has_dean_or_head = self._has_any(text, ["dean", "head", "chairperson", "program chair"])
+        has_con_nursing = self._has_any(text, ["nursing", "bsn", "college of nursing", "con"])
+        has_nursing_enrollment_support = has_con_nursing and self._has_any(
+            text,
+            [
+                "enrollment", "enroll", "incoming", "first year", "waitlisted", "eligible",
+                "requirement", "requirements", "acceptance slip", "forms", "medical",
+                "laboratory", "lab", "immunization", "vaccine", "health center", "submit",
+                "submission", "pass", "pasa", "ipasa", "pagpasa",
+            ],
+        )
+
+        if has_course_slot_query:
+            return "course_slots"
+
+        if has_add_drop_subject:
+            return "add_drop_subject"
+        if has_institutional_email:
+            return "institutional_email_account"
+        if has_student_organization:
+            return "active_student_organizations_guidance"
+        if has_class_schedule:
+            if self._has_any(text, ["change", "adjust"]) and not self._has_any(text, ["check"]):
+                return "change_class_schedule"
+            if self._has_any(text, ["check", "view", "see", "where"]) and not self._has_any(text, ["change", "adjust"]):
+                return "check_class_schedule"
+            return "class_schedule_help"
+        if has_cutoff_score:
+            if self._has_any(text, ["non board", "non-board"]):
+                return "non_board_cutoff_score"
+            if self._has_any(text, ["board course", "board courses"]):
+                return "board_course_cutoff_score"
+            return "program_cutoff_scores"
 
         course_choice = self.course_clarification_response(intent, user_message)
         if course_choice:
@@ -183,6 +336,8 @@ class KnowledgeRouter:
             return "campus_weekend_visitors"
         if has_foundation_day:
             return "buksu_foundation_day"
+        if has_exam_result:
+            return "exam_results"
         if has_generic_buksu_contact:
             return "buksu_contact_number"
         if has_buksu_location and not has_specific_buksu_office_location:
@@ -193,6 +348,10 @@ class KnowledgeRouter:
             return "admission_letter_of_intent_meaning"
         if has_admission_certificate_copy:
             return "admission_certificate_photocopy_guidance"
+        if has_transfer_acceptance and not has_enrollment:
+            return "transferee_admission_requirements"
+        if has_transferee and not has_enrollment and intent in {"ask_availability", "ask_general_info", "ask_process", "ask_requirement"}:
+            return "transferee_admission_requirements"
         if has_pe_uniform:
             return "pe_uniform_process"
         if has_id_validation:
@@ -211,6 +370,30 @@ class KnowledgeRouter:
             ):
                 return "cor_validation_day"
             return "cor_validation_steps"
+        if has_paying_student and has_non_paying_student:
+            return "paying_and_non_paying_students"
+        if has_non_paying_student:
+            return "non_paying_student_definition"
+        if has_paying_student:
+            return "paying_student_definition"
+        if has_nursing_enrollment_support:
+            if self._has_any(text, ["immunization", "vaccine", "health center"]):
+                return "con_nursing_immunization_record"
+            if self._has_any(text, ["medical", "laboratory", "lab", "examination", "exam"]):
+                return "con_nursing_medical_requirements"
+            if self._has_any(text, ["submit", "submission", "pass", "pasa", "ipasa", "pagpasa", "acceptance slip", "forms"]):
+                return "con_nursing_requirements_submission"
+            return "con_nursing_enrollment_guidance"
+        if has_enrollment and has_validation:
+            return "enrollment_validation_payment"
+        if has_enrollment and self._has_any(text, ["pay", "payment", "paying", "cashier", "accounting", "lbp", "landbank", "ofbank"]):
+            return "enrollment_validation_payment"
+        if has_enrollment and has_medicine and intent in {"ask_process", "ask_requirement", "ask_general_info"}:
+            return "medicine_enrollment_requirements"
+        if has_graduate_enrollment and intent in {"ask_process", "ask_requirement", "ask_general_info"}:
+            return "graduate_law_enrollment_requirements"
+        if has_cor and self._has_any(text, ["approval", "approved", "after approval", "incorrect", "error", "errors"]):
+            return "enrollment_application_approval"
         if has_freshman and has_enrollment_process:
             return "freshman_enrollment_process"
         if has_enrollment_time and not has_late_enrollment:
@@ -220,7 +403,7 @@ class KnowledgeRouter:
         if has_enrollment and "online" in text:
             return "online_enrollment_steps"
         if has_enrollment_process:
-            return "mixed_enrollment_process"
+            return "enrollment_general_process"
         if has_masters and self._has_any(text, ["requirement", "requirements", "admission", "apply", "application", "needed", "documents"]):
             return "masters_degree_admission_requirements"
         if has_masters:
@@ -233,6 +416,8 @@ class KnowledgeRouter:
         if has_ict:
             if self._has_any(text, ["wifi", "wi-fi", "internet", "access", "connect"]):
                 return "get_wifi_access"
+            if has_institutional_email:
+                return "institutional_email_account"
             if self._has_any(text, ["mission"]):
                 return "ict_mission"
             return "about_ict"
@@ -287,6 +472,8 @@ class KnowledgeRouter:
                 return "buksu_secretary"
             return "Buksu_vice_pres"
         if has_classroom:
+            if has_class_schedule:
+                return "class_schedule_help"
             if self._has_any(text, ["phone", "mobile"]):
                 return "phone_use_in_class"
             if self._has_any(text, ["eat", "eating", "food"]):
@@ -295,6 +482,14 @@ class KnowledgeRouter:
                 return "submit_assignments_online"
             return "class_concerns"
         if intent == "ask_requirement":
+            if has_enrollment:
+                if has_medicine:
+                    return "medicine_enrollment_requirements"
+                if has_graduate_enrollment:
+                    return "graduate_law_enrollment_requirements"
+                if has_freshman or has_transferee:
+                    return "freshman_enrollment_process"
+                return "enrollment_documents"
             if has_masters:
                 return "masters_degree_admission_requirements"
             if has_gpat:
@@ -305,7 +500,7 @@ class KnowledgeRouter:
                 return "second_courser_requirements"
             if has_transferee and has_admission:
                 return "transferee_admission_requirements"
-            if has_freshman and has_admission:
+            if has_freshman and (has_admission or self._has_any(text, ["document", "documents", "requirements", "papeles", "papers", "needed", "need"])):
                 return "freshman_admission_requirements"
             if has_cat or has_admission:
                 return "exam_requirements"
@@ -313,8 +508,6 @@ class KnowledgeRouter:
                 return "library_id_card_requirements"
             if has_student_id:
                 return "student_id_requirements"
-            if has_enrollment:
-                return "enrollment_documents"
         if has_college and intent != "ask_location":
             college_course_route = self._college_course_route(text)
             if college_course_route:
@@ -355,7 +548,9 @@ class KnowledgeRouter:
             return university_route
         if has_lost_student_id:
             return "lost_student_id_replacement_process"
-        if intent in {"ask_process", "ask_document", "ask_general_info", "ask_location"} and has_good_moral:
+        if raw_normalized.strip() in {"student id", "school id"}:
+            return "student_id_process"
+        if intent in {"ask_process", "ask_document", "ask_general_info", "ask_location", "ask_requirement"} and has_good_moral:
             return "request_good_moral_certificate_oss"
         if intent in {"ask_location", "ask_document", "ask_general_info"} and has_library_id:
             if self._has_any(text, ["where", "get", "kuha", "makuha", "asa"]):
@@ -374,6 +569,16 @@ class KnowledgeRouter:
             if has_registrar:
                 return "office_schedule"
         if intent == "ask_process":
+            if has_enrollment and has_validation:
+                return "enrollment_validation_payment"
+            if has_enrollment and self._has_any(text, ["pay", "payment", "paying", "cashier", "accounting", "lbp", "landbank", "ofbank"]):
+                return "enrollment_validation_payment"
+            if has_enrollment and has_medicine:
+                return "medicine_enrollment_requirements"
+            if has_graduate_enrollment:
+                return "graduate_law_enrollment_requirements"
+            if has_cor and self._has_any(text, ["approval", "approved", "after approval", "incorrect", "error", "errors"]):
+                return "enrollment_application_approval"
             if has_transferee and has_enrollment:
                 return "transferee_enrollment"
             if has_freshman and has_enrollment:
@@ -403,7 +608,7 @@ class KnowledgeRouter:
             if has_enrollment and "online" in text:
                 return "online_enrollment_steps"
             if has_enrollment:
-                return "mixed_enrollment_process"
+                return "enrollment_general_process"
             if has_inc:
                 if "form" in text:
                     return "get_inc_form"
@@ -411,6 +616,14 @@ class KnowledgeRouter:
         if intent == "ask_requirement" and has_inc:
             return "inc_grade_solution"
         if intent == "ask_requirement":
+            if has_enrollment:
+                if has_medicine:
+                    return "medicine_enrollment_requirements"
+                if has_graduate_enrollment:
+                    return "graduate_law_enrollment_requirements"
+                if has_freshman or has_transferee:
+                    return "freshman_enrollment_process"
+                return "enrollment_documents"
             if has_masters:
                 return "masters_degree_admission_requirements"
             if has_gpat:
@@ -429,8 +642,6 @@ class KnowledgeRouter:
                 return "library_id_card_requirements"
             if has_student_id:
                 return "student_id_requirements"
-            if has_enrollment:
-                return "enrollment_documents"
             if has_admission:
                 return "exam_requirements"
         if intent == "ask_fee" and has_library_id:
@@ -439,6 +650,8 @@ class KnowledgeRouter:
             return "Student_id_fee"
         if intent == "ask_fee" and (has_cat or has_admission):
             return "exam_fees"
+        if intent == "ask_fee" and has_enrollment and self._has_any(text, ["pay", "payment", "paying", "cashier", "accounting", "lbp", "landbank", "ofbank", "online"]):
+            return "enrollment_validation_payment"
         if intent == "ask_fee" and (has_enrollment or self._has_any(text, ["student fee", "student fees", "laboratory fee", "miscellaneous fee", "tuition"])):
             return "student_fees"
         if intent == "ask_fee" and has_book_penalty:
@@ -472,6 +685,8 @@ class KnowledgeRouter:
     def validation_clarification_response(self, intent: str, user_message: str) -> Optional[Dict[str, Any]]:
         text = self.interpreter.normalize(user_message)
         if not self._has_any(text, ["validate", "validation"]):
+            return None
+        if self._has_any(text, ["enrollment", "enroll"]):
             return None
         has_specific_validation_target = (
             self._has_any_token(text, ["id", "cor"]) or
@@ -814,8 +1029,12 @@ class KnowledgeRouter:
     def course_clarification_response(self, intent: str, user_message: str) -> Optional[Dict[str, Any]]:
         text = self.interpreter.normalize(user_message)
         tokens = set(self.interpreter.tokens(text))
-        bare_course_terms = {"course", "courses", "program", "programs"}
-        filler_terms = {"buksu", "bukidnon", "state", "university", "school", "available", "offer", "offers"}
+        bare_course_terms = {"course", "courses", "cource", "cources", "program", "programs"}
+        filler_terms = {
+            "buksu", "bukidnon", "state", "university", "school",
+            "available", "availability", "offer", "offers", "offered", "do", "does",
+            "unsa", "unsay", "what", "information", "sa", "ang", "mga",
+        }
 
         if intent not in {"ask_availability", "ask_general_info"}:
             return None
@@ -825,7 +1044,7 @@ class KnowledgeRouter:
             return None
         if self._has_any(text, ["board course", "board courses", "non board", "non-board", "master", "masters", "doctoral"]):
             return None
-        clarification_terms = bare_course_terms.union(filler_terms).union({"offered", "offerd", "by", "in"})
+        clarification_terms = bare_course_terms.union(filler_terms).union({"offered", "offerd", "cource", "cources", "by", "in"})
         if any(token not in clarification_terms for token in tokens):
             return None
 
@@ -870,8 +1089,8 @@ class KnowledgeRouter:
             return self.data_loader.get_response(direct_intent, user_message=user_message)
 
         query_tokens = self.interpreter.tokens(user_message)
-        raw_tokens = self.interpreter.normalize(user_message).replace("?", "").split()
-        clarification_tokens = query_tokens or raw_tokens
+        raw_tokens = self.interpreter.tokens(user_message, expand=False) or self.interpreter.normalize(user_message).replace("?", "").split()
+        clarification_tokens = raw_tokens
         if not entity_values and self._needs_subject_clarification(intent, clarification_tokens):
             return self._clarification_for(intent)
 
@@ -886,6 +1105,10 @@ class KnowledgeRouter:
 
         retrieval_result = self.retrieval_scorer.search(intent, user_message, entity_values)
         if retrieval_result.is_high_confidence and retrieval_result.intent:
+            self.last_selected_intent = retrieval_result.intent
+            return self.data_loader.get_response(retrieval_result.intent, user_message=user_message)
+
+        if retrieval_result.is_medium_confidence and retrieval_result.intent and not retrieval_result.runner_up:
             self.last_selected_intent = retrieval_result.intent
             return self.data_loader.get_response(retrieval_result.intent, user_message=user_message)
 

@@ -91,6 +91,7 @@ LOCATION_ALIASES = {
     "vice president administration planning development": "OVPAPD",
 
     # === Finance Building ===
+    "finance": "Finance Building",
     "finance building": "Finance Building",
     "finance bldg": "Finance Building",
     "airport": "Finance Building",

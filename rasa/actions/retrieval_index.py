@@ -61,6 +61,7 @@ class RetrievalIndex:
             phrases = self._string_list(metadata.get("phrases"))
             topic_terms = self._topic_terms(entry, metadata)
             answer_text = self._answer_text(responses)
+            item_text = self._item_text(responses)
             searchable_text = self.interpreter.normalize(
                 " ".join([
                     intent.replace("_", " "),
@@ -70,6 +71,7 @@ class RetrievalIndex:
                     " ".join(phrases),
                     " ".join(topic_terms),
                     answer_text,
+                    item_text,
                 ])
             )
             candidates.append(
@@ -83,7 +85,7 @@ class RetrievalIndex:
                     topic_terms=topic_terms,
                     answer_text=answer_text,
                     searchable_text=searchable_text,
-                    tokens=self.interpreter.tokens(searchable_text),
+                    tokens=self.interpreter.tokens(searchable_text, expand=False),
                 )
             )
         return candidates
@@ -113,6 +115,23 @@ class RetrievalIndex:
         if isinstance(answer, list):
             return " ".join(str(item) for item in answer)
         return json.dumps(answer, ensure_ascii=False)
+
+    def _item_text(self, responses: Dict[str, Any]) -> str:
+        items = responses.get("items") or []
+        if not isinstance(items, list):
+            return ""
+        parts: List[str] = []
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            parts.extend([
+                str(item.get("key") or ""),
+                str(item.get("name") or ""),
+                str(item.get("value") or ""),
+                str(item.get("text") or ""),
+                " ".join(str(alias) for alias in item.get("aliases") or []),
+            ])
+        return " ".join(part for part in parts if part)
 
     def _string_list(self, value: Any) -> List[str]:
         if isinstance(value, list):

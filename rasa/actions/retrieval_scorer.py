@@ -107,6 +107,9 @@ class RetrievalScorer:
         score = 0.0
         reasons: List[str] = []
 
+        if candidate.intent == "course_slots" and not self._has_course_slot_subject(query_text, query_tokens):
+            return 0.0, ["course_slot_subject_missing"]
+
         if candidate.purpose == intent:
             score += 12.0
             reasons.append("purpose")
@@ -141,7 +144,7 @@ class RetrievalScorer:
 
         # Answer-text overlap is intentionally weak. It helps paraphrases but
         # cannot beat a strong subject/purpose mismatch by itself.
-        answer_tokens = set(self.interpreter.tokens(candidate.answer_text))
+        answer_tokens = set(self.interpreter.tokens(candidate.answer_text, expand=False))
         answer_overlap = query_tokens.intersection(answer_tokens)
         if answer_overlap:
             score += min(len(answer_overlap) * 0.75, 5.0)
@@ -152,6 +155,38 @@ class RetrievalScorer:
             reasons.append("location_guard")
 
         return score, reasons
+
+    def _has_course_slot_subject(self, query_text: str, query_tokens: Set[str]) -> bool:
+        if "course slot" in query_text or "course slots" in query_text:
+            return True
+        if query_tokens.intersection({"cas", "cot", "cob", "con", "coe", "coa", "ba", "ab", "bs"}):
+            return True
+        course_aliases = [
+            "ba philo",
+            "ab philo",
+            "ba eco",
+            "ab eco",
+            "bsit",
+            "bset",
+            "bsat",
+            "bsft",
+            "bsemc",
+            "bs multimedia",
+            "bsn",
+            "bshm",
+            "bsa",
+            "bsba",
+            "bpa",
+            "public administration",
+            "bachelor of public administration",
+            "bsdc",
+            "devcom",
+            "bs comdev",
+            "bs math",
+            "bs bio",
+            "bs es",
+        ]
+        return any(alias in query_text for alias in course_aliases)
 
     def _payload_for_label(self, label: str) -> str:
         normalized = self.interpreter.normalize(label)
@@ -242,7 +277,7 @@ class RetrievalScorer:
 
     def _expanded_query(self, user_message: str, entity_values: Sequence[str]) -> str:
         parts = [user_message, *entity_values]
-        normalized = self.interpreter.normalize(" ".join(parts))
+        normalized = self.interpreter.normalize_for_search(" ".join(parts))
         expansions: List[str] = []
         for term, synonyms in self.SYNONYMS.items():
             if term in normalized:

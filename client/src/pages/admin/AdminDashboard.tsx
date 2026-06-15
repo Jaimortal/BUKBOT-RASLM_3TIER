@@ -12,7 +12,11 @@ import {
   sendVerificationCode,
   verifyCodeAndUpdateEmail,
   changePassword,
-  syncKnowledgeBaseApi
+  syncKnowledgeBaseApi,
+  fetchChatWidgetSettings,
+  saveChatWidgetSettings,
+  deleteUploadedImageByUrl,
+  type ChatWidgetSettings
 } from "@/lib/adminApi";
 import type { ResponseData, Location, UserPrivileges, MigrationResult } from "@/types/admin";
 import { 
@@ -28,6 +32,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { AnimatePresence, motion } from "framer-motion";
 import { 
   Users, 
   MessageSquare, 
@@ -70,6 +76,9 @@ import { AdminKnowledgeManager } from "@/components/admin/AdminKnowledgeManager"
 import { AdminLocations } from "@/components/admin/AdminLocations";
 import { AdminMapSettings } from "@/components/admin/AdminMapSettings";
 import { AdminGallery } from "@/components/admin/AdminGallery";
+import { AdminReports } from "@/components/admin/AdminReports";
+import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
+import { AdminNormalizationRules } from "@/components/admin/AdminNormalizationRules";
 
 export default function AdminDashboard() {
   const queryClient = useQueryClient();
@@ -79,6 +88,8 @@ export default function AdminDashboard() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
   const [showSyncDialog, setShowSyncDialog] = useState(false);
+  const [showUnsavedSettingsDialog, setShowUnsavedSettingsDialog] = useState(false);
+  const [pendingTab, setPendingTab] = useState<string | null>(null);
   const [responsesSubTab, setResponsesSubTab] = useState<"knowledge" | "locations">("knowledge");
   
   const DEFAULT_PRIVILEGES: UserPrivileges = {
@@ -122,6 +133,12 @@ export default function AdminDashboard() {
     staleTime: 5000, // Consider data fresh for 5 seconds
   });
 
+  const { data: fetchedWidgetSettings } = useQuery({
+    queryKey: ["chatWidgetSettings"],
+    queryFn: fetchChatWidgetSettings,
+    staleTime: 60000,
+  });
+
   const mountedAtRef = useRef<number>(Date.now());
   const lastNotifiedJobIdRef = useRef<string | null>(null);
   const translationBusy = autoTranslateStatus?.status === "running";
@@ -129,12 +146,45 @@ export default function AdminDashboard() {
     typeof autoTranslateStatus?.current?.intent === "string" ? autoTranslateStatus.current.intent : null;
 
   const [privileges, setPrivileges] = useState<UserPrivileges>(DEFAULT_PRIVILEGES);
+  const [savedPrivileges, setSavedPrivileges] = useState<UserPrivileges>(DEFAULT_PRIVILEGES);
+  const [widgetSettings, setWidgetSettings] = useState<ChatWidgetSettings>({
+    inactiveIcon: "💬",
+    inactiveImageUrl: "",
+    activeIcon: "✕",
+    activeImageUrl: "",
+    inactiveCustomImages: [],
+    activeCustomImages: [],
+    chatheadBgColor: "#001C38",
+    chatheadOpacity: 1,
+    audioResponseEnabled: true,
+  });
+  const [savedWidgetSettings, setSavedWidgetSettings] = useState<ChatWidgetSettings>({
+    inactiveIcon: "💬",
+    inactiveImageUrl: "",
+    activeIcon: "✕",
+    activeImageUrl: "",
+    inactiveCustomImages: [],
+    activeCustomImages: [],
+    chatheadBgColor: "#001C38",
+    chatheadOpacity: 1,
+    audioResponseEnabled: true,
+  });
+  const [avatarDeleteMode, setAvatarDeleteMode] = useState(false);
+  const [previewAvatarMode, setPreviewAvatarMode] = useState<"inactive" | "active">("inactive");
 
   useEffect(() => {
     if (fetchedPrivileges) {
       setPrivileges(fetchedPrivileges);
+      setSavedPrivileges(fetchedPrivileges);
     }
   }, [fetchedPrivileges]);
+
+  useEffect(() => {
+    if (fetchedWidgetSettings) {
+      setWidgetSettings(fetchedWidgetSettings);
+      setSavedWidgetSettings(fetchedWidgetSettings);
+    }
+  }, [fetchedWidgetSettings]);
 
   useEffect(() => {
     const last = autoTranslateStatus?.lastCompleted;
@@ -207,14 +257,27 @@ export default function AdminDashboard() {
     }
   });
 
-  const savePrivilegesMutation = useMutation({
-    mutationFn: (p: UserPrivileges) => saveUserPrivilegesAdmin(p),
+  const saveSettingsMutation = useMutation({
+    mutationFn: async (payload: { privileges: UserPrivileges; widgetSettings: ChatWidgetSettings }) => {
+      const [privilegeResult, widgetResult] = await Promise.all([
+        saveUserPrivilegesAdmin(payload.privileges),
+        saveChatWidgetSettings(payload.widgetSettings),
+      ]);
+      if (!privilegeResult.success) throw new Error(privilegeResult.message || "Failed to save chatbox toggles");
+      if (!widgetResult.success) throw new Error(widgetResult.message || "Failed to save chathead settings");
+      return payload;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["userPrivileges"] });
-      toast({ title: "Privileges Updated" });
+      queryClient.invalidateQueries({ queryKey: ["privileges"] });
+      queryClient.invalidateQueries({ queryKey: ["chatWidgetSettings"] });
+      setSavedPrivileges(privileges);
+      setSavedWidgetSettings(widgetSettings);
+      toast({ title: "Settings updated" });
+      setActiveTab("responses");
     },
-    onError: () => {
-      toast({ title: "Failed to update privileges", variant: "destructive" });
+    onError: (error: any) => {
+      toast({ title: "Failed to update settings", description: error?.message, variant: "destructive" });
     }
   });
 
@@ -245,12 +308,96 @@ export default function AdminDashboard() {
   });
 
   const handlePrivilegeToggle = (key: keyof UserPrivileges, checked: boolean) => {
-    const updated: UserPrivileges = {
+    setPrivileges({
       ...privileges,
       [key]: checked
-    };
-    setPrivileges(updated);
-    savePrivilegesMutation.mutate(updated);
+    });
+  };
+
+  const settingsDirty =
+    JSON.stringify(privileges) !== JSON.stringify(savedPrivileges) ||
+    JSON.stringify(widgetSettings) !== JSON.stringify(savedWidgetSettings);
+  const presetAvatarIcons = ["💬", "🤖", "🎓", "✕", "?", "i"];
+  const customAvatarImages = Array.from(new Set([
+    ...widgetSettings.inactiveCustomImages,
+    ...widgetSettings.activeCustomImages,
+  ]));
+
+  const getAvatarValue = (mode: "inactive" | "active") => (
+    mode === "inactive"
+      ? (widgetSettings.inactiveImageUrl || widgetSettings.inactiveIcon)
+      : (widgetSettings.activeImageUrl || widgetSettings.activeIcon)
+  );
+
+  const selectAvatar = (mode: "inactive" | "active", value: string) => {
+    if (value.startsWith("/api/images/") || /^https?:\/\//i.test(value) || value.startsWith("/")) {
+      setWidgetSettings(mode === "inactive"
+        ? { ...widgetSettings, inactiveImageUrl: value }
+        : { ...widgetSettings, activeImageUrl: value });
+      return;
+    }
+    setWidgetSettings(mode === "inactive"
+      ? { ...widgetSettings, inactiveIcon: value, inactiveImageUrl: "" }
+      : { ...widgetSettings, activeIcon: value, activeImageUrl: "" });
+  };
+
+  const addCustomAvatar = (url: string) => {
+    const uploadedCount = customAvatarImages.filter((item) => item.startsWith("/api/images/")).length;
+    const urlCount = customAvatarImages.filter((item) => !item.startsWith("/api/images/")).length;
+    const isUploaded = url.startsWith("/api/images/");
+    if (isUploaded && uploadedCount >= 6) {
+      toast({ title: "Upload limit reached", description: "Only 6 uploaded avatar images are allowed.", variant: "destructive" });
+      return;
+    }
+    if (!isUploaded && urlCount >= 12) {
+      toast({ title: "URL limit reached", description: "Only 12 URL avatar images are allowed.", variant: "destructive" });
+      return;
+    }
+    const next = Array.from(new Set([...customAvatarImages, url]));
+    setWidgetSettings({
+      ...widgetSettings,
+      inactiveCustomImages: next,
+      activeCustomImages: next,
+    });
+  };
+
+  const deleteCustomAvatar = async (url: string) => {
+    const next = customAvatarImages.filter((item) => item !== url);
+    setWidgetSettings({
+      ...widgetSettings,
+      inactiveCustomImages: next,
+      activeCustomImages: next,
+      inactiveImageUrl: widgetSettings.inactiveImageUrl === url ? "" : widgetSettings.inactiveImageUrl,
+      activeImageUrl: widgetSettings.activeImageUrl === url ? "" : widgetSettings.activeImageUrl,
+    });
+
+    if (url.startsWith("/api/images/")) {
+      const result = await deleteUploadedImageByUrl(url);
+      if (!result.success) {
+        toast({ title: "Image removed from settings", description: result.message || "The image record could not be deleted from storage.", variant: "destructive" });
+        return;
+      }
+    }
+    toast({ title: "Avatar deleted", description: "The custom avatar was removed." });
+  };
+
+  const handleNavigate = (tabId: string) => {
+    if (activeTab === "privileges" && settingsDirty && tabId !== "privileges") {
+      setPendingTab(tabId);
+      setShowUnsavedSettingsDialog(true);
+      return;
+    }
+    setActiveTab(tabId);
+    setIsMobileSidebarOpen(false);
+  };
+
+  const discardSettingsAndNavigate = () => {
+    setPrivileges(savedPrivileges);
+    setWidgetSettings(savedWidgetSettings);
+    setShowUnsavedSettingsDialog(false);
+    setActiveTab(pendingTab || "responses");
+    setPendingTab(null);
+    setIsMobileSidebarOpen(false);
   };
 
   // --- UI ---
@@ -258,8 +405,8 @@ export default function AdminDashboard() {
     { id: "responses", label: "Responses", icon: MessageSquare },
     { id: "gallery", label: "Gallery", icon: ImageIcon },
     { id: "faqs", label: "FAQs", icon: FileJson },
-    { id: "privileges", label: "User Privilege", icon: Users },
-    { id: "admin-settings", label: "Admin Settings", icon: Settings },
+    { id: "reports", label: "Reports", icon: Shield },
+    { id: "privileges", label: "Settings", icon: Settings },
     { id: "logout", label: "Logout", icon: LogOut, isLogout: true },
   ];
 
@@ -320,8 +467,7 @@ export default function AdminDashboard() {
                     setShowLogoutConfirmation(true);
                     setIsMobileSidebarOpen(false);
                   } else {
-                    setActiveTab(item.id);
-                    setIsMobileSidebarOpen(false);
+                    handleNavigate(item.id);
                   }
                 }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
@@ -385,7 +531,7 @@ export default function AdminDashboard() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg sm:text-xl">User Privileges</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl">Chatbox Settings</CardTitle>
                   <CardDescription className="text-sm">Enable or disable user features in the chat widget</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -397,7 +543,7 @@ export default function AdminDashboard() {
                     <Switch
                       checked={privileges.chatEnabled}
                       onCheckedChange={(checked) => handlePrivilegeToggle("chatEnabled", checked)}
-                      disabled={savePrivilegesMutation.isPending}
+                      disabled={saveSettingsMutation.isPending}
                     />
                   </div>
 
@@ -409,7 +555,7 @@ export default function AdminDashboard() {
                     <Switch
                       checked={privileges.audioInputEnabled}
                       onCheckedChange={(checked) => handlePrivilegeToggle("audioInputEnabled", checked)}
-                      disabled={savePrivilegesMutation.isPending}
+                      disabled={saveSettingsMutation.isPending}
                     />
                   </div>
 
@@ -421,16 +567,201 @@ export default function AdminDashboard() {
                     <Switch
                       checked={privileges.mapAccessEnabled}
                       onCheckedChange={(checked) => handlePrivilegeToggle("mapAccessEnabled", checked)}
-                      disabled={savePrivilegesMutation.isPending}
+                      disabled={saveSettingsMutation.isPending}
+                    />
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 gap-4">
+                    <div className="space-y-1">
+                      <Label className="text-sm sm:text-base">Audio Response</Label>
+                      <p className="text-xs sm:text-sm text-muted-foreground">Show text-to-speech controls and allow automatic audio replies when users enable them</p>
+                    </div>
+                    <Switch
+                      checked={widgetSettings.audioResponseEnabled !== false}
+                      onCheckedChange={(checked) => setWidgetSettings({ ...widgetSettings, audioResponseEnabled: checked })}
+                      disabled={saveSettingsMutation.isPending}
                     />
                   </div>
                 </CardContent>
               </Card>
-            </div>
-          )}
+              <div className="grid gap-6 lg:grid-cols-2">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg sm:text-xl">Chathead Avatar</CardTitle>
+                    <CardDescription>Choose one avatar library, then assign each icon or image to the closed or open chathead.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-5">
+                    <div className="grid grid-cols-2 gap-3 rounded-xl border bg-slate-50 p-3">
+                      <div className="rounded-lg bg-white p-3 shadow-sm">
+                        <p className="text-xs font-semibold text-slate-700">Closed avatar</p>
+                        <div className="mt-2 flex items-center gap-2">
+                          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full text-xl text-white shadow" style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}>
+                            {widgetSettings.inactiveImageUrl ? <img src={widgetSettings.inactiveImageUrl} alt="Closed avatar" className="h-full w-full object-cover" /> : <span>{widgetSettings.inactiveIcon}</span>}
+                          </div>
+                          <span className="text-[11px] text-muted-foreground">When chatbox is closed</span>
+                        </div>
+                      </div>
+                      <div className="rounded-lg bg-white p-3 shadow-sm">
+                        <p className="text-xs font-semibold text-slate-700">Open avatar</p>
+                        <div className="mt-2 flex items-center gap-2">
+                          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full text-xl text-white shadow" style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}>
+                            {widgetSettings.activeImageUrl ? <img src={widgetSettings.activeImageUrl} alt="Open avatar" className="h-full w-full object-cover" /> : <span>{widgetSettings.activeIcon}</span>}
+                          </div>
+                          <span className="text-[11px] text-muted-foreground">When chatbox is open</span>
+                        </div>
+                      </div>
+                    </div>
 
-          {activeTab === "admin-settings" && (
-            <div className="space-y-6">
+                    <div className="space-y-3 rounded-xl border bg-slate-50 p-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <div>
+                          <h3 className="text-sm font-semibold">Avatar library</h3>
+                          <p className="text-xs text-muted-foreground">Click an avatar to assign it. Turn on delete mode to remove custom images.</p>
+                        </div>
+                        <Button
+                          size="sm"
+                          variant={avatarDeleteMode ? "destructive" : "outline"}
+                          onClick={() => setAvatarDeleteMode(!avatarDeleteMode)}
+                        >
+                          Delete
+                        </Button>
+                      </div>
+
+                      <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+                        {presetAvatarIcons.map((icon) => {
+                          const isClosed = getAvatarValue("inactive") === icon;
+                          const isOpen = getAvatarValue("active") === icon;
+                          return (
+                            <DropdownMenu key={`preset-${icon}`}>
+                              <DropdownMenuTrigger asChild>
+                                <button
+                                  type="button"
+                                  className={`relative flex h-12 items-center justify-center rounded-xl border bg-white text-xl shadow-sm transition hover:border-blue-300 ${(isClosed || isOpen) ? "border-blue-500 ring-2 ring-blue-100" : "border-slate-200"}`}
+                                >
+                                  {icon}
+                                  {isClosed && <span className="absolute bottom-1 left-1 rounded bg-blue-600 px-1 text-[9px] text-white">Closed</span>}
+                                  {isOpen && <span className="absolute bottom-1 right-1 rounded bg-emerald-600 px-1 text-[9px] text-white">Open</span>}
+                                </button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="start" className="w-44">
+                                <DropdownMenuItem onClick={() => selectAvatar("inactive", icon)}>Use when closed</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => selectAvatar("active", icon)}>Use when open</DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          );
+                        })}
+
+                        {customAvatarImages.map((url) => {
+                          const isClosed = getAvatarValue("inactive") === url;
+                          const isOpen = getAvatarValue("active") === url;
+                          if (avatarDeleteMode) {
+                            return (
+                              <button
+                                key={`custom-delete-${url}`}
+                                type="button"
+                                onClick={() => deleteCustomAvatar(url)}
+                                className="relative flex h-12 items-center justify-center overflow-hidden rounded-xl border border-red-300 bg-white shadow-sm ring-2 ring-red-100"
+                              >
+                                <span className="absolute right-1 top-1 z-10 rounded-full bg-red-600 px-1 text-[10px] text-white">x</span>
+                                <img src={url} alt="Custom avatar" className="h-full w-full object-cover opacity-80" />
+                              </button>
+                            );
+                          }
+
+                          return (
+                            <DropdownMenu key={`custom-${url}`}>
+                              <DropdownMenuTrigger asChild>
+                                <button
+                                  type="button"
+                                  className={`relative flex h-12 items-center justify-center overflow-hidden rounded-xl border bg-white shadow-sm transition hover:border-blue-300 ${(isClosed || isOpen) ? "border-blue-500 ring-2 ring-blue-100" : "border-slate-200"}`}
+                                >
+                                  <img src={url} alt="Custom avatar" className="h-full w-full object-cover" />
+                                  {isClosed && <span className="absolute bottom-1 left-1 rounded bg-blue-600 px-1 text-[9px] text-white">Closed</span>}
+                                  {isOpen && <span className="absolute bottom-1 right-1 rounded bg-emerald-600 px-1 text-[9px] text-white">Open</span>}
+                                </button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="start" className="w-44">
+                                <DropdownMenuItem onClick={() => selectAvatar("inactive", url)}>Use when closed</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => selectAvatar("active", url)}>Use when open</DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          );
+                        })}
+                      </div>
+
+                      <AdminImageUploader onAddImage={addCustomAvatar} />
+                      <p className="text-[11px] text-muted-foreground">Limit: 6 uploaded images and 12 URL images total. Preset icons cannot be deleted.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg sm:text-xl">Actual Preview</CardTitle>
+                    <CardDescription>Preview the chathead color and icon before saving.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-5">
+                    <div className="flex min-h-40 flex-col items-center justify-center gap-3 rounded-xl border bg-slate-50">
+                      <button
+                        type="button"
+                        className="flex h-16 w-16 cursor-pointer items-center justify-center overflow-hidden rounded-full text-3xl text-white shadow-xl"
+                        style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}
+                        onClick={() => setPreviewAvatarMode(previewAvatarMode === "inactive" ? "active" : "inactive")}
+                      >
+                        <AnimatePresence mode="wait">
+                          {(previewAvatarMode === "inactive" ? widgetSettings.inactiveImageUrl : widgetSettings.activeImageUrl) ? (
+                            <motion.img
+                              key={`preview-image-${previewAvatarMode}-${previewAvatarMode === "inactive" ? widgetSettings.inactiveImageUrl : widgetSettings.activeImageUrl}`}
+                              src={previewAvatarMode === "inactive" ? widgetSettings.inactiveImageUrl : widgetSettings.activeImageUrl}
+                              alt="Chathead preview"
+                              className="h-full w-full object-cover"
+                              initial={{ rotate: 90, opacity: 0 }}
+                              animate={{ rotate: 0, opacity: 1 }}
+                              exit={{ rotate: -90, opacity: 0 }}
+                            />
+                          ) : (
+                            <motion.span
+                              key={`preview-icon-${previewAvatarMode}-${previewAvatarMode === "inactive" ? widgetSettings.inactiveIcon : widgetSettings.activeIcon}`}
+                              initial={{ rotate: 90, opacity: 0 }}
+                              animate={{ rotate: 0, opacity: 1 }}
+                              exit={{ rotate: -90, opacity: 0 }}
+                            >
+                              {previewAvatarMode === "inactive" ? widgetSettings.inactiveIcon : widgetSettings.activeIcon}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                      <p className="text-xs text-muted-foreground">Click preview to switch between closed and open.</p>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Chathead background color and transparency</Label>
+                      <div className="flex items-center gap-3">
+                        <Input
+                          type="color"
+                          value={widgetSettings.chatheadBgColor || "#001C38"}
+                          onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadBgColor: event.target.value })}
+                          className="h-10 w-16 cursor-pointer overflow-hidden rounded-md border-0 p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-md [&::-webkit-color-swatch]:border-0"
+                        />
+                        <Input
+                          value={widgetSettings.chatheadBgColor || "#001C38"}
+                          onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadBgColor: event.target.value })}
+                          className="font-mono text-xs"
+                        />
+                      </div>
+                      <Input
+                        type="range"
+                        min="0.35"
+                        max="1"
+                        step="0.05"
+                        value={widgetSettings.chatheadOpacity ?? 1}
+                        onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadOpacity: Number(event.target.value) })}
+                      />
+                      <p className="text-xs text-muted-foreground">Transparency: {Math.round((widgetSettings.chatheadOpacity ?? 1) * 100)}%</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
               <Card className="hidden">
                 <CardHeader>
                   <CardTitle className="text-lg sm:text-xl">Translation Settings</CardTitle>
@@ -445,13 +776,15 @@ export default function AdminDashboard() {
                     <Switch
                       checked={privileges.autoTranslateEnabled}
                       onCheckedChange={(checked) => handlePrivilegeToggle("autoTranslateEnabled", checked)}
-                      disabled={savePrivilegesMutation.isPending}
+                      disabled={saveSettingsMutation.isPending}
                     />
                   </div>
                 </CardContent>
               </Card>
 
               <AdminMapSettings />
+
+              <AdminNormalizationRules />
 
               <Card>
                 <CardHeader>
@@ -463,7 +796,34 @@ export default function AdminDashboard() {
                   <ChangePasswordDialog />
                 </CardContent>
               </Card>
+
+              <div className="sticky bottom-4 z-10 flex justify-end gap-3 rounded-xl border bg-white/95 p-4 shadow-lg backdrop-blur">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setPrivileges(savedPrivileges);
+                    setWidgetSettings(savedWidgetSettings);
+                    setActiveTab("responses");
+                  }}
+                  disabled={saveSettingsMutation.isPending}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => saveSettingsMutation.mutate({ privileges, widgetSettings })}
+                  disabled={!settingsDirty || saveSettingsMutation.isPending}
+                  className="text-white"
+                  style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}
+                >
+                  {saveSettingsMutation.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
+                  Save update
+                </Button>
+              </div>
             </div>
+          )}
+
+          {activeTab === "reports" && (
+            <AdminReports />
           )}
 
           {activeTab === "faqs" && (
@@ -501,6 +861,27 @@ export default function AdminDashboard() {
               }}
             >
               Confirm
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog open={showUnsavedSettingsDialog} onOpenChange={setShowUnsavedSettingsDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Leave without saving settings?</AlertDialogTitle>
+            <AlertDialogDescription>
+              You have unsaved chatbox setting changes. If you continue, those changes will be discarded.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setPendingTab(null)}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="text-white"
+              style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}
+              onClick={discardSettingsAndNavigate}
+            >
+              Continue without saving
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

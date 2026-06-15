@@ -7,6 +7,9 @@ import { FaqController } from "./controllers/faqController";
 import { AdminBotTopicsController } from "./controllers/adminBotTopicsController";
 import { AdminKnowledgeController } from "./controllers/adminKnowledgeController";
 import { MapController } from "./controllers/mapController";
+import { ReportController } from "./controllers/reportController";
+import { ChatWidgetSettingsController } from "./controllers/chatWidgetSettingsController";
+import { NormalizationRulesController } from "./controllers/normalizationRulesController";
 import emailRoutes from "./routes/emailRoutes";
 import adminMigrationRoutes from "./routes/admin-migration.js";
 import jwt from "jsonwebtoken";
@@ -68,6 +71,9 @@ export async function registerRoutes(
   // CHAT ROUTE
   app.post("/api/chat", ChatController.handleChat);
   app.get("/api/faqs", FaqController.getActiveFaqs);
+  app.post("/api/reports", ReportController.create);
+  app.post("/api/reports/response", ReportController.createResponseReport);
+  app.get("/api/chat-widget-settings", ChatWidgetSettingsController.get);
 
   // PUBLIC USER PRIVILEGES
   app.get("/api/user-privileges", AdminController.getUserPrivileges);
@@ -173,6 +179,10 @@ export async function registerRoutes(
 
   // ADMIN ROUTES
   app.post("/api/admin/map-settings", requireAuth, AdminController.updateMapSettings);
+  app.post("/api/admin/chat-widget-settings", requireAuth, ChatWidgetSettingsController.update);
+  app.get("/api/admin/normalization-rules", requireAuth, NormalizationRulesController.get);
+  app.post("/api/admin/normalization-rules", requireAuth, NormalizationRulesController.update);
+  app.delete("/api/admin/reports/:id", requireAuth, ReportController.delete);
   
   // Get all responses
   app.get("/api/admin/responses", requireAuth, AdminController.getResponses);
@@ -216,6 +226,9 @@ export async function registerRoutes(
   app.get("/api/admin/faqs", requireAuth, FaqController.getAllFaqs);
   app.post("/api/admin/faqs", requireAuth, FaqController.upsertFaq);
   app.delete("/api/admin/faqs/:id", requireAuth, FaqController.deleteFaq);
+
+  // REPORTS (ADMIN)
+  app.get("/api/admin/reports", requireAuth, ReportController.list);
 
   // BOT TOPICS (ADMIN)
   app.get("/api/admin/bot-topics", requireAuth, AdminBotTopicsController.getTopics);

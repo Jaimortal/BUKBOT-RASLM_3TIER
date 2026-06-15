@@ -1,0 +1,332 @@
+QUERY NORMALIZATION LAYER DAY-BY-DAY PROMPT
+Project: BukSU Rasa + Structured Retrieval Chatbot
+Architecture: Rasa NLU + Query Normalization + Context-Aware Structured Retrieval
+
+MAIN OBJECTIVE
+Build a safe input-normalization layer that improves chatbot accuracy for:
+- English typos
+- Cebuano/Bisaya wording
+- mixed English/Bisaya student phrasing
+- common grammar mistakes
+- domain-specific aliases for BukSU services, offices, documents, courses, and policies
+
+IMPORTANT RULES
+- Do not use an LLM.
+- Do not translate full sentences.
+- Do not aggressively autocorrect every word.
+- Keep the original user message.
+- Append normalized concepts only for known chatbot/domain words.
+- Keep Rasa as the NLU layer.
+- Keep the structured retrieval architecture.
+- Test after every phase before proceeding.
+- If a normalization rule is uncertain, prefer clarification choices instead of forcing an answer.
+
+CORE DESIGN
+User message:
+"mamalhinay ko sa buksu unsa requirements?"
+
+Search-normalized message:
+"mamalhinay ko sa buksu unsa requirements transferee transfer student requirements documents need"
+
+The UI should still display the original user message.
+Only the router, entity resolver, and retrieval scorer should use the normalized search text.
+
+DATA LOCATION
+Primary implementation file:
+rasa/actions/query_normalizer.py
+
+Primary integration files:
+rasa/actions/query_interpreter.py
+rasa/actions/knowledge_router.py
+rasa/actions/retrieval_scorer.py
+rasa/actions/entity_resolver.py, only if location alias normalization needs it later
+
+Test file:
+test/test_context_aware_retrieval.py
+
+HOW TO ADD NORMALIZATION DATA
+Add exact phrase mappings to PHRASE_CONCEPTS:
+"transfered student" -> "transferee transfer student"
+"balhin nga student" -> "transferee transfer student"
+"cor validaton" -> "cor validation"
+
+Add token mappings to TOKEN_CONCEPTS:
+"asa" -> "where location find"
+"pila" -> "fee payment cost how much"
+"unsaon" -> "how process steps"
+
+Add root mappings to ROOT_CONCEPTS:
+"balhin" -> "transferee transfer student"
+"malhin" -> "transferee transfer student"
+"dawat" -> "accept availability"
+
+Add fuzzy roots only for highly important domain words:
+"transferee"
+"admission"
+"enrollment"
+"validation"
+"library"
+"requirements"
+
+Avoid fuzzy matching generic words like "office", "student", "course", "pay", "go", or "id" because they can cause false matches.
+
+DAY 1 - PHASE 1: FOUNDATION
+Goal:
+Create the Query Normalization Layer without changing user-visible text.
+
+Tasks:
+1. Create query_normalizer.py.
+2. Add normalize_basic().
+3. Add expand().
+4. Add PHRASE_CONCEPTS, TOKEN_CONCEPTS, ROOT_CONCEPTS, and FUZZY_ROOTS.
+5. Integrate normalize_for_search() into QueryInterpreter.
+6. Use normalized search text in RetrievalScorer.
+7. Use normalized search text in KnowledgeRouter direct overrides.
+
+QA:
+- "Is buksu accept transfered students" should route to transferee admission.
+- "mobalhin nga student sa buksu" should route to transferee admission or transferee enrollment depending on wording.
+- "asa ang registrar" should still route as a location query.
+- "pila student id" should route to student ID fee.
+- "unsaon pag validate id" should route to ID validation process.
+- "student id" must not clarify itself forever.
+
+DAY 1 - PHASE 2: ENGLISH TYPO HARDENING
+Goal:
+Handle common English mistakes without creating wrong matches.
+
+Add phrase/token support for:
+- transfered/transferred/transferee/transfer student
+- admisson/admission
+- enrolment/enrollment
+- validaton/validation
+- libary/library
+- requirments/requirements
+- masteral/masters
+- cources/courses
+- sched/schedule
+
+QA:
+- "admisson requirements"
+- "enrolment when"
+- "cor validaton"
+- "libary id"
+- "masteral courses"
+- "cources offered"
+
+DAY 2 - PHASE 1: BISAYA INTENT WORDS
+Goal:
+Normalize common Bisaya intent words into purpose concepts.
+
+Add support for:
+- asa, hain, diin -> where/location
+- unsa, unsay -> what/info
+- unsaon, giunsa -> how/process
+- kanus-a, kanusa, kanus -> when/schedule
+- kinsa -> who/person
+- pila, tagpila -> fee/cost
+- bayad, bayranan, mubayad -> payment/fee
+- kinahanglan, kailangan -> requirements/need
+- dad-on, dalhon -> bring/documents
+- dokomento/dokumento/papeles -> documents
+
+QA:
+- "asa ang library"
+- "pila ang student id"
+- "unsaon pagkuha ug library id"
+- "kanus-a enrollment"
+- "kinsa dean sa cot"
+- "unsa requirements sa transferee"
+
+DAY 2 - PHASE 2: BISAYA ROOT MATCHING
+Goal:
+Handle messy Bisaya forms by root, not exact spelling.
+
+Roots:
+- balhin/malhin/pamalhin -> transferee transfer student
+- dawat -> accept availability
+- kuha -> get/process/request
+- bayad -> fee/payment/cost
+- kinahanglan -> requirements/documents/need
+- valid -> validation/validate
+
+Hard cases to test:
+- "mamalhinay ko sa buksu"
+- "gapamalhin ko gikan laing school"
+- "mobalhin unta ko sa buksu"
+- "mudawat mo ug transferee"
+- "dawaton ba ang transfer student"
+- "unsay kinahanglan para mamalhin"
+
+DAY 3 - PHASE 1: SERVICE AND DOCUMENT NORMALIZATION
+Goal:
+Improve services and document matching.
+
+Normalize:
+- school id, student id, ID, valid ID, ID validation
+- library id, library card, library ID card
+- COR, certificate of registration, cor validation
+- test permit, exam permit
+- good moral certificate
+- medical certificate
+- dental oral examination
+- PE uniform
+
+QA:
+- "unsaon pag validate id"
+- "asa kuha library card"
+- "kanus-a cor validation"
+- "test permit corrupted"
+- "how get pe"
+- "medical cert pila"
+
+DAY 3 - PHASE 2: COURSE ACRONYM AND TYPO NORMALIZATION
+Goal:
+Improve course/program queries.
+
+Normalize:
+- BSIT/IT/information tech
+- BA philo/philosophy/AB philosophy
+- BSA/accountancy
+- BSAT/automotive
+- BSET/electronics
+- BSN/nursing
+- BSHM/hospitality
+- masteral/masters/graduate studies
+
+QA:
+- "do buksu offer ba philo"
+- "naa moy bsat"
+- "how about bset"
+- "masteral courses"
+- "unsay courses sa buksu"
+
+DAY 4 - PHASE 1: LOCATION WORDING NORMALIZATION
+Goal:
+Improve location intent detection without breaking academic acronyms.
+
+Normalize:
+- asa, asa dapit, asa makita, asa makit-an
+- hain dapit
+- diin dapit
+- location, locate, where, find
+
+Guardrails:
+- Do not treat "who is dean of COT" as a COT building location.
+- Do not treat "courses in COT" as a COT building location.
+- Only location-route if the wording is location-shaped.
+
+QA:
+- "asa ang cot dean office"
+- "hain ang registrar"
+- "where is cpag building"
+- "who is dean of cot"
+- "courses under cot"
+
+DAY 4 - PHASE 2: CLARIFICATION SAFETY
+Goal:
+Prevent loops and bad single-option clarifications.
+
+Rules:
+- If there is only one clarification option and the payload equals the same topic, answer directly.
+- Never show "Can you clarify if you mean X?" with only X as a choice when X can answer.
+- If confidence is medium but options are unrelated, fallback politely instead of suggesting random topics.
+
+QA:
+- "student id" should answer student ID process.
+- "borrow books" should not suggest INC.
+- "transfered students" should not suggest borrow books.
+- "how validate" should show validation choices unless memory clearly identifies COR or ID.
+
+DAY 5 - PHASE 1: ADMIN-MAINTAINED NORMALIZATION DATA
+Goal:
+Allow future maintainers to add normalization rules without editing Python logic heavily.
+
+Possible file:
+rasa/actions/normalization_rules.json
+
+Suggested structure:
+{
+  "phrases": {
+    "transfered student": "transferee transfer student"
+  },
+  "tokens": {
+    "asa": "where location find"
+  },
+  "roots": {
+    "balhin": "transferee transfer student"
+  },
+  "fuzzy_roots": {
+    "transferee": "transferee transfer student"
+  }
+}
+
+Tasks:
+1. Load JSON rules in QueryNormalizer.
+2. Merge JSON rules with default built-in rules.
+3. Add validation so empty or dangerous rules are ignored.
+4. Add tests proving JSON rules load.
+
+DAY 5 - PHASE 2: ADMIN UI FUTURE OPTION
+Goal:
+Optionally add a Normalization Rules UI under admin Settings.
+
+Fields:
+- Rule type: phrase/token/root/fuzzy root
+- User wording
+- Normalized concepts
+- Enabled/disabled
+- Notes
+
+Guardrails:
+- Show warning that wrong normalization rules can affect bot routing.
+- Allow testing a sample query before save.
+- Do not expose critical Python internals.
+
+DAY 6 - PHASE 1: QA DATASET
+Goal:
+Create a repeatable QA list for normalization.
+
+Create a test file or document with categories:
+- English typos
+- Bisaya location
+- Bisaya payment
+- Bisaya requirements
+- Bisaya transfer/admission
+- Mixed English/Bisaya
+- Course acronyms
+- ID/library/COR services
+- Ambiguous queries
+
+Example QA:
+1. Is buksu accept transfered students?
+2. mobalhin nga student unsa requirements?
+3. gapamalhin ko gikan laing school
+4. asa ang registrar?
+5. pila ang student id?
+6. unsaon pag validate id?
+7. kanus-a cor validation?
+8. libary id asa kuha?
+9. masteral courses?
+10. do buksu offer ba philo?
+
+DAY 6 - PHASE 2: FINAL DEBUGGING
+Goal:
+Run regression tests and manual chatbot tests.
+
+Required checks:
+- python -m unittest discover -s test -p "test_context_aware_retrieval.py"
+- Test 30 English typo questions.
+- Test 30 Bisaya questions.
+- Test 20 mixed English/Bisaya questions.
+- Test ambiguous questions.
+- Confirm no random suggestions like "borrow books or INC grade" for transfer questions.
+- Restart Rasa action server after Python changes.
+- Rasa training is only needed if NLU examples/domain changed.
+
+SUCCESS CRITERIA
+- More typo/Bisaya questions route correctly.
+- No self-loop clarification.
+- No broad accidental overmatching.
+- Existing location, map, admin, and response builder behavior remains working.
+- Tests pass after every phase before moving forward.

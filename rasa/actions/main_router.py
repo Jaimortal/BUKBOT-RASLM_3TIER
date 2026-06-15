@@ -50,6 +50,7 @@ class MainRouterService:
             "where", "location", "located", "find", "go to", "get to",
             "direction", "directions", "how to go", "how do i get",
             "room", "building", "office", "campus", "inside", "desk", "window", "gate",
+            "asa", "hain", "diin", "dapit", "makita", "makit-an", "locate",
         ]
         if any(term in text for term in location_terms):
             return True
@@ -98,6 +99,7 @@ class MainRouterService:
             "direction", "directions", "how to go", "how do i get",
             "room", "building", "office", "campus", "inside", "desk",
             "window", "gate", "classroom",
+            "asa", "hain", "diin", "dapit", "makita", "makit-an", "locate",
         ]
         if any(term in text for term in strong_location_terms):
             return True
@@ -105,11 +107,17 @@ class MainRouterService:
         return intent == "ask_location" and len(self.interpreter.tokens(text)) <= 3
 
     def _looks_like_unresolved_location_request(self, user_message: str) -> bool:
-        text = self.interpreter.normalize(user_message)
+        text = self.interpreter.normalize_for_search(user_message)
+        if (
+            any(term in text for term in ["result", "results", "ror", "rating", "passed", "pass"]) and
+            any(term in text for term in ["admission", "exam", "examination", "test", "buksu cat", "college admission test"])
+        ):
+            return False
         location_terms = [
             "where", "location", "located", "find", "go to", "get to",
             "direction", "directions", "room", "building", "office",
             "campus", "inside", "gate", "desk",
+            "asa", "hain", "diin", "dapit", "makita", "makit-an", "locate",
         ]
         return any(term in text for term in location_terms)
 

@@ -83,7 +83,7 @@
               750,
               581
             ],
-            "locationName": "Heres how you could get any wifi connection that ICT could offer to you."
+            "locationName": "ICT Office"
           },
           "subject_key": "campus_wifi_access",
           "subject_type": "service",
@@ -126,6 +126,55 @@
             "internet access"
           ],
           "display_name": "ICT Mission"
+        },
+        {
+          "topic": "institutional_email_account",
+          "responses": {
+            "en": [
+              "For your official BukSU institutional email or student email login, go to the ICT office on the 3rd floor of the Finance Building and ask for assistance with your institutional email account.",
+              "Bring your validated COR or student ID if available, because ICT may need to verify that you are an officially enrolled student.",
+              "Students may also ask ICT for help if they forgot their institutional email, cannot log in, or need account recovery."
+            ],
+            "ceb": [
+              "Para sa imong opisyal nga BukSU institutional email o student email login, adto sa ICT office sa 3rd floor sa Finance Building ug pangayo og tabang bahin sa imong institutional email account.",
+              "Dad-a ang imong validated COR o student ID kung naa, kay mahimong kinahanglanon sa ICT para ma-verify nga opisyal kang naka-enroll.",
+              "Pwede usab mangayo og tabang sa ICT kung nakalimot ka sa institutional email, dili maka-login, o kinahanglan og account recovery."
+            ]
+          },
+          "intent": "institutional_email_account",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "official student email login",
+              "student email login",
+              "institutional email account",
+              "institutional gmail",
+              "buksu student email",
+              "where do i get student email",
+              "how to get institutional email",
+              "forgot institutional email",
+              "student gmail account"
+            ]
+          },
+          "subject_key": "institutional_email_account",
+          "subject_type": "service",
+          "subject_terms": [
+            "institutional email",
+            "student email",
+            "official student email",
+            "institutional account",
+            "student gmail",
+            "buksu gmail"
+          ],
+          "display_name": "Institutional Email Account Help",
+          "mapData": {
+            "mapId": "main_map",
+            "coordinates": [
+              750,
+              581
+            ],
+            "locationName": "ICT Office"
+          }
         }
       ],
       "display_name": "ICT Services"

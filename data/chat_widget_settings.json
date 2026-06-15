@@ -1,0 +1,15 @@
+{
+  "inactiveIcon": "💬",
+  "inactiveImageUrl": "",
+  "activeIcon": "✕",
+  "activeImageUrl": "",
+  "inactiveCustomImages": [
+    "/api/images/b4eec9fa-dcc4-471b-80bd-4a0109c00ae2"
+  ],
+  "activeCustomImages": [
+    "/api/images/b4eec9fa-dcc4-471b-80bd-4a0109c00ae2"
+  ],
+  "chatheadBgColor": "#001C38",
+  "chatheadOpacity": 1,
+  "audioResponseEnabled": true
+}
