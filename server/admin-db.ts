@@ -8,6 +8,7 @@ import * as dbResponses from './db/responses.js';
 import * as dbLocations from './db/locations.js';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { backupJsonFile } from './utils/jsonBackup.js';
 
 const PROJECT_ROOT = process.cwd();
 
@@ -117,6 +118,7 @@ export async function getUserPrivileges(): Promise<UserPrivileges> {
 export async function saveUserPrivileges(privileges: UserPrivileges): Promise<boolean> {
   try {
     await ensureDataDir();
+    await backupJsonFile(PRIVILEGES_FILE, 'settings');
     await fs.writeFile(PRIVILEGES_FILE, JSON.stringify(privileges, null, 2), 'utf-8');
     return true;
   } catch (error) {
@@ -180,6 +182,7 @@ async function saveResponsesToFile(responses: ResponseData[]): Promise<void> {
   const path = await import('path');
   const RESPONSES_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses.json');
   
+  await backupJsonFile(RESPONSES_FILE, 'responses');
   await fs.writeFile(RESPONSES_FILE, JSON.stringify(responses, null, 2), 'utf-8');
 }
 

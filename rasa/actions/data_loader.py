@@ -75,6 +75,7 @@ class KnowledgeDataLoader:
             "departamentals_faculty_staff",
             "department_info",
             "enrollment_info",
+            "facilities_info",
             "ict_info",
             "oss_services",
             "university_info",
@@ -134,6 +135,7 @@ class KnowledgeDataLoader:
                 "base_intent": base_intent,
                 "topic": topic_key,
                 "parent_topic": parent_topic,
+                "display_name": topic.get("display_name") or topic.get("ui_name") or "",
                 **context,
                 **(topic.get("metadata") or {}),
             }
@@ -141,6 +143,7 @@ class KnowledgeDataLoader:
                 "intent": intent,
                 "category": category,
                 "sub_category": full_topic,
+                "display_name": topic.get("display_name") or topic.get("ui_name") or "",
                 "responses": {
                     "answer": topic.get("responses") or {},
                     "follow_up": topic.get("follow_up") or [],
@@ -399,6 +402,7 @@ class KnowledgeDataLoader:
 
         selected_items = self._matching_items(items, user_message)
         matched_groups = self._matching_item_groups(items, item_groups, user_message)
+        wants_available_slots_only = self._wants_available_slot_items(user_message)
 
         if selected_items:
             text_parts = (
@@ -406,14 +410,31 @@ class KnowledgeDataLoader:
                 if len(selected_items) == 1
                 else self._item_lines_by_group(selected_items, item_groups, generic_header="Here are the matching course slots:")
             )
+            displayed_items = selected_items
         elif matched_groups:
             grouped_items = [item for item in items if str(item.get("group") or "").upper() in matched_groups]
+            if wants_available_slots_only:
+                grouped_items = [item for item in grouped_items if self._numeric_slot_count(item) >= 1]
             text_parts = self._item_lines_by_group(grouped_items, item_groups, include_group_headers=True)
+            if wants_available_slots_only and not text_parts:
+                text_parts = ["I do not have any numeric available slot data for that selected group right now."]
+            displayed_items = grouped_items
+        elif wants_available_slots_only:
+            available_items = [item for item in items if self._numeric_slot_count(item) >= 1]
+            text_parts = self._item_lines_by_group(
+                available_items,
+                item_groups,
+                generic_header="Here are the courses that still have available slots:"
+            )
+            if not text_parts:
+                text_parts = ["I do not have any courses with numeric available slots right now."]
+            displayed_items = available_items
         else:
             text_parts = self._answer_parts(selected_answer)
             text_parts.extend(self._item_lines_by_group(items, item_groups, include_group_headers=True))
+            displayed_items = items
 
-        if disclaimer:
+        if disclaimer and self._should_include_item_disclaimer(displayed_items):
             text_parts.append(disclaimer)
 
         text_parts = [part for part in text_parts if str(part).strip()]
@@ -429,6 +450,81 @@ class KnowledgeDataLoader:
         if custom:
             result["custom"] = custom
         return result
+
+    def _should_include_item_disclaimer(self, items: List[Dict[str, Any]]) -> bool:
+        for item in items:
+            value = str(item.get("value") or "").strip().lower()
+            if re.search(r"\b\d+\s*slots?\b", value):
+                return True
+        return False
+
+    def _wants_available_slot_items(self, user_message: str) -> bool:
+        query = self._normalize_item_text(user_message)
+        if not re.search(r"\bslots?\b", query) and not re.search(r"\bbakant[ei]\b", query):
+            return False
+        available_terms = [
+            "still have",
+            "still has",
+            "with slots",
+            "with slot",
+            "have slots",
+            "have slot",
+            "have a slot",
+            "has slots",
+            "has slot",
+            "has a slot",
+            "available slots",
+            "available slot",
+            "free slots",
+            "free slot",
+            "existing slots",
+            "existing slot",
+            "open slots",
+            "open slot",
+            "slots available",
+            "slot available",
+            "remaining slots",
+            "remaining slot",
+            "slots remaining",
+            "slot remaining",
+            "naay slots",
+            "naay slot",
+            "naa slots",
+            "naa slot",
+            "naay available",
+            "naay bakante",
+            "naa pay slot",
+            "naa pay slots",
+            "naa pay mga slot",
+            "naa pay mga slots",
+            "daghan pag slot",
+            "daghan pag slots",
+            "naapa slots",
+            "naapa slot",
+            "naapay slot",
+            "naapay slots",
+            "naa pa slots",
+            "naa pa slot",
+            "naa pabay",
+            "napay bakanti",
+            "naapay bakanti",
+            "naapay bakante",
+            "naay bakanti",
+            "bakanti",
+            "bakante",
+            "bakante nga slots",
+        ]
+        return any(term in query for term in available_terms)
+
+    def _numeric_slot_count(self, item: Dict[str, Any]) -> int:
+        value = str(item.get("value") or "").strip().lower()
+        match = re.search(r"\b(\d+)\s*slots?\b", value)
+        if not match:
+            return 0
+        try:
+            return int(match.group(1))
+        except ValueError:
+            return 0
 
     def _answer_parts(self, selected_answer: Any) -> List[str]:
         if isinstance(selected_answer, list):
@@ -493,7 +589,11 @@ class KnowledgeDataLoader:
             aliases = [
                 item.get("key"),
                 item.get("name"),
+                item.get("display_name"),
+                item.get("text"),
                 *(item.get("aliases") or []),
+                *(item.get("search_terms") or []),
+                *(item.get("searchTerms") or []),
             ]
             if self._matches_any_alias(query, query_tokens, aliases):
                 matches.append(item)
@@ -513,7 +613,10 @@ class KnowledgeDataLoader:
             aliases = [group]
             if isinstance(group_data, dict):
                 aliases.extend(group_data.get("aliases") or [])
+                aliases.extend(group_data.get("search_terms") or [])
+                aliases.extend(group_data.get("searchTerms") or [])
                 aliases.append(group_data.get("name"))
+                aliases.append(group_data.get("header"))
             elif group_data:
                 aliases.append(group_data)
             if self._matches_any_alias(query, set(self._item_tokens(query)), aliases):

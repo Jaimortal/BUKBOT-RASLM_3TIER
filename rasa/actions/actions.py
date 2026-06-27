@@ -175,6 +175,10 @@ class ActionReplyFromJsonHelper:
         # Enrollment Info
         self.enrollment_info_path = os.path.join(self.supper_saiyan_dir, "Enrollment_info.json")
         self.enrollment_info = self._load_json_file(self.enrollment_info_path)
+
+        # Facilities Info
+        self.facilities_info_path = os.path.join(self.supper_saiyan_dir, "Facilities_info.json")
+        self.facilities_info = self._load_json_file(self.facilities_info_path)
         
         # ICT Info
         self.ict_info_path = os.path.join(self.supper_saiyan_dir, "Ict_info.json")
@@ -209,6 +213,7 @@ class ActionReplyFromJsonHelper:
             self.departamentals_path,
             self.department_info_path,
             self.enrollment_info_path,
+            self.facilities_info_path,
             self.ict_info_path,
             self.oss_services_path,
             self.university_info_path,
@@ -239,38 +244,80 @@ class ActionReplyFromJsonHelper:
         Reload JSON knowledge files when admin edits changed their modified time.
 
         This keeps action responses fresh without reading all JSON files on every
-        message. If a file has invalid JSON, the existing safe loader falls back
-        to an empty source for that file and logs the problem.
+        message. If a changed file has invalid JSON, keep the last good
+        in-memory data instead of replacing that source with an empty object.
         """
         current_mtimes = self._snapshot_json_mtimes()
         if current_mtimes == getattr(self, "_json_mtimes", {}):
             return False
 
-        changed_files = [
-            os.path.basename(path)
+        previous_mtimes = getattr(self, "_json_mtimes", {})
+        changed_paths = [
+            path
             for path, mtime in current_mtimes.items()
-            if getattr(self, "_json_mtimes", {}).get(path) != mtime
+            if previous_mtimes.get(path) != mtime
         ]
+        changed_files = [os.path.basename(path) for path in changed_paths]
 
-        self.responses = self._load_responses()
-        self.location_responses = self._load_location_responses()
-        self.library_info = self._load_json_file(self.library_info_path)
-        self.academic_policy = self._load_json_file(self.academic_policy_path)
-        self.administrators_info = self._load_json_file(self.administrators_path)
-        self.admissions_info = self._load_json_file(self.admissions_path)
-        self.classroom_policy = self._load_json_file(self.classroom_policy_path)
-        self.clinic_info = self._load_json_file(self.clinic_info_path)
-        self.courses_info = self._load_json_file(self.courses_info_path)
-        self.departamentals_faculty_staff = self._load_json_file(self.departamentals_path)
-        self.department_info = self._load_json_file(self.department_info_path)
-        self.enrollment_info = self._load_json_file(self.enrollment_info_path)
-        self.ict_info = self._load_json_file(self.ict_info_path)
-        self.oss_services = self._load_json_file(self.oss_services_path)
-        self.university_info = self._load_json_file(self.university_info_path)
-        self.dormitory_info = self._load_json_file(self.dormitory_info_path)
+        for path in changed_paths:
+            error = self._json_validation_error(path)
+            if error:
+                print(
+                    "[Knowledge Hot Reload] Skipped reload because "
+                    f"{error}. Keeping previous in-memory data."
+                )
+                return False
+
+        next_responses = self._load_responses()
+        next_location_responses = self._load_location_responses()
+        next_library_info = self._load_json_file(self.library_info_path)
+        next_academic_policy = self._load_json_file(self.academic_policy_path)
+        next_administrators_info = self._load_json_file(self.administrators_path)
+        next_admissions_info = self._load_json_file(self.admissions_path)
+        next_classroom_policy = self._load_json_file(self.classroom_policy_path)
+        next_clinic_info = self._load_json_file(self.clinic_info_path)
+        next_courses_info = self._load_json_file(self.courses_info_path)
+        next_departamentals_faculty_staff = self._load_json_file(self.departamentals_path)
+        next_department_info = self._load_json_file(self.department_info_path)
+        next_enrollment_info = self._load_json_file(self.enrollment_info_path)
+        next_facilities_info = self._load_json_file(self.facilities_info_path)
+        next_ict_info = self._load_json_file(self.ict_info_path)
+        next_oss_services = self._load_json_file(self.oss_services_path)
+        next_university_info = self._load_json_file(self.university_info_path)
+        next_dormitory_info = self._load_json_file(self.dormitory_info_path)
+
+        self.responses = next_responses
+        self.location_responses = next_location_responses
+        self.library_info = next_library_info
+        self.academic_policy = next_academic_policy
+        self.administrators_info = next_administrators_info
+        self.admissions_info = next_admissions_info
+        self.classroom_policy = next_classroom_policy
+        self.clinic_info = next_clinic_info
+        self.courses_info = next_courses_info
+        self.departamentals_faculty_staff = next_departamentals_faculty_staff
+        self.department_info = next_department_info
+        self.enrollment_info = next_enrollment_info
+        self.facilities_info = next_facilities_info
+        self.ict_info = next_ict_info
+        self.oss_services = next_oss_services
+        self.university_info = next_university_info
+        self.dormitory_info = next_dormitory_info
         self._json_mtimes = current_mtimes
         print(f"[Knowledge Hot Reload] Reloaded JSON sources: {', '.join(changed_files)}")
         return True
+
+    def _json_validation_error(self, filepath: str) -> Optional[str]:
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                json.load(f)
+            return None
+        except FileNotFoundError:
+            return f"{os.path.basename(filepath)} was not found"
+        except json.JSONDecodeError as e:
+            return f"{os.path.basename(filepath)} has invalid JSON: {e}"
+        except OSError as e:
+            return f"{os.path.basename(filepath)} could not be read: {e}"
 
     def _load_location_responses(self) -> Dict[str, Any]:
         try:
@@ -794,11 +841,15 @@ class ActionReplyFromJsonHelper:
         return suggestions
 
     def _should_attach_building_directory(self, location_name: str, location_info: Dict[str, Any], user_message: str) -> bool:
-        directory_terms = ["office", "offices", "room", "rooms", "inside", "found", "faculty", "building", "list"]
+        directory_terms = ["offices", "rooms", "inside", "found", "faculty", "building", "list"]
         text = self._normalize_building_name(user_message)
-        is_building = str(location_info.get("type") or "").lower() == "building"
+        location_type = str(location_info.get("type") or "").lower()
+        is_building = location_type == "building"
         is_faculty_room = "faculty room" in str(location_name).lower()
         asked_directory = any(term in text for term in directory_terms)
+        is_specific_office = "office" in location_type or "office" in str(location_name).lower()
+        if is_specific_office and not (is_building or is_faculty_room):
+            return asked_directory and any(term in text for term in ["offices", "rooms", "inside", "found", "list"])
         return is_building or is_faculty_room or asked_directory
 
     def get_building_directory_for_location(self, location_name: str, user_message: str = "") -> Optional[Dict[str, Any]]:
@@ -1406,6 +1457,7 @@ class ActionMainRouter(Action):
         user_msg = tracker.latest_message.get("text", "")
         slot_updates: Dict[str, Any] = {}
         tracker_slots = tracker.current_slot_values()
+        self.router.refresh_if_changed()
 
         if intent == "ask_follow_up":
             last_topic = self.helper.get_dynamic_slot("last_topic") or tracker.get_slot("last_topic")

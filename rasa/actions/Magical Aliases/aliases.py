@@ -96,6 +96,21 @@ LOCATION_ALIASES = {
     "finance bldg": "Finance Building",
     "airport": "Finance Building",
 
+    # === ATM and Parking ===
+    "atm": "ATM",
+    "atm machine": "ATM",
+    "atm inside campus": "ATM",
+    "atm in campus": "ATM",
+    "motorcycle parking": "Motorcycle Parking Area",
+    "motorcycle parking area": "Motorcycle Parking Area",
+    "motor parking": "Motorcycle Parking Area",
+    "motor parking area": "Motorcycle Parking Area",
+    "parking motorcycle": "Motorcycle Parking Area",
+    "where can i park my motorcycle": "Motorcycle Parking Area",
+    "vehicle parking": "Vehicle Parking Area",
+    "vehicle parking area": "Vehicle Parking Area",
+    "parking area": "Vehicle Parking Area",
+
     # === CPAG Building ===
     "cpag": "CPAG building",
     "cpag building": "CPAG building",
@@ -157,9 +172,20 @@ LOCATION_ALIASES = {
     
 
     # === Buksu Clinic (general) ===
-    "buksu clinic": "Medical clinic",
-    "clinic": "Medical clinic",
-    "bukidnon state univeristy clinic": "Medical clinic",
+    "buksu clinic": "Buksu Clinic",
+    "clinic": "Buksu Clinic",
+    "bukidnon state univeristy clinic": "Buksu Clinic",
+    "bukidnon state university clinic": "Buksu Clinic",
+    "university clinic": "Buksu Clinic",
+
+    # CLINIC
+    "Medical clinic": "Medical clinic",
+    "buksu med clinic": "Medical clinic",
+    "bukidnon state university medical clinic": "Medical clinic",
+    "medical clinic office": "Medical clinic",
+    "pme": "Medical clinic",
+    "physical medical exam clinic": "Medical clinic",
+    "physical medical exam": "Medical clinic",
 
     # === Dental Clinic ===
     "dental clinic": "Dental Clinic",
@@ -487,6 +513,7 @@ LOCATION_ALIASES = {
     "legal office": "Law Office",
     
     "admission office": "Admission Office",
+    "admission building": "Admission Office",
     "admission and testing office": "Admission Office",
     "admissions office": "Admission Office",
     "admission unit": "Admission Office",
@@ -495,6 +522,7 @@ LOCATION_ALIASES = {
     "atu office": "Admission Office",
     "atu": "Admission Office",
     "admission testing unit": "Admission Office",
+    "admission location": "Admission Office",
     
     "nstp office": "NSTP Office",
     "nstp faculty": "NSTP Office",
@@ -1149,15 +1177,6 @@ LOCATION_ALIASES = {
     "guidance": "Guidance Office",
     "office of the guidance": "Guidance Office",
     "guidance department": "Guidance Office",
-
-    # CLINIC
-    "Medical clinic": "Medical clinic",
-    "buksu med clinic": "Medical clinic",
-    "bukidnon state university medical clinic": "Medical clinic",
-    "medical clinic office": "Medical clinic",
-    "pme": "Medical clinic",
-    "physical medical exam clinic": "Medical clinic",
-    "physical medical exam": "Medical clinic",
     
     # ICT Service Unit
     "ict service unit": "ICT Service Unit",
@@ -1295,6 +1314,8 @@ LOCATION_ALIASES = {
     "diversity and inclusion": "diversity and inclusion unit",
     "diversity & inclusion unit": "diversity and inclusion unit",
     "diu office": "diversity and inclusion unit",
+    "diu": "diversity and inclusion unit",
+    
     "diversity and inclusion office": "diversity and inclusion unit",
     "diversity and inclusion unit office": "diversity and inclusion unit",
     "diversity inclusion unit office": "diversity and inclusion unit",

@@ -60,10 +60,19 @@ class RetrievalIndex:
             subject_terms = self._string_list(metadata.get("subject_terms"))
             phrases = self._string_list(metadata.get("phrases"))
             topic_terms = self._topic_terms(entry, metadata)
+            display_name = str(
+                entry.get("display_name") or
+                metadata.get("display_name") or
+                entry.get("sub_category") or
+                intent.replace("_", " ")
+            ).strip()
             answer_text = self._answer_text(responses)
-            item_text = self._item_text(responses)
+            child_terms = self._child_terms(responses)
+            alias_terms = self._alias_terms(responses)
+            item_text = " ".join([*child_terms, *alias_terms])
             searchable_text = self.interpreter.normalize(
                 " ".join([
+                    display_name,
                     intent.replace("_", " "),
                     str(entry.get("category") or ""),
                     str(entry.get("sub_category") or "").replace("_", " "),
@@ -86,6 +95,9 @@ class RetrievalIndex:
                     answer_text=answer_text,
                     searchable_text=searchable_text,
                     tokens=self.interpreter.tokens(searchable_text, expand=False),
+                    display_name=display_name,
+                    child_terms=child_terms,
+                    alias_terms=alias_terms,
                 )
             )
         return candidates
@@ -116,10 +128,10 @@ class RetrievalIndex:
             return " ".join(str(item) for item in answer)
         return json.dumps(answer, ensure_ascii=False)
 
-    def _item_text(self, responses: Dict[str, Any]) -> str:
+    def _child_terms(self, responses: Dict[str, Any]) -> List[str]:
         items = responses.get("items") or []
         if not isinstance(items, list):
-            return ""
+            return []
         parts: List[str] = []
         for item in items:
             if not isinstance(item, dict):
@@ -129,9 +141,36 @@ class RetrievalIndex:
                 str(item.get("name") or ""),
                 str(item.get("value") or ""),
                 str(item.get("text") or ""),
-                " ".join(str(alias) for alias in item.get("aliases") or []),
+                str(item.get("display_name") or ""),
             ])
-        return " ".join(part for part in parts if part)
+        return [part for part in parts if part]
+
+    def _alias_terms(self, responses: Dict[str, Any]) -> List[str]:
+        items = responses.get("items") or []
+        item_groups = responses.get("itemGroups") or {}
+        parts: List[str] = []
+
+        if isinstance(items, list):
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                parts.extend(str(alias) for alias in item.get("aliases") or [])
+                parts.extend(str(term) for term in item.get("search_terms") or [])
+                parts.extend(str(term) for term in item.get("searchTerms") or [])
+
+        if isinstance(item_groups, dict):
+            for group_key, group_data in item_groups.items():
+                parts.append(str(group_key))
+                if isinstance(group_data, dict):
+                    parts.append(str(group_data.get("name") or ""))
+                    parts.append(str(group_data.get("header") or ""))
+                    parts.extend(str(alias) for alias in group_data.get("aliases") or [])
+                    parts.extend(str(term) for term in group_data.get("search_terms") or [])
+                    parts.extend(str(term) for term in group_data.get("searchTerms") or [])
+                elif group_data:
+                    parts.append(str(group_data))
+
+        return [part for part in parts if part]
 
     def _string_list(self, value: Any) -> List[str]:
         if isinstance(value, list):

@@ -15,16 +15,35 @@ export async function sendMessageToRasa(message: string, language?: string, sess
 
     const data = await response.json();
     
-    return [{ 
-      text: data.answer || "No response received.",
+    const answerParts = Array.isArray(data.answer)
+      ? data.answer.filter((part: unknown): part is string => typeof part === "string" && part.trim().length > 0)
+      : typeof data.answer === "string" && data.answer.trim()
+        ? [data.answer]
+        : [];
+
+    const richPayload = {
+      mapData: data.mapDataList || data.mapData,
+      follow_up: data.follow_up || [],
+      imageUrls: data.imageUrls,
+      suggestions: data.suggestions || [],
+      choiceGroups: data.choiceGroups || []
+    };
+
+    if (answerParts.length > 0) {
+      return answerParts.map((text: string, index: number) => {
+        const isLast = index === answerParts.length - 1;
+        return {
+          text,
+          image: isLast ? data.imageUrl : undefined,
+          custom: isLast ? richPayload : {}
+        };
+      });
+    }
+
+    return [{
+      text: data.imageUrl || data.mapData || data.mapDataList ? "" : "No response received.",
       image: data.imageUrl,
-      custom: {
-        mapData: data.mapData,
-        follow_up: data.follow_up || [],
-        imageUrls: data.imageUrls,
-        suggestions: data.suggestions || [],
-        choiceGroups: data.choiceGroups || []
-      }
+      custom: richPayload
     }];
   } catch (error) {
     console.error("Error sending message:", error);

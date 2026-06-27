@@ -2591,7 +2591,7 @@
             643,
             499
           ],
-          "floor": "1F"
+          "floor": "GF"
         },
         {
           "name": "You are here!",
@@ -2599,7 +2599,7 @@
             886,
             632
           ],
-          "floor": "1F"
+          "floor": "GF"
         }
       ],
       "imageUrls": [],
@@ -2742,6 +2742,29 @@
           "route_label": "Route 1"
         }
       ]
+    },
+    "ATM": {
+      "type": "facility",
+      "building": "Campus Exit Area",
+      "floor": "N/A",
+      "coordinates": [
+        500,
+        500
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Yes, there is an ATM near BukSU. It is located outside the campus but still included in my location data, so I can provide the exact location once the map pins are added.",
+          "You can mainly locate it near the exit part of BukSU."
+        ],
+        "ceb": [
+          "Oo, naay ATM duol sa BukSU. Nahimutang kini gawas sa campus pero apil gihapon sa akong location data, mao nga makahatag ko og exact location kung ma-add na ang map pins.",
+          "Kasagaran nimo kini makita duol sa exit part sa BukSU."
+        ]
+      },
+      "pins": [],
+      "routes": [],
+      "imageUrls": []
     },
     "Vehicle Parking Area": {
       "type": "facility",
@@ -8470,10 +8493,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "The BUKSU President’s Office is located near the entrance of the university, next to the Information Unit Office."
+          "The BukSU President’s Office is located near the entrance of the university, next to the Information Unit Office."
         ],
         "ceb": [
-          "Ang Office sa Presidente sa BUKSU kay naa duol sa entrance sa unibersidad, tapad sa Information Unit Office."
+          "Ang Office sa Presidente sa BukSU kay naa duol sa entrance sa unibersidad, tapad sa Information Unit Office."
         ]
       },
       "pins": [
@@ -11531,36 +11554,40 @@
               633
             ],
             [
-              781,
-              636
+              779,
+              635
             ],
             [
-              778,
-              670
+              777,
+              672
             ],
             [
-              598,
-              673
+              653,
+              675
             ],
             [
-              555,
-              648
+              583,
+              675
             ],
             [
-              393,
-              654
+              567,
+              649
             ],
             [
               394,
+              655
+            ],
+            [
+              392,
+              680
+            ],
+            [
+              297,
               683
             ],
             [
-              314,
-              685
-            ],
-            [
-              291,
-              681
+              297,
+              660
             ],
             [
               273,

@@ -1,0 +1,12 @@
+{
+  "default_model": "gemma3:1b",
+  "ollama_url": "http://localhost:11434/api/generate",
+  "top_k": 6,
+  "timeout_seconds": 20,
+  "knowledge_sources": [
+    "rasa/actions/Supper Saiyan",
+    "rasa/actions/responses.json",
+    "rasa/actions/responses_location.json"
+  ]
+}
+

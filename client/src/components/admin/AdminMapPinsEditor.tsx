@@ -12,7 +12,6 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import {
   ArrowUpDown,
-  Footprints,
   Trash2,
   PlusCircle,
   MapPin,
@@ -25,6 +24,26 @@ import {
   Edit2
 } from "lucide-react";
 import { toast } from "sonner";
+
+function StairIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none">
+      <path
+        d="M4 18h5v-4h5v-4h5V6"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4 18h16"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -123,12 +142,44 @@ function drawIndicatorPin(ctx: CanvasRenderingContext2D, sx: number, sy: number,
   ctx.closePath(); ctx.fill();
 
   ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 9px system-ui";
-  ctx.textAlign = "center";
-  ctx.fillText(isElevator ? "EV" : "ST", sx, sy - 4);
-  ctx.textAlign = "start";
+  if (isElevator) {
+    ctx.beginPath();
+    ctx.moveTo(sx, sy - 15);
+    ctx.lineTo(sx - 4, sy - 11);
+    ctx.lineTo(sx - 1.5, sy - 11);
+    ctx.lineTo(sx - 1.5, sy - 4);
+    ctx.lineTo(sx - 4, sy - 4);
+    ctx.lineTo(sx, sy);
+    ctx.lineTo(sx + 4, sy - 4);
+    ctx.lineTo(sx + 1.5, sy - 4);
+    ctx.lineTo(sx + 1.5, sy - 11);
+    ctx.lineTo(sx + 4, sy - 11);
+    ctx.closePath();
+    ctx.fill();
+  } else {
+    ctx.save();
+    ctx.translate(0, -2.5);
+    ctx.lineWidth = 1.6;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.moveTo(sx - 5, sy - 1);
+    ctx.lineTo(sx - 1.8, sy - 1);
+    ctx.lineTo(sx - 1.8, sy - 4.3);
+    ctx.lineTo(sx + 1.8, sy - 4.3);
+    ctx.lineTo(sx + 1.8, sy - 7.6);
+    ctx.lineTo(sx + 5, sy - 7.6);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(sx - 5, sy + 1);
+    ctx.lineTo(sx + 5, sy + 1);
+    ctx.stroke();
+    ctx.restore();
+  }
 
   if (label) {
+    ctx.textAlign = "start";
     ctx.font = "bold 9px system-ui";
     ctx.fillStyle = "rgba(0,0,0,0.85)";
     const w = ctx.measureText(label).width + 8;
@@ -510,7 +561,7 @@ export function AdminMapPinsEditor({
             className={`w-8 h-8 rounded-full shadow border text-[10px] font-black ${mode === "place-staircase" ? "bg-purple-600 text-white border-purple-700" : "bg-white/90 text-purple-700 border-purple-200 hover:bg-purple-50"}`}
             onClick={() => setMode(mode === "place-staircase" ? "view" : "place-staircase")}
           >
-            <Footprints className="h-4 w-4 mx-auto" />
+            <StairIcon className="h-4 w-4 mx-auto" />
           </button>
           <button
             type="button"

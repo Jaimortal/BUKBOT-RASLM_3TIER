@@ -18,7 +18,7 @@ Use `npm.cmd` on PowerShell if `npm.ps1` is blocked by execution policy.
 
 Use:
 
-- `docs/Day 11 Manual Regression Checklist.md`
+- `docs/Day 11 Full Regression Testing Checklist.md`
 
 Start with:
 
@@ -45,6 +45,9 @@ Start with:
 
 ## Known Existing Technical Debt
 
+`python -m unittest discover -s test` still includes older expectation failures in `test_context_aware_retrieval.py`.
+The focused Day 11 regression suite and query-normalization dataset pass, but the older full context suite needs a cleanup pass so it matches the newest response wording and route names.
+
 `npm.cmd run check` still reports older TypeScript errors unrelated to the chatbot architecture refactor:
 
 - `client/src/pages/MapPage.tsx`
@@ -52,7 +55,7 @@ Start with:
 - `server/db.ts`
 - `server/storage.ts`
 
-Production build still passes through:
+Production build passes through:
 
 ```powershell
 npm.cmd run build

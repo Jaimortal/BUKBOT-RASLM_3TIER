@@ -539,6 +539,7 @@ export interface KnowledgeRecord {
   displayName: string;
   subjectKey: string | null;
   subjectType: string | null;
+  ownSubjectTerms?: string[];
   subjectTerms: string[];
   responses: { en: string[]; ceb: string[] };
   phrases: string[];
@@ -564,6 +565,8 @@ export interface KnowledgeChildItem {
   value?: string;
   text?: string;
   aliases?: string[];
+  search_terms?: string[];
+  searchTerms?: string[];
 }
 
 export interface KnowledgeListResult {

@@ -9,9 +9,11 @@ intents:
   - ask_general_info
   - ask_contact
   - ask_availability
+  - ask_facility_availability
   - ask_document
   - ask_follow_up
   - smalltalk
+  - out_of_scope
   - goodbye
   - bot_challenge
   - nlu_fallback
@@ -22,6 +24,7 @@ entities:
   - office
   - document
   - program
+  - facility_name
   - organization
   - time_period
   - topic

@@ -1,4 +1,5 @@
 import logging
+import re
 from typing import Any, Dict, List, Sequence, Set, Tuple
 
 from query_interpreter import QueryInterpreter
@@ -35,6 +36,24 @@ class RetrievalScorer:
     }
 
     LOCATION_PURPOSES = {"ask_location"}
+    EXACT_REASONS = {
+        "display_exact",
+        "subject_exact",
+        "phrase_exact",
+        "child_exact",
+        "alias_exact",
+    }
+    BROAD_AMBIGUOUS_TERMS = {
+        "id",
+        "validation",
+        "admission",
+        "services",
+        "courses",
+        "course",
+        "office",
+        "dean",
+        "head",
+    }
 
     def __init__(self, index: RetrievalIndex, interpreter: QueryInterpreter):
         self.index = index
@@ -70,6 +89,7 @@ class RetrievalScorer:
             reasons=reasons,
             runner_up=runner_up_candidate,
             runner_up_score=runner_up_score,
+            ranked_candidates=[(candidate, score) for score, candidate, _ in scored[:6]],
         )
 
     def clarification(self, result: RetrievalResult) -> Dict[str, Any]:
@@ -106,35 +126,90 @@ class RetrievalScorer:
     ) -> Tuple[float, List[str]]:
         score = 0.0
         reasons: List[str] = []
+        inferred_purposes = self._infer_purposes(query_text)
 
         if candidate.intent == "course_slots" and not self._has_course_slot_subject(query_text, query_tokens):
             return 0.0, ["course_slot_subject_missing"]
 
-        if candidate.purpose == intent:
+        if candidate.purpose and candidate.purpose in inferred_purposes:
+            score += 12.0
+            reasons.append("query_purpose")
+        elif candidate.purpose == intent and not (intent == "ask_general_info" and inferred_purposes):
             score += 12.0
             reasons.append("purpose")
         elif candidate.purpose and candidate.purpose != intent:
             score -= 8.0
             reasons.append("purpose_mismatch")
 
-        phrase_score = self._phrase_score(query_text, candidate.phrases, exact_weight=38.0, partial_weight=18.0)
+        display_score, display_reason = self._phrase_score(
+            query_text,
+            [candidate.display_name],
+            exact_weight=36.0,
+            partial_weight=14.0,
+            reason_prefix="display",
+        )
+        if display_score:
+            score += display_score
+            reasons.append(display_reason)
+
+        phrase_score, phrase_reason = self._phrase_score(
+            query_text,
+            candidate.phrases,
+            exact_weight=38.0,
+            partial_weight=18.0,
+            reason_prefix="phrase",
+        )
         if phrase_score:
             score += phrase_score
-            reasons.append("phrase")
+            reasons.append(phrase_reason)
 
-        subject_score = self._phrase_score(query_text, candidate.subject_terms, exact_weight=34.0, partial_weight=16.0)
+        subject_score, subject_reason = self._phrase_score(
+            query_text,
+            candidate.subject_terms,
+            exact_weight=34.0,
+            partial_weight=16.0,
+            reason_prefix="subject",
+        )
         if subject_score:
             score += subject_score
-            reasons.append("subject")
+            reasons.append(subject_reason)
 
-        topic_score = self._phrase_score(query_text, candidate.topic_terms, exact_weight=10.0, partial_weight=6.0)
+        child_score, child_reason = self._phrase_score(
+            query_text,
+            candidate.child_terms,
+            exact_weight=32.0,
+            partial_weight=14.0,
+            reason_prefix="child",
+        )
+        if child_score:
+            score += child_score
+            reasons.append(child_reason)
+
+        alias_score, alias_reason = self._phrase_score(
+            query_text,
+            candidate.alias_terms,
+            exact_weight=30.0,
+            partial_weight=13.0,
+            reason_prefix="alias",
+        )
+        if alias_score:
+            score += alias_score
+            reasons.append(alias_reason)
+
+        topic_score, topic_reason = self._phrase_score(
+            query_text,
+            candidate.topic_terms,
+            exact_weight=10.0,
+            partial_weight=6.0,
+            reason_prefix="context",
+        )
         if topic_score:
             score += topic_score
-            reasons.append("topic")
+            reasons.append(topic_reason)
 
         overlap = query_tokens.intersection(set(candidate.tokens))
         if overlap:
-            score += min(len(overlap) * 2.0, 14.0)
+            score += min(len(overlap) * 1.5, 9.0)
             reasons.append("token_overlap")
 
         entity_score = self._entity_score(candidate, entity_values)
@@ -154,7 +229,35 @@ class RetrievalScorer:
             score -= 12.0
             reasons.append("location_guard")
 
+        conflict_penalty = self._ambiguous_global_penalty(candidate, query_tokens, reasons)
+        if conflict_penalty:
+            score -= conflict_penalty
+            reasons.append("ambiguous_term_guard")
+
         return score, reasons
+
+    def _infer_purposes(self, query_text: str) -> Set[str]:
+        purposes: Set[str] = set()
+        tokens = set(self.interpreter.tokens(query_text))
+        if tokens.intersection({"where", "asa"}) or self._has_any(query_text, ["located", "location", "find", "go to", "get to", "direction"]):
+            purposes.add("ask_location")
+        if tokens.intersection({"requirement", "requirements", "need", "needed", "bring", "documents", "document", "kinahanglan", "kailangan"}):
+            purposes.add("ask_requirement")
+        if tokens.intersection({"how", "process", "steps", "apply", "request", "kuha", "unsaon"}) or self._has_any(query_text, ["how to", "step by step"]):
+            purposes.add("ask_process")
+        if tokens.intersection({"download", "form", "permit", "certificate", "cor"}):
+            purposes.add("ask_document")
+        if tokens.intersection({"when", "schedule", "deadline", "time", "date", "kanus", "kanusa"}):
+            purposes.add("ask_schedule")
+        if tokens.intersection({"fee", "fees", "payment", "cost", "price", "pay", "bayad", "pila"}):
+            purposes.add("ask_fee")
+        if tokens.intersection({"offer", "offers", "offered", "available", "availability", "naa"}):
+            purposes.add("ask_availability")
+        return purposes
+
+    def _has_any(self, text: str, terms: Sequence[str]) -> bool:
+        normalized = self.interpreter.normalize(text)
+        return any(term in normalized for term in terms)
 
     def _has_course_slot_subject(self, query_text: str, query_tokens: Set[str]) -> bool:
         if "course slot" in query_text or "course slots" in query_text:
@@ -241,24 +344,57 @@ class RetrievalScorer:
             return f"tell me about {label}"
         return label
 
-    def _phrase_score(self, query_text: str, phrases: Sequence[str], exact_weight: float, partial_weight: float) -> float:
+    def _phrase_score(
+        self,
+        query_text: str,
+        phrases: Sequence[str],
+        exact_weight: float,
+        partial_weight: float,
+        reason_prefix: str,
+    ) -> Tuple[float, str]:
         best = 0.0
+        best_reason = ""
+        query_tokens = set(self.interpreter.tokens(query_text))
         for phrase in phrases:
             normalized = self.interpreter.normalize(phrase)
             if not normalized:
                 continue
-            if normalized in query_text:
+            if self._contains_term(query_text, normalized):
                 best = max(best, exact_weight)
+                best_reason = f"{reason_prefix}_exact"
                 continue
 
             phrase_tokens = set(self.interpreter.tokens(normalized))
             if not phrase_tokens:
                 continue
-            query_tokens = set(self.interpreter.tokens(query_text))
             coverage = len(phrase_tokens.intersection(query_tokens)) / len(phrase_tokens)
             if coverage >= 0.6:
-                best = max(best, partial_weight * coverage)
-        return best
+                partial_score = partial_weight * coverage
+                if partial_score > best:
+                    best = partial_score
+                    best_reason = f"{reason_prefix}_partial"
+        return best, best_reason
+
+    def _contains_term(self, query_text: str, normalized_term: str) -> bool:
+        if not normalized_term:
+            return False
+        if len(normalized_term) <= 3 or " " not in normalized_term:
+            return bool(re.search(rf"(?<!\w){re.escape(normalized_term)}(?!\w)", query_text))
+        return normalized_term in query_text
+
+    def _ambiguous_global_penalty(
+        self,
+        candidate: RetrievalCandidate,
+        query_tokens: Set[str],
+        reasons: Sequence[str],
+    ) -> float:
+        if self.EXACT_REASONS.intersection(reasons):
+            return 0.0
+        if not query_tokens.intersection(self.BROAD_AMBIGUOUS_TERMS):
+            return 0.0
+        if "purpose" in reasons and {"phrase_partial", "subject_partial", "child_partial", "alias_partial"}.intersection(reasons):
+            return 0.0
+        return 6.0
 
     def _entity_score(self, candidate: RetrievalCandidate, entity_values: Sequence[str]) -> float:
         score = 0.0
@@ -287,15 +423,27 @@ class RetrievalScorer:
         return self.interpreter.normalize(" ".join(parts))
 
     def _confidence(self, best_score: float, runner_up_score: float, reasons: Sequence[str]) -> str:
-        if best_score >= self.HIGH_THRESHOLD and "purpose" in reasons:
+        exact_match = bool(self.EXACT_REASONS.intersection(reasons))
+        has_purpose_mismatch = "purpose_mismatch" in reasons
+        if has_purpose_mismatch and "phrase_exact" not in reasons and "display_exact" not in reasons:
+            if best_score >= self.MEDIUM_THRESHOLD:
+                return "medium"
+            return "low"
+        if (
+            best_score >= self.HIGH_THRESHOLD
+            and "purpose" in reasons
+            and ("subject_exact" in reasons or "child_exact" in reasons or "display_exact" in reasons or "phrase_exact" in reasons)
+        ):
             return "high"
-        if best_score >= self.HIGH_THRESHOLD and best_score - runner_up_score >= self.AMBIGUOUS_MARGIN:
+        if best_score >= self.HIGH_THRESHOLD and best_score - runner_up_score >= self.AMBIGUOUS_MARGIN and exact_match:
             return "high"
         if best_score >= self.MEDIUM_THRESHOLD:
             return "medium"
         return "low"
 
     def _label(self, candidate: RetrievalCandidate) -> str:
+        if candidate.display_name:
+            return candidate.display_name
         if candidate.subject_terms:
             return candidate.subject_terms[0]
         return candidate.intent.replace("_", " ")

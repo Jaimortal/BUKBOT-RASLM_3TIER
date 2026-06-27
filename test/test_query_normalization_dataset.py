@@ -116,7 +116,7 @@ class QueryNormalizationDatasetTests(unittest.TestCase):
             ("ask_schedule", "kanus-a cor validation", "cor_validation_day"),
             ("ask_fee", "medical cert pila", "clinic_medical_certificate_cost"),
             ("ask_process", "kuha good moral certificate", "request_good_moral_certificate_oss"),
-            ("ask_document", "where get certificate of registration", "request_cor"),
+            ("ask_document", "where get certificate of registration", "where_get_cor"),
             ("ask_process", "unsaon pagkuha library id", "library_id_card_location"),
             ("ask_schedule", "kanusa id validation", "id_validation_day"),
             ("ask_process", "how validate cor", "cor_validation_steps"),
@@ -138,7 +138,7 @@ class QueryNormalizationDatasetTests(unittest.TestCase):
             ("ask_general_info", "what is BA philo", "buksu_AB_PHILO"),
         ])
         self.assert_suggestions_include([
-            ("ask_availability", "unsay courses sa buksu", ["All courses offered", "Board courses", "Non-board courses"]),
+            ("ask_availability", "unsay courses sa buksu", ["Tanang courses offered", "Board courses", "Non-board courses"]),
         ])
 
     def test_ambiguous_and_safety_dataset(self):

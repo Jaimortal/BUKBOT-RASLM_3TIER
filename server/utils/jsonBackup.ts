@@ -14,6 +14,11 @@ export async function backupJsonFile(filePath: string, label = "json"): Promise<
   const backupPath = path.join(backupDir, backupName);
 
   await fsPromises.mkdir(backupDir, { recursive: true });
+  try {
+    await fsPromises.access(filePath);
+  } catch {
+    return "";
+  }
   await fsPromises.copyFile(filePath, backupPath);
 
   return backupPath;

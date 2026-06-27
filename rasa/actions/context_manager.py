@@ -304,6 +304,8 @@ class ContextManager:
             return False
 
         text = self.interpreter.normalize_for_search(user_message)
+        if any(term in text for term in ["library resources", "library resource", "buksu library resources"]):
+            return False
         if any(term in text for term in ["validate", "validation"]):
             return False
         if not self._has_bare_id(text):

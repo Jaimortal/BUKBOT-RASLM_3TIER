@@ -12,10 +12,12 @@ BISAYA_WORDS = [
     "asa", "unsay", "unsa", "ngano", "diin", "kinsa", "kanus-a", "pila",
     "gamay", "dako", "mao", "ug", "uy", "man", "gani", "diay", "sige",
     "kinahanglan", "bisan", "sab", "gud", "pod", "wala", "naa", "ikaw", "ako",
-    "Pwedi", "unsaon", "onsaon", "palihog", "tabangi", "tabang", "taba", "tabange",
+    "pwedi", "pwede", "puwede", "pwedeng", "pweding", "unsaon", "onsaon", "palihog", "tabangi", "tabang", "taba", "tabange",
     "pag", "sa", "ka", "ako", "ikaw", "kita", "kami", "kinsay", "aha", 
     "nako", "makita", "akong", "maayong", "gabii", "kanimo", "hapon", "buntag", "bontag",
-    "maayo", "kaninyo", "kanimo", "diha", "jud", "mani", "kini"
+    "maayo", "kaninyo", "kanimo", "diha", "jud", "mani", "kini",
+    "nga", "mga", "kurso", "diris", "diri", "dinhi", "sudlan", "masudlan",
+    "enrollan", "mangutana", "mangutanag", "adto", "moadto", "adtoon"
 ]
 
 

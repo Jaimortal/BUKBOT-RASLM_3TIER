@@ -37,7 +37,27 @@
               "about university clinic",
               "what is the university clinic",
               "where is the clinic",
-              "buksu clinic information"
+              "buksu clinic information",
+              "asa ang clinic",
+              "asa dapit ang clinic",
+              "unsa mani ang university clinic",
+              "para unsa ng clinic sa skwelahan",
+              "unsa ang purpose sa medical clinic",
+              "what is the buksu medical clinic",
+              "give me info about the university clinic",
+              "tell me about buksu clinic",
+              "clinic information",
+              "health services information",
+              "medical clinic info",
+              "what does the clinic do",
+              "unsa ang clinic sa buksu",
+              "about university health services",
+              "does buksu have clinic",
+              "clinic for students",
+              "health services unit info",
+              "basic medical services in buksu",
+              "can students go to clinic",
+              "clinic help for students"
             ]
           },
           "subject_key": "university_clinic",
@@ -75,7 +95,18 @@
             "phrases": [
               "med mission",
               "clinic mission",
-              "medical clinic mission"
+              "medical clinic mission",
+              "unsa ang mission sa medical clinic",
+              "ano ang mission nga gi set sa clinic",
+              "what is the mission of buksu clinic",
+              "mission sa clinic",
+              "university clinic mission",
+              "health services mission",
+              "what is the mission of clinic",
+              "mission of health services unit",
+              "buksu clinic mission",
+              "tell me clinic mission",
+              "unsa mission sa medical clinic"
             ]
           },
           "subject_key": "university_clinic",
@@ -111,7 +142,18 @@
             "phrases": [
               "med vision",
               "clinic vision",
-              "medical clinic vision"
+              "medical clinic vision",
+              "unsa ang vision sa medical clinic",
+              "ano ang vision nga gi set sa clinic",
+              "what is the vision of buksu clinic",
+              "vision sa clinic",
+              "university clinic vision",
+              "health services vision",
+              "what is the vision of clinic",
+              "vision of health services unit",
+              "buksu clinic vision",
+              "tell me clinic vision",
+              "unsa vision sa medical clinic"
             ]
           },
           "subject_key": "university_clinic",
@@ -144,7 +186,26 @@
               "buksu medical dental services",
               "medical dental services",
               "free medical dental consultation",
-              "clinic services"
+              "clinic services",
+              "what services does the clinic offer",
+              "what are the clinic services",
+              "ang buksu clinic ba ga hatag og free services",
+              "pwedi ko nimo sultian kong ang buksu clinic ga offer og free nga medical and dental services",
+              "libre raba ang pag pa check up diri sa buksu clinic",
+              "ang mga estudyante ba sa buksu pwede magpa check up sa clinic",
+              "do the buksu clinic offers a free services",
+              "can you tell me if the buksu clinic offers a free check up",
+              "medical and dental services",
+              "what medical and dental services are offered",
+              "health services unit services",
+              "services sa clinic ug dental",
+              "basic medical and dental consultations",
+              "does clinic offer dental services",
+              "medical dental help for students",
+              "buksu medical and dental services",
+              "what can health services provide",
+              "medical dental consultation for enrolled students",
+              "medical and dental consultation for students"
             ]
           },
           "subject_key": "university_clinic",
@@ -200,7 +261,20 @@
               "process for medical certificate",
               "do clinic provide medical certificate",
               "how to get medical certificate for intramural",
-              "process of getting certificate for ojt"
+              "process of getting certificate for ojt",
+              "how to get medical certificate from clinic",
+              "medical certificate for ojt",
+              "medical certificate for intramural",
+              "medical certificate process",
+              "how to request medical certificate",
+              "medical cert from clinic",
+              "clinic certificate process",
+              "medical certificate for field trip",
+              "unsaon pagkuha medical certificate sa clinic",
+              "asa makakuha medical certificate",
+              "steps to get medical certificate",
+              "medical certificate requirements and process",
+              "need medical certificate from buksu clinic"
             ]
           },
           "display_name": "Clinic Medical Certificate Process"
@@ -221,7 +295,17 @@
             "phrases": [
               "how much is getting medical certificate",
               "cost for medical certificate",
-              "medical certificate cost"
+              "medical certificate cost",
+              "medical certificate fee",
+              "bayad sa medical certificate",
+              "how much is medical certificate",
+              "do i pay for medical certificate",
+              "is medical certificate free",
+              "pila medical certificate",
+              "naay bayad ang medical certificate",
+              "clinic certificate payment",
+              "payment for medical cert",
+              "medical certificate zero cost"
             ]
           },
           "display_name": "Clinic Medical Certificate Cost"
@@ -243,7 +327,16 @@
               "duration for getting medical certificate",
               "how many hours needed to get medical certificate",
               "how many minutes needed to get medical certificate",
-              "time for getting medical certificate"
+              "time for getting medical certificate",
+              "how long to get medical certificate",
+              "pila ka minutes ang medical certificate",
+              "medical certificate processing time",
+              "how many minutes medical certificate",
+              "time needed for medical certificate",
+              "pila ka minutes medical certificate",
+              "medical cert duration",
+              "medical certificate transaction time",
+              "how fast can i get medical certificate"
             ]
           },
           "display_name": "Clinic Medical Certificate Duration"
@@ -281,7 +374,17 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "directly ask the dental clinic"
+              "directly ask the dental clinic",
+              "ask dental clinic about that",
+              "dental clinic follow up",
+              "dental specific question",
+              "ask dentist directly",
+              "dental clinic direct ask",
+              "please ask dental clinic directly",
+              "pangutana sa dental clinic",
+              "ask the clinic dentist",
+              "dental procedure follow up question",
+              "specific dental concern"
             ]
           },
           "subject_key": "dental_services",
@@ -338,7 +441,15 @@
               "dental clinic services",
               "dental can offer to student",
               "what do dental offer to us",
-              "services dental can offer"
+              "services dental can offer",
+              "what do dental offer to students",
+              "unsa services sa dental clinic",
+              "dental services list",
+              "what dental services are available",
+              "services sa dentist",
+              "dental help menu",
+              "dental clinic offer",
+              "available dental services"
             ]
           },
           "subject_key": "dental_services",
@@ -384,7 +495,16 @@
               "request dental consult",
               "how to request dental consultation",
               "dental consultation process",
-              "request for dental consultation"
+              "request for dental consultation",
+              "request dental consultation",
+              "how to request dental consult",
+              "dentist consultation",
+              "dental consult process",
+              "need dental consultation",
+              "unsaon dental consultation",
+              "pa dental consult",
+              "how to consult dentist in clinic",
+              "dental appointment consultation"
             ]
           },
           "subject_key": "dental_consultation",
@@ -426,7 +546,21 @@
           "metadata": {
             "phrases": [
               "requirement for dental consultation",
-              "dental consultation requirements"
+              "dental consultation requirements",
+              "unsa ang mga requirements sa dental consultation",
+              "unsa akong kinahanglan para sa dental consult",
+              "mga dokumento nga kinahanglan sa dental consultation",
+              "isulti ang mga dokumento nga kinahanglan nako para sa dental consultation",
+              "what are the requirements for dental consultation",
+              "dental consultation requirements checklist",
+              "requirements for dental consultation",
+              "what to bring for dental consultation",
+              "documents needed for dental consult",
+              "photocopy id dental consultation",
+              "study load for dental consultation",
+              "unsa requirements sa dental consultation",
+              "need ba validated id for dental consult",
+              "dental consult needed documents"
             ]
           },
           "subject_key": "dental_consultation",
@@ -473,7 +607,14 @@
               "request dental oral examination",
               "how to request dental oral examination",
               "oral examination process",
-              "request for dental oral examination"
+              "request for dental oral examination",
+              "how to request oral exam",
+              "dental oral exam process",
+              "need oral examination",
+              "unsaon pag request oral examination",
+              "pa oral exam sa dental clinic",
+              "oral exam at clinic",
+              "dental oral examination steps"
             ]
           },
           "subject_key": "dental_oral_examination",
@@ -515,7 +656,21 @@
             "phrases": [
               "dental oral examination requirement",
               "dental oral examination requirements",
-              "oral examination requirements"
+              "oral examination requirements",
+              "unsa ang mga requirements sa dental oral examination",
+              "unsa akong kinahanglan para sa dental oral examination",
+              "mga dokumento nga kinahanglan sa dental oral exam",
+              "pwede nimo isulti unsa akong kinahanglan dad-on para sa dental oral examination",
+              "what are the requirements for dental oral examination",
+              "dental oral exam requirements checklist",
+              "requirements for dental oral examination",
+              "what to bring for oral exam",
+              "dental oral exam needed documents",
+              "validated id for oral examination",
+              "study load for oral exam",
+              "unsa requirements sa oral examination",
+              "documents for dental oral examination",
+              "oral exam photocopy requirements"
             ]
           },
           "subject_key": "dental_oral_examination",
@@ -564,7 +719,15 @@
               "request for tooth extraction",
               "tooth extraction process",
               "how to request tooth extraction",
-              "dental tooth extraction"
+              "dental tooth extraction",
+              "request tooth extraction",
+              "extract tooth clinic",
+              "pa ibot ngipon sa clinic",
+              "paibot ngipon",
+              "tooth removal dental clinic",
+              "requirements for tooth extraction",
+              "can dental clinic extract tooth",
+              "unsaon tooth extraction sa clinic"
             ]
           },
           "subject_key": "dental_tooth_extraction",
@@ -606,7 +769,16 @@
               "referral dispensing of medicine",
               "dental medicine dispensing",
               "dental referral medicine",
-              "request for dispensing of medicine"
+              "request for dispensing of medicine",
+              "request referral dispensing of medicine",
+              "dispensing of medicine process",
+              "dental medicine referral",
+              "prescription slip dental medicine",
+              "how to get medicine from dental clinic",
+              "referral medicine dental",
+              "medicine dispensing dental",
+              "unsaon pagkuha dental medicine",
+              "dental referral and medicine process"
             ]
           },
           "subject_key": "dental_referral_medicine",

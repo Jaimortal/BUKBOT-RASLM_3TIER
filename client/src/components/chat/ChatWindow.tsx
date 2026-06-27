@@ -83,9 +83,15 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
+function safeHtmlBoldToMarkdown(value: string): string {
+  return String(value || "")
+    .replace(/<\s*(b|strong)\s*>/gi, "**")
+    .replace(/<\s*\/\s*(b|strong)\s*>/gi, "**");
+}
+
 function renderSafeMessageHtml(value: string): string {
-  const escaped = escapeHtml(value || "");
-  const withBold = escaped.replace(/\*\*([^*\n][\s\S]*?[^*\n])\*\*/g, "<strong>$1</strong>");
+  const escaped = escapeHtml(safeHtmlBoldToMarkdown(value || ""));
+  const withBold = escaped.replace(/\*\*([^*\n]+?)\*\*/g, "<strong>$1</strong>");
   return withBold.replace(
     /(https?:\/\/[^\s<]+)/g,
     (match) => {
@@ -109,7 +115,6 @@ function convertResponseToMessages(response: any): ChatMessage[] {
 
   // answer is now string[] from RasaBackend
   const answerParts: string[] = Array.isArray(response.answer) ? response.answer : [];
-  const hasImages = Boolean(response.imageUrl) || (Array.isArray(response.imageUrls) && response.imageUrls.length > 0);
 
   // Frontend filter: Clear mapData if answer contains error messages
   // We check the full concatenated text for keywords
@@ -132,16 +137,12 @@ function convertResponseToMessages(response: any): ChatMessage[] {
   const nonEmptyParts = answerParts.filter(text => text && text.trim());
   nonEmptyParts.forEach((text, index) => {
     const isLastTextPart = index === nonEmptyParts.length - 1;
-    const hasMapData = filteredMapData || (Array.isArray(filteredMapDataList) && filteredMapDataList.length > 0);
     
     messages.push({
       id: generateId() + "-t-" + index,
       text: text.trim(),
       sender: "bot",
       type: "text",
-      // Attach images to the last text bubble
-      imageUrl: isLastTextPart ? response.imageUrl : undefined,
-      imageUrls: isLastTextPart ? response.imageUrls : undefined,
       suggestions: isLastTextPart ? response.suggestions : undefined,
       choiceGroups: isLastTextPart ? response.choiceGroups : undefined,
       timestamp: new Date(),
@@ -150,26 +151,10 @@ function convertResponseToMessages(response: any): ChatMessage[] {
     });
   });
 
-  // Handle case where there are only images and no text
-  if (answerParts.length === 0 && hasImages) {
-    messages.push({
-      id: generateId() + "-img",
-      text: "",
-      sender: "bot",
-      type: "text",
-      imageUrl: response.imageUrl,
-      imageUrls: response.imageUrls,
-      suggestions: response.suggestions,
-      choiceGroups: response.choiceGroups,
-      timestamp: new Date(),
-      hideTimestamp: true
-    });
-  }
-
-  // Collect all images to attach to map messages
+  // Collect images as standalone chat cards instead of embedding them in text/map bubbles.
   const allImages = response.imageUrls?.length ? response.imageUrls : (response.imageUrl ? [response.imageUrl] : []);
   
-  // Map message(s) - use filtered data (attach images to first map message)
+  // Map message(s) - use filtered data
   if (Array.isArray(filteredMapDataList) && filteredMapDataList.length > 0) {
     filteredMapDataList.forEach((md: any, idx: number) => {
       if (!md) return;
@@ -180,9 +165,7 @@ function convertResponseToMessages(response: any): ChatMessage[] {
         type: "map",
         mapData: md,
         timestamp: new Date(),
-        hideTimestamp: true,
-        // Attach images to the first map message
-        imageUrls: idx === 0 ? allImages : undefined
+        hideTimestamp: true
       });
     });
   } else if (Array.isArray(response.mapData) && response.mapData.length > 0) {
@@ -195,9 +178,7 @@ function convertResponseToMessages(response: any): ChatMessage[] {
         type: "map",
         mapData: md,
         timestamp: new Date(),
-        hideTimestamp: true,
-        // Attach images to the first map message
-        imageUrls: idx === 0 ? allImages : undefined
+        hideTimestamp: true
       });
     });
   } else if (filteredMapData) {
@@ -208,9 +189,21 @@ function convertResponseToMessages(response: any): ChatMessage[] {
       type: "map",
       mapData: filteredMapData,
       timestamp: new Date(),
-      hideTimestamp: true,
-      // Attach images to the map message
-      imageUrls: allImages.length > 0 ? allImages : undefined
+      hideTimestamp: true
+    });
+  }
+
+  if (allImages.length > 0) {
+    messages.push({
+      id: generateId() + "-img",
+      text: "",
+      sender: "bot",
+      type: "image",
+      imageUrls: allImages,
+      suggestions: nonEmptyParts.length === 0 ? response.suggestions : undefined,
+      choiceGroups: nonEmptyParts.length === 0 ? response.choiceGroups : undefined,
+      timestamp: new Date(),
+      hideTimestamp: true
     });
   }
 
@@ -628,6 +621,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         "[data-radix-scroll-area-viewport]"
       );
       if (scrollContainer) {
+        scrollContainer.scrollLeft = 0;
         scrollContainer.scrollTop = scrollContainer.scrollHeight;
       }
     }
@@ -674,6 +668,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           "[data-radix-scroll-area-viewport]"
         );
         if (scrollContainer) {
+          scrollContainer.scrollLeft = 0;
           scrollContainer.scrollTop = scrollContainer.scrollHeight;
         }
       }, 100);
@@ -842,15 +837,15 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   };
 
   const regularChoiceButtonClass =
-    "flex min-h-[64px] w-full items-center rounded-xl border border-sky-200 bg-white px-3.5 py-1 text-left text-[13px] font-semibold leading-snug text-[#003B63] shadow-[0_3px_10px_rgba(14,74,122,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-[0_6px_16px_rgba(14,74,122,0.18)] focus:outline-none focus:ring-2 focus:ring-sky-200";
+    "flex min-h-[64px] min-w-0 w-full items-center overflow-hidden rounded-xl border border-sky-200 bg-white px-3.5 py-1 text-left text-[13px] font-semibold leading-snug text-[#003B63] shadow-[0_3px_10px_rgba(14,74,122,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-[0_6px_16px_rgba(14,74,122,0.18)] focus:outline-none focus:ring-2 focus:ring-sky-200";
   const compactChoiceButtonClass =
-    "flex h-9 items-center rounded-full border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20";
+    "flex h-9 min-w-0 items-center overflow-hidden rounded-full border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20";
 
   const renderSuggestionBoard = (messageId: string, suggestions?: ChatSuggestion[]) => {
     if (!suggestions || suggestions.length === 0) return null;
 
     return (
-      <div className="mt-2 grid w-full max-w-[96%] grid-cols-2 gap-2 px-1 py-1">
+      <div className="mt-2 grid w-full max-w-[96%] min-w-0 grid-cols-2 gap-2 overflow-hidden px-1 py-1">
         {suggestions.map((suggestion, idx) => (
           <button
             key={`${messageId}-suggestion-${idx}`}
@@ -858,7 +853,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             onClick={() => handleSend(suggestion.label, suggestion.payload || suggestion.label)}
             className={regularChoiceButtonClass}
           >
-            {suggestion.label}
+            <span className="min-w-0 break-words">{suggestion.label}</span>
           </button>
         ))}
       </div>
@@ -874,7 +869,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           choiceBoardRefs.current[msg.id] = node;
         } : undefined}
         className={cn(
-          "relative mt-2 w-full max-w-[96%] px-1 py-1",
+          "relative mt-2 w-full max-w-[96%] min-w-0 overflow-hidden px-1 py-1",
           sticky && "m-0 max-w-none bg-background px-2 py-2 shadow-md ring-1 ring-border"
         )}
       >
@@ -891,7 +886,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           onMouseUp={sticky ? handleStickyChoiceDragEnd : undefined}
           onMouseMove={sticky ? handleStickyChoiceDragMove : undefined}
           className={cn(
-            "grid grid-cols-2 gap-2",
+            "grid min-w-0 grid-cols-2 gap-2",
             sticky && "flex cursor-grab select-none overflow-x-auto pb-1 pr-8 active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
           )}
         >
@@ -907,7 +902,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 ? "flex h-9 min-w-[116px] shrink-0 items-center justify-center rounded-full border border-border bg-white px-2.5 py-1.5 text-center text-[12px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20"
                 : regularChoiceButtonClass}
             >
-              {group.title}
+              <span className="min-w-0 break-words">{group.title}</span>
             </button>
           ))}
         </div>
@@ -992,10 +987,13 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       {/* Messages - Hidden when in fullscreen map mode */}
       {!fullscreenMapId && (
         <div className="relative min-h-0 flex-1 overflow-hidden">
-          <ScrollArea className="h-full p-4" ref={scrollRef}>
+          <ScrollArea
+            className="h-full overflow-x-hidden p-4 [&_[data-radix-scroll-area-viewport]]:!overflow-x-hidden [&_[data-radix-scroll-area-viewport]>div]:!block [&_[data-radix-scroll-area-viewport]>div]:!w-full [&_[data-radix-scroll-area-viewport]>div]:!min-w-0"
+            ref={scrollRef}
+          >
           <div
             className={cn(
-              "pb-4 transition duration-200",
+              "w-full max-w-full min-w-0 overflow-x-hidden pb-4 transition duration-200",
               choiceModal && "pointer-events-none blur-[2px]"
             )}
           >
@@ -1028,6 +1026,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
               const previousMessage = messages[msgIndex - 1];
               const nextMessage = messages[msgIndex + 1];
               const isMapMessage = msg.type === "map";
+              const isImageMessage = msg.type === "image";
+              const isMediaMessage = isMapMessage || isImageMessage;
               const isTextMessage = msg.type === "text";
               const isSameSenderGroup = previousMessage?.sender === msg.sender && previousMessage?.type === msg.type;
               const isBotTextBubble = msg.sender === "bot" && isTextMessage;
@@ -1040,19 +1040,20 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className={cn(
-                    "flex flex-col w-full",
+                    "flex w-full max-w-full min-w-0 flex-col overflow-visible",
                     msgIndex === 0 ? "mt-0" : isSameSenderGroup ? "mt-1" : "mt-4",
-                    msg.sender === "user" ? "items-end" : "items-start pl-1"
+                    msg.sender === "user" ? "items-end" : "items-start pl-1",
+                    isBotTextBubble && "pt-0.5"
                   )}
                 >
                 <div
                   className={cn(
-                    isMapMessage
-                      ? "w-[94%] max-w-[94%] overflow-visible rounded-2xl text-sm"
-                      : "max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-sm",
-                    msg.sender === "user" && !isMapMessage
+                    isMediaMessage
+                      ? "w-[94%] max-w-[94%] min-w-0 overflow-hidden rounded-2xl text-sm"
+                      : "max-w-[80%] min-w-0 overflow-hidden rounded-2xl px-4 py-2.5 text-sm shadow-sm",
+                    msg.sender === "user" && !isMediaMessage
                       ? "bg-primary text-primary-foreground rounded-br-none"
-                      : !isMapMessage && cn(
+                      : !isMediaMessage && cn(
                         "bg-white text-foreground shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5",
                         (isNextBotTextBubble || isSingleBotBubble) && "rounded-bl-none",
                         isPreviousBotTextBubble && "rounded-tl-none"
@@ -1063,44 +1064,37 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   {msg.type === "text" && (
                     <div>
                       <p
-                        className="leading-relaxed whitespace-pre-line"
+                        className="break-words leading-relaxed whitespace-pre-line"
                         dangerouslySetInnerHTML={{
                           __html: renderSafeMessageHtml(msg.text),
                         }}
                       />
 
-                      {msg.imageUrls && msg.imageUrls.length > 0 ? (
-                        <div className="mt-2 grid gap-2">
-                          {msg.imageUrls.map((url, idx) => (
-                            <img
-                              key={`${msg.id}-img-${idx}`}
-                              src={url}
-                              alt="Chatbot response"
-                              loading="lazy"
-                              onClick={() => {
-                                setFullscreenImageUrl(url);
-                                setImageZoom(0.5);
-                                setImagePan({ x: 0, y: 0 });
-                              }}
-                              className="w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                            />
-                          ))}
-                        </div>
-                      ) : msg.imageUrl ? (
-                        <img
-                          src={msg.imageUrl}
-                          alt="Chatbot response"
-                          loading="lazy"
+                    </div>
+                  )}
+
+                  {/* Image message */}
+                  {msg.type === "image" && (msg.imageUrls?.length || msg.imageUrl) && (
+                    <div className="grid w-full max-w-full min-w-0 gap-2 overflow-hidden rounded-2xl">
+                      {(msg.imageUrls?.length ? msg.imageUrls : [msg.imageUrl]).filter(Boolean).map((url, idx) => (
+                        <button
+                          key={`${msg.id}-image-card-${idx}`}
+                          type="button"
                           onClick={() => {
-                            if (msg.imageUrl) {
-                              setFullscreenImageUrl(msg.imageUrl);
-                              setImageZoom(0.5);
-                              setImagePan({ x: 0, y: 0 });
-                            }
+                            setFullscreenImageUrl(url || null);
+                            setImageZoom(0.5);
+                            setImagePan({ x: 0, y: 0 });
                           }}
-                          className="mt-2 w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                        />
-                      ) : null}
+                          className="w-full max-w-full overflow-hidden rounded-2xl bg-white p-0 text-left shadow-[0_2px_12px_rgba(14,74,122,0.24)] transition-all duration-200 hover:shadow-[0_8px_22px_rgba(14,74,122,0.30)] focus:outline-none focus:ring-2 focus:ring-sky-200"
+                        >
+                          <img
+                            src={url}
+                            alt={idx === 0 ? "Chatbot response image" : `Chatbot response image ${idx + 1}`}
+                            loading="lazy"
+                            className="block max-h-72 w-full object-contain"
+                          />
+                        </button>
+                      ))}
                     </div>
                   )}
 
@@ -1109,7 +1103,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                     privileges.mapAccessEnabled ? (
                       <>
                         {liveInlineMapIds.has(msg.id) ? (
-                          <div className="overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(14,74,122,0.24)] transition-all duration-200 hover:shadow-[0_8px_22px_rgba(14,74,122,0.30)]">
+                          <div className="w-full max-w-full min-w-0 overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(14,74,122,0.24)] transition-all duration-200 hover:shadow-[0_8px_22px_rgba(14,74,122,0.30)]">
                             <MapMessage
                               locationName={msg.mapData.locationName}
                               coordinates={(msg.mapData as any).coordinates}
@@ -1125,43 +1119,12 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                           <button
                             type="button"
                             onClick={() => setFullscreenMapId(msg.id)}
-                            className="flex w-full items-center justify-between rounded-2xl border border-sky-100 bg-sky-50/70 px-3 py-2 text-left text-xs font-semibold text-[#003B63] shadow-sm transition-colors hover:bg-sky-100"
+                            className="flex w-full max-w-full min-w-0 items-center justify-between rounded-2xl border border-sky-100 bg-sky-50/70 px-3 py-2 text-left text-xs font-semibold text-[#003B63] shadow-sm transition-colors hover:bg-sky-100"
                           >
-                            <span className="truncate">{msg.mapData.locationName || "Open map"}</span>
+                            <span className="min-w-0 truncate">{msg.mapData.locationName || "Open map"}</span>
                             <span className="ml-2 shrink-0 text-[11px] font-bold">Open map</span>
                           </button>
                         )}
-                        {/* Display images attached to map message */}
-                        {msg.imageUrls && msg.imageUrls.length > 0 ? (
-                          <div className="mt-2 flex flex-col gap-2">
-                            {msg.imageUrls.map((url, i) => (
-                              <img
-                                key={i}
-                                src={url}
-                                alt={`Location image ${i + 1}`}
-                                loading="lazy"
-                                onClick={() => {
-                                  setFullscreenImageUrl(url);
-                                  setImageZoom(0.5);
-                                  setImagePan({ x: 0, y: 0 });
-                                }}
-                                className="w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                              />
-                            ))}
-                          </div>
-                        ) : msg.imageUrl ? (
-                          <img
-                            src={msg.imageUrl}
-                            alt="Location image"
-                            loading="lazy"
-                            onClick={() => {
-                              setFullscreenImageUrl(msg.imageUrl ?? null);
-                              setImageZoom(0.5);
-                              setImagePan({ x: 0, y: 0 });
-                            }}
-                            className="mt-2 w-full max-w-[320px] rounded-lg border border-border object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                          />
-                        ) : null}
                       </>
                     ) : (
                       <div className="mt-2 rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-xs font-medium text-destructive">

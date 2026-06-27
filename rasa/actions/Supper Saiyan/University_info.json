@@ -35,7 +35,16 @@
             "phrases": [
               "what is buksu",
               "about buksu",
-              "tell me about bukidnon state university"
+              "tell me about bukidnon state university",
+              "unsa ang buksu",
+              "buksu information",
+              "what kind of school is buksu",
+              "info about buksu",
+              "about bukidnon state university",
+              "buksu overview",
+              "explain buksu",
+              "what can you say about buksu",
+              "buksu school information"
             ]
           },
           "display_name": "About BukSU"
@@ -60,10 +69,19 @@
             "phrases": [
               "meaning of buksu",
               "what does buksu mean",
-              "buksu abbreviation"
+              "buksu abbreviation",
+              "unsa ang buksu short for",
+              "What does buksu stand for",
+              "buksu meaning",
+              "what is the meaning of buksu",
+              "unsa pasabot buksu",
+              "unsa meaning sa buksu",
+              "buksu stands for what",
+              "bukidnon state university acronym",
+              "buksu acronym meaning"
             ]
           },
-          "display_name": "Meaning Of BukSU"
+          "display_name": "Meaning of BukSU"
         },
         {
           "responses": {
@@ -85,10 +103,17 @@
               "what does tba mean",
               "meaning of tba",
               "whats the meaning of tba",
-              "tba?"
+              "tba?",
+              "tba meaning",
+              "to be announced meaning",
+              "unsa meaning sa tba",
+              "tba pasabot",
+              "tba in schedule meaning",
+              "why does it say tba",
+              "tba means what"
             ]
           },
-          "display_name": "Meaning Of Tba"
+          "display_name": "Meaning of TBA"
         },
         {
           "responses": {
@@ -108,10 +133,21 @@
               "buksu location",
               "where is bukidnon state university",
               "where is the main campus of buksu located",
-              "location main campus"
+              "location main campus",
+              "asa dapit ang buksu",
+              "asa nahimutang ang buksu",
+              "where is buksu main campus located",
+              "buksu main campus location",
+              "buksu address",
+              "main campus address",
+              "asa ang buksu main campus",
+              "location of buksu",
+              "bukidnon state university location",
+              "where can i find buksu campus",
+              "buksu malaybalay address"
             ]
           },
-          "display_name": "Bukus Location"
+          "display_name": "BukSU Main Campus Location"
         },
         {
           "responses": {
@@ -135,7 +171,14 @@
               "bukidnon state university contact number",
               "buksu phone number",
               "buksu telephone number",
-              "how can i contact buksu"
+              "how can i contact buksu",
+              "bukidnon state university contact",
+              "how to contact buksu",
+              "contact number sa buksu",
+              "buksu official contact",
+              "buksu hotline",
+              "university contact number",
+              "phone number of buksu"
             ]
           },
           "display_name": "BukSU Contact Number"
@@ -162,7 +205,14 @@
               "buksu university calendar",
               "academic calendar",
               "school calendar",
-              "semester calendar"
+              "semester calendar",
+              "official school calendar",
+              "school calendar buksu",
+              "where to see buksu calendar",
+              "calendar for this semester",
+              "unsa calendar sa semester",
+              "university calendar schedule",
+              "official calendar buksu"
             ]
           },
           "display_name": "BukSU University Calendar"
@@ -189,7 +239,15 @@
               "buksu charter day",
               "buksu foundation day",
               "buksu founding anniversary",
-              "when is buksu anniversary"
+              "when is buksu anniversary",
+              "when is buksu foundation day",
+              "foundation day celebration",
+              "founding anniversary celebration",
+              "when is charter day",
+              "kanus a foundation day",
+              "buksu anniversary celebration",
+              "date of buksu foundation day",
+              "university charter day"
             ]
           },
           "display_name": "BukSU Foundation Day"
@@ -211,7 +269,16 @@
               "is the campus open to visitors during weekends",
               "can visitors enter buksu on weekends",
               "buksu weekend visitors",
-              "campus open weekends"
+              "campus open weekends",
+              "is campus open to visitors during weekends",
+              "weekend visitors allowed",
+              "can i visit buksu saturday",
+              "can visitors enter sunday",
+              "open ba buksu sa weekend",
+              "pwede visitor sa campus weekend",
+              "campus visitor weekend policy",
+              "buksu weekend access visitors",
+              "can outsiders visit campus weekend"
             ]
           },
           "display_name": "Campus Weekend Visitors"
@@ -231,7 +298,17 @@
           "metadata": {
             "phrases": [
               "is buksu worth it",
-              "should i study in buksu"
+              "should i study in buksu",
+              "nindot ba mo eskwela sa buksu",
+              "worth it ba diria",
+              "is bukidnon state university good",
+              "worth it ba ang buksu",
+              "okay ba mag study sa buksu",
+              "why choose buksu",
+              "is buksu a good school",
+              "should freshmen choose buksu",
+              "buksu worth studying",
+              "is buksu recommended"
             ]
           },
           "display_name": "BukSU Worth It"
@@ -251,7 +328,20 @@
           "metadata": {
             "phrases": [
               "where can i study in buksu",
-              "best study place in buksu"
+              "best study place in buksu",
+              "asa tsada mag tuon sa buksu",
+              "asa makatuon og tarong",
+              "Buksu study spots",
+              "where is a good place to study",
+              "study place in buksu",
+              "best place to study campus",
+              "quiet place to study",
+              "asa pwede mag study sa buksu",
+              "study area in campus",
+              "place to review in buksu",
+              "can i study in library",
+              "where to study inside buksu",
+              "recommended study place"
             ]
           },
           "display_name": "BukSU Study Place"
@@ -271,7 +361,20 @@
           "metadata": {
             "phrases": [
               "does buksu have campus tour",
-              "campus tour in buksu"
+              "campus tour in buksu",
+              "naa bay campus tour",
+              "pwede mag libot sa campus",
+              "Buksu campus tour",
+              "is there a campus tour",
+              "campus tour",
+              "can i tour the campus",
+              "tour around buksu",
+              "can visitors tour buksu",
+              "campus tour guide",
+              "pwede mag campus tour",
+              "unsaon campus tour sa buksu",
+              "tour buksu main campus",
+              "show campus tour information"
             ]
           },
           "display_name": "Campus Tour"
@@ -307,7 +410,18 @@
           "metadata": {
             "phrases": [
               "buksu mission",
-              "mission of bukidnon state university"
+              "mission of bukidnon state university",
+              "unsa ang misyon sa buksu",
+              "what is the mission of buksu",
+              "mission of buksu",
+              "university mission",
+              "what is buksu mission",
+              "mission statement of buksu",
+              "unsa mission sa buksu",
+              "bukidnon state university mission",
+              "tell me university mission",
+              "buksu official mission",
+              "school mission"
             ]
           },
           "display_name": "BukSU Mission"
@@ -327,7 +441,18 @@
           "metadata": {
             "phrases": [
               "buksu vision",
-              "vision of bukidnon state university"
+              "vision of bukidnon state university",
+              "unsa ang bisyon sa buksu",
+              "what is the vision of buksu",
+              "vision of buksu",
+              "university vision",
+              "what is buksu vision",
+              "vision statement of buksu",
+              "unsa vision sa buksu",
+              "bukidnon state university vision",
+              "tell me university vision",
+              "buksu official vision",
+              "school vision"
             ]
           },
           "display_name": "BukSU Vision"
@@ -347,7 +472,17 @@
           "metadata": {
             "phrases": [
               "buksu core values",
-              "core values of buksu"
+              "core values of buksu",
+              "unsa ang values sa buksu",
+              "what are the core values",
+              "what are buksu values",
+              "university core values",
+              "bukidnon state university values",
+              "unsa core values sa buksu",
+              "school values",
+              "buksu values meaning",
+              "official core values buksu",
+              "list buksu core values"
             ]
           },
           "display_name": "BukSU Core Values"
@@ -389,7 +524,18 @@
             "phrases": [
               "meaning of buksu seal",
               "buksu seal significance",
-              "what is buksu seal"
+              "what is buksu seal",
+              "unsa pasabot sa logo sa buksu",
+              "Buksu seal",
+              "buksu seal meaning",
+              "seal significance",
+              "university seal meaning",
+              "what does the buksu seal mean",
+              "symbol in buksu seal",
+              "unsa meaning sa seal sa buksu",
+              "buksu logo seal explanation",
+              "official seal significance",
+              "explain buksu seal"
             ]
           },
           "display_name": "BukSU Seal Significance"
@@ -411,7 +557,17 @@
           "metadata": {
             "phrases": [
               "buksu hymn lyrics",
-              "where can i find buksu hymn"
+              "where can i find buksu hymn",
+              "asa makita ang lyrics",
+              "Buksu hymn",
+              "university hymn lyrics",
+              "lyrics of buksu hymn",
+              "what is buksu hymn",
+              "school hymn lyrics",
+              "buksu song lyrics",
+              "unsa lyrics sa buksu hymn",
+              "bukidnon state university hymn",
+              "official hymn buksu"
             ]
           },
           "display_name": "BukSU Hymn Lyrics"
@@ -433,7 +589,17 @@
           "metadata": {
             "phrases": [
               "what is buksu gazette",
-              "buksu gazette"
+              "buksu gazette",
+              "unsa ang gazette",
+              "buksu gazette meaning",
+              "what does buksu gazette do",
+              "school gazette",
+              "university gazette",
+              "unsa ang buksu gazette",
+              "gazette information",
+              "buksu publication gazette",
+              "tell me about buksu gazette",
+              "gazette sa buksu"
             ]
           },
           "display_name": "Whats BukSU Gazette"
@@ -475,7 +641,16 @@
           "metadata": {
             "phrases": [
               "buksu history",
-              "history of buksu"
+              "history of buksu",
+              "kanus a nagsugod ang buksu",
+              "background of buksu",
+              "bukidnon state university history",
+              "tell me buksu history",
+              "unsa history sa buksu",
+              "school history",
+              "buksu historical background",
+              "how did buksu start",
+              "history background of university"
             ]
           },
           "display_name": "BukSU History Background"
@@ -522,7 +697,17 @@
             "phrases": [
               "when was buksu founded",
               "buksu founding",
-              "founding anniversary"
+              "founding anniversary",
+              "kanus a natukod ang buksu",
+              "buksu founding date",
+              "founding of buksu",
+              "when was bukidnon state university founded",
+              "foundation year of buksu",
+              "date founded buksu",
+              "kanus a na founded ang buksu",
+              "when did buksu start",
+              "school founded year",
+              "founding history buksu"
             ]
           },
           "display_name": "Founding"
@@ -542,7 +727,18 @@
           "metadata": {
             "phrases": [
               "when did buksu become university",
-              "buksu university status"
+              "buksu university status",
+              "kanus a nahimong university",
+              "nahimong unibersidad ang buksu",
+              "when did buksu become a university",
+              "became university date",
+              "when became university",
+              "how buksu became university",
+              "kanus a nahimong university ang buksu",
+              "bukidnon state university status",
+              "year buksu became university",
+              "buksu changed to university",
+              "university status history"
             ]
           },
           "display_name": "BukSU Become University"
@@ -563,7 +759,18 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "who was president when buksu became university"
+              "who was president when buksu became university",
+              "Buksu university president",
+              "president when buksu became university",
+              "first university president of buksu",
+              "president at the time buksu became university",
+              "who led buksu in 2007",
+              "president during university status",
+              "kinsa president pag become university",
+              "first buksu president as university",
+              "president when university status granted",
+              "leader when buksu became university",
+              "2007 buksu president"
             ]
           },
           "display_name": "Pres Thetime University"
@@ -583,7 +790,17 @@
           "metadata": {
             "phrases": [
               "how old is buksu",
-              "buksu age"
+              "buksu age",
+              "pila na ka tuig ang buksu",
+              "pila na ka years ang school",
+              "age of buksu",
+              "age of bukidnon state university",
+              "how many years is buksu",
+              "university age",
+              "buksu years old",
+              "how long has buksu existed",
+              "age of school",
+              "buksu founding age"
             ]
           },
           "display_name": "BukSU Age"
@@ -636,7 +853,16 @@
           "metadata": {
             "phrases": [
               "list of buksu presidents",
-              "former presidents of buksu"
+              "former presidents of buksu",
+              "Buksu presidents",
+              "buksu presidents list",
+              "past buksu presidents",
+              "old presidents of buksu",
+              "who were the presidents of buksu",
+              "list previous university presidents",
+              "mga president sa buksu",
+              "former university presidents",
+              "buksu president history list"
             ]
           },
           "display_name": "BukSU Presidents List"
@@ -688,7 +914,16 @@
             "phrases": [
               "current rank of buksu",
               "buksu ranking",
-              "what is buksu rank"
+              "what is buksu rank",
+              "unsa ang rank nato",
+              "what is the rank of buksu",
+              "buksu wuri ranking",
+              "buksu edurank",
+              "buksu greenmetric",
+              "ranking sa buksu",
+              "university ranking buksu",
+              "buksu world ranking",
+              "current university rank"
             ]
           },
           "display_name": "Current Rank"
@@ -728,7 +963,18 @@
           "metadata": {
             "phrases": [
               "who is the president of buksu",
-              "current buksu president"
+              "current buksu president",
+              "Buksu president",
+              "who is buksu president",
+              "current president of buksu",
+              "university president",
+              "bukidnon state university president",
+              "dr joy mirasol",
+              "kinsa president sa buksu",
+              "name of buksu president",
+              "who leads buksu",
+              "current university president",
+              "president of bukidnon state university"
             ]
           },
           "display_name": "BukSU President"

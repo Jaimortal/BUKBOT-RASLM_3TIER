@@ -100,8 +100,14 @@ class EntityResolver:
             drop("Deans Office")
         if has("BSN Faculty Room") or has("CON Dean's Office"):
             drop("College of Nursing Building")
-        if has("CAS Deans Office") or has("Philosophy Faculty Office"):
+        if has("CAS Deans Office") or has("Philosophy Faculty Office") or has("CAS SBO Office"):
             drop("CAS Buildings")
+        if has("COB SBO Office"):
+            drop("COB Building")
+        if has("COT SBO Office"):
+            drop("COT Buildings")
+            drop("New COT Building")
+            drop("Old COT Building")
         if has("CPAG Faculty Room") or has("CPAG Deans Office") or has("GE Department"):
             drop("CPAG building")
         if has("Window 8 Payroll Regular and Casual"):

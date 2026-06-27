@@ -39,7 +39,20 @@
               "failed a subject",
               "what if i fail a subject",
               "can i retake a failed subject",
-              "failed subject policy"
+              "failed subject policy",
+              "fail subject policy",
+              "failed subject retake",
+              "what happens if i fail a subject",
+              "if i failed subject what should i do",
+              "can i retake failed subject",
+              "retake failed subject process",
+              "failed course policy",
+              "unsa buhaton kung bagsak subject",
+              "nabagsak ko sa subject",
+              "failing subject rules",
+              "do i need to retake failed subject",
+              "what if i fail one subject",
+              "failed subject in buksu"
             ]
           },
           "display_name": "Failed Subject Policy"
@@ -60,7 +73,19 @@
             "phrases": [
               "academic probation",
               "what is academic probation",
-              "low academic performance probation"
+              "low academic performance probation",
+              "probation status",
+              "probation meaning",
+              "academic probation policy",
+              "why student gets probation",
+              "probation in buksu",
+              "unsa ang academic probation",
+              "pasabot sa probation",
+              "probation due to grades",
+              "what happens under probation",
+              "academic standing probation",
+              "student probation meaning",
+              "probation requirements"
             ]
           },
           "display_name": "Academic Probation"
@@ -98,10 +123,82 @@
               "buksu grading system",
               "what is the passing grade",
               "what does 5.0 mean",
-              "what does inc mean in grades"
+              "what does inc mean in grades",
+              "grading scale",
+              "grade system in buksu",
+              "what is the grading system",
+              "how grades work in buksu",
+              "gwa grading system",
+              "sias grades meaning",
+              "unsa grading system sa buksu",
+              "grade equivalent buksu",
+              "how is grade computed",
+              "buksu grade scale",
+              "explain buksu grades"
             ]
           },
           "display_name": "BukSU Grading System"
+        },
+        {
+          "topic": "specific_course_passing_retention_grade",
+          "responses": {
+            "en": [
+              "Passing grade, culling grade, and retention grade for a specific course are usually discussed during your department assembly meeting.",
+              "Sorry, I do not have official data for the specific passing or retention grade of every department and course.",
+              "Please ask your department, program chair, or enrollment adviser for the exact grade requirement for your course."
+            ],
+            "ceb": [
+              "Ang passing grade, culling grade, ug retention grade para sa specific nga course kasagaran i-discuss during department assembly meeting.",
+              "Pasensya, wala koy official data para sa specific passing o retention grade sa matag department ug course.",
+              "Palihog pangutana sa inyong department, program chair, o enrollment adviser para sa eksaktong grade requirement sa imong course."
+            ]
+          },
+          "intent": "specific_course_passing_retention_grade",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "what is the passing grade for my course",
+              "what is the passing grade for bsit",
+              "what is the passing grade for nursing",
+              "what is the passing grade for accountancy",
+              "passing grade for specific course",
+              "passing grade for bachelor of science in information technology",
+              "passing grade for bachelor of science in nursing",
+              "passing grade for bachelor of science in accountancy",
+              "what is the retention grade for my course",
+              "retention grade for specific course",
+              "culling grade for my course",
+              "culling grade for nursing",
+              "culling grade for accountancy",
+              "passing grade in every department",
+              "department passing grade",
+              "course passing grade",
+              "specific course passing grade",
+              "pila passing grade sa akong course",
+              "unsa passing grade sa bsit",
+              "unsa passing grade sa nursing",
+              "unsa retention grade sa akong course",
+              "passing grade for nursing",
+              "passing grade for bsit",
+              "retention grade for my course",
+              "culling grade for course",
+              "what is passing grade in buksu for my course",
+              "passing grade sa specific course",
+              "retention policy per department",
+              "what grade required to stay in program",
+              "department assembly passing grade"
+            ]
+          },
+          "subject_key": "specific_course_passing_retention_grade",
+          "subject_type": "policy",
+          "subject_terms": [
+            "specific course passing grade",
+            "course passing grade",
+            "retention grade",
+            "culling grade",
+            "department passing grade"
+          ],
+          "display_name": "Specific Course Passing And Retention Grade"
         },
         {
           "topic": "process",
@@ -124,7 +221,19 @@
               "where can i see my grades",
               "how to access grades",
               "view grades in sias",
-              "sias grades"
+              "sias grades",
+              "tan-aw sa grado",
+              "view my grades",
+              "check grades semester",
+              "check grades in sias",
+              "view grades online",
+              "how to see sias grades",
+              "where are my grades posted",
+              "unsaon pag tan aw grades",
+              "asa makita grades",
+              "grades in student portal",
+              "how to check final grades",
+              "access my gwa"
             ]
           },
           "display_name": "Access Grades"
@@ -145,7 +254,19 @@
             "phrases": [
               "end of semester process",
               "what happens at end of semester",
-              "final exams and grade submission"
+              "final exams and grade submission",
+              "end of semester",
+              "what happens after semester",
+              "when does semester end",
+              "end of semester schedule",
+              "when are grades released end semester",
+              "semester ending date",
+              "end of sem",
+              "kanus a end sa semester",
+              "when finals end",
+              "school semester end",
+              "end of semester grade posting",
+              "when is end of classes"
             ]
           },
           "display_name": "End Of Semester"
@@ -192,7 +313,18 @@
               "how to complete inc grade",
               "how to fix inc grade",
               "complete incomplete grade",
-              "inc completion process"
+              "inc completion process",
+              "complete INC grade",
+              "INC form process",
+              "inc grade solution",
+              "what to do with inc grade",
+              "incomplete grade process",
+              "how to comply inc",
+              "unsaon pag complete inc",
+              "i have inc grade what should i do",
+              "how to remove inc grade",
+              "complete incomplete subject",
+              "inc grade requirements"
             ]
           },
           "display_name": "INC Grade Solution"
@@ -216,7 +348,18 @@
             "phrases": [
               "what happens if i have inc",
               "inc grade consequences",
-              "what if inc is not completed"
+              "what if inc is not completed",
+              "dili ma completo INC",
+              "not complete INC",
+              "what happens if inc not completed",
+              "if i dont comply inc",
+              "uncompleted inc grade",
+              "deadline for inc consequences",
+              "unsa mahitabo if dili ma complete inc",
+              "inc grade problem",
+              "will inc become failed",
+              "consequence of incomplete grade",
+              "what if inc expires"
             ]
           },
           "display_name": "INC Grade Consequences"
@@ -237,7 +380,16 @@
               "where can i get inc form",
               "download inc form",
               "get incomplete grade form",
-              "inc form link"
+              "inc form link",
+              "asa makuha INC form",
+              "where to get INC form",
+              "how to get inc form",
+              "inc completion form",
+              "get incomplete form",
+              "inc form from registrar",
+              "unsaon pagkuha inc form",
+              "request inc form",
+              "where can i find inc completion form"
             ]
           },
           "display_name": "Get INC Form"
@@ -278,7 +430,18 @@
               "attendance requirement",
               "how many absences allowed",
               "7 absences policy",
-              "absence requirement"
+              "absence requirement",
+              "pwede absent",
+              "attendance policy",
+              "attendance important",
+              "seven absences policy",
+              "7 absences rule",
+              "required attendance in class",
+              "attendance rules buksu",
+              "pila ka absences allowed",
+              "unsa attendance requirement",
+              "absence limit in class",
+              "attendance requirement per subject"
             ]
           },
           "display_name": "Attendance Requirement"
@@ -309,7 +472,16 @@
             "phrases": [
               "what is fda",
               "meaning of fda",
-              "failure due to absences meaning"
+              "failure due to absences meaning",
+              "FDA meaning",
+              "FDA absences",
+              "fda grade meaning",
+              "unsa pasabot fda",
+              "fda sa grade",
+              "what does fda mean",
+              "explain failure due to absences",
+              "fda meaning in buksu",
+              "why grade becomes fda"
             ]
           },
           "display_name": "Meaning Of The FDA"
@@ -333,7 +505,18 @@
             "phrases": [
               "what to do if i get fda",
               "how to solve fda",
-              "received fda what should i do"
+              "received fda what should i do",
+              "FDA next steps",
+              "after FDA grade",
+              "what to do if fda",
+              "fda solution",
+              "can fda be removed",
+              "failure due to absences what to do",
+              "unsaon kung fda",
+              "naa koy fda unsa buhaton",
+              "fda grade concern",
+              "who to ask about fda",
+              "can i fix fda grade"
             ]
           },
           "display_name": "FDA Solution"
@@ -368,7 +551,18 @@
             "phrases": [
               "what is subject overload",
               "meaning of overload subject",
-              "overload meaning"
+              "overload meaning",
+              "subject overload pasabot",
+              "subject overloading",
+              "subject overload meaning",
+              "overload subject",
+              "academic overload",
+              "overloading units meaning",
+              "can student overload subjects",
+              "unsa ang overload subject",
+              "pasabot sa overload units",
+              "subject overload explanation",
+              "taking extra units meaning"
             ]
           },
           "display_name": "Subject Overload Answer Topic"
@@ -388,7 +582,19 @@
             "phrases": [
               "who can overload units",
               "overload units policy",
-              "can graduating students overload"
+              "can graduating students overload",
+              "pwede daghang units",
+              "overload units",
+              "more units policy",
+              "how many units can i overload",
+              "can i overload units",
+              "requirements for overload units",
+              "subject overload policy",
+              "policy for taking extra units",
+              "pila ka units pwede overload",
+              "overload approval process",
+              "can graduating student overload",
+              "overload subject requirements"
             ]
           },
           "display_name": "Overload Units Policy"
@@ -424,7 +630,18 @@
             "phrases": [
               "deans list requirements",
               "dean honor list qualification",
-              "how to qualify for deans list"
+              "how to qualify for deans list",
+              "maka deans list",
+              "qualify deans list",
+              "dean list qualifications",
+              "how to be deans lister",
+              "dean honor list requirements",
+              "what gwa for deans list",
+              "requirements for dean lister",
+              "unsa requirements sa deans list",
+              "deans list grade requirement",
+              "how to qualify dean list",
+              "dean lister policy"
             ]
           },
           "display_name": "Deans List"
@@ -445,7 +662,16 @@
             "phrases": [
               "college honors gwa",
               "college honors qualification",
-              "gwa for college honors"
+              "gwa for college honors",
+              "college honor grades",
+              "college honors gpa",
+              "college honors requirement",
+              "what gwa for college honors",
+              "how to get college honors",
+              "college honors grade requirement",
+              "unsa gwa sa college honors",
+              "qualify for college honors",
+              "college honors academic award"
             ]
           },
           "display_name": "College Honors Gpa"
@@ -466,7 +692,16 @@
             "phrases": [
               "university scholar gwa",
               "university scholar qualification",
-              "gwa for university scholar"
+              "gwa for university scholar",
+              "university scholar grades",
+              "university scholar gpa",
+              "university scholar requirement",
+              "what gwa for university scholar",
+              "how to become university scholar",
+              "university scholar grade requirement",
+              "unsa gwa sa university scholar",
+              "qualify university scholar",
+              "university scholar academic award"
             ]
           },
           "display_name": "University Scholar Gpa"
@@ -502,7 +737,17 @@
             "phrases": [
               "can students choose thesis topic",
               "thesis topic selection",
-              "who approves thesis topic"
+              "who approves thesis topic",
+              "thesis topic propose",
+              "thesis title choose",
+              "how to choose thesis topic",
+              "capstone topic selection",
+              "research topic process",
+              "how to pick capstone topic",
+              "unsaon pagpili thesis topic",
+              "topic proposal thesis",
+              "select research topic",
+              "choose capstone project topic"
             ]
           },
           "display_name": "Thesis Topic Selection"
@@ -523,7 +768,18 @@
             "phrases": [
               "how many panelists in thesis defense",
               "thesis defense panelists",
-              "defense panel members"
+              "defense panel members",
+              "pila ka panelist",
+              "thesis panelist",
+              "number of panelists",
+              "who are thesis panelists",
+              "who chooses defense panel",
+              "capstone defense panelists",
+              "research defense panel",
+              "panelists for thesis defense",
+              "kinsa panel sa defense",
+              "defense panel selection",
+              "who assigns thesis panelists"
             ]
           },
           "display_name": "Thesis Defense Panelists"
@@ -545,7 +801,15 @@
             "phrases": [
               "what if thesis defense fails",
               "failed thesis defense",
-              "failed capstone defense"
+              "failed capstone defense",
+              "thesis defense fail",
+              "what if i fail thesis defense",
+              "what happens if defense fails",
+              "can i retake thesis defense",
+              "unsa mahitabo if fail defense",
+              "defense failure consequence",
+              "capstone defense failed",
+              "research defense failed"
             ]
           },
           "display_name": "Thesis Defense Failure"
@@ -596,7 +860,21 @@
               "how to add subject",
               "how to drop subject",
               "add drop form",
-              "adding and dropping subject process"
+              "adding and dropping subject process",
+              "pwedi add drop",
+              "add drop subject",
+              "add subject period",
+              "how to add and drop subject",
+              "add drop subject process",
+              "adding and dropping subject",
+              "add/drop form",
+              "subject adding dropping process",
+              "unsaon pag add drop subject",
+              "mag add subject ko",
+              "mag drop subject ko",
+              "where to process add drop",
+              "add subject during enrollment",
+              "drop subject process"
             ]
           },
           "intent": "add_drop_subject",
@@ -640,7 +918,17 @@
             "phrases": [
               "how to withdraw enrollment",
               "withdraw enrollment policy",
-              "withdrawal form process"
+              "withdrawal form process",
+              "withdraw enrollment",
+              "withdrawal form",
+              "withdraw enrollment process",
+              "voluntary withdrawal",
+              "drop enrollment policy",
+              "can i withdraw my enrollment",
+              "unsaon pag withdraw enrollment",
+              "cancel enrollment process",
+              "enrollment withdrawal requirements",
+              "student withdrawal policy"
             ]
           },
           "intent": "withdraw_enrollment_policy",
@@ -684,7 +972,17 @@
             "phrases": [
               "how to request cor",
               "certificate of registration request",
-              "lost cor replacement"
+              "lost cor replacement",
+              "request COR",
+              "certificate registration",
+              "request certificate of registration",
+              "where to get cor",
+              "download cor",
+              "get copy of cor",
+              "request cor from registrar",
+              "unsaon pagkuha cor",
+              "asa makuha cor",
+              "cor copy request"
             ]
           },
           "intent": "request_cor",
@@ -711,7 +1009,15 @@
             "phrases": [
               "registrar office schedule",
               "registrar office hours",
-              "when is registrar open"
+              "when is registrar open",
+              "office hours",
+              "what time does the registrar office open in buksuregistrar schedule",
+              "registrar schedule",
+              "office hours of registrar",
+              "kanus a open registrar",
+              "oras sa registrar",
+              "registrar closing time",
+              "when can i visit registrar"
             ]
           },
           "intent": "registrar_office_schedule",
@@ -742,7 +1048,17 @@
             "phrases": [
               "contact registrar for tor",
               "registrar contact number",
-              "registrar email"
+              "registrar email",
+              "request copy of tor",
+              "where can i request a copy of my tor",
+              "registrar contact tor",
+              "who to contact for transcript",
+              "tor inquiry contact",
+              "contact for transcript of records",
+              "registrar tor help",
+              "kinsa contact for tor",
+              "tor registrar email",
+              "tor phone number registrar"
             ]
           },
           "display_name": "Contact Registrar For TOR"
@@ -767,7 +1083,17 @@
             "phrases": [
               "how to request tor",
               "transcript of records request",
-              "tor for graduates"
+              "tor for graduates",
+              "graduate tor",
+              "where graduate get tor",
+              "how to request tor for graduates",
+              "tor request for graduates",
+              "how graduates get tor",
+              "request transcript after graduation",
+              "unsaon pag request tor",
+              "tor process graduate",
+              "get tor from registrar",
+              "graduate tor requirements"
             ]
           },
           "display_name": "TOR Request For Graduates"
@@ -815,7 +1141,12 @@
               "cor validation day",
               "cor validation schedule",
               "date of cor validation",
-              "time for cor validation"
+              "time for cor validation",
+              "cor validation period",
+              "kanus a cor validation",
+              "schedule sa cor validation",
+              "how long is cor validation available",
+              "when can i validate cor"
             ]
           },
           "display_name": "COR Validation Day"
@@ -830,14 +1161,14 @@
               "Step 2: Print your COR.",
               "Step 3: Go to the Finance Building and find Window 7 to validate your COR.",
               "Step 4: Go to the Registrar to seal and confirm your validation.",
-              "Step 5: After a few days, check your SIAS account to confirm that you are validated."
+              "Step 5: You can check your sias account right after to confirm that you are now validated."
             ],
             "ceb": [
               "Step 1: I-download ang imong COR gikan sa https://admissions.buksu.edu.ph/",
               "Step 2: I-print ang imong COR.",
               "Step 3: Adto sa Finance Building ug pangitaa ang Window 7 aron ma-validate ang imong COR.",
               "Step 4: Adto sa Registrar aron ma-seal ug ma-confirm ang imong validation.",
-              "Step 5: Pagkahuman sa pipila ka adlaw, tan-awa ang imong SIAS account aron makompirma nga validated ka na."
+              "Step 5: Pwede nimo i-check ang imong sias account pagkahuman aron ma-confirm nga validated na ka."
             ]
           },
           "metadata": {
@@ -846,7 +1177,25 @@
               "cor validation process",
               "cor validation steps",
               "validate cor",
-              "how do i validate my cor"
+              "how do i validate my cor",
+              "tabangi ko unsaon pag validate sa akong COR",
+              "unsaon pag process sa akong COR",
+              "unsay buhaton nako para ma validate akong COR",
+              "naka print na ko sa COR unsay sunod buhaton",
+              "human nako download ang COR unsa na next",
+              "unsay next step sa COR validation",
+              "pwede ko nimo tabangan sa COR validation",
+              "kinahanglan ba moadto kog office para sa COR",
+              "help me whats the process on validating my cor",
+              "can you help me validate my COR",
+              "how do I validate my COR step by step",
+              "steps to validate cor",
+              "validate certificate of registration",
+              "where to validate cor",
+              "unsaon pag validate cor",
+              "print cor and validate",
+              "finance window cor validation",
+              "registrar seal cor validation"
             ]
           },
           "display_name": "COR Validation Steps"
@@ -873,14 +1222,14 @@
               "Students must undergo a pre evaluation of grades by the Registrar.",
               "They must settle all financial obligations.",
               "Finally they must file a formal Application for Graduation during their final semester.",
-              "You can apply through the buksu Admission for graduation program, here is the link:",
+              "You can apply through the BukSU Admission for graduation program, here is the link:",
               "https://buksu.edu.ph/admission/"
             ],
             "ceb": [
               "Ang estudyante kinahanglan moagi og pre evaluation sa mga grado sa Registrar.",
               "Kinahanglan impasahon ang tanang bayranan.",
               "Human niini mag file og formal Application for Graduation sa huling semester.",
-              "Pwede ka mag-apply pinaagi sa buksu Admission for graduation program, ania ang link:",
+              "Pwede ka mag-apply pinaagi sa BukSU Admission for graduation program, ania ang link:",
               "https://buksu.edu.ph/admission/"
             ]
           },
@@ -889,7 +1238,17 @@
             "phrases": [
               "how to apply for graduation",
               "graduation application process",
-              "application for graduation"
+              "application for graduation",
+              "asa ko pwede mag apply para sa graduation",
+              "apply for graduation",
+              "where do i apply for graduation",
+              "file graduation application",
+              "graduating application steps",
+              "apply for graduation in buksu",
+              "unsaon pag apply graduation",
+              "graduation filing process",
+              "when applying for graduation what to do",
+              "graduation application guide"
             ]
           },
           "display_name": "Graduation Application Process"
@@ -927,7 +1286,15 @@
             "phrases": [
               "graduation clearance requirements",
               "graduating clearance requirements",
-              "university clearance form for graduation"
+              "university clearance form for graduation",
+              "clearance for graduation",
+              "what document do i need for graduations",
+              "requirements for university clearance",
+              "clearance form graduation",
+              "what documents for graduating clearance",
+              "unsa requirements sa graduation clearance",
+              "graduate clearance documents",
+              "clearance requirements before graduation"
             ]
           },
           "display_name": "Graduating Clearance Requirements"

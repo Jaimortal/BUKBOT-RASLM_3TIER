@@ -12,7 +12,7 @@ export function cn(...inputs: ClassValue[]) {
 export const generateId = () => Math.random().toString(36).substr(2, 9);
 
 // --- Types ---
-export type MessageType = "text" | "map" | "faq_carousel";
+export type MessageType = "text" | "map" | "image" | "faq_carousel";
 
 export interface ChatSuggestion {
   label: string;

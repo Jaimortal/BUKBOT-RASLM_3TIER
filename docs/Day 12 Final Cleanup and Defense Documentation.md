@@ -84,23 +84,25 @@ Behavior:
 
 Passed:
 
-- `python -m unittest discover -s test`
+- `python -m unittest discover -s test -p test_day11_regression.py`
+- `python -m unittest discover -s test -p test_query_normalization_dataset.py`
 - `python -m py_compile` for action Python files
 - all `rasa/actions/Supper Saiyan/*.json` files parse successfully
 - `rasa/actions/responses.json` parses successfully
 - `rasa/actions/responses_location.json` parses successfully
 - `rasa data validate --config rasa/config.yml --domain rasa/domain.yml --data rasa/data`
 - `npm.cmd run build`
-- focused TypeScript scan for Day 12-related files
 
 Current automated test count:
 
-- 47 tests
+- 7 Day 11 regression tests
+- 8 query-normalization dataset tests
 
-Known existing issue:
+Known existing issues:
 
+- `python -m unittest discover -s test` still has older expectation failures in `test_context_aware_retrieval.py`. The remaining failures are mostly outdated assertions for older response text or old route names after the newer structured data updates.
 - `npm.cmd run check` still fails because of older unrelated TypeScript errors in `MapPage.tsx`, `server/admin-db.ts`, `server/db.ts`, and `server/storage.ts`.
-- `npm.cmd run build` passes, but the existing server build still prints CommonJS `import.meta` warnings and a large client chunk warning.
+- Full production build passes.
 
 No Day 12-specific TypeScript errors were found in the focused scan.
 
@@ -115,3 +117,4 @@ Final Day 12 status:
 - No LLM or paid AI brain is required.
 - Old topic routing is not needed for normal answers.
 - Structured retrieval, context memory, admin editing, hot reload, map/image support, and safe bold rendering are documented for defense and user testing.
+- Manual user testing should use `docs/Day 11 Full Regression Testing Checklist.md`.

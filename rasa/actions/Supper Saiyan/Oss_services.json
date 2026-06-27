@@ -199,7 +199,24 @@
               "where to get student id",
               "how do i process student id",
               "student id process",
-              "unsaon pagkuha og student id"
+              "where can i process my school id",
+              "how to process school id",
+              "where do i get my school id",
+              "unsaon pagkuha og student id",
+              "unsaon pagkuha sa school id",
+              "asa makuha ang student id",
+              "unsa ang process sa pagkuha og id",
+              "asa dapit mukuha og id",
+              "unsaon pag process sa id",
+              "school id process",
+              "how do i apply for student id",
+              "where do i apply for school id",
+              "unsaon pagkuha student id",
+              "process for buksu student id",
+              "freshman student id process",
+              "how to get my buksu id",
+              "student identification card process",
+              "where to print student id"
             ]
           },
           "display_name": "Student ID Process"
@@ -237,7 +254,15 @@
               "requirements for student id",
               "what do i need for student id",
               "what should i bring for school id",
-              "requirements sa student id"
+              "requirements sa student id",
+              "what to bring for student id",
+              "school id requirements",
+              "documents needed for student id",
+              "unsa requirements sa student id",
+              "kinahanglan para school id",
+              "do i need cor for student id",
+              "student id needed documents",
+              "requirements to get buksu id"
             ]
           },
           "display_name": "Student ID Requirements"
@@ -260,7 +285,19 @@
               "student id fee",
               "student id payment",
               "do i need to pay for student id",
-              "pila ang student id"
+              "pila ang student id",
+              "naa bay bayad ang id",
+              "pila ang cost sa id nato",
+              "do I have to pay for the student id",
+              "school id payment",
+              "do i pay for student id",
+              "student id cost",
+              "pila student id",
+              "naay bayad ang student id",
+              "buksu id fee",
+              "replacement id fee",
+              "first student id free",
+              "how much school id"
             ]
           },
           "display_name": "Student ID Fee"
@@ -288,10 +325,101 @@
               "how to replace lost student id",
               "i lost my student id",
               "student id replacement process",
-              "nawala akong student id"
+              "nawala akong student id",
+              "unsaon kung nawala ang id",
+              "nawala akoang id unsa ang process",
+              "Lost student ID",
+              "what to do if I lost my id",
+              "how to replace lost id",
+              "lost school id process",
+              "replace buksu id",
+              "where to replace lost student id",
+              "lost id affidavit process",
+              "what to do if my school id is lost"
             ]
           },
           "display_name": "Lost Student ID Replacement Process"
+        },
+        {
+          "topic": "campus_entry_without_student_id",
+          "intent": "campus_entry_without_student_id",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "Yes, students without a physical ID are usually allowed during the first month of the school year, especially first-year students who do not have their ID yet.",
+              "You can present your validated COR to the entrance guard so they can verify that you are an officially enrolled first-year student.",
+              "<b>Make sure it is a validated COR</b>, and explain clearly why you do not have your student ID yet.",
+              "If you lost your student ID, ask the guard about the entry process and explain why your ID is missing. Make sure to bring your validated COR.",
+              "If you only forgot your student ID, it is better to go back and bring it. If that is not possible, ask the guard if there is another way to enter temporarily.",
+              "Always bring your student ID when entering campus. If you do not have one yet, process your student ID at the University Press."
+            ],
+            "ceb": [
+              "Oo, kasagaran allowed ang students nga wala pay physical ID sulod sa unang bulan sa school year, labi na ang first-year students nga wala pa nakakuha sa ilang ID.",
+              "Pwede nimo ipakita ang imong validated COR sa entrance guard aron ma-verify nila nga officially enrolled first-year student ka.",
+              "<b>Siguroa nga validated COR kini</b>, ug taronga og explain nganong wala pa kay student ID.",
+              "Kung nawala imong student ID, pangutana sa guard bahin sa entry process ug isulti nganong nawala imong ID. Siguroa nga dala nimo ang imong validated COR.",
+              "Kung nabilin ra nimo imong student ID, mas maayo nga balikan nimo ug dad-on. Kung dili na mahimo, pangutana sa guard kung naa bay temporary way nga makasulod.",
+              "Kanunay dad-a imong student ID kung mosulod sa campus. Kung wala pa kay ID, iprocess imong student ID sa University Press."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "Student ID process",
+              "payload": "Student ID process"
+            },
+            {
+              "label": "COR Validation",
+              "payload": "COR validation"
+            },
+            {
+              "label": "Find my COR",
+              "payload": "where can i find my COR"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how do i enter the campus if i dont have my physical id yet",
+              "am i allowed to go buksu even no id",
+              "am i allowed to go to buksu even no id",
+              "am i allowed to go inside the buksu biskan wakoy id",
+              "pwedi maka sulod sa buksu biskan way id",
+              "pwedi raba mosulod sa buksu even though i dont have my id",
+              "can i go inside the buksu even if i dont have student id",
+              "do i still allowed to go inside the buksu campus even if no id",
+              "are first year student who dont have id allowed to enter",
+              "can first year students enter campus without student id",
+              "can i enter campus without physical id",
+              "can i enter buksu without student id",
+              "can i still go to school even if i dont have id",
+              "i forgot my id am i allowed to go inside buksu",
+              "i left my id at home am i still allowed to enter inside the buksu campus",
+              "i left my id in my house can i still enter buksu",
+              "i lost my id can i still go inside the campus",
+              "i lose my id can i still go inside the campus",
+              "no student id can i enter campus",
+              "without student id can i enter buksu",
+              "no physical id yet can i enter",
+              "i dont have my student id yet can i enter campus",
+              "i do not have my buksu id yet can i go inside",
+              "allowed to enter campus without student id",
+              "allowed to go inside buksu without id",
+              "pwedi bako maka sulod biskan walay student id",
+              "pwede bako makasulod bisan walay student id",
+              "maka sulod ba biskan walay id",
+              "makasulod ba bisan walay id",
+              "nabilin akong id pwedi ra maka sulod",
+              "nabilin akong student id pwede ra makasulod",
+              "wala pakoy id pwedi bako maka sulod sa buksu",
+              "wala pa koy student id pwede ba ko makasulod",
+              "walay student id pwede ba mosulod",
+              "nawala akong id pwede pa ba makasulod",
+              "nawala akong student id maka sulod pa ba ko",
+              "nakalimot ko sa akong id pwede ba ko makasulod",
+              "bisan walay id pwede ba mosulod sa campus",
+              "first year ko wala pa koy id pwede ba ko makasulod"
+            ]
+          },
+          "display_name": "Campus Entry Without Student ID"
         },
         {
           "topic": "id_validation_process",
@@ -321,7 +449,14 @@
               "process of id validation",
               "how do i validate my student id",
               "validate student id",
-              "validate school id"
+              "validate school id",
+              "student id validation",
+              "validate my school id",
+              "where to validate id",
+              "unsaon pag validate id",
+              "asa mag validate sa student id",
+              "validated id process",
+              "id validation steps"
             ]
           },
           "display_name": "ID Validation Process",
@@ -393,7 +528,14 @@
               "time for id validation",
               "id validation day",
               "student id validation schedule",
-              "school id validation date"
+              "school id validation date",
+              "id validation schedule",
+              "student id validation time",
+              "kanus a ang id validation",
+              "schedule sa id validation",
+              "when can i validate my id",
+              "id validation period",
+              "what month is id validation"
             ]
           },
           "display_name": "ID Validation Day"
@@ -593,7 +735,18 @@
               "how get pe uniform",
               "pe uniform where to get",
               "where can i buy pe uniform",
-              "how to request physical education uniform"
+              "how to request physical education uniform",
+              "pe uniform process",
+              "physical education uniform process",
+              "how do i buy pe uniform",
+              "where can i request pe uniform",
+              "unsaon pagkuha pe uniform",
+              "asa makuha pe uniform",
+              "pe clothes where to get",
+              "freshman pe uniform process",
+              "where to pay pe uniform",
+              "pe uniform payment process",
+              "pe uniform university press"
             ]
           },
           "display_name": "PE Uniform Process",
@@ -782,7 +935,21 @@
               "where to get good moral",
               "good moral certificate fee",
               "request good moral from oss",
-              "kuha good moral certificate"
+              "kuha good moral certificate",
+              "asa mukuha og good moral",
+              "pila bayad sa good moral",
+              "Good moral certificate",
+              "how to get good moral certificate",
+              "how to request good moral",
+              "good moral certificate process",
+              "where to get good moral certificate",
+              "request certificate of good moral",
+              "good moral from oss",
+              "unsaon pagkuha good moral",
+              "asa makuha good moral",
+              "requirements for good moral certificate",
+              "how do i get certificate of good moral",
+              "oss good moral request"
             ]
           },
           "display_name": "Request Good Moral Certificate OSS"
@@ -806,121 +973,19 @@
               "good moral certificate fee",
               "good moral payment",
               "do i need to pay for good moral",
-              "pila ang good moral certificate"
+              "pila ang good moral certificate",
+              "how much good moral",
+              "payment for good moral certificate",
+              "good moral cost",
+              "pila ang good moral",
+              "naay bayad ang good moral",
+              "certificate of good moral fee"
             ]
           },
           "display_name": "Good Moral Certificate Fee"
         }
       ],
       "display_name": "Good Moral Certificate"
-    },
-    {
-      "topic": "affirmative_action_program",
-      "subject_key": "affirmative_action_program",
-      "subject_type": "program",
-      "subject_terms": [
-        "affirmative action",
-        "affirmative action program",
-        "aap",
-        "diversity and inclusion"
-      ],
-      "subtopics": [
-        {
-          "topic": "process",
-          "intent": "affirmative_action",
-          "context_topic": "process",
-          "responses": {
-            "en": [
-              "If you failed your buksu cat examination you still have a choice, you can apply for Affirmative Action Program (AAP) but please note that you cannot choose the courses you want to enroll in, they will be the one choosing your program depends on your capability.",
-              "here how you can apply the AAP",
-              "1. Monitor Your Results: Check your Report of Rating (ROR) via the BukSU Admissions Portal. Even if you are not on the list of <b>Qualifiers</b>, keep your account credentials. https://admissions.buksu.edu.ph/",
-              "2 Go to the Diversity and Inclusion Unit located at the BukSU Main Campus in Malaybalay City. This unit manages the AAP selection.",
-              "3. Submit Supporting Documents: You will need to provide proof of your eligibility, such as:<div><span style=\"color: rgb(15, 23, 41);\"><b>For IPs</b>: Certificate of Tribal Membership or NCIP Certificate.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>For PWDs:</b> Valid PWD ID.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>For Low-Income: </b>Certificate of Indigency from your Barangay or ITR of parents.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Academic Records:</b> Your Senior High School Report Card (Form 138).</span></div>",
-              "4. Interview/Evaluation: The Diversity and Inclusion Unit may conduct an interview to assess your <b>academic potential</b> and commitment to finishing the degree.",
-              "5. Placement: If approved, you may be offered a slot in a program that still has available capacity (note that highly competitive board courses like Nursing or Accountancy often have stricter cut-offs that AAP cannot always bypass)."
-            ],
-            "ceb": [
-              "Kung wala ka nakapasar sa BukSU CAT examination, naa gihapon kay laing kapilianâ€”pwede ka mo-apply sa Affirmative Action Program (AAP), apan palihug hinumdumi nga dili ikaw ang mopili sa kurso nga imong enrollan, sila ang mopili base sa imong kapasidad.",
-              "Ania kung giunsa pag-apply sa AAP:",
-              "1. Bantayi ang imong Resulta: Tan-awa ang imong Report of Rating (ROR) pinaagi sa BukSU Admissions Portal. Bisan dili ka apil sa listahan sa <b>Qualifiers</b>, i-keep ang imong account credentials. https://admissions.buksu.edu.ph/",
-              "2. Adto sa Diversity and Inclusion Unit nga nahimutang sa BukSU Main Campus sa Malaybalay City. Kini nga unit ang nagdumala sa AAP selection.",
-              "3. I-submit ang Supporting Documents: Kinahanglan nimo ipakita ang pruweba sa imong eligibility, sama sa:<div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa IPs:</b> Certificate of Tribal Membership o NCIP Certificate.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa PWDs:</b> Valid PWD ID.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Para sa Low-Income:</b> Certificate of Indigency gikan sa inyong Barangay o ITR sa ginikanan.</span></div><div><span style=\"color: rgb(15, 23, 41);\"><b>Academic Records:</b> Senior High School Report Card (Form 138).</span></div>",
-              "4. Interview/Evaluation: Ang Diversity and Inclusion Unit mahimong mag-conduct og interview aron masusi ang imong <b>academic potential</b> ug commitment sa paghuman sa degree.",
-              "5. Placement: Kung ma-aprubahan, mahimo kang hatagan og slot sa usa ka programa nga naa pay available nga kapasidad (hinumdumi nga ang highly competitive nga board courses sama sa Nursing o Accountancy kasagaran adunay mas istrikto nga cut-offs nga dili permi malabwan sa AAP)."
-            ]
-          },
-          "images": [],
-          "map": {
-            "lat": 500,
-            "lng": 500
-          },
-          "pins": [
-            {
-              "name": "Start From Here - Main Entrance",
-              "lat": 895,
-              "lng": 634
-            },
-            {
-              "name": "Diversity and Inclusion Unit",
-              "lat": 628,
-              "lng": 483
-            }
-          ],
-          "routes": [
-            {
-              "name": "Start From Here - Main Entrance to Diversity and Inclusion Unit",
-              "points": [
-                [
-                  895,
-                  634
-                ],
-                [
-                  786,
-                  633
-                ],
-                [
-                  782,
-                  505
-                ],
-                [
-                  794,
-                  501
-                ],
-                [
-                  794,
-                  447
-                ],
-                [
-                  628,
-                  453
-                ],
-                [
-                  628,
-                  469
-                ],
-                [
-                  628,
-                  483
-                ]
-              ],
-              "color": "#ff1744",
-              "route_order": 1,
-              "route_label": "Route 1"
-            }
-          ],
-          "metadata": {
-            "phrases": [
-              "how to apply for affirmative action",
-              "what is aap",
-              "affirmative action program process",
-              "where is diversity and inclusion unit",
-              "failed buksu cat affirmative action"
-            ]
-          },
-          "display_name": "Affirmative Action"
-        }
-      ],
-      "display_name": "Affirmative Action Program"
     },
     {
       "topic": "student_organizations",
@@ -958,7 +1023,17 @@
               "join student organizations process",
               "student body organization process",
               "sbo office",
-              "clubs right now"
+              "clubs right now",
+              "student organizations",
+              "student clubs",
+              "what clubs can i join",
+              "organizations in buksu",
+              "student body organization",
+              "sbo guidance",
+              "clubs for freshmen",
+              "unsa mga organization sa buksu",
+              "can freshmen join clubs",
+              "list of student organizations"
             ]
           },
           "suggestions": [

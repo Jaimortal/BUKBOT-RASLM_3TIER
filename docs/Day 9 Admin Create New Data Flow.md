@@ -2,111 +2,89 @@
 
 ## Phase 1: Create Parent Subject
 
-Implemented parent subject creation inside the admin Knowledge Manager.
+Added a `New Parent` flow inside the admin Knowledge Manager.
 
-Admins can now create a new grouped parent record in an existing `rasa/actions/Supper Saiyan/*.json` file.
+Admins can create a new parent subject group with:
 
-Created fields:
-
+- Source knowledge category JSON file
 - `topic`
 - `subject_key`
 - `subject_type`
 - `subject_terms`
-- empty `subtopics` array
+- Display name
 
-Backend route:
+Safety behavior:
 
-- `POST /api/admin/knowledge/:file/parent`
-
-Safety rules:
-
-- Only safe `.json` filenames inside `rasa/actions/Supper Saiyan` are accepted.
-- Topic keys must use lowercase letters, numbers, and underscores.
-- Subject keys must use lowercase letters, numbers, and underscores.
-- Duplicate topic keys in the same file are rejected.
-- Duplicate subject keys in the same file are rejected.
+- Topic and subject keys must use lowercase letters, numbers, and underscores.
+- Subject terms are required so the retrieval layer has a usable trigger surface.
+- Backend still validates duplicate `topic` and duplicate `subject_key`.
+- Newly created parent groups start with an empty `subtopics` list.
 
 ## Phase 2: Create Subtopic
 
-Implemented subtopic creation inside the admin Knowledge Manager.
+Added an `Add subtopic` flow from parent/topic-group rows in the Knowledge Manager.
 
-Admins can now create a child record under an existing parent subject.
-
-Created fields:
+Admins can create a new answer subtopic with:
 
 - `topic`
-- optional `intent`
-- optional `context_topic`
+- `intent`
+- `context_topic`
+- Display name
 - `responses.en`
 - `responses.ceb`
-- optional `metadata.phrases`
-- optional `images`
-- optional `mapRef`
-- optional `map`
-- optional `mapData`
-- optional `pins`
-- optional `routes`
+- `metadata.phrases`
+- Images
+- `mapRef`
+- Optional pins and routes through the visual map editor
 
-Backend route:
+Safety behavior:
 
-- `POST /api/admin/knowledge/:file/subtopic`
+- Topic keys are required and validated.
+- Intent and context topic are optional, but if provided they must use machine-key format.
+- At least one English or Cebuano response line is required.
+- At least one example question is required to improve retrieval accuracy.
+- Optional map pins/routes reuse the same validation used by existing record editing.
+- Backend still validates duplicate subtopic keys under the selected parent.
 
-Safety rules:
+## Phase 3: Validation Warnings
 
-- Subtopics are added by nested parent path.
-- Existing grouped data is not flattened.
-- Duplicate subtopic keys under the same parent are rejected.
-- Optional JSON map fields are parsed before save.
+Added pre-save warning panels in the Knowledge Manager create dialogs.
 
-Frontend files:
+Parent subject warnings:
+
+- Warns when `topic` already exists inside the selected JSON file.
+- Warns when `subject_key` already exists in any knowledge record.
+- Warns when `subject_terms` are empty.
+- Warns when `subject_terms` are too generic, such as `id`, `process`, `requirements`, `student`, or `office`.
+- Warns when subject terms are very short and likely to overlap.
+
+Subtopic warnings:
+
+- Warns when English and Cebuano responses are both empty.
+- Warns when example question phrases are empty.
+- Warns when a subtopic key already exists under the selected parent.
+- Warns when the same topic key exists elsewhere in the same JSON file.
+- Warns when `mapRef` does not match an existing topic, intent, subject key, context topic, or display name.
+- Warns when a phrase heavily overlaps with an existing topic phrase.
+
+These are warnings for accuracy and maintainability. Required fields and machine-key format are still enforced before save.
+
+## Files Updated
 
 - `client/src/components/admin/AdminKnowledgeManager.tsx`
 - `client/src/lib/adminApi.ts`
-
-Backend files:
-
 - `server/controllers/adminKnowledgeController.ts`
-- `server/routes.ts`
 
-## Debugging Results
+## Checks
 
 Passed:
 
-- `npm.cmd run build`
-- `python -m unittest discover -s test`
-- JSON parse smoke check for all Supper Saiyan JSON files
-- Temporary parent/subtopic creation fixture test
+- Focused esbuild bundle check for `client/src/components/admin/AdminKnowledgeManager.tsx`
+- Focused esbuild bundle check for `server/controllers/adminKnowledgeController.ts`
+- JSON parse smoke check for `rasa/actions/Supper Saiyan/*.json`
+- Validation warning logic is client-side and uses the loaded Knowledge Manager records, so no Rasa retrain is needed.
 
-Fixture test confirmed:
+Notes:
 
-- Parent creation returned path `[0]`
-- Duplicate parent topic was rejected
-- Subtopic creation returned path `[0, 0]`
-- Duplicate subtopic key under the same parent was rejected
-- List endpoint loaded the new parent and child records
-- Map reference and pins were saved on the child
-- Parent/subtopic grouping stayed intact
-- Temporary test file was deleted after verification
-
-Additional edge-case debug pass:
-
-- Unsafe filenames are rejected.
-- Invalid topic keys are rejected.
-- Duplicate subject keys are rejected.
-- Invalid parent paths are rejected.
-- Missing response arrays are rejected.
-- Duplicate subtopic keys are rejected.
-- Topic rename attempts are rejected.
-- Existing subtopics can still be updated after creation.
-- Empty `mapRef` clears the existing map reference.
-- Focused TypeScript scan showed no Day 9 errors in the Knowledge Manager files.
-
-Known project-wide check issue:
-
-- `npm.cmd run check` still fails because of existing unrelated TypeScript errors in `MapPage.tsx`, `server/admin-db.ts`, `server/db.ts`, and `server/storage.ts`.
-
-## Notes
-
-Creating pure JSON knowledge does not require Rasa retraining unless new NLU examples, domain entries, stories, or rules are added.
-
-Day 9 Phase 3 validation warnings are not implemented yet. That phase should add softer admin warnings for generic terms, duplicate phrases, missing responses, and invalid `mapRef` targets.
+- No Rasa retrain is needed for pure JSON parent/subtopic additions.
+- Rasa action server or data loader reload is still needed until the Day 10 hot reload phase is completed.

@@ -37,7 +37,23 @@
               "where to get library id",
               "tell me where to get library id",
               "where can i get my library id",
-              "asa makuha ang library id"
+              "asa makuha ang library id",
+              "asa makakuha ug library id",
+              "unsaon pagkuha og library id",
+              "Library ID location",
+              "where to claim library id",
+              "where to process library card",
+              "where do i go for library id",
+              "asa kuhaon ang library card",
+              "asa ko makakuha og library id",
+              "library id asa makuha",
+              "library card location",
+              "library id office",
+              "where is library id released",
+              "where should i ask for barcoded library card",
+              "i need library id where should i go",
+              "tell me where to get library card",
+              "where can freshmen get library id"
             ]
           },
           "display_name": "Library ID Card Location"
@@ -60,7 +76,23 @@
               "requirements for library id card",
               "what should i bring for library id",
               "library id cor requirement",
-              "unsa requirements sa library id"
+              "unsa requirements sa library id",
+              "unsa kailangan para sa library id",
+              "kinahanglan para sa library id",
+              "Library ID requirements",
+              "requirements for library id",
+              "what to bring for library id",
+              "what do i need for library card",
+              "library card requirements",
+              "requirements sa library id",
+              "kinahanglan para library id",
+              "need ba cor for library id",
+              "do i need cor for library card",
+              "documents needed for library id",
+              "what are the requirements to get barcoded library card",
+              "freshman library id requirements",
+              "what should i prepare for library id",
+              "requirements to claim library card"
             ]
           },
           "display_name": "Library ID Card Requirements"
@@ -83,7 +115,21 @@
               "library id payment",
               "do i need to pay for library id",
               "library id fee",
-              "pila ang library id"
+              "pila ang library id",
+              "bayad sa library id",
+              "pila ang bayad sa library id",
+              "pay for library id",
+              "library card payment",
+              "do i pay for library id",
+              "is library card free",
+              "naay bayad ang library id",
+              "library id bayad",
+              "payment for library card",
+              "cost of library id card",
+              "fee for barcoded library card",
+              "do freshmen pay for library id",
+              "how much to get library card",
+              "library id free ba"
             ]
           },
           "display_name": "Library ID Card Payment"
@@ -130,7 +176,17 @@
               "library borrowing rules",
               "book borrowing policy",
               "can i borrow reserve books",
-              "rules for borrowing books"
+              "rules for borrowing books",
+              "library book rules",
+              "can students borrow books",
+              "who can borrow library books",
+              "borrow books rules",
+              "policy for borrowing books",
+              "rules sa paghulam libro",
+              "unsa rules sa library borrowing",
+              "library borrowing policy",
+              "book borrowing guidelines",
+              "borrowing rules in library"
             ]
           },
           "display_name": "Library Borrowing Rules"
@@ -150,10 +206,27 @@
           "metadata": {
             "phrases": [
               "how to borrow books",
+              "tell me whats the process of getting books",
+              "process of getting books",
+              "how to get books from library",
+              "how do i get library books",
+              "getting books from library",
+              "how can i get a book in the library",
               "how can i borrow book from library",
               "what do i need to borrow books",
               "borrow books in library",
-              "unsaon paghulam og libro"
+              "unsaon paghulam og libro",
+              "how can i borrow library books",
+              "process to borrow book",
+              "borrow book process",
+              "steps to borrow books in library",
+              "unsaon paghulam og libro sa library",
+              "paano mag borrow books sa library",
+              "can i borrow a book from library",
+              "i want to borrow books",
+              "how do freshmen borrow books",
+              "library book borrowing process",
+              "what should i do to borrow library book"
             ]
           },
           "display_name": "Library Borrow Books Process"
@@ -176,7 +249,16 @@
               "where to return library books",
               "return borrowed books",
               "library book return process",
-              "unsaon pag uli sa libro"
+              "unsaon pag uli sa libro",
+              "return library book process",
+              "where to return borrowed books",
+              "steps to return library books",
+              "unsaon pag uli sa library book",
+              "how do i return borrowed book",
+              "book return process library",
+              "return books to library",
+              "where should i give back library books",
+              "library book return steps"
             ]
           },
           "display_name": "Library Return Books Process"
@@ -201,7 +283,18 @@
               "library late return fine",
               "how much is unreturned book penalty",
               "book center unreturned book penalty",
-              "multa sa wala nauli nga libro"
+              "multa sa wala nauli nga libro",
+              "late return penalty library",
+              "penalty for late books",
+              "fine for unreturned book",
+              "what happens if i return book late",
+              "library book overdue fine",
+              "pila penalty sa late return book",
+              "naay fine kung late ang libro",
+              "late borrowed book penalty",
+              "unreturned library book penalty",
+              "library late fee",
+              "book overdue payment"
             ]
           },
           "display_name": "Library Late Return Penalty"
@@ -224,7 +317,14 @@
               "available books in library",
               "does library have books",
               "where to ask for available books",
-              "naa bay available books sa library"
+              "naa bay available books sa library",
+              "what books are available in library",
+              "book availability library",
+              "can i check available books",
+              "library available resources books",
+              "unsa books naa sa library",
+              "list of books in library",
+              "how to know if book is available"
             ]
           },
           "display_name": "Library Available Books"
@@ -247,7 +347,17 @@
               "access library resources",
               "what id is needed for library resources",
               "library resources access",
-              "unsaon pag access sa library resources"
+              "unsaon pag access sa library resources",
+              "ang student ba pwedi maka access sa library resources",
+              "pwedi ko nimo storyahan unsaon nako pag access sa university library resources",
+              "how do student can access the library resources",
+              "online library resources",
+              "how to use library resources",
+              "where can i access library resources",
+              "unsaon pag access library resources",
+              "buksu library resources login",
+              "digital library resources",
+              "library online resources"
             ]
           },
           "display_name": "Access BukSU Library Resources"
@@ -285,7 +395,17 @@
               "library hours",
               "library schedule",
               "when does library close",
-              "oras sa library"
+              "oras sa library",
+              "unsa oras open ang library",
+              "what time does the library open",
+              "what time library open",
+              "library opening hours",
+              "library closing time",
+              "open ba ang library",
+              "kanus a open ang library",
+              "library office hours",
+              "is library open today",
+              "library time schedule"
             ]
           },
           "display_name": "Library Hours Answer Topic"

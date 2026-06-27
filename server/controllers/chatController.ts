@@ -82,6 +82,7 @@ export class ChatController {
       const result = await callRasaAPI(intent, preferredLanguage, sessionId);
 
       let answerText = "I cannot understand your question.";
+      let answerParts: string[] = ["I cannot understand your question."];
       let detectedIntent = null;
       let mapDataFromRasa = null;
       const allAnswers: string[] = [];
@@ -95,7 +96,16 @@ export class ChatController {
         }
         
         if (allAnswers.length > 0) {
-          answerText = allAnswers.join("\n\n");  // Combine all answers with separator
+          answerParts = allAnswers.flatMap((answer) =>
+            String(answer)
+              .split(/\r?\n/)
+              .map((part) => part.trim())
+              .filter(Boolean)
+          );
+          if (answerParts.length === 0) {
+            answerParts = allAnswers.map((answer) => String(answer).trim()).filter(Boolean);
+          }
+          answerText = answerParts.join("\n\n");  // Keep joined text for logs/fallback checks
           detectedIntent = intent;
         }
       }
@@ -212,7 +222,7 @@ export class ChatController {
       const formattedMapData = formattedMapDataList.length > 0 ? formattedMapDataList[0] : null;
 
       return res.json({
-        answer: answerText,
+        answer: answerParts,
         follow_up: result?.[0]?.custom?.follow_up ?? [],
         mapData: formattedMapData,
         mapDataList: formattedMapDataList.length > 0 ? formattedMapDataList : undefined,

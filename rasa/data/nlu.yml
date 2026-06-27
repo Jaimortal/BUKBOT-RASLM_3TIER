@@ -26,6 +26,11 @@ nlu:
     - asa ko moadto para sa [COR validation](service)
     - where do I go for [student ID](document)
     - where is [dormitory](location_name)
+    - motorcycle parking area
+    - where can I park my motorcycle
+    - is there an ATM inside the campus
+    - ATM location
+    - parking area
 
 - intent: ask_schedule
   examples: |
@@ -63,6 +68,8 @@ nlu:
     - when is COR validation
     - COR validation day
     - COR validation schedule
+    - when is the admission application testing schedule
+    - admission testing application date
 
 - intent: ask_fee
   examples: |
@@ -124,6 +131,9 @@ nlu:
     - how to enroll freshman
     - freshman enroll how
     - how can a freshman enroll
+    - how can a transferee enroll
+    - transferee enrollment process
+    - what is the process for returning students
     - am i allowed to enroll even if its late
     - can i still enroll late
     - unsaon pag enroll
@@ -166,6 +176,9 @@ nlu:
     - services that buksu can provide
     - services list
     - unsay mga services ni buksu
+    - can I enroll online
+    - walkin entrance exam is allowed
+    - walk in entrance exam allowed
 
 - intent: ask_general_info
   examples: |
@@ -226,6 +239,9 @@ nlu:
     - vice president for academic affairs
     - vice president for administration and finance
     - who is the board secretary
+    - pass notice how
+    - how do I know if I passed admission
+    - major in English program
     - what is GPAT
     - tell me about GPAT
     - unsa ang GPAT
@@ -302,6 +318,61 @@ nlu:
     - does BukSU have [nursing](program)
     - naa bay [education](program)
 
+- intent: ask_facility_availability
+  examples: |
+    - does BukSU have a [library](facility_name)
+    - do buksu has a [library](facility_name)
+    - does Bukidnon State University have a [library](facility_name)
+    - is there a [library](facility_name) in BukSU
+    - is there a [museum](facility_name) in BukSU
+    - is the Bukidnon State University has [museum](facility_name)
+    - does BukSU have a [clinic](facility_name)
+    - does BukSU have [health services](facility_name)
+    - is there a [dental clinic](facility_name) in BukSU
+    - does BukSU have [dental services](facility_name)
+    - does BukSU have a [gym](facility_name)
+    - is there a [gymnasium](facility_name) on campus
+    - does BukSU have [cafeteria](facility_name)
+    - is there a [canteen](facility_name) in BukSU
+    - does BukSU have an [ATM](facility_name)
+    - is there [parking](facility_name) in BukSU
+    - does BukSU have [motorcycle parking](facility_name)
+    - does BukSU have [car parking](facility_name)
+    - does BukSU have [dormitory](facility_name)
+    - is there a [student dorm](facility_name) in BukSU
+    - does BukSU have an [oval](facility_name)
+    - does BukSU have [open field](facility_name)
+    - is there an [auditorium](facility_name) in BukSU
+    - does BukSU have [guidance office](facility_name)
+    - is there a [registrar office](facility_name) in BukSU
+    - does BukSU have [finance office](facility_name)
+    - is there a [cashier](facility_name) in BukSU
+    - does BukSU have [ICT office](facility_name)
+    - is there an [admission office](facility_name) in BukSU
+    - does BukSU have [guard house](facility_name)
+    - do students have access to the [library](facility_name)
+    - are there [parking areas](facility_name) for students
+    - is [museum](facility_name) available in BukSU
+    - is [clinic](facility_name) available on campus
+    - naa bay [library](facility_name) sa BukSU
+    - naa ba ang BukSU og [library](facility_name)
+    - aduna bay [museum](facility_name) sa BukSU
+    - naa bay [clinic](facility_name) sa BukSU
+    - naa bay [dental clinic](facility_name) sa BukSU
+    - naa bay [gym](facility_name) sa BukSU
+    - naa bay [canteen](facility_name) sa BukSU
+    - naa bay [ATM](facility_name) duol sa BukSU
+    - naa bay [parking](facility_name) sa BukSU
+    - naa bay [dorm](facility_name) sa BukSU
+    - naa bay [oval](facility_name) sa BukSU
+    - naa bay [auditorium](facility_name) sa BukSU
+    - naa bay [guidance office](facility_name) sa BukSU
+    - naa bay [registrar](facility_name) sa BukSU
+    - naa bay [cashier](facility_name) sa BukSU
+    - naa bay [ICT office](facility_name) sa BukSU
+    - naa bay [admission office](facility_name) sa BukSU
+    - naa bay [guard house](facility_name) sa BukSU
+
 - intent: ask_document
   examples: |
     - where can I get [INC form](document)
@@ -312,6 +383,10 @@ nlu:
     - how to get [certificate of registration](document)
     - where can I get [library ID](document)
     - student ID form
+    - where do I submit my missing admission documents
+    - incomplete admission documents
+    - enrollment document list
+    - what documents do I need to bring on enrollment day
 
 - intent: ask_follow_up
   examples: |
@@ -365,3 +440,11 @@ nlu:
     - asdfgh
     - qwerty
     - blah blah
+
+- intent: out_of_scope
+  examples: |
+    - what is the weather today
+    - tell me a joke
+    - who won the NBA game
+    - write my assignment for me
+    - order food for me

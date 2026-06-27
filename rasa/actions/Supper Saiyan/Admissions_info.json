@@ -34,7 +34,18 @@
           "context_topic": "meaning",
           "metadata": {
             "phrases": [
-              "buksu cat definition"
+              "buksu cat definition",
+              "unsa meaning sa buksu cat",
+              "para unsa ang college admission test",
+              "what is buksu cat",
+              "what does cat stand for",
+              "what is buksu college admission test",
+              "what does buksu cat mean",
+              "cat meaning in buksu admission",
+              "unsa nang buksu cat",
+              "unsa pasabot sa cat sa buksu",
+              "college admission test meaning",
+              "buksu entrance test meaning"
             ]
           },
           "display_name": "BukSU CAT Definition"
@@ -65,7 +76,28 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "take exam"
+              "take exam",
+              "unsa ang mga steps para maka-apply sa buksu cat",
+              "step by step nga proseso unsaon pag-take sa admission test sa buksu",
+              "unsaon nako pag-register sa buksu entrance exam online",
+              "how can i take the buksu college admission test",
+              "how do i register for the buksu entrance exam online",
+              "can you tell me the process of applying for the buksu admission test",
+              "are als passers allowed to take the buksu college admission test",
+              "unsaon pag take sa buksu cat",
+              "unsa ang steps para maka exam",
+              "unsaon pag register sa admission",
+              "how to apply for admission test",
+              "how to take the admission exam",
+              "how do i apply for buksu cat",
+              "how to register for buksu cat exam",
+              "how can incoming first year take the entrance exam",
+              "where do i apply for the college admission test",
+              "steps to schedule my buksu cat",
+              "unsaon pag apply sa buksu cat",
+              "unsaon pag schedule sa entrance exam",
+              "mag register ko para buksu cat",
+              "apply for admission testing online"
             ]
           },
           "display_name": "Take Exam"
@@ -96,7 +128,30 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "exam requirements"
+              "exam requirements",
+              "unsa ang kinahanglan nako dalhon sa adlaw sa exam",
+              "pwede nimo isulti unsa ang mga requirements nga akong dad-on para sa exam",
+              "unsa akong kinahanglan dad-on para sa exam",
+              "lista sa mga kinahanglan dad-on sa buksu admission exam",
+              "what do i need to bring for exam",
+              "list of items to bring during the buksu admission examination",
+              "unsa akong dad on sa exam",
+              "pwede ba magdala og ballpen sa cat",
+              "unsa mga requirements sa admission exam",
+              "unsa dad on sa buksu cat",
+              "what should I bring on examination day",
+              "what do i need for admission test",
+              "what documents do i need for buksu cat",
+              "unsa kinahanglan para sa admission test",
+              "what should i bring for buksu cat",
+              "requirements on buksu cat examination day",
+              "what to bring during entrance exam",
+              "what are the test day requirements",
+              "do i need pencil for buksu cat",
+              "dad on para sa buksu cat exam",
+              "unsa dalhon sa entrance exam",
+              "kinahanglan ba ang test permit sa exam day",
+              "admission exam things to bring"
             ]
           },
           "display_name": "Exam Requirements"
@@ -125,7 +180,17 @@
               "test permit cannot open",
               "exam permit corrupted",
               "my test permit is missing",
-              "cannot download test permit"
+              "cannot download test permit",
+              "test permit not opening",
+              "test permit wont open",
+              "test permit is blank",
+              "test permit download failed",
+              "my exam permit is corrupted",
+              "admission test permit error",
+              "dili ma open akong test permit",
+              "di ma download ang test permit",
+              "nawala akong test permit",
+              "test permit file problem"
             ]
           },
           "display_name": "Test Permit Issue"
@@ -150,7 +215,31 @@
           "context_topic": "payment",
           "metadata": {
             "phrases": [
-              "exam fees"
+              "exam fees",
+              "naa bay bayad ang buksu college admission test",
+              "kinahanglan ba ko mobayad para sa buksu entrance exam",
+              "pila ang bayad sa admission test sa buksu",
+              "libre ba ang buksu cat exam o kinahanglan mobayad",
+              "naa bay bayad sa pag-take sa college admission test sa buksu",
+              "kinahanglan ba mobayad ang second coursers sa admission test",
+              "is there a fee for the buksu college admission test",
+              "do i need to pay for the buksu entrance exam",
+              "how much is the admission test fee in buksu",
+              "is the buksu cat exam free or do i need to pay",
+              "naay bayad ang entrance exam",
+              "pila ang bayad sa buksu cat",
+              "libre ra ba ang exam",
+              "how much is the admission test fee",
+              "do I have to pay for the test",
+              "is buksu cat free",
+              "is entrance exam free",
+              "is there payment for admission exam",
+              "do i pay for college admission test",
+              "cat exam payment",
+              "bayad sa entrance exam",
+              "libre ba ang buksu admission test",
+              "naa bay bayad ang buksu cat",
+              "pila bayad entrance exam"
             ]
           },
           "display_name": "Exam Fees"
@@ -161,19 +250,58 @@
             "en": [
               "How and when will I know my examination result?",
               "The schedule of releasing examination results will be posted on the BukSU Admission and Testing Facebook page.",
-              "Examination results will also be posted on your admission account around May to June."
+              "Examination results will also be posted on your admission account around May to June.",
+              "To check if you passed, log in to your BukSU Admission account and open the Admission tab or Show Exam Result if it is already available."
             ],
             "ceb": [
               "Unsaon ug kanus-a nako makuha ang resulta sa akong examination?",
               "Ang schedule sa pag-release sa examination results ipost sa BukSU Admission and Testing Facebook page.",
-              "Ang resulta sa examination ipost usab sa imong admission account mga bulan sa Mayo hangtod Hunyo."
+              "Ang resulta sa examination ipost usab sa imong admission account mga bulan sa Mayo hangtod Hunyo.",
+              "Para mahibal-an kung nakapasar ka, login sa imong BukSU Admission account ug ablihi ang Admission tab o Show Exam Result kung available na."
             ]
           },
           "intent": "exam_results",
           "context_topic": "result",
           "metadata": {
             "phrases": [
-              "exam results"
+              "exam results",
+              "pass notice how",
+              "how do i know if i passed",
+              "how to know if passed admission",
+              "admission pass notice",
+              "passed admission screening",
+              "kanus-a i-release ang resulta sa exam",
+              "unsaon nako pag-check sa akong admission exam results",
+              "asa i-post sa buksu ang resulta sa exam",
+              "kanus-a nila i-release ang resulta sa admission test",
+              "unsaon ug kanus-a nako mahibal-an akong resulta sa buksu exam",
+              "asa nako makita ang akong buksu exam result",
+              "unsaon nako pagtan-aw sa cat exam result sa akong account",
+              "step by step unsaon pag-check sa buksu cat result",
+              "when will the examination results be released",
+              "how can i check my admission exam results",
+              "where will buksu post the examination results",
+              "when do they release the results of the admission test",
+              "kanus a mogawas ang result sa exam",
+              "pila ka adlaw ayha mogawas ang result",
+              "unsaon nako pag check sa akong exam result",
+              "when mogawas ang exam result",
+              "when will I know my exam results",
+              "where can i see my buksu cat result",
+              "where can i view my admission test result",
+              "how to view exam result in admission account",
+              "when will buksu cat result come out",
+              "when is admission test result released",
+              "aha makita akong result sa examination",
+              "asa nako lantawon akong exam result",
+              "unsaon pag lantaw sa admission test result",
+              "kanus-a mogawas akong buksu cat result",
+              "result sa akong buksu examination",
+              "can you tell me when do admission examination release date",
+              "when is the admission examination result release date",
+              "when will the admission exam result be released",
+              "when will admission result come out",
+              "kanus a mogawas ang buksu cat result"
             ]
           },
           "display_name": "Exam Results"
@@ -184,19 +312,38 @@
             "en": [
               "The BukSU Entrance Examination cannot be rescheduled once your exam date has been assigned.",
               "If you are unable to attend your scheduled exam, you may need to wait for the next admission cycle.",
-              "I recommend ensuring your availability on your assigned exam date to avoid delays in your admission."
+              "I recommend ensuring your availability on your assigned exam date to avoid delays in your admission.",
+              "Remember also that walk-in entrance examination is not allowed."
             ],
             "ceb": [
               "Dili ma-reschedule ang BukSU Entrance Examination kung naa na kay assigned exam date.",
               "Kung dili ka makatunga sa imong scheduled exam, mahimo nga kinahanglan ka maghulat sa sunod nga admission cycle.",
-              "Mas maayo nga siguroon ang imong availability sa imong exam date aron malikayan ang delay sa imong admission."
+              "Mas maayo nga siguroon ang imong availability sa imong exam date aron malikayan ang delay sa imong admission.",
+              "Hinumdomi usab nga dili pwede ang walk-in entrance examination."
             ]
           },
           "intent": "reschedule_entrance_exam",
           "context_topic": "schedule",
           "metadata": {
             "phrases": [
-              "reschedule entrance exam"
+              "reschedule entrance exam",
+              "walkin entrance exam is allowed",
+              "walk in entrance exam is allowed",
+              "walk-in entrance exam",
+              "can i walk in for entrance exam",
+              "is walk in allowed for admission test",
+              "pwede ma reschedule akong entrance exam",
+              "unsaon if dili ko ka adto sa sked",
+              "pwede pa usbon ang petsa sa cat",
+              "can I change my exam date",
+              "how to change testing schedule",
+              "can i reschedule my buksu cat",
+              "how to change my entrance exam schedule",
+              "change buksu cat schedule",
+              "reschedule admission test date",
+              "move my exam schedule",
+              "pwede ba ilisan akong exam schedule",
+              "unsaon pag reschedule sa buksu cat"
             ]
           },
           "display_name": "Reschedule Entrance Exam"
@@ -217,7 +364,18 @@
           "context_topic": "schedule",
           "metadata": {
             "phrases": [
-              "missed buksu cat schedule"
+              "missed buksu cat schedule",
+              "na miss nako ang exam date",
+              "what if nakaligtaan akong exam schedule",
+              "nawala nako sa akong exam date",
+              "na late ko ug adlaw sa akong exam",
+              "missed cat exam",
+              "i missed my buksu cat schedule",
+              "what if i missed my admission test",
+              "absent during entrance exam schedule",
+              "wala ko ka take sa akong cat schedule",
+              "nalate ko sa buksu cat exam",
+              "missed entrance exam date"
             ]
           },
           "display_name": "Missed BukSU CAT Schedule"
@@ -236,7 +394,12 @@
           "context_topic": "policy",
           "metadata": {
             "phrases": [
-              "buksu cat calculator policy"
+              "buksu cat calculator policy",
+              "pwede mu gamit ug calculator sa exam",
+              "maka gamit ba tag calcu",
+              "allowed ba ang scientific calculator",
+              "are calculators allowed in buksu cat",
+              "is calcu allowed inside"
             ]
           },
           "display_name": "BukSU CAT Calculator Policy"
@@ -266,7 +429,30 @@
           "context_topic": "result",
           "metadata": {
             "phrases": [
-              "cat exam result"
+              "cat exam result",
+              "unsaon nakabalo kung pasar na kos cat",
+              "asa nako makita ang report of rating",
+              "nakapasar ba ko unsaon pag tan aw",
+              "how to see if I passed the exam",
+              "where to verify my admission outcome",
+              "how do i know if i passed buksu cat",
+              "how to check if i passed the admission exam",
+              "where is show exam result in admission account",
+              "where to find report of rating in admission account",
+              "show exam result button",
+              "lantaw kung pasar ba ko sa cat",
+              "asa makita kung nakapasar ko sa buksu cat",
+              "report of rating sa admission account",
+              "how do i know my cat score",
+              "how to check my admission result",
+              "how do i know my cat percentage",
+              "where can i see my cat result",
+              "how can i view my admission result",
+              "how to check my cat score",
+              "how to see my cat percentage",
+              "where can i check my admission result",
+              "unsaon nako pagka kita sa akong cat result percentage",
+              "unsaon nako pag lantaw nako sa akong cat result"
             ]
           },
           "display_name": "CAT Exam Result"
@@ -284,7 +470,9 @@
         "application status",
         "admission portal",
         "apply admission",
-        "application deadline"
+        "application deadline",
+        "missing admission documents",
+        "incomplete admission documents"
       ],
       "subtopics": [
         {
@@ -305,7 +493,23 @@
           "context_topic": "process",
           "metadata": {
             "phrases": [
-              "application next step"
+              "application next step",
+              "nahuman na nako ang online application unsa na sunod buhaton",
+              "nahuman na nako akong online application unsa akong buhaton sunod",
+              "human nako submit sa application unsa na sunod buhaton",
+              "nahuman na nako ang application form unsa na sunod",
+              "i already filled out the online application what do i do next",
+              "what is the next step after completing the buksu application form",
+              "naka fill out na ko unsa sunod",
+              "human og pasa sa application unsaon",
+              "unsa akong buhaton igka human pasa",
+              "what is the next step after application",
+              "what to do next",
+              "what should i do after admission application",
+              "next step after applying for buksu cat",
+              "after submitting admission application what next",
+              "human submit sa admission unsay sunod",
+              "unsa sunod after application"
             ]
           },
           "display_name": "Application Next Step"
@@ -328,41 +532,203 @@
           "context_topic": "status",
           "metadata": {
             "phrases": [
-              "status application"
+              "status application",
+              "unsaon nako pagkahibalo kung na-accept akong application",
+              "unsaon nako pagkahibalo kung approved akong cat exam application",
+              "asa nako ma-check kung nadawat akong buksu cat application",
+              "how will i know if my admission application is accepted",
+              "where can i check the status of my buksu admission application",
+              "where do i check if my buksu cat application got accepted",
+              "unsaon pagkabalo nga accepted na",
+              "gi accept ba akong application",
+              "status sa akong application",
+              "approved na ba akong application",
+              "how to check my application status",
+              "how to check admission application status",
+              "where can i see my application status",
+              "is my buksu admission application accepted",
+              "pending pa ba akong admission application",
+              "unsaon pag check sa application status"
             ]
           },
           "display_name": "Status Application"
         },
         {
+          "topic": "missing_admission_documents",
+          "responses": {
+            "en": [
+              "If you still have missing admission documents, log in to your BukSU Admission account and edit your admission application so you can upload the remaining document.",
+              "Make sure every required document is complete before submitting the admission testing application.",
+              "Missing documents may delay the approval of your admission testing application or may cause your application to be rejected."
+            ],
+            "ceb": [
+              "Kung naa kay kulang nga admission documents, login sa imong BukSU Admission account ug i-edit ang imong admission application aron ma-upload nimo ang kulang nga document.",
+              "Siguroa nga kompleto ang tanang required documents before nimo i-submit ang admission testing application.",
+              "Ang kulang nga documents mahimong makadelay sa approval sa imong admission testing application o mahimong rason nga ma-reject ang imong application."
+            ]
+          },
+          "intent": "missing_admission_documents",
+          "context_topic": "document",
+          "metadata": {
+            "phrases": [
+              "missing admission documents",
+              "where do i submit my missing admission documents",
+              "where to submit missing admission documents",
+              "incomplete admission documents",
+              "how to upload missing admission document",
+              "i forgot to upload admission document",
+              "where do i submit missing admission documents",
+              "i forgot to upload admission requirement",
+              "incomplete admission requirements where to submit",
+              "missing document in buksu admission",
+              "kulang akong admission documents",
+              "asa ipasa ang kulang nga admission requirements"
+            ],
+            "strong_keywords": [
+              "missing admission documents",
+              "incomplete admission documents",
+              "upload document",
+              "edit admission application"
+            ],
+            "weak_keywords": [
+              "submit",
+              "remaining",
+              "document",
+              "application"
+            ]
+          },
+          "display_name": "Missing Admission Documents"
+        },
+        {
+          "topic": "change_preferred_course_admission_application",
+          "responses": {
+            "en": [
+              "You may request to change your preferred course, but I recommend not changing it unless it is really necessary because it may cause conflicts with your admission application or evaluation.",
+              "If you really want to change your preferred course, go to the Admission and Testing Unit office or contact them and ask for the proper process.",
+              "I recommend visiting their office directly so they can check your application and assist you faster if the change is allowed.",
+              "Facebook Page: https://www.facebook.com/BukSUATU",
+              "Email: admissionandtesting@buksu.edu.ph"
+            ],
+            "ceb": [
+              "Pwede ka mo-request nga ilisan ang imong preferred course, pero mas maayo nga dili nimo kini usbon kung dili gyud kinahanglan kay mahimong makahatag kini og conflict sa imong admission application o evaluation.",
+              "Kung gusto gyud nimo ilisan imong preferred course, adto sa Admission and Testing Unit office o contact-a sila ug pangutana sa saktong proseso.",
+              "Mas maayo nga moadto gyud ka sa ilang office aron ma-check nila imong application ug matabangan ka dayon kung allowed ang pag-change.",
+              "Facebook Page: https://www.facebook.com/BukSUATU",
+              "Email: admissionandtesting@buksu.edu.ph"
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "Admission location",
+              "payload": "admission office location"
+            }
+          ],
+          "intent": "change_preferred_course_admission_application",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "can i still change my preferred course even after passing the buksu cat",
+              "can i still change my preferred course even after passing the buksu-cat",
+              "can i still change my preferred course after passing the buksu cat",
+              "can i change my admission course",
+              "can i change my admission courses",
+              "can i change admission course",
+              "can i still change my admission course",
+              "how to change my admission course",
+              "change my admission course",
+              "do i allowed to change my preferred course after passing the admission examination",
+              "am i allowed to change my preferred course after passing the admission examination",
+              "can i change my course listed on my admission application after the examination",
+              "am i allowed to change my course after the admission examination",
+              "am i allowed to change my course after admission exam",
+              "can i change my course after admission exam",
+              "can i change my course after entrance exam",
+              "can i change my course after buksu cat",
+              "am i allowed to change my course in admission website",
+              "can i change my course in admission website",
+              "can i change my course in my admission account",
+              "can i change the course in my admission application",
+              "can i change my preferred course in my admission application",
+              "can i change my preferred course after the entrance exam",
+              "can i change my course after the entrance examination",
+              "can i change my course after buksu cat result",
+              "can i change my selected course after buksu cat",
+              "can i change my chosen course after admission exam",
+              "can i edit my preferred course after taking buksu cat",
+              "can i edit my course after admission examination",
+              "can i update my course choice in the admission portal",
+              "how to change preferred course in admission application",
+              "how to change course in buksu admission website",
+              "how do i change my course in admission portal",
+              "change course listed in admission application",
+              "change preferred course after cat exam",
+              "change preferred course after entrance exam",
+              "change my course choice after passing buksu cat",
+              "pwedi ranako ni ma change ang courses sa akong admission application",
+              "pwede ranako ni ma change ang course sa akong admission application",
+              "maka ilis bakog course biskan humana kog entrance exam",
+              "maka ilis ba ko og course biskan humana kog entrance exam",
+              "maka ilis ba ko og course bisan humana ko og entrance exam",
+              "pwede nako ilisdan akong preferred course sa admission",
+              "pwede nako ilisan akong preferred course sa admission",
+              "pwede ba ilisan akong course sa admission website",
+              "pwede ba ko mo change og course sa admission application",
+              "pwede pa ba ilisan ang course after buksu cat",
+              "pwede pa ba ko mag ilis og course after admission exam",
+              "humana ko og entrance exam pwede pa ba ilisan akong course",
+              "after sa cat result pwede pa ba ilisan akong course",
+              "course sa admission application pwede pa ba ma change",
+              "gi allowed bako nga ilisdan nako akong course sulod sa admission application",
+              "allowed ba ko nga ilisan akong course sulod sa admission application",
+              "pwede ba nako ilisdan akong course sulod sa admission application",
+              "pwede ba ilisan akong course sulod sa admission application",
+              "pwede ba nako ilisan akong course sa admission application",
+              "gi allowed ba ko mo change sa akong course sa admission application",
+              "can i change the course inside my admission application"
+            ]
+          },
+          "display_name": "Change Preferred Course In Admission Application"
+        },
+        {
           "topic": "online_application_schedule",
           "responses": {
             "en": [
-              "Please refer to the official announcement posted through this link: https://www.facebook.com/share/p/19fuWqGGe3/",
-              "For updates and further announcements, follow the official BukSU Facebook page.",
-              "For additional inquiries, you may contact the BukSU Admission and Testing Unit (ATU):",
-              "📱 Contact Number: 0968 568 1435",
-              "🖥️ Facebook Page: https://www.facebook.com/BukSUATU",
-              "✉️ Email: admissionandtesting@buksu.edu.ph",
-              "🌐 Website: admissions.buksu.edu.ph",
-              "📞 BukSU Contact Number: 088-813-5661"
+              "We cannot provide one fixed exact date for the BukSU admission and testing application because the schedule may change every academic year.",
+              "Usually, the admission application period starts around November and may continue until March.",
+              "Please check the BukSU Admission and Testing Unit page for official announcements, especially for the exact admission application date: https://www.facebook.com/BukSUATU"
             ],
             "ceb": [
-              "Asa nako makit-an ang BukSU-CAT online application schedule para sa AY 2026-2027?",
-              "Palihog tan-awa ang opisyal nga pahibalo nga gipost pinaagi sa kini nga link: https://www.facebook.com/share/p/19fuWqGGe3/",
-              "Para sa updates ug dugang nga pahibalo, i-follow ang opisyal nga BukSU Facebook page.",
-              "Para sa dugang pangutana, pwede nimo kontakon ang BukSU Admission and Testing Unit (ATU):",
-              "📱 Contact Number: 0968 568 1435",
-              "🖥️ Facebook Page: https://www.facebook.com/BukSUATU",
-              "✉️ Email: admissionandtesting@buksu.edu.ph",
-              "🌐 Website: admissions.buksu.edu.ph",
-              "📞 BukSU Contact Number: 088-813-5661"
+              "Dili mi makahatag og usa ka pirmi nga eksaktong petsa sa BukSU admission and testing application kay mahimong mausab ang schedule matag academic year.",
+              "Kasagaran, magsugod ang admission application period around November ug mahimong mopadayon hangtod March.",
+              "Palihog tan-awa ang BukSU Admission and Testing Unit page para sa opisyal nga announcements, labi na sa eksaktong admission application date: https://www.facebook.com/BukSUATU"
             ]
           },
           "intent": "online_application_schedule",
           "context_topic": "schedule",
           "metadata": {
             "phrases": [
-              "online application schedule"
+              "online application schedule",
+              "when is the admission application testing schedule",
+              "admission application testing schedule",
+              "admission testing application date",
+              "when is admission application",
+              "when is buksu cat application",
+              "asa nako makita ang schedule sa buksu cat online application",
+              "kanus-a mag-open ang online application sa buksu cat para next school year",
+              "pwede nimo isulti ang schedule sa online application sa buksu admission test",
+              "i finished my online application so what should i do after",
+              "where can i find the buksu cat online application schedule",
+              "when is the online application for buksu cat open for next school year",
+              "can you tell me the online application schedule for buksu admission test",
+              "unsa ang schedule sa online application",
+              "when mag start ang admission",
+              "kanus a ang application period",
+              "kanus a mo open ang admission",
+              "dates for college admission",
+              "when can i apply for admission test",
+              "schedule for admission application",
+              "when is online admission application open",
+              "kanus-a mag open ang buksu cat application"
             ]
           },
           "display_name": "Online Application Schedule"
@@ -383,7 +749,16 @@
           "context_topic": "schedule",
           "metadata": {
             "phrases": [
-              "admission application deadline"
+              "admission application deadline",
+              "kanus a ang deadline sa admission",
+              "kutob kanus a pwede mag apply",
+              "when mag close ang portal",
+              "when is the application deadline",
+              "last day of cat application",
+              "until when is admission application",
+              "deadline for buksu cat application",
+              "last day of admission application",
+              "kanus-a deadline sa admission application"
             ]
           },
           "display_name": "Admission Application Deadline"
@@ -420,7 +795,25 @@
           "context_topic": "process",
           "metadata": {
             "phrases": [
-              "denied applications"
+              "denied applications",
+              "ngano gi-deny akong admission application sa testing site",
+              "gi-deny akong application unsa ang rason",
+              "ngano gi-deny akong buksu cat application sa testing site",
+              "gi-deny sa testing site akong application ngano nahitabo ni",
+              "unsa akong buhaton kung gi-deny akong application sa testing site",
+              "why was my admission application denied from the testing site",
+              "my application got denied what is the reason",
+              "the testing site denied my application why did that happen",
+              "what should i do if my application from a testing site was denied",
+              "ngano na deny akong application",
+              "gi deny lagi ko sa main",
+              "unsa himuon if ma deny",
+              "why was my application denied",
+              "what to do if application is denied",
+              "my admission application was denied",
+              "what to do if admission application denied",
+              "rejected buksu cat application",
+              "gi deny akong admission application"
             ]
           },
           "display_name": "Denied Applications"
@@ -443,7 +836,25 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "no slots"
+              "no slots",
+              "what should i do if there are no available slots for the exam",
+              "no slots available in the admission portal what do i do",
+              "unsa akong buhaton kung walay available slots para sa exam",
+              "puno na tanan slots sa admission test unsa akong mahimo",
+              "wala nay nagpakita nga slots sa akong admission account",
+              "wala nay slots sa main campus unsa akong mahimo",
+              "unsa akong options kung wala nay slots sa main campus",
+              "the admission test slots are all taken what can i do",
+              "ngano walay available nga slots",
+              "wala nay slots sa cat",
+              "unsaon pagka walay slot",
+              "wala na bay bakante sa admission",
+              "why are there no slots",
+              "no more buksu cat slots",
+              "no available admission test slots",
+              "wala nay available slots sa buksu cat",
+              "full na ang admission test slots",
+              "cannot select cat schedule no slots"
             ]
           },
           "display_name": "No Slots"
@@ -468,7 +879,12 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "additional slots"
+              "additional slots",
+              "naa pa bay idugang nga slots",
+              "kanus a mag add ug slots",
+              "mo open pa ba ang admission",
+              "will there be additional slots",
+              "are they going to open new slots"
             ]
           },
           "display_name": "Additional Slots"
@@ -509,7 +925,23 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "main campus full"
+              "main campus full",
+              "unsa kung puno na ang slots sa main campus",
+              "puno na ang slots sa main campus asa pa ko pwede mo-apply",
+              "puno na ang slots sa buksu main campus asa ko adto",
+              "what if the admission slots at the main campus are already full",
+              "the main campus has no more slots left what can i do",
+              "main campus admission slots are full where else can i apply",
+              "buksu main campus slots are already taken where should i go",
+              "puno na ang main campus",
+              "unsaon if puno na sa main",
+              "wala nay slots sa main campus",
+              "pwede pa maka exam sa main",
+              "main campus slots are full",
+              "main campus admission slots full",
+              "main campus is full in admission portal",
+              "wala nay slot sa main campus",
+              "main campus unavailable in buksu admission"
             ]
           },
           "display_name": "Main Campus Full"
@@ -534,7 +966,16 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "system error"
+              "system error",
+              "ngano nag error ang website",
+              "dili ko maka proceed naay error",
+              "why is the site showing system error",
+              "site is crashing",
+              "buksu admission website error",
+              "admission portal error",
+              "cannot access admission site",
+              "admission system not working",
+              "error sa buksu admission portal"
             ]
           },
           "display_name": "System Error"
@@ -555,7 +996,12 @@
           "context_topic": "process",
           "metadata": {
             "phrases": [
-              "apply cat using mobile phone"
+              "apply cat using mobile phone",
+              "pwede ba mag test gamit cellphone",
+              "ok ra ba mag cellphone mag fill up",
+              "cp ra akong gamit pwede ra ba",
+              "can I apply using my mobile phone",
+              "is mobile phone allowed for portal"
             ]
           },
           "display_name": "Apply CAT Using Mobile Phone"
@@ -603,7 +1049,18 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "freshman admission requirements"
+              "freshman admission requirements",
+              "unsa ang dad on para mag apply ang incoming freshman",
+              "unsa kailangan para maghimo ug account",
+              "unsa ang requirements para maka apply sa admission examination",
+              "unsa ang kailangan para mo apply sa buksu admission testing",
+              "what are the requirements for first year application",
+              "freshmen admission requirements",
+              "incoming first year admission requirements",
+              "freshman buksu cat requirements",
+              "requirements for new student admission",
+              "what does a freshman need for admission",
+              "requirements sa incoming first year"
             ]
           },
           "display_name": "Freshman Admission Requirements"
@@ -628,7 +1085,16 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "transferee admission requirements"
+              "transferee admission requirements",
+              "modawat ba mo og transferee",
+              "unsa rules sa pag transfer sa buksu",
+              "pwede ra maka balhin diri",
+              "what are the requirements for transferees",
+              "transferee application details",
+              "requirements to transfer to buksu",
+              "documents needed for transferee admission",
+              "requirements for transfer student admission",
+              "mobalhin sa buksu admission requirements"
             ]
           },
           "display_name": "Transferee Admission Requirements"
@@ -647,7 +1113,16 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "second courser requirements"
+              "second courser requirements",
+              "unsa ang gikinahanglan sa second courser",
+              "papeles ipasa if second course",
+              "unsa kaylangan isubmit sa namay degree",
+              "what are the requirements for second coursers",
+              "requirements list sa second courser",
+              "second degree admission requirements",
+              "second course taker requirements",
+              "requirements for second courser",
+              "another degree applicant requirements"
             ]
           },
           "display_name": "Second Courser Requirements"
@@ -670,7 +1145,12 @@
           "context_topic": "process",
           "metadata": {
             "phrases": [
-              "second courser cat application"
+              "second courser cat application",
+              "pwede ba mo apply ang second courser",
+              "naa bay bayad if second course",
+              "allowed ba mu take exam if naa nay degree",
+              "pwede maka test usab if human na nig college",
+              "can second coursers take the admission exam"
             ]
           },
           "display_name": "Second Courser CAT Application"
@@ -695,7 +1175,15 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "gpat admission requirements"
+              "gpat admission requirements",
+              "unsa requirements for gpat",
+              "unsa kailangan sa gpat",
+              "what are the requirements for graduate admission test",
+              "gpat requirements list",
+              "graduate admission test requirements",
+              "gpat requirements",
+              "requirements for graduate program admission test",
+              "masteral admission test requirements"
             ]
           },
           "display_name": "GPAT Admission Requirements"
@@ -718,7 +1206,16 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "masters degree admission requirements"
+              "masters degree admission requirements",
+              "unsa ang requirements para sa masters degree",
+              "papeles para sa masters",
+              "unsa ipasa para masters student",
+              "what do I need for a masters degree admission",
+              "masters program reqs",
+              "masters admission requirements",
+              "master degree requirements buksu",
+              "requirements for masters program",
+              "masteral requirements sa buksu"
             ]
           },
           "display_name": "Masters Degree Admission Requirements"
@@ -737,7 +1234,15 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "law admission requirements"
+              "law admission requirements",
+              "unsa requirements sa law",
+              "papeles for juris doctor",
+              "unsa kaylangan para maka law",
+              "what is needed to apply for juris doctor",
+              "law school admission requirements",
+              "juris doctor admission requirements",
+              "requirements for buksu law school",
+              "law school requirements buksu"
             ]
           },
           "display_name": "Law Admission Requirements"
@@ -758,7 +1263,11 @@
           "context_topic": "process",
           "metadata": {
             "phrases": [
-              "als graduate buksu cat application"
+              "als graduate buksu cat application",
+              "pwede ba maka apply ang als graduate",
+              "unsa requirements if als student",
+              "are als passers allowed to take cat",
+              "als passer can I enroll"
             ]
           },
           "display_name": "Als Graduate BukSU CAT Application"
@@ -852,7 +1361,10 @@
           "context_topic": "contact",
           "metadata": {
             "phrases": [
-              "buksu admission contact"
+              "buksu admission contact",
+              "unsaon nako pag contact sa admission unit",
+              "contact sa admission unit",
+              "Admission and testing unit contacts"
             ]
           },
           "display_name": "BukSU Admission Contact"
@@ -875,7 +1387,11 @@
           "context_topic": "contact",
           "metadata": {
             "phrases": [
-              "admission contact help"
+              "admission contact help",
+              "asa pwede mangayo tabang about admission",
+              "asa dapit ang help desk sa admission",
+              "who can help me with my admission problem",
+              "kinsay ma sturya for admission help"
             ]
           },
           "display_name": "Admission Contact Help"
@@ -908,7 +1424,22 @@
           "context_topic": "contact",
           "metadata": {
             "phrases": [
-              "contact atu"
+              "contact atu",
+              "asa nako ma-check ang status sa akong buksu application",
+              "unsaon nako pag-contact ang buksu admission and testing unit",
+              "unsa ang contact number sa admission and testing unit",
+              "pwede nimo ihatag ang contact details sa atu office",
+              "asa nako ma-contact ang buksu atu para sa admission concerns",
+              "unsa ang facebook page sa buksu admission and testing unit",
+              "unsa ang pinakamaayong paagi sa pag-contact sa buksu admission and testing unit",
+              "how can i contact the buksu admission and testing unit",
+              "what is the contact number of the admission and testing unit",
+              "can you give me the contact details of the atu office",
+              "where can i reach the buksu atu for admission concerns",
+              "unsa contact sa admission testing",
+              "asa pwede mu contact for testing",
+              "how to contact atu",
+              "number sa admission"
             ]
           },
           "display_name": "Contact Atu"
@@ -939,7 +1470,19 @@
           "context_topic": "contact",
           "metadata": {
             "phrases": [
-              "contact registrar"
+              "contact registrar",
+              "unsaon nako pag-contact ang buksu registrar office",
+              "unsa ang contact number sa university registrar",
+              "pwede nimo ihatag ang email ug phone number sa registrar office",
+              "asa nako ma-contact ang buksu registrar para sa inquiries",
+              "how can i contact the buksu registrar office",
+              "what is the contact number of the university registrar",
+              "can you give me the email and phone number of the registrar office",
+              "contact details of the buksu university registrar office",
+              "unsa number sa registrar",
+              "asa pwede maka chat sa registrar",
+              "how to contact registrar",
+              "registrar contact info"
             ]
           },
           "display_name": "Contact Registrar"
@@ -968,7 +1511,11 @@
           "context_topic": "contact",
           "metadata": {
             "phrases": [
-              "contact scholarship unit"
+              "contact scholarship unit",
+              "unsaon pag contact sa scholarship",
+              "asa mag chat about scholarship",
+              "number sa scholarship office",
+              "scholarship unit contact"
             ]
           },
           "display_name": "Contact Scholarship Unit"
@@ -989,7 +1536,11 @@
           "context_topic": "contact",
           "metadata": {
             "phrases": [
-              "buksu admission facebook page"
+              "buksu admission facebook page",
+              "unsa inyong facebook page for admission",
+              "asa maka kita ug updates sa admission",
+              "what is the fb page of atu",
+              "saan ang facebook sa testing unit"
             ]
           },
           "display_name": "BukSU Admission Facebook Page"
@@ -1030,7 +1581,12 @@
             "phrases": [
               "all office schedule",
               "buksu office hours",
-              "what are the office hours of bukidnon state university"
+              "what are the office hours of bukidnon state university",
+              "unsa oras open ang office",
+              "open ba ang registrar sa sabado",
+              "unsa oras manira ang buksu",
+              "what are the office hours",
+              "is the office open on weekends"
             ]
           },
           "display_name": "All Office Schedule"
@@ -1072,15 +1628,83 @@
               "program cutoff scores",
               "what is the cut off of the cot department",
               "cut off score",
+              "cut off scores",
               "cutoff score",
+              "cutoff scores",
+              "cut-off score",
+              "cut-off scores",
+              "passing score",
               "buksu cat score",
               "cat score in buksu",
               "cut score for non board courses",
               "cut off for bsit",
-              "cutoff for board courses"
+              "cutoff for board courses",
+              "cat requirement for it",
+              "cat requirement for bsit",
+              "cat score requirement for bsit",
+              "cat percentage for bsit",
+              "cat requirement for bset",
+              "cat requirement for bsat",
+              "cat requirement for bsft",
+              "cat requirement for bsemc",
+              "cat requirement for bsn",
+              "cat requirement for bshm",
+              "cat requirement for bsa",
+              "cat requirement for bsba",
+              "cat requirement for bpa",
+              "cat requirement for ba philosophy",
+              "cat requirement for bachelor of arts in philosophy",
+              "cat requirement for bachelor of science in information technology",
+              "cat requirement for bachelor of science in electronics technology",
+              "cat requirement for bachelor of science in automotive technology",
+              "cat requirement for bachelor of science in food technology",
+              "cat requirement for bachelor of science in nursing",
+              "cat requirement for bachelor of science in hospitality management",
+              "cat requirement for bachelor of science in accountancy",
+              "cat requirement for bachelor of science in business administration",
+              "cat requirement for bachelor of public administration",
+              "what percentage is needed for bsit",
+              "what percentage is needed for it",
+              "percentage needed for non board courses",
+              "percentage needed for board courses",
+              "buksu percentage examination",
+              "buksu cat percentage",
+              "entrance exam percentage",
+              "admission exam percentage",
+              "passing percentage for buksu cat",
+              "passing rate for buksu cat",
+              "qualification percentage for buksu cat",
+              "cut off score for bachelor of science in information technology",
+              "cut off score for bachelor of science in electronics technology",
+              "cut off score for bset",
+              "cut off score for bsit",
+              "cut off scores for bachelor of science in electronic technology",
+              "pila ang passing score sa buksu cat",
+              "pila kailangan idawat sa admission exam",
+              "unsa nga grade makapasar sa cat",
+              "what is the cutoff score",
+              "porsyento para makasulod sa buksu",
+              "buksu cat percentage for it",
+              "buksu cat passing score for bsit",
+              "what cat score do i need for information technology",
+              "what cut off score for electronics technology",
+              "entrance exam passing percentage for non board course",
+              "entrance exam passing percentage for board course",
+              "pila ang percentage para makasulod sa bsit",
+              "pila cat score para sa information technology"
             ]
           },
-          "display_name": "BukSU CAT Cutoff Scores"
+          "display_name": "BukSU CAT Cutoff Scores",
+          "suggestions": [
+            {
+              "label": "Non-board courses",
+              "payload": "non-board courses offered by BukSU"
+            },
+            {
+              "label": "Board courses",
+              "payload": "board courses offered by BukSU"
+            }
+          ]
         },
         {
           "topic": "cat_requirement_nursing_program",
@@ -1089,7 +1713,7 @@
               "Unfortunately, we are not allowed to release the exact CAT score required to qualify for specific programs (non-board or board courses), since this may change every year. We can only provide a percentage range.",
               "NOTE: This range is based only on past BukSU CAT examinations. This may change over the years. It is much better to ask the BukSU Admission Testing Unit (ATU) for specific qualification information:<div>https://www.facebook.com/BukSUATU</div>",
               "Or you can view your BukSU Admission Examination CAT score to know if you are qualified for non-board or board courses.",
-              "For board courses, the range is 70% to 90% <b> Again, this is only a range </b> and it may change in the long run. For non-board courses, the range is 45% to 69%. Below that is considered as failed to pass the Buksu CAT examination."
+              "For board courses, the range is 70% to 90% <b> Again, this is only a range </b> and it may change in the long run. For non-board courses, the range is 45% to 69%. Below that is considered as failed to pass the BukSU CAT examination."
             ],
             "ceb": [
               "Sa pagkakaron, dili namo pwede i-release ang eksaktong CAT score nga kinahanglan aron ma-qualify sa specific nga mga programa (non-board o board courses), tungod kay kini mahimong mausab matag tuig. Makahatag lamang mi og percentage range.",
@@ -1106,7 +1730,11 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "cat requirement nursing program"
+              "cat requirement nursing program",
+              "pila ang passing sa nursing",
+              "unsa nga score pra makasulod sa nursing",
+              "what score is needed for nursing",
+              "nursing cat score"
             ]
           },
           "display_name": "CAT Requirement Nursing Program"
@@ -1118,7 +1746,7 @@
               "Unfortunately, we are not allowed to release the exact CAT score required to qualify for specific programs (non-board or board courses), since this may change every year. We can only provide a percentage range.",
               "NOTE: This range is based only on past BukSU CAT examinations. This may change over the years. It is much better to ask the BukSU Admission Testing Unit (ATU) for specific qualification information:<div>https://www.facebook.com/BukSUATU</div>",
               "Or you can view your BukSU Admission Examination CAT score to know if you are qualified for non-board or board courses.",
-              "For board courses, the range is 70% to 90% <b> Again, this is only a range </b> and it may change in the long run. For non-board courses, the range is 45% to 69%. Below that is considered as failed to pass the Buksu CAT examination."
+              "For board courses, the range is 70% to 90% <b> Again, this is only a range </b> and it may change in the long run. For non-board courses, the range is 45% to 69%. Below that is considered as failed to pass the BukSU CAT examination."
             ],
             "ceb": [
               "Sa pagkakaron, dili namo pwede i-release ang eksaktong CAT score nga kinahanglan aron ma-qualify sa specific nga mga programa (non-board o board courses), tungod kay kini mahimong mausab matag tuig. Makahatag lamang mi og percentage range.",
@@ -1131,7 +1759,10 @@
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "cat requirement education program"
+              "cat requirement education program",
+              "pila score para education",
+              "cat score needed for education",
+              "what is the passing for college of education"
             ]
           },
           "display_name": "CAT Requirement Education Program"
@@ -1140,7 +1771,7 @@
           "topic": "Cat_score_for_nonboard",
           "responses": {
             "en": [
-              "As of the previous data of 2020 - 2021 the buksu CAT score for non-board courses was in 40% to be eligible. now probably since its 2026 it might be change over the years"
+              "As of the previous data of 2020 - 2021 the BukSU CAT score for non-board courses was in 40% to be eligible. now probably since its 2026 it might be change over the years"
             ],
             "ceb": [
               "Base sa datos sa 2020–2021, ang BukSU CAT score para sa non-board nga kurso kinahanglan mga 40% aron mahimong eligible. Karon tingali, sukad kay 2026, posibleng nausab na kini tungod sa mga katuigan."
@@ -1150,7 +1781,11 @@
           "context_topic": "score",
           "metadata": {
             "phrases": [
-              "cat score for nonboard"
+              "cat score for nonboard",
+              "pila ang score para sa non board courses",
+              "unsa ang grade needed for non board",
+              "what is the cat score for non board programs",
+              "passing rate for nonboard courses"
             ]
           },
           "display_name": "CAT Score For Nonboard"
@@ -1185,7 +1820,11 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "exam location vs campus"
+              "exam location vs campus",
+              "same ba ang testing site ug campus",
+              "kung asa ko mag exam adto pud ko mag skwela",
+              "does exam location mean preferred campus",
+              "lahi raba ang testing site ug ang campus"
             ]
           },
           "display_name": "Exam Location Vs Campus"
@@ -1206,7 +1845,19 @@
             "phrases": [
               "cut off score for non board courses",
               "non board cat score",
-              "non board cutoff"
+              "non board cutoff",
+              "non-board course cutoff score",
+              "cat score for non-board courses",
+              "cat requirement for non board courses",
+              "cat percentage for non board courses",
+              "passing percentage for non board courses",
+              "entrance exam percentage for non board courses",
+              "what percentage is needed for non board courses",
+              "non board passing percentage",
+              "non board course cat passing score",
+              "minimum cat score for non board",
+              "pila passing sa non board courses",
+              "cat percentage para non board"
             ]
           },
           "subject_key": "program_qualification_scores",
@@ -1216,7 +1867,17 @@
             "non-board cutoff score",
             "non board cut off"
           ],
-          "display_name": "Non Board Cutoff Score"
+          "display_name": "Non Board Cutoff Score",
+          "suggestions": [
+            {
+              "label": "Non-board courses",
+              "payload": "non-board courses offered by BukSU"
+            },
+            {
+              "label": "Board courses",
+              "payload": "board courses offered by BukSU"
+            }
+          ]
         },
         {
           "topic": "board_course_cutoff_score",
@@ -1234,7 +1895,19 @@
             "phrases": [
               "cut off score for board courses",
               "board course cat score",
-              "board course cutoff"
+              "board course cutoff",
+              "board course cutoff score",
+              "cat score for board courses",
+              "cat requirement for board courses",
+              "cat percentage for board courses",
+              "passing percentage for board courses",
+              "entrance exam percentage for board courses",
+              "what percentage is needed for board courses",
+              "board course passing percentage",
+              "board course cat passing score",
+              "minimum cat score for board course",
+              "pila passing sa board courses",
+              "cat percentage para board course"
             ]
           },
           "subject_key": "program_qualification_scores",
@@ -1244,7 +1917,17 @@
             "board course cutoff score",
             "board cut off"
           ],
-          "display_name": "Board Course Cutoff Score"
+          "display_name": "Board Course Cutoff Score",
+          "suggestions": [
+            {
+              "label": "Board courses",
+              "payload": "board courses offered by BukSU"
+            },
+            {
+              "label": "Non-board courses",
+              "payload": "non-board courses offered by BukSU"
+            }
+          ]
         }
       ],
       "display_name": "Program Qualification Scores"
@@ -1274,7 +1957,11 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "board exam review"
+              "board exam review",
+              "pwede ba mag review diri sa school",
+              "offer ba silag pre board",
+              "naay board exam review sa college",
+              "does buksu offer licensure review"
             ]
           },
           "display_name": "Board Exam Review"
@@ -1293,7 +1980,12 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "licensure examination"
+              "licensure examination",
+              "unsa ng licensure examination",
+              "para unsa ang licensure",
+              "unsa nang prc exam",
+              "what is a board exam",
+              "what does licensure mean"
             ]
           },
           "display_name": "Licensure Examination"
@@ -1312,7 +2004,12 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "mock board exam"
+              "mock board exam",
+              "unsa ng mock board",
+              "para unsa ang mock board",
+              "unsa ning practis board",
+              "what is a mock board exam",
+              "what does mock board mean"
             ]
           },
           "display_name": "Mock Board Exam"
@@ -1351,7 +2048,16 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "change info admission"
+              "change info admission",
+              "unsaon pag change sa akong admission info",
+              "nasayop akong details pwede pa ma usab",
+              "asa dapit mag change ug profile info",
+              "how to update my personal information",
+              "how can I edit my admission details",
+              "how to change information in admission account",
+              "edit my admission application information",
+              "change wrong details in buksu admission",
+              "wrong personal information admission account"
             ]
           },
           "display_name": "Change Info Admission"
@@ -1384,16 +2090,107 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "change pass admission"
+              "change pass admission",
+              "unsaon pag usab sa password",
+              "nakalimot kos password unsaon pag ilis",
+              "how to change my password",
+              "how to reset my admission password",
+              "change admission account password",
+              "reset admission account password",
+              "forgot admission account password",
+              "forgot my buksu admission password",
+              "how to recover admission password",
+              "unsaon pag ilis sa admission password"
             ]
           },
           "display_name": "Change Pass Admission"
         },
         {
+          "topic": "admission_portal_login",
+          "responses": {
+            "en": [
+              "To log in to the BukSU Admission portal, go to <b>https://admissions.buksu.edu.ph/login</b>.",
+              "Type the email and password you used for your BukSU Admission account.",
+              "Click the <b>Sign in</b> button to open your admission dashboard."
+            ],
+            "ceb": [
+              "Para mag-login sa BukSU Admission portal, adto sa <b>https://admissions.buksu.edu.ph/login</b>.",
+              "I-type ang email ug password nga imong gigamit sa imong BukSU Admission account.",
+              "I-click ang <b>Sign in</b> button aron maablihan ang imong admission dashboard."
+            ]
+          },
+          "intent": "admission_portal_login",
+          "context_topic": "account",
+          "metadata": {
+            "phrases": [
+              "admission portal login",
+              "admission website login",
+              "login admission account",
+              "how to login on admission",
+              "how to sign in on admission website",
+              "tell me how to login on admission",
+              "admission portal login tutorial",
+              "admission website sign in process",
+              "admission website signin process",
+              "tudloe ko pag login sa admission portal",
+              "unsaon nako pag signin sa admission",
+              "unsaon pag login sa admission portal",
+              "asa maka login sa admission website",
+              "where do i login admission portal",
+              "bukSU admission login",
+              "admissions buksu login",
+              "how to open admission account"
+            ]
+          },
+          "display_name": "Admission Portal Login"
+        },
+        {
+          "topic": "admission_account_registration",
+          "responses": {
+            "en": [
+              "To create a BukSU Admission account, go to <b>https://admissions.buksu.edu.ph/login</b>.",
+              "Click <b>Register</b>, which is located on the lower part of the login page.",
+              "Continue the account creation process and make sure your personal email is active and accessible because the verification code will be sent there."
+            ],
+            "ceb": [
+              "Para maghimo og BukSU Admission account, adto sa <b>https://admissions.buksu.edu.ph/login</b>.",
+              "I-click ang <b>Register</b> nga makita sa ubos nga parte sa login page.",
+              "Padayona ang account creation process ug siguroa nga active ug ma-access nimo ang imong personal email kay didto ipadala ang verification code."
+            ]
+          },
+          "intent": "admission_account_registration",
+          "context_topic": "account",
+          "metadata": {
+            "phrases": [
+              "create admission account",
+              "how to create admission account",
+              "how to create admission portal account",
+              "admission account registration",
+              "admission portal registration",
+              "register admission account",
+              "how to register admission account",
+              "what if i dont have admission account",
+              "i dont have admission account",
+              "i do not have admission account",
+              "then how to sign up",
+              "how to sign up admission website",
+              "how to register in admission portal",
+              "process admission account registration",
+              "tell me process of creating admission portal account",
+              "unsaon pag buhat sa admission website account",
+              "igna ko unsaon pag buhat admission account",
+              "nya wala man koy account",
+              "wala koy admission account",
+              "how to make admission account"
+            ]
+          },
+          "display_name": "Admission Account Registration"
+        },
+        {
           "topic": "Find_Institutional_Account",
           "responses": {
             "en": [
-              "You can find your Institutional account by just logging in your Buksu Admission account to <b>https://admissions.buksu.edu.ph/login</b>",
+              "You can find your Institutional account by just logging in your BukSU Admission account to <b>https://admissions.buksu.edu.ph/login</b>",
               "Once you logged in, here is the step by step to see your Institutional account",
               "1. Click the <b>Institutional Account</b> tab and scroll down",
               "2. You can now see your Institutional account",
@@ -1402,7 +2199,7 @@
               "You can also view your Sias account by just scrolling down to see the other details."
             ],
             "ceb": [
-              "Makita nimo ang imong Institutional account pinaagi sa pag-login sa imong Buksu Admission account sa <b>https://admissions.buksu.edu.ph/login</b>",
+              "Makita nimo ang imong Institutional account pinaagi sa pag-login sa imong BukSU Admission account sa <b>https://admissions.buksu.edu.ph/login</b>",
               "Sa higayon nga naka-login ka, ania ang step by step sa pagtan-aw sa imong Institutional account",
               "1. I-click ang <b>Institutional Account</b> tab ug scroll down",
               "2. Makita na nimo ang imong Institutional account",
@@ -1423,7 +2220,32 @@
           "context_topic": "account",
           "metadata": {
             "phrases": [
-              "find institutional account"
+              "find institutional account",
+              "asa makita ang institutional account",
+              "unsaon pag kuha sa akong buksu account",
+              "asa ang email gi allocate sa school",
+              "how to find my institutional email",
+              "where to get institutional account details",
+              "how do i get my official buksu student email address",
+              "official buksu student email address",
+              "student institutional email account",
+              "where to find my buksu institutional email",
+              "how to see my institutional account",
+              "asa makita akong institutional email",
+              "where do i get my institutional email",
+              "can you help me find my student email",
+              "process of getting my buksu student email",
+              "asa manako ni makita akong institutional email",
+              "aha nako makuha akong student email address",
+              "tabangi kog pangita sakong buksu student email",
+              "asa mani makuha ang student email",
+              "tutorial how to get the institutional email address",
+              "tutorial process of finding my student email address",
+              "where can i find my official buksu student email",
+              "how to find my official student email address",
+              "how to get my institutional account from admission",
+              "where can i see my institutional account",
+              "asa makit-an akong buksu student email"
             ]
           },
           "display_name": "Find Institutional Account"
@@ -1432,7 +2254,7 @@
           "topic": "Find_Sias_Account",
           "responses": {
             "en": [
-              "You can find your Sias account by just logging in your Buksu Admission account to <b>https://admissions.buksu.edu.ph/login</b>",
+              "You can find your Sias account by just logging in your BukSU Admission account to <b>https://admissions.buksu.edu.ph/login</b>",
               "Once you logged in, here is the step by step to see your Sias account",
               "1. Click the <b>Institutional Account</b> tab and scroll down",
               "2. You can now see your Sias account",
@@ -1440,7 +2262,7 @@
               "They also provide the change password link for you to be able to change it right after you have your account password and users"
             ],
             "ceb": [
-              "Makita nimo ang imong Sias account pinaagi sa pag-login sa imong Buksu Admission account sa <b>https://admissions.buksu.edu.ph/login</b>",
+              "Makita nimo ang imong Sias account pinaagi sa pag-login sa imong BukSU Admission account sa <b>https://admissions.buksu.edu.ph/login</b>",
               "Sa higayon nga naka-login ka, ania ang step by step sa pagtan-aw sa imong Sias account",
               "1. I-click ang <b>Institutional Account</b> tab ug scroll down",
               "2. Makita na nimo ang imong Sias account",
@@ -1452,10 +2274,105 @@
           "context_topic": "account",
           "metadata": {
             "phrases": [
-              "find sias account"
+              "find sias account",
+              "asa nako makita akong sias account",
+              "unsaon pag find sa sias username",
+              "how to check my sias login",
+              "where is my sias account located",
+              "how to find my sias account",
+              "where is my sias account",
+              "student sias account details",
+              "asa makita akong sias account"
             ]
           },
           "display_name": "Find SIAS Account"
+        },
+        {
+          "topic": "sias_login_process",
+          "responses": {
+            "en": [
+              "To log in to SIAS, open <b>https://sias.buksu.edu.ph/sias/</b>.",
+              "Click <b>Student</b> if you are a student. Choose the correct role if you are an instructor or another user type.",
+              "Type your Student ID and password, then click <b>Login</b>."
+            ],
+            "ceb": [
+              "Para mag-login sa SIAS, ablihi ang <b>https://sias.buksu.edu.ph/sias/</b>.",
+              "I-click ang <b>Student</b> kung estudyante ka. Pilia ang sakto nga role kung instructor ka o lain nga user type.",
+              "I-type ang imong Student ID ug password, dayon i-click ang <b>Login</b>."
+            ]
+          },
+          "intent": "sias_login_process",
+          "context_topic": "account",
+          "metadata": {
+            "phrases": [
+              "sias login",
+              "login sias",
+              "login on sias website",
+              "login on sias portal",
+              "how to login sias portal",
+              "how to sign in on sias website",
+              "how to signin on sias website",
+              "sias portal login tutorial",
+              "sias website sign in process",
+              "where do i log for sias portal",
+              "where do i login for sias portal",
+              "aha ta maka login sa sias website",
+              "tudloe ko asa maka login sias portal",
+              "tudloe ko asa maka logins sias portal",
+              "unsaon mani pag login sa sias portal",
+              "unsaon pag signin sa sias",
+              "unsaon pag login sa sias",
+              "student portal sias login",
+              "student information system login process"
+            ]
+          },
+          "display_name": "SIAS Login Process"
+        },
+        {
+          "topic": "sias_forgot_password",
+          "responses": {
+            "en": [
+              "To reset your SIAS password, open <b>https://sias.buksu.edu.ph/sias/</b>.",
+              "Click <b>Student</b> if you are a student. Choose the correct role if you are an instructor or another user type.",
+              "Type your Student ID first, then click the <b>Forgot Password</b> button located below the Login button.",
+              "Type your institutional email or student email, then click <b>Send code</b>. Open your email account and wait for the code.",
+              "Type the code, enter your new password, retype the password to confirm, then click <b>OK</b>. After that, you can log in to your SIAS account."
+            ],
+            "ceb": [
+              "Para ma-reset ang imong SIAS password, ablihi ang <b>https://sias.buksu.edu.ph/sias/</b>.",
+              "I-click ang <b>Student</b> kung estudyante ka. Pilia ang sakto nga role kung instructor ka o lain nga user type.",
+              "I-type una ang imong Student ID, dayon i-click ang <b>Forgot Password</b> button nga naa sa ubos sa Login button.",
+              "I-type ang imong institutional email o student email, dayon i-click ang <b>Send code</b>. Ablihi ang imong email account ug hulata ang code.",
+              "I-type ang code, ibutang ang bag-ong password, i-type pag-usab ang password para ma-confirm, dayon i-click ang <b>OK</b>. Human ana, pwede na ka maka-login sa imong SIAS account."
+            ]
+          },
+          "intent": "sias_forgot_password",
+          "context_topic": "account",
+          "metadata": {
+            "phrases": [
+              "sias forgot password",
+              "forgot sias password",
+              "reset sias password",
+              "change sias password",
+              "recover sias password",
+              "student portal forgot password sias",
+              "student portal password sias",
+              "what should i do if i forget my sias password",
+              "i forgot my sias password",
+              "how to reset my sias account password",
+              "how do i get my sias password",
+              "where do i get my sias account",
+              "what password do i put in sias",
+              "asa mani na password sa sias",
+              "aha manako na makita akong password sa sias",
+              "aha nako makuha ako sias password",
+              "unsaon pag reset sa sias password",
+              "nakalimot ko sa sias password",
+              "forgot password button in sias",
+              "institutional email code sias password"
+            ]
+          },
+          "display_name": "SIAS Forgot Password"
         },
         {
           "topic": "letter_of_intent_meaning",
@@ -1513,8 +2430,9 @@
           "topic": "where_get_cor",
           "responses": {
             "en": [
-              "You can get your COR on the Buksu admission website, here is the step by step process of getting your COR",
-              "Step1: Go to your Buksu admission, Login using your credentials",
+              "You can get your COR on the BukSU admission website, here is the step by step process of getting your COR",
+              "https://admissions.buksu.edu.ph/login",
+              "Step1: Go to your BukSU admission, Login using your credentials",
               "Step2: Click on the Enrollment tab, in mobile you can usually found it by clicking the 3 line menu tab at the top left of your screen",
               "Step3: Click the <b>Application History</b> to see all history of your applications",
               "Step4: Click the Details button located on the bottom right corner of every application history",
@@ -1523,7 +2441,8 @@
             ],
             "ceb": [
               "Makakuha ka sa imong COR sa Admission website, ania ang step by step process sa pagkuha sa imong COR",
-              "Step1: Adto sa imong Buksu admission, Login gamit ang imong credentials",
+              "https://admissions.buksu.edu.ph/login",
+              "Step1: Adto sa imong BukSU admission, Login gamit ang imong credentials",
               "Step2: I-click ang Enrollment tab, sa mobile kasagaran makit-an nimo kini pinaagi sa pag-klik sa 3 line menu tab sa ibabaw nga wala nga bahin sa imong screen",
               "Step3: I-click ang <b>Application History</b> aron makita ang tanan nga History sa imong mga aplikasyon",
               "Step4: I-click ang Details button nga nahimutang sa ubos nga tuo nga suok sa matag application history",
@@ -1535,7 +2454,21 @@
           "context_topic": "document",
           "metadata": {
             "phrases": [
-              "where get cor"
+              "where get cor",
+              "how to get my cor",
+              "where can i get my cor",
+              "where do i download my cor",
+              "where can i download my cor",
+              "how to download certificate of registration",
+              "asa makuha ang cor",
+              "unsaon pag download sa cor",
+              "where do i get my cor or download it",
+              "where can i download my certificate of registration",
+              "how to download cor from admission account",
+              "where is cor in admission portal",
+              "aha man nako makita akong cor",
+              "asa ma download akong cor",
+              "unsaon pagkuha sa certificate of registration"
             ]
           },
           "display_name": "Where Get COR"
@@ -1558,7 +2491,7 @@
           "topic": "affirmative_action",
           "responses": {
             "en": [
-              "If you failed your buksu cat examination you still have a choice, you can apply for Affirmative Action Program (AAP) but please note that you cannot choose the courses you want to enroll in, they will be the one choosing your program depends on your capability.",
+              "If you failed your BukSU cat examination you still have a choice, you can apply for Affirmative Action Program (AAP) but please note that you cannot choose the courses you want to enroll in, they will be the one choosing your program depends on your capability.",
               "here how you can apply the AAP",
               "1. Monitor Your Results: Check your Report of Rating (ROR) via the BukSU Admissions Portal. Even if you are not on the list of <b>Qualifiers</b>, keep your account credentials. https://admissions.buksu.edu.ph/",
               "2 Go to the Diversity and Inclusion Unit located at the BukSU Main Campus in Malaybalay City. This unit manages the AAP selection.",
@@ -1639,10 +2572,128 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "affirmative action"
+              "affirmative action",
+              "how to apply for affirmative action",
+              "what is aap",
+              "affirmative action program process",
+              "where is diversity and inclusion unit",
+              "failed buksu cat affirmative action",
+              "what should i do if i didnot pass the buksu admission exam",
+              "tabangi ko kay wako kapasar sa admission exam",
+              "unsa akong buhaton og wala ko kapasar sa buksu cat",
+              "help me i did not pass the buksu cat examination",
+              "what do i do if i did not pass the buksu cat examination",
+              "can you tell me what to do when i did not pass the buksu admission examination",
+              "unsa kung mapakyas ko sa BukSU CAT exam, pwede pa ba ko maka-enroll",
+              "pwede pa ba ko maka-eskwela sa BukSU bisan wala ko nakapasar sa CAT",
+              "napakyas ko sa BukSU CAT exam, naa pa bay laing paagi para maka-enroll",
+              "naa pa bay chance maka-enroll bisan wala ko nakapasar sa BukSU CAT",
+              "unsa akong buhaton kung wala ko nakapasar sa BukSU entrance exam",
+              "pwede ba ang estudyante mo-apply sa affirmative program",
+              "pwede ba ko mo-apply sa affirmative action program kung napakyas ko sa CAT",
+              "naa pa ba koy chance kung mapakyas ko sa BukSU CAT exam",
+              "what if i fail the buksu cat exam can i still enroll",
+              "can i still study at buksu even if i didnt pass the cat",
+              "what is affirmative action",
+              "affirmative action program",
+              "aap program",
+              "how does affirmative action work",
+              "failed cat can i enroll",
+              "i failed cat can i still enroll",
+              "wala ko kapasar cat unsa buhaton",
+              "what if i fail buksu cat",
+              "diversity and inclusion program",
+              "affirmative action process",
+              "can you help me process affirmative",
+              "can you tell me how to process the affirmative",
+              "unsay buhaton og wakapasar sa cat testing",
+              "tabangi ko unsaon pag affirmative",
+              "how to apply for affirmative",
+              "what to do if not pass the admission",
+              "what should i do if i did not pass the admission",
+              "i did not pass admission what to do",
+              "not pass admission can i still enroll"
             ]
           },
           "display_name": "Affirmative Action"
+        },
+        {
+          "topic": "non_passer_enrollment_affirmative_action",
+          "responses": {
+            "en": [
+              "Yes. BukSU has a program called the Affirmative Action Program (AAP), which may allow applicants who did not pass or did not meet the required admission examination score to be considered for enrollment.",
+              "For this concern, visit the Diversity and Inclusion Unit (DIU), because they handle AAP assessment and guidance.",
+              "As of now, I do not have a confirmed update if BukSU has opened AAP for this school year. Please ask DIU directly or follow official BukSU announcements for the latest status."
+            ],
+            "ceb": [
+              "Oo. Ang BukSU adunay program nga gitawag og Affirmative Action Program (AAP), nga mahimong makatabang sa applicants nga wala nakapasar o wala nakaabot sa required admission examination score aron ma-consider for enrollment.",
+              "Para ani nga concern, adtoa ang Diversity and Inclusion Unit (DIU), kay sila ang nag-handle sa AAP assessment ug guidance.",
+              "Sa pagkakaron, wala koy confirmed update kung gi-open na ba sa BukSU ang AAP para ani nga school year. Mas maayo nga mangutana diretso sa DIU o mosunod sa official BukSU announcements."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "AAP process",
+              "payload": "how to apply for affirmative action"
+            },
+            {
+              "label": "DIU location",
+              "payload": "DIU location"
+            }
+          ],
+          "intent": "non_passer_enrollment_affirmative_action",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "do buksu allow non passer to enroll",
+              "does buksu allow non passers to enroll",
+              "can non passers enroll in buksu",
+              "can a non passer still enroll in buksu",
+              "is buksu allowing applicants who did not pass the cut off score",
+              "is buksu allowing admission takers who did not pass the cut off score",
+              "do buksu allow students who did not pass the buksu cat",
+              "do buksu allow students that failed the buksu cat",
+              "can i enroll even if i did not pass the cat examination",
+              "can i still enroll if i failed the cat examination",
+              "can i still enroll if i did not meet the cat score",
+              "can i still get a course if i did not pass the admission exam",
+              "can students who failed buksu cat still enroll",
+              "did not pass cut off score can i still enroll",
+              "failed admission examination can i still enroll",
+              "failed buksu cat can still enroll",
+              "non passer admission can enroll",
+              "non passer buksu cat can enroll",
+              "allowed to enroll even if failed cat",
+              "allowed to enroll even if i did not pass buksu cat",
+              "can you tell me if buksu allows us to enroll even if we did not pass the cat examination",
+              "does buksu accept applicants who did not pass the admission exam",
+              "does buksu accept failed cat applicants",
+              "can failed cat applicants still be accepted in buksu",
+              "can i still be accepted if i did not pass the admission examination",
+              "can i still be admitted if i did not reach the cat percentage",
+              "can i enroll if my cat percentage is below the cut off score",
+              "what if my cat score is below the cut off can i still enroll",
+              "can i get enrolled if i did not meet the admission percentage",
+              "gadawat ba ang buksu og wakapasar sa admission",
+              "gadawat ba ang buksu og wala kapasar sa cat",
+              "mo dawat ba ang buksu og non passer",
+              "modawat ba ang buksu og non passer",
+              "mudawat ba ang buksu og non passer",
+              "pwede ba ma enroll kung wala kapasar sa cat",
+              "pwede pa ba ko ma enroll kung wa ko kapasar sa admission",
+              "pwede pa ba ko maka enroll kung wala ko nakapasar sa buksu cat",
+              "wa mopasar sa cat pwede pa ba",
+              "wala nakaabot sa cutoff score pwede pa ba",
+              "wala kapasar sa admission pwede pa ba mo enroll",
+              "wala ko kapasar sa admission exam pwede pa ba ko dawaton",
+              "wakapasar sa buksu cat pwede pa ba ma enroll",
+              "wala ko nakaabot sa cat percentage pwede pa ba ko maka sulod",
+              "pwede pa ba ko makakuha og course kung wala ko kapasar sa cat",
+              "dawaton pa ba ko sa buksu kung wala ko kapasar sa admission",
+              "madawat pa ba ang wala kapasar sa buksu cat"
+            ]
+          },
+          "display_name": "Non-Passer Enrollment Through AAP"
         }
       ],
       "display_name": "Affirmative Action Program"

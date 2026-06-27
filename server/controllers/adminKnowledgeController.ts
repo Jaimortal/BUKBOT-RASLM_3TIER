@@ -133,6 +133,7 @@ function collectRecords(
       displayName: topic.display_name || topic.ui_name || formatLabel(topic.intent || topicKey),
       subjectKey: topic.subject_key || parent?.subject_key || null,
       subjectType: topic.subject_type || parent?.subject_type || null,
+      ownSubjectTerms: stringArray(topic.subject_terms),
       subjectTerms: stringArray(topic.subject_terms?.length ? topic.subject_terms : parent?.subject_terms),
       responses: {
         en: stringArray(responses.en),
@@ -352,6 +353,7 @@ export class AdminKnowledgeController {
             value: keyValue(item.value),
             text: keyValue(item.text),
             aliases: cleanStringArray(item.aliases),
+            search_terms: cleanStringArray(item.search_terms || item.searchTerms),
           }))
           .filter((item: any) => item.name || item.value || item.text);
       }

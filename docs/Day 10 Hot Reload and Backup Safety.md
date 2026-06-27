@@ -79,4 +79,61 @@ Backup test confirmed:
 
 The action server checks modified times during router handling. It does not reread every JSON file on every message unless a changed mtime is detected.
 
-If a JSON file is saved with invalid JSON, the safe loader logs the invalid file and returns an empty source for that file until the JSON is fixed.
+## Phase 1 Safety Update
+
+Hot reload now validates changed JSON files before swapping the in-memory knowledge cache.
+
+If an admin save creates invalid JSON, the action server:
+
+- logs the broken file
+- skips the reload
+- keeps the previous good in-memory data
+- tries again on the next message after the JSON is fixed
+
+This protects the chatbot from losing a whole knowledge source because of one malformed edit.
+
+The main router also checks for JSON changes before follow-up handling, so follow-up questions can see recent admin edits too.
+
+## Phase 2 Backup Coverage Update
+
+Backup-before-save now covers both current and older admin JSON write paths:
+
+- Knowledge Manager structured JSON writes: `backups/json/knowledge/`
+- Legacy Super Intents writes: `backups/json/super-intents/`
+- `responses.json` writes: `backups/json/responses/`
+- `responses_location.json` writes: `backups/json/locations/`
+- map/settings JSON writes: `backups/json/map-settings/` and `backups/json/settings/`
+
+If a file does not exist yet, the backup helper skips the backup for that first write instead of blocking the save.
+
+## Phase 3 Restart and Retrain Guidance
+
+Retrain Rasa when these files change:
+
+- `rasa/data/nlu.yml`
+- `rasa/domain.yml`
+- `rasa/data/rules.yml`
+- `rasa/data/stories.yml`
+- Rasa pipeline or policy configuration
+
+Restart the Rasa action server when Python logic changes:
+
+- `rasa/actions/*.py`
+- query normalization Python files
+- retrieval/scoring/router Python files
+
+Hot reload is enough when only JSON knowledge data changes:
+
+- answer text
+- English/Bisaya response lines
+- phrases and subject terms
+- maps, pins, routes, and images saved inside JSON data
+- structured child rows
+
+Rollback steps:
+
+1. Open `backups/json/<category>/`.
+2. Choose the timestamped backup created before the bad save.
+3. Copy it over the original JSON file.
+4. Ask the bot again, or restart the action server if the file was restored while the server was busy.
+5. Retrain only if the rollback involved Rasa training files, not ordinary JSON knowledge data.

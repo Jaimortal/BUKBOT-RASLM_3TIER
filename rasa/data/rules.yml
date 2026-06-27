@@ -42,6 +42,11 @@ rules:
     - intent: ask_availability
     - action: action_main_router
 
+- rule: Route facility availability questions
+  steps:
+    - intent: ask_facility_availability
+    - action: action_main_router
+
 - rule: Route document questions
   steps:
     - intent: ask_document
@@ -55,6 +60,11 @@ rules:
 - rule: Route smalltalk
   steps:
     - intent: smalltalk
+    - action: action_main_router
+
+- rule: Route out of scope
+  steps:
+    - intent: out_of_scope
     - action: action_main_router
 
 - rule: Say goodbye

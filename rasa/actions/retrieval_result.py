@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 
 @dataclass
@@ -16,6 +16,9 @@ class RetrievalCandidate:
     answer_text: str
     searchable_text: str
     tokens: List[str]
+    display_name: str = ""
+    child_terms: List[str] = field(default_factory=list)
+    alias_terms: List[str] = field(default_factory=list)
 
 
 @dataclass
@@ -28,6 +31,7 @@ class RetrievalResult:
     reasons: List[str] = field(default_factory=list)
     runner_up: Optional[RetrievalCandidate] = None
     runner_up_score: float = 0.0
+    ranked_candidates: List[Tuple[RetrievalCandidate, float]] = field(default_factory=list)
 
     @property
     def intent(self) -> Optional[str]:

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, ImageOverlay, Marker, Popup, useMap, Polyline, CircleMarker } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { ArrowUpDown, Footprints, Maximize2, Minimize2 } from "lucide-react";
+import { ArrowUpDown, Maximize2, Minimize2 } from "lucide-react";
 import { useMapSettings } from "@/hooks/useMapSettings";
 
 // Fix for default marker icon in React Leaflet
@@ -42,6 +42,26 @@ const DefaultBounds: L.LatLngBoundsExpression = [
 ];
 
 type IndicatorKind = "staircase" | "elevator";
+
+function StairIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none">
+      <path
+        d="M4 18h5v-4h5v-4h5V6"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4 18h16"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 function normalizeIndicatorKind(pin: { name?: string; access?: string; pinType?: string }): IndicatorKind | null {
   const pinType = String(pin.pinType || "").trim().toLowerCase();
@@ -331,15 +351,27 @@ export default function MapMessage({
     const isStaircase = pinType === "staircase";
     const isElevator = pinType === "elevator";
     const markerColor = isStaircase ? "#7c3aed" : isElevator ? "#0f766e" : "#2563eb";
-    const markerText = isStaircase ? "ST" : isElevator ? "EV" : "";
-    const textHtml = markerText
-      ? `<span style="color:#fff;font-size:9px;font-weight:900;line-height:16px;display:block;text-align:center;transform:rotate(45deg);">${markerText}</span>`
+    const indicatorIconHtml = isStaircase
+      ? `
+        <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" style="display:block;">
+          <path d="M5 18h4v-4h4v-4h4V6h2v6h-4v4h-4v4H5z" fill="#ffffff"/>
+          <path d="M5 18h14" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      `
+      : isElevator
+        ? `
+          <svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true" style="display:block;">
+            <path d="M12 3 7.4 7.6h3.1v8.8H7.4L12 21l4.6-4.6h-3.1V7.6h3.1L12 3Z" fill="#ffffff"/>
+          </svg>
+        `
       : "";
-    return (
-    L.divIcon({
-      className: "",
-      html: `
-        <div style="position:relative; transform: translate(-50%, -100%);">
+    const iconOffset = isStaircase ? "translateX(-1.5px) translateY(-3.5px) rotate(45deg)" : "rotate(45deg)";
+    const textHtml = indicatorIconHtml
+      ? `<span style="width:16px;height:16px;display:flex;align-items:center;justify-content:center;transform:${iconOffset};">${indicatorIconHtml}</span>`
+      : "";
+    const labelHtml = pinType
+      ? ""
+      : `
           <div style="
             position:absolute;
             top:-18px;
@@ -353,6 +385,13 @@ export default function MapMessage({
             line-height: 1;
             white-space: nowrap;
           ">${escapeHtml(label)}</div>
+        `;
+    return (
+    L.divIcon({
+      className: "",
+      html: `
+        <div style="position:relative; transform: translate(-50%, -100%);">
+          ${labelHtml}
           <div style="
             width: 16px;
             height: 16px;
@@ -410,44 +449,43 @@ export default function MapMessage({
           new Set(flippedMarkers.map(m => m.pinType).filter(Boolean))
         ) as IndicatorKind[];
         if (!markerWithFloor && indicatorKinds.length === 0) return null;
+        const floorLabel = markerWithFloor?.floor === 'GF' ? 'Ground Floor' :
+          markerWithFloor?.floor === '2F' ? '2nd Floor' :
+            markerWithFloor?.floor === '3F' ? '3rd Floor' :
+              markerWithFloor?.floor === '4F' ? '4th Floor' :
+                markerWithFloor?.floor === '5F' ? '5th Floor' :
+                  markerWithFloor?.floor === '1F' ? '1st Floor' :
+                    markerWithFloor?.floor === 'BS' ? 'Basement' : '';
 
         return (
           <div className={`absolute z-[1000] flex flex-col items-start gap-1 transition-all ${
             isFullscreen
-              ? "top-2 left-12 text-sm"
-              : "bottom-2 left-2 text-[9px]"
+              ? "top-2 left-12 text-[10px] sm:text-sm"
+              : "bottom-2 left-2 text-[9px] sm:text-[10px]"
           }`}>
             {markerWithFloor && (
-              <div className={`bg-yellow-400/70 backdrop-blur-md text-gray-900 border border-yellow-500/80 rounded shadow-md flex items-center gap-2 ${
-                isFullscreen ? "px-3 py-1.5" : "px-2.5 py-1"
+              <div className={`bg-yellow-400/70 backdrop-blur-md text-gray-900 border border-yellow-500/80 rounded shadow-md flex items-center gap-1.5 sm:gap-2 ${
+                isFullscreen ? "px-2 py-1 sm:px-3 sm:py-1.5" : "px-2 py-0.5 sm:px-2.5 sm:py-1"
               }`}>
                 <span className="font-black">[{markerWithFloor.floor}]</span>
-                <span className="hidden sm:inline font-semibold">
-                  {markerWithFloor.floor === 'GF' ? 'Ground Floor' :
-                    markerWithFloor.floor === '2F' ? '2nd Floor' :
-                      markerWithFloor.floor === '3F' ? '3rd Floor' :
-                        markerWithFloor.floor === '4F' ? '4th Floor' :
-                          markerWithFloor.floor === '5F' ? '5th Floor' :
-                            markerWithFloor.floor === '1F' ? '1st Floor' :
-                              markerWithFloor.floor === 'BS' ? 'Basement' : ''}
-                </span>
+                <span className="font-semibold">{floorLabel}</span>
               </div>
             )}
             {indicatorKinds.map(kind => (
               <div
                 key={kind}
                 className={`bg-white/80 backdrop-blur-md text-gray-900 border border-gray-200/80 rounded shadow-md flex items-center gap-1.5 font-semibold ${
-                  isFullscreen ? "px-3 py-1.5" : "px-2 py-1"
+                  isFullscreen ? "px-2 py-1 sm:px-3 sm:py-1.5" : "px-2 py-0.5 sm:py-1"
                 }`}
               >
                 {kind === "staircase" ? (
                   <>
-                    <Footprints className={isFullscreen ? "h-4 w-4" : "h-3 w-3"} />
+                    <StairIcon className={isFullscreen ? "h-3.5 w-3.5 sm:h-4 sm:w-4" : "h-3 w-3"} />
                     <span>Staircase</span>
                   </>
                 ) : (
                   <>
-                    <ArrowUpDown className={isFullscreen ? "h-4 w-4" : "h-3 w-3"} />
+                    <ArrowUpDown className={isFullscreen ? "h-3.5 w-3.5 sm:h-4 sm:w-4" : "h-3 w-3"} />
                     <span>Elevator</span>
                   </>
                 )}
@@ -466,12 +504,12 @@ export default function MapMessage({
         </button>
       )}
       {isFullscreen && normalizedRoutes.length > 0 && (
-        <div className="absolute top-12 right-2 z-[1000] max-w-[180px] rounded-lg border border-white/50 bg-white/85 p-2 text-xs text-slate-800 shadow-md backdrop-blur">
+        <div className="absolute top-12 right-2 z-[1000] max-w-[150px] rounded-lg border border-white/50 bg-white/85 p-1.5 text-[10px] text-slate-800 shadow-md backdrop-blur sm:max-w-[180px] sm:p-2 sm:text-xs">
           <div className="mb-1 font-bold">Routes</div>
           <div className="space-y-1">
             {normalizedRoutes.map((route, index) => (
-              <div key={`legend-${index}`} className="flex items-center gap-2">
-                <span className="h-2 w-6 rounded-full shadow-sm" style={{ backgroundColor: route.color || ROUTE_COLORS[index % ROUTE_COLORS.length] }} />
+              <div key={`legend-${index}`} className="flex items-center gap-1.5 sm:gap-2">
+                <span className="h-1.5 w-4 rounded-full shadow-sm sm:h-2 sm:w-6" style={{ backgroundColor: route.color || ROUTE_COLORS[index % ROUTE_COLORS.length] }} />
                 <span className="truncate">{route.route_label || `Route ${index + 1}`}</span>
               </div>
             ))}

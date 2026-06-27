@@ -34,7 +34,10 @@
         "incoming nursing students",
         "nursing medical requirements",
         "nursing immunization record",
-        "nursing acceptance slip"
+        "nursing acceptance slip",
+        "returning students enrollment",
+        "medical certificate enrollment",
+        "medical exam before enrollment"
       ],
       "subtopics": [
         {
@@ -65,8 +68,27 @@
               "how does enrollment work",
               "steps for enrollment",
               "how to enroll in buksu",
+              "can you help me for my enrollment",
+              "help me for my enrollment",
+              "help with my enrollment",
+              "help for enrollment",
               "unsaon pag enroll",
-              "unsa ang enrollment process"
+              "unsa ang enrollment process",
+              "Unsaon pag enroll sa BukSU",
+              "Unsa ang proseso sa pag enroll",
+              "Online ba ang enrollment o face to face",
+              "Unsaon pag enroll sa mga estudyante",
+              "can you tell me how to enroll",
+              "how student enroll in bukidnon state university",
+              "unsa ang proseso sa enrollment",
+              "can you help me enroll",
+              "can you guide me for enrollment",
+              "i need help with my buksu enrollment",
+              "general enrollment guide for buksu",
+              "what are the main enrollment steps",
+              "how does buksu enrollment process work",
+              "tabangi ko sa akong enrollment",
+              "unsaon nako pagpa enroll sa buksu"
             ],
             "strong_keywords": [
               "enrollment",
@@ -110,7 +132,13 @@
               "enrollment day",
               "enrollment date",
               "enrollment deadline",
-              "kanus-a ang enrollment"
+              "kanus-a ang enrollment",
+              "when does enrollment start",
+              "when is the enrollment period",
+              "what month is buksu enrollment",
+              "enrollment schedule this year",
+              "kanus-a magsugod ang enrollment",
+              "kanus-a ang schedule sa enrollment"
             ],
             "strong_keywords": [
               "enrollment",
@@ -125,6 +153,96 @@
             ]
           },
           "display_name": "Enrollment Time Schedule"
+        },
+        {
+          "topic": "school_year_class_start_schedule",
+          "responses": {
+            "en": [
+              "Unfortunately, I do not have an exact date for when the school year starts because this may change every year.",
+              "By default, the school year usually starts around the <b>1st week of August</b>.",
+              "For accurate announcements, follow the BukSU Registrar Facebook page: https://www.facebook.com/BSURegistrar",
+              "Also follow the official BukSU Facebook page: https://www.facebook.com/officialbuksu"
+            ],
+            "ceb": [
+              "Pasensya, wala koy eksaktong petsa kung kanus-a magsugod ang school year kay mahimong mausab kini matag tuig.",
+              "Kasagaran, magsugod ang school year around sa <b>1st week sa August</b>.",
+              "Para sa accurate nga announcements, i-follow ang BukSU Registrar Facebook page: https://www.facebook.com/BSURegistrar",
+              "I-follow pud ang official BukSU Facebook page: https://www.facebook.com/officialbuksu"
+            ]
+          },
+          "intent": "school_year_class_start_schedule",
+          "context_topic": "schedule",
+          "metadata": {
+            "phrases": [
+              "when do the school year start in buksu",
+              "when does the school year start in buksu",
+              "when school year start in buksu",
+              "when does school year start",
+              "when do classes start",
+              "when does class start",
+              "when the class start",
+              "when will classes start",
+              "when will class start",
+              "what day do classes start in buksu",
+              "what month do classes start in buksu",
+              "what day and month do school year start in buksu",
+              "can you tell me what day do school year start in buksu",
+              "can you tell me what month do school year start in buksu",
+              "can you tell me what day and month do school year start in buksu",
+              "what do school year 2026 2027 start",
+              "what does school year 2026 2027 start",
+              "when do school year 2026 2027 start",
+              "when does school year 2026 2027 start",
+              "when do classes start in 2026",
+              "when should the class start in 2027",
+              "what exact date do class start in 2020",
+              "when do the buksu school year opening in 2026",
+              "school year opening buksu",
+              "buksu school year opening",
+              "start of classes buksu",
+              "opening of classes buksu",
+              "first day of class buksu",
+              "first day of classes buksu",
+              "kanusa mag start ang klasi sa buksu",
+              "kanus-a mag start ang klase sa buksu",
+              "kanusa magsugod ang klase sa buksu",
+              "kanus-a magsugod ang klase sa buksu",
+              "kanusa man sugod ang klasi",
+              "kanus-a man sugod ang klase",
+              "tell me kanusa mag sugod ang klasi",
+              "tell me kanus-a magsugod ang klase",
+              "kanusa kaha mag sugod ang klasi sa 2026",
+              "kanus-a kaha magsugod ang klase sa 2026",
+              "kanus-a ang opening sa klase",
+              "kanusa ang opening sa klase",
+              "kanus-a magsugod ang school year",
+              "kanusa magsugod ang school year"
+            ],
+            "strong_keywords": [
+              "school year",
+              "classes start",
+              "class start",
+              "opening of classes",
+              "start of classes",
+              "klase",
+              "klasi"
+            ],
+            "weak_keywords": [
+              "start",
+              "sugod",
+              "magsugod",
+              "opening",
+              "august",
+              "buksu"
+            ]
+          },
+          "display_name": "School Year Class Start Schedule",
+          "suggestions": [
+            {
+              "label": "Registrar location",
+              "payload": "Registrar office location"
+            }
+          ]
         },
         {
           "topic": "freshman_enrollment_process",
@@ -166,12 +284,52 @@
               "requirements for first year enrollment",
               "what documents do first year need for enrollment",
               "what documents do transferees need for enrollment",
-              "envelope requirements for enrollment"
+              "envelope requirements for enrollment",
+              "can you help me to enroll im first incoming first year student taking bachelor of arts in philosophy",
+              "help me enroll bs biology",
+              "enrollment steps for beed",
+              "how to enroll bsed english",
+              "send enrollment guide for bs accountancy",
+              "bs criminology enrollment process please",
+              "can you help me how to enroll im first year taking bachelor of science in agri business",
+              "do you have the process of enrollment can you send to me im taking bs hospitality management",
+              "hey help me enroll step by step im incoming freshman in bachelor of science in psychology",
+              "can you send me full process of the enrollment for my course bs in computer science",
+              "how to enroll in buksu im taking bachelor of science in social work",
+              "do you know how to enroll i am first year student taking bachelor of science in tourism management",
+              "help me to enroll please im new student course is bachelor of science in office administration",
+              "can i ask the enrollment process for bachelor of arts in english",
+              "what to do to enroll in bs economics im fresh student",
+              "you have enrollment guide i take bachelor of science in agricultural education",
+              "guide me through enrolling as a first year in bachelor of science in community development",
+              "step by step enrollment guide for bachelor of science in environmental science im a new student",
+              "first time enrolling at buksu taking bachelor of science in food technology what should i do",
+              "help me with the enrollment for bachelor of science in industrial technology im an incoming freshman",
+              "full enrollment process for bachelor of science in library and information science",
+              "what documents do i need to bring on enrollment day",
+              "enrollment document list",
+              "documents needed on enrollment day",
+              "is the medical exam required before enrollment",
+              "medical exam required before enrollment",
+              "medical certificate required for enrollment",
+              "incoming first year enrollment guide",
+              "first year student enrollment steps",
+              "new student enrollment process",
+              "freshman step by step enrollment",
+              "how to enroll as incoming first year",
+              "help me enroll as first year student",
+              "unsaon pag enroll isip first year",
+              "bag-o nga student enrollment process"
             ],
             "strong_keywords": [
               "freshman",
               "transferee",
+              "first year",
+              "new student",
+              "incoming freshman",
               "enrollment",
+              "enroll",
+              "guide",
               "envelope",
               "program acceptance slip",
               "buksu-cat",
@@ -201,7 +359,8 @@
               "Under Course Selection, select your preferred course.",
               "Under Documentary Requirements, scan and upload the documentary requirements specified in Step 1. Documents uploaded during admission must be duly marked with a RECEIVED stamp by the University Registrar's Office.",
               "Under Learning Modality Preference, select your preferred learning modality.",
-              "Under Academic Information, fill in the necessary information."
+              "Under Academic Information, fill in the necessary information.",
+              "Even if you apply for online enrollment, please wait for the announcement from your specific department because some departments may still require you to go to the faculty office for actual enrollment confirmation."
             ],
             "ceb": [
               "Ang Step 2 sa enrollment process mao ang Online Enrollment Application pinaagi sa https://admissions.buksu.edu.ph.",
@@ -213,7 +372,8 @@
               "Sa Course Selection, pili-a ang imong preferred course.",
               "Sa Documentary Requirements, i-scan ug i-upload ang documentary requirements nga naa sa Step 1. Ang documents nga gi-upload during admission kinahanglan duly marked with RECEIVED stamp sa University Registrar's Office.",
               "Sa Learning Modality Preference, pili-a ang imong preferred learning modality.",
-              "Sa Academic Information, pun-a ang necessary information."
+              "Sa Academic Information, pun-a ang necessary information.",
+              "Bisan nag-apply ka online enrollment, palihog hulata gihapon ang announcement sa imong specific department kay ang uban department basin kinahanglan pa nga moadto ka sa faculty office para sa actual enrollment confirmation."
             ]
           },
           "images": [],
@@ -232,7 +392,25 @@
               "apply enrollment admissions buksu",
               "admissions buksu enrollment",
               "where to apply enrollment online",
-              "unsaon pag apply enrollment online"
+              "unsaon pag apply enrollment online",
+              "can i enroll online",
+              "online enrollment link",
+              "can i apply enrollment online",
+              "Unsaon nako pag-enroll online sa BukSU admission step by step",
+              "Unsa ang mga steps para sa online enrollment sa BukSU admission",
+              "Pwede ba ka mo tabang nako sa pag proseso sa online enrollment sa BukSU admission",
+              "Unsaon nako pag enroll online gamit ang BukSU admission website",
+              "Unsa ang angay kong buhaton para maka enroll online sa BukSU admission step by step",
+              "Gusto ko mag pa enroll online sa BukSU admission unsa ang mga steps",
+              "how do I enroll online in BukSU admission step by step",
+              "what are the steps for online enrollment in BukSU admission",
+              "can you guide me through BukSU admission online enrollment process",
+              "Online enrollment",
+              "where is apply enrollment button",
+              "steps in online enrollment application",
+              "how to fill out online enrollment application",
+              "online enrollment through admissions buksu edu ph",
+              "unsaon pag apply enrollment sa admission portal"
             ],
             "strong_keywords": [
               "online enrollment",
@@ -252,10 +430,47 @@
           "display_name": "Online Enrollment Application Steps"
         },
         {
+          "topic": "returning_students_scope_notice",
+          "responses": {
+            "en": [
+              "This chatbot is currently focused on incoming first year students and transferees, so I do not have a complete returning-student enrollment process yet.",
+              "For returning-student enrollment, please wait for your college or department announcement and ask your department or the University Registrar for the official steps."
+            ],
+            "ceb": [
+              "Kini nga chatbot naka-focus karon sa incoming first year students ug transferees, mao nga wala pa koy kompleto nga returning-student enrollment process.",
+              "Para sa returning-student enrollment, palihog hulata ang announcement sa imong college o department ug pangutana sa imong department o sa University Registrar para sa opisyal nga steps."
+            ]
+          },
+          "intent": "returning_students_scope_notice",
+          "context_topic": "scope_notice",
+          "metadata": {
+            "phrases": [
+              "what is the process for returning students",
+              "returning students enrollment process",
+              "how can returning students enroll",
+              "old student enrollment process",
+              "returning student enrollment process",
+              "continuing student enrollment guide",
+              "how to enroll as returning student"
+            ],
+            "strong_keywords": [
+              "returning student",
+              "returning students",
+              "old student"
+            ],
+            "weak_keywords": [
+              "enrollment",
+              "process",
+              "steps"
+            ]
+          },
+          "display_name": "Returning Students Scope Notice"
+        },
+        {
           "topic": "mixed_enrollment_process",
           "responses": {
             "en": [
-              "For Face to face enrollment or mixed enrollment, the process is similar to online enrollment fill up all the requirements on bukSU Admission, for the process just ask about online enrollment. but this time you need to go to your department to process your pending online enrollment. There are specific faculty staff who handle enrollment in your department. Sometimes there is a queue system that you need to scan to know your number in line for your turn.",
+              "For Face to face enrollment or mixed enrollment, the process is similar to online enrollment fill up all the requirements on BukSU Admission, for the process just ask about online enrollment. but this time you need to go to your department to process your pending online enrollment. There are specific faculty staff who handle enrollment in your department. Sometimes there is a queue system that you need to scan to know your number in line for your turn.",
               "but this is for <b>2nd year student</b> only since they already has a record on their department. <b>for freshman and transferees follow this steps</b>",
               "1. Attend the Pre-enrolment Orientation.",
               "2. Proceed to the preferred college of choice for personal interview and present documents in a long <b>brown envelope for evaluation</b>.",
@@ -279,7 +494,26 @@
           "context_topic": "process",
           "metadata": {
             "phrases": [
-              "mixed enrollment process"
+              "mixed enrollment process",
+              "Unsa akong buhaton human sa online enrollment para sa face to face nga proseso",
+              "Unsaon pag-enroll pinaagi sa face to face nga proseso",
+              "Unsa ang sunod nga mga lakang human makompleto ang online enrollment para sa onsite processing",
+              "Human ko maka-enroll online, unsa na akong buhaton para sa in-person nga enrollment",
+              "Unsa ang proseso sa face to face nga enrollment human sa online registration",
+              "Kung mahuman na ang online enrollment, unsaon nako pagpadayon sa physical nga proseso",
+              "Unsaon nako pag-proceed sa face to face nga enrollment human makompleto ang online registration",
+              "what should I do after online enrollment for face to face process",
+              "how to enroll face to face process",
+              "What are the next steps after completing online enrollment for onsite processing",
+              "face to face human sa online",
+              "Face to face enrollment",
+              "mixed enrollment",
+              "face to face enrollment process",
+              "mixed enrollment steps",
+              "department enrollment process",
+              "enrollment at department office",
+              "onsite enrollment procedure",
+              "unsaon ang face to face enrollment"
             ]
           },
           "display_name": "Mixed Enrollment Process"
@@ -307,11 +541,25 @@
           "metadata": {
             "phrases": [
               "late enrollment",
+              "late enrolment",
+              "late enrol",
+              "is late enrol allowed",
               "am i allowed to enroll even if its late",
               "can i still enroll late",
+              "can i still enrol late",
               "late enrollment allowed",
+              "late enrolment allowed",
               "enroll even if late",
-              "allowed ba ang late enrollment"
+              "enrol even if late",
+              "allowed ba ang late enrollment",
+              "is the late enrollment allowed",
+              "is late enrollment allowed",
+              "late enrollment allowed first week",
+              "can i enroll after deadline",
+              "missed enrollment deadline can i still enroll",
+              "am i still allowed to enroll late",
+              "pwede pa ba late enrollment",
+              "allowed ba mo enroll late"
             ]
           },
           "display_name": "Late Enrollment"
@@ -347,7 +595,13 @@
               "download COR enrollment",
               "report incorrect COR",
               "what to do if COR has errors",
-              "when is approval of enrollment"
+              "when is approval of enrollment",
+              "how do i know enrollment application is approved",
+              "where to download cor after approval",
+              "evaluator approval enrollment",
+              "approved enrollment application what next",
+              "report incorrect cor after approval",
+              "wrong cor details after enrollment approval"
             ],
             "strong_keywords": [
               "approval",
@@ -406,7 +660,15 @@
               "onsite payment enrollment",
               "where to validate COR for enrollment",
               "cashier window 10 enrollment",
-              "accounting window 3 to 5 enrollment"
+              "accounting window 3 to 5 enrollment",
+              "how to validate enrollment after payment",
+              "where to validate enrollment",
+              "validation after getting cor",
+              "account verification for enrollment",
+              "where to pay enrollment fees",
+              "online payment for enrollment validation",
+              "onsite payment enrollment validation",
+              "unsaon pag validate sa enrollment"
             ],
             "strong_keywords": [
               "validation",
@@ -458,7 +720,10 @@
               "graduate program documentary requirements",
               "law program documentary requirements",
               "requirements for graduate enrollment",
-              "requirements for law enrollment"
+              "requirements for law enrollment",
+              "graduate enrollment documentary requirements",
+              "law enrollment documentary requirements",
+              "brown envelope for graduate enrollment"
             ],
             "strong_keywords": [
               "graduate",
@@ -507,7 +772,10 @@
               "medicine documentary requirements",
               "requirements for medicine enrollment",
               "college of medicine brown envelope requirements",
-              "nmat result enrollment"
+              "nmat result enrollment",
+              "medicine enrollment documentary requirements",
+              "college of medicine enrollment requirements",
+              "medicine brown envelope requirements"
             ],
             "strong_keywords": [
               "medicine",
@@ -559,7 +827,11 @@
               "nursing acceptance slip and forms",
               "process for nursing enrollment requirements",
               "unsaon pagpasa requirements nursing",
-              "unsa process sa nursing enrollment"
+              "unsa process sa nursing enrollment",
+              "incoming nursing student enrollment",
+              "waitlisted nursing enrollment",
+              "what should nursing waitlisted applicant do",
+              "go to con for nursing enrollment instructions"
             ],
             "strong_keywords": [
               "nursing",
@@ -605,7 +877,9 @@
               "no vaccine record nursing enrollment",
               "where to get immunization record for nursing",
               "wala koy immunization record nursing",
-              "asa kuha vaccine record nursing"
+              "asa kuha vaccine record nursing",
+              "nursing immunization record requirement",
+              "where to get immunization certificate for nursing"
             ],
             "strong_keywords": [
               "nursing",
@@ -650,7 +924,9 @@
               "where to take medical laboratory for nursing",
               "do i need medical exam for nursing enrollment",
               "medical exam nursing requirements",
-              "requirements for nursing medical examination"
+              "requirements for nursing medical examination",
+              "medical exam for incoming nursing",
+              "where to do nursing medical laboratory"
             ],
             "strong_keywords": [
               "nursing",
@@ -696,7 +972,10 @@
               "nursing acceptance slip forms",
               "requirements submission nursing enrollment",
               "pagpasa requirements nursing",
-              "asa ipasa nursing requirements"
+              "asa ipasa nursing requirements",
+              "where to submit nursing requirements",
+              "how to submit con requirements",
+              "nursing acceptance slip and forms"
             ],
             "strong_keywords": [
               "nursing",
@@ -760,7 +1039,24 @@
               "requirements for enrollment",
               "what documents do I need for enrollment",
               "brown envelope requirements",
-              "documents to submit to registrar"
+              "documents to submit to registrar",
+              "Unsa nga mga dokumento ang kinahanglan nako dalhon para sa enrollment isip freshman sa BukSU",
+              "Isip first year student, unsa nga mga dokumento ang kinahanglan aron makapag-enroll",
+              "Isulti unsa nga dokumento ang kinahanglan nako dalhon panahon sa enrollment",
+              "Isip continuing student, unsa nga mga papeles ang kinahanglan para sa enrollment procedure",
+              "Palihug isulti unsa nga dokumento ang kinahanglan nako dalhon para sa enrollment process",
+              "What documents do I need to bring for enrollment as a freshman at BukSU",
+              "As a first year student, what document are required before I can enroll",
+              "tell me what document do i need to bring during the enrollment process",
+              "mga dokumento para sa enrollment",
+              "unsa akong dad-on para enroll",
+              "documents needed for enrollment",
+              "what are the enrollment documentary requirements",
+              "which enrollment requirements apply to me",
+              "undergraduate graduate law medicine enrollment requirements",
+              "what documents should i prepare for registrar enrollment",
+              "choices for enrollment requirements",
+              "unsa nga enrollment requirements para nako"
             ],
             "strong_keywords": [
               "enrollment",
@@ -846,7 +1142,24 @@
           "context_topic": "payment",
           "metadata": {
             "phrases": [
-              "student fees"
+              "student fees",
+              "Gusto ko makabalo unsa nga mga bayranan ang kinahanglan bayran sa mga estudyante sa Bukidnon State University",
+              "Aduna bay mga bayranan nga kinahanglan gihapon bayran bisan libre ang tuition",
+              "Unsa nga mga required fees ang kinahanglan bayran sa mga enrolled nga estudyante sa BukSU",
+              "Palihug ipasabot kung magbayad pa ba ang mga estudyante og fees bisan libre ang tuition",
+              "Pwede ba nimo isulti unsa nga mga student fees ang ginasingil panahon sa enrollment",
+              "Gusto ko makabalo kung ang ubang kurso ba adunay dugang bayranan para sa equipment o materials",
+              "Unsa nga klase sa bayranan ang dapat andamon sa mga estudyante kada semester",
+              "Gusto ko sa kompleto nga detalye bahin sa mga bayranan nga gipangayo sa unibersidad",
+              "I want to know what fees students are required to pay at Bukidnon State University",
+              "Are there any fees that students need to pay even if tuition is free",
+              "What are the required fees that enrolled students must settle at BukSU",
+              "bayranan sa enrollment",
+              "fees during enrollment",
+              "enrollment fee for students",
+              "do i pay during enrollment",
+              "student fees for enrollment",
+              "bayad during enrollment"
             ]
           },
           "display_name": "Student Fees"
@@ -880,7 +1193,9 @@
               "why am i paying student",
               "why do i need to pay enrollment",
               "what does paying student mean",
-              "unsa ang paying student"
+              "unsa ang paying student",
+              "paying student in enrollment means",
+              "unsa meaning sa paying student"
             ],
             "strong_keywords": [
               "paying student",
@@ -928,7 +1243,9 @@
               "who are non paying students",
               "nonpaying student",
               "what does non paying student mean",
-              "unsa ang non paying student"
+              "unsa ang non paying student",
+              "non paying student in enrollment means",
+              "unsa meaning sa non paying student"
             ],
             "strong_keywords": [
               "non paying student",
@@ -976,7 +1293,10 @@
               "difference between paying and non paying student",
               "paying student vs non paying student",
               "what are paying and non paying students",
-              "unsay difference sa paying ug non paying student"
+              "unsay difference sa paying ug non paying student",
+              "what is paying and non paying student",
+              "paying vs non paying students",
+              "paying student and non paying student meaning"
             ],
             "strong_keywords": [
               "paying student",
@@ -1029,7 +1349,22 @@
           "context_topic": "account",
           "metadata": {
             "phrases": [
-              "access sias"
+              "access sias",
+              "Unsaon nako pag access sa akong BukSU SIAS account",
+              "Pwede ba ka motabang kung asa ko maka login sa SIAS",
+              "Asa nako ma access ang akong SIAS account para sa akong mga grado",
+              "Isulti asa ko moadto para ma access ang akong SIAS portal",
+              "Palihug tabangi ko unsaon pag access sa akong SIAS web account",
+              "Pwede ba nimo isulti asa ko moadto para ma access ang akong SIAS account portal",
+              "how can i access my buksu sias account",
+              "can you help me where can i login for sias",
+              "where can i access my sias account for my grades",
+              "SIAS account access",
+              "how to access sias after enrollment",
+              "where to login sias",
+              "student information system login",
+              "sias online account access",
+              "unsaon pag access sa sias"
             ]
           },
           "display_name": "Access SIAS"
@@ -1053,23 +1388,46 @@
           "topic": "transferee_enrollment",
           "responses": {
             "en": [
-              "Transferees from public schools may enroll, subject to the evaluation of their academic records.",
-              "However, students transferring from private schools should expect possible delays in the process.",
-              "Please note that for private school transferees, previously taken subjects may not be credited.",
-              "As a result, you may be required to retake courses as a first-year student."
+              "For transferees, you must first take and pass the BukSU Admission process before you can enroll.",
+              "After passing admission, proceed to the college or department where you plan to enroll so your academic records can be evaluated.",
+              "Prepare transferee-related documents such as Honorable Dismissal, Transcript of Records or informative copy, Subject Equivalency Form if required, and the other enrollment documentary requirements listed for undergraduate first year/transferee applicants.",
+              "Once your documents are evaluated, follow the online enrollment application steps through https://admissions.buksu.edu.ph and wait for your department or evaluator instructions.",
+              "For private school transferees, expect possible delays because previously taken subjects may need additional evaluation and may not all be credited."
             ],
             "ceb": [
-              "Ang mga transferees gikan sa public schools mahimong maka-enroll basta ma-evaluate ang ilang academic records.",
-              "Apan ang mga estudyante nga mobalhin gikan sa private schools kinahanglan mag-expect og posibleng delay sa proseso.",
-              "Palihog timan-i nga para sa mga transferees gikan sa private schools, posibleng dili ma-credit ang ilang mga previous subjects.",
-              "Tungod niini, mahimong kinahanglan nimo kuhaon balik ang mga subject sama sa usa ka first-year student."
+              "Para sa transferees, kinahanglan una ka moagi ug mopasar sa BukSU Admission process bago ka maka-enroll.",
+              "Human makapasar sa admission, adto sa college o department kung asa ka gusto mo-enroll aron ma-evaluate ang imong academic records.",
+              "Pag-andam og transferee-related documents sama sa Honorable Dismissal, Transcript of Records o informative copy, Subject Equivalency Form kung required, ug uban pang enrollment documentary requirements para sa undergraduate first year/transferee applicants.",
+              "Kung ma-evaluate na ang documents, sundon ang online enrollment application steps sa https://admissions.buksu.edu.ph ug hulata ang instructions sa department o evaluator.",
+              "Para sa private school transferees, posible nga naay delay kay kinahanglan pa i-evaluate ang previous subjects ug dili tanan subject automatic ma-credit."
             ]
           },
           "intent": "transferee_enrollment",
-          "context_topic": "general_info",
+          "context_topic": "process",
           "metadata": {
             "phrases": [
-              "transferee enrollment"
+              "transferee enrollment",
+              "how can a transferee enroll",
+              "transferee enrollment process",
+              "transferee enroll how",
+              "how to enroll as transferee",
+              "Gusto ko makabalo kung ang estudyante nga mobalhin gikan sa lain nga eskwelahan pwede ba maka-enroll sa Bukidnon State University",
+              "Pwede ba nimo ipasabot ang proseso sa enrollment para sa transferee nga mga estudyante gikan sa lain nga eskwelahan",
+              "Nagplano ko nga mobalhin sa BukSU ug gusto ko masabtan ang policy sa enrollment para sa transferee",
+              "Palihug ipasabot kung giunsa ang enrollment para sa mga estudyante nga mobalhin gikan sa public nga mga eskwelahan",
+              "Gusto ko mangutana bahin sa mga requirements para sa transferee enrollment sa Bukidnon State University",
+              "Giunsa pag-handle sa BukSU ang enrollment para sa mga estudyante nga mobalhin gikan sa private nga mga eskwelahan",
+              "I want to know if a student transferring from another school can enroll at Bukidnon State University",
+              "Can you explain the enrollment process for transferee students coming from another institution",
+              "I am planning to transfer to BukSU and I want to understand the transferee enrollment policy",
+              "mobalhin sa BukSU",
+              "transfer to BukSU",
+              "does buksu accept transferee students",
+              "does buksu accept transferred students",
+              "is buksu accepting transfer students",
+              "can transfer student enroll in buksu",
+              "modawat ba ang buksu ug transferee",
+              "pwede ba mobalhin sa buksu"
             ]
           },
           "display_name": "Transferee Enrollment"
@@ -1088,7 +1446,20 @@
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
-              "campus transfer"
+              "campus transfer",
+              "Pwede ba ko mobalhin sa lain nga campus sa BukSU",
+              "Posible ba nga mobalhin sa lain nga campus sa Bukidnon State University",
+              "Pwede ba ang mga estudyante mobalhin sa lain nga campus sulod sa semester",
+              "Pwede ba ang estudyante mobalhin sa lain nga campus",
+              "Can I transfer to another BukSU campus",
+              "Is it possible to move to a different bukidnon state university campus",
+              "Can students transfer to another campus during the semester",
+              "mobalhin sa lain nga campus",
+              "transfer campus",
+              "transfer from satellite campus to main campus",
+              "can i transfer campus in buksu",
+              "campus transfer policy",
+              "balhin campus sa buksu"
             ]
           },
           "display_name": "Campus Transfer"
@@ -1107,7 +1478,23 @@
           "context_topic": "policy",
           "metadata": {
             "phrases": [
-              "double enrollment policy"
+              "double enrollment policy",
+              "Pwede ba ko maka enroll sa BukSU samtang nag eskwela pa ko sa lain nga eskwelahan",
+              "Pwede ba ko magtuon sa BukSU kung enrolled pa ko sa lain nga unibersidad",
+              "Gitugotan ba ang dual enrollment sa BukSU ug lain nga eskwelahan",
+              "Pwede ba ko magpa enroll sa BukSU bisan naa pa koy active enrollment sa lain nga kolehiyo",
+              "Okay ra ba nga naka-enroll ko sa BukSU ug sa lain nga eskwelahan sa parehas nga panahon",
+              "Am I allowed to enroll at BukSU while currently studying at another school",
+              "Can I study at BukSU if I am still enrolled in a different university",
+              "Is dual enrollment permitted between BukSU and another institution",
+              "naka-enroll sa duha ka eskwelahan",
+              "Dual enrollment",
+              "double enrollment",
+              "can i enroll in two schools",
+              "double enrollment allowed",
+              "enrolled in another school and buksu",
+              "two enrollment at the same time",
+              "pwede ba duha ka school enrollment"
             ]
           },
           "display_name": "Double Enrollment Policy"

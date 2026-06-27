@@ -5,6 +5,7 @@ import * as dbResponses from './db/responses.js';
 import * as dbLocations from './db/locations.js';
 import { deleteImage } from './db/images.js';
 import { upsertResponse } from './admin-db.js';
+import { backupJsonFile } from './utils/jsonBackup.js';
 
 const PROJECT_ROOT = process.cwd();
 
@@ -54,6 +55,7 @@ export async function getMapSettings(): Promise<MapSettings> {
 export async function saveMapSettings(settings: MapSettings): Promise<boolean> {
   try {
     await ensureDataDir();
+    await backupJsonFile(MAP_SETTINGS_FILE, 'map-settings');
     await fs.writeFile(MAP_SETTINGS_FILE, JSON.stringify(settings, null, 2), 'utf-8');
     return true;
   } catch (error) {
@@ -170,6 +172,7 @@ async function writeLocationFile(next: LocationFileShape): Promise<boolean> {
       locations: next.locations || {},
     };
 
+    await backupJsonFile(RESPONSES_LOCATION_FILE, 'locations');
     await fs.writeFile(RESPONSES_LOCATION_FILE, JSON.stringify(merged, null, 2), 'utf-8');
     return true;
   } catch (error) {
@@ -305,6 +308,7 @@ export async function getUserPrivileges(): Promise<UserPrivileges> {
 export async function saveUserPrivileges(privileges: UserPrivileges): Promise<boolean> {
   try {
     await ensureDataDir();
+    await backupJsonFile(PRIVILEGES_FILE, 'settings');
     await fs.writeFile(PRIVILEGES_FILE, JSON.stringify(privileges, null, 2), 'utf-8');
     return true;
   } catch (error) {

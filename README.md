@@ -182,4 +182,4 @@ PYTHON_CMD=python3
 
 ## License
 
-This project is part of BukSU (Bukidnon State University) admissions system.
+This project is part of BukSU (Bukidnon State University) Information Unit.

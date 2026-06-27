@@ -22,7 +22,7 @@ class ResponseBuilder:
         # Decode common HTML entities and strip raw HTML tags from legacy data.
         text = html.unescape(text)
         text = text.replace("\xa0", " ")
-        text = re.sub(r"<\s*(b|strong)\s*>", "**", text, flags=re.IGNORECASE)
+        text = re.sub(r"<\s*(b|strong)\b[^>]*>", "**", text, flags=re.IGNORECASE)
         text = re.sub(r"<\s*/\s*(b|strong)\s*>", "**", text, flags=re.IGNORECASE)
         text = re.sub(r"<br\s*/?>", "\n", text, flags=re.IGNORECASE)
         text = re.sub(r"</p\s*>", "\n\n", text, flags=re.IGNORECASE)

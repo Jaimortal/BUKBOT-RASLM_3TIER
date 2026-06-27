@@ -78,7 +78,6 @@ import { AdminMapSettings } from "@/components/admin/AdminMapSettings";
 import { AdminGallery } from "@/components/admin/AdminGallery";
 import { AdminReports } from "@/components/admin/AdminReports";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
-import { AdminNormalizationRules } from "@/components/admin/AdminNormalizationRules";
 
 export default function AdminDashboard() {
   const queryClient = useQueryClient();
@@ -403,9 +402,9 @@ export default function AdminDashboard() {
   // --- UI ---
   const menuItems = [
     { id: "responses", label: "Responses", icon: MessageSquare },
+    { id: "reports", label: "User Reports", icon: Shield },
     { id: "gallery", label: "Gallery", icon: ImageIcon },
     { id: "faqs", label: "FAQs", icon: FileJson },
-    { id: "reports", label: "Reports", icon: Shield },
     { id: "privileges", label: "Settings", icon: Settings },
     { id: "logout", label: "Logout", icon: LogOut, isLogout: true },
   ];
@@ -783,8 +782,6 @@ export default function AdminDashboard() {
               </Card>
 
               <AdminMapSettings />
-
-              <AdminNormalizationRules />
 
               <Card>
                 <CardHeader>

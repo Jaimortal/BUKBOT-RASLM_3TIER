@@ -151,6 +151,10 @@ Backups:
 
 - `backups/json/knowledge/`
 - `backups/json/super-intents/`
+- `backups/json/responses/`
+- `backups/json/locations/`
+- `backups/json/map-settings/`
+- `backups/json/settings/`
 
 ## Maps And Images
 
@@ -264,5 +268,7 @@ Blank fallback:
 - Safe bold formatting works: complete.
 - JSON validation passes: complete.
 - Rasa validation passes: complete.
-- Python tests pass: complete.
-- Manual user testing can begin: ready.
+- Focused Day 11 regression tests pass: complete.
+- Query-normalization dataset tests pass: complete.
+- Full legacy Python test discovery still needs expectation cleanup because some older tests assert old response wording and old routing names.
+- Manual user testing can begin with the Day 11 checklist: ready.

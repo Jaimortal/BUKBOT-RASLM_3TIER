@@ -100,7 +100,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Gusto ko mangutana kung pwede ba moapil ang mga freshmen sa student organizations sa BukSU",
+        "Pwede ba moapil ang mga first year students sa giila nga student organizations",
+        "Gusto ko mahibal an kung gitugotan ba ang mga bag ong estudyante nga moapil og organizations",
+        "Pwede ba ang freshmen nga mahimong miyembro sa student organizations",
+        "Mangutana ko kung allowed ba ang first year students sa student organizations sa unibersidad",
+        "Gitugotan ba ang mga bagong enroll nga estudyante nga moapil sa student organizations",
+        "Gusto ko ipatin aw kung pwede moapil ang freshmen sa BukSU student organizations",
+        "Pwede ba moapil ang first year college students sa mga organization sa campus",
+        "I want to ask if freshmen students are allowed to join student organizations at Bukidnon State University",
+        "Can first year college students participate in recognized student organizations",
+        "Are new students permitted to become members of BukSU student organizations"
+      ]
     },
     "display_name": "Student Organizations"
   },
@@ -124,7 +137,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Kinahanglan ba mo-attend sa graduation rehearsal",
+        "Kailangan ba ang estudyante mo-apil sa rehearsal",
+        "Obligado ba ko moadto sa graduation rehearsal",
+        "Mandatory ba ang attendance sa rehearsal",
+        "Pwede ba skipon sa estudyante ang rehearsal",
+        "Pwede ba ko dili moapil sa graduation rehearsal",
+        "Kinahanglan ba tanan graduates moapil sa rehearsal",
+        "Required ba ang rehearsal session para sa mga graduates",
+        "Is it required to attend the graduation rehearsal",
+        "Do students need to be present during graduation rehearsal",
+        "Must I go to the graduation rehearsal"
+      ]
     },
     "display_name": "Graduation Rehearsal Attendance"
   },
@@ -148,7 +174,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Pwede ba mag-request ug documents bisan wala pa graduate",
+        "Posible ba nga makuha nako akong documents sayo",
+        "Giunsa pag-request sa documents sa wala pa graduation",
+        "Gusto nako mag-request sa akong certificate sa wala pa graduation",
+        "Gi-allow ba ang early document requests",
+        "Pwede ba makuha nako akong transcript sa wala pa graduation",
+        "Posible ba ang early processing sa documents",
+        "Pwede ba makakuha ang graduates sa documents sa wala pa graduation day",
+        "Can I request documents before graduation",
+        "Is it possible to get my documents early",
+        "How can I request documents before I graduate"
+      ]
     },
     "display_name": "Early Document Request"
   },
@@ -196,7 +235,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Naay peer mentoring sa BukSU para sa mga estudyante",
+        "Aduna bay peer mentoring programs para sa freshmen o lower-year students",
+        "Gusto nako mahibalo kung pwede ko og peer mentor sa BukSU",
+        "Makamentor ba ang upper-year students sa lower-year students",
+        "Aduna ba peer mentoring initiatives sa BukSU",
+        "Giunsa nako pag-apil sa peer mentoring sa BukSU",
+        "Pwede ko ma-assign og peer mentor kung bag-o pa ko nga estudyante",
+        "Gi-organize ba ang peer mentoring sa specific programs sa BukSU",
+        "Does BukSU offer peer mentoring for students",
+        "Are there peer mentoring programs for freshmen or lower-year students",
+        "I want to know if I can have a peer mentor at BukSU"
+      ]
     },
     "display_name": "Mentoring"
   },
@@ -224,7 +276,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Unsa akong buhaton kung maligaw ko sa campus",
+        "Dili nako makita ang akong agianan sa BukSU unsaon nako",
+        "Giunsa nako pagpangita sa mga building kung maligaw ko sa campus",
+        "Pwede ba nimo ko tabangan pagpangita sa akong agianan sa Bukidnon State University",
+        "Naligaw ko sa campus asa ko pwede mangutana sa direksyon",
+        "Aduna ba tawo nga makatabang nako kung maligaw ko sa BukSU",
+        "Kinsa ang makagiyahan nako kung dili ko kabalo asa moadto sa campus",
+        "Pwede ba nimo ko hatagan og direksyon kung maligaw ko sa BukSU",
+        "What should I do if I get lost on campus",
+        "I cannot find my way around BukSU what can I do",
+        "How do I locate buildings if I am lost on campus"
+      ]
     },
     "display_name": "Campus Navigation"
   },
@@ -248,7 +313,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Pwede ba mo-attend ang mga ginikanan sa graduation ceremony",
+        "Ang mga bisita ba puwede moapil sa graduation",
+        "Gusto nako mahibalo kung pwede ang family members moanhi sa graduation",
+        "Gi-permit ba nga motan-aw ang ginikanan sa graduation",
+        "Pwede ba ko magdala og paryente sa graduation program",
+        "Ang mga visitor ba allowed sa graduation ceremonies",
+        "Pila ka bisita ang pwede mo-attend sa graduation",
+        "Pwede ba ang alumni mo-apil sa graduation sa current students",
+        "Can parents attend the graduation ceremony",
+        "Are guests allowed to join the graduation",
+        "I want to know if family members can come to graduation"
+      ]
     },
     "display_name": "Graduation Attendance"
   },
@@ -272,7 +350,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Unsa man ang tracer study",
+        "Pwede nimo i-explain unsa ang tracer study",
+        "Gusto nako makabalo bahin sa tracer study",
+        "Unsay gi-track sa tracer study",
+        "Required ba ang tracer study para sa mga graduate",
+        "Kinahanglan ba tanan alumni moapil sa tracer study",
+        "Ngano importante ang tracer study",
+        "Unsang impormasyon ang gina-kuha sa tracer study",
+        "What is a tracer study",
+        "Can you explain what a tracer study is",
+        "I want to know about tracer studies"
+      ]
     },
     "display_name": "Graduate Tracking"
   },
@@ -296,7 +387,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentAffairsData"
+      "source": "StudentAffairsData",
+      "phrases": [
+        "Aduna ba campus security sa BukSU aron masiguro ang kaluwasan sa mga estudyante",
+        "Giunsa pagpanalipod sa Bukidnon State University ang mga estudyante sa campus",
+        "Aduna ba mga security personnel nga nagbantay sa grounds sa BukSU",
+        "Pwede ba mag-report ang mga estudyante og safety concerns sa campus security",
+        "Aduna ba emergency services nga magamit sa campus alang sa mga estudyante",
+        "Aduna ba security hotline para sa mga estudyante sa BukSU",
+        "Giunsa pag-handle sa BukSU ang mga insidente nga may kalabotan sa kaluwasan sa estudyante",
+        "Aduna ba mga security guards sa panahon sa klase sa BukSU",
+        "Is there campus security at BukSU to ensure student safety",
+        "How does Bukidnon State University provide safety for students on campus",
+        "Are there security personnel patrolling BukSU grounds"
+      ]
     },
     "display_name": "Safety"
   },
@@ -320,7 +424,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentLifeData"
+      "source": "StudentLifeData",
+      "phrases": [
+        "Unsa ang intramurals sa Bukidnon State University",
+        "Pwede nimo i-explain ang konsepto sa intramurals sa unibersidad",
+        "Gusto nako mahibaloan ang intramural sports events",
+        "Palihog sultihi ko unsa ang intramurals",
+        "Ginahimo ba ang intramurals kada tuig sa unibersidad",
+        "Unsa ang katuyoan sa intramurals sa eskwelahan",
+        "Pwede nimo i-describe ang intramural competitions sa BukSU",
+        "Giunsa pag-benefit ang mga estudyante sa intramurals",
+        "What are intramurals at Bukidnon State University",
+        "Can you explain the concept of intramurals in the university",
+        "I want to know about the intramural sports events"
+      ]
     },
     "display_name": "About Intramurals"
   },
@@ -344,7 +461,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentLifeData"
+      "source": "StudentLifeData",
+      "phrases": [
+        "Pwede ba ang mga freshmen moapil sa intramurals",
+        "Ang mga first year students ba gi-allow sa intramurals",
+        "Open ba ang participation sa intramurals para sa first year students",
+        "Kinsa ang pwede moapil sa BukSU intramural games",
+        "Gi-permit ba ang mga bag-ong estudyante sa intramural competitions",
+        "Unsa ang requirements para sa freshmen aron makasalmot sa intramurals",
+        "Pwede ba ang freshmen moapil sa intramural sports ug activities",
+        "Aduna bay oportunidad ang first year students moapil sa intramurals",
+        "Are freshmen allowed to join intramural activities",
+        "Can first year students participate in intramurals",
+        "How can freshmen get involved in the intramurals"
+      ]
     },
     "display_name": "Freshmen Intramurals"
   },
@@ -368,7 +498,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentConcernsData"
+      "source": "StudentConcernsData",
+      "phrases": [
+        "Unsaon nako pag-handle sa usa ka inactive nga group member",
+        "Kung ang akong kauban sa grupo dili mo-apil unsa akong buhaton",
+        "Ang usa ka membro sa grupo dili mag-contribute unsaon nako",
+        "Pwede ba nako i-report ang usa ka inactive nga group member",
+        "Giunsa nako pag-inform sa instructor bahin sa usa ka inactive nga miembro",
+        "Unsay angay buhaton kung ang usa ka grupo membro dili motabang sa project",
+        "Unsay proseso kung ang akong kauban sa grupo walay partisipasyon sa meetings",
+        "Kinsa akong kontakon kung adunay membro sa grupo nga inactive",
+        "What should I do if a group member becomes inactive",
+        "How do I handle a group member who is not participating",
+        "My team member is not contributing what should I do"
+      ]
     },
     "display_name": "Group Work"
   },
@@ -392,7 +535,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentWellnessData"
+      "source": "StudentWellnessData",
+      "phrases": [
+        "Unsaon nako pag-handle sa stress kung gibati nako sa eskwelahan",
+        "Kung overwhelmed ko sa akong academic workload unsa akong buhaton",
+        "Kinsa ang pwede nako duolon kung gibati nako ang kahadlok o stress sa school",
+        "Asa ko mangayo ug tabang para sa mental health sa unibersidad",
+        "Giunsa nako pagpangita ug tabang kung daghan kaayo akong klase ug assignments",
+        "Pwede ba ko mo-approach sa adviser o counselor kung gibati nako ang stress",
+        "Gibati nako nga sobra kaayo ang stress tungod sa projects ug exams unsa akong buhaton",
+        "Kinsa sa unibersidad ang makatabang sa estudyante nga gibati nga stressed",
+        "What should I do if I am feeling stressed at school",
+        "How can I manage stress during my studies",
+        "I am overwhelmed with my academic workload what should I do"
+      ]
     },
     "display_name": "Mental Health"
   },
@@ -446,7 +602,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "AdmissionsData"
+      "source": "AdmissionsData",
+      "phrases": [
+        "Ngano pending gihapon ang akong admission application",
+        "Ang akong admission status pending gihapon ug gusto ko mahibal an ngano",
+        "Kanus a ma approve ang akong admission application",
+        "Pending gihapon ang status sa akong admission account hangtod karon",
+        "Kanus a i review ug i approve ang akong admission application",
+        "Unsa akong buhaton kung pending gihapon ang akong admission application",
+        "Nagsubmit nako sa akong requirements pero pending gihapon ang status",
+        "Ngano wala pa na approve ang akong admission application",
+        "Why is my admission application still pending approval",
+        "My admission application status shows pending and I want to know why",
+        "How long does it take for my admission application to be approved"
+      ]
     },
     "display_name": "Application Pending"
   },
@@ -478,7 +647,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "ScholarshipData"
+      "source": "ScholarshipData",
+      "phrases": [
+        "Ngano wala pa na release ang akong TES allowance",
+        "Wala pa nako nadawat ang TES allowance ug gusto ko mahibal an ngano",
+        "Kanus a ma release ang TES allowance",
+        "Unsa ang hinungdan sa delay sa TES allowance",
+        "Naghulat gihapon ko sa TES allowance ug wala pay update",
+        "Pila ka adlaw o semana bago ma release ang TES allowance",
+        "Ngano dugay ang proseso sa TES allowance release",
+        "Na delay ang akong TES allowance ug gusto ko mahibal an ngano",
+        "Why is my TES allowance not released yet",
+        "My TES allowance has not been received and I want to know why",
+        "When will the TES allowance be released"
+      ]
     },
     "display_name": "Tes Release Delay"
   },
@@ -508,7 +690,70 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PolicyData"
+      "source": "PolicyData",
+      "phrases": [
+        "can i enter buksu even though im not wearing uniform",
+        "can i get inside buksu without uniform",
+        "can i enter campus without uniform",
+        "can i wear civilian attire in buksu",
+        "do student allowed to use civilian",
+        "are students allowed to wear civilian",
+        "can students use civilian attire",
+        "can i wear civilian clothes to school",
+        "are students permitted to enter campus without uniform",
+        "is it okay to come to school in plain clothes",
+        "do we have permission to use civilian attire on campus",
+        "are non uniform outfits allowed for students",
+        "civilian clothes allowed",
+        "uniform not required today",
+        "can enter no uniform",
+        "plain clothes okay for school",
+        "student civilian dress permitted",
+        "do student can wear civilian to school",
+        "am i allow to used civilian clothes",
+        "can i go school wearing civilian",
+        "is student allowed using civilian to inter school",
+        "do we can enter campus if not wearing uniform",
+        "i can still go school even no uniform",
+        "civilian is allowed for student to enter",
+        "can i inter inside even im wearing civilian",
+        "do the school allowed student not wearing uniform",
+        "is okay if i come school with civilian clothes",
+        "what if i don't have my uniform today can i still attend",
+        "what if i dont have my uniform today can i still attend",
+        "does the dress code allow regular clothes sometimes",
+        "are there days when we don't need to wear the school uniform",
+        "are there days when we dont need to wear the school uniform",
+        "can i get in trouble for wearing civilian clothes instead",
+        "if i show up in plain clothes will they let me in",
+        "not wearing uniform inside campus",
+        "buksu uniform policy",
+        "Pwede ba magsul ob ug civilian attire imbis nga official school uniform",
+        "Tugotan ba ang students nga magsul ob ug civilian attire panahon sa klase",
+        "Pwede ba magsul ob ug civilian attire sulod sa campus",
+        "Gi allow ba ang civilian attire isip uniform sa students",
+        "Kanus a pwede magsul ob ug civilian attire ang students",
+        "Pwede ba mo attend ug klase nga nagsul ob ug civilian attire",
+        "Gi allow ba ang civilian attire panahon sa regular class days",
+        "Tugotan ba sa university ang pagsul ob ug civilian attire",
+        "Am I allowed to wear civilian attire instead of the official school uniform",
+        "Can students wear their civilian attire during regular class days",
+        "Is wearing civilian attire allowed inside the university campus"
+      ],
+      "strong_keywords": [
+        "uniform",
+        "civilian",
+        "attire",
+        "plain",
+        "clothes",
+        "enter",
+        "inside"
+      ],
+      "weak_keywords": [
+        "campus",
+        "buksu",
+        "wear"
+      ]
     },
     "display_name": "Wear Civilian Attire"
   },
@@ -538,7 +783,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "ScholarshipData"
+      "source": "ScholarshipData",
+      "phrases": [
+        "Pwede ba ko mag apply sa TES scholarship bisan naa koy lain nga scholarship",
+        "Tugotan ba nga makadawat ug TES ug lain nga scholarship sa parehas nga panahon",
+        "Posible ba nga ma qualify sa TES kung naa nakoy lain nga scholarship",
+        "Pwede ba makadawat ug TES allowance bisan naa nay existing scholarship",
+        "Gusto nako mahibal an kung pwede ba ang TES ug lain nga scholarship",
+        "Pwede ba ko mag apply sa TES kung scholarship applicant nako daan",
+        "Tugotan ba sa TES ang students nga adunay lain nga scholarship",
+        "Ma approve ba sa TES ang students nga naa nay scholarship",
+        "Can I apply for TES scholarship while applying for another scholarship program",
+        "Am I allowed to receive TES and another scholarship at the same time",
+        "Is it possible to qualify for TES if I already have another scholarship"
+      ]
     },
     "display_name": "Tes With Other Scholarships"
   },
@@ -566,7 +824,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PolicyData"
+      "source": "PolicyData",
+      "phrases": [
+        "Gitugotan ba ang students nga magsul-ob og shorts sulod sa campus",
+        "Kanus-a pwede magsul-ob og shorts sa unibersidad",
+        "Pwede ba ko magsul-ob og shorts panahon sa klase o activities",
+        "Unsay mga rules sa pagsul-ob og shorts sa sulod sa campus",
+        "Ang shorts ba gitugotan ra sa sports o P.E. activities",
+        "Pwede ba magsul-ob og shorts gawas sa sports events",
+        "Pwede ba ko magsul-ob og shorts para sa official university events",
+        "Aduna bay specific days o events nga gitugotan ang shorts",
+        "Are students allowed to wear shorts on campus",
+        "When is it acceptable to wear shorts while at the university",
+        "Can I wear shorts during class or activities"
+      ]
     },
     "display_name": "Shorts On Campus"
   },
@@ -594,7 +865,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PolicyData"
+      "source": "PolicyData",
+      "phrases": [
+        "Kanus-a pwede magsul-ob ang estudyante sa ilang college shirts",
+        "Aduna ba opisyal nga adlaw para magsul-ob og college shirts",
+        "Pwede ba magsul-ob ang estudyante sa ilang shirts sa pipila ka weekdays",
+        "Unsay mga announcements nga naggiya sa pagsul-ob sa shirt",
+        "Gitugotan ba ang shirts panahon sa special academic activities",
+        "Giunsa pagsayran sa estudyante ang rules para sa college shirts",
+        "Aduna bay schedule para sa college shirt days",
+        "Pwede ba magsul-ob sa college shirts kung walay permiso",
+        "When can students wear their college shirts",
+        "Are there official days for wearing college shirts",
+        "Can students wear their shirts on certain weekdays"
+      ]
     },
     "display_name": "College Shirt Allowed"
   },
@@ -622,7 +906,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "EnrollmentData"
+      "source": "EnrollmentData",
+      "phrases": [
+        "Unsaon nako pag check sa akong enrollment status sa BukSU portal",
+        "Asa nako makita ang akong mga subject ug schedule sa student portal",
+        "Giunsa nako pag verify kung successful ba ang akong enrollment sa portal",
+        "Asa nga section sa portal makita ang enrollment information",
+        "Pwede ba makita sa estudyante ang registered subjects pinaagi sa portal",
+        "Giunsa nako pag confirm ang enrollment gamit ang student portal account",
+        "Asa makita ang class schedule human sa enrollment",
+        "Ipakita ba sa BukSU portal ang listahan sa enrolled subjects",
+        "How can I check my enrollment status in the BukSU portal",
+        "Where can I see my subjects and schedule in the student portal",
+        "How do I verify if my enrollment is successful in the portal"
+      ]
     },
     "display_name": "Student Portal"
   },
@@ -633,14 +930,14 @@
     "responses": {
       "answer": {
         "en": [
-          "To change your BukSU portal password log in to your account and go to account settings.",
-          "Select change password and enter your current password and new password.",
-          "Save the changes to update your password."
+          "If you forgot or need to reset your BukSU Admission portal password, go to <b>https://admissions.buksu.edu.ph/login</b>.",
+          "Click the <b>Forgot Password</b> option on the login page.",
+          "Enter the email address registered to your BukSU Admission account and follow the instructions sent to your email."
         ],
         "ceb": [
-          "Aron mausab ang imong BukSU portal password mag login sa imong account ug adto sa account settings.",
-          "Pilia ang change password ug ibutang ang current ug bag ong password.",
-          "I save ang changes aron ma update ang imong password."
+          "Kung nakalimot ka o kinahanglan nimo i-reset ang imong BukSU Admission portal password, adto sa <b>https://admissions.buksu.edu.ph/login</b>.",
+          "I-click ang <b>Forgot Password</b> option sa login page.",
+          "Ibutang ang email address nga naka-register sa imong BukSU Admission account ug sunda ang instructions nga ipadala sa imong email."
         ]
       },
       "follow_up": [],
@@ -650,9 +947,25 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PortalSupportData"
+      "source": "PortalSupportData",
+      "phrases": [
+        "how do i change my portal password",
+        "how do i reset my portal password",
+        "how do i reset my admission portal password",
+        "how do i change my admission portal password",
+        "student portal admission forgot password",
+        "forgot admission portal password",
+        "forgot buksu admission portal password",
+        "forgot my admission website password",
+        "forgot my admission account password",
+        "what should i do if i forgot my admission portal password",
+        "unsaon pag reset sa admission portal password",
+        "nakalimot ko sa admission portal password",
+        "nakalimot ko sa password sa admission website",
+        "unsaon pag recover sa admission account password"
+      ]
     },
-    "display_name": "Account Settings"
+    "display_name": "Admission Forgot Password"
   },
   {
     "intent": "reset_portal_password_buksu",
@@ -678,7 +991,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PortalSupportData"
+      "source": "PortalSupportData",
+      "phrases": [
+        "nakalimot ko sa akong buksu admission account password unsaon nako",
+        "unsaon pag recover sa nakalimtan nga buksu admission password",
+        "dili nako mahinumduman akong password sa admission account unsa buhaton",
+        "unsa ang angay buhaton kung nakalimot ko sa akong admission password",
+        "pwede pa ba nako ma recover akong buksu admission account kung nakalimot ko sa password",
+        "i forgot my admission account password sa buksu unsaon pag recover",
+        "unsaon nako pagkuha balik sa akong nakalimtan nga admission password",
+        "i forgot my buksu admission account password what should i do",
+        "how can i recover my buksu admission account if i forgot the password",
+        "i cannot remember my buksu admission password how to recover it"
+      ]
     },
     "display_name": "Reset Portal Password BukSU"
   },
@@ -706,7 +1031,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PortalSupportData"
+      "source": "PortalSupportData",
+      "phrases": [
+        "Ngano na lock ang akong BukSU portal account",
+        "Unsa ang angay buhaton kung ma lock ang akong student portal account",
+        "Giunsa nako pag unlock ang Bukidnon State University portal account",
+        "Dili nako ma access ang portal kay na lock ang account unsa akong buhaton",
+        "Unsay hinungdan ngano ma lock ang student portal account",
+        "Pila ka minuto ang hulaton kung ma lock ang BukSU portal account",
+        "Maka cause ba og account lock ang daghang sayop nga login attempts",
+        "Unsa nga solution ang mahimo kung na lock ang BukSU portal account",
+        "Why is my BukSU portal account locked",
+        "What should I do if my student portal account becomes locked",
+        "How can I unlock my Bukidnon State University portal account"
+      ]
     },
     "display_name": "Portal Account Locked Issue"
   },
@@ -730,7 +1068,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PortalSupportData"
+      "source": "PortalSupportData",
+      "phrases": [
+        "Ngano dili ko maka login sa BukSU student portal",
+        "Unsa ang angay nako i check kung dili mo work ang portal login",
+        "Ngano dili daw sakto ang akong student identification ug password",
+        "Makaapekto ba ang portal maintenance sa pag login sa estudyante",
+        "Unsa ang kasagarang rason sa portal login problems",
+        "Dili mo work ang akong BukSU portal login unsa akong buhaton",
+        "Ngano moingon ang system nga sayop ang login information",
+        "Unsang troubleshooting steps ang mahimo para sa portal login problems",
+        "Why can I not log in to the BukSU student portal",
+        "What should I check if the portal login does not work",
+        "Why does the portal reject my student identification and password"
+      ]
     },
     "display_name": "Portal Login Problem"
   },
@@ -756,7 +1107,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "AdmissionsData"
+      "source": "AdmissionsData",
+      "phrases": [
+        "Pwede ba usbon ang program human sa pag submit sa BukSU CAT application",
+        "Gitugotan ba nga i modify ang program choice human sa online submission",
+        "Unsay mahitabo kung gusto ko mo switch og program human apply",
+        "Naay pwede ba nga program changes post application",
+        "Pwede ba i update sa applicant ang program choice human submit",
+        "Gitugotan ba ang pag usob sa kurso human sa submission",
+        "Unsa ang buhaton kung sayop ang napiling program",
+        "Posible ba ang modification human sa pag submit sa BukSU CAT",
+        "Can I change my program after submitting the BukSU CAT application",
+        "Is it allowed to modify program choice after online submission",
+        "What happens if I want to switch programs after applying"
+      ]
     },
     "display_name": "Application Rules"
   },
@@ -782,7 +1146,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentServicesData"
+      "source": "StudentServicesData",
+      "phrases": [
+        "Naghatag ba og tabang ang BukSU para sa PWD students",
+        "Giunsa pagkuha og support ang estudyante nga adunay disability",
+        "Asa makig coordinate ang PWD students para sa assistance",
+        "Gisuportahan ba ang inclusivity sa mga estudyante nga adunay disability",
+        "Unsang opisina ang mo handle sa PWD student assistance",
+        "Pwede ba ang BukSU maghatag og exam support para sa disabled students",
+        "Kinsa kontakon sa PWD students para sa tabang",
+        "Does BukSU provide assistance for PWD students",
+        "How can students with disabilities get support at BukSU",
+        "Are there accommodations for PWD applicants during exams"
+      ]
     },
     "display_name": "Accessibility"
   },
@@ -810,7 +1186,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "EnrollmentData"
+      "source": "EnrollmentData",
+      "phrases": [
+        "Unsa ang enrollment process para sa continuing students sa BukSU",
+        "Asa mag login ang continuing students para sa enrollment",
+        "Unsa nga impormasyon ang kinahanglan sa continuing student enrollment",
+        "Giunsa pag submit sa estudyante ang enrollment application online",
+        "Unsa ang proseso sa continuing students panahon sa enrollment",
+        "Pwede nimo ipasabot ang enrollment process para sa returning students",
+        "Giunsa pag kompleto sa continuing students ang enrollment application",
+        "What is the enrollment process for continuing students at BukSU",
+        "How do continuing students enroll through the admissions portal",
+        "What steps should continuing students follow for enrollment"
+      ]
     },
     "display_name": "Process"
   },
@@ -838,7 +1226,38 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PolicyData"
+      "source": "PolicyData",
+      "phrases": [
+        "campus dress code policy",
+        "what is the dress code in buksu",
+        "what clothes are not allowed inside campus",
+        "are slippers allowed inside buksu",
+        "are shorts allowed inside campus",
+        "what should students wear in buksu",
+        "Unsa ang dress code policy para sa mga estudyante sa BukSU",
+        "Kinahanglan ba magsul ob ang estudyante sa opisyal nga uniporme",
+        "Unsa ang mga rules sa pamesti panahon sa civilian days",
+        "Gitugotan ba ang shorts o sleeveless nga sinina sa campus",
+        "Unsang mga pamesti ang dili tugotan sulod sa university",
+        "Unsa ka strikto ang dress code policy sa BukSU",
+        "Unsang sakto nga pamesti ang angay sul obon sa estudyante",
+        "Pwede ba magsul ob og tsinelas o gisi nga karsones sa campus",
+        "What is the dress code policy for students at BukSU",
+        "What clothes are allowed inside the BukSU campus",
+        "Are students required to wear the official university uniform"
+      ],
+      "strong_keywords": [
+        "dress",
+        "code",
+        "uniform",
+        "shorts",
+        "slippers"
+      ],
+      "weak_keywords": [
+        "campus",
+        "wear",
+        "inside"
+      ]
     },
     "display_name": "Dress Code"
   },
@@ -864,7 +1283,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentServicesData"
+      "source": "StudentServicesData",
+      "phrases": [
+        "Naghatag ba ang BukSU og guidance and counseling services",
+        "Unsang mga serbisyo ang gi offer sa University Guidance and Counseling Unit",
+        "Pwede ba makakuha og career guidance ang estudyante sa BukSU",
+        "Naay psychological tests para sa estudyante",
+        "Gi provide ba ang individual counseling sa BukSU",
+        "Giunsa pag access sa estudyante sa mental health support",
+        "Open ba ang guidance services sa tanan estudyante",
+        "Giunsa pag request sa estudyante sa counseling sessions",
+        "Does BukSU provide guidance and counseling services",
+        "What services are offered by University Guidance and Counseling Unit",
+        "Can students receive career guidance at BukSU"
+      ]
     },
     "display_name": "Guidance"
   },
@@ -888,7 +1320,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentFeesData"
+      "source": "StudentFeesData",
+      "phrases": [
+        "Libre ba ang tuition para sa undergraduate sa BukSU",
+        "Libre ba ang tuition sa BukSU ubos sa Universal Access to Quality Tertiary Education Act",
+        "Apil ba ang miscellaneous fees para sa kwalipikadong Filipino students",
+        "Kinsa ang kwalipikado para sa libre nga undergraduate tuition sa BukSU",
+        "Giunsa pag avail sa estudyante ang libre nga tuition ubos sa balaod",
+        "Gi-waive ba ang fees para sa undergraduate programs sa BukSU",
+        "Nag-implement ba ang BukSU og free tuition para sa undergraduates",
+        "Eligible ba ang Filipino students para sa libre nga tuition",
+        "Are undergraduate tuition fees free at BukSU",
+        "Is BukSU tuition free under the Universal Access to Quality Tertiary Education Act",
+        "Are miscellaneous fees covered for qualified Filipino students"
+      ]
     },
     "display_name": "Tuition Policy"
   },
@@ -914,7 +1359,17 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "CampusFacilitiesData"
+      "source": "CampusFacilitiesData",
+      "phrases": [
+        "Pwede ba gamiton sa estudyante ang open fields para sa PE classes",
+        "Pwede ba mag train ang student athletes sa BukSU facilities",
+        "Asa nahimutang ang BukSU sports facilities",
+        "Gipahigayon ba ang PE classes sa sports facilities",
+        "Giunsa pag access sa estudyante ang sports amenities sa BukSU",
+        "Does BukSU have sports facilities",
+        "What sports amenities are available at BukSU",
+        "Are there basketball courts and gym at BukSU"
+      ]
     },
     "display_name": "Sports Facilities For Students"
   },
@@ -966,7 +1421,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentServicesData"
+      "source": "StudentServicesData",
+      "phrases": [
+        "Unsang opisina ang mo handle sa student assistant applications",
+        "Kinahanglan ba mag submit og GWA ug study load para sa application",
+        "Kinahanglan ba ang proof of financial need para sa student assistant",
+        "Pwede ba mo apply pinaagi sa Office of Student Services",
+        "Unsang mga dokumento ang kinahanglan aron mahimong student assistant",
+        "Giunsa pag submit sa estudyante sa ilang application para sa assistant position",
+        "Asa ko mangutana bahin sa student assistant openings",
+        "How can I apply to become a Student Assistant at BukSU",
+        "Which office handles student assistant applications",
+        "What are the requirements to be a student assistant"
+      ]
     },
     "display_name": "Student Assistant"
   },
@@ -992,7 +1459,17 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Unsay Smart BukSU",
+        "Unsay focus sa Smart BukSU",
+        "Apil ba ang digital transformation sa Smart BukSU",
+        "Pwede nimo i explain ang Smart BukSU strategic plan",
+        "Apil ba ang sustainable infrastructure sa Smart BukSU",
+        "What is Smart BukSU",
+        "Who launched the Smart BukSU roadmap",
+        "What does Smart BukSU focus on"
+      ]
     },
     "display_name": "Strategic Plan"
   },
@@ -1070,7 +1547,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Kanus-a natukod ang BukSU",
+        "Ang BukSU ba orihinal nga secondary school",
+        "Unsay founding year sa BukSU",
+        "Kanus-a nagsugod ang institusyon nga nahimong BukSU",
+        "Pwede ba nimo isulti ang original establishment year sa BukSU",
+        "Kanus-a gi establis ang BukSU isip usa ka school",
+        "Pila ka tuig ang BukSU sukad sa pagtukod",
+        "When was BukSU originally established",
+        "What year was Bukidnon State University founded",
+        "Was BukSU originally a secondary school"
+      ]
     },
     "display_name": "BukSU Establishment Year"
   },
@@ -1094,7 +1583,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Ngano nga importante ang tuig 1924 para sa BukSU",
+        "Unsay nahitabo niadtong 1924 para sa Bukidnon State University",
+        "Kanus-a natukod ang Bukidnon Farm School",
+        "Unsay historical origin sa BukSU",
+        "Pwede nimo i explain ang significance sa 1924 para sa BukSU",
+        "Unsay nagsugod sa history sa BukSU",
+        "Unsay foundation year sa BukSU",
+        "Ngano nga importante ang 1924 sa history sa BukSU",
+        "Why is the year 1924 significant for BukSU",
+        "What happened in 1924 for Bukidnon State University",
+        "When was the Bukidnon Farm School founded"
+      ]
     },
     "display_name": "Significance Year 1924 BukSU"
   },
@@ -1120,7 +1622,18 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Unsay opisyal nga spirit animal sa BukSU",
+        "Kanus-a gilunsad ang Dasig sa BukSU",
+        "Ngano nga napili ang Dasig isip spirit animal",
+        "Unsay ginarepresentar sa Dasig para sa university",
+        "Pwede nimo i describe ang Dasig spirit animal",
+        "Bag-o ba nga symbol ang Dasig para sa BukSU",
+        "What is the official spirit animal of BukSU",
+        "When was Dasig introduced at BukSU",
+        "Why was Dasig chosen as the spirit animal"
+      ]
     },
     "display_name": "Symbol"
   },
@@ -1144,7 +1657,14 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Kanus-a gi convert ang BukSU ngadto sa university pinaagi sa balaod",
+        "Pwede nimo isulti ang author sa RA 9454",
+        "Who authored the law converting Bukidnon State College to BukSU",
+        "Who sponsored Republic Act 9454",
+        "Which congressman authored BukSU conversion law"
+      ]
     },
     "display_name": "Law Author BukSU University Conversion"
   },
@@ -1168,7 +1688,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Unsay gitawag sa BukSU sa wala pa 2007",
+        "Unsay previous name sa Bukidnon State University",
+        "Kanus-a nag exist ang Bukidnon State College",
+        "Unsay gitawag sa institusyon gikan 1976 hangtod 2007",
+        "Unsang pangalan ang gigamit sa BukSU sa wala pa mahimong university",
+        "Unsay old name sa BukSU",
+        "Pwede nimo isulti ang former name sa BukSU",
+        "Unsay gitawag sa BukSU sauna",
+        "What was BukSU called before 2007",
+        "What was the previous name of Bukidnon State University",
+        "When did Bukidnon State College exist"
+      ]
     },
     "display_name": "Previous Name BukSU College"
   },
@@ -1194,7 +1727,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PolicyData"
+      "source": "PolicyData",
+      "phrases": [
+        "Unsay University Code",
+        "Unsang rules ang naa sa University Code",
+        "Kinsa ang kinahanglan mosunod sa University Code",
+        "Apil ba ang faculty ug students",
+        "Unsay legal basis para sa university policies",
+        "Pwede ba ma access ang University Code",
+        "Kabahin ba ang University Code sa governance",
+        "What is the University Code",
+        "How does the University Code govern BukSU",
+        "What rules are included in the University Code"
+      ]
     },
     "display_name": "Governance"
   },
@@ -1220,7 +1765,16 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Unsang mga activities ang gi organize sa BukSU Alumni Association",
+        "Pwede ba makatabang ang alumni sa current students",
+        "Kinsa pwede mo join sa BukSU Alumni Association",
+        "Nag maintain ba og contact ang BukSU sa graduates",
+        "Does BukSU have an alumni association",
+        "How does BukSU connect with graduates",
+        "What activities are organized by the BukSU Alumni Association"
+      ]
     },
     "display_name": "Alumni"
   },
@@ -1246,7 +1800,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInformationData"
+      "source": "UniversityInformationData",
+      "phrases": [
+        "Asa nahimutang ang BukSU satellite campuses",
+        "Ngano nag operate ang BukSU og campuses sa lain nga municipalities",
+        "Giunsa pag tabang sa satellite campuses ang mga estudyante",
+        "Para ba sa remote students ang satellite campuses",
+        "Pila ka satellite campuses ang naa sa BukSU",
+        "Unsang education services ang gi offer sa satellite campuses",
+        "Pwede ba mo attend ang students sa satellite campuses",
+        "Does BukSU have satellite campuses",
+        "Where are BukSU satellite campuses located",
+        "Why does BukSU operate campuses in other municipalities"
+      ]
     },
     "display_name": "Campus System"
   },
@@ -1274,7 +1840,17 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "PortalSupportData"
+      "source": "PortalSupportData",
+      "phrases": [
+        "Asa nako usbon ang profile details",
+        "Pwede ba ko mo edit sa student info online",
+        "Kinahanglan ba og documents para sa pag change sa major o ngalan",
+        "Pwede ba mo update sa contact information online",
+        "Unsay steps sa pag update sa profile information",
+        "How can I update my information on the student admission",
+        "Where do I change my profile details",
+        "Can I edit my student info online"
+      ]
     },
     "display_name": "Account Management"
   },
@@ -1389,10 +1965,10 @@
     "responses": {
       "answer": {
         "en": [
-          "The institutional email is the official buksu edu ph account used for university communications and it is usually issued by the ICT unit upon enrollment."
+          "The institutional email is the official BukSU edu ph account used for university communications and it is usually issued by the ICT unit upon enrollment."
         ],
         "ceb": [
-          "Ang institutional email mao ang opisyal nga buksu edu ph account nga gigamit para sa komunikasyon sa unibersidad ug kasagaran ihatag sa ICT unit inig enroll."
+          "Ang institutional email mao ang opisyal nga BukSU edu ph account nga gigamit para sa komunikasyon sa unibersidad ug kasagaran ihatag sa ICT unit inig enroll."
         ]
       },
       "follow_up": [],
@@ -1402,7 +1978,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "BukSU ICT services"
+      "source": "BukSU ICT services",
+      "phrases": [
+        "Unsay institutional email sa BukSU",
+        "Kinsa ang mo issue sa opisyal nga BukSU email",
+        "Kanus-a madawat sa estudyante ang email account",
+        "Gigamit ba ang buksu edu ph email para sa official communication",
+        "Pwede ba ang alumni mo access sa institutional email",
+        "Asa kuhaon ang login details para sa institutional email",
+        "Tanang estudyante ba adunay opisyal nga email",
+        "Unsay purpose sa institutional email",
+        "What is the institutional email at BukSU",
+        "Who issues the official BukSU email",
+        "When do students receive their email accounts"
+      ]
     },
     "display_name": "Institutional Email Purpose"
   },
@@ -1426,7 +2015,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "BukSU student services"
+      "source": "BukSU student services",
+      "phrases": [
+        "Asa i submit ang application para Student Assistant",
+        "Unsang documents ang kinahanglan i submit",
+        "Kinahanglan ba og proof sa financial need",
+        "Kinahanglan ba i submit ang pinakaulahi nga grades",
+        "Pwede ba mo apply ang part-time students",
+        "Kinsa ang mo approve sa Student Assistant applications",
+        "Gi consider ba ang study load sa application",
+        "How to apply as a Student Assistant",
+        "Where to submit application for Student Assistant",
+        "What documents are needed to apply"
+      ]
     },
     "display_name": "Student Assistant Application"
   },
@@ -1474,7 +2075,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "BukSU facilities"
+      "source": "BukSU facilities",
+      "phrases": [
+        "Para sa unsa gigamit ang University Gymnasium",
+        "Pwede ba mo attend og PE classes sa gym",
+        "Gigamit ba ang gym para sa varsity training",
+        "Gi-hold ba ang major events sa gym",
+        "Pwede ba mag conduct og intramurals sa gym",
+        "Bukas ba ang gym during graduation ceremonies",
+        "Asa nahimutang ang BukSU Gymnasium",
+        "Pwede ba ang estudyante mo practice og sports didto",
+        "What is the University Gymnasium used for",
+        "what do gymnasium used for?",
+        "Can I attend PE classes in the gym"
+      ]
     },
     "display_name": "Gymnasium Used For"
   },
@@ -1594,7 +2208,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "BukSU policy"
+      "source": "BukSU policy",
+      "phrases": [
+        "Bukas ba ang Registrar sa oras sa paniudto sa BukSU",
+        "Mosira ba ang Cashier sa lunch break sa BukSU",
+        "Bukas ba ang Office of Student Services panahon sa tanghalian",
+        "Nag follow ba ang mga frontline offices sa no noon break policy sa BukSU",
+        "Pwede ba moadto sa Registrar panahon sa oras sa tanghalian",
+        "Bukas ba ang Registrar ug Cashier sa noon",
+        "Bukas ba ang OSS sa oras sa paniudto",
+        "Pwede ba makakuha og serbisyo sa frontline offices panahon sa lunch",
+        "Do BukSU frontline offices stay open during lunchtime",
+        "Is the Registrar open during lunch break at BukSU",
+        "Does the Cashier close during noon at BukSU"
+      ]
     },
     "display_name": "No Noon Break Policy"
   },
@@ -1638,7 +2265,20 @@
       }
     },
     "metadata": {
-      "source": "AdmissionsData"
+      "source": "AdmissionsData",
+      "phrases": [
+        "Ngano pirmi ma deny ang akong admission application",
+        "Gi reject sa system ang akong application bisan kompleto ang requirements",
+        "Gusto nako mahibal an ngano wala na approve ang akong application",
+        "Unsa ang hinungdan ngano denied ang akong admission application",
+        "Pirmi gi deny sa admission system ang akong application",
+        "Giunsa pag ayos kung pirmi gi reject ang admission application",
+        "Nagpakita ang akong admission status nga denied ug wala ko kabalo ngano",
+        "Nagsubmit nako sa tanan requirements pero gi deny gihapon ang application",
+        "Why does my admission application keep getting denied",
+        "My application is always rejected even though I submitted my requirements",
+        "I want to know why my admission application was denied"
+      ]
     },
     "display_name": "Application Always Denied"
   },
@@ -1664,7 +2304,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "BukSU student services"
+      "source": "BukSU student services",
+      "phrases": [
+        "Unsay purpose sa new student orientation",
+        "Unsay ma kat-onan sa estudyante during orientation",
+        "Gi-explain ba ang policies sa orientation",
+        "Gi-cover ba sa orientation ang academic expectations",
+        "Gi-introduce ba ang student services sa orientation",
+        "Kanus-a ginahimo ang orientation",
+        "Mandatory ba ang orientation para sa tanang new students",
+        "Pila ka oras ang orientation",
+        "What is the purpose of new student orientation",
+        "What do students learn during orientation",
+        "Are policies explained in orientation"
+      ]
     },
     "display_name": "Orientation"
   },
@@ -1768,7 +2421,20 @@
       }
     },
     "metadata": {
-      "source": "StudentLifeData"
+      "source": "StudentLifeData",
+      "phrases": [
+        "Kanus-a ginahimo ang Organization Days o Org Fair",
+        "Asa makita ang listahan sa accredited student clubs",
+        "Pwede ba ang new students moapil sa organizations sa sugod sa school year",
+        "Giunsa pag apply para mo join sa BukSU student club",
+        "Naay schedule ba para sa student organization recruitment",
+        "Asa ang Office of Student Services para sa club information",
+        "Pwede ba mo participate ang students sa student organizations bisan kanus-a",
+        "Unsang opisina ang mo handle sa pag join sa student organizations",
+        "How can I join student organizations at BukSU",
+        "When are Organization Days or Org Fair held",
+        "Where can I find the list of accredited student clubs"
+      ]
     },
     "display_name": "Join Student Organizations Process"
   },
@@ -1796,7 +2462,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "ScholarshipData"
+      "source": "ScholarshipData",
+      "phrases": [
+        "Unsaon nako pag-cancel sa akong TABUK assistance",
+        "Gusto nako undangon ang akong TABUK scholarship support",
+        "Pwede ba nimo isulti ang proseso sa pag-cancel sa TABUK assistance",
+        "Posible ba nga mo-withdraw sa TABUK program",
+        "Unsang mga lakang ang kinahanglan aron dili na madawat ang TABUK funding",
+        "Nanginahanglan ko og tabang sa pag-cancel sa TABUK financial aid",
+        "Unsaon nako pagkuha sa akong kaugalingon gikan sa TABUK scholarship program",
+        "Pwede ba nga mo-undang sa pagdawat sa TABUK funds samtang naa pa sa TES",
+        "How can I cancel my TABUK assistance",
+        "I want to stop my TABUK scholarship support",
+        "Can you tell me the process for cancelling TABUK assistance"
+      ]
     },
     "display_name": "Tabuk"
   },
@@ -1826,7 +2505,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "AdmissionsData"
+      "source": "AdmissionsData",
+      "phrases": [
+        "Dili ma open ang akong test permit sa akong device",
+        "Dili nako makita ang akong test permit kay corrupted kini",
+        "Dili mo open ang file sa akong admission test permit",
+        "Ngano dili mo work ang akong test permit",
+        "Gi download nako ang test permit pero dili ma open",
+        "Nagpakita ug error ang akong test permit kung akong ablihan",
+        "Murag damaged o corrupted ang akong test permit nga file",
+        "Unsa akong buhaton kung dili ma access ang akong test permit",
+        "My test permit cannot be opened on my device",
+        "I cannot view my admission test permit because it is corrupted",
+        "The test permit file does not open properly"
+      ]
     },
     "display_name": "Test Permit"
   },
@@ -1856,7 +2548,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "StudentServicesData"
+      "source": "StudentServicesData",
+      "phrases": [
+        "Naa ba klase panahon sa intramurals week",
+        "Magpadayon ba ang klase panahon sa intramurals",
+        "Mag conduct ba gihapon ug klase ang instructor panahon sa intramurals",
+        "Gusto ko mahibal an kung naa bay klase panahon sa intramurals",
+        "Kinahanglan ba mo attend ug klase panahon sa intramurals week",
+        "Mausab ba ang class schedule panahon sa intramurals",
+        "I suspend ba ang klase panahon sa intramurals activities",
+        "Klase ba o intramurals ang dapat attendan panahon sa intramurals week",
+        "Are there classes during intramurals week",
+        "Will classes continue during the intramurals period",
+        "Do instructors still conduct classes during intramurals week"
+      ]
     },
     "display_name": "Intramurals"
   },
@@ -1906,7 +2611,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "RegistrarProcess"
+      "source": "RegistrarProcess",
+      "phrases": [
+        "asa nako ipa validate ang COR",
+        "asa ko moadto para ma validate ang COR",
+        "asa dapit ang COR validation",
+        "asa ang lugar para sa COR validation",
+        "asa man i validate ang akong COR",
+        "pwede nimo ko tudluan asa i validate ang COR",
+        "asa ko moadto para magpa validate sa COR",
+        "asa dapit ang window 7",
+        "where do i validate my cor",
+        "where can I validate my COR",
+        "where should I go to validate my COR"
+      ]
     },
     "display_name": "COR Validation Location"
   },
@@ -1934,7 +2652,19 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "CampusServices"
+      "source": "CampusServices",
+      "phrases": [
+        "Asa makita ang nawala nga butang sa BukSU?",
+        "Kinsa akong duolon kung naay nawala?",
+        "Asa dad on ang nakit an nga butang?",
+        "Unsay buhaton kung naay nawala sa campus?",
+        "Asa nako i report ang nawala?",
+        "Asa kuhaon ang nakit an nga butang?",
+        "Asa i claim ang nawala nga butang?",
+        "Is there a lost and found in BukSU?",
+        "Does BukSU have a lost and found office?",
+        "Where can I find lost items in BukSU?"
+      ]
     },
     "display_name": "Lost And Found Center"
   },
@@ -1984,7 +2714,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "CampusNavigation"
+      "source": "CampusNavigation",
+      "phrases": [
+        "Asa ang Accounting Office?",
+        "Asa dapit ang Accounting sa BukSU?",
+        "Asa makita ang Accounting Office?",
+        "Asa ang Finance Building Accounting?",
+        "Giunsa pag adto sa Accounting Office?",
+        "Asa dapit sa Finance Building ang Accounting?",
+        "Duol ba sa Window 9 ang Accounting?",
+        "Asa ko moadto para Accounting?",
+        "Where is the Accounting Office?",
+        "Where can I find the Accounting Office in BukSU?",
+        "What floor is the Accounting Office located?"
+      ]
     },
     "display_name": "Accounting Office Location"
   },
@@ -2009,7 +2752,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "UniversityInfo"
+      "source": "UniversityInfo",
+      "phrases": [
+        "Unsa ang mandates sa BukSU?",
+        "Unsa ang tumong sa BukSU?",
+        "Unsa ang responsibilidad sa BukSU?",
+        "Unsay focus sa BukSU?",
+        "Unsa ang ginabuhat sa BukSU?",
+        "Unsay katuyoan sa mandates sa BukSU?",
+        "Unsa ang gisuportahan sa BukSU?",
+        "Unsay gi commit sa BukSU?",
+        "What are the mandates of BukSU?",
+        "What is BukSU mandate?",
+        "What does BukSU aim to do?"
+      ]
     },
     "display_name": "BukSU Mandates"
   },
@@ -2088,7 +2844,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "BukSU information"
+      "source": "BukSU information",
+      "phrases": [
+        "unsa ang BukSU hymn",
+        "unsa ang BukSU anthem",
+        "unsay opisyal nga hymn sa BukSU",
+        "unsay opisyal nga anthem sa BukSU",
+        "unsa ang hymn sa Bukidnon State University",
+        "unsa ang anthem sa Bukidnon State University",
+        "pwede nimo isaysay unsa ang BukSU hymn",
+        "pwede nimo isaysay unsa ang BukSU anthem",
+        "what is the BukSU hymn",
+        "what is the BukSU anthem",
+        "what is the official anthem of BukSU"
+      ]
     },
     "display_name": "Whats Buk Su Hymn"
   },
@@ -2120,7 +2889,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "AdmissionsData"
+      "source": "AdmissionsData",
+      "phrases": [
+        "Dili nako ma upload ang akong 2x2 nga profile picture sa admission portal",
+        "Ngano dili madawat sa system ang akong 2x2 nga litrato",
+        "Naa koy problema sa pag upload sa akong profile picture sa admission system",
+        "Dili mo proceed ang upload sa akong litrato sa admission account",
+        "Gi reject sa portal ang akong 2x2 nga litrato bisan sakto ang format",
+        "Unsa akong buhaton kung dili ma upload ang akong profile picture",
+        "Dili madawat sa admission system ang akong profile photo",
+        "Naglisod ko sa pag upload sa akong litrato para sa admission",
+        "I cannot upload my 2x2 profile picture in the admission portal",
+        "The system does not allow me to upload my 2x2 photo for my application",
+        "Why is my 2x2 picture not uploading in my admission account"
+      ]
     },
     "display_name": "Profile Picture"
   },
@@ -2144,7 +2926,15 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "TheCreator"
+      "source": "TheCreator",
+      "phrases": [
+        "kinsay nag himo nimo",
+        "pwedi nimo i sulti kinsay nag himo sa imo",
+        "kinsa may mga developer nimo",
+        "who created you",
+        "who made you",
+        "who developed you"
+      ]
     },
     "display_name": "Who Created You"
   },
@@ -2186,11 +2976,11 @@
       "answer": {
         "en": [
           "How to avail the services?",
-          "You can visit the University Guidance Center located at the College of Arts and Sciences building or you can message us through our Facebook page Buksu – University Guidance Center."
+          "You can visit the University Guidance Center located at the College of Arts and Sciences building or you can message us through our Facebook page BukSU – University Guidance Center."
         ],
         "ceb": [
           "Unsaon pag-avail sa mga serbisyo?",
-          "Mahimo kang mobisita sa University Guidance Center nga nahimutang sa College of Arts and Sciences building o mahimo kang mag-message kanamo pinaagi sa among Facebook page nga Buksu – University Guidance Center."
+          "Mahimo kang mobisita sa University Guidance Center nga nahimutang sa College of Arts and Sciences building o mahimo kang mag-message kanamo pinaagi sa among Facebook page nga BukSU – University Guidance Center."
         ]
       },
       "follow_up": [
@@ -2282,7 +3072,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "AdmissionFAQ"
+      "source": "AdmissionFAQ",
+      "phrases": [
+        "kanus a magsugod ang admission testing sa BukSU",
+        "kanus a mag open ang BukSU admission testing",
+        "kanus a magsugod ang admission application sa BukSU",
+        "kanus a pwede magsugod og apply sa admission testing",
+        "kanus a magsugod ang BukSU admission para freshmen",
+        "kanus a mag open ang application sa BukSU admission",
+        "kanus a magsugod pag accept og applicants ang BukSU",
+        "kanus a mo open ang admission testing",
+        "when does BukSU admission testing start",
+        "when does BukSU admission application start",
+        "when does BukSU admission open for freshmen"
+      ]
     },
     "display_name": "Admission Schedule"
   },
@@ -2312,7 +3115,20 @@
       "imageUrls": []
     },
     "metadata": {
-      "source": "CampusFAQ"
+      "source": "CampusFAQ",
+      "phrases": [
+        "pwede ba ang bisita mosulod sa BukSU campus",
+        "allowed ba ang visitors sa BukSU",
+        "pwede ba mosulod ang visitor sa campus",
+        "pwede ba ang guest mosulod sa BukSU",
+        "pwede ba ang outsider mosulod isip visitor",
+        "pwede ko mosulod sa BukSU isip bisita",
+        "pwede ba ang dili estudyante mosulod isip visitor",
+        "open ba ang BukSU para sa visitors",
+        "are visitors allowed to enter BukSU campus",
+        "can visitors go inside BukSU campus",
+        "is BukSU open for visitors"
+      ]
     },
     "display_name": "Visitors"
   },
@@ -2371,7 +3187,7 @@
         ],
         "ceb": [
           "Hatagan tika og usa ka hakbang-hakbang nga proseso.",
-          "Una. I-download ang imong COR sa Buksu Admission.",
+          "Una. I-download ang imong COR sa BukSU Admission.",
           "https://admissions.buksu.edu.ph/",
           "ikaduha. I-print ang imong COR para sa pag-validate.",
           "Ikatulo. Adto sa Finance Building ug pangitaa ang bintana 7 aron ma-validate ang imong COR.",
@@ -2492,7 +3308,20 @@
       }
     },
     "metadata": {
-      "source": "RegistrarProcess"
+      "source": "RegistrarProcess",
+      "phrases": [
+        "tabangi ko unsaon pag validate sa akong COR",
+        "unsaon pag process sa akong COR",
+        "unsay buhaton nako para ma validate akong COR",
+        "naka print na ko sa COR unsay sunod buhaton",
+        "human nako download ang COR unsa na next",
+        "unsay next step sa COR validation",
+        "pwede ko nimo tabangan sa COR validation",
+        "kinahanglan ba moadto kog office para sa COR",
+        "help me whats the process on validating my cor",
+        "can you help me validate my COR",
+        "how do I validate my COR step by step"
+      ]
     },
     "display_name": "COR Validation Process"
   },

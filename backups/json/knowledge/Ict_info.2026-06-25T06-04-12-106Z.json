@@ -1,0 +1,254 @@
+{
+  "intent": "ask_ict_info",
+  "category": "ICT Services Form",
+  "entities": [
+    "topic"
+  ],
+  "topics": [
+    {
+      "topic": "ict_services",
+      "subject_key": "ict_services",
+      "subject_type": "service",
+      "subject_terms": [
+        "ict",
+        "ict services",
+        "information communications technology",
+        "wifi access",
+        "campus wifi",
+        "internet access"
+      ],
+      "subtopics": [
+        {
+          "topic": "about_ict",
+          "responses": {
+            "en": [
+              "The Information & Communications Technology Services Unit (ICT-SU) of Bukidnon State University. It handles the technical aspect of university processes involving information systems, network, technical services, and web development. ICT-SU is also responsible for maintaining all computers in the computer laboratories, and ensures that any issues or damages in the labs are addressed promptly. You may also approach them for technical assistance regarding computer facilities."
+            ],
+            "ceb": [
+              "Ang Information & Communications Technology Services Unit (ICT-SU) sa Bukidnon State University. Mao sila ang ga-atiman sa teknikal nga bahin sa mga proseso sa unibersidad lakip ang information systems, network, technical services, ug web development. Sila usab ang ga-mentinar sa mga computer sulod sa computer laboratory, ug kung naay mga posibleng damage sa mga computers, sila usab ang ga-ayo niini. Pwede ka mo-doul sa ila alang sa tabang sa technical nga aspeto sa computer facilities."
+            ]
+          },
+          "intent": "about_ict",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "about ict",
+              "what is ict",
+              "about ict services",
+              "Can you tell me about the ICT service Unit",
+              "ict services",
+              "information communications technology office",
+              "what does ict do",
+              "ictsu information",
+              "ict support unit",
+              "unsa ang ict",
+              "tell me about ict office",
+              "ict office help",
+              "technology services in buksu",
+              "campus ict services"
+            ]
+          },
+          "subject_key": "ict_services",
+          "subject_type": "service",
+          "subject_terms": [
+            "ict",
+            "ict services",
+            "ictsu",
+            "ict su",
+            "information communications technology",
+            "wifi access",
+            "campus wifi",
+            "internet access"
+          ],
+          "display_name": "About ICT"
+        },
+        {
+          "topic": "get_wifi_access",
+          "responses": {
+            "en": [
+              "Heres how you could get any wifi connection that ICT could offer to you.",
+              "Go to <b>Finance Building 3rd floor</b>.",
+              "In front of Audio laboratory you could See ICT office",
+              "You can see all of those numbers computer laboratory? if you see Comlab 6 Computer Laboratory 6, then you sould see the ICT office which is located on the right side of comlab 6 - Computer Laboratory 6"
+            ],
+            "ceb": [
+              "Ani ang paagi aron makakuha ka og bisan unsang wifi connection nga gi-offer sa ICT.",
+              "Adto sa ikatulong andana (3rd floor) sa Finance Building.",
+              "Atubangan sa Audio Laboratory, makit-an nimo ang ICT office.",
+              "Makita nimo ang tanan nga numero sa mga computer laboratory? Kung makita nimo ang ComLab 6 (Computer Laboratory 6), dapat makita nimo ang ICT office nga nahimutang sa tuo nga bahin sa ComLab 6."
+            ]
+          },
+          "intent": "get_wifi_access",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "get wifi access",
+              "how to get wifi access",
+              "campus wifi access",
+              "how to connect to wifi",
+              "unsaon pag connect sa wifi",
+              "asa ko makakuha og wifi access",
+              "how can i connect to campus wifi",
+              "buksu wifi",
+              "ict wifi access",
+              "student internet access",
+              "wifi password help",
+              "how can i use campus wifi",
+              "asa makakuha wifi access",
+              "internet access in campus",
+              "connect to buksu wifi",
+              "wifi for students"
+            ]
+          },
+          "mapData": {
+            "mapId": "main_map",
+            "coordinates": [
+              750,
+              581
+            ],
+            "locationName": "ICT Office"
+          },
+          "subject_key": "campus_wifi_access",
+          "subject_type": "service",
+          "subject_terms": [
+            "wifi access",
+            "campus wifi",
+            "internet access",
+            "ict wifi"
+          ],
+          "display_name": "Get Wi-Fi Access"
+        },
+        {
+          "topic": "ict_mission",
+          "responses": {
+            "en": [
+              "To provide reliable and secure ICT infrastructure and services framework enable for the academic community to exploit innovative information technologies that will support instruction, research, extension and production"
+            ],
+            "ceb": [
+              "To provide reliable and secure ICT infrastructure and services framework enable for the academic community to exploit innovative information technologies that will support instruction, research, extension and production"
+            ]
+          },
+          "intent": "ict_mission",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "ict mission",
+              "mission of ict services",
+              "mission of ict",
+              "ictsu mission",
+              "information communications technology mission",
+              "what is the mission of ict",
+              "mission sa ict",
+              "tell me ict mission",
+              "buksu ict mission",
+              "unsa mission sa ict"
+            ]
+          },
+          "subject_key": "ict_services",
+          "subject_type": "service",
+          "subject_terms": [
+            "ict",
+            "ict services",
+            "ictsu",
+            "ict su",
+            "information communications technology",
+            "wifi access",
+            "campus wifi",
+            "internet access"
+          ],
+          "display_name": "ICT Mission"
+        },
+        {
+          "topic": "institutional_email_account",
+          "responses": {
+            "en": [
+              "Your official BukSU student email address is your institutional email account. It is different from your BukSU Admission account.",
+              "For your official BukSU institutional email or student email login, go to the ICT office on the 3rd floor of the Finance Building and ask for assistance with your institutional email account.",
+              "Bring your validated COR or student ID if available, because ICT may need to verify that you are an officially enrolled student.",
+              "Students may also ask ICT for help if they forgot their institutional email, cannot log in, or need account recovery."
+            ],
+            "ceb": [
+              "Ang imong opisyal nga BukSU student email address mao ang imong institutional email account. Lahi kini sa imong BukSU Admission account.",
+              "Para sa imong opisyal nga BukSU institutional email o student email login, adto sa ICT office sa 3rd floor sa Finance Building ug pangayo og tabang bahin sa imong institutional email account.",
+              "Dad-a ang imong validated COR o student ID kung naa, kay mahimong kinahanglanon sa ICT para ma-verify nga opisyal kang naka-enroll.",
+              "Pwede usab mangayo og tabang sa ICT kung nakalimot ka sa institutional email, dili maka-login, o kinahanglan og account recovery."
+            ]
+          },
+          "intent": "institutional_email_account",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "official student email login",
+              "student email login",
+              "institutional account",
+              "institutional email account",
+              "institutional email address",
+              "institutional gmail",
+              "institutional email account address",
+              "buksu student email",
+              "buksu student email address",
+              "official buksu student email address",
+              "official buksu student email account",
+              "official student email address",
+              "official student email account",
+              "official buksu email",
+              "where do i get student email",
+              "how to get institutional email",
+              "how do i get my official buksu student email address",
+              "how do i get my official buksu student email account",
+              "how to get my student email address",
+              "where can i get my buksu student email",
+              "where can i find my institutional email address",
+              "where can i find my official student email",
+              "how to get my institutional account",
+              "where can i find my institutional account",
+              "how to see my institutional account",
+              "forgot institutional email",
+              "student gmail account",
+              "student email address",
+              "student email account",
+              "unsaon pagkuha sa student email",
+              "asa makuha akong student email",
+              "asa makita akong institutional email",
+              "nakalimot ko sa akong institutional email",
+              "student email account recovery",
+              "official buksu student email",
+              "student institutional account",
+              "buksu email account",
+              "where can i get student email",
+              "unsaon pagkuha institutional email",
+              "asa makuha buksu email",
+              "official student gmail",
+              "email with student id number",
+              "how to access my institutional account",
+              "school email account"
+            ]
+          },
+          "subject_key": "institutional_email_account",
+          "subject_type": "service",
+          "subject_terms": [
+            "institutional email",
+            "institutional email address",
+            "student email",
+            "student email address",
+            "official student email",
+            "official buksu student email",
+            "institutional account",
+            "student gmail",
+            "buksu gmail"
+          ],
+          "display_name": "Institutional Email Account Help",
+          "mapData": {
+            "mapId": "main_map",
+            "coordinates": [
+              750,
+              581
+            ],
+            "locationName": "ICT Office"
+          }
+        }
+      ],
+      "display_name": "ICT Services"
+    }
+  ]
+}
