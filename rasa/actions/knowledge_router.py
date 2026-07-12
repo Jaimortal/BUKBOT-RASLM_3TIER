@@ -711,8 +711,23 @@ class KnowledgeRouter:
             not self._has_any(text, ["password", "change password", "reset password"]) and
             not self._has_any(text, ["result", "results", "show exam result", "report of rating", "ror"])
         )
-        has_admission_password = self._has_any(text, ["admission password", "admission account password", "change admission password", "change admission account password", "reset admission password", "reset admission account password", "forgot admission password", "forgot admission account password"]) or (
-            has_admission_portal and has_password_wording
+        has_admission_password = (
+            self._has_any(text, [
+                "admission password",
+                "admission account password",
+                "change admission password",
+                "change admission account password",
+                "reset admission password",
+                "reset admission account password",
+                "forgot admission password",
+                "forgot admission account password",
+            ]) or
+            (has_admission_portal and has_password_wording) or
+            (
+                self._has_any(text, ["admission", "admissions"]) and
+                has_password_wording and
+                self._has_any(text, ["reset", "change", "forgot", "forget", "recover", "password"])
+            )
         )
         has_admission_password_recovery = (
             has_admission_password and

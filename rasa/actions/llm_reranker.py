@@ -1,10 +1,8 @@
-import json
 import logging
 import os
-import urllib.error
-import urllib.request
 from typing import Any, Dict, Optional
 
+from llm_api_client import LLMApiClient, load_project_env
 from retrieval_result import RetrievalCandidate, RetrievalResult
 
 
@@ -12,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class LLMReranker:
-    """Optional local LLM reranker for close retrieval matches.
+    """Optional external LLM reranker for close retrieval matches.
 
     The LLM is not allowed to answer the user. It can only select one intent
     from official JSON-backed candidates already found by local retrieval.
@@ -32,15 +30,26 @@ JSON shape:
 """
 
     def __init__(self) -> None:
+        load_project_env()
         self.enabled = os.getenv("RASA_LLM_RERANKER_ENABLED", "").strip().lower() in {"1", "true", "yes", "on"}
-        self.url = os.getenv("RASA_LLM_OLLAMA_URL", "http://localhost:11434/api/generate")
-        self.model = os.getenv("RASA_LLM_MODEL", "gemma3:1b")
+        self.provider = os.getenv("RASA_LLM_PROVIDER", "").strip().lower()
+        self.model = os.getenv("RASA_LLM_MODEL", "").strip() or None
         self.timeout_seconds = self._float_env("RASA_LLM_TIMEOUT_SECONDS", 4.0)
         self.top_k = max(2, min(8, self._int_env("RASA_LLM_TOP_K", 5)))
         self.max_prompt_chars = max(1200, self._int_env("RASA_LLM_MAX_PROMPT_CHARS", 7000))
+        self.max_tokens = max(80, min(600, self._int_env("RASA_LLM_MAX_TOKENS", 160)))
+        self.client = LLMApiClient(
+            provider=self.provider or None,
+            model=self.model,
+            timeout_seconds=self.timeout_seconds,
+            max_tokens=self.max_tokens,
+        )
 
     def should_rerank(self, result: RetrievalResult) -> bool:
         if not self.enabled:
+            return False
+        if not self.client.is_configured():
+            logger.warning("LLM reranker is enabled but no API key is configured for provider=%s.", self.client.provider)
             return False
         if not result.candidate or not result.ranked_candidates:
             return False
@@ -99,30 +108,7 @@ JSON shape:
         return prompt[: self.max_prompt_chars]
 
     def _generate_json(self, prompt: str) -> Dict[str, Any]:
-        payload = {
-            "model": self.model,
-            "prompt": prompt,
-            "stream": False,
-            "format": "json",
-            "options": {
-                "temperature": 0,
-                "num_predict": 160,
-            },
-        }
-        request = urllib.request.Request(
-            self.url,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        with urllib.request.urlopen(request, timeout=self.timeout_seconds) as response:
-            body = json.loads(response.read().decode("utf-8"))
-
-        raw_text = body.get("response") or ""
-        try:
-            return json.loads(raw_text)
-        except json.JSONDecodeError as exc:
-            raise RuntimeError(f"LLM returned non-JSON response: {raw_text[:220]}") from exc
+        return self.client.generate_json(prompt)
 
     @staticmethod
     def _compact(value: str, max_chars: int) -> str:

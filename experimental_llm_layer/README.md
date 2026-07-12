@@ -1,18 +1,25 @@
 # Experimental Guarded LLM Layer
 
-This folder is a dry-run only LLM interpreter. It is not connected to Rasa, Express, or the frontend.
+This folder is a dry-run LLM interpreter for testing external API reranking before enabling it inside Rasa.
 
 Purpose:
 
 - Read answers from the existing JSON knowledge base.
 - Retrieve candidate records from `rasa/actions/Supper Saiyan`, `responses.json`, and `responses_location.json`.
-- Optionally ask a local Ollama model to choose the best candidate.
+- Optionally ask Groq or Gemini to choose the best candidate.
 - Return only the selected JSON/database answer. The LLM is not allowed to invent BukSU facts.
 
-Recommended first model for this laptop:
+Configure keys in the project root `.env`:
 
 ```powershell
-ollama run gemma3:1b
+RASA_LLM_PROVIDER=groq
+GROQ_API_KEY=your_groq_key_here
+GROQ_MODEL=llama-3.1-8b-instant
+
+# Or Gemini:
+# RASA_LLM_PROVIDER=gemini
+# GEMINI_API_KEY=your_gemini_key_here
+# GEMINI_MODEL=gemini-2.5-flash-lite
 ```
 
 Dry run without LLM:
@@ -21,10 +28,16 @@ Dry run without LLM:
 python experimental_llm_layer/dry_run.py "how to get PE uniform"
 ```
 
-Dry run with local Ollama:
+Dry run with Groq:
 
 ```powershell
-python experimental_llm_layer/dry_run.py "unsaon pag lantaw admission result" --llm --model gemma3:1b
+python experimental_llm_layer/dry_run.py "unsaon pag lantaw admission result" --llm --provider groq
+```
+
+Dry run with Gemini:
+
+```powershell
+python experimental_llm_layer/dry_run.py "unsaon pag lantaw admission result" --llm --provider gemini
 ```
 
 JSON output:
@@ -39,8 +52,8 @@ Safety rules:
 - The final answer is copied from the chosen candidate record.
 - If no candidate is good enough, the result is `needs_clarification`.
 - Map, suggestions, choice groups, and images remain from JSON.
+- The LLM API is used only as a reranker/chooser, not as the source of BukSU facts.
 
 Removal:
 
-Delete `experimental_llm_layer`. No Rasa files depend on it.
-
+Disable `RASA_LLM_RERANKER_ENABLED` or delete `experimental_llm_layer` if you only want the dry-run removed.

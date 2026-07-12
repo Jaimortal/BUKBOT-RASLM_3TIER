@@ -1,16 +1,25 @@
 import argparse
 import json
+import os
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from knowledge_loader import KnowledgeLoader, KnowledgeRecord
-from ollama_client import OllamaClient
 from prompts import build_selection_prompt
 from retriever import LocalRetriever, RetrievalCandidate
 
 
 def project_root() -> Path:
     return Path(__file__).resolve().parents[1]
+
+
+ROOT = project_root()
+RASA_ACTIONS_PATH = ROOT / "rasa" / "actions"
+if str(RASA_ACTIONS_PATH) not in sys.path:
+    sys.path.insert(0, str(RASA_ACTIONS_PATH))
+
+from llm_api_client import LLMApiClient, load_project_env  # noqa: E402
 
 
 def load_config(root: Path) -> Dict[str, Any]:
@@ -57,13 +66,15 @@ def llm_selection(
     query: str,
     candidates: List[RetrievalCandidate],
     config: Dict[str, Any],
-    model: str,
+    model: Optional[str],
+    provider: Optional[str],
 ) -> Dict[str, Any]:
     prompt = build_selection_prompt(query, candidates)
-    client = OllamaClient(
-        url=config.get("ollama_url", "http://localhost:11434/api/generate"),
+    client = LLMApiClient(
+        provider=provider or config.get("default_provider"),
         model=model,
-        timeout_seconds=int(config.get("timeout_seconds", 20)),
+        timeout_seconds=float(config.get("timeout_seconds", 20)),
+        max_tokens=int(config.get("max_tokens", 180)),
     )
     decision = client.generate_json(prompt)
     selected_id = decision.get("selected_id")
@@ -77,17 +88,25 @@ def llm_selection(
     return decision
 
 
-def run(query: str, use_llm: bool, model: Optional[str], lang: str, as_json: bool) -> Dict[str, Any]:
+def run(query: str, use_llm: bool, model: Optional[str], provider: Optional[str], lang: str, as_json: bool) -> Dict[str, Any]:
+    load_project_env()
     root = project_root()
     config = load_config(root)
     records = KnowledgeLoader(root, config).load()
     retriever = LocalRetriever(records)
     candidates = retriever.search(query, top_k=int(config.get("top_k", 6)))
-    model_name = model or config.get("default_model", "gemma3:1b")
+    provider_name = provider or os.getenv("RASA_LLM_PROVIDER") or config.get("default_provider")
+    if model:
+        model_name = model
+    elif provider_name == config.get("default_provider"):
+        model_name = config.get("default_model")
+    else:
+        model_name = None
 
     result: Dict[str, Any] = {
         "query": query,
         "mode": "llm" if use_llm else "local_retrieval",
+        "provider": provider_name if use_llm else None,
         "model": model_name if use_llm else None,
         "candidate_count": len(candidates),
         "candidates": [
@@ -108,7 +127,7 @@ def run(query: str, use_llm: bool, model: Optional[str], lang: str, as_json: boo
     decision: Dict[str, Any] = {}
     if use_llm and candidates:
         try:
-            decision = llm_selection(query, candidates, config, model_name)
+            decision = llm_selection(query, candidates, config, model_name, provider_name)
             selected_id = decision.get("selected_id")
             selected = next((candidate for candidate in candidates if candidate.record.id == selected_id), None)
         except RuntimeError as exc:
@@ -124,7 +143,7 @@ def run(query: str, use_llm: bool, model: Optional[str], lang: str, as_json: boo
         decision = {
             "selected_id": selected.record.id if selected else None,
             "confidence": "medium" if selected else "low",
-            "reason": "Local retrieval dry run. Use --llm to ask Ollama to choose among candidates.",
+            "reason": "Local retrieval dry run. Use --llm to ask the configured API LLM to choose among candidates.",
         }
 
     result["decision"] = decision
@@ -149,18 +168,21 @@ def run(query: str, use_llm: bool, model: Optional[str], lang: str, as_json: boo
 def main() -> None:
     parser = argparse.ArgumentParser(description="Dry-run guarded LLM interpreter against local chatbot JSON data.")
     parser.add_argument("query", help="User question to test.")
-    parser.add_argument("--llm", action="store_true", help="Use local Ollama to choose from retrieved candidates.")
-    parser.add_argument("--model", default=None, help="Ollama model name. Example: gemma3:1b")
+    parser.add_argument("--llm", action="store_true", help="Use configured LLM API to choose from retrieved candidates.")
+    parser.add_argument("--provider", choices=["groq", "gemini"], default=None, help="LLM API provider. Defaults to config/env.")
+    parser.add_argument("--model", default=None, help="Provider model name. Examples: llama-3.1-8b-instant, gemini-2.5-flash-lite")
     parser.add_argument("--lang", default="en", choices=["en", "ceb"], help="Official answer language to print.")
     parser.add_argument("--json", action="store_true", help="Print full JSON result.")
     args = parser.parse_args()
 
-    result = run(args.query, args.llm, args.model, args.lang, args.json)
+    result = run(args.query, args.llm, args.model, args.provider, args.lang, args.json)
     if args.json:
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return
 
     print(f"Mode: {result['mode']}")
+    if result.get("provider"):
+        print(f"Provider: {result['provider']}")
     if result.get("model"):
         print(f"Model: {result['model']}")
     print(f"Status: {result['status']}")
