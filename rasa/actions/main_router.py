@@ -558,7 +558,7 @@ class MainRouterService:
             if self._looks_like_unresolved_location_request(user_message):
                 response = (
                     "Sorry, I don't have location information for that place yet. "
-                    "Please try a more specific building or office name, or add the location in the admin panel."
+                    "Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button"
                 )
                 memory = self.context_manager.build_memory(
                     intent=intent,
@@ -572,7 +572,7 @@ class MainRouterService:
         if not resolved.locations and self._looks_like_unresolved_location_request(user_message):
             response = (
                 "Sorry, I don't have location information for that place yet. "
-                "Please try a more specific building or office name, or add the location in the admin panel."
+                "Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button."
             )
             memory = self.context_manager.build_memory(
                 intent=intent,
@@ -583,7 +583,22 @@ class MainRouterService:
             )
             return response, self._context_updates(memory, slots)
 
+        cache_key = self._cache_key("knowledge", intent, user_message)
+        cached_response = self._cache_get(cache_key)
+        if cached_response is not None:
+            memory = self.context_manager.build_memory(
+                intent=intent,
+                user_message=user_message,
+                resolved=resolved,
+                response_intent=intent,
+                response=cached_response,
+            )
+            return cached_response, self._context_updates(memory, slots)
+
         response = self.knowledge_router.find_best_response(intent, user_message, resolved.values)
+        if response:
+            self._cache_set(cache_key, response)
+
         memory = self.context_manager.build_memory(
             intent=intent,
             user_message=user_message,

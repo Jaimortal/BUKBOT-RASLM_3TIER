@@ -1,6 +1,7 @@
 import logging
 import os
-from typing import Any, Dict, Optional
+import time
+from typing import Any, Dict, Optional, Tuple
 
 from llm_api_client import LLMApiClient, load_project_env
 from retrieval_result import RetrievalCandidate, RetrievalResult
@@ -44,9 +45,36 @@ JSON shape:
             timeout_seconds=self.timeout_seconds,
             max_tokens=self.max_tokens,
         )
+        self._decision_cache: Dict[str, Tuple[float, Optional[RetrievalCandidate]]] = {}
 
-    def should_rerank(self, result: RetrievalResult) -> bool:
+    NOISE_AND_GREETINGS = {
+        "hi", "hello", "hey", "helo", "hiii", "hiya", "yo", "sup",
+        "good morning", "good afternoon", "good evening", "good night",
+        "kumusta", "musta", "komusta", "maayong buntag", "maayong hapon", "maayong gabii",
+        "test", "testing", "ok", "okay", "k", "bye", "goodbye",
+        "thanks", "thank you", "tnx", "ty", "salamat", "daghang salamat",
+        "lol", "haha", "hahaha", "asdf", "asdfgh"
+    }
+
+    @classmethod
+    def is_noise_or_greeting(cls, text: str) -> bool:
+        cleaned = (text or "").strip().lower().strip("?!.,:-_")
+        if not cleaned:
+            return True
+        if cleaned in cls.NOISE_AND_GREETINGS:
+            return True
+        return False
+
+    def should_rerank(
+        self,
+        result: RetrievalResult,
+        user_message: Optional[str] = None,
+        force: bool = False,
+    ) -> bool:
         if not self.enabled:
+            return False
+        if user_message and self.is_noise_or_greeting(user_message):
+            logger.info("LLM reranker skipped greeting/noise query: %r", user_message)
             return False
         if not self.client.is_configured():
             logger.warning("LLM reranker is enabled but no API key is configured for provider=%s.", self.client.provider)
@@ -57,11 +85,23 @@ JSON shape:
             return False
         return len(result.ranked_candidates) >= 2
 
-    def choose(self, user_message: str, result: RetrievalResult) -> Optional[RetrievalCandidate]:
-        if not self.should_rerank(result):
+    def choose(self, user_message: str, result: RetrievalResult ) -> Optional[RetrievalCandidate]:
+        if not self.should_rerank(result, user_message=user_message):
             return None
 
-        candidates = result.ranked_candidates[: self.top_k]
+        cache_key = (user_message or "").strip().lower().strip("?!.,:-_")
+        now = time.time()
+        if cache_key in self._decision_cache:
+            cached_time, cached_candidate = self._decision_cache[cache_key]
+            if now - cached_time < 3600:
+                logger.info(
+                    "LLM reranker decision cache hit for query=%r -> intent=%s (0 API tokens burned)",
+                    user_message,
+                    cached_candidate.intent if cached_candidate else None,
+                )
+                return cached_candidate
+
+        candidates = result.ranked_candidates[ : self.top_k]
         intent_lookup = {candidate.intent: candidate for candidate, _ in candidates}
         prompt = self._build_prompt(user_message, candidates)
 
@@ -75,9 +115,11 @@ JSON shape:
         confidence = str(decision.get("confidence") or "low").strip().lower()
         if confidence not in {"high", "medium"}:
             logger.info("LLM reranker declined selection: %s", decision)
+            self._decision_cache[cache_key] = (now, None)
             return None
         if selected_intent not in intent_lookup:
             logger.warning("LLM reranker selected unknown intent %r from %s", selected_intent, list(intent_lookup))
+            self._decision_cache[cache_key] = (now, None)
             return None
 
         logger.info(
@@ -86,7 +128,9 @@ JSON shape:
             confidence,
             decision.get("reason", ""),
         )
-        return intent_lookup[selected_intent]
+        selected_candidate = intent_lookup[selected_intent]
+        self._decision_cache[cache_key] = (now, selected_candidate)
+        return selected_candidate
 
     def _build_prompt(self, user_message: str, candidates: Any) -> str:
         lines = [self.SYSTEM_PROMPT, "", f"User question: {user_message}", "", "Candidate records:"]

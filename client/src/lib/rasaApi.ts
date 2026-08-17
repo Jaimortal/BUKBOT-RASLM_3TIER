@@ -71,9 +71,19 @@ interface BackendResponse {
 // --- Backend Adapter for Rasa ---
 class RasaBackend {
   private lastTopic: string | null = null;
+  private queryCache = new Map<string, { timestamp: number; response: BackendResponse }>();
 
   // This method now returns a BackendResponse object instead of ChatMessage[]
   async sendMessage(text: string, sessionId?: string): Promise<BackendResponse> {
+    const cacheKey = (text || "").trim().toLowerCase().replace(/[?!.,:-_]/g, "");
+    if (cacheKey && cacheKey !== "test") {
+      const cached = this.queryCache.get(cacheKey);
+      if (cached && Date.now() - cached.timestamp < 10 * 60 * 1000) {
+        console.log(`[RasaBackend Cache] Serving cached response for repeat query: "${text}" (0 network calls)`);
+        return cached.response;
+      }
+    }
+
     try {
       const session = getSessionData();
       const preferredLanguage = session.userPreferences?.language;
@@ -316,6 +326,10 @@ class RasaBackend {
         response.mapDataList = mapDataList;
       } else if (mapData) {
         response.mapData = mapData;
+      }
+
+      if (cacheKey && cacheKey !== "test" && response.answer && response.answer.length > 0) {
+        this.queryCache.set(cacheKey, { timestamp: Date.now(), response });
       }
 
       return response;

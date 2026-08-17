@@ -20,6 +20,7 @@ if str(RASA_ACTIONS_PATH) not in sys.path:
     sys.path.insert(0, str(RASA_ACTIONS_PATH))
 
 from llm_api_client import LLMApiClient, load_project_env  # noqa: E402
+from llm_reranker import LLMReranker  # noqa: E402
 
 
 def load_config(root: Path) -> Dict[str, Any]:
@@ -69,6 +70,12 @@ def llm_selection(
     model: Optional[str],
     provider: Optional[str],
 ) -> Dict[str, Any]:
+    if LLMReranker.is_noise_or_greeting(query):
+        return {
+            "selected_id": None,
+            "confidence": "low",
+            "reason": "Query skipped (recognized as greeting/noise)."
+        }
     prompt = build_selection_prompt(query, candidates)
     client = LLMApiClient(
         provider=provider or config.get("default_provider"),

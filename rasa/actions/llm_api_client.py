@@ -159,7 +159,7 @@ class LLMApiClient:
     def _model_for_provider(provider: str) -> str:
         if provider == "gemini":
             return os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
-        return os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+        return os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 
     def _api_key(self) -> str:
         if self.provider == "gemini":

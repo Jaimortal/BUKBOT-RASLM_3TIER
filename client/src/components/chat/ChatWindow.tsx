@@ -778,7 +778,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   };
 
   const handleSend = async (displayStr?: string, payloadStr?: string) => {
-    if (!privileges.chatEnabled) {
+    if (!privileges.chatEnabled || isTyping) {
       return;
     }
     const rawDisplay = typeof displayStr === "string" ? displayStr : inputValue;
@@ -837,9 +837,9 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   };
 
   const regularChoiceButtonClass =
-    "flex min-h-[64px] min-w-0 w-full items-center overflow-hidden rounded-xl border border-sky-200 bg-white px-3.5 py-1 text-left text-[13px] font-semibold leading-snug text-[#003B63] shadow-[0_3px_10px_rgba(14,74,122,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-[0_6px_16px_rgba(14,74,122,0.18)] focus:outline-none focus:ring-2 focus:ring-sky-200";
+    "flex min-h-[64px] min-w-0 w-full items-center overflow-hidden rounded-xl border border-sky-200 bg-white px-3.5 py-1 text-left text-[13px] font-semibold leading-snug text-[#003B63] shadow-[0_3px_10px_rgba(14,74,122,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-[0_6px_16px_rgba(14,74,122,0.18)] focus:outline-none focus:ring-2 focus:ring-sky-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none";
   const compactChoiceButtonClass =
-    "flex h-9 min-w-0 items-center overflow-hidden rounded-full border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20";
+    "flex h-9 min-w-0 items-center overflow-hidden rounded-full border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none";
 
   const renderSuggestionBoard = (messageId: string, suggestions?: ChatSuggestion[]) => {
     if (!suggestions || suggestions.length === 0) return null;
@@ -850,6 +850,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           <button
             key={`${messageId}-suggestion-${idx}`}
             type="button"
+            disabled={isTyping || !privileges.chatEnabled}
             onClick={() => handleSend(suggestion.label, suggestion.payload || suggestion.label)}
             className={regularChoiceButtonClass}
           >
@@ -894,12 +895,14 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             <button
               key={`${msg.id}-choice-group-${groupIdx}`}
               type="button"
+              disabled={isTyping || !privileges.chatEnabled}
               onClick={() => {
                 if (sticky && stickyDraggedDistance > 5) return;
+                if (isTyping) return;
                 setChoiceModal(group);
               }}
               className={sticky
-                ? "flex h-9 min-w-[116px] shrink-0 items-center justify-center rounded-full border border-border bg-white px-2.5 py-1.5 text-center text-[12px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20"
+                ? "flex h-9 min-w-[116px] shrink-0 items-center justify-center rounded-full border border-border bg-white px-2.5 py-1.5 text-center text-[12px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none"
                 : regularChoiceButtonClass}
             >
               <span className="min-w-0 break-words">{group.title}</span>
@@ -909,11 +912,12 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         {sticky && (
           <button
             type="button"
+            disabled={isTyping}
             onClick={() => {
               setDismissedStickyChoiceIds((prev) => Array.from(new Set([...prev, msg.id])));
               setStickyChoiceMessageId(null);
             }}
-            className="absolute bottom-1 right-2 rounded-full bg-background p-1 text-muted-foreground shadow-sm ring-1 ring-border transition-colors hover:text-foreground"
+            className="absolute bottom-1 right-2 rounded-full bg-background p-1 text-muted-foreground shadow-sm ring-1 ring-border transition-colors hover:text-foreground disabled:opacity-50 disabled:pointer-events-none"
             aria-label="Hide service category shortcut"
           >
             <X className="h-3.5 w-3.5" />
@@ -1007,6 +1011,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 <div className="flex flex-wrap justify-center gap-2">
                   <button
                     type="button"
+                    disabled={isTyping || !privileges.chatEnabled}
                     onClick={() => handleSend("Chatbot Help menu", "chatbot help menu")}
                     className={compactChoiceButtonClass}
                   >
@@ -1014,6 +1019,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   </button>
                   <button
                     type="button"
+                    disabled={isTyping || !privileges.chatEnabled}
                     onClick={() => handleSend("BukSU student services", "what are the student services")}
                     className={compactChoiceButtonClass}
                   >
@@ -1214,6 +1220,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                     <button
                       key={`${choiceModal.title}-${idx}`}
                       type="button"
+                      disabled={isTyping || !privileges.chatEnabled}
                       onClick={() => handleSend(item.label, item.payload || item.label)}
                       className={regularChoiceButtonClass}
                     >
@@ -1289,6 +1296,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                     {activeFaqs.map((faq, idx) => (
                       <button
                         key={faq.id || idx}
+                        disabled={isTyping || !privileges.chatEnabled}
                         onClick={(e) => {
                           if (draggedDistance > 5) {
                             e.preventDefault();
@@ -1297,7 +1305,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                           }
                           handleSend(faq.displayLabel, faq.payload);
                         }}
-                        className="flex-shrink-0 flex items-center gap-1.5 bg-muted hover:bg-accent border border-border text-foreground rounded-full px-3 py-1.5 shadow-sm transition-all duration-200 whitespace-nowrap h-9 pointer-events-auto"
+                        className="flex-shrink-0 flex items-center gap-1.5 bg-muted hover:bg-accent border border-border text-foreground rounded-full px-3 py-1.5 shadow-sm transition-all duration-200 whitespace-nowrap h-9 pointer-events-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none"
                       >
                         <span className="text-[13px]">{faq.icon || "✨"}</span>
                         <span className="font-medium text-[13px] truncate max-w-[140px]">{faq.displayLabel}</span>
