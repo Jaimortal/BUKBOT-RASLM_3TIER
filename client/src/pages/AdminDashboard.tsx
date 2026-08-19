@@ -465,7 +465,9 @@ function LocationDialog({ location, onSave, trigger }: {
   const [open, setOpen] = useState(false);
   const [locationName, setLocationName] = useState(location?.name || "");
   const [mapCoordinates, setMapCoordinates] = useState<[number, number]>(
-    location?.coordinates || [500, 500]
+    Array.isArray(location?.coordinates) && location.coordinates.length === 2
+      ? [location.coordinates[0], location.coordinates[1]]
+      : [500, 500]
   );
 
   const handleSubmit = () => {

@@ -11,7 +11,7 @@ export interface Intent {
 export interface Location {
   id: string;
   name: string;
-  coordinates: [number, number]; // [y, x] format
+  coordinates?: [number, number] | []; // [y, x] format
   mapImage: string;
   type?: string;
   building?: string;

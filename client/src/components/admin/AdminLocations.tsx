@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo, useDeferredValue, memo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchLocations, saveLocation } from "@/lib/adminApi";
 import type { Location } from "@/types/admin";
@@ -11,6 +11,7 @@ import {
   AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -56,6 +57,9 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
+  const [activeTab, setActiveTab] = useState<string>("responses");
+  const isCoordsPresent = Array.isArray(location.coordinates) && location.coordinates.length === 2;
+  const [mapEnabled, setMapEnabled] = useState<boolean>(isCoordsPresent);
   const [enLines, setEnLines] = useState<string[]>(location.responses?.en?.length ? location.responses.en : [""]);
   const [cebLines, setCebLines] = useState<string[]>(location.responses?.ceb?.length ? location.responses.ceb : [""]);
   const [images, setImages] = useState<string[]>(location.imageUrls ?? []);
@@ -77,6 +81,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
 
   useEffect(() => {
     if (!open) return;
+    setActiveTab("responses");
     setEnLines(location.responses?.en?.length ? location.responses.en : [""]);
     setCebLines(location.responses?.ceb?.length ? location.responses.ceb : [""]);
     setImages(location.imageUrls ?? []);
@@ -89,22 +94,24 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
       pinType: (p as any).pinType as AdminPin["pinType"],
     })));
     setRoutes(location.routes ?? []);
+    const hasCoordinates = Array.isArray(location.coordinates) && location.coordinates.length === 2;
+    setMapEnabled(hasCoordinates);
   }, [open, location]);
 
   const saveMutation = useMutation({
     mutationFn: async () => {
       const payload: Location = {
         ...location,
-        coordinates: coords,
+        coordinates: mapEnabled ? coords : [],
         // Convert AdminPin back to Location pin format, preserving floor data
-        pins: pins.filter(p => p.name.trim()).map(p => ({
+        pins: mapEnabled ? pins.filter(p => p.name.trim()).map(p => ({
           name: p.name,
           coordinates: p.coordinates,
           ...(p.floor && { floor: p.floor }),
           ...(p.access && { access: p.access }),
           ...(p.pinType && { pinType: p.pinType }),
-        } as any)),
-        routes: routes,
+        } as any)) : [],
+        routes: mapEnabled ? routes : [],
         responses: {
           en: enLines.filter(l => l.trim()),
           ceb: cebLines.filter(l => l.trim()),
@@ -143,7 +150,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
           </DialogHeader>
 
           <div className="flex-1 overflow-y-auto">
-            <Tabs defaultValue="responses" className="w-full">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="w-full rounded-none border-b bg-gray-50 justify-start gap-1 px-4 h-10">
                 <TabsTrigger value="responses" className="text-xs gap-1.5"><MessageSquareText className="h-3.5 w-3.5" />Responses</TabsTrigger>
                 <TabsTrigger value="images" className="text-xs gap-1.5"><ImagePlus className="h-3.5 w-3.5" />Images</TabsTrigger>
@@ -161,10 +168,10 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                   {enLines.map((l, i) => (
                     <div key={i} className="flex gap-2">
                       <div className="flex-1 min-w-0">
-                        <AdminRichTextEditor 
-                          value={l} 
-                          onChange={(v) => { const n = [...enLines]; n[i] = v; setEnLines(n); }} 
-                          placeholder={`Bubble ${i + 1}…`} 
+                        <AdminRichTextEditor
+                          value={l}
+                          onChange={(v) => { const n = [...enLines]; n[i] = v; setEnLines(n); }}
+                          placeholder={`Bubble ${i + 1}…`}
                         />
                       </div>
                       {enLines.length > 1 && <button onClick={() => setEnLines(enLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>}
@@ -180,10 +187,10 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                   {cebLines.map((l, i) => (
                     <div key={i} className="flex gap-2">
                       <div className="flex-1 min-w-0">
-                        <AdminRichTextEditor 
-                          value={l} 
-                          onChange={(v) => { const n = [...cebLines]; n[i] = v; setCebLines(n); }} 
-                          placeholder={`Bubble ${i + 1}…`} 
+                        <AdminRichTextEditor
+                          value={l}
+                          onChange={(v) => { const n = [...cebLines]; n[i] = v; setCebLines(n); }}
+                          placeholder={`Bubble ${i + 1}…`}
                         />
                       </div>
                       {cebLines.length > 1 && <button onClick={() => setCebLines(cebLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>}
@@ -195,7 +202,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
               {/* Images */}
               <TabsContent value="images" className="p-5 space-y-4 mt-0">
                 <AdminImageUploader onAddImage={(url) => setImages([...images, url])} />
-                
+
                 {images.length === 0
                   ? <div className="text-center py-10 text-muted-foreground text-sm border-2 border-dashed rounded-lg"><ImagePlus className="h-8 w-8 mx-auto mb-2 opacity-30" />No images yet.</div>
                   : <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -213,20 +220,54 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
 
               {/* Map & Pins — merged */}
               <TabsContent value="map" className="p-3 mt-0">
-                <AdminMapPinsEditor
-                  pins={pins}
-                  routes={routes}
-                  onPinsChange={setPins}
-                  onRoutesChange={setRoutes}
-                  mapSize={420}
-                />
+                {!mapEnabled ? (
+                  <div className="flex flex-col items-center justify-center p-12 text-center border-2 border-dashed rounded-xl bg-gray-50/50 my-2">
+                    <MapPin className="h-10 w-10 text-gray-400 mb-3 opacity-40" />
+                    <h4 className="text-sm font-semibold text-gray-700">Map & Pins Disabled</h4>
+                    <p className="text-xs text-muted-foreground mt-1 max-w-sm">
+                      This location will not display a map route or pin in the chatbot response. Toggle the switch below to configure coordinates, pins, and navigation routes.
+                    </p>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className="mt-4 text-xs font-medium"
+                      onClick={() => setMapEnabled(true)}
+                    >
+                      Enable Map & Pins
+                    </Button>
+                  </div>
+                ) : (
+                  <AdminMapPinsEditor
+                    pins={pins}
+                    routes={routes}
+                    onPinsChange={setPins}
+                    onRoutesChange={setRoutes}
+                    mapSize={420}
+                  />
+                )}
               </TabsContent>
             </Tabs>
           </div>
 
           <div className="px-5 py-3 border-t bg-gray-50 flex items-center justify-between rounded-b-lg">
             <p className="text-xs text-muted-foreground">Saves to <code className="font-mono">responses_location.json</code></p>
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
+              {activeTab === "map" && (
+                <div className="flex items-center gap-2 mr-2 px-2.5 py-1 bg-white rounded-md border shadow-xs">
+                  <Switch
+                    id="map-enable-toggle"
+                    checked={mapEnabled}
+                    onCheckedChange={setMapEnabled}
+                  />
+                  <Label
+                    htmlFor="map-enable-toggle"
+                    className="text-xs cursor-pointer select-none font-medium text-gray-700"
+                  >
+                    {mapEnabled ? "Map Enabled" : "Map Disabled"}
+                  </Label>
+                </div>
+              )}
               <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
               <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending} className="text-white" style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}>
                 {saveMutation.isPending ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving…</> : <><Save className="h-4 w-4 mr-2" />Save</>}
@@ -254,7 +295,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
 
 // ─── Card ─────────────────────────────────────────────────────────────────────
 
-function LocationCard({ location, onClick }: { location: Location; onClick: () => void }) {
+const LocationCard = memo(function LocationCard({ location, onClick }: { location: Location; onClick: () => void }) {
   const preview = previewText(location);
   const hasImg = !!(location.imageUrls?.length);
   const hasPins = !!(location.pins?.length);
@@ -262,8 +303,11 @@ function LocationCard({ location, onClick }: { location: Location; onClick: () =
   const hasMapData = hasPins || hasCoordinates;
 
   return (
-    <button onClick={onClick} className="group w-full text-left rounded-xl border bg-white hover:border-blue-400 hover:shadow-md transition-all duration-200 p-4 flex flex-col gap-2 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 group-hover:from-blue-50/40 transition-all duration-300 pointer-events-none" />
+    <button
+      type="button"
+      onClick={onClick}
+      className="group w-full text-left rounded-xl border bg-white hover:border-blue-400 hover:shadow-xs transition-colors p-4 flex flex-col gap-2 relative overflow-hidden"
+    >
       <div className="flex items-start justify-between gap-2 relative">
         <div className="min-w-0">
           <p className="font-semibold text-sm text-gray-800 leading-tight truncate">{location.name}</p>
@@ -283,18 +327,25 @@ function LocationCard({ location, onClick }: { location: Location; onClick: () =
       )}
     </button>
   );
-}
+});
 
 // ─── Building Panel ───────────────────────────────────────────────────────────
 
 function BuildingPanel({ building, locations }: { building: string; locations: Location[] }) {
   const [selected, setSelected] = useState<Location | null>(null);
   const [search, setSearch] = useState("");
+  const deferredSearch = useDeferredValue(search);
   const qc = useQueryClient();
 
-  const filtered = search
-    ? locations.filter(l => l.name.toLowerCase().includes(search.toLowerCase()))
-    : locations;
+  const filtered = useMemo(() => {
+    return deferredSearch
+      ? locations.filter(l => l.name.toLowerCase().includes(deferredSearch.toLowerCase()))
+      : locations;
+  }, [deferredSearch, locations]);
+
+  const handleSelect = useCallback((l: Location) => {
+    setSelected(l);
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -310,12 +361,12 @@ function BuildingPanel({ building, locations }: { building: string; locations: L
         ? <div className="text-center py-16 text-sm text-muted-foreground border-2 border-dashed rounded-xl">{search ? `No locations match "${search}"` : "No locations found."}</div>
         : <div className="overflow-y-auto max-h-[420px] pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: "#cbd5e1 transparent" }}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {filtered.map(l => <LocationCard key={l.id} location={l} onClick={() => setSelected(l)} />)}
+            {filtered.map(l => <LocationCard key={l.id} location={l} onClick={() => handleSelect(l)} />)}
           </div>
         </div>}
 
       {selected && (
-        <LocationModal location={selected} open={!!selected} onClose={() => setSelected(null)}
+        <LocationModal key={`${selected.id}_${selected.coordinates?.length || 0}`} location={selected} open={!!selected} onClose={() => setSelected(null)}
           onSaved={() => { qc.invalidateQueries({ queryKey: ["locations"] }); setSelected(null); }} />
       )}
     </div>

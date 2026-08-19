@@ -188,10 +188,10 @@ export async function getLocations(): Promise<Location[]> {
     const locationsMap = file.locations || {};
     return Object.entries(locationsMap).map(([name, value]) => {
       const coordsRaw: any = (value as any)?.coordinates;
-      const coords: [number, number] =
+      const coords: [number, number] | [] =
         Array.isArray(coordsRaw) && coordsRaw.length === 2
           ? [Number(coordsRaw[0]), Number(coordsRaw[1])]
-          : [500, 500];
+          : (Array.isArray(coordsRaw) && coordsRaw.length === 0 ? [] : [500, 500]);
 
       const pinsRaw: any = (value as any)?.pins;
       const pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }> = Array.isArray(pinsRaw)
@@ -200,7 +200,7 @@ export async function getLocations(): Promise<Location[]> {
               const c: any = p?.coordinates;
               const tuple: [number, number] = Array.isArray(c) && c.length === 2
                 ? [Number(c[0]), Number(c[1])]
-                : coords;
+                : (Array.isArray(coords) && coords.length === 2 ? coords : [500, 500]);
               const n = String(p?.name || "").trim() || `Pin ${idx + 1}`;
               const floor = p?.floor ? String(p.floor) : undefined;
               const access = p?.access ? String(p.access) : undefined;
@@ -247,7 +247,7 @@ export async function getLocations(): Promise<Location[]> {
 // Lightweight public version — returns only name, coordinates, pins, routes, building (no response text)
 export async function getMapLocationsList(): Promise<Array<{
   name: string;
-  coordinates: [number, number];
+  coordinates: [number, number] | [];
   building: string;
   pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
   routes: Array<{ name: string; points: [number, number][]; color?: string }>;
@@ -257,10 +257,10 @@ export async function getMapLocationsList(): Promise<Array<{
     const locationsMap = file.locations || {};
     return Object.entries(locationsMap).map(([name, value]) => {
       const coordsRaw: any = (value as any)?.coordinates;
-      const coords: [number, number] =
+      const coords: [number, number] | [] =
         Array.isArray(coordsRaw) && coordsRaw.length === 2
           ? [Number(coordsRaw[0]), Number(coordsRaw[1])]
-          : [500, 500];
+          : (Array.isArray(coordsRaw) && coordsRaw.length === 0 ? [] : [500, 500]);
 
       const pinsRaw: any = (value as any)?.pins;
       const pins = Array.isArray(pinsRaw)
@@ -386,13 +386,16 @@ export async function upsertLocation(location: Location): Promise<ApiResponse> {
           .filter(Boolean)
       : (Array.isArray(existing.pins) ? existing.pins : []);
 
+    const coordsProvided = Object.prototype.hasOwnProperty.call((location as any) || {}, 'coordinates');
     const coordsRaw: any = (location as any)?.coordinates;
-    const nextCoords: [number, number] =
+    const nextCoords: any =
       Array.isArray(coordsRaw) && coordsRaw.length === 2
         ? [Number(coordsRaw[0]), Number(coordsRaw[1])]
-        : (Array.isArray(existing.coordinates) && existing.coordinates.length === 2
-            ? [Number(existing.coordinates[0]), Number(existing.coordinates[1])]
-            : [500, 500]);
+        : (coordsProvided && Array.isArray(coordsRaw) && coordsRaw.length === 0
+            ? []
+            : (Array.isArray(existing.coordinates) && existing.coordinates.length === 2
+                ? [Number(existing.coordinates[0]), Number(existing.coordinates[1])]
+                : [500, 500]));
 
     const coordsFromPins: [number, number] | null = Array.isArray(nextPins) && nextPins.length > 0
       ? ([Number(nextPins[0].coordinates[0]), Number(nextPins[0].coordinates[1])] as [number, number])

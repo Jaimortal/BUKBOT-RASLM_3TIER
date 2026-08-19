@@ -14598,7 +14598,10 @@
           "Makita nimo ang TBA Classroom kung magsaba na ang imong instructor kung asa mo mag klasi, ang TBA daghan kaynag meaning. <b>TO BE ANNOUNCED, TO BE ARRANGED, TO BE ADVISED</b>. meaning wala pamoy spacific classroom and mag hulat og kanusa mo ignan sa inyo instructor kong asa mo dapita. Okay?😁"
         ]
       },
-      "coordinates": [],
+      "coordinates": [
+        500,
+        500
+      ],
       "pins": [],
       "imageUrls": [],
       "routes": []

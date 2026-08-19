@@ -823,6 +823,12 @@ LOCATION_ALIASES = {
     "arts and sciences buildings": "CAS Buildings",
     "college arts sciences": "CAS Buildings",
 
+    # Pink building under cas
+    "pink bldg": "pink building",
+    "pink building": "pink building",
+    "pink office": "pink building",
+    "cas pink building": "pink building",
+
     # COLLEGE OF NURSING BUILDING
     "con": "College of Nursing Building",
     "college of nursing building": "College of Nursing Building",
@@ -1347,4 +1353,12 @@ LOCATION_ALIASES = {
     "Office of ictu": "ICTU Office",
     "ictu Office": "ICTU Office",
 
+
+    # Other locations
+    "tba classroom": "TBA classroom",
+    "tba classrooms": "TBA classroom",
+    "tba room": "TBA classroom",
+    "tba rooms": "TBA classroom",
+    "tba nga room": "TBA classroom",
+    "tba nga classroom": "TBA classroom"
 }

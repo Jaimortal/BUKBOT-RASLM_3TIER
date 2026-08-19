@@ -14511,97 +14511,15 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "look on the map👀. you see it?😁"
+          "You can find it in the CAS building, Ground floor."
         ],
         "ceb": [
-          "Awang mapa👀. kita nimo?😁"
-        ]
-      },
-      "coordinates": [
-        869,
-        634
-      ],
-      "pins": [
-        {
-          "name": "Start From Here",
-          "coordinates": [
-            869,
-            634
-          ]
-        },
-        {
-          "name": "Pink Building",
-          "coordinates": [
-            526,
-            558
-          ]
-        }
-      ],
-      "imageUrls": [],
-      "routes": [
-        {
-          "name": "Start From Here to Pink Building",
-          "points": [
-            [
-              869,
-              634
-            ],
-            [
-              787,
-              635
-            ],
-            [
-              786,
-              670
-            ],
-            [
-              590,
-              676
-            ],
-            [
-              573,
-              664
-            ],
-            [
-              572,
-              645
-            ],
-            [
-              548,
-              648
-            ],
-            [
-              547,
-              558
-            ],
-            [
-              526,
-              558
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ]
-    },
-    "TBA classroom": {
-      "type": "Information",
-      "building": "Others",
-      "floor": " ",
-      "map_id": "main_map",
-      "responses": {
-        "en": [
-          "You can find the TBA Classroom when your instructor announce where your class facilitate, TBA has alot of meaning <b>TO BE ANNOUNCED</b>, <b>TO BE ARRANGED, TO BE ADVISED</b>. Meaning you still dont have&nbsp;designated classroom, just wait until your instructor announced the classroom location. Okay?😁"
-        ],
-        "ceb": [
-          "Makita nimo ang TBA Classroom kung magsaba na ang imong instructor kung asa mo mag klasi, ang TBA daghan kaynag meaning. <b>TO BE ANNOUNCED, TO BE ARRANGED, TO BE ADVISED</b>. meaning wala pamoy spacific classroom and mag hulat og kanusa mo ignan sa inyo instructor kong asa mo dapita. Okay?😁"
+          "Makita ni nimo sa CAS building, Ground floor."
         ]
       },
       "coordinates": [],
       "pins": [],
-      "imageUrls": [],
-      "routes": []
+      "imageUrls": []
     }
   }
 }

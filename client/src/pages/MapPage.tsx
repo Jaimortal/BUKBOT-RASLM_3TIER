@@ -3,7 +3,6 @@ import InteractiveMap from "@/components/map/InteractiveMap";
 import { fetchAllMaps, fetchMapRoutes, fetchMapMarkers, saveMap, saveRoute, saveMarker, importMap as importMapApi } from "@/lib/adminApi";
 import { toast } from "sonner";
 import { Card } from "@/components/ui/card";
-import { Sidebar } from "@/components/admin/Sidebar"; // Assuming there's a sidebar or layout
 
 export default function MapPage() {
   const [maps, setMaps] = useState<any[]>([]);

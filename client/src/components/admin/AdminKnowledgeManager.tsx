@@ -1,4 +1,4 @@
-import { type KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import { type KeyboardEvent, memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   createKnowledgeParent,
@@ -21,6 +21,7 @@ import { useToast } from "@/hooks/use-toast";
 import type { ApiResponse } from "@/types/admin";
 import {
   Braces,
+  ChevronDown,
   ChevronRight,
   FileText,
   FolderTree,
@@ -29,6 +30,7 @@ import {
   Loader2,
   MapPin,
   Pencil,
+  PlusCircle,
   Save,
   Search,
   ShieldCheck,
@@ -1409,8 +1411,10 @@ function CreateSubtopicDialog({
 
 export function AdminKnowledgeManager() {
   const [search, setSearch] = useState("");
+  const deferredSearch = useDeferredValue(search);
   const [fileFilter, setFileFilter] = useState("all");
   const [selected, setSelected] = useState<KnowledgeRecord | null>(null);
+  const [collapsedFiles, setCollapsedFiles] = useState<Set<string>>(new Set());
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["knowledgeRecords"],
@@ -1438,7 +1442,7 @@ export function AdminKnowledgeManager() {
   }, [records]);
 
   const visibleIds = useMemo(() => {
-    const term = search.trim().toLowerCase();
+    const term = deferredSearch.trim().toLowerCase();
     const matchesFile = (record: KnowledgeRecord) => fileFilter === "all" || record.file === fileFilter;
     const directMatches = new Set<string>();
 
@@ -1464,14 +1468,57 @@ export function AdminKnowledgeManager() {
     });
 
     return visible;
-  }, [fileFilter, records, recordsById, search]);
+  }, [deferredSearch, fileFilter, records, recordsById]);
 
   const visibleFiles = useMemo(() => {
-    const result = files
+    return files
       .filter((file) => fileFilter === "all" || file.file === fileFilter)
       .filter((file) => records.some((record) => record.file === file.file && visibleIds.has(record.id)));
-    return result;
   }, [fileFilter, files, records, visibleIds]);
+
+  const fileTreeData = useMemo(() => {
+    return visibleFiles.map((file) => {
+      const roots = records.filter(
+        (record) => record.file === file.file && record.path.length === 1 && visibleIds.has(record.id)
+      );
+      const rootsWithChildren = roots.map((root) => {
+        const children = (childrenByParent.get(root.id) || []).filter((child) => visibleIds.has(child.id));
+        return {
+          root,
+          crumbs: breadcrumb(root, recordsById),
+          children: children.map((child) => ({
+            child,
+            crumbs: breadcrumb(child, recordsById),
+          })),
+        };
+      });
+      return {
+        file,
+        rootsWithChildren,
+      };
+    });
+  }, [visibleFiles, records, visibleIds, childrenByParent, recordsById]);
+
+  const handleOpen = useCallback((record: KnowledgeRecord) => {
+    setSelected(record);
+  }, []);
+
+  const toggleFileCollapse = useCallback((fileName: string) => {
+    setCollapsedFiles((prev) => {
+      const next = new Set(prev);
+      if (next.has(fileName)) next.delete(fileName);
+      else next.add(fileName);
+      return next;
+    });
+  }, []);
+
+  const toggleAllCollapse = useCallback(() => {
+    if (collapsedFiles.size > 0) {
+      setCollapsedFiles(new Set());
+    } else {
+      setCollapsedFiles(new Set(files.map((f) => f.file)));
+    }
+  }, [collapsedFiles.size, files]);
 
   if (isLoading) {
     return (
@@ -1510,11 +1557,14 @@ export function AdminKnowledgeManager() {
               ))}
             </SelectContent>
           </Select>
-          <Button variant="outline" onClick={() => refetch()}>Refresh</Button>
+          <Button variant="outline" size="sm" onClick={toggleAllCollapse} className="text-xs">
+            {collapsedFiles.size > 0 ? "Expand All" : "Collapse All"}
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => refetch()} className="text-xs">Refresh</Button>
         </div>
       </div>
 
-      <div className="rounded-lg border bg-white">
+      <div className="rounded-lg border bg-white shadow-xs">
         <div className="border-b bg-slate-50 px-4 py-3">
           <div className="grid grid-cols-12 gap-2 text-xs font-semibold text-slate-600">
             <div className="col-span-4">Knowledge Category / Topic</div>
@@ -1523,34 +1573,38 @@ export function AdminKnowledgeManager() {
             <div className="col-span-1 text-right">Edit</div>
           </div>
         </div>
-        <div className="max-h-[620px] overflow-y-auto">
-          {visibleFiles.map((file) => {
-            const roots = records.filter((record) => record.file === file.file && record.path.length === 1 && visibleIds.has(record.id));
+        <div className="max-h-[620px] overflow-y-auto divide-y">
+          {fileTreeData.map(({ file, rootsWithChildren }) => {
+            const isCollapsed = collapsedFiles.has(file.file);
             return (
               <div key={file.file} className="border-b last:border-b-0">
-                <div className="flex items-center gap-2 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-950">
-                  <FolderTree className="h-4 w-4" />
-                  <span>{categoryLabel(file.file)}</span>
-                  <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-blue-700">{file.count} records</span>
-                </div>
-                {roots.map((root) => {
-                  const children = (childrenByParent.get(root.id) || []).filter((child) => visibleIds.has(child.id));
-                  return (
-                    <div key={root.id}>
-                      <KnowledgeRow record={root} recordsById={recordsById} onOpen={setSelected} depth={0} />
-                      {children.map((child) => (
-                        <KnowledgeRow key={child.id} record={child} recordsById={recordsById} onOpen={setSelected} depth={1} />
-                      ))}
-                      {children.length === 0 && root.subtopicCount > 0 && (
-                        <div className="border-t px-10 py-2 text-xs text-muted-foreground">No answer topics matched your current search.</div>
-                      )}
-                    </div>
-                  );
-                })}
+                <button
+                  type="button"
+                  onClick={() => toggleFileCollapse(file.file)}
+                  className="w-full flex items-center justify-between bg-blue-50/80 hover:bg-blue-100/80 transition-colors px-4 py-2.5 text-sm font-semibold text-blue-950 select-none text-left"
+                >
+                  <div className="flex items-center gap-2">
+                    {isCollapsed ? <ChevronRight className="h-4 w-4 text-blue-700 shrink-0" /> : <ChevronDown className="h-4 w-4 text-blue-700 shrink-0" />}
+                    <FolderTree className="h-4 w-4 text-blue-700 shrink-0" />
+                    <span>{categoryLabel(file.file)}</span>
+                  </div>
+                  <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-blue-700 shadow-xs">{file.count} records</span>
+                </button>
+                {!isCollapsed && rootsWithChildren.map(({ root, crumbs: rootCrumbs, children }) => (
+                  <div key={root.id}>
+                    <KnowledgeRow record={root} crumbs={rootCrumbs} onOpen={handleOpen} depth={0} />
+                    {children.map(({ child, crumbs: childCrumbs }) => (
+                      <KnowledgeRow key={child.id} record={child} crumbs={childCrumbs} onOpen={handleOpen} depth={1} />
+                    ))}
+                    {children.length === 0 && root.subtopicCount > 0 && (
+                      <div className="border-t px-10 py-2 text-xs text-muted-foreground bg-slate-50/50">No answer topics matched your current search.</div>
+                    )}
+                  </div>
+                ))}
               </div>
             );
           })}
-          {visibleFiles.length === 0 && (
+          {fileTreeData.length === 0 && (
             <div className="py-14 text-center text-sm text-muted-foreground">No knowledge records matched your filters.</div>
           )}
         </div>
@@ -1563,22 +1617,22 @@ export function AdminKnowledgeManager() {
   );
 }
 
-function KnowledgeRow({
+const KnowledgeRow = memo(function KnowledgeRow({
   record,
-  recordsById,
+  crumbs,
   onOpen,
   depth,
 }: {
   record: KnowledgeRecord;
-  recordsById: Map<string, KnowledgeRecord>;
+  crumbs: string[];
   onOpen: (record: KnowledgeRecord) => void;
   depth: number;
 }) {
-  const crumbs = breadcrumb(record, recordsById);
   const isTopicGroup = record.path.length === 1 && record.subtopicCount > 0;
+  const preview = recordPreview(record);
 
   return (
-    <div className="grid grid-cols-12 gap-2 border-t px-4 py-3 text-sm">
+    <div className="grid grid-cols-12 gap-2 border-t px-4 py-3 text-sm hover:bg-slate-50/70 transition-colors">
       <div className="col-span-4 min-w-0">
         <div className="flex items-start gap-2">
           <div className={`mt-0.5 shrink-0 ${depth ? "ml-6" : ""}`}>
@@ -1601,7 +1655,7 @@ function KnowledgeRow({
         </div>
       </div>
       <div className="col-span-4 min-w-0 text-xs text-slate-600">
-        <p className="line-clamp-3">{recordPreview(record)}</p>
+        <p className="line-clamp-3 leading-relaxed">{preview}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
           <Braces className="h-3.5 w-3.5" /> {record.phrases.length} example(s)
           <Image className="h-3.5 w-3.5" /> {record.images.length} image(s)
@@ -1627,7 +1681,7 @@ function KnowledgeRow({
               Group
             </span>
           ) : (
-            <Button size="sm" variant="outline" onClick={() => onOpen(record)}>
+            <Button size="sm" variant="outline" onClick={() => onOpen(record)} className="h-7 text-xs">
               Open
             </Button>
           )}
@@ -1635,4 +1689,4 @@ function KnowledgeRow({
       </div>
     </div>
   );
-}
+});

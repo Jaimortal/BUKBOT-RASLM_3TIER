@@ -1537,11 +1537,14 @@ function LocationDialog({ location, onSave, trigger }: {
   const [building, setBuilding] = useState(location?.building || "");
   const [floor, setFloor] = useState(location?.floor || "");
   const [mapId, setMapId] = useState(location?.mapImage || "main_map");
-  const [mapCoordinates, setMapCoordinates] = useState<[number, number]>(location?.coordinates || [500, 500]);
+  const initialCoords: [number, number] = Array.isArray(location?.coordinates) && location.coordinates.length === 2
+    ? [location.coordinates[0], location.coordinates[1]]
+    : [500, 500];
+  const [mapCoordinates, setMapCoordinates] = useState<[number, number]>(initialCoords);
   const [pins, setPins] = useState<Array<{ name: string; coordinates: [number, number] }>>(
     Array.isArray((location as any)?.pins) && (location as any).pins.length > 0
       ? (location as any).pins
-      : [{ name: "Main Pin", coordinates: location?.coordinates || [500, 500] }]
+      : [{ name: "Main Pin", coordinates: initialCoords }]
   );
   const [activePinIndex, setActivePinIndex] = useState<number>(0);
   const [enText, setEnText] = useState<string>((location?.responses?.en || []).join("\n"));
@@ -1552,15 +1555,18 @@ function LocationDialog({ location, onSave, trigger }: {
 
   useEffect(() => {
     if (!open) return;
+    const currentCoords: [number, number] = Array.isArray(location?.coordinates) && location.coordinates.length === 2
+      ? [location.coordinates[0], location.coordinates[1]]
+      : [500, 500];
     setLocationName(location?.name || "");
     setLocationType(location?.type || "");
     setBuilding(location?.building || "");
     setFloor(location?.floor || "");
     setMapId(location?.mapImage || "main_map");
-    setMapCoordinates(location?.coordinates || [500, 500]);
+    setMapCoordinates(currentCoords);
     const nextPins = Array.isArray((location as any)?.pins) && (location as any).pins.length > 0
       ? (location as any).pins
-      : [{ name: "Main Pin", coordinates: location?.coordinates || [500, 500] }];
+      : [{ name: "Main Pin", coordinates: currentCoords }];
     setPins(nextPins);
     setActivePinIndex(0);
     setEnText((location?.responses?.en || []).join("\n"));
