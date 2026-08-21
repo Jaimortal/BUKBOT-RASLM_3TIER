@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Mail, ShieldAlert, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
 export function AdminReports() {
   const queryClient = useQueryClient();
@@ -73,32 +74,38 @@ export function AdminReports() {
             <div className="rounded-lg border-2 border-dashed py-12 text-center text-sm text-muted-foreground">No reports submitted yet.</div>
           ) : (
             <div className="overflow-hidden rounded-lg border">
-              <div className="grid grid-cols-12 bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-600">
+              <div className="grid grid-cols-12 bg-slate-50 px-4 py-2.5 text-xs font-semibold text-slate-600 sticky top-0 z-10 border-b">
                 <div className="col-span-4">IP</div>
                 <div className="col-span-3">Reports</div>
                 <div className="col-span-3">Latest</div>
                 <div className="col-span-2 text-right">Action</div>
               </div>
-              {groups.map((group) => (
-                <div key={group.ipHash} className="grid grid-cols-12 items-center border-t px-4 py-3 text-sm">
-                  <div className="col-span-4 font-mono text-xs">{group.ipAddress}</div>
-                  <div className="col-span-3">{group.count}</div>
-                  <div className="col-span-3 text-xs text-muted-foreground">{new Date(group.latestAt).toLocaleString()}</div>
-                  <div className="col-span-2 flex justify-end gap-2">
-                    <Button size="sm" variant="outline" onClick={() => setSelected(group)}>View</Button>
-                    <Button
-                      size="sm"
-                      variant="destructive"
-                      className="gap-1 px-2"
-                      onClick={() => deleteGroupMutation.mutate(group)}
-                      disabled={deleteGroupMutation.isPending}
-                    >
-                      <Trash2 className="h-3.5 w-3.5" />
-                      Delete
-                    </Button>
+              <div className="max-h-[290px] overflow-y-auto divide-y divide-slate-100">
+                {groups.map((group) => (
+                  <div key={group.ipHash} className="grid grid-cols-12 items-center px-4 py-3 text-sm hover:bg-slate-50/75 transition-colors">
+                    <div className="col-span-4 font-mono text-xs">{group.ipAddress}</div>
+                    <div className="col-span-3 font-medium">{group.count} report(s)</div>
+                    <div className="col-span-3 text-xs text-muted-foreground">{new Date(group.latestAt).toLocaleString()}</div>
+                    <div className="col-span-2 flex justify-end gap-2">
+                      <AdminTooltip title="View Reports" description="Inspect reports submitted under this IP address" side="left">
+                        <Button size="sm" variant="outline" className="h-8 px-2.5 text-xs" onClick={() => setSelected(group)}>View</Button>
+                      </AdminTooltip>
+                      <AdminTooltip title="Delete IP Group" description="Permanently delete all reports from this IP address" side="left">
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          className="h-8 gap-1 px-2.5 text-xs"
+                          onClick={() => deleteGroupMutation.mutate(group)}
+                          disabled={deleteGroupMutation.isPending}
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Delete
+                        </Button>
+                      </AdminTooltip>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           )}
         </CardContent>
@@ -123,16 +130,18 @@ export function AdminReports() {
                       {report.reportKind === "response" ? "Response" : "General"}
                     </span>
                     <span>{new Date(report.createdAt).toLocaleString()}</span>
-                    <Button
-                      size="sm"
-                      variant="destructive"
-                      className="h-7 gap-1 px-2 text-xs"
-                      onClick={() => deleteMutation.mutate(report.id)}
-                      disabled={deleteMutation.isPending}
-                    >
-                      <Trash2 className="h-3.5 w-3.5" />
-                      Delete
-                    </Button>
+                    <AdminTooltip title="Delete Report" description="Permanently remove this specific report" side="left">
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        className="h-7 gap-1 px-2 text-xs"
+                        onClick={() => deleteMutation.mutate(report.id)}
+                        disabled={deleteMutation.isPending}
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                        Delete
+                      </Button>
+                    </AdminTooltip>
                   </div>
                 </div>
                 {report.reportKind === "response" && (

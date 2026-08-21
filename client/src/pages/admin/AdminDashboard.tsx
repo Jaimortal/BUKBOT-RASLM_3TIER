@@ -78,11 +78,13 @@ import { AdminMapSettings } from "@/components/admin/AdminMapSettings";
 import { AdminGallery } from "@/components/admin/AdminGallery";
 import { AdminReports } from "@/components/admin/AdminReports";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
+import { AdminActivityLogs } from "@/components/admin/AdminActivityLogs";
+import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
 export default function AdminDashboard() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
-  const { logout } = useAuth();
+  const { logout, user, isMainAdmin } = useAuth();
   const [activeTab, setActiveTab] = useState("responses");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
@@ -402,7 +404,7 @@ export default function AdminDashboard() {
   // --- UI ---
   const menuItems = [
     { id: "responses", label: "Responses", icon: MessageSquare },
-    { id: "reports", label: "User Reports", icon: Shield },
+    { id: "reports", label: "Reports", icon: Shield },
     { id: "gallery", label: "Gallery", icon: ImageIcon },
     { id: "faqs", label: "FAQs", icon: FileJson },
     { id: "privileges", label: "Settings", icon: Settings },
@@ -454,6 +456,22 @@ export default function AdminDashboard() {
             </div>
           </div>
         </div>
+
+        {user && (
+          <div className="mx-4 mb-3 p-2.5 rounded-lg bg-slate-50 border border-slate-200/80 text-xs">
+            <div className="flex items-center justify-between gap-1 mb-1">
+              <span className="font-semibold text-slate-800 truncate">{user.name || "Admin"}</span>
+              <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com'
+                  ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                  : 'bg-amber-100 text-amber-800 border border-amber-200'
+              }`}>
+                {user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'main-admin' : 'co-admin'}
+              </span>
+            </div>
+            <p className="text-slate-500 font-mono text-[11px] truncate">{user.email}</p>
+          </div>
+        )}
         
         <nav className="px-4 gap-2 flex flex-col flex-1 overflow-y-auto pb-6">
           {menuItems.map((item) => {
@@ -500,18 +518,36 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between w-full">
                     <Tabs value={responsesSubTab} onValueChange={(v) => setResponsesSubTab(v as any)} className="w-full sm:w-auto">
                       <TabsList className="bg-slate-100 p-1">
-                        <TabsTrigger value="knowledge" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Knowledge Manager</TabsTrigger>
-                        <TabsTrigger value="locations" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Locations</TabsTrigger>
+                        <AdminTooltip
+                          title="Knowledge Manager"
+                          description="Browse, filter, and edit structured knowledge categories, topics, and responses"
+                          side="top"
+                        >
+                          <TabsTrigger value="knowledge" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Knowledge Manager</TabsTrigger>
+                        </AdminTooltip>
+                        <AdminTooltip
+                          title="Locations & Maps"
+                          description="Manage campus buildings, room coordinates, map pins, and navigational routes"
+                          side="top"
+                        >
+                          <TabsTrigger value="locations" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Locations</TabsTrigger>
+                        </AdminTooltip>
                       </TabsList>
                     </Tabs>
                     
-                    <Button 
-                      onClick={() => setShowSyncDialog(true)}
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center gap-2 shadow-sm"
+                    <AdminTooltip
+                      title="Sync Knowledge Base"
+                      description="Synchronize and persist all knowledge files with the database and refresh caches"
+                      side="bottom"
                     >
-                      <RefreshCw className={`w-4 h-4 ${syncKnowledgeBaseMutation.isPending ? "animate-spin" : ""}`} />
-                      Sync Knowledge Base
-                    </Button>
+                      <Button 
+                        onClick={() => setShowSyncDialog(true)}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center gap-2 shadow-sm"
+                      >
+                        <RefreshCw className={`w-4 h-4 ${syncKnowledgeBaseMutation.isPending ? "animate-spin" : ""}`} />
+                        Sync Knowledge Base
+                      </Button>
+                    </AdminTooltip>
                   </div>
                 </div>
 
@@ -820,7 +856,12 @@ export default function AdminDashboard() {
           )}
 
           {activeTab === "reports" && (
-            <AdminReports />
+            <div className="space-y-6">
+              <AdminReports />
+              {(isMainAdmin || user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com') && (
+                <AdminActivityLogs />
+              )}
+            </div>
           )}
 
           {activeTab === "faqs" && (

@@ -1,4 +1,4 @@
-import type { ResponseData, Location, ApiResponse, UserPrivileges, MigrationResult } from '@/types/admin';
+import type { ResponseData, Location, ApiResponse, UserPrivileges, MigrationResult, ActivityLog } from '@/types/admin';
 
 const API_BASE = '/api/admin';
 
@@ -980,6 +980,70 @@ export async function importMap(mapData: { map: MapInfo, markers: MarkerInfo[], 
     return await response.json();
   } catch (error) {
     console.error('Error importing map:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+// Activity Logs API (Main-Admin only)
+export async function fetchActivityLogs(params?: {
+  module?: string;
+  search?: string;
+  page?: number;
+  limit?: number;
+}): Promise<{ logs: ActivityLog[]; pagination: { total: number; page: number; limit: number; totalPages: number } }> {
+  try {
+    const queryParams = new URLSearchParams();
+    if (params?.module && params.module !== 'all') queryParams.set('module', params.module);
+    if (params?.search && params.search.trim()) queryParams.set('search', params.search.trim());
+    if (params?.page) queryParams.set('page', String(params.page));
+    if (params?.limit) queryParams.set('limit', String(params.limit));
+
+    const url = `${API_BASE}/activity-logs${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
+    const response = await fetch(url, {
+      headers: getAuthHeaders(),
+    });
+
+    if (response.status === 403) {
+      console.warn('[ActivityLog] Access denied (not main-admin)');
+      return { logs: [], pagination: { total: 0, page: 1, limit: 50, totalPages: 0 } };
+    }
+
+    const result = await response.json();
+    if (result.success && Array.isArray(result.data)) {
+      return {
+        logs: result.data,
+        pagination: result.pagination || { total: result.data.length, page: 1, limit: 50, totalPages: 1 }
+      };
+    }
+    return { logs: [], pagination: { total: 0, page: 1, limit: 50, totalPages: 0 } };
+  } catch (error) {
+    console.error('Error fetching activity logs:', error);
+    return { logs: [], pagination: { total: 0, page: 1, limit: 50, totalPages: 0 } };
+  }
+}
+
+export async function deleteActivityLogApi(id: string): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/activity-logs/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error deleting activity log:', error);
+    return { success: false, message: 'Network error' };
+  }
+}
+
+export async function clearActivityLogsApi(): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/activity-logs`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error clearing activity logs:', error);
     return { success: false, message: 'Network error' };
   }
 }

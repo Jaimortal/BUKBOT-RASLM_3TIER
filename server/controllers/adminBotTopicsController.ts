@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import { promises as fsPromises } from 'fs';
 import { deleteImage } from '../db/images.js';
 import { backupJsonFile } from '../utils/jsonBackup';
+import { logActivity, computeKnowledgeDiff } from '../services/activityLogService.js';
 
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
 
@@ -82,14 +83,10 @@ function guessIcon(labelOrKey: string): string {
 }
 
 // Utility to format a display name from intent string
-// e.g. "ask_ict_info" -> "ICT Info",  "departments_faculty_staff" -> "Departments Faculty Staff"
 function formatIntentDisplayName(intent: string): string {
   if (!intent) return 'Unknown';
-  // Remove leading "ask_" prefix if present
   let name = intent.replace(/^ask_/, '');
-  // Replace underscores with spaces
   name = name.replace(/_/g, ' ');
-  // Title-case each word
   return name
     .split(' ')
     .filter(w => w.length > 0)
@@ -131,7 +128,6 @@ export class AdminBotTopicsController {
 
   // -----------------------------------------------------------------------
   // GET /api/admin/super-intents
-  // Returns a list of all Super Intent files with their display names
   // -----------------------------------------------------------------------
   static async getSuperIntents(req: Request, res: Response) {
     try {
@@ -169,12 +165,10 @@ export class AdminBotTopicsController {
 
   // -----------------------------------------------------------------------
   // GET /api/admin/super-intents/:file
-  // Returns all topics for a given JSON file
   // -----------------------------------------------------------------------
   static async getSuperIntentTopics(req: Request, res: Response) {
     try {
       const { file } = req.params;
-      // Security: only allow .json files with safe names
       if (!file || !file.endsWith('.json') || file.includes('..') || file.includes('/')) {
         return res.status(400).json({ success: false, message: 'Invalid file name' });
       }
@@ -213,8 +207,6 @@ export class AdminBotTopicsController {
 
   // -----------------------------------------------------------------------
   // POST /api/admin/super-intents/:file/topic
-  // Body: { topic: string, ui_name?, responses?, images?, map?, pins?, routes? }
-  // Updates ONLY the matching topic object — never changes the `topic` key
   // -----------------------------------------------------------------------
   static async updateTopic(req: Request, res: Response) {
     try {
@@ -300,6 +292,18 @@ export class AdminBotTopicsController {
       await backupJsonFile(filePath, 'super-intents');
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
 
+      // Log activity
+      const changes = computeKnowledgeDiff(existing, req.body);
+      const title = updated.ui_name || updated.display_name || formatLabel(topicKey);
+      await logActivity(req, {
+        actionType: "update",
+        module: "Knowledge Manager",
+        summary: `Modified: ${title}`,
+        targetTitle: title,
+        targetId: file,
+        changes
+      }).catch(err => console.error("Failed to log super intent topic update:", err));
+
       res.json({ success: true, message: 'Topic updated successfully', topic: updated });
     } catch (error) {
       console.error('Error updating topic:', error);
@@ -308,7 +312,7 @@ export class AdminBotTopicsController {
   }
 
   // -----------------------------------------------------------------------
-  // GET /api/admin/bot-topics  (existing endpoint kept)
+  // GET /api/admin/bot-topics
   // -----------------------------------------------------------------------
   static async getTopics(req: Request, res: Response) {
     try {
@@ -345,8 +349,8 @@ export class AdminBotTopicsController {
                       payload: buildKnowledgePayload(subKey, sub),
                       superIntent,
                       defaultLabel: labelSource || formatLabel(fallbackLabelSource),
-                      defaultIcon: guessIcon(`${labelSource || fallbackLabelSource} ${parentKey} ${file}`),
-                      routingType: 'supper_saiyan_subtopic',
+                      defaultIcon: guessIcon((labelSource || fallbackLabelSource) + ' ' + file),
+                      routingType: 'supper_saiyan',
                       previewResponse: firstResponseText(sub)
                     });
                   }

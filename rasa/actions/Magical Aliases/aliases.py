@@ -2,6 +2,7 @@
 LOCATION_ALIASES = {
     # === Computer Laboratory Aliases ===
     "comlab 1": "ComLab 1",
+    "comlab1": "ComLab 1",
     "computer laboratory 1": "ComLab 1",
     "com lab 1": "ComLab 1",
     "cl1": "ComLab 1",
@@ -9,6 +10,7 @@ LOCATION_ALIASES = {
     "computer lab 1": "ComLab 1",
     
     "comlab 2": "ComLab 2",
+    "comlab2": "ComLab 2",
     "computer laboratory 2": "ComLab 2",
     "com lab 2": "ComLab 2",
     "cl2": "ComLab 2",
@@ -16,6 +18,7 @@ LOCATION_ALIASES = {
     "computer lab 2": "ComLab 2",
     
     "comlab 3": "ComLab 3",
+    "comlab3": "ComLab 3",
     "computer laboratory 3": "ComLab 3",
     "com lab 3": "ComLab 3",
     "cl3": "ComLab 3",
@@ -23,6 +26,7 @@ LOCATION_ALIASES = {
     "computer lab 3": "ComLab 3",
     
     "comlab 4": "ComLab 4",
+    "comlab4": "ComLab 4",
     "computer laboratory 4": "ComLab 4",
     "com lab 4": "ComLab 4",
     "cl4": "ComLab 4",
@@ -30,6 +34,7 @@ LOCATION_ALIASES = {
     "computer lab 4": "ComLab 4",
     
     "comlab 5": "ComLab 5",
+    "comlab5": "ComLab 5",
     "computer laboratory 5": "ComLab 5",
     "com lab 5": "ComLab 5",
     "cl5": "ComLab 5",
@@ -37,6 +42,7 @@ LOCATION_ALIASES = {
     "computer lab 5": "ComLab 5",
     
     "comlab 6": "ComLab 6",
+    "comlab6": "ComLab 6",
     "computer laboratory 6": "ComLab 6",
     "com lab 6": "ComLab 6",
     "cl6": "ComLab 6",
@@ -44,6 +50,7 @@ LOCATION_ALIASES = {
     "computer lab 6": "ComLab 6",
     
     "comlab 7": "ComLab 7",
+    "comlab7": "ComLab 7",
     "computer laboratory 7": "ComLab 7",
     "com lab 7": "ComLab 7",
     "cl7": "ComLab 7",
@@ -51,6 +58,7 @@ LOCATION_ALIASES = {
     "computer lab 7": "ComLab 7",
     
     "comlab 8": "ComLab 8",
+    "comlab8": "ComLab 8",
     "computer laboratory 8": "ComLab 8",
     "com lab 8": "ComLab 8",
     "cl8": "ComLab 8",
@@ -58,6 +66,7 @@ LOCATION_ALIASES = {
     "computer lab 8": "ComLab 8",
     
     "comlab 9": "ComLab 9",
+    "comlab9": "ComLab 9",
     "computer laboratory 9": "ComLab 9",
     "com lab 9": "ComLab 9",
     "cl9": "ComLab 9",
@@ -65,6 +74,7 @@ LOCATION_ALIASES = {
     "computer lab 9": "ComLab 9",
     
     "comlab 10": "ComLab 10",
+    "comlab10": "ComLab 10",
     "computer laboratory 10": "ComLab 10",
     "com lab 10": "ComLab 10",
     "cl10": "ComLab 10",
@@ -72,6 +82,7 @@ LOCATION_ALIASES = {
     "computer lab 10": "ComLab 10",
     
     "comlab 11": "ComLab 11",
+    "comlab11": "ComLab 11",
     "computer laboratory 11": "ComLab 11",
     "com lab 11": "ComLab 11",
     "cl11": "ComLab 11",
@@ -79,6 +90,7 @@ LOCATION_ALIASES = {
     "computer lab 11": "ComLab 11",
     
     "comlab 12": "ComLab 12",
+    "comlab12": "ComLab 12",
     "computer laboratory 12": "ComLab 12",
     "com lab 12": "ComLab 12",
     "cl12": "ComLab 12",
@@ -316,7 +328,7 @@ LOCATION_ALIASES = {
     "faculty office of cot": "COT Faculty Room",
     "faculty office sa cot": "COT Faculty Room",
     "college of technology faculty": "COT Faculty Room",
-    
+
     "cob faculty": "COB Faculty Room",
     "college of business faculty": "COB Faculty Room",
     "cob faculty room": "COB Faculty Room",
@@ -606,6 +618,7 @@ LOCATION_ALIASES = {
     "room b-1-01": "B-1-01",
     "room b101": "B-1-01",
     "room b0101": "B-1-01",
+    "classroom b101": "B-1-01",
 
     "b-1-02": "B-1-02",
     "b1-02": "B-1-02",
@@ -615,6 +628,7 @@ LOCATION_ALIASES = {
     "room b-1-02": "B-1-02",
     "room b102": "B-1-02",
     "room b0102": "B-1-02",
+    "classroom b102": "B-1-02",
 
     "b-1-03": "B-1-03",
     "b1-03": "B-1-03",
@@ -624,6 +638,7 @@ LOCATION_ALIASES = {
     "room b-1-03": "B-1-03",
     "room b103": "B-1-03",
     "room b0103": "B-1-03",
+    "classroom b103": "B-1-03",
 
     "b-1-04": "B-1-04",
     "b1-04": "B-1-04",
@@ -633,6 +648,7 @@ LOCATION_ALIASES = {
     "room b-1-04": "B-1-04",
     "room b104": "B-1-04",
     "room b0104": "B-1-04",
+    "classroom b104": "B-1-04",
 
     "b-1-05": "B-1-05",
     "b1-05": "B-1-05",
@@ -642,6 +658,7 @@ LOCATION_ALIASES = {
     "room b-1-05": "B-1-05",
     "room b105": "B-1-05",
     "room b0105": "B-1-05",
+    "classroom b105": "B-1-05",
 
     "b-1-06": "B-1-06",
     "b1-06": "B-1-06",
@@ -651,6 +668,7 @@ LOCATION_ALIASES = {
     "room b-1-06": "B-1-06",
     "room b106": "B-1-06",
     "room b0106": "B-1-06",
+    "classroom b106": "B-1-06",
 
     "b-1-08": "B-1-08",
     "b1-08": "B-1-08",
@@ -660,6 +678,7 @@ LOCATION_ALIASES = {
     "room b-1-08": "B-1-08",
     "room b108": "B-1-08",
     "room b0108": "B-1-08",
+    "classroom b108": "B-1-08",
 
     "b-1-09": "B-1-09",
     "b1-09": "B-1-09",
@@ -669,6 +688,7 @@ LOCATION_ALIASES = {
     "room b-1-09": "B-1-09",
     "room b109": "B-1-09",
     "room b0109": "B-1-09",
+    "classroom b109": "B-1-09",
 
     "b-2-10": "B-2-10",
     "b2-10": "B-2-10",
@@ -678,6 +698,7 @@ LOCATION_ALIASES = {
     "room b-2-10": "B-2-10",
     "room b210": "B-2-10",
     "room b0210": "B-2-10",
+    "classroom b210": "B-2-10",
 
     "b-2-07": "B-2-07",
     "b2-07": "B-2-07",
@@ -687,6 +708,7 @@ LOCATION_ALIASES = {
     "room b-2-07": "B-2-07",
     "room b207": "B-2-07",
     "room b0207": "B-2-07",
+    "classroom b207": "B-2-07",
 
     "b-2-06": "B-2-06",
     "b2-06": "B-2-06",
@@ -696,6 +718,7 @@ LOCATION_ALIASES = {
     "room b-2-06": "B-2-06",
     "room b206": "B-2-06",
     "room b0206": "B-2-06",
+    "classroom b206": "B-2-06",
 
     "b-2-05": "B-2-05",
     "b2-05": "B-2-05",
@@ -705,6 +728,7 @@ LOCATION_ALIASES = {
     "room b-2-05": "B-2-05",
     "room b205": "B-2-05",
     "room b0205": "B-2-05",
+    "classroom b205": "B-2-05",
 
     "b-2-04": "B-2-04",
     "b2-04": "B-2-04",
@@ -714,6 +738,7 @@ LOCATION_ALIASES = {
     "room b-2-04": "B-2-04",
     "room b204": "B-2-04",
     "room b0204": "B-2-04",
+    "classroom b204": "B-2-04",
 
     "b-2-03": "B-2-03",
     "b2-03": "B-2-03",
@@ -723,6 +748,7 @@ LOCATION_ALIASES = {
     "room b-2-03": "B-2-03",
     "room b203": "B-2-03",
     "room b0203": "B-2-03",
+    "classroom b203": "B-2-03",
 
     "b-2-02": "B-2-02",
     "b2-02": "B-2-02",
@@ -732,6 +758,7 @@ LOCATION_ALIASES = {
     "room b-2-02": "B-2-02",
     "room b202": "B-2-02",
     "room b0202": "B-2-02",
+    "classroom b202": "B-2-02",
 
     "b-2-01": "B-2-01",
     "b2-01": "B-2-01",
@@ -741,6 +768,7 @@ LOCATION_ALIASES = {
     "room b-2-01": "B-2-01",
     "room b201": "B-2-01",
     "room b0201": "B-2-01",
+    "classroom b201": "B-2-01",
 
     "b-3-01": "B-3-01",
     "b3-01": "B-3-01",
@@ -750,6 +778,7 @@ LOCATION_ALIASES = {
     "room b-3-01": "B-3-01",
     "room b301": "B-3-01",
     "room b0301": "B-3-01",
+    "classroom b301": "B-3-01",
 
     "b-3-02": "B-3-02",
     "b3-02": "B-3-02",
@@ -759,6 +788,169 @@ LOCATION_ALIASES = {
     "room b-3-02": "B-3-02",
     "room b302": "B-3-02",
     "room b0302": "B-3-02",
+    "classroom b302": "B-3-02",
+
+    # room continue
+    "b-3-03": "B-3-03",
+    "b3-03": "B-3-03",
+    "b3 03": "B-3-03",
+    "b 3 03": "B-3-03",
+    "b303": "B-3-03",
+    "room b-3-03": "B-3-03",
+    "room b303": "B-3-03",
+    "room b0303": "B-3-03",
+    "classroom b303": "B-3-03",
+    
+
+    "b-3-04": "B-3-04",
+    "b3-04": "B-3-04",
+    "b3 04": "B-3-04",
+    "b 3 04": "B-3-04",
+    "b304": "B-3-04",
+    "room b-3-04": "B-3-04",
+    "room b304": "B-3-04",
+    "room b0304": "B-3-04",
+    "classroom b0304": "B-3-04",
+
+    "b-3-05": "B-3-05",
+    "b3-05": "B-3-05",
+    "b3 05": "B-3-05",
+    "b 3 05": "B-3-05",
+    "b305": "B-3-05",
+    "room b-3-05": "B-3-05",
+    "room b305": "B-3-05",
+    "room b0305": "B-3-05",
+    "classroom b0305": "B-3-05",
+
+    "b-3-06": "B-3-06",
+    "b3-06": "B-3-06",
+    "b3 06": "B-3-06",
+    "b 3 06": "B-3-06",
+    "b306": "B-3-06",
+    "room b-3-06": "B-3-06",
+    "room b306": "B-3-06",
+    "room b0306": "B-3-06",
+    "classroom b0306": "B-3-06",
+
+    "b-3-07": "B-3-07",
+    "b3-07": "B-3-07",
+    "b3 07": "B-3-07",
+    "b 3 07": "B-3-07",
+    "b307": "B-3-07",
+    "room b-3-07": "B-3-07",
+    "room b307": "B-3-07",
+    "room b0307": "B-3-07",
+    "classroom b0307": "B-3-07",
+
+    "b-3-08": "B-3-08",
+    "b3-08": "B-3-08",
+    "b3 08": "B-3-08",
+    "b 3 08": "B-3-08",
+    "b308": "B-3-08",
+    "room b-3-08": "B-3-08",
+    "room b308": "B-3-08",
+    "room b0308": "B-3-08",
+    "classroom b0308": "B-3-08",
+
+    "b-3-09": "B-3-09",
+    "b3-09": "B-3-09",
+    "b3 09": "B-3-09",
+    "b 3 09": "B-3-09",
+    "b309": "B-3-09",
+    "room b-3-09": "B-3-09",
+    "room b309": "B-3-09",
+    "room b0309": "B-3-09",
+    "classroom b0309": "B-3-09",
+
+    "b-4-01": "B-4-01",
+    "b4-01": "B-4-01",
+    "b4 01": "B-4-01",
+    "b 4 01": "B-4-01",
+    "b401": "B-4-01",
+    "room b-4-01": "B-4-01",
+    "room b401": "B-4-01",
+    "room b0401": "B-4-01",
+    "classroom b0401": "B-4-01",
+
+    "b-4-02": "B-4-02",
+    "b4-02": "B-4-02",
+    "b4 02": "B-4-02",
+    "b 4 02": "B-4-02",
+    "b402": "B-4-02",
+    "room b-4-02": "B-4-02",
+    "room b402": "B-4-02",
+    "room b0402": "B-4-02",
+    "classroom b0402": "B-4-02",
+
+    "b-4-03": "B-4-03",
+    "b4-03": "B-4-03",
+    "b4 03": "B-4-03",
+    "b 4 03": "B-4-03",
+    "b403": "B-4-03",
+    "room b-4-03": "B-4-03",
+    "room b403": "B-4-03",
+    "room b0403": "B-4-03",
+    "classroom b0403": "B-4-03",
+
+    "b-4-04": "B-4-04",
+    "b4-04": "B-4-04",
+    "b4 04": "B-4-04",
+    "b 4 04": "B-4-04",
+    "b404": "B-4-04",
+    "room b-4-04": "B-4-04",
+    "room b404": "B-4-04",
+    "room b0404": "B-4-04",
+    "classroom b0404": "B-4-04",
+
+    "b-4-05": "B-4-05",
+    "b4-05": "B-4-05",
+    "b4 05": "B-4-05",
+    "b 4 05": "B-4-05",
+    "b405": "B-4-05",
+    "room b-4-05": "B-4-05",
+    "room b405": "B-4-05",
+    "room b0405": "B-4-05",
+    "classroom b0405": "B-4-05",
+
+    "b-4-06": "B-4-06",
+    "b4-06": "B-4-06",
+    "b4 06": "B-4-06",
+    "b 4 06": "B-4-06",
+    "b406": "B-4-06",
+    "room b-4-06": "B-4-06",
+    "room b406": "B-4-06",
+    "room b0406": "B-4-06",
+    "classroom b0406": "B-4-06",
+
+    "b-4-07": "B-4-07",
+    "b4-07": "B-4-07",
+    "b4 07": "B-4-07",
+    "b 4 07": "B-4-07",
+    "b407": "B-4-07",
+    "room b-4-07": "B-4-07",
+    "room b407": "B-4-07",
+    "room b0407": "B-4-07",
+    "classroom b0407": "B-4-07",
+
+    "b-4-08": "B-4-08",
+    "b4-08": "B-4-08",
+    "b4 08": "B-4-08",
+    "b 4 08": "B-4-08",
+    "b408": "B-4-08",
+    "room b-4-08": "B-4-08",
+    "room b408": "B-4-08",
+    "room b0408": "B-4-08",
+    "classroom b0408": "B-4-08",
+
+    "b-4-09": "B-4-09",
+    "b4-09": "B-4-09",
+    "b4 09": "B-4-09",
+    "b 4 09": "B-4-09",
+    "b409": "B-4-09",
+    "room b-4-09": "B-4-09",
+    "room b409": "B-4-09",
+    "room b0409": "B-4-09",
+    "classroom b0409": "B-4-09",
 
     # ...continue this pattern for all remaining rooms B-3-03 → B-4-09
 

@@ -17,16 +17,15 @@ class LLMReranker:
     from official JSON-backed candidates already found by local retrieval.
     """
 
-    SYSTEM_PROMPT = """You are a guarded reranker for a BukSU Rasa chatbot.
+    SYSTEM_PROMPT = """You are an intelligent semantic selector for a university chatbot.
+Given a student's question and a list of official candidate records, your task is to identify which candidate's answer directly addresses the student's question.
 
 Rules:
-- Choose only from the provided candidate intents.
-- Do not answer using your own knowledge.
-- Do not invent dates, fees, offices, requirements, procedures, images, or maps.
-- If no candidate clearly matches the user question, return selected_intent as null.
-- Return JSON only.
-
-JSON shape:
+1. Understand the core context and intent of the student's question (e.g. losing a card, paying for replacement, applying for graduation).
+2. Match the student's situation to the candidate whose official_answer or display_name best resolves their question.
+3. If a candidate clearly answers the question, choose its intent and set confidence to "high" (or "medium" if partial).
+4. Only return selected_intent as null if NONE of the candidate records are relevant to the user's inquiry.
+5. Return JSON only in this exact shape:
 {"selected_intent": string|null, "confidence": "high"|"medium"|"low", "reason": string}
 """
 
@@ -133,26 +132,24 @@ JSON shape:
         return selected_candidate
 
     def _build_prompt(self, user_message: str, candidates: Any) -> str:
-        lines = [self.SYSTEM_PROMPT, "", f"User question: {user_message}", "", "Candidate records:"]
+        lines = [f"Student Question: {user_message}", "", "Candidate Official Records:"]
         for index, (candidate, score) in enumerate(candidates, start=1):
             lines.append(f"{index}. intent: {candidate.intent}")
-            lines.append(f"   display_name: {candidate.display_name}")
-            lines.append(f"   local_score: {round(score, 2)}")
-            lines.append(f"   purpose: {candidate.purpose or ''}")
+            lines.append(f"   topic_name: {candidate.display_name}")
             if candidate.subject_terms:
-                lines.append(f"   subject_terms: {', '.join(candidate.subject_terms[:8])}")
+                lines.append(f"   subject: {', '.join(candidate.subject_terms[:8])}")
             if candidate.phrases:
-                lines.append(f"   phrases: {', '.join(candidate.phrases[:8])}")
+                lines.append(f"   sample_phrases: {', '.join(candidate.phrases[:6])}")
             answer_preview = self._compact(candidate.answer_text, 420)
             if answer_preview:
-                lines.append(f"   official_answer_preview: {answer_preview}")
+                lines.append(f"   official_answer: {answer_preview}")
             lines.append("")
-        lines.append("Return the JSON decision only.")
+        lines.append("Choose which candidate intent best answers the Student Question. Return JSON only.")
         prompt = "\n".join(lines)
         return prompt[: self.max_prompt_chars]
 
     def _generate_json(self, prompt: str) -> Dict[str, Any]:
-        return self.client.generate_json(prompt)
+        return self.client.generate_json(prompt, system_prompt=self.SYSTEM_PROMPT)
 
     @staticmethod
     def _compact(value: str, max_chars: int) -> str:

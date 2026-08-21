@@ -143,4 +143,49 @@ OSS_SERVICES_TOPIC_PATTERNS = {
         ],
         "required_context": []
     },
+    "pe_uniform_process": {
+        "phrases": [
+            "how to get pe uniform",
+            "where to get pe uniform",
+            "where can i buy pe uniform",
+            "pe uniform process",
+            "how do i buy pe uniform",
+            "unsaon pagkuha pe uniform",
+            "asa makuha pe uniform",
+            "where to pay pe uniform",
+            "pe uniform payment process",
+            "pe uniform university press"
+        ],
+        "strong_keywords": [
+            "buy", "request", "press", "finance", "pay", "cost", "price", "palit", "bayad"
+        ],
+        "weak_keywords": [
+            "pe", "uniform", "unifrom", "clothes", "get", "kuha", "asa", "where", "how", "unsaon"
+        ],
+        "required_context": []
+    },
+    "pe_uniform_old_allowed": {
+        "phrases": [
+            "am i allowed to use the old PE uniform",
+            "pwedi rakaha gamiton ang daan nga pe",
+            "pe nako kay daan okay rakaha ni",
+            "can i still use my old pe uniform",
+            "is it allowed to use old pe",
+            "daan na pe akong gamiton okay rakaha",
+            "pwedi raning daan na pe gamiton",
+            "pwede ba daan nga PE unifrom",
+            "uniform PE daan okay ra ba",
+            "Buksu PE uniform old pwede ba",
+            "can i wear old pe attire",
+            "jogging pants and white shirt for pe",
+            "what if i wear jogging pants in pe class"
+        ],
+        "strong_keywords": [
+            "old", "daan", "previous", "jogging", "pants", "white", "allowed", "gamiton", "isuot"
+        ],
+        "weak_keywords": [
+            "pe", "uniform", "unifrom", "attire", "pwede", "pwedi", "okay", "ok", "rakaha", "ra ba"
+        ],
+        "required_context": []
+    },
 }

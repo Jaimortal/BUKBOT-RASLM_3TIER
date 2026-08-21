@@ -123,9 +123,9 @@ function cleanupExpiredSessions() {
 }
 
 // Generate JWT token
-function generateToken(username: string): string {
+function generateToken(username: string, role: string = "co-admin"): string {
   return jwt.sign(
-    { username, role: "admin" },
+    { username, role },
     JWT_SECRET,
     { expiresIn: "24h" }
   );
@@ -179,7 +179,8 @@ export class AuthController {
           const passwordValid = await verifyPassword(password, user.password);
           
           if (passwordValid) {
-            const token = generateToken(user.email);
+            const role = user.role || (user.email === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin");
+            const token = generateToken(user.email, role);
             const sessionId = `session_${Date.now()}_${Math.random()}`;
             
             sessions.set(sessionId, {
@@ -197,7 +198,7 @@ export class AuthController {
               user: {
                 email: user.email,
                 name: user.name,
-                role: user.role
+                role: role
               }
             });
           }
@@ -288,10 +289,11 @@ export class AuthController {
         });
       }
       
-      console.log(`Google login successful for authorized admin: ${effectiveEmail}`);
+      const role = adminUser.role || (adminUser.email === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin");
+      console.log(`Google login successful for authorized [${role}]: ${effectiveEmail}`);
 
-      // Generate JWT token
-      const jwtToken = generateToken(effectiveEmail);
+      // Generate JWT token with role
+      const jwtToken = generateToken(effectiveEmail, role);
       const sessionId = `session_${Date.now()}_${Math.random()}`;
       
       sessions.set(sessionId, {
@@ -304,8 +306,9 @@ export class AuthController {
         token: jwtToken,
         user: {
           email: payload.email,
-          name: payload.name,
+          name: adminUser.name || payload.name,
           picture: payload.picture,
+          role: role
         },
         message: "Google login successful"
       });
@@ -356,9 +359,21 @@ export class AuthController {
         });
       }
 
+      loadAdminUsers();
+      const matchedUser = adminUsers?.development?.users?.find(
+        (u: any) => u.email === decoded.username
+      );
+
+      const role = matchedUser?.role || decoded.role || (decoded.username === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin");
+
       return res.json({
         success: true,
-        message: "Token valid"
+        message: "Token valid",
+        user: {
+          email: decoded.username,
+          name: matchedUser?.name || "Admin",
+          role: role
+        }
       });
     } catch (error) {
       console.error("Verify error:", error);

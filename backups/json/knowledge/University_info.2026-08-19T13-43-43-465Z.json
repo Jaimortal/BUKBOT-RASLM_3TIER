@@ -1014,37 +1014,23 @@
           "pins": [
             {
               "name": "OVPCASSS",
-              "coordinates": [
-                820,
-                757
-              ],
+              "coordinates": [822, 786],
               "floor": "GF"
             },
             {
               "name": "You are here!",
-              "coordinates": [
-                883,
-                634
-              ],
+              "coordinates": [883, 634],
               "floor": "GF"
             }
           ],
           "routes": [
             {
-              "name": "You are here! to OVPCASSS",
+              "name": "You are here! to OVPCASSS Office",
               "points": [
-                [
-                  883,
-                  634
-                ],
-                [
-                  819,
-                  635
-                ],
-                [
-                  820,
-                  757
-                ]
+                [883, 634],
+                [818, 634],
+                [820, 784],
+                [822, 786]
               ],
               "color": "#ff1744",
               "route_order": 1,
@@ -1072,10 +1058,7 @@
               "student handbook gikan asa"
             ]
           },
-          "display_name": "Student Handbook",
-          "subject_terms": [],
-          "images": [],
-          "items": []
+          "display_name": "Student Handbook"
         }
       ],
       "display_name": "Student Handbook"

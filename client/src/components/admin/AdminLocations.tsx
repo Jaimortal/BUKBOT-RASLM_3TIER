@@ -23,6 +23,7 @@ import {
   Save, Loader2, ImagePlus, Trash2, MapPin,
   MessageSquareText, ChevronRight,
 } from "lucide-react";
+import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 
@@ -163,7 +164,9 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label className="font-semibold text-sm flex items-center gap-2"><span className="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-mono">EN</span>English</Label>
-                    <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setEnLines([...enLines, ""])}>+ Add message</Button>
+                    <AdminTooltip title="Add English Message" description="Add a new conversational response bubble in English" side="top">
+                      <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setEnLines([...enLines, ""])}>+ Add message</Button>
+                    </AdminTooltip>
                   </div>
                   {enLines.map((l, i) => (
                     <div key={i} className="flex gap-2">
@@ -174,7 +177,11 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                           placeholder={`Bubble ${i + 1}…`}
                         />
                       </div>
-                      {enLines.length > 1 && <button onClick={() => setEnLines(enLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>}
+                      {enLines.length > 1 && (
+                        <AdminTooltip title="Remove Message" description="Delete this response bubble" side="left">
+                          <button onClick={() => setEnLines(enLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>
+                        </AdminTooltip>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -182,7 +189,9 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label className="font-semibold text-sm flex items-center gap-2"><span className="bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded font-mono">CEB</span>Cebuano</Label>
-                    <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setCebLines([...cebLines, ""])}>+ Add message</Button>
+                    <AdminTooltip title="Add Cebuano Message" description="Add a new conversational response bubble in Cebuano" side="top">
+                      <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setCebLines([...cebLines, ""])}>+ Add message</Button>
+                    </AdminTooltip>
                   </div>
                   {cebLines.map((l, i) => (
                     <div key={i} className="flex gap-2">
@@ -193,7 +202,11 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                           placeholder={`Bubble ${i + 1}…`}
                         />
                       </div>
-                      {cebLines.length > 1 && <button onClick={() => setCebLines(cebLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>}
+                      {cebLines.length > 1 && (
+                        <AdminTooltip title="Remove Message" description="Delete this response bubble" side="left">
+                          <button onClick={() => setCebLines(cebLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>
+                        </AdminTooltip>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -268,10 +281,14 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                   </Label>
                 </div>
               )}
-              <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
-              <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending} className="text-white" style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}>
-                {saveMutation.isPending ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving…</> : <><Save className="h-4 w-4 mr-2" />Save</>}
-              </Button>
+              <AdminTooltip title="Cancel" description="Discard edits and close location modal" side="top">
+                <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
+              </AdminTooltip>
+              <AdminTooltip title="Save Location" description="Save responses, coordinates, pins, and images for this location" side="top">
+                <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending} className="text-white" style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}>
+                  {saveMutation.isPending ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving…</> : <><Save className="h-4 w-4 mr-2" />Save</>}
+                </Button>
+              </AdminTooltip>
             </div>
           </div>
         </DialogContent>
@@ -303,12 +320,17 @@ const LocationCard = memo(function LocationCard({ location, onClick }: { locatio
   const hasMapData = hasPins || hasCoordinates;
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="group w-full text-left rounded-xl border bg-white hover:border-blue-400 hover:shadow-xs transition-colors p-4 flex flex-col gap-2 relative overflow-hidden"
+    <AdminTooltip
+      title={location.name}
+      description="Click to open location editor and modify coordinates, pins, and responses"
+      side="top"
     >
-      <div className="flex items-start justify-between gap-2 relative">
+      <button
+        type="button"
+        onClick={onClick}
+        className="group w-full text-left rounded-xl border bg-white hover:border-blue-400 hover:shadow-xs transition-colors p-4 flex flex-col gap-2 relative overflow-hidden"
+      >
+        <div className="flex items-start justify-between gap-2 relative">
         <div className="min-w-0">
           <p className="font-semibold text-sm text-gray-800 leading-tight truncate">{location.name}</p>
           <p className="text-[10px] text-gray-400 mt-0.5">
@@ -326,6 +348,7 @@ const LocationCard = memo(function LocationCard({ location, onClick }: { locatio
         </div>
       )}
     </button>
+  </AdminTooltip>
   );
 });
 

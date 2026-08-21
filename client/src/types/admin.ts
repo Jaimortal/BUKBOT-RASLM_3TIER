@@ -103,9 +103,33 @@ export interface FaqConfig {
   enabled: boolean;
   sortOrder: number;
 }
+
 export interface MigrationResult {
   success: boolean;
   message: string;
   imported: number;
   errors: string[];
+}
+
+export interface ActivityLogChange {
+  field: string;
+  changeType: 'added' | 'modified' | 'removed';
+  details: string;
+  oldValue?: any;
+  newValue?: any;
+}
+
+export interface ActivityLog {
+  id: string;
+  userEmail: string;
+  userName: string;
+  userRole: string; // 'main-admin' | 'co-admin'
+  actionType: 'create' | 'update' | 'delete' | 'upload';
+  module: 'Knowledge Manager' | 'Locations' | 'Responses' | 'Images' | 'Settings' | 'FAQs';
+  summary: string;
+  targetTitle?: string;
+  targetId?: string;
+  changes: ActivityLogChange[];
+  ipAddress?: string;
+  createdAt: string;
 }

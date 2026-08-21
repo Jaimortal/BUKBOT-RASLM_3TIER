@@ -287,7 +287,7 @@ export type UserPrivileges = typeof userPrivileges.$inferSelect;
 export type InsertConversationLog = z.infer<typeof insertConversationLogSchema>;
 export type ConversationLog = typeof conversationLogs.$inferSelect;
 
-export const LoginAttempt = typeof loginAttempts.$inferSelect;
+export type LoginAttempt = typeof loginAttempts.$inferSelect;
 export type UserSession = typeof userSessions.$inferSelect;
 
 export type InsertFaqConfig = z.infer<typeof insertFaqConfigSchema>;
@@ -309,3 +309,31 @@ export type Route = typeof routes.$inferSelect;
 
 export type InsertMapMarker = z.infer<typeof insertMapMarkerSchema>;
 export type MapMarker = typeof mapMarkers.$inferSelect;
+
+// Table for storing activity logs (audit trail) in PostgreSQL
+export const activityLogs = pgTable("activity_logs", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userEmail: text("user_email").notNull(),
+  userName: text("user_name").notNull(),
+  userRole: text("user_role").default("co-admin").notNull(), // "main-admin" | "co-admin"
+  actionType: text("action_type").notNull(), // "create" | "update" | "delete" | "upload"
+  module: text("module").notNull(), // "Knowledge Manager" | "Locations" | "Responses" | "Images" | "Settings"
+  summary: text("summary").notNull(),
+  targetTitle: text("target_title").default(""),
+  targetId: text("target_id").default(""),
+  changes: jsonb("changes").$type<Array<{
+    field: string;
+    changeType: "added" | "modified" | "removed";
+    details: string;
+    oldValue?: any;
+    newValue?: any;
+  }>>().default([]),
+  ipAddress: text("ip_address").default(""),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertActivityLogSchema = createInsertSchema(activityLogs);
+
+export type ActivityLog = typeof activityLogs.$inferSelect;
+export type InsertActivityLog = typeof activityLogs.$inferInsert;
+

@@ -1,9 +1,17 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
+export interface AdminUser {
+  email: string;
+  name: string;
+  role: 'main-admin' | 'co-admin' | string;
+}
+
 interface AuthContextType {
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (token: string) => void;
+  user: AdminUser | null;
+  isMainAdmin: boolean;
+  login: (token: string, userData?: AdminUser) => void;
   logout: () => void;
   checkAuth: () => Promise<boolean>;
 }
@@ -13,6 +21,19 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<AdminUser | null>(() => {
+    try {
+      const saved = localStorage.getItem("adminUserData");
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const isMainAdmin = Boolean(
+    user?.role === 'main-admin' || 
+    user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com'
+  );
 
   const checkAuth = async (): Promise<boolean> => {
     try {
@@ -21,6 +42,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       if (!token || !isAuth) {
         setIsAuthenticated(false);
+        setUser(null);
         return false;
       }
 
@@ -34,14 +56,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (response.ok) {
+        const data = await response.json();
         setIsAuthenticated(true);
+        if (data.user) {
+          setUser(data.user);
+          localStorage.setItem("adminUserData", JSON.stringify(data.user));
+        }
         return true;
       } else {
         // Token invalid, clear storage
         localStorage.removeItem("adminToken");
         localStorage.removeItem("adminAuthenticated");
+        localStorage.removeItem("adminUserData");
         localStorage.removeItem("googleUser");
         setIsAuthenticated(false);
+        setUser(null);
         return false;
       }
     } catch (error) {
@@ -51,9 +80,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const login = (token: string) => {
+  const login = (token: string, userData?: AdminUser) => {
     localStorage.setItem("adminToken", token);
     localStorage.setItem("adminAuthenticated", "true");
+    if (userData) {
+      setUser(userData);
+      localStorage.setItem("adminUserData", JSON.stringify(userData));
+    }
     setIsAuthenticated(true);
   };
 
@@ -73,8 +106,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } finally {
       localStorage.removeItem("adminToken");
       localStorage.removeItem("adminAuthenticated");
+      localStorage.removeItem("adminUserData");
       localStorage.removeItem("googleUser");
       setIsAuthenticated(false);
+      setUser(null);
       window.location.href = "/admin/login";
     }
   };
@@ -94,6 +129,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       value={{
         isAuthenticated,
         isLoading,
+        user,
+        isMainAdmin,
         login,
         logout,
         checkAuth,

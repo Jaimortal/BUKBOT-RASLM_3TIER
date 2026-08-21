@@ -38,6 +38,9 @@ export default function Login() {
         const data = await response.json();
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminAuthenticated", "true");
+        if (data.user) {
+          localStorage.setItem("adminUserData", JSON.stringify(data.user));
+        }
         
         toast({
           title: "Login Successful",

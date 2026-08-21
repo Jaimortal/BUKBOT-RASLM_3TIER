@@ -116,6 +116,11 @@ export default function GoogleAuthButton({ onGoogleLogin, isLoading = false }: G
           localStorage.setItem("adminToken", data.token);
           localStorage.setItem("adminAuthenticated", "true");
           localStorage.setItem("googleUser", JSON.stringify(user));
+          if (data.user) {
+            localStorage.setItem("adminUserData", JSON.stringify(data.user));
+          } else {
+            localStorage.setItem("adminUserData", JSON.stringify(user));
+          }
           
           toast({
             title: "Login Successful",

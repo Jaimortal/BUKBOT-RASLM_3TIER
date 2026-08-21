@@ -106,23 +106,21 @@ class QueryInterpreter:
             return by_question_mark
 
         wh_count = sum(1 for word in self.WH_PATTERNS if re.search(rf"\b{re.escape(word)}\b", masked))
-        if " and " in masked and wh_count >= 1:
-            parts = [
-                self._unmask_protected_conjunctions(part.strip())
-                for part in masked.split(" and ")
-                if part.strip()
-            ]
-            if len(parts) > 1:
-                return parts
-
-        if " ug " in masked and wh_count >= 1:
-            parts = [
-                self._unmask_protected_conjunctions(part.strip())
-                for part in masked.split(" ug ")
-                if part.strip()
-            ]
-            if len(parts) > 1:
-                return parts
+        # Only split on 'and' / 'ug' if BOTH sides are full independent questions (both have WH patterns)
+        # e.g., "where is the library and how to borrow books" -> split
+        # but "what if I lose card and is there any fee" -> do NOT split (dependent clause)
+        for conj in (" and ", " ug "):
+            if conj in masked:
+                raw_parts = masked.split(conj)
+                if len(raw_parts) == 2:
+                    p1, p2 = raw_parts[0].strip(), raw_parts[1].strip()
+                    has_wh_p1 = any(re.search(rf"\b{re.escape(w)}\b", p1) for w in self.WH_PATTERNS)
+                    has_wh_p2 = any(re.search(rf"\b{re.escape(w)}\b", p2) for w in self.WH_PATTERNS)
+                    if has_wh_p1 and has_wh_p2 and len(p1.split()) >= 3 and len(p2.split()) >= 3:
+                        return [
+                            self._unmask_protected_conjunctions(p1),
+                            self._unmask_protected_conjunctions(p2),
+                        ]
 
         return [normalized]
 

@@ -305,7 +305,7 @@ class MainRouterService:
             "text": "Which faculty office or faculty room do you want to locate?",
             "custom": {
                 "suggestions": [
-                    {"label": "COT Faculty Room", "payload": "where is COT Faculty Room"},
+                    {"label": "COT/IT Faculty Room", "payload": "where is COT Faculty Room"},
                     {"label": "COB Faculty Room", "payload": "where is COB Faculty Room"},
                     {"label": "BSN Faculty Room", "payload": "where is BSN Faculty Room"},
                     {"label": "CPAG Faculty Room", "payload": "where is CPAG Faculty Room"},
@@ -509,6 +509,21 @@ class MainRouterService:
         if pe_uniform_clarification:
             return pe_uniform_clarification, self.context_manager.decay_slot_values(slots)
 
+        direct_intent = self.knowledge_router.direct_intent_override(intent, user_message, resolved.values)
+        if direct_intent:
+            if str(direct_intent).startswith("__"):
+                response = self.knowledge_router.find_best_response(intent, user_message, resolved.values)
+            else:
+                response = self.data_loader.get_response(direct_intent, user_message=user_message)
+            memory = self.context_manager.build_memory(
+                intent=intent,
+                user_message=user_message,
+                resolved=resolved,
+                response_intent=direct_intent,
+                response=response,
+            )
+            return response, self._context_updates(memory, slots)
+
         facility_intent = self.knowledge_router._facility_availability_route(user_message)
         if facility_intent:
             cache_key = self._cache_key("facility_availability", facility_intent, user_message)
@@ -536,21 +551,6 @@ class MainRouterService:
 
         if self._should_prioritize_location(intent, user_message, resolved):
             return self._route_locations(intent, user_message, resolved, slots)
-
-        direct_intent = self.knowledge_router.direct_intent_override(intent, user_message, resolved.values)
-        if direct_intent:
-            if str(direct_intent).startswith("__"):
-                response = self.knowledge_router.find_best_response(intent, user_message, resolved.values)
-            else:
-                response = self.data_loader.get_response(direct_intent, user_message=user_message)
-            memory = self.context_manager.build_memory(
-                intent=intent,
-                user_message=user_message,
-                resolved=resolved,
-                response_intent=direct_intent,
-                response=response,
-            )
-            return response, self._context_updates(memory, slots)
 
         if intent == "ask_location":
             if resolved.locations:

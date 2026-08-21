@@ -95,12 +95,7 @@
               "requirements to claim library card"
             ]
           },
-          "display_name": "Library ID Card Requirements",
-          "subject_terms": [],
-          "images": [
-            "/api/images/4ecae719-6db3-4e5f-957c-c2146330d1b6"
-          ],
-          "items": []
+          "display_name": "Library ID Card Requirements"
         },
         {
           "topic": "payment",
@@ -185,81 +180,7 @@
               "2nd time getting library card fee"
             ]
           },
-          "display_name": "Library ID Card Replacement",
-          "subject_terms": [],
-          "images": [],
-          "items": [],
-          "pins": [
-            {
-              "name": "Start From Here",
-              "coordinates": [
-                884,
-                630
-              ]
-            },
-            {
-              "name": "Library",
-              "coordinates": [
-                553,
-                396
-              ],
-              "floor": "2F"
-            }
-          ],
-          "routes": [
-            {
-              "name": "Start From Here to Library",
-              "points": [
-                [
-                  884,
-                  630
-                ],
-                [
-                  787,
-                  632
-                ],
-                [
-                  782,
-                  493
-                ],
-                [
-                  749,
-                  506
-                ],
-                [
-                  611,
-                  509
-                ],
-                [
-                  611,
-                  469
-                ],
-                [
-                  588,
-                  467
-                ],
-                [
-                  588,
-                  417
-                ],
-                [
-                  571,
-                  416
-                ],
-                [
-                  573,
-                  395
-                ],
-                [
-                  553,
-                  396
-                ]
-              ],
-              "color": "#ff1744",
-              "route_order": 1,
-              "route_label": "Route 1"
-            }
-          ]
+          "display_name": "Library ID Card Replacement"
         }
       ],
       "display_name": "Library ID Card"

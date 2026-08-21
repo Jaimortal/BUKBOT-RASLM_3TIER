@@ -1,0 +1,67 @@
+[
+  {
+    "id": "log_1787282696705_qtmlgij",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Deans List",
+    "targetTitle": "Deans List",
+    "targetId": "Academic_policy.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (1 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (1 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-21T03:24:56.705Z"
+  },
+  {
+    "id": "log_1787282332041_pzsd02s",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Failed Academic Policy",
+    "targetTitle": "Failed Academic Policy",
+    "targetId": "Academic_policies.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (2 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (1 line(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      },
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated map pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated map routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-21T03:18:52.033Z"
+  }
+]

@@ -95,12 +95,7 @@
               "requirements to claim library card"
             ]
           },
-          "display_name": "Library ID Card Requirements",
-          "subject_terms": [],
-          "images": [
-            "/api/images/4ecae719-6db3-4e5f-957c-c2146330d1b6"
-          ],
-          "items": []
+          "display_name": "Library ID Card Requirements"
         },
         {
           "topic": "payment",
@@ -187,7 +182,9 @@
           },
           "display_name": "Library ID Card Replacement",
           "subject_terms": [],
-          "images": [],
+          "images": [
+            "/api/images/5a432f2e-25dc-407e-90a7-8a269c22d133"
+          ],
           "items": [],
           "pins": [
             {

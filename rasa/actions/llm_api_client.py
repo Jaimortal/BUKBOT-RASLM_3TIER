@@ -59,39 +59,51 @@ class LLMApiClient:
     def is_configured(self) -> bool:
         return bool(self.provider in {"groq", "gemini"} and self._api_key())
 
-    def generate_json(self, prompt: str) -> Dict[str, Any]:
+    def generate_json(self, prompt: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
         if self.provider == "groq":
-            return self._generate_groq_json(prompt)
+            return self._generate_groq_json(prompt, system_prompt=system_prompt)
         if self.provider == "gemini":
-            return self._generate_gemini_json(prompt)
+            return self._generate_gemini_json(prompt, system_prompt=system_prompt)
         raise RuntimeError(f"Unsupported LLM provider: {self.provider or 'not set'}")
 
-    def _generate_groq_json(self, prompt: str) -> Dict[str, Any]:
+    def _generate_groq_json(self, prompt: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
         api_key = os.getenv("GROQ_API_KEY", "").strip()
         if not api_key:
             raise RuntimeError("GROQ_API_KEY is not configured.")
+
+        messages = []
+        if system_prompt:
+            messages.append({"role": "system", "content": system_prompt})
+        messages.append({"role": "user", "content": prompt})
+
         payload = {
             "model": self.model or os.getenv("GROQ_MODEL", "llama-3.1-8b-instant"),
-            "messages": [{"role": "user", "content": prompt}],
+            "messages": messages,
             "temperature": 0,
-            "max_tokens": self.max_tokens,
+            "max_tokens": max(350, self.max_tokens),
             "response_format": {"type": "json_object"},
         }
-        body = self._post_json(
-            self.GROQ_URL,
-            payload,
-            {
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-        )
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        }
+
+        try:
+            body = self._post_json(self.GROQ_URL, payload, headers)
+        except Exception as primary_err:
+            # If Groq json_object enforcement fails with 400, retry once without response_format
+            # and parse JSON from the raw text response
+            logger.debug("Groq JSON mode failed, retrying in plain mode: %s", primary_err)
+            payload.pop("response_format", None)
+            body = self._post_json(self.GROQ_URL, payload, headers)
+
         try:
             raw_text = body["choices"][0]["message"]["content"]
         except (KeyError, IndexError, TypeError) as exc:
             raise RuntimeError(f"Groq returned an unexpected response: {str(body)[:220]}") from exc
         return self._parse_json_text(raw_text, "Groq")
 
-    def _generate_gemini_json(self, prompt: str) -> Dict[str, Any]:
+    def _generate_gemini_json(self, prompt: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
         api_key = os.getenv("GEMINI_API_KEY", "").strip()
         if not api_key:
             raise RuntimeError("GEMINI_API_KEY is not configured.")

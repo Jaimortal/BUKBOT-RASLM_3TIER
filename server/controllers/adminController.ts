@@ -5,6 +5,7 @@ import fs from "fs";
 import crypto from "crypto";
 import PhraseTranslator from "../../rulebaseTranslation/phraseTranslator";
 import { hashPassword, verifyPassword } from "../utils/passwordUtils";
+import { logActivity, computeLocationDiff } from "../services/activityLogService.js";
 import jwt from "jsonwebtoken";
 import {
   getResponses,
@@ -44,8 +45,8 @@ const CEB_POST_FILTER_MAP: Record<string, string> = {
   nahibulong: "naghunahuna ka",
 };
 
-function escapeRegExp(s: string) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function escapeRegExp(str: string) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function applyCebuanoPostFilters(text: string) {
@@ -59,97 +60,6 @@ function applyCebuanoPostFilters(text: string) {
 
 function newJobId() {
   return `${Date.now()}-${Math.random().toString(16).slice(2, 10)}`;
-}
-
-async function translateToCebuanoViaPython(text: string): Promise<string> {
-  const pythonScript = path.join(SERVER_DIR, "privateAPI", "translator_service.py");
-  const modelPath = process.env.CTRANSLATE2_MODEL_PATH || path.join(SERVER_DIR, "privateAPI", "models", "ctranslate2");
-  const spmPath = process.env.SENTENCEPIECE_MODEL || path.join(SERVER_DIR, "privateAPI", "models", "spm.model");
-  const backend = process.env.TRANSLATOR_BACKEND || "auto";
-
-  const candidates: Array<{ cmd: string; argsPrefix: string[] }> = [];
-  if (process.env.PYTHON_CMD) {
-    candidates.push({ cmd: process.env.PYTHON_CMD, argsPrefix: [] });
-  }
-
-  if (process.platform === "win32") {
-    candidates.push({ cmd: "py", argsPrefix: ["-3"] });
-    candidates.push({ cmd: "python", argsPrefix: [] });
-    candidates.push({ cmd: "python3", argsPrefix: [] });
-  } else {
-    candidates.push({ cmd: "python3", argsPrefix: [] });
-    candidates.push({ cmd: "python", argsPrefix: [] });
-  }
-
-  const trySpawn = (idx: number): Promise<string> => {
-    if (idx >= candidates.length) {
-      throw new Error("Python is not available (tried: PYTHON_CMD, py, python, python3)");
-    }
-
-    const { cmd, argsPrefix } = candidates[idx];
-    const args = [
-      ...argsPrefix,
-      pythonScript,
-      "--text",
-      text,
-      "--model",
-      modelPath,
-      "--spm",
-      spmPath,
-      "--backend",
-      backend,
-    ];
-
-    return new Promise((resolve, reject) => {
-      const child = spawn(cmd, args);
-      let stdout = "";
-      let stderr = "";
-      let settled = false;
-
-      const doneOk = (val: string) => {
-        if (settled) return;
-        settled = true;
-        resolve(val);
-      };
-      const doneErr = (err: unknown) => {
-        if (settled) return;
-        settled = true;
-        reject(err);
-      };
-
-      child.stdout?.on("data", (d) => (stdout += String(d)));
-      child.stderr?.on("data", (d) => (stderr += String(d)));
-
-      child.on("error", (err: any) => {
-        // If the command doesn't exist, try the next candidate.
-        if (err && err.code === "ENOENT") {
-          trySpawn(idx + 1).then(doneOk).catch(doneErr);
-          return;
-        }
-        doneErr(err);
-      });
-
-      child.on("close", (code) => {
-        if (code !== 0) {
-          doneErr(new Error(stderr || `Python translator failed with code ${code}`));
-          return;
-        }
-
-        try {
-          const parsed = JSON.parse(stdout);
-          if (parsed?.success && typeof parsed.translatedText === "string") {
-            doneOk(parsed.translatedText);
-            return;
-          }
-          doneErr(new Error(parsed?.error || "Python translator returned no translatedText"));
-        } catch (e) {
-          doneErr(new Error(`Failed to parse Python output: ${stdout || stderr}`));
-        }
-      });
-    });
-  };
-
-  return trySpawn(0);
 }
 
 export class AdminController {
@@ -218,6 +128,23 @@ export class AdminController {
       if (!result?.success) {
         return res.json(result);
       }
+
+      // Log activity
+      const intentName = body.intent || "General Response";
+      await logActivity(req, {
+        actionType: "update",
+        module: "Responses",
+        summary: `Modified Response: ${intentName}`,
+        targetTitle: intentName,
+        targetId: intentName,
+        changes: [
+          {
+            field: "Responses",
+            changeType: "modified",
+            details: `Updated general response for intent "${intentName}" (Category: ${body.category || 'General'})`
+          }
+        ]
+      }).catch(err => console.error("Error logging response update:", err));
 
       if (!shouldAutoTranslate || typeof body?.intent !== "string") {
         return res.json({ ...result, translationQueued: false });
@@ -337,7 +264,25 @@ export class AdminController {
 
   static async createOrUpdateLocation(req: Request, res: Response) {
     try {
+      const existingLocations = await getLocations().catch(() => []);
+      const locationId = req.body?.id || req.body?.name || req.body?.building;
+      const existing = existingLocations.find((l: any) => l.name === req.body.name || l.id === req.body.id);
+      
       const result = await upsertLocation(req.body);
+      
+      if (result?.success) {
+        const changes = computeLocationDiff(existing, req.body);
+        const locName = req.body.name || locationId;
+        await logActivity(req, {
+          actionType: existing ? "update" : "create",
+          module: "Locations",
+          summary: existing ? `Modified Location: ${locName}` : `Created Location: ${locName}`,
+          targetTitle: locName,
+          targetId: String(locationId || ''),
+          changes
+        }).catch(err => console.error("Error logging location update:", err));
+      }
+
       res.json(result);
     } catch (error) {
       console.error("Error saving location:", error);
@@ -347,7 +292,26 @@ export class AdminController {
 
   static async deleteLocation(req: Request, res: Response) {
     try {
-      const result = await deleteLocation(req.params.id);
+      const locId = req.params.id;
+      const result = await deleteLocation(locId);
+
+      if (result?.success) {
+        await logActivity(req, {
+          actionType: "delete",
+          module: "Locations",
+          summary: `Deleted Location: ${locId}`,
+          targetTitle: locId,
+          targetId: locId,
+          changes: [
+            {
+              field: "Location",
+              changeType: "removed",
+              details: `Deleted location "${locId}"`
+            }
+          ]
+        }).catch(err => console.error("Error logging location deletion:", err));
+      }
+
       res.json(result);
     } catch (error) {
       console.error("Error deleting location:", error);

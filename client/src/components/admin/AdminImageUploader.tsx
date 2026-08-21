@@ -30,9 +30,9 @@ export function AdminImageUploader({ onAddImage }: AdminImageUploaderProps) {
       return;
     }
 
-    const maxFileSize = 5 * 1024 * 1024; // 5MB limit
+    const maxFileSize = 10 * 1024 * 1024; // 10MB limit (server auto-compresses to WebP)
     if (file.size > maxFileSize) {
-      toast({ title: "File too large", description: "Image should be under 5MB.", variant: "destructive" });
+      toast({ title: "File too large", description: "Image must be under 10MB. Large images are automatically compressed on upload.", variant: "destructive" });
       return;
     }
 

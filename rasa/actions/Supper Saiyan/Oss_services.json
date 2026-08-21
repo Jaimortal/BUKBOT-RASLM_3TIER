@@ -551,7 +551,11 @@
         "pe uniform",
         "physical education uniform",
         "pe clothes",
-        "pe uniform request"
+        "pe uniform request",
+        "old pe uniform",
+        "old pe",
+        "pe attire",
+        "daan nga pe"
       ],
       "subtopics": [
         {
@@ -750,6 +754,59 @@
             ]
           },
           "display_name": "PE Uniform Process",
+          "items": []
+        },
+        {
+          "topic": "old_uniform_policy",
+          "intent": "pe_uniform_old_allowed",
+          "context_topic": "old_uniform",
+          "responses": {
+            "en": [
+              "Under BukSU guidelines, there is no rule prohibiting the use of an old or previously issued PE uniform.",
+              "If you do not have an official PE uniform yet, you are permitted to wear comfortable jogging pants that allow free movement, paired with a plain white upper/shirt.",
+              "If you already have your own or previous BukSU PE uniform, you may freely use it during your physical education classes."
+            ],
+            "ceb": [
+              "Ubos sa mga lagda sa BukSU, walay gipahayag nga gidili ang paggamit sa daan o previous nga PE uniform.",
+              "Kung wala pa kay opisyal nga PE uniform, pwede ra ka magsul-ob og komportable nga jogging pants nga makalihok ka og gawasnon, inubanan sa plain puti nga t-shirt/upper.",
+              "Kung aduna na kay daan o kaugalingon nga BukSU PE uniform, pwede ra kaayo nimo kini gamiton sa imong Physical Education classes."
+            ]
+          },
+          "images": [],
+          "pins": [],
+          "routes": [],
+          "metadata": {
+            "phrases": [
+              "am i allowed to use the old PE uniform",
+              "pwedi rakaha gamiton ang daan nga pe",
+              "pe nako kay daan okay rakaha ni",
+              "can i still use my old pe uniform",
+              "is it allowed to use old pe",
+              "daan na pe akong gamiton okay rakaha",
+              "pwedi raning daan na pe gamiton",
+              "is it allowed to use the old uniform PE",
+              "can i wear old pe uniform",
+              "can i use previous pe uniform",
+              "is old pe uniform accepted in buksu",
+              "pwede ba mugamit daan nga pe uniform",
+              "okay ra ba daan nga pe uniform gamiton",
+              "pwede ra ba daan nga pe",
+              "what to wear if no pe uniform yet",
+              "jogging pants and white shirt for pe",
+              "can i wear jogging pants in pe class",
+              "alternative attire if no pe uniform",
+              "white shirt and jogging pants for physical education",
+              "pwede ba mag jogging pants sa pe",
+              "pwede ba plain white shirt ug jogging pants sa pe",
+              "unsay sul-obon kung walay pe uniform",
+              "unsay isuot kung wala pay pe uniform",
+              "daan nga physical education uniform pwede ba",
+              "can i wear old pe attire",
+              "allowed ba ang daan nga pe uniform",
+              "okay ra ba dili new pe uniform ang gamiton"
+            ]
+          },
+          "display_name": "Old PE Uniform & Attire Policy",
           "items": []
         }
       ],

@@ -2748,8 +2748,8 @@
       "building": "Others",
       "floor": "N/A",
       "coordinates": [
-        878,
-        635
+        500,
+        500
       ],
       "map_id": "main_map",
       "responses": {
@@ -2762,56 +2762,8 @@
           "Kasagaran nimo kini makita duol sa exit part sa BukSU."
         ]
       },
-      "pins": [
-        {
-          "name": "Start From Here",
-          "coordinates": [
-            878,
-            635
-          ]
-        },
-        {
-          "name": "ATM",
-          "coordinates": [
-            884,
-            496
-          ]
-        }
-      ],
-      "routes": [
-        {
-          "name": "Start From Here to ATM",
-          "points": [
-            [
-              878,
-              635
-            ],
-            [
-              857,
-              635
-            ],
-            [
-              856,
-              458
-            ],
-            [
-              905,
-              456
-            ],
-            [
-              905,
-              497
-            ],
-            [
-              884,
-              496
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ],
+      "pins": [],
+      "routes": [],
       "imageUrls": []
     },
     "Vehicle Parking Area": {
@@ -12038,9 +11990,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/1a1ac341-695a-43a6-95b2-bc36a8c3564b"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Business Administration Faculty Room",

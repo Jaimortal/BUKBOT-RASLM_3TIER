@@ -3,6 +3,7 @@ import path from "path";
 import { promises as fsPromises } from "fs";
 import { Request, Response } from "express";
 import { backupJsonFile } from "../utils/jsonBackup";
+import { logActivity, computeKnowledgeDiff } from "../services/activityLogService.js";
 
 type JsonObject = Record<string, any>;
 
@@ -307,6 +308,9 @@ export class AdminKnowledgeController {
         return res.status(404).json({ success: false, message: "Topic path not found" });
       }
 
+      // Snapshot previous state before modifying
+      const prevTopic = JSON.parse(JSON.stringify(target));
+
       if (req.body.topic && req.body.topic !== target.topic) {
         return res.status(400).json({ success: false, message: "Topic keys cannot be renamed from Knowledge Manager." });
       }
@@ -399,6 +403,18 @@ export class AdminKnowledgeController {
       await backupJsonFile(filePath, "knowledge");
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
 
+      // Log activity
+      const changes = computeKnowledgeDiff(prevTopic, req.body);
+      const title = target.display_name || formatLabel(target.topic);
+      await logActivity(req, {
+        actionType: "update",
+        module: "Knowledge Manager",
+        summary: `Modified: ${title}`,
+        targetTitle: title,
+        targetId: file,
+        changes,
+      }).catch((err) => console.error("Failed to log knowledge update:", err));
+
       return res.json({ success: true, message: "Knowledge record updated", topic: target });
     } catch (error) {
       console.error("Error updating knowledge record:", error);
@@ -450,6 +466,22 @@ export class AdminKnowledgeController {
       data.topics.push(parentTopic);
       await backupJsonFile(filePath, "knowledge");
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
+
+      const title = parentTopic.display_name || parentTopic.topic;
+      await logActivity(req, {
+        actionType: "create",
+        module: "Knowledge Manager",
+        summary: `Created Subject Category: "${title}" in ${file}`,
+        targetTitle: title,
+        targetId: file,
+        changes: [
+          {
+            field: "Subject Category",
+            changeType: "added",
+            details: `Created subject "${title}" with ${parentTopic.subject_terms?.length || 0} keyword term(s)`
+          }
+        ]
+      }).catch((err) => console.error("Failed to log parent creation:", err));
 
       return res.json({
         success: true,
@@ -521,6 +553,22 @@ export class AdminKnowledgeController {
       const pathParts = [...req.body.parentPath, parent.subtopics.length - 1];
       await backupJsonFile(filePath, "knowledge");
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
+
+      const title = subtopic.display_name || subtopic.topic;
+      await logActivity(req, {
+        actionType: "create",
+        module: "Knowledge Manager",
+        summary: `Created Subtopic: "${title}" in ${file}`,
+        targetTitle: title,
+        targetId: file,
+        changes: [
+          {
+            field: "Subtopic",
+            changeType: "added",
+            details: `Created subtopic "${title}" with ${subtopic.responses?.en?.length || 0} English and ${subtopic.responses?.ceb?.length || 0} Cebuano responses`
+          }
+        ]
+      }).catch((err) => console.error("Failed to log subtopic creation:", err));
 
       return res.json({
         success: true,

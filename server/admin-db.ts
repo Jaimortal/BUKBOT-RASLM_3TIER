@@ -47,9 +47,9 @@ export async function getResponses(): Promise<ResponseData[]> {
         context_slots: row.contextSlots || {},
         imageUrl: row.imageUrl || undefined,
         imageUrls: row.imageUrls || undefined,
-        mapData: row.mapData || undefined,
+        mapData: (row.mapData as any) || undefined,
       },
-      metadata: row.metadata || {},
+      metadata: (row.metadata as any) || {},
     }));
   } catch (error) {
     console.error('Error fetching responses from database:', error);
@@ -83,7 +83,7 @@ export async function getLocations(): Promise<Location[]> {
       mapImage: row.mapId || 'main_map',
       type: row.type,
       building: row.building,
-      floor: row.floor,
+      floor: row.floor || undefined,
       pins: (row.pins || []).map((p: any) => ({
         name: p.name,
         coordinates: p.coordinates as [number, number],
@@ -189,8 +189,6 @@ async function saveResponsesToFile(responses: ResponseData[]): Promise<void> {
 // Delete a response from database
 export async function deleteResponse(intent: string): Promise<ApiResponse> {
   try {
-    // Note: dbResponses.deleteResponse doesn't exist yet - we can add it if needed
-    // For now, return disabled message
     return {
       success: false,
       message: 'Deleting intents is disabled.'

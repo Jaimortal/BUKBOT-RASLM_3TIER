@@ -760,7 +760,7 @@ class ActionReplyFromJsonHelper:
                 "COB 4th Floor Students Organization",
             ],
             "New COT Building": [
-                "COT Faculty Room",
+                "COT/IT Faculty Room",
                 "COT Dean's Office",
                 "Electronics Faculty Room",
                 "food technology laboratory",

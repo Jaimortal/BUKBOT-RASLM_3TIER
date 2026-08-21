@@ -10,10 +10,13 @@ import { MapController } from "./controllers/mapController";
 import { ReportController } from "./controllers/reportController";
 import { ChatWidgetSettingsController } from "./controllers/chatWidgetSettingsController";
 import { NormalizationRulesController } from "./controllers/normalizationRulesController";
+import { ActivityLogController } from "./controllers/activityLogController";
+import { logActivity } from "./services/activityLogService";
 import emailRoutes from "./routes/emailRoutes";
 import adminMigrationRoutes from "./routes/admin-migration.js";
 import jwt from "jsonwebtoken";
 import multer from "multer";
+import sharp from "sharp";
 import * as dbImages from "./db/images.js";
 
 // Configure multer for memory storage (to save to PostgreSQL)
@@ -78,32 +81,61 @@ export async function registerRoutes(
   // PUBLIC USER PRIVILEGES
   app.get("/api/user-privileges", AdminController.getUserPrivileges);
 
-
   // IMAGE UPLOAD ROUTE (Admin only) - Saves to PostgreSQL
+  // Accepts up to 10MB raw upload, auto-compresses to WebP (max 1200px, 82% quality)
+  // before storing — typically reduces 6-7MB photos to ~100-250KB.
   app.post("/api/admin/upload-image", requireAuth, upload.single("image"), async (req, res) => {
     if (!req.file) {
       return res.status(400).json({ success: false, message: "No image file provided" });
     }
-    
+
     try {
-      // Convert buffer to base64
-      const base64Data = req.file.buffer.toString('base64');
-      const mimeType = req.file.mimetype;
-      const filename = req.file.originalname;
-      const size = req.file.size;
-      
-      // Save to database
+      // Auto-compress: resize to max 800px width, convert to WebP at 65% quality.
+      const compressedBuffer = await sharp(req.file.buffer)
+        .resize({ width: 800, withoutEnlargement: true })
+        .webp({ quality: 65 })
+        .toBuffer();
+
+      const base64Data = compressedBuffer.toString('base64');
+      const mimeType = 'image/webp';
+      // Keep original filename but change extension so it's clear it was converted.
+      const filename = req.file.originalname.replace(/\.[^.]+$/, '') + '.webp';
+      const size = compressedBuffer.length;
+
+      console.log(
+        `[Image Upload] Original: ${(req.file.size / 1024).toFixed(1)}KB` +
+        ` → Compressed: ${(size / 1024).toFixed(1)}KB` +
+        ` (${Math.round((1 - size / req.file.size) * 100)}% reduction)`
+      );
+
+      // Save compressed image to database
       const image = await dbImages.saveImage({
         filename,
         mimeType,
         data: base64Data,
         size,
       });
-      
+
       if (!image) {
         return res.status(500).json({ success: false, message: "Failed to save image" });
       }
-      
+
+      // Log activity
+      await logActivity(req, {
+        actionType: "upload",
+        module: "Images",
+        summary: `Uploaded image: "${filename}" (${(size / 1024).toFixed(1)} KB)`,
+        targetTitle: filename,
+        targetId: image.id,
+        changes: [
+          {
+            field: "Image",
+            changeType: "added",
+            details: `Uploaded image "${filename}" (${(size / 1024).toFixed(1)} KB)`
+          }
+        ]
+      }).catch((err) => console.error("Error logging image upload:", err));
+
       // Return URL that can be used to retrieve the image
       const url = `/api/images/${image.id}`;
       return res.json({ success: true, url, id: image.id });
@@ -137,6 +169,22 @@ export async function registerRoutes(
       const { id } = req.params;
       const result = await dbImages.deleteImage(id);
       if (result) {
+        // Log activity
+        await logActivity(req, {
+          actionType: "delete",
+          module: "Images",
+          summary: `Deleted image ID: "${id}"`,
+          targetTitle: `Image ID: ${id}`,
+          targetId: id,
+          changes: [
+            {
+              field: "Image",
+              changeType: "removed",
+              details: `Deleted image ID ${id}`
+            }
+          ]
+        }).catch((err) => console.error("Error logging image deletion:", err));
+
         return res.json({ success: true, message: "Image deleted successfully" });
       }
       return res.status(500).json({ success: false, message: "Failed to delete image" });
@@ -160,6 +208,7 @@ export async function registerRoutes(
       const buffer = Buffer.from(image.data, 'base64');
       res.setHeader('Content-Type', image.mimeType);
       res.setHeader('Content-Length', buffer.length);
+      res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
       res.send(buffer);
     } catch (error) {
       console.error("Error serving image:", error);
@@ -168,7 +217,6 @@ export async function registerRoutes(
   });
 
   // ADMIN DASHBOARD ROUTES
-
   app.get("/api/privileges", AdminController.getUserPrivileges);
 
   // MAP SETTINGS PUBLIC
@@ -245,10 +293,13 @@ export async function registerRoutes(
   app.post("/api/admin/super-intents/:file/topic", requireAuth, AdminBotTopicsController.updateTopic);
 
   // USER PRIVILEGES (ADMIN)
-
   app.get("/api/admin/privileges", requireAuth, AdminController.getUserPrivileges);
-
   app.post("/api/admin/privileges", requireAuth, AdminController.updateUserPrivileges);
+
+  // ACTIVITY LOGS (ADMIN - Main Admin only)
+  app.get("/api/admin/activity-logs", requireAuth, ActivityLogController.list);
+  app.delete("/api/admin/activity-logs/:id", requireAuth, ActivityLogController.delete);
+  app.delete("/api/admin/activity-logs", requireAuth, ActivityLogController.clearAll);
 
   // PASSWORD CHANGE (ADMIN)
   app.post("/api/admin/change-password", requireAuth, AdminController.changePassword);

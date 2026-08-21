@@ -19,6 +19,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import type { ApiResponse } from "@/types/admin";
+import { AdminTooltip } from "@/components/admin/AdminTooltip";
 import {
   Braces,
   ChevronDown,
@@ -492,8 +493,20 @@ function ResponseLinesEditor({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Label>{label}</Label>
         <div className="flex gap-2">
-          <Button type="button" size="sm" variant="outline" onClick={addLine}>Add line</Button>
-          <Button type="button" size="sm" variant="outline" onClick={removeEmptyLines}>Clean empty</Button>
+          <AdminTooltip
+            title="Add Line"
+            description="Insert a new paragraph or alternate response line bubble"
+            side="top"
+          >
+            <Button type="button" size="sm" variant="outline" onClick={addLine}>Add line</Button>
+          </AdminTooltip>
+          <AdminTooltip
+            title="Clean Empty"
+            description="Automatically remove all blank or whitespace-only response lines"
+            side="top"
+          >
+            <Button type="button" size="sm" variant="outline" onClick={removeEmptyLines}>Clean empty</Button>
+          </AdminTooltip>
         </div>
       </div>
       <div className="max-h-72 space-y-2 overflow-y-auto rounded-md border bg-slate-50 p-2">
@@ -502,13 +515,19 @@ function ResponseLinesEditor({
             <div className="mb-1 flex items-center justify-between gap-2">
               <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Line {index + 1}</span>
               {lines.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removeLine(index)}
-                  className="text-[10px] text-red-500 hover:text-red-700"
+                <AdminTooltip
+                  title="Remove Line"
+                  description="Delete this response line bubble"
+                  side="left"
                 >
-                  Remove
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => removeLine(index)}
+                    className="text-[10px] text-red-500 hover:text-red-700"
+                  >
+                    Remove
+                  </button>
+                </AdminTooltip>
               )}
             </div>
             <div
@@ -628,8 +647,12 @@ function ChildItemEditorModal({
           </div>
         </div>
         <div className="flex justify-end gap-2 border-t bg-gray-50 px-5 py-3">
-          <Button variant="outline" onClick={onClose}>Cancel</Button>
-          <Button onClick={save} className="bg-[#001C38] text-white hover:bg-[#032f5d]">Save child row</Button>
+          <AdminTooltip title="Cancel" description="Discard changes and close modal" side="top">
+            <Button variant="outline" onClick={onClose}>Cancel</Button>
+          </AdminTooltip>
+          <AdminTooltip title="Save Child Row" description="Save modified child fields" side="top">
+            <Button onClick={save} className="bg-[#001C38] text-white hover:bg-[#032f5d]">Save child row</Button>
+          </AdminTooltip>
         </div>
       </DialogContent>
     </Dialog>
@@ -696,9 +719,15 @@ function ChildItemsEditor({
                   <p className="mt-1 text-[10px] text-muted-foreground">Aliases: {(item.aliases || []).join(", ") || "None"}</p>
                 </div>
                 <div className="flex shrink-0 gap-1">
-                  <Button type="button" size="sm" variant="outline" onClick={() => openExisting(index)}>
-                    <Pencil className="h-3.5 w-3.5" />
-                  </Button>
+                  <AdminTooltip
+                    title="Edit Child Row"
+                    description="Modify group, aliases, and detailed answer values"
+                    side="left"
+                  >
+                    <Button type="button" size="sm" variant="outline" onClick={() => openExisting(index)}>
+                      <Pencil className="h-3.5 w-3.5" />
+                    </Button>
+                  </AdminTooltip>
                 </div>
               </div>
             </div>
@@ -997,16 +1026,20 @@ function KnowledgeEditor({
             Saves this selected record only. Unknown JSON fields are preserved.
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
-            <Button
-              onClick={() => saveMutation.mutate()}
-              disabled={saveMutation.isPending}
-              className="text-white"
-              style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}
-            >
-              {saveMutation.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
-              Save
-            </Button>
+            <AdminTooltip title="Cancel" description="Discard all unsaved edits and close editor" side="top">
+              <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
+            </AdminTooltip>
+            <AdminTooltip title="Save Changes" description="Save all responses, maps, pins, and retrieval terms" side="top">
+              <Button
+                onClick={() => saveMutation.mutate()}
+                disabled={saveMutation.isPending}
+                className="text-white"
+                style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}
+              >
+                {saveMutation.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
+                Save
+              </Button>
+            </AdminTooltip>
           </div>
         </div>
       </DialogContent>
@@ -1557,10 +1590,22 @@ export function AdminKnowledgeManager() {
               ))}
             </SelectContent>
           </Select>
-          <Button variant="outline" size="sm" onClick={toggleAllCollapse} className="text-xs">
-            {collapsedFiles.size > 0 ? "Expand All" : "Collapse All"}
-          </Button>
-          <Button variant="outline" size="sm" onClick={() => refetch()} className="text-xs">Refresh</Button>
+          <AdminTooltip
+            title={collapsedFiles.size > 0 ? "Expand button" : "Collapse button"}
+            description={collapsedFiles.size > 0 ? "Expand all categorized knowledge dropdown data" : "Collapse all in to categorized dropdown data"}
+            side="bottom"
+          >
+            <Button variant="outline" size="sm" onClick={toggleAllCollapse} className="text-xs">
+              {collapsedFiles.size > 0 ? "Expand All" : "Collapse All"}
+            </Button>
+          </AdminTooltip>
+          <AdminTooltip
+            title="Refresh Knowledge"
+            description="Reload all knowledge topics, categories, and answers from server"
+            side="bottom"
+          >
+            <Button variant="outline" size="sm" onClick={() => refetch()} className="text-xs">Refresh</Button>
+          </AdminTooltip>
         </div>
       </div>
 
@@ -1681,9 +1726,15 @@ const KnowledgeRow = memo(function KnowledgeRow({
               Group
             </span>
           ) : (
-            <Button size="sm" variant="outline" onClick={() => onOpen(record)} className="h-7 text-xs">
-              Open
-            </Button>
+            <AdminTooltip
+              title="Open Knowledge Record"
+              description="Open topic editor to modify responses, maps, pins, and images"
+              side="left"
+            >
+              <Button size="sm" variant="outline" onClick={() => onOpen(record)} className="h-7 text-xs">
+                Open
+              </Button>
+            </AdminTooltip>
           )}
         </div>
       </div>

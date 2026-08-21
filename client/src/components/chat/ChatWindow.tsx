@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Flag, Mic, Send, Minimize2, ChevronUp, X, ZoomIn, ZoomOut, RotateCcw, Volume2, VolumeX } from "lucide-react";
+import { Flag, Mic, Send, Minimize2, ChevronUp, X, ZoomIn, ZoomOut, RotateCcw, Volume2, VolumeX, BookOpen, AlertCircle, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -314,6 +314,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const [reportText, setReportText] = useState("");
   const [isSubmittingReport, setIsSubmittingReport] = useState(false);
   const [audioResponseEnabled, setAudioResponseEnabled] = useState(false);
+  const [showManualModal, setShowManualModal] = useState(false);
   const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
@@ -942,7 +943,17 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             {/* <p className="text-xs text-white/90 font-light">Ask me about BukSU</p> */}
           </div>
         </div>
-        <div className="flex gap-1">
+        <div className="flex gap-1 items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setShowManualModal(true)}
+            className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+            title="Manual & Guide"
+            aria-label="Manual"
+          >
+            <BookOpen className="h-4 w-4" />
+          </Button>
           {audioFeatureAvailable && (
             <Button
               variant="ghost"
@@ -959,6 +970,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             size="icon"
             onClick={onClose}
             className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+            title="Minimize"
           >
             <Minimize2 className="h-4 w-4" />
           </Button>
@@ -1429,8 +1441,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 <Textarea
                   value={reportText}
                   onChange={(event) => setReportText(event.target.value.slice(0, 1000))}
-                  placeholder="Tell us what answer or feature was wrong..."
-                  className="min-h-32 resize-none"
+                className="min-h-32 resize-none"
                   disabled={isSubmittingReport}
                   maxLength={1000}
                 />
@@ -1438,6 +1449,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
               <div className="flex justify-end gap-2">
                 <Button
                   variant="outline"
+                  type="button"
                   onClick={() => {
                     setIsReportOpen(false);
                     resetReportForm();
@@ -1446,10 +1458,139 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 >
                   Cancel
                 </Button>
-                <Button onClick={handleSubmitReport} disabled={isSubmittingReport}>
-                  {isSubmittingReport ? "Sending..." : "Send report"}
+                <Button
+                  type="button"
+                  onClick={handleSubmitReport}
+                  disabled={isSubmittingReport || !reportText.trim()}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                >
+                  {isSubmittingReport ? "Submitting..." : "Submit Report"}
                 </Button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* In-Chatbox Manual Modal */}
+      {showManualModal && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-3 animate-in fade-in-0 duration-150">
+          <div className="w-full max-w-sm max-h-[92%] flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10 animate-in zoom-in-95 duration-150">
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-3 text-white shrink-0" style={{ backgroundColor: "#001C38" }}>
+              <div className="flex items-center gap-2">
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                  <BookOpen className="h-4 w-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold leading-tight">Manual</h3>
+                  <p className="text-[10px] text-blue-200">Chatbot User Guide & Instructions</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowManualModal(false)}
+                className="rounded-full p-1 text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                aria-label="Close"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Scrollable Body */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs text-slate-700 leading-relaxed" style={{ scrollbarWidth: "thin" }}>
+              {/* Important Instruction Notice */}
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-amber-900 shadow-xs">
+                <div className="flex items-start gap-2">
+                  <AlertCircle className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
+                  <p className="font-bold text-xs leading-normal">
+                    Please be informed that when asking the bot, you should be direct with your questions. Avoid telling lengthy stories so the bot can accurately identify and resolve your inquiry.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step-by-Step Instructions */}
+              <div className="space-y-3">
+                <p className="font-semibold text-[11px] uppercase tracking-wider text-slate-500">
+                  Step-by-Step User Guide
+                </p>
+
+                {/* Step 1 */}
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-slate-900">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">1</span>
+                    <span>How to Ask Questions</span>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11.5px]">
+                    Type your specific question into the chat bar at the bottom. Use simple keywords for best results, for example:
+                  </p>
+                  <div className="pl-7 flex flex-wrap gap-1 mt-1">
+                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Enrollment schedule</span>
+                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Tuition & fees</span>
+                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Library hours</span>
+                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Grading system</span>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-slate-900">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">2</span>
+                    <span>How to Open & View Campus Maps</span>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11.5px]">
+                    When inquiring about campus facilities, offices, or directions (e.g. <em>"Where is the Registrar?"</em> or <em>"COT building"</em>), the bot provides an interactive map. You can pan, zoom, click location pins, and follow walking routes. Click the expand icon on any map to view it in full screen.
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-slate-900">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">3</span>
+                    <span>Audio & Voice Input / Responses</span>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11.5px]">
+                    • <strong>Speak your question:</strong> Click the <strong>Microphone</strong> icon in the text bar to dictate your query via voice.
+                  </p>
+                  <p className="text-slate-600 pl-7 text-[11.5px]">
+                    • <strong>Voice playback:</strong> Click the <strong>Speaker</strong> icon in the top header to enable or disable automatic text-to-speech audio replies.
+                  </p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-slate-900">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">4</span>
+                    <span>Language Support</span>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11.5px]">
+                    You can chat in both <strong>English</strong> and <strong>Cebuano / Bisaya</strong>. The bot will automatically recognize and reply in your selected language.
+                  </p>
+                </div>
+
+                {/* Step 5 */}
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-slate-900">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">5</span>
+                    <span>Quick Suggestions & Reporting</span>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11.5px]">
+                    Click suggestion buttons beneath answers to explore related topics quickly. If an answer contains an error, tap the <strong>Flag</strong> icon next to the message to report it to administrators.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer with Exit button */}
+            <div className="px-4 py-3 border-t border-slate-100 bg-slate-50 flex justify-end shrink-0">
+              <Button
+                type="button"
+                onClick={() => setShowManualModal(false)}
+                className="w-full text-white text-xs font-semibold h-9 shadow-xs"
+                style={{ backgroundColor: "#001C38" }}
+              >
+                Exit
+              </Button>
             </div>
           </div>
         </div>

@@ -1,0 +1,128 @@
+# Activity Log (Audit Trail) Implementation Plan (Updated)
+
+## Goal Description
+Implement an **Activity Log** (Audit Trail) system in Admin Settings stored directly in PostgreSQL (with JSON file fallback) that captures all modifications across **Knowledge Manager** (topics, responses, subtopics, maps, images), **Locations** (buildings, pins, coordinates, routes, images), **General Responses**, and **Image Uploads**.
+
+### Key Rules & Requirements
+1. **Role Separation**:
+   - `main-admin` (`thepersonaljaime@gmail.com`): Has full exclusive access to view, inspect, and delete activity logs.
+   - `co-admin` (`jhonmarkambito82@gmail.com` and others): Cannot access or see the Activity Log section (UI is hidden; backend returns `403 Forbidden`).
+2. **Database Storage**:
+   - Stored directly in the **PostgreSQL database** (`activity_logs` table) with automatic table creation and fallback persistence to `data/activity_logs.json`.
+3. **Table & Actions**:
+   - Columns: `User` (with `main-admin` / `co-admin` badge) | `Time` | `Active Log` | `Actions`
+   - Actions include:
+     - 👁️ **View Details**: Opens a modal with the detailed breakdown of modifications (responses edited, map/pins updated, images added/removed, timestamp, user info).
+     - 🗑️ **Delete**: Allows `main-admin` to delete specific log entries or clear logs with confirmation.
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> - **Roles in `admin-users.json`**:
+>   - `thepersonaljaime@gmail.com` is set to `"role": "main-admin"`.
+>   - `jhonmarkambito82@gmail.com` and other admins are set to `"role": "co-admin"`.
+> - **Permissions**: Only users with the `main-admin` role (or `thepersonaljaime@gmail.com`) can access `GET /api/admin/activity-logs` and `DELETE /api/admin/activity-logs/:id`.
+
+---
+
+## Proposed Changes
+
+### Database & Backend Architecture
+
+#### [MODIFY] [schema.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/shared/schema.ts)
+- Add `activityLogs` table schema in Drizzle ORM:
+  - `id` (varchar primary key)
+  - `userEmail` (text)
+  - `userName` (text)
+  - `userRole` (text: `"main-admin"` | `"co-admin"`)
+  - `actionType` (text: `"create"` | `"update"` | `"delete"` | `"upload"`)
+  - `module` (text: `"Knowledge Manager"` | `"Locations"` | `"Responses"` | `"Images"` | `"Settings"`)
+  - `summary` (text)
+  - `targetTitle` (text)
+  - `targetId` (text)
+  - `changes` (jsonb array of field diffs)
+  - `ipAddress` (text)
+  - `createdAt` (timestamp defaultNow)
+
+#### [NEW] [activityLogs.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/db/activityLogs.ts)
+- Database queries for PostgreSQL:
+  - `ensureActivityLogsTable()`: Auto-creates `activity_logs` table if it doesn't exist.
+  - `insertActivityLog(data)`
+  - `getActivityLogs(filters)`
+  - `deleteActivityLog(id)`
+  - `clearActivityLogs()`
+
+#### [NEW] [activityLogService.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/services/activityLogService.ts)
+- Helper service for diff calculation (English/Cebuano responses, map pins/routes, images, keywords).
+- Extracts user display name and role from `admin-users.json` / request token.
+- Saves log to PostgreSQL and syncs to `data/activity_logs.json`.
+
+#### [NEW] [activityLogController.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/controllers/activityLogController.ts)
+- `GET /api/admin/activity-logs`: Returns logs if user is `main-admin` (otherwise 403 Forbidden).
+- `DELETE /api/admin/activity-logs/:id`: Deletes single log entry if user is `main-admin`.
+- `DELETE /api/admin/activity-logs`: Clears logs if user is `main-admin`.
+
+#### [MODIFY] [admin-users.json](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/account/admin-users.json)
+- Update roles: `thepersonaljaime@gmail.com` as `"main-admin"`, `jhonmarkambito82@gmail.com` as `"co-admin"`.
+
+#### [MODIFY] [authController.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/controllers/authController.ts)
+- Pass user `role` in JWT token and return `user: { email, name, role }` in login and `/api/admin/verify`.
+
+#### [MODIFY] [routes.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/routes.ts)
+- Register activity log routes.
+- Hook activity logging into image upload and deletion endpoints.
+
+#### [MODIFY] Controllers: [adminKnowledgeController.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/controllers/adminKnowledgeController.ts), [adminBotTopicsController.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/controllers/adminBotTopicsController.ts), [adminController.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/server/controllers/adminController.ts)
+- Trigger `logActivity` on Knowledge Manager edits, Location edits, and Response edits.
+
+---
+
+### Frontend UI Components
+
+#### [NEW] [AdminActivityLogs.tsx](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/client/src/components/admin/AdminActivityLogs.tsx)
+- Main-admin exclusive Activity Log component in Settings.
+- Responsive table with columns:
+  - **User**: User Name + Email + Role badge (`main-admin` in blue/purple, `co-admin` in amber/gray).
+  - **Time**: Formatted Date & Time with exact timestamp tooltip.
+  - **Active Log**: Summary badge + target title (e.g. `Modified: Failed Academic Policy`, `Knowledge Manager`).
+  - **Actions**:
+    - 👁️ "View Details" button -> Opens detail modal.
+    - 🗑️ "Delete" button -> Opens delete confirmation dialog.
+- **Modification Detail Modal**:
+  - Displays user name, email, role, date/time, IP address.
+  - Clean cards showing what was modified:
+    - Response text changes (English / Cebuano)
+    - Map changes (coordinates, pins, routes)
+    - Images added / removed
+    - Keywords / Subject terms modified
+- Search filter & Module filter.
+
+#### [MODIFY] [adminApi.ts](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/client/src/lib/adminApi.ts)
+- Add `fetchActivityLogs`, `deleteActivityLogApi`, `clearActivityLogsApi`.
+
+#### [MODIFY] [AuthContext.tsx](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/client/src/contexts/AuthContext.tsx)
+- Store and expose `user` (`{ email, name, role }`).
+
+#### [MODIFY] [AdminDashboard.tsx](file:///c:/School%20Related%20File/3rd%20year/Capstone%20dev/Chatbot/CHATBOT%20V5%20merged%20versions/Capstone_Project_Artificial_Intelligence_Chatbot/client/src/pages/admin/AdminDashboard.tsx)
+- In the Settings tab (`activeTab === "privileges"`), conditionally render `<AdminActivityLogs />` only if `user?.role === "main-admin"` or `user?.email === "thepersonaljaime@gmail.com"`.
+
+---
+
+## Verification Plan
+
+### Automated / API Verification
+1. **Role & Permission Tests**:
+   - `main-admin` token -> `GET /api/admin/activity-logs` returns `200 OK`.
+   - `co-admin` token -> `GET /api/admin/activity-logs` returns `403 Forbidden`.
+   - `main-admin` token -> `DELETE /api/admin/activity-logs/:id` returns `200 OK`.
+   - `co-admin` token -> `DELETE /api/admin/activity-logs/:id` returns `403 Forbidden`.
+2. **Action Logging Test**:
+   - Perform a test modification in Knowledge Manager & Locations.
+   - Verify log is stored in PostgreSQL and displayed in the table with user role, timestamp, and detailed diff.
+
+### Manual Verification
+1. Log in as `thepersonaljaime@gmail.com` (`main-admin`) -> Settings -> Confirm Activity Log is visible with full table and actions (View Details + Delete).
+2. Click "View Details" -> Confirm modal displays complete breakdown of edits.
+3. Log in as `jhonmarkambito82@gmail.com` (`co-admin`) -> Settings -> Confirm Activity Log is completely hidden.

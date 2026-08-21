@@ -4,7 +4,7 @@
       {
         "email": "thepersonaljaime@gmail.com",
         "name": "Admin User",
-        "role": "admin",
+        "role": "main-admin",
         "googleId": null,
         "enabled": true,
         "password": "$2b$12$LiK4ttOHCtaGC.nsYs/WdOCwQtmtA4tiPiFVdUCMKBhUh4FIpjyku"
@@ -12,7 +12,7 @@
       {
         "email": "2301106910@student.buksu.edu.ph",
         "name": "Jaime Perez",
-        "role": "admin",
+        "role": "co-admin",
         "googleId": null,
         "enabled": true,
         "password": "$2b$12$vqUt3ojH8f9LwO7n99MLXeGC24Z6MiNZhYLVT.wz1R.NEOjVkzyBe"
@@ -20,10 +20,18 @@
       {
         "email": "admin@example.com",
         "name": "Dummy Admin",
-        "role": "admin",
+        "role": "co-admin",
         "googleId": null,
         "enabled": true,
-        "password": "$2b$10$bwroaD.89SrWLpuVPbFgiusCOCwBO2355Q.a5CEJPH6VJPB86dfd2"
+        "password": "$2b$10$CNCxC6yJEzMfT0lLHYWm.eOVK71cchSvwV4/tNaCfnyQWoRR9z1ei"
+      },
+      {
+        "email": "jhonmarkambito82@gmail.com",
+        "name": "Co-admin-ambito",
+        "role": "co-admin",
+        "googleId": null,
+        "enabled": true,
+        "password": "$2b$12$3IUr20eZQyjrZ//ewPf66OnYmcPzbFs3j09Ds3z6jXrqrV62NY7sC"
       }
     ],
     "settings": {

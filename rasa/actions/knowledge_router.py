@@ -113,6 +113,16 @@ class KnowledgeRouter:
         if not has_availability_wording or has_location_wording:
             return None
 
+        # Exclude queries asking about specific items, services, cards, rules, or fees inside the facility
+        non_facility_subjects = [
+            "card", "id", "book", "books", "borrow", "return", "penalty", "fee", "fees",
+            "payment", "pay", "requirement", "requirements", "service", "services",
+            "hour", "hours", "schedule", "time", "open", "close", "when", "contact",
+            "permit", "handbook", "replace", "replacement", "lost", "another", "form",
+        ]
+        if self._has_any(normalized, non_facility_subjects):
+            return None
+
         for aliases, intent in self.FACILITY_AVAILABILITY_ROUTES:
             for alias in aliases:
                 if re.search(rf"(?<!\w){re.escape(alias)}(?!\w)", normalized):
@@ -156,6 +166,54 @@ class KnowledgeRouter:
         tokens = set(self.interpreter.tokens(text))
         raw_tokens = set(re.findall(r"\b[\w'-]+\b", raw_normalized))
         facility_availability_intent = self._facility_availability_route(text)
+
+        # Student Handbook — intercept before location scoring penalizes it.
+        # Any query mentioning "handbook" is about how to get the document,
+        # not about a physical location or a general university info topic.
+        if self._has_any(text, [
+            "student handbook",
+            "university handbook",
+            "university student handbook",
+            "school handbook",
+            "studenthandbook",
+        ]):
+            return "student_handbook_access"
+
+        # Library Card Replacement — intercept before "payment" keyword causes ambiguity
+        # with student fees or other payment topics.
+        # Triggered only when BOTH a loss/replacement signal AND a library card signal are present.
+        _has_library_card = self._has_any(text, [
+            "library card", "library id", "library id card", "barcoded library card",
+        ])
+        _has_lost_or_replace = self._has_any(text, [
+            "lost", "lose", "nawala", "replacement", "replace", "another library",
+            "new library card", "new library id", "2nd library", "second library",
+            "another", "get another", "second", "2nd",
+        ])
+        if _has_library_card and _has_lost_or_replace:
+            return "library_id_card_replacement"
+
+        # Certificate of Registration (COR) routing:
+        # 1. Process / Steps / How to get / Download online -> where_get_cor (5-step portal guide)
+        # 2. Where to get / Inquire / Registrar office -> request_cor (Registrar & online options info)
+        has_cor_signal = self._has_any(text, [
+            "cor", "certificate of registration", "cert of registration", "registration certificate",
+        ])
+        if has_cor_signal:
+            has_cor_process_signal = self._has_any(text, [
+                "process", "steps", "step by step", "how to get", "how do i get", "how to download",
+                "how do i download", "unsaon pagkuha", "unsaon pag download", "how can i get my cor",
+                "download my cor", "procedure", "unsaon", "how to", "how do i",
+            ])
+            has_cor_location_signal = self._has_any(text, [
+                "where to get", "where can i get", "where do i get", "where to access",
+                "where is cor", "where can i find", "asa makuha", "asa makakuha",
+                "registrar", "registrar office", "inquire",
+            ])
+            if has_cor_process_signal:
+                return "where_get_cor"
+            if has_cor_location_signal:
+                return "request_cor"
 
         if self._is_available_course_slot_query(text, tokens):
             return "course_slots"
@@ -997,7 +1055,10 @@ class KnowledgeRouter:
             "makasulod",
         ])
         has_civilian_attire = self._has_any(text, ["civilian", "civilian attire", "civilian clothes", "plain clothes", "regular clothes", "non uniform", "non-uniform", "no uniform"])
-        has_pe_uniform_mention = self._has_any(text, ["pe uniform", "physical education uniform"])
+        has_pe_uniform_mention = self._has_any(text, [
+            "pe uniform", "pe unifrom", "uniform pe", "unifrom pe",
+            "physical education uniform", "pe clothes", "pe attire", "old pe", "daan nga pe", "daan na pe"
+        ])
         has_uniform_policy = (
             self._has_any(text, ["uniform", "dress code", "not wearing uniform", "without uniform", "wearing uniform", "school uniform"]) or
             has_civilian_attire
@@ -1274,9 +1335,49 @@ class KnowledgeRouter:
             ],
         )
         has_training_course = self._has_any(text, ["internship", "ojt", "on the job", "prerequisite", "nstp", "rotc", "physical education", "course shifting", "program shifting"])
-        has_pe_uniform = self._has_any(text, ["pe uniform", "physical education uniform"]) or (
-            self._has_any(text, ["pe clothes", "pe uniform clothes"]) and
-            self._has_any(text, ["where", "get", "kuha", "makuha", "asa", "how", "unsaon", "request", "buy"])
+        has_pe_uniform = (
+            self._has_any(text, [
+                "pe uniform", "pe unifrom", "uniform pe", "unifrom pe",
+                "physical education uniform", "buksu pe uniform", "buksu uniform pe"
+            ]) or (
+                self._has_any(text, ["pe clothes", "pe uniform clothes", "pe attire", "pe shirt", "pe t-shirt"]) and
+                self._has_any(text, ["where", "get", "kuha", "makuha", "asa", "how", "unsaon", "request", "buy", "allowed", "use", "wear", "gamiton", "pwede", "pwedi", "daan", "old"])
+            )
+        )
+        has_old_pe_uniform = (
+            self._has_any(text, [
+                "old pe", "old pe uniform", "old pe unifrom", "old uniform pe", "old uniform in pe",
+                "previous pe", "previous pe uniform", "previous uniform pe",
+                "daan nga pe", "daan na pe", "daan pe", "daan akong pe", "pe nako kay daan",
+                "gamiton ang daan nga pe", "gamiton daan nga pe", "gamiton ang daan na pe",
+                "pwedi rakaha gamiton ang daan", "pwede rakaha gamiton ang daan",
+                "pwedi ba gamiton ang daan", "pwede ba gamiton ang daan",
+                "pwedi raning daan", "pwede raning daan", "pwedi ba daan", "pwede ba daan",
+                "okay ra ba daan", "okay rakaha daan", "okay rakaha ni daan",
+                "daan na pe", "daan nga physical education",
+                "allowed to use old pe", "allowed to wear old pe", "allowed to use the old pe",
+                "allowed to use the old uniform pe", "allowed to use the old pe uniform",
+                "allowed to wear the old pe", "allowed to wear old pe uniform",
+                "can i use my old pe", "can i use old pe", "can i still use my old pe",
+                "can i wear old pe", "can i wear my old pe", "can i still wear my old pe",
+                "is it allowed to use old pe", "is it allowed to use the old pe",
+                "is it allowed to use the old uniform pe", "is it allowed to wear old pe",
+                "jogging pants and white shirt", "jogging pants for pe", "jogging pants in pe",
+                "wear jogging pants in pe", "wear jogging pants for pe", "jogging pants",
+                "white shirt for pe", "white shirt in pe", "white upper for pe", "white upper in pe",
+                "white upper for physical education", "white shirt for physical education",
+                "no pe uniform yet", "walay pe uniform", "wala pay pe uniform"
+            ]) or (
+                (
+                    self._has_any(text, ["pe", "physical education"]) or
+                    self._has_any(text, ["uniform", "unifrom", "attire", "jogging pants"])
+                ) and (
+                    self._has_any(text, ["old", "previous", "daan", "karaan", "dati", "used", "jogging", "pants", "white"]) and
+                    self._has_any(text, ["pe", "physical education", "uniform", "unifrom", "pants", "shirt", "jogging", "upper"])
+                ) and (
+                    self._has_any(text, ["allowed", "allow", "use", "using", "wear", "wearing", "still", "pwede", "pwedi", "gamiton", "isuot", "sul-ob", "okay", "ok", "rakaha", "ra ba", "raba", "what if", "kung"])
+                )
+            )
         )
         has_college = (
             self._has_any(text, ["college", "colleges"]) or
@@ -1833,6 +1934,8 @@ class KnowledgeRouter:
             return "transferee_enrollment"
         if has_transferee and not has_enrollment and intent in {"ask_availability", "ask_general_info", "ask_process", "ask_requirement"}:
             return "transferee_admission_requirements"
+        if has_old_pe_uniform:
+            return "pe_uniform_old_allowed"
         if has_pe_uniform:
             return "pe_uniform_process"
         if has_generic_validation_question:
@@ -2713,6 +2816,8 @@ class KnowledgeRouter:
         if "pe" not in tokens and "physical education" not in text:
             return None
         if "uniform" in tokens or "uniforms" in tokens:
+            return None
+        if self._has_any(text, ["old", "daan", "previous", "jogging", "white", "allowed", "pwede", "pwedi", "gamiton", "isuot", "sul-ob"]):
             return None
         if self._has_any(text, ["pe clothes", "pe clothing"]) and self._has_any(text, ["where", "get", "request", "buy", "kuha", "asa"]):
             return None

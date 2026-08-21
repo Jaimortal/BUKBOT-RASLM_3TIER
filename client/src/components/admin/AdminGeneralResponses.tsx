@@ -23,6 +23,7 @@ import {
   Save, Loader2, ImagePlus, Trash2, MapPin,
   Tag, MessageSquareText, ChevronRight, AlertCircle,
 } from "lucide-react";
+import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 
@@ -191,7 +192,9 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
                     <Label className="font-semibold text-sm flex items-center gap-2">
                       <span className="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-mono">EN</span>English
                     </Label>
-                    <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setEnLines([...enLines, ""])}>+ Add message</Button>
+                    <AdminTooltip title="Add English Message" description="Add a new conversational response bubble in English" side="top">
+                      <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setEnLines([...enLines, ""])}>+ Add message</Button>
+                    </AdminTooltip>
                   </div>
                   {enLines.map((l, i) => (
                     <div key={i} className="flex gap-2">
@@ -202,17 +205,24 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
                           placeholder={`Bubble ${i + 1}…`} 
                         />
                       </div>
-                      {enLines.length > 1 && <button onClick={() => setEnLines(enLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>}
+                      {enLines.length > 1 && (
+                        <AdminTooltip title="Remove Message" description="Delete this response bubble" side="left">
+                          <button onClick={() => setEnLines(enLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>
+                        </AdminTooltip>
+                      )}
                     </div>
                   ))}
                 </div>
+
                 {/* CEB */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label className="font-semibold text-sm flex items-center gap-2">
                       <span className="bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded font-mono">CEB</span>Cebuano
                     </Label>
-                    <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setCebLines([...cebLines, ""])}>+ Add message</Button>
+                    <AdminTooltip title="Add Cebuano Message" description="Add a new conversational response bubble in Cebuano" side="top">
+                      <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setCebLines([...cebLines, ""])}>+ Add message</Button>
+                    </AdminTooltip>
                   </div>
                   {cebLines.map((l, i) => (
                     <div key={i} className="flex gap-2">
@@ -223,7 +233,11 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
                           placeholder={`Bubble ${i + 1}…`} 
                         />
                       </div>
-                      {cebLines.length > 1 && <button onClick={() => setCebLines(cebLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>}
+                      {cebLines.length > 1 && (
+                        <AdminTooltip title="Remove Message" description="Delete this response bubble" side="left">
+                          <button onClick={() => setCebLines(cebLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>
+                        </AdminTooltip>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -303,10 +317,14 @@ function GeneralModal({ response, open, onClose, onSaved }: GeneralModalProps) {
           <div className="px-5 py-3 border-t bg-gray-50 flex items-center justify-between rounded-b-lg">
             <p className="text-xs text-muted-foreground">Saves to <code className="font-mono">responses.json</code></p>
             <div className="flex gap-2">
-              <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
-              <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending} className="text-white" style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}>
-                {saveMutation.isPending ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving…</> : <><Save className="h-4 w-4 mr-2" />Save</>}
-              </Button>
+              <AdminTooltip title="Cancel" description="Discard unsaved edits and close modal" side="top">
+                <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
+              </AdminTooltip>
+              <AdminTooltip title="Save Response" description="Persist answers, images, maps, and UI display name" side="top">
+                <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending} className="text-white" style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}>
+                  {saveMutation.isPending ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving…</> : <><Save className="h-4 w-4 mr-2" />Save</>}
+                </Button>
+              </AdminTooltip>
             </div>
           </div>
         </DialogContent>
@@ -337,23 +355,25 @@ function ResponseCard({ response, onClick }: { response: ResponseData; onClick: 
   const hasMap = !!response.responses?.mapData;
 
   return (
-    <button onClick={onClick} className="group w-full text-left rounded-xl border bg-white hover:border-blue-400 hover:shadow-md transition-all duration-200 p-4 flex flex-col gap-2 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 group-hover:from-blue-50/40 transition-all duration-300 pointer-events-none" />
-      <div className="flex items-start justify-between gap-2 relative">
-        <div>
-          <p className="font-semibold text-sm text-gray-800 leading-tight">{name}</p>
-          <p className="text-[10px] text-gray-400 font-mono mt-0.5">{response.intent}</p>
+    <AdminTooltip title={name} description="Click to edit response bubbles, maps, and images" side="top">
+      <button onClick={onClick} className="group w-full text-left rounded-xl border bg-white hover:border-blue-400 hover:shadow-md transition-all duration-200 p-4 flex flex-col gap-2 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 group-hover:from-blue-50/40 transition-all duration-300 pointer-events-none" />
+        <div className="flex items-start justify-between gap-2 relative">
+          <div>
+            <p className="font-semibold text-sm text-gray-800 leading-tight">{name}</p>
+            <p className="text-[10px] text-gray-400 font-mono mt-0.5">{response.intent}</p>
+          </div>
+          <ChevronRight className="h-4 w-4 text-gray-300 group-hover:text-blue-500 transition-colors shrink-0 mt-0.5" />
         </div>
-        <ChevronRight className="h-4 w-4 text-gray-300 group-hover:text-blue-500 transition-colors shrink-0 mt-0.5" />
-      </div>
-      <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 relative">{preview}</p>
-      {(hasImg || hasMap) && (
-        <div className="flex gap-1 flex-wrap relative">
-          {hasImg && <span className="text-[10px] bg-purple-50 text-purple-600 border border-purple-200 rounded-full px-2 py-0.5">🖼 Images</span>}
-          {hasMap && <span className="text-[10px] bg-green-50 text-green-600 border border-green-200 rounded-full px-2 py-0.5">📍 Map</span>}
-        </div>
-      )}
-    </button>
+        <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 relative">{preview}</p>
+        {(hasImg || hasMap) && (
+          <div className="flex gap-1 flex-wrap relative">
+            {hasImg && <span className="text-[10px] bg-purple-50 text-purple-600 border border-purple-200 rounded-full px-2 py-0.5">🖼 Images</span>}
+            {hasMap && <span className="text-[10px] bg-green-50 text-green-600 border border-green-200 rounded-full px-2 py-0.5">📍 Map</span>}
+          </div>
+        )}
+      </button>
+    </AdminTooltip>
   );
 }
 

@@ -2451,27 +2451,32 @@
             ]
           },
           "intent": "where_get_cor",
-          "context_topic": "document",
+          "context_topic": "process",
           "metadata": {
             "phrases": [
-              "where get cor",
+              "what is the process of getting cor",
+              "process of getting cor",
+              "steps to get cor",
               "how to get my cor",
-              "where can i get my cor",
-              "where do i download my cor",
-              "where can i download my cor",
+              "how to get cor",
+              "how do i get my cor",
+              "how to download cor",
               "how to download certificate of registration",
-              "asa makuha ang cor",
-              "unsaon pag download sa cor",
-              "where do i get my cor or download it",
-              "where can i download my certificate of registration",
+              "steps in getting certificate of registration",
               "how to download cor from admission account",
-              "where is cor in admission portal",
-              "aha man nako makita akong cor",
-              "asa ma download akong cor",
-              "unsaon pagkuha sa certificate of registration"
+              "unsaon pagkuha og cor",
+              "unsaon pag download sa cor",
+              "unsaon pagkuha sa certificate of registration",
+              "step by step process of getting cor",
+              "step by step cor download",
+              "how do i download my cor",
+              "how to get copy of cor online",
+              "process of downloading cor",
+              "what is the procedure in getting cor",
+              "how to get cor from admission portal"
             ]
           },
-          "display_name": "Where Get COR"
+          "display_name": "Process of Getting / Downloading COR"
         }
       ],
       "display_name": "Admission Accounts And Documents"
