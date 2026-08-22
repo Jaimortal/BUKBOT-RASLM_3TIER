@@ -7099,9 +7099,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/a65b375a-98b6-48bf-86ac-db916d3c3ebc"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-04",
@@ -7172,9 +7170,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/83f294f2-54d9-476c-ba2f-3385ca6b5d3f"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-03",
@@ -7241,9 +7237,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/ae699e03-20d2-4464-add2-9d7077958af8"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-02",
@@ -7310,9 +7304,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/a7a3875d-1bc6-4f00-ab8a-952a609e02d7"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-01",

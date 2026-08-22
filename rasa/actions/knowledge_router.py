@@ -1456,25 +1456,35 @@ class KnowledgeRouter:
             bool(raw_tokens.intersection({"eat", "eating", "food", "snack", "kaon", "mokaon", "mukaon", "pagkaon"})) or
             self._has_any(text, ["can i eat", "eat inside", "eating inside"])
         )
-        has_classroom = self._has_any(
-            text,
-            [
-                "classroom",
-                "class",
-                "klase",
-                "room",
-                "assignment",
-                "assignments",
-                "homework",
-                "google classroom",
-                "instructor",
-                "food",
-                "snack",
-                "kaon",
-                "mokaon",
-                "mukaon",
-                "pagkaon",
-            ],
+        has_classroom = (
+            self._has_any(
+                text,
+                [
+                    "classroom",
+                    "classroom policy",
+                    "classroom policies",
+                    "class rules",
+                    "in class",
+                    "during class",
+                    "in classroom",
+                    "inside classroom",
+                    "sulod sa classroom",
+                    "sulod sa klase",
+                    "sa klase",
+                    "assignment",
+                    "assignments",
+                    "homework",
+                    "google classroom",
+                    "class concern",
+                    "class concerns",
+                    "issue with instructor",
+                    "concern with teacher",
+                ],
+            ) or
+            (
+                self._has_any(text, ["class", "klase"]) and
+                self._has_any(text, ["policy", "policies", "rule", "rules", "concern", "concerns", "problem", "issue", "schedule", "section", "phone", "food", "eat"])
+            )
         ) or has_classroom_food
         has_phone_in_class = (
             self._has_any(text, ["phone", "cellphone", "mobile phone", "cell phone", "gadget"]) or
@@ -2139,7 +2149,8 @@ class KnowledgeRouter:
                 return "eating_in_classroom"
             if self._has_any(text, ["assignment", "assignments", "homework", "google classroom", "submit", "pasa", "ipasa", "turn in"]):
                 return "submit_assignments_online"
-            return "class_concerns"
+            if self._has_any(text, ["concern", "concerns", "problem", "issue", "teacher", "instructor", "problema", "grado", "grade", "class issue", "klase concern"]):
+                return "class_concerns"
         if intent == "ask_requirement":
             if has_enrollment:
                 if has_medicine:

@@ -7310,9 +7310,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/a7a3875d-1bc6-4f00-ab8a-952a609e02d7"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-01",

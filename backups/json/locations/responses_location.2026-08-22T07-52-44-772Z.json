@@ -5069,9 +5069,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/240f51c8-dcae-481f-a037-d005fe0f10cb"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-1-02",
@@ -5142,9 +5140,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/70d45ec9-e0a5-4a63-960f-4bb46bb12799"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-1-03",
@@ -5215,9 +5211,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/670380d1-79b4-49a5-8b1a-ae913b6dfefa"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-1-04",
@@ -5430,9 +5424,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/5faf1e48-ecb9-4827-9be1-e3e79642f387"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-1-08",
@@ -5503,9 +5495,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/e98b509f-bc0c-423f-9bb8-9ebc2d7aceaa"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-1-09",
@@ -5576,9 +5566,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/b79d6eab-d5c8-4397-9fa3-5196208e0a37"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-2-10",
@@ -5649,9 +5637,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/2488b4bb-2eae-4a37-aa4c-28fb7f9c13e9"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-2-07",
@@ -5722,9 +5708,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/8bc85205-e062-4411-bea8-103dedc3645f"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-2-06",
@@ -5795,9 +5779,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/0a965000-36d4-4502-8282-efdee76c56d2"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-2-05",
@@ -5864,9 +5846,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/bbc2ad0e-38bc-4bb6-8814-0765804cebda"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-2-04",
@@ -5937,9 +5917,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/b0ae72ca-bd09-4ded-9007-81e80204a42f"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-2-03",
@@ -6010,9 +5988,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/9df14460-7de7-40ed-90f8-956cb40263b8"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-2-02",
@@ -6154,9 +6130,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/7efe9adb-8414-4ccb-9798-db89667d9f88"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-01",
@@ -6223,9 +6197,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/7579eb6d-9a58-478a-a22c-109a184b40e7"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-02",
@@ -6296,9 +6268,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/bb99f85e-5f6e-418a-a36c-19cf2c4b63ca"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-03",
@@ -6369,9 +6339,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/d0ae31b2-04d6-48cb-8e61-5f52a7f30e04"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-04",
@@ -6442,9 +6410,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/c13fc6a3-3754-485b-8624-1ef4f6da65ee"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-05",
@@ -6515,9 +6481,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/391fcde0-d631-49a2-94f7-76ec997f4318"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-06",
@@ -6588,9 +6552,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/750aa545-95cd-4146-8e6f-8f71d2a60d9a"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-07",
@@ -6661,9 +6623,7 @@
           "floor": "3F"
         }
       ],
-      "imageUrls": [
-        "/api/images/c0fb04ef-1c95-425f-b96b-91115361389b"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-3-09",
@@ -6734,9 +6694,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/8f271422-b410-4a81-a89d-e28c34fd227d"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-09",
@@ -6807,9 +6765,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/e8a9f40a-9bce-4fe0-8cde-b5064d51e2a1"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-08",
@@ -6880,9 +6836,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/205edd08-0c64-495a-8df5-cedd2b1b710a"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-07",
@@ -6953,9 +6907,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/9919a665-0020-4121-91eb-b901a4af82cb"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-06",
@@ -7026,9 +6978,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/49c73d0c-04b2-45e6-baca-357bf36140e0"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-05",
@@ -7099,9 +7049,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/a65b375a-98b6-48bf-86ac-db916d3c3ebc"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-04",
@@ -7172,9 +7120,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/83f294f2-54d9-476c-ba2f-3385ca6b5d3f"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-03",
@@ -7241,9 +7187,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/ae699e03-20d2-4464-add2-9d7077958af8"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-02",
@@ -7310,9 +7254,7 @@
           "floor": "4F"
         }
       ],
-      "imageUrls": [
-        "/api/images/a7a3875d-1bc6-4f00-ab8a-952a609e02d7"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Entrance to B-4-01",

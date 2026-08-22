@@ -509,6 +509,9 @@ class MainRouterService:
         if pe_uniform_clarification:
             return pe_uniform_clarification, self.context_manager.decay_slot_values(slots)
 
+        if self._should_prioritize_location(intent, user_message, resolved):
+            return self._route_locations(intent, user_message, resolved, slots)
+
         direct_intent = self.knowledge_router.direct_intent_override(intent, user_message, resolved.values)
         if direct_intent:
             if str(direct_intent).startswith("__"):
@@ -548,9 +551,6 @@ class MainRouterService:
             )
             self._cache_set(cache_key, response)
             return response, self._context_updates(memory, slots)
-
-        if self._should_prioritize_location(intent, user_message, resolved):
-            return self._route_locations(intent, user_message, resolved, slots)
 
         if intent == "ask_location":
             if resolved.locations:
