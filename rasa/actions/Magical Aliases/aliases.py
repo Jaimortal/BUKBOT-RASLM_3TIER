@@ -332,6 +332,7 @@ LOCATION_ALIASES = {
     "cob faculty": "COB Faculty Room",
     "college of business faculty": "COB Faculty Room",
     "cob faculty room": "COB Faculty Room",
+    "cob office of the dean": "COB Faculty Room",
     
     "cpag faculty": "CPAG Faculty Room",
     "office of the cpag faculty": "CPAG Faculty Room",
