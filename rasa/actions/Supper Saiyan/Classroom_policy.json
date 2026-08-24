@@ -22,10 +22,10 @@
           "topic": "phone_use_in_class",
           "responses": {
             "en": [
-              "The use of mobile phones during class depends on the classroom rules set by the instructor."
+              "The use of mobile phones during class is strictly prohibited, especially when the instructor is leading a discussion, but use during activities and other curricular activities will depend on the classroom rules set by the instructor."
             ],
             "ceb": [
-              "Ang paggamit sa cellphone sulod sa klase depende sa classroom rules nga gi-set sa instructor."
+              "Bawal gyud kaayo ang paggamit og cellphone samtang nagklase, labi na kung nag-discuss ang maestro/maestra, pero kung gamiton sa activities ug uban pang curricular activities, magdepende na na sa classroom rules nga gipahimutang sa maestro/maestra."
             ]
           },
           "intent": "phone_use_in_class",

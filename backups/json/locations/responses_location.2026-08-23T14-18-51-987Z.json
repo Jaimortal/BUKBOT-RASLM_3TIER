@@ -11408,9 +11408,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/2317c140-ca43-49ca-9faa-23a4e95ac16e"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 02 Budget Office",

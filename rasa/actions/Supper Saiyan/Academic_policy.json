@@ -427,6 +427,21 @@
           "intent": "attendance_requirement",
           "metadata": {
             "phrases": [
+              "am i allowed to absent my class",
+              "am i allowed to be absent",
+              "can i be absent in class",
+              "is it okay to be absent",
+              "can i miss class",
+              "what happens if i absent",
+              "what will happen if i am absent",
+              "allowed ba mag absent sa klase",
+              "pwede ba mag absent sa klase",
+              "pwede ba mo absent sa subject",
+              "unsa mahitabo kung mag absent ko",
+              "okay ra ba mag absent",
+              "is absence allowed in buksu",
+              "what if i get absent",
+              "pwede ba ma absent",
               "attendance requirement",
               "how many absences allowed",
               "7 absences policy",
@@ -442,9 +457,86 @@
               "unsa attendance requirement",
               "absence limit in class",
               "attendance requirement per subject"
+            ],
+            "strong_keywords": [
+              "absent",
+              "absences",
+              "attendance",
+              "allowed",
+              "pwede",
+              "limit",
+              "7 absences",
+              "fda"
+            ],
+            "weak_keywords": [
+              "class",
+              "klase",
+              "subject",
+              "buksu",
+              "policy"
             ]
           },
           "display_name": "Attendance Requirement"
+        },
+        {
+          "topic": "absence_excuse_requirements",
+          "intent": "absence_excuse_requirements",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "If you are absent from class, you must submit the following supporting documents to your subject instructor upon your return:",
+              "1. Excuse Letter: Signed by you and your parent or guardian explaining the valid reason for the absence.",
+              "2. Medical Certificate: If the absence is due to illness, secure a medical certificate from a physician or verified by the University Clinic.",
+              "3. Official Endorsement: If absent due to an official school competition, seminar, or university-sanctioned activity.",
+              "Always present these documents immediately upon your return to excuse your absence and request special make-up activities or quizzes if permitted."
+            ],
+            "ceb": [
+              "Kung naka-absent ka sa klase, kinahanglan nimo ipasa ang mga mosunod nga supporting documents sa imong subject instructor inig balik nimo:",
+              "1. Excuse Letter: Pinirmahan nimo ug sa imong ginikanan o guardian nga nagpatin-aw sa balidong rason sa imong pag-absent.",
+              "2. Medical Certificate: Kung tungod sa sakit ang rason, pagkuha og medical certificate gikan sa doktor o gipamatud-an sa University Clinic.",
+              "3. Official Endorsement: Kung ang pag-absent tungod sa opisyal nga kalihokan sa unibersidad, seminar, o kompetisyon.",
+              "Ipresentar dayon kini sa imong magtutudlo aron ma-excuse ang imong absence ug makapangayo og special make-up quiz o activity kung gitugot."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "what do i need to pass if i have some absences",
+              "what do i need to pass if i have some absentcess",
+              "what to pass if absent",
+              "what to submit when absent from class",
+              "what are the requirements for excused absence",
+              "documents to submit for absence",
+              "excuse letter requirements",
+              "how to excuse my absence in class",
+              "unsay ipasa if makaabsent ka",
+              "unsay ipasa if makaabsent",
+              "unsay kinahanglan ipasa kung ma absent sa klase",
+              "unsa requirements sa excuse letter",
+              "unsay buhaton kung na absent sa klase",
+              "unsaon pag excuse sa klase",
+              "unsa akong ipasa sa teacher kung na absent ko",
+              "requirements sa pag excuse sa absence",
+              "medical certificate for excused absence",
+              "excuse slip requirements"
+            ],
+            "strong_keywords": [
+              "absent",
+              "absences",
+              "excuse letter",
+              "excuse",
+              "ipasa",
+              "pass",
+              "submit"
+            ],
+            "weak_keywords": [
+              "class",
+              "klase",
+              "instructor",
+              "teacher",
+              "documents"
+            ]
+          },
+          "display_name": "Absence and Excuse Letter Requirements"
         },
         {
           "topic": "meaning",

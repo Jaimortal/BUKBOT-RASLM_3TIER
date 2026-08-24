@@ -90,6 +90,24 @@ class QueryInterpreter:
             .replace(self._UG_SENTINEL, "ug")
         )
 
+    def _is_valid_standalone_question(self, text: str) -> bool:
+        cleaned = self.normalize(text).strip()
+        words = cleaned.split()
+        if len(words) < 3:
+            return False
+        # Trailing conversational disjunctions/tags (e.g., "or not", "or dili na", "dili ba") are not independent questions
+        tag_starts = ("or ", "o ", "ug ", "and ", "pero ", "kung ", "if ", "dili ")
+        if cleaned.startswith(tag_starts) and not any(re.search(rf"\b{re.escape(w)}\b", cleaned) for w in self.WH_PATTERNS):
+            return False
+        has_wh = any(re.search(rf"\b{re.escape(w)}\b", cleaned) for w in self.WH_PATTERNS)
+        has_question_starter = any(
+            cleaned.startswith(starter) for starter in (
+                "is ", "are ", "can ", "do ", "does ", "did ", "will ", "would ", "should ",
+                "pwede ", "pwedi ", "naa ", "naay ", "aduna ", "kinahanglan ", "unsa ", "asa ", "pila ",
+            )
+        )
+        return has_wh or has_question_starter or len(words) >= 4
+
     def split_multi_question(self, text: str) -> List[str]:
         normalized = self.normalize(text)
         if not normalized:
@@ -97,12 +115,13 @@ class QueryInterpreter:
 
         masked = self._mask_protected_conjunctions(normalized)
 
+        # Split by '?' only if ALL resulting parts are valid standalone questions
         by_question_mark = [
             self._unmask_protected_conjunctions(part.strip())
             for part in re.split(r"\?+", masked)
             if part.strip()
         ]
-        if len(by_question_mark) > 1:
+        if len(by_question_mark) > 1 and all(self._is_valid_standalone_question(p) for p in by_question_mark):
             return by_question_mark
 
         wh_count = sum(1 for word in self.WH_PATTERNS if re.search(rf"\b{re.escape(word)}\b", masked))

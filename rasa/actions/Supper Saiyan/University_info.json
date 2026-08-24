@@ -1079,6 +1079,112 @@
         }
       ],
       "display_name": "Student Handbook"
+    },
+    {
+      "topic": "gate_pass_policy",
+      "subject_key": "gate_pass_policy",
+      "subject_type": "policy",
+      "subject_terms": [
+        "gate pass",
+        "vehicle gate pass",
+        "gate pass policy",
+        "bike gate pass",
+        "bicycle gate pass",
+        "motorcycle gate pass",
+        "car gate pass"
+      ],
+      "subtopics": [
+        {
+          "topic": "general_gate_pass",
+          "intent": "general_gate_pass",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "A gate pass is needed to enter Bukidnon State University if you are using a vehicle (such as a motorcycle or car). Usually for bikes or bicycles, you can directly ask the guard on duty for their rules since I don't have specific data indicating that bicycles need a gate pass."
+            ],
+            "ceb": [
+              "Ang gate pass gikinahanglan aron makasulod sa Bukidnon State University kung naggamit ka og sakyanan (sama sa motor o awto/sakyanan). Kasagaran para sa mga bike o bisekleta, pwede ka direktang mangutana sa gwardya bahin sa ilang patakaran kay wala koy espesipikong datos nga nag-ingon nga kinahanglan og gate pass ang bisekleta."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "do i need gate pass",
+              "do i need a gate pass",
+              "is gate pass needed to enter buksu",
+              "do vehicles need gate pass",
+              "gate pass requirement for entrance",
+              "do i need gate pass for motorcycle",
+              "do i need gate pass for car",
+              "motorcycle gate pass",
+              "car gate pass in buksu",
+              "vehicle gate pass",
+              "who needs a gate pass",
+              "is gate pass required",
+              "gate pass policy in buksu",
+              "kinahanglan ba og gate pass",
+              "kinahanglan bag gate pass sa buksu",
+              "kinahanglan ba ug gate pass para makasulod",
+              "need ba og gate pass ang motor",
+              "need ba gate pass ang sakyanan",
+              "kinahanglan bag gate pass ang motor ug awto",
+              "gate pass sa sakyanan",
+              "unsaon pagsulod nga naay sakyanan gate pass",
+              "kinsay kinahanglan og gate pass",
+              "gate pass requirement sa buksu"
+            ]
+          },
+          "display_name": "Gate Pass Policy (General)",
+          "subject_terms": [],
+          "images": [],
+          "items": []
+        },
+        {
+          "topic": "bike_gate_pass",
+          "intent": "bike_gate_pass",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "Usually for bikes or bicycles, you can directly ask the guard on duty for their rules since I don't have specific data indicating that bicycles need a gate pass."
+            ],
+            "ceb": [
+              "Kasagaran para sa mga bike o bisekleta, pwede ka direktang mangutana sa gwardya bahin sa ilang patakaran kay wala koy espesipikong datos nga nag-ingon nga kinahanglan og gate pass ang bisekleta."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "do i need gate pass for my bike",
+              "do bike need some gate pass",
+              "do bikes need gate pass",
+              "do bicycle need some gate pass to enter in buksu",
+              "do bikes need to have gate pass",
+              "is gate pass required for bicycles",
+              "does bike need gate pass",
+              "is bike allowed without gate pass",
+              "gate pass for bicycle in buksu",
+              "bicycle gate pass buksu",
+              "can i bring bike inside buksu without gate pass",
+              "is gate pass needed for bike",
+              "bike pass requirement",
+              "bicycle entry gate pass",
+              "kinahanglang bag gate pass ang bike",
+              "kinahanglan ba og gate pass ang bike",
+              "kinahanglan ba og gate pass ang bicycle sa buksu",
+              "kinahanglan bag gate pass ang bisekleta",
+              "naa bay gate pass ang bike",
+              "pwede ba makasulod ang bike nga walay gate pass",
+              "need ba gate pass ang bike sa buksu",
+              "kinahanglan ba ug pass ang bike",
+              "bisekleta kinahanglan gate pass",
+              "bike gate pass sa buksu"
+            ]
+          },
+          "display_name": "Bicycle / Bike Gate Pass Policy",
+          "subject_terms": [],
+          "images": [],
+          "items": []
+        }
+      ],
+      "display_name": "Gate Pass Policy"
     }
   ]
 }

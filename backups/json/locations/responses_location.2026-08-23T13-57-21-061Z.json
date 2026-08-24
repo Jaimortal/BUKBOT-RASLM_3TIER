@@ -11264,9 +11264,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/d71919d0-eb9e-4455-bd42-503fa9b0d47f"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 9 Information",
@@ -11408,9 +11406,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/2317c140-ca43-49ca-9faa-23a4e95ac16e"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 02 Budget Office",
@@ -11481,9 +11477,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/2aa9066e-ed14-4e6f-b62c-61a4cef157a3"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 01 Finance and Management Division and Administrative Office",

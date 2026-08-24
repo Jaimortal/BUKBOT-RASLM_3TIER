@@ -1,5 +1,775 @@
 [
   {
+    "id": "log_1787494731999_vjtokx7",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Window 02 Budget Office",
+    "targetTitle": "Window 02 Budget Office",
+    "targetId": "Window 02 Budget Office",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T14:18:51.999Z"
+  },
+  {
+    "id": "log_1787494729666_isee6my",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_103102_560.webp\" (52.2 KB)",
+    "targetTitle": "IMG_20260127_103102_560.webp",
+    "targetId": "2317c140-ca43-49ca-9faa-23a4e95ac16e",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_103102_560.webp\" (52.2 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T14:18:49.666Z"
+  },
+  {
+    "id": "log_1787493840019_yv9e8lz",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Window 9 Information",
+    "targetTitle": "Window 9 Information",
+    "targetId": "Window 9 Information",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T14:04:00.019Z"
+  },
+  {
+    "id": "log_1787493764732_5wkboov",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_103102_560.webp\" (52.2 KB)",
+    "targetTitle": "IMG_20260127_103102_560.webp",
+    "targetId": "d71919d0-eb9e-4455-bd42-503fa9b0d47f",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_103102_560.webp\" (52.2 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T14:02:44.732Z"
+  },
+  {
+    "id": "log_1787493441071_6nn3k0q",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Window 01 Finance and Management Division and Administrative Office",
+    "targetTitle": "Window 01 Finance and Management Division and Administrative Office",
+    "targetId": "Window 01 Finance and Management Division and Administrative Office",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T13:57:21.071Z"
+  },
+  {
+    "id": "log_1787493434895_uf9snfm",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_103832_139.webp\" (60.3 KB)",
+    "targetTitle": "IMG_20260127_103832_139.webp",
+    "targetId": "2aa9066e-ed14-4e6f-b62c-61a4cef157a3",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_103832_139.webp\" (60.3 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T13:57:14.895Z"
+  },
+  {
+    "id": "log_1787493365448_n4gevhj",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Finance Building",
+    "targetTitle": "Finance Building",
+    "targetId": "Finance Building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T13:56:05.448Z"
+  },
+  {
+    "id": "log_1787493363039_6zbkj3d",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_102932_572.webp\" (24.7 KB)",
+    "targetTitle": "IMG_20260127_102932_572.webp",
+    "targetId": "c316bf31-2243-4201-80d5-7b9474fdf03d",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_102932_572.webp\" (24.7 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T13:56:03.039Z"
+  },
+  {
+    "id": "log_1787493098695_u32w250",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Window 1 Scholarship and Financial Assistance",
+    "targetTitle": "Window 1 Scholarship and Financial Assistance",
+    "targetId": "Window 1 Scholarship and Financial Assistance",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T13:51:38.695Z"
+  },
+  {
+    "id": "log_1787493090068_6wpg3mk",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_104022_287.webp\" (57.1 KB)",
+    "targetTitle": "IMG_20260127_104022_287.webp",
+    "targetId": "dde6a4be-6884-4fa4-b559-49532c2050e2",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_104022_287.webp\" (57.1 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T13:51:30.068Z"
+  },
+  {
+    "id": "log_1787490002868_lbu17vb",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Automotive Faculty Office",
+    "targetTitle": "Automotive Faculty Office",
+    "targetId": "Automotive Faculty Office",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T13:00:02.868Z"
+  },
+  {
+    "id": "log_1787489979613_fg5zllz",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260224_084501_777.webp\" (115.1 KB)",
+    "targetTitle": "IMG_20260224_084501_777.webp",
+    "targetId": "41639473-ef8f-447f-98c6-6b83e45f35d3",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260224_084501_777.webp\" (115.1 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:59:39.613Z"
+  },
+  {
+    "id": "log_1787489160537_qqfc2e3",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Power Building",
+    "targetTitle": "Power Building",
+    "targetId": "Power Building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:46:00.537Z"
+  },
+  {
+    "id": "log_1787489157148_zneovbp",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_100536_960.webp\" (81.4 KB)",
+    "targetTitle": "IMG_20260127_100536_960.webp",
+    "targetId": "b4415247-7d9e-4f4e-9948-8a3dbc85ced2",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_100536_960.webp\" (81.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:45:57.148Z"
+  },
+  {
+    "id": "log_1787489083295_1xityzg",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"GYM.webp\" (61.4 KB)",
+    "targetTitle": "GYM.webp",
+    "targetId": "b56817ab-2e18-4af6-99a8-97a02ac8850a",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"GYM.webp\" (61.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:44:43.295Z"
+  },
+  {
+    "id": "log_1787488929565_kfs4i40",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Gymnasium",
+    "targetTitle": "Gymnasium",
+    "targetId": "Gymnasium",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:42:09.565Z"
+  },
+  {
+    "id": "log_1787488864095_4qfpulg",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"GYM.webp\" (61.4 KB)",
+    "targetTitle": "GYM.webp",
+    "targetId": "d9950551-5a95-4d88-a680-90937808d9fa",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"GYM.webp\" (61.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:41:04.095Z"
+  },
+  {
+    "id": "log_1787487673921_9olfyiw",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: language and literature department",
+    "targetTitle": "language and literature department",
+    "targetId": "language and literature department",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:21:13.921Z"
+  },
+  {
+    "id": "log_1787487669346_y9ionbi",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260819_170802_987.webp\" (39.8 KB)",
+    "targetTitle": "IMG_20260819_170802_987.webp",
+    "targetId": "ee4fbaad-2dc8-4051-8b30-ba6184d7372f",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260819_170802_987.webp\" (39.8 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:21:09.346Z"
+  },
+  {
+    "id": "log_1787487645068_qymkzz3",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-402",
+    "targetTitle": "NC4-A4-402",
+    "targetId": "NC4-A4-402",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:20:45.068Z"
+  },
+  {
+    "id": "log_1787487640168_optsyzk",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260819_170801_832.webp\" (42.7 KB)",
+    "targetTitle": "IMG_20260819_170801_832.webp",
+    "targetId": "6f5b4808-25a3-458a-93e9-25c626a3efd4",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260819_170801_832.webp\" (42.7 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:20:40.168Z"
+  },
+  {
+    "id": "log_1787487620249_38rdn9a",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-401",
+    "targetTitle": "NC4-A4-401",
+    "targetId": "NC4-A4-401",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:20:20.249Z"
+  },
+  {
+    "id": "log_1787487606848_u2ilxms",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260819_170801_832.webp\" (42.7 KB)",
+    "targetTitle": "IMG_20260819_170801_832.webp",
+    "targetId": "a5d2e5eb-94f9-4726-aa29-b1f4d4b48e4d",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260819_170801_832.webp\" (42.7 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:20:06.848Z"
+  },
+  {
+    "id": "log_1787487539381_3zgeyc5",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-401",
+    "targetTitle": "NC4-A4-401",
+    "targetId": "NC4-A4-401",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:18:59.381Z"
+  },
+  {
+    "id": "log_1787487521111_7zkz04q",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-402",
+    "targetTitle": "NC4-A4-402",
+    "targetId": "NC4-A4-402",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:18:41.111Z"
+  },
+  {
+    "id": "log_1787487298977_eohjnc7",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-401",
+    "targetTitle": "NC4-A4-401",
+    "targetId": "NC4-A4-401",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:14:58.977Z"
+  },
+  {
+    "id": "log_1787486923098_hspzczm",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Museum",
+    "targetTitle": "Museum",
+    "targetId": "Museum",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:08:43.098Z"
+  },
+  {
+    "id": "log_1787486912404_mplnglh",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260819_165646_438.webp\" (74.4 KB)",
+    "targetTitle": "IMG_20260819_165646_438.webp",
+    "targetId": "2a53e141-530c-43a1-ad80-349b1a69d12e",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260819_165646_438.webp\" (74.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T12:08:32.404Z"
+  },
+  {
+    "id": "log_1787485792100_4l0sz5e",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: New COT Building",
+    "targetTitle": "New COT Building",
+    "targetId": "New COT Building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:49:52.100Z"
+  },
+  {
+    "id": "log_1787485780318_8t1lgki",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_094941_677.webp\" (147.8 KB)",
+    "targetTitle": "IMG_20260127_094941_677.webp",
+    "targetId": "41fa9c01-1e1e-4f7a-bf04-48cca343c52c",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_094941_677.webp\" (147.8 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:49:40.318Z"
+  },
+  {
+    "id": "log_1787485390494_txggv84",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C2-2-04",
+    "targetTitle": "C2-2-04",
+    "targetId": "C2-2-04",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:43:10.494Z"
+  },
+  {
+    "id": "log_1787485388897_sak045v",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"2nd.webp\" (29.4 KB)",
+    "targetTitle": "2nd.webp",
+    "targetId": "1675ffc3-ce0a-4c70-ae4f-0cc0731d84b1",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"2nd.webp\" (29.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:43:08.897Z"
+  },
+  {
+    "id": "log_1787485355918_jobe3h6",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C2-2-03",
+    "targetTitle": "C2-2-03",
+    "targetId": "C2-2-03",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:42:35.918Z"
+  },
+  {
+    "id": "log_1787485354596_2ohhk2d",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"2nd.webp\" (29.4 KB)",
+    "targetTitle": "2nd.webp",
+    "targetId": "cb3a479d-ba71-46e4-a54e-f3e161186cb8",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"2nd.webp\" (29.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:42:34.596Z"
+  },
+  {
+    "id": "log_1787485342599_8r4j4g9",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C2-2-02",
+    "targetTitle": "C2-2-02",
+    "targetId": "C2-2-02",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:42:22.599Z"
+  },
+  {
+    "id": "log_1787485340531_pmz5ilz",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"2nd.webp\" (29.4 KB)",
+    "targetTitle": "2nd.webp",
+    "targetId": "d05e1f42-89f4-462d-824d-0448916b1dce",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"2nd.webp\" (29.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:42:20.531Z"
+  },
+  {
+    "id": "log_1787485325332_xytmfr5",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C2-2-01",
+    "targetTitle": "C2-2-01",
+    "targetId": "C2-2-01",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:42:05.332Z"
+  },
+  {
+    "id": "log_1787485321536_nf6fseu",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"2nd.webp\" (29.4 KB)",
+    "targetTitle": "2nd.webp",
+    "targetId": "273a555f-9b29-43c7-a04a-1d881662d9fe",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"2nd.webp\" (29.4 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-23T11:42:01.536Z"
+  },
+  {
     "id": "log_1787408974905_au48u9p",
     "userEmail": "jhonmarkambito82@gmail.com",
     "userName": "Co-admin-ambito",

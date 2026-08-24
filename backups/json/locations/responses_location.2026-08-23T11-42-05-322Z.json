@@ -1763,9 +1763,7 @@
           ]
         }
       ],
-      "imageUrls": [
-        "/api/images/2a53e141-530c-43a1-ad80-349b1a69d12e"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Museum",
@@ -3552,9 +3550,7 @@
           ]
         }
       ],
-      "imageUrls": [
-        "/api/images/41639473-ef8f-447f-98c6-6b83e45f35d3"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Automotive Faculty Office",
@@ -4336,9 +4332,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/273a555f-9b29-43c7-a04a-1d881662d9fe"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C2-2-01 - 2nd floor",
@@ -4421,9 +4415,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/d05e1f42-89f4-462d-824d-0448916b1dce"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C2-2-02 - 2nd floor",
@@ -4506,9 +4498,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/cb3a479d-ba71-46e4-a54e-f3e161186cb8"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C2-2-03 - 2nd floor",
@@ -4591,9 +4581,7 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [
-        "/api/images/1675ffc3-ce0a-4c70-ae4f-0cc0731d84b1"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C2-2-04 - 2nd floor",
@@ -7553,9 +7541,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/41fa9c01-1e1e-4f7a-bf04-48cca343c52c"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to New COT Building",
@@ -7694,76 +7680,7 @@
         "ceb": [
           "Ang language and literature department makita sa ground floor sa new CAS building"
         ]
-      },
-      "coordinates": [
-        861,
-        634
-      ],
-      "pins": [
-        {
-          "name": "You are Here!",
-          "coordinates": [
-            861,
-            634
-          ]
-        },
-        {
-          "name": "NC4-A4-401",
-          "coordinates": [
-            418,
-            780
-          ]
-        }
-      ],
-      "imageUrls": [
-        "/api/images/a5d2e5eb-94f9-4726-aa29-b1f4d4b48e4d"
-      ],
-      "routes": [
-        {
-          "name": "You are Here! to Pin 2",
-          "points": [
-            [
-              861,
-              634
-            ],
-            [
-              788,
-              633
-            ],
-            [
-              788,
-              673
-            ],
-            [
-              599,
-              677
-            ],
-            [
-              560,
-              651
-            ],
-            [
-              454,
-              654
-            ],
-            [
-              458,
-              704
-            ],
-            [
-              417,
-              703
-            ],
-            [
-              418,
-              780
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ]
+      }
     },
     "NC4-A4-402": {
       "type": "office",
@@ -7777,76 +7694,7 @@
         "ceb": [
           "Ang language and literature department makita sa ground floor sa new CAS building"
         ]
-      },
-      "coordinates": [
-        856,
-        636
-      ],
-      "pins": [
-        {
-          "name": "You are here!",
-          "coordinates": [
-            856,
-            636
-          ]
-        },
-        {
-          "name": "NC4-A4-402",
-          "coordinates": [
-            413,
-            779
-          ]
-        }
-      ],
-      "imageUrls": [
-        "/api/images/6f5b4808-25a3-458a-93e9-25c626a3efd4"
-      ],
-      "routes": [
-        {
-          "name": "You are here! to NC4-A4-402",
-          "points": [
-            [
-              856,
-              636
-            ],
-            [
-              787,
-              637
-            ],
-            [
-              783,
-              673
-            ],
-            [
-              595,
-              679
-            ],
-            [
-              556,
-              648
-            ],
-            [
-              458,
-              651
-            ],
-            [
-              459,
-              699
-            ],
-            [
-              415,
-              710
-            ],
-            [
-              413,
-              779
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ]
+      }
     },
     "language and literature department": {
       "type": "office",
@@ -7883,9 +7731,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/ee4fbaad-2dc8-4051-8b30-ba6184d7372f"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "Start From Here - Main entrance to language & literature department",
@@ -8432,9 +8278,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/d9950551-5a95-4d88-a680-90937808d9fa"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Gymnasium",
@@ -8576,9 +8420,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/b4415247-7d9e-4f4e-9948-8a3dbc85ced2"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Power house Building",
@@ -10714,9 +10556,7 @@
           "floor": "1F"
         }
       ],
-      "imageUrls": [
-        "/api/images/dde6a4be-6884-4fa4-b559-49532c2050e2"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 1 Scholarship and Financial Assistance",
@@ -11264,9 +11104,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/d71919d0-eb9e-4455-bd42-503fa9b0d47f"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 9 Information",
@@ -11408,9 +11246,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/2317c140-ca43-49ca-9faa-23a4e95ac16e"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 02 Budget Office",
@@ -11481,9 +11317,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/2aa9066e-ed14-4e6f-b62c-61a4cef157a3"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Window 01 Finance and Management Division and Administrative Office",
@@ -11985,9 +11819,7 @@
           ]
         }
       ],
-      "imageUrls": [
-        "/api/images/c316bf31-2243-4201-80d5-7b9474fdf03d"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "you are here! to Finance Building",

@@ -215,6 +215,39 @@ class KnowledgeRouter:
             if has_cor_location_signal:
                 return "request_cor"
 
+        # Gate Pass Policy Routing
+        _has_gate_pass = self._has_any(text, [
+            "gate pass", "gatepass", "vehicle pass", "vehicle sticker",
+        ]) or (
+            self._has_any(text, ["gate", "guard", "security", "enter", "sulod", "makasulod"]) and
+            self._has_any(text, ["pass", "permit", "sticker"])
+        )
+        _has_bike = self._has_any(text, [
+            "bike", "bikes", "bicycle", "bicycles", "bisekleta", "bisikleta",
+        ])
+        if _has_gate_pass:
+            if _has_bike:
+                return "bike_gate_pass"
+            return "general_gate_pass"
+
+        # Absence / Excuse Requirements Routing
+        _has_absence = self._has_any(text, [
+            "absent", "absences", "absence", "absentcess", "makaabsent", "na absent", "ma absent", "nag absent", "na-absent",
+        ])
+        _has_excuse_doc = self._has_any(text, [
+            "pass", "submit", "ipasa", "i-pasa", "document", "documents", "letter", "excuse", "requirements",
+            "unsa akong ipasa", "unsay ipasa", "what to pass", "what to submit", "medical certificate", "what do i need",
+        ])
+        if _has_absence and _has_excuse_doc:
+            return "absence_excuse_requirements"
+
+        # General Attendance / Allowed Absence Policy
+        if _has_absence and self._has_any(text, [
+            "allowed", "allow", "pwede", "puwede", "okay", "can i", "what if", "rules", "policy",
+            "limit", "how many", "unsa mahitabo", "what happens", "permitted", "miss", "pila", "pila ka",
+        ]):
+            return "attendance_requirement"
+
         if self._is_available_course_slot_query(text, tokens):
             return "course_slots"
 
