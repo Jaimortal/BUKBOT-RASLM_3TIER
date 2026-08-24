@@ -1,0 +1,1013 @@
+{
+  "Academic_policy.json": {
+    "intent": "ask_academic_policy",
+    "category": "academic policies",
+    "topics": [
+      {
+        "topic": "academic_standing",
+        "display_name": "Academic Standing",
+        "subtopics": [
+          "failed_subject_policy",
+          "probation"
+        ]
+      },
+      {
+        "topic": "grading_system",
+        "display_name": "Grading System",
+        "subtopics": [
+          "meaning",
+          "specific_course_passing_retention_grade",
+          "process",
+          "schedule"
+        ]
+      },
+      {
+        "topic": "inc_grade",
+        "display_name": "INC Grade",
+        "subtopics": [
+          "process",
+          "consequences",
+          "form"
+        ]
+      },
+      {
+        "topic": "attendance_fda",
+        "display_name": "Attendance FDA",
+        "subtopics": [
+          "requirements",
+          "absence_excuse_requirements",
+          "meaning",
+          "process"
+        ]
+      },
+      {
+        "topic": "subject_overload",
+        "display_name": "Subject Overload Topic Group",
+        "subtopics": [
+          "meaning",
+          "policy"
+        ]
+      },
+      {
+        "topic": "academic_honors",
+        "display_name": "Academic Honors",
+        "subtopics": [
+          "requirements",
+          "college_honors",
+          "university_scholar"
+        ]
+      },
+      {
+        "topic": "thesis_capstone",
+        "display_name": "Thesis Capstone",
+        "subtopics": [
+          "topic_selection",
+          "panelists",
+          "consequences"
+        ]
+      },
+      {
+        "topic": "add_drop_subject",
+        "display_name": "Add Drop Subject Topic Group",
+        "subtopics": [
+          "process"
+        ]
+      },
+      {
+        "topic": "withdrawal",
+        "display_name": "Enrollment Withdrawal",
+        "subtopics": [
+          "process"
+        ]
+      },
+      {
+        "topic": "registrar_documents",
+        "display_name": "Registrar Documents",
+        "subtopics": [
+          "cor_request",
+          "schedule",
+          "contact",
+          "tor_request"
+        ]
+      },
+      {
+        "topic": "cor_validation",
+        "display_name": "COR Validation",
+        "subtopics": [
+          "schedule",
+          "process"
+        ]
+      },
+      {
+        "topic": "graduation_clearance",
+        "display_name": "Graduation Clearance",
+        "subtopics": [
+          "process",
+          "requirements"
+        ]
+      }
+    ]
+  },
+  "Administrators.json": {
+    "intent": "ask_buksuadmin_info",
+    "category": "Administrators Info",
+    "topics": [
+      {
+        "topic": "university_administrators",
+        "display_name": "University Administrators",
+        "subtopics": [
+          "Buksu_vice_pres",
+          "vicepres_academic_affairs",
+          "vicepres_research_extension_innovations",
+          "vicepres_administration_finance",
+          "vicepres_culture_arts_sports_student_services",
+          "buksu_secretary"
+        ]
+      }
+    ]
+  },
+  "Admissions_info.json": {
+    "intent": "ask_admissions_info",
+    "category": "Admissions Info Form",
+    "topics": [
+      {
+        "topic": "college_admission_test",
+        "display_name": "College Admission Test",
+        "subtopics": [
+          "buksu_cat_definition",
+          "take_exam",
+          "exam_requirements",
+          "test_permit_issue",
+          "exam_fees",
+          "exam_results",
+          "reschedule_entrance_exam",
+          "missed_buksu_cat_schedule",
+          "buksu_cat_calculator_policy",
+          "cat_exam_result"
+        ]
+      },
+      {
+        "topic": "admission_application",
+        "display_name": "Admission Application",
+        "subtopics": [
+          "application_next_step",
+          "status_application",
+          "missing_admission_documents",
+          "change_preferred_course_admission_application",
+          "online_application_schedule",
+          "admission_application_deadline",
+          "denied_applications",
+          "no_slots",
+          "additional_slots",
+          "main_campus_full",
+          "system_error",
+          "apply_cat_using_mobile_phone"
+        ]
+      },
+      {
+        "topic": "admission_requirements",
+        "display_name": "Admission Requirements",
+        "subtopics": [
+          "freshman_admission_requirements",
+          "transferee_admission_requirements",
+          "second_courser_requirements",
+          "second_courser_cat_application",
+          "gpat_admission_requirements",
+          "masters_degree_admission_requirements",
+          "law_admission_requirements",
+          "als_graduate_buksu_cat_application"
+        ]
+      },
+      {
+        "topic": "admission_contacts",
+        "display_name": "Admission Contacts",
+        "subtopics": [
+          "buksu_admission_contact",
+          "admission_contact_help",
+          "contact_atu",
+          "contact_registrar",
+          "contact_scholarship_unit",
+          "buksu_admission_facebook_page",
+          "all_office_schedule"
+        ]
+      },
+      {
+        "topic": "program_qualification_scores",
+        "display_name": "Program Qualification Scores",
+        "subtopics": [
+          "program_cutoff_scores",
+          "cat_requirement_nursing_program",
+          "cat_requirement_education_program",
+          "Cat_score_for_nonboard",
+          "exam_location_vs_campus",
+          "non_board_cutoff_score",
+          "board_course_cutoff_score"
+        ]
+      },
+      {
+        "topic": "board_exam_information",
+        "display_name": "Board Exam Information",
+        "subtopics": [
+          "board_exam_review",
+          "licensure_examination",
+          "mock_board_exam"
+        ]
+      },
+      {
+        "topic": "admission_accounts_and_documents",
+        "display_name": "Admission Accounts And Documents",
+        "subtopics": [
+          "Change_info_admission",
+          "Change_Pass_admission",
+          "admission_portal_login",
+          "admission_account_registration",
+          "Find_Institutional_Account",
+          "Find_Sias_Account",
+          "sias_login_process",
+          "sias_forgot_password",
+          "letter_of_intent_meaning",
+          "certificate_submission_copy",
+          "where_get_cor"
+        ]
+      },
+      {
+        "topic": "affirmative_action_program_admission",
+        "display_name": "Affirmative Action Program",
+        "subtopics": [
+          "affirmative_action",
+          "non_passer_enrollment_affirmative_action"
+        ]
+      }
+    ]
+  },
+  "Classroom_policy.json": {
+    "intent": "ask_classroom_policy",
+    "category": "Classroom policies",
+    "topics": [
+      {
+        "topic": "classroom_policies",
+        "display_name": "Classroom Policies",
+        "subtopics": [
+          "phone_use_in_class",
+          "class_concerns",
+          "eating_in_classroom",
+          "submit_assignments_online",
+          "class_schedule_help",
+          "check_class_schedule",
+          "change_class_schedule",
+          "change_section_schedule_conflict"
+        ]
+      }
+    ]
+  },
+  "Clinic_info.json": {
+    "intent": "ask_clinic_info",
+    "category": "Clinic Services Info Form",
+    "topics": [
+      {
+        "topic": "university_clinic",
+        "display_name": "University Clinic",
+        "subtopics": [
+          "medic_clinic",
+          "med_mission",
+          "med_vision",
+          "buksu_medical_dental_services"
+        ]
+      },
+      {
+        "topic": "medical_certificate",
+        "display_name": "Medical Certificate",
+        "subtopics": [
+          "process",
+          "payment",
+          "duration"
+        ]
+      },
+      {
+        "topic": "dental_services",
+        "display_name": "Dental Services",
+        "subtopics": [
+          "dental_clinic_direct_ask",
+          "dental_services_menu",
+          "request_dental_consult",
+          "requirement_for_dental_consultation",
+          "request_dental_oral_examination",
+          "dental_oral_examination_requirement",
+          "request_tooth_extraction",
+          "request_referral_dispensing_medicine"
+        ]
+      }
+    ]
+  },
+  "Courses_info.json": {
+    "intent": "ask_courses_info",
+    "category": "Courses Info Form",
+    "topics": [
+      {
+        "topic": "bsit",
+        "display_name": "BSIT",
+        "subtopics": [
+          "buksu_IT",
+          "buksu_bsit_program"
+        ]
+      },
+      {
+        "topic": "bsft",
+        "display_name": "Bsft",
+        "subtopics": [
+          "buksu_FT",
+          "buksu_BSFT_program"
+        ]
+      },
+      {
+        "topic": "bset",
+        "display_name": "BSET",
+        "subtopics": [
+          "buksu_ET",
+          "buksu_BSET_program"
+        ]
+      },
+      {
+        "topic": "bsemc_dat",
+        "display_name": "Bsemc Dat",
+        "subtopics": [
+          "buksu_EMC",
+          "buksu_BSEMC-DAT_program"
+        ]
+      },
+      {
+        "topic": "bs_bio",
+        "display_name": "Bs Bio",
+        "subtopics": [
+          "buksu_BS-BIO",
+          "buksu_BS-BIO_program"
+        ]
+      },
+      {
+        "topic": "ab_socsci",
+        "display_name": "Ab Socsci",
+        "subtopics": [
+          "buksu_AB_SocSci",
+          "buksu_AB SocSci_program"
+        ]
+      },
+      {
+        "topic": "bsed_fil",
+        "display_name": "Bsed Fil",
+        "subtopics": [
+          "buksu_BSED_FIL",
+          "buksu_BSED-FIL_program"
+        ]
+      },
+      {
+        "topic": "bsed_math",
+        "display_name": "Bsed Math",
+        "subtopics": [
+          "buksu_BSED_MATH",
+          "buksu_BSED-MATH_program"
+        ]
+      },
+      {
+        "topic": "beed",
+        "display_name": "Beed",
+        "subtopics": [
+          "buksu_BEED_program"
+        ]
+      },
+      {
+        "topic": "bsn",
+        "display_name": "Bsn",
+        "subtopics": [
+          "buksu_BSN",
+          "buksu_BSN_program"
+        ]
+      },
+      {
+        "topic": "ab_philo",
+        "display_name": "Ab Philo",
+        "subtopics": [
+          "buksu_AB_PHILO",
+          "buksu_AB-PHILO_program"
+        ]
+      },
+      {
+        "topic": "bs_es",
+        "display_name": "Bs Es",
+        "subtopics": [
+          "buksu_BS_ES",
+          "buksu_BS-ES_program"
+        ]
+      },
+      {
+        "topic": "ab_socio",
+        "display_name": "Ab Socio",
+        "subtopics": [
+          "buksu_AB_SOCIO",
+          "buksu_AB-SOCIO_program"
+        ]
+      },
+      {
+        "topic": "ab_eng",
+        "display_name": "Ab Eng",
+        "subtopics": [
+          "buksu_AB_ENG",
+          "buksu_AB-ENG_program"
+        ]
+      },
+      {
+        "topic": "bped",
+        "display_name": "Bped",
+        "subtopics": [
+          "buksu_BPED",
+          "buksu_BPED_program"
+        ]
+      },
+      {
+        "topic": "bs_comdev",
+        "display_name": "Bs Comdev",
+        "subtopics": [
+          "buksu_BS_COMDEV",
+          "buksu_BS COMDEV_program"
+        ]
+      },
+      {
+        "topic": "ab_econ",
+        "display_name": "Ab Econ",
+        "subtopics": [
+          "buksu_AB_ECON",
+          "buksu_AB-ECON_program"
+        ]
+      },
+      {
+        "topic": "beced",
+        "display_name": "Beced",
+        "subtopics": [
+          "buksu_BECED",
+          "buksu_BECED_program"
+        ]
+      },
+      {
+        "topic": "bsdc",
+        "display_name": "Bsdc",
+        "subtopics": [
+          "buksu_BSDC",
+          "buksu_BSDC_program"
+        ]
+      },
+      {
+        "topic": "bshm",
+        "display_name": "Bshm",
+        "subtopics": [
+          "buksu_BSHM",
+          "buksu_BSHM_program"
+        ]
+      },
+      {
+        "topic": "bsat",
+        "display_name": "BSAT",
+        "subtopics": [
+          "buksu_BSAT",
+          "buksu_BSAT_program"
+        ]
+      },
+      {
+        "topic": "bpa",
+        "display_name": "Bpa",
+        "subtopics": [
+          "buksu_BPA",
+          "buksu_BPA_program"
+        ]
+      },
+      {
+        "topic": "bs_math",
+        "display_name": "Bs Math",
+        "subtopics": [
+          "buksu_BS_MATH",
+          "buksu_BS-MATH_program"
+        ]
+      },
+      {
+        "topic": "bsa",
+        "display_name": "BSA",
+        "subtopics": [
+          "buksu_BSA",
+          "buksu_BSA_program"
+        ]
+      },
+      {
+        "topic": "bsba_fm",
+        "display_name": "Bsba Fm",
+        "subtopics": [
+          "buksu_BSBA_FM",
+          "buksu_BSBA-FM_program"
+        ]
+      },
+      {
+        "topic": "bsed_eng",
+        "display_name": "Bsed Eng",
+        "subtopics": [
+          "buksu_BSED_ENG",
+          "buksu_BSED-ENG_program"
+        ]
+      },
+      {
+        "topic": "bsed_sci",
+        "display_name": "Bsed Sci",
+        "subtopics": [
+          "buksu_BSED_SCI",
+          "buksu_BSED-SCI_program"
+        ]
+      },
+      {
+        "topic": "bsed_socstud",
+        "display_name": "Bsed Socstud",
+        "subtopics": [
+          "buksu_BSED_SOCSTUD",
+          "buksu_BSED-SOCSTUD_program"
+        ]
+      },
+      {
+        "topic": "mpa",
+        "display_name": "Mpa",
+        "subtopics": [
+          "buksu_mpa_program"
+        ]
+      },
+      {
+        "topic": "course_catalog",
+        "display_name": "Course Catalog",
+        "subtopics": [
+          "buksu_courses_offered",
+          "buksu_non_board_courses",
+          "buksu_board_courses",
+          "buksu_masters_courses",
+          "meaning_of_nonboard_course",
+          "meaning_of_board_course",
+          "evening_classes_working_students"
+        ]
+      },
+      {
+        "topic": "general_curriculum_subjects",
+        "display_name": "General Curriculum Subjects",
+        "subtopics": [
+          "about_nstp",
+          "about_pe",
+          "minor_subject",
+          "prerequisite_subjects_purpose",
+          "rotc_meaning"
+        ]
+      },
+      {
+        "topic": "course_shifting_and_training",
+        "display_name": "Course Shifting And Training",
+        "subtopics": [
+          "course_shifting",
+          "course_shifting_later_years",
+          "internship_requirement",
+          "on_the_job_training",
+          "program_shifting_policy",
+          "shift_to_another_course_next_school_year"
+        ]
+      },
+      {
+        "topic": "course_slots",
+        "display_name": "Course Slots",
+        "subtopics": []
+      }
+    ]
+  },
+  "Departamentals_facultystaff.json": {
+    "intent": "departments_faculty_staff",
+    "category": "Department staff",
+    "topics": [
+      {
+        "topic": "college_deans",
+        "display_name": "College Deans",
+        "subtopics": [
+          "Dean_0f_COT",
+          "Dean_0f_COB",
+          "Dean_0f_CAS",
+          "Dean_0f_CPAG",
+          "Dean_0f_CON",
+          "Dean_0f_COE",
+          "Dean_0f_LAW"
+        ]
+      },
+      {
+        "topic": "department_heads",
+        "display_name": "Department Heads",
+        "subtopics": [
+          "Head_of_BSIT",
+          "Head_of_COT",
+          "Head_of_COB",
+          "Head_of_CAS",
+          "Head_of_CPAG",
+          "Head_of_CON",
+          "Head_of_COE",
+          "Head_of_LAW"
+        ]
+      }
+    ]
+  },
+  "Department_info.json": {
+    "intent": "ask_department_info",
+    "category": "Department Related Info",
+    "topics": [
+      {
+        "topic": "academic_colleges",
+        "display_name": "Academic Colleges",
+        "subtopics": [
+          "buksu_academic_colleges"
+        ]
+      },
+      {
+        "topic": "college_cas",
+        "display_name": "College CAS",
+        "subtopics": [
+          "course_offer_CAS"
+        ]
+      },
+      {
+        "topic": "college_cob",
+        "display_name": "College COB",
+        "subtopics": [
+          "course_offer_COB"
+        ]
+      },
+      {
+        "topic": "college_cot",
+        "display_name": "College COT",
+        "subtopics": [
+          "course_offer_COT"
+        ]
+      },
+      {
+        "topic": "college_con",
+        "display_name": "College CON",
+        "subtopics": [
+          "course_offer_CON"
+        ]
+      },
+      {
+        "topic": "college_coe",
+        "display_name": "College COE",
+        "subtopics": [
+          "course_offer_COE"
+        ]
+      },
+      {
+        "topic": "college_law",
+        "display_name": "College Law",
+        "subtopics": [
+          "course_offer_LAW"
+        ]
+      },
+      {
+        "topic": "college_coa_cpag",
+        "display_name": "College COA CPAG",
+        "subtopics": [
+          "course_offer_COA"
+        ]
+      }
+    ]
+  },
+  "Dormitory_info.json": {
+    "intent": "ask_dormitory_info",
+    "category": "Dormitory Information",
+    "topics": [
+      {
+        "topic": "campus_dormitories",
+        "display_name": "Campus Dormitories Topic Group",
+        "subtopics": [
+          "campus_dormitories",
+          "number_of_dormitories",
+          "dormitory_pros_cons",
+          "buksu_dormitory_information",
+          "male_dorm",
+          "female_dorm"
+        ]
+      }
+    ]
+  },
+  "Enrollment_info.json": {
+    "intent": "ask_enrollment_info",
+    "category": "Enrollment Info Form",
+    "topics": [
+      {
+        "topic": "enrollment_process",
+        "display_name": "Enrollment",
+        "subtopics": [
+          "enrollment_general_process",
+          "enrollment_time_schedule",
+          "school_year_class_start_schedule",
+          "freshman_enrollment_process",
+          "online_enrollment_steps",
+          "returning_students_scope_notice",
+          "mixed_enrollment_process",
+          "late_enrollment",
+          "enrollment_application_approval",
+          "enrollment_validation_payment",
+          "graduate_law_enrollment_requirements",
+          "medicine_enrollment_requirements",
+          "con_nursing_enrollment_guidance",
+          "con_nursing_immunization_record",
+          "con_nursing_medical_requirements",
+          "con_nursing_requirements_submission"
+        ]
+      },
+      {
+        "topic": "enrollment_requirements",
+        "display_name": "Enrollment Requirements",
+        "subtopics": [
+          "enrollment_documents"
+        ]
+      },
+      {
+        "topic": "enrollment_fees",
+        "display_name": "Enrollment Fees",
+        "subtopics": [
+          "student_fees",
+          "paying_student_definition",
+          "non_paying_student_definition",
+          "paying_and_non_paying_students"
+        ]
+      },
+      {
+        "topic": "sias_access",
+        "display_name": "SIAS Access",
+        "subtopics": [
+          "access_sias"
+        ]
+      },
+      {
+        "topic": "transfer_and_enrollment_policy",
+        "display_name": "Transfer And Enrollment Policy",
+        "subtopics": [
+          "transferee_enrollment",
+          "campus_transfer",
+          "double_enrollment_policy"
+        ]
+      }
+    ]
+  },
+  "Facilities_info.json": {
+    "intent": "ask_facility_availability",
+    "category": "Facilities Info",
+    "topics": [
+      {
+        "topic": "library_facility_availability",
+        "display_name": "Library Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "museum_facility_availability",
+        "display_name": "Museum Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "clinic_facility_availability",
+        "display_name": "Clinic Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "dental_clinic_facility_availability",
+        "display_name": "Dental Clinic Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "gym_facility_availability",
+        "display_name": "Gym Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "cafeteria_facility_availability",
+        "display_name": "Cafeteria And Canteen Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "atm_facility_availability",
+        "display_name": "ATM Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "parking_facility_availability",
+        "display_name": "Parking Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "dormitory_facility_availability",
+        "display_name": "Dormitory Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "oval_facility_availability",
+        "display_name": "Oval Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "auditorium_facility_availability",
+        "display_name": "Auditorium Facility Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "guidance_office_facility_availability",
+        "display_name": "Guidance Office Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "registrar_office_facility_availability",
+        "display_name": "Registrar Office Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "finance_cashier_facility_availability",
+        "display_name": "Finance And Cashier Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "ict_office_facility_availability",
+        "display_name": "ICT Office Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "admission_office_facility_availability",
+        "display_name": "Admission Office Availability",
+        "subtopics": []
+      },
+      {
+        "topic": "guard_house_facility_availability",
+        "display_name": "Guard House Availability",
+        "subtopics": []
+      }
+    ]
+  },
+  "Ict_info.json": {
+    "intent": "ask_ict_info",
+    "category": "ICT Services Form",
+    "topics": [
+      {
+        "topic": "ict_services",
+        "display_name": "ICT Services",
+        "subtopics": [
+          "about_ict",
+          "get_wifi_access",
+          "ict_mission",
+          "institutional_email_account"
+        ]
+      }
+    ]
+  },
+  "Library_info.json": {
+    "intent": "ask_library_info",
+    "category": "Library Services",
+    "topics": [
+      {
+        "topic": "library_id_card",
+        "display_name": "Library ID Card",
+        "subtopics": [
+          "location",
+          "requirements",
+          "payment",
+          "replacement"
+        ]
+      },
+      {
+        "topic": "library_borrowing",
+        "display_name": "Library Borrowing",
+        "subtopics": [
+          "policy",
+          "process",
+          "return_process",
+          "late_return_penalty",
+          "availability",
+          "access_resources"
+        ]
+      },
+      {
+        "topic": "library_hours",
+        "display_name": "Library Hours Topic Group",
+        "subtopics": [
+          "schedule"
+        ]
+      }
+    ]
+  },
+  "Oss_services.json": {
+    "intent": "ask_oss_services",
+    "category": "OSS Services",
+    "topics": [
+      {
+        "topic": "student_id",
+        "display_name": "Student ID",
+        "subtopics": [
+          "process",
+          "requirements",
+          "payment",
+          "replacement",
+          "campus_entry_without_student_id",
+          "id_validation_process",
+          "id_validation_day"
+        ]
+      },
+      {
+        "topic": "pe_uniform",
+        "display_name": "PE Uniform",
+        "subtopics": [
+          "process",
+          "old_uniform_policy"
+        ]
+      },
+      {
+        "topic": "good_moral_certificate",
+        "display_name": "Good Moral Certificate",
+        "subtopics": [
+          "process",
+          "payment"
+        ]
+      },
+      {
+        "topic": "student_organizations",
+        "display_name": "Student Organizations",
+        "subtopics": [
+          "active_student_organizations_guidance"
+        ]
+      }
+    ]
+  },
+  "University_info.json": {
+    "intent": "ask_university_info",
+    "category": "University Info Form",
+    "topics": [
+      {
+        "topic": "university_profile",
+        "display_name": "University Profile",
+        "subtopics": [
+          "about_buksu",
+          "meaning_of_buksu",
+          "meaning_of_tba",
+          "bukus_location",
+          "buksu_contact_number",
+          "buksu_university_calendar",
+          "buksu_foundation_day",
+          "campus_weekend_visitors",
+          "Buksu_worth_it",
+          "buksu_study_place",
+          "Campus_tour"
+        ]
+      },
+      {
+        "topic": "university_identity",
+        "display_name": "University Identity",
+        "subtopics": [
+          "buksu_mission",
+          "buksu_vision",
+          "buksu_core_values",
+          "buksu_seal_significance",
+          "buksu_hymn_lyrics",
+          "Whats_buksu_gazette"
+        ]
+      },
+      {
+        "topic": "university_history",
+        "display_name": "University History",
+        "subtopics": [
+          "buksu_history_background",
+          "founding",
+          "buksu_become_university",
+          "Pres_thetime_university",
+          "Buksu_age",
+          "buksu_presidents_list"
+        ]
+      },
+      {
+        "topic": "university_ranking",
+        "display_name": "University Ranking",
+        "subtopics": [
+          "current_rank"
+        ]
+      },
+      {
+        "topic": "university_leadership",
+        "display_name": "University Leadership",
+        "subtopics": [
+          "buksu_president"
+        ]
+      },
+      {
+        "topic": "student_handbook",
+        "display_name": "Student Handbook",
+        "subtopics": [
+          "student_handbook_access"
+        ]
+      },
+      {
+        "topic": "gate_pass_policy",
+        "display_name": "Gate Pass Policy",
+        "subtopics": [
+          "general_gate_pass",
+          "bike_gate_pass"
+        ]
+      }
+    ]
+  }
+}

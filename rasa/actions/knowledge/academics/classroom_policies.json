@@ -1,0 +1,474 @@
+{
+  "intent": "ask_classroom_policies",
+  "category": "Classroom Policies & Conduct",
+  "entities": [
+    "topic"
+  ],
+  "topics": [
+    {
+      "topic": "classroom_policies",
+      "subject_key": "classroom_policies",
+      "subject_type": "policy",
+      "subject_terms": [
+        "classroom policy",
+        "class rules",
+        "phone in class",
+        "eating in classroom",
+        "class concerns",
+        "online assignments"
+      ],
+      "subtopics": [
+        {
+          "topic": "phone_use_in_class",
+          "responses": {
+            "en": [
+              "The use of mobile phones during class is strictly prohibited, especially when the instructor is leading a discussion, but use during activities and other curricular activities will depend on the classroom rules set by the instructor."
+            ],
+            "ceb": [
+              "Bawal gyud kaayo ang paggamit og cellphone samtang nagklase, labi na kung nag-discuss ang maestro/maestra, pero kung gamiton sa activities ug uban pang curricular activities, magdepende na na sa classroom rules nga gipahimutang sa maestro/maestra."
+            ]
+          },
+          "intent": "phone_use_in_class",
+          "context_topic": "policy",
+          "metadata": {
+            "phrases": [
+              "can i use phone in class",
+              "phone use in class",
+              "pwede ba mag gamit ug cellphone sa klase",
+              "unsa ang rules sa pag gamit sa phone",
+              "allowed ba mag cp sulod sa classroom",
+              "bawal ba ang mobile phone during class",
+              "is gadget allowed inside the room",
+              "pwede ba mag cellphone sa klase",
+              "pwede ba mag cp sa klase",
+              "pwede ba gamiton ang phone sulod sa klase",
+              "is phone allowed in class",
+              "cellphone in classroom allowed",
+              "mobile phone during class",
+              "can students use cellphone during lecture",
+              "phone use policy in classroom",
+              "allowed ba cellphone sa class",
+              "pwede phone sa classroom",
+              "can i use my cp in class",
+              "using phone while teacher is discussing",
+              "phone during class rules",
+              "gadget use in class",
+              "is mobile allowed inside classroom"
+            ]
+          },
+          "subject_key": "classroom_phone_policy",
+          "subject_type": "policy",
+          "subject_terms": [
+            "phone in class",
+            "mobile phone in class",
+            "cellphone in class"
+          ],
+          "display_name": "Phone Use In Class"
+        },
+        {
+          "topic": "class_concerns",
+          "responses": {
+            "en": [
+              "For class-related concerns, you should talk to your instructor first."
+            ],
+            "ceb": [
+              "Para sa mga concern sa klase, makigstorya una sa imong instructor."
+            ]
+          },
+          "intent": "class_concerns",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "class concerns",
+              "who to talk to about class concerns",
+              "unsaon pag address sa problema sa klase",
+              "asa muduol kung naay problema sa teacher",
+              "naa koy issue sa akong grado",
+              "what to do if naay concern sa subject",
+              "class concern",
+              "who to ask for class concern",
+              "problem with my class",
+              "issue with instructor",
+              "class related concern",
+              "concern about subject class",
+              "unsaon kung naay concern sa class",
+              "kinsa duolon sa class concern",
+              "what to do for class concerns",
+              "instructor concern",
+              "teacher concern in class",
+              "where to report class issue",
+              "class problem guidance"
+            ]
+          },
+          "subject_key": "class_concerns",
+          "subject_type": "policy",
+          "subject_terms": [
+            "class concerns",
+            "class concern",
+            "instructor concern"
+          ],
+          "display_name": "Class Concerns"
+        },
+        {
+          "topic": "eating_in_classroom",
+          "responses": {
+            "en": [
+              "Eating inside classrooms depends on the rules set by the instructor."
+            ],
+            "ceb": [
+              "Ang pagkaon sulod sa classroom depende sa rules sa instructor."
+            ]
+          },
+          "intent": "eating_in_classroom",
+          "context_topic": "policy",
+          "metadata": {
+            "phrases": [
+              "can i eat in classroom",
+              "eating in classroom",
+              "pwede ba mokaon sulod sa klase",
+              "okay ra ba magdala og pagkaon sa room",
+              "bawal ba mokaon sa sulod",
+              "is eating snacks allowed inside the classroom",
+              "are we allowed to eat while having class",
+              "pwede ba mokaon sa classroom",
+              "pwede ba mukaon sulod sa klase",
+              "pwede ba magkaon sulod sa classroom",
+              "is eating allowed in class",
+              "food in class allowed",
+              "can students bring food in classroom",
+              "snacks during class",
+              "eating inside classroom rules",
+              "pwede mokaon sa classroom",
+              "pwede ba food sa class",
+              "kaon sa klase allowed ba",
+              "can i drink in class",
+              "food and drinks in classroom",
+              "snack while in class",
+              "eating policy in classroom"
+            ]
+          },
+          "subject_key": "classroom_food_policy",
+          "subject_type": "policy",
+          "subject_terms": [
+            "eating in classroom",
+            "eat in classroom",
+            "food in class"
+          ],
+          "display_name": "Eating In Classroom"
+        },
+        {
+          "topic": "submit_assignments_online",
+          "responses": {
+            "en": [
+              "Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:",
+              "<b>1</b>. Open the specific subject with the pending assignment.",
+              "",
+              "<b>2</b>. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'",
+              "",
+              "<b>3</b>. Select the assignment, attach your file, and click 'Turn in.",
+              "",
+              "<b>4</b>. Once the status changes to 'Turned in,' your submission is complete."
+            ],
+            "ceb": [
+              "Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:",
+              "<b>1</b>. Ablihi ang specific nga subject nga naay pending nga assignment.",
+              "",
+              "<b>2</b>. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.",
+              "",
+              "<b>3</b>. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.",
+              "",
+              "<b>4</b>. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission."
+            ]
+          },
+          "intent": "submit_assignments_online",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "submit assignments online",
+              "can i submit assignments online",
+              "unsaon pag pasa sa assignment sa google classroom",
+              "asa dapit i turn in ang assignment",
+              "unsaon pag upload sa file para sa activity",
+              "steps para mag pasa sa email or gclass",
+              "how do i submit my homework online",
+              "how to pass assignment online",
+              "unsaon pag submit sa assignment",
+              "unsaon pagpasa sa homework",
+              "how to submit assignment online",
+              "google classroom assignment",
+              "where to pass online assignment",
+              "turn in assignment google classroom",
+              "online assignment submission",
+              "unsaon pagpasa assignment online",
+              "ipasa assignment sa google classroom",
+              "pasa homework online",
+              "assignment submission rules",
+              "how to turn in homework",
+              "submit activity online",
+              "can i submit assignments through google classroom"
+            ]
+          },
+          "subject_key": "online_assignment_submission",
+          "subject_type": "policy",
+          "subject_terms": [
+            "submit assignments online",
+            "google classroom assignment",
+            "online assignment"
+          ],
+          "display_name": "Submit Assignments Online"
+        },
+        {
+          "topic": "class_schedule_help",
+          "intent": "class_schedule_help",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "For checking your class schedule, you can view it on your Certificate of Registration (COR). Download your COR from the BukSU admission website if it is already available in your account.",
+              "For changing or adjusting your class schedule, ask the faculty staff in your department faculty office so they can guide you on possible schedule adjustments."
+            ],
+            "ceb": [
+              "Para ma-check ang imong class schedule, makita nimo kini sa imong Certificate of Registration (COR). I-download ang imong COR sa BukSU admission website kung available na kini sa imong account.",
+              "Para sa pag-change o pag-adjust sa imong class schedule, pangutana sa faculty staff sa inyong department faculty office aron matabangan ka sa possible schedule adjustment."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how do i check or change my class schedule",
+              "check class schedule",
+              "change class schedule",
+              "adjust class schedule",
+              "where to check my class schedule",
+              "how to change my schedule",
+              "class schedule concern",
+              "class schedule help",
+              "schedule concern",
+              "problem with class schedule",
+              "help with my schedule",
+              "my cor schedule has issue",
+              "schedule adjustment help",
+              "unsaon kung naay conflict sa schedule",
+              "class schedule conflict help",
+              "who can help with schedule",
+              "schedule in cor problem",
+              "class schedule guide",
+              "i have concern with my class schedule"
+            ]
+          },
+          "choiceGroups": [
+            {
+              "title": "Class schedule help",
+              "items": [
+                {
+                  "label": "How to get COR",
+                  "payload": "how to get COR"
+                },
+                {
+                  "label": "COT Faculty Room",
+                  "payload": "where is COT Faculty Room"
+                },
+                {
+                  "label": "COB Faculty Room",
+                  "payload": "where is COB Faculty Room"
+                },
+                {
+                  "label": "CAS Dean's Office",
+                  "payload": "where is CAS Deans Office"
+                },
+                {
+                  "label": "CPAG Faculty Room",
+                  "payload": "where is CPAG Faculty Room"
+                },
+                {
+                  "label": "BSN Faculty Room",
+                  "payload": "where is BSN Faculty Room"
+                }
+              ]
+            }
+          ],
+          "subject_key": "class_schedule_help",
+          "subject_type": "academic_process",
+          "subject_terms": [
+            "class schedule",
+            "schedule adjustment",
+            "change schedule",
+            "check schedule",
+            "cor schedule"
+          ],
+          "display_name": "Class Schedule Check And Change"
+        },
+        {
+          "topic": "check_class_schedule",
+          "intent": "check_class_schedule",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "You can check your class schedule on your Certificate of Registration (COR). Download your COR from the BukSU admission website if it is already available in your account."
+            ],
+            "ceb": [
+              "Makita nimo ang imong class schedule sa imong Certificate of Registration (COR). I-download ang imong COR sa BukSU admission website kung available na kini sa imong account."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "check class schedule",
+              "where to check class schedule",
+              "where can i see my schedule",
+              "how to check class schedule",
+              "check my class schedule",
+              "view class schedule",
+              "where is my schedule in cor",
+              "how to know my class schedule",
+              "tan aw schedule sa klase",
+              "asa makita akong schedule",
+              "check schedule in cor",
+              "where to find subject schedule",
+              "how to view schedule of classes"
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "How to get COR",
+              "payload": "how to get COR"
+            }
+          ],
+          "subject_key": "class_schedule_help",
+          "subject_type": "academic_process",
+          "subject_terms": [
+            "class schedule",
+            "check schedule",
+            "cor schedule"
+          ],
+          "display_name": "Check Class Schedule"
+        },
+        {
+          "topic": "change_class_schedule",
+          "intent": "change_class_schedule",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "If you have a concern about your class schedule, ask the faculty staff in your department faculty office so they can guide you on possible schedule adjustments."
+            ],
+            "ceb": [
+              "Kung naa kay concern sa imong class schedule, pangutana sa faculty staff sa inyong department faculty office aron matabangan ka sa possible schedule adjustment."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "change class schedule",
+              "adjust class schedule",
+              "how to change my schedule",
+              "how to change class schedule",
+              "can i adjust my schedule",
+              "change my class schedule",
+              "schedule adjustment process",
+              "who can change my class schedule",
+              "can i transfer schedule",
+              "unsaon pag change schedule",
+              "balhin schedule sa klase",
+              "adjust class schedule concern",
+              "class schedule change process",
+              "can i request schedule adjustment"
+            ]
+          },
+          "choiceGroups": [
+            {
+              "title": "Faculty offices",
+              "items": [
+                {
+                  "label": "COT Faculty Room",
+                  "payload": "where is COT Faculty Room"
+                },
+                {
+                  "label": "COB Faculty Room",
+                  "payload": "where is COB Faculty Room"
+                },
+                {
+                  "label": "CPAG Faculty Room",
+                  "payload": "where is CPAG Faculty Room"
+                },
+                {
+                  "label": "BSN Faculty Room",
+                  "payload": "where is BSN Faculty Room"
+                },
+                {
+                  "label": "PE Faculty Room",
+                  "payload": "where is PE Faculty Room"
+                }
+              ]
+            }
+          ],
+          "subject_key": "class_schedule_help",
+          "subject_type": "academic_process",
+          "subject_terms": [
+            "change schedule",
+            "adjust schedule",
+            "class schedule concern"
+          ],
+          "display_name": "Change Class Schedule"
+        },
+        {
+          "topic": "change_section_schedule_conflict",
+          "intent": "change_section_schedule_conflict",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "You can only request a section change during the enrollment period, so make sure to check your schedule right after enrollment and report any unwanted schedule conflict as early as possible.",
+              "For schedule conflict or section change concerns, directly ask the faculty staff or enrollment officer handling your year level enrollment.",
+              "Any requirements for transferring to another section will be discussed by your enrollment officer, so make sure to ask them for the exact process."
+            ],
+            "ceb": [
+              "Pwede ra ka mangayo og section change during enrollment period, busa siguroa nga ma-check nimo dayon ang imong schedule human sa enrollment ug i-report dayon kung naay unwanted schedule conflict.",
+              "Para sa schedule conflict o section change concern, pangutana diretso sa faculty staff o enrollment officer nga nag-handle sa enrollment sa imong year level.",
+              "Ang bisan unsang requirements para sa pagbalhin og section i-discuss sa imong enrollment officer, busa pangutana gyud nila para sa eksaktong proseso."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how do i change my section if my schedule conflicts",
+              "how do i change my section",
+              "change section",
+              "change my section",
+              "section change",
+              "section transfer",
+              "transfer section",
+              "change section because schedule conflict",
+              "change section due to schedule conflict",
+              "my schedule has conflict can i change section",
+              "can i transfer to another section because of schedule conflict",
+              "how to change section during enrollment",
+              "who should i ask to change my section",
+              "schedule conflict section change",
+              "class schedule conflict section",
+              "conflict akong schedule pwede ko change section",
+              "unsaon pag change section",
+              "pwede ba ko mag change section",
+              "pwede ko balhin section tungod conflict schedule",
+              "section change schedule conflict",
+              "transfer section because of conflict",
+              "my schedule conflicts can i change section",
+              "can i move to another section",
+              "balhin section tungod conflict",
+              "schedule conflict section transfer",
+              "who handles section change",
+              "section conflict during enrollment",
+              "can freshman change section if conflict",
+              "change section enrollment period"
+            ]
+          },
+          "subject_key": "section_change_schedule_conflict",
+          "subject_type": "academic_process",
+          "subject_terms": [
+            "change section",
+            "section change",
+            "section transfer",
+            "transfer section",
+            "schedule conflict",
+            "class schedule conflict"
+          ],
+          "display_name": "Change Section Due To Schedule Conflict"
+        }
+      ],
+      "display_name": "Classroom Policies"
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "intent": "ask_admission_directory",
+  "category": "Admission Office & Contacts",
+  "entities": [
+    "topic"
+  ],
+  "topics": [
+    {
+      "topic": "admission_contacts",
+      "subject_key": "admission_contacts",
+      "subject_type": "office",
+      "subject_terms": [
+        "admission contact",
+        "atu",
+        "admission and testing unit",
+        "registrar contact",
+        "scholarship unit",
+        "admission facebook"
+      ],
+      "subtopics": [
+        {
+          "topic": "buksu_admission_contact",
+          "responses": {
+            "en": [
+              "You can contact the Admission and Testing Unit through their official Facebook page BukSU Admission and Testing Unit or visit their office at the CPAG building.",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUATU.<div>📱 Contact Number: 0968 568 1435.</div><div>✉️ Email: admissionandtesting@buksu.edu.ph</div>"
+            ],
+            "ceb": [
+              "Mahimo nimong makontak ang Admission and Testing Unit pinaagi sa ilang Facebook page BukSU Admission and Testing Unit o bisitaha ang ilang opisina sa CPAG building.",
+              "<span style=\"color: rgb(15, 23, 41);\">🖥️ Facebook Page: https://www.facebook.com/BukSUATU.</span><div style=\"border-color: rgb(226, 232, 240); color: rgb(15, 23, 41);\">📱 Contact Number: 0968 568 1435.</div><div style=\"border-color: rgb(226, 232, 240); color: rgb(15, 23, 41);\">✉️ Email: admissionandtesting@buksu.edu.ph</div>"
+            ]
+          },
+          "images": [
+            "/api/images/f2f0ba16-bf56-44ef-a172-779cee5d92cc"
+          ],
+          "map": {
+            "lat": 500,
+            "lng": 500
+          },
+          "pins": [
+            {
+              "name": "Start From Here",
+              "lat": 892,
+              "lng": 634
+            },
+            {
+              "name": "Admission Testing Unit",
+              "lat": 654,
+              "lng": 496
+            }
+          ],
+          "routes": [
+            {
+              "name": "Start From Here to Admission Testing Unit",
+              "points": [
+                [
+                  892,
+                  634
+                ],
+                [
+                  782,
+                  634
+                ],
+                [
+                  780,
+                  578
+                ],
+                [
+                  685,
+                  581
+                ],
+                [
+                  679,
+                  519
+                ],
+                [
+                  656,
+                  518
+                ],
+                [
+                  654,
+                  496
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            }
+          ],
+          "intent": "buksu_admission_contact",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "buksu admission contact",
+              "unsaon nako pag contact sa admission unit",
+              "contact sa admission unit",
+              "Admission and testing unit contacts"
+            ]
+          },
+          "display_name": "BukSU Admission Contact"
+        },
+        {
+          "topic": "admission_contact_help",
+          "responses": {
+            "en": [
+              "You can contact the official Bukidnon State University Admission and Testing Unit for more information about admission.",
+              "It’s better to go in person to their office so they can assist you right away.",
+              "You can also contact them through their Facebook page: https://www.facebook.com/BukSUATU"
+            ],
+            "ceb": [
+              "Pwede nimo kontakon ang opisyal nga Bukidnon State University Admission and Testing Unit para sa dugang impormasyon bahin sa admission.",
+              "Mas maayo nga moadto ka personal sa ilang opisina aron matabangan ka dayon.",
+              "Pwede usab nimo sila kontakon pinaagi sa ilang Facebook page: https://www.facebook.com/BukSUATU"
+            ]
+          },
+          "intent": "admission_contact_help",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "admission contact help",
+              "asa pwede mangayo tabang about admission",
+              "asa dapit ang help desk sa admission",
+              "who can help me with my admission problem",
+              "kinsay ma sturya for admission help"
+            ]
+          },
+          "display_name": "Admission Contact Help"
+        },
+        {
+          "topic": "contact_atu",
+          "responses": {
+            "en": [
+              "How can I contact the BukSU Admission and Testing Unit (ATU)?",
+              "To expedite the response to your query or concern, please contact the appropriate office directly.",
+              "BukSU Admission and Testing Unit (ATU) contact details:",
+              "📱 Contact Number: 0968 568 1435",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUATU",
+              "✉️ Email: admissionandtesting@buksu.edu.ph",
+              "🌐 Website: admissions.buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ],
+            "ceb": [
+              "How can I contact the BukSU Admission and Testing Unit (ATU)?",
+              "To expedite the response to your query or concern, please contact the appropriate office directly.",
+              "BukSU Admission and Testing Unit (ATU) contact details:",
+              "📱 Contact Number: 0968 568 1435",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUATU",
+              "✉️ Email: admissionandtesting@buksu.edu.ph",
+              "🌐 Website: admissions.buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ]
+          },
+          "intent": "contact_atu",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "contact atu",
+              "asa nako ma-check ang status sa akong buksu application",
+              "unsaon nako pag-contact ang buksu admission and testing unit",
+              "unsa ang contact number sa admission and testing unit",
+              "pwede nimo ihatag ang contact details sa atu office",
+              "asa nako ma-contact ang buksu atu para sa admission concerns",
+              "unsa ang facebook page sa buksu admission and testing unit",
+              "unsa ang pinakamaayong paagi sa pag-contact sa buksu admission and testing unit",
+              "how can i contact the buksu admission and testing unit",
+              "what is the contact number of the admission and testing unit",
+              "can you give me the contact details of the atu office",
+              "where can i reach the buksu atu for admission concerns",
+              "unsa contact sa admission testing",
+              "asa pwede mu contact for testing",
+              "how to contact atu",
+              "number sa admission"
+            ]
+          },
+          "display_name": "Contact Atu"
+        },
+        {
+          "topic": "contact_registrar",
+          "responses": {
+            "en": [
+              "Looking to contact the University Registrar Office?",
+              "You can get in touch with them directly using the following contact information:",
+              "Here are the contact details for the University Registrar Office (URO):",
+              "📱 Contact Number: 0975 758 3157",
+              "✉️ Email: registrar@buksu.edu.ph",
+              "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ],
+            "ceb": [
+              "Nangita ba ka og paagi para makontak ang University Registrar Office?",
+              "Pwede nimo sila kontakon diretso gamit ang mosunod nga contact information:",
+              "Ania ang mga detalye sa kontak sa University Registrar Office (URO):",
+              "📱 Contact Number: 0975 758 3157",
+              "✉️ Email: registrar@buksu.edu.ph",
+              "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ]
+          },
+          "intent": "contact_registrar",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "contact registrar",
+              "unsaon nako pag-contact ang buksu registrar office",
+              "unsa ang contact number sa university registrar",
+              "pwede nimo ihatag ang email ug phone number sa registrar office",
+              "asa nako ma-contact ang buksu registrar para sa inquiries",
+              "how can i contact the buksu registrar office",
+              "what is the contact number of the university registrar",
+              "can you give me the email and phone number of the registrar office",
+              "contact details of the buksu university registrar office",
+              "unsa number sa registrar",
+              "asa pwede maka chat sa registrar",
+              "how to contact registrar",
+              "registrar contact info"
+            ]
+          },
+          "display_name": "Contact Registrar"
+        },
+        {
+          "topic": "contact_scholarship_unit",
+          "responses": {
+            "en": [
+              "Need to get in touch with the Scholarships and Financial Grants Unit?",
+              "To ensure a quicker response, please contact the appropriate office directly.",
+              "Here are the contact details for the Scholarships and Financial Grants Unit:",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "✉️ Email: sfgu@buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ],
+            "ceb": [
+              "Need to get in touch with the Scholarships and Financial Grants Unit?",
+              "To ensure a quicker response, please contact the appropriate office directly.",
+              "Here are the contact details for the Scholarships and Financial Grants Unit:",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "✉️ Email: sfgu@buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ]
+          },
+          "intent": "contact_scholarship_unit",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "contact scholarship unit",
+              "unsaon pag contact sa scholarship",
+              "asa mag chat about scholarship",
+              "number sa scholarship office",
+              "scholarship unit contact"
+            ]
+          },
+          "display_name": "Contact Scholarship Unit"
+        },
+        {
+          "topic": "buksu_admission_facebook_page",
+          "responses": {
+            "en": [
+              "For official updates announcements and schedules regarding admissions you can follow the BukSU Admission and Testing Unit Facebook page.",
+              "https://www.facebook.com/BukSUATU"
+            ],
+            "ceb": [
+              "Para sa opisyal nga update pahibalo ug mga schedule bahin sa admissions mahimo nimong i follow ang Facebook page nga BukSU Admission and Testing Unit.",
+              "https://www.facebook.com/BukSUATU"
+            ]
+          },
+          "intent": "buksu_admission_facebook_page",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "buksu admission facebook page",
+              "unsa inyong facebook page for admission",
+              "asa maka kita ug updates sa admission",
+              "what is the fb page of atu",
+              "saan ang facebook sa testing unit"
+            ]
+          },
+          "display_name": "BukSU Admission Facebook Page"
+        },
+        {
+          "topic": "all_office_schedule",
+          "responses": {
+            "en": [
+              "What are the office hours of Bukidnon State University?",
+              "Bukidnon State University offices, including the Registrar’s Office and the Accounting Office, operate only from Monday to Friday.",
+              "Office hours are 8:00 AM to 12:00 NN and 1:00 PM to 5:00 PM.",
+              "They are closed on Saturdays and Sundays.",
+              " ",
+              "Make sure to plan your visits during the official office hours.",
+              "For urgent matters, you can check if services are available online or contact the offices directly.",
+              "📱 Contact Number: 0975 758 3157",
+              "✉️ Email: registrar@buksu.edu.ph",
+              "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ],
+            "ceb": [
+              "Unsa ang oras sa opisina sa Bukidnon State University?",
+              "Ang mga opisina sa Bukidnon State University, lakip na ang Registrar’s Office ug Accounting Office, bukas lang gikan Lunes hangtod Biyernes.",
+              "Ang oras sa opisina kay 8:00 AM hangtod 12:00 NN ug 1:00 PM hangtod 5:00 PM.",
+              "Sirado kini sa Sabado ug Domingo.",
+              " ",
+              "Siguroha nga imong i-plan ang imong pagbisita sa opisyal nga oras sa opisina.",
+              "Para sa mga urgent nga butang, pwede nimo tan-awon kung available ang serbisyo online o kontaka diretso ang opisina.",
+              "📱 Contact Number: 0975 758 3157",
+              "✉️ Email: registrar@buksu.edu.ph",
+              "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ]
+          },
+          "intent": "all_office_schedule",
+          "context_topic": "schedule",
+          "metadata": {
+            "phrases": [
+              "all office schedule",
+              "buksu office hours",
+              "what are the office hours of bukidnon state university",
+              "unsa oras open ang office",
+              "open ba ang registrar sa sabado",
+              "unsa oras manira ang buksu",
+              "what are the office hours",
+              "is the office open on weekends"
+            ]
+          },
+          "display_name": "All Office Schedule"
+        }
+      ],
+      "display_name": "Admission Contacts"
+    }
+  ]
+}

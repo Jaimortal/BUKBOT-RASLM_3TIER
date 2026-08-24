@@ -1,0 +1,94 @@
+{
+  "intent": "ask_oss_services",
+  "category": "Office of Student Services",
+  "entities": [
+    "topic"
+  ],
+  "topics": [
+    {
+      "topic": "student_organizations",
+      "subject_key": "student_organizations",
+      "subject_type": "service",
+      "subject_terms": [
+        "student organizations",
+        "clubs",
+        "student clubs",
+        "sbo",
+        "student body organization"
+      ],
+      "subtopics": [
+        {
+          "topic": "active_student_organizations_guidance",
+          "intent": "active_student_organizations_guidance",
+          "context_topic": "general_info",
+          "responses": {
+            "en": [
+              "I do not have live data for which student clubs or organizations are active right now.",
+              "You may start by joining or asking the Student Body Organization (SBO) of your specific college or department. Visit your college SBO office and ask the staff or officers about the process of joining."
+            ],
+            "ceb": [
+              "Wala koy live data kung unsang student clubs o organizations ang active karon.",
+              "Pwede ka magsugod pinaagi sa pagpangutana o pag-apil sa Student Body Organization (SBO) sa imong specific nga college o department. Adtoa ang inyong college SBO office ug pangutana sa staff o officers bahin sa proseso sa pag-apil."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "active student organizations",
+              "student organizations i can join",
+              "clubs i can join",
+              "active clubs in buksu",
+              "join student organization",
+              "join student organizations process",
+              "student body organization process",
+              "sbo office",
+              "clubs right now",
+              "student organizations",
+              "student clubs",
+              "what clubs can i join",
+              "organizations in buksu",
+              "student body organization",
+              "sbo guidance",
+              "clubs for freshmen",
+              "unsa mga organization sa buksu",
+              "can freshmen join clubs",
+              "list of student organizations"
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "COT SBO Office",
+              "payload": "where is COT SBO Office"
+            },
+            {
+              "label": "COB SBO Office",
+              "payload": "where is COB SBO Office"
+            },
+            {
+              "label": "CAS SBO Office",
+              "payload": "where is CAS SBO Office"
+            },
+            {
+              "label": "CON SBO Office",
+              "payload": "where is CON SBO Office"
+            },
+            {
+              "label": "COA SBO Office",
+              "payload": "where is COA SBO Office"
+            }
+          ],
+          "subject_key": "student_organizations",
+          "subject_type": "service",
+          "subject_terms": [
+            "student organizations",
+            "clubs",
+            "student clubs",
+            "sbo",
+            "student body organization"
+          ],
+          "display_name": "Active Student Organizations Guidance"
+        }
+      ],
+      "display_name": "Student Organizations"
+    }
+  ]
+}

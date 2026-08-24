@@ -1,0 +1,1084 @@
+{
+  "intent": "ask_university_identity",
+  "category": "University Identity & Profile",
+  "entities": [
+    "topic"
+  ],
+  "topics": [
+    {
+      "topic": "university_profile",
+      "subject_key": "university_profile",
+      "subject_type": "institution",
+      "subject_terms": [
+        "buksu",
+        "bukidnon state university",
+        "university",
+        "school",
+        "campus"
+      ],
+      "subtopics": [
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University is a state university located in Malaybalay City, Bukidnon, Philippines. The school was formerly known as Bukidnon State College. It is the only university in the Province of Bukidnon that carries the name of Bukidnon in its official name.",
+              "Bukidnon State University is currently TOP 400 World University Rankings for Innovation (WURI) 2025"
+            ],
+            "ceb": [
+              "Bukidnon State University is a state university located in Malaybalay City, Bukidnon, Philippines. The school was formerly known as Bukidnon State College. It is the only university in the Province of Bukidnon that carries the name of Bukidnon in its official name.",
+              "Bukidnon State University is currently TOP 400 World University Rankings for Innovation (WURI) 2025"
+            ]
+          },
+          "topic": "about_buksu",
+          "intent": "about_buksu",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "what is buksu",
+              "about buksu",
+              "tell me about bukidnon state university",
+              "unsa ang buksu",
+              "buksu information",
+              "what kind of school is buksu",
+              "info about buksu",
+              "about bukidnon state university",
+              "buksu overview",
+              "explain buksu",
+              "what can you say about buksu",
+              "buksu school information"
+            ]
+          },
+          "display_name": "About BukSU"
+        },
+        {
+          "responses": {
+            "en": [
+              "BukSU is the commonly used abbreviation for Bukidnon State University.",
+              "Before it became a university, it was formerly known as Bukidnon State College (BSC).",
+              "Located in Malaybalay, Philippines, Bukidnon State University is a public higher education institution founded in 1924. It officially attained university status in 2007 and is now recognized for its strong teacher education programs and wide range of academic offerings."
+            ],
+            "ceb": [
+              "Ang BukSU mao ang kasagarang gigamit nga abbreviation sa Bukidnon State University.",
+              "Sa wala pa kini nahimong unibersidad, nailhan kini kaniadto isip Bukidnon State College (BSC).",
+              "Nahimutang sa Malaybalay, Philippines, ang Bukidnon State University usa ka pampublikong institusyon sa higher education nga gitukod niadtong 1924. Opisyal kini nga nahimong unibersidad niadtong 2007 ug karon nailhan tungod sa kusgan nga programa sa teacher education ug halapad nga mga academic offerings."
+            ]
+          },
+          "topic": "meaning_of_buksu",
+          "intent": "meaning_of_buksu",
+          "context_topic": "meaning",
+          "metadata": {
+            "phrases": [
+              "meaning of buksu",
+              "what does buksu mean",
+              "buksu abbreviation",
+              "unsa ang buksu short for",
+              "What does buksu stand for",
+              "buksu meaning",
+              "what is the meaning of buksu",
+              "unsa pasabot buksu",
+              "unsa meaning sa buksu",
+              "buksu stands for what",
+              "bukidnon state university acronym",
+              "buksu acronym meaning"
+            ]
+          },
+          "display_name": "Meaning of BukSU"
+        },
+        {
+          "responses": {
+            "en": [
+              "TBA means To Be Announced.",
+              "If you see TBA in a schedule, room assignment, date, or announcement, it means the final details are not available yet and will be posted later."
+            ],
+            "ceb": [
+              "Ang TBA nagpasabot og To Be Announced.",
+              "Kung makita nimo ang TBA sa schedule, room assignment, date, o announcement, pasabot ana wala pa ang final details ug ipahibalo ra kini sa ulahi."
+            ]
+          },
+          "topic": "meaning_of_tba",
+          "intent": "meaning_of_tba",
+          "context_topic": "meaning",
+          "metadata": {
+            "phrases": [
+              "what is tba",
+              "what does tba mean",
+              "meaning of tba",
+              "whats the meaning of tba",
+              "tba?",
+              "tba meaning",
+              "to be announced meaning",
+              "unsa meaning sa tba",
+              "tba pasabot",
+              "tba in schedule meaning",
+              "why does it say tba",
+              "tba means what"
+            ]
+          },
+          "display_name": "Meaning of TBA"
+        },
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University (BukSU) Main Campus is located at Fortich St., Malaybalay City, Bukidnon, Philippines. I cannot provide a city map because my map data is designed mainly for navigation inside the BukSU Main Campus."
+            ],
+            "ceb": [
+              "Bukidnon State University (BukSU) nahimutang sa Malaybalay City, Bukidnon, Philippines. Pasensya, dili ko makahatag og mapa kay kini naa sa gawas sa akong datos; ang akong mapa gi-design ug magigamit sulod sa Bukidnon State University Main Campus."
+            ]
+          },
+          "topic": "bukus_location",
+          "intent": "bukus_location",
+          "context_topic": "location",
+          "metadata": {
+            "phrases": [
+              "where is buksu located",
+              "buksu location",
+              "where is bukidnon state university",
+              "where is the main campus of buksu located",
+              "location main campus",
+              "asa dapit ang buksu",
+              "asa nahimutang ang buksu",
+              "where is buksu main campus located",
+              "buksu main campus location",
+              "buksu address",
+              "main campus address",
+              "asa ang buksu main campus",
+              "location of buksu",
+              "bukidnon state university location",
+              "where can i find buksu campus",
+              "buksu malaybalay address"
+            ]
+          },
+          "display_name": "BukSU Main Campus Location"
+        },
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University is located at Fortich St., Malaybalay City, Bukidnon.",
+              "For general contact, you may call +63-88-813-5661 to 5663 or +63-88-813-2717.",
+              "Source: https://buksu.edu.ph/contact-us/"
+            ],
+            "ceb": [
+              "Ang Bukidnon State University nahimutang sa Fortich St., Malaybalay City, Bukidnon.",
+              "Para sa general contact, pwede motawag sa +63-88-813-5661 to 5663 o +63-88-813-2717.",
+              "Source: https://buksu.edu.ph/contact-us/"
+            ]
+          },
+          "topic": "buksu_contact_number",
+          "intent": "buksu_contact_number",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "buksu contact number",
+              "bukidnon state university contact number",
+              "buksu phone number",
+              "buksu telephone number",
+              "how can i contact buksu",
+              "bukidnon state university contact",
+              "how to contact buksu",
+              "contact number sa buksu",
+              "buksu official contact",
+              "buksu hotline",
+              "university contact number",
+              "phone number of buksu"
+            ]
+          },
+          "display_name": "BukSU Contact Number"
+        },
+        {
+          "responses": {
+            "en": [
+              "For the official university calendar, please check the BukSU University Calendar page.",
+              "The current calendar page available from the university website is: https://buksu.edu.ph/university-calendar-2025/",
+              "For semester-specific changes, always follow the official BukSU website or your college announcements."
+            ],
+            "ceb": [
+              "Para sa opisyal nga university calendar, tan-awa ang BukSU University Calendar page.",
+              "Ang kasamtangang calendar page nga naa sa university website mao kini: https://buksu.edu.ph/university-calendar-2025/",
+              "Para sa semester-specific nga kausaban, sunda gihapon ang opisyal nga BukSU website o announcements sa inyong college."
+            ]
+          },
+          "topic": "buksu_university_calendar",
+          "intent": "buksu_university_calendar",
+          "context_topic": "schedule",
+          "metadata": {
+            "phrases": [
+              "official calendar for this semester",
+              "buksu university calendar",
+              "academic calendar",
+              "school calendar",
+              "semester calendar",
+              "official school calendar",
+              "school calendar buksu",
+              "where to see buksu calendar",
+              "calendar for this semester",
+              "unsa calendar sa semester",
+              "university calendar schedule",
+              "official calendar buksu"
+            ]
+          },
+          "display_name": "BukSU University Calendar"
+        },
+        {
+          "responses": {
+            "en": [
+              "BukSU celebrates its founding anniversary around June. In 2026, the university announced its 102nd Founding Anniversary on June 1, 2026.",
+              "For the exact yearly celebration schedule, check the official BukSU website and announcements.",
+              "Source: https://buksu.edu.ph/2026/06/01/buksu-president-mirasol-delivers-anniversary-message-that-celebrates-buksus-rich-102-year-history/"
+            ],
+            "ceb": [
+              "Ang BukSU nagasaulog sa founding anniversary kasagaran palibot sa Hunyo. Niadtong June 1, 2026, gipahibalo sa university ang ika-102 nga Founding Anniversary.",
+              "Para sa eksaktong schedule matag tuig, tan-awa ang opisyal nga BukSU website ug announcements.",
+              "Source: https://buksu.edu.ph/2026/06/01/buksu-president-mirasol-delivers-anniversary-message-that-celebrates-buksus-rich-102-year-history/"
+            ]
+          },
+          "topic": "buksu_foundation_day",
+          "intent": "buksu_foundation_day",
+          "context_topic": "schedule",
+          "metadata": {
+            "phrases": [
+              "when is the university charter day celebration",
+              "buksu charter day",
+              "buksu foundation day",
+              "buksu founding anniversary",
+              "when is buksu anniversary",
+              "when is buksu foundation day",
+              "foundation day celebration",
+              "founding anniversary celebration",
+              "when is charter day",
+              "kanus a foundation day",
+              "buksu anniversary celebration",
+              "date of buksu foundation day",
+              "university charter day"
+            ]
+          },
+          "display_name": "BukSU Foundation Day"
+        },
+        {
+          "responses": {
+            "en": [
+              "Most BukSU offices operate on weekdays. If you plan to visit during weekends, please check first with the specific office, guard house, or official announcement because regular office transactions are usually not available on Saturdays and Sundays."
+            ],
+            "ceb": [
+              "Kasagaran sa mga opisina sa BukSU kay weekdays ra naga-operate. Kung moadto ka during weekend, mas maayo nga mangutana una sa specific office, guard house, o tan-aw sa official announcement kay kasagaran walay regular office transactions sa Sabado ug Domingo."
+            ]
+          },
+          "topic": "campus_weekend_visitors",
+          "intent": "campus_weekend_visitors",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "is the campus open to visitors during weekends",
+              "can visitors enter buksu on weekends",
+              "buksu weekend visitors",
+              "campus open weekends",
+              "is campus open to visitors during weekends",
+              "weekend visitors allowed",
+              "can i visit buksu saturday",
+              "can visitors enter sunday",
+              "open ba buksu sa weekend",
+              "pwede visitor sa campus weekend",
+              "campus visitor weekend policy",
+              "buksu weekend access visitors",
+              "can outsiders visit campus weekend"
+            ]
+          },
+          "display_name": "Campus Weekend Visitors"
+        },
+        {
+          "responses": {
+            "en": [
+              "Yes, if the course you want is available at Bukidnon State University. If not, you may consider looking at other schools or checking some of the courses we offer."
+            ],
+            "ceb": [
+              "Oo, kung ang kurso nga imong gusto available sa Bukidnon State University. Kung wala, pwede nimo tan-awon ang uban nga eskwelahan o susihon ang uban sa mga kurso nga among gi-offer."
+            ]
+          },
+          "topic": "Buksu_worth_it",
+          "intent": "Buksu_worth_it",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "is buksu worth it",
+              "should i study in buksu",
+              "nindot ba mo eskwela sa buksu",
+              "worth it ba diria",
+              "is bukidnon state university good",
+              "worth it ba ang buksu",
+              "okay ba mag study sa buksu",
+              "why choose buksu",
+              "is buksu a good school",
+              "should freshmen choose buksu",
+              "buksu worth studying",
+              "is buksu recommended"
+            ]
+          },
+          "display_name": "BukSU Worth It"
+        },
+        {
+          "responses": {
+            "en": [
+              "The only place I can recommend for studying is the library, as it offers a lot of books you can borrow and is quiet inside. You should check out the library building."
+            ],
+            "ceb": [
+              "Ang bugtong lugar nga akong mairekomenda para sa pagtuon mao ang library, kay daghan kini og mga libro nga puwede nimong hulman ug hilum kaayo sulod. Angay nimo bisitahon ang library building."
+            ]
+          },
+          "topic": "buksu_study_place",
+          "intent": "buksu_study_place",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "where can i study in buksu",
+              "best study place in buksu",
+              "asa tsada mag tuon sa buksu",
+              "asa makatuon og tarong",
+              "Buksu study spots",
+              "where is a good place to study",
+              "study place in buksu",
+              "best place to study campus",
+              "quiet place to study",
+              "asa pwede mag study sa buksu",
+              "study area in campus",
+              "place to review in buksu",
+              "can i study in library",
+              "where to study inside buksu",
+              "recommended study place"
+            ]
+          },
+          "display_name": "BukSU Study Place"
+        },
+        {
+          "responses": {
+            "en": [
+              "Yes, usually the SBO of your specific department conducts campus tours to help you familiarize yourself with at least the important building locations. However, keep in mind that this depends on your college department."
+            ],
+            "ceb": [
+              "Oo, kasagaran ang SBO sa imong espesipikong departamento nagdumala og campus tours aron matabangan ka nga mahibaloan ang importante nga mga building locations. Apan hinumdumi nga kini nagdepende sa imong college department."
+            ]
+          },
+          "topic": "Campus_tour",
+          "intent": "Campus_tour",
+          "context_topic": "availability",
+          "metadata": {
+            "phrases": [
+              "does buksu have campus tour",
+              "campus tour in buksu",
+              "naa bay campus tour",
+              "pwede mag libot sa campus",
+              "Buksu campus tour",
+              "is there a campus tour",
+              "campus tour",
+              "can i tour the campus",
+              "tour around buksu",
+              "can visitors tour buksu",
+              "campus tour guide",
+              "pwede mag campus tour",
+              "unsaon campus tour sa buksu",
+              "tour buksu main campus",
+              "show campus tour information"
+            ]
+          },
+          "display_name": "Campus Tour"
+        }
+      ],
+      "display_name": "University Profile"
+    },
+    {
+      "topic": "university_identity",
+      "subject_key": "university_identity",
+      "subject_type": "institution",
+      "subject_terms": [
+        "buksu mission",
+        "buksu vision",
+        "core values",
+        "seal",
+        "hymn",
+        "gazette"
+      ],
+      "subtopics": [
+        {
+          "responses": {
+            "en": [
+              "The mission of Bukidnon State University is to develop competitive professionals who are committed to building a sustainable life for all through quality instruction, research, extension, and production."
+            ],
+            "ceb": [
+              "Ang misyon sa Bukidnon State University mao ang pagpalambo sa mga kompetitibong propesyonal nga komitado sa pagtukod og malungtarong kinabuhi alang sa tanan pinaagi sa kalidad nga pagtudlo, panukiduki, extension, ug produksyon."
+            ]
+          },
+          "topic": "buksu_mission",
+          "intent": "buksu_mission",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu mission",
+              "mission of bukidnon state university",
+              "unsa ang misyon sa buksu",
+              "what is the mission of buksu",
+              "mission of buksu",
+              "university mission",
+              "what is buksu mission",
+              "mission statement of buksu",
+              "unsa mission sa buksu",
+              "bukidnon state university mission",
+              "tell me university mission",
+              "buksu official mission",
+              "school mission"
+            ]
+          },
+          "display_name": "BukSU Mission"
+        },
+        {
+          "responses": {
+            "en": [
+              "The vision of Bukidnon State University is to become a premier institution that produces innovative and ethical leaders for sustainable development."
+            ],
+            "ceb": [
+              "Ang bisyon sa Bukidnon State University mao ang mahimong usa ka nangunang institusyon nga nagmugna og mga lider nga inobatibo ug adunay integridad alang sa malungtarong kalamboan."
+            ]
+          },
+          "topic": "buksu_vision",
+          "intent": "buksu_vision",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu vision",
+              "vision of bukidnon state university",
+              "unsa ang bisyon sa buksu",
+              "what is the vision of buksu",
+              "vision of buksu",
+              "university vision",
+              "what is buksu vision",
+              "vision statement of buksu",
+              "unsa vision sa buksu",
+              "bukidnon state university vision",
+              "tell me university vision",
+              "buksu official vision",
+              "school vision"
+            ]
+          },
+          "display_name": "BukSU Vision"
+        },
+        {
+          "responses": {
+            "en": [
+              "The core values of Bukidnon State University are Excellence, Professionalism, Integrity, Commitment, and Culture Sensitivity."
+            ],
+            "ceb": [
+              "Ang mga core values sa Bukidnon State University mao ang Excellence, Professionalism, Integrity, Commitment, ug Culture Sensitivity."
+            ]
+          },
+          "topic": "buksu_core_values",
+          "intent": "buksu_core_values",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu core values",
+              "core values of buksu",
+              "unsa ang values sa buksu",
+              "what are the core values",
+              "what are buksu values",
+              "university core values",
+              "bukidnon state university values",
+              "unsa core values sa buksu",
+              "school values",
+              "buksu values meaning",
+              "official core values buksu",
+              "list buksu core values"
+            ]
+          },
+          "display_name": "BukSU Core Values"
+        },
+        {
+          "responses": {
+            "en": [
+              "The BukSU Seal is the “sacred” and official emblem of Bukidnon State University, used primarily for high level academic and legal documents like diplomas and transcripts.",
+              "Each element within the seal has a specific meaning:",
+              "The Lamp: Symbolizes the light of truth and the university's commitment to academic, moral, and spiritual enlightenment.",
+              "The Book: Represents knowledge and the historical record of the institution.",
+              "The Adult and Child: Signifies the university's roots in teacher training, showing a teacher guiding a child toward a better future.",
+              "The Mountains: Represents the university's location in Bukidnon and symbolizes the heights of wisdom.",
+              "The Shield: Serves as the base for all symbols, representing education as a person's defense or shield against life's challenges.",
+              "Laurel Leaves: Represents the excellence the university strives for in its graduates and faculty.",
+              "Sheaf of Palay and Flask: These symbolize the university's goal of progress and prosperity for the region."
+            ],
+            "ceb": [
+              "Ang BukSU Seal mao ang “sagrado” ug opisyal nga simbolo sa Bukidnon State University, nga kasagarang gigamit alang sa high-level academic ug legal nga mga dokumento sama sa diplomas ug transcripts.",
+              "Ang matag elemento sulod sa seal adunay espesipikong kahulogan:",
+              "Ang Lampara: Nagsimbolo sa kahayag sa kamatuoran ug sa komitment sa unibersidad sa akademiko, moral, ug espiritwal nga kahayag.",
+              "Ang Libro: Nagrepresentar sa kahibalo ug sa historikal nga rekord sa institusyon.",
+              "Ang Hamtong ug Bata: Nagpasabot sa gigikanan sa unibersidad sa teacher training, nga nagpakita sa usa ka magtutudlo nga naggiya sa bata padulong sa mas maayong kaugmaon.",
+              "Ang Kabukiran: Nagrepresentar sa lokasyon sa unibersidad sa Bukidnon ug nagsimbolo sa kataas sa kaalam.",
+              "Ang Panagang (Shield): Mao ang base sa tanang simbolo, nga nagpasabot sa edukasyon isip panagang sa tawo batok sa mga hagit sa kinabuhi.",
+              "Ang Dahon sa Laurel: Nagrepresentar sa kahusayan nga gipaningkamotan sa unibersidad para sa iyang mga gradwado ug faculty.",
+              "Ang Bugkos sa Palay ug Flask: Kini nagsimbolo sa tumong sa unibersidad alang sa pag-uswag ug kauswagan sa rehiyon."
+            ]
+          },
+          "images": [
+            "/api/images/b279c810-c2cf-437f-a2b6-36b3c3ee7fac"
+          ],
+          "map": null,
+          "pins": [],
+          "topic": "buksu_seal_significance",
+          "intent": "buksu_seal_significance",
+          "context_topic": "meaning",
+          "metadata": {
+            "phrases": [
+              "meaning of buksu seal",
+              "buksu seal significance",
+              "what is buksu seal",
+              "unsa pasabot sa logo sa buksu",
+              "Buksu seal",
+              "buksu seal meaning",
+              "seal significance",
+              "university seal meaning",
+              "what does the buksu seal mean",
+              "symbol in buksu seal",
+              "unsa meaning sa seal sa buksu",
+              "buksu logo seal explanation",
+              "official seal significance",
+              "explain buksu seal"
+            ]
+          },
+          "display_name": "BukSU Seal Significance"
+        },
+        {
+          "responses": {
+            "en": [
+              "Unfortunately I cannot display the full lyrics of the BukSU Hymn due to larg amount of text but i can send you the link, note this is not official link but it contains the lyrics of the BukSU Hymn",
+              "https://bukidnononline.com/bukidnon-state-university-hymn/#google_vignette"
+            ],
+            "ceb": [
+              "Pasensya na dili nako ma display ang full lyrics sa BukSU Hymn tungod sa kadaghan sa teksto pero pwede nako ipadala ang link, note nga dili ni official link pero naglakip kini sa lyrics sa BukSU Hymn",
+              "https://bukidnononline.com/bukidnon-state-university-hymn/#google_vignette"
+            ]
+          },
+          "topic": "buksu_hymn_lyrics",
+          "intent": "buksu_hymn_lyrics",
+          "context_topic": "document",
+          "metadata": {
+            "phrases": [
+              "buksu hymn lyrics",
+              "where can i find buksu hymn",
+              "asa makita ang lyrics",
+              "Buksu hymn",
+              "university hymn lyrics",
+              "lyrics of buksu hymn",
+              "what is buksu hymn",
+              "school hymn lyrics",
+              "buksu song lyrics",
+              "unsa lyrics sa buksu hymn",
+              "bukidnon state university hymn",
+              "official hymn buksu"
+            ]
+          },
+          "display_name": "BukSU Hymn Lyrics"
+        },
+        {
+          "responses": {
+            "en": [
+              "The BukSU Gazette is the official repository of the University’s public documents, including policies, circulars, announcements, and other public communications. Managed by the Records Management Unit, the Gazette ensures the timely publication and accessibility of official information.",
+              "https://buksu.edu.ph/buksu-gazette/"
+            ],
+            "ceb": [
+              "Ang BukSU Gazette mao ang opisyal nga repositoryo sa mga publikong dokumento sa Unibersidad, apil na ang mga polisiya, circulars, pahibalo, ug uban pang publikong komunikasyon. Gidumala kini sa Records Management Unit, ug ang Gazette nagsiguro sa tukmang panahon nga pagmantala ug pagka-access sa opisyal nga impormasyon.",
+              "https://buksu.edu.ph/buksu-gazette/"
+            ]
+          },
+          "topic": "Whats_buksu_gazette",
+          "intent": "Whats_buksu_gazette",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "what is buksu gazette",
+              "buksu gazette",
+              "unsa ang gazette",
+              "buksu gazette meaning",
+              "what does buksu gazette do",
+              "school gazette",
+              "university gazette",
+              "unsa ang buksu gazette",
+              "gazette information",
+              "buksu publication gazette",
+              "tell me about buksu gazette",
+              "gazette sa buksu"
+            ]
+          },
+          "display_name": "Whats BukSU Gazette"
+        }
+      ],
+      "display_name": "University Identity"
+    },
+    {
+      "topic": "university_history",
+      "subject_key": "university_history",
+      "subject_type": "institution_history",
+      "subject_terms": [
+        "buksu history",
+        "founding",
+        "founded",
+        "university status",
+        "presidents list",
+        "old presidents"
+      ],
+      "subtopics": [
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University started in 1924 as the Bukidnon Farm School.",
+              "In 1928 it became Bukidnon Secondary Normal School.",
+              "In 1976 it was converted into Bukidnon State College through Presidential Decree 944.",
+              "It became Bukidnon State University on June 15 2007 under Republic Act 9454."
+            ],
+            "ceb": [
+              "Ang Bukidnon State University nagsugod niadtong 1924 isip Bukidnon Farm School.",
+              "Niadtong 1928 nahimo kini nga Bukidnon Secondary Normal School.",
+              "Sa 1976 nahimo kini nga Bukidnon State College pinaagi sa Presidential Decree 944.",
+              "Nahimo kini nga Bukidnon State University niadtong June 15 2007 ubos sa Republic Act 9454."
+            ]
+          },
+          "topic": "buksu_history_background",
+          "intent": "buksu_history_background",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "buksu history",
+              "history of buksu",
+              "kanus a nagsugod ang buksu",
+              "background of buksu",
+              "bukidnon state university history",
+              "tell me buksu history",
+              "unsa history sa buksu",
+              "school history",
+              "buksu historical background",
+              "how did buksu start",
+              "history background of university"
+            ]
+          },
+          "display_name": "BukSU History Background"
+        },
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University (BukSU) was founded in 1924 and celebrated its 101st Founding Anniversary on June 10, 2025. Over the years, the institution has undergone several important transformations in its development as a higher education institution in Malaybalay, Philippines.",
+              "Its historical development can be traced through the following milestones:",
+              "",
+              "1924 – Established as Bukidnon Provincial High School (BPHS)",
+              "",
+              "1928 – Renamed Bukidnon Normal School (BNS), with a focus on teacher training",
+              "",
+              "1972 – Renamed Bukidnon Normal College (BNC)",
+              "",
+              "June 14, 1976 – Converted into Bukidnon State College (BSC) through Presidential Decree No. 944",
+              "",
+              "May 15, 2007 – Attained university status as Bukidnon State University under Republic Act No. 9456",
+              "",
+              "Today, BukSU is recognized as a public institution of higher learning known for its commitment to academic excellence, teacher education, and diverse academic programs."
+            ],
+            "ceb": [
+              "Bukidnon State University (BukSU) gitukod niadtong 1924 ug nagsaulog sa iyang ika-101 nga Founding Anniversary niadtong June 10, 2025. Sa paglabay sa mga tuig, ang institusyon nakaagi og daghang importante nga mga kausaban sa iyang pag-uswag isip usa ka higher education institution sa Malaybalay, Philippines.",
+              "Ang iyang kasaysayan sa pag-uswag masubay pinaagi sa mosunod nga mga milestones:",
+              "",
+              "1924 – Gitukod isip Bukidnon Provincial High School (BPHS)",
+              "",
+              "1928 – Ginganlan og Bukidnon Normal School (BNS), nga nagpunting sa teacher training",
+              "",
+              "1972 – Ginganlan og Bukidnon Normal College (BNC)",
+              "",
+              "June 14, 1976 – Nahimong Bukidnon State College (BSC) pinaagi sa Presidential Decree No. 944",
+              "",
+              "May 15, 2007 – Nahimong unibersidad isip Bukidnon State University ubos sa Republic Act No. 9456",
+              "",
+              "Karon, ang BukSU giila isip usa ka pampublikong institusyon sa higher learning nga nailhan tungod sa iyang komitment sa academic excellence, teacher education, ug nagkalain-laing academic programs."
+            ]
+          },
+          "topic": "founding",
+          "intent": "founding",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "when was buksu founded",
+              "buksu founding",
+              "founding anniversary",
+              "kanus a natukod ang buksu",
+              "buksu founding date",
+              "founding of buksu",
+              "when was bukidnon state university founded",
+              "foundation year of buksu",
+              "date founded buksu",
+              "kanus a na founded ang buksu",
+              "when did buksu start",
+              "school founded year",
+              "founding history buksu"
+            ]
+          },
+          "display_name": "Founding"
+        },
+        {
+          "responses": {
+            "en": [
+              "Before becoming a university, BukSU was known as Bukidnon State College (BSC). It officially attained university status on May 15, 2007, and was renamed Bukidnon State University (BukSU)."
+            ],
+            "ceb": [
+              "Sa wala pa kini nahimong unibersidad, ang BukSU nailhan isip Bukidnon State College (BSC). Opisyal kini nga nahimong unibersidad niadtong May 15, 2007, ug giusab ang ngalan ngadto sa Bukidnon State University (BukSU)."
+            ]
+          },
+          "topic": "buksu_become_university",
+          "intent": "buksu_become_university",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "when did buksu become university",
+              "buksu university status",
+              "kanus a nahimong university",
+              "nahimong unibersidad ang buksu",
+              "when did buksu become a university",
+              "became university date",
+              "when became university",
+              "how buksu became university",
+              "kanus a nahimong university ang buksu",
+              "bukidnon state university status",
+              "year buksu became university",
+              "buksu changed to university",
+              "university status history"
+            ]
+          },
+          "display_name": "BukSU Become University"
+        },
+        {
+          "responses": {
+            "en": [
+              "When BukSU became a university in 2007, the president was Dr. Victor M. Barroso. BukSU’s official milestones page says that after the institution obtained university status under Republic Act No. 9456, Dr. Victor M. Barroso was inaugurated as the first BukSU President.",
+              "The school administrators page also lists him as President of Bukidnon State College (1998–2007) and then 1st University President of BukSU (2007–2015)."
+            ],
+            "ceb": [
+              "Sa dihang nahimong unibersidad ang BukSU niadtong 2007, ang presidente mao si Dr. Victor M. Barroso. Sumala sa opisyal nga milestones page sa BukSU, human makuha sa institusyon ang university status ubos sa Republic Act No. 9456, gi-inaugurate si Dr. Victor M. Barroso isip unang presidente sa BukSU.",
+              "Ang school administrators page naglista usab kaniya isip Presidente sa Bukidnon State College (1998–2007) ug dayon isip unang University President sa BukSU (2007–2015)."
+            ]
+          },
+          "topic": "Pres_thetime_university",
+          "intent": "Pres_thetime_university",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "who was president when buksu became university",
+              "Buksu university president",
+              "president when buksu became university",
+              "first university president of buksu",
+              "president at the time buksu became university",
+              "who led buksu in 2007",
+              "president during university status",
+              "kinsa president pag become university",
+              "first buksu president as university",
+              "president when university status granted",
+              "leader when buksu became university",
+              "2007 buksu president"
+            ]
+          },
+          "display_name": "Pres Thetime University"
+        },
+        {
+          "responses": {
+            "en": [
+              "Bukidnon State University (BukSU) is 102 years old as of 2026. It was founded in 1924, and BukSU itself reported celebrating its 101st founding anniversary on June 10, 2025, which makes it 102 years old in 2026."
+            ],
+            "ceb": [
+              "Ang Bukidnon State University (BukSU) 102 ka tuig na as of 2026. Gitukod kini niadtong 1924, ug ang BukSU mismo nagreport nga nagsaulog sa ika-101 nga founding anniversary niadtong June 10, 2025, nga nagpasabot nga 102 na kini ka tuig sa 2026."
+            ]
+          },
+          "topic": "Buksu_age",
+          "intent": "Buksu_age",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "how old is buksu",
+              "buksu age",
+              "pila na ka tuig ang buksu",
+              "pila na ka years ang school",
+              "age of buksu",
+              "age of bukidnon state university",
+              "how many years is buksu",
+              "university age",
+              "buksu years old",
+              "how long has buksu existed",
+              "age of school",
+              "buksu founding age"
+            ]
+          },
+          "display_name": "BukSU Age"
+        },
+        {
+          "responses": {
+            "en": [
+              "Here is the list of Bukidnon State University presidents and leaders over the years:",
+              "Dr. Joy M. Mirasol - 3rd University President (since 2023)",
+              "Atty. Ryan Estevez - OIC University President (2022 - 2023)",
+              "Dr. Oscar B. Cabañelez - 2nd University President (2015 - 2022)",
+              "Dr. Victor M. Barroso - 1st University President (2007 - 2015)",
+              "Dr. Victor M. Barroso - 3rd President, Bukidnon State College (1998 - 2007)",
+              "Dr. Teresita T. Tumapon - 2nd President, Bukidnon State College (1986 - 1998)",
+              "Dr. Jaime M. Gellor - 1st President, Bukidnon State College (1976 - 1986)",
+              "Dr. Jaime M. Gellor - 1st President, Bukidnon Normal College (1969 - 1976)",
+              "Mr. Pacifico A. Ramos - Superintendent, Bukidnon Normal School (1950 - 1969)",
+              "Mrs. Gliceria B. Soriano - Superintendent, Bukidnon Normal School (1949 - 1950)",
+              "Mr. Bartolome Monje - Superintendent, Bukidnon Normal School (1948 - 1949)",
+              "Mr. Primitivo Lara - Superintendent, Bukidnon Normal School (1945 - 1948)",
+              "War Years Period",
+              "William H. Pickell - Superintendent / Founder, Bukidnon Normal School (1928 - 1940)",
+              "William H. Pickell - Superintendent / Founder, Bukidnon Provincial High School (1924 - 1928)"
+            ],
+            "ceb": [
+              "Mao ni ang lista sa mga presidente ug lider sa Bukidnon State University sa nagkalain-laing panahon:",
+              "Dr. Joy M. Mirasol - 3rd University President (since 2023)",
+              "Atty. Ryan Estevez - OIC University President (2022 - 2023)",
+              "Dr. Oscar B. Cabañelez - 2nd University President (2015 - 2022)",
+              "Dr. Victor M. Barroso - 1st University President (2007 - 2015)",
+              "Dr. Victor M. Barroso - 3rd President, Bukidnon State College (1998 - 2007)",
+              "Dr. Teresita T. Tumapon - 2nd President, Bukidnon State College (1986 - 1998)",
+              "Dr. Jaime M. Gellor - 1st President, Bukidnon State College (1976 - 1986)",
+              "Dr. Jaime M. Gellor - 1st President, Bukidnon Normal College (1969 - 1976)",
+              "Mr. Pacifico A. Ramos - Superintendent, Bukidnon Normal School (1950 - 1969)",
+              "Mrs. Gliceria B. Soriano - Superintendent, Bukidnon Normal School (1949 - 1950)",
+              "Mr. Bartolome Monje - Superintendent, Bukidnon Normal School (1948 - 1949)",
+              "Mr. Primitivo Lara - Superintendent, Bukidnon Normal School (1945 - 1948)",
+              "Panahon sa Gubat",
+              "William H. Pickell - Superintendent / Founder, Bukidnon Normal School (1928 - 1940)",
+              "William H. Pickell - Superintendent / Founder, Bukidnon Provincial High School (1924 - 1928)"
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "topic": "buksu_presidents_list",
+          "intent": "buksu_presidents_list",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "list of buksu presidents",
+              "former presidents of buksu",
+              "Buksu presidents",
+              "buksu presidents list",
+              "past buksu presidents",
+              "old presidents of buksu",
+              "who were the presidents of buksu",
+              "list previous university presidents",
+              "mga president sa buksu",
+              "former university presidents",
+              "buksu president history list"
+            ]
+          },
+          "display_name": "BukSU Presidents List"
+        }
+      ],
+      "display_name": "University History"
+    },
+    {
+      "topic": "university_ranking",
+      "subject_key": "university_ranking",
+      "subject_type": "ranking",
+      "subject_terms": [
+        "buksu rank",
+        "buksu ranking",
+        "wuri",
+        "edurank",
+        "greenmetric"
+      ],
+      "subtopics": [
+        {
+          "responses": {
+            "en": [
+              "BukSU does not have just one single official rank right now, it depends on which ranking system you mean.",
+              "Different organizations measure different things like research, sustainability, innovation, web presence, or overall visibility.",
+              "As of the most recent available rankings, BukSU is:",
+              "63rd in the Philippines in the 2026 EduRank update",
+              "241st in Asia and 14th in the Philippines in the AppliedHE 2026 Public University Ranking",
+              "7th in the Philippines, 358th globally, and 1st in Mindanao in the 2025 UI GreenMetric World University Rankings",
+              "Top 4 in the Philippines in the 2025 Times Higher Education (THE) Impact Rankings, with BukSU also appearing in the 801–1000 global bracket",
+              "84th in the Philippines in Webometrics (latest result cited on BukSU's site was July 2024)",
+              "161st worldwide in WURI 2025 (World University Rankings for Innovation)"
+            ],
+            "ceb": [
+              "Wala'y usa lang ka opisyal nga ranggo ang BukSU karon — nagdepende kini kung unsang ranking system ang imong pasabot.",
+              "Lain-laing organisasyon nagasukod og lain-laing aspeto sama sa research, sustainability, innovation, web presence, o overall visibility.",
+              "Base sa pinakabag-ong available nga rankings, ang BukSU mao ang:",
+              "63rd sa Pilipinas sa 2026 EduRank update",
+              "241st sa Asia ug 14th sa Pilipinas sa AppliedHE 2026 Public University Ranking",
+              "7th sa Pilipinas, 358th sa tibuok kalibutan, ug 1st sa Mindanao sa 2025 UI GreenMetric World University Rankings",
+              "Top 4 sa Pilipinas sa 2025 Times Higher Education (THE) Impact Rankings, ug apil usab ang BukSU sa 801–1000 global bracket",
+              "84th sa Pilipinas sa Webometrics (pinakabag-ong resulta nga gi-mention sa site sa BukSU kay July 2024)",
+              "161st sa tibuok kalibutan sa WURI 2025 (World University Rankings for Innovation)"
+            ]
+          },
+          "topic": "current_rank",
+          "intent": "current_rank",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "current rank of buksu",
+              "buksu ranking",
+              "what is buksu rank",
+              "unsa ang rank nato",
+              "what is the rank of buksu",
+              "buksu wuri ranking",
+              "buksu edurank",
+              "buksu greenmetric",
+              "ranking sa buksu",
+              "university ranking buksu",
+              "buksu world ranking",
+              "current university rank"
+            ]
+          },
+          "display_name": "Current Rank"
+        }
+      ],
+      "display_name": "University Ranking"
+    },
+    {
+      "topic": "university_leadership",
+      "subject_key": "university_leadership",
+      "subject_type": "person",
+      "subject_terms": [
+        "buksu president",
+        "university president",
+        "dr joy mirasol"
+      ],
+      "subtopics": [
+        {
+          "responses": {
+            "en": [
+              "The current president of Bukidnon State University is <b>Dr. Joy M Mirasol.</b>",
+              "She leads the university in promoting quality education, research, and community service."
+            ],
+            "ceb": [
+              "Ang kasamtangang presidente sa Bukidnon State University mao si <b>Dr. Joy M. Mirasol.</b>",
+              "Siya ang nanguna sa unibersidad sa pagpalambo sa kalidad nga edukasyon, panukiduki, ug serbisyo sa komunidad."
+            ]
+          },
+          "images": [
+            "/api/images/6b9b0e9d-de21-4ba5-b66d-4b2c4cfaa205"
+          ],
+          "map": null,
+          "pins": [],
+          "topic": "buksu_president",
+          "intent": "buksu_president",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "who is the president of buksu",
+              "current buksu president",
+              "Buksu president",
+              "who is buksu president",
+              "current president of buksu",
+              "university president",
+              "bukidnon state university president",
+              "dr joy mirasol",
+              "kinsa president sa buksu",
+              "name of buksu president",
+              "who leads buksu",
+              "current university president",
+              "president of bukidnon state university"
+            ]
+          },
+          "display_name": "BukSU President"
+        }
+      ],
+      "display_name": "University Leadership"
+    },
+    {
+      "topic": "student_handbook",
+      "subject_key": "student_handbook",
+      "subject_type": "resource",
+      "subject_terms": [
+        "student handbook",
+        "university handbook",
+        "school handbook",
+        "studenthandbook"
+      ],
+      "subtopics": [
+        {
+          "topic": "student_handbook_access",
+          "intent": "student_handbook_access",
+          "context_topic": "university_info",
+          "responses": {
+            "en": [
+              "The University Student Handbook is distributed by the OVPCASSS (Office of the Vice President for Cultural Arts, Sports, and Student Services).",
+              "You may visit the OVPCASSS office and ask the staff — they will provide you with a soft copy of the Student Handbook.",
+              "Look up for their signage once you enter the Administrative Building. The office is on the ground floor, on the right side when facing the building from the main entrance."
+            ],
+            "ceb": [
+              "Ang University Student Handbook gihatag sa OVPCASSS (Office of the Vice President for Cultural Arts, Sports, and Student Services).",
+              "Bisitahi ang opisina sa OVPCASSS ug pangutana sa staff — hatagan nila ikaw og soft copy sa Student Handbook.",
+              "Tan-awa ang ilang signage pag-abot nimo sa Administrative Building. Ang opisina anaa sa ground floor, sa tuo nga bahin kung nag-atubang ka sa building gikan sa main entrance."
+            ]
+          },
+          "locationName": "OVPCASSS Office",
+          "mapId": "main_map",
+          "pins": [
+            {
+              "name": "OVPCASSS",
+              "coordinates": [
+                820,
+                757
+              ],
+              "floor": "GF"
+            },
+            {
+              "name": "You are here!",
+              "coordinates": [
+                883,
+                634
+              ],
+              "floor": "GF"
+            }
+          ],
+          "routes": [
+            {
+              "name": "You are here! to OVPCASSS",
+              "points": [
+                [
+                  883,
+                  634
+                ],
+                [
+                  819,
+                  635
+                ],
+                [
+                  820,
+                  757
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "where to access student handbook",
+              "where to get student handbook",
+              "where can i get the student handbook",
+              "student handbook access",
+              "how to get student handbook",
+              "who distributes the student handbook",
+              "who will give the student handbook",
+              "student handbook soft copy",
+              "university student handbook access",
+              "university handbook access",
+              "school handbook access",
+              "studenthandbook where",
+              "asa makuha ang student handbook",
+              "asa ang student handbook",
+              "asa makuha og student handbook",
+              "kinsa maghatag sa student handbook",
+              "student handbook gikan asa"
+            ]
+          },
+          "display_name": "Student Handbook",
+          "subject_terms": [],
+          "images": [],
+          "items": []
+        }
+      ],
+      "display_name": "Student Handbook"
+    }
+  ]
+}

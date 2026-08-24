@@ -1,0 +1,285 @@
+{
+  "intent": "ask_library_services",
+  "category": "Library Services & Guidelines",
+  "entities": [
+    "topic"
+  ],
+  "topics": [
+    {
+      "topic": "library_borrowing",
+      "subject_key": "library_borrowing",
+      "subject_type": "service",
+      "subject_terms": [
+        "borrow books",
+        "borrow book",
+        "library borrowing",
+        "borrow library books",
+        "return books",
+        "library resources",
+        "late books",
+        "late return",
+        "unreturned book",
+        "book penalty"
+      ],
+      "subtopics": [
+        {
+          "topic": "policy",
+          "intent": "library_borrowing_rules",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "Students can borrow a maximum of five books per week from the BukSU Library.",
+              "Borrowers must present a barcoded library card.",
+              "Some materials like reserve books, encyclopedias, and theses are only for inside reading and photocopying."
+            ],
+            "ceb": [
+              "Ang mga estudyante pwede mohulam og hangtod lima ka libro matag semana sa BukSU Library.",
+              "Kinahanglan ipakita ang barcoded library card.",
+              "Ang ubang materyales sama sa reserve books, encyclopedias ug thesis para lamang sa inside reading o photocopy."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how many books can i borrow",
+              "library borrowing rules",
+              "book borrowing policy",
+              "can i borrow reserve books",
+              "rules for borrowing books",
+              "library book rules",
+              "can students borrow books",
+              "who can borrow library books",
+              "borrow books rules",
+              "policy for borrowing books",
+              "rules sa paghulam libro",
+              "unsa rules sa library borrowing",
+              "library borrowing policy",
+              "book borrowing guidelines",
+              "borrowing rules in library"
+            ]
+          },
+          "display_name": "Library Borrowing Rules"
+        },
+        {
+          "topic": "process",
+          "intent": "library_borrow_books_process",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "To borrow a book, bring your library ID card and ask any staff member for assistance. Also bring a pen to fill out the necessary details."
+            ],
+            "ceb": [
+              "Aron makahulam og libro, kinahanglan nimo dad on ang imong library ID card ug mangutana sa bisan kinsang staff para sa tabang. Ayaw kalimti pagdala og bolpen aron mapunan ang mga detalye."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how to borrow books",
+              "tell me whats the process of getting books",
+              "process of getting books",
+              "how to get books from library",
+              "how do i get library books",
+              "getting books from library",
+              "how can i get a book in the library",
+              "how can i borrow book from library",
+              "what do i need to borrow books",
+              "borrow books in library",
+              "unsaon paghulam og libro",
+              "how can i borrow library books",
+              "process to borrow book",
+              "borrow book process",
+              "steps to borrow books in library",
+              "unsaon paghulam og libro sa library",
+              "paano mag borrow books sa library",
+              "can i borrow a book from library",
+              "i want to borrow books",
+              "how do freshmen borrow books",
+              "library book borrowing process",
+              "what should i do to borrow library book"
+            ]
+          },
+          "display_name": "Library Borrow Books Process"
+        },
+        {
+          "topic": "return_process",
+          "intent": "library_return_books_process",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "To return books, bring your library ID card and ask any staff member inside the library for assistance. You can also use the machine outside the library which has a guide on how to return books."
+            ],
+            "ceb": [
+              "Aron ibalik ang mga libro, dad-a ang imong library ID card ug pangutana sa bisan kinsang staff sulod sa librarya para sa tabang. Pwede usab nimo gamiton ang makina sa gawas sa librarya nga adunay giya kung giunsa pagbalik sa mga libro."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how to return books",
+              "where to return library books",
+              "return borrowed books",
+              "library book return process",
+              "unsaon pag uli sa libro",
+              "return library book process",
+              "where to return borrowed books",
+              "steps to return library books",
+              "unsaon pag uli sa library book",
+              "how do i return borrowed book",
+              "book return process library",
+              "return books to library",
+              "where should i give back library books",
+              "library book return steps"
+            ]
+          },
+          "display_name": "Library Return Books Process"
+        },
+        {
+          "topic": "late_return_penalty",
+          "intent": "library_late_return_penalty",
+          "context_topic": "payment",
+          "responses": {
+            "en": [
+              "Students who fail to return borrowed materials on time will face fines.",
+              "For books rented from the Book Center for a semester, the penalty for unreturned items is one hundred pesos."
+            ],
+            "ceb": [
+              "Ang mga estudyante nga mapakyas sa pag uli sa mga libro sa saktong oras multahan.",
+              "Para sa mga libro gikan sa Book Center ang multa sa wala nauli nga libro kay usa ka gatus ka pesos."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "what is the penalty for late books",
+              "library late return fine",
+              "how much is unreturned book penalty",
+              "book center unreturned book penalty",
+              "multa sa wala nauli nga libro",
+              "late return penalty library",
+              "penalty for late books",
+              "fine for unreturned book",
+              "what happens if i return book late",
+              "library book overdue fine",
+              "pila penalty sa late return book",
+              "naay fine kung late ang libro",
+              "late borrowed book penalty",
+              "unreturned library book penalty",
+              "library late fee",
+              "book overdue payment"
+            ]
+          },
+          "display_name": "Library Late Return Penalty"
+        },
+        {
+          "topic": "availability",
+          "intent": "library_available_books",
+          "context_topic": "availability",
+          "responses": {
+            "en": [
+              "The library regularly updates its collection, so availability of books may change. For more information, visit the university library and ask staff on each floor for assistance."
+            ],
+            "ceb": [
+              "Ang librarya pirmi nag-update sa ilang koleksyon, busa ang availability sa mga libro mahimong mag-usab. Para sa dugang kasayuran, adto sa university library ug mangutana sa staff sa matag andana para sa tabang."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "are books available in the library",
+              "available books in library",
+              "does library have books",
+              "where to ask for available books",
+              "naa bay available books sa library",
+              "what books are available in library",
+              "book availability library",
+              "can i check available books",
+              "library available resources books",
+              "unsa books naa sa library",
+              "list of books in library",
+              "how to know if book is available"
+            ]
+          },
+          "display_name": "Library Available Books"
+        },
+        {
+          "topic": "access_resources",
+          "intent": "access_buksu_library_resources",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "Students can access BukSU library resources by presenting a valid Library ID."
+            ],
+            "ceb": [
+              "Mahimong magamit sa estudyante ang library resources pinaagi sa pagpakita sa valid Library ID."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "how to access buksu library resources",
+              "access library resources",
+              "what id is needed for library resources",
+              "library resources access",
+              "unsaon pag access sa library resources",
+              "ang student ba pwedi maka access sa library resources",
+              "pwedi ko nimo storyahan unsaon nako pag access sa university library resources",
+              "how do student can access the library resources",
+              "online library resources",
+              "how to use library resources",
+              "where can i access library resources",
+              "unsaon pag access library resources",
+              "buksu library resources login",
+              "digital library resources",
+              "library online resources"
+            ]
+          },
+          "display_name": "Access BukSU Library Resources"
+        }
+      ],
+      "display_name": "Library Borrowing"
+    },
+    {
+      "topic": "library_hours",
+      "subject_key": "library_hours",
+      "subject_type": "schedule",
+      "subject_terms": [
+        "library hours",
+        "library schedule",
+        "library open",
+        "library closing time",
+        "university library hours"
+      ],
+      "subtopics": [
+        {
+          "topic": "schedule",
+          "intent": "library_hours",
+          "context_topic": "schedule",
+          "responses": {
+            "en": [
+              "The University Library is generally open from Monday to Friday from 8 AM to 5 PM, though hours may extend during examination weeks."
+            ],
+            "ceb": [
+              "Ang University Library kasagaran bukas gikan Lunes hangtod Biyernes gikan alas 8 sa buntag hangtod alas 5 sa hapon, apan mahimong ma extend ang oras inig panahon sa exam."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "what time is the library open",
+              "library hours",
+              "library schedule",
+              "when does library close",
+              "oras sa library",
+              "unsa oras open ang library",
+              "what time does the library open",
+              "what time library open",
+              "library opening hours",
+              "library closing time",
+              "open ba ang library",
+              "kanus a open ang library",
+              "library office hours",
+              "is library open today",
+              "library time schedule"
+            ]
+          },
+          "display_name": "Library Hours Answer Topic"
+        }
+      ],
+      "display_name": "Library Hours Topic Group"
+    }
+  ]
+}
