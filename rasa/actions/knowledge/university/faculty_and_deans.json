@@ -21,6 +21,93 @@
       ],
       "subtopics": [
         {
+          "topic": "deans_of_colleges_list",
+          "responses": {
+            "en": [
+              "Here is the list of Deans across all Colleges at Bukidnon State University (BukSU):\n\n• <b>College of Technologies (COT):</b> Dr. Marilou O. Espina\n• <b>College of Business (COB):</b> Dr. Donna G. Tilanduca\n• <b>College of Arts and Sciences (CAS):</b> Dr. Maribel G. Valdez\n• <b>College of Public Administration and Governance (CPAG):</b> Dr. Lalevie C. Lubos\n• <b>College of Nursing (CON):</b> Dr. Ma. Algerica T. Cuenco\n• <b>College of Education (COE):</b> Dr. Ann Sheila C. Del Rosario\n• <b>College of Law (COL):</b> Atty. Ophelia Pilar E. Rubio-Zamora\n\nYou may also ask about any specific college or department head for more details."
+            ],
+            "ceb": [
+              "Mao kini ang lista sa mga Dean sa tanang Kolehiyo sa Bukidnon State University (BukSU):\n\n• <b>College of Technologies (COT):</b> Dr. Marilou O. Espina\n• <b>College of Business (COB):</b> Dr. Donna G. Tilanduca\n• <b>College of Arts and Sciences (CAS):</b> Dr. Maribel G. Valdez\n• <b>College of Public Administration and Governance (CPAG):</b> Dr. Lalevie C. Lubos\n• <b>College of Nursing (CON):</b> Dr. Ma. Algerica T. Cuenco\n• <b>College of Education (COE):</b> Dr. Ann Sheila C. Del Rosario\n• <b>College of Law (COL):</b> Atty. Ophelia Pilar E. Rubio-Zamora\n\nPwede usab ka mangutana bahin sa usa ka partikular nga kolehiyo o department head para sa dugang detalye."
+            ]
+          },
+          "intent": "deans_of_colleges_list",
+          "context_topic": "person",
+          "metadata": {
+            "phrases": [
+              "deans of colleges list",
+              "deans of colleges",
+              "dean of colleges",
+              "all deans of colleges",
+              "all deans in buksu",
+              "dean of all colleges",
+              "list of deans in buksu",
+              "who are the deans in buksu",
+              "who are the college deans",
+              "list of college deans",
+              "who are the deans of every college",
+              "deans in every college department",
+              "deans of every college",
+              "who are all the deans",
+              "who are the deans",
+              "list of all deans",
+              "all college deans",
+              "kinsa ang mga dean sa buksu",
+              "lista sa mga dean sa buksu",
+              "mga dean sa tanang kolehiyo",
+              "mga dean sa buksu",
+              "tanang dean sa buksu",
+              "mga dean sa college",
+              "mga dean sa department"
+            ]
+          },
+          "choiceGroups": [
+            {
+              "type": "regular",
+              "title": "College Deans",
+              "items": [
+                {
+                  "label": "Dean of COT",
+                  "payload": "/direct_intent{\"intent\":\"Dean_0f_COT\"}"
+                },
+                {
+                  "label": "Dean of COB",
+                  "payload": "/direct_intent{\"intent\":\"Dean_0f_COB\"}"
+                },
+                {
+                  "label": "Dean of CAS",
+                  "payload": "/direct_intent{\"intent\":\"Dean_0f_CAS\"}"
+                },
+                {
+                  "label": "Dean of CON",
+                  "payload": "/direct_intent{\"intent\":\"Dean_0f_CON\"}"
+                },
+                {
+                  "label": "Dean of COE",
+                  "payload": "/direct_intent{\"intent\":\"Dean_0f_COE\"}"
+                },
+                {
+                  "label": "Dean of CPAG",
+                  "payload": "/direct_intent{\"intent\":\"Dean_0f_CPAG\"}"
+                },
+                {
+                  "label": "Dean of Law",
+                  "payload": "/direct_intent{\"intent\":\"Dean_0f_LAW\"}"
+                }
+              ]
+            }
+          ],
+          "subject_key": "deans_of_colleges_list",
+          "subject_type": "person_role",
+          "subject_terms": [
+            "deans of colleges list",
+            "deans of colleges",
+            "all deans",
+            "list of deans",
+            "college deans"
+          ],
+          "display_name": "Deans of Colleges List"
+        },
+        {
           "topic": "Dean_0f_COT",
           "responses": {
             "en": [

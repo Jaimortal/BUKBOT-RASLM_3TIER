@@ -57,23 +57,23 @@
           "suggestions": [
             {
               "label": "COT SBO Office",
-              "payload": "where is COT SBO Office"
+              "payload": "/direct_intent{\"intent\":\"location_COT_SBO_Office\"}"
             },
             {
               "label": "COB SBO Office",
-              "payload": "where is COB SBO Office"
+              "payload": "/direct_intent{\"intent\":\"location_COB_SBO_Office\"}"
             },
             {
               "label": "CAS SBO Office",
-              "payload": "where is CAS SBO Office"
+              "payload": "/direct_intent{\"intent\":\"location_CAS_SBO_Office\"}"
             },
             {
               "label": "CON SBO Office",
-              "payload": "where is CON SBO Office"
+              "payload": "/direct_intent{\"intent\":\"location_CON_SBO_Office_(no_data)\"}"
             },
             {
               "label": "COA SBO Office",
-              "payload": "where is COA SBO Office"
+              "payload": "/direct_intent{\"intent\":\"location_COA_SBO_Office_(no_data)\"}"
             }
           ],
           "subject_key": "student_organizations",
@@ -89,6 +89,125 @@
         }
       ],
       "display_name": "Student Organizations"
+    },
+    {
+      "topic": "scholarships_and_financial_grants",
+      "subject_key": "scholarship",
+      "subject_type": "service",
+      "subject_terms": [
+        "scholarship",
+        "scholarships",
+        "financial grants",
+        "grants",
+        "financial assistance",
+        "sfgu",
+        "scholarship unit",
+        "scholarship application",
+        "apply scholarship"
+      ],
+      "subtopics": [
+        {
+          "topic": "scholarship_application",
+          "intent": "scholarship_application",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "unfortunately I dont have data for how could you apply for scholarship, but we do have other data you can ask for"
+            ],
+            "ceb": [
+              "Ikasubo nga wala koy impormasyon kung unsaon pag-apply og scholarship, apan aduna koy laing impormasyon nga mahimo nimong pangutan-on:"
+            ]
+          },
+          "choiceGroups": [
+            {
+              "title": "Here is scholarship-related information you can check:",
+              "items": [
+                {
+                  "label": "Contact Scholarship Unit",
+                  "payload": "/direct_intent{\"intent\":\"contact_scholarship_unit\"}"
+                }
+              ]
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how to apply for scholarship",
+              "how to apply scholarship",
+              "how can i apply for scholarship",
+              "how do i apply for scholarship",
+              "apply for scholarship",
+              "apply scholarship",
+              "scholarship application",
+              "scholarship requirements",
+              "how to get scholarship",
+              "scholarship process",
+              "unsaon pag apply og scholarship",
+              "unsaon pag apply ug scholarship",
+              "unsaon pag apply sa scholarship",
+              "unsaon pagkuha og scholarship",
+              "unsaon pag apply scholarship",
+              "pamaagi sa scholarship",
+              "apply scholarship buksu"
+            ]
+          },
+          "display_name": "Scholarship Application Guidance",
+          "subject_terms": [
+            "scholarship application",
+            "apply scholarship",
+            "scholarship process",
+            "scholarship requirements"
+          ],
+          "images": [],
+          "items": []
+        },
+        {
+          "topic": "contact_scholarship_unit",
+          "intent": "contact_scholarship_unit",
+          "context_topic": "contact",
+          "responses": {
+            "en": [
+              "Need to get in touch with the Scholarships and Financial Grants Unit?",
+              "To ensure a quicker response, please contact the appropriate office directly.",
+              "Here are the contact details for the Scholarships and Financial Grants Unit:",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "✉️ Email: sfgu@buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ],
+            "ceb": [
+              "Need to get in touch with the Scholarships and Financial Grants Unit?",
+              "To ensure a quicker response, please contact the appropriate office directly.",
+              "Here are the contact details for the Scholarships and Financial Grants Unit:",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "✉️ Email: sfgu@buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "contact scholarship unit",
+              "contact scholarships and financial grants unit",
+              "contact sfgu",
+              "how to contact scholarship unit",
+              "scholarship contact number",
+              "scholarship email",
+              "scholarship facebook page",
+              "unsaon pag contact sa scholarship",
+              "asa mag chat about scholarship",
+              "number sa scholarship office",
+              "scholarship unit contact"
+            ]
+          },
+          "display_name": "Contact Scholarships and Financial Grants Unit",
+          "subject_terms": [
+            "contact scholarship",
+            "sfgu contact",
+            "scholarship unit email"
+          ],
+          "images": [],
+          "items": []
+        }
+      ],
+      "display_name": "Scholarships and Financial Grants Unit"
     }
   ]
 }

@@ -283,14 +283,14 @@ export async function registerRoutes(
 
   // KNOWLEDGE MANAGER (ADMIN) - structured nested JSON browser/editor
   app.get("/api/admin/knowledge", requireAuth, AdminKnowledgeController.list);
-  app.post("/api/admin/knowledge/:file/parent", requireAuth, AdminKnowledgeController.createParent);
-  app.post("/api/admin/knowledge/:file/subtopic", requireAuth, AdminKnowledgeController.createSubtopic);
-  app.post("/api/admin/knowledge/:file/topic", requireAuth, AdminKnowledgeController.update);
+  app.post("/api/admin/knowledge/:file(*)/parent", requireAuth, AdminKnowledgeController.createParent);
+  app.post("/api/admin/knowledge/:file(*)/subtopic", requireAuth, AdminKnowledgeController.createSubtopic);
+  app.post("/api/admin/knowledge/:file(*)/topic", requireAuth, AdminKnowledgeController.update);
 
   // SUPER INTENTS (ADMIN) - list, topics, update
   app.get("/api/admin/super-intents", requireAuth, AdminBotTopicsController.getSuperIntents);
-  app.get("/api/admin/super-intents/:file", requireAuth, AdminBotTopicsController.getSuperIntentTopics);
-  app.post("/api/admin/super-intents/:file/topic", requireAuth, AdminBotTopicsController.updateTopic);
+  app.get("/api/admin/super-intents/:file(*)", requireAuth, AdminBotTopicsController.getSuperIntentTopics);
+  app.post("/api/admin/super-intents/:file(*)/topic", requireAuth, AdminBotTopicsController.updateTopic);
 
   // USER PRIVILEGES (ADMIN)
   app.get("/api/admin/privileges", requireAuth, AdminController.getUserPrivileges);

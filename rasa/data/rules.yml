@@ -76,3 +76,14 @@ rules:
   steps:
     - intent: bot_challenge
     - action: utter_iamabot
+
+- rule: Set active category
+  steps:
+    - intent: set_category
+    - action: action_set_active_category
+
+- rule: Reset active category
+  steps:
+    - intent: reset_category
+    - action: action_reset_active_category
+

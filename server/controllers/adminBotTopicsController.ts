@@ -7,6 +7,72 @@ import { backupJsonFile } from '../utils/jsonBackup';
 import { logActivity, computeKnowledgeDiff } from '../services/activityLogService.js';
 
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
+const KNOWLEDGE_ROOT = path.join(process.cwd(), 'rasa', 'actions', 'knowledge');
+
+function getKnowledgeFiles(): { file: string; fullPath: string; domain?: string }[] {
+  const result: { file: string; fullPath: string; domain?: string }[] = [];
+  if (fs.existsSync(KNOWLEDGE_ROOT)) {
+    const entries = fs.readdirSync(KNOWLEDGE_ROOT, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        const domainDir = path.join(KNOWLEDGE_ROOT, entry.name);
+        const subFiles = fs.readdirSync(domainDir).filter((f) => f.endsWith('.json'));
+        for (const subFile of subFiles) {
+          result.push({
+            file: `${entry.name}/${subFile}`,
+            fullPath: path.join(domainDir, subFile),
+            domain: entry.name,
+          });
+        }
+      } else if (entry.isFile() && entry.name.endsWith('.json')) {
+        result.push({
+          file: entry.name,
+          fullPath: path.join(KNOWLEDGE_ROOT, entry.name),
+        });
+      }
+    }
+  }
+
+  // Also include Supper Saiyan if exists and not already loaded
+  const oldDir = path.join(process.cwd(), 'rasa', 'actions', 'Supper Saiyan');
+  if (fs.existsSync(oldDir)) {
+    const oldFiles = fs.readdirSync(oldDir).filter((f) => f.endsWith('.json'));
+    for (const oldFile of oldFiles) {
+      if (!result.some((r) => r.file.endsWith(oldFile))) {
+        result.push({
+          file: oldFile,
+          fullPath: path.join(oldDir, oldFile),
+        });
+      }
+    }
+  }
+
+  return result;
+}
+
+function resolveKnowledgeFilePath(filePathOrName: string): string | null {
+  if (!filePathOrName) return null;
+  const decoded = decodeURIComponent(filePathOrName).replace(/^[/\\]+/, '');
+  
+  // 1. Direct path under KNOWLEDGE_ROOT
+  const directPath = path.join(KNOWLEDGE_ROOT, decoded);
+  if (fs.existsSync(directPath)) return directPath;
+
+  // 2. Look across all domain subdirectories
+  const allFiles = getKnowledgeFiles();
+  const matched = allFiles.find(
+    (item) => item.file === decoded || path.basename(item.file) === path.basename(decoded)
+  );
+  if (matched && fs.existsSync(matched.fullPath)) {
+    return matched.fullPath;
+  }
+
+  // 3. Check old Supper Saiyan
+  const oldCandidate = path.join(process.cwd(), 'rasa', 'actions', 'Supper Saiyan', path.basename(decoded));
+  if (fs.existsSync(oldCandidate)) return oldCandidate;
+
+  return null;
+}
 
 function normalizeRoutes(routes: any[]): any[] {
   return (Array.isArray(routes) ? routes : []).map((route: any, index: number) => ({
@@ -131,20 +197,18 @@ export class AdminBotTopicsController {
   // -----------------------------------------------------------------------
   static async getSuperIntents(req: Request, res: Response) {
     try {
-      const basePath = path.join(process.cwd(), 'rasa', 'actions', 'Supper Saiyan');
-      if (!fs.existsSync(basePath)) {
-        return res.status(404).json({ success: false, message: 'Supper Saiyan directory not found' });
+      const allFiles = getKnowledgeFiles();
+      if (allFiles.length === 0) {
+        return res.status(404).json({ success: false, message: 'Knowledge files not found' });
       }
 
-      const files = fs.readdirSync(basePath).filter(f => f.endsWith('.json'));
-      const superIntents = files.map(file => {
+      const superIntents = allFiles.map((item) => {
         try {
-          const filePath = path.join(basePath, file);
-          const content = fs.readFileSync(filePath, 'utf-8');
+          const content = fs.readFileSync(item.fullPath, 'utf-8');
           const data = JSON.parse(content);
-          const intent = data.intent || file.replace('.json', '');
+          const intent = data.intent || path.basename(item.file, '.json');
           return {
-            file,
+            file: item.file,
             intent,
             displayName: formatIntentDisplayName(intent),
             topicCount: Array.isArray(data.topics)
@@ -169,18 +233,14 @@ export class AdminBotTopicsController {
   static async getSuperIntentTopics(req: Request, res: Response) {
     try {
       const { file } = req.params;
-      if (!file || !file.endsWith('.json') || file.includes('..') || file.includes('/')) {
-        return res.status(400).json({ success: false, message: 'Invalid file name' });
-      }
-
-      const filePath = path.join(process.cwd(), 'rasa', 'actions', 'Supper Saiyan', file);
-      if (!fs.existsSync(filePath)) {
+      const filePath = resolveKnowledgeFilePath(file);
+      if (!filePath || !fs.existsSync(filePath)) {
         return res.status(404).json({ success: false, message: 'File not found' });
       }
 
       const content = fs.readFileSync(filePath, 'utf-8');
       const data = JSON.parse(content);
-      const intent = data.intent || file.replace('.json', '');
+      const intent = data.intent || path.basename(file, '.json');
 
       const topics = (Array.isArray(data.topics) ? data.topics : [])
         .filter((t: any) => t.topic && t.topic.trim())
@@ -211,17 +271,13 @@ export class AdminBotTopicsController {
   static async updateTopic(req: Request, res: Response) {
     try {
       const { file } = req.params;
-      if (!file || !file.endsWith('.json') || file.includes('..') || file.includes('/')) {
-        return res.status(400).json({ success: false, message: 'Invalid file name' });
-      }
-
       const { topic: topicKey, ui_name, responses, images, map, pins, routes } = req.body;
       if (!topicKey) {
         return res.status(400).json({ success: false, message: 'topic key is required' });
       }
 
-      const filePath = path.join(process.cwd(), 'rasa', 'actions', 'Supper Saiyan', file);
-      if (!fs.existsSync(filePath)) {
+      const filePath = resolveKnowledgeFilePath(file);
+      if (!filePath || !fs.existsSync(filePath)) {
         return res.status(404).json({ success: false, message: 'File not found' });
       }
 
@@ -317,75 +373,69 @@ export class AdminBotTopicsController {
   static async getTopics(req: Request, res: Response) {
     try {
       const categories: BotCategory[] = [];
-      const basePath = path.join(process.cwd(), 'rasa', 'actions');
-      
-      // 1. Parse Supper Saiyan/ JSON files
-      const supperSaiyanPath = path.join(basePath, 'Supper Saiyan');
-      if (fs.existsSync(supperSaiyanPath)) {
-        const files = fs.readdirSync(supperSaiyanPath).filter(f => f.endsWith('.json'));
-        
-        for (const file of files) {
-          try {
-            const filePath = path.join(supperSaiyanPath, file);
-            const content = fs.readFileSync(filePath, 'utf-8');
-            const data = JSON.parse(content);
-            const superIntent = data.intent; 
-            
-            if (data.topics && Array.isArray(data.topics)) {
-              const botTopics: BotTopic[] = [];
-              for (const top of data.topics) {
-                if (!top.topic) continue;
+      const allFiles = getKnowledgeFiles();
 
-                const parentKey = top.topic;
-                if (Array.isArray(top.subtopics) && top.subtopics.length > 0) {
-                  for (const sub of top.subtopics) {
-                    const subKey = sub.intent || sub.topic;
-                    if (!subKey) continue;
-                    const topicKey = `${parentKey}.${subKey}`;
-                    const labelSource = sub.display_name || sub.ui_name;
-                    const fallbackLabelSource = sub.intent || sub.topic || parentKey;
-                    botTopics.push({
-                      topicKey,
-                      payload: buildKnowledgePayload(subKey, sub),
-                      superIntent,
-                      defaultLabel: labelSource || formatLabel(fallbackLabelSource),
-                      defaultIcon: guessIcon((labelSource || fallbackLabelSource) + ' ' + file),
-                      routingType: 'supper_saiyan',
-                      previewResponse: firstResponseText(sub)
-                    });
-                  }
-                  continue;
+      // 1. Parse knowledge JSON files
+      for (const item of allFiles) {
+        try {
+          const content = fs.readFileSync(item.fullPath, 'utf-8');
+          const data = JSON.parse(content);
+          const superIntent = data.intent || path.basename(item.file, '.json'); 
+          
+          if (data.topics && Array.isArray(data.topics)) {
+            const botTopics: BotTopic[] = [];
+            for (const top of data.topics) {
+              if (!top.topic) continue;
+
+              const parentKey = top.topic;
+              if (Array.isArray(top.subtopics) && top.subtopics.length > 0) {
+                for (const sub of top.subtopics) {
+                  const subKey = sub.intent || sub.topic;
+                  if (!subKey) continue;
+                  const topicKey = `${parentKey}.${subKey}`;
+                  const labelSource = sub.display_name || sub.ui_name;
+                  const fallbackLabelSource = sub.intent || sub.topic || parentKey;
+                  botTopics.push({
+                    topicKey,
+                    payload: buildKnowledgePayload(subKey, sub),
+                    superIntent,
+                    defaultLabel: labelSource || formatLabel(fallbackLabelSource),
+                    defaultIcon: guessIcon((labelSource || fallbackLabelSource) + ' ' + item.file),
+                    routingType: 'supper_saiyan',
+                    previewResponse: firstResponseText(sub)
+                  });
                 }
+                continue;
+              }
 
-                const topicKey = parentKey;
-                botTopics.push({
-                  topicKey,
-                  payload: buildKnowledgePayload(topicKey, top),
-                  superIntent,
-                  defaultLabel: top.display_name || top.ui_name || formatLabel(topicKey),
-                  defaultIcon: guessIcon((top.display_name || top.ui_name || topicKey) + ' ' + file),
-                  routingType: 'supper_saiyan',
-                  previewResponse: firstResponseText(top)
-                });
-              }
-              
-              if (botTopics.length > 0) {
-                categories.push({
-                  id: file,
-                  displayName: formatLabel(file.replace('.json', '')),
-                  sourceFile: `Supper Saiyan/${file}`,
-                  topics: botTopics
-                });
-              }
+              const topicKey = parentKey;
+              botTopics.push({
+                topicKey,
+                payload: buildKnowledgePayload(topicKey, top),
+                superIntent,
+                defaultLabel: top.display_name || top.ui_name || formatLabel(topicKey),
+                defaultIcon: guessIcon((top.display_name || top.ui_name || topicKey) + ' ' + item.file),
+                routingType: 'supper_saiyan',
+                previewResponse: firstResponseText(top)
+              });
             }
-          } catch (err) {
-            console.error(`Error parsing file ${file}:`, err);
+            
+            if (botTopics.length > 0) {
+              categories.push({
+                id: item.file,
+                displayName: formatLabel(path.basename(item.file, '.json')),
+                sourceFile: item.file,
+                topics: botTopics
+              });
+            }
           }
+        } catch (err) {
+          console.error(`Error parsing file ${item.file}:`, err);
         }
       }
       
-      // 2. Parse responses_location.json
-      const locationFile = path.join(basePath, 'responses_location.json');
+      // 2. Parse responses_location.json if exists
+      const locationFile = path.join(process.cwd(), 'rasa', 'actions', 'responses_location.json');
       if (fs.existsSync(locationFile)) {
         try {
           const content = fs.readFileSync(locationFile, 'utf-8');
@@ -421,8 +471,8 @@ export class AdminBotTopicsController {
         }
       }
       
-      // 3. Parse responses.json
-      const responsesFile = path.join(basePath, 'responses.json');
+      // 3. Parse responses.json if exists
+      const responsesFile = path.join(process.cwd(), 'rasa', 'actions', 'responses.json');
       if (fs.existsSync(responsesFile)) {
         try {
           const content = fs.readFileSync(responsesFile, 'utf-8');

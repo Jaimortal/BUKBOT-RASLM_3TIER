@@ -1,0 +1,833 @@
+{
+  "intent": "ask_facility_availability",
+  "category": "Facilities Info",
+  "entities": [
+    "facility_name"
+  ],
+  "topics": [
+    {
+      "topic": "library_facility_availability",
+      "subject_key": "library_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "library",
+        "university library",
+        "BukSU library"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a University Library available for students.",
+          "Students may use the library for reading, studying, borrowing books, and accessing library services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og University Library para sa mga estudyante.",
+          "Pwede magamit sa students ang library para sa pagbasa, pag-study, paghulam og libro, ug paggamit sa library services."
+        ]
+      },
+      "intent": "library_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a library",
+          "do buksu has a library",
+          "is there a library in BukSU",
+          "does Bukidnon State University have a library",
+          "naa bay library sa BukSU",
+          "naa ba ang BukSU og library",
+          "aduna bay library sa BukSU",
+          "library available in BukSU"
+        ],
+        "strong_keywords": [
+          "library",
+          "facility",
+          "available"
+        ]
+      },
+      "display_name": "Library Facility Availability",
+      "suggestions": [
+        {
+          "label": "Library location",
+          "payload": "where is Library"
+        }
+      ]
+    },
+    {
+      "topic": "museum_facility_availability",
+      "subject_key": "museum_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "museum",
+        "university museum",
+        "BukSU museum"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Museum on campus.",
+          "You may visit it for university-related exhibits and campus heritage information, depending on its available schedule."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Museum sulod sa campus.",
+          "Pwede nimo kini bisitahon para sa university-related exhibits ug campus heritage information, depende sa available schedule niini."
+        ]
+      },
+      "intent": "museum_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a museum",
+          "do buksu has museum",
+          "is there a museum in BukSU",
+          "is the Bukidnon State University has museum",
+          "does Bukidnon State University have a museum",
+          "naa bay museum sa BukSU",
+          "naa ba ang BukSU og museum",
+          "museum available in BukSU"
+        ],
+        "strong_keywords": [
+          "museum",
+          "facility",
+          "available"
+        ]
+      },
+      "display_name": "Museum Facility Availability",
+      "suggestions": [
+        {
+          "label": "Museum location",
+          "payload": "where is Museum"
+        }
+      ]
+    },
+    {
+      "topic": "clinic_facility_availability",
+      "subject_key": "clinic_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "clinic",
+        "medical clinic",
+        "health clinic",
+        "university clinic",
+        "health services"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a medical clinic or health services facility for students.",
+          "Students may ask the clinic for basic medical assistance, health concerns, and related student health services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og medical clinic o health services facility para sa students.",
+          "Pwede mangutana ang students sa clinic para sa basic medical assistance, health concerns, ug related student health services."
+        ]
+      },
+      "intent": "clinic_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a clinic",
+          "is there a clinic in BukSU",
+          "does BukSU have medical clinic",
+          "does BukSU have health services",
+          "naa bay clinic sa BukSU",
+          "naa ba ang BukSU og clinic",
+          "naa bay health services sa BukSU",
+          "clinic available in BukSU"
+        ],
+        "strong_keywords": [
+          "clinic",
+          "health services",
+          "medical"
+        ]
+      },
+      "display_name": "Clinic Facility Availability",
+      "suggestions": [
+        {
+          "label": "Clinic location",
+          "payload": "where is Medical clinic"
+        }
+      ]
+    },
+    {
+      "topic": "dental_clinic_facility_availability",
+      "subject_key": "dental_clinic_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "dental clinic",
+        "dental",
+        "dentist",
+        "oral clinic"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Dental Clinic for student dental-related services.",
+          "Students may ask the Dental Clinic about consultation, oral examination, referral, medicine dispensing, and other available dental services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Dental Clinic para sa dental-related services sa students.",
+          "Pwede mangutana ang students sa Dental Clinic bahin sa consultation, oral examination, referral, medicine dispensing, ug uban pang available dental services."
+        ]
+      },
+      "intent": "dental_clinic_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a dental clinic",
+          "is there a dental clinic in BukSU",
+          "does BukSU have dental services",
+          "naa bay dental clinic sa BukSU",
+          "naa ba ang BukSU og dental clinic",
+          "naa bay dentist sa BukSU",
+          "dental clinic available in BukSU"
+        ],
+        "strong_keywords": [
+          "dental",
+          "dentist",
+          "clinic"
+        ]
+      },
+      "display_name": "Dental Clinic Facility Availability",
+      "suggestions": [
+        {
+          "label": "Dental Clinic location",
+          "payload": "where is Dental Clinic"
+        }
+      ]
+    },
+    {
+      "topic": "gym_facility_availability",
+      "subject_key": "gym_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "gym",
+        "gymnasium",
+        "fitness gym",
+        "sports facility"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has sports-related facilities such as the Gymnasium and Fitness Gym.",
+          "Availability may depend on schedules, events, and university rules for student use."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og sports-related facilities sama sa Gymnasium ug Fitness Gym.",
+          "Ang availability mahimong magdepende sa schedule, events, ug university rules para sa paggamit sa students."
+        ]
+      },
+      "intent": "gym_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a gym",
+          "is there a gym in BukSU",
+          "does BukSU have gymnasium",
+          "does BukSU have fitness gym",
+          "naa bay gym sa BukSU",
+          "naa bay gymnasium sa BukSU",
+          "naa ba ang BukSU og fitness gym",
+          "gym available in BukSU"
+        ],
+        "strong_keywords": [
+          "gym",
+          "gymnasium",
+          "fitness"
+        ]
+      },
+      "display_name": "Gym Facility Availability",
+      "suggestions": [
+        {
+          "label": "Gymnasium location",
+          "payload": "where is Gymnasium"
+        },
+        {
+          "label": "Fitness Gym location",
+          "payload": "where is Fitness Gym"
+        }
+      ]
+    },
+    {
+      "topic": "cafeteria_facility_availability",
+      "subject_key": "cafeteria_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "cafeteria",
+        "canteen",
+        "food area",
+        "student food"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has food areas such as the Cafeteria and Canteen.",
+          "Students may go there during available hours to buy food or take a break."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og food areas sama sa Cafeteria ug Canteen.",
+          "Pwede moadto ang students didto during available hours para mopalit og pagkaon o mopahuway."
+        ]
+      },
+      "intent": "cafeteria_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have cafeteria",
+          "is there a cafeteria in BukSU",
+          "does BukSU have canteen",
+          "is there a canteen in BukSU",
+          "naa bay cafeteria sa BukSU",
+          "naa bay canteen sa BukSU",
+          "naa ba mapalitan pagkaon sa BukSU",
+          "food area available in BukSU"
+        ],
+        "strong_keywords": [
+          "cafeteria",
+          "canteen",
+          "food"
+        ]
+      },
+      "display_name": "Cafeteria And Canteen Availability",
+      "suggestions": [
+        {
+          "label": "Cafeteria location",
+          "payload": "where is Cafeteria"
+        },
+        {
+          "label": "Canteen location",
+          "payload": "where is Canteen"
+        }
+      ]
+    },
+    {
+      "topic": "atm_facility_availability",
+      "subject_key": "atm_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "atm",
+        "cash machine",
+        "automated teller machine"
+      ],
+      "responses": {
+        "en": [
+          "Yes, there is an ATM near BukSU.",
+          "It is included in the campus location data so students can ask for its location when needed."
+        ],
+        "ceb": [
+          "Oo, naay ATM duol sa BukSU.",
+          "Apil kini sa campus location data aron makapangutana ang students sa location kung kinahanglan."
+        ]
+      },
+      "intent": "atm_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have an ATM",
+          "is there an ATM in BukSU",
+          "is there ATM near BukSU",
+          "does BukSU have cash machine",
+          "naa bay ATM sa BukSU",
+          "naa bay ATM duol sa BukSU",
+          "naa ba ang BukSU og ATM",
+          "ATM available in BukSU"
+        ],
+        "strong_keywords": [
+          "atm",
+          "cash machine"
+        ]
+      },
+      "display_name": "ATM Facility Availability",
+      "suggestions": [
+        {
+          "label": "ATM location",
+          "payload": "where is ATM"
+        }
+      ]
+    },
+    {
+      "topic": "parking_facility_availability",
+      "subject_key": "parking_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "parking",
+        "parking area",
+        "vehicle parking",
+        "motorcycle parking",
+        "car parking"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has designated parking areas for vehicles and motorcycles.",
+          "Students should still follow campus guard instructions and posted parking rules."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og designated parking areas para sa vehicles ug motorcycles.",
+          "Kinahanglan gihapon sundon sa students ang instructions sa campus guards ug ang posted parking rules."
+        ]
+      },
+      "intent": "parking_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have parking",
+          "is there parking in BukSU",
+          "does BukSU have motorcycle parking",
+          "does BukSU have car parking",
+          "naa bay parking sa BukSU",
+          "naa bay motorcycle parking sa BukSU",
+          "naa ba ang BukSU og parking area",
+          "parking available in BukSU"
+        ],
+        "strong_keywords": [
+          "parking",
+          "vehicle",
+          "motorcycle"
+        ]
+      },
+      "display_name": "Parking Facility Availability",
+      "suggestions": [
+        {
+          "label": "Vehicle parking location",
+          "payload": "where is Vehicle Parking Area"
+        },
+        {
+          "label": "Motorcycle parking location",
+          "payload": "where is Motorcycle Parking Area"
+        },
+        {
+          "label": "Car parking location",
+          "payload": "where is Car Parking Area"
+        }
+      ]
+    },
+    {
+      "topic": "dormitory_facility_availability",
+      "subject_key": "dormitory_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "dormitory",
+        "dorm",
+        "student dorm",
+        "mahogany dorm",
+        "rubia dorm",
+        "kilala dorm"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has dormitory facilities for students.",
+          "Dormitory availability and requirements may depend on the dormitory office and official university guidelines."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og dormitory facilities para sa students.",
+          "Ang availability ug requirements sa dormitory mahimong magdepende sa dormitory office ug official university guidelines."
+        ]
+      },
+      "intent": "dormitory_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have dormitory",
+          "is there a dormitory in BukSU",
+          "does BukSU have dorm",
+          "does BukSU have student dorm",
+          "naa bay dormitory sa BukSU",
+          "naa bay dorm sa BukSU",
+          "naa ba ang BukSU og dormitory",
+          "dormitory available in BukSU"
+        ],
+        "strong_keywords": [
+          "dormitory",
+          "dorm"
+        ]
+      },
+      "display_name": "Dormitory Facility Availability",
+      "suggestions": [
+        {
+          "label": "Mahogany Dorm location",
+          "payload": "where is Mahogany dorm"
+        },
+        {
+          "label": "Rubia Dorm location",
+          "payload": "where is Rubia dorm"
+        },
+        {
+          "label": "Kilala Dorm location",
+          "payload": "where is Kilala Dorm"
+        }
+      ]
+    },
+    {
+      "topic": "oval_facility_availability",
+      "subject_key": "oval_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "oval",
+        "field",
+        "open field",
+        "sports field"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an Oval or open field area on campus.",
+          "Students may use it depending on university rules, events, and available schedules."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Oval o open field area sulod sa campus.",
+          "Pwede kini magamit sa students depende sa university rules, events, ug available schedules."
+        ]
+      },
+      "intent": "oval_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have oval",
+          "is there an oval in BukSU",
+          "does BukSU have open field",
+          "does BukSU have sports field",
+          "naa bay oval sa BukSU",
+          "naa bay open field sa BukSU",
+          "naa ba ang BukSU og oval",
+          "oval available in BukSU"
+        ],
+        "strong_keywords": [
+          "oval",
+          "field"
+        ]
+      },
+      "display_name": "Oval Facility Availability",
+      "suggestions": [
+        {
+          "label": "Oval location",
+          "payload": "where is Oval"
+        }
+      ]
+    },
+    {
+      "topic": "auditorium_facility_availability",
+      "subject_key": "auditorium_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "auditorium",
+        "theater",
+        "theatre",
+        "event hall"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an Auditorium and other event-related spaces.",
+          "Use of these facilities may depend on official schedules, events, and university approval."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Auditorium ug uban pang event-related spaces.",
+          "Ang paggamit niini mahimong magdepende sa official schedules, events, ug university approval."
+        ]
+      },
+      "intent": "auditorium_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have auditorium",
+          "is there an auditorium in BukSU",
+          "does BukSU have theater",
+          "does BukSU have event hall",
+          "naa bay auditorium sa BukSU",
+          "naa bay theater sa BukSU",
+          "naa ba ang BukSU og auditorium",
+          "auditorium available in BukSU"
+        ],
+        "strong_keywords": [
+          "auditorium",
+          "theater",
+          "event hall"
+        ]
+      },
+      "display_name": "Auditorium Facility Availability",
+      "suggestions": [
+        {
+          "label": "Auditorium location",
+          "payload": "where is Auditorium"
+        }
+      ]
+    },
+    {
+      "topic": "guidance_office_facility_availability",
+      "subject_key": "guidance_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "guidance office",
+        "guidance counselor",
+        "counseling office",
+        "counselor"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Guidance Office where students may ask for guidance and counseling-related assistance.",
+          "Students may visit or ask the office directly for available services and schedules."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Guidance Office diin pwede mangayo og guidance ug counseling-related assistance ang students.",
+          "Pwede moduol ang students sa office para mangutana sa available services ug schedules."
+        ]
+      },
+      "intent": "guidance_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have guidance office",
+          "is there a guidance office in BukSU",
+          "does BukSU have guidance counselor",
+          "does BukSU have counseling office",
+          "naa bay guidance office sa BukSU",
+          "naa bay guidance counselor sa BukSU",
+          "naa ba ang BukSU og counseling office",
+          "guidance office available in BukSU"
+        ],
+        "strong_keywords": [
+          "guidance",
+          "counseling",
+          "counselor"
+        ]
+      },
+      "display_name": "Guidance Office Availability",
+      "suggestions": [
+        {
+          "label": "Guidance Office location",
+          "payload": "where is Guidance Office"
+        }
+      ]
+    },
+    {
+      "topic": "registrar_office_facility_availability",
+      "subject_key": "registrar_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "registrar",
+        "registrar office",
+        "university registrar"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Registrar Office for enrollment, records, COR, and other registrar-related transactions.",
+          "Students should follow official Registrar announcements and office procedures for specific services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Registrar Office para sa enrollment, records, COR, ug uban pang registrar-related transactions.",
+          "Kinahanglan sundon sa students ang official Registrar announcements ug office procedures para sa specific services."
+        ]
+      },
+      "intent": "registrar_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have registrar office",
+          "is there a registrar office in BukSU",
+          "does BukSU have university registrar",
+          "naa bay registrar office sa BukSU",
+          "naa bay registrar sa BukSU",
+          "naa ba ang BukSU og registrar office",
+          "registrar office available in BukSU"
+        ],
+        "strong_keywords": [
+          "registrar",
+          "records",
+          "cor"
+        ]
+      },
+      "display_name": "Registrar Office Availability",
+      "suggestions": [
+        {
+          "label": "Registrar Office location",
+          "payload": "where is Registrar Office"
+        }
+      ]
+    },
+    {
+      "topic": "finance_cashier_facility_availability",
+      "subject_key": "finance_cashier_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "finance",
+        "finance office",
+        "cashier",
+        "cashier office",
+        "accounting"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Finance Building and cashier windows for finance-related transactions.",
+          "For payment or account concerns, students should follow the correct window or office instructions."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Finance Building ug cashier windows para sa finance-related transactions.",
+          "Para sa payment o account concerns, sundon sa students ang sakto nga window o office instructions."
+        ]
+      },
+      "intent": "finance_cashier_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have finance office",
+          "is there a finance office in BukSU",
+          "does BukSU have cashier",
+          "is there a cashier in BukSU",
+          "naa bay finance office sa BukSU",
+          "naa bay cashier sa BukSU",
+          "naa ba ang BukSU og finance building",
+          "cashier available in BukSU"
+        ],
+        "strong_keywords": [
+          "finance",
+          "cashier",
+          "accounting"
+        ]
+      },
+      "display_name": "Finance And Cashier Availability",
+      "suggestions": [
+        {
+          "label": "Finance Building location",
+          "payload": "where is Finance Building"
+        },
+        {
+          "label": "Cashier location",
+          "payload": "where is Window 03 Cashiers Office"
+        }
+      ]
+    },
+    {
+      "topic": "ict_office_facility_availability",
+      "subject_key": "ict_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "ict",
+        "ict office",
+        "ict service unit",
+        "ictu",
+        "technology services"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an ICT office or ICT Service Unit for technology-related concerns.",
+          "Students may ask ICT about institutional email, Wi-Fi, and other supported technology services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og ICT office o ICT Service Unit para sa technology-related concerns.",
+          "Pwede mangutana ang students sa ICT bahin sa institutional email, Wi-Fi, ug uban pang supported technology services."
+        ]
+      },
+      "intent": "ict_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have ICT office",
+          "is there an ICT office in BukSU",
+          "does BukSU have ICT service unit",
+          "does BukSU have technology office",
+          "naa bay ICT office sa BukSU",
+          "naa bay ICT service unit sa BukSU",
+          "naa ba ang BukSU og ICT office",
+          "ICT office available in BukSU"
+        ],
+        "strong_keywords": [
+          "ict",
+          "ictu",
+          "technology"
+        ]
+      },
+      "display_name": "ICT Office Availability",
+      "suggestions": [
+        {
+          "label": "ICT office location",
+          "payload": "where is ICT Service Unit"
+        }
+      ]
+    },
+    {
+      "topic": "admission_office_facility_availability",
+      "subject_key": "admission_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "admission office",
+        "admission",
+        "admission and testing",
+        "atu"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an Admission Office for admission and testing-related concerns.",
+          "Students and applicants may ask the office about admission applications, testing, results, and related processes."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Admission Office para sa admission ug testing-related concerns.",
+          "Pwede mangutana ang students ug applicants sa office bahin sa admission applications, testing, results, ug related processes."
+        ]
+      },
+      "intent": "admission_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have admission office",
+          "is there an admission office in BukSU",
+          "does BukSU have admission and testing office",
+          "does BukSU have ATU office",
+          "naa bay admission office sa BukSU",
+          "naa bay admission and testing sa BukSU",
+          "naa ba ang BukSU og admission office",
+          "admission office available in BukSU"
+        ],
+        "strong_keywords": [
+          "admission",
+          "testing",
+          "atu"
+        ]
+      },
+      "display_name": "Admission Office Availability",
+      "suggestions": [
+        {
+          "label": "Admission Office location",
+          "payload": "where is Admission Office"
+        }
+      ]
+    },
+    {
+      "topic": "guard_house_facility_availability",
+      "subject_key": "guard_house_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "guard house",
+        "security",
+        "campus guard",
+        "entrance guard"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Guard House and campus security personnel at campus entry points.",
+          "For entry concerns, students should follow the guard's instructions and present required documents or ID when needed."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Guard House ug campus security personnel sa campus entry points.",
+          "Para sa entry concerns, sundon sa students ang instructions sa guard ug ipakita ang required documents o ID kung kinahanglan."
+        ]
+      },
+      "intent": "guard_house_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have guard house",
+          "is there a guard house in BukSU",
+          "does BukSU have campus guard",
+          "does BukSU have security guard",
+          "naa bay guard house sa BukSU",
+          "naa bay guard sa BukSU",
+          "naa ba ang BukSU og security",
+          "guard house available in BukSU"
+        ],
+        "strong_keywords": [
+          "guard",
+          "security",
+          "entrance"
+        ]
+      },
+      "display_name": "Guard House Availability",
+      "suggestions": [
+        {
+          "label": "Guard House location",
+          "payload": "where is Guard House"
+        }
+      ]
+    }
+  ]
+}

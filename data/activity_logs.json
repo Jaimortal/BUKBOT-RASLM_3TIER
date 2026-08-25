@@ -1,5 +1,235 @@
 [
   {
+    "id": "log_1787633973429_kqqiwin",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Cafeteria",
+    "targetTitle": "Cafeteria",
+    "targetId": "Cafeteria",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-25T04:59:33.429Z"
+  },
+  {
+    "id": "log_1787633971651_e1wb9wq",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260819_165858_645.webp\" (53.3 KB)",
+    "targetTitle": "IMG_20260819_165858_645.webp",
+    "targetId": "47f42159-1d75-4f77-ada7-a7a8ee122fd6",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260819_165858_645.webp\" (53.3 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-25T04:59:31.651Z"
+  },
+  {
+    "id": "log_1787633947682_2j979jw",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Cafeteria",
+    "targetTitle": "Cafeteria",
+    "targetId": "Cafeteria",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-25T04:59:07.682Z"
+  },
+  {
+    "id": "log_1787627943852_ibw9c21",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Library ID Card Location",
+    "targetTitle": "Library ID Card Location",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated map pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated map routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-25T03:19:03.852Z"
+  },
+  {
+    "id": "log_1787625019964_t4c7dbt",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Center for Innovative Teaching and Learning (CITL)",
+    "targetTitle": "Center for Innovative Teaching and Learning (CITL)",
+    "targetId": "Center for Innovative Teaching and Learning (CITL)",
+    "changes": [
+      {
+        "field": "Coordinates",
+        "changeType": "modified",
+        "details": "Updated coordinates to [500, 500]"
+      },
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-25T02:30:19.964Z"
+  },
+  {
+    "id": "log_1787588951771_pcukuyz",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Enrollment General Process",
+    "targetTitle": "Enrollment General Process",
+    "targetId": "procedures/enrollment_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (16 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (16 line(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 4 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-24T16:29:11.771Z"
+  },
+  {
+    "id": "log_1787588950439_9vl7f0a",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"step 4.webp\" (71.1 KB)",
+    "targetTitle": "step 4.webp",
+    "targetId": "193eb88e-a5d4-4ba9-b2ed-aa0b064c798c",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"step 4.webp\" (71.1 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-24T16:29:10.439Z"
+  },
+  {
+    "id": "log_1787588947959_fkt8jb9",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"1.3.webp\" (83.5 KB)",
+    "targetTitle": "1.3.webp",
+    "targetId": "bd0b40cd-01b1-4393-8e86-d645c1d9e8e1",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"1.3.webp\" (83.5 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-24T16:29:07.959Z"
+  },
+  {
+    "id": "log_1787588945314_4cghg47",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"1.2.webp\" (76.3 KB)",
+    "targetTitle": "1.2.webp",
+    "targetId": "5fbc94fd-d9a6-4587-9f46-024c3ea7f562",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"1.2.webp\" (76.3 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-24T16:29:05.314Z"
+  },
+  {
+    "id": "log_1787588942540_le1eijo",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"1.1.webp\" (75.4 KB)",
+    "targetTitle": "1.1.webp",
+    "targetId": "0beb97b4-ae96-4c5c-ae10-5526cb829f21",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"1.1.webp\" (75.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-24T16:29:02.540Z"
+  },
+  {
     "id": "log_1787494731999_vjtokx7",
     "userEmail": "jhonmarkambito82@gmail.com",
     "userName": "Co-admin-ambito",

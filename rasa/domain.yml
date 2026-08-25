@@ -1,6 +1,9 @@
 version: "3.1"
 
 intents:
+  - set_category
+  - reset_category
+  - get_category_suggestions
   - ask_location
   - ask_schedule
   - ask_fee
@@ -19,6 +22,9 @@ intents:
   - nlu_fallback
 
 entities:
+  - active_category
+  - category
+  - domain
   - location_name
   - service
   - office
@@ -31,6 +37,32 @@ entities:
   - lab_number
 
 slots:
+  active_category:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: active_category
+      - type: from_entity
+        entity: category
+      - type: custom
+
+  category:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: category
+      - type: custom
+
+  domain:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: domain
+      - type: custom
+
   location_name:
     type: text
     influence_conversation: false
@@ -159,6 +191,9 @@ actions:
   - action_main_router
   - action_reply_from_json
   - action_set_dynamic_slot
+  - action_set_active_category
+  - action_reset_active_category
+  - action_get_category_suggestions
 
 session_config:
   session_expiration_time: 60

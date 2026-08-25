@@ -159,13 +159,33 @@ class KnowledgeRouter:
             )
         )
 
-    def direct_intent_override(self, intent: str, user_message: str, entity_values: List[str]) -> Optional[str]:
+    def direct_intent_override(
+        self,
+        intent: str,
+        user_message: str,
+        entity_values: List[str],
+        active_domain: Optional[str] = None,
+    ) -> Optional[str]:
+        result = self._calculate_direct_intent_override(intent, user_message, entity_values, active_domain=active_domain)
+        if result and active_domain:
+            if not self.data_loader.is_intent_in_domain(result, active_domain):
+                return None
+        return result
+
+    def _calculate_direct_intent_override(
+        self,
+        intent: str,
+        user_message: str,
+        entity_values: List[str],
+        active_domain: Optional[str] = None,
+    ) -> Optional[str]:
         raw_text = " ".join([user_message, *entity_values])
         raw_normalized = self.interpreter.normalize(raw_text)
         text = self.interpreter.normalize_for_search(raw_text)
         tokens = set(self.interpreter.tokens(text))
         raw_tokens = set(re.findall(r"\b[\w'-]+\b", raw_normalized))
-        facility_availability_intent = self._facility_availability_route(text)
+        facility_availability_intent = self._facility_availability_route(text) if not active_domain or active_domain == "location" else None
+
 
         # Student Handbook — intercept before location scoring penalizes it.
         # Any query mentioning "handbook" is about how to get the document,
@@ -215,6 +235,84 @@ class KnowledgeRouter:
             if has_cor_location_signal:
                 return "request_cor"
 
+        # Exam Location vs Preferred Campus
+        if self._has_any(text, [
+            "exam location vs campus", "testing site vs campus",
+            "exam location determine campus", "does exam location mean preferred campus",
+            "same ba ang testing site ug campus", "kung asa ko mag exam adto pud ko mag skwela",
+        ]):
+            return "exam_location_vs_campus"
+
+        # Deans of Colleges List Routing (University Administrators)
+        _is_deans_list_academic_award = self._has_any(text, [
+            "qualification", "qualify", "requirement", "requirements", "criteria",
+            "gwa", "grade", "grades", "apply", "how to be", "honor", "honors", "award"
+        ])
+        _is_specific_college_dean = self._has_any(text, [
+            "cot", "cob", "cas", "cpag", "con", "coe", "law",
+            "technology", "technologies", "business", "arts and sciences",
+            "public administration", "nursing", "education",
+        ])
+        if not _is_deans_list_academic_award and not _is_specific_college_dean:
+            if (
+                self._has_any(text, ["dean", "deans", "mga dean"]) and
+                self._has_any(text, [
+                    "college", "colleges", "department", "departments", "kolehiyo",
+                    "buksu", "all", "tanan", "list", "lista", "who are", "kinsa", "7", "seven",
+                    "every", "each"
+                ])
+            ) or self._has_any(text, [
+                "deans of colleges list", "deans of colleges", "dean of colleges",
+                "all deans of colleges", "all deans in buksu", "dean of all colleges",
+                "list of deans", "list of college deans", "who are the deans",
+                "who are all the deans", "deans of every college", "deans in every college",
+                "all college deans", "kinsa ang mga dean", "lista sa mga dean",
+                "mga dean sa tanang kolehiyo", "mga dean sa buksu", "tanang dean sa buksu",
+                "mga dean sa college", "mga dean sa department", "deans of 7 colleges",
+                "deans of the 7 colleges", "7 colleges deans", "all 7 deans"
+            ]):
+                return "deans_of_colleges_list"
+
+        # Specific College Deans Direct Routing
+        if not _is_deans_list_academic_award and self._has_any(text, ["dean", "dean of", "current dean", "kinsa ang dean", "who is the dean"]):
+            if self._has_any(text, ["cot", "technology", "technologies"]) and not self._has_any(text, ["head", "chair", "faculty"]):
+                return "Dean_0f_COT"
+            if self._has_any(text, ["cob", "business", "accountancy"]) and not self._has_any(text, ["head", "chair", "faculty"]):
+                return "Dean_0f_COB"
+            if self._has_any(text, ["cas", "arts and sciences", "arts & sciences", "natural sciences", "social sciences", "mathematics"]) and not self._has_any(text, ["head", "chair", "faculty"]):
+                return "Dean_0f_CAS"
+            if self._has_any(text, ["cpag", "public administration", "governance"]) and not self._has_any(text, ["head", "chair", "faculty"]):
+                return "Dean_0f_CPAG"
+            if self._has_any(text, ["con", "nursing"]) and not self._has_any(text, ["head", "chair", "faculty"]):
+                return "Dean_0f_CON"
+            if self._has_any(text, ["coe", "education", "teacher education"]) and not self._has_any(text, ["head", "chair", "faculty"]):
+                return "Dean_0f_COE"
+            if self._has_any(text, ["law", "college of law", "col"]) and not self._has_any(text, ["head", "chair", "faculty"]):
+                return "Dean_0f_LAW"
+
+        # Contact Scholarship Unit Routing
+        if self._has_any(text, [
+            "contact scholarship", "contact scholarship unit", "contact sfgu",
+            "scholarship contact", "scholarship unit contact", "sfgu contact",
+            "number sa scholarship", "email sa scholarship", "fb sa scholarship",
+            "facebook sa scholarship", "unsaon pag contact sa scholarship",
+            "asa mag chat about scholarship", "scholarship phone number",
+            "scholarship email", "scholarship facebook page",
+        ]):
+            return "contact_scholarship_unit"
+
+        # Scholarship Application Routing
+        if self._has_any(text, [
+            "apply for scholarship", "apply for scholarships", "apply scholarship", "apply scholarships",
+            "scholarship application", "how to get scholarship", "how to get a scholarship",
+            "scholarship requirement", "scholarship requirements", "scholarship process", "scholarship procedure",
+            "requirements for the scholarship", "requirements for scholarship", "requirement for scholarship",
+            "unsaon pag apply og scholarship", "unsaon pag apply ug scholarship", "unsaon pag apply sa scholarship",
+            "unsaon pagkuha og scholarship", "unsaon pagkuha ug scholarship", "unsaon pag apply scholarship",
+            "pamaagi sa scholarship", "pamaagi sa pag apply og scholarship", "apply og scholarship",
+        ]) and not self._has_any(text, ["where is window", "location of window", "asa ang window", "contact scholarship", "contact sfgu"]):
+            return "scholarship_application"
+
         # Gate Pass Policy Routing
         _has_gate_pass = self._has_any(text, [
             "gate pass", "gatepass", "vehicle pass", "vehicle sticker",
@@ -229,6 +327,18 @@ class KnowledgeRouter:
             if _has_bike:
                 return "bike_gate_pass"
             return "general_gate_pass"
+
+        # Add and Drop Subjects Routing
+        if (
+            self._has_any(text, [
+                "adding and dropping", "adding & dropping", "add and drop", "add & drop",
+                "add drop", "adding dropping", "mag add drop", "mag-add drop",
+            ]) or (
+                self._has_any(text, ["add subject", "adding subject", "drop subject", "dropping subject"]) and
+                not self._has_any(text, ["how to pay", "cashier"])
+            )
+        ):
+            return "add_drop_subject"
 
         # Absence / Excuse Requirements Routing
         _has_absence = self._has_any(text, [
@@ -252,6 +362,39 @@ class KnowledgeRouter:
             return "course_slots"
 
         has_enrollment = self._has_any(text, ["enroll", "enrollment", "enrol", "enrolment"])
+        if has_enrollment:
+            # Check for explicit Medicine
+            if (self._has_any(text, ["medicine", "college of medicine"]) or "nmat" in text) and not self._has_any(text, ["schedule", "time", "date", "when"]):
+                return "medicine_enrollment_requirements"
+
+            # Check for explicit Undergraduate
+            if self._has_any(text, [
+                "undergraduate requirements", "undergraduate enrollment requirements",
+                "undergraduate requirement", "undergraduate enrollment requirement",
+                "freshman requirements", "first year requirements", "transferee requirements",
+                "freshman documentary requirements", "freshman enrollment requirements",
+                "undergraduate",
+            ]):
+                return "freshman_enrollment_process"
+
+            # Check for explicit Law / Graduate
+            if (self._has_any(text, ["law", "juris doctor", "masters", "masteral", "doctorate", "post-graduate"]) or
+                re.search(r"\bgraduate\b", text)) and not self._has_any(text, ["schedule", "time", "date", "when"]):
+                return "graduate_law_enrollment_requirements"
+
+            # Check if requirements/documents asked
+            if self._has_any(text, ["requirement", "requirements", "document", "documents", "need", "needs", "papers", "dad-on", "dalhon", "ipasa", "submit", "envelope", "what do i need", "what to prepare"]):
+                course_name = self._extract_mentioned_course_or_dept(text)
+                if course_name and not self._has_any(text, ["medicine", "college of medicine", "law", "graduate"]):
+                    return f"__course_enrollment_req_notice__{course_name}"
+                return "enrollment_documents"
+
+            # Check if process/steps asked
+            if self._has_any(text, ["process", "step", "steps", "step by step", "guide", "how to enroll", "how do i enroll", "unsaon pag enroll", "unsaon pagpa enroll", "paagi sa pag enroll"]):
+                course_name = self._extract_mentioned_course_or_dept(text)
+                if course_name and not self._has_any(text, ["medicine", "college of medicine", "law", "graduate"]):
+                    return f"__course_enrollment_proc_notice__{course_name}"
+                return "enrollment_general_process"
         has_cat = (
             "cat" in tokens or
             self._has_any(text, ["buksu cat", "college admission test", "admission test", "entrance exam", "buksu entrance"])
@@ -2025,6 +2168,28 @@ class KnowledgeRouter:
             return "con_nursing_enrollment_guidance"
         if has_returning_student and (has_enrollment or self._has_any(text, ["process", "steps", "how", "procedure"])):
             return "returning_students_scope_notice"
+        # Specific Level Enrollment Requirements
+        if has_enrollment and (has_medicine or self._has_any(text, ["nmat", "college of medicine"])) and not self._has_any(text, ["schedule", "time", "date", "when"]):
+            return "medicine_enrollment_requirements"
+        if (has_graduate_enrollment or (has_enrollment and self._has_any(text, ["law", "juris doctor", "graduate", "masters", "masteral", "doctorate", "post-graduate"]))) and not self._has_any(text, ["schedule", "time", "date", "when"]):
+            return "graduate_law_enrollment_requirements"
+        if self._has_any(text, ["undergraduate requirements", "undergraduate enrollment requirements", "freshman requirements", "first year requirements", "transferee requirements", "freshman documentary requirements"]):
+            return "freshman_enrollment_process"
+
+        # Enrollment Requirements / Documents with Course Name or Department mentioned
+        if has_enrollment and self._has_any(text, ["requirement", "requirements", "document", "documents", "need", "needs", "papers", "dad-on", "dalhon", "ipasa", "submit", "envelope", "what do i need", "what to prepare"]):
+            course_name = self._extract_mentioned_course_or_dept(text)
+            if course_name and not self._has_any(text, ["medicine", "college of medicine", "law", "graduate"]):
+                return f"__course_enrollment_req_notice__{course_name}"
+            return "enrollment_documents"
+
+        # Enrollment Process / Steps with Course Name mentioned
+        if has_enrollment and (has_enrollment_process or self._has_any(text, ["process", "step", "steps", "step by step", "guide", "how to enroll", "how do i enroll", "unsaon pag enroll", "unsaon pagpa enroll", "paagi sa pag enroll"])):
+            course_name = self._extract_mentioned_course_or_dept(text)
+            if course_name and not self._has_any(text, ["medicine", "college of medicine", "law", "graduate"]):
+                return f"__course_enrollment_proc_notice__{course_name}"
+            return "enrollment_general_process"
+
         if has_transferee and has_enrollment:
             return "transferee_enrollment"
         if has_undergraduate_enrollment_requirements:
@@ -2037,10 +2202,6 @@ class KnowledgeRouter:
             return "enrollment_validation_payment"
         if has_enrollment and self._has_any(text, ["pay", "payment", "paying", "cashier", "accounting", "lbp", "landbank", "ofbank"]):
             return "enrollment_validation_payment"
-        if has_enrollment and has_medicine and intent in {"ask_process", "ask_requirement", "ask_general_info"}:
-            return "medicine_enrollment_requirements"
-        if has_graduate_enrollment and intent in {"ask_process", "ask_requirement", "ask_general_info"}:
-            return "graduate_law_enrollment_requirements"
         if has_cor and self._has_any(text, ["approval", "approved", "after approval", "incorrect", "error", "errors"]):
             return "enrollment_application_approval"
         if has_cor and self._has_any(text, ["where", "get", "download", "kuha", "makuha", "asa", "unsaon", "how"]):
@@ -2445,8 +2606,8 @@ class KnowledgeRouter:
         return self._choice_response(
             "Which validation do you mean?",
             [
-                {"label": "ID validation", "payload": "how to validate ID"},
-                {"label": "COR validation", "payload": "how to validate COR"},
+                {"label": "ID validation", "payload": "/direct_intent{\"intent\":\"id_validation_process\"}"},
+                {"label": "COR validation", "payload": "/direct_intent{\"intent\":\"cor_validation_steps\"}"},
             ],
         )
 
@@ -2520,26 +2681,26 @@ class KnowledgeRouter:
                 {
                     "title": "Library ID",
                     "items": [
-                        {"label": "Where to get library ID", "payload": "where can I get library id"},
-                        {"label": "Library ID requirements", "payload": "library id requirements"},
-                        {"label": "Library ID payment", "payload": "how much is library id"},
+                        {"label": "Where to get library ID", "payload": "/direct_intent{\"intent\":\"library_id_card_location\"}"},
+                        {"label": "Library ID requirements", "payload": "/direct_intent{\"intent\":\"library_id_card_requirements\"}"},
+                        {"label": "Library ID payment", "payload": "/direct_intent{\"intent\":\"library_id_card_requirements\"}"},
                     ],
                 },
                 {
                     "title": "Borrowing and Books",
                     "items": [
-                        {"label": "Borrow books", "payload": "how to borrow books"},
-                        {"label": "Borrowing rules", "payload": "library borrowing rules"},
-                        {"label": "Return books", "payload": "how to return books"},
-                        {"label": "Late return penalty", "payload": "library late return penalty"},
+                        {"label": "Borrow books", "payload": "/direct_intent{\"intent\":\"library_borrow_books_process\"}"},
+                        {"label": "Borrowing rules", "payload": "/direct_intent{\"intent\":\"library_borrowing_rules\"}"},
+                        {"label": "Return books", "payload": "/direct_intent{\"intent\":\"library_return_books_process\"}"},
+                        {"label": "Late return penalty", "payload": "/direct_intent{\"intent\":\"library_late_return_penalty\"}"},
                     ],
                 },
                 {
                     "title": "Library Access",
                     "items": [
-                        {"label": "Available books", "payload": "available books in library"},
-                        {"label": "Library resources", "payload": "how to access buksu library resources"},
-                        {"label": "Library hours", "payload": "library hours"},
+                        {"label": "Available books", "payload": "/direct_intent{\"intent\":\"library_available_books\"}"},
+                        {"label": "Library resources", "payload": "/direct_intent{\"intent\":\"access_buksu_library_resources\"}"},
+                        {"label": "Library hours", "payload": "/direct_intent{\"intent\":\"library_hours\"}"},
                     ],
                 },
             ],
@@ -2552,46 +2713,46 @@ class KnowledgeRouter:
                 {
                     "title": "IDs and Validation",
                     "items": [
-                        {"label": "Student ID process", "payload": "how to get student id"},
-                        {"label": "Student ID fee", "payload": "how much is student id"},
-                        {"label": "ID validation process", "payload": "how to validate ID"},
-                        {"label": "ID validation day", "payload": "when is ID validation"},
-                        {"label": "COR validation process", "payload": "how to validate COR"},
-                        {"label": "COR validation day", "payload": "when is COR validation"},
+                        {"label": "Student ID process", "payload": "/direct_intent{\"intent\":\"student_id_requirements\"}"},
+                        {"label": "Student ID fee", "payload": "/direct_intent{\"intent\":\"Student_id_fee\"}"},
+                        {"label": "ID validation process", "payload": "/direct_intent{\"intent\":\"id_validation_process\"}"},
+                        {"label": "ID validation day", "payload": "/direct_intent{\"intent\":\"id_validation_process\"}"},
+                        {"label": "COR validation process", "payload": "/direct_intent{\"intent\":\"cor_validation_steps\"}"},
+                        {"label": "COR validation day", "payload": "/direct_intent{\"intent\":\"cor_validation_day\"}"},
                     ],
                 },
                 {
                     "title": "Accounts and Access",
                     "items": [
-                        {"label": "Wi-Fi access", "payload": "how to get wifi access"},
-                        {"label": "SIAS access", "payload": "how to access SIAS"},
-                        {"label": "COR request", "payload": "how to get COR"},
-                        {"label": "Admission password help", "payload": "change admission password"},
+                        {"label": "Wi-Fi access", "payload": "/direct_intent{\"intent\":\"get_wifi_access\"}"},
+                        {"label": "SIAS access", "payload": "/direct_intent{\"intent\":\"access_sias\"}"},
+                        {"label": "COR request", "payload": "/direct_intent{\"intent\":\"request_cor\"}"},
+                        {"label": "Admission password help", "payload": "/direct_intent{\"intent\":\"Change_Pass_admission\"}"},
                     ],
                 },
                 {
                     "title": "Documents",
                     "items": [
-                        {"label": "INC form", "payload": "where can I get INC form"},
-                        {"label": "TOR request", "payload": "how to request TOR"},
-                        {"label": "Graduation clearance", "payload": "graduation clearance requirements"},
+                        {"label": "INC form", "payload": "/direct_intent{\"intent\":\"inc_grade_solution\"}"},
+                        {"label": "TOR request", "payload": "/direct_intent{\"intent\":\"contact_registrar_for_tor\"}"},
+                        {"label": "Graduation clearance", "payload": "/direct_intent{\"intent\":\"graduating_clearance_requirements\"}"},
                     ],
                 },
                 {
                     "title": "Campus Support",
                     "items": [
-                        {"label": "Library ID", "payload": "where can I get library id"},
-                        {"label": "Borrow books", "payload": "how to borrow books"},
-                        {"label": "PE uniform", "payload": "how to get PE uniform"},
+                        {"label": "Library ID", "payload": "/direct_intent{\"intent\":\"library_id_card_requirements\"}"},
+                        {"label": "Borrow books", "payload": "/direct_intent{\"intent\":\"library_borrow_books_process\"}"},
+                        {"label": "PE uniform", "payload": "/direct_intent{\"intent\":\"pe_uniform_process\"}"},
                     ],
                 },
                 {
                     "title": "Clinic Services",
                     "items": [
-                        {"label": "Dental services", "payload": "dental services"},
-                        {"label": "Medical certificate", "payload": "how to get medical certificate on clinic"},
-                        {"label": "Medical certificate cost", "payload": "medical certificate cost"},
-                        {"label": "Medical certificate duration", "payload": "duration for getting medical certificate"},
+                        {"label": "Dental services", "payload": "/direct_intent{\"intent\":\"dental_services_menu\"}"},
+                        {"label": "Medical certificate", "payload": "/direct_intent{\"intent\":\"clinic_medical_certificate_process\"}"},
+                        {"label": "Medical certificate cost", "payload": "/direct_intent{\"intent\":\"clinic_medical_certificate_cost\"}"},
+                        {"label": "Medical certificate duration", "payload": "/direct_intent{\"intent\":\"clinic_medical_certificate_duration\"}"},
                     ],
                 },
             ],
@@ -2602,63 +2763,63 @@ class KnowledgeRouter:
             "This is all I can provide to help you. Open a category and choose a topic.",
             [
                 {
-                    "title": "Academic Policy",
+                    "title": "Academic Policies and Grades",
                     "items": [
-                        {"label": "What is probation", "payload": "what is academic probation"},
-                        {"label": "INC grade", "payload": "how to complete INC grade"},
-                        {"label": "FDA", "payload": "what is FDA"},
-                        {"label": "Dean's list", "payload": "deans list requirements"},
-                        {"label": "Graduation application", "payload": "how to apply for graduation"},
+                        {"label": "Grading system", "payload": "/direct_intent{\"intent\":\"buksu_grading_system\"}"},
+                        {"label": "Incomplete grade", "payload": "/direct_intent{\"intent\":\"inc_grade_solution\"}"},
+                        {"label": "FDA", "payload": "/direct_intent{\"intent\":\"academic_probation\"}"},
+                        {"label": "Dean's list", "payload": "/direct_intent{\"intent\":\"College_Honors_gpa\"}"},
+                        {"label": "Graduation application", "payload": "/direct_intent{\"intent\":\"graduation_application_process\"}"},
                     ],
                 },
                 {
                     "title": "Admissions and Enrollment",
                     "items": [
-                        {"label": "Admission testing", "payload": "how to apply for admission"},
-                        {"label": "Admission requirements", "payload": "admission requirements"},
-                        {"label": "Admission result", "payload": "admission exam results"},
-                        {"label": "Enrollment time", "payload": "enrollment time"},
-                        {"label": "Freshman enrollment", "payload": "how to enroll freshman"},
-                        {"label": "Late enrollment", "payload": "late enrollment allowed"},
+                        {"label": "Admission testing", "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}"},
+                        {"label": "Admission requirements", "payload": "/direct_intent{\"intent\":\"freshman_admission_requirements\"}"},
+                        {"label": "Admission result", "payload": "/direct_intent{\"intent\":\"exam_results\"}"},
+                        {"label": "Enrollment time", "payload": "/direct_intent{\"intent\":\"enrollment_time_schedule\"}"},
+                        {"label": "Freshman enrollment", "payload": "/direct_intent{\"intent\":\"freshman_enrollment_process\"}"},
+                        {"label": "Late enrollment", "payload": "/direct_intent{\"intent\":\"late_enrollment\"}"},
                     ],
                 },
                 {
                     "title": "Courses and Departments",
                     "items": [
-                        {"label": "All courses", "payload": "all courses offered by BukSU"},
-                        {"label": "Board courses", "payload": "board courses offered by BukSU"},
-                        {"label": "Non-board courses", "payload": "non-board courses offered by BukSU"},
-                        {"label": "Master's programs", "payload": "master courses offered by BukSU"},
-                        {"label": "College list", "payload": "list of colleges"},
+                        {"label": "All courses", "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"},
+                        {"label": "Board courses", "payload": "/direct_intent{\"intent\":\"buksu_board_courses\"}"},
+                        {"label": "Non-board courses", "payload": "/direct_intent{\"intent\":\"buksu_non_board_courses\"}"},
+                        {"label": "Master's programs", "payload": "/direct_intent{\"intent\":\"buksu_masters_courses\"}"},
+                        {"label": "College list", "payload": "/direct_intent{\"intent\":\"buksu_academic_colleges\"}"},
                     ],
                 },
                 {
                     "title": "Library",
                     "items": [
-                        {"label": "Library services", "payload": "library services"},
-                        {"label": "Library ID", "payload": "where can I get library id"},
-                        {"label": "Borrow books", "payload": "how to borrow books"},
-                        {"label": "Library hours", "payload": "library hours"},
+                        {"label": "Library services", "payload": "/direct_intent{\"intent\":\"access_buksu_library_resources\"}"},
+                        {"label": "Library ID", "payload": "/direct_intent{\"intent\":\"library_id_card_location\"}"},
+                        {"label": "Borrow books", "payload": "/direct_intent{\"intent\":\"library_borrow_books_process\"}"},
+                        {"label": "Library hours", "payload": "/direct_intent{\"intent\":\"library_hours\"}"},
                     ],
                 },
                 {
                     "title": "Student Services and ICT",
                     "items": [
-                        {"label": "Student ID process", "payload": "how to get student id"},
-                        {"label": "ID validation", "payload": "how to validate ID"},
-                        {"label": "COR validation", "payload": "how to validate COR"},
-                        {"label": "Wi-Fi access", "payload": "how to get wifi access"},
-                        {"label": "SIAS access", "payload": "how to access SIAS"},
-                        {"label": "Office hours", "payload": "what are the office hours of the university"},
+                        {"label": "Student ID process", "payload": "/direct_intent{\"intent\":\"student_id_requirements\"}"},
+                        {"label": "ID validation", "payload": "/direct_intent{\"intent\":\"id_validation_process\"}"},
+                        {"label": "COR validation", "payload": "/direct_intent{\"intent\":\"cor_validation_steps\"}"},
+                        {"label": "Wi-Fi access", "payload": "/direct_intent{\"intent\":\"get_wifi_access\"}"},
+                        {"label": "SIAS access", "payload": "/direct_intent{\"intent\":\"access_sias\"}"},
+                        {"label": "Office hours", "payload": "/direct_intent{\"intent\":\"all_office_schedule\"}"},
                     ],
                 },
                 {
                     "title": "Health and Campus Life",
                     "items": [
-                        {"label": "Clinic services", "payload": "clinic services"},
-                        {"label": "Dental consultation", "payload": "dental services"},
-                        {"label": "Dormitory", "payload": "dormitory services"},
-                        {"label": "Classroom policy", "payload": "classroom policy"},
+                        {"label": "Clinic services", "payload": "/direct_intent{\"intent\":\"buksu_medical_dental_services\"}"},
+                        {"label": "Dental consultation", "payload": "/direct_intent{\"intent\":\"request_dental_consult\"}"},
+                        {"label": "Dormitory", "payload": "/direct_intent{\"intent\":\"buksu_dormitory_information\"}"},
+                        {"label": "Classroom policy", "payload": "/direct_intent{\"intent\":\"buksu_grading_system\"}"},
                     ],
                 },
             ],
@@ -2671,19 +2832,22 @@ class KnowledgeRouter:
                 {
                     "title": "Medical Services",
                     "items": [
-                        {"label": "Medical certificate process", "payload": "how to get medical certificate on clinic"},
-                        {"label": "Medical certificate cost", "payload": "medical certificate cost"},
-                        {"label": "Medical certificate duration", "payload": "duration for getting medical certificate"},
+                        {"label": "Medic Clinic Overview", "payload": "/direct_intent{\"intent\":\"medic_clinic\"}"},
+                        {"label": "Free Consultation Info", "payload": "/direct_intent{\"intent\":\"buksu_medical_dental_services\"}"},
+                        {"label": "Clinic Mission", "payload": "/direct_intent{\"intent\":\"med_mission\"}"},
+                        {"label": "Clinic Vision", "payload": "/direct_intent{\"intent\":\"med_vision\"}"},
                     ],
                 },
                 {
                     "title": "Dental Services",
                     "items": [
-                        {"label": "Dental services list", "payload": "dental services"},
-                        {"label": "Dental consultation", "payload": "request for dental consultation"},
-                        {"label": "Dental oral examination", "payload": "request for dental oral examination"},
-                        {"label": "Tooth extraction", "payload": "request for tooth extraction"},
-                        {"label": "Referral/Dispensing of Medicine", "payload": "request for referral dispensing of medicine"},
+                        {"label": "Dental Services List", "payload": "/direct_intent{\"intent\":\"dental_services_menu\"}"},
+                        {"label": "Dental Consultation", "payload": "/direct_intent{\"intent\":\"request_dental_consult\"}"},
+                        {"label": "Dental Consult Requirements", "payload": "/direct_intent{\"intent\":\"requirement_for_dental_consultation\"}"},
+                        {"label": "Dental Oral Examination", "payload": "/direct_intent{\"intent\":\"request_dental_oral_examination\"}"},
+                        {"label": "Oral Exam Requirements", "payload": "/direct_intent{\"intent\":\"dental_oral_examination_requirement\"}"},
+                        {"label": "Tooth Extraction", "payload": "/direct_intent{\"intent\":\"request_tooth_extraction\"}"},
+                        {"label": "Referral / Medicine", "payload": "/direct_intent{\"intent\":\"request_referral_dispensing_medicine\"}"},
                     ],
                 },
             ],
@@ -2696,18 +2860,19 @@ class KnowledgeRouter:
                 {
                     "title": "Dormitory Information",
                     "items": [
-                        {"label": "Dormitory overview", "payload": "does buksu have dormitory"},
-                        {"label": "How many dormitories", "payload": "how many dormitories does buksu have"},
-                        {"label": "Dormitory availability", "payload": "who can stay in buksu dormitory"},
-                        {"label": "Dormitory pros and cons", "payload": "pros and cons of dormitory"},
+                        {"label": "Dormitory overview", "payload": "/direct_intent{\"intent\":\"buksu_dormitory_information\"}"},
+                        {"label": "How many dormitories", "payload": "/direct_intent{\"intent\":\"campus_dormitories\"}"},
+                        {"label": "Dormitory availability", "payload": "/direct_intent{\"intent\":\"female_dorm\"}"},
+                        {"label": "Dormitory pros and cons", "payload": "/direct_intent{\"intent\":\"dormitory_pros_cons\"}"},
                     ],
                 },
                 {
                     "title": "Dormitory Locations",
                     "items": [
-                        {"label": "Mahogany Dormitory", "payload": "where is mahogany dorm"},
-                        {"label": "Rubia Dormitory", "payload": "where is rubia dorm"},
-                        {"label": "Kilala Dormitory", "payload": "where is kilala dorm"},
+                        {"label": "Mahogany Dormitory", "payload": "/direct_intent{\"intent\":\"location_Mahogany_dorm\"}"},
+                        {"label": "Mahogany Dormitory", "payload": "/direct_intent{\"intent\":\"location_Mahogany_dorm\"}"},
+                        {"label": "Rubia Dormitory", "payload": "/direct_intent{\"intent\":\"location_Rubia_dorm\"}"},
+                        {"label": "Kilala Dormitory", "payload": "/direct_intent{\"intent\":\"campus_dormitories\"}"},
                     ],
                 },
             ],
@@ -2720,10 +2885,10 @@ class KnowledgeRouter:
                 {
                     "title": "Classroom Policies",
                     "items": [
-                        {"label": "Phone use in class", "payload": "can i use phone in class"},
-                        {"label": "Eating in classroom", "payload": "can i eat in classroom"},
-                        {"label": "Class concerns", "payload": "class concerns"},
-                        {"label": "Submit assignments online", "payload": "submit assignments online"},
+                        {"label": "Phone use in class", "payload": "/direct_intent{\"intent\":\"phone_use_in_class\"}"},
+                        {"label": "Eating in classroom", "payload": "/direct_intent{\"intent\":\"eating_in_classroom\"}"},
+                        {"label": "Class concerns", "payload": "/direct_intent{\"intent\":\"class_concerns\"}"},
+                        {"label": "Submit assignments online", "payload": "/direct_intent{\"intent\":\"submit_assignments_online\"}"},
                     ],
                 },
             ],
@@ -2759,18 +2924,121 @@ class KnowledgeRouter:
                 "suggestions": [
                     {
                         "label": "Admission application/testing",
-                        "payload": "when is the admission application testing schedule",
+                        "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}",
                     },
                     {
                         "label": "Admission enrollment",
-                        "payload": "when is admission enrollment",
+                        "payload": "/direct_intent{\"intent\":\"enrollment_time_schedule\"}",
                     },
                     {
                         "label": "Admission testing result",
-                        "payload": "when is admission testing result",
+                        "payload": "/direct_intent{\"intent\":\"exam_results\"}",
                     },
                 ]
             },
+        }
+
+    def _extract_mentioned_course_or_dept(self, text: str) -> Optional[str]:
+        course_dept_map = [
+            ("bsemc-dat", "BSEMC-DAT"),
+            ("bsemc dat", "BSEMC-DAT"),
+            ("bsemc", "BSEMC"),
+            ("bsit", "BSIT"),
+            ("bset", "BSET"),
+            ("bsat", "BSAT"),
+            ("bsft", "BSFT"),
+            ("bsn", "BS Nursing"),
+            ("bshm", "BSHM"),
+            ("bsa", "BS Accountancy"),
+            ("bsba", "BSBA"),
+            ("bpa", "BPA"),
+            ("beed", "BEEd"),
+            ("beced", "BECEd"),
+            ("bsed", "BSEd"),
+            ("bped", "BPEd"),
+            ("bsdc", "BSDC"),
+            ("bses", "BSES"),
+            ("bsbio", "BS Biology"),
+            ("bsmath", "BS Mathematics"),
+            ("information technology", "Information Technology"),
+            ("entertainment and multimedia computing", "Entertainment and Multimedia Computing"),
+            ("food technology", "Food Technology"),
+            ("automotive technology", "Automotive Technology"),
+            ("electronics technology", "Electronics Technology"),
+            ("nursing", "Nursing"),
+            ("hospitality management", "Hospitality Management"),
+            ("accountancy", "Accountancy"),
+            ("business administration", "Business Administration"),
+            ("public administration", "Public Administration"),
+            ("elementary education", "Elementary Education"),
+            ("secondary education", "Secondary Education"),
+            ("early childhood education", "Early Childhood Education"),
+            ("physical education", "Physical Education"),
+            ("development communication", "Development Communication"),
+            ("environmental science", "Environmental Science"),
+            ("biology", "Biology"),
+            ("mathematics", "Mathematics"),
+            ("philosophy", "Philosophy"),
+            ("economics", "Economics"),
+            ("sociology", "Sociology"),
+            ("english language", "English Language Studies"),
+            ("social work", "Social Work"),
+            ("psychology", "Psychology"),
+            ("college of technologies", "College of Technologies"),
+            ("college of technology", "College of Technologies"),
+            ("cot", "College of Technologies"),
+            ("college of arts and sciences", "College of Arts and Sciences"),
+            ("cas", "College of Arts and Sciences"),
+            ("college of business", "College of Business"),
+            ("cob", "College of Business"),
+            ("college of education", "College of Education"),
+            ("coe", "College of Education"),
+            ("college of nursing", "College of Nursing"),
+            ("con", "College of Nursing"),
+            ("college of public administration", "CPAG"),
+            ("cpag", "CPAG"),
+        ]
+        text_lower = text.lower()
+        for key, display_title in course_dept_map:
+            if re.search(rf"\b{re.escape(key)}\b", text_lower):
+                return display_title
+        return None
+
+    def _course_enrollment_requirements_choice(self, course_name: str) -> Dict[str, Any]:
+        text_bubble_1 = f"The data we have for enrollment is general; we don't have specific data for the enrollment of **{course_name}**, as this may be given by your department."
+        text_bubble_2 = "Here are the enrollment requirements you can choose:"
+        full_text = f"{text_bubble_1}\n\n{text_bubble_2}"
+        return {
+            "text": full_text,
+            "textParts": [text_bubble_1, text_bubble_2],
+            "custom": {
+                "choiceGroups": [
+                    {
+                        "title": "Here are the enrollment requirements you can choose:",
+                        "items": [
+                            {"label": "Undergraduate Requirements", "payload": "/direct_intent{\"intent\":\"freshman_admission_requirements\"}"},
+                            {"label": "Law & Graduate Requirements", "payload": "/direct_intent{\"intent\":\"graduate_law_enrollment_requirements\"}"},
+                            {"label": "College of Medicine Requirements", "payload": "/direct_intent{\"intent\":\"medicine_enrollment_requirements\"}"},
+                        ]
+                    }
+                ]
+            }
+        }
+
+    def _course_enrollment_process_response(self, course_name: str, active_domain: Optional[str] = None) -> Dict[str, Any]:
+        base_resp = self.data_loader.get_response("enrollment_general_process", domain=active_domain or "procedures")
+        notice_text = f"Our enrollment process data is general across Bukidnon State University based on University Registrar guidelines. Additional department-specific instructions for **{course_name}** will be announced by your college department."
+        
+        if isinstance(base_resp, dict):
+            parts = [notice_text] + (base_resp.get("textParts", []) or [base_resp.get("text", "")])
+            return {
+                **base_resp,
+                "text": f"{notice_text}\n\n{base_resp.get('text', '')}",
+                "textParts": parts
+            }
+        return {
+            "text": f"{notice_text}\n\n{base_resp}",
+            "textParts": [notice_text, str(base_resp)]
         }
 
     def course_clarification_response(self, intent: str, user_message: str) -> Optional[Dict[str, Any]]:
@@ -2835,20 +3103,20 @@ class KnowledgeRouter:
             return self._choice_response(
                 "Unsang listahan sa courses imong gusto tan-awon?",
                 [
-                    {"label": "Tanang courses offered", "payload": "all courses offered by BukSU"},
-                    {"label": "Board courses", "payload": "board courses offered by BukSU"},
-                    {"label": "Non-board courses", "payload": "non-board courses offered by BukSU"},
-                    {"label": "Master's ug doctoral programs", "payload": "master courses offered by BukSU"},
+                    {"label": "Tanang courses offered", "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"},
+                    {"label": "Board courses", "payload": "/direct_intent{\"intent\":\"buksu_board_courses\"}"},
+                    {"label": "Non-board courses", "payload": "/direct_intent{\"intent\":\"buksu_non_board_courses\"}"},
+                    {"label": "Master's ug doctoral programs", "payload": "/direct_intent{\"intent\":\"buksu_masters_courses\"}"},
                 ],
             )
 
         return self._choice_response(
             "Which course list do you want to view?",
             [
-                {"label": "All courses offered", "payload": "all courses offered by BukSU"},
-                {"label": "Board courses", "payload": "board courses offered by BukSU"},
-                {"label": "Non-board courses", "payload": "non-board courses offered by BukSU"},
-                {"label": "Master's and doctoral programs", "payload": "master courses offered by BukSU"},
+                {"label": "All courses offered", "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"},
+                {"label": "Board courses", "payload": "/direct_intent{\"intent\":\"buksu_board_courses\"}"},
+                {"label": "Non-board courses", "payload": "/direct_intent{\"intent\":\"buksu_non_board_courses\"}"},
+                {"label": "Master's and doctoral programs", "payload": "/direct_intent{\"intent\":\"buksu_masters_courses\"}"},
             ],
         )
 
@@ -2871,13 +3139,29 @@ class KnowledgeRouter:
         return self._choice_response(
             "Did you mean PE uniform?",
             [
-                {"label": "PE uniform", "payload": "how to get PE uniform"},
+                {"label": "PE uniform", "payload": "/direct_intent{\"intent\":\"pe_uniform_process\"}"},
             ],
         )
 
-    def find_best_response(self, intent: str, user_message: str, entity_values: List[str]) -> Any:
+    def find_best_response(
+        self,
+        intent: str,
+        user_message: str,
+        entity_values: List[str],
+        active_domain: Optional[str] = None,
+    ) -> Any:
         self.last_selected_intent = None
-        direct_intent = self.direct_intent_override(intent, user_message, entity_values)
+        direct_intent = self.direct_intent_override(
+            intent, user_message, entity_values, active_domain=active_domain
+        )
+        if direct_intent and str(direct_intent).startswith("__course_enrollment_req_notice__"):
+            course_name = str(direct_intent).replace("__course_enrollment_req_notice__", "")
+            return self._course_enrollment_requirements_choice(course_name)
+
+        if direct_intent and str(direct_intent).startswith("__course_enrollment_proc_notice__"):
+            course_name = str(direct_intent).replace("__course_enrollment_proc_notice__", "")
+            return self._course_enrollment_process_response(course_name, active_domain=active_domain)
+
         if direct_intent == "__course_clarification__":
             return self.course_clarification_response(intent, user_message) or self.data_loader.fallback()
         if direct_intent == "__pe_uniform_clarification__":
@@ -2886,24 +3170,24 @@ class KnowledgeRouter:
             return self._choice_response(
                 "Which account do you mean?",
                 [
-                    {"label": "Institutional email account", "payload": "how do I get my official BukSU student email address"},
-                    {"label": "Admission password help", "payload": "how to change my admission account password"},
+                    {"label": "Institutional email account", "payload": "/direct_intent{\"intent\":\"institutional_email_account\"}"},
+                    {"label": "Admission password help", "payload": "/direct_intent{\"intent\":\"Change_Pass_admission\"}"},
                 ],
             )
         if direct_intent == "__student_portal_password_clarification__":
             return self._choice_response(
                 "Which student portal password do you mean?",
                 [
-                    {"label": "Admission Forgot Password", "payload": "forgot admission portal password"},
-                    {"label": "SIAS password", "payload": "sias forgot password"},
+                    {"label": "Admission Forgot Password", "payload": "/direct_intent{\"intent\":\"Change_Pass_admission\"}"},
+                    {"label": "SIAS password", "payload": "/direct_intent{\"intent\":\"sias_forgot_password\"}"},
                 ],
             )
         if direct_intent == "__student_portal_login_clarification__":
             return self._choice_response(
                 "Which student portal do you want to log in to?",
                 [
-                    {"label": "Admission portal", "payload": "how to login on admission portal"},
-                    {"label": "SIAS portal", "payload": "how to login on SIAS portal"},
+                    {"label": "Admission portal", "payload": "/direct_intent{\"intent\":\"admission_portal_login\"}"},
+                    {"label": "SIAS portal", "payload": "/direct_intent{\"intent\":\"sias_login_process\"}"},
                 ],
             )
         if direct_intent == "__validation_clarification__":
@@ -2912,15 +3196,15 @@ class KnowledgeRouter:
             return self._choice_response(
                 "Which ID do you mean?",
                 [
-                    {"label": "Student ID", "payload": "how to get student id"},
-                    {"label": "Library ID", "payload": "where can I get library id"},
+                    {"label": "Student ID", "payload": "/direct_intent{\"intent\":\"student_id_requirements\"}"},
+                    {"label": "Library ID", "payload": "/direct_intent{\"intent\":\"library_id_card_location\"}"},
                 ],
             )
         if direct_intent == "__passing_grade_clarification__":
             return self._choice_response(
                 "Do you mean the BukSU CAT passing percentage?",
                 [
-                    {"label": "BukSU CAT passing rate", "payload": "buksu cat passing rate for board and non-board courses"},
+                    {"label": "BukSU CAT passing rate", "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"},
                 ],
             )
         if direct_intent == "__clinic_services_menu__":
@@ -2931,13 +3215,13 @@ class KnowledgeRouter:
             return self._classroom_policy_menu()
         if direct_intent:
             self.last_selected_intent = direct_intent
-            return self.data_loader.get_response(direct_intent, user_message=user_message)
+            return self.data_loader.get_response(direct_intent, user_message=user_message, domain=active_domain)
 
         validation_choice = self.validation_clarification_response(intent, user_message)
         if validation_choice:
             return validation_choice
 
-        services_choice = self.services_response(intent, user_message)
+        services_choice = self.services_response(intent, user_message) if not active_domain or active_domain == "services" else None
         if services_choice:
             return services_choice
 
@@ -2948,32 +3232,76 @@ class KnowledgeRouter:
             return self._clarification_for(intent)
 
         if not query_tokens and not entity_values:
-            return self.data_loader.fallback()
+            return self._domain_fallback_response(active_domain)
 
         if not entity_values and self.interpreter.normalize(user_message) in {"what is it", "what it", "about it"}:
+            return self._domain_fallback_response(active_domain)
+
+        if not entity_values and self._looks_like_unresolved_location_query(user_message) and active_domain != "location":
+            if active_domain:
+                return self._domain_fallback_response(active_domain)
             return self.data_loader.fallback()
 
-        if not entity_values and self._looks_like_unresolved_location_query(user_message):
-            return self.data_loader.fallback()
-
-        retrieval_result = self.retrieval_scorer.search(intent, user_message, entity_values)
+        retrieval_result = self.retrieval_scorer.search(intent, user_message, entity_values, domain=active_domain)
         if retrieval_result.is_high_confidence and retrieval_result.intent:
             self.last_selected_intent = retrieval_result.intent
-            return self.data_loader.get_response(retrieval_result.intent, user_message=user_message)
+            return self.data_loader.get_response(retrieval_result.intent, user_message=user_message, domain=active_domain)
 
         llm_candidate = self.llm_reranker.choose(user_message, retrieval_result)
         if llm_candidate:
             self.last_selected_intent = llm_candidate.intent
-            return self.data_loader.get_response(llm_candidate.intent, user_message=user_message)
+            return self.data_loader.get_response(llm_candidate.intent, user_message=user_message, domain=active_domain)
 
         if retrieval_result.is_medium_confidence and retrieval_result.intent and not retrieval_result.runner_up:
             self.last_selected_intent = retrieval_result.intent
-            return self.data_loader.get_response(retrieval_result.intent, user_message=user_message)
+            return self.data_loader.get_response(retrieval_result.intent, user_message=user_message, domain=active_domain)
 
         if retrieval_result.is_medium_confidence:
             return self.retrieval_scorer.clarification(retrieval_result)
 
-        return self.data_loader.fallback()
+        return self._domain_fallback_response(active_domain, retrieval_result=retrieval_result)
+
+    def _domain_fallback_response(
+        self,
+        active_domain: Optional[str],
+        retrieval_result: Optional[Any] = None,
+    ) -> Any:
+        from domain_registry import get_domain_info, get_domain_suggestions
+        if not active_domain:
+            return self.data_loader.fallback()
+
+        info = get_domain_info(active_domain)
+        title = info.get("title", "this category") if info else "this category"
+        
+        # Extract dynamic suggestion buttons from ranked candidates within the category
+        suggestions = []
+        if retrieval_result and hasattr(retrieval_result, "ranked_candidates") and retrieval_result.ranked_candidates:
+            seen_labels = set()
+            for cand in retrieval_result.ranked_candidates:
+                label = str(getattr(cand, "display_name", None) or getattr(cand, "topic", None) or getattr(cand, "intent", None) or "").strip()
+                if label and label.lower() not in seen_labels and not label.startswith("__"):
+                    seen_labels.add(label.lower())
+                    phrases = getattr(cand, "phrases", [])
+                    payload = phrases[0] if phrases else label
+                    suggestions.append({"label": label, "payload": payload})
+                if len(suggestions) >= 3:
+                    break
+
+        # If not enough partial candidate matches, fill with domain starters
+        if len(suggestions) < 3:
+            domain_starters = get_domain_suggestions(active_domain)
+            for q in domain_starters:
+                if q.lower() not in {s["label"].lower() for s in suggestions}:
+                    suggestions.append({"label": q, "payload": q})
+                if len(suggestions) >= 3:
+                    break
+
+        return {
+            "text": f"I couldn't find a matching answer for that in **{title}**.\n\nYou can try asking about:",
+            "custom": {
+                "suggestions": suggestions
+            },
+        }
 
     def _looks_like_unresolved_location_query(self, user_message: str) -> bool:
         text = self.interpreter.normalize(user_message)
@@ -3372,6 +3700,14 @@ class KnowledgeRouter:
             return "about_buksu"
         return None
 
+    def location_responses(self, locations: List[str], user_message: str) -> List[Dict[str, Any]]:
+        responses = []
+        for location in locations:
+            response = self.data_loader.get_location_response(location, user_message)
+            text = response.get("text", "")
+            if text and not text.lower().startswith("sorry, i don't have information"):
+                responses.append(response)
+        return responses
     def location_responses(self, locations: List[str], user_message: str) -> List[Dict[str, Any]]:
         responses = []
         for location in locations:

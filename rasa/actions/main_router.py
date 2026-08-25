@@ -1,7 +1,7 @@
 import re
 import time
 from copy import deepcopy
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from context_manager import ContextManager, ConversationMemory
 from data_loader import KnowledgeDataLoader
@@ -17,9 +17,9 @@ class MainRouterService:
     CACHE_TTL_SECONDS = 10 * 60
     CACHE_MAX_ENTRIES = 128
 
-    def __init__(self, helper: Any, location_aliases: Dict[str, str]):
+    def __init__(self, helper: Any = None, location_aliases: Optional[Dict[str, str]] = None):
         self.interpreter = QueryInterpreter()
-        self.entity_resolver = EntityResolver(location_aliases)
+        self.entity_resolver = EntityResolver(location_aliases or {})
         self.data_loader = KnowledgeDataLoader(helper)
         self.knowledge_router = KnowledgeRouter(self.data_loader, self.interpreter)
         self.context_manager = ContextManager(self.interpreter, self.data_loader.context_index)
@@ -194,7 +194,7 @@ class MainRouterService:
         if any(term in text for term in strong_location_terms):
             return True
 
-        return intent == "ask_location" and len(self.interpreter.tokens(text)) <= 3
+        return len(self.interpreter.tokens(text)) <= 3 and bool(resolved.locations)
 
     def _looks_like_library_service_request(self, user_message: str) -> bool:
         text = self.interpreter.normalize_for_search(user_message)
@@ -343,6 +343,65 @@ class MainRouterService:
             },
         }
 
+    def _generic_it_department_response(self, user_message: str) -> Optional[Dict[str, Any]]:
+        text = self.interpreter.normalize(user_message)
+        
+        # Check if the query specifically refers to IT / IT department in general
+        it_dept_patterns = [
+            r"\bit\s+(department|dept|office|building|dapit)\b",
+            r"\b(information\s+technology)\s+(department|dept|office|building)\b",
+            r"\bwhere\s+is\s+(the\s+)?it\b",
+            r"\bwhere\s+is\s+(the\s+)?it\s+department\b",
+            r"\basa\s+ang\s+it\b",
+            r"\basa\s+dapit\s+ang\s+it\b",
+            r"^it\s*(department|dept)?$",
+            r"^it\s+office$",
+            r"^information\s+technology\s*(department|dept)?$",
+        ]
+        
+        is_it_query = any(re.search(p, text) for p in it_dept_patterns)
+        if not is_it_query:
+            return None
+
+        # Exclude specific non-general queries (like COT faculty room, comlab, DXBU, specific subjects, etc.)
+        specific_exclusions = [
+            "comlab", "faculty room", "dean", "dxbu", "electronics", "citl", "ict service unit",
+            "laboratory", "curriculum", "prospectus", "retention", "grade", "grading",
+            "subject", "subjects", "enrollment", "admission", "tuition", "fee", "cost"
+        ]
+        if any(term in text for term in specific_exclusions):
+            return None
+
+        detector = getattr(self.data_loader.helper, "detect_language", None)
+        lang = str(detector(user_message)) if callable(detector) else "en"
+        
+        if lang == "ceb":
+            text_msg = "Ang IT department usa ka general nga termino, mahimo nimong tan-awon sa ubos kung asa nga lokasyon ang imong gipangita"
+        else:
+            text_msg = "IT department is a general term, you can look bellow on what location youre looking for"
+
+        items = [
+            {"label": "COT faculty room", "payload": "Where is the COT Faculty Room?"},
+            {"label": "COT Dean", "payload": "Where is the COT Dean's Office?"},
+            {"label": "ICTU", "payload": "Where is the ICTU?"},
+            {"label": "CITL", "payload": "Where is the CITL?"},
+            {"label": "DXBU", "payload": "Where is DXBU?"},
+            {"label": "ICTU Service Unit", "payload": "Where is the ICT Service Unit?"},
+            {"label": "Electronics Faculty Room", "payload": "Where is the Electronics Faculty Room?"},
+        ]
+
+        return {
+            "text": text_msg,
+            "custom": {
+                "choiceGroups": [
+                    {
+                        "title": "Here are the IT-related locations you can choose:",
+                        "items": items
+                    }
+                ]
+            }
+        }
+
     def _route_locations(
         self,
         intent: str,
@@ -399,17 +458,163 @@ class MainRouterService:
         user_message: str,
         slots: Dict[str, Any] = None,
     ) -> Tuple[Any, Dict[str, Any]]:
+        from domain_registry import normalize_domain, get_domain_info, get_domain_suggestions
+
         self.refresh_if_changed()
         slots = slots or {}
+        active_domain = normalize_domain(slots.get("active_category"))
         resolved = self.resolve(latest_message, user_message)
         normalized_text = self.interpreter.normalize(user_message)
+        raw_msg = str(user_message).strip()
 
+        # ==============================================================
+        # DIRECT TOPIC / INTENT POINT DATA GRAB (Bypasses all layers)
+        # ==============================================================
+        direct_grab_intent = None
+        if raw_msg.startswith("/direct_intent") or raw_msg.startswith("/direct_topic"):
+            match = re.search(r'\{["\'](?:intent|topic)["\']\s*:\s*["\']([^"\']+)["\']\}', raw_msg)
+            if match:
+                direct_grab_intent = match.group(1).strip()
+        elif raw_msg.startswith("/"):
+            potential = raw_msg.lstrip("/").strip()
+            if self.data_loader.get_entry(potential, domain=active_domain) or potential in self.data_loader._all_structured_by_intent:
+                direct_grab_intent = potential
+        elif raw_msg in self.data_loader._all_structured_by_intent:
+            direct_grab_intent = raw_msg
+
+        if direct_grab_intent:
+            print(f"[ROUTER - DIRECT POINT DATA GRAB] Target: '{direct_grab_intent}' -> Grabbed from JSON immediately.")
+            response = self.data_loader.get_response(direct_grab_intent, user_message=user_message, domain=active_domain)
+            memory = self.context_manager.build_memory(
+                intent=direct_grab_intent,
+                user_message=user_message,
+                resolved=resolved,
+                response_intent=direct_grab_intent,
+                response=response,
+            )
+            updates = self._context_updates(memory, slots)
+            if active_domain:
+                updates["active_category"] = active_domain
+            return response, updates
+
+        # Bot Creator inquiry
         if (
             any(term in normalized_text for term in ["who create", "who created", "who made", "kinsa naghimo", "kinsa nag create"]) or
             ("create" in normalized_text and "you" in normalized_text)
         ):
             return self.data_loader.get_response("Bot_creator", user_message=user_message), {}
 
+        # Smalltalk (only trigger if it is actually a greeting/thanks and not a resolved location or location category)
+        is_greeting = any(
+            re.search(rf"\b{re.escape(g)}\b", normalized_text)
+            for g in ["hi", "hello", "hey", "hoy", "kumusta", "kamusta", "musta",
+                      "good morning", "good afternoon", "good evening", "good day",
+                      "maayong buntag", "maayong hapon", "maayong gabii", "maayong adlaw",
+                      "morning", "afternoon", "evening", "sup", "yo", "hola",
+                      "thank", "thanks", "salamat", "bye", "goodbye", "adios", "adieu",
+                      "maayad na pag ahum", "bot"]
+        )
+        if intent == "smalltalk" and is_greeting and not resolved.locations and active_domain != "location":
+            response = self.handle_smalltalk(user_message)
+            return response, {}
+
+        # ==============================================================
+        # DOMAIN ISOLATION MODE: LOCATION
+        # ==============================================================
+        if active_domain == "location":
+            if self._looks_like_building_directory_request(user_message) or self._looks_like_building_directory_follow_up(user_message, slots):
+                directory_response, directory_slots = self._route_building_directory(user_message, slots)
+                if directory_response:
+                    directory_slots["active_category"] = "location"
+            it_dept_menu = self._generic_it_department_response(user_message)
+            if it_dept_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return it_dept_menu, ctx
+
+            faculty_office_menu = self._generic_faculty_office_response(user_message)
+            if faculty_office_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return faculty_office_menu, ctx
+
+            deans_office_menu = self._generic_deans_office_response(user_message)
+            if deans_office_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return deans_office_menu, ctx
+
+            if resolved.locations:
+                loc_res, loc_slots = self._route_locations(intent, user_message, resolved, slots)
+                loc_slots["active_category"] = "location"
+                return loc_res, loc_slots
+
+            # Search in location domain index
+            loc_res = self.knowledge_router.find_best_response(
+                intent, user_message, resolved.values, active_domain="location"
+            )
+            if loc_res:
+                return loc_res, {"active_category": "location"}
+
+            return {
+                "text": "I couldn't locate that specific room or office on the campus map.\n\nPlease check the spelling or ask with the building name (e.g. *CAS Building*, *ComLab 1*, *Clinic*).",
+                "custom": {
+                    "suggestions": [
+                        {"label": "ComLab 1", "payload": "where is ComLab 1"},
+                        {"label": "CAS Building", "payload": "where is CAS Building"},
+                        {"label": "University Clinic", "payload": "where is Clinic"},
+                        {"label": "Cashier Office", "payload": "where is Cashier"},
+                    ]
+                }
+            }, {"active_category": "location"}
+
+        # ==============================================================
+        # DOMAIN ISOLATION MODE: PROCEDURES, ACADEMICS, SERVICES, UNIVERSITY
+        # ==============================================================
+        if active_domain in {"procedures", "academics", "services", "university"}:
+            direct_intent = self.knowledge_router.direct_intent_override(
+                intent, user_message, resolved.values, active_domain=active_domain
+            )
+            if direct_intent:
+                print(f"[ROUTER - LAYER 1: Direct Rule Override] Domain: '{active_domain}' | Query: '{user_message}' -> Matched Intent: '{direct_intent}'")
+                if str(direct_intent).startswith("__"):
+                    response = self.knowledge_router.find_best_response(
+                        intent, user_message, resolved.values, active_domain=active_domain
+                    )
+                else:
+                    response = self.data_loader.get_response(
+                        direct_intent, user_message=user_message, domain=active_domain
+                    )
+                memory = self.context_manager.build_memory(
+                    intent=intent,
+                    user_message=user_message,
+                    resolved=resolved,
+                    response_intent=direct_intent,
+                    response=response,
+                )
+                updates = self._context_updates(memory, slots)
+                updates["active_category"] = active_domain
+                return response, updates
+
+            response = self.knowledge_router.find_best_response(
+                intent, user_message, resolved.values, active_domain=active_domain
+            )
+            selected_intent = getattr(self.knowledge_router, "last_selected_intent", None)
+            print(f"[ROUTER - LAYER 2/3: Semantic/LLM Retrieval] Domain: '{active_domain}' | Query: '{user_message}' -> Matched Intent: '{selected_intent}'")
+            memory = self.context_manager.build_memory(
+                intent=intent,
+                user_message=user_message,
+                resolved=resolved,
+                response_intent=selected_intent,
+                response=response,
+            )
+            updates = self._context_updates(memory, slots)
+            updates["active_category"] = active_domain
+            return response, updates
+
+        # ==============================================================
+        # OPEN / UNRESTRICTED MODE (No active_category set)
+        # ==============================================================
         if (
             (
                 "civilian" in normalized_text or
@@ -433,10 +638,6 @@ class MainRouterService:
                     response=response,
                 )
                 return response, self._context_updates(memory, slots)
-
-        if intent == "smalltalk":
-            response = self.handle_smalltalk(user_message)
-            return response, {}
 
         clarified_intent = self.context_manager.resolve_id_clarification(user_message, slots)
         if clarified_intent:
@@ -484,6 +685,10 @@ class MainRouterService:
             directory_response, directory_slots = self._route_building_directory(user_message, slots)
             if directory_response:
                 return directory_response, directory_slots
+
+        it_dept_menu = self._generic_it_department_response(user_message)
+        if it_dept_menu:
+            return it_dept_menu, self.context_manager.decay_slot_values(slots)
 
         faculty_office_menu = self._generic_faculty_office_response(user_message)
         if faculty_office_menu:
@@ -558,7 +763,7 @@ class MainRouterService:
             if self._looks_like_unresolved_location_request(user_message):
                 response = (
                     "Sorry, I don't have location information for that place yet. "
-                    "Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button"
+                    "Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button."
                 )
                 memory = self.context_manager.build_memory(
                     intent=intent,

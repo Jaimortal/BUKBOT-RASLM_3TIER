@@ -620,7 +620,7 @@
           "suggestions": [
             {
               "label": "Admission location",
-              "payload": "admission office location"
+              "payload": "/direct_intent{\"intent\":\"location_Admission_Office\"}"
             }
           ],
           "intent": "change_preferred_course_admission_application",
@@ -1379,11 +1379,11 @@
           "suggestions": [
             {
               "label": "Non-board courses",
-              "payload": "non-board courses offered by BukSU"
+              "payload": "/direct_intent{\"intent\":\"Cat_score_for_nonboard\"}"
             },
             {
               "label": "Board courses",
-              "payload": "board courses offered by BukSU"
+              "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"
             }
           ]
         },
@@ -1552,11 +1552,11 @@
           "suggestions": [
             {
               "label": "Non-board courses",
-              "payload": "non-board courses offered by BukSU"
+              "payload": "/direct_intent{\"intent\":\"Cat_score_for_nonboard\"}"
             },
             {
               "label": "Board courses",
-              "payload": "board courses offered by BukSU"
+              "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"
             }
           ]
         },
@@ -1602,11 +1602,11 @@
           "suggestions": [
             {
               "label": "Board courses",
-              "payload": "board courses offered by BukSU"
+              "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"
             },
             {
               "label": "Non-board courses",
-              "payload": "non-board courses offered by BukSU"
+              "payload": "/direct_intent{\"intent\":\"Cat_score_for_nonboard\"}"
             }
           ]
         }
@@ -2235,11 +2235,11 @@
           "suggestions": [
             {
               "label": "AAP process",
-              "payload": "how to apply for affirmative action"
+              "payload": "/direct_intent{\"intent\":\"affirmative_action\"}"
             },
             {
               "label": "DIU location",
-              "payload": "DIU location"
+              "payload": "/direct_intent{\"intent\":\"location_CAS_Deans_Office\"}"
             }
           ],
           "intent": "non_passer_enrollment_affirmative_action",

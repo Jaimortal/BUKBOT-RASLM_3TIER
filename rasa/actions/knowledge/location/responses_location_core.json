@@ -1063,10 +1063,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "The Smart Classroom is located on the 3rd floor of the Finance building. For your convenience, a map is provided to help you navigate the area."
+          "There are 2 Smart Classrooms (COTSCR), both are in the same location, which is the 3rd floor of the Finance building. For your convenience, a map is provided to help you navigate the area."
         ],
         "ceb": [
-          "Ang Smart Classroom nahimutang sa 3rd floor sa Finance building. Para sa imong kasayon, naghatag ko og mapa aron matabangan ka sa pag-navigate sa lugar."
+          "Naa'y duha ka Smart Classroom (COTSCR), pareho ra og lokasyon, sa 3rd floor sa Finance building. Alang sa imong kasayon, naghatag ko og mapa aron matabangan ka sa pag-navigate sa lugar."
         ]
       },
       "pins": [
@@ -2647,98 +2647,80 @@
       "building": "Dorm",
       "floor": "N/A",
       "coordinates": [
-        892,
-        633
+        884,
+        632
       ],
       "map_id": "main_map",
       "responses": {
         "en": [
-          "There are two cafeterias on campus, though only one is currently open. You can find it located next to the Rubia Dorm. A map is provided to assist you with navigation."
+          "There is a new cafeteria in campus, this is position infront of the New Cas Building. A map is provided to assist you with navigation."
         ],
         "ceb": [
-          "Adunay duha ka cafeteria sa campus, apan usa ra ang abri. Makita nimo kini tapad sa Rubia Dorm. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
+          "Adunay usa ka bag-ong cafeteria sa campus, kini nahimutang atubangan sa New Cas Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
         ]
       },
       "pins": [
         {
-          "name": "Start From Here - Main Entrance",
+          "name": "Start From here",
           "coordinates": [
-            892,
-            633
+            884,
+            632
           ]
         },
         {
-          "name": "CAFETERIA",
+          "name": "NEW CAFETERIA",
           "coordinates": [
-            217,
-            397
+            361,
+            775
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/47f42159-1d75-4f77-ada7-a7a8ee122fd6"
+      ],
       "routes": [
         {
-          "name": "Start From Here - Main Entrance to CAFETERIA",
+          "name": "Start From here to NEW CAFETERIA",
           "points": [
             [
-              892,
-              633
-            ],
-            [
-              784,
-              635
+              884,
+              632
             ],
             [
               782,
-              492
+              631
             ],
             [
-              754,
-              504
+              782,
+              676
             ],
             [
-              618,
-              507
+              583,
+              676
             ],
             [
-              595,
-              496
+              562,
+              648
             ],
             [
-              549,
-              496
+              456,
+              651
             ],
             [
-              547,
-              460
+              457,
+              714
             ],
             [
-              325,
-              551
+              401,
+              720
             ],
             [
-              260,
-              572
+              401,
+              776
             ],
             [
-              234,
-              559
-            ],
-            [
-              222,
-              528
-            ],
-            [
-              222,
-              490
-            ],
-            [
-              231,
-              395
-            ],
-            [
-              217,
-              397
+              361,
+              775
             ]
           ],
           "color": "#ff1744",
@@ -14882,6 +14864,87 @@
       "pins": [],
       "imageUrls": [],
       "routes": []
+    },
+    "Center for Innovative Teaching and Learning (CITL)": {
+      "type": "office",
+      "building": "Others",
+      "floor": "Ground Floor",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The CITL can be found beside the Health and Services Building, look on the map"
+        ],
+        "ceb": [
+          "Ang CITL makit-an tupad sa Health and Services Building, tan-awa sa mapa."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Strat From Here",
+          "coordinates": [
+            881,
+            634
+          ]
+        },
+        {
+          "name": "Center for Innovative Teaching and Learning (CITL)",
+          "coordinates": [
+            347,
+            649
+          ]
+        }
+      ],
+      "coordinates": [
+        881,
+        634
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Strat From Here to Center for Innovative Teaching and Learning (CITL)",
+          "points": [
+            [
+              881,
+              634
+            ],
+            [
+              785,
+              636
+            ],
+            [
+              781,
+              672
+            ],
+            [
+              583,
+              675
+            ],
+            [
+              566,
+              647
+            ],
+            [
+              395,
+              654
+            ],
+            [
+              394,
+              679
+            ],
+            [
+              350,
+              679
+            ],
+            [
+              347,
+              649
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
     }
   }
 }

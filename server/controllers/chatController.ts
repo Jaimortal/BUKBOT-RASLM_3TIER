@@ -76,10 +76,11 @@ export class ChatController {
     const userMessageTimestamp = new Date();
     
     try {
-      const { intent, language, lang, sessionId = "default" } = req.body;
+      const { intent, language, lang, sessionId = "default", activeCategory, category } = req.body;
       const preferredLanguage: string | undefined = language || lang;
+      const domainCategory = activeCategory || category;
 
-      const result = await callRasaAPI(intent, preferredLanguage, sessionId);
+      const result = await callRasaAPI(intent, preferredLanguage, sessionId, domainCategory);
 
       let answerText = "I cannot understand your question.";
       let answerParts: string[] = ["I cannot understand your question."];

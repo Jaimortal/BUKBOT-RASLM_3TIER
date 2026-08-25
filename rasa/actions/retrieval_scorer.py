@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Any, Dict, List, Sequence, Set, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Set, Tuple
 
 from query_interpreter import QueryInterpreter
 from retrieval_index import RetrievalIndex
@@ -59,14 +59,21 @@ class RetrievalScorer:
         self.index = index
         self.interpreter = interpreter
 
-    def search(self, intent: str, user_message: str, entity_values: Sequence[str]) -> RetrievalResult:
+    def search(
+        self,
+        intent: str,
+        user_message: str,
+        entity_values: Sequence[str],
+        domain: Optional[str] = None,
+    ) -> RetrievalResult:
         query_text = self._expanded_query(user_message, entity_values)
         query_tokens = set(self.interpreter.tokens(query_text))
         if not query_tokens and not entity_values:
             return RetrievalResult(None, 0.0, "low")
 
+        candidate_pool = self.index.candidates_for_domain(domain) if domain else self.index.candidates
         scored: List[Tuple[float, RetrievalCandidate, List[str]]] = []
-        for candidate in self.index.candidates:
+        for candidate in candidate_pool:
             score, reasons = self._score_candidate(candidate, intent, query_text, query_tokens, entity_values)
             if score > 0:
                 scored.append((score, candidate, reasons))
@@ -96,23 +103,27 @@ class RetrievalScorer:
         if not result.candidate:
             return {"text": "Can you tell me which topic you mean?"}
 
-        options = [self._label(result.candidate)]
-        if result.runner_up:
-            options.append(self._label(result.runner_up))
+        candidates = [result.candidate]
+        if result.runner_up and result.runner_up.intent != result.candidate.intent:
+            candidates.append(result.runner_up)
 
-        unique_options = []
-        for option in options:
-            if option and option not in unique_options:
-                unique_options.append(option)
+        if getattr(result, "ranked_candidates", None):
+            for cand, _ in result.ranked_candidates:
+                if cand and cand.intent not in {c.intent for c in candidates}:
+                    candidates.append(cand)
 
-        suggestions = [{"label": option, "payload": self._payload_for_label(option)} for option in unique_options[:3]]
-        if len(unique_options) >= 2:
+        suggestions = [
+            {"label": self._label(cand), "payload": f'/direct_intent{{"intent":"{cand.intent}"}}'}
+            for cand in candidates[:4]
+        ]
+
+        if len(suggestions) >= 2:
             return {
-                "text": f"Do you mean {unique_options[0]} or {unique_options[1]}?",
+                "text": f"Do you mean {suggestions[0]['label']} or {suggestions[1]['label']}?",
                 "custom": {"suggestions": suggestions},
             }
         return {
-            "text": f"Can you clarify if you mean {unique_options[0]}?",
+            "text": f"Can you clarify if you mean {suggestions[0]['label']}?",
             "custom": {"suggestions": suggestions},
         }
 

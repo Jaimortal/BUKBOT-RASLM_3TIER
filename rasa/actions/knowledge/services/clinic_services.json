@@ -288,19 +288,19 @@
               "items": [
                 {
                   "label": "Request for dental oral examination",
-                  "payload": "request for dental oral examination"
+                  "payload": "/direct_intent{\"intent\":\"request_dental_oral_examination\"}"
                 },
                 {
                   "label": "Request for Tooth Extraction",
-                  "payload": "request for tooth extraction"
+                  "payload": "/direct_intent{\"intent\":\"request_tooth_extraction\"}"
                 },
                 {
                   "label": "Request for dental Consultation",
-                  "payload": "request for dental consultation"
+                  "payload": "/direct_intent{\"intent\":\"request_dental_consult\"}"
                 },
                 {
                   "label": "Request for Referral/Dispensing of Medicine",
-                  "payload": "request for referral dispensing of medicine"
+                  "payload": "/direct_intent{\"intent\":\"request_referral_dispensing_medicine\"}"
                 }
               ]
             }

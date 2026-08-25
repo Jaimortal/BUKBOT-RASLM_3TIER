@@ -4,11 +4,77 @@ import { promises as fsPromises } from "fs";
 import { Request, Response } from "express";
 import { backupJsonFile } from "../utils/jsonBackup";
 import { logActivity, computeKnowledgeDiff } from "../services/activityLogService.js";
+import { deleteImage } from "../db/images.js";
 
 type JsonObject = Record<string, any>;
 
-const KNOWLEDGE_DIR = path.join(process.cwd(), "rasa", "actions", "Supper Saiyan");
+const KNOWLEDGE_ROOT = path.join(process.cwd(), "rasa", "actions", "knowledge");
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
+
+function getKnowledgeFiles(): { file: string; fullPath: string; domain?: string }[] {
+  const result: { file: string; fullPath: string; domain?: string }[] = [];
+  if (fs.existsSync(KNOWLEDGE_ROOT)) {
+    const entries = fs.readdirSync(KNOWLEDGE_ROOT, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        const domainDir = path.join(KNOWLEDGE_ROOT, entry.name);
+        const subFiles = fs.readdirSync(domainDir).filter((f) => f.endsWith(".json"));
+        for (const subFile of subFiles) {
+          result.push({
+            file: `${entry.name}/${subFile}`,
+            fullPath: path.join(domainDir, subFile),
+            domain: entry.name,
+          });
+        }
+      } else if (entry.isFile() && entry.name.endsWith(".json")) {
+        result.push({
+          file: entry.name,
+          fullPath: path.join(KNOWLEDGE_ROOT, entry.name),
+        });
+      }
+    }
+  }
+
+  // Also include Supper Saiyan if exists and not already loaded
+  const oldDir = path.join(process.cwd(), "rasa", "actions", "Supper Saiyan");
+  if (fs.existsSync(oldDir)) {
+    const oldFiles = fs.readdirSync(oldDir).filter((f) => f.endsWith(".json"));
+    for (const oldFile of oldFiles) {
+      if (!result.some((r) => r.file.endsWith(oldFile))) {
+        result.push({
+          file: oldFile,
+          fullPath: path.join(oldDir, oldFile),
+        });
+      }
+    }
+  }
+
+  return result;
+}
+
+function resolveKnowledgeFilePath(filePathOrName: string): string | null {
+  if (!filePathOrName) return null;
+  const decoded = decodeURIComponent(filePathOrName).replace(/^[/\\]+/, "");
+  
+  // 1. Direct path under KNOWLEDGE_ROOT
+  const directPath = path.join(KNOWLEDGE_ROOT, decoded);
+  if (fs.existsSync(directPath)) return directPath;
+
+  // 2. Look across all domain subdirectories
+  const allFiles = getKnowledgeFiles();
+  const matched = allFiles.find(
+    (item) => item.file === decoded || path.basename(item.file) === path.basename(decoded)
+  );
+  if (matched && fs.existsSync(matched.fullPath)) {
+    return matched.fullPath;
+  }
+
+  // 3. Check old Supper Saiyan
+  const oldCandidate = path.join(process.cwd(), "rasa", "actions", "Supper Saiyan", path.basename(decoded));
+  if (fs.existsSync(oldCandidate)) return oldCandidate;
+
+  return null;
+}
 
 function formatLabel(value: string): string {
   return String(value || "Unknown")
@@ -22,7 +88,9 @@ function formatLabel(value: string): string {
 }
 
 function isSafeJsonFile(file: string): boolean {
-  return Boolean(file && file.endsWith(".json") && !file.includes("..") && !file.includes("/") && !file.includes("\\"));
+  if (!file) return false;
+  const decoded = decodeURIComponent(file);
+  return Boolean(decoded.endsWith(".json") && !decoded.includes(".."));
 }
 
 function stringArray(value: any): string[] {
@@ -259,23 +327,26 @@ function validateCreateSubtopic(body: JsonObject): string[] {
 export class AdminKnowledgeController {
   static async list(req: Request, res: Response) {
     try {
-      if (!fs.existsSync(KNOWLEDGE_DIR)) {
+      const allFiles = getKnowledgeFiles();
+      if (allFiles.length === 0) {
         return res.status(404).json({ success: false, message: "Knowledge directory not found" });
       }
 
       const records: JsonObject[] = [];
-      const files = fs.readdirSync(KNOWLEDGE_DIR).filter((file) => file.endsWith(".json"));
 
-      for (const file of files) {
-        const filePath = path.join(KNOWLEDGE_DIR, file);
-        const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-        if (!Array.isArray(data.topics)) continue;
-        data.topics.forEach((topic: JsonObject, index: number) => collectRecords(file, topic, [index], null, records));
+      for (const item of allFiles) {
+        try {
+          const data = JSON.parse(fs.readFileSync(item.fullPath, "utf-8"));
+          if (!Array.isArray(data.topics)) continue;
+          data.topics.forEach((topic: JsonObject, index: number) => collectRecords(item.file, topic, [index], null, records));
+        } catch (err) {
+          console.error(`Error reading knowledge file ${item.file}:`, err);
+        }
       }
 
-      const filesSummary = files.map((file) => ({
-        file,
-        count: records.filter((record) => record.file === file).length,
+      const filesSummary = allFiles.map((item) => ({
+        file: item.file,
+        count: records.filter((record) => record.file === item.file).length,
       }));
 
       return res.json({ success: true, records, files: filesSummary });
@@ -297,8 +368,8 @@ export class AdminKnowledgeController {
         return res.status(400).json({ success: false, message: errors.join(" ") });
       }
 
-      const filePath = path.join(KNOWLEDGE_DIR, file);
-      if (!fs.existsSync(filePath)) {
+      const filePath = resolveKnowledgeFilePath(file);
+      if (!filePath || !fs.existsSync(filePath)) {
         return res.status(404).json({ success: false, message: "File not found" });
       }
 
@@ -333,7 +404,11 @@ export class AdminKnowledgeController {
       }
 
       if (req.body.subjectType !== undefined) {
-        target.subject_type = String(req.body.subjectType || "").trim() || target.subject_type;
+        target.subject_type = keyValue(req.body.subjectType) || "general";
+      }
+
+      if (req.body.subjectKey !== undefined) {
+        target.subject_key = keyValue(req.body.subjectKey) || undefined;
       }
 
       if (req.body.phrases !== undefined) {
@@ -344,7 +419,20 @@ export class AdminKnowledgeController {
       }
 
       if (req.body.images !== undefined) {
-        target.images = req.body.images.map((image: any) => String(image).trim()).filter(Boolean);
+        const newImages = req.body.images.map((image: any) => String(image).trim()).filter(Boolean);
+        const oldImages = target.images || [];
+        const removedImages = oldImages.filter((img: string) => !newImages.includes(img));
+
+        for (const imgUrl of removedImages) {
+          if (typeof imgUrl === "string" && imgUrl.startsWith("/api/images/")) {
+            const id = imgUrl.split("/").pop();
+            if (id) {
+              await deleteImage(id).catch((err) => console.error("Failed to delete unused image:", err));
+            }
+          }
+        }
+
+        target.images = newImages;
       }
 
       if (req.body.items !== undefined) {
@@ -372,40 +460,39 @@ export class AdminKnowledgeController {
       }
 
       if (req.body.map !== undefined) {
-        target.map = req.body.map;
+        target.map = req.body.map || null;
       }
+
       if (req.body.mapData !== undefined) {
         target.mapData = safeParseJson(req.body.mapData, req.body.mapData);
       }
+
       if (req.body.pins !== undefined) {
-        target.pins = req.body.pins;
-        if (target.mapData && typeof target.mapData === "object" && !Array.isArray(target.mapData)) {
-          target.mapData = { ...target.mapData, pins: req.body.pins };
-        }
-      }
-      if (req.body.routes !== undefined) {
-        target.routes = normalizeRoutes(req.body.routes);
-        if (target.mapData && typeof target.mapData === "object" && !Array.isArray(target.mapData)) {
-          target.mapData = { ...target.mapData, routes: target.routes };
-        }
-      }
-      if (req.body.mapRef !== undefined) {
-        const mapRef = String(req.body.mapRef || "").trim();
-        if (mapRef) {
-          target.mapRef = mapRef;
-        } else {
-          delete target.mapRef;
-          delete target.map_ref;
-        }
+        target.pins = req.body.pins || [];
       }
 
-      JSON.stringify(data);
+      if (req.body.routes !== undefined) {
+        target.routes = normalizeRoutes(req.body.routes);
+      }
+
+      if (req.body.mapRef !== undefined) {
+        target.mapRef = keyValue(req.body.mapRef) || undefined;
+      }
+
+      if (req.body.intent !== undefined) {
+        target.intent = keyValue(req.body.intent) || undefined;
+      }
+
+      if (req.body.contextTopic !== undefined) {
+        target.context_topic = keyValue(req.body.contextTopic) || undefined;
+      }
+
       await backupJsonFile(filePath, "knowledge");
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
 
       // Log activity
       const changes = computeKnowledgeDiff(prevTopic, req.body);
-      const title = target.display_name || formatLabel(target.topic);
+      const title = target.display_name || target.topic;
       await logActivity(req, {
         actionType: "update",
         module: "Knowledge Manager",
@@ -434,8 +521,8 @@ export class AdminKnowledgeController {
         return res.status(400).json({ success: false, message: errors.join(" ") });
       }
 
-      const filePath = path.join(KNOWLEDGE_DIR, file);
-      if (!fs.existsSync(filePath)) {
+      const filePath = resolveKnowledgeFilePath(file);
+      if (!filePath || !fs.existsSync(filePath)) {
         return res.status(404).json({ success: false, message: "File not found" });
       }
 
@@ -478,7 +565,7 @@ export class AdminKnowledgeController {
           {
             field: "Subject Category",
             changeType: "added",
-            details: `Created subject "${title}" with ${parentTopic.subject_terms?.length || 0} keyword term(s)`
+            details: `Created subject "${title}" with ${parentTopic.subject_terms?.length || 0} keyword term(s)`,
           }
         ]
       }).catch((err) => console.error("Failed to log parent creation:", err));
@@ -507,8 +594,8 @@ export class AdminKnowledgeController {
         return res.status(400).json({ success: false, message: errors.join(" ") });
       }
 
-      const filePath = path.join(KNOWLEDGE_DIR, file);
-      if (!fs.existsSync(filePath)) {
+      const filePath = resolveKnowledgeFilePath(file);
+      if (!filePath || !fs.existsSync(filePath)) {
         return res.status(404).json({ success: false, message: "File not found" });
       }
 
@@ -565,7 +652,7 @@ export class AdminKnowledgeController {
           {
             field: "Subtopic",
             changeType: "added",
-            details: `Created subtopic "${title}" with ${subtopic.responses?.en?.length || 0} English and ${subtopic.responses?.ceb?.length || 0} Cebuano responses`
+            details: `Created subtopic "${title}" with ${subtopic.responses?.en?.length || 0} English and ${subtopic.responses?.ceb?.length || 0} Cebuano responses`,
           }
         ]
       }).catch((err) => console.error("Failed to log subtopic creation:", err));

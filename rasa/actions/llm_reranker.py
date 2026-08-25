@@ -58,7 +58,7 @@ Rules:
     @classmethod
     def is_noise_or_greeting(cls, text: str) -> bool:
         cleaned = (text or "").strip().lower().strip("?!.,:-_")
-        if not cleaned:
+        if not cleaned or (text and text.strip().startswith("/")):
             return True
         if cleaned in cls.NOISE_AND_GREETINGS:
             return True

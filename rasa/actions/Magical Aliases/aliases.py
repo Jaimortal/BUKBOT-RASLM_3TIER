@@ -993,6 +993,7 @@ LOCATION_ALIASES = {
     "ll department": "language and literature department",
     "language literature office": "language and literature department",
     "language literature department": "language and literature department",
+    "lld": "language and literature department",
 
     # PHILOSOPHY FACULTY OFFICE
     "philosophy faculty office": "Philosophy Faculty Office",
@@ -1147,6 +1148,33 @@ LOCATION_ALIASES = {
     # === HRDU Aliases ===
     "hrdu": "HRDU",
     "hr department unit": "HRDU",
+
+    # === CITL (Center for Innovative Teaching and Learning) Aliases ===
+    "citl": "Center for Innovative Teaching and Learning (CITL)",
+    "citl office": "Center for Innovative Teaching and Learning (CITL)",
+    "buksu citl": "Center for Innovative Teaching and Learning (CITL)",
+    "citl buksu": "Center for Innovative Teaching and Learning (CITL)",
+    "center for inovative teaching and learning": "Center for Innovative Teaching and Learning (CITL)",
+    "center for innovative teaching and learning": "Center for Innovative Teaching and Learning (CITL)",
+    "center for inovative teaching and learning office": "Center for Innovative Teaching and Learning (CITL)",
+    "center for innovative teaching and learning office": "Center for Innovative Teaching and Learning (CITL)",
+    "office of the center for inovative teaching and learning": "Center for Innovative Teaching and Learning (CITL)",
+    "office of the center for innovative teaching and learning": "Center for Innovative Teaching and Learning (CITL)",
+    "citl department": "Center for Innovative Teaching and Learning (CITL)",
+
+    # === ICTU & ICT Service Unit Aliases ===
+    "ictu": "ictu office",
+    "ictu office": "ictu office",
+    "buksu ictu": "ictu office",
+    "ictu buksu": "ictu office",
+    "ictu unit": "ictu office",
+    "ict service unit": "ICT Service Unit",
+    "ict service unit office": "ICT Service Unit",
+    "ictu service unit": "ICT Service Unit",
+    "ict service unit room": "ICT Service Unit",
+    "ict office": "ICT Service Unit",
+    "ict unit": "ICT Service Unit",
+    "ict": "ICT Service Unit",
 
     # === DRRMO Office Aliases ===
     "drrmo office": "DRRMO Office",
@@ -1355,6 +1383,7 @@ LOCATION_ALIASES = {
     "center for advocacy": "CARES",
     "center for advocacy and well being services": "CARES",
 
+    "ged": "GE Department",
     "ge department": "GE Department",
     "General Education Courses Department": "GE Department",
     "general education department": "GE Department",
@@ -1449,6 +1478,9 @@ LOCATION_ALIASES = {
     "finance planning office": "Planning Office",
     
     # Smart Classroom
+    "cotscr": "Smart Classroom",
+    "scr 1": "Smart Classroom",
+    "scr": "Smart Classroom",
     "smart classroom": "Smart Classroom",
     "classroom smart": "Smart Classroom",
     "smart room": "Smart Classroom",

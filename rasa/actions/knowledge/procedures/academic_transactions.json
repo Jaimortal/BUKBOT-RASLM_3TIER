@@ -14,7 +14,12 @@
         "add subject",
         "drop subject",
         "adding form",
-        "dropping form"
+        "dropping form",
+        "adding and dropping",
+        "adding dropping",
+        "add and drop",
+        "when is adding and dropping",
+        "adding and dropping schedule"
       ],
       "subtopics": [
         {
@@ -55,6 +60,12 @@
               "how to add and drop subject",
               "add drop subject process",
               "adding and dropping subject",
+              "adding and dropping",
+              "when is adding and dropping",
+              "when is the adding and dropping",
+              "when is adding and dropping subject",
+              "when is the adding and dropping subject",
+              "adding and dropping schedule",
               "add/drop form",
               "subject adding dropping process",
               "unsaon pag add drop subject",
@@ -320,7 +331,7 @@
           "suggestions": [
             {
               "label": "COR validation process",
-              "payload": "how to validate COR"
+              "payload": "/direct_intent{\"intent\":\"cor_validation_steps\"}"
             }
           ],
           "metadata": {

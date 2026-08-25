@@ -441,10 +441,24 @@ nlu:
     - qwerty
     - blah blah
 
-- intent: out_of_scope
+- intent: set_category
   examples: |
-    - what is the weather today
-    - tell me a joke
-    - who won the NBA game
-    - write my assignment for me
-    - order food for me
+    - /set_category{"active_category": "location"}
+    - /set_category{"active_category": "procedures"}
+    - /set_category{"active_category": "academics"}
+    - /set_category{"active_category": "services"}
+    - /set_category{"active_category": "university"}
+    - switch to location category
+    - select procedures category
+    - choose academics category
+    - go to services category
+    - open university category
+
+- intent: reset_category
+  examples: |
+    - /reset_category
+    - back to category
+    - back to categories
+    - change category
+    - reset category
+    - return to category selection

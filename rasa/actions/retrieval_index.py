@@ -1,12 +1,13 @@
 import json
 from typing import Any, Dict, List, Optional
 
+from domain_registry import DOMAIN_REGISTRY, normalize_domain
 from query_interpreter import QueryInterpreter
 from retrieval_result import RetrievalCandidate
 
 
 class RetrievalIndex:
-    """Builds local searchable records from legacy and structured knowledge entries."""
+    """Builds local searchable records from structured knowledge entries with domain isolation."""
 
     PURPOSE_BY_TOPIC = {
         "location": "ask_location",
@@ -42,21 +43,38 @@ class RetrievalIndex:
     def __init__(self, data_loader: Any, interpreter: QueryInterpreter):
         self.data_loader = data_loader
         self.interpreter = interpreter
-        self._candidates = self._build_candidates()
+        self._rebuild()
+
+    def _rebuild(self) -> None:
+        self._candidates = self._build_candidates(self.data_loader.responses)
+        self._candidates_by_domain: Dict[str, List[RetrievalCandidate]] = {
+            domain: [] for domain in DOMAIN_REGISTRY
+        }
+        for cand in self._candidates:
+            if cand.domain and cand.domain in self._candidates_by_domain:
+                self._candidates_by_domain[cand.domain].append(cand)
 
     @property
     def candidates(self) -> List[RetrievalCandidate]:
         return self._candidates
 
-    def _build_candidates(self) -> List[RetrievalCandidate]:
+    def candidates_for_domain(self, domain_id: Optional[str]) -> List[RetrievalCandidate]:
+        """Returns candidates strictly belonging to the requested domain."""
+        norm = normalize_domain(domain_id)
+        if norm and norm in self._candidates_by_domain:
+            return self._candidates_by_domain[norm]
+        return self._candidates
+
+    def _build_candidates(self, entries: List[Dict[str, Any]]) -> List[RetrievalCandidate]:
         candidates: List[RetrievalCandidate] = []
-        for entry in self.data_loader.responses:
+        for entry in entries:
             intent = str(entry.get("intent") or "").strip()
             if not intent:
                 continue
 
             metadata = entry.get("metadata") or {}
             responses = entry.get("responses") or {}
+            domain = str(entry.get("domain") or metadata.get("domain") or "").strip()
             subject_terms = self._string_list(metadata.get("subject_terms"))
             phrases = self._string_list(metadata.get("phrases"))
             topic_terms = self._topic_terms(entry, metadata)
@@ -96,6 +114,7 @@ class RetrievalIndex:
                     searchable_text=searchable_text,
                     tokens=self.interpreter.tokens(searchable_text, expand=False),
                     display_name=display_name,
+                    domain=domain,
                     child_terms=child_terms,
                     alias_terms=alias_terms,
                 )

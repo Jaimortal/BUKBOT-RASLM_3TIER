@@ -59,16 +59,45 @@ export async function findIntent(intent: string): Promise<any | null> {
 }
 
 // Call actual Rasa API
-export async function callRasaAPI(message: string, language?: string, sessionId?: string) {
+export async function callRasaAPI(message: string, language?: string, sessionId?: string, activeCategory?: string | null) {
   try {
-    console.log(`[Rasa] Calling Rasa API: "${message}"`);
+    console.log(`[Rasa] Calling Rasa API: "${message}" (Category: ${activeCategory || "all"})`);
     
     const sender = sessionId || "user";
+
+    // Synchronize active_category slot to Rasa tracker
+    if (activeCategory !== undefined) {
+      try {
+        await fetch(`http://127.0.0.1:5005/conversations/${encodeURIComponent(sender)}/tracker/events`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify([{
+            event: "slot",
+            name: "active_category",
+            value: activeCategory || null,
+            timestamp: Date.now() / 1000
+          }]),
+        });
+      } catch (trackerErr) {
+        // Tracker endpoint silent fallback
+      }
+    }
 
     const response = await fetch(RASA_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sender, message, language, sessionId }),
+      body: JSON.stringify({
+        sender,
+        message,
+        language,
+        sessionId,
+        active_category: activeCategory,
+        category: activeCategory,
+        metadata: {
+          active_category: activeCategory,
+          category: activeCategory
+        }
+      }),
     });
 
     if (!response.ok) {

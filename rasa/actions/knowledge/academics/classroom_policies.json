@@ -260,27 +260,27 @@
               "items": [
                 {
                   "label": "How to get COR",
-                  "payload": "how to get COR"
+                  "payload": "/direct_intent{\"intent\":\"request_cor\"}"
                 },
                 {
                   "label": "COT Faculty Room",
-                  "payload": "where is COT Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_COT_Faculty_Room\"}"
                 },
                 {
                   "label": "COB Faculty Room",
-                  "payload": "where is COB Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_COB_Faculty_Room\"}"
                 },
                 {
                   "label": "CAS Dean's Office",
-                  "payload": "where is CAS Deans Office"
+                  "payload": "/direct_intent{\"intent\":\"location_CAS_Deans_Office\"}"
                 },
                 {
                   "label": "CPAG Faculty Room",
-                  "payload": "where is CPAG Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_CPAG_Faculty_Room\"}"
                 },
                 {
                   "label": "BSN Faculty Room",
-                  "payload": "where is BSN Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_BSN_Faculty_Room\"}"
                 }
               ]
             }
@@ -328,7 +328,7 @@
           "suggestions": [
             {
               "label": "How to get COR",
-              "payload": "how to get COR"
+              "payload": "/direct_intent{\"intent\":\"request_cor\"}"
             }
           ],
           "subject_key": "class_schedule_help",
@@ -376,23 +376,23 @@
               "items": [
                 {
                   "label": "COT Faculty Room",
-                  "payload": "where is COT Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_COT_Faculty_Room\"}"
                 },
                 {
                   "label": "COB Faculty Room",
-                  "payload": "where is COB Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_COB_Faculty_Room\"}"
                 },
                 {
                   "label": "CPAG Faculty Room",
-                  "payload": "where is CPAG Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_CPAG_Faculty_Room\"}"
                 },
                 {
                   "label": "BSN Faculty Room",
-                  "payload": "where is BSN Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_BSN_Faculty_Room\"}"
                 },
                 {
                   "label": "PE Faculty Room",
-                  "payload": "where is PE Faculty Room"
+                  "payload": "/direct_intent{\"intent\":\"location_PE_Faculty_Room\"}"
                 }
               ]
             }

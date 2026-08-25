@@ -1,17 +1,22 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Flag, Mic, Send, Minimize2, ChevronUp, X, ZoomIn, ZoomOut, RotateCcw, Volume2, VolumeX, BookOpen, AlertCircle, HelpCircle } from "lucide-react";
+import { Flag, Mic, Send, Minimize2, ChevronUp, X, ZoomIn, ZoomOut, RotateCcw, Volume2, VolumeX, BookOpen, AlertCircle, HelpCircle, ArrowLeft, Map as MapIcon, Images, ChevronLeft, ChevronRight, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Textarea } from "@/components/ui/textarea";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import MapMessage from "./MapMessage";
 import { cn } from "@/lib/utils";
 import { rasaBackend, generateId, type ChatChoiceGroup, type ChatMessage, type ChatSuggestion } from "@/lib/rasaApi";
 import type { UserPrivileges } from "@/types/admin";
-import { QuickAccessBar } from "./QuickAccessBar";
 import { MapQuickAccess } from "./MapQuickAccess";
+import { WelcomeScreen } from "./WelcomeScreen";
+import { CategoryScopeBanner } from "./CategoryScopeBanner";
+import { CategoryManualModal } from "./CategoryManualModal";
+import { CategoryFaqModal } from "./CategoryFaqModal";
+import { CategoryIcon } from "./CategoryIcon";
+import { CATEGORY_DEFINITIONS, type CategoryId, type CategoryFaqItem } from "@/lib/categoryConfig";
 import { fetchActiveFaqs, fetchChatWidgetSettings, submitChatbotReport, submitChatbotResponseReport } from "@/lib/adminApi";
 import { useToast } from "@/hooks/use-toast";
 
@@ -246,17 +251,30 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   // Fullscreen map state - stores the message ID of the map currently in fullscreen
   const [fullscreenMapId, setFullscreenMapId] = useState<string | null>(null);
   
-  // Fullscreen image state
+  // Gallery modal & Fullscreen image state
+  const [galleryModalImages, setGalleryModalImages] = useState<string[] | null>(null);
   const [fullscreenImageUrl, setFullscreenImageUrl] = useState<string | null>(null);
+  const [fullscreenImageGallery, setFullscreenImageGallery] = useState<string[] | null>(null);
+  const [fullscreenImageIndex, setFullscreenImageIndex] = useState<number>(0);
   const [imageZoom, setImageZoom] = useState(1);
   const [imagePan, setImagePan] = useState({ x: 0, y: 0 });
   const [isDraggingImage, setIsDraggingImage] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   
+  // Category State
+  const [activeCategory, setActiveCategory] = useState<CategoryId | null>(() => {
+    try {
+      return (sessionStorage.getItem('chatActiveCategory') as CategoryId) || null;
+    } catch {
+      return null;
+    }
+  });
+  const [showCategoryFaqModal, setShowCategoryFaqModal] = useState(false);
+
   // Map Quick Access modal state
   const [showMapQuickAccess, setShowMapQuickAccess] = useState(false);
   
-  const [showQuickAccess, setShowQuickAccess] = useState(true);
+  const [showQuickAccess, setShowQuickAccess] = useState(false);
   const [choiceModal, setChoiceModal] = useState<ChatChoiceGroup | null>(null);
   const [stickyChoiceMessageId, setStickyChoiceMessageId] = useState<string | null>(null);
   const [dismissedStickyChoiceIds, setDismissedStickyChoiceIds] = useState<string[]>([]);
@@ -276,7 +294,6 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       const saved = sessionStorage.getItem('chatMessages');
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Remove time-based expiration since sessionStorage clears on reload
         return trimChatMessages(parsed.messages.map((msg: any) => ({
           ...msg,
           timestamp: new Date(msg.timestamp)
@@ -285,17 +302,32 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     } catch (error) {
       console.error('Failed to load messages from sessionStorage:', error);
     }
-    // Default welcome message
-    return [
-      {
-        id: "welcome",
-        text: "Hi there! I'm the BukSU Assistance Chatbot. Ask me anything about BukSU. Pwede ra gyud Bisaya or English",
-        sender: "bot",
-        type: "text",
-        timestamp: new Date(),
-      },
-    ];
+    return [];
   });
+
+  const handleSelectCategory = async (categoryId: CategoryId) => {
+    rasaBackend.clearCache();
+    setActiveCategory(categoryId);
+    sessionStorage.setItem('chatActiveCategory', categoryId);
+    try {
+      await rasaBackend.sendMessage(`/set_category{"active_category":"${categoryId}"}`, sessionId, categoryId);
+    } catch (err) {
+      console.error("Failed to notify backend of category select:", err);
+    }
+  };
+
+  const handleResetCategory = async () => {
+    rasaBackend.clearCache();
+    sessionStorage.removeItem('chatMessages');
+    sessionStorage.removeItem('chatActiveCategory');
+    setMessages([]);
+    setActiveCategory(null);
+    try {
+      await rasaBackend.sendMessage(`/reset_category`, sessionId, null);
+    } catch (err) {
+      console.error("Failed to notify backend of category reset:", err);
+    }
+  };
 
   // Removed in-timeline FAQ Carousel injection. Now handled by QuickAccessBar floating UI.
 
@@ -321,12 +353,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const lastAutoSpokenMessageIdRef = useRef<string | null>(null);
   const speakingMessageIdRef = useRef<string | null>(null);
 
-  // Quick Access Drag-to-Scroll State
-  const quickAccessScrollRef = useRef<HTMLDivElement>(null);
-  const [isDraggingFAQ, setIsDraggingFAQ] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [dragScrollLeft, setDragScrollLeft] = useState(0);
-  const [draggedDistance, setDraggedDistance] = useState(0);
+  // Sticky Choices Drag-to-Scroll State
   const [isDraggingStickyChoices, setIsDraggingStickyChoices] = useState(false);
   const [stickyDragStartX, setStickyDragStartX] = useState(0);
   const [stickyDragScrollLeft, setStickyDragScrollLeft] = useState(0);
@@ -357,28 +384,6 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     }
     return undefined;
   }, [messages]);
-
-  const handleDragStart = (e: React.MouseEvent) => {
-    setIsDraggingFAQ(true);
-    setDragStartX(e.pageX - (quickAccessScrollRef.current?.offsetLeft || 0));
-    setDragScrollLeft(quickAccessScrollRef.current?.scrollLeft || 0);
-    setDraggedDistance(0);
-  };
-
-  const handleDragEnd = () => {
-    setIsDraggingFAQ(false);
-  };
-
-  const handleDragMove = (e: React.MouseEvent) => {
-    if (!isDraggingFAQ) return;
-    e.preventDefault(); // prevents text selection highlighting
-    const x = e.pageX - (quickAccessScrollRef.current?.offsetLeft || 0);
-    const walk = (x - dragStartX) * 1.5;
-    if (quickAccessScrollRef.current) {
-      quickAccessScrollRef.current.scrollLeft = dragScrollLeft - walk;
-    }
-    setDraggedDistance(Math.abs(x - dragStartX));
-  };
 
   const handleStickyChoiceDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!stickyChoiceMessageId) return;
@@ -803,7 +808,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     setIsTyping(true);
 
     try {
-      const response = await rasaBackend.sendMessage(payloadToSend, sessionId);
+      const response = await rasaBackend.sendMessage(payloadToSend, sessionId, activeCategory);
       
       // Convert bot response to correct message types
       const botMessages = convertResponseToMessages(response);
@@ -838,15 +843,15 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   };
 
   const regularChoiceButtonClass =
-    "flex min-h-[64px] min-w-0 w-full items-center overflow-hidden rounded-xl border border-sky-200 bg-white px-3.5 py-1 text-left text-[13px] font-semibold leading-snug text-[#003B63] shadow-[0_3px_10px_rgba(14,74,122,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-300 hover:shadow-[0_6px_16px_rgba(14,74,122,0.18)] focus:outline-none focus:ring-2 focus:ring-sky-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none";
+    "flex min-h-[36px] min-w-0 w-full items-center justify-start overflow-hidden rounded-xl border border-sky-200/80 bg-gradient-to-br from-white via-sky-50/40 to-sky-100/40 px-2.5 py-1.5 text-left text-[11.5px] font-semibold leading-tight text-[#003B63] shadow-[0_1.5px_4px_rgba(14,74,122,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-400 hover:bg-sky-50/90 hover:shadow-[0_4px_10px_rgba(14,74,122,0.12)] focus:outline-none focus:ring-2 focus:ring-sky-300/60 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none cursor-pointer";
   const compactChoiceButtonClass =
-    "flex h-9 min-w-0 items-center overflow-hidden rounded-full border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none";
+    "flex h-8 min-w-0 items-center overflow-hidden rounded-full border border-sky-200 bg-white px-2.5 py-1 text-[11.5px] font-medium text-[#003B63] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none cursor-pointer";
 
   const renderSuggestionBoard = (messageId: string, suggestions?: ChatSuggestion[]) => {
     if (!suggestions || suggestions.length === 0) return null;
 
     return (
-      <div className="mt-2 grid w-full max-w-[96%] min-w-0 grid-cols-2 gap-2 overflow-hidden px-1 py-1">
+      <div className="mt-1.5 grid w-full max-w-[96%] min-w-0 grid-cols-2 gap-1.5 overflow-hidden px-1 py-0.5">
         {suggestions.map((suggestion, idx) => (
           <button
             key={`${messageId}-suggestion-${idx}`}
@@ -855,7 +860,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             onClick={() => handleSend(suggestion.label, suggestion.payload || suggestion.label)}
             className={regularChoiceButtonClass}
           >
-            <span className="min-w-0 break-words">{suggestion.label}</span>
+            <span className="min-w-0 break-words line-clamp-2">{suggestion.label}</span>
           </button>
         ))}
       </div>
@@ -865,13 +870,16 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const renderChoiceGroupBoard = (msg: ChatMessage, sticky = false) => {
     if (!msg.choiceGroups || msg.choiceGroups.length === 0) return null;
 
+    const isSingleGroup = msg.choiceGroups.length === 1 && (msg.choiceGroups[0].items?.length || 0) > 0;
+    const directItems = isSingleGroup ? msg.choiceGroups[0].items : null;
+
     return (
       <div
         ref={!sticky ? (node) => {
           choiceBoardRefs.current[msg.id] = node;
         } : undefined}
         className={cn(
-          "relative mt-2 w-full max-w-[96%] min-w-0 overflow-hidden px-1 py-1",
+          "relative mt-1.5 w-full max-w-[96%] min-w-0 overflow-hidden px-1 py-0.5",
           sticky && "m-0 max-w-none bg-background px-2 py-2 shadow-md ring-1 ring-border"
         )}
       >
@@ -888,27 +896,43 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           onMouseUp={sticky ? handleStickyChoiceDragEnd : undefined}
           onMouseMove={sticky ? handleStickyChoiceDragMove : undefined}
           className={cn(
-            "grid min-w-0 grid-cols-2 gap-2",
-            sticky && "flex cursor-grab select-none overflow-x-auto pb-1 pr-8 active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+            "grid min-w-0 grid-cols-2 gap-1.5",
+            sticky && "flex flex-row cursor-grab select-none overflow-x-auto pb-1 pr-8 active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
           )}
         >
-          {msg.choiceGroups.map((group, groupIdx) => (
-            <button
-              key={`${msg.id}-choice-group-${groupIdx}`}
-              type="button"
-              disabled={isTyping || !privileges.chatEnabled}
-              onClick={() => {
-                if (sticky && stickyDraggedDistance > 5) return;
-                if (isTyping) return;
-                setChoiceModal(group);
-              }}
-              className={sticky
-                ? "flex h-9 min-w-[116px] shrink-0 items-center justify-center rounded-full border border-border bg-white px-2.5 py-1.5 text-center text-[12px] font-medium text-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none"
-                : regularChoiceButtonClass}
-            >
-              <span className="min-w-0 break-words">{group.title}</span>
-            </button>
-          ))}
+          {directItems ? (
+            directItems.map((item, idx) => (
+              <button
+                key={`${msg.id}-direct-choice-${idx}`}
+                type="button"
+                disabled={isTyping || !privileges.chatEnabled}
+                onClick={() => handleSend(item.label, item.payload || item.label)}
+                className={sticky
+                  ? "flex h-8 min-w-[110px] shrink-0 items-center justify-center rounded-full border border-sky-200 bg-white px-2.5 py-1 text-center text-[11.5px] font-semibold text-[#003B63] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200 disabled:opacity-50 cursor-pointer"
+                  : regularChoiceButtonClass}
+              >
+                <span className="min-w-0 break-words line-clamp-2">{item.label}</span>
+              </button>
+            ))
+          ) : (
+            msg.choiceGroups.map((group, groupIdx) => (
+              <button
+                key={`${msg.id}-choice-group-${groupIdx}`}
+                type="button"
+                disabled={isTyping || !privileges.chatEnabled}
+                onClick={() => {
+                  if (sticky && stickyDraggedDistance > 5) return;
+                  if (isTyping) return;
+                  setChoiceModal(group);
+                }}
+                className={sticky
+                  ? "flex h-8 min-w-[110px] shrink-0 items-center justify-center rounded-full border border-sky-200 bg-white px-2.5 py-1 text-center text-[11.5px] font-medium text-[#003B63] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200 disabled:opacity-50 cursor-pointer"
+                  : regularChoiceButtonClass}
+              >
+                <span className="min-w-0 break-words line-clamp-2">{group.title}</span>
+              </button>
+            ))
+          )}
         </div>
         {sticky && (
           <button
@@ -935,15 +959,34 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   return (
     <div className="flex flex-col h-full bg-background relative overflow-hidden">
       {/* Header */}
-      <div className="bg-primary p-4 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{backgroundColor: '#001C38'}}>
-        <div className="flex items-center gap-4" >
-          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse mt-1" />
+      <div className="bg-primary px-4 py-3 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{backgroundColor: '#001C38'}}>
+        <div className="flex items-center gap-3">
+          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <div className="flex flex-col leading-tight">
-            <h3 className="font-semibold text-sm text-white">Buksu Chatbot</h3>
-            {/* <p className="text-xs text-white/90 font-light">Ask me about BukSU</p> */}
+            <div className="flex items-center gap-2">
+              <h3 className="font-semibold text-sm text-white">Buksu Chatbot</h3>
+              {activeCategory && CATEGORY_DEFINITIONS[activeCategory] && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-[10.5px] font-semibold text-sky-200 border border-white/20">
+                  <CategoryIcon id={activeCategory} className="h-3 w-3 text-sky-300" />
+                  <span>{CATEGORY_DEFINITIONS[activeCategory].shortTitle}</span>
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <div className="flex gap-1 items-center">
+          {privileges.mapAccessEnabled && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setShowMapQuickAccess(true)}
+              className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+              title="Campus Map"
+              aria-label="Map"
+            >
+              <MapIcon className="h-4 w-4" />
+            </Button>
+          )}
           <Button
             variant="ghost"
             size="icon"
@@ -977,6 +1020,27 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         </div>
       </div>
 
+      {/* Sub-Header Strip (Outside Header) - Only shown when in active category */}
+      {activeCategory && CATEGORY_DEFINITIONS[activeCategory] && (
+        <div className="flex items-center justify-between px-4 py-2 bg-slate-100/95 border-b border-slate-200/90 shadow-2xs shrink-0 backdrop-blur-xs">
+          <div className="flex items-center gap-1.5 min-w-0 pr-2">
+            <CategoryIcon id={activeCategory} className="h-3.5 w-3.5 text-blue-900 shrink-0" />
+            <span className="text-[11.5px] font-bold text-slate-800 truncate">
+              {CATEGORY_DEFINITIONS[activeCategory].title}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={handleResetCategory}
+            className="flex items-center gap-1 text-[11px] font-semibold text-blue-700 hover:text-blue-900 bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 px-2.5 py-1 rounded-full shadow-2xs transition-all shrink-0 cursor-pointer"
+            title="Return to category selection"
+          >
+            <ArrowLeft className="h-3 w-3" />
+            <span>Back to category</span>
+          </button>
+        </div>
+      )}
+
       {stickyChoiceMessage && renderChoiceGroupBoard(stickyChoiceMessage, true)}
 
       {/* Fullscreen Map View - Only visible when a map is in fullscreen */}
@@ -995,10 +1059,17 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
       {/* Map Quick Access Modal - Fills the chatbox area */}
       {showMapQuickAccess && (
-        <div className="absolute inset-0 z-30 flex flex-col">
+        <div className="absolute inset-0 z-40 flex flex-col">
           <MapQuickAccess onClose={() => setShowMapQuickAccess(false)} />
         </div>
       )}
+
+      {/* Welcome Screen Overlay when no category is active */}
+      <AnimatePresence>
+        {!activeCategory && (
+          <WelcomeScreen onSelectCategory={handleSelectCategory} />
+        )}
+      </AnimatePresence>
 
       {/* Messages - Hidden when in fullscreen map mode */}
       {!fullscreenMapId && (
@@ -1013,32 +1084,11 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
               choiceModal && "pointer-events-none blur-[2px]"
             )}
           >
-            {messages.length === 1 && messages[0]?.id === "welcome" && (
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mx-auto flex max-w-[92%] flex-col items-center gap-3 px-4 py-4 text-center text-foreground"
-              >
-                <p className="text-sm font-semibold">What can this bot help you with?</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  <button
-                    type="button"
-                    disabled={isTyping || !privileges.chatEnabled}
-                    onClick={() => handleSend("Chatbot Help menu", "chatbot help menu")}
-                    className={compactChoiceButtonClass}
-                  >
-                    Chatbot Help menu
-                  </button>
-                  <button
-                    type="button"
-                    disabled={isTyping || !privileges.chatEnabled}
-                    onClick={() => handleSend("BukSU student services", "what are the student services")}
-                    className={compactChoiceButtonClass}
-                  >
-                    BukSU student services
-                  </button>
-                </div>
-              </motion.div>
+            {activeCategory && (
+              <CategoryScopeBanner
+                categoryId={activeCategory}
+                onTopicClick={(payload, label) => handleSend(label, payload)}
+              />
             )}
             {messages.map((msg, msgIndex) => {
               const previousMessage = messages[msgIndex - 1];
@@ -1092,29 +1142,106 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   )}
 
                   {/* Image message */}
-                  {msg.type === "image" && (msg.imageUrls?.length || msg.imageUrl) && (
-                    <div className="grid w-full max-w-full min-w-0 gap-2 overflow-hidden rounded-2xl">
-                      {(msg.imageUrls?.length ? msg.imageUrls : [msg.imageUrl]).filter(Boolean).map((url, idx) => (
+                  {msg.type === "image" && (msg.imageUrls?.length || msg.imageUrl) && (() => {
+                    const validImages = (msg.imageUrls?.length ? msg.imageUrls : [msg.imageUrl]).filter((u): u is string => Boolean(u));
+                    if (validImages.length === 0) return null;
+
+                    // Single image: Uniform Gallery Cube UI (opens fullscreen directly)
+                    if (validImages.length === 1) {
+                      return (
+                        <div className="w-full max-w-full min-w-0">
+                          <button
+                            key={`${msg.id}-image-single`}
+                            type="button"
+                            onClick={() => {
+                              setFullscreenImageUrl(validImages[0]);
+                              setFullscreenImageGallery(null);
+                              setFullscreenImageIndex(0);
+                              setImageZoom(0.75);
+                              setImagePan({ x: 0, y: 0 });
+                            }}
+                            className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-slate-900 border border-slate-700/60 p-2 text-left shadow-[0_4px_16px_rgba(0,0,0,0.20)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(14,74,122,0.35)] hover:border-sky-400/70 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                          >
+                            {/* Single Image Aspect Box */}
+                            <div className="relative w-full rounded-xl overflow-hidden bg-slate-950 aspect-[4/3]">
+                              <img
+                                src={validImages[0]}
+                                alt="Photo preview"
+                                loading="lazy"
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                              />
+                              <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/25 flex items-center justify-center pointer-events-none">
+                                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/75 text-white text-[11px] font-medium px-2.5 py-1 rounded-full backdrop-blur-sm shadow-md">
+                                  Click to view
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Gallery Bottom Bar */}
+                            <div className="mt-2 flex items-center justify-between px-1 text-xs">
+                              <div className="flex items-center gap-1.5 text-slate-200 font-medium">
+                                <Images className="h-3.5 w-3.5 text-sky-400" />
+                                <span>1 Photo</span>
+                              </div>
+                              <span className="text-[11px] font-semibold text-sky-400 group-hover:text-sky-300 transition-colors">
+                                View Photo &rarr;
+                              </span>
+                            </div>
+                          </button>
+                        </div>
+                      );
+                    }
+
+                    // 2 or more images: Compact Gallery Cube
+                    return (
+                      <div className="w-full max-w-full min-w-0">
                         <button
-                          key={`${msg.id}-image-card-${idx}`}
                           type="button"
                           onClick={() => {
-                            setFullscreenImageUrl(url || null);
-                            setImageZoom(0.5);
-                            setImagePan({ x: 0, y: 0 });
+                            setGalleryModalImages(validImages);
                           }}
-                          className="w-full max-w-full overflow-hidden rounded-2xl bg-white p-0 text-left shadow-[0_2px_12px_rgba(14,74,122,0.24)] transition-all duration-200 hover:shadow-[0_8px_22px_rgba(14,74,122,0.30)] focus:outline-none focus:ring-2 focus:ring-sky-200"
+                          className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-slate-900 border border-slate-700/60 p-2 text-left shadow-[0_4px_16px_rgba(0,0,0,0.20)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(14,74,122,0.35)] hover:border-sky-400/70 focus:outline-none focus:ring-2 focus:ring-sky-300"
                         >
-                          <img
-                            src={url}
-                            alt={idx === 0 ? "Chatbot response image" : `Chatbot response image ${idx + 1}`}
-                            loading="lazy"
-                            className="block max-h-72 w-full object-contain"
-                          />
+                          {/* Collage Grid */}
+                          <div className={cn(
+                            "grid gap-1 w-full rounded-xl overflow-hidden bg-slate-950 aspect-[4/3]",
+                            validImages.length === 2 ? "grid-cols-2" : "grid-cols-2 grid-rows-2"
+                          )}>
+                            {validImages.slice(0, 4).map((url, idx) => {
+                              const isLastSlot = idx === 3 && validImages.length > 4;
+                              const remaining = validImages.length - 4;
+                              return (
+                                <div key={idx} className="relative w-full h-full overflow-hidden bg-slate-800">
+                                  <img
+                                    src={url}
+                                    alt={`Preview ${idx + 1}`}
+                                    loading="lazy"
+                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                  />
+                                  {isLastSlot && (
+                                    <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px] flex items-center justify-center text-white font-bold text-base">
+                                      +{remaining + 1}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          {/* Gallery Bottom Bar */}
+                          <div className="mt-2 flex items-center justify-between px-1 text-xs">
+                            <div className="flex items-center gap-1.5 text-slate-200 font-medium">
+                              <Images className="h-3.5 w-3.5 text-sky-400" />
+                              <span>{validImages.length} Photos</span>
+                            </div>
+                            <span className="text-[11px] font-semibold text-sky-400 group-hover:text-sky-300 transition-colors">
+                              View Gallery &rarr;
+                            </span>
+                          </div>
                         </button>
-                      ))}
-                    </div>
-                  )}
+                      </div>
+                    );
+                  })()}
 
                   {/* Map message */}
                   {msg.type === "map" && msg.mapData && (
@@ -1154,7 +1281,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
                 {msg.sender === "bot" && (
                   <>
-                    {renderSuggestionBoard(msg.id, msg.suggestions)}
+                    {(!msg.choiceGroups || msg.choiceGroups.length === 0) && renderSuggestionBoard(msg.id, msg.suggestions)}
                     {renderChoiceGroupBoard(msg)}
                   </>
                 )}
@@ -1227,7 +1354,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 </button>
               </div>
               <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain p-3">
-                <div className="grid grid-cols-1 gap-2">
+                <div className="grid grid-cols-2 gap-1.5">
                   {choiceModal.items.map((item, idx) => (
                     <button
                       key={`${choiceModal.title}-${idx}`}
@@ -1236,7 +1363,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                       onClick={() => handleSend(item.label, item.payload || item.label)}
                       className={regularChoiceButtonClass}
                     >
-                      {item.label}
+                      <span className="min-w-0 break-words line-clamp-2">{item.label}</span>
                     </button>
                   ))}
                 </div>
@@ -1250,84 +1377,23 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       {/* Input - Hidden when in fullscreen map mode */}
       {!fullscreenMapId && (
         <div className="flex flex-col shrink-0 bg-background border-t">
-          
-          {/* Collapse/Expand Quick Access */}
-          {activeFaqs && activeFaqs.length > 0 && (
-            <div className="relative z-20">
-              {/* Dissolve top effect when closed */}
-              {!showQuickAccess && (
-                <div className="absolute bottom-full left-0 w-full h-8 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-              )}
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex justify-center">
-                <button 
-                  onClick={() => setShowQuickAccess(!showQuickAccess)}
-                  className="bg-background border rounded-full p-1 shadow-sm hover:bg-muted text-muted-foreground group flex items-center justify-center transition-all duration-300"
-                  title={showQuickAccess ? "Close Quick Access" : "Show Quick Access"}
-                >
-                  {showQuickAccess ? (
-                    <X className="h-3.5 w-3.5 group-hover:text-foreground transition-colors" />
-                  ) : (
-                    <ChevronUp className="h-3.5 w-3.5 group-hover:text-foreground transition-colors" />
-                  )}
-                </button>
-              </div>
+          {/* Quick FAQs Category Action Bar */}
+          {activeCategory && CATEGORY_DEFINITIONS[activeCategory] && (
+            <div className="flex items-center justify-between px-3 pt-2 pb-1.5 border-b border-slate-100 bg-slate-50/80">
+              <button
+                type="button"
+                disabled={isTyping || !privileges.chatEnabled}
+                onClick={() => setShowCategoryFaqModal(true)}
+                className="flex items-center gap-1.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-xs font-semibold shadow-xs transition-all duration-150 disabled:opacity-50 cursor-pointer"
+              >
+                <HelpCircle className="h-3.5 w-3.5" />
+                <span>FAQs & Topics ({CATEGORY_DEFINITIONS[activeCategory].faqs.length})</span>
+              </button>
+              <span className="text-[10.5px] text-slate-500 font-medium">
+                {CATEGORY_DEFINITIONS[activeCategory].shortTitle} Mode
+              </span>
             </div>
           )}
-
-          {/* Quick Access Bar */}
-          <div className={cn("transition-all duration-300 ease-in-out origin-bottom", showQuickAccess ? "max-h-[76px] opacity-100" : "max-h-0 opacity-0 overflow-hidden")}>
-            <div className="relative w-full bg-background border-t border-border flex items-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pt-5 pb-2 px-2 z-10 transition-all">
-              {/* Map Quick Access Button */}
-              {privileges.mapAccessEnabled && (
-                <button
-                  onClick={() => setShowMapQuickAccess(true)}
-                  className="flex-shrink-0 flex items-center gap-2 bg-blue-50 hover:bg-blue-100 border border-blue-200 hover:border-blue-300 text-blue-700 rounded-full px-3 py-1.5 shadow-sm transition-all duration-200 whitespace-nowrap h-9 mx-1"
-                >
-                  <span className="text-[13px]">🗺️</span>
-                  <span className="font-medium text-[13px] truncate">Map</span>
-                </button>
-              )}
-              
-              {/* FAQ Quick Access - scrollable area with fade edges */}
-              {activeFaqs?.length ? (
-                <div 
-                  ref={quickAccessScrollRef}
-                  onMouseDown={handleDragStart}
-                  onMouseLeave={handleDragEnd}
-                  onMouseUp={handleDragEnd}
-                  onMouseMove={handleDragMove}
-                  className={cn("flex-1 overflow-x-auto py-1 pl-1 pr-1 [&::-webkit-scrollbar]:hidden", isDraggingFAQ ? "cursor-grabbing" : "cursor-grab")}
-                  style={{ 
-                    maskImage: "linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent)", 
-                    WebkitMaskImage: "-webkit-linear-gradient(left, transparent, black 16px, black calc(100% - 16px), transparent)",
-                    msOverflowStyle: "none",
-                    scrollbarWidth: "none"
-                  }}
-                >
-                  <div className="flex gap-2">
-                    {activeFaqs.map((faq, idx) => (
-                      <button
-                        key={faq.id || idx}
-                        disabled={isTyping || !privileges.chatEnabled}
-                        onClick={(e) => {
-                          if (draggedDistance > 5) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            return;
-                          }
-                          handleSend(faq.displayLabel, faq.payload);
-                        }}
-                        className="flex-shrink-0 flex items-center gap-1.5 bg-muted hover:bg-accent border border-border text-foreground rounded-full px-3 py-1.5 shadow-sm transition-all duration-200 whitespace-nowrap h-9 pointer-events-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none"
-                      >
-                        <span className="text-[13px]">{faq.icon || "✨"}</span>
-                        <span className="font-medium text-[13px] truncate max-w-[140px]">{faq.displayLabel}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          </div>
 
           {/* Chat Input Field */}
           <div className="p-3 pb-1">
@@ -1340,7 +1406,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                       size="icon"
                       className="rounded-full shrink-0 h-10 w-10 transition-all duration-300"
                       onClick={toggleListening}
-                      disabled={isTyping}
+                      disabled={isTyping || !activeCategory}
                     >
                       <Mic className={cn("h-5 w-5", isListening && "animate-pulse")} />
                     </Button>
@@ -1350,19 +1416,26 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder={isListening ? "Listening..." : "Type a message..."}
+                    placeholder={
+                      !activeCategory
+                        ? "Select a category above to start chatting..."
+                        : isListening
+                        ? "Listening..."
+                        : `Ask a direct question about ${CATEGORY_DEFINITIONS[activeCategory].shortTitle.toLowerCase()}...`
+                    }
                     className={cn(
                       "rounded-full bg-muted/50 border-transparent focus-visible:bg-background focus-visible:border-primary/20 transition-all text-sm h-10",
-                      isListening && "bg-red-50 border-red-200 animate-pulse"
+                      isListening && "bg-red-50 border-red-200 animate-pulse",
+                      !activeCategory && "opacity-60 cursor-not-allowed"
                     )}
-                    disabled={isTyping}
+                    disabled={isTyping || !activeCategory}
                   />
 
                   <Button
                     onClick={() => handleSend(inputValue)}
                     size="icon"
-                    disabled={!inputValue.trim() || isTyping || isListening}
-                    className="rounded-full shrink-0 h-10 w-10"
+                    disabled={!inputValue.trim() || isTyping || isListening || !activeCategory}
+                    className="rounded-full shrink-0 h-10 w-10 bg-[#001C38] hover:bg-[#002d5a] text-white"
                   >
                     <Send className="h-4 w-4" />
                   </Button>
@@ -1472,142 +1545,143 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         </div>
       )}
 
-      {/* In-Chatbox Manual Modal */}
+      {/* Category FAQ & Topics Modal */}
+      {showCategoryFaqModal && activeCategory && (
+        <CategoryFaqModal
+          activeCategory={activeCategory}
+          onSelectTopic={(faq) => handleSend(faq.label, faq.payload)}
+          onClose={() => setShowCategoryFaqModal(false)}
+        />
+      )}
+
+      {/* Dynamic Category-Aware Manual Modal */}
       {showManualModal && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-3 animate-in fade-in-0 duration-150">
-          <div className="w-full max-w-sm max-h-[92%] flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10 animate-in zoom-in-95 duration-150">
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 text-white shrink-0" style={{ backgroundColor: "#001C38" }}>
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-500/20 text-blue-300 border border-blue-400/30">
-                  <BookOpen className="h-4 w-4" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold leading-tight">Manual</h3>
-                  <p className="text-[10px] text-blue-200">Chatbot User Guide & Instructions</p>
-                </div>
+        <CategoryManualModal
+          activeCategory={activeCategory}
+          onClose={() => setShowManualModal(false)}
+        />
+      )}
+
+      {/* Gallery Overview Modal - Contained within chatbox */}
+      {galleryModalImages && !fullscreenImageUrl && (
+        <div
+          className="absolute inset-0 z-40 bg-slate-950/95 backdrop-blur-md flex flex-col overflow-hidden animate-in fade-in duration-200"
+          onClick={() => setGalleryModalImages(null)}
+        >
+          {/* Modal Header */}
+          <div
+            className="flex items-center justify-between px-4 py-3 shrink-0 border-b border-white/10"
+            style={{ backgroundColor: "#001C38" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-2">
+              <div className="p-1.5 rounded-lg bg-sky-500/20 text-sky-400">
+                <Images className="h-4 w-4" />
               </div>
-              <button
-                type="button"
-                onClick={() => setShowManualModal(false)}
-                className="rounded-full p-1 text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-                aria-label="Close"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Scrollable Body */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs text-slate-700 leading-relaxed" style={{ scrollbarWidth: "thin" }}>
-              {/* Important Instruction Notice */}
-              <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-amber-900 shadow-xs">
-                <div className="flex items-start gap-2">
-                  <AlertCircle className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
-                  <p className="font-bold text-xs leading-normal">
-                    Please be informed that when asking the bot, you should be direct with your questions. Avoid telling lengthy stories so the bot can accurately identify and resolve your inquiry.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step-by-Step Instructions */}
-              <div className="space-y-3">
-                <p className="font-semibold text-[11px] uppercase tracking-wider text-slate-500">
-                  Step-by-Step User Guide
-                </p>
-
-                {/* Step 1 */}
-                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
-                  <div className="flex items-center gap-2 font-semibold text-slate-900">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">1</span>
-                    <span>How to Ask Questions</span>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11.5px]">
-                    Type your specific question into the chat bar at the bottom. Use simple keywords for best results, for example:
-                  </p>
-                  <div className="pl-7 flex flex-wrap gap-1 mt-1">
-                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Enrollment schedule</span>
-                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Tuition & fees</span>
-                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Library hours</span>
-                    <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-mono text-blue-800">Grading system</span>
-                  </div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
-                  <div className="flex items-center gap-2 font-semibold text-slate-900">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">2</span>
-                    <span>How to Open & View Campus Maps</span>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11.5px]">
-                    When inquiring about campus facilities, offices, or directions (e.g. <em>"Where is the Registrar?"</em> or <em>"COT building"</em>), the bot provides an interactive map. You can pan, zoom, click location pins, and follow walking routes. Click the expand icon on any map to view it in full screen.
-                  </p>
-                </div>
-
-                {/* Step 3 */}
-                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
-                  <div className="flex items-center gap-2 font-semibold text-slate-900">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">3</span>
-                    <span>Audio & Voice Input / Responses</span>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11.5px]">
-                    • <strong>Speak your question:</strong> Click the <strong>Microphone</strong> icon in the text bar to dictate your query via voice.
-                  </p>
-                  <p className="text-slate-600 pl-7 text-[11.5px]">
-                    • <strong>Voice playback:</strong> Click the <strong>Speaker</strong> icon in the top header to enable or disable automatic text-to-speech audio replies.
-                  </p>
-                </div>
-
-                {/* Step 4 */}
-                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
-                  <div className="flex items-center gap-2 font-semibold text-slate-900">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">4</span>
-                    <span>Language Support</span>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11.5px]">
-                    You can chat in both <strong>English</strong> and <strong>Cebuano / Bisaya</strong>. The bot will automatically recognize and reply in your selected language.
-                  </p>
-                </div>
-
-                {/* Step 5 */}
-                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-3 space-y-1.5">
-                  <div className="flex items-center gap-2 font-semibold text-slate-900">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-[10px] font-bold">5</span>
-                    <span>Quick Suggestions & Reporting</span>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11.5px]">
-                    Click suggestion buttons beneath answers to explore related topics quickly. If an answer contains an error, tap the <strong>Flag</strong> icon next to the message to report it to administrators.
-                  </p>
-                </div>
+              <div>
+                <h3 className="text-white text-sm font-semibold leading-tight">Image Gallery</h3>
+                <p className="text-white/60 text-[11px]">Select a photo to view details ({galleryModalImages.length} available)</p>
               </div>
             </div>
+            <button
+              type="button"
+              onClick={() => setGalleryModalImages(null)}
+              className="p-1.5 hover:bg-white/15 rounded-full text-white/80 hover:text-white transition-colors"
+              title="Close gallery"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
 
-            {/* Footer with Exit button */}
-            <div className="px-4 py-3 border-t border-slate-100 bg-slate-50 flex justify-end shrink-0">
-              <Button
-                type="button"
-                onClick={() => setShowManualModal(false)}
-                className="w-full text-white text-xs font-semibold h-9 shadow-xs"
-                style={{ backgroundColor: "#001C38" }}
-              >
-                Exit
-              </Button>
+          {/* Modal Body: Grid of Images */}
+          <ScrollArea className="flex-1 p-3" onClick={(e) => e.stopPropagation()}>
+            <div className="grid grid-cols-2 gap-2.5">
+              {galleryModalImages.map((url, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => {
+                    setFullscreenImageUrl(url);
+                    setFullscreenImageGallery(galleryModalImages);
+                    setFullscreenImageIndex(idx);
+                    setImageZoom(0.75);
+                    setImagePan({ x: 0, y: 0 });
+                  }}
+                  className="group relative aspect-square overflow-hidden rounded-xl bg-slate-800 border border-slate-700/60 shadow-md hover:border-sky-400 hover:ring-2 hover:ring-sky-400/40 focus:outline-none transition-all duration-150"
+                >
+                  <img
+                    src={url}
+                    alt={`Gallery photo ${idx + 1}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  {/* Photo number badge */}
+                  <div className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-0.5 rounded-md">
+                    Photo {idx + 1}
+                  </div>
+                  {/* Hover expand overlay */}
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="bg-sky-500/90 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg">
+                      Open
+                    </span>
+                  </div>
+                </button>
+              ))}
             </div>
+          </ScrollArea>
+
+          {/* Modal Footer */}
+          <div
+            className="px-4 py-2 text-center text-xs text-white/50 border-t border-white/5 bg-slate-900/50"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Click any image to view in fullscreen • Click X to return to chat
           </div>
         </div>
       )}
 
-      {/* Fullscreen Image View - Contained within chatbox */}
+      {/* Fullscreen Image View - Contained ONLY within chatbox */}
       {fullscreenImageUrl && (
         <div
-          className="absolute inset-0 z-40 bg-black/95 flex flex-col"
-          onClick={() => setFullscreenImageUrl(null)}
+          className="absolute inset-0 z-50 bg-black/95 flex flex-col animate-in fade-in duration-150"
+          onClick={() => {
+            setFullscreenImageUrl(null);
+          }}
         >
-          {/* Header with close button */}
-          <div className="flex items-center justify-between px-4 py-3 shrink-0" style={{backgroundColor: '#001C38'}}>
-            <span className="text-white/80 text-sm font-medium">Image Viewer</span>
+          {/* Header with back-to-gallery and close buttons */}
+          <div
+            className="flex items-center justify-between px-4 py-3 shrink-0 border-b border-white/10"
+            style={{ backgroundColor: "#001C38" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-2">
+              {fullscreenImageGallery && fullscreenImageGallery.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFullscreenImageUrl(null);
+                  }}
+                  className="p-1 hover:bg-white/15 rounded-lg text-white/80 hover:text-white transition-colors mr-1 flex items-center gap-1 text-xs"
+                  title="Back to gallery"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  <span>Gallery</span>
+                </button>
+              )}
+              <span className="text-white text-sm font-medium">
+                {fullscreenImageGallery && fullscreenImageGallery.length > 1
+                  ? `Photo ${fullscreenImageIndex + 1} of ${fullscreenImageGallery.length}`
+                  : "Image Viewer"}
+              </span>
+            </div>
+
             <button
-              onClick={() => setFullscreenImageUrl(null)}
+              type="button"
+              onClick={() => {
+                setFullscreenImageUrl(null);
+              }}
               className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+              title="Close"
             >
               <X className="h-5 w-5" />
             </button>
@@ -1615,7 +1689,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
           {/* Image container with pan/zoom (mouse + touch support) */}
           <div
-            className="flex-1 overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing relative touch-none"
+            className="flex-1 overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing relative touch-none select-none"
             onClick={(e) => e.stopPropagation()}
             onMouseDown={(e) => {
               setIsDraggingImage(true);
@@ -1625,7 +1699,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
               if (!isDraggingImage) return;
               setImagePan({
                 x: e.clientX - dragStart.x,
-                y: e.clientY - dragStart.y
+                y: e.clientY - dragStart.y,
               });
             }}
             onMouseUp={() => setIsDraggingImage(false)}
@@ -1642,7 +1716,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
               const touch = e.touches[0];
               setImagePan({
                 x: touch.clientX - dragStart.x,
-                y: touch.clientY - dragStart.y
+                y: touch.clientY - dragStart.y,
               });
             }}
             onTouchEnd={() => setIsDraggingImage(false)}
@@ -1654,43 +1728,88 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
               className="max-w-none select-none"
               style={{
                 transform: `translate(${imagePan.x}px, ${imagePan.y}px) scale(${imageZoom})`,
-                transition: isDraggingImage ? 'none' : 'transform 0.1s ease-out',
-                cursor: isDraggingImage ? 'grabbing' : 'grab'
+                transition: isDraggingImage ? "none" : "transform 0.1s ease-out",
+                cursor: isDraggingImage ? "grabbing" : "grab",
               }}
               draggable={false}
             />
+
+            {/* Left / Right arrows for multi-image navigation */}
+            {fullscreenImageGallery && fullscreenImageGallery.length > 1 && (
+              <>
+                {fullscreenImageIndex > 0 && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const newIdx = fullscreenImageIndex - 1;
+                      setFullscreenImageIndex(newIdx);
+                      setFullscreenImageUrl(fullscreenImageGallery[newIdx]);
+                      setImagePan({ x: 0, y: 0 });
+                    }}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-sm transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-400"
+                    title="Previous photo"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                )}
+                {fullscreenImageIndex < fullscreenImageGallery.length - 1 && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const newIdx = fullscreenImageIndex + 1;
+                      setFullscreenImageIndex(newIdx);
+                      setFullscreenImageUrl(fullscreenImageGallery[newIdx]);
+                      setImagePan({ x: 0, y: 0 });
+                    }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-sm transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-400"
+                    title="Next photo"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                )}
+              </>
+            )}
           </div>
 
           {/* Zoom controls at bottom */}
-          <div className="flex items-center justify-center gap-2 px-4 py-3 shrink-0"  style={{backgroundColor: '#001C38'}}>
+          <div
+            className="flex items-center justify-center gap-2 px-4 py-3 shrink-0 border-t border-white/10"
+            style={{ backgroundColor: "#001C38" }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setImageZoom(z => Math.max(0.25, z - 0.25));
+              type="button"
+              onClick={() => {
+                setImageZoom((z) => Math.max(0.25, z - 0.25));
               }}
               className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+              title="Zoom out"
             >
               <ZoomOut className="h-5 w-5" />
             </button>
-            <span className="text-white text-sm min-w-[60px] text-center">
+            <span className="text-white text-sm min-w-[60px] text-center font-mono">
               {Math.round(imageZoom * 100)}%
             </span>
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setImageZoom(z => Math.min(1, z + 0.25));
+              type="button"
+              onClick={() => {
+                setImageZoom((z) => Math.min(2, z + 0.25));
               }}
               className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+              title="Zoom in"
             >
               <ZoomIn className="h-5 w-5" />
             </button>
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setImageZoom(0.5);
+              type="button"
+              onClick={() => {
+                setImageZoom(0.75);
                 setImagePan({ x: 0, y: 0 });
               }}
               className="p-2 hover:bg-white/20 rounded-full text-white transition-colors"
+              title="Reset view"
             >
               <RotateCcw className="h-5 w-5" />
             </button>

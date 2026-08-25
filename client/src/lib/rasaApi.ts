@@ -73,13 +73,19 @@ class RasaBackend {
   private lastTopic: string | null = null;
   private queryCache = new Map<string, { timestamp: number; response: BackendResponse }>();
 
+  clearCache() {
+    this.queryCache.clear();
+    console.log("[RasaBackend] Query cache cleared.");
+  }
+
   // This method now returns a BackendResponse object instead of ChatMessage[]
-  async sendMessage(text: string, sessionId?: string): Promise<BackendResponse> {
-    const cacheKey = (text || "").trim().toLowerCase().replace(/[?!.,:-_]/g, "");
-    if (cacheKey && cacheKey !== "test") {
+  async sendMessage(text: string, sessionId?: string, category?: string | null): Promise<BackendResponse> {
+    const catPrefix = category || "general";
+    const cacheKey = `${catPrefix}:${(text || "").trim().toLowerCase().replace(/[?!.,:-_]/g, "")}`;
+    if (cacheKey && !text.startsWith("/") && text !== "test") {
       const cached = this.queryCache.get(cacheKey);
       if (cached && Date.now() - cached.timestamp < 10 * 60 * 1000) {
-        console.log(`[RasaBackend Cache] Serving cached response for repeat query: "${text}" (0 network calls)`);
+        console.log(`[RasaBackend Cache] Serving cached response for [${catPrefix}]: "${text}" (0 network calls)`);
         return cached.response;
       }
     }
@@ -87,7 +93,7 @@ class RasaBackend {
     try {
       const session = getSessionData();
       const preferredLanguage = session.userPreferences?.language;
-      const responses = await sendMessageToRasa(text, preferredLanguage, sessionId);
+      const responses = await sendMessageToRasa(text, preferredLanguage, sessionId, category);
 
       // Collect text parts separately
       const textParts: string[] = [];

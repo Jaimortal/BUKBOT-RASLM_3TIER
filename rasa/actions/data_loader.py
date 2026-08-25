@@ -1,22 +1,66 @@
+import glob
+import json
+import os
 import re
 from typing import Any, Dict, List, Optional
 
+from domain_registry import DOMAIN_REGISTRY, normalize_domain
+
 
 class KnowledgeDataLoader:
-    """Adapter around legacy responses plus structured Supper Saiyan topics."""
+    """
+    Domain-Aware Knowledge Data Loader.
+    Dynamically loads structured knowledge from `rasa/actions/knowledge/<domain>/*.json`.
+    Maintains isolated domain indices for zero-collision retrieval.
+    """
 
-    def __init__(self, helper: Any):
+    def __init__(self, helper: Optional[Any] = None):
         self.helper = helper
+        self.knowledge_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "knowledge")
         self._rebuild_indexes()
 
     def _rebuild_indexes(self) -> None:
-        self._structured_responses = self._flatten_structured_sources()
-        self._structured_by_intent = {
-            entry.get("intent"): entry
-            for entry in self._structured_responses
-            if entry.get("intent")
+        self._structured_responses_by_domain: Dict[str, List[Dict[str, Any]]] = {
+            domain: [] for domain in DOMAIN_REGISTRY
         }
-        self._context_index = self._build_context_index()
+        self._structured_by_intent_by_domain: Dict[str, Dict[str, Dict[str, Any]]] = {
+            domain: {} for domain in DOMAIN_REGISTRY
+        }
+        self._context_index_by_domain: Dict[str, Dict[str, Any]] = {
+            domain: {} for domain in DOMAIN_REGISTRY
+        }
+
+        self._all_structured_responses: List[Dict[str, Any]] = []
+        self._all_structured_by_intent: Dict[str, Dict[str, Any]] = {}
+
+        # Scan each domain folder under knowledge/
+        for domain_id, domain_info in DOMAIN_REGISTRY.items():
+            domain_folder = os.path.join(self.knowledge_root, domain_info["folder"])
+            if not os.path.isdir(domain_folder):
+                continue
+
+            for json_path in sorted(glob.glob(os.path.join(domain_folder, "*.json"))):
+                source_name = os.path.splitext(os.path.basename(json_path))[0]
+                try:
+                    with open(json_path, "r", encoding="utf-8") as fp:
+                        data_source = json.load(fp)
+                    if isinstance(data_source, dict):
+                        records = self._flatten_data_source(data_source, source_name, domain_id)
+                        self._structured_responses_by_domain[domain_id].extend(records)
+                        for r in records:
+                            intent = r.get("intent")
+                            if intent:
+                                self._structured_by_intent_by_domain[domain_id][intent] = r
+                                self._all_structured_by_intent[intent] = r
+                        self._all_structured_responses.extend(records)
+                except Exception as e:
+                    print(f"Error loading {json_path}: {e}")
+
+            self._context_index_by_domain[domain_id] = self._build_context_index_for_records(
+                self._structured_responses_by_domain[domain_id]
+            )
+
+        self._context_index = self._build_context_index_for_records(self._all_structured_responses)
 
     def refresh_if_changed(self) -> bool:
         reload_if_changed = getattr(self.helper, "reload_if_changed", None)
@@ -27,26 +71,65 @@ class KnowledgeDataLoader:
 
     @property
     def responses(self) -> List[Dict[str, Any]]:
+        """All combined responses across domains + legacy general responses."""
+        if not self.helper or not getattr(self.helper, "responses", None):
+            return self._all_structured_responses
         legacy_intents = {entry.get("intent") for entry in self.helper.responses}
         structured_only = [
-            entry for entry in self._structured_responses
+            entry for entry in self._all_structured_responses
             if entry.get("intent") not in legacy_intents
         ]
         return [*self.helper.responses, *structured_only]
 
-    def fallback(self) -> str:
-        return self.helper._get_fallback_response()
+    def get_responses_for_domain(self, domain_id: Optional[str]) -> List[Dict[str, Any]]:
+        """Get flattened responses exclusively for a given domain."""
+        norm = normalize_domain(domain_id)
+        if norm and norm in self._structured_responses_by_domain:
+            return self._structured_responses_by_domain[norm]
+        return self.responses
 
-    def get_response(self, intent: str, user_message: str = "") -> Any:
-        if intent in self._structured_by_intent:
-            return self._format_entry_response(self._structured_by_intent[intent], user_message)
-        return self.helper.get_response(intent, user_message=user_message)
+    def fallback(self) -> str:
+        if self.helper and hasattr(self.helper, "_get_fallback_response"):
+            return self.helper._get_fallback_response()
+        return "I'm sorry, I couldn't find specific information on that. Please try rephrasing or choose one of the categories."
+
+    def get_response(self, intent: str, user_message: str = "", domain: Optional[str] = None) -> Any:
+        norm = normalize_domain(domain)
+        if norm and norm in self._structured_by_intent_by_domain:
+            if intent in self._structured_by_intent_by_domain[norm]:
+                return self._format_entry_response(self._structured_by_intent_by_domain[norm][intent], user_message)
+        
+        if intent in self._all_structured_by_intent:
+            return self._format_entry_response(self._all_structured_by_intent[intent], user_message)
+        if self.helper and hasattr(self.helper, "get_response"):
+            return self.helper.get_response(intent, user_message=user_message)
+        return self.fallback()
 
     def get_follow_up(self, last_topic: str) -> List[str]:
-        return self.helper.get_follow_up(last_topic)
+        if self.helper and hasattr(self.helper, "get_follow_up"):
+            return self.helper.get_follow_up(last_topic)
+        return []
 
     def get_location_response(self, location_name: str, user_message: str) -> Dict[str, Any]:
-        return self.helper.get_location_response(location_name, user_message)
+        if self.helper and hasattr(self.helper, "get_location_response"):
+            return self.helper.get_location_response(location_name, user_message)
+        # Search directly in location structured entries
+        entry = self.get_entry(location_name, domain="location")
+        if not entry:
+            entry = self.get_entry(f"location_{location_name.lower().strip().replace(' ', '_')}", domain="location")
+        if not entry:
+            # Search location domain items by name/subject terms
+            norm_target = location_name.lower().strip()
+            loc_entries = self._structured_by_intent_by_domain.get("location", {})
+            for k, e in loc_entries.items():
+                disp = str(e.get("display_name") or "").lower()
+                sub = [str(s).lower() for s in e.get("metadata", {}).get("subject_terms", [])]
+                if norm_target in k.lower() or norm_target in disp or any(norm_target in s for s in sub):
+                    entry = e
+                    break
+        if entry:
+            return self._format_entry_response(entry, user_message)
+        return {"text": f"Sorry, I don't have location information for {location_name}."}
 
     def get_building_directory_response(self, user_message: str) -> Optional[Dict[str, Any]]:
         directory_response = getattr(self.helper, "get_building_directory_response", None)
@@ -54,43 +137,49 @@ class KnowledgeDataLoader:
             return directory_response(user_message)
         return None
 
-    def get_entry(self, intent: str) -> Optional[Dict[str, Any]]:
-        if intent in self._structured_by_intent:
-            return self._structured_by_intent[intent]
-        return next((entry for entry in self.helper.responses if entry.get("intent") == intent), None)
+    def get_entry(self, intent: str, domain: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        norm = normalize_domain(domain)
+        if norm and norm in self._structured_by_intent_by_domain:
+            if intent in self._structured_by_intent_by_domain[norm]:
+                return self._structured_by_intent_by_domain[norm][intent]
+        if intent in self._all_structured_by_intent:
+            return self._all_structured_by_intent[intent]
+        if self.helper and getattr(self.helper, "responses", None):
+            return next((entry for entry in self.helper.responses if entry.get("intent") == intent), None)
+        return None
+
+    def is_intent_in_domain(self, intent_name: str, domain_id: Optional[str]) -> bool:
+        if not domain_id or not intent_name:
+            return True
+        if str(intent_name).startswith("__"):
+            return True
+        norm = normalize_domain(domain_id)
+        if not norm:
+            return True
+        if norm in self._structured_by_intent_by_domain:
+            return intent_name in self._structured_by_intent_by_domain[norm]
+        return True
 
     @property
     def context_index(self) -> Dict[str, Any]:
         return self._context_index
 
-    def _flatten_structured_sources(self) -> List[Dict[str, Any]]:
-        source_names = [
-            "library_info",
-            "academic_policy",
-            "administrators_info",
-            "admissions_info",
-            "classroom_policy",
-            "clinic_info",
-            "courses_info",
-            "departamentals_faculty_staff",
-            "department_info",
-            "enrollment_info",
-            "facilities_info",
-            "ict_info",
-            "oss_services",
-            "university_info",
-            "dormitory_info",
-        ]
+    def get_context_index_for_domain(self, domain_id: Optional[str]) -> Dict[str, Any]:
+        norm = normalize_domain(domain_id)
+        if norm and norm in self._context_index_by_domain:
+            return self._context_index_by_domain[norm]
+        return self._context_index
 
+    def _flatten_data_source(self, data_source: Dict[str, Any], source_name: str, domain_id: str) -> List[Dict[str, Any]]:
         records: List[Dict[str, Any]] = []
-        for source_name in source_names:
-            data_source = getattr(self.helper, source_name, None)
-            if isinstance(data_source, dict):
-                records.extend(self._flatten_data_source(data_source, source_name))
-        return records
 
-    def _flatten_data_source(self, data_source: Dict[str, Any], source_name: str) -> List[Dict[str, Any]]:
-        records: List[Dict[str, Any]] = []
+        # Handle location database format {"locations": {...}}
+        if "locations" in data_source and isinstance(data_source["locations"], dict):
+            for loc_name, loc_data in data_source["locations"].items():
+                if isinstance(loc_data, dict):
+                    records.append(self._flatten_location_entry(loc_name, loc_data, source_name, domain_id))
+            return records
+
         base_intent = data_source.get("intent") or source_name
         category = data_source.get("category") or source_name.replace("_", " ")
         topic_lookup = self._topic_lookup(data_source)
@@ -102,11 +191,48 @@ class KnowledgeDataLoader:
                     base_intent=base_intent,
                     category=category,
                     source_name=source_name,
+                    domain_id=domain_id,
                     inherited_context={},
                     topic_lookup=topic_lookup,
                 )
             )
         return records
+
+    def _flatten_location_entry(self, loc_name: str, loc_data: Dict[str, Any], source_name: str, domain_id: str) -> Dict[str, Any]:
+        intent = f"location_{loc_name.replace(' ', '_').replace('-', '_')}"
+        raw_responses = loc_data.get("responses") or {}
+        return {
+            "intent": intent,
+            "domain": domain_id,
+            "category": "Location",
+            "sub_category": loc_name,
+            "display_name": loc_name,
+            "responses": {
+                "answer": raw_responses,
+                "follow_up": [],
+                "context_slots": {"last_topic": loc_name, "active_category": domain_id},
+                "imageUrls": loc_data.get("images") or loc_data.get("imageUrls") or [],
+                "mapData": {
+                    "locationName": loc_name,
+                    "mapId": loc_data.get("map_id", "main_map"),
+                    "floor": loc_data.get("floor", ""),
+                    "building": loc_data.get("building", ""),
+                    "type": loc_data.get("type", ""),
+                    "pins": loc_data.get("pins", []),
+                    "routes": loc_data.get("routes", []),
+                },
+                "suggestions": [],
+            },
+            "metadata": {
+                "source": source_name,
+                "domain": domain_id,
+                "structured_source": True,
+                "topic": "location",
+                "display_name": loc_name,
+                "subject_terms": [loc_name, loc_data.get("building", ""), loc_data.get("type", "")],
+                "phrases": [f"where is {loc_name}", f"location of {loc_name}", f"how to go to {loc_name}"],
+            },
+        }
 
     def _flatten_topic(
         self,
@@ -114,6 +240,7 @@ class KnowledgeDataLoader:
         base_intent: str,
         category: str,
         source_name: str,
+        domain_id: str,
         parent_topic: Optional[str] = None,
         inherited_context: Optional[Dict[str, Any]] = None,
         topic_lookup: Optional[Dict[str, Dict[str, Any]]] = None,
@@ -131,6 +258,7 @@ class KnowledgeDataLoader:
             intent = topic.get("intent") or f"{base_intent}_{full_topic}".replace("-", "_")
             metadata = {
                 "source": source_name,
+                "domain": domain_id,
                 "structured_source": True,
                 "base_intent": base_intent,
                 "topic": topic_key,
@@ -141,13 +269,14 @@ class KnowledgeDataLoader:
             }
             records.append({
                 "intent": intent,
+                "domain": domain_id,
                 "category": category,
                 "sub_category": full_topic,
                 "display_name": topic.get("display_name") or topic.get("ui_name") or "",
                 "responses": {
                     "answer": topic.get("responses") or {},
                     "follow_up": topic.get("follow_up") or [],
-                    "context_slots": {"last_topic": intent},
+                    "context_slots": {"last_topic": intent, "active_category": domain_id},
                     "imageUrls": topic.get("imageUrls") or topic.get("images") or [],
                     "mapData": self._map_data_for_topic(topic, full_topic, topic_lookup or {}),
                     "suggestions": topic.get("suggestions") or [],
@@ -166,6 +295,7 @@ class KnowledgeDataLoader:
                     base_intent=base_intent,
                     category=category,
                     source_name=source_name,
+                    domain_id=domain_id,
                     parent_topic=full_topic,
                     inherited_context=context,
                     topic_lookup=topic_lookup,
@@ -298,11 +428,11 @@ class KnowledgeDataLoader:
             context["context_topic"] = topic.get("topic")
         return context
 
-    def _build_context_index(self) -> Dict[str, Any]:
+    def _build_context_index_for_records(self, records: List[Dict[str, Any]]) -> Dict[str, Any]:
         subjects: Dict[str, Dict[str, Any]] = {}
         routes: Dict[str, Dict[str, str]] = {}
 
-        for entry in self._structured_responses:
+        for entry in records:
             metadata = entry.get("metadata", {})
             subject_key = metadata.get("subject_key")
             if not subject_key:
@@ -357,7 +487,8 @@ class KnowledgeDataLoader:
 
         answer = responses_data.get("answer", {})
 
-        preferred_lang = self.helper.detect_language(user_message)
+        detector = getattr(self.helper, "detect_language", None)
+        preferred_lang = detector(user_message) if callable(detector) else "en"
         selected = answer.get(preferred_lang) if isinstance(answer, dict) else answer
         if not selected and isinstance(answer, dict):
             selected = answer.get("en") or next(iter(answer.values()), [])
@@ -395,7 +526,8 @@ class KnowledgeDataLoader:
         items = [item for item in responses_data.get("items") or [] if isinstance(item, dict)]
         item_groups = responses_data.get("itemGroups") or {}
         disclaimer = str(responses_data.get("itemDisclaimer") or "").strip()
-        preferred_lang = self.helper.detect_language(user_message)
+        detector = getattr(self.helper, "detect_language", None)
+        preferred_lang = detector(user_message) if callable(detector) else "en"
         selected_answer = answer.get(preferred_lang) if isinstance(answer, dict) else answer
         if not selected_answer and isinstance(answer, dict):
             selected_answer = answer.get("en") or next(iter(answer.values()), [])
@@ -463,56 +595,15 @@ class KnowledgeDataLoader:
         if not re.search(r"\bslots?\b", query) and not re.search(r"\bbakant[ei]\b", query):
             return False
         available_terms = [
-            "still have",
-            "still has",
-            "with slots",
-            "with slot",
-            "have slots",
-            "have slot",
-            "have a slot",
-            "has slots",
-            "has slot",
-            "has a slot",
-            "available slots",
-            "available slot",
-            "free slots",
-            "free slot",
-            "existing slots",
-            "existing slot",
-            "open slots",
-            "open slot",
-            "slots available",
-            "slot available",
-            "remaining slots",
-            "remaining slot",
-            "slots remaining",
-            "slot remaining",
-            "naay slots",
-            "naay slot",
-            "naa slots",
-            "naa slot",
-            "naay available",
-            "naay bakante",
-            "naa pay slot",
-            "naa pay slots",
-            "naa pay mga slot",
-            "naa pay mga slots",
-            "daghan pag slot",
-            "daghan pag slots",
-            "naapa slots",
-            "naapa slot",
-            "naapay slot",
-            "naapay slots",
-            "naa pa slots",
-            "naa pa slot",
-            "naa pabay",
-            "napay bakanti",
-            "naapay bakanti",
-            "naapay bakante",
-            "naay bakanti",
-            "bakanti",
-            "bakante",
-            "bakante nga slots",
+            "still have", "still has", "with slots", "with slot", "have slots", "have slot",
+            "have a slot", "has slots", "has slot", "has a slot", "available slots", "available slot",
+            "free slots", "free slot", "existing slots", "existing slot", "open slots", "open slot",
+            "slots available", "slot available", "remaining slots", "remaining slot", "slots remaining",
+            "slot remaining", "naay slots", "naay slot", "naa slots", "naa slot", "naay available",
+            "naay bakante", "naa pay slot", "naa pay slots", "naa pay mga slot", "naa pay mga slots",
+            "daghan pag slot", "daghan pag slots", "naapa slots", "naapa slot", "naapay slot",
+            "naapay slots", "naa pa slots", "naa pa slot", "naa pabay", "napay bakanti",
+            "naapay bakanti", "naapay bakante", "naay bakanti", "bakanti", "bakante", "bakante nga slots",
         ]
         return any(term in query for term in available_terms)
 
@@ -642,10 +733,32 @@ class KnowledgeDataLoader:
         normalized = re.sub(r"\s+", " ", normalized).strip()
         return normalized
 
-    def _item_tokens(self, text: str) -> List[str]:
-        weak = {
-            "the", "is", "are", "under", "course", "courses", "slot", "slots",
-            "available", "availability", "left", "open", "sa", "ang", "nga",
-            "naay", "naa", "paba", "pa", "may", "mga", "diris", "for", "in",
-        }
         return [token for token in re.findall(r"\b[\w'-]+\b", text) if len(token) > 1 and token not in weak]
+
+    def is_intent_in_domain(self, intent_name: str, domain: Optional[str]) -> bool:
+        """Checks if a given intent/topic belongs to the specified domain."""
+        if not domain or not intent_name:
+            return True
+        if str(intent_name).startswith("__"):
+            return True
+        from domain_registry import normalize_domain
+        norm_domain = normalize_domain(domain)
+        if not norm_domain:
+            return True
+        
+        # Check structured topic index
+        domain_structured = self._structured_by_intent_by_domain.get(norm_domain, {})
+        if intent_name in domain_structured:
+            return True
+        
+        # Check context index
+        domain_context = self._context_index_by_domain.get(norm_domain, {})
+        if intent_name in domain_context:
+            return True
+        
+        # Check location prefix
+        if norm_domain == "location" and (intent_name.startswith("location_") or intent_name == "ask_location"):
+            return True
+
+        return False
+

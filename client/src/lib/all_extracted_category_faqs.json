@@ -1,0 +1,3624 @@
+{
+  "procedures": [
+    {
+      "id": "procedures_add_drop_subject",
+      "label": "Add Drop Subject Answer Topic",
+      "payload": "/direct_intent{\"intent\":\"add_drop_subject\"}",
+      "subCategory": "Add Drop Subject Topic Group",
+      "description": "Adding subjects is allowed during the first two weeks of the semester."
+    },
+    {
+      "id": "procedures_withdraw_enrollment_policy",
+      "label": "Withdraw Enrollment Policy",
+      "payload": "/direct_intent{\"intent\":\"withdraw_enrollment_policy\"}",
+      "subCategory": "Enrollment Withdrawal",
+      "description": "To withdraw enrollment, you must submit a Withdrawal Form to the Registrar's Office."
+    },
+    {
+      "id": "procedures_request_cor",
+      "label": "Where to Get COR (Registrar / Online)",
+      "payload": "/direct_intent{\"intent\":\"request_cor\"}",
+      "subCategory": "Registrar Documents",
+      "description": "To request a Certificate of Registration (COR), you may visit the Registrar's Office durin..."
+    },
+    {
+      "id": "procedures_registrar_office_schedule",
+      "label": "Registrar Office Schedule",
+      "payload": "/direct_intent{\"intent\":\"registrar_office_schedule\"}",
+      "subCategory": "Registrar Documents",
+      "description": "The Registrar's Office is open from Monday to Friday, 8:00 AM to 5:00 PM."
+    },
+    {
+      "id": "procedures_contact_registrar_for_tor",
+      "label": "Contact Registrar For TOR",
+      "payload": "/direct_intent{\"intent\":\"contact_registrar_for_tor\"}",
+      "subCategory": "Registrar Documents",
+      "description": "You can visit the Registrar Office at the BukSU Main Campus to request your Transcript of ..."
+    },
+    {
+      "id": "procedures_tor_request_for_graduates",
+      "label": "TOR Request For Graduates",
+      "payload": "/direct_intent{\"intent\":\"tor_request_for_graduates\"}",
+      "subCategory": "Registrar Documents",
+      "description": "Graduates can request their Transcript of Records at the University Registrar."
+    },
+    {
+      "id": "procedures_cor_validation_day",
+      "label": "COR Validation Day",
+      "payload": "/direct_intent{\"intent\":\"cor_validation_day\"}",
+      "subCategory": "COR Validation",
+      "description": "You can validate your COR right after your enrollment because your COR will be uploaded to..."
+    },
+    {
+      "id": "procedures_cor_validation_steps",
+      "label": "COR Validation Steps",
+      "payload": "/direct_intent{\"intent\":\"cor_validation_steps\"}",
+      "subCategory": "COR Validation",
+      "description": "Step 1: Download your COR from https://admissions.buksu.edu.ph/"
+    },
+    {
+      "id": "procedures_graduation_application_process",
+      "label": "Graduation Application Process",
+      "payload": "/direct_intent{\"intent\":\"graduation_application_process\"}",
+      "subCategory": "Graduation Clearance",
+      "description": "Students must undergo a pre evaluation of grades by the Registrar."
+    },
+    {
+      "id": "procedures_graduating_clearance_requirements",
+      "label": "Graduating Clearance Requirements",
+      "payload": "/direct_intent{\"intent\":\"graduating_clearance_requirements\"}",
+      "subCategory": "Graduation Clearance",
+      "description": "You can request your University Clearance Form through the BukSU online clearance system."
+    },
+    {
+      "id": "procedures_buksu_cat_definition",
+      "label": "BukSU CAT Definition",
+      "payload": "/direct_intent{\"intent\":\"buksu_cat_definition\"}",
+      "subCategory": "College Admission Test",
+      "description": "The BukSU CAT is the Bukidnon State University College Admission Test."
+    },
+    {
+      "id": "procedures_take_exam",
+      "label": "Take Exam",
+      "payload": "/direct_intent{\"intent\":\"take_exam\"}",
+      "subCategory": "College Admission Test",
+      "description": "How can I take the BukSU College Admission Test?"
+    },
+    {
+      "id": "procedures_exam_requirements",
+      "label": "Exam Requirements",
+      "payload": "/direct_intent{\"intent\":\"exam_requirements\"}",
+      "subCategory": "College Admission Test",
+      "description": "What to bring on the examination day"
+    },
+    {
+      "id": "procedures_test_permit_issue",
+      "label": "Test Permit Issue",
+      "payload": "/direct_intent{\"intent\":\"test_permit_issue\"}",
+      "subCategory": "College Admission Test",
+      "description": "If your BukSU CAT test permit is corrupted, invalid, missing, or cannot be opened, log in ..."
+    },
+    {
+      "id": "procedures_exam_fees",
+      "label": "Exam Fees",
+      "payload": "/direct_intent{\"intent\":\"exam_fees\"}",
+      "subCategory": "College Admission Test",
+      "description": "Are there fees for the College Admission Test?"
+    },
+    {
+      "id": "procedures_exam_results",
+      "label": "Exam Results",
+      "payload": "/direct_intent{\"intent\":\"exam_results\"}",
+      "subCategory": "College Admission Test",
+      "description": "How and when will I know my examination result?"
+    },
+    {
+      "id": "procedures_reschedule_entrance_exam",
+      "label": "Reschedule Entrance Exam",
+      "payload": "/direct_intent{\"intent\":\"reschedule_entrance_exam\"}",
+      "subCategory": "College Admission Test",
+      "description": "The BukSU Entrance Examination cannot be rescheduled once your exam date has been assigned..."
+    },
+    {
+      "id": "procedures_missed_buksu_cat_schedule",
+      "label": "Missed BukSU CAT Schedule",
+      "payload": "/direct_intent{\"intent\":\"missed_buksu_cat_schedule\"}",
+      "subCategory": "College Admission Test",
+      "description": "If you miss your scheduled BukSU CAT exam date you should immediately contact the Admissio..."
+    },
+    {
+      "id": "procedures_buksu_cat_calculator_policy",
+      "label": "BukSU CAT Calculator Policy",
+      "payload": "/direct_intent{\"intent\":\"buksu_cat_calculator_policy\"}",
+      "subCategory": "College Admission Test",
+      "description": "No the use of any type of calculator basic or scientific is strictly prohibited during the..."
+    },
+    {
+      "id": "procedures_cat_exam_result",
+      "label": "CAT Exam Result",
+      "payload": "/direct_intent{\"intent\":\"cat_exam_result\"}",
+      "subCategory": "College Admission Test",
+      "description": "The only way to know if you passed the BukSU Admission CAT Examination is to log in to you..."
+    },
+    {
+      "id": "procedures_application_next_step",
+      "label": "Application Next Step",
+      "payload": "/direct_intent{\"intent\":\"application_next_step\"}",
+      "subCategory": "Admission Application",
+      "description": "I have already filled out the online application. What is the next step?"
+    },
+    {
+      "id": "procedures_status_application",
+      "label": "Status Application",
+      "payload": "/direct_intent{\"intent\":\"status_application\"}",
+      "subCategory": "Admission Application",
+      "description": "How would I know that my application to take the College Admission Test is accepted?"
+    },
+    {
+      "id": "procedures_missing_admission_documents",
+      "label": "Missing Admission Documents",
+      "payload": "/direct_intent{\"intent\":\"missing_admission_documents\"}",
+      "subCategory": "Admission Application",
+      "description": "If you still have missing admission documents, log in to your BukSU Admission account and ..."
+    },
+    {
+      "id": "procedures_change_preferred_course_admission_application",
+      "label": "Change Preferred Course In Admission Application",
+      "payload": "/direct_intent{\"intent\":\"change_preferred_course_admission_application\"}",
+      "subCategory": "Admission Application",
+      "description": "You may request to change your preferred course, but I recommend not changing it unless it..."
+    },
+    {
+      "id": "procedures_online_application_schedule",
+      "label": "Online Application Schedule",
+      "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}",
+      "subCategory": "Admission Application",
+      "description": "We cannot provide one fixed exact date for the BukSU admission and testing application bec..."
+    },
+    {
+      "id": "procedures_admission_application_deadline",
+      "label": "Admission Application Deadline",
+      "payload": "/direct_intent{\"intent\":\"admission_application_deadline\"}",
+      "subCategory": "Admission Application",
+      "description": "There is no exact deadline, but BukSU admission applications usually end during the last w..."
+    },
+    {
+      "id": "procedures_denied_applications",
+      "label": "Denied Applications",
+      "payload": "/direct_intent{\"intent\":\"denied_applications\"}",
+      "subCategory": "Admission Application",
+      "description": "Why was my application from a testing site denied?"
+    },
+    {
+      "id": "procedures_no_slots",
+      "label": "No Slots",
+      "payload": "/direct_intent{\"intent\":\"no_slots\"}",
+      "subCategory": "Admission Application",
+      "description": "No Slots Available?"
+    },
+    {
+      "id": "procedures_additional_slots",
+      "label": "Additional Slots",
+      "payload": "/direct_intent{\"intent\":\"additional_slots\"}",
+      "subCategory": "Admission Application",
+      "description": "Wondering what to do if no slots are available?"
+    },
+    {
+      "id": "procedures_main_campus_full",
+      "label": "Main Campus Full",
+      "payload": "/direct_intent{\"intent\":\"main_campus_full\"}",
+      "subCategory": "Admission Application",
+      "description": "What if the admission slots at the Main Campus are full?"
+    },
+    {
+      "id": "procedures_system_error",
+      "label": "System Error",
+      "payload": "/direct_intent{\"intent\":\"system_error\"}",
+      "subCategory": "Admission Application",
+      "description": "It seems you've encountered a system error. Let's try to resolve it together."
+    },
+    {
+      "id": "procedures_apply_cat_using_mobile_phone",
+      "label": "Apply CAT Using Mobile Phone",
+      "payload": "/direct_intent{\"intent\":\"apply_cat_using_mobile_phone\"}",
+      "subCategory": "Admission Application",
+      "description": "Yes you can use a mobile phone to access the admission portal."
+    },
+    {
+      "id": "procedures_freshman_admission_requirements",
+      "label": "Freshman Admission Requirements",
+      "payload": "/direct_intent{\"intent\":\"freshman_admission_requirements\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Here are the requirements you need before applying for BukSU Admission Testing:"
+    },
+    {
+      "id": "procedures_transferee_admission_requirements",
+      "label": "Transferee Admission Requirements",
+      "payload": "/direct_intent{\"intent\":\"transferee_admission_requirements\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Yes BukSU accepts transferees depending on the availability of slots in the chosen program..."
+    },
+    {
+      "id": "procedures_second_courser_requirements",
+      "label": "Second Courser Requirements",
+      "payload": "/direct_intent{\"intent\":\"second_courser_requirements\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Second coursers must submit a Transcript of Records for evaluation a 2x2 ID picture and a ..."
+    },
+    {
+      "id": "procedures_second_courser_cat_application",
+      "label": "Second Courser CAT Application",
+      "payload": "/direct_intent{\"intent\":\"second_courser_cat_application\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Yes second coursers may apply for the BukSU CAT."
+    },
+    {
+      "id": "procedures_gpat_admission_requirements",
+      "label": "GPAT Admission Requirements",
+      "payload": "/direct_intent{\"intent\":\"gpat_admission_requirements\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Requirements for the Graduate Program Admission Test include a soft copy of a 2x2 ID pictu..."
+    },
+    {
+      "id": "procedures_masters_degree_admission_requirements",
+      "label": "Masters Degree Admission Requirements",
+      "payload": "/direct_intent{\"intent\":\"masters_degree_admission_requirements\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Applicants for a Masters degree must submit an Honorable Dismissal."
+    },
+    {
+      "id": "procedures_law_admission_requirements",
+      "label": "Law Admission Requirements",
+      "payload": "/direct_intent{\"intent\":\"law_admission_requirements\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Applicants for the Juris Doctor program must have a bachelor degree a Transcript of Record..."
+    },
+    {
+      "id": "procedures_als_graduate_buksu_cat_application",
+      "label": "Als Graduate BukSU CAT Application",
+      "payload": "/direct_intent{\"intent\":\"als_graduate_buksu_cat_application\"}",
+      "subCategory": "Admission Requirements",
+      "description": "Graduates of the Alternative Learning System or ALS are allowed to apply for the BukSU Col..."
+    },
+    {
+      "id": "procedures_program_cutoff_scores",
+      "label": "BukSU CAT Cutoff Scores",
+      "payload": "/direct_intent{\"intent\":\"program_cutoff_scores\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "For BukSU-CAT qualification, non-board courses usually require at least 50% CAT score."
+    },
+    {
+      "id": "procedures_cat_requirement_nursing_program",
+      "label": "CAT Requirement Nursing Program",
+      "payload": "/direct_intent{\"intent\":\"cat_requirement_nursing_program\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "Unfortunately, we are not allowed to release the exact CAT score required to qualify for s..."
+    },
+    {
+      "id": "procedures_cat_requirement_education_program",
+      "label": "CAT Requirement Education Program",
+      "payload": "/direct_intent{\"intent\":\"cat_requirement_education_program\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "Unfortunately, we are not allowed to release the exact CAT score required to qualify for s..."
+    },
+    {
+      "id": "procedures_Cat_score_for_nonboard",
+      "label": "CAT Score For Nonboard",
+      "payload": "/direct_intent{\"intent\":\"Cat_score_for_nonboard\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "As of the previous data of 2020 - 2021 the BukSU CAT score for non-board courses was in 40..."
+    },
+    {
+      "id": "procedures_exam_location_vs_campus",
+      "label": "Exam Location Vs Campus",
+      "payload": "/direct_intent{\"intent\":\"exam_location_vs_campus\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "Does the location of my entrance exam determine my preferred campus?"
+    },
+    {
+      "id": "procedures_non_board_cutoff_score",
+      "label": "Non Board Cutoff Score",
+      "payload": "/direct_intent{\"intent\":\"non_board_cutoff_score\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "For non-board courses, 50% and above CAT score is usually the passing qualification. This ..."
+    },
+    {
+      "id": "procedures_board_course_cutoff_score",
+      "label": "Board Course Cutoff Score",
+      "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "For board courses, 80% and above CAT score is usually the passing qualification. This may ..."
+    },
+    {
+      "id": "procedures_Change_info_admission",
+      "label": "Change Info Admission",
+      "payload": "/direct_intent{\"intent\":\"Change_info_admission\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "You can change your admission info by just logging in to your account"
+    },
+    {
+      "id": "procedures_Change_Pass_admission",
+      "label": "Change Pass Admission",
+      "payload": "/direct_intent{\"intent\":\"Change_Pass_admission\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "To change your admission password, follow these steps:"
+    },
+    {
+      "id": "procedures_admission_portal_login",
+      "label": "Admission Portal Login",
+      "payload": "/direct_intent{\"intent\":\"admission_portal_login\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "To log in to the BukSU Admission portal, go to https://admissions.buksu.edu.ph/login."
+    },
+    {
+      "id": "procedures_admission_account_registration",
+      "label": "Admission Account Registration",
+      "payload": "/direct_intent{\"intent\":\"admission_account_registration\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "To create a BukSU Admission account, go to https://admissions.buksu.edu.ph/login."
+    },
+    {
+      "id": "procedures_Find_Institutional_Account",
+      "label": "Find Institutional Account",
+      "payload": "/direct_intent{\"intent\":\"Find_Institutional_Account\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "You can find your Institutional account by just logging in your BukSU Admission account to..."
+    },
+    {
+      "id": "procedures_Find_Sias_Account",
+      "label": "Find SIAS Account",
+      "payload": "/direct_intent{\"intent\":\"Find_Sias_Account\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "You can find your Sias account by just logging in your BukSU Admission account to https://..."
+    },
+    {
+      "id": "procedures_sias_login_process",
+      "label": "SIAS Login Process",
+      "payload": "/direct_intent{\"intent\":\"sias_login_process\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "To log in to SIAS, open https://sias.buksu.edu.ph/sias/."
+    },
+    {
+      "id": "procedures_sias_forgot_password",
+      "label": "SIAS Forgot Password",
+      "payload": "/direct_intent{\"intent\":\"sias_forgot_password\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "To reset your SIAS password, open https://sias.buksu.edu.ph/sias/."
+    },
+    {
+      "id": "procedures_admission_letter_of_intent_meaning",
+      "label": "Admission Letter Of Intent Meaning",
+      "payload": "/direct_intent{\"intent\":\"admission_letter_of_intent_meaning\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "A Letter of Intent for admission is a formal letter that explains why you want to study at..."
+    },
+    {
+      "id": "procedures_admission_certificate_photocopy_guidance",
+      "label": "Admission Certificate Photocopy Guidance",
+      "payload": "/direct_intent{\"intent\":\"admission_certificate_photocopy_guidance\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "For awards, certificates, and recognitions during SHS, you usually do not need to submit a..."
+    },
+    {
+      "id": "procedures_where_get_cor",
+      "label": "Process of Getting / Downloading COR",
+      "payload": "/direct_intent{\"intent\":\"where_get_cor\"}",
+      "subCategory": "Admission Accounts And Documents",
+      "description": "You can get your COR on the BukSU admission website, here is the step by step process of g..."
+    },
+    {
+      "id": "procedures_affirmative_action",
+      "label": "Affirmative Action",
+      "payload": "/direct_intent{\"intent\":\"affirmative_action\"}",
+      "subCategory": "Affirmative Action Program",
+      "description": "If you failed your BukSU cat examination you still have a choice, you can apply for Affirm..."
+    },
+    {
+      "id": "procedures_non_passer_enrollment_affirmative_action",
+      "label": "Non-Passer Enrollment Through AAP",
+      "payload": "/direct_intent{\"intent\":\"non_passer_enrollment_affirmative_action\"}",
+      "subCategory": "Affirmative Action Program",
+      "description": "Yes. BukSU has a program called the Affirmative Action Program (AAP), which may allow appl..."
+    },
+    {
+      "id": "procedures_enrollment_general_process",
+      "label": "Enrollment General Process",
+      "payload": "/direct_intent{\"intent\":\"enrollment_general_process\"}",
+      "subCategory": "Enrollment",
+      "description": "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate P..."
+    },
+    {
+      "id": "procedures_mixed_enrollment_process",
+      "label": "Mixed / Onsite Enrollment Process",
+      "payload": "/direct_intent{\"intent\":\"mixed_enrollment_process\"}",
+      "subCategory": "Enrollment",
+      "description": "For Face-to-Face or mixed enrollment, the initial process is similar to online enrollment\u2014..."
+    },
+    {
+      "id": "procedures_enrollment_time_schedule",
+      "label": "Enrollment Time Schedule",
+      "payload": "/direct_intent{\"intent\":\"enrollment_time_schedule\"}",
+      "subCategory": "Enrollment",
+      "description": "There is no exact fixed enrollment time or day because Bukidnon State University may adjus..."
+    },
+    {
+      "id": "procedures_school_year_class_start_schedule",
+      "label": "School Year Class Start Schedule",
+      "payload": "/direct_intent{\"intent\":\"school_year_class_start_schedule\"}",
+      "subCategory": "Enrollment",
+      "description": "Unfortunately, I do not have an exact date for when the school year starts because this ma..."
+    },
+    {
+      "id": "procedures_freshman_enrollment_process",
+      "label": "Freshman Enrollment Process",
+      "payload": "/direct_intent{\"intent\":\"freshman_enrollment_process\"}",
+      "subCategory": "Enrollment",
+      "description": "Make sure you pass the entrance examination, and prepare these requirements. It should be ..."
+    },
+    {
+      "id": "procedures_online_enrollment_steps",
+      "label": "Online Enrollment Application Steps",
+      "payload": "/direct_intent{\"intent\":\"online_enrollment_steps\"}",
+      "subCategory": "Enrollment",
+      "description": "Step 2 of the enrollment process is the Online Enrollment Application through https://admi..."
+    },
+    {
+      "id": "procedures_returning_students_scope_notice",
+      "label": "Returning Students Scope Notice",
+      "payload": "/direct_intent{\"intent\":\"returning_students_scope_notice\"}",
+      "subCategory": "Enrollment",
+      "description": "This chatbot is currently focused on incoming first year students and transferees, so I do..."
+    },
+    {
+      "id": "procedures_late_enrollment",
+      "label": "Late Enrollment",
+      "payload": "/direct_intent{\"intent\":\"late_enrollment\"}",
+      "subCategory": "Enrollment",
+      "description": "Late enrollment is still allowed at Bukidnon State University, but it is subject to specif..."
+    },
+    {
+      "id": "procedures_enrollment_application_approval",
+      "label": "Enrollment Application Approval and COR Download",
+      "payload": "/direct_intent{\"intent\":\"enrollment_application_approval\"}",
+      "subCategory": "Enrollment",
+      "description": "Step 3 is the Approval of Enrollment Application from July 1 to 31, 2026."
+    },
+    {
+      "id": "procedures_enrollment_validation_payment",
+      "label": "Enrollment Validation and Payment Process",
+      "payload": "/direct_intent{\"intent\":\"enrollment_validation_payment\"}",
+      "subCategory": "Enrollment",
+      "description": "Step 4 is Validation of Enrollment from July 1 to August 31, 2026."
+    },
+    {
+      "id": "procedures_graduate_law_enrollment_requirements",
+      "label": "Law and Graduate Enrollment Requirements",
+      "payload": "/direct_intent{\"intent\":\"graduate_law_enrollment_requirements\"}",
+      "subCategory": "Enrollment",
+      "description": "Make sure you pass the entrance examination, and prepare these requirements. It should be ..."
+    },
+    {
+      "id": "procedures_medicine_enrollment_requirements",
+      "label": "College of Medicine Enrollment Requirements",
+      "payload": "/direct_intent{\"intent\":\"medicine_enrollment_requirements\"}",
+      "subCategory": "Enrollment",
+      "description": "Prepare these requirements. It should be 3 envelopes: Envelope 1 is the Registrar's Copy, ..."
+    },
+    {
+      "id": "procedures_con_nursing_enrollment_guidance",
+      "label": "CON Nursing Enrollment Guidance",
+      "payload": "/direct_intent{\"intent\":\"con_nursing_enrollment_guidance\"}",
+      "subCategory": "Enrollment",
+      "description": "For incoming First Year Nursing students, especially waitlisted applicants who became elig..."
+    },
+    {
+      "id": "procedures_con_nursing_immunization_record",
+      "label": "CON Nursing Immunization Record Guidance",
+      "payload": "/direct_intent{\"intent\":\"con_nursing_immunization_record\"}",
+      "subCategory": "Enrollment",
+      "description": "If you do not have an immunization or vaccine record, go to your barangay health center or..."
+    },
+    {
+      "id": "procedures_con_nursing_medical_requirements",
+      "label": "CON Nursing Medical Requirements Guidance",
+      "payload": "/direct_intent{\"intent\":\"con_nursing_medical_requirements\"}",
+      "subCategory": "Enrollment",
+      "description": "For Nursing medical requirements, follow the checklist or forms provided by the College of..."
+    },
+    {
+      "id": "procedures_con_nursing_requirements_submission",
+      "label": "CON Nursing Requirements Submission Process",
+      "payload": "/direct_intent{\"intent\":\"con_nursing_requirements_submission\"}",
+      "subCategory": "Enrollment",
+      "description": "For submitting Nursing enrollment requirements, go to the College of Nursing (CON) first a..."
+    },
+    {
+      "id": "procedures_enrollment_documents",
+      "label": "Enrollment Documentary Requirements Overview",
+      "payload": "/direct_intent{\"intent\":\"enrollment_documents\"}",
+      "subCategory": "Enrollment Requirements",
+      "description": "Here are the enrollment requirements, remember the data we have is general, so if your loo..."
+    },
+    {
+      "id": "procedures_student_fees",
+      "label": "Student Fees",
+      "payload": "/direct_intent{\"intent\":\"student_fees\"}",
+      "subCategory": "Enrollment Fees",
+      "description": "Students are required to pay for laboratory, ID, and miscellaneous fees. Tuition is free a..."
+    },
+    {
+      "id": "procedures_paying_student_definition",
+      "label": "Paying Student Definition",
+      "payload": "/direct_intent{\"intent\":\"paying_student_definition\"}",
+      "subCategory": "Enrollment Fees",
+      "description": "A paying student is a student who needs to pay the assessed tuition and/or other school fe..."
+    },
+    {
+      "id": "procedures_non_paying_student_definition",
+      "label": "Non-Paying Student Definition",
+      "payload": "/direct_intent{\"intent\":\"non_paying_student_definition\"}",
+      "subCategory": "Enrollment Fees",
+      "description": "A non-paying student is a student whose tuition and covered school fees are under the Free..."
+    },
+    {
+      "id": "procedures_paying_and_non_paying_students",
+      "label": "Paying and Non-Paying Student Difference",
+      "payload": "/direct_intent{\"intent\":\"paying_and_non_paying_students\"}",
+      "subCategory": "Enrollment Fees",
+      "description": "Paying students and non-paying students are different based on how their tuition and schoo..."
+    },
+    {
+      "id": "procedures_access_sias",
+      "label": "Access SIAS",
+      "payload": "/direct_intent{\"intent\":\"access_sias\"}",
+      "subCategory": "SIAS Access",
+      "description": "You can access the BukSU SIAS portal using the link provided."
+    },
+    {
+      "id": "procedures_transferee_enrollment",
+      "label": "Transferee Enrollment",
+      "payload": "/direct_intent{\"intent\":\"transferee_enrollment\"}",
+      "subCategory": "Transfer And Enrollment Policy",
+      "description": "For transferees, you must first take and pass the BukSU Admission process before you can e..."
+    },
+    {
+      "id": "procedures_campus_transfer",
+      "label": "Campus Transfer",
+      "payload": "/direct_intent{\"intent\":\"campus_transfer\"}",
+      "subCategory": "Transfer And Enrollment Policy",
+      "description": "Yes, transferring to another campus is possible, subject to campus policies and approval."
+    },
+    {
+      "id": "procedures_double_enrollment_policy",
+      "label": "Double Enrollment Policy",
+      "payload": "/direct_intent{\"intent\":\"double_enrollment_policy\"}",
+      "subCategory": "Transfer And Enrollment Policy",
+      "description": "No double enrollment is not allowed. A student must first officially withdraw or secure an..."
+    },
+    {
+      "id": "procedures_student_id_process",
+      "label": "Student ID Process",
+      "payload": "/direct_intent{\"intent\":\"student_id_process\"}",
+      "subCategory": "Student ID",
+      "description": "Here is the process of getting student ID:"
+    },
+    {
+      "id": "procedures_student_id_requirements",
+      "label": "Student ID Requirements",
+      "payload": "/direct_intent{\"intent\":\"student_id_requirements\"}",
+      "subCategory": "Student ID",
+      "description": "The requirements for getting a BukSU student ID:"
+    },
+    {
+      "id": "procedures_Student_id_fee",
+      "label": "Student ID Fee",
+      "payload": "/direct_intent{\"intent\":\"Student_id_fee\"}",
+      "subCategory": "Student ID",
+      "description": "Yes and no. Yes, if you are someone who frequently loses your ID and ends up getting a new..."
+    },
+    {
+      "id": "procedures_lost_student_id_replacement_process",
+      "label": "Lost Student ID Replacement Process",
+      "payload": "/direct_intent{\"intent\":\"lost_student_id_replacement_process\"}",
+      "subCategory": "Student ID",
+      "description": "If you lose your BukSU student ID you must first secure an affidavit of loss."
+    },
+    {
+      "id": "procedures_campus_entry_without_student_id",
+      "label": "Campus Entry Without Student ID",
+      "payload": "/direct_intent{\"intent\":\"campus_entry_without_student_id\"}",
+      "subCategory": "Student ID",
+      "description": "Yes, students without a physical ID are usually allowed during the first month of the scho..."
+    },
+    {
+      "id": "procedures_id_validation_process",
+      "label": "ID Validation Process",
+      "payload": "/direct_intent{\"intent\":\"id_validation_process\"}",
+      "subCategory": "Student ID",
+      "description": "To validate your student ID, go to OVPCASSS and ask a staff member in that office for ID v..."
+    },
+    {
+      "id": "procedures_id_validation_day",
+      "label": "ID Validation Day",
+      "payload": "/direct_intent{\"intent\":\"id_validation_day\"}",
+      "subCategory": "Student ID",
+      "description": "There is a specific day or period for student ID validation. For the official schedule, vi..."
+    },
+    {
+      "id": "procedures_pe_uniform_process",
+      "label": "PE Uniform Process",
+      "payload": "/direct_intent{\"intent\":\"pe_uniform_process\"}",
+      "subCategory": "PE Uniform",
+      "description": "To get your PE uniform, go to the University Press and ask the staff inside the office abo..."
+    },
+    {
+      "id": "procedures_pe_uniform_old_allowed",
+      "label": "Old PE Uniform & Attire Policy",
+      "payload": "/direct_intent{\"intent\":\"pe_uniform_old_allowed\"}",
+      "subCategory": "PE Uniform",
+      "description": "Under BukSU guidelines, there is no rule prohibiting the use of an old or previously issue..."
+    },
+    {
+      "id": "procedures_request_good_moral_certificate_oss",
+      "label": "Request Good Moral Certificate OSS",
+      "payload": "/direct_intent{\"intent\":\"request_good_moral_certificate_oss\"}",
+      "subCategory": "Good Moral Certificate",
+      "description": "Students can request a Good Moral Certificate from the Office of Student Services."
+    },
+    {
+      "id": "procedures_good_moral_certificate_fee",
+      "label": "Good Moral Certificate Fee",
+      "payload": "/direct_intent{\"intent\":\"good_moral_certificate_fee\"}",
+      "subCategory": "Good Moral Certificate",
+      "description": "The standard fee for issuing a Good Moral Certificate is fifty pesos. You can request it f..."
+    },
+    {
+      "id": "procedures_clinic_medical_certificate_process",
+      "label": "Clinic Medical Certificate Process",
+      "payload": "/direct_intent{\"intent\":\"clinic_medical_certificate_process\"}",
+      "subCategory": "Medical Certificate",
+      "description": "Go to the Clinic and present your validated School ID."
+    },
+    {
+      "id": "procedures_clinic_medical_certificate_cost",
+      "label": "Clinic Medical Certificate Cost",
+      "payload": "/direct_intent{\"intent\":\"clinic_medical_certificate_cost\"}",
+      "subCategory": "Medical Certificate",
+      "description": "You don't need to pay for Medical Certificate when getting medical certificate at the BukS..."
+    },
+    {
+      "id": "procedures_clinic_medical_certificate_duration",
+      "label": "Clinic Medical Certificate Duration",
+      "payload": "/direct_intent{\"intent\":\"clinic_medical_certificate_duration\"}",
+      "subCategory": "Medical Certificate",
+      "description": "Total duration for getting a medical certificate is 28 minutes. This does not include the ..."
+    },
+    {
+      "id": "procedures_library_id_card_location",
+      "label": "Library ID Card Location",
+      "payload": "/direct_intent{\"intent\":\"library_id_card_location\"}",
+      "subCategory": "Library ID Card",
+      "description": "You can get your library ID card on the second floor of the library building. Just ask any..."
+    },
+    {
+      "id": "procedures_library_id_card_requirements",
+      "label": "Library ID Card Requirements",
+      "payload": "/direct_intent{\"intent\":\"library_id_card_requirements\"}",
+      "subCategory": "Library ID Card",
+      "description": "You need to bring your COR as proof that you are a student at Bukidnon State University an..."
+    },
+    {
+      "id": "procedures_library_id_card_payment",
+      "label": "Library ID Card Payment",
+      "payload": "/direct_intent{\"intent\":\"library_id_card_payment\"}",
+      "subCategory": "Library ID Card",
+      "description": "Depending on what is indicated in your COR, usually you do not need to pay for a library I..."
+    },
+    {
+      "id": "procedures_library_id_card_replacement",
+      "label": "Library ID Card Replacement",
+      "payload": "/direct_intent{\"intent\":\"library_id_card_replacement\"}",
+      "subCategory": "Library ID Card",
+      "description": "Getting your first library card is free, depending on your course."
+    },
+    {
+      "id": "procedures_library_borrowing_rules",
+      "label": "Library Borrowing Rules",
+      "payload": "/direct_intent{\"intent\":\"library_borrowing_rules\"}",
+      "subCategory": "Library Borrowing",
+      "description": "Students can borrow a maximum of five books per week from the BukSU Library."
+    },
+    {
+      "id": "procedures_library_borrow_books_process",
+      "label": "Library Borrow Books Process",
+      "payload": "/direct_intent{\"intent\":\"library_borrow_books_process\"}",
+      "subCategory": "Library Borrowing",
+      "description": "To borrow a book, bring your library ID card and ask any staff member for assistance. Also..."
+    },
+    {
+      "id": "procedures_library_return_books_process",
+      "label": "Library Return Books Process",
+      "payload": "/direct_intent{\"intent\":\"library_return_books_process\"}",
+      "subCategory": "Library Borrowing",
+      "description": "To return books, bring your library ID card and ask any staff member inside the library fo..."
+    },
+    {
+      "id": "procedures_library_late_return_penalty",
+      "label": "Library Late Return Penalty",
+      "payload": "/direct_intent{\"intent\":\"library_late_return_penalty\"}",
+      "subCategory": "Library Borrowing",
+      "description": "Students who fail to return borrowed materials on time will face fines."
+    },
+    {
+      "id": "procedures_library_available_books",
+      "label": "Library Available Books",
+      "payload": "/direct_intent{\"intent\":\"library_available_books\"}",
+      "subCategory": "Library Borrowing",
+      "description": "The library regularly updates its collection, so availability of books may change. For mor..."
+    },
+    {
+      "id": "procedures_access_buksu_library_resources",
+      "label": "Access BukSU Library Resources",
+      "payload": "/direct_intent{\"intent\":\"access_buksu_library_resources\"}",
+      "subCategory": "Library Borrowing",
+      "description": "Students can access BukSU library resources by presenting a valid Library ID."
+    },
+    {
+      "id": "procedures_about_ict",
+      "label": "About ICT",
+      "payload": "/direct_intent{\"intent\":\"about_ict\"}",
+      "subCategory": "ICT Services",
+      "description": "The Information & Communications Technology Services Unit (ICT-SU) of Bukidnon State Unive..."
+    },
+    {
+      "id": "procedures_get_wifi_access",
+      "label": "Get Wi-Fi Access",
+      "payload": "/direct_intent{\"intent\":\"get_wifi_access\"}",
+      "subCategory": "ICT Services",
+      "description": "Heres how you could get any wifi connection that ICT could offer to you."
+    },
+    {
+      "id": "procedures_ict_mission",
+      "label": "ICT Mission",
+      "payload": "/direct_intent{\"intent\":\"ict_mission\"}",
+      "subCategory": "ICT Services",
+      "description": "To provide reliable and secure ICT infrastructure and services framework enable for the ac..."
+    },
+    {
+      "id": "procedures_institutional_email_account",
+      "label": "Institutional Email Account Help",
+      "payload": "/direct_intent{\"intent\":\"institutional_email_account\"}",
+      "subCategory": "ICT Services",
+      "description": "Your official BukSU student email address is your institutional email account. It is diffe..."
+    },
+    {
+      "id": "procedures_general_gate_pass",
+      "label": "Gate Pass Policy (General)",
+      "payload": "/direct_intent{\"intent\":\"general_gate_pass\"}",
+      "subCategory": "Gate Pass Policy",
+      "description": "A gate pass is needed to enter Bukidnon State University if you are using a vehicle (such ..."
+    },
+    {
+      "id": "procedures_bike_gate_pass",
+      "label": "Bicycle / Bike Gate Pass Policy",
+      "payload": "/direct_intent{\"intent\":\"bike_gate_pass\"}",
+      "subCategory": "Gate Pass Policy",
+      "description": "Usually for bikes or bicycles, you can directly ask the guard on duty for their rules sinc..."
+    },
+    {
+      "id": "procedures_scholarship_application",
+      "label": "Scholarship Application Guidance",
+      "payload": "/direct_intent{\"intent\":\"scholarship_application\"}",
+      "subCategory": "Scholarship Application",
+      "description": "unfortunately I dont have data for how could you apply for scholarship, but we do have oth..."
+    },
+    {
+      "id": "procedures_contact_scholarship_unit",
+      "label": "Contact Scholarships and Financial Grants Unit",
+      "payload": "/direct_intent{\"intent\":\"contact_scholarship_unit\"}",
+      "subCategory": "Scholarship Application",
+      "description": "Need to get in touch with the Scholarships and Financial Grants Unit?"
+    }
+  ],
+  "academics": [
+    {
+      "id": "academics_phone_use_in_class",
+      "label": "Phone Use In Class",
+      "payload": "/direct_intent{\"intent\":\"phone_use_in_class\"}",
+      "subCategory": "Classroom Policies",
+      "description": "The use of mobile phones during class is strictly prohibited, especially when the instruct..."
+    },
+    {
+      "id": "academics_class_concerns",
+      "label": "Class Concerns",
+      "payload": "/direct_intent{\"intent\":\"class_concerns\"}",
+      "subCategory": "Classroom Policies",
+      "description": "For class-related concerns, you should talk to your instructor first."
+    },
+    {
+      "id": "academics_eating_in_classroom",
+      "label": "Eating In Classroom",
+      "payload": "/direct_intent{\"intent\":\"eating_in_classroom\"}",
+      "subCategory": "Classroom Policies",
+      "description": "Eating inside classrooms depends on the rules set by the instructor."
+    },
+    {
+      "id": "academics_submit_assignments_online",
+      "label": "Submit Assignments Online",
+      "payload": "/direct_intent{\"intent\":\"submit_assignments_online\"}",
+      "subCategory": "Classroom Policies",
+      "description": "Assignments may be submitted via email or through platforms like Google Classroom, dependi..."
+    },
+    {
+      "id": "academics_class_schedule_help",
+      "label": "Class Schedule Check And Change",
+      "payload": "/direct_intent{\"intent\":\"class_schedule_help\"}",
+      "subCategory": "Classroom Policies",
+      "description": "For checking your class schedule, you can view it on your Certificate of Registration (COR..."
+    },
+    {
+      "id": "academics_check_class_schedule",
+      "label": "Check Class Schedule",
+      "payload": "/direct_intent{\"intent\":\"check_class_schedule\"}",
+      "subCategory": "Classroom Policies",
+      "description": "You can check your class schedule on your Certificate of Registration (COR). Download your..."
+    },
+    {
+      "id": "academics_change_class_schedule",
+      "label": "Change Class Schedule",
+      "payload": "/direct_intent{\"intent\":\"change_class_schedule\"}",
+      "subCategory": "Classroom Policies",
+      "description": "If you have a concern about your class schedule, ask the faculty staff in your department ..."
+    },
+    {
+      "id": "academics_change_section_schedule_conflict",
+      "label": "Change Section Due To Schedule Conflict",
+      "payload": "/direct_intent{\"intent\":\"change_section_schedule_conflict\"}",
+      "subCategory": "Classroom Policies",
+      "description": "You can only request a section change during the enrollment period, so make sure to check ..."
+    },
+    {
+      "id": "academics_buksu_IT",
+      "label": "BukSU It",
+      "payload": "/direct_intent{\"intent\":\"buksu_IT\"}",
+      "subCategory": "BSIT",
+      "description": "The Bachelor of Science in Information Technology program includes the study of the utiliz..."
+    },
+    {
+      "id": "academics_buksu_bsit_program",
+      "label": "BukSU BSIT Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_bsit_program\"}",
+      "subCategory": "BSIT",
+      "description": "Yes BukSU offers a Bachelor of Science in Information Technology under the College of Tech..."
+    },
+    {
+      "id": "academics_buksu_FT",
+      "label": "BukSU Ft",
+      "payload": "/direct_intent{\"intent\":\"buksu_FT\"}",
+      "subCategory": "Bsft",
+      "description": "Bachelor of Science in Food Technology is a four-year degree program design to develop pro..."
+    },
+    {
+      "id": "academics_buksu_BSFT_program",
+      "label": "BukSU Bsft Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSFT_program\"}",
+      "subCategory": "Bsft",
+      "description": "Yes, BukSU offers a Bachelor of Science in Food Technology focusing on food science, post-..."
+    },
+    {
+      "id": "academics_buksu_ET",
+      "label": "BukSU Et",
+      "payload": "/direct_intent{\"intent\":\"buksu_ET\"}",
+      "subCategory": "BSET",
+      "description": "The Bachelor of Science and Electronics Technology program offers opportunities for studen..."
+    },
+    {
+      "id": "academics_buksu_BSET_program",
+      "label": "BukSU BSET Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSET_program\"}",
+      "subCategory": "BSET",
+      "description": "Yes, BukSU offers a Bachelor of Science in Electronics Technology which focuses on the tec..."
+    },
+    {
+      "id": "academics_buksu_EMC",
+      "label": "BukSU Emc",
+      "payload": "/direct_intent{\"intent\":\"buksu_EMC\"}",
+      "subCategory": "Bsemc Dat",
+      "description": "The Bachelor of Science in Entertainment and Multimedia Computing is the study and use of ..."
+    },
+    {
+      "id": "academics_buksu_BSEMC-DAT_program",
+      "label": "BukSU Bsemc Dat Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSEMC-DAT_program\"}",
+      "subCategory": "Bsemc Dat",
+      "description": "Yes, BukSU offers a Bachelor of Science in Entertainment and Multimedia Computing major in..."
+    },
+    {
+      "id": "academics_buksu_BS-BIO",
+      "label": "BukSU Bs Bio",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS-BIO\"}",
+      "subCategory": "Bs Bio",
+      "description": "The Bachelor of Science in Biology major in Biotechnology is a four-year program focusing ..."
+    },
+    {
+      "id": "academics_buksu_BS-BIO_program",
+      "label": "BukSU Bs Bio Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS-BIO_program\"}",
+      "subCategory": "Bs Bio",
+      "description": "Yes, BukSU offers a Bachelor of Science in Biology major in Biotechnology which focuses on..."
+    },
+    {
+      "id": "academics_buksu_AB_SocSci",
+      "label": "BukSU Ab Soc Sci",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB_SocSci\"}",
+      "subCategory": "Ab Socsci",
+      "description": "The Bachelor of Arts in Social Science is an interdisciplinary study of human society and ..."
+    },
+    {
+      "id": "academics_buksu_AB SocSci_program",
+      "label": "BukSU Ab Soc Sci Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB SocSci_program\"}",
+      "subCategory": "Ab Socsci",
+      "description": "Yes, BukSU offers a Bachelor of Arts in Social Science focusing on the study of human soci..."
+    },
+    {
+      "id": "academics_buksu_BSED_FIL",
+      "label": "BukSU Bsed Fil",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED_FIL\"}",
+      "subCategory": "Bsed Fil",
+      "description": "The Bachelor of Secondary Education major in Filipino is a teacher education program desig..."
+    },
+    {
+      "id": "academics_buksu_BSED-FIL_program",
+      "label": "BukSU Bsed Fil Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED-FIL_program\"}",
+      "subCategory": "Bsed Fil",
+      "description": "Yes, BukSU offers a Bachelor of Secondary Education major in Filipino, designed to develop..."
+    },
+    {
+      "id": "academics_buksu_BSED_MATH",
+      "label": "BukSU Bsed Math",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED_MATH\"}",
+      "subCategory": "Bsed Math",
+      "description": "The Bachelor of Secondary Education major in Mathematics focuses on the mastery of mathema..."
+    },
+    {
+      "id": "academics_buksu_BSED-MATH_program",
+      "label": "BukSU Bsed Math Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED-MATH_program\"}",
+      "subCategory": "Bsed Math",
+      "description": "Yes, BukSU offers a Bachelor of Secondary Education major in Mathematics focusing on maste..."
+    },
+    {
+      "id": "academics_buksu_BEED_program",
+      "label": "BukSU Beed Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BEED_program\"}",
+      "subCategory": "Beed",
+      "description": "Yes, BukSU offers a Bachelor of Elementary Education which prepares educators for primary ..."
+    },
+    {
+      "id": "academics_buksu_BSN",
+      "label": "BukSU Bsn",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSN\"}",
+      "subCategory": "Bsn",
+      "description": "The Bachelor of Science in Nursing is a clinical and theoretical program centered on patie..."
+    },
+    {
+      "id": "academics_buksu_BSN_program",
+      "label": "BukSU Bsn Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSN_program\"}",
+      "subCategory": "Bsn",
+      "description": "Yes, BukSU offers a Bachelor of Science in Nursing focusing on clinical patient care, heal..."
+    },
+    {
+      "id": "academics_buksu_AB_PHILO",
+      "label": "BukSU Ab Philo",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB_PHILO\"}",
+      "subCategory": "Ab Philo",
+      "description": "The Bachelor of Arts in Philosophy engages with fundamental questions of existence, ethics..."
+    },
+    {
+      "id": "academics_buksu_AB-PHILO_program",
+      "label": "BukSU Ab Philo Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB-PHILO_program\"}",
+      "subCategory": "Ab Philo",
+      "description": "Yes, BukSU offers a Bachelor of Arts in Philosophy which focuses on critical thinking, eth..."
+    },
+    {
+      "id": "academics_buksu_BS_ES",
+      "label": "BukSU Bs Es",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS_ES\"}",
+      "subCategory": "Bs Es",
+      "description": "The Bachelor of Science in Environmental Science major in Environmental Heritage Studies u..."
+    },
+    {
+      "id": "academics_buksu_BS-ES_program",
+      "label": "BukSU Bs Es Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS-ES_program\"}",
+      "subCategory": "Bs Es",
+      "description": "Yes, BukSU offers a Bachelor of Science in Environmental Science major in Environmental He..."
+    },
+    {
+      "id": "academics_buksu_AB_SOCIO",
+      "label": "BukSU Ab Socio",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB_SOCIO\"}",
+      "subCategory": "Ab Socio",
+      "description": "The Bachelor of Arts in Sociology examines social structures, human behavior, and institut..."
+    },
+    {
+      "id": "academics_buksu_AB-SOCIO_program",
+      "label": "BukSU Ab Socio Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB-SOCIO_program\"}",
+      "subCategory": "Ab Socio",
+      "description": "Yes, BukSU offers a Bachelor of Arts in Sociology focusing on the analysis of social struc..."
+    },
+    {
+      "id": "academics_buksu_AB_ENG",
+      "label": "BukSU Ab Eng",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB_ENG\"}",
+      "subCategory": "Ab Eng",
+      "description": "The Bachelor of Arts in English Language focuses on the structure, development, and social..."
+    },
+    {
+      "id": "academics_buksu_AB-ENG_program",
+      "label": "BukSU Ab Eng Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB-ENG_program\"}",
+      "subCategory": "Ab Eng",
+      "description": "Yes, BukSU offers a Bachelor of Arts in English Language focusing on the structure, social..."
+    },
+    {
+      "id": "academics_buksu_BPED",
+      "label": "BukSU Bped",
+      "payload": "/direct_intent{\"intent\":\"buksu_BPED\"}",
+      "subCategory": "Bped",
+      "description": "The Bachelor of Physical Education focuses on sports science, health, and fitness."
+    },
+    {
+      "id": "academics_buksu_BPED_program",
+      "label": "BukSU Bped Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BPED_program\"}",
+      "subCategory": "Bped",
+      "description": "Yes, BukSU offers a Bachelor of Physical Education focusing on sports science, health prom..."
+    },
+    {
+      "id": "academics_buksu_BS_COMDEV",
+      "label": "BukSU Bs Comdev",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS_COMDEV\"}",
+      "subCategory": "Bs Comdev",
+      "description": "The Bachelor of Science in Community Development prepares professionals to work directly w..."
+    },
+    {
+      "id": "academics_buksu_BS COMDEV_program",
+      "label": "BukSU Bs Comdev Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS COMDEV_program\"}",
+      "subCategory": "Bs Comdev",
+      "description": "Yes, BukSU offers a Bachelor of Science in Community Development which focuses on project ..."
+    },
+    {
+      "id": "academics_buksu_AB_ECON",
+      "label": "BukSU Ab Econ",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB_ECON\"}",
+      "subCategory": "Ab Econ",
+      "description": "The Bachelor of Arts in Economics studies the production, distribution, and consumption of..."
+    },
+    {
+      "id": "academics_buksu_AB-ECON_program",
+      "label": "BukSU Ab Econ Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_AB-ECON_program\"}",
+      "subCategory": "Ab Econ",
+      "description": "Yes, BukSU offers a Bachelor of Arts in Economics focusing on market analysis, resource ma..."
+    },
+    {
+      "id": "academics_buksu_BECED",
+      "label": "BukSU Beced",
+      "payload": "/direct_intent{\"intent\":\"buksu_BECED\"}",
+      "subCategory": "Beced",
+      "description": "The Bachelor of Early Childhood Education specializes in the teaching and care of children..."
+    },
+    {
+      "id": "academics_buksu_BECED_program",
+      "label": "BukSU Beced Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BECED_program\"}",
+      "subCategory": "Beced",
+      "description": "Yes, BukSU offers a Bachelor of Early Childhood Education focusing on the care and teachin..."
+    },
+    {
+      "id": "academics_buksu_BSDC",
+      "label": "BukSU Bsdc",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSDC\"}",
+      "subCategory": "Bsdc",
+      "description": "The Bachelor of Science in Development Communication trains \"communicators for development..."
+    },
+    {
+      "id": "academics_buksu_BSDC_program",
+      "label": "BukSU Bsdc Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSDC_program\"}",
+      "subCategory": "Bsdc",
+      "description": "Yes, BukSU offers a Bachelor of Science in Development Communication focusing on using var..."
+    },
+    {
+      "id": "academics_buksu_BSHM",
+      "label": "BukSU Bshm",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSHM\"}",
+      "subCategory": "Bshm",
+      "description": "The Bachelor of Science in Hospitality Management provides technical and managerial traini..."
+    },
+    {
+      "id": "academics_buksu_BSHM_program",
+      "label": "BukSU Bshm Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSHM_program\"}",
+      "subCategory": "Bshm",
+      "description": "Yes, BukSU offers a Bachelor of Science in Hospitality Management focusing on hotel and re..."
+    },
+    {
+      "id": "academics_buksu_BSAT",
+      "label": "BukSU BSAT",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSAT\"}",
+      "subCategory": "BSAT",
+      "description": "The Bachelor of Science in Automotive Technology is a competency-based program focusing on..."
+    },
+    {
+      "id": "academics_buksu_BSAT_program",
+      "label": "BukSU BSAT Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSAT_program\"}",
+      "subCategory": "BSAT",
+      "description": "Yes, BukSU offers a Bachelor of Science in Automotive Technology focusing on technical dia..."
+    },
+    {
+      "id": "academics_buksu_BPA",
+      "label": "BukSU Bpa",
+      "payload": "/direct_intent{\"intent\":\"buksu_BPA\"}",
+      "subCategory": "Bpa",
+      "description": "The Bachelor of Public Administration focuses on the management of government programs, pu..."
+    },
+    {
+      "id": "academics_buksu_BPA_program",
+      "label": "BukSU Bpa Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BPA_program\"}",
+      "subCategory": "Bpa",
+      "description": "Yes, BukSU offers a Bachelor of Public Administration focusing on government program manag..."
+    },
+    {
+      "id": "academics_buksu_BS_MATH",
+      "label": "BukSU Bs Math",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS_MATH\"}",
+      "subCategory": "Bs Math",
+      "description": "The Bachelor of Science in Mathematics is a specialized study of abstract and applied math..."
+    },
+    {
+      "id": "academics_buksu_BS-MATH_program",
+      "label": "BukSU Bs Math Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BS-MATH_program\"}",
+      "subCategory": "Bs Math",
+      "description": "Yes, BukSU offers a Bachelor of Science in Mathematics focusing on abstract and applied ma..."
+    },
+    {
+      "id": "academics_buksu_BSA",
+      "label": "BukSU BSA",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSA\"}",
+      "subCategory": "BSA",
+      "description": "The Bachelor of Science in Accountancy provides rigorous training in financial reporting, ..."
+    },
+    {
+      "id": "academics_buksu_BSA_program",
+      "label": "BukSU BSA Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSA_program\"}",
+      "subCategory": "BSA",
+      "description": "Yes, BukSU offers a Bachelor of Science in Accountancy focusing on financial reporting, au..."
+    },
+    {
+      "id": "academics_buksu_BSBA_FM",
+      "label": "BukSU Bsba Fm",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSBA_FM\"}",
+      "subCategory": "Bsba Fm",
+      "description": "The Bachelor of Science in Business Administration major in Financial Management focuses o..."
+    },
+    {
+      "id": "academics_buksu_BSBA-FM_program",
+      "label": "BukSU Bsba Fm Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSBA-FM_program\"}",
+      "subCategory": "Bsba Fm",
+      "description": "Yes, BukSU offers a Bachelor of Science in Business Administration major in Financial Mana..."
+    },
+    {
+      "id": "academics_buksu_BSED_ENG",
+      "label": "BukSU Bsed Eng",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED_ENG\"}",
+      "subCategory": "Bsed Eng",
+      "description": "The Bachelor of Secondary Education major in English equips future secondary teachers with..."
+    },
+    {
+      "id": "academics_buksu_BSED-ENG_program",
+      "label": "BukSU Bsed Eng Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED-ENG_program\"}",
+      "subCategory": "Bsed Eng",
+      "description": "Yes, BukSU offers a Bachelor of Secondary Education major in English focusing on language ..."
+    },
+    {
+      "id": "academics_buksu_BSED_SCI",
+      "label": "BukSU Bsed Sci",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED_SCI\"}",
+      "subCategory": "Bsed Sci",
+      "description": "The Bachelor of Secondary Education major in Science provides pedagogical and scientific t..."
+    },
+    {
+      "id": "academics_buksu_BSED-SCI_program",
+      "label": "BukSU Bsed Sci Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED-SCI_program\"}",
+      "subCategory": "Bsed Sci",
+      "description": "Yes, BukSU offers a Bachelor of Secondary Education major in Science focusing on the scien..."
+    },
+    {
+      "id": "academics_buksu_BSED_SOCSTUD",
+      "label": "BukSU Bsed Socstud",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED_SOCSTUD\"}",
+      "subCategory": "Bsed Socstud",
+      "description": "The Bachelor of Secondary Education major in Social Studies prepares secondary teachers to..."
+    },
+    {
+      "id": "academics_buksu_BSED-SOCSTUD_program",
+      "label": "BukSU Bsed Socstud Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_BSED-SOCSTUD_program\"}",
+      "subCategory": "Bsed Socstud",
+      "description": "Yes, BukSU offers a Bachelor of Secondary Education major in Social Studies focusing on hi..."
+    },
+    {
+      "id": "academics_buksu_mpa_program",
+      "label": "BukSU Mpa Program",
+      "payload": "/direct_intent{\"intent\":\"buksu_mpa_program\"}",
+      "subCategory": "Mpa",
+      "description": "Yes BukSU offers a Master in Public Administration under the College of Public Administrat..."
+    },
+    {
+      "id": "academics_buksu_courses_offered",
+      "label": "BukSU Courses Offered",
+      "payload": "/direct_intent{\"intent\":\"buksu_courses_offered\"}",
+      "subCategory": "Course Catalog",
+      "description": "Here are the undergraduate courses offered by Bukidnon State University (BukSU) Main Campu..."
+    },
+    {
+      "id": "academics_buksu_non_board_courses",
+      "label": "BukSU Non Board Courses",
+      "payload": "/direct_intent{\"intent\":\"buksu_non_board_courses\"}",
+      "subCategory": "Course Catalog",
+      "description": "Here are the non-board courses that BukSU Offers."
+    },
+    {
+      "id": "academics_buksu_board_courses",
+      "label": "BukSU Board Courses",
+      "payload": "/direct_intent{\"intent\":\"buksu_board_courses\"}",
+      "subCategory": "Course Catalog",
+      "description": "here are the board courses that BukSU Offers."
+    },
+    {
+      "id": "academics_buksu_masters_courses",
+      "label": "BukSU Masters Courses",
+      "payload": "/direct_intent{\"intent\":\"buksu_masters_courses\"}",
+      "subCategory": "Course Catalog",
+      "description": "This is all the graduate programs that BukSU can offer to us. First is the Masters Degree"
+    },
+    {
+      "id": "academics_meaning_of_nonboard_course",
+      "label": "Meaning Of Nonboard Course",
+      "payload": "/direct_intent{\"intent\":\"meaning_of_nonboard_course\"}",
+      "subCategory": "Course Catalog",
+      "description": "In the context of Bukidnon State University (BukSU) and the Philippine education system, n..."
+    },
+    {
+      "id": "academics_meaning_of_board_course",
+      "label": "Meaning Of Board Course",
+      "payload": "/direct_intent{\"intent\":\"meaning_of_board_course\"}",
+      "subCategory": "Course Catalog",
+      "description": "At Bukidnon State University (BukSU), board courses are degree programs that require gradu..."
+    },
+    {
+      "id": "academics_evening_classes_working_students",
+      "label": "Evening Classes Working Students",
+      "payload": "/direct_intent{\"intent\":\"evening_classes_working_students\"}",
+      "subCategory": "Course Catalog",
+      "description": "Yes BukSU offers evening programs specifically for working individuals particularly in the..."
+    },
+    {
+      "id": "academics_about_nstp",
+      "label": "About Nstp",
+      "payload": "/direct_intent{\"intent\":\"about_nstp\"}",
+      "subCategory": "General Curriculum Subjects",
+      "description": "The National Service Training Program (NSTP) (R.A. 9163) aims to enhance civic consciousne..."
+    },
+    {
+      "id": "academics_about_pe",
+      "label": "About PE",
+      "payload": "/direct_intent{\"intent\":\"about_pe\"}",
+      "subCategory": "General Curriculum Subjects",
+      "description": "Yes, Physical Education is part of BukSU's general curriculum."
+    },
+    {
+      "id": "academics_minor_subject",
+      "label": "Minor Subject",
+      "payload": "/direct_intent{\"intent\":\"minor_subject\"}",
+      "subCategory": "General Curriculum Subjects",
+      "description": "A minor subject supports your major field of study and helps build general knowledge."
+    },
+    {
+      "id": "academics_prerequisite_subjects_purpose",
+      "label": "Prerequisite Subjects Purpose",
+      "payload": "/direct_intent{\"intent\":\"prerequisite_subjects_purpose\"}",
+      "subCategory": "General Curriculum Subjects",
+      "description": "Prerequisite subjects are foundational courses that must be completed before enrolling in ..."
+    },
+    {
+      "id": "academics_rotc_meaning",
+      "label": "Rotc Meaning",
+      "payload": "/direct_intent{\"intent\":\"rotc_meaning\"}",
+      "subCategory": "General Curriculum Subjects",
+      "description": "ROTC stands for Reserve Officers' Training Corps."
+    },
+    {
+      "id": "academics_course_shifting",
+      "label": "Course Shifting",
+      "payload": "/direct_intent{\"intent\":\"course_shifting\"}",
+      "subCategory": "Course Shifting And Training",
+      "description": "Yes, course shifting is allowed at BukSU, especially after finishing your first year cours..."
+    },
+    {
+      "id": "academics_course_shifting_later_years",
+      "label": "Course Shifting Later Years",
+      "payload": "/direct_intent{\"intent\":\"course_shifting_later_years\"}",
+      "subCategory": "Course Shifting And Training",
+      "description": "Shifting courses in the third year is possible, but it may delay graduation."
+    },
+    {
+      "id": "academics_internship_requirement",
+      "label": "Internship Requirement",
+      "payload": "/direct_intent{\"intent\":\"internship_requirement\"}",
+      "subCategory": "Course Shifting And Training",
+      "description": "Not all courses require an internship; it depends on the curriculum."
+    },
+    {
+      "id": "academics_on_the_job_training",
+      "label": "On The Job Training",
+      "payload": "/direct_intent{\"intent\":\"on_the_job_training\"}",
+      "subCategory": "Course Shifting And Training",
+      "description": "On-the-job training (OJT) provides students with real-world work experience related to the..."
+    },
+    {
+      "id": "academics_program_shifting_policy",
+      "label": "Program Shifting Policy",
+      "payload": "/direct_intent{\"intent\":\"program_shifting_policy\"}",
+      "subCategory": "Course Shifting And Training",
+      "description": "Students who wish to shift to another program must meet the grade requirements of the new ..."
+    },
+    {
+      "id": "academics_shift_to_another_course_next_school_year",
+      "label": "Shift To Another Course Next School Year",
+      "payload": "/direct_intent{\"intent\":\"shift_to_another_course_next_school_year\"}",
+      "subCategory": "Course Shifting And Training",
+      "description": "To shift to another course, please go to your department and ask the faculty staff or prog..."
+    },
+    {
+      "id": "academics_program_cutoff_scores",
+      "label": "BukSU CAT Cutoff Scores",
+      "payload": "/direct_intent{\"intent\":\"program_cutoff_scores\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "For BukSU-CAT qualification, non-board courses usually require at least 50% CAT score."
+    },
+    {
+      "id": "academics_cat_requirement_nursing_program",
+      "label": "CAT Requirement Nursing Program",
+      "payload": "/direct_intent{\"intent\":\"cat_requirement_nursing_program\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "Unfortunately, we are not allowed to release the exact CAT score required to qualify for s..."
+    },
+    {
+      "id": "academics_cat_requirement_education_program",
+      "label": "CAT Requirement Education Program",
+      "payload": "/direct_intent{\"intent\":\"cat_requirement_education_program\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "Unfortunately, we are not allowed to release the exact CAT score required to qualify for s..."
+    },
+    {
+      "id": "academics_Cat_score_for_nonboard",
+      "label": "CAT Score For Nonboard",
+      "payload": "/direct_intent{\"intent\":\"Cat_score_for_nonboard\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "As of the previous data of 2020 - 2021 the BukSU CAT score for non-board courses was in 40..."
+    },
+    {
+      "id": "academics_exam_location_vs_campus",
+      "label": "Exam Location Vs Campus",
+      "payload": "/direct_intent{\"intent\":\"exam_location_vs_campus\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "Does the location of my entrance exam determine my preferred campus?"
+    },
+    {
+      "id": "academics_non_board_cutoff_score",
+      "label": "Non Board Cutoff Score",
+      "payload": "/direct_intent{\"intent\":\"non_board_cutoff_score\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "For non-board courses, 50% and above CAT score is usually the passing qualification. This ..."
+    },
+    {
+      "id": "academics_board_course_cutoff_score",
+      "label": "Board Course Cutoff Score",
+      "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}",
+      "subCategory": "Program Qualification Scores",
+      "description": "For board courses, 80% and above CAT score is usually the passing qualification. This may ..."
+    },
+    {
+      "id": "academics_board_exam_review",
+      "label": "Board Exam Review",
+      "payload": "/direct_intent{\"intent\":\"board_exam_review\"}",
+      "subCategory": "Board Exam Information",
+      "description": "Some colleges offer board examination review programs or support sessions for students."
+    },
+    {
+      "id": "academics_licensure_examination",
+      "label": "Licensure Examination",
+      "payload": "/direct_intent{\"intent\":\"licensure_examination\"}",
+      "subCategory": "Board Exam Information",
+      "description": "A licensure examination is a national exam required to legally practice certain profession..."
+    },
+    {
+      "id": "academics_mock_board_exam",
+      "label": "Mock Board Exam",
+      "payload": "/direct_intent{\"intent\":\"mock_board_exam\"}",
+      "subCategory": "Board Exam Information",
+      "description": "A mock board exam is a practice examination designed to prepare students for the actual li..."
+    },
+    {
+      "id": "academics_failed_subject_policy",
+      "label": "Failed Subject Policy",
+      "payload": "/direct_intent{\"intent\":\"failed_subject_policy\"}",
+      "subCategory": "Academic Standing",
+      "description": "According to BukSU academic policies, you may retake a subject if it is your first time fa..."
+    },
+    {
+      "id": "academics_academic_probation",
+      "label": "Academic Probation",
+      "payload": "/direct_intent{\"intent\":\"academic_probation\"}",
+      "subCategory": "Academic Standing",
+      "description": "Academic probation is given to students with low academic performance."
+    },
+    {
+      "id": "academics_buksu_grading_system",
+      "label": "BukSU Grading System",
+      "payload": "/direct_intent{\"intent\":\"buksu_grading_system\"}",
+      "subCategory": "Grading System",
+      "description": "BukSU uses a numerical grading system where 1.0 is the highest grade and 3.0 is the passin..."
+    },
+    {
+      "id": "academics_specific_course_passing_retention_grade",
+      "label": "Specific Course Passing And Retention Grade",
+      "payload": "/direct_intent{\"intent\":\"specific_course_passing_retention_grade\"}",
+      "subCategory": "Grading System",
+      "description": "Passing grade, culling grade, and retention grade for a specific course are usually discus..."
+    },
+    {
+      "id": "academics_access_grades",
+      "label": "Access Grades",
+      "payload": "/direct_intent{\"intent\":\"access_grades\"}",
+      "subCategory": "Grading System",
+      "description": "Grades can be viewed once they are officially released."
+    },
+    {
+      "id": "academics_end_of_semester",
+      "label": "End Of Semester",
+      "payload": "/direct_intent{\"intent\":\"end_of_semester\"}",
+      "subCategory": "Grading System",
+      "description": "At the end of the semester, final examinations are conducted, grades are submitted, and cl..."
+    },
+    {
+      "id": "academics_inc_grade_solution",
+      "label": "INC Grade Solution",
+      "payload": "/direct_intent{\"intent\":\"inc_grade_solution\"}",
+      "subCategory": "INC Grade",
+      "description": "An INC (Incomplete) grade means you still have missing requirements for the subject."
+    },
+    {
+      "id": "academics_inc_grade_consequences",
+      "label": "INC Grade Consequences",
+      "payload": "/direct_intent{\"intent\":\"inc_grade_consequences\"}",
+      "subCategory": "INC Grade",
+      "description": "If you receive an INC grade, it means you still need to complete the missing requirements ..."
+    },
+    {
+      "id": "academics_get_inc_form",
+      "label": "Get INC Form",
+      "payload": "/direct_intent{\"intent\":\"get_inc_form\"}",
+      "subCategory": "INC Grade",
+      "description": "You can find all the forms, including the INC form, on the BukSU main website. You can acc..."
+    },
+    {
+      "id": "academics_attendance_requirement",
+      "label": "Attendance Requirement",
+      "payload": "/direct_intent{\"intent\":\"attendance_requirement\"}",
+      "subCategory": "Attendance FDA",
+      "description": "Regular attendance is required and strictly recorded."
+    },
+    {
+      "id": "academics_absence_excuse_requirements",
+      "label": "Absence and Excuse Letter Requirements",
+      "payload": "/direct_intent{\"intent\":\"absence_excuse_requirements\"}",
+      "subCategory": "Attendance FDA",
+      "description": "If you are absent from class, you must submit the following supporting documents to your s..."
+    },
+    {
+      "id": "academics_fda_meaning",
+      "label": "Meaning Of The FDA",
+      "payload": "/direct_intent{\"intent\":\"fda_meaning\"}",
+      "subCategory": "Attendance FDA",
+      "description": "FDA stands for Failure Due to Absences, and there are only 7 absences is allowed for stude..."
+    },
+    {
+      "id": "academics_fda_solution",
+      "label": "FDA Solution",
+      "payload": "/direct_intent{\"intent\":\"fda_solution\"}",
+      "subCategory": "Attendance FDA",
+      "description": "If you receive an FDA, you should immediately approach your instructor and discuss your si..."
+    },
+    {
+      "id": "academics_subject_overload",
+      "label": "Subject Overload Answer Topic",
+      "payload": "/direct_intent{\"intent\":\"subject_overload\"}",
+      "subCategory": "Subject Overload Topic Group",
+      "description": "Overload refers to taking more subjects than the regular academic load."
+    },
+    {
+      "id": "academics_overload_units_policy",
+      "label": "Overload Units Policy",
+      "payload": "/direct_intent{\"intent\":\"overload_units_policy\"}",
+      "subCategory": "Subject Overload Topic Group",
+      "description": "Overloading of units is generally only allowed for graduating students in their final year..."
+    },
+    {
+      "id": "academics_deans_list",
+      "label": "Deans List",
+      "payload": "/direct_intent{\"intent\":\"deans_list\"}",
+      "subCategory": "Academic Honors",
+      "description": "To qualify for the Dean's Honor List at Bukidnon State University, a student must meet the..."
+    },
+    {
+      "id": "academics_College_Honors_gpa",
+      "label": "College Honors Gpa",
+      "payload": "/direct_intent{\"intent\":\"College_Honors_gpa\"}",
+      "subCategory": "Academic Honors",
+      "description": "To be qualified for College Honors, you need to have at least a GWA of 1.50 above to 1.25,..."
+    },
+    {
+      "id": "academics_University_Scholar_gpa",
+      "label": "University Scholar Gpa",
+      "payload": "/direct_intent{\"intent\":\"University_Scholar_gpa\"}",
+      "subCategory": "Academic Honors",
+      "description": "To be qualified as a University Scholar, you need to have a GWA of 1.25 or higher with no ..."
+    },
+    {
+      "id": "academics_thesis_topic_selection",
+      "label": "Thesis Topic Selection",
+      "payload": "/direct_intent{\"intent\":\"thesis_topic_selection\"}",
+      "subCategory": "Thesis Capstone",
+      "description": "Yes, thesis topics are usually proposed by students and approved by advisers."
+    },
+    {
+      "id": "academics_thesis_defense_panelists",
+      "label": "Thesis Defense Panelists",
+      "payload": "/direct_intent{\"intent\":\"thesis_defense_panelists\"}",
+      "subCategory": "Thesis Capstone",
+      "description": "The thesis defense usually consists of a three-member panel and one secretary, though this..."
+    },
+    {
+      "id": "academics_thesis_defense_failure",
+      "label": "Thesis Defense Failure",
+      "payload": "/direct_intent{\"intent\":\"thesis_defense_failure\"}",
+      "subCategory": "Thesis Capstone",
+      "description": "Students may be required to revise and re-defend their thesis within a specified timeframe..."
+    }
+  ],
+  "services": [
+    {
+      "id": "services_medic_clinic",
+      "label": "Medic Clinic",
+      "payload": "/direct_intent{\"intent\":\"medic_clinic\"}",
+      "subCategory": "University Clinic",
+      "description": "The University Medical Clinic is a primary health care facility that is available to rende..."
+    },
+    {
+      "id": "services_med_mission",
+      "label": "Med Mission",
+      "payload": "/direct_intent{\"intent\":\"med_mission\"}",
+      "subCategory": "University Clinic",
+      "description": "Bukidnon State University Medical Clinic Mission"
+    },
+    {
+      "id": "services_med_vision",
+      "label": "Med Vision",
+      "payload": "/direct_intent{\"intent\":\"med_vision\"}",
+      "subCategory": "University Clinic",
+      "description": "Bukidnon State University Medical Clinic Vision"
+    },
+    {
+      "id": "services_buksu_medical_dental_services",
+      "label": "BukSU Medical Dental Services",
+      "payload": "/direct_intent{\"intent\":\"buksu_medical_dental_services\"}",
+      "subCategory": "University Clinic",
+      "description": "Yes the University Health Services Unit offers free basic medical and dental consultations..."
+    },
+    {
+      "id": "services_dental_clinic_direct_ask",
+      "label": "Dental Clinic Direct Ask",
+      "payload": "/direct_intent{\"intent\":\"dental_clinic_direct_ask\"}",
+      "subCategory": "Dental Services",
+      "description": "Directly ask the dental clinic about that."
+    },
+    {
+      "id": "services_dental_services_menu",
+      "label": "Dental Services Menu",
+      "payload": "/direct_intent{\"intent\":\"dental_services_menu\"}",
+      "subCategory": "Dental Services",
+      "description": "Here are the dental services, and please remember to prepare for Photocopy of validated sc..."
+    },
+    {
+      "id": "services_request_dental_consult",
+      "label": "Request Dental Consult",
+      "payload": "/direct_intent{\"intent\":\"request_dental_consult\"}",
+      "subCategory": "Dental Services",
+      "description": "Here is the process of Request for dental Consultation."
+    },
+    {
+      "id": "services_requirement_for_dental_consultation",
+      "label": "Requirement For Dental Consultation",
+      "payload": "/direct_intent{\"intent\":\"requirement_for_dental_consultation\"}",
+      "subCategory": "Dental Services",
+      "description": "CHECKLIST OF REQUIREMENTS FOR DENTAL CONSULTATION"
+    },
+    {
+      "id": "services_request_dental_oral_examination",
+      "label": "Request Dental Oral Examination",
+      "payload": "/direct_intent{\"intent\":\"request_dental_oral_examination\"}",
+      "subCategory": "Dental Services",
+      "description": "Here is the process of Request for dental oral examination."
+    },
+    {
+      "id": "services_dental_oral_examination_requirement",
+      "label": "Dental Oral Examination Requirement",
+      "payload": "/direct_intent{\"intent\":\"dental_oral_examination_requirement\"}",
+      "subCategory": "Dental Services",
+      "description": "CHECKLIST OF REQUIREMENTS FOR DENTAL ORAL EXAMINATION"
+    },
+    {
+      "id": "services_request_tooth_extraction",
+      "label": "Request Tooth Extraction",
+      "payload": "/direct_intent{\"intent\":\"request_tooth_extraction\"}",
+      "subCategory": "Dental Services",
+      "description": "Ask the clinic for the cost first since I don't have data for the tooth extraction cost."
+    },
+    {
+      "id": "services_request_referral_dispensing_medicine",
+      "label": "Request Referral Dispensing Medicine",
+      "payload": "/direct_intent{\"intent\":\"request_referral_dispensing_medicine\"}",
+      "subCategory": "Dental Services",
+      "description": "Here is the process of Request for Referral/Dispensing of Medicine."
+    },
+    {
+      "id": "services_campus_dormitories",
+      "label": "Campus Dormitories Answer Topic",
+      "payload": "/direct_intent{\"intent\":\"campus_dormitories\"}",
+      "subCategory": "Campus Dormitories Topic Group",
+      "description": "BukSU provides on-campus dormitory facilities for students."
+    },
+    {
+      "id": "services_number_of_dormitories",
+      "label": "Number Of Dormitories",
+      "payload": "/direct_intent{\"intent\":\"number_of_dormitories\"}",
+      "subCategory": "Campus Dormitories Topic Group",
+      "description": "Bukidnon State University currently has 3 existing dormitories, 2 for males, which are the..."
+    },
+    {
+      "id": "services_dormitory_pros_cons",
+      "label": "Dormitory Pros Cons",
+      "payload": "/direct_intent{\"intent\":\"dormitory_pros_cons\"}",
+      "subCategory": "Campus Dormitories Topic Group",
+      "description": "Living in BukSU dormitories provides several benefits, including affordable housing, campu..."
+    },
+    {
+      "id": "services_buksu_dormitory_information",
+      "label": "BukSU Dormitory Information",
+      "payload": "/direct_intent{\"intent\":\"buksu_dormitory_information\"}",
+      "subCategory": "Campus Dormitories Topic Group",
+      "description": "BukSU has limited dormitory slots primarily for athletes and specific student groups."
+    },
+    {
+      "id": "services_male_dorm",
+      "label": "Male Dorm",
+      "payload": "/direct_intent{\"intent\":\"male_dorm\"}",
+      "subCategory": "Campus Dormitories Topic Group",
+      "description": "Yes, Bukidnon State University has a male dormitory known as Mahogany Dorm. It is located ..."
+    },
+    {
+      "id": "services_female_dorm",
+      "label": "Female Dorm",
+      "payload": "/direct_intent{\"intent\":\"female_dorm\"}",
+      "subCategory": "Campus Dormitories Topic Group",
+      "description": "Bukidnon State University has a female dormitory known as Rubia Dormitory. This dormitory ..."
+    },
+    {
+      "id": "services_library_borrowing_rules",
+      "label": "Library Borrowing Rules",
+      "payload": "/direct_intent{\"intent\":\"library_borrowing_rules\"}",
+      "subCategory": "Library Borrowing",
+      "description": "Students can borrow a maximum of five books per week from the BukSU Library."
+    },
+    {
+      "id": "services_library_borrow_books_process",
+      "label": "Library Borrow Books Process",
+      "payload": "/direct_intent{\"intent\":\"library_borrow_books_process\"}",
+      "subCategory": "Library Borrowing",
+      "description": "To borrow a book, bring your library ID card and ask any staff member for assistance. Also..."
+    },
+    {
+      "id": "services_library_return_books_process",
+      "label": "Library Return Books Process",
+      "payload": "/direct_intent{\"intent\":\"library_return_books_process\"}",
+      "subCategory": "Library Borrowing",
+      "description": "To return books, bring your library ID card and ask any staff member inside the library fo..."
+    },
+    {
+      "id": "services_library_late_return_penalty",
+      "label": "Library Late Return Penalty",
+      "payload": "/direct_intent{\"intent\":\"library_late_return_penalty\"}",
+      "subCategory": "Library Borrowing",
+      "description": "Students who fail to return borrowed materials on time will face fines."
+    },
+    {
+      "id": "services_library_available_books",
+      "label": "Library Available Books",
+      "payload": "/direct_intent{\"intent\":\"library_available_books\"}",
+      "subCategory": "Library Borrowing",
+      "description": "The library regularly updates its collection, so availability of books may change. For mor..."
+    },
+    {
+      "id": "services_access_buksu_library_resources",
+      "label": "Access BukSU Library Resources",
+      "payload": "/direct_intent{\"intent\":\"access_buksu_library_resources\"}",
+      "subCategory": "Library Borrowing",
+      "description": "Students can access BukSU library resources by presenting a valid Library ID."
+    },
+    {
+      "id": "services_library_hours",
+      "label": "Library Hours Answer Topic",
+      "payload": "/direct_intent{\"intent\":\"library_hours\"}",
+      "subCategory": "Library Hours Topic Group",
+      "description": "The University Library is generally open from Monday to Friday from 8 AM to 5 PM, though h..."
+    },
+    {
+      "id": "services_active_student_organizations_guidance",
+      "label": "Active Student Organizations Guidance",
+      "payload": "/direct_intent{\"intent\":\"active_student_organizations_guidance\"}",
+      "subCategory": "Student Organizations",
+      "description": "I do not have live data for which student clubs or organizations are active right now."
+    },
+    {
+      "id": "services_scholarship_application",
+      "label": "Scholarship Application Guidance",
+      "payload": "/direct_intent{\"intent\":\"scholarship_application\"}",
+      "subCategory": "Scholarships and Financial Grants Unit",
+      "description": "unfortunately I dont have data for how could you apply for scholarship, but we do have oth..."
+    },
+    {
+      "id": "services_contact_scholarship_unit",
+      "label": "Contact Scholarships and Financial Grants Unit",
+      "payload": "/direct_intent{\"intent\":\"contact_scholarship_unit\"}",
+      "subCategory": "Scholarships and Financial Grants Unit",
+      "description": "Need to get in touch with the Scholarships and Financial Grants Unit?"
+    }
+  ],
+  "university": [
+    {
+      "id": "university_Buksu_vice_pres",
+      "label": "BukSU Vice Presidents",
+      "payload": "/direct_intent{\"intent\":\"Buksu_vice_pres\"}",
+      "subCategory": "University Administrators",
+      "description": "As of 2026, Bukidnon State University (BukSU) has a team of vice presidents specializing i..."
+    },
+    {
+      "id": "university_vicepres_academic_affairs",
+      "label": "Vice President for Academic Affairs",
+      "payload": "/direct_intent{\"intent\":\"vicepres_academic_affairs\"}",
+      "subCategory": "University Administrators",
+      "description": "The Vice President for Academic Affairs: Dr. Hazel Jean M. Abejuela."
+    },
+    {
+      "id": "university_vicepres_research_extension_innovations",
+      "label": "Vice President for Research, Extension, and Innovations",
+      "payload": "/direct_intent{\"intent\":\"vicepres_research_extension_innovations\"}",
+      "subCategory": "University Administrators",
+      "description": "The Vice President for Research, Extension and Innovations: Dr. Carina Joane V. Barroso"
+    },
+    {
+      "id": "university_vicepres_administration_finance",
+      "label": "Vice President for Administration and Finance",
+      "payload": "/direct_intent{\"intent\":\"vicepres_administration_finance\"}",
+      "subCategory": "University Administrators",
+      "description": "Vice President for Administration and Finance: Mr. Dante S. Victoria, Jr."
+    },
+    {
+      "id": "university_vicepres_culture_arts_sports_student_services",
+      "label": "Vice President for Culture, Arts, Sports, and Student Services",
+      "payload": "/direct_intent{\"intent\":\"vicepres_culture_arts_sports_student_services\"}",
+      "subCategory": "University Administrators",
+      "description": "Vice President for Culture, Arts, Sports and Student Services: Dr. Lincoln V. Tan"
+    },
+    {
+      "id": "university_buksu_secretary",
+      "label": "BukSU Board Secretary",
+      "payload": "/direct_intent{\"intent\":\"buksu_secretary\"}",
+      "subCategory": "University Administrators",
+      "description": "Mr. Dante S. Victoria, Jr. serves as the Board Secretary and concurrently the Vice Preside..."
+    },
+    {
+      "id": "university_buksu_admission_contact",
+      "label": "BukSU Admission Contact",
+      "payload": "/direct_intent{\"intent\":\"buksu_admission_contact\"}",
+      "subCategory": "Admission Contacts",
+      "description": "You can contact the Admission and Testing Unit through their official Facebook page BukSU ..."
+    },
+    {
+      "id": "university_admission_contact_help",
+      "label": "Admission Contact Help",
+      "payload": "/direct_intent{\"intent\":\"admission_contact_help\"}",
+      "subCategory": "Admission Contacts",
+      "description": "You can contact the official Bukidnon State University Admission and Testing Unit for more..."
+    },
+    {
+      "id": "university_contact_atu",
+      "label": "Contact Atu",
+      "payload": "/direct_intent{\"intent\":\"contact_atu\"}",
+      "subCategory": "Admission Contacts",
+      "description": "How can I contact the BukSU Admission and Testing Unit (ATU)?"
+    },
+    {
+      "id": "university_contact_registrar",
+      "label": "Contact Registrar",
+      "payload": "/direct_intent{\"intent\":\"contact_registrar\"}",
+      "subCategory": "Admission Contacts",
+      "description": "Looking to contact the University Registrar Office?"
+    },
+    {
+      "id": "university_contact_scholarship_unit",
+      "label": "Contact Scholarship Unit",
+      "payload": "/direct_intent{\"intent\":\"contact_scholarship_unit\"}",
+      "subCategory": "Admission Contacts",
+      "description": "Need to get in touch with the Scholarships and Financial Grants Unit?"
+    },
+    {
+      "id": "university_buksu_admission_facebook_page",
+      "label": "BukSU Admission Facebook Page",
+      "payload": "/direct_intent{\"intent\":\"buksu_admission_facebook_page\"}",
+      "subCategory": "Admission Contacts",
+      "description": "For official updates announcements and schedules regarding admissions you can follow the B..."
+    },
+    {
+      "id": "university_all_office_schedule",
+      "label": "All Office Schedule",
+      "payload": "/direct_intent{\"intent\":\"all_office_schedule\"}",
+      "subCategory": "Admission Contacts",
+      "description": "What are the office hours of Bukidnon State University?"
+    },
+    {
+      "id": "university_deans_of_colleges_list",
+      "label": "Deans of Colleges List",
+      "payload": "/direct_intent{\"intent\":\"deans_of_colleges_list\"}",
+      "subCategory": "College Deans",
+      "description": "Here is the list of Deans across all Colleges at Bukidnon State University (BukSU):\n\n\u2022 Col..."
+    },
+    {
+      "id": "university_Dean_0f_COT",
+      "label": "Dean of COT",
+      "payload": "/direct_intent{\"intent\":\"Dean_0f_COT\"}",
+      "subCategory": "College Deans",
+      "description": "The Dean of the College of Technologies (COT) at Bukidnon State University is Dr. Marilou ..."
+    },
+    {
+      "id": "university_Dean_0f_COB",
+      "label": "Dean of COB",
+      "payload": "/direct_intent{\"intent\":\"Dean_0f_COB\"}",
+      "subCategory": "College Deans",
+      "description": "The Dean of the College of Business (COB) at Bukidnon State University is Dr. Donna G. Til..."
+    },
+    {
+      "id": "university_Dean_0f_CAS",
+      "label": "Dean of CAS",
+      "payload": "/direct_intent{\"intent\":\"Dean_0f_CAS\"}",
+      "subCategory": "College Deans",
+      "description": "The Dean of the College of Arts and Sciences (CAS) at Bukidnon State University is Dr. Mar..."
+    },
+    {
+      "id": "university_Dean_0f_CPAG",
+      "label": "Dean of CPAG",
+      "payload": "/direct_intent{\"intent\":\"Dean_0f_CPAG\"}",
+      "subCategory": "College Deans",
+      "description": "The Dean of the College of Public Administration and Governance (CPAG) at Bukidnon State U..."
+    },
+    {
+      "id": "university_Dean_0f_CON",
+      "label": "Dean of CON",
+      "payload": "/direct_intent{\"intent\":\"Dean_0f_CON\"}",
+      "subCategory": "College Deans",
+      "description": "The Dean of the College of Nursing (CON) at Bukidnon State University is Dr. Ma. Algerica ..."
+    },
+    {
+      "id": "university_Dean_0f_COE",
+      "label": "Dean of COE",
+      "payload": "/direct_intent{\"intent\":\"Dean_0f_COE\"}",
+      "subCategory": "College Deans",
+      "description": "The Dean of the College of Education (COE) at Bukidnon State University is Dr. Ann Sheila ..."
+    },
+    {
+      "id": "university_Dean_0f_LAW",
+      "label": "Dean of Law",
+      "payload": "/direct_intent{\"intent\":\"Dean_0f_LAW\"}",
+      "subCategory": "College Deans",
+      "description": "The Dean of the College of Law (COL) at Bukidnon State University is Atty. Ophelia Pilar E..."
+    },
+    {
+      "id": "university_Head_of_BSIT",
+      "label": "Head of BSIT",
+      "payload": "/direct_intent{\"intent\":\"Head_of_BSIT\"}",
+      "subCategory": "Department Heads",
+      "description": "The Department Head of the Information Technology Department / BSIT program under the Coll..."
+    },
+    {
+      "id": "university_Head_of_COT",
+      "label": "Department Heads of COT",
+      "payload": "/direct_intent{\"intent\":\"Head_of_COT\"}",
+      "subCategory": "Department Heads",
+      "description": "The College of Technologies (COT) at Bukidnon State University is organized into four prim..."
+    },
+    {
+      "id": "university_Head_of_COB",
+      "label": "Department Heads of COB",
+      "payload": "/direct_intent{\"intent\":\"Head_of_COB\"}",
+      "subCategory": "Department Heads",
+      "description": "The College of Business (COB) at Bukidnon State University is organized into several depar..."
+    },
+    {
+      "id": "university_Head_of_CAS",
+      "label": "Department Heads of CAS",
+      "payload": "/direct_intent{\"intent\":\"Head_of_CAS\"}",
+      "subCategory": "Department Heads",
+      "description": "The College of Arts and Sciences (CAS) is divided into several specific departments, each ..."
+    },
+    {
+      "id": "university_Head_of_CPAG",
+      "label": "Department Heads of CPAG",
+      "payload": "/direct_intent{\"intent\":\"Head_of_CPAG\"}",
+      "subCategory": "Department Heads",
+      "description": "The leadership of the College of Public Administration and Governance (CPAG) at Bukidnon S..."
+    },
+    {
+      "id": "university_Head_of_CON",
+      "label": "Department Heads of CON",
+      "payload": "/direct_intent{\"intent\":\"Head_of_CON\"}",
+      "subCategory": "Department Heads",
+      "description": "The Department Head (or Chairperson) of the College of Nursing (CON) at Bukidnon State Uni..."
+    },
+    {
+      "id": "university_Head_of_COE",
+      "label": "Department Heads of COE",
+      "payload": "/direct_intent{\"intent\":\"Head_of_COE\"}",
+      "subCategory": "Department Heads",
+      "description": "The College of Education (COE) at Bukidnon State University is structured into several dep..."
+    },
+    {
+      "id": "university_Head_of_LAW",
+      "label": "Leadership of Law",
+      "payload": "/direct_intent{\"intent\":\"Head_of_LAW\"}",
+      "subCategory": "Department Heads",
+      "description": "The College of Law (COL) at Bukidnon State University is primarily led by the Dean, and un..."
+    },
+    {
+      "id": "university_buksu_academic_colleges",
+      "label": "BukSU Academic Colleges",
+      "payload": "/direct_intent{\"intent\":\"buksu_academic_colleges\"}",
+      "subCategory": "Academic Colleges",
+      "description": "BukSU is composed of several colleges including the:"
+    },
+    {
+      "id": "university_course_offer_CAS",
+      "label": "Course Offer CAS",
+      "payload": "/direct_intent{\"intent\":\"course_offer_CAS\"}",
+      "subCategory": "College CAS",
+      "description": "The College of Arts and Sciences (CAS) offers a variety of courses that you can choose fro..."
+    },
+    {
+      "id": "university_course_offer_COB",
+      "label": "Course Offer COB",
+      "payload": "/direct_intent{\"intent\":\"course_offer_COB\"}",
+      "subCategory": "College COB",
+      "description": "The College of Business (COB) offers a variety of courses that you can choose from. Here i..."
+    },
+    {
+      "id": "university_course_offer_COT",
+      "label": "Course Offer COT",
+      "payload": "/direct_intent{\"intent\":\"course_offer_COT\"}",
+      "subCategory": "College COT",
+      "description": "The College of Technology (COT) offers a variety of courses that you can choose from. Here..."
+    },
+    {
+      "id": "university_course_offer_CON",
+      "label": "Course Offer CON",
+      "payload": "/direct_intent{\"intent\":\"course_offer_CON\"}",
+      "subCategory": "College CON",
+      "description": "The College of Nursing (CON) offers the Bachelor of Science in Nursing (BSN)."
+    },
+    {
+      "id": "university_course_offer_COE",
+      "label": "Course Offer COE",
+      "payload": "/direct_intent{\"intent\":\"course_offer_COE\"}",
+      "subCategory": "College COE",
+      "description": "The College of Education (COE) offers a variety of courses that you can choose from, but i..."
+    },
+    {
+      "id": "university_course_offer_LAW",
+      "label": "Course Offer Law",
+      "payload": "/direct_intent{\"intent\":\"course_offer_LAW\"}",
+      "subCategory": "College Law",
+      "description": "The Law program offers only one course, which is Juris Doctor. You must already be a degre..."
+    },
+    {
+      "id": "university_course_offer_COA",
+      "label": "Course Offer COA",
+      "payload": "/direct_intent{\"intent\":\"course_offer_COA\"}",
+      "subCategory": "College COA CPAG",
+      "description": "The College of Administration offer only one course which is the:"
+    },
+    {
+      "id": "university_about_buksu",
+      "label": "About BukSU",
+      "payload": "/direct_intent{\"intent\":\"about_buksu\"}",
+      "subCategory": "University Profile",
+      "description": "Bukidnon State University is a state university located in Malaybalay City, Bukidnon, Phil..."
+    },
+    {
+      "id": "university_meaning_of_buksu",
+      "label": "Meaning of BukSU",
+      "payload": "/direct_intent{\"intent\":\"meaning_of_buksu\"}",
+      "subCategory": "University Profile",
+      "description": "BukSU is the commonly used abbreviation for Bukidnon State University."
+    },
+    {
+      "id": "university_meaning_of_tba",
+      "label": "Meaning of TBA",
+      "payload": "/direct_intent{\"intent\":\"meaning_of_tba\"}",
+      "subCategory": "University Profile",
+      "description": "TBA means To Be Announced."
+    },
+    {
+      "id": "university_bukus_location",
+      "label": "BukSU Main Campus Location",
+      "payload": "/direct_intent{\"intent\":\"bukus_location\"}",
+      "subCategory": "University Profile",
+      "description": "Bukidnon State University (BukSU) Main Campus is located at Fortich St., Malaybalay City, ..."
+    },
+    {
+      "id": "university_buksu_contact_number",
+      "label": "BukSU Contact Number",
+      "payload": "/direct_intent{\"intent\":\"buksu_contact_number\"}",
+      "subCategory": "University Profile",
+      "description": "Bukidnon State University is located at Fortich St., Malaybalay City, Bukidnon."
+    },
+    {
+      "id": "university_buksu_university_calendar",
+      "label": "BukSU University Calendar",
+      "payload": "/direct_intent{\"intent\":\"buksu_university_calendar\"}",
+      "subCategory": "University Profile",
+      "description": "For the official university calendar, please check the BukSU University Calendar page."
+    },
+    {
+      "id": "university_buksu_foundation_day",
+      "label": "BukSU Foundation Day",
+      "payload": "/direct_intent{\"intent\":\"buksu_foundation_day\"}",
+      "subCategory": "University Profile",
+      "description": "BukSU celebrates its founding anniversary around June. In 2026, the university announced i..."
+    },
+    {
+      "id": "university_campus_weekend_visitors",
+      "label": "Campus Weekend Visitors",
+      "payload": "/direct_intent{\"intent\":\"campus_weekend_visitors\"}",
+      "subCategory": "University Profile",
+      "description": "Most BukSU offices operate on weekdays. If you plan to visit during weekends, please check..."
+    },
+    {
+      "id": "university_Buksu_worth_it",
+      "label": "BukSU Worth It",
+      "payload": "/direct_intent{\"intent\":\"Buksu_worth_it\"}",
+      "subCategory": "University Profile",
+      "description": "Yes, if the course you want is available at Bukidnon State University. If not, you may con..."
+    },
+    {
+      "id": "university_buksu_study_place",
+      "label": "BukSU Study Place",
+      "payload": "/direct_intent{\"intent\":\"buksu_study_place\"}",
+      "subCategory": "University Profile",
+      "description": "The only place I can recommend for studying is the library, as it offers a lot of books yo..."
+    },
+    {
+      "id": "university_Campus_tour",
+      "label": "Campus Tour",
+      "payload": "/direct_intent{\"intent\":\"Campus_tour\"}",
+      "subCategory": "University Profile",
+      "description": "Yes, usually the SBO of your specific department conducts campus tours to help you familia..."
+    },
+    {
+      "id": "university_buksu_mission",
+      "label": "BukSU Mission",
+      "payload": "/direct_intent{\"intent\":\"buksu_mission\"}",
+      "subCategory": "University Identity",
+      "description": "The mission of Bukidnon State University is to develop competitive professionals who are c..."
+    },
+    {
+      "id": "university_buksu_vision",
+      "label": "BukSU Vision",
+      "payload": "/direct_intent{\"intent\":\"buksu_vision\"}",
+      "subCategory": "University Identity",
+      "description": "The vision of Bukidnon State University is to become a premier institution that produces i..."
+    },
+    {
+      "id": "university_buksu_core_values",
+      "label": "BukSU Core Values",
+      "payload": "/direct_intent{\"intent\":\"buksu_core_values\"}",
+      "subCategory": "University Identity",
+      "description": "The core values of Bukidnon State University are Excellence, Professionalism, Integrity, C..."
+    },
+    {
+      "id": "university_buksu_seal_significance",
+      "label": "BukSU Seal Significance",
+      "payload": "/direct_intent{\"intent\":\"buksu_seal_significance\"}",
+      "subCategory": "University Identity",
+      "description": "The BukSU Seal is the \u201csacred\u201d and official emblem of Bukidnon State University, used prim..."
+    },
+    {
+      "id": "university_buksu_hymn_lyrics",
+      "label": "BukSU Hymn Lyrics",
+      "payload": "/direct_intent{\"intent\":\"buksu_hymn_lyrics\"}",
+      "subCategory": "University Identity",
+      "description": "Unfortunately I cannot display the full lyrics of the BukSU Hymn due to larg amount of tex..."
+    },
+    {
+      "id": "university_Whats_buksu_gazette",
+      "label": "Whats BukSU Gazette",
+      "payload": "/direct_intent{\"intent\":\"Whats_buksu_gazette\"}",
+      "subCategory": "University Identity",
+      "description": "The BukSU Gazette is the official repository of the University\u2019s public documents, includi..."
+    },
+    {
+      "id": "university_buksu_history_background",
+      "label": "BukSU History Background",
+      "payload": "/direct_intent{\"intent\":\"buksu_history_background\"}",
+      "subCategory": "University History",
+      "description": "Bukidnon State University started in 1924 as the Bukidnon Farm School."
+    },
+    {
+      "id": "university_founding",
+      "label": "Founding",
+      "payload": "/direct_intent{\"intent\":\"founding\"}",
+      "subCategory": "University History",
+      "description": "Bukidnon State University (BukSU) was founded in 1924 and celebrated its 101st Founding An..."
+    },
+    {
+      "id": "university_buksu_become_university",
+      "label": "BukSU Become University",
+      "payload": "/direct_intent{\"intent\":\"buksu_become_university\"}",
+      "subCategory": "University History",
+      "description": "Before becoming a university, BukSU was known as Bukidnon State College (BSC). It official..."
+    },
+    {
+      "id": "university_Pres_thetime_university",
+      "label": "Pres Thetime University",
+      "payload": "/direct_intent{\"intent\":\"Pres_thetime_university\"}",
+      "subCategory": "University History",
+      "description": "When BukSU became a university in 2007, the president was Dr. Victor M. Barroso. BukSU\u2019s o..."
+    },
+    {
+      "id": "university_Buksu_age",
+      "label": "BukSU Age",
+      "payload": "/direct_intent{\"intent\":\"Buksu_age\"}",
+      "subCategory": "University History",
+      "description": "Bukidnon State University (BukSU) is 102 years old as of 2026. It was founded in 1924, and..."
+    },
+    {
+      "id": "university_buksu_presidents_list",
+      "label": "BukSU Presidents List",
+      "payload": "/direct_intent{\"intent\":\"buksu_presidents_list\"}",
+      "subCategory": "University History",
+      "description": "Here is the list of Bukidnon State University presidents and leaders over the years:"
+    },
+    {
+      "id": "university_current_rank",
+      "label": "Current Rank",
+      "payload": "/direct_intent{\"intent\":\"current_rank\"}",
+      "subCategory": "University Ranking",
+      "description": "BukSU does not have just one single official rank right now, it depends on which ranking s..."
+    },
+    {
+      "id": "university_buksu_president",
+      "label": "BukSU President",
+      "payload": "/direct_intent{\"intent\":\"buksu_president\"}",
+      "subCategory": "University Leadership",
+      "description": "The current president of Bukidnon State University is Dr. Joy M Mirasol."
+    },
+    {
+      "id": "university_student_handbook_access",
+      "label": "Student Handbook",
+      "payload": "/direct_intent{\"intent\":\"student_handbook_access\"}",
+      "subCategory": "Student Handbook",
+      "description": "The University Student Handbook is distributed by the OVPCASSS (Office of the Vice Preside..."
+    }
+  ],
+  "location": [
+    {
+      "id": "loc_atm",
+      "label": "ATM",
+      "payload": "Where is ATM?",
+      "subCategory": "Facility",
+      "description": "Yes, there is an ATM near BukSU. It is located outside the campus but still included ..."
+    },
+    {
+      "id": "loc_avc",
+      "label": "AVC",
+      "payload": "Where is AVC?",
+      "subCategory": "CPAG Building",
+      "description": "The Audio Visual Center (AVC) is located on the second floor of the CPAG Building, di..."
+    },
+    {
+      "id": "loc_accountancy_faculty_department_room",
+      "label": "Accountancy Faculty Department Room",
+      "payload": "Where is Accountancy Faculty Department Room?",
+      "subCategory": "COB Building",
+      "description": "Accountancy Faculty Department Room is located on the ground floor of the COB buildin..."
+    },
+    {
+      "id": "loc_admission_office",
+      "label": "Admission Office",
+      "payload": "Where is Admission Office?",
+      "subCategory": "CPAG Building",
+      "description": "The Admission and Testing Office is located on the first floor of the CPAG Building, ..."
+    },
+    {
+      "id": "loc_alumni_building",
+      "label": "Alumni Building",
+      "payload": "Where is Alumni Building?",
+      "subCategory": "Campus Building & Area",
+      "description": "The Alumni building is located right beside the library building. Please use the map ..."
+    },
+    {
+      "id": "loc_auditorium",
+      "label": "Auditorium",
+      "payload": "Where is Auditorium?",
+      "subCategory": "CPAG Building",
+      "description": "You can find it located directly in front of the Registrar\u2019s Office on the first floo..."
+    },
+    {
+      "id": "loc_automotive_faculty_office",
+      "label": "Automotive Faculty Office",
+      "payload": "Where is Automotive Faculty Office?",
+      "subCategory": "Automotive Building",
+      "description": "The Automotive Faculty Office is located to the left of the Rubia Ladies Dormitory. I..."
+    },
+    {
+      "id": "loc_b_1_01",
+      "label": "B-1-01",
+      "payload": "Where is B-1-01?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-01 accreditation is located on the College of Business building on the g..."
+    },
+    {
+      "id": "loc_b_1_02",
+      "label": "B-1-02",
+      "payload": "Where is B-1-02?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-02 faculty Accountancy department is located on the College of Business ..."
+    },
+    {
+      "id": "loc_b_1_03",
+      "label": "B-1-03",
+      "payload": "Where is B-1-03?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-03 faculty Accountancy department is located on the College of Business ..."
+    },
+    {
+      "id": "loc_b_1_04",
+      "label": "B-1-04",
+      "payload": "Where is B-1-04?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-04 faculty Business Ad is located on the College of Business building on..."
+    },
+    {
+      "id": "loc_b_1_05",
+      "label": "B-1-05",
+      "payload": "Where is B-1-05?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-05 faculty business ad is located on the College of Business building on..."
+    },
+    {
+      "id": "loc_b_1_06",
+      "label": "B-1-06",
+      "payload": "Where is B-1-06?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-06 faculty HM department is located on the College of Business building ..."
+    },
+    {
+      "id": "loc_b_1_08",
+      "label": "B-1-08",
+      "payload": "Where is B-1-08?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-08 Kilid sa HM faculty is located on the College of Business building on..."
+    },
+    {
+      "id": "loc_b_1_09",
+      "label": "B-1-09",
+      "payload": "Where is B-1-09?",
+      "subCategory": "COB Building",
+      "description": "The room B-1-09 Kilid ni b8 is located on the College of Business building on the gro..."
+    },
+    {
+      "id": "loc_b_2_01",
+      "label": "B-2-01",
+      "payload": "Where is B-2-01?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-01 Under construction is located on the 2nd floor of the COB building."
+    },
+    {
+      "id": "loc_b_2_02",
+      "label": "B-2-02",
+      "payload": "Where is B-2-02?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-02 is located on the 2nd floor of the COB building."
+    },
+    {
+      "id": "loc_b_2_03",
+      "label": "B-2-03",
+      "payload": "Where is B-2-03?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-03 is located on the 2nd floor of the COB building."
+    },
+    {
+      "id": "loc_b_2_04",
+      "label": "B-2-04",
+      "payload": "Where is B-2-04?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-04 is located on the 2nd floor of the COB building."
+    },
+    {
+      "id": "loc_b_2_05",
+      "label": "B-2-05",
+      "payload": "Where is B-2-05?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-05 is located on the 2nd floor of the COB building."
+    },
+    {
+      "id": "loc_b_2_06",
+      "label": "B-2-06",
+      "payload": "Where is B-2-06?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-06 is located on the College of Business building on the 2nd floor."
+    },
+    {
+      "id": "loc_b_2_07",
+      "label": "B-2-07",
+      "payload": "Where is B-2-07?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-07 is located on the College of Business building on the 2nd floor."
+    },
+    {
+      "id": "loc_b_2_10",
+      "label": "B-2-10",
+      "payload": "Where is B-2-10?",
+      "subCategory": "COB Building",
+      "description": "The room B-2-10 Science laboratory stock room is located on the College of Business b..."
+    },
+    {
+      "id": "loc_b_3_01",
+      "label": "B-3-01",
+      "payload": "Where is B-3-01?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-01 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_3_02",
+      "label": "B-3-02",
+      "payload": "Where is B-3-02?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-02 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_3_03",
+      "label": "B-3-03",
+      "payload": "Where is B-3-03?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-03 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_3_04",
+      "label": "B-3-04",
+      "payload": "Where is B-3-04?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-04 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_3_05",
+      "label": "B-3-05",
+      "payload": "Where is B-3-05?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-05 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_3_06",
+      "label": "B-3-06",
+      "payload": "Where is B-3-06?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-06 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_3_07",
+      "label": "B-3-07",
+      "payload": "Where is B-3-07?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-07 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_3_09",
+      "label": "B-3-09",
+      "payload": "Where is B-3-09?",
+      "subCategory": "COB Building",
+      "description": "The room B-3-09 is located on the 3rd floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_01",
+      "label": "B-4-01",
+      "payload": "Where is B-4-01?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-01 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_02",
+      "label": "B-4-02",
+      "payload": "Where is B-4-02?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-02 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_03",
+      "label": "B-4-03",
+      "payload": "Where is B-4-03?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-03 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_04",
+      "label": "B-4-04",
+      "payload": "Where is B-4-04?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-04 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_05",
+      "label": "B-4-05",
+      "payload": "Where is B-4-05?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-05 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_06",
+      "label": "B-4-06",
+      "payload": "Where is B-4-06?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-06 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_07",
+      "label": "B-4-07",
+      "payload": "Where is B-4-07?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-07 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_08",
+      "label": "B-4-08",
+      "payload": "Where is B-4-08?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-08 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_b_4_09",
+      "label": "B-4-09",
+      "payload": "Where is B-4-09?",
+      "subCategory": "COB Building",
+      "description": "The room B-4-09 is located on the 4th floor of the COB building."
+    },
+    {
+      "id": "loc_bsn_faculty_room",
+      "label": "BSN Faculty Room",
+      "payload": "Where is BSN Faculty Room?",
+      "subCategory": "CON Building",
+      "description": "The BSN Faculty Room is located in the Old College of Nursing Building on the ground ..."
+    },
+    {
+      "id": "loc_buksu_president_office",
+      "label": "BUKSU President Office",
+      "payload": "Where is BUKSU President Office?",
+      "subCategory": "Administrative Building",
+      "description": "The BukSU President\u2019s Office is located near the entrance of the university, next to ..."
+    },
+    {
+      "id": "loc_buksu_clinic",
+      "label": "Buksu Clinic",
+      "payload": "Where is Buksu Clinic?",
+      "subCategory": "Health & Services Building",
+      "description": "Which clinic are you referring to: the medical clinic or the dental clinic? Since you..."
+    },
+    {
+      "id": "loc_business_administration_faculty_roo",
+      "label": "Business Administration Faculty Room",
+      "payload": "Where is Business Administration Faculty Room?",
+      "subCategory": "COB Building",
+      "description": "Business administration faculty room is located on the ground floor of the COB buildi..."
+    },
+    {
+      "id": "loc_business_affairs_office",
+      "label": "Business Affairs Office",
+      "payload": "Where is Business Affairs Office?",
+      "subCategory": "High School Laboratory Building",
+      "description": "Business Affairs Office is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_c2_2_01",
+      "label": "C2-2-01",
+      "payload": "Where is C2-2-01?",
+      "subCategory": "Old COT Building",
+      "description": "You can find that room on the second floor of the Old COT building."
+    },
+    {
+      "id": "loc_c2_2_02",
+      "label": "C2-2-02",
+      "payload": "Where is C2-2-02?",
+      "subCategory": "Old COT Building",
+      "description": "You can find that room on the second floor of the Old COT building, located directly ..."
+    },
+    {
+      "id": "loc_c2_2_03",
+      "label": "C2-2-03",
+      "payload": "Where is C2-2-03?",
+      "subCategory": "Old COT Building",
+      "description": "You can find that room on the second floor of the Old COT building, located directly ..."
+    },
+    {
+      "id": "loc_c2_2_04",
+      "label": "C2-2-04",
+      "payload": "Where is C2-2-04?",
+      "subCategory": "Old COT Building",
+      "description": "You can find that room on the second floor of the Old COT building, located directly ..."
+    },
+    {
+      "id": "loc_cao_admin",
+      "label": "CAO-ADMIN",
+      "payload": "Where is CAO-ADMIN?",
+      "subCategory": "Administrative Building",
+      "description": "Office of the Chief Administrative Officer For Administrative Division (CAO-ADMIN) is..."
+    },
+    {
+      "id": "loc_cares",
+      "label": "CARES",
+      "payload": "Where is CARES?",
+      "subCategory": "CPAG Building",
+      "description": "The Center for Advocacy and Well-Being Services (CARES) is located on the ground floo..."
+    },
+    {
+      "id": "loc_cas_buildings",
+      "label": "CAS Buildings",
+      "payload": "Where is CAS Buildings?",
+      "subCategory": "CAS Building",
+      "description": "There are multiple CAS buildings, and I will help you locate them. The New CAS buildi..."
+    },
+    {
+      "id": "loc_cas_deans_office",
+      "label": "CAS Deans Office",
+      "payload": "Where is CAS Deans Office?",
+      "subCategory": "CAS Building",
+      "description": "The CAS Dean's Office is located on the ground floor of the Pink Building. It is clea..."
+    },
+    {
+      "id": "loc_cas_sbo_office",
+      "label": "CAS SBO Office",
+      "payload": "Where is CAS SBO Office?",
+      "subCategory": "CAS Building",
+      "description": "CAS Student Body Organization (SBO) office located on the pink building ground floor."
+    },
+    {
+      "id": "loc_coa_sbo_office__no_data_",
+      "label": "COA SBO Office (no data)",
+      "payload": "Where is COA SBO Office (no data)?",
+      "subCategory": "CPAG Building",
+      "description": "Sorry to inform you that I don\u2019t have any information about the COA SBO office, but y..."
+    },
+    {
+      "id": "loc_cob_4th_floor_students_organization",
+      "label": "COB 4th Floor Students Organization",
+      "payload": "Where is COB 4th Floor Students Organization?",
+      "subCategory": "COB Building",
+      "description": "The COB 4th floor students organization is located on the College of Business buildin..."
+    },
+    {
+      "id": "loc_cob_accreditation_room",
+      "label": "COB Accreditation Room",
+      "payload": "Where is COB Accreditation Room?",
+      "subCategory": "COB Building",
+      "description": "COB Accreditation Room is located on the ground floor of the COB Building. It is the ..."
+    },
+    {
+      "id": "loc_cob_faculty_room",
+      "label": "COB Faculty Room",
+      "payload": "Where is COB Faculty Room?",
+      "subCategory": "COB Building",
+      "description": "The COB Faculty Room is located in the College of Business Building on the second flo..."
+    },
+    {
+      "id": "loc_cob_sbo_office",
+      "label": "COB SBO Office",
+      "payload": "Where is COB SBO Office?",
+      "subCategory": "COB Building",
+      "description": "COB Student Body Organization (SBO) Office can be found on the mid 4th and 3rd floor ..."
+    },
+    {
+      "id": "loc_con_dean_s_office",
+      "label": "CON Dean's Office",
+      "payload": "Where is CON Dean's Office?",
+      "subCategory": "Health & Services Building",
+      "description": "College of Nursing (CON) is Dean's officelocated on the Health and Services Building ..."
+    },
+    {
+      "id": "loc_con_sbo_office__no_data_",
+      "label": "CON SBO Office (no data)",
+      "payload": "Where is CON SBO Office (no data)?",
+      "subCategory": "CON Building",
+      "description": "Sorry to inform you that I don\u2019t have data for that, but you can ask any staff or stu..."
+    },
+    {
+      "id": "loc_cot_buildings",
+      "label": "COT Buildings",
+      "payload": "Where is COT Buildings?",
+      "subCategory": "New COT Building",
+      "description": "There are actually two buildings for the College of Technology (COT). The new one is ..."
+    },
+    {
+      "id": "loc_cot_dean_s_office",
+      "label": "COT Dean's Office",
+      "payload": "Where is COT Dean's Office?",
+      "subCategory": "New COT Building",
+      "description": "The COT Dean's office located on the new COT building 3rd floor you can easily identi..."
+    },
+    {
+      "id": "loc_cot_faculty_room",
+      "label": "COT Faculty Room",
+      "payload": "Where is COT Faculty Room?",
+      "subCategory": "New COT Building",
+      "description": "The COT Faculty Room is located in the New College of Technologies Building on the th..."
+    },
+    {
+      "id": "loc_cot_sbo_office",
+      "label": "COT SBO Office",
+      "payload": "Where is COT SBO Office?",
+      "subCategory": "Old COT Building",
+      "description": "COT Student Body Organization (SBO) office located on the Old COT building Ground flo..."
+    },
+    {
+      "id": "loc_cpag_2_01",
+      "label": "CPAG 2-01",
+      "payload": "Where is CPAG 2-01?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 2-01 is located on the 2nd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_2_02",
+      "label": "CPAG 2-02",
+      "payload": "Where is CPAG 2-02?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 2-02 is located on the 2nd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_2_03",
+      "label": "CPAG 2-03",
+      "payload": "Where is CPAG 2-03?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 2-03 is located on the 2nd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_2_04",
+      "label": "CPAG 2-04",
+      "payload": "Where is CPAG 2-04?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 2-04 is located on the 2nd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_2_05",
+      "label": "CPAG 2-05",
+      "payload": "Where is CPAG 2-05?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 2-05 is located on the 2nd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_3_06",
+      "label": "CPAG 3-06",
+      "payload": "Where is CPAG 3-06?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 3-06 is located on the 3rd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_3_07",
+      "label": "CPAG 3-07",
+      "payload": "Where is CPAG 3-07?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 3-07 is located on the 3rd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_3_08",
+      "label": "CPAG 3-08",
+      "payload": "Where is CPAG 3-08?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 3-08 is located on the 3rd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_3_09",
+      "label": "CPAG 3-09",
+      "payload": "Where is CPAG 3-09?",
+      "subCategory": "CPAG Building",
+      "description": "Room CPAG 3-09 is located on the 3rd floor of the CPAG building. For your convenience..."
+    },
+    {
+      "id": "loc_cpag_deans_office",
+      "label": "CPAG Deans Office",
+      "payload": "Where is CPAG Deans Office?",
+      "subCategory": "CPAG Building",
+      "description": "The CPAG Dean\u2019s Office is located on the first floor of the CPAG Building, directly a..."
+    },
+    {
+      "id": "loc_cpag_faculty_room",
+      "label": "CPAG Faculty Room",
+      "payload": "Where is CPAG Faculty Room?",
+      "subCategory": "CPAG Building",
+      "description": "The CPAG Faculty Room is located on the second floor of the CPAG Building. A map is p..."
+    },
+    {
+      "id": "loc_cpag_guidance_office",
+      "label": "CPAG Guidance Office",
+      "payload": "Where is CPAG Guidance Office?",
+      "subCategory": "CPAG Building",
+      "description": "The CPAG Guidance Office is located on the 3rd floor of the CPAG building. For your c..."
+    },
+    {
+      "id": "loc_cpag_building",
+      "label": "CPAG building",
+      "payload": "Where is CPAG building?",
+      "subCategory": "CPAG Building",
+      "description": "The CPAG building is located next to the Finance Building, near the university exit p..."
+    },
+    {
+      "id": "loc_cafeteria",
+      "label": "Cafeteria",
+      "payload": "Where is Cafeteria?",
+      "subCategory": "Dorm",
+      "description": "There is a new cafeteria in campus, this is position infront of the New Cas Building...."
+    },
+    {
+      "id": "loc_canteen",
+      "label": "Canteen",
+      "payload": "Where is Canteen?",
+      "subCategory": "CPAG Building",
+      "description": "The canteen is located in the basement of the CPAG Building, directly below the CPAG ..."
+    },
+    {
+      "id": "loc_car_parking_area",
+      "label": "Car Parking Area",
+      "payload": "Where is Car Parking Area?",
+      "subCategory": "Parking Areas",
+      "description": "There are several parking areas available for cars, and I will help you identify pote..."
+    },
+    {
+      "id": "loc_center_for_innovative_teaching_and_",
+      "label": "Center for Innovative Teaching and Learning (CITL)",
+      "payload": "Where is Center for Innovative Teaching and Learning (CITL)?",
+      "subCategory": "Office",
+      "description": "The CITL can be found beside the Health and Services Building, look on the map"
+    },
+    {
+      "id": "loc_client_care_center",
+      "label": "Client Care Center",
+      "payload": "Where is Client Care Center?",
+      "subCategory": "Administrative Building",
+      "description": "The Client Care Center is in the Administrative Building. It\u2019s the first Office on th..."
+    },
+    {
+      "id": "loc_college_of_business_building",
+      "label": "College of Business Building",
+      "payload": "Where is College of Business Building?",
+      "subCategory": "COB Building",
+      "description": "The College of Business building is right to the left of the university library. I\u2019ve..."
+    },
+    {
+      "id": "loc_college_of_nursing_building",
+      "label": "College of Nursing Building",
+      "payload": "Where is College of Nursing Building?",
+      "subCategory": "CON Building",
+      "description": "There are two buildings related to the College of Nursing. One is the College of Nurs..."
+    },
+    {
+      "id": "loc_comlab_1",
+      "label": "ComLab 1",
+      "payload": "Where is ComLab 1?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 3rd floor of the Finance Building."
+    },
+    {
+      "id": "loc_comlab_10",
+      "label": "ComLab 10",
+      "payload": "Where is ComLab 10?",
+      "subCategory": "Finance Building",
+      "description": "At present, ComLab 10 does not exist."
+    },
+    {
+      "id": "loc_comlab_11",
+      "label": "ComLab 11",
+      "payload": "Where is ComLab 11?",
+      "subCategory": "Finance Building",
+      "description": "This is the Audio Laboratory located on the 3rd floor of the CPAG Building."
+    },
+    {
+      "id": "loc_comlab_12",
+      "label": "ComLab 12",
+      "payload": "Where is ComLab 12?",
+      "subCategory": "Finance Building",
+      "description": "This is the Networking Laboratory located on the 3rd floor of the CPAG Building."
+    },
+    {
+      "id": "loc_comlab_2",
+      "label": "ComLab 2",
+      "payload": "Where is ComLab 2?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 3rd floor of the Finance Building."
+    },
+    {
+      "id": "loc_comlab_3",
+      "label": "ComLab 3",
+      "payload": "Where is ComLab 3?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 3rd floor of the Finance Building."
+    },
+    {
+      "id": "loc_comlab_4",
+      "label": "ComLab 4",
+      "payload": "Where is ComLab 4?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 3rd floor of the Finance Building."
+    },
+    {
+      "id": "loc_comlab_5",
+      "label": "ComLab 5",
+      "payload": "Where is ComLab 5?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 3rd floor of the Finance Building."
+    },
+    {
+      "id": "loc_comlab_6",
+      "label": "ComLab 6",
+      "payload": "Where is ComLab 6?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 3rd floor of the Finance Building."
+    },
+    {
+      "id": "loc_comlab_7",
+      "label": "ComLab 7",
+      "payload": "Where is ComLab 7?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 3rd floor of the Finance Building."
+    },
+    {
+      "id": "loc_comlab_8",
+      "label": "ComLab 8",
+      "payload": "Where is ComLab 8?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 1st floor of the Secondary School Laboratory Building."
+    },
+    {
+      "id": "loc_comlab_9",
+      "label": "ComLab 9",
+      "payload": "Where is ComLab 9?",
+      "subCategory": "Finance Building",
+      "description": "Located in the same building as ComLab 8, the Secondary School Laboratory Building."
+    },
+    {
+      "id": "loc_comfort_room",
+      "label": "Comfort Room",
+      "payload": "Where is Comfort Room?",
+      "subCategory": "Comfort Room",
+      "description": "There are many restrooms located throughout the university. I have pinned as many as ..."
+    },
+    {
+      "id": "loc_computer_laboratories",
+      "label": "Computer Laboratories",
+      "payload": "Where is Computer Laboratories?",
+      "subCategory": "Finance Building",
+      "description": "There are two buildings that house computer laboratories, the first is located on the..."
+    },
+    {
+      "id": "loc_conference_room_a",
+      "label": "Conference Room A",
+      "payload": "Where is Conference Room A?",
+      "subCategory": "Finance Building",
+      "description": "Located on the 2nd floor of the Admin Building."
+    },
+    {
+      "id": "loc_drrmo_office",
+      "label": "DRRMO Office",
+      "payload": "Where is DRRMO Office?",
+      "subCategory": "Administrative Building",
+      "description": "Disaster Risk Reduction Management Office (DRRMO) is located on the exit this is the ..."
+    },
+    {
+      "id": "loc_dxbu",
+      "label": "DXBU",
+      "payload": "Where is DXBU?",
+      "subCategory": "New COT Building",
+      "description": "DXBU is located on the fourth floor of the new College of Technology (COT) building, ..."
+    },
+    {
+      "id": "loc_dental_clinic",
+      "label": "Dental Clinic",
+      "payload": "Where is Dental Clinic?",
+      "subCategory": "Health & Services Building",
+      "description": "Dental clinic is located on the health and Services Center ground floor."
+    },
+    {
+      "id": "loc_ehso",
+      "label": "EHSO",
+      "payload": "Where is EHSO?",
+      "subCategory": "Administrative Building",
+      "description": "The Environmental Health & Safety Office (EHSO) is located in the Administrative Buil..."
+    },
+    {
+      "id": "loc_electronics_faculty_room",
+      "label": "Electronics Faculty Room",
+      "payload": "Where is Electronics Faculty Room?",
+      "subCategory": "New COT Building",
+      "description": "The Electronics Faculty Room is located on the third floor of the new College of Tech..."
+    },
+    {
+      "id": "loc_electronics_laboratories",
+      "label": "Electronics Laboratories",
+      "payload": "Where is Electronics Laboratories?",
+      "subCategory": "New COT Building",
+      "description": "The Electronics Laboratories are located on the fourth floor of the new College of Te..."
+    },
+    {
+      "id": "loc_electronics_laboratory_1",
+      "label": "Electronics Laboratory 1",
+      "payload": "Where is Electronics Laboratory 1?",
+      "subCategory": "Old COT Building",
+      "description": "You can find that specific room on the first floor of the Old COT building. I have pi..."
+    },
+    {
+      "id": "loc_electronics_laboratory_2",
+      "label": "Electronics Laboratory 2",
+      "payload": "Where is Electronics Laboratory 2?",
+      "subCategory": "Old COT Building",
+      "description": "You can find that specific room on the first floor of the Old COT building. I have pi..."
+    },
+    {
+      "id": "loc_employees_multipurpose_cooperative",
+      "label": "Employees Multipurpose Cooperative",
+      "payload": "Where is Employees Multipurpose Cooperative?",
+      "subCategory": "High School Laboratory Building",
+      "description": "Employees Multipurpose Cooperative is located on the High School Laboratory Building ..."
+    },
+    {
+      "id": "loc_finance_building",
+      "label": "Finance Building",
+      "payload": "Where is Finance Building?",
+      "subCategory": "Finance Building",
+      "description": "The Finance Building is located behind the Administration Building. You can easily sp..."
+    },
+    {
+      "id": "loc_fitness_gym",
+      "label": "Fitness Gym",
+      "payload": "Where is Fitness Gym?",
+      "subCategory": "Campus Building & Area",
+      "description": "The university gym is located on the bleacher side of the Track and Field area, commo..."
+    },
+    {
+      "id": "loc_ge_department",
+      "label": "GE Department",
+      "payload": "Where is GE Department?",
+      "subCategory": "CPAG Building",
+      "description": "The General Education Course Department (GE) is located on the ground floor of the CP..."
+    },
+    {
+      "id": "loc_guard_house",
+      "label": "Guard House",
+      "payload": "Where is Guard House?",
+      "subCategory": "Guard House",
+      "description": "There are three guard houses located on campus, two are positioned at the entrance, a..."
+    },
+    {
+      "id": "loc_guidance_office",
+      "label": "Guidance Office",
+      "payload": "Where is Guidance Office?",
+      "subCategory": "CPAG Building",
+      "description": "The Guidance Office is located on the ground floor of the CPAG building, just above t..."
+    },
+    {
+      "id": "loc_gymnasium",
+      "label": "Gymnasium",
+      "payload": "Where is Gymnasium?",
+      "subCategory": "Gymnasium",
+      "description": "You can find the gymnasium at the back area of the campus. It is easy to identify bec..."
+    },
+    {
+      "id": "loc_hrdu",
+      "label": "HRDU",
+      "payload": "Where is HRDU?",
+      "subCategory": "Administrative Building",
+      "description": "The Human Resource Development Unit is located in the Administrative Building, which ..."
+    },
+    {
+      "id": "loc_hs_01",
+      "label": "HS-01",
+      "payload": "Where is HS-01?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS-01 Room is located on the High School Laboratory Building Ground floor"
+    },
+    {
+      "id": "loc_hs_02",
+      "label": "HS-02",
+      "payload": "Where is HS-02?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS-02 Room is located on the High School Laboratory Building Ground floor"
+    },
+    {
+      "id": "loc_hs_03",
+      "label": "HS-03",
+      "payload": "Where is HS-03?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS-03 Room is located on the High School Laboratory Building Ground floor"
+    },
+    {
+      "id": "loc_hs_04",
+      "label": "HS-04",
+      "payload": "Where is HS-04?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS-04 Room is located on the High School Laboratory Building Ground floor"
+    },
+    {
+      "id": "loc_hs_05",
+      "label": "HS-05",
+      "payload": "Where is HS-05?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS-05 Room is located on the High School Laboratory Building Ground floor"
+    },
+    {
+      "id": "loc_hs_06",
+      "label": "HS-06",
+      "payload": "Where is HS-06?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS-06 Room is located on the High School Laboratory Building Ground floor"
+    },
+    {
+      "id": "loc_hs_2_01",
+      "label": "HS-2-01",
+      "payload": "Where is HS-2-01?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-01 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_hs_2_02",
+      "label": "HS-2-02",
+      "payload": "Where is HS-2-02?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-02 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_hs_2_03",
+      "label": "HS-2-03",
+      "payload": "Where is HS-2-03?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-03 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_hs_2_04",
+      "label": "HS-2-04",
+      "payload": "Where is HS-2-04?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-04 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_hs_2_05",
+      "label": "HS-2-05",
+      "payload": "Where is HS-2-05?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-05 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_hs_2_06",
+      "label": "HS-2-06",
+      "payload": "Where is HS-2-06?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-06 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_hs_2_07",
+      "label": "HS-2-07",
+      "payload": "Where is HS-2-07?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-07 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_hs_2_08",
+      "label": "HS-2-08",
+      "payload": "Where is HS-2-08?",
+      "subCategory": "High School Laboratory Building",
+      "description": "HS 2-08 Room is located on the High School Laboratory Building 2nd Floor"
+    },
+    {
+      "id": "loc_health_and_services_building",
+      "label": "Health and Services Building",
+      "payload": "Where is Health and Services Building?",
+      "subCategory": "Health & Services Building",
+      "description": "The Health & Services Building is located on the left side of the College of Nursing ..."
+    },
+    {
+      "id": "loc_hospitality_management_faculty_room",
+      "label": "Hospitality Management Faculty Room",
+      "payload": "Where is Hospitality Management Faculty Room?",
+      "subCategory": "COB Building",
+      "description": "Hospitality Management Faculty located on the Ground floor of the COB building, room ..."
+    },
+    {
+      "id": "loc_i_love_buksu",
+      "label": "I Love BukSU",
+      "payload": "Where is I Love BukSU?",
+      "subCategory": "Campus Building & Area",
+      "description": "Its located on the University Frontage ground, in the main entrance"
+    },
+    {
+      "id": "loc_ias_office",
+      "label": "IAS Office",
+      "payload": "Where is IAS Office?",
+      "subCategory": "Administrative Building",
+      "description": "The IAS Office is in the Administrative Building that\u2019s the first building you\u2019ll see..."
+    },
+    {
+      "id": "loc_ict_service_unit",
+      "label": "ICT Service Unit",
+      "payload": "Where is ICT Service Unit?",
+      "subCategory": "CPAG Building",
+      "description": "The ICT Service Unit is located on the 2nd floor of the CPAG building. For your conve..."
+    },
+    {
+      "id": "loc_information_unit_office",
+      "label": "Information Unit Office",
+      "payload": "Where is Information Unit Office?",
+      "subCategory": "Administrative Building",
+      "description": "The Information Unit office is located at the entrance of Bukidnon State University. ..."
+    },
+    {
+      "id": "loc_kilala_dorm",
+      "label": "Kilala Dorm",
+      "payload": "Where is Kilala Dorm?",
+      "subCategory": "Dorm",
+      "description": "The Kilala Dorm is located behind the Health & Service Building. A map is provided be..."
+    },
+    {
+      "id": "loc_law_office",
+      "label": "Law Office",
+      "payload": "Where is Law Office?",
+      "subCategory": "Law Building",
+      "description": "The Law Office is easy to find, as it is located between the University Press buildin..."
+    },
+    {
+      "id": "loc_learning_commons",
+      "label": "Learning Commons",
+      "payload": "Where is Learning Commons?",
+      "subCategory": "Library Building",
+      "description": "Learning commons located on the 4th floor of the library building."
+    },
+    {
+      "id": "loc_legal_unit_office",
+      "label": "Legal Unit Office",
+      "payload": "Where is Legal Unit Office?",
+      "subCategory": "Administrative Building",
+      "description": "Legal Unit Office is located in the Administrative Building to be exact, it's located..."
+    },
+    {
+      "id": "loc_library",
+      "label": "Library",
+      "payload": "Where is Library?",
+      "subCategory": "Library Building",
+      "description": "Library is located on the left side of museum facing front, you can easily find it si..."
+    },
+    {
+      "id": "loc_library_building",
+      "label": "Library Building",
+      "payload": "Where is Library Building?",
+      "subCategory": "Library Building",
+      "description": "Library is located on the left side of museum facing front, you can easily find it si..."
+    },
+    {
+      "id": "loc_mahogany_dorm",
+      "label": "Mahogany dorm",
+      "payload": "Where is Mahogany dorm?",
+      "subCategory": "Dorm",
+      "description": "You can find the male dormitory right next to the library building please refer to th..."
+    },
+    {
+      "id": "loc_main_administration_building",
+      "label": "Main Administration Building",
+      "payload": "Where is Main Administration Building?",
+      "subCategory": "Administrative Building",
+      "description": "The Administration Building is at the entrance; it is the first building you will see..."
+    },
+    {
+      "id": "loc_medical_clinic",
+      "label": "Medical clinic",
+      "payload": "Where is Medical clinic?",
+      "subCategory": "Health & Services Building",
+      "description": "The University Medical Clinic is located at the Ground Floor of the Health Services B..."
+    },
+    {
+      "id": "loc_motorcycle_parking_area",
+      "label": "Motorcycle Parking Area",
+      "payload": "Where is Motorcycle Parking Area?",
+      "subCategory": "Parking Areas",
+      "description": "There are several areas where you can park your motorcycle. Please be reminded that i..."
+    },
+    {
+      "id": "loc_multimedia_laboratory",
+      "label": "Multimedia Laboratory",
+      "payload": "Where is Multimedia Laboratory?",
+      "subCategory": "CPAG Building",
+      "description": "There are three laboratories dedicated to multimedia, including a sound laboratory sp..."
+    },
+    {
+      "id": "loc_museum",
+      "label": "Museum",
+      "payload": "Where is Museum?",
+      "subCategory": "IP Museum",
+      "description": "The IP Museum is located in front of the Research Building and the University Library..."
+    },
+    {
+      "id": "loc_nc4_a4_401",
+      "label": "NC4-A4-401",
+      "payload": "Where is NC4-A4-401?",
+      "subCategory": "New CAS Building",
+      "description": "language and literature department is on the ground floor of the new CAS building"
+    },
+    {
+      "id": "loc_nc4_a4_402",
+      "label": "NC4-A4-402",
+      "payload": "Where is NC4-A4-402?",
+      "subCategory": "New CAS Building",
+      "description": "language and literature department is on the ground floor of the new CAS building"
+    },
+    {
+      "id": "loc_nstp_office",
+      "label": "NSTP Office",
+      "payload": "Where is NSTP Office?",
+      "subCategory": "Campus Building & Area",
+      "description": "The NSTP Office is located within the COA Building and is easily accessible if you ar..."
+    },
+    {
+      "id": "loc_new_cot_building",
+      "label": "New COT Building",
+      "payload": "Where is New COT Building?",
+      "subCategory": "New COT Building",
+      "description": "The new COT building is located in front of the old COT building. You can easily iden..."
+    },
+    {
+      "id": "loc_oss",
+      "label": "OSS",
+      "payload": "Where is OSS?",
+      "subCategory": "Campus Building & Area",
+      "description": "Here \ud83d\udc40."
+    },
+    {
+      "id": "loc_ovpaa_office",
+      "label": "OVPAA Office",
+      "payload": "Where is OVPAA Office?",
+      "subCategory": "Administrative Building",
+      "description": "The Office of the Vice President of Academic Affairs (OVPAA) is found in the Administ..."
+    },
+    {
+      "id": "loc_ovpapd",
+      "label": "OVPAPD",
+      "payload": "Where is OVPAPD?",
+      "subCategory": "Finance Building",
+      "description": "The Office of the Vice President for Administration, Planning, and Development (OVPAP..."
+    },
+    {
+      "id": "loc_ovpcas_office",
+      "label": "OVPCAS Office",
+      "payload": "Where is OVPCAS Office?",
+      "subCategory": "Administrative Building",
+      "description": "The Office of the Vice President for Cultural Arts, Sports, and Student Services (OVP..."
+    },
+    {
+      "id": "loc_office_of_the_board_secretary",
+      "label": "Office of the Board Secretary",
+      "payload": "Where is Office of the Board Secretary?",
+      "subCategory": "Administrative Building",
+      "description": "Office of the Board Secretary is located in the Administrative Building to be exact, ..."
+    },
+    {
+      "id": "loc_office_of_the_chairperson_cpag",
+      "label": "Office of the Chairperson CPAG",
+      "payload": "Where is Office of the Chairperson CPAG?",
+      "subCategory": "CPAG Building",
+      "description": "The Office of the Chairperson for CPAG is located on the 2nd floor of the CPAG buildi..."
+    },
+    {
+      "id": "loc_old_cot_building",
+      "label": "Old COT Building",
+      "payload": "Where is Old COT Building?",
+      "subCategory": "Old COT Building",
+      "description": "The old COT building is located in front of the new COT building. This building faces..."
+    },
+    {
+      "id": "loc_oval",
+      "label": "Oval",
+      "payload": "Where is Oval?",
+      "subCategory": "Campus Building & Area",
+      "description": "The Oval, also known as the Track and Field, is accessible via Mr. Odulo De Guzman St..."
+    },
+    {
+      "id": "loc_pe_faculty_room",
+      "label": "PE Faculty Room",
+      "payload": "Where is PE Faculty Room?",
+      "subCategory": "Gymnasium",
+      "description": "The PE Faculty Room is located between the Old Nursing Building and the Gymnasium. Fo..."
+    },
+    {
+      "id": "loc_philosophy_faculty_office",
+      "label": "Philosophy Faculty Office",
+      "payload": "Where is Philosophy Faculty Office?",
+      "subCategory": "New CAS Building",
+      "description": "The Philosophy faculty office is located in the New CAS building, which is behind the..."
+    },
+    {
+      "id": "loc_planning_office",
+      "label": "Planning Office",
+      "payload": "Where is Planning Office?",
+      "subCategory": "Finance Building",
+      "description": "The Planning Office is located on the 2nd floor of the Finance building. For your con..."
+    },
+    {
+      "id": "loc_power_building",
+      "label": "Power Building",
+      "payload": "Where is Power Building?",
+      "subCategory": "Campus Building & Area",
+      "description": "The Power Building is located at the back of the Alumni building. Please use the map ..."
+    },
+    {
+      "id": "loc_project_management_unit",
+      "label": "Project Management Unit",
+      "payload": "Where is Project Management Unit?",
+      "subCategory": "Finance Building",
+      "description": "The Project Management Unit is located on the 2nd floor of the Finance building. For ..."
+    },
+    {
+      "id": "loc_public_assistance_desk",
+      "label": "Public Assistance Desk",
+      "payload": "Where is Public Assistance Desk?",
+      "subCategory": "Administrative Building",
+      "description": "The Public Assistance Desk is located in the Information Unit office, which is the of..."
+    },
+    {
+      "id": "loc_rmu",
+      "label": "RMU",
+      "payload": "Where is RMU?",
+      "subCategory": "Administrative Building",
+      "description": "Records Management Unit (RMU) is located in the Administrative Building to be exact, ..."
+    },
+    {
+      "id": "loc_registrar_office",
+      "label": "Registrar Office",
+      "payload": "Where is Registrar Office?",
+      "subCategory": "CPAG Building",
+      "description": "The Registrar's Office is located between the CPAG Building and the Finance Building...."
+    },
+    {
+      "id": "loc_research_extension",
+      "label": "Research Extension",
+      "payload": "Where is Research Extension?",
+      "subCategory": "Campus Building & Area",
+      "description": "The Research Extension is located directly in front of the museum and is clearly labe..."
+    },
+    {
+      "id": "loc_rondala_room",
+      "label": "Rondala Room",
+      "payload": "Where is Rondala Room?",
+      "subCategory": "University Press Building",
+      "description": "Rondala room is on the University Press building 3rd floor"
+    },
+    {
+      "id": "loc_rubia_dorm",
+      "label": "Rubia dorm",
+      "payload": "Where is Rubia dorm?",
+      "subCategory": "Dorm",
+      "description": "You can find the Female dormitory right beside the automotive Building, Please refer ..."
+    },
+    {
+      "id": "loc_smart_classroom",
+      "label": "Smart Classroom",
+      "payload": "Where is Smart Classroom?",
+      "subCategory": "Finance Building",
+      "description": "There are 2 Smart Classrooms (COTSCR), both are in the same location, which is the 3r..."
+    },
+    {
+      "id": "loc_speech_laboratory",
+      "label": "Speech Laboratory",
+      "payload": "Where is Speech Laboratory?",
+      "subCategory": "CPAG Building",
+      "description": "The Speech Laboratory is located on the 3rd floor of the CPAG building. For your conv..."
+    },
+    {
+      "id": "loc_tba_classroom",
+      "label": "TBA classroom",
+      "payload": "Where is TBA classroom?",
+      "subCategory": "Information",
+      "description": "You can find the TBA Classroom when your instructor announce where your class facilit..."
+    },
+    {
+      "id": "loc_theater",
+      "label": "Theater",
+      "payload": "Where is Theater?",
+      "subCategory": "Finance Building",
+      "description": "The Theater is located on the Fifth floor of the Finance Building. For quicker access..."
+    },
+    {
+      "id": "loc_vehicle_parking_area",
+      "label": "Vehicle Parking Area",
+      "payload": "Where is Vehicle Parking Area?",
+      "subCategory": "Parking Areas",
+      "description": "While there are multiple parking areas, I will highlight the specific locations where..."
+    },
+    {
+      "id": "loc_window_01_finance_and_management_di",
+      "label": "Window 01 Finance and Management Division and Administrative Office",
+      "payload": "Where is Window 01 Finance and Management Division and Administrative Office?",
+      "subCategory": "Finance Building",
+      "description": "The Finance and Management Division / Administrative Office (Window 01) Is located on..."
+    },
+    {
+      "id": "loc_window_02_budget_office",
+      "label": "Window 02 Budget Office",
+      "payload": "Where is Window 02 Budget Office?",
+      "subCategory": "Finance Building",
+      "description": "The Budget Office (Window 02) Is located on the Ground floor at the assessment counte..."
+    },
+    {
+      "id": "loc_window_03_cashiers_office",
+      "label": "Window 03 Cashiers Office",
+      "payload": "Where is Window 03 Cashiers Office?",
+      "subCategory": "Finance Building",
+      "description": "The Cashiers Office (Window 03) Is located on the Ground floor at the assessment coun..."
+    },
+    {
+      "id": "loc_window_1_scholarship_and_financial_",
+      "label": "Window 1 Scholarship and Financial Assistance",
+      "payload": "Where is Window 1 Scholarship and Financial Assistance?",
+      "subCategory": "Finance Building",
+      "description": "Window 1 for Scholarship and Financial Assistance is on the 1st floor at the finance ..."
+    },
+    {
+      "id": "loc_window_2_scholarship_and_financial_",
+      "label": "Window 2 Scholarship and Financial Assistance",
+      "payload": "Where is Window 2 Scholarship and Financial Assistance?",
+      "subCategory": "Finance Building",
+      "description": "Window 2 for Scholarship and Financial Assistance is on the 1st floor beside Window 1..."
+    },
+    {
+      "id": "loc_window_6_payroll_regular_satellite_",
+      "label": "Window 6 Payroll Regular Satellite Campus",
+      "payload": "Where is Window 6 Payroll Regular Satellite Campus?",
+      "subCategory": "Finance Building",
+      "description": "Window 6 (Payroll Regular Satellite Campus) Is located on the Ground floor at the ass..."
+    },
+    {
+      "id": "loc_window_7_payroll_regular",
+      "label": "Window 7 Payroll Regular",
+      "payload": "Where is Window 7 Payroll Regular?",
+      "subCategory": "Finance Building",
+      "description": "Window 7 (Payroll Regular) Is located on the Ground floor at the assessment counter a..."
+    },
+    {
+      "id": "loc_window_8_payroll_regular_and_casual",
+      "label": "Window 8 Payroll Regular and Casual",
+      "payload": "Where is Window 8 Payroll Regular and Casual?",
+      "subCategory": "Finance Building",
+      "description": "Window 8 (Payroll Regular & Casual) Is located on the Ground floor at the assessment ..."
+    },
+    {
+      "id": "loc_window_9_information",
+      "label": "Window 9 Information",
+      "payload": "Where is Window 9 Information?",
+      "subCategory": "Finance Building",
+      "description": "Window 9 (Information) Is located on the Ground floor at the assessment counter area ..."
+    },
+    {
+      "id": "loc_windows_3_assessment",
+      "label": "Windows 3 Assessment",
+      "payload": "Where is Windows 3 Assessment?",
+      "subCategory": "Finance Building",
+      "description": "Windows 3 (Assessment) Is located on the Ground floor at the assessment counter area ..."
+    },
+    {
+      "id": "loc_windows_4_assessment",
+      "label": "Windows 4 Assessment",
+      "payload": "Where is Windows 4 Assessment?",
+      "subCategory": "Finance Building",
+      "description": "Windows 4 (Assessment) Is located on the Ground floor at the assessment counter area ..."
+    },
+    {
+      "id": "loc_windows_5_assessment",
+      "label": "Windows 5 Assessment",
+      "payload": "Where is Windows 5 Assessment?",
+      "subCategory": "Finance Building",
+      "description": "Windows 5 (Assessment) Is located on the Ground floor at the assessment counter area ..."
+    },
+    {
+      "id": "loc_diversity_and_inclusion_unit",
+      "label": "diversity and inclusion unit",
+      "payload": "Where is diversity and inclusion unit?",
+      "subCategory": "CPAG Building",
+      "description": "Diversity and inclusion unit located on CPAG parking space, its hard to find but i wi..."
+    },
+    {
+      "id": "loc_food_technology_laboratory",
+      "label": "food technology laboratory",
+      "payload": "Where is food technology laboratory?",
+      "subCategory": "New COT Building",
+      "description": "Food technology laboratory located on the 2nd floor of new COT building"
+    },
+    {
+      "id": "loc_ictu_office",
+      "label": "ictu office",
+      "payload": "Where is ictu office?",
+      "subCategory": "Ictu Office",
+      "description": "You can find it besid on the Health & Services Building\ud83d\udc40."
+    },
+    {
+      "id": "loc_language_and_literature_department",
+      "label": "language and literature department",
+      "payload": "Where is language and literature department?",
+      "subCategory": "New CAS Building",
+      "description": "language and literature department is on the ground floor of the new CAS building"
+    },
+    {
+      "id": "loc_pe_department",
+      "label": "pe department",
+      "payload": "Where is pe department?",
+      "subCategory": "Pe Department",
+      "description": "Here \ud83d\udc40."
+    },
+    {
+      "id": "loc_pink_building",
+      "label": "pink building",
+      "payload": "Where is pink building?",
+      "subCategory": "CAS Building",
+      "description": "look on the map\ud83d\udc40. you see it?\ud83d\ude01"
+    },
+    {
+      "id": "loc_university_press",
+      "label": "university press",
+      "payload": "Where is university press?",
+      "subCategory": "University Press Building",
+      "description": "Here \ud83d\udc40."
+    }
+  ]
+}

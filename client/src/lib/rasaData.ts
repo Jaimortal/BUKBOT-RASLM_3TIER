@@ -1,12 +1,12 @@
 export const RASA_API_URL = "http://127.0.0.1:5005/webhooks/rest/webhook";
 
 // Send message to Rasa and get the response
-export async function sendMessageToRasa(message: string, language?: string, sessionId?: string) {
+export async function sendMessageToRasa(message: string, language?: string, sessionId?: string, category?: string | null) {
   try {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ intent: message, language, sessionId }),
+      body: JSON.stringify({ intent: message, language, sessionId, activeCategory: category, category }),
     });
 
     if (!response.ok) {

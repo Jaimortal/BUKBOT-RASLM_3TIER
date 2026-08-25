@@ -363,15 +363,15 @@
           "suggestions": [
             {
               "label": "Student ID process",
-              "payload": "Student ID process"
+              "payload": "/direct_intent{\"intent\":\"student_id_requirements\"}"
             },
             {
               "label": "COR Validation",
-              "payload": "COR validation"
+              "payload": "/direct_intent{\"intent\":\"cor_validation_steps\"}"
             },
             {
               "label": "Find my COR",
-              "payload": "where can i find my COR"
+              "payload": "/direct_intent{\"intent\":\"where_get_cor\"}"
             }
           ],
           "metadata": {
@@ -1212,7 +1212,58 @@
               "where can freshmen get library id"
             ]
           },
-          "display_name": "Library ID Card Location"
+          "display_name": "Library ID Card Location",
+          "subject_terms": [],
+          "images": [],
+          "items": [],
+          "pins": [
+            {
+              "name": "Start From Here",
+              "coordinates": [
+                877,
+                636
+              ],
+              "floor": "2F"
+            },
+            {
+              "name": "Library 2nd floor",
+              "coordinates": [
+                581,
+                395
+              ],
+              "floor": "2F"
+            }
+          ],
+          "routes": [
+            {
+              "name": "Start From Here to Library 2nd floor",
+              "points": [
+                [
+                  877,
+                  636
+                ],
+                [
+                  793,
+                  638
+                ],
+                [
+                  790,
+                  445
+                ],
+                [
+                  583,
+                  453
+                ],
+                [
+                  581,
+                  395
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            }
+          ]
         },
         {
           "topic": "requirements",
@@ -2126,6 +2177,134 @@
         }
       ],
       "display_name": "Gate Pass Policy"
+    },
+    {
+      "topic": "scholarship",
+      "subject_key": "scholarship",
+      "subject_type": "procedure",
+      "subject_terms": [
+        "scholarship",
+        "scholarships",
+        "financial grants",
+        "grants",
+        "financial assistance",
+        "scholarship application",
+        "apply scholarship"
+      ],
+      "subtopics": [
+        {
+          "topic": "scholarship_application",
+          "intent": "scholarship_application",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "unfortunately I dont have data for how could you apply for scholarship, but we do have other data you can ask for"
+            ],
+            "ceb": [
+              "Ikasubo nga wala koy impormasyon kung unsaon pag-apply og scholarship, apan aduna koy laing impormasyon nga mahimo nimong pangutan-on:"
+            ]
+          },
+          "choiceGroups": [
+            {
+              "title": "Here is scholarship-related information you can check:",
+              "items": [
+                {
+                  "label": "Contact Scholarship Unit",
+                  "payload": "/direct_intent{\"intent\":\"contact_scholarship_unit\"}"
+                }
+              ]
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how to apply for scholarship",
+              "how to apply scholarship",
+              "how can i apply for scholarship",
+              "how do i apply for scholarship",
+              "how to apply for a scholarship",
+              "how to apply for scholarships in buksu",
+              "apply for scholarship",
+              "apply scholarship",
+              "scholarship application",
+              "scholarship application process",
+              "scholarship application procedure",
+              "scholarship requirements",
+              "requirements for scholarship",
+              "how to get scholarship",
+              "how to get a scholarship in buksu",
+              "scholarship process",
+              "unsaon pag apply og scholarship",
+              "unsaon pag apply ug scholarship",
+              "unsaon pag apply sa scholarship",
+              "unsaon pagkuha og scholarship",
+              "unsaon pagkuha ug scholarship",
+              "unsaon pag apply scholarship",
+              "pamaagi sa scholarship",
+              "pamaagi sa pag apply og scholarship",
+              "unsaon pag apply ug scholarship sa buksu",
+              "apply scholarship buksu",
+              "scholarship sa buksu",
+              "apply og scholarship"
+            ]
+          },
+          "display_name": "Scholarship Application Guidance",
+          "subject_terms": [
+            "scholarship application",
+            "apply scholarship",
+            "scholarship process",
+            "scholarship requirements"
+          ],
+          "images": [],
+          "items": []
+        },
+        {
+          "topic": "contact_scholarship_unit",
+          "intent": "contact_scholarship_unit",
+          "context_topic": "contact",
+          "responses": {
+            "en": [
+              "Need to get in touch with the Scholarships and Financial Grants Unit?",
+              "To ensure a quicker response, please contact the appropriate office directly.",
+              "Here are the contact details for the Scholarships and Financial Grants Unit:",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "✉️ Email: sfgu@buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ],
+            "ceb": [
+              "Need to get in touch with the Scholarships and Financial Grants Unit?",
+              "To ensure a quicker response, please contact the appropriate office directly.",
+              "Here are the contact details for the Scholarships and Financial Grants Unit:",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "✉️ Email: sfgu@buksu.edu.ph",
+              "📞 BukSU Contact Number: 088-813-5661"
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "contact scholarship unit",
+              "contact scholarships and financial grants unit",
+              "contact sfgu",
+              "how to contact scholarship unit",
+              "scholarship contact number",
+              "scholarship email",
+              "scholarship facebook page",
+              "unsaon pag contact sa scholarship",
+              "asa mag chat about scholarship",
+              "number sa scholarship office",
+              "scholarship unit contact"
+            ]
+          },
+          "display_name": "Contact Scholarships and Financial Grants Unit",
+          "subject_terms": [
+            "contact scholarship",
+            "sfgu contact",
+            "scholarship unit email"
+          ],
+          "images": [],
+          "items": []
+        }
+      ],
+      "display_name": "Scholarship Application"
     }
   ]
 }

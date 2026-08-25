@@ -44,18 +44,40 @@
           "topic": "enrollment_general_process",
           "responses": {
             "en": [
-              "The BukSU enrollment process for undergraduate, graduate, law, and medicine applicants has four main steps.",
-              "Step 1: Submit your documentary requirements to the University Registrar's Office. First year and transferee applicants must prepare the required long brown envelopes and submit the needed original documents and photocopies.",
-              "Step 2: Log in to https://admissions.buksu.edu.ph and apply for enrollment. Online Enrollment Application opens on July 1, 2026.",
-              "Step 3: Wait for the evaluator's approval from July 1 to 31, 2026. Once approved, download your Certificate of Registration (COR) through the admissions portal.",
-              "Step 4: Validate your enrollment from July 1 to August 31, 2026. Paying students must complete payment first, while non-paying students still need account verification and enrollment validation."
+              "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**:",
+              "Step 1. You may look on the picture provided below for the requirements needed.",
+              "Step 2: Login to https://admissions.buksu.edu.ph",
+              "• Click on **Admission**",
+              "• Click **Show Exam Result** then proceed to enrollment",
+              "• Click **Apply Enrollment**",
+              "- **Campus Selection**: Select *Main Campus*",
+              "- **Course Selection**: Select your *Preferred Course*",
+              "- **Documentary Requirements**: Scan and upload the documentary requirements as specified in Step 1",
+              "*(NOTE: All documents uploaded as part of the admission process must be duly marked with a \"RECEIVED\" stamp by the University Registrar's Office)*",
+              "- **Learning Modality Preference**: Select your *Preferred Learning Modality*",
+              "- **Academic Information**: Fill in the necessary information",
+              "Step 3: Approval of Enrollment Application",
+              "Wait for the evaluator's approval of your application. Once your application is approved, download your Certificate of Registration (COR) through https://admissions.buksu.edu.ph",
+              "*(Click 'Report Incorrect COR' if you find any errors)*",
+              "Step 4: Validation of Enrollment, you may look on the image provided below."
             ],
             "ceb": [
-              "Ang BukSU enrollment process para sa undergraduate, graduate, law, ug medicine applicants adunay upat ka main steps.",
-              "Step 1: I-submit ang documentary requirements sa University Registrar's Office. Ang first year ug transferee applicants kinahanglan mag-andam sa required long brown envelopes ug ipasa ang original documents ug photocopies.",
-              "Step 2: Pag-log in sa https://admissions.buksu.edu.ph ug pag-apply for enrollment. Ang Online Enrollment Application mag-open sa July 1, 2026.",
-              "Step 3: Hulata ang approval sa evaluator gikan July 1 hangtod July 31, 2026. Kung approved na, i-download ang imong Certificate of Registration (COR) sa admissions portal.",
-              "Step 4: I-validate ang imong enrollment gikan July 1 hangtod August 31, 2026. Ang paying students kinahanglan magbayad una, samtang ang non-paying students kinahanglan gihapon moagi sa account verification ug enrollment validation."
+              "Mao kini ang step-by-step enrollment process para sa **Undergraduate Programs, Law & Graduate Programs, ug College of Medicine**:",
+              "Step 1. Mahimo nimong tan-awon ang litrato nga gihatag sa ubos para sa gikinahanglan nga mga requirements.",
+              "Step 2: Pag-log in sa https://admissions.buksu.edu.ph",
+              "• I-click ang **Admission**",
+              "• I-click ang **Show Exam Result** dayon proceed to enrollment",
+              "• I-click ang **Apply Enrollment**",
+              "- **Campus Selection**: Pilia ang *Main Campus*",
+              "- **Course Selection**: Pilia ang imong *Preferred Course*",
+              "- **Documentary Requirements**: I-scan ug i-upload ang documentary requirements sumala sa Step 1",
+              "*(PAHINUMDOM: Ang tanang dokumento nga gi-upload kinahanglan adunay \"RECEIVED\" stamp gikan sa University Registrar's Office)*",
+              "- **Learning Modality Preference**: Pilia ang imong *Preferred Learning Modality*",
+              "- **Academic Information**: Pun-a ang gikinahanglan nga impormasyon",
+              "Step 3: Pag-apruba sa Enrollment Application",
+              "Hulata ang approval sa evaluator sa imong application. Kung ma-aprubahan na, i-download ang imong Certificate of Registration (COR) sa https://admissions.buksu.edu.ph",
+              "*(I-click ang 'Report Incorrect COR' kung adunay sayop)*",
+              "Step 4: Pag-validate sa Enrollment, mahimo nimong tan-awon ang imahe nga gihatag sa ubos."
             ]
           },
           "intent": "enrollment_general_process",
@@ -105,7 +127,55 @@
               "registrar"
             ]
           },
-          "display_name": "Enrollment General Process"
+          "display_name": "Enrollment General Process",
+          "subject_terms": [],
+          "images": [
+            "/api/images/0beb97b4-ae96-4c5c-ae10-5526cb829f21",
+            "/api/images/5fbc94fd-d9a6-4587-9f46-024c3ea7f562",
+            "/api/images/bd0b40cd-01b1-4393-8e86-d645c1d9e8e1",
+            "/api/images/193eb88e-a5d4-4ba9-b2ed-aa0b064c798c"
+          ],
+          "items": []
+        },
+        {
+          "topic": "mixed_enrollment_process",
+          "responses": {
+            "en": [
+              "For Face-to-Face or mixed enrollment, the initial process is similar to online enrollment—fill up the requirements on the BukSU Admissions portal.",
+              "After completing your online application, proceed to your department to process your pending enrollment. Dedicated faculty staff handle department enrollment. Follow any queue system or line numbers provided.",
+              "For 2nd year students and above, you will process directly with your department evaluators.",
+              "For Incoming Freshmen and Transferees:\n1. Attend the Pre-enrolment Orientation.\n2. Proceed to your college of choice for personal interview and present documents in a long brown envelope for evaluation.\n3. Proceed to the I.T. Laboratory for Information System Registration and document submission."
+            ],
+            "ceb": [
+              "Para sa Face-to-Face o mixed enrollment, parehas ra ang proseso sa online enrollment—pun-a ang mga requirements sa BukSU Admissions portal.",
+              "Human sa imong online application, adto sa inyong department aron iproseso ang pending enrollment. Adunay mga faculty staff nga nagdumala sa enrollment sa inyong departamento.",
+              "Para sa 2nd year pataas, direkta kamo magproseso sa inyong department evaluators.",
+              "Para sa Incoming Freshmen ug Transferees:\n1. Motambong sa Pre-enrolment Orientation.\n2. Moadto sa napiling kolehiyo para sa interview ug ipresentar ang mga dokumento sa long brown envelope.\n3. Moadto sa I.T. Laboratory para sa Information System Registration ug pagpasa sa dokumento."
+            ]
+          },
+          "intent": "mixed_enrollment_process",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "mixed enrollment process",
+              "face to face enrollment process",
+              "onsite enrollment process",
+              "mixed enrollment steps",
+              "department enrollment process",
+              "what should I do after online enrollment for face to face process",
+              "how to enroll face to face process",
+              "unsaon ang face to face enrollment",
+              "unsa akong buhaton human sa online enrollment para sa face to face nga proseso",
+              "unsaon pag-enroll pinaagi sa face to face nga proseso",
+              "unsa ang sunod nga mga lakang human makompleto ang online enrollment para sa onsite processing"
+            ]
+          },
+          "display_name": "Mixed / Onsite Enrollment Process",
+          "subject_terms": [
+            "mixed enrollment",
+            "face to face enrollment",
+            "onsite enrollment"
+          ]
         },
         {
           "topic": "enrollment_time_schedule",
@@ -240,7 +310,7 @@
           "suggestions": [
             {
               "label": "Registrar location",
-              "payload": "Registrar office location"
+              "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
             }
           ]
         },
@@ -248,20 +318,12 @@
           "topic": "freshman_enrollment_process",
           "responses": {
             "en": [
-              "For undergraduate first year and transferee enrollment, Step 1 is the submission of documentary requirements to the University Registrar's Office until July 16, 2026.",
-              "Prepare 2 long brown envelopes: Envelope 1 is the Registrar's Copy and Envelope 2 is the Student's Copy.",
-              "Envelope 1 should contain original documents unless stated otherwise: Program Acceptance Slip, Report Card, Good Moral, Honorable Dismissal for transferees only, Transcript of Records for transferees only, Subject Equivalency Form for transferees, photocopy of PSA Birth Certificate, photocopy of Marriage Contract if married, BukSU-CAT Report of Rating, and photocopy of Medical Certificate.",
-              "Envelope 2 should contain photocopies of the same requirements: Program Acceptance Slip, Report Card, Good Moral, Honorable Dismissal for transferees only, Transcript of Records for transferees only, Subject Equivalency Form for transferees, PSA Birth Certificate, Marriage Contract if married, BukSU-CAT Report of Rating, and Medical Certificate.",
-              "You also need to submit to your department or program an original Medical Certificate issued by a Government Physician stating that you are physically fit for off-campus and in-campus activities, and an original Notarized General Parental or Guardian Consent Form.",
-              "Download the consent form here: https://buksu.edu.ph/downloadable-forms/"
+              "Make sure you pass the entrance examination, and prepare these requirements. It should be 2 envelopes: Envelope 1 is the Registrar's Copy, and Envelope 2 is the Student's Copy.\n\n1. Program Acceptance Slip\n2. Report Card\n3. Good Moral\n4. Honorable Dismissal (for Transferees only)\n5. Transcript of Records (for Transferees only)\n6. Subject Equivalency Form (for Transferees only)\n7. Photocopy of PSA Birth Certificate\n8. Photocopy of Marriage Contract (if Married)\n9. BukSU-CAT Report of Rating\n10. Photocopy of Medical Certificate",
+              "Requirements to be submitted to the department/program:\n\n1. Medical Certificate (The Medical Certificate must be issued by a government Physician and must state that the student is physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED GENERAL PARENTAL/GUARDIAN CONSENT FORM (Original Copy)\n\nDownload the form here: https://buksu.edu.ph/downloadable-forms/"
             ],
             "ceb": [
-              "Para sa undergraduate first year ug transferee enrollment, ang Step 1 mao ang pag-submit sa documentary requirements sa University Registrar's Office hangtod July 16, 2026.",
-              "Pag-andam og 2 ka long brown envelopes: Envelope 1 para sa Registrar's Copy ug Envelope 2 para sa Student's Copy.",
-              "Ang Envelope 1 kinahanglan adunay original documents gawas kung stated otherwise: Program Acceptance Slip, Report Card, Good Moral, Honorable Dismissal para sa transferees only, Transcript of Records para sa transferees only, Subject Equivalency Form para sa transferees, photocopy sa PSA Birth Certificate, photocopy sa Marriage Contract kung minyo, BukSU-CAT Report of Rating, ug photocopy sa Medical Certificate.",
-              "Ang Envelope 2 kinahanglan adunay photocopies sa parehas nga requirements: Program Acceptance Slip, Report Card, Good Moral, Honorable Dismissal para sa transferees only, Transcript of Records para sa transferees only, Subject Equivalency Form para sa transferees, PSA Birth Certificate, Marriage Contract kung minyo, BukSU-CAT Report of Rating, ug Medical Certificate.",
-              "Kinahanglan usab nimo i-submit sa imong department o program ang original Medical Certificate gikan sa Government Physician nga nag-ingon nga physically fit ka for off-campus and in-campus activities, ug original Notarized General Parental or Guardian Consent Form.",
-              "I-download ang consent form diri: https://buksu.edu.ph/downloadable-forms/"
+              "Siguroha nga nakapasar ka sa entrance examination, ug i-andam kining mga requirements. Kinahanglan kini og 2 ka envelopes: Envelope 1 para sa Registrar's Copy, ug Envelope 2 para sa Student's Copy.\n\n1. Program Acceptance Slip\n2. Report Card\n3. Good Moral\n4. Honorable Dismissal (para sa Transferees lamang)\n5. Transcript of Records (para sa Transferees lamang)\n6. Subject Equivalency Form (para sa Transferees lamang)\n7. Photocopy sa PSA Birth Certificate\n8. Photocopy sa Marriage Contract (kung Minyo)\n9. BukSU-CAT Report of Rating\n10. Photocopy sa Medical Certificate",
+              "Requirements nga kinahanglan i-submit sa department/program:\n\n1. Medical Certificate (Ang Medical Certificate kinahanglan issued gikan sa government Physician ug nagpamatuod nga physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED GENERAL PARENTAL/GUARDIAN CONSENT FORM (Original Copy)\n\nI-download ang form diri: https://buksu.edu.ph/downloadable-forms/"
             ]
           },
           "images": [],
@@ -467,58 +529,6 @@
           "display_name": "Returning Students Scope Notice"
         },
         {
-          "topic": "mixed_enrollment_process",
-          "responses": {
-            "en": [
-              "For Face to face enrollment or mixed enrollment, the process is similar to online enrollment fill up all the requirements on BukSU Admission, for the process just ask about online enrollment. but this time you need to go to your department to process your pending online enrollment. There are specific faculty staff who handle enrollment in your department. Sometimes there is a queue system that you need to scan to know your number in line for your turn.",
-              "but this is for <b>2nd year student</b> only since they already has a record on their department. <b>for freshman and transferees follow this steps</b>",
-              "1. Attend the Pre-enrolment Orientation.",
-              "2. Proceed to the preferred college of choice for personal interview and present documents in a long <b>brown envelope for evaluation</b>.",
-              "3. Proceed to the I.T. Laboratory for the Information System Registration&amp; submit documents.<div><b>Requirements for Incoming Freshmen:</b></div><div>Admission Exam Results</div><div>High School Report Card</div><div>Certificate of Good Moral Character</div><div>Birth Certificate</div><div>Individual Inventory Record</div><div><br></div>",
-              "<b>Requirements for Transferees:</b><div>Admission Exam Results</div><div>Medical Certificate</div><div>Birth Certificate</div><div>Honorable Dismissal</div><div>Transcript of Records&nbsp;</div><div>Individual Inventory Record</div>"
-            ],
-            "ceb": [
-              "For face to face or mixed enrollment, parehas ra ang proseso sa online enrollment—pun-a tanan nga requirements sa BukSU Admission. Para sa proseso, pwede ka mangutana bahin sa online enrollment. Apan karon, kinahanglan ka moadto sa inyong department aron iproseso ang imong pending online enrollment. Adunay mga specific nga faculty staff nga nag-handle sa enrollment sa inyong department. Usahay, adunay queue system nga kinahanglan nimo i-scan aron mahibal-an ang imong numero sa linya para sa imong turno.",
-              "Apan kini para lamang sa <b>2nd year student</b> kay naa na silay record sa ilang department. <b>Para sa freshmen ug transferees, sundan kini nga mga lakang</b>:",
-              "1. Motambong sa Pre-enrolment Orientation.",
-              "2. Moadto sa napiling college para sa personal interview ug ipresent ang mga dokumento sulod sa long <b>brown envelope para sa evaluation</b>.",
-              "3. Moadto sa I.T. Laboratory para sa Information System Registration& ug ipasa ang mga dokumento.<div><b>Requirements for Incoming Freshmen:</b></div><div>Admission Exam Results</div><div>High School Report Card</div><div>Certificate of Good Moral Character</div><div>Birth Certificate</div><div>Individual Inventory Record</div><div><br></div>",
-              "<b>Requirements for Transferees:</b><div>Admission Exam Results</div><div>Medical Certificate</div><div>Birth Certificate</div><div>Honorable Dismissal</div><div>Transcript of Records </div><div>Individual Inventory Record</div>"
-            ]
-          },
-          "images": [],
-          "map": null,
-          "pins": [],
-          "routes": [],
-          "intent": "mixed_enrollment_process",
-          "context_topic": "process",
-          "metadata": {
-            "phrases": [
-              "mixed enrollment process",
-              "Unsa akong buhaton human sa online enrollment para sa face to face nga proseso",
-              "Unsaon pag-enroll pinaagi sa face to face nga proseso",
-              "Unsa ang sunod nga mga lakang human makompleto ang online enrollment para sa onsite processing",
-              "Human ko maka-enroll online, unsa na akong buhaton para sa in-person nga enrollment",
-              "Unsa ang proseso sa face to face nga enrollment human sa online registration",
-              "Kung mahuman na ang online enrollment, unsaon nako pagpadayon sa physical nga proseso",
-              "Unsaon nako pag-proceed sa face to face nga enrollment human makompleto ang online registration",
-              "what should I do after online enrollment for face to face process",
-              "how to enroll face to face process",
-              "What are the next steps after completing online enrollment for onsite processing",
-              "face to face human sa online",
-              "Face to face enrollment",
-              "mixed enrollment",
-              "face to face enrollment process",
-              "mixed enrollment steps",
-              "department enrollment process",
-              "enrollment at department office",
-              "onsite enrollment procedure",
-              "unsaon ang face to face enrollment"
-            ]
-          },
-          "display_name": "Mixed Enrollment Process"
-        },
-        {
           "topic": "late_enrollment",
           "responses": {
             "en": [
@@ -692,18 +702,12 @@
           "topic": "graduate_law_enrollment_requirements",
           "responses": {
             "en": [
-              "For Law and Graduate Programs first year and transferee enrollment, submit documentary requirements to the University Registrar's Office until July 16, 2026 and provide 2 long brown envelopes.",
-              "Envelope 1 is the Registrar's Copy and should contain original documents unless stated otherwise: Program Acceptance Slip, Honorable Dismissal for non-BukSU graduates only, Transcript of Records, Subject Equivalency Form for transferees, photocopy of PSA Birth Certificate, photocopy of Marriage Contract if married, BukSU-CAT Report of Rating, photocopy of Medical Certificate, and photocopy of Waiver.",
-              "Envelope 2 is the Student's Copy and should contain photocopies: Program Acceptance Slip, Honorable Dismissal for non-BukSU graduates only, Transcript of Records, Subject Equivalency Form for transferees, PSA Birth Certificate, Marriage Contract if married, BukSU-CAT Report of Rating, Medical Certificate, and photocopy of Waiver.",
-              "Submit to the department or program an original Medical Certificate issued by a Government Physician stating that you are physically fit for off-campus and in-campus activities, and an original Notarized Waiver and Release for Graduate and Post-Graduate Students.",
-              "Download the waiver form here: https://buksu.edu.ph/downloadable-forms/"
+              "Make sure you pass the entrance examination, and prepare these requirements. It should be 2 envelopes: Envelope 1 is the Registrar's Copy, and Envelope 2 is the Student's Copy.\n\n1. Program Acceptance Slip\n2. Honorable Dismissal (for non-BukSU graduates only)\n3. Transcript of Records\n4. Subject Equivalency Form (for Transferees)\n5. Photocopy of PSA Birth Certificate\n6. Photocopy of Marriage Contract (if Married)\n7. BukSU-CAT Report of Rating\n8. Photocopy of Medical Certificate\n9. Photocopy of Waiver",
+              "Requirements to be submitted to the department/program:\n\n1. Medical Certificate (The Medical Certificate must be issued by a government Physician and must state that the student is physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED WAIVER AND RELEASE FOR GRADUATE AND POST-GRADUATE STUDENTS (Original Copy)\n\nDownload the form here: https://buksu.edu.ph/downloadable-forms/"
             ],
             "ceb": [
-              "Para sa Law ug Graduate Programs first year ug transferee enrollment, i-submit ang documentary requirements sa University Registrar's Office hangtod July 16, 2026 ug pag-andam og 2 ka long brown envelopes.",
-              "Ang Envelope 1 mao ang Registrar's Copy ug kinahanglan adunay original documents gawas kung stated otherwise: Program Acceptance Slip, Honorable Dismissal para sa non-BukSU graduates only, Transcript of Records, Subject Equivalency Form para sa transferees, photocopy sa PSA Birth Certificate, photocopy sa Marriage Contract kung minyo, BukSU-CAT Report of Rating, photocopy sa Medical Certificate, ug photocopy sa Waiver.",
-              "Ang Envelope 2 mao ang Student's Copy ug kinahanglan adunay photocopies: Program Acceptance Slip, Honorable Dismissal para sa non-BukSU graduates only, Transcript of Records, Subject Equivalency Form para sa transferees, PSA Birth Certificate, Marriage Contract kung minyo, BukSU-CAT Report of Rating, Medical Certificate, ug photocopy sa Waiver.",
-              "I-submit sa department o program ang original Medical Certificate gikan sa Government Physician nga nag-ingon nga physically fit ka for off-campus and in-campus activities, ug original Notarized Waiver and Release for Graduate and Post-Graduate Students.",
-              "I-download ang waiver form diri: https://buksu.edu.ph/downloadable-forms/"
+              "Siguroha nga nakapasar ka sa entrance examination, ug i-andam kining mga requirements. Kinahanglan kini og 2 ka envelopes: Envelope 1 para sa Registrar's Copy, ug Envelope 2 para sa Student's Copy.\n\n1. Program Acceptance Slip\n2. Honorable Dismissal (para sa non-BukSU graduates lamang)\n3. Transcript of Records\n4. Subject Equivalency Form (para sa Transferees)\n5. Photocopy sa PSA Birth Certificate\n6. Photocopy sa Marriage Contract (kung Minyo)\n7. BukSU-CAT Report of Rating\n8. Photocopy sa Medical Certificate\n9. Photocopy sa Waiver",
+              "Requirements nga kinahanglan i-submit sa department/program:\n\n1. Medical Certificate (Ang Medical Certificate kinahanglan issued gikan sa government Physician ug nagpamatuod nga physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED WAIVER AND RELEASE FOR GRADUATE AND POST-GRADUATE STUDENTS (Original Copy)\n\nI-download ang form diri: https://buksu.edu.ph/downloadable-forms/"
             ]
           },
           "images": [],
@@ -723,7 +727,11 @@
               "requirements for law enrollment",
               "graduate enrollment documentary requirements",
               "law enrollment documentary requirements",
-              "brown envelope for graduate enrollment"
+              "brown envelope for graduate enrollment",
+              "law and graduate requirements",
+              "law & graduate requirements",
+              "graduate requirements",
+              "law requirements"
             ],
             "strong_keywords": [
               "graduate",
@@ -745,18 +753,12 @@
           "topic": "medicine_enrollment_requirements",
           "responses": {
             "en": [
-              "For College of Medicine enrollment, submit documentary requirements to the University Registrar's Office from June 15, 2026 to July 16, 2026 and provide 3 long brown envelopes.",
-              "Envelope 1 is the Registrar's Copy and should contain original documents unless stated otherwise: Certificate of Eligibility for Enrolment, Honorable Dismissal for non-BukSU graduates only, Transcript of Records, Certificate of Good Moral from the Dean or Associate/Assistant Dean of the college graduated from or Senior Faculty, Subject Equivalency Form for transferees, photocopy of PSA Birth Certificate, photocopy of Marriage Contract if married, photocopy of Medical Certificate, photocopy of Waiver, and NMAT Result.",
-              "Envelope 2 is the Student's Copy and Envelope 3 is the College Copy. Both should contain photocopies of the same requirements: Certificate of Eligibility for Enrolment, Honorable Dismissal for non-BukSU graduates only, Transcript of Records, Certificate of Good Moral from the Dean or Associate/Assistant Dean or Senior Faculty, Subject Equivalency Form for transferees, PSA Birth Certificate, Marriage Contract if married, Medical Certificate, photocopy of Waiver, and NMAT Result.",
-              "Submit to the department or program an original Medical Certificate issued by a Government Physician stating that you are physically fit for off-campus and in-campus activities, and an original Notarized Waiver and Release for Graduate and Post-Graduate Students.",
-              "Download the waiver form here: https://buksu.edu.ph/downloadable-forms/"
+              "Prepare these requirements. It should be 3 envelopes: Envelope 1 is the Registrar's Copy, Envelope 2 is the Student's Copy, and Envelope 3 is the College Copy.\n\n1. Certificate of Eligibility for Enrollment\n2. Honorable Dismissal (for non-BukSU graduates only)\n3. Transcript of Records\n4. Certificate of Good Moral from the Dean or Associate/Assistant Dean of College Graduated from / Senior Faculty\n5. Subject Equivalency Form (for Transferees)\n6. Photocopy of PSA Birth Certificate\n7. Photocopy of Marriage Contract (if Married)\n8. Photocopy of Medical Certificate\n9. Photocopy of Waiver\n10. NMAT Result",
+              "Requirements to be submitted to the department/program:\n\n1. Medical Certificate (The Medical Certificate must be issued by a government Physician and must state that the student is physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED WAIVER AND RELEASE FOR GRADUATE AND POST-GRADUATE STUDENTS (Original Copy)\n\nDownload the form here: https://buksu.edu.ph/downloadable-forms/"
             ],
             "ceb": [
-              "Para sa College of Medicine enrollment, i-submit ang documentary requirements sa University Registrar's Office gikan June 15, 2026 hangtod July 16, 2026 ug pag-andam og 3 ka long brown envelopes.",
-              "Ang Envelope 1 mao ang Registrar's Copy ug kinahanglan adunay original documents gawas kung stated otherwise: Certificate of Eligibility for Enrolment, Honorable Dismissal para sa non-BukSU graduates only, Transcript of Records, Certificate of Good Moral gikan sa Dean o Associate/Assistant Dean sa college nga imong gigikanan o Senior Faculty, Subject Equivalency Form para sa transferees, photocopy sa PSA Birth Certificate, photocopy sa Marriage Contract kung minyo, photocopy sa Medical Certificate, photocopy sa Waiver, ug NMAT Result.",
-              "Ang Envelope 2 mao ang Student's Copy ug Envelope 3 mao ang College Copy. Pareho kini nga kinahanglan adunay photocopies sa requirements: Certificate of Eligibility for Enrolment, Honorable Dismissal para sa non-BukSU graduates only, Transcript of Records, Certificate of Good Moral gikan sa Dean o Associate/Assistant Dean o Senior Faculty, Subject Equivalency Form para sa transferees, PSA Birth Certificate, Marriage Contract kung minyo, Medical Certificate, photocopy sa Waiver, ug NMAT Result.",
-              "I-submit sa department o program ang original Medical Certificate gikan sa Government Physician nga nag-ingon nga physically fit ka for off-campus and in-campus activities, ug original Notarized Waiver and Release for Graduate and Post-Graduate Students.",
-              "I-download ang waiver form diri: https://buksu.edu.ph/downloadable-forms/"
+              "I-andam kining mga requirements. Kinahanglan kini og 3 ka envelopes: Envelope 1 para sa Registrar's Copy, Envelope 2 para sa Student's Copy, ug Envelope 3 para sa College Copy.\n\n1. Certificate of Eligibility for Enrollment\n2. Honorable Dismissal (para sa non-BukSU graduates lamang)\n3. Transcript of Records\n4. Certificate of Good Moral gikan sa Dean o Associate/Assistant Dean sa College nga imong gigikanan / Senior Faculty\n5. Subject Equivalency Form (para sa Transferees)\n6. Photocopy sa PSA Birth Certificate\n7. Photocopy sa Marriage Contract (kung Minyo)\n8. Photocopy sa Medical Certificate\n9. Photocopy sa Waiver\n10. NMAT Result",
+              "Requirements nga kinahanglan i-submit sa department/program:\n\n1. Medical Certificate (Ang Medical Certificate kinahanglan issued gikan sa government Physician ug nagpamatuod nga physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED WAIVER AND RELEASE FOR GRADUATE AND POST-GRADUATE STUDENTS (Original Copy)\n\nI-download ang form diri: https://buksu.edu.ph/downloadable-forms/"
             ]
           },
           "images": [],
@@ -1018,16 +1020,10 @@
           "topic": "enrollment_documents",
           "responses": {
             "en": [
-              "Enrollment documentary requirements depend on your program group: undergraduate first year/transferee, law and graduate programs, or College of Medicine.",
-              "For undergraduate first year and transferees, prepare 2 long brown envelopes and submit the documents to the University Registrar's Office until July 16, 2026.",
-              "For law and graduate programs, prepare 2 long brown envelopes and submit the required documents to the University Registrar's Office until July 16, 2026.",
-              "For College of Medicine, prepare 3 long brown envelopes and submit the required documents to the University Registrar's Office from June 15, 2026 to July 16, 2026."
+              "Here are the enrollment requirements, remember the data we have is general, so if your looking for spacific requirements for spacific course, you may directly ask the department, or look for their FB page update"
             ],
             "ceb": [
-              "Ang enrollment documentary requirements depende sa imong program group: undergraduate first year/transferee, law and graduate programs, o College of Medicine.",
-              "Para sa undergraduate first year ug transferees, pag-andam og 2 ka long brown envelopes ug i-submit ang documents sa University Registrar's Office hangtod July 16, 2026.",
-              "Para sa law ug graduate programs, pag-andam og 2 ka long brown envelopes ug i-submit ang required documents sa University Registrar's Office hangtod July 16, 2026.",
-              "Para sa College of Medicine, pag-andam og 3 ka long brown envelopes ug i-submit ang required documents sa University Registrar's Office gikan June 15, 2026 hangtod July 16, 2026."
+              "Mao kini ang mga enrollment requirements. Hinumdumi nga general ang datos nga ania kanato, busa kung nangita ka og espesipikong mga requirements para sa espesipikong kurso, mahimo kang direktang mangutana sa inyong departamento o magtan-aw sa updates sa ilang FB page."
             ]
           },
           "intent": "enrollment_documents",
@@ -1075,23 +1071,19 @@
           "display_name": "Enrollment Documentary Requirements Overview",
           "choiceGroups": [
             {
-              "title": "Choose enrollment requirement type",
+              "title": "Here are the enrollment requirements you can choose:",
               "items": [
                 {
-                  "label": "Undergraduate requirements",
-                  "payload": "undergraduate enrollment requirements"
+                  "label": "Undergraduate Requirements",
+                  "payload": "/direct_intent{\"intent\":\"freshman_admission_requirements\"}"
                 },
                 {
-                  "label": "Graduate requirements",
-                  "payload": "graduate enrollment requirements"
+                  "label": "Law & Graduate Requirements",
+                  "payload": "/direct_intent{\"intent\":\"graduate_law_enrollment_requirements\"}"
                 },
                 {
-                  "label": "Law requirements",
-                  "payload": "law enrollment requirements"
-                },
-                {
-                  "label": "Medicine requirements",
-                  "payload": "medicine enrollment requirements"
+                  "label": "College of Medicine Requirements",
+                  "payload": "/direct_intent{\"intent\":\"medicine_enrollment_requirements\"}"
                 }
               ]
             }

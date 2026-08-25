@@ -17,6 +17,7 @@ class RetrievalCandidate:
     searchable_text: str
     tokens: List[str]
     display_name: str = ""
+    domain: str = ""
     child_terms: List[str] = field(default_factory=list)
     alias_terms: List[str] = field(default_factory=list)
 

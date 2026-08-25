@@ -12,6 +12,7 @@ const PROJECT_ROOT = process.cwd();
 const DATA_DIR = path.join(PROJECT_ROOT, 'data');
 const RESPONSES_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses.json');
 const RESPONSES_LOCATION_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses_location.json');
+const RESPONSES_LOCATION_CORE_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'knowledge', 'location', 'responses_location_core.json');
 const PRIVILEGES_FILE = path.join(DATA_DIR, 'user_privileges.json');
 const MAP_SETTINGS_FILE = path.join(DATA_DIR, 'map_settings.json');
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
@@ -98,33 +99,43 @@ export async function getResponses(): Promise<ResponseData[]> {
 // Write responses to database (primary source)
 export async function saveResponses(responses: ResponseData[]): Promise<boolean> {
   try {
-    for (const response of responses) {
-      await upsertResponse(response);
-    }
+    await backupJsonFile(RESPONSES_FILE, 'responses');
+    await fs.writeFile(RESPONSES_FILE, JSON.stringify(responses, null, 2), 'utf-8');
     return true;
   } catch (error) {
-    console.error('Error saving responses to database:', error);
+    console.error('Error saving responses.json:', error);
     return false;
   }
 }
 
-type LocationFileShape = {
+export type LocationFileShape = {
   locations: Record<
     string,
     {
       type?: string;
       building?: string;
       floor?: string;
-      coordinates?: [number, number] | number[];
-      pins?: Array<{ name?: string; coordinates?: [number, number] | number[]; floor?: string; access?: string; pinType?: string }>;
+      coordinates?: [number, number];
       map_id?: string;
-      mapId?: string;
-      responses?: Record<string, any>;
+      responses?: {
+        en?: string[];
+        ceb?: string[];
+      };
+      pins?: Array<{
+        name: string;
+        coordinates: [number, number];
+        floor?: string;
+        access?: string;
+        pinType?: string;
+      }>;
       imageUrls?: string[];
+      images?: string[];
       routes?: Array<{
         name: string;
         points: [number, number][];
-        color?: string;
+        color: string;
+        route_order: number;
+        route_label: string;
       }>;
     }
   >;
@@ -141,30 +152,34 @@ function normalizeRoutes(routes: any[]): Array<{ name: string; points: [number, 
 }
 
 async function readLocationFile(): Promise<LocationFileShape> {
-  try {
-    const data = await fs.readFile(RESPONSES_LOCATION_FILE, 'utf-8');
-    const parsed = JSON.parse(data);
-    if (parsed && typeof parsed === 'object' && parsed.locations && typeof parsed.locations === 'object') {
-      return parsed as LocationFileShape;
+  for (const targetPath of [RESPONSES_LOCATION_CORE_FILE, RESPONSES_LOCATION_FILE]) {
+    try {
+      const data = await fs.readFile(targetPath, 'utf-8');
+      const parsed = JSON.parse(data);
+      if (parsed && typeof parsed === 'object' && parsed.locations && typeof parsed.locations === 'object') {
+        return parsed as LocationFileShape;
+      }
+    } catch {
+      // try next
     }
-    return { locations: {} };
-  } catch (error) {
-    console.error('Error reading responses_location.json:', error);
-    return { locations: {} };
   }
+  return { locations: {} };
 }
 
 async function writeLocationFile(next: LocationFileShape): Promise<boolean> {
   try {
     let base: any = {};
-    try {
-      const current = await fs.readFile(RESPONSES_LOCATION_FILE, 'utf-8');
-      const parsed = JSON.parse(current);
-      if (parsed && typeof parsed === 'object') {
-        base = parsed;
+    for (const targetPath of [RESPONSES_LOCATION_CORE_FILE, RESPONSES_LOCATION_FILE]) {
+      try {
+        const current = await fs.readFile(targetPath, 'utf-8');
+        const parsed = JSON.parse(current);
+        if (parsed && typeof parsed === 'object') {
+          base = parsed;
+          break;
+        }
+      } catch {
+        // try next
       }
-    } catch {
-      base = {};
     }
 
     const merged = {
@@ -172,11 +187,18 @@ async function writeLocationFile(next: LocationFileShape): Promise<boolean> {
       locations: next.locations || {},
     };
 
-    await backupJsonFile(RESPONSES_LOCATION_FILE, 'locations');
-    await fs.writeFile(RESPONSES_LOCATION_FILE, JSON.stringify(merged, null, 2), 'utf-8');
+    const targets = [RESPONSES_LOCATION_CORE_FILE, RESPONSES_LOCATION_FILE];
+    for (const targetPath of targets) {
+      try {
+        await backupJsonFile(targetPath, 'locations');
+        await fs.writeFile(targetPath, JSON.stringify(merged, null, 2), 'utf-8');
+      } catch (err) {
+        console.error(`Error saving location file ${targetPath}:`, err);
+      }
+    }
     return true;
   } catch (error) {
-    console.error('Error saving responses_location.json:', error);
+    console.error('Error saving location files:', error);
     return false;
   }
 }

@@ -26,6 +26,13 @@ LOCATION_ALIASES = aliases_module.LOCATION_ALIASES
 
 from main_router import MainRouterService
 from response_builder import ResponseBuilder
+from domain_registry import (
+    DOMAIN_REGISTRY,
+    normalize_domain,
+    get_domain_info,
+    get_domain_suggestions,
+    get_all_domains,
+)
 
 # Weak/common words that should score lower to avoid false matches
 WEAK_COMMON_WORDS = {
@@ -132,68 +139,80 @@ class ActionReplyFromJsonHelper:
             responses_path = os.path.join(current_dir, "responses.json")
         self.responses_path = responses_path
         self.responses = self._load_responses()
-        self.location_responses_path = os.path.join(os.path.dirname(responses_path), "responses_location.json")
+        core_loc_path = os.path.join(os.path.dirname(responses_path), "knowledge", "location", "responses_location_core.json")
+        if os.path.isfile(core_loc_path):
+            self.location_responses_path = core_loc_path
+        else:
+            self.location_responses_path = os.path.join(os.path.dirname(responses_path), "responses_location.json")
         self.location_responses = self._load_location_responses()
         # Load structured knowledge bases from Supper Saiyan folder
+        # Load structured knowledge bases from knowledge directory
+        self.knowledge_dir = os.path.join(os.path.dirname(responses_path), "knowledge")
         self.supper_saiyan_dir = os.path.join(os.path.dirname(responses_path), "Supper Saiyan")
         
-        # Library and Academic Policy (already exist at root level too)
-        self.library_info_path = os.path.join(self.supper_saiyan_dir, "Library_info.json")
+        def _resolve_kb_path(domain_subpath: str, legacy_filename: str) -> str:
+            kn_path = os.path.join(self.knowledge_dir, domain_subpath)
+            if os.path.isfile(kn_path):
+                return kn_path
+            return os.path.join(self.supper_saiyan_dir, legacy_filename)
+
+        # Library and Academic Policy
+        self.library_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Library_info.json")
         self.library_info = self._load_json_file(self.library_info_path)
         
-        self.academic_policy_path = os.path.join(self.supper_saiyan_dir, "Academic_policy.json")
+        self.academic_policy_path = _resolve_kb_path(os.path.join("academics", "academic_policies.json"), "Academic_policy.json")
         self.academic_policy = self._load_json_file(self.academic_policy_path)
         
         # Administrators
-        self.administrators_path = os.path.join(self.supper_saiyan_dir, "Administrators.json")
+        self.administrators_path = _resolve_kb_path(os.path.join("university", "administrators.json"), "Administrators.json")
         self.administrators_info = self._load_json_file(self.administrators_path)
         
         # Admissions
-        self.admissions_path = os.path.join(self.supper_saiyan_dir, "Admissions_info.json")
+        self.admissions_path = _resolve_kb_path(os.path.join("procedures", "admission_procedures.json"), "Admissions_info.json")
         self.admissions_info = self._load_json_file(self.admissions_path)
         
         # Classroom Policy
-        self.classroom_policy_path = os.path.join(self.supper_saiyan_dir, "Classroom_policy.json")
+        self.classroom_policy_path = _resolve_kb_path(os.path.join("academics", "academic_policies.json"), "Classroom_policy.json")
         self.classroom_policy = self._load_json_file(self.classroom_policy_path)
         
         # Clinic Info
-        self.clinic_info_path = os.path.join(self.supper_saiyan_dir, "Clinic_info.json")
+        self.clinic_info_path = _resolve_kb_path(os.path.join("services", "student_health_services.json"), "Clinic_info.json")
         self.clinic_info = self._load_json_file(self.clinic_info_path)
         
         # Courses Info
-        self.courses_info_path = os.path.join(self.supper_saiyan_dir, "Courses_info.json")
+        self.courses_info_path = _resolve_kb_path(os.path.join("academics", "degree_programs.json"), "Courses_info.json")
         self.courses_info = self._load_json_file(self.courses_info_path)
         
         # Departmentals Faculty Staff
-        self.departamentals_path = os.path.join(self.supper_saiyan_dir, "Departamentals_facultystaff.json")
+        self.departamentals_path = _resolve_kb_path(os.path.join("university", "faculty_and_deans.json"), "Departamentals_facultystaff.json")
         self.departamentals_faculty_staff = self._load_json_file(self.departamentals_path)
         
         # Department Info
-        self.department_info_path = os.path.join(self.supper_saiyan_dir, "Department_info.json")
+        self.department_info_path = _resolve_kb_path(os.path.join("university", "faculty_and_deans.json"), "Department_info.json")
         self.department_info = self._load_json_file(self.department_info_path)
         
         # Enrollment Info
-        self.enrollment_info_path = os.path.join(self.supper_saiyan_dir, "Enrollment_info.json")
+        self.enrollment_info_path = _resolve_kb_path(os.path.join("procedures", "enrollment_procedures.json"), "Enrollment_info.json")
         self.enrollment_info = self._load_json_file(self.enrollment_info_path)
 
         # Facilities Info
-        self.facilities_info_path = os.path.join(self.supper_saiyan_dir, "Facilities_info.json")
+        self.facilities_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Facilities_info.json")
         self.facilities_info = self._load_json_file(self.facilities_info_path)
         
         # ICT Info
-        self.ict_info_path = os.path.join(self.supper_saiyan_dir, "Ict_info.json")
+        self.ict_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Ict_info.json")
         self.ict_info = self._load_json_file(self.ict_info_path)
         
         # OSS Services
-        self.oss_services_path = os.path.join(self.supper_saiyan_dir, "Oss_services.json")
+        self.oss_services_path = _resolve_kb_path(os.path.join("services", "oss_student_services.json"), "Oss_services.json")
         self.oss_services = self._load_json_file(self.oss_services_path)
         
         # University Info
-        self.university_info_path = os.path.join(self.supper_saiyan_dir, "University_info.json")
+        self.university_info_path = _resolve_kb_path(os.path.join("university", "university_identity.json"), "University_info.json")
         self.university_info = self._load_json_file(self.university_info_path)
         
         # Dormitory Info
-        self.dormitory_info_path = os.path.join(self.supper_saiyan_dir, "Dormitory_info.json")
+        self.dormitory_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Dormitory_info.json")
         self.dormitory_info = self._load_json_file(self.dormitory_info_path)
         
         self._json_mtimes = self._snapshot_json_mtimes()
@@ -220,12 +239,11 @@ class ActionReplyFromJsonHelper:
             self.dormitory_info_path,
         ]
         try:
-            supper_saiyan_paths = [
-                os.path.join(self.supper_saiyan_dir, filename)
-                for filename in os.listdir(self.supper_saiyan_dir)
-                if filename.endswith(".json")
-            ]
-            paths.extend(supper_saiyan_paths)
+            knowledge_root = os.path.join(os.path.dirname(self.responses_path), "knowledge")
+            for root, _, files in os.walk(knowledge_root):
+                for f in files:
+                    if f.endswith(".json"):
+                        paths.append(os.path.join(root, f))
         except OSError:
             pass
         return list(dict.fromkeys(path for path in paths if path))
@@ -543,32 +561,50 @@ class ActionReplyFromJsonHelper:
         return LOCATION_ALIASES.get(cleaned, raw_name)
 
     def _guess_all_locations_from_text(self, user_message: str) -> List[str]:
-        """Find ALL location aliases in the text, not just the best one"""
+        """Find ALL distinct, non-overlapping location aliases in the text (longest match first)"""
         if not user_message:
             return []
 
         text = str(user_message).strip().lower()
-        found_locations = set()
+        matches = []
 
-        # Find all matching aliases
-        for alias, normalized in LOCATION_ALIASES.items():
-            if alias and alias in text:
-                found_locations.add(normalized)
+        # Find all matching aliases with regex boundaries
+        for alias, canonical in LOCATION_ALIASES.items():
+            if not alias:
+                continue
+            pattern = rf"(?<!\w){re.escape(alias.lower())}(?!\w)"
+            for m in re.finditer(pattern, text):
+                matches.append((m.start(), m.end(), len(alias), canonical))
 
         # Also try room code patterns
-        matches = re.finditer(r"\b(c\d+)\s+(\d+)\s+(\d{1,2})\b", text)
-        for match in matches:
+        matches_room = re.finditer(r"\b(c\d+)\s+(\d+)\s+(\d{1,2})\b", text)
+        for match in matches_room:
             building, floor, room = match.group(1), match.group(2), match.group(3)
             room_padded = room.zfill(2)
-            found_locations.add(f"{building}-{floor}-{room_padded}".upper())
+            canonical = f"{building}-{floor}-{room_padded}".upper()
+            matches.append((match.start(), match.end(), match.end() - match.start(), canonical))
 
-        matches2 = re.finditer(r"\b(c\d+)-(\d+)-(\d{1,2})\b", text)
-        for match in matches2:
+        matches_room2 = re.finditer(r"\b(c\d+)-(\d+)-(\d{1,2})\b", text)
+        for match in matches_room2:
             building, floor, room = match.group(1), match.group(2), match.group(3)
             room_padded = room.zfill(2)
-            found_locations.add(f"{building}-{floor}-{room_padded}".upper())
+            canonical = f"{building}-{floor}-{room_padded}".upper()
+            matches.append((match.start(), match.end(), match.end() - match.start(), canonical))
 
-        return list(found_locations)
+        # Sort matches: start index ascending, length descending (longest phrase prioritized)
+        matches.sort(key=lambda item: (item[0], -item[2]))
+
+        used_spans = []
+        found_locations: List[str] = []
+        for start, end, _, canonical in matches:
+            # Skip if this match overlaps with a longer previously accepted span
+            if any(start < u_end and end > u_start for u_start, u_end in used_spans):
+                continue
+            used_spans.append((start, end))
+            if canonical not in found_locations:
+                found_locations.append(canonical)
+
+        return found_locations
 
     def _guess_location_from_text(self, user_message: str) -> Optional[str]:
         """Find the best (longest) location alias in the text"""
@@ -1454,9 +1490,36 @@ class ActionMainRouter(Action):
 
     async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
         intent = tracker.latest_message.get("intent", {}).get("name")
-        user_msg = tracker.latest_message.get("text", "")
+        user_msg = str(tracker.latest_message.get("text", "")).strip()
         slot_updates: Dict[str, Any] = {}
         tracker_slots = tracker.current_slot_values()
+        
+        # Intercept category commands directly
+        if user_msg.startswith("/set_category") or intent == "set_category":
+            category_action = ActionSetActiveCategory()
+            return await category_action.run(dispatcher, tracker, domain)
+
+        if user_msg.startswith("/reset_category") or intent == "reset_category":
+            reset_action = ActionResetActiveCategory()
+            return await reset_action.run(dispatcher, tracker, domain)
+
+        raw_cat = (
+            tracker.latest_message.get("metadata", {}).get("active_category") or
+            tracker.latest_message.get("metadata", {}).get("category")
+        )
+        if not raw_cat:
+            for entity in tracker.latest_message.get("entities", []):
+                if entity.get("entity") in {"category", "active_category", "domain"} and entity.get("value"):
+                    raw_cat = entity.get("value")
+                    break
+        if not raw_cat:
+            raw_cat = tracker_slots.get("active_category") or tracker_slots.get("category")
+        
+        if raw_cat:
+            norm_cat = normalize_domain(raw_cat)
+            tracker_slots["active_category"] = norm_cat
+            slot_updates["active_category"] = norm_cat
+
         self.router.refresh_if_changed()
 
         if intent == "ask_follow_up":
@@ -1884,3 +1947,95 @@ class ActionSetDynamicSlot(Action):
             self.helper.set_dynamic_slot(slot_name, slot_value)
             dispatcher.utter_message(text=f"Slot '{slot_name}' set to '{slot_value}'.")
         return []
+
+
+class ActionSetActiveCategory(Action):
+    """Sets the active category domain and presents tailored starter suggestions."""
+    def name(self) -> str:
+        return "action_set_active_category"
+
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
+        raw_category = None
+        for entity in tracker.latest_message.get("entities", []):
+            if entity.get("entity") in {"category", "active_category", "domain"}:
+                raw_category = entity.get("value")
+                break
+        if not raw_category:
+            raw_category = tracker.get_slot("active_category") or tracker.get_slot("category")
+
+        norm_domain = normalize_domain(raw_category)
+        if not norm_domain:
+            dispatcher.utter_message(
+                text="Please select one of the categories below:",
+                json_message={
+                    "choiceGroups": [
+                        {
+                            "title": "Available Categories",
+                            "items": [
+                                {"label": d["title"], "payload": f"/set_category{{\"active_category\":\"{d['id']}\"}}"}
+                                for d in get_all_domains()
+                            ]
+                        }
+                    ]
+                }
+            )
+            return [SlotSet("active_category", None)]
+
+        info = get_domain_info(norm_domain)
+        title = info.get("title", norm_domain.title())
+        desc = info.get("description", "")
+        suggestions = get_domain_suggestions(norm_domain)
+
+        dispatcher.utter_message(
+            text=f"### 🎯 Active Category: {title}\n{desc}\n\nAsk any question in this category or tap one of the quick suggestions below:",
+            json_message={
+                "activeCategory": norm_domain,
+                "activeCategoryTitle": title,
+                "suggestions": [{"label": q, "payload": q} for q in suggestions]
+            }
+        )
+        return [SlotSet("active_category", norm_domain)]
+
+
+class ActionResetActiveCategory(Action):
+    """Resets the active category back to None and presents the 5 main categories."""
+    def name(self) -> str:
+        return "action_reset_active_category"
+
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
+        dispatcher.utter_message(
+            text="👋 **Hello BukSUan! What can I assist you with today?**\n\nPlease choose a category below:",
+            json_message={
+                "activeCategory": None,
+                "categoryCards": [
+                    {
+                        "id": d["id"],
+                        "title": d["title"],
+                        "icon": d["icon"],
+                        "description": d["description"],
+                        "payload": f"/set_category{{\"active_category\":\"{d['id']}\"}}"
+                    }
+                    for d in get_all_domains()
+                ]
+            }
+        )
+        return [SlotSet("active_category", None)]
+
+
+class ActionGetCategorySuggestions(Action):
+    """Returns quick suggestions for the active category."""
+    def name(self) -> str:
+        return "action_get_category_suggestions"
+
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
+        active_cat = tracker.get_slot("active_category")
+        norm_domain = normalize_domain(active_cat)
+        if norm_domain:
+            suggestions = get_domain_suggestions(norm_domain)
+            dispatcher.utter_message(
+                json_message={
+                    "suggestions": [{"label": q, "payload": q} for q in suggestions]
+                }
+            )
+        return []
+
