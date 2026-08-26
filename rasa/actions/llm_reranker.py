@@ -17,13 +17,13 @@ class LLMReranker:
     from official JSON-backed candidates already found by local retrieval.
     """
 
-    SYSTEM_PROMPT = """You are an intelligent semantic selector for a university chatbot.
+    SYSTEM_PROMPT = """You are an intelligent semantic selector for a university chatbot at Bukidnon State University.
 Given a student's question and a list of official candidate records, your task is to identify which candidate's answer directly addresses the student's question.
 
 Rules:
-1. Understand the core context and intent of the student's question (e.g. losing a card, paying for replacement, applying for graduation).
-2. Match the student's situation to the candidate whose official_answer or display_name best resolves their question.
-3. If a candidate clearly answers the question, choose its intent and set confidence to "high" (or "medium" if partial).
+1. Understand the core intent of the student's question even if written in Cebuano/Bisaya, Tagalog/Taglish, colloquial slang, or long narratives (e.g., "dili nako mahinumdoman ang passcode", "nahagbong ko", "sakit akong ngipon", "magpa ibot", "losing an account", "applying for graduation").
+2. Match the student's situation to the candidate whose display_name, subject terms, or official_answer best resolves their inquiry.
+3. If a candidate clearly answers the question, choose its intent and set confidence to "high" (or "medium" if it is the closest reasonable match).
 4. Only return selected_intent as null if NONE of the candidate records are relevant to the user's inquiry.
 5. Return JSON only in this exact shape:
 {"selected_intent": string|null, "confidence": "high"|"medium"|"low", "reason": string}
@@ -104,29 +104,26 @@ Rules:
         intent_lookup = {candidate.intent: candidate for candidate, _ in candidates}
         prompt = self._build_prompt(user_message, candidates)
 
+        print(f"[LLM MATCHER] Query: '{user_message}' -> Consulting LLM on {len(candidates)} candidates...")
         try:
             decision = self._generate_json(prompt)
         except Exception as exc:
+            print(f"[LLM MATCHER] API call failed: {exc} -> Falling back to RASA Local NLU")
             logger.warning("LLM reranker unavailable; falling back to local retrieval: %s", exc)
             return None
 
         selected_intent = str(decision.get("selected_intent") or "").strip()
         confidence = str(decision.get("confidence") or "low").strip().lower()
         if confidence not in {"high", "medium"}:
-            logger.info("LLM reranker declined selection: %s", decision)
+            print(f"[LLM MATCHER] LLM declined selection (confidence='{confidence}') -> Falling back to RASA Local NLU")
             self._decision_cache[cache_key] = (now, None)
             return None
         if selected_intent not in intent_lookup:
-            logger.warning("LLM reranker selected unknown intent %r from %s", selected_intent, list(intent_lookup))
+            print(f"[LLM MATCHER] LLM selected unknown intent '{selected_intent}' -> Falling back to RASA Local NLU")
             self._decision_cache[cache_key] = (now, None)
             return None
 
-        logger.info(
-            "LLM reranker selected intent=%s confidence=%s reason=%s",
-            selected_intent,
-            confidence,
-            decision.get("reason", ""),
-        )
+        print(f"[LLM MATCHER] Success! Selected Intent: '{selected_intent}' (Confidence: {confidence}) | Reason: {decision.get('reason', '')}")
         selected_candidate = intent_lookup[selected_intent]
         self._decision_cache[cache_key] = (now, selected_candidate)
         return selected_candidate
@@ -137,10 +134,10 @@ Rules:
             lines.append(f"{index}. intent: {candidate.intent}")
             lines.append(f"   topic_name: {candidate.display_name}")
             if candidate.subject_terms:
-                lines.append(f"   subject: {', '.join(candidate.subject_terms[:8])}")
+                lines.append(f"   subject: {', '.join(candidate.subject_terms[:6])}")
             if candidate.phrases:
-                lines.append(f"   sample_phrases: {', '.join(candidate.phrases[:6])}")
-            answer_preview = self._compact(candidate.answer_text, 420)
+                lines.append(f"   sample_phrases: {', '.join(candidate.phrases[:4])}")
+            answer_preview = self._compact(candidate.answer_text, 120)
             if answer_preview:
                 lines.append(f"   official_answer: {answer_preview}")
             lines.append("")

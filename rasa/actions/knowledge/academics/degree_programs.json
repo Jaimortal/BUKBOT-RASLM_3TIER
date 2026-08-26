@@ -3731,7 +3731,14 @@
               "shift to another program",
               "course transfer process",
               "can i shift course",
-              "what is course shifting"
+              "what is course shifting",
+              "move to education next term",
+              "move to another course",
+              "switch course",
+              "course not for me",
+              "change my current tech course",
+              "transfer to other program",
+              "change degree program"
             ]
           },
           "display_name": "Course Shifting"

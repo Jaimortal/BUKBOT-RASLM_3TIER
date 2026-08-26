@@ -1965,7 +1965,14 @@
               "unsaon pag reset sa sias password",
               "nakalimot ko sa sias password",
               "forgot password button in sias",
-              "institutional email code sias password"
+              "institutional email code sias password",
+              "unsaon pag sulod balik sa akong account",
+              "dili nako mahinumdoman ang passcode",
+              "dugay nako wala ka log in",
+              "lost account passcode",
+              "forgot passcode portal",
+              "cannot log in to my account",
+              "forgot account credentials"
             ]
           },
           "display_name": "SIAS Forgot Password"

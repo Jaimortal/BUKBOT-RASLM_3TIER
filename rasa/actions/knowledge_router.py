@@ -314,11 +314,17 @@ class KnowledgeRouter:
             return "scholarship_application"
 
         # Gate Pass Policy Routing
-        _has_gate_pass = self._has_any(text, [
-            "gate pass", "gatepass", "vehicle pass", "vehicle sticker",
-        ]) or (
-            self._has_any(text, ["gate", "guard", "security", "enter", "sulod", "makasulod"]) and
-            self._has_any(text, ["pass", "permit", "sticker"])
+        _has_account_portal = self._has_any(text, [
+            "account", "portal", "login", "log in", "log-in", "signin", "sign in", "sign-in",
+            "password", "passcode", "pass code", "forgot", "sias", "email", "gmail", "credentials"
+        ])
+        _has_gate_pass = not _has_account_portal and (
+            self._has_any(text, [
+                "gate pass", "gatepass", "vehicle pass", "vehicle sticker", "car sticker", "motor sticker", "motorcycle pass", "car pass", "motor pass"
+            ]) or (
+                self._has_any(text, ["gate", "guard", "security", "campus entrance"]) and
+                self._has_any(text, ["pass", "permit", "sticker"])
+            )
         )
         _has_bike = self._has_any(text, [
             "bike", "bikes", "bicycle", "bicycles", "bisekleta", "bisikleta",
@@ -2268,7 +2274,13 @@ class KnowledgeRouter:
             if self._has_any(text, ["does clinic offer dental services", "clinic offer dental services", "clinic offers dental services"]):
                 return "buksu_medical_dental_services"
             if has_clinic and not has_dental and self._has_any(text, ["service", "services", "available", "offer"]):
-                return "__clinic_services_menu__"
+                _has_specific_complaint = self._has_any(text, [
+                    "ngipon", "tooth", "teeth", "ibot", "extract", "extraction", "sakit", "pain", "ache",
+                    "consult", "consultation", "checkup", "check up", "check-up", "medicine", "tambal",
+                    "fever", "hilanat", "headache", "labad", "wound", "samad", "first aid", "first-aid", "bandage"
+                ])
+                if not _has_specific_complaint:
+                    return "__clinic_services_menu__"
             if has_tooth_extraction:
                 return "request_tooth_extraction"
             if has_dental_referral_medicine:
@@ -2296,9 +2308,11 @@ class KnowledgeRouter:
                 return "med_mission"
             if self._has_any(text, ["vision"]):
                 return "med_vision"
-            if self._has_any(text, ["where", "location", "find"]):
+            if self._has_any(text, ["where", "location", "find", "asa dapit", "asa ang clinic"]):
                 return "buksu_med_loc"
-            return "medic_clinic"
+            if self._has_any(text, ["what is clinic", "about clinic", "about the clinic", "unsa ang clinic", "tell me about the clinic", "information about clinic", "info about clinic"]):
+                return "medic_clinic"
+            return None
         if has_dean_or_head:
             college_route = self._college_person_route(text)
             if college_route:
@@ -3244,21 +3258,26 @@ class KnowledgeRouter:
 
         retrieval_result = self.retrieval_scorer.search(intent, user_message, entity_values, domain=active_domain)
         if retrieval_result.is_high_confidence and retrieval_result.intent:
+            print(f"[RASA NLU - HIGH CONFIDENCE] Query: '{user_message}' -> Score: {retrieval_result.score:.2f} -> Intent: '{retrieval_result.intent}' (RASA took over)")
             self.last_selected_intent = retrieval_result.intent
             return self.data_loader.get_response(retrieval_result.intent, user_message=user_message, domain=active_domain)
 
         llm_candidate = self.llm_reranker.choose(user_message, retrieval_result)
         if llm_candidate:
+            print(f"[LLM MATCH - TAKEOVER] Query: '{user_message}' -> Selected: '{llm_candidate.intent}' (LLM took over)")
             self.last_selected_intent = llm_candidate.intent
             return self.data_loader.get_response(llm_candidate.intent, user_message=user_message, domain=active_domain)
 
         if retrieval_result.is_medium_confidence and retrieval_result.intent and not retrieval_result.runner_up:
+            print(f"[RASA NLU - MEDIUM CONFIDENCE] Query: '{user_message}' -> Score: {retrieval_result.score:.2f} -> Intent: '{retrieval_result.intent}' (RASA took over)")
             self.last_selected_intent = retrieval_result.intent
             return self.data_loader.get_response(retrieval_result.intent, user_message=user_message, domain=active_domain)
 
         if retrieval_result.is_medium_confidence:
+            print(f"[ROUTER - CLARIFICATION] Query: '{user_message}' -> Presenting disambiguation buttons")
             return self.retrieval_scorer.clarification(retrieval_result)
 
+        print(f"[ROUTER - DOMAIN FALLBACK] Query: '{user_message}' -> Domain fallback for '{active_domain}'")
         return self._domain_fallback_response(active_domain, retrieval_result=retrieval_result)
 
     def _domain_fallback_response(

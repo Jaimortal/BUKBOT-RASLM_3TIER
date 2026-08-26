@@ -4,6 +4,7 @@ intents:
   - set_category
   - reset_category
   - get_category_suggestions
+  - direct_intent
   - ask_location
   - ask_schedule
   - ask_fee
@@ -25,6 +26,7 @@ entities:
   - active_category
   - category
   - domain
+  - intent
   - location_name
   - service
   - office
