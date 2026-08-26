@@ -96,7 +96,7 @@ class RetrievalScorer:
             reasons=reasons,
             runner_up=runner_up_candidate,
             runner_up_score=runner_up_score,
-            ranked_candidates=[(candidate, score) for score, candidate, _ in scored[:6]],
+            ranked_candidates=[(candidate, score) for score, candidate, _ in scored[:10]],  # Issue 4 Fix: pool expanded from 6 to 10
         )
 
     def clarification(self, result: RetrievalResult) -> Dict[str, Any]:

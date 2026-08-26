@@ -3257,12 +3257,20 @@ class KnowledgeRouter:
             return self.data_loader.fallback()
 
         retrieval_result = self.retrieval_scorer.search(intent, user_message, entity_values, domain=active_domain)
-        if retrieval_result.is_high_confidence and retrieval_result.intent:
-            print(f"[RASA NLU - HIGH CONFIDENCE] Query: '{user_message}' -> Score: {retrieval_result.score:.2f} -> Intent: '{retrieval_result.intent}' (RASA took over)")
+
+        # Issue 1 Fix: Only bypass LLM when RASA is high confidence AND the margin
+        # over the runner-up is clearly unambiguous (>= 8 pts). Narrow margins go to LLM.
+        margin = retrieval_result.score - retrieval_result.runner_up_score
+        strong_high = retrieval_result.is_high_confidence and (
+            not retrieval_result.runner_up or margin >= 8.0
+        )
+        if strong_high and retrieval_result.intent:
+            print(f"[RASA NLU - HIGH CONFIDENCE] Query: '{user_message}' -> Score: {retrieval_result.score:.2f} (margin={margin:.1f}) -> Intent: '{retrieval_result.intent}' (RASA took over)")
             self.last_selected_intent = retrieval_result.intent
             return self.data_loader.get_response(retrieval_result.intent, user_message=user_message, domain=active_domain)
 
-        llm_candidate = self.llm_reranker.choose(user_message, retrieval_result)
+        # Issue 2 Fix: Pass active_domain so LLM cache key is domain-scoped
+        llm_candidate = self.llm_reranker.choose(user_message, retrieval_result, domain=active_domain)
         if llm_candidate:
             print(f"[LLM MATCH - TAKEOVER] Query: '{user_message}' -> Selected: '{llm_candidate.intent}' (LLM took over)")
             self.last_selected_intent = llm_candidate.intent
@@ -3719,14 +3727,6 @@ class KnowledgeRouter:
             return "about_buksu"
         return None
 
-    def location_responses(self, locations: List[str], user_message: str) -> List[Dict[str, Any]]:
-        responses = []
-        for location in locations:
-            response = self.data_loader.get_location_response(location, user_message)
-            text = response.get("text", "")
-            if text and not text.lower().startswith("sorry, i don't have information"):
-                responses.append(response)
-        return responses
     def location_responses(self, locations: List[str], user_message: str) -> List[Dict[str, Any]]:
         responses = []
         for location in locations:
