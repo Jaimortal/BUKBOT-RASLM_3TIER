@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ALL_CATEGORIES, type CategoryId } from "@/lib/categoryConfig";
-import { MapPin, ClipboardList, GraduationCap, Building2, Landmark, ChevronRight } from "lucide-react";
+import { MapPin, ClipboardList, GraduationCap, Building2, Landmark, LayoutGrid, ChevronRight } from "lucide-react";
 
 interface WelcomeScreenProps {
   onSelectCategory: (categoryId: CategoryId) => void;
@@ -12,6 +12,7 @@ const ICON_MAP: Record<string, any> = {
   GraduationCap,
   Building2,
   Landmark,
+  LayoutGrid,
 };
 
 export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {

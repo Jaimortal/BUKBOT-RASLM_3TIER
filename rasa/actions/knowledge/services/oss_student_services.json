@@ -208,6 +208,543 @@
         }
       ],
       "display_name": "Scholarships and Financial Grants Unit"
+    },
+    {
+      "topic": "campus_dress_code",
+      "subject_key": "dress_code",
+      "subject_type": "policy",
+      "subject_terms": [
+        "dress code",
+        "uniform",
+        "civilian",
+        "civilian attire",
+        "attire",
+        "clothes",
+        "t-shirt",
+        "pants",
+        "casual clothes"
+      ],
+      "subtopics": [
+        {
+          "topic": "wear_civilian_attire",
+          "intent": "wear_civilian_attire",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "The official school uniform is required for undergraduate students during regular class days (Mondays, Tuesdays, Thursdays, and Fridays).",
+              "Civilian attire (such as decent T-shirts and long pants/jeans) is permitted on Wednesdays (Wash Days), Saturdays, Sundays, and during official university wash-day announcements or enrollment periods.",
+              "Incoming first-year students and freshmen who do not have their official school uniforms yet are granted a temporary grace period to wear modest and decent civilian clothes (e.g. plain T-shirt and pants) by presenting their validated Certificate of Registration (COR) at the entrance guard.",
+              "Note: Sandos/sleeveless shirts, short shorts, ripped/revealing clothing, and rubber slippers are strictly prohibited on campus."
+            ],
+            "ceb": [
+              "Ang opisyal nga school uniform required para sa mga undergraduate students panahon sa regular class days (Lunes, Martes, Huwebes, ug Biyernes).",
+              "Ang civilian attire (sama sa desente nga T-shirt ug long pants/maong) gitugotan matag Miyerkules (Wash Day), Sabado, Domingo, ug sa panahon sa opisyal nga enrollment o university events.",
+              "Ang mga incoming first-year students ug freshmen nga wala pa nakakuha sa ilang opisyal nga uniform gihatagan og temporaryong grace period nga makasul-ob og disente nga civilian clothes (sama sa T-shirt ug karsones) pinaagi sa pagpakita sa ilang validated Certificate of Registration (COR) sa security guard.",
+              "Hinumdomi: Ang sando/sleeveless, mugbo kaayo nga shorts, gisi-gisi nga sinina, ug tsinelas hugot nga gidili sulod sa campus."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "am i allowed to enter inside the campus with using t shirt and a pants",
+              "can i wear t shirt and pants inside campus",
+              "pwede ba mag t shirt ug pants sulod sa campus",
+              "is t shirt and jeans allowed in buksu",
+              "can i enter campus without uniform",
+              "can i wear civilian attire in buksu",
+              "do student allowed to use civilian",
+              "are students allowed to wear civilian",
+              "can students use civilian attire",
+              "can i wear civilian clothes to school",
+              "are students permitted to enter campus without uniform",
+              "is it okay to come to school in plain clothes",
+              "civilian clothes allowed",
+              "uniform not required today",
+              "can enter no uniform",
+              "plain clothes okay for school",
+              "pwede ba mag civilian sa buksu",
+              "pwede ba mag civilian",
+              "pwede ra ba mag civilian sa buksu",
+              "unsa adlaw pwede mag civilian",
+              "bawal ba mag civilian",
+              "pwede ba mag sanina ug civilian",
+              "pwede ba mag civilian attire",
+              "dress code policy in buksu"
+            ]
+          },
+          "display_name": "Civilian Attire & Dress Code Policy",
+          "subject_terms": [
+            "civilian",
+            "uniform",
+            "dress code",
+            "attire",
+            "t-shirt",
+            "pants"
+          ]
+        }
+      ],
+      "display_name": "Campus Dress Code & Uniform Policy"
+    },
+    {
+      "topic": "pwd_student_assistance_services",
+      "responses": {
+        "en": [
+          "Yes BukSU supports inclusivity and provides assistance for students with disabilities.",
+          "PWD applicants and students may coordinate with the Office of Student Services for assistance and reasonable accommodations during exams and classes."
+        ],
+        "ceb": [
+          "Oo ang BukSU naghatag og importansya sa inclusivity ug naghatag og tabang para sa mga estudyante nga adunay disability.",
+          "Ang mga PWD nga aplikante o estudyante mahimong makig coordinate sa Office of Student Services para sa tabang ug espesyal nga accommodation sa exam o klase."
+        ]
+      },
+      "intent": "pwd_student_assistance_services",
+      "context_topic": "accessibility",
+      "metadata": {
+        "phrases": [
+          "Naghatag ba og tabang ang BukSU para sa PWD students",
+          "Giunsa pagkuha og support ang estudyante nga adunay disability",
+          "Asa makig coordinate ang PWD students para sa assistance",
+          "Gisuportahan ba ang inclusivity sa mga estudyante nga adunay disability",
+          "Unsang opisina ang mo handle sa PWD student assistance",
+          "Pwede ba ang BukSU maghatag og exam support para sa disabled students",
+          "Kinsa kontakon sa PWD students para sa tabang",
+          "Does BukSU provide assistance for PWD students",
+          "How can students with disabilities get support at BukSU",
+          "Are there accommodations for PWD applicants during exams"
+        ],
+        "strong_keywords": [
+          "students",
+          "buksu",
+          "support",
+          "assistance",
+          "tabang"
+        ],
+        "weak_keywords": [
+          "estudyante",
+          "adunay",
+          "disability",
+          "naghatag",
+          "giunsa"
+        ]
+      },
+      "display_name": "Accessibility"
+    },
+    {
+      "topic": "guidance_counseling_services_buksu",
+      "responses": {
+        "en": [
+          "Yes the University Guidance and Counseling Unit provides services such as individual counseling career guidance and psychological testing.",
+          "These services support the mental health and well being of students."
+        ],
+        "ceb": [
+          "Oo ang University Guidance and Counseling Unit naghatag og serbisyo sama sa individual counseling career guidance ug psychological testing.",
+          "Kini nga serbisyo nagasuporta sa mental health ug kaayohan sa mga estudyante."
+        ]
+      },
+      "intent": "guidance_counseling_services_buksu",
+      "context_topic": "guidance",
+      "metadata": {
+        "phrases": [
+          "Naghatag ba ang BukSU og guidance and counseling services",
+          "Unsang mga serbisyo ang gi offer sa University Guidance and Counseling Unit",
+          "Pwede ba makakuha og career guidance ang estudyante sa BukSU",
+          "Naay psychological tests para sa estudyante",
+          "Gi provide ba ang individual counseling sa BukSU",
+          "Giunsa pag access sa estudyante sa mental health support",
+          "Open ba ang guidance services sa tanan estudyante",
+          "Giunsa pag request sa estudyante sa counseling sessions",
+          "Does BukSU provide guidance and counseling services",
+          "What services are offered by University Guidance and Counseling Unit",
+          "Can students receive career guidance at BukSU"
+        ],
+        "strong_keywords": [
+          "guidance",
+          "counseling",
+          "buksu",
+          "estudyante",
+          "services"
+        ],
+        "weak_keywords": [
+          "university",
+          "unit",
+          "career",
+          "provide",
+          "giunsa"
+        ]
+      },
+      "display_name": "Guidance"
+    },
+    {
+      "topic": "free_tuition_undergraduate_buksu",
+      "responses": {
+        "en": [
+          "Under the Universal Access to Quality Tertiary Education Act tuition and miscellaneous fees are free for qualified Filipino students in undergraduate programs at BukSU."
+        ],
+        "ceb": [
+          "Ubos sa balaod nga Universal Access to Quality Tertiary Education Act libre ang tuition ug miscellaneous fees para sa mga kwalipikadong Filipino nga estudyante sa undergraduate programs sa BukSU."
+        ]
+      },
+      "intent": "free_tuition_undergraduate_buksu",
+      "context_topic": "tuition_policy",
+      "metadata": {
+        "phrases": [
+          "Libre ba ang tuition para sa undergraduate sa BukSU",
+          "Libre ba ang tuition sa BukSU ubos sa Universal Access to Quality Tertiary Education Act",
+          "Apil ba ang miscellaneous fees para sa kwalipikadong Filipino students",
+          "Kinsa ang kwalipikado para sa libre nga undergraduate tuition sa BukSU",
+          "Giunsa pag avail sa estudyante ang libre nga tuition ubos sa balaod",
+          "Gi-waive ba ang fees para sa undergraduate programs sa BukSU",
+          "Nag-implement ba ang BukSU og free tuition para sa undergraduates",
+          "Eligible ba ang Filipino students para sa libre nga tuition",
+          "Are undergraduate tuition fees free at BukSU",
+          "Is BukSU tuition free under the Universal Access to Quality Tertiary Education Act",
+          "Are miscellaneous fees covered for qualified Filipino students"
+        ],
+        "strong_keywords": [
+          "tuition",
+          "buksu",
+          "libre",
+          "undergraduate",
+          "fees"
+        ],
+        "weak_keywords": [
+          "filipino",
+          "students",
+          "free",
+          "ubos",
+          "universal"
+        ]
+      },
+      "display_name": "Tuition Policy"
+    },
+    {
+      "topic": "student_id_replacement",
+      "responses": {
+        "en": [
+          "To replace a lost student ID secure an Affidavit of Loss go to the Office of Student Services for a reissuance slip pay 150 pesos at the Cashier and present the receipt to the University Press."
+        ],
+        "ceb": [
+          "Para makakuha og replacement sa student ID kinahanglan magkuha og Affidavit of Loss adto sa Office of Student Services para sa reissuance slip bayad og 150 pesos sa Cashier ug ipakita ang resibo sa University Press."
+        ]
+      },
+      "intent": "student_id_replacement",
+      "context_topic": "Replacement student ID",
+      "metadata": {
+        "phrases": [
+          "student id replacement"
+        ],
+        "strong_keywords": [
+          "student",
+          "replacement"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Replacement Student ID"
+    },
+    {
+      "topic": "institutional_email_info",
+      "responses": {
+        "en": [
+          "The institutional email is the official BukSU edu ph account used for university communications and it is usually issued by the ICT unit upon enrollment."
+        ],
+        "ceb": [
+          "Ang institutional email mao ang opisyal nga BukSU edu ph account nga gigamit para sa komunikasyon sa unibersidad ug kasagaran ihatag sa ICT unit inig enroll."
+        ]
+      },
+      "intent": "institutional_email_info",
+      "context_topic": "institutional email purpose",
+      "metadata": {
+        "phrases": [
+          "Unsay institutional email sa BukSU",
+          "Kinsa ang mo issue sa opisyal nga BukSU email",
+          "Kanus-a madawat sa estudyante ang email account",
+          "Gigamit ba ang buksu edu ph email para sa official communication",
+          "Pwede ba ang alumni mo access sa institutional email",
+          "Asa kuhaon ang login details para sa institutional email",
+          "Tanang estudyante ba adunay opisyal nga email",
+          "Unsay purpose sa institutional email",
+          "What is the institutional email at BukSU",
+          "Who issues the official BukSU email",
+          "When do students receive their email accounts"
+        ],
+        "strong_keywords": [
+          "email",
+          "institutional",
+          "buksu",
+          "unsay",
+          "opisyal"
+        ],
+        "weak_keywords": [
+          "estudyante",
+          "official",
+          "kinsa",
+          "issue",
+          "kanus"
+        ]
+      },
+      "display_name": "Institutional Email Purpose"
+    },
+    {
+      "topic": "lost_and_found_buksu",
+      "responses": {
+        "en": [
+          "BukSU does not have a centralized Lost and Found counter.",
+          "Lost items are usually turned over to Campus Security, Registrar, or nearby offices.",
+          "Report lost items with your details and description, and bring valid ID when claiming."
+        ],
+        "ceb": [
+          "Walay centralized Lost and Found sa BukSU.",
+          "Ang mga butang kasagaran i-turn over sa Campus Security, Registrar, o duol nga opisina.",
+          "I-report ang nawala nga butang ug dad-a ang valid ID kung i-claim."
+        ]
+      },
+      "intent": "lost_and_found_buksu",
+      "context_topic": "Lost and Found center",
+      "metadata": {
+        "phrases": [
+          "Asa makita ang nawala nga butang sa BukSU?",
+          "Kinsa akong duolon kung naay nawala?",
+          "Asa dad on ang nakit an nga butang?",
+          "Unsay buhaton kung naay nawala sa campus?",
+          "Asa nako i report ang nawala?",
+          "Asa kuhaon ang nakit an nga butang?",
+          "Asa i claim ang nawala nga butang?",
+          "Is there a lost and found in BukSU?",
+          "Does BukSU have a lost and found office?",
+          "Where can I find lost items in BukSU?",
+          "what should i do if i lose something on the campus",
+          "what should i do if i lost something on campus",
+          "what to do if i lose an item on campus",
+          "i lost my belongings on campus"
+        ],
+        "strong_keywords": [
+          "nawala",
+          "butang",
+          "buksu",
+          "lost",
+          "kung"
+        ],
+        "weak_keywords": [
+          "naay",
+          "nakit",
+          "found",
+          "makita",
+          "kinsa"
+        ]
+      },
+      "display_name": "Lost And Found Center"
+    },
+    {
+      "topic": "ask_guidance_fee",
+      "responses": {
+        "en": [
+          "Is there a fee if we avail the services?",
+          "All the services are free for undergraduate students. However, testing fee is required for other students, such as in the Graduate Program and the College of Law",
+          "For Graduate Studies (LAW, PhD and Masters): 475.00php",
+          "For Applicants: Non-teaching: 100.00php; Teaching: 475.00php"
+        ],
+        "ceb": [
+          "Naa bay bayad kung mag avail sa mga serbisyo?",
+          "Libre ang tanang serbisyo para sa mga undergraduate nga estudyante. Apan adunay testing fee nga gikinahanglan para sa ubang estudyante sama sa Graduate Program ug College of Law",
+          "Para sa Graduate Studies (LAW, PhD ug Masters): 475.00php",
+          "Para sa mga Applicants: Non-teaching: 100.00php; Teaching: 475.00php"
+        ]
+      },
+      "intent": "ask_guidance_fee",
+      "context_topic": "fees",
+      "metadata": {
+        "phrases": [
+          "ask guidance fee"
+        ],
+        "strong_keywords": [
+          "guidance"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Ask Guidance Fee"
+    },
+    {
+      "topic": "ask_how_to_avail_guidance",
+      "responses": {
+        "en": [
+          "How to avail the services?",
+          "You can visit the University Guidance Center located at the College of Arts and Sciences building or you can message us through our Facebook page BukSU – University Guidance Center."
+        ],
+        "ceb": [
+          "Unsaon pag-avail sa mga serbisyo?",
+          "Mahimo kang mobisita sa University Guidance Center nga nahimutang sa College of Arts and Sciences building o mahimo kang mag-message kanamo pinaagi sa among Facebook page nga BukSU – University Guidance Center."
+        ]
+      },
+      "intent": "ask_how_to_avail_guidance",
+      "context_topic": "Guidance avail services",
+      "metadata": {
+        "phrases": [
+          "ask how to avail guidance"
+        ],
+        "strong_keywords": [
+          "avail",
+          "guidance"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Guidance Avail Services"
+    },
+    {
+      "topic": "ask_guidance_eligibility",
+      "responses": {
+        "en": [
+          "Who is eligible to receive services?",
+          "Anyone who is currently enrolled in Bukidnon State University."
+        ],
+        "ceb": [
+          "Kinsa ang pwede makadawat sa mga serbisyo?",
+          "Bisan kinsa nga kasamtangang naka-enroll sa Bukidnon State University."
+        ]
+      },
+      "intent": "ask_guidance_eligibility",
+      "context_topic": "Guidance Services Eligibility",
+      "metadata": {
+        "phrases": [
+          "ask guidance eligibility"
+        ],
+        "strong_keywords": [
+          "guidance",
+          "eligibility"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Guidance Services Eligibility"
+    },
+    {
+      "topic": "ask_guidance_schedule",
+      "responses": {
+        "en": [
+          "When are the services available?",
+          "The services are available from Mondays to Fridays, 8:00 AM to 5:00 PM"
+        ],
+        "ceb": [
+          "Kanus-a mahimong ma-avail ang mga serbisyo?",
+          "Ang mga serbisyo abli gikan Lunes hangtod Biyernes, 8:00 AM hangtod 5:00 PM."
+        ]
+      },
+      "intent": "ask_guidance_schedule",
+      "context_topic": "Guidance Services Schedule",
+      "metadata": {
+        "phrases": [
+          "ask guidance schedule"
+        ],
+        "strong_keywords": [
+          "guidance",
+          "schedule"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Guidance Services Schedule"
+    },
+    {
+      "topic": "ask_guidance_services",
+      "responses": {
+        "en": [
+          "What are the services offered in the University Guidance Center?",
+          "The services that the UGC offers the following services:",
+          "Counseling Services: Counseling is considered as the core of guidance services. It aims to assist the students in their emotional, social, physical, spiritual, and cognitive needs. During this time of pandemic the University Guidance Center offers online counselling so that the guidance counselors can reach out to students easier and use the online platform to cater their personal issues, problems and concerns.",
+          "Career and Job Placement Services: It is a support service of the University Guidance Center, it aims to address the pre-employment and employment needs of the graduating students and alumnae. The UGC schedules an annual Job Fair. Various agencies and company are invited to take part of the school’s on-campus recruitment program. The UGC offers career seminars and orientation that cater the needs of the students.",
+          "Testing Services: The student’s individual strength and weaknesses in the area of personality, IQ and aptitude are assessed through the use of standardized tests. This is handled by the psychometricians. The center provides; Psychological testing for students and testing of faculty and staff applicants.",
+          "Exit Interview: The graduating students are given an opportunity to discuss their future plans, career choices and various options for employment."
+        ],
+        "ceb": [
+          "Unsa ang mga serbisyo nga gitanyag sa University Guidance Center?",
+          "Ang UGC nagatanyag sa mosunod nga mga serbisyo:",
+          "Counseling Services: Ang counseling mao ang pinakauyok sa mga serbisyo sa guidance. Tumong niini nga tabangan ang mga estudyante sa ilang emosyonal, sosyal, pisikal, espiritwal, ug panghunahuna nga panginahanglan. Niining panahon sa pandemya, nagtanyag ang UGC og online counseling aron mas dali maabot sa mga counselor ang mga estudyante gamit ang online platform para sa ilang personal nga mga isyu ug problema.",
+          "Career and Job Placement Services: Kini usa ka support service sa UGC nga nagtinguha sa pagtubag sa mga panginahanglanon sa pre-employment ug trabaho sa mga mogradwar nga estudyante ug alumni. Ang UGC nag-iskedyul og tinuig nga Job Fair diin lain-laing ahensya ug kompanya ang imbitahon. Nagtanyag usab sila og career seminars ug orientation.",
+          "Testing Services: Ang tagsa-tagsa ka kusog ug kahuyang sa estudyante sa aspeto sa personalidad, IQ, ug aptitude ginasusi pinaagi sa standardized tests nga gidumala sa mga psychometrician. Naghatag usab sila og psychological testing para sa mga aplikante nga faculty ug staff.",
+          "Exit Interview: Ang mga mogradwar nga estudyante hatagan og higayon nga hisgutan ang ilang mga plano sa umaabot, pagpili sa karera, ug mga opsyon sa trabaho."
+        ]
+      },
+      "intent": "ask_guidance_services",
+      "context_topic": "Services offered by guidance",
+      "metadata": {
+        "phrases": [
+          "ask guidance services"
+        ],
+        "strong_keywords": [
+          "guidance",
+          "services"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Services Offered By Guidance"
+    },
+    {
+      "topic": "mroning_greater",
+      "responses": {
+        "en": [
+          "Good morning! How can I assist you today?"
+        ],
+        "ceb": [
+          "Maayong buntag! Unsa akong matabang nimo karon?"
+        ]
+      },
+      "intent": "mroning_greater",
+      "context_topic": "fees",
+      "metadata": {
+        "phrases": [
+          "mroning greater"
+        ],
+        "strong_keywords": [
+          "mroning",
+          "greater"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Mroning Greater"
+    },
+    {
+      "topic": "afternoon_greater",
+      "responses": {
+        "en": [
+          "Good afternoon! How may I help you?"
+        ],
+        "ceb": [
+          "Maayong hapon! Unsa akong ikatabang nimo?"
+        ]
+      },
+      "intent": "afternoon_greater",
+      "context_topic": "fees",
+      "metadata": {
+        "phrases": [
+          "afternoon greater"
+        ],
+        "strong_keywords": [
+          "afternoon",
+          "greater"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Afternoon Greater"
+    },
+    {
+      "topic": "evening_greater",
+      "responses": {
+        "en": [
+          "Good evening! How can I help you today?"
+        ],
+        "ceb": [
+          "Maayong gabii! Unsa akong matabang nimo karon?"
+        ]
+      },
+      "intent": "evening_greater",
+      "context_topic": "fees",
+      "metadata": {
+        "phrases": [
+          "evening greater"
+        ],
+        "strong_keywords": [
+          "evening",
+          "greater"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Evening Greater"
     }
   ]
 }

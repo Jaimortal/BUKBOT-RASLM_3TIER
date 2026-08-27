@@ -571,19 +571,22 @@ class MainRouterService:
         # ==============================================================
         # DOMAIN ISOLATION MODE: PROCEDURES, ACADEMICS, SERVICES, UNIVERSITY
         # ==============================================================
-        if active_domain in {"procedures", "academics", "services", "university"}:
+        if active_domain in {"procedures", "academics", "services", "university", "others"}:
             direct_intent = self.knowledge_router.direct_intent_override(
                 intent, user_message, resolved.values, active_domain=active_domain
             )
             if direct_intent:
+                self.knowledge_router.last_selected_intent = direct_intent
                 print(f"[ROUTER - LAYER 1: Direct Rule Override] Domain: '{active_domain}' | Query: '{user_message}' -> Matched Intent: '{direct_intent}'")
                 if str(direct_intent).startswith("__"):
                     response = self.knowledge_router.find_best_response(
                         intent, user_message, resolved.values, active_domain=active_domain
                     )
                 else:
+                    entry = self.data_loader.get_entry(direct_intent)
+                    matched_domain = entry.get("domain") if entry else active_domain
                     response = self.data_loader.get_response(
-                        direct_intent, user_message=user_message, domain=active_domain
+                        direct_intent, user_message=user_message, domain=matched_domain
                     )
                 memory = self.context_manager.build_memory(
                     intent=intent,
@@ -593,7 +596,8 @@ class MainRouterService:
                     response=response,
                 )
                 updates = self._context_updates(memory, slots)
-                updates["active_category"] = active_domain
+                entry = self.data_loader.get_entry(direct_intent)
+                updates["active_category"] = entry.get("domain") if entry else active_domain
                 return response, updates
 
             response = self.knowledge_router.find_best_response(

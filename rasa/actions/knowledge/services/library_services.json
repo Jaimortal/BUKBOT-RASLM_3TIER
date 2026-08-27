@@ -277,9 +277,173 @@
             ]
           },
           "display_name": "Library Hours Answer Topic"
+        },
+        {
+          "topic": "library_entry_without_id",
+          "intent": "library_entry_without_id",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "Can I enter the BukSU University Library if I don't have a physical student ID card yet?",
+              "Yes, incoming first-year students and new students who have not yet received their physical Student ID / Library Card are still permitted to enter the BukSU University Library.",
+              "Requirements for entry without physical ID: 1. Present your validated **Certificate of Registration (COR)** as proof of enrollment for the current semester. 2. Present any valid alternative photo ID (such as your SHS ID or valid government ID). 3. Sign the visitor/temporary entry logbook at the library entrance.",
+              "Once your official Student ID or barcoded Library Card is issued, you will use it for standard tap/scan entry and borrowing."
+            ],
+            "ceb": [
+              "Pwede ba makasulod sa BukSU Library bisan wala pay physical student ID card?",
+              "Oo, ang mga incoming first-year students ug bag-ong estudyante nga wala pa nakadawat sa ilang physical Student ID o Library Card gitugotan gihapon nga makasulod sa BukSU University Library.",
+              "Mga kinahanglanon sa pagsulod kung wala pay ID: 1. Ipakita ang imong validated nga **Certificate of Registration (COR)** isip pamatuod nga enrolled ka karong semester. 2. Pagpakita og valid alternative photo ID (sama sa Senior High School ID o valid government ID). 3. Pagpirma sa temporary logbook sa entrance sa library.",
+              "Kung makuha na nimo ang imong opisyal nga Student ID o barcoded Library Card, mao na kini ang imong gamiton para sa scan entry ug paghulam og mga libro."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "pwede ba makasulod sa library bisan wala pay physical student id card",
+              "can i enter library without student id",
+              "library entry without id buksu",
+              "pwede ba mosulod sa library bisag walay id",
+              "cor as library pass buksu",
+              "freshman enter library without id card",
+              "is physical id required to enter buksu library",
+              "can first year enter library with cor only",
+              "library entry requirements for new students"
+            ]
+          },
+          "display_name": "Library Entry Without Physical ID"
         }
       ],
       "display_name": "Library Hours Topic Group"
+    },
+    {
+      "topic": "library_book_borrowing_rules",
+      "responses": {
+        "en": [
+          "Students can borrow a maximum of five books per week from the BukSU Library.",
+          "Borrowers must present a barcoded library card.",
+          "Some materials like reserve books encyclopedias and theses are only for inside reading and photocopying."
+        ],
+        "ceb": [
+          "Ang mga estudyante pwede mohulam og hangtod lima ka libro matag semana sa BukSU Library.",
+          "Kinahanglan ipakita ang barcoded library card.",
+          "Ang ubang materyales sama sa reserve books encyclopedias ug thesis para lamang sa inside reading o photocopy."
+        ]
+      },
+      "intent": "library_book_borrowing_rules",
+      "context_topic": "borrowing",
+      "metadata": {
+        "phrases": [
+          "library book borrowing rules"
+        ],
+        "strong_keywords": [
+          "library",
+          "book",
+          "borrowing",
+          "rules"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Borrowing"
+    },
+    {
+      "topic": "buksu_library_hours",
+      "responses": {
+        "en": [
+          "The University Library is generally open from Monday to Friday from 8 AM to 5 PM though hours may extend during examination weeks."
+        ],
+        "ceb": [
+          "Ang University Library kasagaran bukas gikan Lunes hangtod Biyernes gikan alas 8 sa buntag hangtod alas 5 sa hapon apan mahimong ma extend ang oras inig panahon sa exam."
+        ]
+      },
+      "intent": "buksu_library_hours",
+      "context_topic": "library hours",
+      "metadata": {
+        "phrases": [
+          "buksu library hours"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "library",
+          "hours"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Library Hours"
+    },
+    {
+      "topic": "library_return_books",
+      "responses": {
+        "en": [
+          "To return books bring your library ID card and ask any staff member inside the library for assistance. You can also use the machine outside the library which has a guide on how to return books."
+        ],
+        "ceb": [
+          "Aron ibalik ang mga libro dad a ang imong library ID card ug pangutan a ang bisan kinsang staff sulod sa librarya para sa tabang. Pwede usab nimo gamiton ang makina sa gawas sa librarya nga adunay giya kung giunsa pagbalik sa mga libro."
+        ]
+      },
+      "intent": "library_return_books",
+      "context_topic": "Book return",
+      "metadata": {
+        "phrases": [
+          "library return books"
+        ],
+        "strong_keywords": [
+          "library",
+          "return",
+          "books"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Book Return"
+    },
+    {
+      "topic": "library_available_books_info",
+      "responses": {
+        "en": [
+          "The library regularly updates its collection so availability of books may change. For more information visit the university library and ask staff on each floor for assistance."
+        ],
+        "ceb": [
+          "Ang librarya pirmi nag update sa ilang koleksyon busa ang availability sa mga libro mahimong mag usab. Para sa dugang kasayuran adto sa university library ug mangutana sa staff sa matag andana para sa tabang."
+        ]
+      },
+      "intent": "library_available_books_info",
+      "context_topic": "Library Books available to borrow",
+      "metadata": {
+        "phrases": [
+          "library available books info"
+        ],
+        "strong_keywords": [
+          "library",
+          "available",
+          "books",
+          "info"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Library Books Available To Borrow"
+    },
+    {
+      "topic": "library_borrow_books",
+      "responses": {
+        "en": [
+          "To borrow a book bring your library ID card and ask any staff member for assistance. Also bring a pen to fill out the necessary details."
+        ],
+        "ceb": [
+          "Aron makahulam og libro kinahanglan nimo dad on ang imong library ID card ug mangutana sa bisan kinsang staff para sa tabang. Ayaw kalimti pagdala og bolpen aron mapunan ang mga detalye."
+        ]
+      },
+      "intent": "library_borrow_books",
+      "context_topic": "Book borrow",
+      "metadata": {
+        "phrases": [
+          "library borrow books"
+        ],
+        "strong_keywords": [
+          "library",
+          "borrow",
+          "books"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Book Borrow"
     }
   ]
 }

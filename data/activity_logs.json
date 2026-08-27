@@ -1,5 +1,90 @@
 [
   {
+    "id": "log_1787829770268_j6yhb9g",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Student Fees",
+    "targetTitle": "Student Fees",
+    "targetId": "procedures/enrollment_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (3 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (3 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-27T11:22:50.268Z"
+  },
+  {
+    "id": "log_1787752062594_yd4k3rh",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: College of Business Building",
+    "targetTitle": "College of Business Building",
+    "targetId": "College of Business Building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-26T13:47:42.594Z"
+  },
+  {
+    "id": "log_1787752057100_cow1m53",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260127_101136_260.webp\" (54.6 KB)",
+    "targetTitle": "IMG_20260127_101136_260.webp",
+    "targetId": "698df585-56a4-4f2a-a91c-144a7a49dc5c",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260127_101136_260.webp\" (54.6 KB)"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-26T13:47:37.100Z"
+  },
+  {
+    "id": "log_1787751974297_dlv4ski",
+    "userEmail": "jhonmarkambito82@gmail.com",
+    "userName": "Co-admin-ambito",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Library",
+    "targetTitle": "Library",
+    "targetId": "Library",
+    "changes": [
+      {
+        "field": "Location Details",
+        "changeType": "modified",
+        "details": "Updated location settings and metadata"
+      }
+    ],
+    "ipAddress": "120.28.189.79",
+    "createdAt": "2026-08-26T13:46:14.297Z"
+  },
+  {
     "id": "log_1787633973429_kqqiwin",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

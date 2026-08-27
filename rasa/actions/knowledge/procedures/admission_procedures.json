@@ -93,14 +93,101 @@
               "how to register for buksu cat exam",
               "how can incoming first year take the entrance exam",
               "where do i apply for the college admission test",
-              "steps to schedule my buksu cat",
               "unsaon pag apply sa buksu cat",
               "unsaon pag schedule sa entrance exam",
               "mag register ko para buksu cat",
-              "apply for admission testing online"
+              "apply for admission testing online",
+              "take exam",
+              "apply exam",
+              "apply for cat",
+              "cat application",
+              "how to apply for cat",
+              "how to take exam",
+              "buksu cat steps",
+              "entrance exam application",
+              "register for cat",
+              "register for admission test",
+              "apply for admission test",
+              "schedule buksu cat",
+              "take buksu cat",
+              "unsaon pag take sa cat",
+              "unsaon pag apply sa cat",
+              "unsaon pag apply sa entrance exam"
             ]
           },
+          "suggestions": [
+            {
+              "label": "Enrollment Process",
+              "payload": "/direct_intent{\"intent\":\"enrollment_general_process\"}"
+            },
+            {
+              "label": "Exam Day Requirements",
+              "payload": "/direct_intent{\"intent\":\"exam_requirements\"}"
+            }
+          ],
           "display_name": "Take Exam"
+        },
+        {
+          "topic": "after_admission_application",
+          "responses": {
+            "en": [
+              "After the application, wait for the Admission Testing Unit (ATU) officer to validate your information whether to accept or reject your data.",
+              "If your application gets accepted, please download your Test Permit through the BukSU Admissions website (https://admissions.buksu.edu.ph/) and check the information. Also prepare your Application Form, which can be downloaded through the same website."
+            ],
+            "ceb": [
+              "Human sa aplikasyon, hulata ang Admission Testing Unit (ATU) officer nga mo-validate sa imong impormasyon kung i-accept ba o i-reject ang imong data.",
+              "Kung ma-accept ang imong application, palihog i-download ang imong Test Permit pinaagi sa BukSU Admissions website (https://admissions.buksu.edu.ph/) ug i-check ang impormasyon niini. I-andam usab ang imong Application Form nga pwede ma-download sa maong website."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "Exam Day Requirements",
+              "payload": "/direct_intent{\"intent\":\"exam_requirements\"}"
+            },
+            {
+              "label": "Approval Processing Time",
+              "payload": "/direct_intent{\"intent\":\"admission_application_processing_time\"}"
+            }
+          ],
+          "intent": "after_admission_application",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "after admission application",
+              "unsay sunod after pag apply og admission",
+              "unsay sunod buhaton after mag apply og admission",
+              "unsay sunod after admission application",
+              "what to do after applying for admission",
+              "what is the next step after applying for admission",
+              "what to do after buksu cat application",
+              "after applying for buksu cat",
+              "next step after cat application",
+              "human ko mag apply sa admission unsay sunod",
+              "human mag apply sa admission",
+              "unsa sunod buhaton human maka apply sa cat",
+              "what happens after admission application is submitted",
+              "what next after applying for entrance exam",
+              "after apply admission",
+              "next steps after admission application"
+            ],
+            "strong_keywords": [
+              "after",
+              "sunod",
+              "human",
+              "next step",
+              "admission application",
+              "test permit",
+              "application form",
+              "validate"
+            ],
+            "weak_keywords": [
+              "what to do",
+              "unsa buhaton",
+              "apply",
+              "officer"
+            ]
+          },
+          "display_name": "Next Steps After Admission Application"
         },
         {
           "topic": "exam_requirements",
@@ -194,6 +281,183 @@
             ]
           },
           "display_name": "Test Permit Issue"
+        },
+        {
+          "topic": "test_permit_name_error",
+          "responses": {
+            "en": [
+              "What should I do if there is an error in my name on the test permit?",
+              "If there is an error in the name or personal information on your BukSU CAT test permit, you should:",
+              "1. Log in to your BukSU Admission account at http://admissions.buksu.edu.ph",
+              "2. Go to your application profile and check the personal information you submitted.",
+              "3. If the name on your application form is also incorrect, edit and correct it, then save the changes.",
+              "4. Re-download your test permit after saving the corrections.",
+              "5. If you are unable to edit your information or the error remains, contact or visit the BukSU Admission and Testing Unit (ATU) as soon as possible — ideally before your exam schedule.",
+              "Note: Bring both your corrected test permit and a valid government-issued ID on the day of the exam to avoid issues at the testing venue."
+            ],
+            "ceb": [
+              "Unsa ang buhaton kung naay sayup sa akong ngalan sa test permit?",
+              "Kung naay sayup sa ngalan o personal information sa imong BukSU CAT test permit, buhata ang mosunod:",
+              "1. Log in sa imong BukSU Admission account sa http://admissions.buksu.edu.ph",
+              "2. Adtoa ang imong application profile ug susihon ang imong personal information nga gi-submit nimo.",
+              "3. Kung ang ngalan sa imong application form sayup usab, i-edit ug i-correct kini, unya i-save ang mga pagbabago.",
+              "4. I-download usab ang imong test permit human sa pagkorrekto.",
+              "5. Kung dili ka maka-edit sa imong information o nagpabilin ang sayup, kontaka o adtoa ang BukSU Admission and Testing Unit (ATU) sa labing madali — mas maayo sa wala pa ang imong exam schedule.",
+              "Hinumdomi: Dad-a ang imong corrected test permit ug valid government-issued ID sa adlaw sa exam aron malikayan ang problema sa testing venue."
+            ]
+          },
+          "intent": "test_permit_name_error",
+          "context_topic": "document",
+          "metadata": {
+            "phrases": [
+              "error in name on test permit",
+              "wrong name on test permit",
+              "name error on test permit",
+              "incorrect name on test permit",
+              "what to do if name on test permit is wrong",
+              "what if there is an error in my name on the test permit",
+              "mali ang ngalan sa test permit",
+              "sayup ang ngalan sa test permit",
+              "error sa ngalan sa test permit",
+              "error sa akong ngalan sa test permit",
+              "kung naay sayup sa ngalan sa test permit",
+              "what should i do if my name is misspelled on the test permit",
+              "my name is incorrect on the test permit what should i do",
+              "there is an error in my name on the buksu cat test permit",
+              "wrong information on my test permit",
+              "incorrect info on test permit",
+              "name is wrong on admission test permit",
+              "name is misspelled on exam permit"
+            ]
+          },
+          "display_name": "Test Permit Name Error"
+        },
+        {
+          "topic": "cat_retake_policy",
+          "responses": {
+            "en": [
+              "As of current BukSU admission guidelines, incoming first-year students may only take the BukSU College Admission Test (CAT) once per admission cycle.",
+              "If you did not reach the qualifying score, BukSU offers the **Affirmative Action Program (AAP)** which may allow non-passers to be considered for admission in select non-board programs.",
+              "For AAP assessment, visit the **Diversity and Inclusion Unit (DIU)**. Otherwise, applicants may reapply in the next academic year's admission cycle."
+            ],
+            "ceb": [
+              "Base sa BukSU admission guidelines, ang incoming first-year student pwede lang mag-take sa BukSU College Admission Test (CAT) kausa matag admission cycle.",
+              "Kung wala nimo maabot ang qualifying score, ang BukSU adunay **Affirmative Action Program (AAP)** nga mahimong motugot sa mga non-passers nga ma-admit sa piniling non-board courses.",
+              "Para sa AAP evaluation, bisitaha ang **Diversity and Inclusion Unit (DIU)**. Pwede usab mag-apply balik sa sunod nga admission cycle."
+            ]
+          },
+          "intent": "cat_retake_policy",
+          "context_topic": "policy",
+          "metadata": {
+            "phrases": [
+              "cat retake policy",
+              "can i take cat more than once",
+              "are incoming first years allowed to take the cat more than once",
+              "how many times can i take buksu cat",
+              "can i retake the buksu cat",
+              "can i take buksu cat again",
+              "take cat twice",
+              "can first year student retake cat",
+              "can i take the admission test more than once",
+              "allowed to take cat more than once in a school year",
+              "can i take the buksu cat twice in one year",
+              "is there a limit on how many times i can take the cat",
+              "pila ka beses pwede mag take ug cat",
+              "pwede ba mag take ug cat kaduha",
+              "maka take ba ug cat pag usab",
+              "maka-take ba ko ug cat sa sunod semester",
+              "maka take ug cat pag usab kung di ko makapasar",
+              "retake cat admission exam",
+              "second attempt cat",
+              "take the cat again next year"
+            ]
+          },
+          "display_name": "CAT Retake Policy"
+        },
+        {
+          "topic": "intent_to_enroll_confirm",
+          "responses": {
+            "en": [
+              "How to confirm the Intent to Enroll in the BukSU admission portal after passing the CAT?",
+              "After the CAT results are released and you have passed:",
+              "Step 1: Log in to your BukSU Admission account at http://admissions.buksu.edu.ph using your registered Gmail.",
+              "Step 2: Look for the 'Intent to Enroll' or 'Confirm Enrollment' button/option in your dashboard. This option usually appears after the official release of results.",
+              "Step 3: Select and confirm your Intent to Enroll. Make sure to do this within the deadline set by the BukSU Admission and Testing Unit.",
+              "Step 4: After confirming, take note of or print the acknowledgment for your records.",
+              "Note: Failing to confirm your Intent to Enroll within the given deadline may forfeit your slot. For the exact deadline and steps, check the BukSU ATU Facebook page: https://www.facebook.com/BukSUATU"
+            ],
+            "ceb": [
+              "Unsaon pag-confirm sa Intent to Enroll sa BukSU admission portal human sa CAT?",
+              "Human ma-release ang CAT results ug nakapasar ka:",
+              "Hakbang 1: Mag-login sa imong BukSU Admission account sa http://admissions.buksu.edu.ph gamit ang imong registered Gmail.",
+              "Hakbang 2: Pangitaa ang 'Intent to Enroll' o 'Confirm Enrollment' nga button/option sa imong dashboard. Kini nga option kasagarang makita human ma-officially release ang results.",
+              "Hakbang 3: Pilia ug i-confirm ang imong Intent to Enroll. Siguroa nga buhaton nimo kini sa sulod sa deadline nga gitakda sa BukSU Admission and Testing Unit.",
+              "Hakbang 4: Human sa pagkumpirma, hinumdomi o i-print ang acknowledgment para sa imong records.",
+              "Hinumdomi: Kung dili nimo ma-confirm ang Intent to Enroll sulod sa deadline, mahimong mawagtang ang imong slot. Para sa eksaktong deadline ug mga lakang, tan-awa ang BukSU ATU Facebook page: https://www.facebook.com/BukSUATU"
+            ]
+          },
+          "intent": "intent_to_enroll_confirm",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "how to confirm intent to enroll",
+              "confirm intent to enroll admission portal",
+              "unsaon pag confirm sa intent to enroll sa admission portal",
+              "intent to enroll buksu",
+              "how to confirm enrollment after cat",
+              "confirm enrollment in admission portal",
+              "intent to enroll after passing cat",
+              "paano mag confirm ng intent to enroll",
+              "unsaon pag confirm sa intent to enroll pagkahuman sa exam",
+              "confirm intent to enroll sa buksu admission",
+              "where is intent to enroll button",
+              "what is intent to enroll buksu",
+              "intent to enroll meaning buksu",
+              "buksu intent to enroll process",
+              "how to submit intent to enroll",
+              "confirm my enrollment slot after cat",
+              "i passed cat what do i do next",
+              "nakapasar sa cat unsa sunod",
+              "unsaon pag-confirm sa enrollment after exam",
+              "intent to enroll pagkahuman sa buksu cat"
+            ]
+          },
+          "display_name": "Intent to Enroll Confirmation"
+        },
+        {
+          "topic": "cat_online_vs_walkin_application",
+          "responses": {
+            "en": [
+              "Can I apply as a walk-in for the BukSU CAT, or is it strictly online?",
+              "Application and slot registration for the BukSU College Admission Test (CAT) is strictly conducted ONLINE through the official admission website: http://admissions.buksu.edu.ph.",
+              "Walk-in applications for exam scheduling are not accommodated because testing slots, venues, and test permits are managed through the online system.",
+              "However, the actual examination is conducted in-person (face-to-face) at your selected testing venue and schedule. Be sure to register online, secure your test permit, and bring the required documents on exam day."
+            ],
+            "ceb": [
+              "Pwede ba mag-walk-in application sa BukSU CAT o strictly online lang?",
+              "Ang pag-apply ug pag-schedule sa BukSU College Admission Test (CAT) kay strictly ONLINE lamang pinaagi sa opisyal nga admission portal: http://admissions.buksu.edu.ph.",
+              "Dili gidawat ang walk-in nga pag-apply para sa exam schedule tungod kay ang mga slots, testing venues, ug test permits gi-manage pinaagi sa online system.",
+              "Apan, ang aktuwal nga examination kay in-person (face-to-face) nga kuhaon sa imong napili nga testing center ug schedule. Siguroha nga maka-register ka online, ma-download ang test permit, ug dad-on ang mga kinahanglanon sa adlaw sa exam."
+            ]
+          },
+          "intent": "cat_online_vs_walkin_application",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "pwede ba mag walk in application sa buksu cat or strictly online lang",
+              "pwede ba mag walk-in application sa buksu cat",
+              "is buksu cat application strictly online",
+              "can i apply walk in for buksu cat",
+              "walk in application buksu cat",
+              "strictly online ba ang buksu cat application",
+              "pwede ba mo walk in para mag apply sa cat",
+              "walk in entrance exam buksu",
+              "online ra ba ang application sa buksu cat",
+              "is entrance exam application online only",
+              "walk in cat exam allowed"
+            ]
+          },
+          "display_name": "CAT Online vs Walk-in Application"
         },
         {
           "topic": "exam_fees",
@@ -479,17 +743,25 @@
           "topic": "application_next_step",
           "responses": {
             "en": [
-              "I have already filled out the online application. What is the next step?",
-              "After you have filled out the application, select your preferred schedule and venue.",
-              "Make sure that you have completed the application process and prepare all the necessary requirements before the day of testing."
+              "After the application, wait for the Admission Testing Unit (ATU) officer to validate your information whether to accept or reject your data.",
+              "If your application gets accepted, please download your Test Permit through the BukSU Admissions website (https://admissions.buksu.edu.ph/) and check the information. Also prepare your Application Form, which can be downloaded through the same website."
             ],
             "ceb": [
-              "Nakahuman na ko sa online application. Unsa ang sunod nga buhaton?",
-              "Human nimo mapuno ang application, pilia ang imong preferred nga schedule ug venue.",
-              "Siguroha nga nahuman nimo ang tibuok application process ug andama ang tanan nga kinahanglanon sa wala pa ang adlaw sa testing."
+              "Human sa aplikasyon, hulata ang Admission Testing Unit (ATU) officer nga mo-validate sa imong impormasyon kung i-accept ba o i-reject ang imong data.",
+              "Kung ma-accept ang imong application, palihog i-download ang imong Test Permit pinaagi sa BukSU Admissions website (https://admissions.buksu.edu.ph/) ug i-check ang impormasyon niini. I-andam usab ang imong Application Form nga pwede ma-download sa maong website."
             ]
           },
-          "intent": "application_next_step",
+          "suggestions": [
+            {
+              "label": "Exam Day Requirements",
+              "payload": "/direct_intent{\"intent\":\"exam_requirements\"}"
+            },
+            {
+              "label": "Approval Processing Time",
+              "payload": "/direct_intent{\"intent\":\"admission_application_processing_time\"}"
+            }
+          ],
+          "intent": "after_admission_application",
           "context_topic": "process",
           "metadata": {
             "phrases": [
@@ -598,6 +870,147 @@
             ]
           },
           "display_name": "Missing Admission Documents"
+        },
+        {
+          "topic": "admission_application_processing_time",
+          "responses": {
+            "en": [
+              "How long does it take for BukSU admission applications to be approved?",
+              "Admission Officers evaluate and verify applications during regular university working hours (Mondays to Fridays, 8:00 AM – 5:00 PM, excluding weekends and university holidays).",
+              "The standard evaluation and approval process typically takes **3 to 5 working days** after submitting your complete online application and documentary requirements.",
+              "You will receive an email notification and a status update on your https://admissions.buksu.edu.ph dashboard once your application is approved.",
+              "*(Note: Incomplete, blurred, or non-compliant documents may cause delays in approval or application denial)*"
+            ],
+            "ceb": [
+              "Pila ka adlaw una ma-aprubahan ang BukSU admission application?",
+              "Ang mga Admission Officers naga-evaluate sa mga aplikasyon panahon sa regular nga oras sa opisina (Lunes hangtod Biyernes, 8:00 AM – 5:00 PM, gawas sa Sabado, Domingo, ug university holidays).",
+              "Ang standard nga evaluation ug pag-apruba kasagarang molungtad og **3 hangtod 5 ka working days** human nimo ma-submit ang kompleto nga online application ug documentary requirements.",
+              "Makadawat ka og email notification ug status update sa imong https://admissions.buksu.edu.ph dashboard kung ma-aprubahan na ang imong aplikasyon.",
+              "*(Pahinumdom: Ang kulang, hanap, o dili compliant nga dokumento mahimong makadelay sa approval o makapa-deny sa application)*"
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "Why was my application denied?",
+              "payload": "/direct_intent{\"intent\":\"application_always_denied\"}"
+            },
+            {
+              "label": "Missing Documents Guide",
+              "payload": "/direct_intent{\"intent\":\"missing_admission_documents\"}"
+            }
+          ],
+          "intent": "admission_application_processing_time",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "admission application processing time",
+              "how many days before admission application is approved",
+              "pila ka adlaw una ma approve ang admission application",
+              "how many days do admission application got accepted",
+              "how long does admission approval take",
+              "pila ka adlaw hulaton ang approval sa admission",
+              "pila ka days ang evaluation sa admission",
+              "when will my admission application be approved",
+              "how many days for buksu admission approval",
+              "processing time for admission test application",
+              "how long to wait for test permit approval",
+              "kanus-a ma approve akong admission application",
+              "waiting time for admission application"
+            ],
+            "strong_keywords": [
+              "processing time",
+              "days",
+              "approval",
+              "approved",
+              "admissions.buksu.edu.ph",
+              "evaluator",
+              "working days"
+            ],
+            "weak_keywords": [
+              "how long",
+              "pila ka adlaw",
+              "when",
+              "application"
+            ]
+          },
+          "display_name": "Admission Application Approval Time"
+        },
+        {
+          "topic": "application_always_denied",
+          "responses": {
+            "en": [
+              "Why was my BukSU admission application denied or rejected?",
+              "The most common reasons for admission application denial include:",
+              "1. **2x2 Profile Picture Specification**: The photo does not have a pure white background, is not wearing a plain white T-shirt, contains accessories (caps, earrings, sunglasses, headbands), or is distorted/blurry.",
+              "2. **Account Details Discrepancy**: Your full name, contact number, or Gmail address does not match your official school records.",
+              "3. **Documentary & Signature Issues**: The Principal's Certification lacks the official signature or school seal of your Principal, or the scan of your Report Card (Form 138) is unreadable.",
+              "**How to Fix:** Log in to https://admissions.buksu.edu.ph, edit your application, replace the flagged photo or document, and re-submit. If your application continues to be denied, visit the Admission Office on the CPAG Building ground floor for assistance."
+            ],
+            "ceb": [
+              "Nganong na-deny o na-reject ang akong BukSU admission application?",
+              "Ang kasagarang mga hinungdan ngano ma-deny ang application mao ang mosunod:",
+              "1. **2x2 Profile Picture Specification**: Ang litrato walay puti nga background, wala nagsul-ob og plain puti nga T-shirt, adunay accessories (kalo, ariyos, sunglasses), o hanap ang file.",
+              "2. **Sayop nga Account Details**: Ang imong ngalan, contact number, o Gmail dili parehas sa imong opisyal nga records.",
+              "3. **Kulang o Walay Pirma nga Dokumento**: Ang Principal's Certification walay pirma o dry seal sa inyong principal, o dili klaro ang scan sa Report Card (Form 138).",
+              "**Unsaon Pag-ayo:** Pag-log in sa https://admissions.buksu.edu.ph, i-edit ang imong application, ilisi ang sayop nga litrato o dokumento, ug i-submit pag-usab. Kung ma-deny gihapon, bisitaha ang Admission Office sa CPAG Building ground floor."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "Admission Office Location",
+              "payload": "/direct_intent{\"intent\":\"location_Admission_Office\"}"
+            },
+            {
+              "label": "Approval Processing Time",
+              "payload": "/direct_intent{\"intent\":\"admission_application_processing_time\"}"
+            }
+          ],
+          "mapData": {
+            "mapId": "main_map",
+            "coordinates": [
+              651,
+              490
+            ],
+            "locationName": "Admission Office (CPAG Building Ground Floor)"
+          },
+          "intent": "application_always_denied",
+          "context_topic": "process",
+          "metadata": {
+            "phrases": [
+              "application always denied",
+              "why is my admission application rejected",
+              "why my admission got rejected",
+              "why did my admission application get denied",
+              "ngano pirmi ma deny ang akong admission application",
+              "gi reject sa system ang akong application bisan kompleto",
+              "unsa ang hinungdan ngano denied akong application",
+              "reasons why admission application is rejected",
+              "how to fix rejected admission application",
+              "my application is always rejected",
+              "nganong gi reject akong admission application",
+              "admission application denied",
+              "admission application rejected",
+              "why was my cat application disapproved",
+              "disapproved admission application"
+            ],
+            "strong_keywords": [
+              "denied",
+              "rejected",
+              "disapproved",
+              "gi reject",
+              "gi deny",
+              "admission application",
+              "reasons"
+            ],
+            "weak_keywords": [
+              "why",
+              "ngano",
+              "fix",
+              "photo",
+              "principal certification"
+            ]
+          },
+          "display_name": "Admission Application Rejection Reasons"
         },
         {
           "topic": "change_preferred_course_admission_application",
@@ -2305,6 +2718,333 @@
         }
       ],
       "display_name": "Affirmative Action Program"
+    },
+    {
+      "topic": "application_pending",
+      "responses": {
+        "en": [
+          "Application approval may take time due to the high volume of applications being reviewed by the Admission staff.",
+          "In most cases, applications are approved about one week before the scheduled examination date.",
+          "However, processing times may vary and approval may occur closer to the exam date in some situations.",
+          "Please continue monitoring your admission account and allow additional time for the review process."
+        ],
+        "ceb": [
+          "Ang approval sa application mahimong modugay tungod sa kadaghan sa applications nga gi-review sa Admission staff.",
+          "Sa kasagaran, ang applications ma-aprubahan mga usa ka semana sa wala pa ang exam date.",
+          "Apan, ang processing time mahimong magkalain-lain ug usahay ma-aprubahan mas duol sa exam date.",
+          "Palihog padayon sa pag-monitor sa imong admission account ug magpailub samtang naghulat sa approval."
+        ]
+      },
+      "intent": "application_pending",
+      "context_topic": "application_status",
+      "metadata": {
+        "phrases": [
+          "Ngano pending gihapon ang akong admission application",
+          "Ang akong admission status pending gihapon ug gusto ko mahibal an ngano",
+          "Kanus a ma approve ang akong admission application",
+          "Pending gihapon ang status sa akong admission account hangtod karon",
+          "Kanus a i review ug i approve ang akong admission application",
+          "Unsa akong buhaton kung pending gihapon ang akong admission application",
+          "Nagsubmit nako sa akong requirements pero pending gihapon ang status",
+          "Ngano wala pa na approve ang akong admission application",
+          "Why is my admission application still pending approval",
+          "My admission application status shows pending and I want to know why",
+          "How long does it take for my admission application to be approved"
+        ],
+        "strong_keywords": [
+          "admission",
+          "akong",
+          "application",
+          "pending",
+          "gihapon"
+        ],
+        "weak_keywords": [
+          "status",
+          "approve",
+          "kanus",
+          "gusto",
+          "mahibal"
+        ]
+      },
+      "display_name": "Application Pending"
+    },
+    {
+      "topic": "change_program_after_application",
+      "responses": {
+        "en": [
+          "Changing your program choice is generally not allowed once the BukSU CAT application is submitted online.",
+          "Applicants are strongly advised to finalize their chosen program before clicking the submit button."
+        ],
+        "ceb": [
+          "Kasagaran dili na pwede usabon ang napiling kurso kung na submit na ang BukSU CAT application online.",
+          "Girekomendar nga sigurohon una ang imong desisyon sa dili pa i click ang submit button."
+        ]
+      },
+      "intent": "change_program_after_application",
+      "context_topic": "application_rules",
+      "metadata": {
+        "phrases": [
+          "Pwede ba usbon ang program human sa pag submit sa BukSU CAT application",
+          "Gitugotan ba nga i modify ang program choice human sa online submission",
+          "Unsay mahitabo kung gusto ko mo switch og program human apply",
+          "Naay pwede ba nga program changes post application",
+          "Pwede ba i update sa applicant ang program choice human submit",
+          "Gitugotan ba ang pag usob sa kurso human sa submission",
+          "Unsa ang buhaton kung sayop ang napiling program",
+          "Posible ba ang modification human sa pag submit sa BukSU CAT",
+          "Can I change my program after submitting the BukSU CAT application",
+          "Is it allowed to modify program choice after online submission",
+          "What happens if I want to switch programs after applying"
+        ],
+        "strong_keywords": [
+          "program",
+          "human",
+          "pwede",
+          "submit",
+          "buksu"
+        ],
+        "weak_keywords": [
+          "application",
+          "choice",
+          "submission",
+          "after",
+          "gitugotan"
+        ]
+      },
+      "display_name": "Application Rules"
+    },
+    {
+      "topic": "student_assistant_application_process",
+      "responses": {
+        "en": [
+          "Students who want to become Student Assistants may apply through the Office of Student Services.",
+          "Requirements usually include the required GWA a copy of the current study load and proof of financial need."
+        ],
+        "ceb": [
+          "Ang mga estudyante nga gusto mahimong Student Assistant mahimong mo apply sa Office of Student Services.",
+          "Ang mga kinahanglanon kasagaran naglakip sa gikinahanglan nga GWA kopya sa study load ug pamatuod sa financial need."
+        ]
+      },
+      "intent": "student_assistant_application_process",
+      "context_topic": "student_assistant",
+      "metadata": {
+        "phrases": [
+          "Unsang opisina ang mo handle sa student assistant applications",
+          "Kinahanglan ba mag submit og GWA ug study load para sa application",
+          "Kinahanglan ba ang proof of financial need para sa student assistant",
+          "Pwede ba mo apply pinaagi sa Office of Student Services",
+          "Unsang mga dokumento ang kinahanglan aron mahimong student assistant",
+          "Giunsa pag submit sa estudyante sa ilang application para sa assistant position",
+          "Asa ko mangutana bahin sa student assistant openings",
+          "How can I apply to become a Student Assistant at BukSU",
+          "Which office handles student assistant applications",
+          "What are the requirements to be a student assistant"
+        ],
+        "strong_keywords": [
+          "student",
+          "assistant",
+          "kinahanglan",
+          "unsang",
+          "applications"
+        ],
+        "weak_keywords": [
+          "submit",
+          "application",
+          "apply",
+          "office",
+          "opisina"
+        ]
+      },
+      "display_name": "Student Assistant"
+    },
+    {
+      "topic": "student_assistant_application",
+      "responses": {
+        "en": [
+          "Students interested in becoming Student Assistants can apply through the Office of Student Services and must submit their study load latest grades and proof of financial need."
+        ],
+        "ceb": [
+          "Ang mga estudyante nga gusto mahimong Student Assistant mahimong mo apply sa Office of Student Services ug kinahanglan mag submit og study load pinakaulahing grades ug proof sa pinansyal nga panginahanglan."
+        ]
+      },
+      "intent": "student_assistant_application",
+      "context_topic": "Student assistant application",
+      "metadata": {
+        "phrases": [
+          "Asa i submit ang application para Student Assistant",
+          "Unsang documents ang kinahanglan i submit",
+          "Kinahanglan ba og proof sa financial need",
+          "Kinahanglan ba i submit ang pinakaulahi nga grades",
+          "Pwede ba mo apply ang part-time students",
+          "Kinsa ang mo approve sa Student Assistant applications",
+          "Gi consider ba ang study load sa application",
+          "How to apply as a Student Assistant",
+          "Where to submit application for Student Assistant",
+          "What documents are needed to apply"
+        ],
+        "strong_keywords": [
+          "submit",
+          "student",
+          "assistant",
+          "application",
+          "kinahanglan"
+        ],
+        "weak_keywords": [
+          "apply",
+          "documents",
+          "unsang",
+          "proof",
+          "financial"
+        ]
+      },
+      "display_name": "Student Assistant Application"
+    },
+    {
+      "topic": "test_permit_corrupted",
+      "responses": {
+        "en": [
+          "If your test permit cannot be opened or appears corrupted, this issue may require assistance from the Admission Office.",
+          "This may be caused by a system or database-related error that cannot be resolved through basic troubleshooting.",
+          "I recommend visiting the Admission Office and informing the staff about the issue so they can assist you directly.",
+          "A campus map is available to help you locate the office."
+        ],
+        "ceb": [
+          "Kung dili ma-open ang imong test permit o corrupted kini, posible nga kinahanglan kini ug assistance gikan sa Admission Office.",
+          "Mahimong tungod kini sa system o database error nga dili masulbad pinaagi sa basic troubleshooting.",
+          "Girekomenda nga moadto ka sa Admission Office ug ipahibalo ang staff bahin sa problema aron matabangan ka nila direkta.",
+          "Adunay mapa nga makatabang nimo sa pagpangita sa opisina."
+        ]
+      },
+      "intent": "test_permit_corrupted",
+      "context_topic": "test_permit",
+      "metadata": {
+        "phrases": [
+          "Dili ma open ang akong test permit sa akong device",
+          "Dili nako makita ang akong test permit kay corrupted kini",
+          "Dili mo open ang file sa akong admission test permit",
+          "Ngano dili mo work ang akong test permit",
+          "Gi download nako ang test permit pero dili ma open",
+          "Nagpakita ug error ang akong test permit kung akong ablihan",
+          "Murag damaged o corrupted ang akong test permit nga file",
+          "Unsa akong buhaton kung dili ma access ang akong test permit",
+          "My test permit cannot be opened on my device",
+          "I cannot view my admission test permit because it is corrupted",
+          "The test permit file does not open properly"
+        ],
+        "strong_keywords": [
+          "test",
+          "permit",
+          "akong",
+          "dili",
+          "open"
+        ],
+        "weak_keywords": [
+          "corrupted",
+          "file",
+          "device",
+          "admission",
+          "kung"
+        ]
+      },
+      "display_name": "Test Permit"
+    },
+    {
+      "topic": "cannot_upload_2x2_picture",
+      "responses": {
+        "en": [
+          "This issue commonly occurs among first- and second-year applicants.",
+          "Please ensure that your photo meets the required specifications: it must have a <b>pure white background</b>, show you wearing a plain <b>white t-shirt</b>, and contain <b>no accessories</b>.",
+          "The photo must also follow the 2x2 format and have a small file size to ensure successful uploading.",
+          "After uploading your photo, please allow time for the Admission Officers to review and approve it.",
+          "If the issue persists, I recommend visiting the Registrar’s Office for further assistance."
+        ],
+        "ceb": [
+          "Kining problema kasagaran mahitabo sa mga first ug second-year nga applicants.",
+          "Siguroa nga ang imong litrato nagsunod sa mga required specifications: kinahanglan puti gyud ang background, nagsul-ob ka ug plain nga puti nga t-shirt, ug walay accessories.",
+          "Ang litrato kinahanglan usab 2x2 ang size ug gamay ra ang file size aron masiguro nga ma-upload kini og tarong.",
+          "Human sa pag-upload, palihog hulata ang approval gikan sa Admission Officers.",
+          "Kung magpadayon gihapon ang problema, girekomenda nga moadto ka sa Registrar’s Office aron mangayo ug dugang nga tabang."
+        ]
+      },
+      "intent": "cannot_upload_2x2_picture",
+      "context_topic": "profile_picture",
+      "metadata": {
+        "phrases": [
+          "Dili nako ma upload ang akong 2x2 nga profile picture sa admission portal",
+          "Ngano dili madawat sa system ang akong 2x2 nga litrato",
+          "Naa koy problema sa pag upload sa akong profile picture sa admission system",
+          "Dili mo proceed ang upload sa akong litrato sa admission account",
+          "Gi reject sa portal ang akong 2x2 nga litrato bisan sakto ang format",
+          "Unsa akong buhaton kung dili ma upload ang akong profile picture",
+          "Dili madawat sa admission system ang akong profile photo",
+          "Naglisod ko sa pag upload sa akong litrato para sa admission",
+          "I cannot upload my 2x2 profile picture in the admission portal",
+          "The system does not allow me to upload my 2x2 photo for my application",
+          "Why is my 2x2 picture not uploading in my admission account"
+        ],
+        "strong_keywords": [
+          "akong",
+          "upload",
+          "admission",
+          "dili",
+          "profile"
+        ],
+        "weak_keywords": [
+          "picture",
+          "system",
+          "litrato",
+          "portal",
+          "madawat"
+        ]
+      },
+      "display_name": "Profile Picture"
+    },
+    {
+      "topic": "freshmen_application_period",
+      "responses": {
+        "en": [
+          "The BukSU admission application does not have a fixed opening date.",
+          "It is usually open from October or November until the last week of March.",
+          "For updates and announcements, visit: https://www.facebook.com/BukSUATU"
+        ],
+        "ceb": [
+          "Ang BukSU admission application walay piho nga petsa sa pag-abli.",
+          "Kasagaran mag-abli kini gikan Oktubre o Nobyembre hangtod sa katapusan nga semana sa Marso.",
+          "Para sa updates ug pahibalo, bisitaha: https://www.facebook.com/BukSUATU"
+        ]
+      },
+      "intent": "freshmen_application_period",
+      "context_topic": "Admission schedule",
+      "metadata": {
+        "phrases": [
+          "kanus a magsugod ang admission testing sa BukSU",
+          "kanus a mag open ang BukSU admission testing",
+          "kanus a magsugod ang admission application sa BukSU",
+          "kanus a pwede magsugod og apply sa admission testing",
+          "kanus a magsugod ang BukSU admission para freshmen",
+          "kanus a mag open ang application sa BukSU admission",
+          "kanus a magsugod pag accept og applicants ang BukSU",
+          "kanus a mo open ang admission testing",
+          "when does BukSU admission testing start",
+          "when does BukSU admission application start",
+          "when does BukSU admission open for freshmen"
+        ],
+        "strong_keywords": [
+          "admission",
+          "buksu",
+          "kanus",
+          "magsugod",
+          "testing"
+        ],
+        "weak_keywords": [
+          "open",
+          "application",
+          "does",
+          "freshmen",
+          "start"
+        ]
+      },
+      "display_name": "Admission Schedule"
     }
   ]
 }

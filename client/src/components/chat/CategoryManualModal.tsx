@@ -13,6 +13,7 @@ import {
   GraduationCap,
   Building2,
   Landmark,
+  LayoutGrid,
   ArrowLeft,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -91,7 +92,7 @@ export function CategoryManualModal({ activeCategory, onClose }: CategoryManualM
                   <span>Select a Knowledge Category</span>
                 </div>
                 <p className="text-slate-600 pl-7 text-[11.5px]">
-                  Choose from one of the 5 categories on the welcome screen:
+                  Choose from one of the 6 categories on the welcome screen:
                 </p>
                 <div className="pl-7 space-y-2 mt-1 text-[11px] text-slate-700">
                   <div className="flex items-center gap-2">
@@ -113,6 +114,10 @@ export function CategoryManualModal({ activeCategory, onClose }: CategoryManualM
                   <div className="flex items-center gap-2">
                     <Landmark className="h-3.5 w-3.5 text-rose-600 shrink-0" />
                     <span><strong>University:</strong> History, leadership, and directories.</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <LayoutGrid className="h-3.5 w-3.5 text-indigo-600 shrink-0" />
+                    <span><strong>Others:</strong> Campus facilities availability, ATM, and sports oval.</span>
                   </div>
                 </div>
               </div>

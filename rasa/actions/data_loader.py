@@ -733,6 +733,8 @@ class KnowledgeDataLoader:
         normalized = re.sub(r"\s+", " ", normalized).strip()
         return normalized
 
+    def _item_tokens(self, text: str) -> List[str]:
+        weak = {"the", "a", "an", "in", "on", "at", "for", "to", "of", "and", "or", "sa", "ug", "ang", "nga"}
         return [token for token in re.findall(r"\b[\w'-]+\b", text) if len(token) > 1 and token not in weak]
 
     def is_intent_in_domain(self, intent_name: str, domain: Optional[str]) -> bool:

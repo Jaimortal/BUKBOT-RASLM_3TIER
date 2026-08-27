@@ -2302,9 +2302,369 @@
           ],
           "images": [],
           "items": []
+        },
+        {
+          "topic": "haircut_and_hair_color_policy",
+          "intent": "haircut_and_hair_color_policy",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "What is BukSU's policy on haircut and colored hair?",
+              "According to the BukSU Student Handbook guidelines on grooming and campus decorum:",
+              "1. Students are expected to maintain neat, clean, and respectable hairstyles while on campus.",
+              "2. For male students in general undergraduate programs, modest and well-groomed haircuts are expected. Extreme or unkempt styles are discouraged.",
+              "3. **Board Courses & Clinical Programs**: Programs such as the **College of Nursing (CON)** and **College of Education (COE)** during teaching internships enforce strict professional grooming rules — including natural hair color (no loud/unnatural hair dye) and standard military/prescribed hair cuts for males.",
+              "4. Modest hair highlights are generally permitted in non-board programs as long as they adhere to general university decorum."
+            ],
+            "ceb": [
+              "Unsa ang patakaran sa BukSU bahin sa haircut ug colored hair?",
+              "Sumala sa BukSU Student Handbook guidelines sa grooming ug campus decorum:",
+              "1. Ang mga estudyante gilauman nga magmintinar og hapsay, limpyo, ug desente nga estilo sa buhok sulod sa campus.",
+              "2. Para sa mga lalaki sa regular nga undergraduate programs, gikinahanglan ang disente ug hapsay nga tupi. Ang sobra o unkempt nga estilo dili girekomenda.",
+              "3. **Board Courses & Clinical Programs**: Ang mga kurso sama sa **College of Nursing (CON)** ug **College of Education (COE)** panahon sa internship nagpatuman og estrikto nga grooming rules — lakip ang natural nga kolor sa buhok (bawal ang hayag/unnatural nga hair dye) ug standard prescribed haircut para sa mga lalaki.",
+              "4. Ang natural o modest nga hair highlights kasagarang gitugotan sa mga non-board programs basta subay sa kinatibuk-ang university decorum."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "bawal ba ang colored hair o naay strict haircut policy para sa mga lalaki",
+              "bawal ba colored hair sa buksu",
+              "haircut policy for male students buksu",
+              "strict haircut policy buksu",
+              "pwede ba magpakolor sa buhok sa buksu",
+              "hair color policy bukidnon state university",
+              "hair grooming policy buksu",
+              "is colored hair allowed in buksu",
+              "haircut rules for boys buksu"
+            ]
+          },
+          "display_name": "Haircut and Hair Color Policy",
+          "subject_terms": [
+            "haircut",
+            "hair color",
+            "grooming",
+            "dress code"
+          ],
+          "images": [],
+          "items": []
+        },
+        {
+          "topic": "campus_wifi_access",
+          "intent": "campus_wifi_access",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "How do students connect to the official BukSU campus Wi-Fi?",
+              "To connect to the university student Wi-Fi network:",
+              "Step 1: Turn on your device's Wi-Fi and connect to the **'BukSU-Student'** network.",
+              "Step 2: A captive portal / login page will automatically open (or open your browser and navigate to any web page).",
+              "Step 3: Log in using your **BukSU Institutional Email Account** (@student.buksu.edu.ph) and password.",
+              "Step 4: Once authenticated, you will have access to campus internet services.",
+              "Note: If you have not yet claimed your institutional email, or if your login is not working, visit the **ICT Service Unit (ICTU)** on the 2nd Floor of the CPAG Building."
+            ],
+            "ceb": [
+              "Unsaon pag-connect sa campus Wi-Fi sa BukSU para sa mga estudyante?",
+              "Aron maka-connect sa university student Wi-Fi network:",
+              "Hakbang 1: I-on ang Wi-Fi sa imong cellphone o laptop ug pilia ang **'BukSU-Student'** network.",
+              "Hakbang 2: Awtomatikong moabli ang login portal (o ablihi ang imong browser aron mogawas ang portal).",
+              "Hakbang 3: Pag-login gamit ang imong **BukSU Institutional Email Account** (@student.buksu.edu.ph) ug password.",
+              "Hakbang 4: Human sa malampusong pag-login, aduna na kay access sa campus internet.",
+              "Hinumdomi: Kung wala pa nimo makuha ang imong institutional email o naay problema sa login, adtoa ang **ICT Service Unit (ICTU)** sa 2nd Floor sa CPAG Building."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "unsaon pag-connect sa campus wi-fi sa buksu para sa mga estudyante",
+              "how to connect to buksu campus wifi",
+              "unsaon pag connect sa wifi sa buksu",
+              "buksu student wifi login",
+              "campus wifi connection process",
+              "wifi password for buksu students",
+              "how to get wifi access in buksu",
+              "unsaon pag access sa buksu wifi",
+              "buksu student internet connection"
+            ]
+          },
+          "display_name": "Campus Wi-Fi Access",
+          "subject_terms": [
+            "wifi",
+            "internet",
+            "campus wifi",
+            "ictu"
+          ],
+          "images": [],
+          "items": []
         }
       ],
       "display_name": "Scholarship Application"
+    },
+    {
+      "topic": "peer_mentoring",
+      "responses": {
+        "en": [
+          "Yes, some programs offer peer mentoring for lower-year students."
+        ],
+        "ceb": [
+          "Oo, naay peer mentoring programs para sa lower-year students."
+        ]
+      },
+      "intent": "peer_mentoring",
+      "context_topic": "mentoring",
+      "metadata": {
+        "phrases": [
+          "Naay peer mentoring sa BukSU para sa mga estudyante",
+          "Aduna bay peer mentoring programs para sa freshmen o lower-year students",
+          "Gusto nako mahibalo kung pwede ko og peer mentor sa BukSU",
+          "Makamentor ba ang upper-year students sa lower-year students",
+          "Aduna ba peer mentoring initiatives sa BukSU",
+          "Giunsa nako pag-apil sa peer mentoring sa BukSU",
+          "Pwede ko ma-assign og peer mentor kung bag-o pa ko nga estudyante",
+          "Gi-organize ba ang peer mentoring sa specific programs sa BukSU",
+          "Does BukSU offer peer mentoring for students",
+          "Are there peer mentoring programs for freshmen or lower-year students",
+          "I want to know if I can have a peer mentor at BukSU"
+        ],
+        "strong_keywords": [
+          "peer",
+          "mentoring",
+          "buksu",
+          "students",
+          "year"
+        ],
+        "weak_keywords": [
+          "programs",
+          "lower",
+          "mentor",
+          "estudyante",
+          "aduna"
+        ]
+      },
+      "display_name": "Mentoring"
+    },
+    {
+      "topic": "about_intramurals",
+      "responses": {
+        "en": [
+          "Intramurals are sports competitions held within the university."
+        ],
+        "ceb": [
+          "Ang intramurals kay sports competition sulod sa unibersidad."
+        ]
+      },
+      "intent": "about_intramurals",
+      "context_topic": "sports",
+      "metadata": {
+        "phrases": [
+          "Unsa ang intramurals sa Bukidnon State University",
+          "Pwede nimo i-explain ang konsepto sa intramurals sa unibersidad",
+          "Gusto nako mahibaloan ang intramural sports events",
+          "Palihog sultihi ko unsa ang intramurals",
+          "Ginahimo ba ang intramurals kada tuig sa unibersidad",
+          "Unsa ang katuyoan sa intramurals sa eskwelahan",
+          "Pwede nimo i-describe ang intramural competitions sa BukSU",
+          "Giunsa pag-benefit ang mga estudyante sa intramurals",
+          "What are intramurals at Bukidnon State University",
+          "Can you explain the concept of intramurals in the university",
+          "I want to know about the intramural sports events"
+        ],
+        "strong_keywords": [
+          "intramurals",
+          "university",
+          "intramural",
+          "bukidnon",
+          "state"
+        ],
+        "weak_keywords": [
+          "pwede",
+          "nimo",
+          "explain",
+          "unibersidad",
+          "sports"
+        ]
+      },
+      "display_name": "About Intramurals"
+    },
+    {
+      "topic": "freshmen_intramurals",
+      "responses": {
+        "en": [
+          "Yes, freshmen are allowed to participate in intramurals."
+        ],
+        "ceb": [
+          "Oo, pwede moapil ang freshmen sa intramurals."
+        ]
+      },
+      "intent": "freshmen_intramurals",
+      "context_topic": "sports",
+      "metadata": {
+        "phrases": [
+          "Pwede ba ang mga freshmen moapil sa intramurals",
+          "Ang mga first year students ba gi-allow sa intramurals",
+          "Open ba ang participation sa intramurals para sa first year students",
+          "Kinsa ang pwede moapil sa BukSU intramural games",
+          "Gi-permit ba ang mga bag-ong estudyante sa intramural competitions",
+          "Unsa ang requirements para sa freshmen aron makasalmot sa intramurals",
+          "Pwede ba ang freshmen moapil sa intramural sports ug activities",
+          "Aduna bay oportunidad ang first year students moapil sa intramurals",
+          "Are freshmen allowed to join intramural activities",
+          "Can first year students participate in intramurals",
+          "How can freshmen get involved in the intramurals"
+        ],
+        "strong_keywords": [
+          "intramurals",
+          "freshmen",
+          "moapil",
+          "first",
+          "year"
+        ],
+        "weak_keywords": [
+          "students",
+          "intramural",
+          "pwede",
+          "activities",
+          "allow"
+        ]
+      },
+      "display_name": "Freshmen Intramurals"
+    },
+    {
+      "topic": "new_student_orientation_purpose",
+      "responses": {
+        "en": [
+          "The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.",
+          "During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program."
+        ],
+        "ceb": [
+          "Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.",
+          "Sa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa."
+        ]
+      },
+      "intent": "new_student_orientation_purpose",
+      "context_topic": "Orientation",
+      "metadata": {
+        "phrases": [
+          "Unsay purpose sa new student orientation",
+          "Unsay ma kat-onan sa estudyante during orientation",
+          "Gi-explain ba ang policies sa orientation",
+          "Gi-cover ba sa orientation ang academic expectations",
+          "Gi-introduce ba ang student services sa orientation",
+          "Kanus-a ginahimo ang orientation",
+          "Mandatory ba ang orientation para sa tanang new students",
+          "Pila ka oras ang orientation",
+          "What is the purpose of new student orientation",
+          "What do students learn during orientation",
+          "Are policies explained in orientation"
+        ],
+        "strong_keywords": [
+          "orientation",
+          "student",
+          "unsay",
+          "purpose",
+          "during"
+        ],
+        "weak_keywords": [
+          "policies",
+          "students",
+          "onan",
+          "estudyante",
+          "explain"
+        ]
+      },
+      "display_name": "Orientation"
+    },
+    {
+      "topic": "join_student_organizations_process",
+      "responses": {
+        "en": [
+          "Students can join recognized student organizations during Organization Days or Org Fair usually held at the start of the academic year.",
+          "You may also visit the Office of Student Services to see the list of accredited clubs and organizations."
+        ],
+        "ceb": [
+          "Ang mga estudyante mahimong moapil sa nagkalain lain nga organisasyon sa panahon sa Organization Days nga kasagarang ginahimo sa sugod sa ting eskwela.",
+          "Mahimo usab moadto sa Office of Student Services aron makita ang listahan sa mga accredited nga club ug organisasyon."
+        ]
+      },
+      "intent": "join_student_organizations_process",
+      "context_topic": "organizations",
+      "metadata": {
+        "phrases": [
+          "Kanus-a ginahimo ang Organization Days o Org Fair",
+          "Asa makita ang listahan sa accredited student clubs",
+          "Pwede ba ang new students moapil sa organizations sa sugod sa school year",
+          "Giunsa pag apply para mo join sa BukSU student club",
+          "Naay schedule ba para sa student organization recruitment",
+          "Asa ang Office of Student Services para sa club information",
+          "Pwede ba mo participate ang students sa student organizations bisan kanus-a",
+          "Unsang opisina ang mo handle sa pag join sa student organizations",
+          "How can I join student organizations at BukSU",
+          "When are Organization Days or Org Fair held",
+          "Where can I find the list of accredited student clubs"
+        ],
+        "strong_keywords": [
+          "student",
+          "organizations",
+          "organization",
+          "join",
+          "kanus"
+        ],
+        "weak_keywords": [
+          "days",
+          "fair",
+          "accredited",
+          "clubs",
+          "pwede"
+        ]
+      },
+      "display_name": "Join Student Organizations Process"
+    },
+    {
+      "topic": "intramurals_week_classes",
+      "responses": {
+        "en": [
+          "Class schedules during intramurals week may vary depending on your instructor.",
+          "In most cases, there are no formal classes held during this period.",
+          "However, participation in intramurals activities is important, as attendance may be monitored by your department and instructors.",
+          "I recommend checking with your instructor for specific instructions regarding your class."
+        ],
+        "ceb": [
+          "Ang schedule sa klase panahon sa intramurals week nagdepende sa inyong instructor.",
+          "Sa kasagaran, walay pormal nga klase niining panahona.",
+          "Apan importante ang pag-apil sa intramurals activities kay ang attendance mahimong ginabantayan sa inyong departamento ug instructors.",
+          "Mas maayo nga mangutana sa inyong instructor alang sa eksaktong instruksyon bahin sa inyong klase."
+        ]
+      },
+      "intent": "intramurals_week_classes",
+      "context_topic": "intramurals",
+      "metadata": {
+        "phrases": [
+          "Naa ba klase panahon sa intramurals week",
+          "Magpadayon ba ang klase panahon sa intramurals",
+          "Mag conduct ba gihapon ug klase ang instructor panahon sa intramurals",
+          "Gusto ko mahibal an kung naa bay klase panahon sa intramurals",
+          "Kinahanglan ba mo attend ug klase panahon sa intramurals week",
+          "Mausab ba ang class schedule panahon sa intramurals",
+          "I suspend ba ang klase panahon sa intramurals activities",
+          "Klase ba o intramurals ang dapat attendan panahon sa intramurals week",
+          "Are there classes during intramurals week",
+          "Will classes continue during the intramurals period",
+          "Do instructors still conduct classes during intramurals week"
+        ],
+        "strong_keywords": [
+          "intramurals",
+          "panahon",
+          "klase",
+          "week",
+          "classes"
+        ],
+        "weak_keywords": [
+          "during",
+          "conduct",
+          "magpadayon",
+          "gihapon",
+          "instructor"
+        ]
+      },
+      "display_name": "Intramurals"
     }
   ]
 }

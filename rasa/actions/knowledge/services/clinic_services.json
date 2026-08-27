@@ -676,6 +676,128 @@
         }
       ],
       "display_name": "Dental Services"
+    },
+    {
+      "topic": "buksu_med_loc",
+      "responses": {
+        "en": [
+          "The University Medical Clinic is located at the Ground Floor of the Health Services Building near the old College of Nursing Building."
+        ],
+        "ceb": [
+          "Ang University Medical Clinic nahimutang sa Ground Floor sa Health Services Building, duol sa karaang College of Nursing Building."
+        ]
+      },
+      "intent": "buksu_med_loc",
+      "context_topic": "medical_clinic_location",
+      "metadata": {
+        "phrases": [
+          "buksu med loc"
+        ],
+        "strong_keywords": [
+          "buksu"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Medical Clinic Location"
+    },
+    {
+      "topic": "student_stress_support",
+      "responses": {
+        "en": [
+          "If you are feeling stressed or overwhelmed, consider seeking help from your advisers, counselors, or trusted university staff."
+        ],
+        "ceb": [
+          "Kung gibati nimo nga stressed o overwhelmed ka, mangayo ug tabang sa adviser, counselor, o kasaligan nga staff sa unibersidad."
+        ]
+      },
+      "intent": "student_stress_support",
+      "context_topic": "mental_health",
+      "metadata": {
+        "phrases": [
+          "Unsaon nako pag-handle sa stress kung gibati nako sa eskwelahan",
+          "Kung overwhelmed ko sa akong academic workload unsa akong buhaton",
+          "Kinsa ang pwede nako duolon kung gibati nako ang kahadlok o stress sa school",
+          "Asa ko mangayo ug tabang para sa mental health sa unibersidad",
+          "Giunsa nako pagpangita ug tabang kung daghan kaayo akong klase ug assignments",
+          "Pwede ba ko mo-approach sa adviser o counselor kung gibati nako ang stress",
+          "Gibati nako nga sobra kaayo ang stress tungod sa projects ug exams unsa akong buhaton",
+          "Kinsa sa unibersidad ang makatabang sa estudyante nga gibati nga stressed",
+          "What should I do if I am feeling stressed at school",
+          "How can I manage stress during my studies",
+          "I am overwhelmed with my academic workload what should I do"
+        ],
+        "strong_keywords": [
+          "stress",
+          "kung",
+          "gibati",
+          "akong",
+          "overwhelmed"
+        ],
+        "weak_keywords": [
+          "academic",
+          "workload",
+          "buhaton",
+          "kinsa",
+          "pwede"
+        ]
+      },
+      "display_name": "Mental Health"
+    },
+    {
+      "topic": "buksu_clinic_services",
+      "responses": {
+        "en": [
+          "Yes the University Health Services Unit provides free medical and dental consultations first aid and emergency treatment for students and staff."
+        ],
+        "ceb": [
+          "Oo ang University Health Services Unit naghatag og libre nga medical ug dental consultations first aid ug emergency treatment para sa mga estudyante ug staff."
+        ]
+      },
+      "intent": "buksu_clinic_services",
+      "context_topic": "FIrst aid",
+      "metadata": {
+        "phrases": [
+          "buksu clinic services"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "clinic",
+          "services"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "First Aid"
+    },
+    {
+      "topic": "health_services_unit_location_hours",
+      "responses": {
+        "en": [
+          "The University Health Services Unit or clinic is located within the main campus of BukSU.",
+          "It is generally open from Monday to Friday from 8 AM to 5 PM.",
+          "The clinic provides medical and dental consultations first aid and emergency treatment for students and staff."
+        ],
+        "ceb": [
+          "Ang University Health Services Unit o clinic nahimutang sa sulod sa main campus sa BukSU.",
+          "Kasagaran bukas kini gikan Lunes hangtod Biyernes gikan alas 8 sa buntag hangtod alas 5 sa hapon.",
+          "Nagahatag kini og medical ug dental consultation first aid ug emergency nga pagtambal para sa mga estudyante ug staff."
+        ]
+      },
+      "intent": "health_services_unit_location_hours",
+      "context_topic": "clinic",
+      "metadata": {
+        "phrases": [
+          "health services unit location hours"
+        ],
+        "strong_keywords": [
+          "health",
+          "services",
+          "unit",
+          "location",
+          "hours"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Clinic"
     }
   ]
 }

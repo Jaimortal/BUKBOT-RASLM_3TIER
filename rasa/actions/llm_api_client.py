@@ -72,7 +72,7 @@ class LLMApiClient:
 
     def _get_groq_keys(self) -> List[str]:
         keys: List[str] = []
-        for i in range(1, 10):
+        for i in range(1, 20):
             val = os.getenv(f"GROQ_API_KEY_{i}", "").strip()
             if val and val not in keys and not val.startswith("your-"):
                 keys.append(val)
@@ -90,7 +90,7 @@ class LLMApiClient:
 
     def _get_gemini_keys(self) -> List[str]:
         keys: List[str] = []
-        for i in range(1, 10):
+        for i in range(1, 20):
             val = os.getenv(f"GEMINI_API_KEY_{i}", "").strip()
             if val and val not in keys and not val.startswith("your-"):
                 keys.append(val)
@@ -202,7 +202,7 @@ class LLMApiClient:
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
-        model = self.model or os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+        model = self.model or os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
         payload = {
             "model": model,
             "messages": messages,
@@ -231,7 +231,7 @@ class LLMApiClient:
     def _generate_gemini_json_with_key(
         self, prompt: str, api_key: str, system_prompt: Optional[str] = None
     ) -> Dict[str, Any]:
-        model = self.model or os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+        model = self.model or os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
         url = self.GEMINI_URL_TEMPLATE.format(model=urllib.parse.quote(model, safe=""))
         url = f"{url}?key={urllib.parse.quote(api_key, safe='')}"
 

@@ -133,7 +133,8 @@ Rules:
             self._decision_cache[cache_key] = (now, None)
             return None
 
-        print(f"[LLM MATCHER] Success! Selected Intent: '{selected_intent}' (Confidence: {confidence}) | Reason: {decision.get('reason', '')}")
+        reason_text = str(decision.get('reason', '')).encode('ascii', errors='replace').decode('ascii')
+        print(f"[LLM MATCHER] Success! Selected Intent: '{selected_intent}' (Confidence: {confidence}) | Reason: {reason_text}")
         selected_candidate = intent_lookup[selected_intent]
         self._decision_cache[cache_key] = (now, selected_candidate)
         return selected_candidate

@@ -4929,7 +4929,9 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/698df585-56a4-4f2a-a91c-144a7a49dc5c"
+      ],
       "routes": [
         {
           "name": "Entrance to COB",

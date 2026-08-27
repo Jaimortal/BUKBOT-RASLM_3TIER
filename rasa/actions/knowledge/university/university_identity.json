@@ -186,6 +186,63 @@
         {
           "responses": {
             "en": [
+              "The official website of Bukidnon State University is: https://buksu.edu.ph",
+              "Important official BukSU university portals:",
+              "- 🌐 Main Website: https://buksu.edu.ph",
+              "- 📝 Admissions Portal: https://admissions.buksu.edu.ph",
+              "- 🎓 Student Portal: https://portal.buksu.edu.ph"
+            ],
+            "ceb": [
+              "Ang opisyal nga website sa Bukidnon State University mao ang: https://buksu.edu.ph",
+              "Importante nga mga opisyal nga university portals:",
+              "- 🌐 Main Website: https://buksu.edu.ph",
+              "- 📝 Admissions Portal: https://admissions.buksu.edu.ph",
+              "- 🎓 Student Portal: https://sias.buksu.edu.ph/sias/"
+            ]
+          },
+          "topic": "buksu_official_website",
+          "intent": "buksu_official_website",
+          "context_topic": "university_identity",
+          "metadata": {
+            "phrases": [
+              "university official website",
+              "official website of buksu",
+              "buksu official website",
+              "buksu website",
+              "what is the official website of buksu",
+              "what is the website of buksu",
+              "official link of buksu",
+              "website sa buksu",
+              "unsa ang official website sa buksu",
+              "unsa ang website sa buksu",
+              "website link sa buksu",
+              "official website sa buksu",
+              "bukidnon state university website",
+              "buksu web page",
+              "official webpage of buksu",
+              "buksu website link"
+            ]
+          },
+          "strong_keywords": [
+            "website",
+            "official",
+            "buksu",
+            "link",
+            "portal",
+            "webpage"
+          ],
+          "weak_keywords": [
+            "unsa",
+            "page",
+            "site",
+            "url",
+            "online"
+          ],
+          "display_name": "BukSU Official Website"
+        },
+        {
+          "responses": {
+            "en": [
               "For the official university calendar, please check the BukSU University Calendar page.",
               "The current calendar page available from the university website is: https://buksu.edu.ph/university-calendar-2025/",
               "For semester-specific changes, always follow the official BukSU website or your college announcements."
@@ -1079,6 +1136,849 @@
         }
       ],
       "display_name": "Student Handbook"
+    },
+    {
+      "topic": "campus_safety",
+      "responses": {
+        "en": [
+          "Yes, Bukidnon State University has campus security personnel on duty to help ensure student safety."
+        ],
+        "ceb": [
+          "Oo, adunay campus security personnel ang Bukidnon State University nga nagbantay aron masiguro ang kaluwasan sa mga estudyante."
+        ]
+      },
+      "intent": "campus_safety",
+      "context_topic": "safety",
+      "metadata": {
+        "phrases": [
+          "Aduna ba campus security sa BukSU aron masiguro ang kaluwasan sa mga estudyante",
+          "Giunsa pagpanalipod sa Bukidnon State University ang mga estudyante sa campus",
+          "Aduna ba mga security personnel nga nagbantay sa grounds sa BukSU",
+          "Pwede ba mag-report ang mga estudyante og safety concerns sa campus security",
+          "Aduna ba emergency services nga magamit sa campus alang sa mga estudyante",
+          "Aduna ba security hotline para sa mga estudyante sa BukSU",
+          "Giunsa pag-handle sa BukSU ang mga insidente nga may kalabotan sa kaluwasan sa estudyante",
+          "Aduna ba mga security guards sa panahon sa klase sa BukSU",
+          "Is there campus security at BukSU to ensure student safety",
+          "How does Bukidnon State University provide safety for students on campus",
+          "Are there security personnel patrolling BukSU grounds"
+        ],
+        "strong_keywords": [
+          "security",
+          "buksu",
+          "campus",
+          "estudyante",
+          "aduna"
+        ],
+        "weak_keywords": [
+          "safety",
+          "kaluwasan",
+          "giunsa",
+          "bukidnon",
+          "state"
+        ]
+      },
+      "display_name": "Safety"
+    },
+    {
+      "topic": "shorts_on_campus",
+      "responses": {
+        "en": [
+          "Wearing shorts is permitted only during intramural sports competitions, such as wearing a jersey to allow for better movement.",
+          "Shorts are also allowed if required for specific academic activities, such as P.E. presentations.",
+          "Outside of these specific instances, wearing shorts on campus is strictly prohibited."
+        ],
+        "ceb": [
+          "Ang pagsul-ob og shorts gitugotan ra panahon sa intramural sports competitions, sama sa pagsul-ob og jersey aron mas sayon ang lihok.",
+          "Gitugotan usab kini kung kinahanglan para sa espesipikong academic activities, sama sa mga P.E. presentations.",
+          "Gawas ani nga mga sitwasyon, hugot nga bawal ang pagsul-ob og shorts sulod sa campus."
+        ]
+      },
+      "intent": "shorts_on_campus",
+      "context_topic": "uniform",
+      "metadata": {
+        "phrases": [
+          "Gitugotan ba ang students nga magsul-ob og shorts sulod sa campus",
+          "Kanus-a pwede magsul-ob og shorts sa unibersidad",
+          "Pwede ba ko magsul-ob og shorts panahon sa klase o activities",
+          "Unsay mga rules sa pagsul-ob og shorts sa sulod sa campus",
+          "Ang shorts ba gitugotan ra sa sports o P.E. activities",
+          "Pwede ba magsul-ob og shorts gawas sa sports events",
+          "Pwede ba ko magsul-ob og shorts para sa official university events",
+          "Aduna bay specific days o events nga gitugotan ang shorts",
+          "Are students allowed to wear shorts on campus",
+          "When is it acceptable to wear shorts while at the university",
+          "Can I wear shorts during class or activities"
+        ],
+        "strong_keywords": [
+          "shorts",
+          "magsul",
+          "pwede",
+          "gitugotan",
+          "campus"
+        ],
+        "weak_keywords": [
+          "activities",
+          "events",
+          "wear",
+          "students",
+          "sulod"
+        ]
+      },
+      "display_name": "Shorts On Campus"
+    },
+    {
+      "topic": "college_shirt_allowed",
+      "responses": {
+        "en": [
+          "Students may sometimes be allowed to wear their college shirts depending on official announcements.",
+          "In some cases, this is permitted on Thursdays or Fridays.",
+          "It is best to stay updated by following the official Bukidnon State University Facebook page for announcements."
+        ],
+        "ceb": [
+          "Usahay tugotan ang mga estudyante nga magsul-ob sa ilang college shirt depende sa opisyal nga announcements.",
+          "Sa ubang kaso, gitugotan kini kada Huwebes o Biyernes.",
+          "Mas maayo nga magpabiling updated pinaagi sa pagsunod sa opisyal nga Facebook page sa Bukidnon State University."
+        ]
+      },
+      "intent": "college_shirt_allowed",
+      "context_topic": "uniform",
+      "metadata": {
+        "phrases": [
+          "Kanus-a pwede magsul-ob ang estudyante sa ilang college shirts",
+          "Aduna ba opisyal nga adlaw para magsul-ob og college shirts",
+          "Pwede ba magsul-ob ang estudyante sa ilang shirts sa pipila ka weekdays",
+          "Unsay mga announcements nga naggiya sa pagsul-ob sa shirt",
+          "Gitugotan ba ang shirts panahon sa special academic activities",
+          "Giunsa pagsayran sa estudyante ang rules para sa college shirts",
+          "Aduna bay schedule para sa college shirt days",
+          "Pwede ba magsul-ob sa college shirts kung walay permiso",
+          "When can students wear their college shirts",
+          "Are there official days for wearing college shirts",
+          "Can students wear their shirts on certain weekdays"
+        ],
+        "strong_keywords": [
+          "shirts",
+          "college",
+          "magsul",
+          "pwede",
+          "estudyante"
+        ],
+        "weak_keywords": [
+          "ilang",
+          "aduna",
+          "weekdays",
+          "shirt",
+          "days"
+        ]
+      },
+      "display_name": "College Shirt Allowed"
+    },
+    {
+      "topic": "campus_dress_code_policy",
+      "responses": {
+        "en": [
+          "Students must wear the prescribed university uniform on designated days.",
+          "During civilian days students must still follow the modest dress code.",
+          "Shorts sleeveless tops ripped jeans and slippers are not allowed inside the campus."
+        ],
+        "ceb": [
+          "Ang mga estudyante kinahanglan magsul ob sa saktong uniporme sa mga gitakdang adlaw.",
+          "Sa civilian days kinahanglan gihapon mosunod sa ligdong nga pamesti.",
+          "Bawal ang mag shorts mag sando gisi nga karsones ug mag tsinelas sulod sa campus."
+        ]
+      },
+      "intent": "campus_dress_code_policy",
+      "context_topic": "dress_code",
+      "metadata": {
+        "phrases": [
+          "campus dress code policy",
+          "what is the dress code in buksu",
+          "what clothes are not allowed inside campus",
+          "are slippers allowed inside buksu",
+          "are shorts allowed inside campus",
+          "what should students wear in buksu",
+          "Unsa ang dress code policy para sa mga estudyante sa BukSU",
+          "Kinahanglan ba magsul ob ang estudyante sa opisyal nga uniporme",
+          "Unsa ang mga rules sa pamesti panahon sa civilian days",
+          "Gitugotan ba ang shorts o sleeveless nga sinina sa campus",
+          "Unsang mga pamesti ang dili tugotan sulod sa university",
+          "Unsa ka strikto ang dress code policy sa BukSU",
+          "Unsang sakto nga pamesti ang angay sul obon sa estudyante",
+          "Pwede ba magsul ob og tsinelas o gisi nga karsones sa campus",
+          "What is the dress code policy for students at BukSU",
+          "What clothes are allowed inside the BukSU campus",
+          "Are students required to wear the official university uniform"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "campus",
+          "dress",
+          "code",
+          "policy"
+        ],
+        "weak_keywords": [
+          "allowed",
+          "inside",
+          "students",
+          "estudyante",
+          "pamesti"
+        ]
+      },
+      "display_name": "Dress Code"
+    },
+    {
+      "topic": "smart_buksu_vision",
+      "responses": {
+        "en": [
+          "Smart BukSU is a strategic roadmap launched under the administration of Dr Joy M Mirasol.",
+          "It focuses on digital transformation innovative instruction sustainable infrastructure and improved student services through technology."
+        ],
+        "ceb": [
+          "Ang Smart BukSU usa ka strategic roadmap nga gilunsad ubos sa pagdumala ni Dr Joy M Mirasol.",
+          "Nagtutok kini sa digital transformation innovative nga pagtudlo malungtarong imprastraktura ug mas maayong serbisyo para sa mga estudyante pinaagi sa teknolohiya."
+        ]
+      },
+      "intent": "smart_buksu_vision",
+      "context_topic": "strategic_plan",
+      "metadata": {
+        "phrases": [
+          "Unsay Smart BukSU",
+          "Unsay focus sa Smart BukSU",
+          "Apil ba ang digital transformation sa Smart BukSU",
+          "Pwede nimo i explain ang Smart BukSU strategic plan",
+          "Apil ba ang sustainable infrastructure sa Smart BukSU",
+          "What is Smart BukSU",
+          "Who launched the Smart BukSU roadmap",
+          "What does Smart BukSU focus on"
+        ],
+        "strong_keywords": [
+          "smart",
+          "buksu",
+          "unsay",
+          "focus",
+          "apil"
+        ],
+        "weak_keywords": [
+          "digital",
+          "transformation",
+          "pwede",
+          "nimo",
+          "explain"
+        ]
+      },
+      "display_name": "Strategic Plan"
+    },
+    {
+      "topic": "oss_no_noon_break_policy",
+      "responses": {
+        "en": [
+          "The Office of Student Services practices a No Noon Break Policy.",
+          "This means staff members remain available even during lunch time to provide continuous frontline services to students."
+        ],
+        "ceb": [
+          "Ang Office of Student Services nagpatuman og No Noon Break Policy.",
+          "Nagpasabot kini nga adunay staff nga available bisan sa oras sa paniudto aron mapadayon ang serbisyo sa mga estudyante."
+        ]
+      },
+      "intent": "oss_no_noon_break_policy",
+      "context_topic": "office_policy",
+      "metadata": {
+        "phrases": [
+          "oss no noon break policy"
+        ],
+        "strong_keywords": [
+          "noon",
+          "break",
+          "policy"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Office Policy"
+    },
+    {
+      "topic": "buksu_establishment_year",
+      "responses": {
+        "en": [
+          "The institution was originally established in 1924 as a secondary school which later evolved into Bukidnon State University."
+        ],
+        "ceb": [
+          "Ang institusyon natukod niadtong 1924 isip usa ka secondary school nga sa ulahi nahimong Bukidnon State University."
+        ]
+      },
+      "intent": "buksu_establishment_year",
+      "context_topic": "history",
+      "metadata": {
+        "phrases": [
+          "Kanus-a natukod ang BukSU",
+          "Ang BukSU ba orihinal nga secondary school",
+          "Unsay founding year sa BukSU",
+          "Kanus-a nagsugod ang institusyon nga nahimong BukSU",
+          "Pwede ba nimo isulti ang original establishment year sa BukSU",
+          "Kanus-a gi establis ang BukSU isip usa ka school",
+          "Pila ka tuig ang BukSU sukad sa pagtukod",
+          "When was BukSU originally established",
+          "What year was Bukidnon State University founded",
+          "Was BukSU originally a secondary school"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "kanus",
+          "school",
+          "year",
+          "secondary"
+        ],
+        "weak_keywords": [
+          "originally",
+          "natukod",
+          "orihinal",
+          "unsay",
+          "founding"
+        ]
+      },
+      "display_name": "BukSU Establishment Year"
+    },
+    {
+      "topic": "significance_year_1924_buksu",
+      "responses": {
+        "en": [
+          "The year 1924 marks the founding of the Bukidnon Farm School which is the historical origin of Bukidnon State University."
+        ],
+        "ceb": [
+          "Ang tuig 1924 mao ang pagkatukod sa Bukidnon Farm School nga gigikanan sa karon nga Bukidnon State University."
+        ]
+      },
+      "intent": "significance_year_1924_buksu",
+      "context_topic": "history",
+      "metadata": {
+        "phrases": [
+          "Ngano nga importante ang tuig 1924 para sa BukSU",
+          "Unsay nahitabo niadtong 1924 para sa Bukidnon State University",
+          "Kanus-a natukod ang Bukidnon Farm School",
+          "Unsay historical origin sa BukSU",
+          "Pwede nimo i explain ang significance sa 1924 para sa BukSU",
+          "Unsay nagsugod sa history sa BukSU",
+          "Unsay foundation year sa BukSU",
+          "Ngano nga importante ang 1924 sa history sa BukSU",
+          "Why is the year 1924 significant for BukSU",
+          "What happened in 1924 for Bukidnon State University",
+          "When was the Bukidnon Farm School founded"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "unsay",
+          "bukidnon",
+          "importante",
+          "state"
+        ],
+        "weak_keywords": [
+          "university",
+          "farm",
+          "school",
+          "history",
+          "year"
+        ]
+      },
+      "display_name": "Significance Year 1924 BukSU"
+    },
+    {
+      "topic": "dasig_spirit_animal_buksu",
+      "responses": {
+        "en": [
+          "Dasig is the official spirit animal of Bukidnon State University.",
+          "It was launched in February 2026 to represent the modern brand identity and heritage of the university."
+        ],
+        "ceb": [
+          "Ang Dasig mao ang opisyal nga spirit animal sa Bukidnon State University.",
+          "Gilunsad kini niadtong Pebrero 2026 aron magrepresentar sa modernong brand identity ug kabilin sa unibersidad."
+        ]
+      },
+      "intent": "dasig_spirit_animal_buksu",
+      "context_topic": "symbol",
+      "metadata": {
+        "phrases": [
+          "Unsay opisyal nga spirit animal sa BukSU",
+          "Kanus-a gilunsad ang Dasig sa BukSU",
+          "Ngano nga napili ang Dasig isip spirit animal",
+          "Unsay ginarepresentar sa Dasig para sa university",
+          "Pwede nimo i describe ang Dasig spirit animal",
+          "Bag-o ba nga symbol ang Dasig para sa BukSU",
+          "What is the official spirit animal of BukSU",
+          "When was Dasig introduced at BukSU",
+          "Why was Dasig chosen as the spirit animal"
+        ],
+        "strong_keywords": [
+          "dasig",
+          "spirit",
+          "animal",
+          "buksu",
+          "unsay"
+        ],
+        "weak_keywords": [
+          "opisyal",
+          "kanus",
+          "gilunsad",
+          "napili",
+          "isip"
+        ]
+      },
+      "display_name": "Symbol"
+    },
+    {
+      "topic": "law_author_buksu_university_conversion",
+      "responses": {
+        "en": [
+          "Republic Act 9454 which converted Bukidnon State College into Bukidnon State University was authored and sponsored by Juan Miguel Zubiri when he was a Congressman."
+        ],
+        "ceb": [
+          "Ang Republic Act 9454 nga naghimo sa Bukidnon State College nga Bukidnon State University gisponsor ug gisulat ni Juan Miguel Zubiri sa dihang siya Congressman pa."
+        ]
+      },
+      "intent": "law_author_buksu_university_conversion",
+      "context_topic": "history",
+      "metadata": {
+        "phrases": [
+          "Kanus-a gi convert ang BukSU ngadto sa university pinaagi sa balaod",
+          "Pwede nimo isulti ang author sa RA 9454",
+          "Who authored the law converting Bukidnon State College to BukSU",
+          "Who sponsored Republic Act 9454",
+          "Which congressman authored BukSU conversion law"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "authored",
+          "kanus",
+          "convert",
+          "ngadto"
+        ],
+        "weak_keywords": [
+          "university",
+          "pinaagi",
+          "balaod",
+          "pwede",
+          "nimo"
+        ]
+      },
+      "display_name": "Law Author BukSU University Conversion"
+    },
+    {
+      "topic": "previous_name_buksu_college",
+      "responses": {
+        "en": [
+          "Before becoming Bukidnon State University in 2007 the institution was known as Bukidnon State College starting from 1976."
+        ],
+        "ceb": [
+          "Sa wala pa kini nahimong Bukidnon State University niadtong 2007 ang institusyon nailhan isip Bukidnon State College sugod niadtong 1976."
+        ]
+      },
+      "intent": "previous_name_buksu_college",
+      "context_topic": "history",
+      "metadata": {
+        "phrases": [
+          "Unsay gitawag sa BukSU sa wala pa 2007",
+          "Unsay previous name sa Bukidnon State University",
+          "Kanus-a nag exist ang Bukidnon State College",
+          "Unsay gitawag sa institusyon gikan 1976 hangtod 2007",
+          "Unsang pangalan ang gigamit sa BukSU sa wala pa mahimong university",
+          "Unsay old name sa BukSU",
+          "Pwede nimo isulti ang former name sa BukSU",
+          "Unsay gitawag sa BukSU sauna",
+          "What was BukSU called before 2007",
+          "What was the previous name of Bukidnon State University",
+          "When did Bukidnon State College exist"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "unsay",
+          "name",
+          "bukidnon",
+          "state"
+        ],
+        "weak_keywords": [
+          "gitawag",
+          "university",
+          "wala",
+          "previous",
+          "exist"
+        ]
+      },
+      "display_name": "Previous Name BukSU College"
+    },
+    {
+      "topic": "university_code_definition",
+      "responses": {
+        "en": [
+          "The University Code is a compilation of the rules regulations and policies that govern the administration faculty and student body.",
+          "It serves as the legal framework for the operations of the university."
+        ],
+        "ceb": [
+          "Ang University Code mao ang pundok sa mga balaod regulasyon ug polisiya nga nagdumala sa administrasyon faculty ug mga estudyante.",
+          "Kini ang nagsilbing legal nga basehan sa operasyon sa unibersidad."
+        ]
+      },
+      "intent": "university_code_definition",
+      "context_topic": "governance",
+      "metadata": {
+        "phrases": [
+          "Unsay University Code",
+          "Unsang rules ang naa sa University Code",
+          "Kinsa ang kinahanglan mosunod sa University Code",
+          "Apil ba ang faculty ug students",
+          "Unsay legal basis para sa university policies",
+          "Pwede ba ma access ang University Code",
+          "Kabahin ba ang University Code sa governance",
+          "What is the University Code",
+          "How does the University Code govern BukSU",
+          "What rules are included in the University Code"
+        ],
+        "strong_keywords": [
+          "university",
+          "code",
+          "unsay",
+          "rules",
+          "unsang"
+        ],
+        "weak_keywords": [
+          "kinsa",
+          "kinahanglan",
+          "mosunod",
+          "apil",
+          "faculty"
+        ]
+      },
+      "display_name": "Governance"
+    },
+    {
+      "topic": "buksu_alumni_association",
+      "responses": {
+        "en": [
+          "Yes BukSU has an Alumni Association that connects graduates.",
+          "It organizes activities and initiatives that support the university and assist current students."
+        ],
+        "ceb": [
+          "Oo ang BukSU adunay Alumni Association nga nagkonektar sa mga gradwar.",
+          "Nagorganisar kini og mga kalihokan aron makatabang sa kalamboan sa unibersidad ug sa mga kasamtangang estudyante."
+        ]
+      },
+      "intent": "buksu_alumni_association",
+      "context_topic": "alumni",
+      "metadata": {
+        "phrases": [
+          "Unsang mga activities ang gi organize sa BukSU Alumni Association",
+          "Pwede ba makatabang ang alumni sa current students",
+          "Kinsa pwede mo join sa BukSU Alumni Association",
+          "Nag maintain ba og contact ang BukSU sa graduates",
+          "Does BukSU have an alumni association",
+          "How does BukSU connect with graduates",
+          "What activities are organized by the BukSU Alumni Association"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "alumni",
+          "association",
+          "activities",
+          "pwede"
+        ],
+        "weak_keywords": [
+          "graduates",
+          "does",
+          "unsang",
+          "organize",
+          "makatabang"
+        ]
+      },
+      "display_name": "Alumni"
+    },
+    {
+      "topic": "buksu_satellite_campuses",
+      "responses": {
+        "en": [
+          "BukSU operates several satellite campuses in different municipalities across Bukidnon and nearby provinces.",
+          "These campuses provide accessible education for students living in remote areas."
+        ],
+        "ceb": [
+          "Ang BukSU adunay daghang satellite campuses sa nagkalain laing lungsod sa Bukidnon ug silingang probinsya.",
+          "Gihimo kini aron mahatagan og accessible nga edukasyon ang mga estudyante sa layo nga lugar."
+        ]
+      },
+      "intent": "buksu_satellite_campuses",
+      "context_topic": "campus_system",
+      "metadata": {
+        "phrases": [
+          "Asa nahimutang ang BukSU satellite campuses",
+          "Ngano nag operate ang BukSU og campuses sa lain nga municipalities",
+          "Giunsa pag tabang sa satellite campuses ang mga estudyante",
+          "Para ba sa remote students ang satellite campuses",
+          "Pila ka satellite campuses ang naa sa BukSU",
+          "Unsang education services ang gi offer sa satellite campuses",
+          "Pwede ba mo attend ang students sa satellite campuses",
+          "Does BukSU have satellite campuses",
+          "Where are BukSU satellite campuses located",
+          "Why does BukSU operate campuses in other municipalities"
+        ],
+        "strong_keywords": [
+          "campuses",
+          "satellite",
+          "buksu",
+          "operate",
+          "municipalities"
+        ],
+        "weak_keywords": [
+          "students",
+          "does",
+          "nahimutang",
+          "lain",
+          "giunsa"
+        ]
+      },
+      "display_name": "Campus System"
+    },
+    {
+      "topic": "buksu_hymn",
+      "responses": {
+        "en": [
+          "The BukSU Hymn is the official song of the university performed during flag ceremonies and formal events and reflects the university commitment to excellence service and identity."
+        ],
+        "ceb": [
+          "Ang BukSU Hymn mao ang opisyal nga kanta sa unibersidad nga ginakanta sa mga flag ceremony ug pormal nga okasyon ug nagpakita sa dedikasyon sa unibersidad sa excellence ug serbisyo."
+        ]
+      },
+      "intent": "buksu_hymn",
+      "context_topic": "culture",
+      "metadata": {
+        "phrases": [
+          "buksu hymn"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "hymn"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Culture"
+    },
+    {
+      "topic": "no_noon_break_policy",
+      "responses": {
+        "en": [
+          "Yes frontline offices such as the Registrar Cashier and Office of Student Services follow a No Noon Break policy to ensure continuous service to students."
+        ],
+        "ceb": [
+          "Oo ang mga frontline office sama sa Registrar Cashier ug Office of Student Services nagpatuman og No Noon Break nga polisiya aron masiguro ang padayon nga serbisyo sa mga estudyante."
+        ]
+      },
+      "intent": "no_noon_break_policy",
+      "context_topic": "No noon break policy",
+      "metadata": {
+        "phrases": [
+          "Bukas ba ang Registrar sa oras sa paniudto sa BukSU",
+          "Mosira ba ang Cashier sa lunch break sa BukSU",
+          "Bukas ba ang Office of Student Services panahon sa tanghalian",
+          "Nag follow ba ang mga frontline offices sa no noon break policy sa BukSU",
+          "Pwede ba moadto sa Registrar panahon sa oras sa tanghalian",
+          "Bukas ba ang Registrar ug Cashier sa noon",
+          "Bukas ba ang OSS sa oras sa paniudto",
+          "Pwede ba makakuha og serbisyo sa frontline offices panahon sa lunch",
+          "Do BukSU frontline offices stay open during lunchtime",
+          "Is the Registrar open during lunch break at BukSU",
+          "Does the Cashier close during noon at BukSU"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "bukas",
+          "registrar",
+          "oras",
+          "cashier"
+        ],
+        "weak_keywords": [
+          "lunch",
+          "break",
+          "panahon",
+          "frontline",
+          "offices"
+        ]
+      },
+      "display_name": "No Noon Break Policy"
+    },
+    {
+      "topic": "office_schedule",
+      "responses": {
+        "en": [
+          "What are the office hours of Bukidnon State University?",
+          "Bukidnon State University offices, including the Registrar’s Office and the Accounting Office, operate only from Monday to Friday.",
+          "Office hours are 8:00 AM to 12:00 NN and 1:00 PM to 5:00 PM.",
+          "They are closed on Saturdays and Sundays.",
+          " ",
+          "Make sure to plan your visits during the official office hours.",
+          "For urgent matters, you can check if services are available online or contact the offices directly.",
+          "📱 Contact Number: 0975 758 3157",
+          "✉️ Email: registrar@buksu.edu.ph",
+          "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+          "📞 BukSU Contact Number: 088-813-5661"
+        ],
+        "ceb": [
+          "Unsa ang oras sa opisina sa Bukidnon State University?",
+          "Ang mga opisina sa Bukidnon State University, lakip na ang Registrar’s Office ug Accounting Office, bukas lang gikan Lunes hangtod Biyernes.",
+          "Ang oras sa opisina kay 8:00 AM hangtod 12:00 NN ug 1:00 PM hangtod 5:00 PM.",
+          "Sirado kini sa Sabado ug Domingo.",
+          " ",
+          "Siguroha nga imong i-plan ang imong pagbisita sa opisyal nga oras sa opisina.",
+          "Para sa mga urgent nga butang, pwede nimo tan-awon kung available ang serbisyo online o kontaka diretso ang opisina.",
+          "📱 Contact Number: 0975 758 3157",
+          "✉️ Email: registrar@buksu.edu.ph",
+          "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+          "📞 BukSU Contact Number: 088-813-5661"
+        ]
+      },
+      "intent": "office_schedule",
+      "context_topic": "office_hours",
+      "metadata": {
+        "phrases": [
+          "office schedule"
+        ],
+        "strong_keywords": [
+          "office",
+          "schedule"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Office Hours"
+    },
+    {
+      "topic": "buksu_mandates",
+      "responses": {
+        "en": [
+          "BukSU is committed to the development and continuous improvement of its Quality Management System.",
+          "It ensures excellence in instruction, research, extension, and production while meeting stakeholder needs."
+        ],
+        "ceb": [
+          "Pasensya, dili pwede maghimo og Bisaya translation sa BukSU mandates tungod kay opisyal kini nga English version."
+        ]
+      },
+      "intent": "buksu_mandates",
+      "context_topic": "BUksu Mandates",
+      "metadata": {
+        "phrases": [
+          "Unsa ang mandates sa BukSU?",
+          "Unsa ang tumong sa BukSU?",
+          "Unsa ang responsibilidad sa BukSU?",
+          "Unsay focus sa BukSU?",
+          "Unsa ang ginabuhat sa BukSU?",
+          "Unsay katuyoan sa mandates sa BukSU?",
+          "Unsa ang gisuportahan sa BukSU?",
+          "Unsay gi commit sa BukSU?",
+          "What are the mandates of BukSU?",
+          "What is BukSU mandate?",
+          "What does BukSU aim to do?"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "mandates",
+          "unsay",
+          "tumong",
+          "responsibilidad"
+        ],
+        "weak_keywords": [
+          "focus",
+          "ginabuhat",
+          "katuyoan",
+          "gisuportahan",
+          "commit"
+        ]
+      },
+      "display_name": "BukSU Mandates"
+    },
+    {
+      "topic": "buksu_official_anthem",
+      "responses": {
+        "en": [
+          "The BukSU Hymn is the official anthem of the university performed during flag ceremonies and formal events. It reflects the university commitment to academic excellence service and identity as an institution in the heart of Bukidnon. If you want I can provide a link for the Bukidnon State University anthem just say yes please."
+        ],
+        "ceb": [
+          "Ang BukSU Hymn mao ang opisyal nga kanta sa unibersidad nga ginakanta sa mga flag ceremony ug pormal nga okasyon. Gipakita niini ang dedikasyon sa unibersidad sa excellence ug serbisyo ug ang garbo niini isip institusyon sa Bukidnon. Kung gusto nimo maka provide ko og link para sa Bukidnon State University anthem pag sulti lang og yes please."
+        ]
+      },
+      "intent": "buksu_official_anthem",
+      "context_topic": "whats BukSU hymn",
+      "metadata": {
+        "phrases": [
+          "unsa ang BukSU hymn",
+          "unsa ang BukSU anthem",
+          "unsay opisyal nga hymn sa BukSU",
+          "unsay opisyal nga anthem sa BukSU",
+          "unsa ang hymn sa Bukidnon State University",
+          "unsa ang anthem sa Bukidnon State University",
+          "pwede nimo isaysay unsa ang BukSU hymn",
+          "pwede nimo isaysay unsa ang BukSU anthem",
+          "what is the BukSU hymn",
+          "what is the BukSU anthem",
+          "what is the official anthem of BukSU"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "anthem",
+          "hymn",
+          "unsay",
+          "opisyal"
+        ],
+        "weak_keywords": [
+          "bukidnon",
+          "state",
+          "university",
+          "pwede",
+          "nimo"
+        ]
+      },
+      "display_name": "Whats Buk Su Hymn"
+    },
+    {
+      "topic": "visitor_campus_access",
+      "responses": {
+        "en": [
+          "Yes, they are, but it depends if you are a special visitor.",
+          "Usually, special visitors have letters to show the guard to enter the campus freely.",
+          "However, if you are just visiting someone, such as a student, there are other rules to follow.",
+          "Go to the exit and ask the guard about the specific days and times you are allowed to enter."
+        ],
+        "ceb": [
+          "Oo, puwede sila, apan depende kung ikaw usa ka special visitor.",
+          "Kasagaran, ang special visitors adunay sulat nga ipakita sa guard aron makasulod sa campus nga walay problema.",
+          "Apan, kung bisita ra ka sa usa ka tawo, sama sa estudyante, adunay lain nga mga lagda nga sundon.",
+          "Adtoa ang exit ug pangutan-a ang guard bahin sa espesipikong mga adlaw ug oras nga pwede ka mosulod."
+        ]
+      },
+      "intent": "visitor_campus_access",
+      "context_topic": "visitors",
+      "metadata": {
+        "phrases": [
+          "pwede ba ang bisita mosulod sa BukSU campus",
+          "allowed ba ang visitors sa BukSU",
+          "pwede ba mosulod ang visitor sa campus",
+          "pwede ba ang guest mosulod sa BukSU",
+          "pwede ba ang outsider mosulod isip visitor",
+          "pwede ko mosulod sa BukSU isip bisita",
+          "pwede ba ang dili estudyante mosulod isip visitor",
+          "open ba ang BukSU para sa visitors",
+          "are visitors allowed to enter BukSU campus",
+          "can visitors go inside BukSU campus",
+          "is BukSU open for visitors"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "pwede",
+          "mosulod",
+          "visitors",
+          "campus"
+        ],
+        "weak_keywords": [
+          "visitor",
+          "isip",
+          "bisita",
+          "allowed",
+          "open"
+        ]
+      },
+      "display_name": "Visitors"
     }
   ]
 }

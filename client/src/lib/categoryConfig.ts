@@ -1,6 +1,6 @@
 import extractedCategoryFaqs from "./all_extracted_category_faqs.json";
 
-export type CategoryId = "location" | "procedures" | "academics" | "services" | "university";
+export type CategoryId = "location" | "procedures" | "academics" | "services" | "university" | "others";
 
 export interface ScopeTopicItem {
   label: string;
@@ -305,6 +305,53 @@ export const CATEGORY_DEFINITIONS: Record<CategoryId, CategoryDefinition> = {
       { question: "Who leads Bukidnon State University?", description: "Details on University President Dr. Joy M. Mirasol." },
       { question: "When was BukSU founded and converted to University?", description: "Key historical milestones from 1924 to 2007." },
       { question: "How to contact official university offices?", description: "Phone numbers and email directory for university inquiries." },
+    ],
+  },
+  others: {
+    id: "others",
+    title: "Other Services & Campus Inquiries",
+    shortTitle: "Others",
+    subtitle: "Facility Availability & Inquiries",
+    iconName: "LayoutGrid",
+    emoji: "✨",
+    color: "from-purple-600 to-indigo-600",
+    accentBg: "bg-purple-50 text-purple-700 border-purple-200",
+    description: "Campus facility availability, ATM machine, sports gym, cafeteria, parking, and miscellaneous inquiries.",
+    scopeGroups: [
+      {
+        title: "Campus Facilities & Amenities",
+        items: [
+          { label: "ATM Machine Availability", payload: '/direct_intent{"intent":"atm_facility_availability"}' },
+          { label: "Gymnasium & Fitness Gym", payload: '/direct_intent{"intent":"gym_facility_availability"}' },
+          { label: "Cafeteria & Canteen", payload: '/direct_intent{"intent":"cafeteria_facility_availability"}' },
+          { label: "Sports Oval & Running Track", payload: '/direct_intent{"intent":"oval_facility_availability"}' },
+          { label: "University Museum", payload: '/direct_intent{"intent":"museum_facility_availability"}' },
+          { label: "Dental Clinic Services", payload: '/direct_intent{"intent":"dental_clinic_facility_availability"}' },
+          { label: "Auditorium & Event Spaces", payload: '/direct_intent{"intent":"auditorium_facility_availability"}' },
+          { label: "Vehicle & Motor Parking", payload: '/direct_intent{"intent":"parking_facility_availability"}' },
+        ],
+      },
+      {
+        title: "Campus Support Offices",
+        items: [
+          { label: "Guidance Office Availability", payload: '/direct_intent{"intent":"guidance_office_facility_availability"}' },
+          { label: "Medical Clinic Availability", payload: '/direct_intent{"intent":"clinic_facility_availability"}' },
+          { label: "Library Facility Availability", payload: '/direct_intent{"intent":"library_facility_availability"}' },
+          { label: "ICT Office Availability", payload: '/direct_intent{"intent":"ict_office_facility_availability"}' },
+          { label: "Registrar Office Availability", payload: '/direct_intent{"intent":"registrar_office_facility_availability"}' },
+          { label: "Finance & Cashier Availability", payload: '/direct_intent{"intent":"finance_cashier_facility_availability"}' },
+          { label: "Admission Office Availability", payload: '/direct_intent{"intent":"admission_office_facility_availability"}' },
+          { label: "Dormitory Facility Availability", payload: '/direct_intent{"intent":"dormitory_facility_availability"}' },
+          { label: "Guard House & Campus Security", payload: '/direct_intent{"intent":"guard_house_facility_availability"}' },
+        ],
+      },
+    ],
+    faqs: (extractedCategoryFaqs.others || []) as CategoryFaqItem[],
+    manualGuides: [
+      { question: "Does BukSU have an ATM on campus?", description: "Information on ATM banking access near and inside the campus." },
+      { question: "Is there a sports gym and oval in BukSU?", description: "Details on sports amenities, gym facilities, and running tracks." },
+      { question: "Where are the student cafeterias and canteens?", description: "Food services, dining areas, and campus canteen availability." },
+      { question: "What health and dental facilities are available?", description: "Overview of student healthcare, medical consultations, and dental care." },
     ],
   },
 };

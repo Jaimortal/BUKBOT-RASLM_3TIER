@@ -1,0 +1,1645 @@
+{
+  "intent": "ask_facility_availability",
+  "category": "Other Services & Campus Facilities",
+  "entities": [
+    "facility_name"
+  ],
+  "topics": [
+    {
+      "topic": "library_facility_availability",
+      "subject_key": "library_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "library",
+        "university library",
+        "BukSU library"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a University Library available for students.",
+          "Students may use the library for reading, studying, borrowing books, and accessing library services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og University Library para sa mga estudyante.",
+          "Pwede magamit sa students ang library para sa pagbasa, pag-study, paghulam og libro, ug paggamit sa library services."
+        ]
+      },
+      "intent": "library_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a library",
+          "do buksu has a library",
+          "is there a library in BukSU",
+          "does Bukidnon State University have a library",
+          "naa bay library sa BukSU",
+          "naa ba ang BukSU og library",
+          "aduna bay library sa BukSU",
+          "library available in BukSU"
+        ],
+        "strong_keywords": [
+          "library",
+          "facility",
+          "available"
+        ]
+      },
+      "display_name": "Library Facility Availability",
+      "suggestions": [
+        {
+          "label": "Library location",
+          "payload": "where is Library"
+        }
+      ]
+    },
+    {
+      "topic": "museum_facility_availability",
+      "subject_key": "museum_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "museum",
+        "university museum",
+        "BukSU museum"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Museum on campus.",
+          "You may visit it for university-related exhibits and campus heritage information, depending on its available schedule."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Museum sulod sa campus.",
+          "Pwede nimo kini bisitahon para sa university-related exhibits ug campus heritage information, depende sa available schedule niini."
+        ]
+      },
+      "intent": "museum_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a museum",
+          "do buksu has museum",
+          "is there a museum in BukSU",
+          "is the Bukidnon State University has museum",
+          "does Bukidnon State University have a museum",
+          "naa bay museum sa BukSU",
+          "naa ba ang BukSU og museum",
+          "museum available in BukSU"
+        ],
+        "strong_keywords": [
+          "museum",
+          "facility",
+          "available"
+        ]
+      },
+      "display_name": "Museum Facility Availability",
+      "suggestions": [
+        {
+          "label": "Museum location",
+          "payload": "where is Museum"
+        }
+      ]
+    },
+    {
+      "topic": "clinic_facility_availability",
+      "subject_key": "clinic_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "clinic",
+        "medical clinic",
+        "health clinic",
+        "university clinic",
+        "health services"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a medical clinic or health services facility for students.",
+          "Students may ask the clinic for basic medical assistance, health concerns, and related student health services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og medical clinic o health services facility para sa students.",
+          "Pwede mangutana ang students sa clinic para sa basic medical assistance, health concerns, ug related student health services."
+        ]
+      },
+      "intent": "clinic_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a clinic",
+          "is there a clinic in BukSU",
+          "does BukSU have medical clinic",
+          "does BukSU have health services",
+          "naa bay clinic sa BukSU",
+          "naa ba ang BukSU og clinic",
+          "naa bay health services sa BukSU",
+          "clinic available in BukSU"
+        ],
+        "strong_keywords": [
+          "clinic",
+          "health services",
+          "medical"
+        ]
+      },
+      "display_name": "Clinic Facility Availability",
+      "suggestions": [
+        {
+          "label": "Clinic location",
+          "payload": "where is Medical clinic"
+        }
+      ]
+    },
+    {
+      "topic": "dental_clinic_facility_availability",
+      "subject_key": "dental_clinic_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "dental clinic",
+        "dental",
+        "dentist",
+        "oral clinic"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Dental Clinic for student dental-related services.",
+          "Students may ask the Dental Clinic about consultation, oral examination, referral, medicine dispensing, and other available dental services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Dental Clinic para sa dental-related services sa students.",
+          "Pwede mangutana ang students sa Dental Clinic bahin sa consultation, oral examination, referral, medicine dispensing, ug uban pang available dental services."
+        ]
+      },
+      "intent": "dental_clinic_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a dental clinic",
+          "is there a dental clinic in BukSU",
+          "does BukSU have dental services",
+          "naa bay dental clinic sa BukSU",
+          "naa ba ang BukSU og dental clinic",
+          "naa bay dentist sa BukSU",
+          "dental clinic available in BukSU"
+        ],
+        "strong_keywords": [
+          "dental",
+          "dentist",
+          "clinic"
+        ]
+      },
+      "display_name": "Dental Clinic Facility Availability",
+      "suggestions": [
+        {
+          "label": "Dental Clinic location",
+          "payload": "where is Dental Clinic"
+        }
+      ]
+    },
+    {
+      "topic": "gym_facility_availability",
+      "subject_key": "gym_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "gym",
+        "gymnasium",
+        "fitness gym",
+        "sports facility"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has sports-related facilities such as the Gymnasium and Fitness Gym.",
+          "Availability may depend on schedules, events, and university rules for student use."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og sports-related facilities sama sa Gymnasium ug Fitness Gym.",
+          "Ang availability mahimong magdepende sa schedule, events, ug university rules para sa paggamit sa students."
+        ]
+      },
+      "intent": "gym_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have a gym",
+          "is there a gym in BukSU",
+          "does BukSU have gymnasium",
+          "does BukSU have fitness gym",
+          "naa bay gym sa BukSU",
+          "naa bay gymnasium sa BukSU",
+          "naa ba ang BukSU og fitness gym",
+          "gym available in BukSU"
+        ],
+        "strong_keywords": [
+          "gym",
+          "gymnasium",
+          "fitness"
+        ]
+      },
+      "display_name": "Gym Facility Availability",
+      "suggestions": [
+        {
+          "label": "Gymnasium location",
+          "payload": "where is Gymnasium"
+        },
+        {
+          "label": "Fitness Gym location",
+          "payload": "where is Fitness Gym"
+        }
+      ]
+    },
+    {
+      "topic": "cafeteria_facility_availability",
+      "subject_key": "cafeteria_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "cafeteria",
+        "canteen",
+        "food area",
+        "student food"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has food areas such as the Cafeteria and Canteen.",
+          "Students may go there during available hours to buy food or take a break."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og food areas sama sa Cafeteria ug Canteen.",
+          "Pwede moadto ang students didto during available hours para mopalit og pagkaon o mopahuway."
+        ]
+      },
+      "intent": "cafeteria_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have cafeteria",
+          "is there a cafeteria in BukSU",
+          "does BukSU have canteen",
+          "is there a canteen in BukSU",
+          "naa bay cafeteria sa BukSU",
+          "naa bay canteen sa BukSU",
+          "naa ba mapalitan pagkaon sa BukSU",
+          "food area available in BukSU"
+        ],
+        "strong_keywords": [
+          "cafeteria",
+          "canteen",
+          "food"
+        ]
+      },
+      "display_name": "Cafeteria And Canteen Availability",
+      "suggestions": [
+        {
+          "label": "Cafeteria location",
+          "payload": "where is Cafeteria"
+        },
+        {
+          "label": "Canteen location",
+          "payload": "where is Canteen"
+        }
+      ]
+    },
+    {
+      "topic": "atm_facility_availability",
+      "subject_key": "atm_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "atm",
+        "cash machine",
+        "automated teller machine"
+      ],
+      "responses": {
+        "en": [
+          "Yes, there is an ATM near BukSU.",
+          "It is included in the campus location data so students can ask for its location when needed."
+        ],
+        "ceb": [
+          "Oo, naay ATM duol sa BukSU.",
+          "Apil kini sa campus location data aron makapangutana ang students sa location kung kinahanglan."
+        ]
+      },
+      "intent": "atm_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have an ATM",
+          "is there an ATM in BukSU",
+          "is there ATM near BukSU",
+          "does BukSU have cash machine",
+          "naa bay ATM sa BukSU",
+          "naa bay ATM duol sa BukSU",
+          "naa ba ang BukSU og ATM",
+          "ATM available in BukSU"
+        ],
+        "strong_keywords": [
+          "atm",
+          "cash machine"
+        ]
+      },
+      "display_name": "ATM Facility Availability",
+      "suggestions": [
+        {
+          "label": "ATM location",
+          "payload": "where is ATM"
+        }
+      ]
+    },
+    {
+      "topic": "parking_facility_availability",
+      "subject_key": "parking_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "parking",
+        "parking area",
+        "vehicle parking",
+        "motorcycle parking",
+        "car parking"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has designated parking areas for vehicles and motorcycles.",
+          "Students should still follow campus guard instructions and posted parking rules."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og designated parking areas para sa vehicles ug motorcycles.",
+          "Kinahanglan gihapon sundon sa students ang instructions sa campus guards ug ang posted parking rules."
+        ]
+      },
+      "intent": "parking_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have parking",
+          "is there parking in BukSU",
+          "does BukSU have motorcycle parking",
+          "does BukSU have car parking",
+          "naa bay parking sa BukSU",
+          "naa bay motorcycle parking sa BukSU",
+          "naa ba ang BukSU og parking area",
+          "parking available in BukSU"
+        ],
+        "strong_keywords": [
+          "parking",
+          "vehicle",
+          "motorcycle"
+        ]
+      },
+      "display_name": "Parking Facility Availability",
+      "suggestions": [
+        {
+          "label": "Vehicle parking location",
+          "payload": "where is Vehicle Parking Area"
+        },
+        {
+          "label": "Motorcycle parking location",
+          "payload": "where is Motorcycle Parking Area"
+        },
+        {
+          "label": "Car parking location",
+          "payload": "where is Car Parking Area"
+        }
+      ]
+    },
+    {
+      "topic": "dormitory_facility_availability",
+      "subject_key": "dormitory_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "dormitory",
+        "dorm",
+        "student dorm",
+        "mahogany dorm",
+        "rubia dorm",
+        "kilala dorm"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has dormitory facilities for students.",
+          "Dormitory availability and requirements may depend on the dormitory office and official university guidelines."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og dormitory facilities para sa students.",
+          "Ang availability ug requirements sa dormitory mahimong magdepende sa dormitory office ug official university guidelines."
+        ]
+      },
+      "intent": "dormitory_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have dormitory",
+          "is there a dormitory in BukSU",
+          "does BukSU have dorm",
+          "does BukSU have student dorm",
+          "naa bay dormitory sa BukSU",
+          "naa bay dorm sa BukSU",
+          "naa ba ang BukSU og dormitory",
+          "dormitory available in BukSU"
+        ],
+        "strong_keywords": [
+          "dormitory",
+          "dorm"
+        ]
+      },
+      "display_name": "Dormitory Facility Availability",
+      "suggestions": [
+        {
+          "label": "Mahogany Dorm location",
+          "payload": "where is Mahogany dorm"
+        },
+        {
+          "label": "Rubia Dorm location",
+          "payload": "where is Rubia dorm"
+        },
+        {
+          "label": "Kilala Dorm location",
+          "payload": "where is Kilala Dorm"
+        }
+      ]
+    },
+    {
+      "topic": "oval_facility_availability",
+      "subject_key": "oval_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "oval",
+        "field",
+        "open field",
+        "sports field"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an Oval or open field area on campus.",
+          "Students may use it depending on university rules, events, and available schedules."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Oval o open field area sulod sa campus.",
+          "Pwede kini magamit sa students depende sa university rules, events, ug available schedules."
+        ]
+      },
+      "intent": "oval_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have oval",
+          "is there an oval in BukSU",
+          "does BukSU have open field",
+          "does BukSU have sports field",
+          "naa bay oval sa BukSU",
+          "naa bay open field sa BukSU",
+          "naa ba ang BukSU og oval",
+          "oval available in BukSU"
+        ],
+        "strong_keywords": [
+          "oval",
+          "field"
+        ]
+      },
+      "display_name": "Oval Facility Availability",
+      "suggestions": [
+        {
+          "label": "Oval location",
+          "payload": "where is Oval"
+        }
+      ]
+    },
+    {
+      "topic": "auditorium_facility_availability",
+      "subject_key": "auditorium_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "auditorium",
+        "theater",
+        "theatre",
+        "event hall"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an Auditorium and other event-related spaces.",
+          "Use of these facilities may depend on official schedules, events, and university approval."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Auditorium ug uban pang event-related spaces.",
+          "Ang paggamit niini mahimong magdepende sa official schedules, events, ug university approval."
+        ]
+      },
+      "intent": "auditorium_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have auditorium",
+          "is there an auditorium in BukSU",
+          "does BukSU have theater",
+          "does BukSU have event hall",
+          "naa bay auditorium sa BukSU",
+          "naa bay theater sa BukSU",
+          "naa ba ang BukSU og auditorium",
+          "auditorium available in BukSU"
+        ],
+        "strong_keywords": [
+          "auditorium",
+          "theater",
+          "event hall"
+        ]
+      },
+      "display_name": "Auditorium Facility Availability",
+      "suggestions": [
+        {
+          "label": "Auditorium location",
+          "payload": "where is Auditorium"
+        }
+      ]
+    },
+    {
+      "topic": "guidance_office_facility_availability",
+      "subject_key": "guidance_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "guidance office",
+        "guidance counselor",
+        "counseling office",
+        "counselor"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Guidance Office where students may ask for guidance and counseling-related assistance.",
+          "Students may visit or ask the office directly for available services and schedules."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Guidance Office diin pwede mangayo og guidance ug counseling-related assistance ang students.",
+          "Pwede moduol ang students sa office para mangutana sa available services ug schedules."
+        ]
+      },
+      "intent": "guidance_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have guidance office",
+          "is there a guidance office in BukSU",
+          "does BukSU have guidance counselor",
+          "does BukSU have counseling office",
+          "naa bay guidance office sa BukSU",
+          "naa bay guidance counselor sa BukSU",
+          "naa ba ang BukSU og counseling office",
+          "guidance office available in BukSU"
+        ],
+        "strong_keywords": [
+          "guidance",
+          "counseling",
+          "counselor"
+        ]
+      },
+      "display_name": "Guidance Office Availability",
+      "suggestions": [
+        {
+          "label": "Guidance Office location",
+          "payload": "where is Guidance Office"
+        }
+      ]
+    },
+    {
+      "topic": "registrar_office_facility_availability",
+      "subject_key": "registrar_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "registrar",
+        "registrar office",
+        "university registrar"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Registrar Office for enrollment, records, COR, and other registrar-related transactions.",
+          "Students should follow official Registrar announcements and office procedures for specific services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Registrar Office para sa enrollment, records, COR, ug uban pang registrar-related transactions.",
+          "Kinahanglan sundon sa students ang official Registrar announcements ug office procedures para sa specific services."
+        ]
+      },
+      "intent": "registrar_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have registrar office",
+          "is there a registrar office in BukSU",
+          "does BukSU have university registrar",
+          "naa bay registrar office sa BukSU",
+          "naa bay registrar sa BukSU",
+          "naa ba ang BukSU og registrar office",
+          "registrar office available in BukSU"
+        ],
+        "strong_keywords": [
+          "registrar",
+          "records",
+          "cor"
+        ]
+      },
+      "display_name": "Registrar Office Availability",
+      "suggestions": [
+        {
+          "label": "Registrar Office location",
+          "payload": "where is Registrar Office"
+        }
+      ]
+    },
+    {
+      "topic": "finance_cashier_facility_availability",
+      "subject_key": "finance_cashier_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "finance",
+        "finance office",
+        "cashier",
+        "cashier office",
+        "accounting"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Finance Building and cashier windows for finance-related transactions.",
+          "For payment or account concerns, students should follow the correct window or office instructions."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Finance Building ug cashier windows para sa finance-related transactions.",
+          "Para sa payment o account concerns, sundon sa students ang sakto nga window o office instructions."
+        ]
+      },
+      "intent": "finance_cashier_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have finance office",
+          "is there a finance office in BukSU",
+          "does BukSU have cashier",
+          "is there a cashier in BukSU",
+          "naa bay finance office sa BukSU",
+          "naa bay cashier sa BukSU",
+          "naa ba ang BukSU og finance building",
+          "cashier available in BukSU"
+        ],
+        "strong_keywords": [
+          "finance",
+          "cashier",
+          "accounting"
+        ]
+      },
+      "display_name": "Finance And Cashier Availability",
+      "suggestions": [
+        {
+          "label": "Finance Building location",
+          "payload": "where is Finance Building"
+        },
+        {
+          "label": "Cashier location",
+          "payload": "where is Window 03 Cashiers Office"
+        }
+      ]
+    },
+    {
+      "topic": "ict_office_facility_availability",
+      "subject_key": "ict_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "ict",
+        "ict office",
+        "ict service unit",
+        "ictu",
+        "technology services"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an ICT office or ICT Service Unit for technology-related concerns.",
+          "Students may ask ICT about institutional email, Wi-Fi, and other supported technology services."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og ICT office o ICT Service Unit para sa technology-related concerns.",
+          "Pwede mangutana ang students sa ICT bahin sa institutional email, Wi-Fi, ug uban pang supported technology services."
+        ]
+      },
+      "intent": "ict_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have ICT office",
+          "is there an ICT office in BukSU",
+          "does BukSU have ICT service unit",
+          "does BukSU have technology office",
+          "naa bay ICT office sa BukSU",
+          "naa bay ICT service unit sa BukSU",
+          "naa ba ang BukSU og ICT office",
+          "ICT office available in BukSU"
+        ],
+        "strong_keywords": [
+          "ict",
+          "ictu",
+          "technology"
+        ]
+      },
+      "display_name": "ICT Office Availability",
+      "suggestions": [
+        {
+          "label": "ICT office location",
+          "payload": "where is ICT Service Unit"
+        }
+      ]
+    },
+    {
+      "topic": "admission_office_facility_availability",
+      "subject_key": "admission_office_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "admission office",
+        "admission",
+        "admission and testing",
+        "atu"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has an Admission Office for admission and testing-related concerns.",
+          "Students and applicants may ask the office about admission applications, testing, results, and related processes."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Admission Office para sa admission ug testing-related concerns.",
+          "Pwede mangutana ang students ug applicants sa office bahin sa admission applications, testing, results, ug related processes."
+        ]
+      },
+      "intent": "admission_office_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have admission office",
+          "is there an admission office in BukSU",
+          "does BukSU have admission and testing office",
+          "does BukSU have ATU office",
+          "naa bay admission office sa BukSU",
+          "naa bay admission and testing sa BukSU",
+          "naa ba ang BukSU og admission office",
+          "admission office available in BukSU"
+        ],
+        "strong_keywords": [
+          "admission",
+          "testing",
+          "atu"
+        ]
+      },
+      "display_name": "Admission Office Availability",
+      "suggestions": [
+        {
+          "label": "Admission Office location",
+          "payload": "where is Admission Office"
+        }
+      ]
+    },
+    {
+      "topic": "guard_house_facility_availability",
+      "subject_key": "guard_house_facility",
+      "subject_type": "facility",
+      "subject_terms": [
+        "guard house",
+        "security",
+        "campus guard",
+        "entrance guard"
+      ],
+      "responses": {
+        "en": [
+          "Yes, BukSU has a Guard House and campus security personnel at campus entry points.",
+          "For entry concerns, students should follow the guard's instructions and present required documents or ID when needed."
+        ],
+        "ceb": [
+          "Oo, naa ang BukSU og Guard House ug campus security personnel sa campus entry points.",
+          "Para sa entry concerns, sundon sa students ang instructions sa guard ug ipakita ang required documents o ID kung kinahanglan."
+        ]
+      },
+      "intent": "guard_house_facility_availability",
+      "context_topic": "availability",
+      "metadata": {
+        "phrases": [
+          "does BukSU have guard house",
+          "is there a guard house in BukSU",
+          "does BukSU have campus guard",
+          "does BukSU have security guard",
+          "naa bay guard house sa BukSU",
+          "naa bay guard sa BukSU",
+          "naa ba ang BukSU og security",
+          "guard house available in BukSU"
+        ],
+        "strong_keywords": [
+          "guard",
+          "security",
+          "entrance"
+        ]
+      },
+      "display_name": "Guard House Availability",
+      "suggestions": [
+        {
+          "label": "Guard House location",
+          "payload": "where is Guard House"
+        }
+      ]
+    },
+    {
+      "topic": "nlu_fallback",
+      "responses": {
+        "en": [
+          "I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question."
+        ],
+        "ceb": [
+          "Dili ko sigurado nga nasabtan nako pag-ayo imong pangutana, ug palihog hinumdomi nga adunay uban nga datos nga dili nako puwede ipaambit. Pwede nimo usbon ang paghulagway sa imong pangutana, o basin wala koy tubag para niining espesipikong pangutana."
+        ]
+      },
+      "intent": "nlu_fallback",
+      "context_topic": "No Answer",
+      "metadata": {
+        "phrases": [
+          "nlu fallback"
+        ],
+        "strong_keywords": [
+          "fallback"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "No Answer"
+    },
+    {
+      "topic": "all_comlab_locations",
+      "responses": {
+        "en": [
+          "There are currently three main locations for the computer laboratories at Bukidnon State University:",
+          "• ComLab 8 to 9 are located beside the University Press (UP) Building.",
+          "• ComLab 1 to 6 are situated on the 3rd floor of the Finance Building.",
+          "• ComLab 11 to 12 can be found in the College of Public Administration and Governance (CPAG) Building."
+        ],
+        "ceb": [
+          "Ang impormasyon kasamtangang gi-update."
+        ]
+      },
+      "intent": "all_comlab_locations",
+      "context_topic": "computer_laboratories",
+      "metadata": {
+        "phrases": [
+          "all comlab locations"
+        ],
+        "strong_keywords": [
+          "comlab",
+          "locations"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Computer Laboratories"
+    },
+    {
+      "topic": "graduation_rehearsal_attendance",
+      "responses": {
+        "en": [
+          "Yes, attendance during the graduation rehearsal is usually mandatory."
+        ],
+        "ceb": [
+          "Oo, kasagaran required ang attendance sa graduation rehearsal."
+        ]
+      },
+      "intent": "graduation_rehearsal_attendance",
+      "context_topic": "graduation",
+      "metadata": {
+        "phrases": [
+          "Kinahanglan ba mo-attend sa graduation rehearsal",
+          "Kailangan ba ang estudyante mo-apil sa rehearsal",
+          "Obligado ba ko moadto sa graduation rehearsal",
+          "Mandatory ba ang attendance sa rehearsal",
+          "Pwede ba skipon sa estudyante ang rehearsal",
+          "Pwede ba ko dili moapil sa graduation rehearsal",
+          "Kinahanglan ba tanan graduates moapil sa rehearsal",
+          "Required ba ang rehearsal session para sa mga graduates",
+          "Is it required to attend the graduation rehearsal",
+          "Do students need to be present during graduation rehearsal",
+          "Must I go to the graduation rehearsal"
+        ],
+        "strong_keywords": [
+          "rehearsal",
+          "graduation",
+          "kinahanglan",
+          "attend",
+          "estudyante"
+        ],
+        "weak_keywords": [
+          "pwede",
+          "moapil",
+          "graduates",
+          "required",
+          "kailangan"
+        ]
+      },
+      "display_name": "Graduation Rehearsal Attendance"
+    },
+    {
+      "topic": "lost_on_campus",
+      "responses": {
+        "en": [
+          "Getting lost on campus is rare, but if it happens, you may ask staff members, security guards, or fellow students for directions.",
+          "I can also provide a campus map to help you navigate more easily.",
+          "You may ask me about a specific place, and I will check if I can help you locate it."
+        ],
+        "ceb": [
+          "Talagsa ra ni mahitabo, apan kung mahitabo man, pwede ka mangutana sa staff, mga guard, o ubang estudyante para sa direksyon.",
+          "Pwede usab ko mohatag og mapa aron mas sayon ang pag-navigate sa campus.",
+          "Pwede pud ka mangutana nako sa usa ka specific nga lugar, ug tan-awon nako kung makatabang ba ko sa pagpangita niini."
+        ]
+      },
+      "intent": "lost_on_campus",
+      "context_topic": "campus_navigation",
+      "metadata": {
+        "phrases": [
+          "Unsa akong buhaton kung maligaw ko sa campus",
+          "Dili nako makita ang akong agianan sa BukSU unsaon nako",
+          "Giunsa nako pagpangita sa mga building kung maligaw ko sa campus",
+          "Pwede ba nimo ko tabangan pagpangita sa akong agianan sa Bukidnon State University",
+          "Naligaw ko sa campus asa ko pwede mangutana sa direksyon",
+          "Aduna ba tawo nga makatabang nako kung maligaw ko sa BukSU",
+          "Kinsa ang makagiyahan nako kung dili ko kabalo asa moadto sa campus",
+          "Pwede ba nimo ko hatagan og direksyon kung maligaw ko sa BukSU",
+          "What should I do if I get lost on campus",
+          "I cannot find my way around BukSU what can I do",
+          "How do I locate buildings if I am lost on campus"
+        ],
+        "strong_keywords": [
+          "campus",
+          "kung",
+          "maligaw",
+          "buksu",
+          "akong"
+        ],
+        "weak_keywords": [
+          "pwede",
+          "dili",
+          "agianan",
+          "pagpangita",
+          "nimo"
+        ]
+      },
+      "display_name": "Campus Navigation"
+    },
+    {
+      "topic": "graduation_attendance",
+      "responses": {
+        "en": [
+          "Yes, parents and guests are allowed to attend graduation ceremonies."
+        ],
+        "ceb": [
+          "Oo, pwede mo-attend ang parents ug mga bisita sa graduation ceremonies."
+        ]
+      },
+      "intent": "graduation_attendance",
+      "context_topic": "graduation",
+      "metadata": {
+        "phrases": [
+          "Pwede ba mo-attend ang mga ginikanan sa graduation ceremony",
+          "Ang mga bisita ba puwede moapil sa graduation",
+          "Gusto nako mahibalo kung pwede ang family members moanhi sa graduation",
+          "Gi-permit ba nga motan-aw ang ginikanan sa graduation",
+          "Pwede ba ko magdala og paryente sa graduation program",
+          "Ang mga visitor ba allowed sa graduation ceremonies",
+          "Pila ka bisita ang pwede mo-attend sa graduation",
+          "Pwede ba ang alumni mo-apil sa graduation sa current students",
+          "Can parents attend the graduation ceremony",
+          "Are guests allowed to join the graduation",
+          "I want to know if family members can come to graduation"
+        ],
+        "strong_keywords": [
+          "graduation",
+          "pwede",
+          "attend",
+          "ginikanan",
+          "ceremony"
+        ],
+        "weak_keywords": [
+          "bisita",
+          "family",
+          "members",
+          "allowed",
+          "puwede"
+        ]
+      },
+      "display_name": "Graduation Attendance"
+    },
+    {
+      "topic": "tracer_study",
+      "responses": {
+        "en": [
+          "A tracer study tracks graduates’ employment status and is usually required."
+        ],
+        "ceb": [
+          "Ang tracer study nag-track sa employment status sa mga graduate, ug kasagaran required gyud ni."
+        ]
+      },
+      "intent": "tracer_study",
+      "context_topic": "graduate_tracking",
+      "metadata": {
+        "phrases": [
+          "Unsa man ang tracer study",
+          "Pwede nimo i-explain unsa ang tracer study",
+          "Gusto nako makabalo bahin sa tracer study",
+          "Unsay gi-track sa tracer study",
+          "Required ba ang tracer study para sa mga graduate",
+          "Kinahanglan ba tanan alumni moapil sa tracer study",
+          "Ngano importante ang tracer study",
+          "Unsang impormasyon ang gina-kuha sa tracer study",
+          "What is a tracer study",
+          "Can you explain what a tracer study is",
+          "I want to know about tracer studies"
+        ],
+        "strong_keywords": [
+          "tracer",
+          "study",
+          "explain",
+          "pwede",
+          "nimo"
+        ],
+        "weak_keywords": [
+          "gusto",
+          "makabalo",
+          "bahin",
+          "unsay",
+          "track"
+        ]
+      },
+      "display_name": "Graduate Tracking"
+    },
+    {
+      "topic": "inactive_group_member",
+      "responses": {
+        "en": [
+          "If a group member becomes inactive, it is best to inform your instructor about the situation as early as possible."
+        ],
+        "ceb": [
+          "Kung naay inactive nga group member, mas maayo nga i-inform dayon ang instructor sa sitwasyon."
+        ]
+      },
+      "intent": "inactive_group_member",
+      "context_topic": "group_work",
+      "metadata": {
+        "phrases": [
+          "Unsaon nako pag-handle sa usa ka inactive nga group member",
+          "Kung ang akong kauban sa grupo dili mo-apil unsa akong buhaton",
+          "Ang usa ka membro sa grupo dili mag-contribute unsaon nako",
+          "Pwede ba nako i-report ang usa ka inactive nga group member",
+          "Giunsa nako pag-inform sa instructor bahin sa usa ka inactive nga miembro",
+          "Unsay angay buhaton kung ang usa ka grupo membro dili motabang sa project",
+          "Unsay proseso kung ang akong kauban sa grupo walay partisipasyon sa meetings",
+          "Kinsa akong kontakon kung adunay membro sa grupo nga inactive",
+          "What should I do if a group member becomes inactive",
+          "How do I handle a group member who is not participating",
+          "My team member is not contributing what should I do"
+        ],
+        "strong_keywords": [
+          "inactive",
+          "member",
+          "grupo",
+          "group",
+          "kung"
+        ],
+        "weak_keywords": [
+          "akong",
+          "dili",
+          "membro",
+          "handle",
+          "kauban"
+        ]
+      },
+      "display_name": "Group Work"
+    },
+    {
+      "topic": "tes_release_delay",
+      "responses": {
+        "en": [
+          "TES allowance release may take time due to multiple verification and approval processes.",
+          "This includes fund release, eligibility validation, and billing verification.",
+          "The process involves coordination between DBM, CHED, and the university.",
+          "Any missing documents or strict auditing procedures may further delay the release.",
+          "I recommend regularly checking with your scholarship coordinator for updates."
+        ],
+        "ceb": [
+          "Ang pag-release sa TES allowance mahimong modugay tungod sa daghang proseso sa verification ug approval.",
+          "Lakip niini ang pag-release sa pondo, pag-validate sa eligibility, ug pag-verify sa billing documents.",
+          "Ang proseso naglakip sa koordinasyon tali sa DBM, CHED, ug sa unibersidad.",
+          "Ang kulang nga dokumento o hugot nga auditing mahimong makapahinay sa pag-release sa allowance.",
+          "Mas maayo nga mangutana sa inyong scholarship coordinator para sa updates."
+        ]
+      },
+      "intent": "tes_release_delay",
+      "context_topic": "TES",
+      "metadata": {
+        "phrases": [
+          "Ngano wala pa na release ang akong TES allowance",
+          "Wala pa nako nadawat ang TES allowance ug gusto ko mahibal an ngano",
+          "Kanus a ma release ang TES allowance",
+          "Unsa ang hinungdan sa delay sa TES allowance",
+          "Naghulat gihapon ko sa TES allowance ug wala pay update",
+          "Pila ka adlaw o semana bago ma release ang TES allowance",
+          "Ngano dugay ang proseso sa TES allowance release",
+          "Na delay ang akong TES allowance ug gusto ko mahibal an ngano",
+          "Why is my TES allowance not released yet",
+          "My TES allowance has not been received and I want to know why",
+          "When will the TES allowance be released"
+        ],
+        "strong_keywords": [
+          "allowance",
+          "release",
+          "wala",
+          "akong",
+          "gusto"
+        ],
+        "weak_keywords": [
+          "mahibal",
+          "delay",
+          "released",
+          "nadawat",
+          "kanus"
+        ]
+      },
+      "display_name": "Tes Release Delay"
+    },
+    {
+      "topic": "tes_with_other_scholarships",
+      "responses": {
+        "en": [
+          "Students may apply for TES even if they are applicants of other scholarship programs such as REAP or TABUK.",
+          "However, TES qualification policies generally do not allow students to receive multiple government-funded educational assistance benefits simultaneously.",
+          "Final eligibility is subject to scholarship guidelines and official verification.",
+          "I recommend consulting the Scholarship Office for accurate confirmation regarding your eligibility."
+        ],
+        "ceb": [
+          "Ang mga estudyante pwede mag-apply sa TES bisan applicant sila sa ubang scholarship programs sama sa REAP o TABUK.",
+          "Apan, base sa scholarship policies, dili kasagaran tugotan nga makadawat og daghang government-funded educational assistance sa parehas nga panahon.",
+          "Ang final eligibility magdepende sa scholarship guidelines ug official verification.",
+          "Mas maayo nga mangutana sa Scholarship Office aron makakuha og eksaktong impormasyon."
+        ]
+      },
+      "intent": "tes_with_other_scholarships",
+      "context_topic": "TES",
+      "metadata": {
+        "phrases": [
+          "Pwede ba ko mag apply sa TES scholarship bisan naa koy lain nga scholarship",
+          "Tugotan ba nga makadawat ug TES ug lain nga scholarship sa parehas nga panahon",
+          "Posible ba nga ma qualify sa TES kung naa nakoy lain nga scholarship",
+          "Pwede ba makadawat ug TES allowance bisan naa nay existing scholarship",
+          "Gusto nako mahibal an kung pwede ba ang TES ug lain nga scholarship",
+          "Pwede ba ko mag apply sa TES kung scholarship applicant nako daan",
+          "Tugotan ba sa TES ang students nga adunay lain nga scholarship",
+          "Ma approve ba sa TES ang students nga naa nay scholarship",
+          "Can I apply for TES scholarship while applying for another scholarship program",
+          "Am I allowed to receive TES and another scholarship at the same time",
+          "Is it possible to qualify for TES if I already have another scholarship"
+        ],
+        "strong_keywords": [
+          "scholarship",
+          "lain",
+          "pwede",
+          "apply",
+          "kung"
+        ],
+        "weak_keywords": [
+          "another",
+          "bisan",
+          "tugotan",
+          "makadawat",
+          "qualify"
+        ]
+      },
+      "display_name": "Tes With Other Scholarships"
+    },
+    {
+      "topic": "change_portal_password_buksu",
+      "responses": {
+        "en": [
+          "If you forgot or need to reset your BukSU Admission portal password, go to <b>https://admissions.buksu.edu.ph/login</b>.",
+          "Click the <b>Forgot Password</b> option on the login page.",
+          "Enter the email address registered to your BukSU Admission account and follow the instructions sent to your email."
+        ],
+        "ceb": [
+          "Kung nakalimot ka o kinahanglan nimo i-reset ang imong BukSU Admission portal password, adto sa <b>https://admissions.buksu.edu.ph/login</b>.",
+          "I-click ang <b>Forgot Password</b> option sa login page.",
+          "Ibutang ang email address nga naka-register sa imong BukSU Admission account ug sunda ang instructions nga ipadala sa imong email."
+        ]
+      },
+      "intent": "change_portal_password_buksu",
+      "context_topic": "account_settings",
+      "metadata": {
+        "phrases": [
+          "how do i change my portal password",
+          "how do i reset my portal password",
+          "how do i reset my admission portal password",
+          "how do i change my admission portal password",
+          "student portal admission forgot password",
+          "forgot admission portal password",
+          "forgot buksu admission portal password",
+          "forgot my admission website password",
+          "forgot my admission account password",
+          "what should i do if i forgot my admission portal password",
+          "unsaon pag reset sa admission portal password",
+          "nakalimot ko sa admission portal password",
+          "nakalimot ko sa password sa admission website",
+          "unsaon pag recover sa admission account password"
+        ],
+        "strong_keywords": [
+          "password",
+          "admission",
+          "portal",
+          "forgot",
+          "reset"
+        ],
+        "weak_keywords": [
+          "change",
+          "website",
+          "account",
+          "nakalimot",
+          "student"
+        ]
+      },
+      "display_name": "Admission Forgot Password"
+    },
+    {
+      "topic": "reset_portal_password_buksu",
+      "responses": {
+        "en": [
+          "If you forgot your BukSU Admission password go to the BukSU Admission login page and click the Forgot Password option.",
+          "Enter the email address registered with your BukSU account.",
+          "The system will send instructions to your email so you can create a new password."
+        ],
+        "ceb": [
+          "Kung nakalimot ka sa imong BukSU portal password adto sa BukSU Admission login page ug i click ang Forgot Password nga option.",
+          "Ibutang ang email address nga naka register sa imong BukSU account.",
+          "Magpadala ang system ug instructions sa imong email aron makabuhat ka ug bag ong password."
+        ]
+      },
+      "intent": "reset_portal_password_buksu",
+      "context_topic": "account_access",
+      "metadata": {
+        "phrases": [
+          "nakalimot ko sa akong buksu admission account password unsaon nako",
+          "unsaon pag recover sa nakalimtan nga buksu admission password",
+          "dili nako mahinumduman akong password sa admission account unsa buhaton",
+          "unsa ang angay buhaton kung nakalimot ko sa akong admission password",
+          "pwede pa ba nako ma recover akong buksu admission account kung nakalimot ko sa password",
+          "i forgot my admission account password sa buksu unsaon pag recover",
+          "unsaon nako pagkuha balik sa akong nakalimtan nga admission password",
+          "i forgot my buksu admission account password what should i do",
+          "how can i recover my buksu admission account if i forgot the password",
+          "i cannot remember my buksu admission password how to recover it"
+        ],
+        "strong_keywords": [
+          "admission",
+          "password",
+          "buksu",
+          "account",
+          "akong"
+        ],
+        "weak_keywords": [
+          "recover",
+          "nakalimot",
+          "forgot",
+          "nakalimtan",
+          "buhaton"
+        ]
+      },
+      "display_name": "Reset Portal Password BukSU"
+    },
+    {
+      "topic": "portal_account_locked_issue",
+      "responses": {
+        "en": [
+          "If your BukSU portal account is locked wait a few minutes and try logging in again.",
+          "Accounts may become locked after multiple incorrect login attempts.",
+          "If the problem continues contact the BukSU ICT support office or the registrar for assistance."
+        ],
+        "ceb": [
+          "Kung na lock ang imong BukSU portal account hulata una ang pila ka minuto ug sulayi pag login pag usab.",
+          "Kasagaran ma lock ang account kung daghan na kaayo ug sayop nga login attempts.",
+          "Kung padayon gihapon ang problema kontaka ang BukSU ICT support o ang registrar aron matabangan ka."
+        ]
+      },
+      "intent": "portal_account_locked_issue",
+      "context_topic": "account_access",
+      "metadata": {
+        "phrases": [
+          "Ngano na lock ang akong BukSU portal account",
+          "Unsa ang angay buhaton kung ma lock ang akong student portal account",
+          "Giunsa nako pag unlock ang Bukidnon State University portal account",
+          "Dili nako ma access ang portal kay na lock ang account unsa akong buhaton",
+          "Unsay hinungdan ngano ma lock ang student portal account",
+          "Pila ka minuto ang hulaton kung ma lock ang BukSU portal account",
+          "Maka cause ba og account lock ang daghang sayop nga login attempts",
+          "Unsa nga solution ang mahimo kung na lock ang BukSU portal account",
+          "Why is my BukSU portal account locked",
+          "What should I do if my student portal account becomes locked",
+          "How can I unlock my Bukidnon State University portal account"
+        ],
+        "strong_keywords": [
+          "account",
+          "portal",
+          "lock",
+          "buksu",
+          "akong"
+        ],
+        "weak_keywords": [
+          "kung",
+          "student",
+          "buhaton",
+          "unlock",
+          "bukidnon"
+        ]
+      },
+      "display_name": "Portal Account Locked Issue"
+    },
+    {
+      "topic": "portal_login_problem",
+      "responses": {
+        "en": [
+          "You may not be able to log in to the BukSU Admission portal if the email or password is incorrect. It can also happen if your account is locked or if the portal is temporarily under maintenance. Check your login details carefully and try again."
+        ],
+        "ceb": [
+          "Dili ka makasulod sa BukSU Admission portal kung sayop ang imong email o password. Mahimo usab kini kung na lock ang imong account o kung adunay maintenance ang portal. Siguroa nga sakto ang imong login details ug sulayi pag login pag usab."
+        ]
+      },
+      "intent": "portal_login_problem",
+      "context_topic": "account_access",
+      "metadata": {
+        "phrases": [
+          "Ngano dili ko maka login sa BukSU student portal",
+          "Unsa ang angay nako i check kung dili mo work ang portal login",
+          "Ngano dili daw sakto ang akong student identification ug password",
+          "Makaapekto ba ang portal maintenance sa pag login sa estudyante",
+          "Unsa ang kasagarang rason sa portal login problems",
+          "Dili mo work ang akong BukSU portal login unsa akong buhaton",
+          "Ngano moingon ang system nga sayop ang login information",
+          "Unsang troubleshooting steps ang mahimo para sa portal login problems",
+          "Why can I not log in to the BukSU student portal",
+          "What should I check if the portal login does not work",
+          "Why does the portal reject my student identification and password"
+        ],
+        "strong_keywords": [
+          "portal",
+          "login",
+          "dili",
+          "student",
+          "buksu"
+        ],
+        "weak_keywords": [
+          "work",
+          "akong",
+          "check",
+          "identification",
+          "password"
+        ]
+      },
+      "display_name": "Portal Login Problem"
+    },
+    {
+      "topic": "sports_facilities_for_students",
+      "responses": {
+        "en": [
+          "Yes BukSU has sports facilities including a gymnasium basketball courts and open fields.",
+          "These facilities are used for PE classes intramurals and training of student athletes."
+        ],
+        "ceb": [
+          "Oo ang BukSU adunay sports facilities sama sa gymnasium basketball courts ug open fields.",
+          "Gigamit kini para sa PE classes intramurals ug training sa mga student athletes."
+        ]
+      },
+      "intent": "sports_facilities_for_students",
+      "context_topic": "sports",
+      "metadata": {
+        "phrases": [
+          "Pwede ba gamiton sa estudyante ang open fields para sa PE classes",
+          "Pwede ba mag train ang student athletes sa BukSU facilities",
+          "Asa nahimutang ang BukSU sports facilities",
+          "Gipahigayon ba ang PE classes sa sports facilities",
+          "Giunsa pag access sa estudyante ang sports amenities sa BukSU",
+          "Does BukSU have sports facilities",
+          "What sports amenities are available at BukSU",
+          "Are there basketball courts and gym at BukSU"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "sports",
+          "facilities",
+          "pwede",
+          "estudyante"
+        ],
+        "weak_keywords": [
+          "classes",
+          "amenities",
+          "gamiton",
+          "open",
+          "fields"
+        ]
+      },
+      "display_name": "Sports Facilities For Students"
+    },
+    {
+      "topic": "update_student_portal_information",
+      "responses": {
+        "en": [
+          "Log in to the BukSU student portal and go to the Profile or Student Information section.",
+          "Click Edit to update your personal details.",
+          "Major changes such as name or civil status may require legal documents to be submitted to the Registrar."
+        ],
+        "ceb": [
+          "Mag login sa BukSU student portal ug adto sa Profile o Student Information nga section.",
+          "I click ang Edit aron ma update ang imong personal nga impormasyon.",
+          "Ang dagkong kausaban sama sa ngalan o civil status mahimong manginahanglan og legal nga dokumento nga i submit sa Registrar."
+        ]
+      },
+      "intent": "update_student_portal_information",
+      "context_topic": "account_management",
+      "metadata": {
+        "phrases": [
+          "Asa nako usbon ang profile details",
+          "Pwede ba ko mo edit sa student info online",
+          "Kinahanglan ba og documents para sa pag change sa major o ngalan",
+          "Pwede ba mo update sa contact information online",
+          "Unsay steps sa pag update sa profile information",
+          "How can I update my information on the student admission",
+          "Where do I change my profile details",
+          "Can I edit my student info online"
+        ],
+        "strong_keywords": [
+          "profile",
+          "student",
+          "online",
+          "update",
+          "information"
+        ],
+        "weak_keywords": [
+          "details",
+          "pwede",
+          "edit",
+          "info",
+          "change"
+        ]
+      },
+      "display_name": "Account Management"
+    },
+    {
+      "topic": "buksu_gymnasium_facility",
+      "responses": {
+        "en": [
+          "Yes the University Gymnasium is used for physical education classes varsity training and major events such as intramurals and graduation ceremonies."
+        ],
+        "ceb": [
+          "Oo ang University Gymnasium gigamit para sa PE classes varsity training ug mga dagkong okasyon sama sa intramurals ug graduation ceremonies."
+        ]
+      },
+      "intent": "buksu_gymnasium_facility",
+      "context_topic": "Gymnasium Used for",
+      "metadata": {
+        "phrases": [
+          "Para sa unsa gigamit ang University Gymnasium",
+          "Pwede ba mo attend og PE classes sa gym",
+          "Gigamit ba ang gym para sa varsity training",
+          "Gi-hold ba ang major events sa gym",
+          "Pwede ba mag conduct og intramurals sa gym",
+          "Bukas ba ang gym during graduation ceremonies",
+          "Asa nahimutang ang BukSU Gymnasium",
+          "Pwede ba ang estudyante mo practice og sports didto",
+          "What is the University Gymnasium used for",
+          "what do gymnasium used for?",
+          "Can I attend PE classes in the gym"
+        ],
+        "strong_keywords": [
+          "gymnasium",
+          "pwede",
+          "gigamit",
+          "university",
+          "attend"
+        ],
+        "weak_keywords": [
+          "classes",
+          "used",
+          "varsity",
+          "training",
+          "hold"
+        ]
+      },
+      "display_name": "Gymnasium Used For"
+    },
+    {
+      "topic": "cancel_tabuk_assistance",
+      "responses": {
+        "en": [
+          "Unfortunately, I do not have information on how to cancel your TABUK assistance, as that program is not managed by BukSU.",
+          "Regarding your concerns about eligibility: being in one program does not automatically disqualify you from others.",
+          "However, to avoid disqualification from the TES program or other programs, you must ensure you are not actively receiving funds from two different government subsidies at the same time."
+        ],
+        "ceb": [
+          "Kasubo, wala ko’y impormasyon kung unsaon pag-cancel sa imong TABUK assistance, kay ang maong programa dili gi-manage sa BukSU.",
+          "Bahin sa imong kabalaka bahin sa eligibility: ang pagka-apil sa usa ka programa dili pasabot nga dili na ka pwede moapil sa lain.",
+          "Apan, aron malikayan ang disqualification sa TES program o uban pang programa, siguroa nga dili ka simultaneous nga nakadawat ug pondo gikan sa duha ka lain-laing government subsidies."
+        ]
+      },
+      "intent": "cancel_tabuk_assistance",
+      "context_topic": "TABUK",
+      "metadata": {
+        "phrases": [
+          "Unsaon nako pag-cancel sa akong TABUK assistance",
+          "Gusto nako undangon ang akong TABUK scholarship support",
+          "Pwede ba nimo isulti ang proseso sa pag-cancel sa TABUK assistance",
+          "Posible ba nga mo-withdraw sa TABUK program",
+          "Unsang mga lakang ang kinahanglan aron dili na madawat ang TABUK funding",
+          "Nanginahanglan ko og tabang sa pag-cancel sa TABUK financial aid",
+          "Unsaon nako pagkuha sa akong kaugalingon gikan sa TABUK scholarship program",
+          "Pwede ba nga mo-undang sa pagdawat sa TABUK funds samtang naa pa sa TES",
+          "How can I cancel my TABUK assistance",
+          "I want to stop my TABUK scholarship support",
+          "Can you tell me the process for cancelling TABUK assistance"
+        ],
+        "strong_keywords": [
+          "tabuk",
+          "cancel",
+          "assistance",
+          "akong",
+          "scholarship"
+        ],
+        "weak_keywords": [
+          "support",
+          "pwede",
+          "program",
+          "gusto",
+          "undangon"
+        ]
+      },
+      "display_name": "Tabuk"
+    },
+    {
+      "topic": "accounting_office_location",
+      "responses": {
+        "en": [
+          "The Accounting Office is located on the ground floor of the Finance Building. It is after window 9, and you can easily identify it by the sign above the area."
+        ],
+        "ceb": [
+          "Ang Accounting Office nahimutang sa ground floor sa Finance Building. Naa siya after sa window 9, ug dali ra nimo makit-an kay sign sa taas sa lugar."
+        ]
+      },
+      "intent": "accounting_office_location",
+      "context_topic": "Accounting office location",
+      "metadata": {
+        "phrases": [
+          "Asa ang Accounting Office?",
+          "Asa dapit ang Accounting sa BukSU?",
+          "Asa makita ang Accounting Office?",
+          "Asa ang Finance Building Accounting?",
+          "Giunsa pag adto sa Accounting Office?",
+          "Asa dapit sa Finance Building ang Accounting?",
+          "Duol ba sa Window 9 ang Accounting?",
+          "Asa ko moadto para Accounting?",
+          "Where is the Accounting Office?",
+          "Where can I find the Accounting Office in BukSU?",
+          "What floor is the Accounting Office located?"
+        ],
+        "strong_keywords": [
+          "accounting",
+          "office",
+          "dapit",
+          "buksu",
+          "finance"
+        ],
+        "weak_keywords": [
+          "building",
+          "makita",
+          "giunsa",
+          "duol",
+          "window"
+        ]
+      },
+      "display_name": "Accounting Office Location"
+    },
+    {
+      "topic": "Bot_creator",
+      "responses": {
+        "en": [
+          "That question is outside the scope of my data. I am a prototype project created by one of BukSU’s products, which is why there is some information I cannot provide. We are still expanding the knowledge base and improving the natural language processing to deliver more logical and accurate responses."
+        ],
+        "ceb": [
+          "Ang maong pangutana naa sa gawas sa sakop sa akong datos. Usa ra ako ka prototype project nga gihimo gikan sa usa sa mga produkto sa BukSU, mao nga adunay pipila ka impormasyon nga dili nako mahatag. Padayon pa namo nga gipalapad ang knowledge base ug gi-improve ang natural language processing aron makahatag og mas lohikal ug tukma nga tubag."
+        ]
+      },
+      "intent": "Bot_creator",
+      "context_topic": "Who created you",
+      "metadata": {
+        "phrases": [
+          "kinsay nag himo nimo",
+          "pwedi nimo i sulti kinsay nag himo sa imo",
+          "kinsa may mga developer nimo",
+          "who created you",
+          "who made you",
+          "who developed you"
+        ],
+        "strong_keywords": [
+          "nimo",
+          "kinsay",
+          "himo",
+          "pwedi",
+          "sulti"
+        ],
+        "weak_keywords": [
+          "kinsa",
+          "developer",
+          "created",
+          "made",
+          "developed"
+        ]
+      },
+      "display_name": "Who Created You"
+    }
+  ]
+}

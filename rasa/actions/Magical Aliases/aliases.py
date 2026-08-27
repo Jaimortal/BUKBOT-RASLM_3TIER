@@ -1585,5 +1585,16 @@ LOCATION_ALIASES = {
     "tba room": "TBA classroom",
     "tba rooms": "TBA classroom",
     "tba nga room": "TBA classroom",
-    "tba nga classroom": "TBA classroom"
+    "tba nga classroom": "TBA classroom",
+
+    # Finance, Accounting & Cashier
+    "accounting office": "Finance Building",
+    "accounting": "Finance Building",
+    "finance office": "Finance Building",
+    "finance building": "Finance Building",
+    "finance": "Finance Building",
+    "cashier": "Window 03 Cashiers Office",
+    "cashier office": "Window 03 Cashiers Office",
+    "bayad sa cashier": "Window 03 Cashiers Office",
+    "bayad sa accounting": "Finance Building"
 }

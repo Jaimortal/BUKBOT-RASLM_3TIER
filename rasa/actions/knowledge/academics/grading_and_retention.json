@@ -908,9 +908,224 @@
             ]
           },
           "display_name": "Thesis Defense Failure"
+        },
+        {
+          "topic": "freshman_maximum_units_policy",
+          "intent": "freshman_maximum_units_policy",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "What is the maximum number of units a first-year student can take in their first semester?",
+              "For incoming first-year students, your course load is fixed and block-enrolled according to your degree program's approved curriculum/prospectus.",
+              "A regular first-year first-semester load typically ranges from **21 to 24 units** (including NSTP and PE).",
+              "First-year students are not permitted to take unit overloads or advance subjects, as overloads are strictly reserved for graduating students in their final academic year."
+            ],
+            "ceb": [
+              "Pila ka units ang maximum nga pwede kuhaon sa first year first semester?",
+              "Para sa mga incoming first-year students, ang inyong unit load kay regular ug block-enrolled subay sa opisyal nga curriculum/prospectus sa inyong kurso.",
+              "Ang regular nga load sa first-year first-semester kasagaran anaa sa **21 hangtod 24 units** (apil na ang NSTP ug PE).",
+              "Ang mga first-year students dili gitugotan nga mag-overload o mag-advance og subjects, kay ang subject overload gitagana lamang para sa mga graduating students sa ilang katapusang tuig."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "pila ka units ang maximum nga pwede kuhaon sa first year first semester",
+              "maximum units for first year first semester buksu",
+              "pila ka units pwede kuhaon sa first year",
+              "maximum allowable units freshman",
+              "how many units can a freshman take in first semester",
+              "unit limit for first year students buksu",
+              "regular unit load for incoming freshmen",
+              "overload units for first year student"
+            ]
+          },
+          "display_name": "Freshman Maximum Units Policy"
+        },
+        {
+          "topic": "board_course_retention_policy",
+          "intent": "board_course_retention_policy",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "Passing grade, culling grade, and retention grade for a specific board course (such as Nursing and Accountancy) are set and discussed during your specific department assembly meeting.",
+              "Because each college department (e.g. College of Nursing and College of Business) establishes its own distinct retention and qualifying criteria rather than a single universal percentage, the chatbot does not assume fixed numbers.",
+              "Please consult your department chairperson, college dean's office, or academic adviser for the exact retention and maintaining grade guidelines for your program."
+            ],
+            "ceb": [
+              "Ang passing grade, culling grade, ug retention grade para sa specific nga board course (sama sa Nursing ug Accountancy) gitakda ug gina-discuss during sa inyong department assembly meeting.",
+              "Tungod kay ang matag college department (sama sa College of Nursing ug College of Business) nagpatuman sa ilang kaugalingong retention ug qualifying criteria ug dili usa ra ka universal nga numero, dili mag-assume ang chatbot og fixed nga grado.",
+              "Palihog pangutana sa inyong department chairperson, dean's office, o academic adviser para sa eksaktong retention ug maintaining grade guidelines sa imong programa."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "unsa ang retention policy ug maintaining grade para sa board courses sama sa nursing ug accountancy",
+              "retention policy for board courses buksu",
+              "maintaining grade for nursing and accountancy",
+              "maintaining grade for board programs buksu",
+              "nursing maintaining grade buksu",
+              "accountancy retention policy buksu",
+              "retention requirements for board programs",
+              "qualifying exam for accountancy buksu"
+            ]
+          },
+          "display_name": "Board Course Retention Policy"
         }
       ],
       "display_name": "Thesis Capstone"
+    },
+    {
+      "topic": "thesis_defense",
+      "responses": {
+        "en": [
+          "A thesis defense is a formal presentation where students defend their research."
+        ],
+        "ceb": [
+          "Ang thesis defense kay usa ka formal presentation sa research."
+        ]
+      },
+      "intent": "thesis_defense",
+      "context_topic": "thesis_capstone",
+      "metadata": {
+        "phrases": [
+          "thesis defense"
+        ],
+        "strong_keywords": [
+          "thesis",
+          "defense"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Thesis Capstone"
+    },
+    {
+      "topic": "buksu_courses_offered_list",
+      "responses": {
+        "en": [
+          "The list of undergraduate and graduate programs can be found on the official BukSU website under the Academics section.",
+          "You may also inquire directly at the Admission and Testing Unit for the list of available courses."
+        ],
+        "ceb": [
+          "Ang listahan sa mga kurso makita sa opisyal nga website sa BukSU sa Academics nga section.",
+          "Mahimo usab mangutana diretso sa Admission and Testing Unit para sa listahan sa mga kurso."
+        ]
+      },
+      "intent": "buksu_courses_offered_list",
+      "context_topic": "courses",
+      "metadata": {
+        "phrases": [
+          "buksu courses offered list"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "courses",
+          "offered",
+          "list"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Courses"
+    },
+    {
+      "topic": "buksu_graduation_honors",
+      "responses": {
+        "en": [
+          "BukSU awards Latin Honors to deserving graduates such as Summa Cum Laude Magna Cum Laude and Cum Laude based on their final GPA and residency rules."
+        ],
+        "ceb": [
+          "Ang BukSU naghatag og Latin Honors sa mga kwalipikadong gradwar sama sa Summa Cum Laude Magna Cum Laude ug Cum Laude base sa ilang final GPA ug sa pagsunod sa residency rules."
+        ]
+      },
+      "intent": "buksu_graduation_honors",
+      "context_topic": "graduation",
+      "metadata": {
+        "phrases": [
+          "buksu graduation honors"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "graduation",
+          "honors"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "BukSU Graduation Honors"
+    },
+    {
+      "topic": "latin_honors_graduation_requirements",
+      "responses": {
+        "en": [
+          "To graduate with Latin Honors such as Summa Magna or Cum Laude a student must meet the required GPA have no failing grades and complete the residency requirements of the university."
+        ],
+        "ceb": [
+          "Aron makagradwar nga naay Latin Honors sama sa Summa Magna o Cum Laude kinahanglan makuha ang saktong GPA walay bagsak nga grado ug natuman ang residency requirements sa unibersidad."
+        ]
+      },
+      "intent": "latin_honors_graduation_requirements",
+      "context_topic": "honor graduate requirements",
+      "metadata": {
+        "phrases": [
+          "latin honors graduation requirements"
+        ],
+        "strong_keywords": [
+          "latin",
+          "honors",
+          "graduation",
+          "requirements"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Honor Graduate Requirements"
+    },
+    {
+      "topic": "latin_honors_average_gpa",
+      "responses": {
+        "en": [
+          "Generally a student must maintain a GWA of 1.75 or higher to qualify for Latin Honors with 2.00 being the lowest individual grade allowed. For Summa Cum Laude the requirements are stricter usually requiring a GWA of 1.25 or higher with no grade falling below 1.50 or 1.75."
+        ],
+        "ceb": [
+          "Sa kasagaran kinahanglan mag maintain og GWA nga 1.75 o mas taas aron mahimong qualified sa Latin Honors ug ang pinakagamay nga individual grade nga pwede kay 2.00. Para sa Summa Cum Laude mas strikto ang requirement kasagaran kinahanglan ang GWA nga 1.25 o mas taas ug wala bisan usa ka grado nga mas ubos sa 1.50 o 1.75."
+        ]
+      },
+      "intent": "latin_honors_average_gpa",
+      "context_topic": "Deans lister rule",
+      "metadata": {
+        "phrases": [
+          "latin honors average gpa"
+        ],
+        "strong_keywords": [
+          "latin",
+          "honors",
+          "average"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Deans Lister Rule"
+    },
+    {
+      "topic": "library_thesis_availability",
+      "responses": {
+        "en": [
+          "Library has thesis research and capstone papers for different colleges. Some are not displayed on shelves so you should ask a library staff member for assistance in finding them."
+        ],
+        "ceb": [
+          "Ang Librarya adunay thesis research ug capstone papers para sa nagkalain laing kolehiyo. Ang uban wala gipahimutang sa estante busa pangutan a ang staff sa librarya para matabangan ka sa pagpangita."
+        ]
+      },
+      "intent": "library_thesis_availability",
+      "context_topic": "Library thesis availability",
+      "metadata": {
+        "phrases": [
+          "library thesis availability"
+        ],
+        "strong_keywords": [
+          "library",
+          "thesis",
+          "availability"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Library Thesis Availability"
     }
   ]
 }

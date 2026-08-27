@@ -70,7 +70,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import InteractiveMap from "@/components/InteractiveMap";
-import { AdminFAQs } from "@/components/admin/AdminFAQs";
 import { AdminGeneralResponses } from "@/components/admin/AdminGeneralResponses";
 import { AdminKnowledgeManager } from "@/components/admin/AdminKnowledgeManager";
 import { AdminLocations } from "@/components/admin/AdminLocations";
@@ -406,7 +405,6 @@ export default function AdminDashboard() {
     { id: "responses", label: "Responses", icon: MessageSquare },
     { id: "reports", label: "Reports", icon: Shield },
     { id: "gallery", label: "Gallery", icon: ImageIcon },
-    { id: "faqs", label: "FAQs", icon: FileJson },
     { id: "privileges", label: "Settings", icon: Settings },
     { id: "logout", label: "Logout", icon: LogOut, isLogout: true },
   ];
@@ -862,10 +860,6 @@ export default function AdminDashboard() {
                 <AdminActivityLogs />
               )}
             </div>
-          )}
-
-          {activeTab === "faqs" && (
-            <AdminFAQs />
           )}
 
           {activeTab === "gallery" && (

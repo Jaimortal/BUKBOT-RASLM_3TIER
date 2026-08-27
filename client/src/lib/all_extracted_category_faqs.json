@@ -432,7 +432,7 @@
       "label": "Mixed / Onsite Enrollment Process",
       "payload": "/direct_intent{\"intent\":\"mixed_enrollment_process\"}",
       "subCategory": "Enrollment",
-      "description": "For Face-to-Face or mixed enrollment, the initial process is similar to online enrollment\u2014..."
+      "description": "For Face-to-Face or mixed enrollment, the initial process is similar to online enrollment—..."
     },
     {
       "id": "procedures_enrollment_time_schedule",
@@ -1908,7 +1908,7 @@
       "label": "Deans of Colleges List",
       "payload": "/direct_intent{\"intent\":\"deans_of_colleges_list\"}",
       "subCategory": "College Deans",
-      "description": "Here is the list of Deans across all Colleges at Bukidnon State University (BukSU):\n\n\u2022 Col..."
+      "description": "Here is the list of Deans across all Colleges at Bukidnon State University (BukSU):\n\n• Col..."
     },
     {
       "id": "university_Dean_0f_COT",
@@ -2174,7 +2174,7 @@
       "label": "BukSU Seal Significance",
       "payload": "/direct_intent{\"intent\":\"buksu_seal_significance\"}",
       "subCategory": "University Identity",
-      "description": "The BukSU Seal is the \u201csacred\u201d and official emblem of Bukidnon State University, used prim..."
+      "description": "The BukSU Seal is the “sacred” and official emblem of Bukidnon State University, used prim..."
     },
     {
       "id": "university_buksu_hymn_lyrics",
@@ -2188,7 +2188,7 @@
       "label": "Whats BukSU Gazette",
       "payload": "/direct_intent{\"intent\":\"Whats_buksu_gazette\"}",
       "subCategory": "University Identity",
-      "description": "The BukSU Gazette is the official repository of the University\u2019s public documents, includi..."
+      "description": "The BukSU Gazette is the official repository of the University’s public documents, includi..."
     },
     {
       "id": "university_buksu_history_background",
@@ -2216,7 +2216,7 @@
       "label": "Pres Thetime University",
       "payload": "/direct_intent{\"intent\":\"Pres_thetime_university\"}",
       "subCategory": "University History",
-      "description": "When BukSU became a university in 2007, the president was Dr. Victor M. Barroso. BukSU\u2019s o..."
+      "description": "When BukSU became a university in 2007, the president was Dr. Victor M. Barroso. BukSU’s o..."
     },
     {
       "id": "university_Buksu_age",
@@ -2295,7 +2295,7 @@
       "label": "Auditorium",
       "payload": "Where is Auditorium?",
       "subCategory": "CPAG Building",
-      "description": "You can find it located directly in front of the Registrar\u2019s Office on the first floo..."
+      "description": "You can find it located directly in front of the Registrar’s Office on the first floo..."
     },
     {
       "id": "loc_automotive_faculty_office",
@@ -2547,7 +2547,7 @@
       "label": "BUKSU President Office",
       "payload": "Where is BUKSU President Office?",
       "subCategory": "Administrative Building",
-      "description": "The BukSU President\u2019s Office is located near the entrance of the university, next to ..."
+      "description": "The BukSU President’s Office is located near the entrance of the university, next to ..."
     },
     {
       "id": "loc_buksu_clinic",
@@ -2638,7 +2638,7 @@
       "label": "COA SBO Office (no data)",
       "payload": "Where is COA SBO Office (no data)?",
       "subCategory": "CPAG Building",
-      "description": "Sorry to inform you that I don\u2019t have any information about the COA SBO office, but y..."
+      "description": "Sorry to inform you that I don’t have any information about the COA SBO office, but y..."
     },
     {
       "id": "loc_cob_4th_floor_students_organization",
@@ -2680,7 +2680,7 @@
       "label": "CON SBO Office (no data)",
       "payload": "Where is CON SBO Office (no data)?",
       "subCategory": "CON Building",
-      "description": "Sorry to inform you that I don\u2019t have data for that, but you can ask any staff or stu..."
+      "description": "Sorry to inform you that I don’t have data for that, but you can ask any staff or stu..."
     },
     {
       "id": "loc_cot_buildings",
@@ -2778,7 +2778,7 @@
       "label": "CPAG Deans Office",
       "payload": "Where is CPAG Deans Office?",
       "subCategory": "CPAG Building",
-      "description": "The CPAG Dean\u2019s Office is located on the first floor of the CPAG Building, directly a..."
+      "description": "The CPAG Dean’s Office is located on the first floor of the CPAG Building, directly a..."
     },
     {
       "id": "loc_cpag_faculty_room",
@@ -2834,14 +2834,14 @@
       "label": "Client Care Center",
       "payload": "Where is Client Care Center?",
       "subCategory": "Administrative Building",
-      "description": "The Client Care Center is in the Administrative Building. It\u2019s the first Office on th..."
+      "description": "The Client Care Center is in the Administrative Building. It’s the first Office on th..."
     },
     {
       "id": "loc_college_of_business_building",
       "label": "College of Business Building",
       "payload": "Where is College of Business Building?",
       "subCategory": "COB Building",
-      "description": "The College of Business building is right to the left of the university library. I\u2019ve..."
+      "description": "The College of Business building is right to the left of the university library. I’ve..."
     },
     {
       "id": "loc_college_of_nursing_building",
@@ -3191,7 +3191,7 @@
       "label": "IAS Office",
       "payload": "Where is IAS Office?",
       "subCategory": "Administrative Building",
-      "description": "The IAS Office is in the Administrative Building that\u2019s the first building you\u2019ll see..."
+      "description": "The IAS Office is in the Administrative Building that’s the first building you’ll see..."
     },
     {
       "id": "loc_ict_service_unit",
@@ -3324,7 +3324,7 @@
       "label": "OSS",
       "payload": "Where is OSS?",
       "subCategory": "Campus Building & Area",
-      "description": "Here \ud83d\udc40."
+      "description": "Here 👀."
     },
     {
       "id": "loc_ovpaa_office",
@@ -3590,7 +3590,7 @@
       "label": "ictu office",
       "payload": "Where is ictu office?",
       "subCategory": "Ictu Office",
-      "description": "You can find it besid on the Health & Services Building\ud83d\udc40."
+      "description": "You can find it besid on the Health & Services Building👀."
     },
     {
       "id": "loc_language_and_literature_department",
@@ -3604,21 +3604,142 @@
       "label": "pe department",
       "payload": "Where is pe department?",
       "subCategory": "Pe Department",
-      "description": "Here \ud83d\udc40."
+      "description": "Here 👀."
     },
     {
       "id": "loc_pink_building",
       "label": "pink building",
       "payload": "Where is pink building?",
       "subCategory": "CAS Building",
-      "description": "look on the map\ud83d\udc40. you see it?\ud83d\ude01"
+      "description": "look on the map👀. you see it?😁"
     },
     {
       "id": "loc_university_press",
       "label": "university press",
       "payload": "Where is university press?",
       "subCategory": "University Press Building",
-      "description": "Here \ud83d\udc40."
+      "description": "Here 👀."
+    }
+  ],
+  "others": [
+    {
+      "id": "others_library_facility_availability",
+      "label": "Library Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"library_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a University Library available for students."
+    },
+    {
+      "id": "others_museum_facility_availability",
+      "label": "Museum Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"museum_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a Museum on campus."
+    },
+    {
+      "id": "others_clinic_facility_availability",
+      "label": "Clinic Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"clinic_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a medical clinic or health services facility for students."
+    },
+    {
+      "id": "others_dental_clinic_facility_availability",
+      "label": "Dental Clinic Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"dental_clinic_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a Dental Clinic for student dental-related services."
+    },
+    {
+      "id": "others_gym_facility_availability",
+      "label": "Gym Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"gym_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has sports-related facilities such as the Gymnasium and Fitness Gym."
+    },
+    {
+      "id": "others_cafeteria_facility_availability",
+      "label": "Cafeteria And Canteen Availability",
+      "payload": "/direct_intent{\"intent\":\"cafeteria_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has food areas such as the Cafeteria and Canteen."
+    },
+    {
+      "id": "others_atm_facility_availability",
+      "label": "ATM Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"atm_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, there is an ATM near BukSU."
+    },
+    {
+      "id": "others_parking_facility_availability",
+      "label": "Parking Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"parking_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has designated parking areas for vehicles and motorcycles."
+    },
+    {
+      "id": "others_dormitory_facility_availability",
+      "label": "Dormitory Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"dormitory_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has dormitory facilities for students."
+    },
+    {
+      "id": "others_oval_facility_availability",
+      "label": "Oval Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"oval_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has an Oval or open field area on campus."
+    },
+    {
+      "id": "others_auditorium_facility_availability",
+      "label": "Auditorium Facility Availability",
+      "payload": "/direct_intent{\"intent\":\"auditorium_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has an Auditorium and other event-related spaces."
+    },
+    {
+      "id": "others_guidance_office_facility_availability",
+      "label": "Guidance Office Availability",
+      "payload": "/direct_intent{\"intent\":\"guidance_office_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a Guidance Office where students may ask for guidance and counseling-related assistan..."
+    },
+    {
+      "id": "others_registrar_office_facility_availability",
+      "label": "Registrar Office Availability",
+      "payload": "/direct_intent{\"intent\":\"registrar_office_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a Registrar Office for enrollment, records, COR, and other registrar-related transact..."
+    },
+    {
+      "id": "others_finance_cashier_facility_availability",
+      "label": "Finance And Cashier Availability",
+      "payload": "/direct_intent{\"intent\":\"finance_cashier_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a Finance Building and cashier windows for finance-related transactions."
+    },
+    {
+      "id": "others_ict_office_facility_availability",
+      "label": "ICT Office Availability",
+      "payload": "/direct_intent{\"intent\":\"ict_office_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has an ICT office or ICT Service Unit for technology-related concerns."
+    },
+    {
+      "id": "others_admission_office_facility_availability",
+      "label": "Admission Office Availability",
+      "payload": "/direct_intent{\"intent\":\"admission_office_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has an Admission Office for admission and testing-related concerns."
+    },
+    {
+      "id": "others_guard_house_facility_availability",
+      "label": "Guard House Availability",
+      "payload": "/direct_intent{\"intent\":\"guard_house_facility_availability\"}",
+      "subCategory": "Campus Facility Availability",
+      "description": "Yes, BukSU has a Guard House and campus security personnel at campus entry points."
     }
   ]
 }

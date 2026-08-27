@@ -843,15 +843,15 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   };
 
   const regularChoiceButtonClass =
-    "flex min-h-[36px] min-w-0 w-full items-center justify-start overflow-hidden rounded-xl border border-sky-200/80 bg-gradient-to-br from-white via-sky-50/40 to-sky-100/40 px-2.5 py-1.5 text-left text-[11.5px] font-semibold leading-tight text-[#003B63] shadow-[0_1.5px_4px_rgba(14,74,122,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-400 hover:bg-sky-50/90 hover:shadow-[0_4px_10px_rgba(14,74,122,0.12)] focus:outline-none focus:ring-2 focus:ring-sky-300/60 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none cursor-pointer";
+    "group flex min-h-[38px] min-w-0 w-full items-center justify-between gap-1.5 overflow-hidden rounded-xl border border-sky-300/90 dark:border-sky-700/60 bg-gradient-to-r from-sky-50/90 via-white to-blue-50/90 dark:from-slate-800 dark:via-slate-800/95 dark:to-slate-850 px-3 py-2 text-left text-[12px] font-semibold leading-tight text-[#002F54] dark:text-sky-200 shadow-[0_2px_6px_rgba(0,59,99,0.08)] ring-1 ring-sky-400/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-500 hover:bg-gradient-to-r hover:from-sky-100/90 hover:via-white hover:to-blue-100/90 hover:text-[#001C38] dark:hover:text-white hover:shadow-[0_4px_12px_rgba(0,59,99,0.18)] hover:ring-sky-400/50 focus:outline-none focus:ring-2 focus:ring-sky-400/60 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none cursor-pointer";
   const compactChoiceButtonClass =
-    "flex h-8 min-w-0 items-center overflow-hidden rounded-full border border-sky-200 bg-white px-2.5 py-1 text-[11.5px] font-medium text-[#003B63] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none cursor-pointer";
+    "group flex h-8 min-w-0 items-center gap-1.5 overflow-hidden rounded-full border border-sky-300/90 dark:border-sky-700/60 bg-white dark:bg-slate-800 px-3 py-1 text-[11.5px] font-semibold text-[#002F54] dark:text-sky-200 shadow-xs ring-1 ring-sky-400/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-500 hover:bg-sky-50 dark:hover:bg-slate-700 hover:text-[#001C38] hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:bg-slate-100 disabled:border-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none cursor-pointer";
 
   const renderSuggestionBoard = (messageId: string, suggestions?: ChatSuggestion[]) => {
     if (!suggestions || suggestions.length === 0) return null;
 
     return (
-      <div className="mt-1.5 grid w-full max-w-[96%] min-w-0 grid-cols-2 gap-1.5 overflow-hidden px-1 py-0.5">
+      <div className="mt-2 grid w-full max-w-[96%] min-w-0 grid-cols-2 gap-1.5 overflow-hidden px-1 py-0.5">
         {suggestions.map((suggestion, idx) => (
           <button
             key={`${messageId}-suggestion-${idx}`}
@@ -861,6 +861,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             className={regularChoiceButtonClass}
           >
             <span className="min-w-0 break-words line-clamp-2">{suggestion.label}</span>
+            <ChevronRight className="h-3.5 w-3.5 shrink-0 text-sky-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-700 dark:text-sky-400" />
           </button>
         ))}
       </div>
@@ -908,10 +909,11 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 disabled={isTyping || !privileges.chatEnabled}
                 onClick={() => handleSend(item.label, item.payload || item.label)}
                 className={sticky
-                  ? "flex h-8 min-w-[110px] shrink-0 items-center justify-center rounded-full border border-sky-200 bg-white px-2.5 py-1 text-center text-[11.5px] font-semibold text-[#003B63] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200 disabled:opacity-50 cursor-pointer"
+                  ? "flex h-8 min-w-[110px] shrink-0 items-center justify-center rounded-full border border-sky-300 bg-white px-2.5 py-1 text-center text-[11.5px] font-semibold text-[#002F54] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-300 disabled:opacity-50 cursor-pointer"
                   : regularChoiceButtonClass}
               >
                 <span className="min-w-0 break-words line-clamp-2">{item.label}</span>
+                {!sticky && <ChevronRight className="h-3.5 w-3.5 shrink-0 text-sky-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-700 dark:text-sky-400" />}
               </button>
             ))
           ) : (
@@ -926,10 +928,11 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                   setChoiceModal(group);
                 }}
                 className={sticky
-                  ? "flex h-8 min-w-[110px] shrink-0 items-center justify-center rounded-full border border-sky-200 bg-white px-2.5 py-1 text-center text-[11.5px] font-medium text-[#003B63] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200 disabled:opacity-50 cursor-pointer"
+                  ? "flex h-8 min-w-[110px] shrink-0 items-center justify-center rounded-full border border-sky-300 bg-white px-2.5 py-1 text-center text-[11.5px] font-semibold text-[#002F54] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-300 disabled:opacity-50 cursor-pointer"
                   : regularChoiceButtonClass}
               >
                 <span className="min-w-0 break-words line-clamp-2">{group.title}</span>
+                {!sticky && <ChevronRight className="h-3.5 w-3.5 shrink-0 text-sky-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-700 dark:text-sky-400" />}
               </button>
             ))
           )}
@@ -1364,6 +1367,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                       className={regularChoiceButtonClass}
                     >
                       <span className="min-w-0 break-words line-clamp-2">{item.label}</span>
+                      <ChevronRight className="h-3.5 w-3.5 shrink-0 text-sky-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-700 dark:text-sky-400" />
                     </button>
                   ))}
                 </div>

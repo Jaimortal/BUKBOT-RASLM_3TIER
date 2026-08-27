@@ -77,6 +77,21 @@ DOMAIN_REGISTRY: Dict[str, Dict[str, Any]] = {
             "Kinsa ang mga opisyal sa unibersidad?",
         ],
     },
+    "others": {
+        "id": "others",
+        "title": "Other Services & Inquiries",
+        "icon": "more-horizontal",
+        "description": "Campus facility availability, ATM machine, sports gym, cafeteria, parking, and miscellaneous inquiries.",
+        "folder": "others",
+        "suggested_questions": [
+            "Does BukSU have an ATM machine on campus?",
+            "Is there a gym or sports oval in BukSU?",
+            "Does BukSU have a student cafeteria or canteen?",
+            "Is there a parking area inside the campus?",
+            "Does BukSU have a museum on campus?",
+            "Naa bay clinic o guidance office sa BukSU?",
+        ],
+    },
 }
 
 def get_all_domains() -> List[Dict[str, Any]]:
@@ -128,6 +143,15 @@ def normalize_domain(domain_id: Optional[str]) -> Optional[str]:
         "about": "university",
         "directory": "university",
         "university info & directory": "university",
+        "other": "others",
+        "others": "others",
+        "miscellaneous": "others",
+        "misc": "others",
+        "facility_availability": "others",
+        "facilities_info": "others",
+        "other services & inquiries": "others",
+        "other services": "others",
+        "other inquiries": "others",
     }
     return alias_map.get(val, val if val in DOMAIN_REGISTRY else None)
 

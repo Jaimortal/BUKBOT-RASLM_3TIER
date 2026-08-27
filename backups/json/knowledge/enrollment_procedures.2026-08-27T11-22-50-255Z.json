@@ -1150,14 +1150,14 @@
           "topic": "student_fees",
           "responses": {
             "en": [
-              "Students are required to pay for laboratory, ID, and miscellaneous fees.**Tuition is free at Bukidnon State University depending on the program you are enrolled in.**",
+              "Students are required to pay for laboratory, ID, and miscellaneous fees. Tuition is free at Bukidnon State University depending on the program you are enrolled in.",
               "However, some courses may have additional charges for laboratory equipment and required textbooks. Your college department may provide some instructions on how you pay for these fees, so it is recommended to check with them for more details.",
-              "**But you can also ask the accounting office, on the Finance building since they can give you more information about the fees and payment process.**"
+              "But you can also ask the accounting office, on the Finance building since they can give you more information about the fees and payment process."
             ],
             "ceb": [
-              "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees.**Libre ang tuition sa Bukidnon State University depende sa programa nga imong gi-enrollan.**",
+              "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees. Libre ang tuition sa Bukidnon State University depende sa programa nga imong gi-enrollan.",
               "Apan, ang uban nga mga kurso posibleng adunay dugang nga bayad para sa laboratory equipment ug required textbooks. Ang imong college department posibleng maghatag og mga instruksyon kung unsaon pagbayad sa mga fees, mao nga girekomenda nga mag-check ka sa ila para sa mas klaro nga detalye.",
-              "**Pero pwede pud nimo adtuhon ang accounting office, sa Finance building kay sila makahatag og dugang impormasyon bahin sa mga fees ug proseso sa pagbayad.**"
+              "Pero pwede pud nimo adtuhon ang accounting office, sa Finance building kay sila makahatag og dugang impormasyon bahin sa mga fees ug proseso sa pagbayad."
             ]
           },
           "intent": "student_fees",
@@ -1188,10 +1188,7 @@
               "free tuition policy bukidnon state university"
             ]
           },
-          "display_name": "Student Fees",
-          "subject_terms": [],
-          "images": [],
-          "items": []
+          "display_name": "Student Fees"
         },
         {
           "topic": "paying_student_definition",
