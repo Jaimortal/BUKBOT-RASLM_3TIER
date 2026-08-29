@@ -216,6 +216,10 @@ class ResponseBuilder:
             text = item.get("text") or None
             custom = item.get("custom") or None
 
+            if text:
+                # Protect intra-bubble blank lines from being split by Rasa Core's output channel
+                text = re.sub(r"\n{2,}", "\n\u200b\n", text)
+
             # Send text and map payload together when possible so the frontend
             # receives one coherent answer object for a merged response.
             if text and custom:

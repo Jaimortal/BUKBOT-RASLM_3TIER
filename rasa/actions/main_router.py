@@ -118,6 +118,27 @@ class MainRouterService:
     def handle_follow_up(self, last_topic: str) -> List[str]:
         return self.data_loader.get_follow_up(last_topic)
 
+    def _looks_like_contact_request(self, user_message: str) -> bool:
+        text = self.interpreter.normalize(user_message)
+        # Use compound phrases to avoid false positives ('room number', 'student number',
+        # 'email for sias', 'they call it', etc.)
+        explicit_contact_phrases = [
+            "contact number", "contact details", "contact info", "contact information",
+            "phone number", "telephone number", "cellphone number", "mobile number",
+            "email address", "email of", "email ng", "email sa",
+            "facebook page", "facebook of", "fb page",
+            "reach out", "get in touch",
+            "how to contact", "how do i contact", "how can i contact",
+            "how to reach", "how do i reach",
+            "unsaon pag contact", "asa mag chat", "unsa ang contact",
+            "tawagan", "kontak", "i-contact",
+        ]
+        if any(phrase in text for phrase in explicit_contact_phrases):
+            # Don't flag portal/account queries even if they contain 'email'
+            portal_terms = ["portal", "sias", "login", "log in", "forgot", "password", "credentials", "gmail", "account"]
+            return not any(pt in text for pt in portal_terms)
+        return False
+
     def _looks_like_location_request(self, user_message: str, resolved: Any) -> bool:
         if not resolved.locations:
             return False
@@ -128,6 +149,10 @@ class MainRouterService:
         if self._looks_like_library_service_request(user_message):
             return False
         if self._looks_like_admission_service_request(user_message):
+            return False
+        if self._looks_like_enrollment_service_request(user_message):
+            return False
+        if self._looks_like_contact_request(user_message):
             return False
         location_terms = [
             "where", "location", "located", "find", "go to", "get to",
@@ -144,6 +169,7 @@ class MainRouterService:
             "fee", "fees", "payment", "pay", "requirement", "requirements",
             "need", "process", "steps", "how much", "service", "services",
             "course", "courses", "program", "programs", "offer", "offers",
+            "contact", "phone", "email", "number", "facebook", "call",
         ]
         if any(term in text for term in non_location_followups):
             return False
@@ -167,6 +193,8 @@ class MainRouterService:
         if self._looks_like_library_service_request(user_message):
             return False
         if self._looks_like_admission_service_request(user_message):
+            return False
+        if self._looks_like_enrollment_service_request(user_message):
             return False
         tokens = set(self.interpreter.tokens(text))
         asks_person_role = (
@@ -225,6 +253,24 @@ class MainRouterService:
         ])
         return has_admission_context and has_admission_action
 
+    def _looks_like_enrollment_service_request(self, user_message: str) -> bool:
+        text = self.interpreter.normalize_for_search(user_message)
+        has_enrollment_term = any(term in text for term in [
+            "enroll", "enrollment", "enrolling", "enrol", "enrolment",
+            "mag-enroll", "mag enroll", "magpa-enroll", "magpa enroll",
+            "pag-enroll", "pag enroll", "mo-enroll", "mo enroll",
+        ])
+        if not has_enrollment_term:
+            return False
+        # If asking about specific physical places/rooms (e.g. "where is the registrar", "where is window 7", "where is cashier"), let location handler process it
+        has_specific_place = any(term in text for term in [
+            "room", "building", "office", "window", "registrar", "cashier", "clinic",
+            "guidance", "canteen", "library", "cpag", "cas", "cot", "cob", "con", "coe"
+        ])
+        if has_specific_place:
+            return False
+        return True
+
     def _looks_like_unresolved_location_request(self, user_message: str) -> bool:
         text = self.interpreter.normalize_for_search(user_message)
         if self.knowledge_router._facility_availability_route(user_message):
@@ -232,6 +278,8 @@ class MainRouterService:
         if self._looks_like_library_service_request(user_message):
             return False
         if self._looks_like_admission_service_request(user_message):
+            return False
+        if self._looks_like_enrollment_service_request(user_message):
             return False
         if (
             any(term in text for term in ["result", "results", "ror", "rating", "passed", "pass"]) and
@@ -297,7 +345,7 @@ class MainRouterService:
         ):
             return None
 
-        college_terms = ["cot", "cob", "cas", "con", "cpag", "coa", "coe", "bsn", "pe", "philo", "electronics", "automotive", "hospitality", "business", "accountancy"]
+        college_terms = ["cot", "cob", "cas", "con", "cpag", "coa", "coe", "bsn", "pe", "philo", "electronics", "electronic", "automotive", "hospitality", "business", "accountancy", "foodtech", "food tech", "food technology"]
         if any(re.search(rf"(?<!\w){re.escape(term)}(?!\w)", text) for term in college_terms):
             return None
 
@@ -311,6 +359,7 @@ class MainRouterService:
                     {"label": "CPAG Faculty Room", "payload": "where is CPAG Faculty Room"},
                     {"label": "PE Faculty Room", "payload": "where is PE Faculty Room"},
                     {"label": "Electronics Faculty Room", "payload": "where is Electronics Faculty Room"},
+                    {"label": "Food Tech Faculty Room", "payload": "where is Food Technology Faculty Room"},
                     {"label": "Philosophy Faculty Office", "payload": "where is Philosophy Faculty Office"},
                     {"label": "Automotive Faculty Office", "payload": "where is Automotive Faculty Office"},
                 ]
@@ -341,6 +390,106 @@ class MainRouterService:
                     {"label": "CPAG Dean's Office", "payload": "where is CPAG Deans Office"},
                 ]
             },
+        }
+
+    def _generic_electronics_lab_response(self, user_message: str) -> Optional[Dict[str, Any]]:
+        """Return a room-choice menu when the user asks about electronic/electronics labs in general."""
+        text = self.interpreter.normalize(user_message)
+
+        # Exclude specific rooms or faculty rooms
+        specific_room_patterns = [
+            r"c-?1-?4-?0[2-6]", r"c14-?0[2-6]", r"c 1 4 0[2-6]", r"dxbu", r"faculty"
+        ]
+        if any(re.search(p, text) for p in specific_room_patterns):
+            return None
+
+        electronics_patterns = [
+            r"\belectron(ic|ics)\s+(lab|laboratory|laboratories|room|rooms)\b",
+            r"\b(lab|laboratory|laboratories)\s+electron(ic|ics)\b",
+            r"\belectron(ic|ics)\s+floor\b",
+            r"\bwhere\s+(is|are|can\s+i\s+find)\s+(the\s+)?electron(ic|ics)\b",
+            r"\belectronics?\s+lab\b",
+            r"\belectronics?\s+laboratory\b",
+            r"\belectronics?\s+laboratories\b",
+            r"\basa\s+(ang\s+)?(mga\s+)?electron(ic|ics)\s*(lab|laboratory|laboratories)?\b",
+        ]
+        if not any(re.search(p, text) for p in electronics_patterns):
+            return None
+
+        detector = getattr(self.data_loader.helper, "detect_language", None)
+        lang = str(detector(user_message)) if callable(detector) else "en"
+        if lang == "ceb":
+            text_msg = "Adunay daghang Electronic Laboratory, nahimutang sa 4th floor sa Bag-ong COT Building. Palihug pangitaa ang eksakto nga numero sa kwarto para mas paspas nga pag-navigate."
+        else:
+            text_msg = "There are several electronic Laboratory, located on the 4th floor of the new COT Building, Please find the exact room number for faster navigation"
+
+        items = [
+            {"label": "C-1-4-02", "payload": "where is C-1-4-02"},
+            {"label": "C-1-4-03 (DXBU)", "payload": "where is DXBU"},
+            {"label": "C-1-4-04", "payload": "where is C-1-4-04"},
+            {"label": "C-1-4-05", "payload": "where is C-1-4-05"},
+            {"label": "C-1-4-06", "payload": "where is C-1-4-06"},
+        ]
+        return {
+            "text": text_msg,
+            "custom": {
+                "choiceGroups": [
+                    {
+                        "title": "Select a room:",
+                        "items": items
+                    }
+                ]
+            }
+        }
+
+    def _generic_foodtech_lab_response(self, user_message: str) -> Optional[Dict[str, Any]]:
+        """Return a room-choice menu when the user asks about food technology labs in general."""
+        text = self.interpreter.normalize(user_message)
+
+        # Exclude specific rooms, first floor, and faculty office queries
+        specific_room_patterns = [
+            r"c-?1-?2-?0[1-4]", r"c12-?0[1-4]", r"c 1 2 0[1-4]",
+            r"first\s*floor", r"1st\s*floor", r"ground\s*floor",
+            r"faculty"
+        ]
+        if any(re.search(p, text) for p in specific_room_patterns):
+            return None
+
+        foodtech_patterns = [
+            r"\bfood\s+(tech|technology)\s+(lab|laboratory|laboratories|room|rooms)?\b",
+            r"\b(lab|laboratory|laboratories)\s+(sa\s+)?food\s+(tech|technology)\b",
+            r"\bfood\s+tech\b",
+            r"\bfood\s+technology\b",
+            r"\bwhere\s+(is|are|can\s+i\s+find)\s+(the\s+)?food\s+(tech|technology)\b",
+            r"\basa\s+(ang\s+)?(mga\s+)?food\s+(tech|technology)\s*(lab|laboratory|laboratories)?\b",
+        ]
+        if not any(re.search(p, text) for p in foodtech_patterns):
+            return None
+
+        detector = getattr(self.data_loader.helper, "detect_language", None)
+        lang = str(detector(user_message)) if callable(detector) else "en"
+        if lang == "ceb":
+            text_msg = "Adunay daghang Food technology Laboratory, nahimutang sa 2nd floor sa Bag-ong COT Building. Palihug pangitaa ang eksakto nga numero sa kwarto para mas paspas nga pag-navigate."
+        else:
+            text_msg = "There are several Food technology Laboratory, located on the 2nd floor of the new COT Building, Please find the exact room number for faster navigation"
+
+        items = [
+            {"label": "C-1-2-01", "payload": "where is C-1-2-01"},
+            {"label": "C-1-2-02", "payload": "where is C-1-2-02"},
+            {"label": "C-1-2-03", "payload": "where is C-1-2-03"},
+            {"label": "C-1-2-04", "payload": "where is C-1-2-04"},
+            {"label": "FoodTech Laboratory first floor", "payload": "where is FoodTech Laboratory First Floor"},
+        ]
+        return {
+            "text": text_msg,
+            "custom": {
+                "choiceGroups": [
+                    {
+                        "title": "Select a room:",
+                        "items": items
+                    }
+                ]
+            }
         }
 
     def _generic_it_department_response(self, user_message: str) -> Optional[Dict[str, Any]]:
@@ -386,7 +535,7 @@ class MainRouterService:
             {"label": "ICTU", "payload": "Where is the ICTU?"},
             {"label": "CITL", "payload": "Where is the CITL?"},
             {"label": "DXBU", "payload": "Where is DXBU?"},
-            {"label": "ICTU Service Unit", "payload": "Where is the ICT Service Unit?"},
+            {"label": "ICT Service Unit", "payload": "Where is the ICT Service Unit?"},
             {"label": "Electronics Faculty Room", "payload": "Where is the Electronics Faculty Room?"},
         ]
 
@@ -522,6 +671,23 @@ class MainRouterService:
         # DOMAIN ISOLATION MODE: LOCATION
         # ==============================================================
         if active_domain == "location":
+            electronics_lab_menu = self._generic_electronics_lab_response(user_message)
+            if electronics_lab_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return electronics_lab_menu, ctx
+
+            foodtech_lab_menu = self._generic_foodtech_lab_response(user_message)
+            if foodtech_lab_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return foodtech_lab_menu, ctx
+
+            if resolved.locations:
+                loc_res, loc_slots = self._route_locations(intent, user_message, resolved, slots)
+                loc_slots["active_category"] = "location"
+                return loc_res, loc_slots
+
             if self._looks_like_building_directory_request(user_message) or self._looks_like_building_directory_follow_up(user_message, slots):
                 directory_response, directory_slots = self._route_building_directory(user_message, slots)
                 if directory_response:
@@ -543,11 +709,6 @@ class MainRouterService:
                 ctx = self.context_manager.decay_slot_values(slots)
                 ctx["active_category"] = "location"
                 return deans_office_menu, ctx
-
-            if resolved.locations:
-                loc_res, loc_slots = self._route_locations(intent, user_message, resolved, slots)
-                loc_slots["active_category"] = "location"
-                return loc_res, loc_slots
 
             # Search in location domain index
             loc_res = self.knowledge_router.find_best_response(
@@ -689,6 +850,14 @@ class MainRouterService:
             directory_response, directory_slots = self._route_building_directory(user_message, slots)
             if directory_response:
                 return directory_response, directory_slots
+
+        electronics_lab_menu = self._generic_electronics_lab_response(user_message)
+        if electronics_lab_menu:
+            return electronics_lab_menu, self.context_manager.decay_slot_values(slots)
+
+        foodtech_lab_menu = self._generic_foodtech_lab_response(user_message)
+        if foodtech_lab_menu:
+            return foodtech_lab_menu, self.context_manager.decay_slot_values(slots)
 
         it_dept_menu = self._generic_it_department_response(user_message)
         if it_dept_menu:

@@ -467,43 +467,40 @@
           "images": [],
           "pins": [
             {
-              "name": "Start From Here",
+              "name": "You are here",
               "coordinates": [
-                879,
-                630
+                872,
+                633
               ]
             },
             {
-              "name": "Registrar - window 4",
+              "name": "OVPCASSS",
               "coordinates": [
-                681,
-                557
-              ]
+                823,
+                728
+              ],
+              "floor": "GF"
             }
           ],
           "routes": [
             {
-              "name": "Start From Here to Registrar - window 4",
+              "name": "You are here to OVPCASSS",
               "points": [
                 [
-                  879,
-                  630
+                  872,
+                  633
                 ],
                 [
-                  785,
+                  817,
                   635
                 ],
                 [
-                  782,
-                  579
+                  819,
+                  728
                 ],
                 [
-                  681,
-                  584
-                ],
-                [
-                  681,
-                  557
+                  823,
+                  728
                 ]
               ],
               "color": "#ff1744",
@@ -520,12 +517,22 @@
           "context_topic": "schedule",
           "responses": {
             "en": [
-              "Here is the schedule for ID Validation. Please note that **this may change every year, so always visit the Registrar Facebook page**: https://www.facebook.com/BSURegistrar",
-              "📌 **VALIDATION SCHEDULE:**\n4th Year will be on **August 17 - 21, 2026**\n3rd Year will be on **August 24 - 28, 2026**\n2nd Year will be on **September 1 - 7, 2026**\n\n📍 Submission of IDs: Window 4\n⏰ Morning: 8:00 AM–12:00 NN\n⏰ Afternoon: 12:00 NN–5:00 PM"
+              "Okay here is the Schedule for the Validation of I.D please **this may change every year so always visit the Registrar Facebook page** : https://www.facebook.com/BSURegistrar Here is the 📌 **VALIDATION SCHEDULE:**",
+              "4th Year will be on **August 17 - 21, 2026**",
+              "3rd Year will be on **August 24 - 28, 2026**",
+              "2nd Year will be on **September 1 - 7, 2026**",
+              "📍 Submission of IDs: Window 4",
+              "⏰ Morning: 8:00 AM–12:00 NN",
+              "⏰ Afternoon: 12:00 NN–5:00 PM"
             ],
             "ceb": [
-              "Ania ang iskedyul para sa ID Validation. Palihug **hinumdomi nga kini mahimong mausab matag tuig, busa kanunay bisitaha ang Facebook page sa Registrar:** https://www.facebook.com/BSURegistrar",
-              "📌 **ISKEDYUL SA VALIDATION:**\nAng 4th Year mahitabo sa **August 17 - 21, 2026**\nAng 3rd Year mahitabo sa **August 24 - 28, 2026**\nAng 2nd Year mahitabo sa **September 1 - 7, 2026**\n\n📍 Pagsumite sa mga ID: Window 4\n⏰ Buntag: 8:00 AM–12:00 NN\n⏰ Hapon: 12:00 NN–5:00 PM"
+              "Okay, ania ang Iskedyul para sa Validation sa I.D, palihug **hinumdomi nga kini mahimong mausab matag tuig busa kanunay bisitaha ang Facebook page sa Registrar:** https://www.facebook.com/BSURegistrar Ania ang 📌 **ISKEDYUL SA VALIDATION:**",
+              "Ang 4th Year mahitabo sa **August 17 - 21, 2026**",
+              "Ang 3rd Year mahitabo sa **August 24 - 28, 2026**",
+              "Ang 2nd Year mahitabo sa **September 1 - 7, 2026**",
+              "📍 Pagsumite sa mga ID: Window 4",
+              "⏰ Buntag: 8:00 AM–12:00 NN",
+              "⏰ Hapon: 12:00 NN–5:00 PM"
             ]
           },
           "metadata": {
@@ -546,16 +553,6 @@
             ]
           },
           "display_name": "ID Validation Day",
-          "suggestions": [
-            {
-              "label": "Id Validation Process",
-              "payload": "/direct_intent{\"intent\":\"id_validation_process\"}"
-            },
-            {
-              "label": "Registrar location",
-              "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
-            }
-          ],
           "subject_terms": [],
           "images": [],
           "items": []

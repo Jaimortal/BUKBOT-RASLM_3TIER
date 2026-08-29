@@ -63,13 +63,17 @@ class EntityResolver:
             used_spans.append((start, end))
             self._add_location(found, seen, canonical)
 
-        for match in re.finditer(r"\b(c\d+)\s+(\d+)\s+(\d{1,2})\b", normalized_text):
+        for match in re.finditer(r"\b([a-zA-Z]\d*)\s+(\d+)\s+(\d{1,2})\b", normalized_text):
             building, floor, room = match.group(1), match.group(2), match.group(3)
             self._add_location(found, seen, f"{building}-{floor}-{room.zfill(2)}".upper())
 
-        for match in re.finditer(r"\b(c\d+)-(\d+)-(\d{1,2})\b", normalized_text):
+        for match in re.finditer(r"\b([a-zA-Z]\d*)-(\d+)-(\d{1,2})\b", normalized_text):
             building, floor, room = match.group(1), match.group(2), match.group(3)
             self._add_location(found, seen, f"{building}-{floor}-{room.zfill(2)}".upper())
+
+        for match in re.finditer(r"\b([a-zA-Z])[- ]*(\d)[- ]*(\d)[- ]*(\d{1,2})\b", normalized_text):
+            b_prefix, b_num, floor, room = match.group(1), match.group(2), match.group(3), match.group(4)
+            self._add_location(found, seen, f"{b_prefix.upper()}{b_num}-{floor}-{room.zfill(2)}")
 
         return found
 
@@ -92,7 +96,7 @@ class EntityResolver:
             if key in normalized:
                 remove.add(key)
 
-        if has("COT Faculty Room") or has("COT Dean's Office") or has("Electronics Faculty Room"):
+        if has("COT Faculty Room") or has("COT Dean's Office") or has("Electronics Faculty Room") or has("Food Technology Faculty Room"):
             drop("COT Buildings")
             drop("New COT Building")
             drop("Old COT Building")

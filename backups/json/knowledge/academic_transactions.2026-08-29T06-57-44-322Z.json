@@ -417,11 +417,11 @@
           "context_topic": "location",
           "responses": {
             "en": [
-              "Go to Window 7 at the Finance Building to validate your COR. Remember the validation may change anytime, Please when youre there ask any staff for assistance",
+              "Go to Window 4 to 7 at the Finance Building to validate your COR. Remember the validation may change anytime, Please when youre there ask any staff for assistance",
               "After that, proceed to the Registrar to seal and confirm validation."
             ],
             "ceb": [
-              "Adto sa Window 7 sa Finance Building aron ma-validate ang COR. hinumdomi nga ang validation pwedi mabago kanunay, palihug kung anaa na didto mangayo ug tabang sa staff",
+              "Adto sa Window 4 to 7 sa Finance Building aron ma-validate ang COR. hinumdomi nga ang validation pwedi mabago kanunay, palihug kung anaa na didto mangayo ug tabang sa staff",
               "human niana, adto sa Registrar aron ma-seal ug makumpirma ang validation."
             ]
           },
@@ -466,94 +466,7 @@
               "lugar"
             ]
           },
-          "display_name": "COR Validation Location",
-          "subject_terms": [],
-          "images": [
-            "/api/images/57d98efc-e6e2-4a5e-877c-dfbc986f753a",
-            "/api/images/8d11d4d8-9f05-46dc-8cc7-506e497bb7e0"
-          ],
-          "items": [],
-          "pins": [
-            {
-              "name": "Start From Here",
-              "coordinates": [
-                888,
-                632
-              ]
-            },
-            {
-              "name": "Finance Window 4 - 7",
-              "coordinates": [
-                679,
-                637
-              ]
-            },
-            {
-              "name": "Registrar",
-              "coordinates": [
-                706,
-                564
-              ]
-            }
-          ],
-          "routes": [
-            {
-              "name": "Start From Here to Finance Window 4 - 7",
-              "points": [
-                [
-                  888,
-                  632
-                ],
-                [
-                  783,
-                  634
-                ],
-                [
-                  781,
-                  670
-                ],
-                [
-                  678,
-                  674
-                ],
-                [
-                  679,
-                  637
-                ]
-              ],
-              "color": "#ff1744",
-              "route_order": 1,
-              "route_label": "Route 1"
-            },
-            {
-              "name": "Finance Window 4 - 7 to Registrar",
-              "points": [
-                [
-                  679,
-                  637
-                ],
-                [
-                  687,
-                  620
-                ],
-                [
-                  686,
-                  584
-                ],
-                [
-                  710,
-                  583
-                ],
-                [
-                  710,
-                  564
-                ]
-              ],
-              "color": "#ffea00",
-              "route_order": 2,
-              "route_label": "Route 2"
-            }
-          ]
+          "display_name": "COR Validation Location"
         }
       ],
       "display_name": "COR Validation"

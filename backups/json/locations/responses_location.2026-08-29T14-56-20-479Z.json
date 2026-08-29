@@ -16027,6 +16027,44 @@
       "building": "Pink Building",
       "floor": "Ground Floor",
       "room_number": "A1-1-02",
+      "coordinates": null,
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Scholarship and Financial Grants Unit is located on the pink building entrance, beside the academic mentoring unit.\nRoom Number A1-1-02"
+        ],
+        "ceb": [
+          "Ang Scholarship and Financial Grants Unit nahimutang sa entrance sa pink building, tapad sa academic mentoring unit.\nRoom Number A1-1-02"
+        ]
+      },
+      "pins": [],
+      "routes": [],
+      "imageUrls": []
+    },
+    "Academic Mentoring Unit": {
+      "type": "office",
+      "building": "Pink Building",
+      "floor": "Ground Floor",
+      "room_number": "A1-1-03",
+      "coordinates": null,
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Academic Mentoring Unit is located on the pink building entrance, beside the scholarship and financial grants unit.\nRoom Number A1-1-03"
+        ],
+        "ceb": [
+          "Ang Academic Mentoring Unit nahimutang sa entrance sa pink building, tapad sa scholarship and financial grants unit.\nRoom Number A1-1-03"
+        ]
+      },
+      "pins": [],
+      "routes": [],
+      "imageUrls": []
+    },
+    "A1-1-02": {
+      "type": "room",
+      "building": "Pink Building",
+      "floor": "Ground Floor",
+      "room_number": "A1-1-02",
       "coordinates": [
         882,
         635
@@ -16117,15 +16155,12 @@
         "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
       ]
     },
-    "Academic Mentoring Unit": {
-      "type": "office",
+    "A1-1-03": {
+      "type": "room",
       "building": "Pink Building",
       "floor": "Ground Floor",
       "room_number": "A1-1-03",
-      "coordinates": [
-        882,
-        635
-      ],
+      "coordinates": null,
       "map_id": "main_map",
       "responses": {
         "en": [
@@ -16135,82 +16170,9 @@
           "Ang Room A1-1-03 mao ang Academic Mentoring Unit, nahimutang sa entrance sa pink building, tapad sa scholarship and financial grants unit."
         ]
       },
-      "pins": [
-        {
-          "name": "Start From here",
-          "coordinates": [
-            882,
-            635
-          ]
-        },
-        {
-          "name": "Academic Mentoring Unit",
-          "coordinates": [
-            528,
-            574
-          ],
-          "floor": "GF"
-        }
-      ],
-      "routes": [
-        {
-          "name": "Start From here to Academic Mentoring Unit",
-          "points": [
-            [
-              883,
-              637
-            ],
-            [
-              781,
-              635
-            ],
-            [
-              784,
-              673
-            ],
-            [
-              590,
-              677
-            ],
-            [
-              572,
-              664
-            ],
-            [
-              570,
-              646
-            ],
-            [
-              545,
-              647
-            ],
-            [
-              544,
-              600
-            ],
-            [
-              534,
-              591
-            ],
-            [
-              534,
-              575
-            ],
-            [
-              530,
-              573
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ],
-      "imageUrls": [
-        "/api/images/a8628874-f618-400e-b747-95994678501e",
-        "/api/images/30802112-2428-40cb-97c9-3ace4b3d8faa",
-        "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
-      ]
+      "pins": [],
+      "routes": [],
+      "imageUrls": []
     }
   }
 }

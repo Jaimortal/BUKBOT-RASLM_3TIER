@@ -494,11 +494,15 @@ class KnowledgeDataLoader:
             selected = answer.get("en") or next(iter(answer.values()), [])
 
         if isinstance(selected, list):
-            text_parts = [str(line).strip() for line in selected if str(line).strip()]
+            text_parts = [
+                re.sub(r"\n{2,}", "\n\u200b\n", str(line).strip())
+                for line in selected
+                if str(line).strip()
+            ]
             text = "\n".join(text_parts)
         else:
-            text = str(selected or "")
-            text_parts = [text] if text.strip() else []
+            text = re.sub(r"\n{2,}", "\n\u200b\n", str(selected or "").strip())
+            text_parts = [text] if text else []
 
         result: Dict[str, Any] = {"text": text}
         if len(text_parts) > 1:
@@ -619,9 +623,9 @@ class KnowledgeDataLoader:
 
     def _answer_parts(self, selected_answer: Any) -> List[str]:
         if isinstance(selected_answer, list):
-            return [str(line).strip() for line in selected_answer if str(line).strip()]
+            return [re.sub(r"\n{2,}", "\n\u200b\n", str(line).strip()) for line in selected_answer if str(line).strip()]
         if selected_answer:
-            return [str(selected_answer).strip()]
+            return [re.sub(r"\n{2,}", "\n\u200b\n", str(selected_answer).strip())]
         return []
 
     def _item_lines_by_group(

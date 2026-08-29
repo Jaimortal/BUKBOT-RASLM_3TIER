@@ -104,14 +104,9 @@ class RasaBackend {
       const mapDataList: any[] = [];
 
       responses.forEach((r: any) => {
-        // Extract text and split by newlines to separate JSON array elements
-        if (typeof r.text === "string" && r.text.length > 0) {
-          // Split by newline and add to textParts
-          const split = r.text.split('\n');
-          split.forEach((part: string) => {
-            // Keep the part even if it is " " (user specifically asked for this)
-            textParts.push(part);
-          });
+        // Extract text while preserving single-bubble multi-line strings
+        if (typeof r.text === "string" && r.text.trim().length > 0) {
+          textParts.push(r.text.trim());
         }
 
         // Extract image (standard Rasa REST field)

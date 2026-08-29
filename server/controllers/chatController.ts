@@ -97,14 +97,11 @@ export class ChatController {
         }
         
         if (allAnswers.length > 0) {
-          answerParts = allAnswers.flatMap((answer) =>
-            String(answer)
-              .split(/\r?\n/)
-              .map((part) => part.trim())
-              .filter(Boolean)
-          );
+          answerParts = allAnswers
+            .map((answer) => String(answer).trim())
+            .filter(Boolean);
           if (answerParts.length === 0) {
-            answerParts = allAnswers.map((answer) => String(answer).trim()).filter(Boolean);
+            answerParts = ["I cannot understand your question."];
           }
           answerText = answerParts.join("\n\n");  // Keep joined text for logs/fallback checks
           detectedIntent = intent;

@@ -159,10 +159,10 @@ function validateEditorDraft({
   requiresResponse,
 }: {
   displayName: string;
-  en: string;
-  ceb: string;
-  phrases: string;
-  subjectTerms: string;
+  en: string[];
+  ceb: string[];
+  phrases?: string;
+  subjectTerms?: string;
   images: string[];
   hasMapEditor: boolean;
   pins: AdminPin[];
@@ -172,13 +172,13 @@ function validateEditorDraft({
   const errors: string[] = [];
 
   if (!displayName.trim()) errors.push("Display name is required.");
-  if (requiresResponse && toLines(en).length === 0 && toLines(ceb).length === 0) {
-    errors.push("At least one English or Cebuano response line is required.");
+  if (requiresResponse && en.filter((b) => b.trim()).length === 0 && ceb.filter((b) => b.trim()).length === 0) {
+    errors.push("At least one English or Cebuano response bubble is required.");
   }
-  if (toLines(phrases).some((phrase) => phrase.length < 2)) {
+  if (phrases && toLines(phrases).some((phrase) => phrase.length < 2)) {
     errors.push("Example questions must contain readable text.");
   }
-  if (toLines(subjectTerms).some((term) => term.length < 2)) {
+  if (subjectTerms && toLines(subjectTerms).some((term) => term.length < 2)) {
     errors.push("Subject terms must contain readable text.");
   }
   if (images.some((url) => !String(url || "").trim())) {
@@ -401,349 +401,211 @@ function safeHtmlBoldToMarkdown(value: string): string {
 }
 
 function renderMarkdownBoldHtml(value: string): string {
-  const markdown = safeHtmlBoldToMarkdown(value);
+  const markdown = safeHtmlBoldToMarkdown(value || "");
   const escaped = escapeHtml(markdown);
-  return escaped.replace(/\*\*([^*\n]+?)\*\*/g, "<b>$1</b>");
+  return escaped
+    .replace(/\*\*([^*\n]+?)\*\*/g, "<b>$1</b>")
+    .replace(/\n/g, "<br>");
 }
 
-function normalizeRichLine(value: string): string {
+function normalizeRichBubble(value: string): string {
+  if (!value) return "";
   const wrapper = document.createElement("div");
-  wrapper.innerHTML = value
-    .replace(/<strong\b[^>]*>/gi, "<b>")
-    .replace(/<\/strong>/gi, "</b>")
-    .replace(/<span\b[^>]*style=["'][^"']*font-weight:\s*(bold|700)[^"']*["'][^>]*>/gi, "<b>")
-    .replace(/<\/span>/gi, "</b>");
+  wrapper.innerHTML = value;
 
   function walk(node: Node): string {
     if (node.nodeType === Node.TEXT_NODE) {
       return node.textContent || "";
     }
-    if (node.nodeName.toLowerCase() === "br") {
+    const tag = node.nodeName.toLowerCase();
+    if (tag === "br") {
       return "\n";
     }
+
     const children = Array.from(node.childNodes).map(walk).join("");
-    const tag = node.nodeName.toLowerCase();
-    if (tag === "b" || tag === "strong") {
+    const isBold =
+      tag === "b" ||
+      tag === "strong" ||
+      (node instanceof HTMLElement && (
+        node.style?.fontWeight === "bold" ||
+        parseInt(node.style?.fontWeight || "0", 10) >= 700 ||
+        node.classList?.contains("font-bold")
+      ));
+
+    if (isBold) {
+      const leadingSpace = /^\s+/.test(children) ? " " : "";
+      const trailingSpace = /\s+$/.test(children) ? " " : "";
       const content = children.trim();
-      return content ? `**${content}**` : "";
+      if (!content) return leadingSpace || trailingSpace;
+      if (/^\*\*([^*]+)\*\*$/.test(content)) {
+        return `${leadingSpace}${content}${trailingSpace}`;
+      }
+      return `${leadingSpace}**${content}**${trailingSpace}`;
     }
+
+    if (tag === "div" || tag === "p") {
+      return children ? `${children}\n` : "\n";
+    }
+
     return children;
   }
 
-  return Array.from(wrapper.childNodes)
-    .map(walk)
-    .join("")
+  const text = Array.from(wrapper.childNodes).map(walk).join("");
+  return text
     .replace(/&nbsp;/g, " ")
     .replace(/\u00a0/g, " ")
-    .replace(/\s+\*\*/g, "**")
-    .replace(/\*\*\s+/g, "**")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
 
-function ResponseLinesEditor({
-  label,
-  value,
+function SingleBubbleBox({
+  initialValue,
+  index,
+  canRemove,
+  onRemove,
   onChange,
 }: {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
+  initialValue: string;
+  index: number;
+  canRemove: boolean;
+  onRemove: () => void;
+  onChange: (normalizedContent: string) => void;
 }) {
-  const editorRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const lines = splitEditableLines(value);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
-  function updateLine(index: number, nextLine: string) {
-    const next = [...lines];
-    next[index] = normalizeRichLine(nextLine);
-    onChange(next.join("\n"));
+  // Set initial HTML and only update if initialValue changes externally while NOT focused
+  useEffect(() => {
+    if (contentRef.current && document.activeElement !== contentRef.current) {
+      contentRef.current.innerHTML = renderMarkdownBoldHtml(initialValue);
+    }
+  }, [initialValue]);
+
+  function syncChanges() {
+    if (!contentRef.current) return;
+    const normalized = normalizeRichBubble(contentRef.current.innerHTML);
+    onChange(normalized);
   }
 
-  function addLine() {
-    const next = [...lines, ""];
-    onChange(next.join("\n"));
-    window.requestAnimationFrame(() => editorRefs.current[next.length - 1]?.focus());
-  }
-
-  function removeLine(index: number) {
-    const next = lines.filter((_, lineIndex) => lineIndex !== index);
-    onChange((next.length ? next : [""]).join("\n"));
-  }
-
-  function removeEmptyLines() {
-    const next = lines.map((line) => normalizeRichLine(line)).filter(Boolean);
-    onChange((next.length ? next : [""]).join("\n"));
-  }
-
-  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>, index: number) {
+  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    // Ctrl + B: Bold selected text
     if (event.ctrlKey && event.key.toLowerCase() === "b") {
       event.preventDefault();
       document.execCommand("bold");
-      updateLine(index, event.currentTarget.innerHTML);
+      syncChanges();
       return;
     }
 
+    // Shift + Enter or Enter: Insert line break at exact caret position
     if (event.key === "Enter") {
       event.preventDefault();
-      addLine();
+      document.execCommand("insertLineBreak");
+      syncChanges();
     }
+  }
+
+  return (
+    <div className="rounded-md border bg-white p-2.5 shadow-xs">
+      <div className="mb-1.5 flex items-center justify-between gap-2">
+        <span className="text-[10.5px] font-bold uppercase tracking-wider text-blue-900/80 bg-blue-50 px-2 py-0.5 rounded">
+          Bubble {index + 1}
+        </span>
+        {canRemove && (
+          <AdminTooltip
+            title="Remove Bubble"
+            description="Delete this response bubble"
+            side="left"
+          >
+            <button
+              type="button"
+              onClick={onRemove}
+              className="text-[11px] font-medium text-red-500 hover:text-red-700 flex items-center gap-1 cursor-pointer"
+            >
+              <Trash2 className="h-3 w-3" />
+              Remove
+            </button>
+          </AdminTooltip>
+        )}
+      </div>
+      <div
+        ref={contentRef}
+        contentEditable
+        suppressContentEditableWarning
+        className="min-h-16 rounded border border-slate-200 bg-white px-3 py-2 text-sm leading-relaxed outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 [&_b]:font-bold whitespace-pre-wrap"
+        onInput={syncChanges}
+        onBlur={syncChanges}
+        onKeyDown={handleKeyDown}
+        onPaste={(event) => {
+          event.preventDefault();
+          const text = event.clipboardData.getData("text/plain");
+          document.execCommand("insertText", false, text);
+          syncChanges();
+        }}
+      />
+    </div>
+  );
+}
+
+function ResponseBubblesEditor({
+  label,
+  bubbles,
+  onChange,
+}: {
+  label: string;
+  bubbles: string[];
+  onChange: (bubbles: string[]) => void;
+}) {
+  const safeBubbles = bubbles.length > 0 ? bubbles : [""];
+
+  function updateBubble(index: number, nextContent: string) {
+    const next = [...safeBubbles];
+    next[index] = nextContent;
+    onChange(next);
+  }
+
+  function addBubble() {
+    const next = [...safeBubbles, ""];
+    onChange(next);
+  }
+
+  function removeBubble(index: number) {
+    const next = safeBubbles.filter((_, i) => i !== index);
+    onChange(next.length ? next : [""]);
   }
 
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <Label>{label}</Label>
-        <div className="flex gap-2">
-          <AdminTooltip
-            title="Add Line"
-            description="Insert a new paragraph or alternate response line bubble"
-            side="top"
-          >
-            <Button type="button" size="sm" variant="outline" onClick={addLine}>Add line</Button>
-          </AdminTooltip>
-          <AdminTooltip
-            title="Clean Empty"
-            description="Automatically remove all blank or whitespace-only response lines"
-            side="top"
-          >
-            <Button type="button" size="sm" variant="outline" onClick={removeEmptyLines}>Clean empty</Button>
-          </AdminTooltip>
-        </div>
+        <Label className="text-xs font-semibold text-slate-700">{label}</Label>
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          onClick={addBubble}
+          className="h-7 text-xs border-blue-200 text-blue-700 hover:bg-blue-50"
+        >
+          <PlusCircle className="mr-1 h-3.5 w-3.5" />
+          Add Bubble
+        </Button>
       </div>
-      <div className="max-h-72 space-y-2 overflow-y-auto rounded-md border bg-slate-50 p-2">
-        {lines.map((line, index) => (
-          <div key={`${label}-${index}`} className="rounded-md border bg-white p-2 shadow-sm">
-            <div className="mb-1 flex items-center justify-between gap-2">
-              <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Line {index + 1}</span>
-              {lines.length > 1 && (
-                <AdminTooltip
-                  title="Remove Line"
-                  description="Delete this response line bubble"
-                  side="left"
-                >
-                  <button
-                    type="button"
-                    onClick={() => removeLine(index)}
-                    className="text-[10px] text-red-500 hover:text-red-700"
-                  >
-                    Remove
-                  </button>
-                </AdminTooltip>
-              )}
-            </div>
-            <div
-              ref={(node) => { editorRefs.current[index] = node; }}
-              contentEditable
-              suppressContentEditableWarning
-              className="min-h-16 rounded border border-slate-200 bg-white px-3 py-2 text-sm leading-relaxed outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 [&_b]:font-bold"
-              onBlur={(event) => updateLine(index, event.currentTarget.innerHTML)}
-              onKeyDown={(event) => handleKeyDown(event, index)}
-              onPaste={(event) => {
-                event.preventDefault();
-                const text = event.clipboardData.getData("text/plain");
-                document.execCommand("insertText", false, text);
-                updateLine(index, event.currentTarget.innerHTML);
-              }}
-              dangerouslySetInnerHTML={{ __html: renderMarkdownBoldHtml(line) }}
-            />
-          </div>
+
+      <div className="max-h-80 space-y-2 overflow-y-auto rounded-md border bg-slate-50 p-2">
+        {safeBubbles.map((bubble, index) => (
+          <SingleBubbleBox
+            key={`${label}-bubble-${index}`}
+            initialValue={bubble}
+            index={index}
+            canRemove={safeBubbles.length > 1}
+            onRemove={() => removeBubble(index)}
+            onChange={(content) => updateBubble(index, content)}
+          />
         ))}
       </div>
-      <p className="text-[11px] text-muted-foreground">Each box becomes one chatbot bubble. Select text and press Ctrl+B to bold or unbold it.</p>
     </div>
   );
 }
 
-function aliasesText(item: KnowledgeChildItem): string {
-  return (item.aliases || []).join("\n");
-}
 
-function ChildItemEditorModal({
-  item,
-  open,
-  onClose,
-  onSave,
-}: {
-  item: KnowledgeChildItem | null;
-  open: boolean;
-  onClose: () => void;
-  onSave: (item: KnowledgeChildItem) => void;
-}) {
-  const [draft, setDraft] = useState<KnowledgeChildItem>(item || {});
-  const valueRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    setDraft(item || {});
-  }, [item]);
-
-  function update<K extends keyof KnowledgeChildItem>(key: K, value: KnowledgeChildItem[K]) {
-    setDraft((current) => ({ ...current, [key]: value }));
-  }
-
-  function save() {
-    onSave({
-      ...draft,
-      key: String(draft.key || "").trim(),
-      group: String(draft.group || "").trim().toUpperCase(),
-      name: String(draft.name || "").trim(),
-      value: normalizeRichLine(String(draft.value || "")),
-      text: normalizeRichLine(String(draft.text || "")),
-      aliases: toLines(aliasesText(draft)),
-    });
-  }
-
-  return (
-    <Dialog open={open} onOpenChange={(value) => !value && onClose()}>
-      <DialogContent className="max-w-2xl overflow-hidden p-0">
-        <DialogHeader className="border-b bg-gradient-to-r from-[#001C38] to-[#0356a9] px-5 pb-3 pt-4 rounded-t-lg">
-          <DialogTitle className="text-white">Edit child row</DialogTitle>
-          <p className="text-xs text-blue-200">Only safe display fields are editable here. Routing logic remains protected.</p>
-        </DialogHeader>
-        <div className="grid gap-4 p-5">
-          <div className="grid gap-3 md:grid-cols-2">
-            <div className="space-y-2">
-              <Label>Group</Label>
-              <Input value={draft.group || ""} onChange={(event) => update("group", event.target.value)} placeholder="CAS, COT, COB" />
-            </div>
-            <div className="space-y-2">
-              <Label>Admin key</Label>
-              <Input value={draft.key || ""} onChange={(event) => update("key", event.target.value)} placeholder="ba_philosophy_slots" />
-              <p className="text-[10px] text-muted-foreground">Used only to identify this row in JSON.</p>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label>Display name</Label>
-            <Input value={draft.name || ""} onChange={(event) => update("name", event.target.value)} placeholder="Bachelor of Arts in Philosophy" />
-          </div>
-
-          <div className="space-y-2">
-            <Label>Value / answer detail</Label>
-            <div
-              ref={valueRef}
-              contentEditable
-              suppressContentEditableWarning
-              className="min-h-20 rounded border border-slate-200 bg-white px-3 py-2 text-sm leading-relaxed outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 [&_b]:font-bold"
-              onBlur={(event) => update("value", normalizeRichLine(event.currentTarget.innerHTML))}
-              onKeyDown={(event) => {
-                if (event.ctrlKey && event.key.toLowerCase() === "b") {
-                  event.preventDefault();
-                  document.execCommand("bold");
-                  update("value", normalizeRichLine(event.currentTarget.innerHTML));
-                }
-              }}
-              dangerouslySetInnerHTML={{ __html: renderMarkdownBoldHtml(draft.value || "") }}
-            />
-            <p className="text-[11px] text-muted-foreground">Select text and press Ctrl+B to bold or unbold.</p>
-          </div>
-
-          <div className="space-y-2">
-            <Label>Aliases, one per line</Label>
-            <Textarea
-              value={aliasesText(draft)}
-              onChange={(event) => update("aliases", toLines(event.target.value))}
-              className="min-h-28 font-mono text-xs"
-              placeholder={"ba philo\nbaphilo\nphilosophy"}
-            />
-          </div>
-        </div>
-        <div className="flex justify-end gap-2 border-t bg-gray-50 px-5 py-3">
-          <AdminTooltip title="Cancel" description="Discard changes and close modal" side="top">
-            <Button variant="outline" onClick={onClose}>Cancel</Button>
-          </AdminTooltip>
-          <AdminTooltip title="Save Child Row" description="Save modified child fields" side="top">
-            <Button onClick={save} className="bg-[#001C38] text-white hover:bg-[#032f5d]">Save child row</Button>
-          </AdminTooltip>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
-
-function ChildItemsEditor({
-  items,
-  disclaimer,
-  onItemsChange,
-  onDisclaimerChange,
-}: {
-  items: KnowledgeChildItem[];
-  disclaimer: string;
-  onItemsChange: (items: KnowledgeChildItem[]) => void;
-  onDisclaimerChange: (value: string) => void;
-}) {
-  const [editingIndex, setEditingIndex] = useState<number | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const currentItem = editingIndex === null ? null : (items[editingIndex] || null);
-
-  function openExisting(index: number) {
-    setEditingIndex(index);
-    setModalOpen(true);
-  }
-
-  function saveItem(item: KnowledgeChildItem) {
-    const next = [...items];
-    if (editingIndex !== null) next[editingIndex] = item;
-    onItemsChange(next);
-    setModalOpen(false);
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="rounded-md border border-blue-100 bg-blue-50 px-3 py-2 text-xs text-blue-800">
-        Child rows allow one parent answer to return the whole list, one matching row, or multiple matching rows. Admins can edit existing rows only; creation and deletion are developer-controlled.
-      </div>
-
-      <div className="space-y-2">
-        <Label>Shared note / disclaimer</Label>
-        <Textarea value={disclaimer} onChange={(event) => onDisclaimerChange(event.target.value)} className="min-h-20 text-sm" />
-      </div>
-
-      <div className="flex items-center justify-between">
-        <Label>Child rows ({items.length})</Label>
-      </div>
-
-      {items.length === 0 ? (
-        <div className="rounded-lg border-2 border-dashed py-10 text-center text-sm text-muted-foreground">
-          No child rows are configured for this record. Child rows are created by the developer to protect routing stability.
-        </div>
-      ) : (
-        <div className="max-h-80 space-y-2 overflow-y-auto rounded-lg border bg-slate-50 p-2">
-          {items.map((item, index) => (
-            <div key={`${item.key || item.name || "child"}-${index}`} className="rounded-lg border bg-white p-3 shadow-sm">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-700">{item.group || "GROUP"}</span>
-                    <p className="font-semibold text-sm text-slate-800">{item.name || item.text || "Untitled child row"}</p>
-                  </div>
-                  <p className="mt-1 text-sm text-slate-600" dangerouslySetInnerHTML={{ __html: renderMarkdownBoldHtml(item.value || item.text || "") }} />
-                  <p className="mt-1 text-[10px] text-muted-foreground">Aliases: {(item.aliases || []).join(", ") || "None"}</p>
-                </div>
-                <div className="flex shrink-0 gap-1">
-                  <AdminTooltip
-                    title="Edit Child Row"
-                    description="Modify group, aliases, and detailed answer values"
-                    side="left"
-                  >
-                    <Button type="button" size="sm" variant="outline" onClick={() => openExisting(index)}>
-                      <Pencil className="h-3.5 w-3.5" />
-                    </Button>
-                  </AdminTooltip>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <ChildItemEditorModal
-        item={currentItem}
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onSave={saveItem}
-      />
-    </div>
-  );
-}
 
 function KnowledgeEditor({
   record,
@@ -759,41 +621,34 @@ function KnowledgeEditor({
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [displayName, setDisplayName] = useState(record.displayName || "");
-  const [en, setEn] = useState(fromLines(record.responses.en));
-  const [ceb, setCeb] = useState(fromLines(record.responses.ceb));
-  const [subjectTerms, setSubjectTerms] = useState(fromLines(record.ownSubjectTerms ?? record.subjectTerms));
-  const [phrases, setPhrases] = useState(fromLines(record.phrases));
+  const [en, setEn] = useState<string[]>(record.responses?.en?.length ? record.responses.en : [""]);
+  const [ceb, setCeb] = useState<string[]>(record.responses?.ceb?.length ? record.responses.ceb : [""]);
   const [images, setImages] = useState<string[]>(record.images || []);
   const [mapRef, setMapRef] = useState(record.mapRef || "");
   const [hasMapEditor, setHasMapEditor] = useState(record.hasMap);
   const [pins, setPins] = useState<AdminPin[]>(normalizePins(record.pins));
   const [routes, setRoutes] = useState<AdminRoute[]>(normalizeRoutes(record.routes));
-  const [items, setItems] = useState<KnowledgeChildItem[]>(record.items || []);
-  const [itemDisclaimer, setItemDisclaimer] = useState(record.itemDisclaimer || "");
 
   useEffect(() => {
     setDisplayName(record.displayName || "");
-    setEn(fromLines(record.responses.en));
-    setCeb(fromLines(record.responses.ceb));
-    setSubjectTerms(fromLines(record.ownSubjectTerms ?? record.subjectTerms));
-    setPhrases(fromLines(record.phrases));
+    setEn(record.responses?.en?.length ? record.responses.en : [""]);
+    setCeb(record.responses?.ceb?.length ? record.responses.ceb : [""]);
     setImages(record.images || []);
     setMapRef(record.mapRef || "");
     setHasMapEditor(record.hasMap);
     setPins(normalizePins(record.pins));
     setRoutes(normalizeRoutes(record.routes));
-    setItems(record.items || []);
-    setItemDisclaimer(record.itemDisclaimer || "");
   }, [record]);
 
   const saveMutation = useMutation({
     mutationFn: async (): Promise<ApiResponse> => {
+      const cleanEn = en.map(normalizeRichBubble).filter((b) => b.trim().length > 0);
+      const cleanCeb = ceb.map(normalizeRichBubble).filter((b) => b.trim().length > 0);
+
       const errors = validateEditorDraft({
         displayName,
-        en,
-        ceb,
-        phrases,
-        subjectTerms,
+        en: cleanEn,
+        ceb: cleanCeb,
         images,
         hasMapEditor,
         pins,
@@ -809,14 +664,14 @@ function KnowledgeEditor({
         topic: record.topic,
         displayName: displayName.trim(),
         responses: {
-          en: toLines(en),
-          ceb: toLines(ceb),
+          en: cleanEn.length ? cleanEn : [""],
+          ceb: cleanCeb.length ? cleanCeb : [""],
         },
-        subjectTerms: toLines(subjectTerms),
-        phrases: toLines(phrases),
+        subjectTerms: record.ownSubjectTerms ?? record.subjectTerms ?? [],
+        phrases: record.phrases ?? [],
         images: images.map((url) => url.trim()).filter(Boolean),
-        items,
-        itemDisclaimer,
+        items: record.items ?? [],
+        itemDisclaimer: record.itemDisclaimer ?? "",
         mapRef,
       };
 
@@ -862,56 +717,25 @@ function KnowledgeEditor({
           <Tabs defaultValue="responses" className="w-full">
             <TabsList className="h-10 w-full justify-start gap-1 rounded-none border-b bg-gray-50 px-4">
               <TabsTrigger value="responses" className="text-xs">Responses</TabsTrigger>
-              <TabsTrigger value="children" className="text-xs">Child Rows</TabsTrigger>
-              <TabsTrigger value="examples" className="text-xs">Retrieval Terms</TabsTrigger>
               <TabsTrigger value="media" className="text-xs">Images</TabsTrigger>
               <TabsTrigger value="map" className="text-xs">Map & Pins</TabsTrigger>
-              <TabsTrigger value="developer" className="text-xs">Developer Details</TabsTrigger>
             </TabsList>
 
             <TabsContent value="responses" className="m-0 grid gap-4 p-4">
-              <div className="rounded-md border border-blue-100 bg-blue-50 px-3 py-2 text-xs text-blue-800">
-                <div className="flex items-center gap-2 font-medium">
-                  <ShieldCheck className="h-4 w-4" />
-                  Safe editing mode
-                </div>
-                <p className="mt-1">Edit only the admin label and answer content shown here. Routing fields are protected.</p>
-              </div>
-              <div className="space-y-2">
-                <Label>Display name</Label>
+              <div className="space-y-1.5">
+                <Label className="text-xs font-semibold">Display name</Label>
                 <Input value={displayName} onChange={(event) => setDisplayName(event.target.value)} />
                 <p className="text-[11px] text-muted-foreground">This label helps admins find the answer. It does not change chatbot routing.</p>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
-                <ResponseLinesEditor label="English response lines" value={en} onChange={setEn} />
-                <ResponseLinesEditor label="Cebuano/Bisaya response lines" value={ceb} onChange={setCeb} />
+                <ResponseBubblesEditor label="English Responses" bubbles={en} onChange={setEn} />
+                <ResponseBubblesEditor label="Cebuano/Bisaya Responses" bubbles={ceb} onChange={setCeb} />
               </div>
-            </TabsContent>
-
-            <TabsContent value="children" className="m-0 p-4">
-              <ChildItemsEditor
-                items={items}
-                disclaimer={itemDisclaimer}
-                onItemsChange={setItems}
-                onDisclaimerChange={setItemDisclaimer}
-              />
-            </TabsContent>
-
-            <TabsContent value="examples" className="m-0 space-y-4 p-4">
-              <div className="rounded-md border border-amber-100 bg-amber-50 px-3 py-2 text-xs text-amber-800">
-                Subject terms and example questions improve retrieval accuracy. Keep them specific to this answer so they do not overlap with unrelated topics.
-              </div>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label>Subject terms, one per line</Label>
-                  <Textarea value={subjectTerms} onChange={(event) => setSubjectTerms(event.target.value)} className="min-h-72 font-mono text-xs" />
-                  <p className="text-[11px] text-muted-foreground">These terms describe the subject, office, service, course, or document for this record.</p>
-                </div>
-                <div className="space-y-2">
-                  <Label>Example questions, one per line</Label>
-                  <Textarea value={phrases} onChange={(event) => setPhrases(event.target.value)} className="min-h-72 font-mono text-xs" />
-                  <p className="text-[11px] text-muted-foreground">These examples help retrieval match the right answer. Keep them natural and specific.</p>
-                </div>
+              <div className="mt-1 flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50/90 px-4 py-2.5 text-center text-xs text-slate-600 shadow-xs">
+                <span className="text-sm">💡</span>
+                <span>
+                  <strong>Tip:</strong> Each box represents <strong>1 chatbot bubble</strong>. Press <strong>Shift + Enter</strong> (or Enter) to add a line break inside the bubble. Click <strong>+ Add Bubble</strong> for another bubble. Select text and press <strong>Ctrl + B</strong> to bold.
+                </span>
               </div>
             </TabsContent>
 
@@ -993,29 +817,6 @@ function KnowledgeEditor({
               )}
               <div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-xs text-blue-800">
                 This editor saves pins and routes without exposing raw JSON. Older map data stays compatible.
-              </div>
-            </TabsContent>
-
-            <TabsContent value="developer" className="m-0 p-4">
-              <div className="rounded-lg border bg-slate-50 p-4">
-                <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
-                  <ShieldCheck className="h-4 w-4 text-slate-600" />
-                  Read-only routing details
-                </div>
-                <div className="grid gap-2 text-xs md:grid-cols-2">
-                  <div><span className="text-muted-foreground">File:</span> <span className="font-mono">{record.file}</span></div>
-                  <div><span className="text-muted-foreground">Path:</span> <span className="font-mono">{record.path.join(".")}</span></div>
-                  <div><span className="text-muted-foreground">Topic machine ID:</span> <span className="font-mono">{record.topic}</span></div>
-                  <div><span className="text-muted-foreground">Intent:</span> <span className="font-mono">{record.intent || "None"}</span></div>
-                  <div><span className="text-muted-foreground">Context topic:</span> <span className="font-mono">{record.contextTopic || "None"}</span></div>
-                  <div><span className="text-muted-foreground">Subject key:</span> <span className="font-mono">{record.subjectKey || "None"}</span></div>
-                  <div><span className="text-muted-foreground">Subject type:</span> <span className="font-mono">{record.subjectType || "None"}</span></div>
-                  <div><span className="text-muted-foreground">Subject terms:</span> <span>{record.subjectTerms.join(", ") || "None"}</span></div>
-                  <div><span className="text-muted-foreground">Map payload:</span> <span>{record.hasMap ? "Available" : "None"}</span></div>
-                  <div><span className="text-muted-foreground">Map reference:</span> <span className="font-mono">{record.mapRef || "None"}</span></div>
-                  <div><span className="text-muted-foreground">Images:</span> <span>{record.images.length}</span></div>
-                  <div><span className="text-muted-foreground">Example questions:</span> <span>{record.phrases.length}</span></div>
-                </div>
               </div>
             </TabsContent>
           </Tabs>
@@ -1207,8 +1008,8 @@ function CreateSubtopicDialog({
   const [intent, setIntent] = useState("");
   const [contextTopic, setContextTopic] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [en, setEn] = useState("");
-  const [ceb, setCeb] = useState("");
+  const [en, setEn] = useState<string[]>([""]);
+  const [ceb, setCeb] = useState<string[]>([""]);
   const [phrases, setPhrases] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [mapRef, setMapRef] = useState("");
@@ -1222,8 +1023,8 @@ function CreateSubtopicDialog({
     setIntent("");
     setContextTopic("");
     setDisplayName("");
-    setEn("");
-    setCeb("");
+    setEn([""]);
+    setCeb([""]);
     setPhrases("");
     setImages([]);
     setMapRef("");
@@ -1240,7 +1041,7 @@ function CreateSubtopicDialog({
     const result: string[] = [];
     const cleanTopic = topic.trim();
     const phraseLines = toLines(phrases);
-    const hasResponse = toLines(en).length > 0 || toLines(ceb).length > 0;
+    const hasResponse = en.some((b) => b.trim()) || ceb.some((b) => b.trim());
 
     if (!hasResponse) {
       result.push("Responses are empty. Add at least one English or Cebuano answer before saving.");
@@ -1284,16 +1085,18 @@ function CreateSubtopicDialog({
       if (contextTopic.trim() && !isMachineKey(contextTopic)) {
         return Promise.resolve({ success: false, message: "Context topic must use lowercase letters, numbers, and underscores only." });
       }
-      if (toLines(en).length === 0 && toLines(ceb).length === 0) {
-        return Promise.resolve({ success: false, message: "Add at least one English or Cebuano response line." });
+      const cleanEn = en.map(normalizeRichBubble).filter((b) => b.trim().length > 0);
+      const cleanCeb = ceb.map(normalizeRichBubble).filter((b) => b.trim().length > 0);
+      if (cleanEn.length === 0 && cleanCeb.length === 0) {
+        return Promise.resolve({ success: false, message: "Add at least one English or Cebuano response bubble." });
       }
       if (toLines(phrases).length === 0) {
         return Promise.resolve({ success: false, message: "Add at least one example question for retrieval accuracy." });
       }
       const mapErrors = validateEditorDraft({
         displayName: displayName || topic,
-        en,
-        ceb,
+        en: cleanEn,
+        ceb: cleanCeb,
         phrases,
         subjectTerms: "",
         images,
@@ -1310,7 +1113,7 @@ function CreateSubtopicDialog({
         displayName: displayName.trim(),
         intent: intent.trim(),
         contextTopic: contextTopic.trim(),
-        responses: { en: toLines(en), ceb: toLines(ceb) },
+        responses: { en: cleanEn.length ? cleanEn : [""], ceb: cleanCeb.length ? cleanCeb : [""] },
         phrases: toLines(phrases),
         images: images.map((url) => url.trim()).filter(Boolean),
         mapRef: mapRef.trim(),
@@ -1373,8 +1176,8 @@ function CreateSubtopicDialog({
                 </div>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
-                <ResponseLinesEditor label="English response lines" value={en} onChange={setEn} />
-                <ResponseLinesEditor label="Cebuano/Bisaya response lines" value={ceb} onChange={setCeb} />
+                <ResponseBubblesEditor label="English Responses" bubbles={en} onChange={setEn} />
+                <ResponseBubblesEditor label="Cebuano/Bisaya Responses" bubbles={ceb} onChange={setCeb} />
               </div>
             </TabsContent>
             <TabsContent value="retrieval" className="m-0 space-y-2">

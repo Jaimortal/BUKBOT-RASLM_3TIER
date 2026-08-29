@@ -16027,6 +16027,44 @@
       "building": "Pink Building",
       "floor": "Ground Floor",
       "room_number": "A1-1-02",
+      "coordinates": null,
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Scholarship and Financial Grants Unit is located on the pink building entrance, beside the academic mentoring unit.\nRoom Number A1-1-02"
+        ],
+        "ceb": [
+          "Ang Scholarship and Financial Grants Unit nahimutang sa entrance sa pink building, tapad sa academic mentoring unit.\nRoom Number A1-1-02"
+        ]
+      },
+      "pins": [],
+      "routes": [],
+      "imageUrls": []
+    },
+    "Academic Mentoring Unit": {
+      "type": "office",
+      "building": "Pink Building",
+      "floor": "Ground Floor",
+      "room_number": "A1-1-03",
+      "coordinates": null,
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Academic Mentoring Unit is located on the pink building entrance, beside the scholarship and financial grants unit.\nRoom Number A1-1-03"
+        ],
+        "ceb": [
+          "Ang Academic Mentoring Unit nahimutang sa entrance sa pink building, tapad sa scholarship and financial grants unit.\nRoom Number A1-1-03"
+        ]
+      },
+      "pins": [],
+      "routes": [],
+      "imageUrls": []
+    },
+    "A1-1-02": {
+      "type": "room",
+      "building": "Pink Building",
+      "floor": "Ground Floor",
+      "room_number": "A1-1-02",
       "coordinates": [
         882,
         635
@@ -16117,15 +16155,12 @@
         "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
       ]
     },
-    "Academic Mentoring Unit": {
-      "type": "office",
+    "A1-1-03": {
+      "type": "room",
       "building": "Pink Building",
       "floor": "Ground Floor",
       "room_number": "A1-1-03",
-      "coordinates": [
-        882,
-        635
-      ],
+      "coordinates": null,
       "map_id": "main_map",
       "responses": {
         "en": [
@@ -16144,17 +16179,17 @@
           ]
         },
         {
-          "name": "Academic Mentoring Unit",
+          "name": "Scholarship and Financial Grants Unit",
           "coordinates": [
-            528,
-            574
+            529,
+            565
           ],
           "floor": "GF"
         }
       ],
       "routes": [
         {
-          "name": "Start From here to Academic Mentoring Unit",
+          "name": "Start From here to Scholarship and Financial Grants Unit",
           "points": [
             [
               883,
@@ -16193,12 +16228,12 @@
               591
             ],
             [
-              534,
-              575
+              533,
+              564
             ],
             [
-              530,
-              573
+              529,
+              565
             ]
           ],
           "color": "#ff1744",

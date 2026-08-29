@@ -1,5 +1,710 @@
 [
   {
+    "id": "log_1788015380491_hmje30c",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: A1-1-03",
+    "targetTitle": "A1-1-03",
+    "targetId": "A1-1-03",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T14:56:20.491Z"
+  },
+  {
+    "id": "log_1788015243919_kmi0s7i",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: A1-1-02",
+    "targetTitle": "A1-1-02",
+    "targetId": "A1-1-02",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 3 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T14:54:03.919Z"
+  },
+  {
+    "id": "log_1788015242775_4v7xo15",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"scholarship and mentoring 3.webp\" (48.1 KB)",
+    "targetTitle": "scholarship and mentoring 3.webp",
+    "targetId": "0052af0e-71b0-4606-b0fa-1d92a6891a23",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"scholarship and mentoring 3.webp\" (48.1 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T14:54:02.775Z"
+  },
+  {
+    "id": "log_1788015240034_k4gklf5",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"scholarship and mentoring 2.webp\" (82.4 KB)",
+    "targetTitle": "scholarship and mentoring 2.webp",
+    "targetId": "30802112-2428-40cb-97c9-3ace4b3d8faa",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"scholarship and mentoring 2.webp\" (82.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T14:54:00.034Z"
+  },
+  {
+    "id": "log_1788015236642_3uvnqgz",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"scholarship and mentoring 1.webp\" (87.4 KB)",
+    "targetTitle": "scholarship and mentoring 1.webp",
+    "targetId": "a8628874-f618-400e-b747-95994678501e",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"scholarship and mentoring 1.webp\" (87.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T14:53:56.642Z"
+  },
+  {
+    "id": "log_1788015223295_p6japq7",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: A1-1-02",
+    "targetTitle": "A1-1-02",
+    "targetId": "A1-1-02",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T14:53:43.295Z"
+  },
+  {
+    "id": "log_1788006105154_021e7ms",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: FoodTech Laboratory First Floor",
+    "targetTitle": "FoodTech Laboratory First Floor",
+    "targetId": "FoodTech Laboratory First Floor",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T12:21:45.154Z"
+  },
+  {
+    "id": "log_1788006056816_pkfp3xj",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: food technology laboratory",
+    "targetTitle": "food technology laboratory",
+    "targetId": "food technology laboratory",
+    "changes": [
+      {
+        "field": "Location Details",
+        "changeType": "modified",
+        "details": "Updated location settings and metadata"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T12:20:56.816Z"
+  },
+  {
+    "id": "log_1788005960130_m4iwzve",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: food technology laboratory",
+    "targetTitle": "food technology laboratory",
+    "targetId": "food technology laboratory",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T12:19:20.130Z"
+  },
+  {
+    "id": "log_1788005872596_90bvsnt",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-2-04",
+    "targetTitle": "C-1-2-04",
+    "targetId": "C-1-2-04",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (4 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T12:17:52.596Z"
+  },
+  {
+    "id": "log_1788005842874_o2t0ebt",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-2-03",
+    "targetTitle": "C-1-2-03",
+    "targetId": "C-1-2-03",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (4 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T12:17:22.874Z"
+  },
+  {
+    "id": "log_1788005813875_h79lx22",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-2-02",
+    "targetTitle": "C-1-2-02",
+    "targetId": "C-1-2-02",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (4 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T12:16:53.875Z"
+  },
+  {
+    "id": "log_1788005753342_07x1lmn",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-2-01",
+    "targetTitle": "C-1-2-01",
+    "targetId": "C-1-2-01",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (4 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T12:15:53.342Z"
+  },
+  {
+    "id": "log_1788003754056_x9p952d",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-4-06",
+    "targetTitle": "C-1-4-06",
+    "targetId": "C-1-4-06",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:42:34.056Z"
+  },
+  {
+    "id": "log_1788003715098_t6n2ucy",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-4-05",
+    "targetTitle": "C-1-4-05",
+    "targetId": "C-1-4-05",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:41:55.098Z"
+  },
+  {
+    "id": "log_1788003603010_0e8iqw6",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-4-04",
+    "targetTitle": "C-1-4-04",
+    "targetId": "C-1-4-04",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (4 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:40:03.010Z"
+  },
+  {
+    "id": "log_1788003560789_px2hh8p",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: DXBU",
+    "targetTitle": "DXBU",
+    "targetId": "DXBU",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (4 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:39:20.789Z"
+  },
+  {
+    "id": "log_1788003432202_31u1iv5",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-4-02",
+    "targetTitle": "C-1-4-02",
+    "targetId": "C-1-4-02",
+    "changes": [
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (2 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:37:12.202Z"
+  },
+  {
+    "id": "log_1788003308388_93ax94z",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-4-02",
+    "targetTitle": "C-1-4-02",
+    "targetId": "C-1-4-02",
+    "changes": [
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:35:08.388Z"
+  },
+  {
+    "id": "log_1788003148783_pbsp8xr",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-4-02",
+    "targetTitle": "C-1-4-02",
+    "targetId": "C-1-4-02",
+    "changes": [
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (2 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:32:28.783Z"
+  },
+  {
+    "id": "log_1788003078791_twbc0pq",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: C-1-4-02",
+    "targetTitle": "C-1-4-02",
+    "targetId": "C-1-4-02",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (4 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (2 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T11:31:18.791Z"
+  },
+  {
+    "id": "log_1787996786837_rai569f",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: ID Validation Process",
+    "targetTitle": "ID Validation Process",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (3 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T09:46:26.837Z"
+  },
+  {
+    "id": "log_1787996694879_dcb5vnb",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: ID Validation Process",
+    "targetTitle": "ID Validation Process",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (3 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T09:44:54.879Z"
+  },
+  {
+    "id": "log_1787996600646_irrkad2",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: ID Validation Process",
+    "targetTitle": "ID Validation Process",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (3 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T09:43:20.646Z"
+  },
+  {
+    "id": "log_1787991009018_gz4lgev",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: ID Validation Process",
+    "targetTitle": "ID Validation Process",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated map pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated map routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T08:10:09.018Z"
+  },
+  {
+    "id": "log_1787990797995_j8fl5cd",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: ID Validation Day",
+    "targetTitle": "ID Validation Day",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (7 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (7 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T08:06:37.995Z"
+  },
+  {
+    "id": "log_1787990012540_9z01ozn",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: ID Validation Process",
+    "targetTitle": "ID Validation Process",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (3 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (3 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T07:53:32.540Z"
+  },
+  {
+    "id": "log_1787986889132_18pza9b",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: COR Validation Location",
+    "targetTitle": "COR Validation Location",
+    "targetId": "procedures/academic_transactions.json",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 2 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T07:01:29.132Z"
+  },
+  {
+    "id": "log_1787986884970_wfb9qan",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"registrar validation.webp\" (89.4 KB)",
+    "targetTitle": "registrar validation.webp",
+    "targetId": "8d11d4d8-9f05-46dc-8cc7-506e497bb7e0",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"registrar validation.webp\" (89.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T07:01:24.970Z"
+  },
+  {
+    "id": "log_1787986881657_hyjib13",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"Finance win 4.webp\" (56.9 KB)",
+    "targetTitle": "Finance win 4.webp",
+    "targetId": "57d98efc-e6e2-4a5e-877c-dfbc986f753a",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"Finance win 4.webp\" (56.9 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T07:01:21.657Z"
+  },
+  {
+    "id": "log_1787986664335_pg2d4uj",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: COR Validation Location",
+    "targetTitle": "COR Validation Location",
+    "targetId": "procedures/academic_transactions.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (2 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (2 line(s))"
+      },
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated map pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated map routes (2 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-29T06:57:44.335Z"
+  },
+  {
     "id": "log_1787829770268_j6yhb9g",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

@@ -3967,97 +3967,6 @@
         }
       ]
     },
-    "Food Technology Faculty Room": {
-      "type": "room",
-      "building": "New COT Building",
-      "floor": "Third Floor",
-      "coordinates": [
-        472,
-        793
-      ],
-      "map_id": "main_map",
-      "responses": {
-        "en": [
-          "The Food Technology Faculty Room is located on the third floor of the new College of Technology (COT) building. To assist with your navigation, a map is provided below."
-        ],
-        "ceb": [
-          "Ang Food Technology Faculty Room nahimutang sa third floor sa bag-ong College of Technology (COT) building. Aron matabangan ka sa pag-navigate, adunay gihatag nga mapa sa ubos."
-        ]
-      },
-      "pins": [
-        {
-          "name": "Food Technology Faculty Room - 3rd floor",
-          "coordinates": [
-            472,
-            793
-          ],
-          "floor": "3F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            864,
-            634
-          ],
-          "floor": "3F"
-        }
-      ],
-      "imageUrls": [],
-      "routes": [
-        {
-          "name": "You are here! to Food Technology Faculty Room",
-          "points": [
-            [
-              864,
-              634
-            ],
-            [
-              784,
-              635
-            ],
-            [
-              783,
-              672
-            ],
-            [
-              592,
-              677
-            ],
-            [
-              591,
-              697
-            ],
-            [
-              503,
-              700
-            ],
-            [
-              502,
-              727
-            ],
-            [
-              467,
-              726
-            ],
-            [
-              466,
-              743
-            ],
-            [
-              488,
-              741
-            ],
-            [
-              490,
-              793
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ]
-    },
     "Electronics Laboratories": {
       "type": "room",
       "building": "New COT Building",
@@ -4149,161 +4058,33 @@
         }
       ]
     },
+
     "C-1-4-02": {
       "type": "room",
       "building": "New COT Building",
       "floor": "Fourth Floor",
-      "coordinates": [
-        478,
-        757
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-4-02 is located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-4-02 nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-4-02 is located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-4-02 nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-4-02 - 4th floor",
-          "coordinates": [
-            478,
-            757
-          ],
-          "floor": "4F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "4F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            469,
-            721
-          ],
-          "pinType": "staircase"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            426,
-            722
-          ],
-          "pinType": "elevator"
-        }
+        {"name": "C-1-4-02 - 4th floor", "coordinates": [476, 849], "floor": "4F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "4F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-4-02 - 4th floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              482,
-              750
-            ],
-            [
-              481,
-              757
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
-        },
-        {
-          "name": "Alternative",
-          "points": [
-            [
-              590,
-              676
-            ],
-            [
-              565,
-              648
-            ],
-            [
-              451,
-              652
-            ],
-            [
-              453,
-              710
-            ],
-            [
-              413,
-              712
-            ],
-            [
-              413,
-              725
-            ],
-            [
-              428,
-              725
-            ],
-            [
-              430,
-              729
-            ],
-            [
-              455,
-              727
-            ]
-          ],
-          "color": "#ffea00",
-          "route_order": 2,
-          "route_label": "Route 2"
         }
       ]
     },
+
     "DXBU": {
       "type": "room",
       "building": "New COT Building",
@@ -4337,22 +4118,6 @@
             634
           ],
           "floor": "4F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            468,
-            724
-          ],
-          "pinType": "staircase"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            425,
-            727
-          ],
-          "pinType": "elevator"
         }
       ],
       "imageUrls": [],
@@ -4415,107 +4180,26 @@
         }
       ]
     },
+
     "C-1-4-04": {
       "type": "room",
       "building": "New COT Building",
       "floor": "Fourth Floor",
-      "coordinates": [
-        473,
-        800
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-4-04 is located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-4-04 nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-4-04 is located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-4-04 nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-4-04 - 4th floor",
-          "coordinates": [
-            473,
-            800
-          ],
-          "floor": "4F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "4F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            475,
-            722
-          ],
-          "pinType": "staircase"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            427,
-            723
-          ],
-          "pinType": "elevator"
-        }
+        {"name": "C-1-4-04 - 4th floor", "coordinates": [476, 849], "floor": "4F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "4F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-4-04 - 4th floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              482,
-              797
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
@@ -4526,87 +4210,21 @@
       "type": "room",
       "building": "New COT Building",
       "floor": "Fourth Floor",
-      "coordinates": [
-        477,
-        835
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-4-05 is located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-4-05 nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-4-05 is located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-4-05 nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-4-05 - 4th floor",
-          "coordinates": [
-            477,
-            835
-          ],
-          "floor": "4F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "4F"
-        }
+        {"name": "C-1-4-05 - 4th floor", "coordinates": [476, 849], "floor": "4F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "4F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-4-05 - 4th floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              480,
-              834
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
@@ -4617,91 +4235,21 @@
       "type": "laboratory",
       "building": "New COT Building",
       "floor": "Fourth Floor",
-      "coordinates": [
-        465,
-        855
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-4-06 is a laboratory located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-4-06 usa ka laboratoryo nga nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-4-06 is a laboratory located on the 4th floor of the New COT Building, in the electronic laboratories area. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-4-06 usa ka laboratoryo nga nahimutang sa 4th floor sa Bag-ong COT Building, sa lugar sa electronic laboratories. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-4-06 - 4th floor",
-          "coordinates": [
-            465,
-            855
-          ],
-          "floor": "4F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "4F"
-        }
+        {"name": "C-1-4-06 - 4th floor", "coordinates": [476, 849], "floor": "4F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "4F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-4-06 - 4th floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              482,
-              856
-            ],
-            [
-              467,
-              855
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
@@ -4712,103 +4260,21 @@
       "type": "laboratory",
       "building": "New COT Building",
       "floor": "Second Floor",
-      "coordinates": [
-        478,
-        754
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-2-01 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-2-01 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-2-01 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-2-01 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-2-01 - 2nd floor",
-          "coordinates": [
-            478,
-            754
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            475,
-            726
-          ],
-          "pinType": "elevator"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            422,
-            727
-          ],
-          "pinType": "staircase"
-        }
+        {"name": "C-1-2-01 - 2nd floor", "coordinates": [476, 849], "floor": "2F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "2F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-2-01 - 2nd floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              482,
-              754
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
@@ -4819,103 +4285,21 @@
       "type": "laboratory",
       "building": "New COT Building",
       "floor": "Second Floor",
-      "coordinates": [
-        478,
-        774
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-2-02 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-2-02 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-2-02 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-2-02 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-2-02 - 2nd floor",
-          "coordinates": [
-            478,
-            774
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            425,
-            725
-          ],
-          "pinType": "elevator"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            472,
-            724
-          ],
-          "pinType": "staircase"
-        }
+        {"name": "C-1-2-02 - 2nd floor", "coordinates": [476, 849], "floor": "2F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "2F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-2-02 - 2nd floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              483,
-              775
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
@@ -4926,103 +4310,21 @@
       "type": "laboratory",
       "building": "New COT Building",
       "floor": "Second Floor",
-      "coordinates": [
-        480,
-        815
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-2-03 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-2-03 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-2-03 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-2-03 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-2-03 - 2nd floor",
-          "coordinates": [
-            480,
-            815
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            426,
-            726
-          ],
-          "pinType": "elevator"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            474,
-            727
-          ],
-          "pinType": "staircase"
-        }
+        {"name": "C-1-2-03 - 2nd floor", "coordinates": [476, 849], "floor": "2F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "2F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-2-03 - 2nd floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              481,
-              810
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
@@ -5033,103 +4335,21 @@
       "type": "laboratory",
       "building": "New COT Building",
       "floor": "Second Floor",
-      "coordinates": [
-        480,
-        847
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "Room C-1-2-04 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang room C-1-2-04 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["Room C-1-2-04 is a food technology laboratory located on the 2nd floor of the New COT Building. A map is provided for your navigation."],
+        "ceb": ["Ang room C-1-2-04 usa ka food technology laboratory nga nahimutang sa 2nd floor sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "C-1-2-04 - 2nd floor",
-          "coordinates": [
-            480,
-            847
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            475,
-            724
-          ],
-          "pinType": "staircase"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            425,
-            726
-          ],
-          "pinType": "elevator"
-        }
+        {"name": "C-1-2-04 - 2nd floor", "coordinates": [476, 849], "floor": "2F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "2F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to C-1-2-04 - 2nd floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              468,
-              725
-            ],
-            [
-              467,
-              744
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              482,
-              847
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
@@ -5140,93 +4360,28 @@
       "type": "laboratory",
       "building": "New COT Building",
       "floor": "First Floor",
-      "coordinates": [
-        482,
-        795
-      ],
+      "coordinates": [476, 849],
       "map_id": "main_map",
       "responses": {
-        "en": [
-          "The Food Technology Laboratory on the 1st floor occupies the entire first floor of the New COT Building. A map is provided for your navigation."
-        ],
-        "ceb": [
-          "Ang Food Technology Laboratory sa 1st floor nakasakop sa tibuok unang palapag sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
-        ]
+        "en": ["The Food Technology Laboratory on the 1st floor occupies the entire first floor of the New COT Building. A map is provided for your navigation."],
+        "ceb": ["Ang Food Technology Laboratory sa 1st floor nakasakop sa tibuok unang palapag sa Bag-ong COT Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."]
       },
       "pins": [
-        {
-          "name": "FoodTech Laboratory - 1st floor",
-          "coordinates": [
-            482,
-            795
-          ],
-          "floor": "1F"
-        },
-        {
-          "name": "You are here!",
-          "coordinates": [
-            879,
-            637
-          ],
-          "floor": "1F"
-        }
+        {"name": "FoodTech Laboratory - 1st floor", "coordinates": [476, 849], "floor": "1F"},
+        {"name": "You are here!", "coordinates": [879, 637], "floor": "1F"}
       ],
       "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to FoodTech Laboratory - 1st floor",
-          "points": [
-            [
-              879,
-              637
-            ],
-            [
-              788,
-              638
-            ],
-            [
-              785,
-              672
-            ],
-            [
-              591,
-              676
-            ],
-            [
-              590,
-              697
-            ],
-            [
-              506,
-              698
-            ],
-            [
-              508,
-              723
-            ],
-            [
-              482,
-              723
-            ],
-            [
-              482,
-              735
-            ],
-            [
-              482,
-              743
-            ],
-            [
-              483,
-              792
-            ]
-          ],
+          "points": [[879,637],[788,638],[785,672],[591,676],[590,697],[506,698],[508,723],[468,725],[467,744],[482,743],[476,849]],
           "color": "#ff1744",
           "route_order": 1,
           "route_label": "Route 1"
         }
       ]
     },
+
     "Theater": {
       "type": "room",
       "building": "Finance Building",
@@ -8508,7 +7663,7 @@
           "floor": "2F"
         },
         {
-          "name": "Food Tech Laboratory",
+          "name": "Food Tech Laboratory - C1-2-01",
           "coordinates": [
             482,
             756
@@ -16020,196 +15175,6 @@
           "route_order": 1,
           "route_label": "Route 1"
         }
-      ]
-    },
-    "Scholarship and Financial Grants Unit": {
-      "type": "office",
-      "building": "Pink Building",
-      "floor": "Ground Floor",
-      "room_number": "A1-1-02",
-      "coordinates": [
-        882,
-        635
-      ],
-      "map_id": "main_map",
-      "responses": {
-        "en": [
-          "Room A1-1-02 is the Scholarship and Financial Grants Unit, located on the pink building entrance, beside the academic mentoring unit."
-        ],
-        "ceb": [
-          "Ang Room A1-1-02 mao ang Scholarship and Financial Grants Unit, nahimutang sa entrance sa pink building, tapad sa academic mentoring unit."
-        ]
-      },
-      "pins": [
-        {
-          "name": "Start From here",
-          "coordinates": [
-            882,
-            635
-          ]
-        },
-        {
-          "name": "Scholarship and Financial Grants Unit",
-          "coordinates": [
-            529,
-            565
-          ],
-          "floor": "GF"
-        }
-      ],
-      "routes": [
-        {
-          "name": "Start From here to Scholarship and Financial Grants Unit",
-          "points": [
-            [
-              883,
-              637
-            ],
-            [
-              781,
-              635
-            ],
-            [
-              784,
-              673
-            ],
-            [
-              590,
-              677
-            ],
-            [
-              572,
-              664
-            ],
-            [
-              570,
-              646
-            ],
-            [
-              545,
-              647
-            ],
-            [
-              544,
-              600
-            ],
-            [
-              534,
-              591
-            ],
-            [
-              533,
-              564
-            ],
-            [
-              529,
-              565
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ],
-      "imageUrls": [
-        "/api/images/a8628874-f618-400e-b747-95994678501e",
-        "/api/images/30802112-2428-40cb-97c9-3ace4b3d8faa",
-        "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
-      ]
-    },
-    "Academic Mentoring Unit": {
-      "type": "office",
-      "building": "Pink Building",
-      "floor": "Ground Floor",
-      "room_number": "A1-1-03",
-      "coordinates": [
-        882,
-        635
-      ],
-      "map_id": "main_map",
-      "responses": {
-        "en": [
-          "Room A1-1-03 is the Academic Mentoring Unit, located on the pink building entrance, beside the scholarship and financial grants unit."
-        ],
-        "ceb": [
-          "Ang Room A1-1-03 mao ang Academic Mentoring Unit, nahimutang sa entrance sa pink building, tapad sa scholarship and financial grants unit."
-        ]
-      },
-      "pins": [
-        {
-          "name": "Start From here",
-          "coordinates": [
-            882,
-            635
-          ]
-        },
-        {
-          "name": "Academic Mentoring Unit",
-          "coordinates": [
-            528,
-            574
-          ],
-          "floor": "GF"
-        }
-      ],
-      "routes": [
-        {
-          "name": "Start From here to Academic Mentoring Unit",
-          "points": [
-            [
-              883,
-              637
-            ],
-            [
-              781,
-              635
-            ],
-            [
-              784,
-              673
-            ],
-            [
-              590,
-              677
-            ],
-            [
-              572,
-              664
-            ],
-            [
-              570,
-              646
-            ],
-            [
-              545,
-              647
-            ],
-            [
-              544,
-              600
-            ],
-            [
-              534,
-              591
-            ],
-            [
-              534,
-              575
-            ],
-            [
-              530,
-              573
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ],
-      "imageUrls": [
-        "/api/images/a8628874-f618-400e-b747-95994678501e",
-        "/api/images/30802112-2428-40cb-97c9-3ace4b3d8faa",
-        "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
       ]
     }
   }

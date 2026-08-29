@@ -4713,8 +4713,8 @@
       "building": "New COT Building",
       "floor": "Second Floor",
       "coordinates": [
-        478,
-        754
+        476,
+        849
       ],
       "map_id": "main_map",
       "responses": {
@@ -4729,8 +4729,8 @@
         {
           "name": "C-1-2-01 - 2nd floor",
           "coordinates": [
-            478,
-            754
+            476,
+            849
           ],
           "floor": "2F"
         },
@@ -4741,22 +4741,6 @@
             637
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            475,
-            726
-          ],
-          "pinType": "elevator"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            422,
-            727
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
@@ -4805,8 +4789,8 @@
               743
             ],
             [
-              482,
-              754
+              476,
+              849
             ]
           ],
           "color": "#ff1744",
@@ -4820,8 +4804,8 @@
       "building": "New COT Building",
       "floor": "Second Floor",
       "coordinates": [
-        478,
-        774
+        476,
+        849
       ],
       "map_id": "main_map",
       "responses": {
@@ -4836,8 +4820,8 @@
         {
           "name": "C-1-2-02 - 2nd floor",
           "coordinates": [
-            478,
-            774
+            476,
+            849
           ],
           "floor": "2F"
         },
@@ -4848,22 +4832,6 @@
             637
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            425,
-            725
-          ],
-          "pinType": "elevator"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            472,
-            724
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
@@ -4912,8 +4880,8 @@
               743
             ],
             [
-              483,
-              775
+              476,
+              849
             ]
           ],
           "color": "#ff1744",
@@ -4927,8 +4895,8 @@
       "building": "New COT Building",
       "floor": "Second Floor",
       "coordinates": [
-        480,
-        815
+        476,
+        849
       ],
       "map_id": "main_map",
       "responses": {
@@ -4943,8 +4911,8 @@
         {
           "name": "C-1-2-03 - 2nd floor",
           "coordinates": [
-            480,
-            815
+            476,
+            849
           ],
           "floor": "2F"
         },
@@ -4955,22 +4923,6 @@
             637
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            426,
-            726
-          ],
-          "pinType": "elevator"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            474,
-            727
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
@@ -5019,8 +4971,8 @@
               743
             ],
             [
-              481,
-              810
+              476,
+              849
             ]
           ],
           "color": "#ff1744",
@@ -5034,8 +4986,8 @@
       "building": "New COT Building",
       "floor": "Second Floor",
       "coordinates": [
-        480,
-        847
+        476,
+        849
       ],
       "map_id": "main_map",
       "responses": {
@@ -5050,8 +5002,8 @@
         {
           "name": "C-1-2-04 - 2nd floor",
           "coordinates": [
-            480,
-            847
+            476,
+            849
           ],
           "floor": "2F"
         },
@@ -5062,22 +5014,6 @@
             637
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            475,
-            724
-          ],
-          "pinType": "staircase"
-        },
-        {
-          "name": "Elevator",
-          "coordinates": [
-            425,
-            726
-          ],
-          "pinType": "elevator"
         }
       ],
       "imageUrls": [],
@@ -5126,8 +5062,8 @@
               743
             ],
             [
-              482,
-              847
+              476,
+              849
             ]
           ],
           "color": "#ff1744",
@@ -5141,8 +5077,8 @@
       "building": "New COT Building",
       "floor": "First Floor",
       "coordinates": [
-        482,
-        795
+        476,
+        849
       ],
       "map_id": "main_map",
       "responses": {
@@ -5157,8 +5093,8 @@
         {
           "name": "FoodTech Laboratory - 1st floor",
           "coordinates": [
-            482,
-            795
+            476,
+            849
           ],
           "floor": "1F"
         },
@@ -5205,20 +5141,20 @@
               723
             ],
             [
-              482,
-              723
+              468,
+              725
             ],
             [
-              482,
-              735
+              467,
+              744
             ],
             [
               482,
               743
             ],
             [
-              483,
-              792
+              476,
+              849
             ]
           ],
           "color": "#ff1744",
@@ -8508,7 +8444,7 @@
           "floor": "2F"
         },
         {
-          "name": "Food Tech Laboratory",
+          "name": "Food Tech Laboratory - C1-2-01",
           "coordinates": [
             482,
             756
@@ -16020,196 +15956,6 @@
           "route_order": 1,
           "route_label": "Route 1"
         }
-      ]
-    },
-    "Scholarship and Financial Grants Unit": {
-      "type": "office",
-      "building": "Pink Building",
-      "floor": "Ground Floor",
-      "room_number": "A1-1-02",
-      "coordinates": [
-        882,
-        635
-      ],
-      "map_id": "main_map",
-      "responses": {
-        "en": [
-          "Room A1-1-02 is the Scholarship and Financial Grants Unit, located on the pink building entrance, beside the academic mentoring unit."
-        ],
-        "ceb": [
-          "Ang Room A1-1-02 mao ang Scholarship and Financial Grants Unit, nahimutang sa entrance sa pink building, tapad sa academic mentoring unit."
-        ]
-      },
-      "pins": [
-        {
-          "name": "Start From here",
-          "coordinates": [
-            882,
-            635
-          ]
-        },
-        {
-          "name": "Scholarship and Financial Grants Unit",
-          "coordinates": [
-            529,
-            565
-          ],
-          "floor": "GF"
-        }
-      ],
-      "routes": [
-        {
-          "name": "Start From here to Scholarship and Financial Grants Unit",
-          "points": [
-            [
-              883,
-              637
-            ],
-            [
-              781,
-              635
-            ],
-            [
-              784,
-              673
-            ],
-            [
-              590,
-              677
-            ],
-            [
-              572,
-              664
-            ],
-            [
-              570,
-              646
-            ],
-            [
-              545,
-              647
-            ],
-            [
-              544,
-              600
-            ],
-            [
-              534,
-              591
-            ],
-            [
-              533,
-              564
-            ],
-            [
-              529,
-              565
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ],
-      "imageUrls": [
-        "/api/images/a8628874-f618-400e-b747-95994678501e",
-        "/api/images/30802112-2428-40cb-97c9-3ace4b3d8faa",
-        "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
-      ]
-    },
-    "Academic Mentoring Unit": {
-      "type": "office",
-      "building": "Pink Building",
-      "floor": "Ground Floor",
-      "room_number": "A1-1-03",
-      "coordinates": [
-        882,
-        635
-      ],
-      "map_id": "main_map",
-      "responses": {
-        "en": [
-          "Room A1-1-03 is the Academic Mentoring Unit, located on the pink building entrance, beside the scholarship and financial grants unit."
-        ],
-        "ceb": [
-          "Ang Room A1-1-03 mao ang Academic Mentoring Unit, nahimutang sa entrance sa pink building, tapad sa scholarship and financial grants unit."
-        ]
-      },
-      "pins": [
-        {
-          "name": "Start From here",
-          "coordinates": [
-            882,
-            635
-          ]
-        },
-        {
-          "name": "Academic Mentoring Unit",
-          "coordinates": [
-            528,
-            574
-          ],
-          "floor": "GF"
-        }
-      ],
-      "routes": [
-        {
-          "name": "Start From here to Academic Mentoring Unit",
-          "points": [
-            [
-              883,
-              637
-            ],
-            [
-              781,
-              635
-            ],
-            [
-              784,
-              673
-            ],
-            [
-              590,
-              677
-            ],
-            [
-              572,
-              664
-            ],
-            [
-              570,
-              646
-            ],
-            [
-              545,
-              647
-            ],
-            [
-              544,
-              600
-            ],
-            [
-              534,
-              591
-            ],
-            [
-              534,
-              575
-            ],
-            [
-              530,
-              573
-            ]
-          ],
-          "color": "#ff1744",
-          "route_order": 1,
-          "route_label": "Route 1"
-        }
-      ],
-      "imageUrls": [
-        "/api/images/a8628874-f618-400e-b747-95994678501e",
-        "/api/images/30802112-2428-40cb-97c9-3ace4b3d8faa",
-        "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
       ]
     }
   }

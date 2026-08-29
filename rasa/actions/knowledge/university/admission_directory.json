@@ -251,6 +251,44 @@
           "display_name": "Contact Scholarship Unit"
         },
         {
+          "topic": "contact_dormitory_office",
+          "responses": {
+            "en": [
+              "Need to contact the BukSU Housing and Dormitory Services?",
+              "For inquiries regarding on-campus dormitories (Mahogany, Rubia, and Kilala dorms), you can reach out via:",
+              "🏢 Office: Office of Student Services (OSS) / Housing Management Office, Ground Floor, CPAG Building",
+              "📞 BukSU Main Line: (088) 813-5661 to 5663",
+              "✉️ Email: info@buksu.edu.ph",
+              "You can also visit the dormitory manager or resident assistants on-site at the respective dormitory building."
+            ],
+            "ceb": [
+              "Gusto makontak ang BukSU Housing and Dormitory Services?",
+              "Alang sa mga pangutana bahin sa mga dormitoryo (Mahogany, Rubia, ug Kilala dorms), mahimo kang mokontak pinaagi sa:",
+              "🏢 Opisina: Office of Student Services (OSS) / Housing Management Office, Ground Floor, CPAG Building",
+              "📞 BukSU Main Line: (088) 813-5661 to 5663",
+              "✉️ Email: info@buksu.edu.ph",
+              "Mahimo usab nimo bisitahon ang dormitory manager o resident assistants didto mismo sa dormitory building."
+            ]
+          },
+          "intent": "contact_dormitory_office",
+          "context_topic": "contact",
+          "metadata": {
+            "phrases": [
+              "contact dormitory office",
+              "what is the contact number of the dormitory office",
+              "how to contact dormitory",
+              "contact number of dormitory",
+              "dormitory office contact details",
+              "unsa ang contact number sa dormitory office",
+              "unsaon pag contact sa dormitory office",
+              "contact number sa dorm",
+              "dormitory contact number",
+              "dorm contact info"
+            ]
+          },
+          "display_name": "Contact Dormitory Office"
+        },
+        {
           "topic": "buksu_admission_facebook_page",
           "responses": {
             "en": [

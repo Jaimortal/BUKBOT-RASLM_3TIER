@@ -50,11 +50,11 @@
               "• Click on **Admission**",
               "• Click **Show Exam Result** then proceed to enrollment",
               "• Click **Apply Enrollment**",
-              "- **Campus Selection**: Select *Main Campus*",
-              "- **Course Selection**: Select your *Preferred Course*",
+              "- **Campus Selection**: Select **Main Campus**",
+              "- **Course Selection**: Select your **Preferred Course**",
               "- **Documentary Requirements**: Scan and upload the documentary requirements as specified in Step 1",
               "*(NOTE: All documents uploaded as part of the admission process must be duly marked with a \"RECEIVED\" stamp by the University Registrar's Office)*",
-              "- **Learning Modality Preference**: Select your *Preferred Learning Modality*",
+              "- **Learning Modality Preference**: Select your **Preferred Learning Modality**",
               "- **Academic Information**: Fill in the necessary information",
               "Step 3: Approval of Enrollment Application",
               "Wait for the evaluator's approval of your application. Once your application is approved, download your Certificate of Registration (COR) through https://admissions.buksu.edu.ph",
@@ -164,6 +164,117 @@
             "/api/images/5fbc94fd-d9a6-4587-9f46-024c3ea7f562",
             "/api/images/bd0b40cd-01b1-4393-8e86-d645c1d9e8e1",
             "/api/images/193eb88e-a5d4-4ba9-b2ed-aa0b064c798c"
+          ],
+          "items": []
+        },
+        {
+          "topic": "enrollment_where_to_start",
+          "responses": {
+            "en": [
+              "Welcome! Don't worry — let me walk you through the full enrollment journey step by step. Here's what you need to do as an **incoming freshman or transferee** at BukSU:\n\n**Step 1: Pass the BukSU College Admission Test (BukSU-CAT)**\nBefore you can enroll, you must first take and pass the BukSU entrance examination. You can apply for the CAT at https://admissions.buksu.edu.ph.\n\n**Step 2: Check your Exam Result**\nOnce the results are released, log in to the same portal to check your score and admission status.\n\n**Step 3: Apply for Enrollment Online**\nIf you passed, proceed to your online enrollment application:\n• Go to https://admissions.buksu.edu.ph\n• Click **Admission → Show Exam Result**, then click **Apply Enrollment**\n• Select your **Campus**, **Preferred Course**, and upload your **Documentary Requirements**\n\n**Step 4: Wait for Approval**\nWait for the evaluator's approval. Once approved, download your **Certificate of Registration (COR)**.\n\n**Step 5: Validate your COR**\nGo to **Window 7** at the Finance Building to get your COR validated.\n\n**Step 6: Pay your Tuition**\nProceed to the **Cashier's Office (Window 3)** at the Finance Building to settle your fees.\n\nYou can also ask me about any specific step above — I'm here to help!"
+            ],
+            "ceb": [
+              "Maayong pag-abot! Ayaw kabalaka — ipasubay ko ikaw sa tibuok proseso sa enrollment. Mao kini ang kinahanglan nimong buhaton bilang **incoming freshman o transferee** sa BukSU:\n\n**Step 1: Pasar sa BukSU College Admission Test (BukSU-CAT)**\nSa wala pa ka maka-enroll, kinahanglan una nimong kuhaon ug mapasaran ang entrance exam sa BukSU. Makapy-apil ka pinaagi sa https://admissions.buksu.edu.ph.\n\n**Step 2: Tan-awon ang Imong Resulta sa Exam**\nKung na-release na ang resulta, log in sa mao gihapon nga portal aron makita ang imong score ug admission status.\n\n**Step 3: Mag-apply og Enrollment Online**\nKung nakapasar ka, padayon sa imong online enrollment application:\n• Adto sa https://admissions.buksu.edu.ph\n• I-click ang **Admission → Show Exam Result**, dayon i-click ang **Apply Enrollment**\n• Pilia ang imong **Campus**, **Preferred Course**, ug i-upload ang imong **Documentary Requirements**\n\n**Step 4: Hulaton ang Approval**\nHulaton ang approval sa evaluator. Kung ma-approve na, i-download ang imong **Certificate of Registration (COR)**.\n\n**Step 5: I-validate ang Imong COR**\nAdto sa **Window 7** sa Finance Building aron ma-validate ang imong COR.\n\n**Step 6: Bayad sa Tuition**\nMoadto sa **Cashier's Office (Window 3)** sa Finance Building aron bayaran ang imong fees.\n\nMahimo ka usab mangutana bahin sa bisan unsang specific nga lakang sa ibabaw — naa ko dinhi para matabangan ka!"
+            ]
+          },
+          "intent": "enrollment_where_to_start",
+          "context_topic": "enrollment",
+          "metadata": {
+            "phrases": [
+              "i want to enroll but i don't know where to start",
+              "i want to enroll but dont know where to start",
+              "i want to enroll but i don't know how to start",
+              "i want to enroll but i don't know what to do",
+              "i want to enroll but i dont know what to do",
+              "i want to enroll can you help me",
+              "i want to enroll but i'm confused",
+              "i want to enroll but im confused",
+              "i want to enroll but i don't know the process",
+              "where do i start for enrollment",
+              "how do i start enrolling",
+              "how do i begin the enrollment process",
+              "i need help starting enrollment",
+              "can you guide me through enrollment",
+              "guide me through the enrollment process",
+              "i'm new here and i want to enroll",
+              "im new here and i want to enroll",
+              "i'm a freshman and i don't know how to enroll",
+              "i'm an incoming student and i want to enroll",
+              "incoming student enrollment guide",
+              "freshman enrollment guide",
+              "how to start the enrollment process",
+              "start of enrollment process",
+              "beginning of enrollment",
+              "first step to enroll",
+              "first step in enrollment",
+              "what is the first step to enroll",
+              "what is the very first thing i need to do to enroll",
+              "i don't know how to enroll in buksu",
+              "i dont know how to enroll in buksu",
+              "i'm lost about enrollment",
+              "im lost about enrollment",
+              "help me start my enrollment",
+              "tabangi ko magsugod sa enrollment",
+              "dili ko kahibaw asa magsugod og enroll",
+              "dili ko kabalo unsaon pag enroll",
+              "dili ko mahibaw-an asa magsugod sa enrollment",
+              "gusto ko mag enroll pero dili ko kabalo asa magsugod",
+              "gusto ko mag enroll pero wala ko kabalo unsaon",
+              "unsaon nako pagsugod sa enrollment",
+              "asa ko magsugod sa enrollment",
+              "nganong dili ko makasugod sa enrollment",
+              "palihog gabii ko sa enrollment",
+              "palihog tabangi ko para sa enrollment",
+              "enrollment guide para sa mga bag-ong estudyante",
+              "unsa ang una nga buhaton para mag enroll",
+              "what should i do first to enroll at buksu",
+              "complete guide to enrolling at buksu",
+              "full enrollment process for freshmen"
+            ],
+            "strong_keywords": [
+              "enroll",
+              "enrollment",
+              "start",
+              "where to start",
+              "how to start",
+              "don't know",
+              "guide",
+              "freshman",
+              "incoming"
+            ],
+            "weak_keywords": [
+              "help",
+              "process",
+              "steps",
+              "confused",
+              "new",
+              "first"
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "BukSU-CAT Exam Steps",
+              "payload": "/direct_intent{\"intent\":\"take_exam\"}"
+            },
+            {
+              "label": "Freshman Requirements",
+              "payload": "/direct_intent{\"intent\":\"freshman_enrollment_process\"}"
+            },
+            {
+              "label": "Full Enrollment Process",
+              "payload": "/direct_intent{\"intent\":\"enrollment_general_process\"}"
+            },
+            {
+              "label": "COR Validation",
+              "payload": "/direct_intent{\"intent\":\"cor_validation_process\"}"
+            }
+          ],
+          "display_name": "Enrollment - Where to Start",
+          "subject_terms": [
+            "enrollment guide",
+            "freshman enrollment",
+            "where to start enrollment",
+            "enrollment process overview"
           ],
           "items": []
         },
@@ -349,11 +460,13 @@
           "responses": {
             "en": [
               "Make sure you pass the entrance examination, and prepare these requirements. It should be 2 envelopes: Envelope 1 is the Registrar's Copy, and Envelope 2 is the Student's Copy.\n\n1. Program Acceptance Slip\n2. Report Card\n3. Good Moral\n4. Honorable Dismissal (for Transferees only)\n5. Transcript of Records (for Transferees only)\n6. Subject Equivalency Form (for Transferees only)\n7. Photocopy of PSA Birth Certificate\n8. Photocopy of Marriage Contract (if Married)\n9. BukSU-CAT Report of Rating\n10. Photocopy of Medical Certificate",
-              "Requirements to be submitted to the department/program:\n\n1. Medical Certificate (The Medical Certificate must be issued by a government Physician and must state that the student is physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED GENERAL PARENTAL/GUARDIAN CONSENT FORM (Original Copy)\n\nDownload the form here: https://buksu.edu.ph/downloadable-forms/"
+              "Requirements to be submitted to the department/program:\n\n1. Medical Certificate (The Medical Certificate must be issued by a government Physician and must state that the student is physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED GENERAL PARENTAL/GUARDIAN CONSENT FORM (Original Copy)\n\nDownload the form here: https://buksu.edu.ph/downloadable-forms/",
+              "⚠️ **PROGRAM-SPECIFIC ADVISORY (e.g., BSIT, Nursing, BSBA, Education, etc.):**\nWhile the documents above are the general institutional enrollment requirements for BukSU, specific programs (such as BSIT, Nursing, Accountancy, Education, etc.) may have additional department-level qualifying cutoffs, interview schedules, skill assessments, or program-specific medical guidelines.\n\n📌 For program-specific announcements, qualifying updates, and interview dates for your chosen course, please visit your official College / Department Facebook Page or check https://admissions.buksu.edu.ph/courses."
             ],
             "ceb": [
               "Siguroha nga nakapasar ka sa entrance examination, ug i-andam kining mga requirements. Kinahanglan kini og 2 ka envelopes: Envelope 1 para sa Registrar's Copy, ug Envelope 2 para sa Student's Copy.\n\n1. Program Acceptance Slip\n2. Report Card\n3. Good Moral\n4. Honorable Dismissal (para sa Transferees lamang)\n5. Transcript of Records (para sa Transferees lamang)\n6. Subject Equivalency Form (para sa Transferees lamang)\n7. Photocopy sa PSA Birth Certificate\n8. Photocopy sa Marriage Contract (kung Minyo)\n9. BukSU-CAT Report of Rating\n10. Photocopy sa Medical Certificate",
-              "Requirements nga kinahanglan i-submit sa department/program:\n\n1. Medical Certificate (Ang Medical Certificate kinahanglan issued gikan sa government Physician ug nagpamatuod nga physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED GENERAL PARENTAL/GUARDIAN CONSENT FORM (Original Copy)\n\nI-download ang form diri: https://buksu.edu.ph/downloadable-forms/"
+              "Requirements nga kinahanglan i-submit sa department/program:\n\n1. Medical Certificate (Ang Medical Certificate kinahanglan issued gikan sa government Physician ug nagpamatuod nga physically fit for \"OFF-CAMPUS AND IN-CAMPUS ACTIVITY\"). (Original Copy)\n2. NOTARIZED GENERAL PARENTAL/GUARDIAN CONSENT FORM (Original Copy)\n\nI-download ang form diri: https://buksu.edu.ph/downloadable-forms/",
+              "⚠️ **PAHINUMDOM PARA SA MGA ESPESIPIKONG KURSO (e.g., BSIT, Nursing, BSBA, Education, ubp.):**\nBisan kini ang mga kinatibuk-ang documentary requirements sa unibersidad, ang mga espesipikong kurso mahimong adunay dugang nga department qualifying exams, interview schedules, cut-off rating, o medical guidelines.\n\n📌 Para sa espesipikong updates sa inyong kurso, palihug bisitaha ang opisyal nga Facebook Page sa inyong College/Department o tan-awa sa https://admissions.buksu.edu.ph/courses."
             ]
           },
           "images": [],
@@ -1150,12 +1263,12 @@
           "topic": "student_fees",
           "responses": {
             "en": [
-              "Students are required to pay for laboratory, ID, and miscellaneous fees.**Tuition is free at Bukidnon State University depending on the program you are enrolled in.**",
+              "Students are required to pay for laboratory, ID, and miscellaneous fees. **Tuition is free at Bukidnon State University depending on the program you are enrolled in.**",
               "However, some courses may have additional charges for laboratory equipment and required textbooks. Your college department may provide some instructions on how you pay for these fees, so it is recommended to check with them for more details.",
               "**But you can also ask the accounting office, on the Finance building since they can give you more information about the fees and payment process.**"
             ],
             "ceb": [
-              "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees.**Libre ang tuition sa Bukidnon State University depende sa programa nga imong gi-enrollan.**",
+              "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees. **Libre ang tuition sa Bukidnon State University depende sa programa nga imong gi-enrollan.**",
               "Apan, ang uban nga mga kurso posibleng adunay dugang nga bayad para sa laboratory equipment ug required textbooks. Ang imong college department posibleng maghatag og mga instruksyon kung unsaon pagbayad sa mga fees, mao nga girekomenda nga mag-check ka sa ila para sa mas klaro nga detalye.",
               "**Pero pwede pud nimo adtuhon ang accounting office, sa Finance building kay sila makahatag og dugang impormasyon bahin sa mga fees ug proseso sa pagbayad.**"
             ]
@@ -1790,51 +1903,6 @@
         ]
       },
       "display_name": "Process"
-    },
-    {
-      "topic": "cor_validation_location",
-      "responses": {
-        "en": [
-          "Go to Window 7 at the Finance Building to validate your COR.",
-          "After that, proceed to the Registrar to seal and confirm validation."
-        ],
-        "ceb": [
-          "Adto sa Window 7 sa Finance Building aron ma-validate ang COR.",
-          "Dayon adto sa Registrar aron ma-seal ug makumpirma."
-        ]
-      },
-      "intent": "cor_validation_location",
-      "context_topic": "COR Validation location",
-      "metadata": {
-        "phrases": [
-          "asa nako ipa validate ang COR",
-          "asa ko moadto para ma validate ang COR",
-          "asa dapit ang COR validation",
-          "asa ang lugar para sa COR validation",
-          "asa man i validate ang akong COR",
-          "pwede nimo ko tudluan asa i validate ang COR",
-          "asa ko moadto para magpa validate sa COR",
-          "asa dapit ang window 7",
-          "where do i validate my cor",
-          "where can I validate my COR",
-          "where should I go to validate my COR"
-        ],
-        "strong_keywords": [
-          "validate",
-          "moadto",
-          "dapit",
-          "validation",
-          "lugar"
-        ],
-        "weak_keywords": [
-          "akong",
-          "pwede",
-          "nimo",
-          "tudluan",
-          "magpa"
-        ]
-      },
-      "display_name": "COR Validation Location"
     },
     {
       "topic": "request_tor_process",
