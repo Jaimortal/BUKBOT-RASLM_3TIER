@@ -552,6 +552,86 @@
           "display_name": "Freshman Enrollment Process"
         },
         {
+          "topic": "enrollment_online_system",
+          "responses": {
+            "en": [
+              "The official online portal used for BukSU admissions and enrollment application is:\n\n🌐 **BukSU Admissions Portal**: https://admissions.buksu.edu.ph\n\n**Through this portal, applicants and incoming students can:**\n• Apply for the BukSU College Admission Test (BukSU-CAT)\n• Check entrance examination results and admission status\n• Submit online enrollment applications and upload required documents\n• Download the approved Certificate of Registration (COR)\n\n**For officially enrolled / continuing students:**\n🎓 **SIAS Portal** (http://sias.buksu.edu.ph) is used to access study loads, enrolled subjects, and grades."
+            ],
+            "ceb": [
+              "Ang opisyal nga portal nga gigamit para sa BukSU admission ug enrollment application mao ang:\n\n🌐 **BukSU Admissions Portal**: https://admissions.buksu.edu.ph\n\n**Pinaagi niini nga portal, ang mga aplikante ug estudyante mahimong:**\n• Mag-apply sa BukSU College Admission Test (BukSU-CAT)\n• Mosusi sa resulta ug status sa entrance examination\n• Mag-submit sa online enrollment application ug mag-upload sa documentary requirements\n• Mag-download sa na-aprobahan nga Certificate of Registration (COR)\n\n**Para sa mga officially enrolled / continuing students:**\n🎓 **SIAS Portal** (http://sias.buksu.edu.ph) ang gamiton aron makita ang study load, enrolled subjects, ug grado."
+            ]
+          },
+          "images": [],
+          "map": null,
+          "pins": [],
+          "routes": [],
+          "intent": "enrollment_online_system",
+          "context_topic": "enrollment",
+          "metadata": {
+            "phrases": [
+              "Is there a specific portal or online system for enrollment?",
+              "is the buksu has its own website for enrollemnt",
+              "is the buksu has its own website for enrollment",
+              "Bukidnon state university has their own website for enrollment",
+              "Do you have any website for enrollment",
+              "can you give me the actual website of the buksu for enrollment",
+              "Can you tell me if the busku has its spacific portal for incoming first year to enroll",
+              "Can you tell me if the buksu has its specific portal for incoming first year to enroll",
+              "is there a specific portal or online system for enrollment",
+              "is there a portal for enrollment in buksu",
+              "is there an online system for enrollment in buksu",
+              "is there a portal for enrollment",
+              "what portal is used for enrollment",
+              "what website is used for enrollment",
+              "what is the enrollment portal of buksu",
+              "what online system do we use to enroll",
+              "what portal do i use to enroll",
+              "what website do i use to enroll",
+              "what portal is used to apply for enrollment",
+              "enrollment portal website",
+              "online system for enrollment",
+              "website for enrollment",
+              "portal for enrollment",
+              "unsa ang portal para sa enrollment",
+              "unsa ang website para sa enrollment",
+              "naa bay specific portal para sa enrollment sa buksu",
+              "naa bay online system para sa enrollment",
+              "unsa nga portal gamiton para mag enroll"
+            ],
+            "strong_keywords": [
+              "portal for enrollment",
+              "online system for enrollment",
+              "enrollment portal",
+              "website for enrollment",
+              "admissions.buksu.edu.ph",
+              "specific portal",
+              "online system"
+            ],
+            "weak_keywords": [
+              "enrollment",
+              "portal",
+              "website",
+              "system",
+              "online"
+            ]
+          },
+          "display_name": "Enrollment Online System & Portal",
+          "suggestions": [
+            {
+              "label": "Online Enrollment Steps",
+              "payload": "/direct_intent{\"intent\":\"online_enrollment_steps\"}"
+            },
+            {
+              "label": "Access SIAS Portal",
+              "payload": "/direct_intent{\"intent\":\"access_sias\"}"
+            },
+            {
+              "label": "BukSU-CAT Exam Steps",
+              "payload": "/direct_intent{\"intent\":\"take_exam\"}"
+            }
+          ]
+        },
+        {
           "topic": "online_enrollment_steps",
           "responses": {
             "en": [

@@ -127,8 +127,41 @@ class LLMApiClient:
         masked = key[:6] + "..." + key[-4:] if len(key) > 10 else "***"
         logger.warning("LLM API key [%s] placed on cooldown for %.0f seconds.", masked, secs)
 
+    def _get_active_key(self, provider: str) -> Tuple[Optional[str], Optional[int]]:
+        """Finds the current active sticky key for the provider.
+
+        Sticks to the current index as long as it is not cooling down.
+        If current index is on cooldown, scans forward sequentially until an available key is found.
+        Returns (key_string, key_index) or (None, None) if all keys are currently cooling down.
+        """
+        if provider == "groq":
+            keys = self._get_groq_keys()
+            if not keys:
+                return None, None
+            for offset in range(len(keys)):
+                idx = (self._groq_index + offset) % len(keys)
+                key = keys[idx]
+                if self._is_key_available(key):
+                    self._groq_index = idx
+                    return key, idx
+            return None, None
+
+        elif provider == "gemini":
+            keys = self._get_gemini_keys()
+            if not keys:
+                return None, None
+            for offset in range(len(keys)):
+                idx = (self._gemini_index + offset) % len(keys)
+                key = keys[idx]
+                if self._is_key_available(key):
+                    self._gemini_index = idx
+                    return key, idx
+            return None, None
+
+        return None, None
+
     def generate_json(self, prompt: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
-        """Generate JSON using multi-key pool with automatic failover."""
+        """Generate JSON using sticky multi-key pool with 1-minute cooldown and automatic failover."""
         providers_to_try = [self.primary_provider]
         if self.fallback_provider and self.fallback_provider != self.primary_provider:
             providers_to_try.append(self.fallback_provider)
@@ -140,54 +173,60 @@ class LLMApiClient:
                 keys = self._get_groq_keys()
                 if not keys:
                     continue
-                for attempt_idx in range(len(keys)):
-                    key_idx = self._groq_index % len(keys)
-                    key = keys[key_idx]
-                    self._groq_index = (self._groq_index + 1) % len(keys)
-                    if not self._is_key_available(key):
-                        continue
+
+                for _ in range(len(keys)):
+                    key, key_idx = self._get_active_key("groq")
+                    if not key:
+                        print("[LLM API] -> All GROQ keys are currently on 1-minute cooldown. Failing over to GEMINI...")
+                        break
+
                     masked = key[:6] + "..." + key[-4:] if len(key) > 10 else "***"
                     try:
                         print(f"[LLM API] -> Sending request to GROQ (Key #{key_idx + 1}: {masked})...")
                         return self._generate_groq_json_with_key(prompt, key, system_prompt=system_prompt)
                     except urllib.error.HTTPError as http_err:
                         last_error = http_err
-                        if http_err.code in (429, 403, 503, 500):
-                            self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
-                            print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) returned HTTP {http_err.code}. Rotating to next key...")
-                            continue
-                        raise
+                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        next_idx = (key_idx + 1) % len(keys)
+                        print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code}. Placed on 1-minute cooldown. Proceeding to GROQ Key #{next_idx + 1}...")
+                        self._groq_index = next_idx
+                        continue
                     except Exception as err:
                         last_error = err
-                        self._mark_key_cooldown(key, 30.0)
-                        print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) failed: {err}. Rotating to next key...")
+                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        next_idx = (key_idx + 1) % len(keys)
+                        print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) failed: {err}. Placed on 1-minute cooldown. Proceeding to GROQ Key #{next_idx + 1}...")
+                        self._groq_index = next_idx
                         continue
 
             elif current_provider == "gemini":
                 keys = self._get_gemini_keys()
                 if not keys:
                     continue
-                for attempt_idx in range(len(keys)):
-                    key_idx = self._gemini_index % len(keys)
-                    key = keys[key_idx]
-                    self._gemini_index = (self._gemini_index + 1) % len(keys)
-                    if not self._is_key_available(key):
-                        continue
+
+                for _ in range(len(keys)):
+                    key, key_idx = self._get_active_key("gemini")
+                    if not key:
+                        print("[LLM API] -> All GEMINI keys are currently on 1-minute cooldown.")
+                        break
+
                     masked = key[:6] + "..." + key[-4:] if len(key) > 10 else "***"
                     try:
                         print(f"[LLM API] -> Sending request to GEMINI (Key #{key_idx + 1}: {masked})...")
                         return self._generate_gemini_json_with_key(prompt, key, system_prompt=system_prompt)
                     except urllib.error.HTTPError as http_err:
                         last_error = http_err
-                        if http_err.code in (429, 403, 503, 500):
-                            self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
-                            print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) returned HTTP {http_err.code}. Rotating to next key...")
-                            continue
-                        raise
+                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        next_idx = (key_idx + 1) % len(keys)
+                        print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code}. Placed on 1-minute cooldown. Proceeding to GEMINI Key #{next_idx + 1}...")
+                        self._gemini_index = next_idx
+                        continue
                     except Exception as err:
                         last_error = err
-                        self._mark_key_cooldown(key, 30.0)
-                        print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) failed: {err}. Rotating to next key...")
+                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        next_idx = (key_idx + 1) % len(keys)
+                        print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) failed: {err}. Placed on 1-minute cooldown. Proceeding to GEMINI Key #{next_idx + 1}...")
+                        self._gemini_index = next_idx
                         continue
 
         if last_error:

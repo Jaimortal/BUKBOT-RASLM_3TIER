@@ -1,5 +1,525 @@
 [
   {
+    "id": "log_1788091407307_r94f35g",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Available Scholarships in BukSU",
+    "targetTitle": "Available Scholarships in BukSU",
+    "targetId": "services/oss_student_services.json",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "removed",
+        "details": "Removed 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T12:03:27.307Z"
+  },
+  {
+    "id": "log_1788091383366_7gpa50d",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Available Scholarships in BukSU",
+    "targetTitle": "Available Scholarships in BukSU",
+    "targetId": "services/oss_student_services.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (2 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (2 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T12:03:03.366Z"
+  },
+  {
+    "id": "log_1788091317507_7tjsggi",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Available Scholarships in BukSU",
+    "targetTitle": "Available Scholarships in BukSU",
+    "targetId": "services/oss_student_services.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (2 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (2 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T12:01:57.507Z"
+  },
+  {
+    "id": "log_1788087986319_upr131l",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Legal Unit Office",
+    "targetTitle": "Legal Unit Office",
+    "targetId": "Legal Unit Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T11:06:26.319Z"
+  },
+  {
+    "id": "log_1788087790704_elt51tg",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: RMU",
+    "targetTitle": "RMU",
+    "targetId": "RMU",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T11:03:10.704Z"
+  },
+  {
+    "id": "log_1788077564029_df5k7rt",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Biotechnology Laboratory",
+    "targetTitle": "Biotechnology Laboratory",
+    "targetId": "Biotechnology Laboratory",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      },
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:12:44.029Z"
+  },
+  {
+    "id": "log_1788077459342_gbdwbe7",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Kalatungan Learning Space",
+    "targetTitle": "Kalatungan Learning Space",
+    "targetId": "Kalatungan Learning Space",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:10:59.342Z"
+  },
+  {
+    "id": "log_1788077427762_skcu42y",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Microbiology Laboratory",
+    "targetTitle": "Microbiology Laboratory",
+    "targetId": "Microbiology Laboratory",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      },
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:10:27.762Z"
+  },
+  {
+    "id": "log_1788077292294_5v1zhpz",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Kalatungan Learning Space",
+    "targetTitle": "Kalatungan Learning Space",
+    "targetId": "Kalatungan Learning Space",
+    "changes": [
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:08:12.294Z"
+  },
+  {
+    "id": "log_1788077282245_b8cacwv",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Plant Tissue Culture Laboratory",
+    "targetTitle": "Plant Tissue Culture Laboratory",
+    "targetId": "Plant Tissue Culture Laboratory",
+    "changes": [
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:08:02.245Z"
+  },
+  {
+    "id": "log_1788077256712_ja9rq5b",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Plant Tissue Culture Laboratory",
+    "targetTitle": "Plant Tissue Culture Laboratory",
+    "targetId": "Plant Tissue Culture Laboratory",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:07:36.712Z"
+  },
+  {
+    "id": "log_1788077154463_d58smio",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Sociology Department",
+    "targetTitle": "Sociology Department",
+    "targetId": "Sociology Department",
+    "changes": [
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:05:54.463Z"
+  },
+  {
+    "id": "log_1788077137480_nhpqn7w",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Economics Department",
+    "targetTitle": "Economics Department",
+    "targetId": "Economics Department",
+    "changes": [
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:05:37.480Z"
+  },
+  {
+    "id": "log_1788077102355_mlzl5hn",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Economics Department",
+    "targetTitle": "Economics Department",
+    "targetId": "Economics Department",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:05:02.355Z"
+  },
+  {
+    "id": "log_1788077016809_7jdyrsn",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Sociology Department",
+    "targetTitle": "Sociology Department",
+    "targetId": "Sociology Department",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:03:36.809Z"
+  },
+  {
+    "id": "log_1788076900605_1dji7yx",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: language and literature department",
+    "targetTitle": "language and literature department",
+    "targetId": "language and literature department",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T08:01:40.605Z"
+  },
+  {
+    "id": "log_1788076682039_d9fmyv1",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Philosophy Faculty Office",
+    "targetTitle": "Philosophy Faculty Office",
+    "targetId": "Philosophy Faculty Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      },
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T07:58:02.039Z"
+  },
+  {
+    "id": "log_1788076430682_bli8yfk",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-402",
+    "targetTitle": "NC4-A4-402",
+    "targetId": "NC4-A4-402",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T07:53:50.682Z"
+  },
+  {
+    "id": "log_1788076351395_hp7hxce",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-401",
+    "targetTitle": "NC4-A4-401",
+    "targetId": "NC4-A4-401",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T07:52:31.395Z"
+  },
+  {
+    "id": "log_1788076114615_frgryi4",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: ODeL Office",
+    "targetTitle": "ODeL Office",
+    "targetId": "ODeL Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T07:48:34.615Z"
+  },
+  {
+    "id": "log_1788074087622_jsspjji",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-401",
+    "targetTitle": "NC4-A4-401",
+    "targetId": "NC4-A4-401",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "removed",
+        "details": "Removed 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T07:14:47.622Z"
+  },
+  {
+    "id": "log_1788074079605_m80pz1d",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: NC4-A4-402",
+    "targetTitle": "NC4-A4-402",
+    "targetId": "NC4-A4-402",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "removed",
+        "details": "Removed 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-08-30T07:14:39.605Z"
+  },
+  {
     "id": "log_1788015380491_hmje30c",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

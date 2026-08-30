@@ -842,7 +842,6 @@ class ActionReplyFromJsonHelper:
                 "Admission Office",
                 "Registrar Office",
                 "AVC",
-                "Canteen",
             ],
         }
         return preferred.get(building, [])

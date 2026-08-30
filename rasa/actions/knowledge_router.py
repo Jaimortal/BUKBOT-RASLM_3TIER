@@ -855,7 +855,15 @@ class KnowledgeRouter:
         has_sias = self._has_any(text, ["sias", "student information system"])
         has_student_portal = self._has_any(text, ["student portal", "student website", "portal account", "portal password"])
         has_login_wording = self._has_any(text, ["login", "log in", "sign in", "signin", "sign-in", "access", "open"])
-        has_password_wording = self._has_any(text, ["password", "passcode", "forgot password", "forget password", "forgot my password", "reset password", "change password", "recover password"])
+        has_password_wording = (
+            self._has_any(text, [
+                "password", "passwords", "passcode", "passcodes", "forgot password", "forget password",
+                "forgot my password", "reset password", "change password", "recover password",
+                "reseting password", "resetting password", "changing password", "ilis password",
+                "usab password", "nakalimot sa password", "nakalimot kos password", "nakalimot ko sa password"
+            ]) or
+            "password" in raw_tokens or "passcode" in raw_tokens or "passwords" in raw_tokens or "passcodes" in raw_tokens
+        )
         has_account_creation_wording = self._has_any(
             text,
             [
@@ -1004,8 +1012,27 @@ class KnowledgeRouter:
             has_admission_password and
             self._has_any(raw_normalized, ["forgot", "forget", "reset", "recover", "cannot remember", "cant remember", "can't remember", "nakalimot", "nalimot", "dili nako mahinumduman", "di nako mahinumduman", "wala ko kahinumdom"])
         )
-        has_generic_student_portal_login = has_student_portal and has_login_wording and not has_sias and not has_admission_portal
-        has_generic_student_portal_password = has_student_portal and has_password_wording and not has_sias and not has_admission_portal
+        has_generic_student_portal_login = (
+            (
+                has_student_portal or
+                self._has_any(text, ["portal", "my portal", "the portal"])
+            ) and
+            has_login_wording and
+            not has_password_wording and
+            not has_sias and
+            not has_admission_portal and
+            not self._has_any(text, ["admission", "admissions", "cat", "applicant", "wifi", "wi-fi", "internet", "library", "email", "institutional email", "gmail", "deped", "google"])
+        )
+        has_generic_student_portal_password = (
+            (
+                has_student_portal or
+                self._has_any(text, ["portal", "my portal", "the portal", "account", "akong account", "my account"])
+            ) and
+            has_password_wording and
+            not has_sias and
+            not has_admission_portal and
+            not self._has_any(text, ["admission", "admissions", "cat", "applicant", "wifi", "wi-fi", "internet", "library", "email", "institutional email", "gmail", "deped", "google"])
+        )
         has_sias_account_lookup = has_sias and self._has_any(
             text,
             [
@@ -1409,12 +1436,29 @@ class KnowledgeRouter:
         ])
         has_uniform_policy = (
             self._has_any(text, [
-                "uniform", "dress code", "not wearing uniform", "without uniform", "wearing uniform", "school uniform",
-                "attire", "dress", "outfit", "clothes", "clothing"
+                "uniform", "dress code", "dresscode", "not wearing uniform", "without uniform", "wearing uniform", "school uniform",
+                "attire", "dress", "outfit", "pamesti", "uniporme"
             ]) or
             has_civilian_attire or
             (has_campus_entry_wording and self._has_any(text, ["t-shirt", "t shirt", "tshirt", "pants", "shirt", "wear", "wearing", "using", "isuot", "sul-ob"]))
         ) and not has_pe_uniform_mention
+        has_buksu_general_policy = (
+            self._has_any(text, [
+                "policy of buksu", "policy of bukidnon state university", "policies of buksu", "policies in buksu",
+                "policy sa buksu", "polisiya sa buksu", "mga polisiya sa buksu", "mga policy sa buksu",
+                "buksu policy", "buksu policies", "university policy", "university policies",
+                "rules and regulations in buksu", "rules and regulations sa buksu", "rules and regulations of buksu",
+                "rules of buksu", "rules sa buksu", "rules in buksu", "regulations in buksu", "regulations of buksu",
+                "campus policy", "campus policies", "school policy", "school policies",
+                "unsay policy sa buksu", "unsa ang policy sa buksu", "unsa ang mga policy sa buksu", "unsa ang mga polisiya",
+                "what are the policies of buksu", "what are the policies in buksu", "what is the policy of buksu",
+                "whats the policy of bukidnon state university", "what's the policy of bukidnon state university",
+                "whats the policy of buksu", "what's the policy of buksu", "general policy of buksu", "general policies of buksu"
+            ]) or (
+                self._has_any(text, ["policy", "policies", "polisiya", "rules and regulations"]) and
+                self._has_any(text, ["buksu", "bukidnon state university", "university", "campus", "school"])
+            )
+        ) and not has_uniform_policy and not self._has_any(text, ["curfew", "muffler", "traffic", "vehicle", "gate pass", "dorm", "probation", "retention", "attendance", "overload", "refund", "grading", "shifting", "scholarship", "admission", "enrollment", "leave", "mentoring", "clinic", "dental"])
         has_specific_buksu_office_location = self._has_any(text, [
             "buksu president office",
             "president office",
@@ -1644,15 +1688,15 @@ class KnowledgeRouter:
         has_tooth_extraction = self._has_any(text, ["tooth extraction", "extract tooth", "extract a tooth", "tooth removal", "remove tooth", "paibot ngipon", "ibot ngipon"])
         has_dental_referral_medicine = self._has_any(text, ["referral dispensing", "dispensing of medicine", "dental medicine", "prescription slip", "referral medicine", "medicine dispensing", "get medicine from dental", "dental referral"])
         has_location_wording = self._has_any(text, ["where", "location", "located", "find", "go to", "get to", "direction", "directions"])
-        has_it_program = bool(re.search(r"\bIT\b", raw_text)) or self._has_any(text, ["bsit", "information technology"])
+        has_it_program = bool(re.search(r"\bIT\b", raw_text)) or self._has_any_token(text, ["bsit", "bs-it"]) or self._has_any(text, ["bs it", "information technology"])
         has_course = self._has_any(
             text,
             [
                 "course", "courses", "program", "programs", "bachelor",
-                "bsit", "bsap", "philo", "bsa", "philosophy", "masters", "master's",
+                "bsap", "philo", "bsa", "philosophy", "masters", "master's",
                 "masteral", "board course", "non board",
             ],
-        ) or has_it_program or self._course_route(text, intent, has_it_program=has_it_program) is not None
+        ) or self._has_any_token(text, ["bsit"]) or has_it_program or self._course_route(text, intent, has_it_program=has_it_program) is not None
         has_explicit_college_name = (
             bool(tokens.intersection({"cas", "cob", "cot", "con", "coe", "coa", "cpag"})) or
             self._has_any(
@@ -1784,11 +1828,6 @@ class KnowledgeRouter:
                 "course nga naay available",
                 "ba philo",
                 "ba eco",
-                "bsit",
-                "bset",
-                "bsat",
-                "bsft",
-                "bsemc",
                 "bs multimedia",
                 "bsn",
                 "bshm",
@@ -1800,7 +1839,7 @@ class KnowledgeRouter:
                 "college of law",
                 "juris doctor",
                 "juris doctor program",
-            ])
+            ]) or self._has_any_token(text, ["bsit", "bset", "bsat", "bsft", "bsemc", "bsn", "bshm", "bpa"])
         )
         has_course_slot_query = has_slot_word and has_course_slot_subject
         has_dormitory = self._has_any(text, ["dormitory", "dormitories", "dorm", "dorms", "mahogany", "rubia", "kilala"])
@@ -1888,7 +1927,8 @@ class KnowledgeRouter:
             self._has_any(text, ["passing grade", "retention grade", "culling grade", "grade required to stay", "required to stay in program"]) and
             (
                 self._course_route(text, intent, has_it_program=has_it_program) is not None or
-                self._has_any(text, ["specific course", "course passing", "my course", "department", "program", "bsit", "nursing", "accountancy", "bachelor"])
+                self._has_any(text, ["specific course", "course passing", "my course", "department", "program", "nursing", "accountancy", "bachelor"]) or
+                self._has_any_token(text, ["bsit"])
                 or self._has_any(text, ["passing grade course", "passing grade sa course"])
             ) and
             not self._has_any(text, ["cat", "buksu cat", "admission test", "entrance exam", "percentage", "percent"])
@@ -2058,14 +2098,39 @@ class KnowledgeRouter:
         if has_contact_info:
             return "buksu_contact_info"
 
-        has_official_website = (
+        has_enrollment_website = (
             self._has_any(text, [
-                "official website", "university website", "buksu website", "website sa buksu",
-                "webpage sa buksu", "website link", "buksu web page", "official link",
-                "unsa ang website", "what is the website of buksu", "what is the official website",
-                "university official website", "official website of buksu"
-            ]) or
-            (self._has_any(text, ["website", "webpage", "web page"]) and self._has_any(text, ["buksu", "university", "official", "main"]))
+                "website for enrollment", "website for enrollemnt", "website para sa enrollment",
+                "enrollment website", "enrollemnt website", "enrollment portal", "admissions portal",
+                "portal for enrollment", "portal for enrollemnt", "online system for enrollment",
+                "specific portal for enrollment", "website of the buksu for enrollment",
+                "website of buksu for enrollment", "portal for incoming first year to enroll",
+                "portal for incoming first year", "website to enroll", "website para mag enroll",
+                "portal para mag enroll", "portal para sa enrollment",
+                "portal for freshman to enroll", "portal for freshmen to enroll",
+                "website sa enrollment", "website sa pag enroll", "portal sa pag enroll",
+                "spacific portal for incoming first year to enroll", "portal for incoming first year to enroll"
+            ]) or (
+                self._has_any(text, [
+                    "enroll", "enrollment", "enrollemnt", "enrolling", "enrol", "mag enroll", "magpa enroll", "pag enroll"
+                ]) and
+                self._has_any(text, ["website", "webpage", "web page", "portal", "online system", "system", "link"]) and
+                not self._has_any(text, ["cannot login", "can't login", "dili maka login", "password", "reset", "forgot", "steps", "step by step", "unsaon pag apply"])
+            )
+        )
+        if has_enrollment_website and active_domain != "location":
+            return "enrollment_online_system"
+
+        has_official_website = (
+            (
+                self._has_any(text, [
+                    "official website", "university website", "buksu website", "website sa buksu",
+                    "webpage sa buksu", "website link", "buksu web page", "official link",
+                    "unsa ang website", "what is the website of buksu", "what is the official website",
+                    "university official website", "official website of buksu"
+                ]) or
+                (self._has_any(text, ["website", "webpage", "web page"]) and self._has_any(text, ["buksu", "university", "official", "main"]))
+            ) and not self._has_any(text, ["enroll", "enrollment", "enrollemnt", "enrolling", "admission", "admissions", "exam", "grade", "grades", "sias"])
         )
         if has_official_website:
             return "buksu_official_website"
@@ -2103,13 +2168,28 @@ class KnowledgeRouter:
         if has_dual_scholarship:
             return "tes_with_other_scholarships"
 
+        has_available_scholarships = (
+            self._has_any(text, [
+                "what scholarships are available", "what scholarships are offered", "what scholarships does buksu offer",
+                "what scholarship is available", "what scholarship is offered", "what scholarship does buksu offer",
+                "scholarships available", "scholarships offered", "scholarship available", "scholarship offered",
+                "scholarships in buksu", "scholarship in buksu", "list of scholarships", "list of scholarship",
+                "unsa nga mga scholarship available", "unsa ang mga scholarship available", "unsa nga scholarship available",
+                "unsa ang mga scholarship sa buksu", "unsa nga mga scholarship sa buksu", "unsa nga scholarship naa sa buksu",
+                "naa bay scholarship sa buksu", "naa bay available nga scholarship", "available scholarships in buksu",
+                "available scholarships", "available scholarship", "scholarship programs", "scholarship program"
+            ]) or (
+                self._has_any(text, ["scholarship", "scholarships", "sfgu", "financial grants", "financial grant"]) and
+                self._has_any(text, ["available", "offer", "offered", "offers", "list", "programs", "options", "types", "unsa", "what", "naa", "aduna"])
+            )
+        ) and not has_dual_scholarship and not self._has_any(text, ["where", "location", "asa dapit", "hain", "diin", "room", "a1-1-02", "contact", "email", "phone", "number", "how to apply", "unsaon pag apply"])
+        if has_available_scholarships:
+            return "available_scholarships_buksu"
+
+        if has_buksu_general_policy:
+            return "buksu_general_policies"
+
         if has_uniform_policy:
-            if (
-                has_civilian_attire or
-                self._has_any(text, ["not wearing uniform", "without uniform", "no uniform", "walay uniform", "uniform not required", "not required today"]) or
-                has_campus_entry_wording
-            ):
-                return "wear_civilian_attire"
             return "campus_dress_code_policy"
         if has_dormitory:
             if self._has_any(text, ["bayad", "curfew", "rate", "rates", "fee", "fees", "monthly", "binuwan", "pila", "tagpila"]):
@@ -2195,7 +2275,8 @@ class KnowledgeRouter:
             ])
         )
         if has_general_enrollment_documents and not (
-            self._has_any(text, ["bsit", "bs-it", "bs it", "nursing", "bsn", "bsba", "bsa", "bshm", "bstm", "bsed", "beed", "bsphilo", "emc", "bscrim"])
+            self._has_any_token(text, ["bsit", "bs-it", "nursing", "bsn", "bsba", "bsa", "bshm", "bstm", "bsed", "beed", "bsphilo", "emc", "bscrim"]) or
+            self._has_any(text, ["bs it", "bs emc", "bs at", "bs et", "bs ft", "bs n", "bs ba", "bs hm", "bs tm", "bs ed", "be ed", "bs crim"])
         ) and active_domain != "location":
             return "enrollment_documents"
 
@@ -2204,39 +2285,39 @@ class KnowledgeRouter:
         has_undergrad_course_mention = (
             self._has_any(text, [
                 # COT
-                "bsit", "bs-it", "bs it", "information technology", "info tech", "bs info tech", "bs information tech", "bs information technology",
-                "bsemc", "bs-emc", "bs emc", "entertainment and multimedia", "multimedia computing",
-                "bs automotive", "automotive technology", "auto tech", "bsat", "bs-at", "bs at",
-                "bs electronics", "electronics technology", "bset", "bs-et", "bs et", "electronics tech",
-                "bs food tech", "food technology", "bsft", "bs-ft", "bs ft",
+                "bs it", "information technology", "info tech", "bs info tech", "bs information tech", "bs information technology",
+                "bs-emc", "bs emc", "entertainment and multimedia", "multimedia computing",
+                "bs automotive", "automotive technology", "auto tech", "bs-at", "bs at",
+                "bs electronics", "electronics technology", "bs-et", "bs et", "electronics tech",
+                "bs food tech", "food technology", "bs-ft", "bs ft",
                 # CON
-                "bsn", "bs-n", "bs nursing", "nursing course", "nursing program",
+                "bs-n", "bs nursing", "nursing course", "nursing program",
                 # COB
-                "bsba", "bs-ba", "bs ba", "business administration", "financial management", "marketing management",
+                "bs-ba", "bs ba", "business administration", "financial management", "marketing management",
                 "bs accountancy", "bs accounting", "bsa course", "accountancy program", "accountancy course",
-                "bshm", "bs-hm", "bs hm", "hospitality management", "hotel management", "hrm course",
-                "bstm", "bs-tm", "bs tm", "tourism management", "tourism course",
+                "bs-hm", "bs hm", "hospitality management", "hotel management", "hrm course",
+                "bs-tm", "bs tm", "tourism management", "tourism course",
                 # COE
-                "bsed", "bs-ed", "bs ed", "secondary education", "beed", "be-ed", "be ed", "elementary education",
-                "beced", "early childhood education", "bsned", "special needs education", "bped", "physical education",
+                "bs-ed", "bs ed", "secondary education", "be-ed", "be ed", "elementary education",
+                "early childhood education", "special needs education", "physical education",
                 "education course", "education program", "teacher education",
                 # CAS
-                "ba comm", "ba communication", "mass comm", "devcom", "dev com", "development communication",
-                "bs devcom", "bs development communication", "bs philo", "bsphilo", "ba philo", "philosophy course",
+                "ba comm", "ba communication", "mass comm", "dev com", "development communication",
+                "bs devcom", "bs development communication", "bs philo", "ba philo", "philosophy course",
                 "ba philosophy", "bs sociology", "ba sociology", "bs economics", "ba economics", "bs english",
-                "ba english", "english language", "bs community development", "community development", "bscd",
+                "ba english", "english language", "bs community development", "community development",
                 "bs math", "bs mathematics", "applied math", "bs applied math", "bs biology", "bs bio",
-                "bs environmental science", "envi sci", "bs envi sci", "bs social work", "bssw", "bs psychology",
+                "bs environmental science", "envi sci", "bs envi sci", "bs social work", "bs psychology",
                 "ba psychology", "bs psych", "ba psych",
                 # CPAG
                 "bpa course", "bs public administration", "public administration", "public admin",
                 # Criminology
-                "bscrim", "bs-crim", "bs crim", "criminology"
+                "bs-crim", "bs crim", "criminology"
             ]) or
             self._has_any_token(text, [
-                "bsit", "emc", "bsn", "nursing", "bsba", "bsa", "accountancy", "bshm", "bstm",
+                "bsit", "bs-it", "bsemc", "emc", "bsat", "bset", "bsft", "bsn", "nursing", "bsba", "bsa", "accountancy", "bshm", "bstm",
                 "bsed", "beed", "beced", "bsned", "bped", "education", "educ", "devcom", "bscd", "bssw", "bpa",
-                "bscrim", "criminology", "philosophy", "sociology", "psychology", "economics"
+                "bscrim", "criminology", "philosophy", "sociology", "psychology", "economics", "bsphilo"
             ])
         )
 
@@ -2344,6 +2425,38 @@ class KnowledgeRouter:
         )
         if has_enrollment_onboarding_intent and active_domain != "location":
             return "enrollment_where_to_start"
+
+        has_enrollment_portal_query = (
+            self._has_any(text, [
+                "is there a specific portal or online system for enrollment",
+                "specific portal or online system for enrollment",
+                "portal or online system for enrollment",
+                "online system for enrollment",
+                "specific portal for enrollment",
+                "what portal is used for enrollment",
+                "what portal do we use for enrollment",
+                "what portal do i use to enroll",
+                "what website do i use to enroll",
+                "what website is used for enrollment",
+                "what is the enrollment portal",
+                "what is the enrollment website",
+                "enrollment portal of buksu",
+                "portal for enrollment",
+                "website for enrollment",
+                "unsa ang portal para sa enrollment",
+                "unsa ang website para sa enrollment",
+                "naa bay specific portal para sa enrollment",
+                "naa bay online system para sa enrollment",
+                "unsa nga portal gamiton para mag enroll",
+            ]) or (
+                self._has_any(text, ["enroll", "enrollment", "enrolling", "mag enroll", "magpa enroll"]) and
+                self._has_any(text, ["portal", "online system", "website", "system"]) and
+                self._has_any(text, ["specific", "is there", "what portal", "which portal", "what website", "which website", "what system", "unsa nga portal", "naa ba", "naa bay", "asa nga website"]) and
+                not self._has_any(text, ["cannot login", "can't login", "dili maka login", "password", "reset", "forgot", "steps", "step by step", "unsaon pag"])
+            )
+        )
+        if has_enrollment_portal_query and active_domain != "location":
+            return "enrollment_online_system"
 
         has_enrollment_application_intent = (
             self._has_any(text, [
@@ -2640,7 +2753,12 @@ class KnowledgeRouter:
 
         has_portal_login_query = (
             self._has_any(text, ["portal", "sias", "student portal", "admissions portal"]) and
-            self._has_any(text, ["login", "log in", "log-in", "maka-login", "password", "account", "forgot", "nakalimot", "dili maka", "cannot", "cant", "error", "problem"])
+            self._has_any(text, [
+                "cannot login", "can't login", "cant login", "dili maka login", "dili makasulod",
+                "login error", "login problem", "account locked", "locked account", "troubleshoot login",
+                "forgot my email", "forgot email", "what email do i use to login", "email for sias"
+            ]) and
+            not has_password_wording
         )
         if has_portal_login_query:
             return "portal_login_problem"
@@ -2915,13 +3033,12 @@ class KnowledgeRouter:
             return "buksu_university_calendar"
         if has_weekend_visitor:
             return "campus_weekend_visitors"
+        if has_available_scholarships:
+            return "available_scholarships_buksu"
+        if has_buksu_general_policy:
+            return "buksu_general_policies"
+
         if has_uniform_policy:
-            if (
-                has_civilian_attire or
-                self._has_any(text, ["not wearing uniform", "without uniform", "no uniform", "walay uniform", "uniform not required", "not required today"]) or
-                has_campus_entry_wording
-            ):
-                return "wear_civilian_attire"
             return "campus_dress_code_policy"
         if has_foundation_day:
             return "buksu_foundation_day"
@@ -4051,12 +4168,46 @@ class KnowledgeRouter:
             )
         if direct_intent == "__student_portal_password_clarification__":
             return self._choice_response(
-                "Which student portal password do you mean?",
+                "Which portal password do you need help with?",
                 [
-                    {"label": "Admission Forgot Password", "payload": "/direct_intent{\"intent\":\"Change_Pass_admission\"}"},
-                    {"label": "SIAS password", "payload": "/direct_intent{\"intent\":\"sias_forgot_password\"}"},
+                    {"label": "Admission Portal Password", "payload": "/direct_intent{\"intent\":\"Change_Pass_admission\"}"},
+                    {"label": "SIAS Portal Password", "payload": "/direct_intent{\"intent\":\"sias_forgot_password\"}"},
                 ],
             )
+        if direct_intent == "__food_tech_lab_clarification__":
+            return {
+                "text": "There are multiple laboratory locations under Food Technology. Please choose a building below to open all available laboratory rooms:",
+                "custom": {
+                    "choiceGroups": [
+                        {
+                            "title": "New COT Building (FoodTech Labs)",
+                            "items": [
+                                {"label": "FoodTech Laboratory First Floor", "payload": "/direct_intent{\"intent\":\"FoodTech Laboratory First Floor\"}"},
+                                {"label": "C-1-2-01 (FoodTech Lab 1)", "payload": "/direct_intent{\"intent\":\"NC1-C-1-2-01\"}"},
+                                {"label": "C-1-2-02 (FoodTech Lab 2)", "payload": "/direct_intent{\"intent\":\"NC1-C-1-2-02\"}"},
+                                {"label": "C-1-2-03 (FoodTech Lab 3)", "payload": "/direct_intent{\"intent\":\"NC1-C-1-2-03\"}"},
+                                {"label": "C-1-2-04 (FoodTech Lab 4)", "payload": "/direct_intent{\"intent\":\"NC1-C-1-2-04\"}"},
+                                {"label": "Food Technology Laboratory (2nd Floor)", "payload": "/direct_intent{\"intent\":\"food technology laboratory\"}"},
+                                {"label": "Food Tech Faculty Room (3rd Floor)", "payload": "/direct_intent{\"intent\":\"Food Technology Faculty Room\"}"},
+                            ]
+                        },
+                        {
+                            "title": "New CAS Building (Labs & Departments)",
+                            "items": [
+                                {"label": "Microbiology Laboratory (A4-404)", "payload": "/direct_intent{\"intent\":\"Microbiology Laboratory\"}"},
+                                {"label": "Biotechnology Laboratory (A4-405)", "payload": "/direct_intent{\"intent\":\"Biotechnology Laboratory\"}"},
+                                {"label": "Plant Tissue Culture Lab (3rd Floor)", "payload": "/direct_intent{\"intent\":\"Plant Tissue Culture Laboratory\"}"},
+                                {"label": "Kalatungan Learning Space (3rd Floor)", "payload": "/direct_intent{\"intent\":\"Kalatungan Learning Space\"}"},
+                                {"label": "Philosophy Faculty Office (2nd Floor)", "payload": "/direct_intent{\"intent\":\"Philosophy Faculty Office\"}"},
+                                {"label": "Sociology Department (2nd Floor)", "payload": "/direct_intent{\"intent\":\"Sociology Department\"}"},
+                                {"label": "Economics Department (2nd Floor)", "payload": "/direct_intent{\"intent\":\"Economics Department\"}"},
+                                {"label": "ODeL Office (1st Floor)", "payload": "/direct_intent{\"intent\":\"ODeL Office\"}"},
+                                {"label": "Language & Literature / DDL (1st Floor)", "payload": "/direct_intent{\"intent\":\"language and literature department\"}"},
+                            ]
+                        }
+                    ]
+                }
+            }
         if direct_intent == "__student_portal_login_clarification__":
             return self._choice_response(
                 "Which student portal do you want to log in to?",

@@ -104,7 +104,14 @@ class EntityResolver:
             drop("Deans Office")
         if has("BSN Faculty Room") or has("CON Dean's Office"):
             drop("College of Nursing Building")
-        if has("CAS Deans Office") or has("Philosophy Faculty Office") or has("CAS SBO Office"):
+        cas_specific_rooms = [
+            "CAS Deans Office", "Philosophy Faculty Office", "CAS SBO Office",
+            "Microbiology Laboratory", "Biotechnology Laboratory",
+            "Plant Tissue Culture Laboratory", "Kalatungan Learning Space",
+            "Sociology Department", "Economics Department", "ODeL Office",
+            "language and literature department", "NC4-A4-401", "NC4-A4-402"
+        ]
+        if any(has(r) for r in cas_specific_rooms):
             drop("CAS Buildings")
         if has("COB SBO Office"):
             drop("COB Building")

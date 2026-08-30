@@ -456,12 +456,11 @@ class MainRouterService:
             return None
 
         foodtech_patterns = [
-            r"\bfood\s+(tech|technology)\s+(lab|laboratory|laboratories|room|rooms)?\b",
-            r"\b(lab|laboratory|laboratories)\s+(sa\s+)?food\s+(tech|technology)\b",
-            r"\bfood\s+tech\b",
-            r"\bfood\s+technology\b",
-            r"\bwhere\s+(is|are|can\s+i\s+find)\s+(the\s+)?food\s+(tech|technology)\b",
-            r"\basa\s+(ang\s+)?(mga\s+)?food\s+(tech|technology)\s*(lab|laboratory|laboratories)?\b",
+            r"\b(food\s*tech|food\s*technology|foodtech)\s*(lab|laboratory|laboratories|room|rooms)?\b",
+            r"\b(lab|laboratory|laboratories)\s+(sa\s+)?(food\s*tech|food\s*technology|foodtech)\b",
+            r"\b(food\s*tech|food\s*technology|foodtech)\b",
+            r"\bwhere\s+(is|are|can\s+i\s+find)\s+(the\s+)?(food\s*tech|food\s*technology|foodtech)\b",
+            r"\basa\s+(ang\s+)?(mga\s+)?(food\s*tech|food\s*technology|foodtech)\s*(lab|laboratory|laboratories)?\b",
         ]
         if not any(re.search(p, text) for p in foodtech_patterns):
             return None
@@ -469,26 +468,43 @@ class MainRouterService:
         detector = getattr(self.data_loader.helper, "detect_language", None)
         lang = str(detector(user_message)) if callable(detector) else "en"
         if lang == "ceb":
-            text_msg = "Adunay daghang Food technology Laboratory, nahimutang sa 2nd floor sa Bag-ong COT Building. Palihug pangitaa ang eksakto nga numero sa kwarto para mas paspas nga pag-navigate."
+            text_msg = "Adunay daghang mga laboratory ug kwarto ubos sa Food Technology. Palihug i-click ang building sa ubos aron maablihan ang listahan sa tanang kwarto:"
         else:
-            text_msg = "There are several Food technology Laboratory, located on the 2nd floor of the new COT Building, Please find the exact room number for faster navigation"
+            text_msg = "There are multiple laboratory locations under Food Technology. Please choose a building below to open all available laboratory rooms:"
 
-        items = [
-            {"label": "C-1-2-01", "payload": "where is C-1-2-01"},
-            {"label": "C-1-2-02", "payload": "where is C-1-2-02"},
-            {"label": "C-1-2-03", "payload": "where is C-1-2-03"},
-            {"label": "C-1-2-04", "payload": "where is C-1-2-04"},
-            {"label": "FoodTech Laboratory first floor", "payload": "where is FoodTech Laboratory First Floor"},
+        choice_groups = [
+            {
+                "title": "New COT Building (FoodTech Labs)",
+                "items": [
+                    {"label": "FoodTech Laboratory First Floor", "payload": "where is FoodTech Laboratory First Floor"},
+                    {"label": "C-1-2-01 (FoodTech Lab 1)", "payload": "where is C-1-2-01"},
+                    {"label": "C-1-2-02 (FoodTech Lab 2)", "payload": "where is C-1-2-02"},
+                    {"label": "C-1-2-03 (FoodTech Lab 3)", "payload": "where is C-1-2-03"},
+                    {"label": "C-1-2-04 (FoodTech Lab 4)", "payload": "where is C-1-2-04"},
+                    {"label": "Food Technology Laboratory (2nd Floor)", "payload": "where is food technology laboratory"},
+                    {"label": "Food Tech Faculty Room (3rd Floor)", "payload": "where is Food Technology Faculty Room"},
+                ]
+            },
+            {
+                "title": "New CAS Building (Labs & Departments)",
+                "items": [
+                    {"label": "Microbiology Laboratory (A4-404)", "payload": "where is Microbiology Laboratory"},
+                    {"label": "Biotechnology Laboratory (A4-405)", "payload": "where is Biotechnology Laboratory"},
+                    {"label": "Plant Tissue Culture Lab (3rd Floor)", "payload": "where is Plant Tissue Culture Laboratory"},
+                    {"label": "Kalatungan Learning Space (3rd Floor)", "payload": "where is Kalatungan Learning Space"},
+                    {"label": "Philosophy Faculty Office (2nd Floor)", "payload": "where is Philosophy Faculty Office"},
+                    {"label": "Sociology Department (2nd Floor)", "payload": "where is Sociology Department"},
+                    {"label": "Economics Department (2nd Floor)", "payload": "where is Economics Department"},
+                    {"label": "ODeL Office (1st Floor)", "payload": "where is ODeL Office"},
+                    {"label": "Language & Literature / DDL (1st Floor)", "payload": "where is language and literature department"},
+                ]
+            }
         ]
+
         return {
             "text": text_msg,
             "custom": {
-                "choiceGroups": [
-                    {
-                        "title": "Select a room:",
-                        "items": items
-                    }
-                ]
+                "choiceGroups": choice_groups
             }
         }
 

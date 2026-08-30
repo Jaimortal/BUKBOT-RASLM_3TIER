@@ -808,14 +808,12 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "Located on the 1st floor of the Secondary School Laboratory Building.",
-          "This building is situated beside the University Press (UP) Building and directly in front of the parking area along P.A. Ramos Street.",
-          "Once you reach the building, ComLab 10 can be easily found on the ground floor."
+          "At present, ComLab 10 does not exist.",
+          "The available computer laboratories are currently numbered from ComLab 1 up to ComLab 12, with no designated ComLab 10."
         ],
         "ceb": [
-          "Nahimutang sa 1st floor sa Secondary School Laboratory Building.",
-          "Kining bilding nahimutang tapad sa University Press (UP) Building ug diretso sa atubangan sa parking area sa P.A. Ramos Street.",
-          "Kung moabot ka sa bilding, sayon makita ang ComLab 10 sa ground floor."
+          "Karon, wala ang ComLab 10.",
+          "Ang anaa nga mga computer laboratory karon gikan sa ComLab 1 hangtod sa ComLab 12, walay designated ComLab 10."
         ]
       },
       "pins": [
@@ -2368,6 +2366,77 @@
             [
               736,
               496
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "Canteen": {
+      "type": "facility",
+      "building": "CPAG Building",
+      "floor": "Basement",
+      "coordinates": [
+        746,
+        531
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The canteen is located in the basement of the CPAG Building, directly below the CPAG Dean's Office. A map has been provided to help you find your way."
+        ],
+        "ceb": [
+          "Ang canteen nahimutang sa basement sa CPAG Building, direkta ilalom sa CPAG Dean’s Office. Adunay gihatag nga mapa aron matabangan ka sa pagpangita sa dalan."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Canteen",
+          "coordinates": [
+            746,
+            531
+          ],
+          "floor": "BS"
+        },
+        {
+          "name": "You are here!",
+          "coordinates": [
+            882,
+            630
+          ],
+          "floor": "BS"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to Canteen",
+          "points": [
+            [
+              882,
+              630
+            ],
+            [
+              788,
+              631
+            ],
+            [
+              785,
+              499
+            ],
+            [
+              771,
+              503
+            ],
+            [
+              760,
+              516
+            ],
+            [
+              746,
+              531
             ]
           ],
           "color": "#ff1744",
@@ -9890,50 +9959,42 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
-          "coordinates": [
-            886,
-            635
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "EHSO",
+          "name": "EHSO -2nd floor",
           "coordinates": [
             825,
-            664
+            657
           ],
           "floor": "2F"
         },
         {
-          "name": "Staircase",
+          "name": "You are here!",
           "coordinates": [
-            839,
-            657
+            887,
+            632
           ],
-          "pinType": "staircase"
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to EHSO",
+          "name": "You are here! to EHSO -2nd floor",
           "points": [
             [
-              886,
-              635
+              887,
+              632
             ],
             [
-              839,
-              637
+              841,
+              634
             ],
             [
-              839,
-              664
+              840,
+              657
             ],
             [
               825,
-              664
+              657
             ]
           ],
           "color": "#ff1744",
@@ -9961,50 +10022,50 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
+          "name": "CAO-ADMIN - 2nd floor",
           "coordinates": [
-            886,
-            635
+            824,
+            629
           ],
           "floor": "2F"
         },
         {
-          "name": "CAO-ADMIN",
+          "name": "You are here!",
           "coordinates": [
-            825,
-            664
+            884,
+            631
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            839,
-            657
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to CAO-ADMIN",
+          "name": "You are here! to CAO-ADMIN",
           "points": [
             [
-              886,
-              635
+              884,
+              631
             ],
             [
-              839,
-              637
+              840,
+              633
             ],
             [
-              839,
+              842,
               664
             ],
             [
-              825,
-              664
+              830,
+              665
+            ],
+            [
+              830,
+              638
+            ],
+            [
+              829,
+              631
             ]
           ],
           "color": "#ff1744",
@@ -10018,8 +10079,8 @@
       "building": "Administrative Building",
       "floor": "Second Floor",
       "coordinates": [
-        886,
-        635
+        827,
+        633
       ],
       "map_id": "main_map",
       "responses": {
@@ -10032,50 +10093,46 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
+          "name": "RMU - 2nd floor",
           "coordinates": [
-            886,
-            635
+            827,
+            633
           ],
           "floor": "2F"
         },
         {
-          "name": "RMU",
+          "name": "You are here!",
           "coordinates": [
-            825,
-            664
+            884,
+            632
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            839,
-            657
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to RMU",
+          "name": "You are here! to RMU - 2nd floor",
           "points": [
             [
-              886,
-              635
+              884,
+              632
             ],
             [
               839,
-              637
+              633
             ],
             [
               839,
-              664
+              669
             ],
             [
-              825,
-              664
+              828,
+              655
+            ],
+            [
+              827,
+              633
             ]
           ],
           "color": "#ff1744",
@@ -10103,50 +10160,46 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
-          "coordinates": [
-            886,
-            635
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Office of the Board Secretary",
+          "name": "Office of the Board Secretary - 2nd floor",
           "coordinates": [
             825,
-            664
+            608
           ],
           "floor": "2F"
         },
         {
-          "name": "Staircase",
+          "name": "You are here!",
           "coordinates": [
-            839,
-            657
+            886,
+            633
           ],
-          "pinType": "staircase"
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to Office of the Board Secretary",
+          "name": "You are here! to Office of the Board Secretary - 2nd floor",
           "points": [
             [
               886,
-              635
+              633
+            ],
+            [
+              840,
+              633
             ],
             [
               839,
-              637
+              671
             ],
             [
-              839,
-              664
+              827,
+              656
             ],
             [
-              825,
-              664
+              827,
+              612
             ]
           ],
           "color": "#ff1744",
@@ -10160,8 +10213,8 @@
       "building": "Administrative Building",
       "floor": "Second Floor",
       "coordinates": [
-        886,
-        635
+        826,
+        619
       ],
       "map_id": "main_map",
       "responses": {
@@ -10174,50 +10227,46 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
+          "name": "Legal Unit Office - 2nd floor",
+          "coordinates": [
+            826,
+            619
+          ],
+          "floor": "2F"
+        },
+        {
+          "name": "You are here!",
           "coordinates": [
             886,
-            635
+            633
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Legal Unit Office",
-          "coordinates": [
-            825,
-            664
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            839,
-            657
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to Legal Unit Office",
+          "name": "You are here! to Legal Unit Office - 2nd floor",
           "points": [
             [
               886,
-              635
+              633
+            ],
+            [
+              840,
+              634
             ],
             [
               839,
-              637
+              679
             ],
             [
-              839,
-              664
+              829,
+              660
             ],
             [
-              825,
-              664
+              826,
+              619
             ]
           ],
           "color": "#ff1744",
@@ -16277,10 +16326,10 @@
       ],
       "responses": {
         "en": [
-          "The Sociology Department (Faculty Office)<b> is located on the 2nd floor of the New CAS Building</b>, behind the New COT Building. You can reach it via the elevator or staircase. Please use the map for navigation."
+          "The Sociology Department (Faculty Office) is located on the 2nd floor of the New CAS Building, behind the New COT Building. You can reach it via the elevator or staircase. Please use the map for navigation."
         ],
         "ceb": [
-          "Ang Sociology Department (Faculty Office) <b>nahimutang sa 2nd floor sa New CAS Building</b>, sa luyo sa New COT Building. Mahimo nimo kining maabot pinaagi sa elevator o hagdanan. Palihug gamita ang mapa alang sa pag-navigate."
+          "Ang Sociology Department (Faculty Office) nahimutang sa 2nd floor sa New CAS Building, sa luyo sa New COT Building. Mahimo nimo kining maabot pinaagi sa elevator o hagdanan. Palihug gamita ang mapa alang sa pag-navigate."
         ]
       },
       "pins": [
@@ -16388,10 +16437,10 @@
       ],
       "responses": {
         "en": [
-          "The Economics Department (Faculty Office) is <b>located on the 2nd floor of the New CAS Building</b>, situated behind the New COT Building. You can reach the 2nd floor using the elevator or staircase. A map is provided to assist your navigation."
+          "The Economics Department (Faculty Office) is located on the 2nd floor of the New CAS Building, situated behind the New COT Building. You can reach the 2nd floor using the elevator or staircase. A map is provided to assist your navigation."
         ],
         "ceb": [
-          "Ang Economics Department (Faculty Office) <b>nahimutang sa 2nd floor sa New CAS Building</b>, sa luyo sa New COT Building. Mahimo nimong maabot ang ika-duhang andana gamit ang elevator o hagdanan. Adunay gihatag nga mapa alang sa imong pag-navigate."
+          "Ang Economics Department (Faculty Office) nahimutang sa 2nd floor sa New CAS Building, sa luyo sa New COT Building. Mahimo nimong maabot ang ika-duhang andana gamit ang elevator o hagdanan. Adunay gihatag nga mapa alang sa imong pag-navigate."
         ]
       },
       "pins": [
@@ -16494,25 +16543,25 @@
       "floor": "Third Floor",
       "map_id": "main_map",
       "coordinates": [
-        427,
-        834
+        423,
+        780
       ],
       "responses": {
         "en": [
-          "The Plant Tissue Culture Laboratory is <b>located on the 3rd floor of the New CAS Building</b>, behind the New COT Building. You can reach the 3rd floor using the elevator or staircase. Please refer to the map for directions."
+          "The Plant Tissue Culture Laboratory is located on the 3rd floor of the New CAS Building, behind the New COT Building. You can reach the 3rd floor using the elevator or staircase. Please refer to the map for directions."
         ],
         "ceb": [
-          "Ang Plant Tissue Culture Laboratory <b>nahimutang sa 3rd floor sa New CAS Building</b>, sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ikatulo nga andana. Palihug tan-awa ang mapa alang sa giya."
+          "Ang Plant Tissue Culture Laboratory nahimutang sa 3rd floor sa New CAS Building, sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ikatulo nga andana. Palihug tan-awa ang mapa alang sa giya."
         ]
       },
       "pins": [
         {
-          "name": "Plant tissue culture laboratory",
+          "name": "Philosophy Faculty Office - 2nd floor",
           "coordinates": [
             427,
-            834
+            746
           ],
-          "floor": "3F"
+          "floor": "2F"
         },
         {
           "name": "Your are here!",
@@ -16520,7 +16569,7 @@
             883,
             633
           ],
-          "floor": "3F"
+          "floor": "2F"
         },
         {
           "name": "Elevator",
@@ -16581,16 +16630,16 @@
               729
             ],
             [
-              422,
-              730
+              421,
+              728
             ],
             [
-              424,
-              830
+              421,
+              746
             ],
             [
-              429,
-              835
+              427,
+              746
             ]
           ],
           "color": "#ff1744",
@@ -16605,20 +16654,20 @@
       "floor": "Third Floor",
       "map_id": "main_map",
       "coordinates": [
-        427,
-        746
+        425,
+        783
       ],
       "responses": {
         "en": [
-          "The Kalatungan Learning Space is l<b>ocated on the 3rd floor of the New CAS Building</b>, situated behind the New COT Building. Use the staircase or elevator to reach the 3rd floor. A map is provided to guide your way."
+          "The Kalatungan Learning Space is located on the 3rd floor of the New CAS Building, situated behind the New COT Building. Use the staircase or elevator to reach the 3rd floor. A map is provided to guide your way."
         ],
         "ceb": [
-          "Ang Kalatungan Learning Space <b>nahimutang sa 3rd floor sa New CAS Building</b>, sa luyo sa New COT Building. Gamita ang hagdanan o elevator paingon sa ikatulo nga andana. Adunay mapa nga gihatag alang sa imong giya."
+          "Ang Kalatungan Learning Space nahimutang sa 3rd floor sa New CAS Building, sa luyo sa New COT Building. Gamita ang hagdanan o elevator paingon sa ikatulo nga andana. Adunay mapa nga gihatag alang sa imong giya."
         ]
       },
       "pins": [
         {
-          "name": "Kalatungan learning space - 2nd floor",
+          "name": "Philosophy Faculty Office - 2nd floor",
           "coordinates": [
             427,
             746
@@ -16716,25 +16765,25 @@
       "floor": "Fourth Floor",
       "map_id": "main_map",
       "coordinates": [
-        426,
-        786
+        425,
+        782
       ],
       "responses": {
         "en": [
-          "The Microbiology Laboratory (A4-404) is <b>located on the 4th floor of the New CAS Building,</b> situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
+          "The Microbiology Laboratory (A4-404) is located on the 4th floor of the New CAS Building, situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
         ],
         "ceb": [
-          "Ang Microbiology Laboratory (A4-404) <b>nahimutang sa 4th floor sa New CAS Building,</b> nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
+          "Ang Microbiology Laboratory (A4-404) nahimutang sa 4th floor sa New CAS Building, nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
         ]
       },
       "pins": [
         {
-          "name": "Microbiology laboratory - 4th floor",
+          "name": "Philosophy Faculty Office - 2nd floor",
           "coordinates": [
-            426,
-            786
+            427,
+            746
           ],
-          "floor": "4F"
+          "floor": "2F"
         },
         {
           "name": "Your are here!",
@@ -16742,7 +16791,7 @@
             883,
             633
           ],
-          "floor": "4F"
+          "floor": "2F"
         },
         {
           "name": "Elevator",
@@ -16803,16 +16852,16 @@
               729
             ],
             [
-              423,
+              421,
               728
             ],
             [
-              423,
-              784
+              421,
+              746
             ],
             [
-              429,
-              786
+              427,
+              746
             ]
           ],
           "color": "#ff1744",
@@ -16827,25 +16876,25 @@
       "floor": "Fourth Floor",
       "map_id": "main_map",
       "coordinates": [
-        427,
-        832
+        425,
+        785
       ],
       "responses": {
         "en": [
-          "The Biotechnology Laboratory (A4-405) <b>is located on the 4th floor of the New CAS Building</b>, situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
+          "The Biotechnology Laboratory (A4-405) is located on the 4th floor of the New CAS Building, situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
         ],
         "ceb": [
-          "Ang Biotechnology Laboratory (A4-405) <b>nahimutang sa 4th floor sa New CAS Building</b>, nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
+          "Ang Biotechnology Laboratory (A4-405) nahimutang sa 4th floor sa New CAS Building, nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
         ]
       },
       "pins": [
         {
-          "name": "Biotechnology laboratory - 4th floor",
+          "name": "Philosophy Faculty Office - 2nd floor",
           "coordinates": [
             427,
-            832
+            746
           ],
-          "floor": "4F"
+          "floor": "2F"
         },
         {
           "name": "Your are here!",
@@ -16853,7 +16902,7 @@
             883,
             633
           ],
-          "floor": "4F"
+          "floor": "2F"
         },
         {
           "name": "Elevator",
@@ -16914,16 +16963,16 @@
               729
             ],
             [
-              423,
-              730
+              421,
+              728
             ],
             [
-              424,
-              830
+              421,
+              746
             ],
             [
-              430,
-              833
+              427,
+              746
             ]
           ],
           "color": "#ff1744",

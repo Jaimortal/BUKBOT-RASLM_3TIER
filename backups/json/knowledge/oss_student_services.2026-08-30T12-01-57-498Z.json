@@ -121,12 +121,10 @@
           "map_id": "main_map",
           "responses": {
             "en": [
-              "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, **directly ask to the BukSU Scholarship and Financial Grants Unit,** i'll provide you some map for faster navigation of their office. \n\n you can also directly ask to their Facebook page: https://www.facebook.com/BukSUSFGU",
-              "You can **locate the** Scholarship and Financial Grants Unit **beside the Academic Mentoring unit office**"
+              "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, directly ask to the BukSU Scholarship and Financial Grants Unit, i'll provide you some map for faster navigation of their office. \n\n you can also directly ask to their Facebook page: https://www.facebook.com/BukSUSFGU"
             ],
             "ceb": [
-              "Alang sa mga pangutana bahin sa scholarship labi na sa mga available nga programa sa scholarship sa BukSU, **direkta nga pangutana sa BukSU Scholarship and Financial Grants Unit,** maghatag ako og mapa para sa mas paspas nga pag-navigate sa ilang opisina.\n\nMahimo usab kang direktang mangutana sa ilang Facebook page: https://www.facebook.com/BukSUSFGU",
-              "**makita nimo ang** Scholarship and Financial Grants Unit **kilid rajud sa Academic Mentoring unit office**"
+              "Alang sa mga pangutana bahin sa scholarship labi na sa mga available nga programa sa scholarship sa BukSU, direkta nga pangutana sa BukSU Scholarship and Financial Grants Unit, maghatag ako og mapa para sa mas paspas nga pag-navigate sa ilang opisina.\n\nMahimo usab kang direktang mangutana sa ilang Facebook page: https://www.facebook.com/BukSUSFGU"
             ]
           },
           "pins": [
@@ -202,6 +200,7 @@
           ],
           "images": [
             "/api/images/a8628874-f618-400e-b747-95994678501e",
+            "/api/images/30802112-2428-40cb-97c9-3ace4b3d8faa",
             "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
           ],
           "items": [],
@@ -240,8 +239,7 @@
               "unsa",
               "naa"
             ]
-          },
-          "subject_terms": []
+          }
         },
         {
           "topic": "scholarship_application",

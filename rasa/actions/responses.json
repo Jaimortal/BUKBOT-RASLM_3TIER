@@ -620,6 +620,146 @@
     "display_name": "Application Pending"
   },
   {
+    "intent": "available_scholarships_buksu",
+    "category": "Scholarship",
+    "sub_category": "availability",
+    "responses": {
+      "answer": {
+        "en": [
+          "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, directly ask to the BukSU Scholarship and Financial Grants Unit, i'll provide you some map for faster navigation of their office. \n\n you can also directly ask to their Facebook page: https://www.facebook.com/BukSUSFGU"
+        ],
+        "ceb": [
+          "Alang sa mga pangutana bahin sa scholarship labi na sa mga available nga programa sa scholarship sa BukSU, direkta nga pangutana sa BukSU Scholarship and Financial Grants Unit, maghatag ako og mapa para sa mas paspas nga pag-navigate sa ilang opisina.\n\nMahimo usab kang direktang mangutana sa ilang Facebook page: https://www.facebook.com/BukSUSFGU"
+        ]
+      },
+      "follow_up": [],
+      "context_slots": {
+        "last_topic": "available_scholarships_buksu"
+      },
+      "mapData": {
+        "locationName": "Scholarship and Financial Grants Unit",
+        "mapId": "main_map",
+        "floor": "Ground Floor",
+        "building": "Pink Building",
+        "type": "office",
+        "pins": [
+          {
+            "name": "Start From here",
+            "coordinates": [
+              882,
+              635
+            ]
+          },
+          {
+            "name": "Scholarship and Financial Grants Unit",
+            "coordinates": [
+              529,
+              565
+            ],
+            "floor": "GF"
+          }
+        ],
+        "routes": [
+          {
+            "name": "Start From here to Scholarship and Financial Grants Unit",
+            "points": [
+              [
+                883,
+                637
+              ],
+              [
+                781,
+                635
+              ],
+              [
+                784,
+                673
+              ],
+              [
+                590,
+                677
+              ],
+              [
+                572,
+                664
+              ],
+              [
+                570,
+                646
+              ],
+              [
+                545,
+                647
+              ],
+              [
+                544,
+                600
+              ],
+              [
+                534,
+                591
+              ],
+              [
+                533,
+                564
+              ],
+              [
+                529,
+                565
+              ]
+            ],
+            "color": "#ff1744",
+            "route_order": 1,
+            "route_label": "Route 1"
+          }
+        ]
+      },
+      "imageUrls": [
+        "/api/images/a8628874-f618-400e-b747-95994678501e",
+        "/api/images/30802112-2428-40cb-97c9-3ace4b3d8faa",
+        "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
+      ]
+    },
+    "metadata": {
+      "source": "ScholarshipData",
+      "phrases": [
+        "What scholarships are available",
+        "What scholarships are available in buksu",
+        "what scholarships are offered in buksu",
+        "what scholarships does buksu offer",
+        "scholarships available in buksu",
+        "scholarships in buksu",
+        "list of scholarships in buksu",
+        "available scholarships in buksu",
+        "available scholarships",
+        "unsa nga mga scholarship available sa buksu",
+        "unsa ang mga scholarship sa buksu",
+        "unsa nga scholarship ang naa sa buksu",
+        "unsa ang mga available nga scholarship",
+        "naa bay scholarship sa buksu",
+        "naa bay available nga scholarship sa buksu",
+        "are there scholarships available in buksu",
+        "is there any scholarship available in buksu"
+      ],
+      "strong_keywords": [
+        "scholarship",
+        "scholarships",
+        "available",
+        "offered",
+        "sfgu",
+        "grants"
+      ],
+      "weak_keywords": [
+        "buksu",
+        "list",
+        "what",
+        "unsa",
+        "naa"
+      ]
+    },
+    "display_name": "Available Scholarships in BukSU"
+  },
+  {
     "intent": "tes_release_delay",
     "category": "Scholarship",
     "sub_category": "TES",
@@ -1209,14 +1349,12 @@
     "responses": {
       "answer": {
         "en": [
-          "Students must wear the prescribed university uniform on designated days.",
-          "During civilian days students must still follow the modest dress code.",
-          "Shorts sleeveless tops ripped jeans and slippers are not allowed inside the campus."
+          "Dress code policy: Under the application of the policy on access to persons, the **wearing of the complete school/PE uniform and school ID shall be observed**. This **means you are required to wear a uniform**, unless there is a memorandum stating that students can wear casual attire on a specific day. **wearing of shorts and sando shall not be allowed to enter the school premises during class days and office hours** except during legitimate school activities with permission from the authorities. **However,** you may wear your casual attire on Wednesday, since this is wash day.",
+          "You can also read other BukSU Policy through this link: https://buksu.edu.ph/security-services-unit/"
         ],
         "ceb": [
-          "Ang mga estudyante kinahanglan magsul ob sa saktong uniporme sa mga gitakdang adlaw.",
-          "Sa civilian days kinahanglan gihapon mosunod sa ligdong nga pamesti.",
-          "Bawal ang mag shorts mag sando gisi nga karsones ug mag tsinelas sulod sa campus."
+          "Dress code policy: Ubos sa implementasyon sa polisiya sa access sa mga tawo, ang **pagsul-ob sa kompleto nga school/PE uniform ug school ID kinahanglan sundon**. Kini **nagpasabot nga gikinahanglan gayod nga mag-uniporme**, gawas kon adunay memorandum nga nagtugot sa mga estudyante nga makasul-ob og casual attire sa espesipikong adlaw. Ang **pagsul-ob og shorts ug sando dili tugotan nga makasulod sa premises sa eskwelahan panahon sa class days ug office hours** gawas lang sa mga lehitimong kalihokan sa tunghaan nga adunay pagtugot gikan sa mga awtoridad. **Apan,** mahimo kang magsul-ob og casual attire matag Miyerkules kay kini ang wash day.",
+          "Mabasa usab nimo ang uban pang BukSU Policies pinaagi niini nga link: https://buksu.edu.ph/security-services-unit/"
         ]
       },
       "follow_up": [],
@@ -1228,8 +1366,13 @@
     "metadata": {
       "source": "PolicyData",
       "phrases": [
+        "what is the dress code policy",
+        "Can you tell me whats the dresscode policy of Bukidnon state university",
+        "Dress code policy",
+        "unsa may dress code policy sa buksu",
         "campus dress code policy",
         "what is the dress code in buksu",
+        "what is the school uniform policy",
         "what clothes are not allowed inside campus",
         "are slippers allowed inside buksu",
         "are shorts allowed inside campus",
@@ -1244,22 +1387,58 @@
         "Pwede ba magsul ob og tsinelas o gisi nga karsones sa campus",
         "What is the dress code policy for students at BukSU",
         "What clothes are allowed inside the BukSU campus",
-        "Are students required to wear the official university uniform"
-      ],
-      "strong_keywords": [
-        "dress",
-        "code",
-        "uniform",
-        "shorts",
-        "slippers"
-      ],
-      "weak_keywords": [
-        "campus",
-        "wear",
-        "inside"
+        "Are students required to wear the official university uniform",
+        "school uniform or dress code policy"
       ]
     },
-    "display_name": "Dress Code"
+    "display_name": "Dress Code Policy"
+  },
+  {
+    "intent": "buksu_general_policies",
+    "category": "Campus Policies",
+    "sub_category": "general_policy",
+    "responses": {
+      "answer": {
+        "en": [
+          "Here are some of the Bukidnon State University policies, you can also visit this BukSU official Website for more information about the policies of Bukidnon State University: https://buksu.edu.ph/security-services-unit/",
+          "**Dress Code and Personal Access**\n• Prohibited Attire: The security manual explicitly states: Proper and decent attire upon entering the BUKSU premises, offices shall be observed. Thus, **wearing of shorts and sando shall not be allowed to enter the school premises during class days and office hours** except during legitimate school activities with permission from the authorities.\n• \"No ID, No Entry\" Policy: All students across all levels and employees must wear or present their official school ID upon entering the campus.",
+          "**Campus Curfew Policy**\n• College Students: Not allowed to stay inside the campus **beyond 9:30 PM** (unless attending official school evening activities).\n• General Campus Lockout: No **persons are allowed inside the campus beyond 10:00 PM** (including dorm residents, with exceptions for school officials and graduate students/DepEd Fellows logged by security).",
+          "**Vehicle and Traffic Regulations**\n• Motorcycle Mufflers: Motorcycles with **modified mufflers that produce annoying or loud sounds are strictly banned** from entering the campus, even with a valid gate pass.\n• Minors / Students: A **No Driver's License, No Entry** policy is strictly enforced for elementary and high school student drivers from Monday to Sunday.\n• Vehicle Passes: Regular vehicles entering the campus must display a **valid Vehicle Gate Pass Sticker issued by the Office of the Chief Administrative Officer.** Visitors must leave a valid ID at the gate in exchange for a visitor’s pass."
+        ],
+        "ceb": [
+          "Ania ang pipila sa mga nag-unang polisiya sa Bukidnon State University, mahimo usab nimong bisitahon ang opisyal nga website sa BukSU alang sa dugang impormasyon: https://buksu.edu.ph/security-services-unit/",
+          "**Dress Code ug Personal Access**\n• Gidili nga Pamesti: Ang security manual klarong nag-ingon: Kinahanglan ang husto ug desente nga pamesti pagsulod sa BUKSU premises ug mga opisina. Busa, ang **pagsul-ob og shorts ug sando dili tugotan nga makasulod sa eskwelahan sa mga adlaw sa klase ug office hours** gawas lang kon adunay lehitimong kalihokan nga gitugotan sa awtoridad.\n• \"No ID, No Entry\" Policy: Ang tanang estudyante sa tanang ang-ang ug mga empleyado kinahanglang magsul-ob o magpakita sa ilang opisyal nga school ID sa pagsulod sa campus.",
+          "**Curfew sa Campus**\n• College Students: Dili tugotan nga magpabilin sulod sa campus **lapas sa 9:30 PM** (gawas kon motambong og opisyal nga kalihokan sa eskwelahan sa gabii).\n• General Campus Lockout: **Walay gitugotan sulod sa campus lapas sa 10:00 PM** (lakip ang mga nag-dorm, gawas sa mga school officials ug graduate students/DepEd Fellows nga na-log sa security).",
+          "**Regulasyon sa Sakyanan ug Trapiko**\n• Tambutso sa Motor: Ang mga motorsiklo nga adunay **bora-bora o modified mufflers nga saba ug makadisturbo hugot nga gidili** sa pagsulod sa campus, bisan pa kon adunay valid gate pass.\n• Minors / Estudyante: Ang **No Driver's License, No Entry** nga polisiya hugot nga gipatuman alang sa mga estudyante gikan Lunes hangtod Domingo.\n• Vehicle Passes: Ang mga regular nga sakyanan kinahanglang magpakita og **valid Vehicle Gate Pass Sticker gikan sa Office of the Chief Administrative Officer.** Ang mga bisita kinahanglang magbilin og valid ID sa gate baylo sa visitor's pass."
+        ]
+      },
+      "follow_up": [],
+      "context_slots": {
+        "last_topic": "buksu_general_policies"
+      },
+      "imageUrls": []
+    },
+    "metadata": {
+      "source": "PolicyData",
+      "phrases": [
+        "what is the policy of buksu",
+        "whats the policy of Bukidnon state university",
+        "unsay policy sa buksu",
+        "what are the policies of buksu",
+        "what are the policies in buksu",
+        "unsa ang mga polisiya sa buksu",
+        "unsa ang policy sa buksu",
+        "buksu policies",
+        "buksu policy",
+        "university policies of buksu",
+        "university policy in buksu",
+        "school policy of buksu",
+        "mga polisiya sa buksu",
+        "rules and regulations in buksu",
+        "what is the general policy of buksu"
+      ]
+    },
+    "display_name": "BukSU General Policies"
   },
   {
     "intent": "guidance_counseling_services_buksu",

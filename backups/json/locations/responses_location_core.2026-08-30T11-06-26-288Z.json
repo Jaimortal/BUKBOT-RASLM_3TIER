@@ -808,14 +808,12 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "Located on the 1st floor of the Secondary School Laboratory Building.",
-          "This building is situated beside the University Press (UP) Building and directly in front of the parking area along P.A. Ramos Street.",
-          "Once you reach the building, ComLab 10 can be easily found on the ground floor."
+          "At present, ComLab 10 does not exist.",
+          "The available computer laboratories are currently numbered from ComLab 1 up to ComLab 12, with no designated ComLab 10."
         ],
         "ceb": [
-          "Nahimutang sa 1st floor sa Secondary School Laboratory Building.",
-          "Kining bilding nahimutang tapad sa University Press (UP) Building ug diretso sa atubangan sa parking area sa P.A. Ramos Street.",
-          "Kung moabot ka sa bilding, sayon makita ang ComLab 10 sa ground floor."
+          "Karon, wala ang ComLab 10.",
+          "Ang anaa nga mga computer laboratory karon gikan sa ComLab 1 hangtod sa ComLab 12, walay designated ComLab 10."
         ]
       },
       "pins": [
@@ -2368,6 +2366,77 @@
             [
               736,
               496
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "Canteen": {
+      "type": "facility",
+      "building": "CPAG Building",
+      "floor": "Basement",
+      "coordinates": [
+        746,
+        531
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The canteen is located in the basement of the CPAG Building, directly below the CPAG Dean's Office. A map has been provided to help you find your way."
+        ],
+        "ceb": [
+          "Ang canteen nahimutang sa basement sa CPAG Building, direkta ilalom sa CPAG Dean’s Office. Adunay gihatag nga mapa aron matabangan ka sa pagpangita sa dalan."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Canteen",
+          "coordinates": [
+            746,
+            531
+          ],
+          "floor": "BS"
+        },
+        {
+          "name": "You are here!",
+          "coordinates": [
+            882,
+            630
+          ],
+          "floor": "BS"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to Canteen",
+          "points": [
+            [
+              882,
+              630
+            ],
+            [
+              788,
+              631
+            ],
+            [
+              785,
+              499
+            ],
+            [
+              771,
+              503
+            ],
+            [
+              760,
+              516
+            ],
+            [
+              746,
+              531
             ]
           ],
           "color": "#ff1744",
@@ -9898,7 +9967,7 @@
           "floor": "2F"
         },
         {
-          "name": "EHSO",
+          "name": "RMU",
           "coordinates": [
             825,
             664
@@ -9917,7 +9986,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to EHSO",
+          "name": "Start From Here to RMU",
           "points": [
             [
               886,
@@ -9969,7 +10038,7 @@
           "floor": "2F"
         },
         {
-          "name": "CAO-ADMIN",
+          "name": "RMU",
           "coordinates": [
             825,
             664
@@ -9988,7 +10057,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to CAO-ADMIN",
+          "name": "Start From Here to RMU",
           "points": [
             [
               886,
@@ -10111,7 +10180,7 @@
           "floor": "2F"
         },
         {
-          "name": "Office of the Board Secretary",
+          "name": "RMU",
           "coordinates": [
             825,
             664
@@ -10130,7 +10199,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to Office of the Board Secretary",
+          "name": "Start From Here to RMU",
           "points": [
             [
               886,
@@ -10160,8 +10229,8 @@
       "building": "Administrative Building",
       "floor": "Second Floor",
       "coordinates": [
-        886,
-        635
+        826,
+        619
       ],
       "map_id": "main_map",
       "responses": {
@@ -10182,7 +10251,7 @@
           "floor": "2F"
         },
         {
-          "name": "Legal Unit Office",
+          "name": "RMU",
           "coordinates": [
             825,
             664
@@ -10201,7 +10270,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to Legal Unit Office",
+          "name": "Start From Here to RMU",
           "points": [
             [
               886,

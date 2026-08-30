@@ -47,7 +47,7 @@
       "suggestions": [
         {
           "label": "Library location",
-          "payload": "where is Library"
+          "payload": "/direct_intent{\"intent\":\"location_Library_Building\"}"
         }
       ]
     },
@@ -93,7 +93,7 @@
       "suggestions": [
         {
           "label": "Museum location",
-          "payload": "where is Museum"
+          "payload": "/direct_intent{\"intent\":\"location_Museum\"}"
         }
       ]
     },
@@ -141,7 +141,7 @@
       "suggestions": [
         {
           "label": "Clinic location",
-          "payload": "where is Medical clinic"
+          "payload": "/direct_intent{\"intent\":\"location_Medical_clinic\"}"
         }
       ]
     },
@@ -187,7 +187,7 @@
       "suggestions": [
         {
           "label": "Dental Clinic location",
-          "payload": "where is Dental Clinic"
+          "payload": "/direct_intent{\"intent\":\"location_Dental_Clinic\"}"
         }
       ]
     },
@@ -234,11 +234,11 @@
       "suggestions": [
         {
           "label": "Gymnasium location",
-          "payload": "where is Gymnasium"
+          "payload": "/direct_intent{\"intent\":\"location_Gymnasium\"}"
         },
         {
           "label": "Fitness Gym location",
-          "payload": "where is Fitness Gym"
+          "payload": "/direct_intent{\"intent\":\"location_Fitness_Gym\"}"
         }
       ]
     },
@@ -254,11 +254,11 @@
       ],
       "responses": {
         "en": [
-          "Yes, BukSU has food areas such as the Cafeteria and Canteen.",
+          "Yes, BukSU has a main Cafeteria located in front of the New CAS Building.",
           "Students may go there during available hours to buy food or take a break."
         ],
         "ceb": [
-          "Oo, naa ang BukSU og food areas sama sa Cafeteria ug Canteen.",
+          "Oo, naa ang BukSU og main Cafeteria nga nahimutang atubangan sa New CAS Building.",
           "Pwede moadto ang students didto during available hours para mopalit og pagkaon o mopahuway."
         ]
       },
@@ -281,15 +281,11 @@
           "food"
         ]
       },
-      "display_name": "Cafeteria And Canteen Availability",
+      "display_name": "Cafeteria Availability",
       "suggestions": [
         {
           "label": "Cafeteria location",
-          "payload": "where is Cafeteria"
-        },
-        {
-          "label": "Canteen location",
-          "payload": "where is Canteen"
+          "payload": "/direct_intent{\"intent\":\"location_Cafeteria\"}"
         }
       ]
     },
@@ -334,7 +330,7 @@
       "suggestions": [
         {
           "label": "ATM location",
-          "payload": "where is ATM"
+          "payload": "/direct_intent{\"intent\":\"location_ATM\"}"
         }
       ]
     },
@@ -382,15 +378,15 @@
       "suggestions": [
         {
           "label": "Vehicle parking location",
-          "payload": "where is Vehicle Parking Area"
+          "payload": "/direct_intent{\"intent\":\"location_Vehicle_Parking_Area\"}"
         },
         {
           "label": "Motorcycle parking location",
-          "payload": "where is Motorcycle Parking Area"
+          "payload": "/direct_intent{\"intent\":\"location_Motorcycle_Parking_Area\"}"
         },
         {
           "label": "Car parking location",
-          "payload": "where is Car Parking Area"
+          "payload": "/direct_intent{\"intent\":\"location_Car_Parking_Area\"}"
         }
       ]
     },
@@ -438,15 +434,15 @@
       "suggestions": [
         {
           "label": "Mahogany Dorm location",
-          "payload": "where is Mahogany dorm"
+          "payload": "/direct_intent{\"intent\":\"location_Mahogany_dorm\"}"
         },
         {
           "label": "Rubia Dorm location",
-          "payload": "where is Rubia dorm"
+          "payload": "/direct_intent{\"intent\":\"location_Rubia_dorm\"}"
         },
         {
           "label": "Kilala Dorm location",
-          "payload": "where is Kilala Dorm"
+          "payload": "/direct_intent{\"intent\":\"location_Kilala_Dorm\"}"
         }
       ]
     },
@@ -492,7 +488,7 @@
       "suggestions": [
         {
           "label": "Oval location",
-          "payload": "where is Oval"
+          "payload": "/direct_intent{\"intent\":\"location_Oval\"}"
         }
       ]
     },
@@ -539,7 +535,7 @@
       "suggestions": [
         {
           "label": "Auditorium location",
-          "payload": "where is Auditorium"
+          "payload": "/direct_intent{\"intent\":\"location_Auditorium\"}"
         }
       ]
     },
@@ -586,7 +582,7 @@
       "suggestions": [
         {
           "label": "Guidance Office location",
-          "payload": "where is Guidance Office"
+          "payload": "/direct_intent{\"intent\":\"location_Guidance_Office\"}"
         }
       ]
     },
@@ -631,7 +627,7 @@
       "suggestions": [
         {
           "label": "Registrar Office location",
-          "payload": "where is Registrar Office"
+          "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
         }
       ]
     },
@@ -679,11 +675,11 @@
       "suggestions": [
         {
           "label": "Finance Building location",
-          "payload": "where is Finance Building"
+          "payload": "/direct_intent{\"intent\":\"location_Finance_Building\"}"
         },
         {
           "label": "Cashier location",
-          "payload": "where is Window 03 Cashiers Office"
+          "payload": "/direct_intent{\"intent\":\"location_Window_03_Cashiers_Office\"}"
         }
       ]
     },
@@ -731,7 +727,7 @@
       "suggestions": [
         {
           "label": "ICT office location",
-          "payload": "where is ICT Service Unit"
+          "payload": "/direct_intent{\"intent\":\"location_ICT_Service_Unit\"}"
         }
       ]
     },
@@ -778,7 +774,7 @@
       "suggestions": [
         {
           "label": "Admission Office location",
-          "payload": "where is Admission Office"
+          "payload": "/direct_intent{\"intent\":\"location_Admission_Office\"}"
         }
       ]
     },
@@ -825,7 +821,7 @@
       "suggestions": [
         {
           "label": "Guard House location",
-          "payload": "where is Guard House"
+          "payload": "/direct_intent{\"intent\":\"location_Guard_House\"}"
         }
       ]
     },

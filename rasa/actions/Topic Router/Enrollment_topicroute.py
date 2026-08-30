@@ -156,6 +156,39 @@ ENROLLMENT_INFO_TOPIC_PATTERNS = {
         "required_context": []
     },
 
+    "enrollment_online_system": {
+        "phrases": [
+            "Is there a specific portal or online system for enrollment?",
+            "is there a specific portal or online system for enrollment",
+            "is there a portal for enrollment in buksu",
+            "is there an online system for enrollment in buksu",
+            "is there a portal for enrollment",
+            "what portal is used for enrollment",
+            "what website is used for enrollment",
+            "what is the enrollment portal of buksu",
+            "what online system do we use to enroll",
+            "what portal do i use to enroll",
+            "what website do i use to enroll",
+            "what portal is used to apply for enrollment",
+            "enrollment portal website",
+            "online system for enrollment",
+            "unsa ang portal para sa enrollment",
+            "unsa ang website para sa enrollment",
+            "naa bay specific portal para sa enrollment sa buksu",
+            "naa bay online system para sa enrollment",
+            "unsa nga portal gamiton para mag enroll"
+        ],
+        "strong_keywords": [
+            "portal for enrollment", "online system for enrollment",
+            "enrollment portal", "admissions.buksu.edu.ph",
+            "specific portal", "online system"
+        ],
+        "weak_keywords": [
+            "enrollment", "portal", "website", "system", "online", "buksu"
+        ],
+        "required_context": []
+    },
+
     "online_enrollment_steps": {
         "phrases": [
             "Online enrollment",

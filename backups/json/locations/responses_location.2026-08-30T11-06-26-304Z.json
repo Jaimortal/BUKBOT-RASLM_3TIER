@@ -808,14 +808,12 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "Located on the 1st floor of the Secondary School Laboratory Building.",
-          "This building is situated beside the University Press (UP) Building and directly in front of the parking area along P.A. Ramos Street.",
-          "Once you reach the building, ComLab 10 can be easily found on the ground floor."
+          "At present, ComLab 10 does not exist.",
+          "The available computer laboratories are currently numbered from ComLab 1 up to ComLab 12, with no designated ComLab 10."
         ],
         "ceb": [
-          "Nahimutang sa 1st floor sa Secondary School Laboratory Building.",
-          "Kining bilding nahimutang tapad sa University Press (UP) Building ug diretso sa atubangan sa parking area sa P.A. Ramos Street.",
-          "Kung moabot ka sa bilding, sayon makita ang ComLab 10 sa ground floor."
+          "Karon, wala ang ComLab 10.",
+          "Ang anaa nga mga computer laboratory karon gikan sa ComLab 1 hangtod sa ComLab 12, walay designated ComLab 10."
         ]
       },
       "pins": [
@@ -2368,6 +2366,77 @@
             [
               736,
               496
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "Canteen": {
+      "type": "facility",
+      "building": "CPAG Building",
+      "floor": "Basement",
+      "coordinates": [
+        746,
+        531
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The canteen is located in the basement of the CPAG Building, directly below the CPAG Dean's Office. A map has been provided to help you find your way."
+        ],
+        "ceb": [
+          "Ang canteen nahimutang sa basement sa CPAG Building, direkta ilalom sa CPAG Dean’s Office. Adunay gihatag nga mapa aron matabangan ka sa pagpangita sa dalan."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Canteen",
+          "coordinates": [
+            746,
+            531
+          ],
+          "floor": "BS"
+        },
+        {
+          "name": "You are here!",
+          "coordinates": [
+            882,
+            630
+          ],
+          "floor": "BS"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to Canteen",
+          "points": [
+            [
+              882,
+              630
+            ],
+            [
+              788,
+              631
+            ],
+            [
+              785,
+              499
+            ],
+            [
+              771,
+              503
+            ],
+            [
+              760,
+              516
+            ],
+            [
+              746,
+              531
             ]
           ],
           "color": "#ff1744",
@@ -9890,50 +9959,42 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
-          "coordinates": [
-            886,
-            635
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "EHSO",
+          "name": "EHSO -2nd floor",
           "coordinates": [
             825,
-            664
+            657
           ],
           "floor": "2F"
         },
         {
-          "name": "Staircase",
+          "name": "You are here!",
           "coordinates": [
-            839,
-            657
+            887,
+            632
           ],
-          "pinType": "staircase"
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to EHSO",
+          "name": "You are here! to EHSO -2nd floor",
           "points": [
             [
-              886,
-              635
+              887,
+              632
             ],
             [
-              839,
-              637
+              841,
+              634
             ],
             [
-              839,
-              664
+              840,
+              657
             ],
             [
               825,
-              664
+              657
             ]
           ],
           "color": "#ff1744",
@@ -9961,50 +10022,50 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
+          "name": "CAO-ADMIN - 2nd floor",
           "coordinates": [
-            886,
-            635
+            824,
+            629
           ],
           "floor": "2F"
         },
         {
-          "name": "CAO-ADMIN",
+          "name": "You are here!",
           "coordinates": [
-            825,
-            664
+            884,
+            631
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            839,
-            657
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to CAO-ADMIN",
+          "name": "You are here! to CAO-ADMIN",
           "points": [
             [
-              886,
-              635
+              884,
+              631
             ],
             [
-              839,
-              637
+              840,
+              633
             ],
             [
-              839,
+              842,
               664
             ],
             [
-              825,
-              664
+              830,
+              665
+            ],
+            [
+              830,
+              638
+            ],
+            [
+              829,
+              631
             ]
           ],
           "color": "#ff1744",
@@ -10103,50 +10164,46 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
-          "coordinates": [
-            886,
-            635
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Office of the Board Secretary",
+          "name": "Office of the Board Secretary - 2nd floor",
           "coordinates": [
             825,
-            664
+            608
           ],
           "floor": "2F"
         },
         {
-          "name": "Staircase",
+          "name": "You are here!",
           "coordinates": [
-            839,
-            657
+            886,
+            633
           ],
-          "pinType": "staircase"
+          "floor": "2F"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to Office of the Board Secretary",
+          "name": "You are here! to Office of the Board Secretary - 2nd floor",
           "points": [
             [
               886,
-              635
+              633
+            ],
+            [
+              840,
+              633
             ],
             [
               839,
-              637
+              671
             ],
             [
-              839,
-              664
+              827,
+              656
             ],
             [
-              825,
-              664
+              827,
+              612
             ]
           ],
           "color": "#ff1744",
@@ -10160,8 +10217,8 @@
       "building": "Administrative Building",
       "floor": "Second Floor",
       "coordinates": [
-        886,
-        635
+        826,
+        619
       ],
       "map_id": "main_map",
       "responses": {
@@ -10174,50 +10231,46 @@
       },
       "pins": [
         {
-          "name": "Start From Here",
+          "name": "Legal Unit Office - 2nd floor",
+          "coordinates": [
+            826,
+            619
+          ],
+          "floor": "2F"
+        },
+        {
+          "name": "You are here!",
           "coordinates": [
             886,
-            635
+            633
           ],
           "floor": "2F"
-        },
-        {
-          "name": "Legal Unit Office",
-          "coordinates": [
-            825,
-            664
-          ],
-          "floor": "2F"
-        },
-        {
-          "name": "Staircase",
-          "coordinates": [
-            839,
-            657
-          ],
-          "pinType": "staircase"
         }
       ],
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to Legal Unit Office",
+          "name": "You are here! to Legal Unit Office - 2nd floor",
           "points": [
             [
               886,
-              635
+              633
+            ],
+            [
+              840,
+              634
             ],
             [
               839,
-              637
+              679
             ],
             [
-              839,
-              664
+              829,
+              660
             ],
             [
-              825,
-              664
+              826,
+              619
             ]
           ],
           "color": "#ff1744",
