@@ -167,7 +167,38 @@ class KnowledgeRouter:
         entity_values: List[str],
         active_domain: Optional[str] = None,
     ) -> Optional[str]:
-        return self._calculate_direct_intent_override(intent, user_message, entity_values, active_domain=active_domain)
+        raw_intent = self._calculate_direct_intent_override(intent, user_message, entity_values, active_domain=active_domain)
+        if not raw_intent:
+            return None
+
+        # In Open/Unrestricted Mode (no active_domain), allow all direct overrides
+        if not active_domain:
+            return raw_intent
+
+        # Internal menus domain scoping
+        if str(raw_intent).startswith("__"):
+            menu_allowed_domains = {
+                "__clinic_services_menu__": {"services"},
+                "__dormitory_services_menu__": {"services", "others"},
+                "__classroom_policy_menu__": {"university", "academics"},
+                "__student_portal_login_clarification__": {"procedures", "university"},
+                "__student_portal_password_clarification__": {"procedures", "university", "services"},
+                "__validation_clarification__": {"procedures", "services"},
+                "__id_clarification__": {"procedures", "services"},
+                "__passing_grade_clarification__": {"procedures", "academics"},
+                "__contact_clarification__": {"services", "others", "university"},
+            }
+            allowed = menu_allowed_domains.get(str(raw_intent))
+            if allowed is not None and active_domain not in allowed:
+                return None
+            return raw_intent
+
+        # Verify that raw_intent strictly belongs to active_domain
+        if self.data_loader.is_intent_in_domain(raw_intent, active_domain):
+            return raw_intent
+
+        # Reject out-of-domain match to prevent cross-domain leak
+        return None
 
     def _calculate_direct_intent_override(
         self,
@@ -183,6 +214,50 @@ class KnowledgeRouter:
         raw_tokens = set(re.findall(r"\b[\w'-]+\b", raw_normalized))
         facility_availability_intent = self._facility_availability_route(text) if not active_domain or active_domain == "location" else None
 
+
+        # Password Management & Reset Clarification
+        is_password_query = any(k in text for k in [
+            "password", "passcode", "reset password", "change password", "forgot password",
+            "recover password", "update password", "ilis sa password", "ilis og password",
+            "usab sa password", "usbon ang password", "nakalimot kos password", "nakalimot ko sa password",
+            "change my password", "reset my password", "forgot my password", "lost my password",
+        ]) or (
+            ("password" in tokens or "pass" in tokens or "pwd" in tokens) and 
+            any(w in text for w in ["change", "reset", "forgot", "forget", "recover", "update", "ilis", "usab", "nakalimot", "lost"])
+        )
+
+        if is_password_query:
+            if any(w in text for w in ["admission", "cat", "applicant", "application", "testing"]):
+                return "Change_Pass_admission"
+            if any(w in text for w in ["sias", "grades portal", "grading portal", "sias portal", "enrollment portal"]):
+                return "sias_forgot_password"
+            if any(w in text for w in ["wifi", "wi-fi", "internet"]):
+                return "wifi_password"
+            if any(w in text for w in ["institutional", "email", "gmail", "google account", "office 365", "student email"]):
+                return "institutional_email_account"
+            return "__student_portal_password_clarification__"
+
+        # Admission Account Registration / Sign up
+        if self._has_any(text, [
+            "create admission account", "register admission account", "admission portal registration",
+            "how to create admission account", "how to register admission account", "sign up admission",
+            "admission account registration", "wala koy admission account", "create admission portal account",
+            "maghimo og admission account", "unsaon pag buhat admission account"
+        ]):
+            return "admission_account_registration"
+
+        # Change / Update Admission Profile Information
+        if self._has_any(text, [
+            "change info admission", "change information in admission", "edit admission details",
+            "update personal information", "update academic information", "change wrong details in buksu admission",
+            "edit my admission application", "unsaon pag change sa akong admission info", "wrong personal information admission",
+            "nasayop akong details pwede pa ma usab", "asa dapit mag change ug profile info"
+        ]) or (
+            self._has_any(text, ["change", "update", "edit", "usab", "ilis"]) and
+            self._has_any(text, ["info", "information", "detail", "details", "profile", "personal details", "academic information"]) and
+            self._has_any(text, ["admission", "cat", "applicant", "application"])
+        ):
+            return "Change_info_admission"
 
         # Student Handbook — intercept before location scoring penalizes it.
         # Any query mentioning "handbook" is about how to get the document,
@@ -2154,7 +2229,7 @@ class KnowledgeRouter:
             if self._has_any(text, ["dental", "ngipon", "tooth", "teeth", "pasta", "ibot"]):
                 return "request_dental_consult"
             if self._has_any(text, ["medical", "checkup", "check up", "doctor", "doktor", "tambal", "medicine"]):
-                return "request_medical_consult"
+                return "buksu_medical_dental_services"
             return "__clinic_services_menu__"
 
         has_institutional_email = self._has_any(text, ["institutional email", "ms teams", "teams account", "office 365", "student email"])
@@ -2715,7 +2790,7 @@ class KnowledgeRouter:
             if self._has_any(text, ["dental", "ngipon", "tooth", "teeth", "pasta", "ibot"]):
                 return "request_dental_consult"
             if self._has_any(text, ["medical", "checkup", "check up", "doctor", "doktor", "tambal", "medicine"]):
-                return "request_medical_consult"
+                return "buksu_medical_dental_services"
             return "__clinic_services_menu__"
 
         has_guidance_query = (
@@ -4168,10 +4243,11 @@ class KnowledgeRouter:
             )
         if direct_intent == "__student_portal_password_clarification__":
             return self._choice_response(
-                "Which portal password do you need help with?",
+                "Which portal or account password do you need help with?",
                 [
                     {"label": "Admission Portal Password", "payload": "/direct_intent{\"intent\":\"Change_Pass_admission\"}"},
-                    {"label": "SIAS Portal Password", "payload": "/direct_intent{\"intent\":\"sias_forgot_password\"}"},
+                    {"label": "SIAS Student Portal Password", "payload": "/direct_intent{\"intent\":\"sias_forgot_password\"}"},
+                    {"label": "Institutional Email Account", "payload": "/direct_intent{\"intent\":\"institutional_email_account\"}"},
                 ],
             )
         if direct_intent == "__food_tech_lab_clarification__":

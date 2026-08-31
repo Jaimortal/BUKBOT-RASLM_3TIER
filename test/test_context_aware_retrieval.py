@@ -142,7 +142,7 @@ class ContextAwareRetrievalTests(unittest.TestCase):
         self.assertTrue(response["custom"]["mapData"].get("locationName"))
 
     def test_hot_reload_detects_new_supper_saiyan_json_file(self):
-        tmp_path = ROOT / "rasa" / "actions" / "Supper Saiyan" / "Day11_hot_reload_tmp.json"
+        tmp_path = ROOT / "rasa" / "actions" / "knowledge" / "services" / "Day11_hot_reload_tmp.json"
         try:
             self.assertFalse(tmp_path.exists())
             self.assertFalse(self.router.refresh_if_changed())

@@ -591,9 +591,9 @@
       "subject_key": "registrar_office_facility",
       "subject_type": "facility",
       "subject_terms": [
-        "registrar",
         "registrar office",
-        "university registrar"
+        "university registrar office",
+        "records office"
       ],
       "responses": {
         "en": [
@@ -618,9 +618,8 @@
           "registrar office available in BukSU"
         ],
         "strong_keywords": [
-          "registrar",
-          "records",
-          "cor"
+          "registrar office",
+          "records office"
         ]
       },
       "display_name": "Registrar Office Availability",
@@ -737,9 +736,9 @@
       "subject_type": "facility",
       "subject_terms": [
         "admission office",
-        "admission",
-        "admission and testing",
-        "atu"
+        "admission and testing office",
+        "atu office",
+        "admission unit"
       ],
       "responses": {
         "en": [
@@ -765,9 +764,9 @@
           "admission office available in BukSU"
         ],
         "strong_keywords": [
-          "admission",
-          "testing",
-          "atu"
+          "admission office",
+          "testing office",
+          "atu office"
         ]
       },
       "display_name": "Admission Office Availability",

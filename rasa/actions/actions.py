@@ -145,75 +145,61 @@ class ActionReplyFromJsonHelper:
         else:
             self.location_responses_path = os.path.join(os.path.dirname(responses_path), "responses_location.json")
         self.location_responses = self._load_location_responses()
-        # Load structured knowledge bases from Supper Saiyan folder
         # Load structured knowledge bases from knowledge directory
         self.knowledge_dir = os.path.join(os.path.dirname(responses_path), "knowledge")
-        self.supper_saiyan_dir = os.path.join(os.path.dirname(responses_path), "Supper Saiyan")
         
-        def _resolve_kb_path(domain_subpath: str, legacy_filename: str) -> str:
-            kn_path = os.path.join(self.knowledge_dir, domain_subpath)
-            if os.path.isfile(kn_path):
-                return kn_path
-            return os.path.join(self.supper_saiyan_dir, legacy_filename)
+        def _resolve_kb_path(domain_subpath: str) -> str:
+            return os.path.join(self.knowledge_dir, domain_subpath)
 
-        # Library and Academic Policy
-        self.library_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Library_info.json")
-        self.library_info = self._load_json_file(self.library_info_path)
+        # Library & OSS Services
+        self.oss_services_path = _resolve_kb_path(os.path.join("services", "oss_student_services.json"))
+        self.oss_services = self._load_json_file(self.oss_services_path)
+        self.library_info_path = self.oss_services_path
+        self.library_info = self.oss_services
         
-        self.academic_policy_path = _resolve_kb_path(os.path.join("academics", "academic_policies.json"), "Academic_policy.json")
+        # Academic Policy & Transactions
+        self.academic_policy_path = _resolve_kb_path(os.path.join("academics", "grading_and_retention.json"))
         self.academic_policy = self._load_json_file(self.academic_policy_path)
         
-        # Administrators
-        self.administrators_path = _resolve_kb_path(os.path.join("university", "administrators.json"), "Administrators.json")
+        # Administrators & Faculty
+        self.administrators_path = _resolve_kb_path(os.path.join("university", "faculty_and_deans.json"))
         self.administrators_info = self._load_json_file(self.administrators_path)
+        self.departamentals_path = self.administrators_path
+        self.departamentals_faculty_staff = self.administrators_info
+        self.department_info_path = self.administrators_path
+        self.department_info = self.administrators_info
         
-        # Admissions
-        self.admissions_path = _resolve_kb_path(os.path.join("procedures", "admission_procedures.json"), "Admissions_info.json")
+        # Admissions & Procedures
+        self.admissions_path = _resolve_kb_path(os.path.join("procedures", "admission_procedures.json"))
         self.admissions_info = self._load_json_file(self.admissions_path)
         
-        # Classroom Policy
-        self.classroom_policy_path = _resolve_kb_path(os.path.join("academics", "academic_policies.json"), "Classroom_policy.json")
-        self.classroom_policy = self._load_json_file(self.classroom_policy_path)
+        # Classroom & University Info
+        self.university_info_path = _resolve_kb_path(os.path.join("university", "university_identity.json"))
+        self.university_info = self._load_json_file(self.university_info_path)
+        self.classroom_policy_path = self.university_info_path
+        self.classroom_policy = self.university_info
         
         # Clinic Info
-        self.clinic_info_path = _resolve_kb_path(os.path.join("services", "student_health_services.json"), "Clinic_info.json")
+        self.clinic_info_path = _resolve_kb_path(os.path.join("services", "clinic_services.json"))
         self.clinic_info = self._load_json_file(self.clinic_info_path)
         
-        # Courses Info
-        self.courses_info_path = _resolve_kb_path(os.path.join("academics", "degree_programs.json"), "Courses_info.json")
+        # Courses / Degree Programs
+        self.courses_info_path = _resolve_kb_path(os.path.join("academics", "degree_programs.json"))
         self.courses_info = self._load_json_file(self.courses_info_path)
         
-        # Departmentals Faculty Staff
-        self.departamentals_path = _resolve_kb_path(os.path.join("university", "faculty_and_deans.json"), "Departamentals_facultystaff.json")
-        self.departamentals_faculty_staff = self._load_json_file(self.departamentals_path)
-        
-        # Department Info
-        self.department_info_path = _resolve_kb_path(os.path.join("university", "faculty_and_deans.json"), "Department_info.json")
-        self.department_info = self._load_json_file(self.department_info_path)
-        
         # Enrollment Info
-        self.enrollment_info_path = _resolve_kb_path(os.path.join("procedures", "enrollment_procedures.json"), "Enrollment_info.json")
+        self.enrollment_info_path = _resolve_kb_path(os.path.join("procedures", "enrollment_procedures.json"))
         self.enrollment_info = self._load_json_file(self.enrollment_info_path)
 
-        # Facilities Info
-        self.facilities_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Facilities_info.json")
+        # Facilities & Dormitory Info
+        self.facilities_info_path = _resolve_kb_path(os.path.join("others", "facilities_and_other_inquiries.json"))
         self.facilities_info = self._load_json_file(self.facilities_info_path)
+        self.dormitory_info_path = self.facilities_info_path
+        self.dormitory_info = self.facilities_info
         
         # ICT Info
-        self.ict_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Ict_info.json")
-        self.ict_info = self._load_json_file(self.ict_info_path)
-        
-        # OSS Services
-        self.oss_services_path = _resolve_kb_path(os.path.join("services", "oss_student_services.json"), "Oss_services.json")
-        self.oss_services = self._load_json_file(self.oss_services_path)
-        
-        # University Info
-        self.university_info_path = _resolve_kb_path(os.path.join("university", "university_identity.json"), "University_info.json")
-        self.university_info = self._load_json_file(self.university_info_path)
-        
-        # Dormitory Info
-        self.dormitory_info_path = _resolve_kb_path(os.path.join("services", "campus_facilities.json"), "Dormitory_info.json")
-        self.dormitory_info = self._load_json_file(self.dormitory_info_path)
+        self.ict_info_path = self.oss_services_path
+        self.ict_info = self.oss_services
         
         self._json_mtimes = self._snapshot_json_mtimes()
         self.context = ConversationContext()
@@ -1083,395 +1069,6 @@ class ActionReplyFromJsonHelper:
                 }
                 if college_info.get("floor"):
                     result["custom"]["mapData"]["floor"] = str(college_info.get("floor"))
-        
-        return result
-
-    def get_structured_response(
-        self,
-        user_message: str,
-        data_source: Dict[str, Any],
-        topic_patterns: Dict[str, Any],
-        topic_mapping: Optional[Dict[str, tuple]] = None,
-        fallback_message: str = "I'm sorry, I don't have information about that topic.",
-        language_keywords: Optional[List[str]] = None
-    ) -> Dict[str, Any]:
-        """
-        Generic structured response handler for super intent + topic routing architecture.
-        
-        Args:
-            user_message: The user's input text
-            data_source: The JSON data source containing topics and responses
-            topic_patterns: Pattern dictionary for topic detection (e.g., LIBRARY_TOPIC_PATTERNS)
-            topic_mapping: Optional mapping of detected topics to (main_topic, subtopic) tuples
-            fallback_message: Message to return when topic not detected or data missing
-            language_keywords: Deprecated, kept for backward compatibility. Use detect_language() instead.
-        
-        Returns:
-            Dict with "text" key containing the response
-        """
-        if not data_source:
-            return {"text": fallback_message}
-        
-        # Detect topic from user message
-        detected_topic = detect_topic(user_message, topic_patterns)
-        
-        if not detected_topic:
-            return {"text": fallback_message}
-        
-        # Default topic mapping if not provided
-        if topic_mapping is None:
-            topic_mapping = {}
-        
-        # Get topic info from data_source JSON
-        topics = data_source.get("topics", [])
-        responses_data = {}
-        
-        # Check if detected topic maps to a subtopic
-        if detected_topic in topic_mapping:
-            main_topic, subtopic = topic_mapping[detected_topic]
-            # Find the main topic with subtopics
-            topic_entry = next((t for t in topics if t.get("topic") == main_topic), None)
-            if topic_entry and "subtopics" in topic_entry:
-                # Find the specific subtopic
-                subtopic_entry = next(
-                    (st for st in topic_entry["subtopics"] if st.get("topic") == subtopic),
-                    None
-                )
-                if subtopic_entry:
-                    responses_data = subtopic_entry.get("responses", {})
-                else:
-                    return {"text": f"I'm sorry, I don't have information about {subtopic.replace('_', ' ')}."}
-            else:
-                return {"text": f"I'm sorry, I don't have information about {main_topic.replace('_', ' ')}."}
-        else:
-            # Direct topic lookup
-            topic_entry = next((t for t in topics if t.get("topic") == detected_topic), None)
-            if not topic_entry:
-                return {"text": f"I'm sorry, I don't have information about {detected_topic.replace('_', ' ')}."}
-            responses_data = topic_entry.get("responses", {})
-        
-        # Detect language using centralized method (language_keywords param deprecated)
-        lang_key = self.detect_language(user_message)
-        
-        # Get responses for detected language
-        responses = responses_data.get(lang_key)
-        if not responses:
-            responses = responses_data.get("en", [])
-        
-        # Combine all response lines
-        if isinstance(responses, list):
-            response_text = "\n".join(responses)
-        else:
-            response_text = str(responses)
-        
-        # Build result with text
-        result = {"text": response_text}
-        
-        # Extract images from topic entry if available
-        images = None
-        if isinstance(topic_entry.get("images"), list):
-            images = [str(x) for x in topic_entry.get("images") if x]
-        elif topic_entry.get("image"):
-            images = [str(topic_entry.get("image"))]
-        
-        if images:
-            result["images"] = images
-            result["image"] = images[0]  # backward compatibility
-        
-        # Extract map data (map, pins, routes) from topic entry
-        map_data = topic_entry.get("map")
-        pins_raw = topic_entry.get("pins")
-        routes_raw = topic_entry.get("routes")
-        
-        if map_data or pins_raw or routes_raw:
-            map_data_payload: Dict[str, Any] = {
-                "locationName": topic_entry.get("ui_name") or topic_entry.get("topic", "Location"),
-            }
-            
-            # Add coordinates from map data
-            if map_data and isinstance(map_data, dict):
-                if "lat" in map_data and "lng" in map_data:
-                    map_data_payload["coordinates"] = [map_data["lat"], map_data["lng"]]
-            
-            # Process pins
-            pins_out = []
-            if isinstance(pins_raw, list):
-                for idx, p in enumerate(pins_raw):
-                    pin_data = normalize_map_pin(p, idx)
-                    if pin_data:
-                        pins_out.append(pin_data)
-            
-            if pins_out:
-                map_data_payload["pins"] = pins_out
-            
-            # Process routes
-            routes_out = []
-            if isinstance(routes_raw, list):
-                for r in routes_raw:
-                    if isinstance(r, dict) and isinstance(r.get("points"), list):
-                        routes_out.append({
-                            "name": r.get("name") or "Route",
-                            "points": r.get("points"),
-                            "color": r.get("color") or "#dc2626"
-                        })
-            
-            if routes_out:
-                map_data_payload["routes"] = routes_out
-            
-            # Only add custom mapData if we have meaningful data
-            if pins_out or routes_out or map_data:
-                result["custom"] = {"mapData": map_data_payload}
-        
-        return result
-
-    def get_library_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Library-specific wrapper around get_structured_response.
-        Uses LIBRARY_TOPIC_PATTERNS and Library_info.json.
-        """
-        library_topic_mapping = {
-            "library_id_card_location": ("id_card", "location"),
-            "library_id_card_requirements": ("id_card", "requirements"),
-            "library_id_card_payment": ("id_card", "payment"),
-        }
-        
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.library_info,
-            topic_patterns=LIBRARY_TOPIC_PATTERNS,
-            topic_mapping=library_topic_mapping,
-            fallback_message="I'm sorry, I didn't understand your library question. Could you please rephrase it?"
-        )
-
-    def get_academic_policy_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Academic Policy-specific wrapper around get_structured_response.
-        Uses ACADEMIC_POLICY_TOPIC_PATTERNS and Academic_policy.json.
-        """
-        # Academic policy has no subtopic mapping - all topics are direct
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.academic_policy,
-            topic_patterns=ACADEMIC_POLICY_TOPIC_PATTERNS,
-            topic_mapping=None,  # No subtopics for academic policy
-            fallback_message="I'm sorry, I didn't understand your academic policy question. Could you please rephrase it?"
-        )
-
-    def get_administrators_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Administrators-specific wrapper around get_structured_response.
-        Uses ADMINISTRATORS_NAMES_TOPIC_PATTERNS and Administrators.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.administrators_info,
-            topic_patterns=ADMINISTRATORS_NAMES_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your question about BUKSU administrators. Could you please rephrase it?"
-        )
-
-    def get_admissions_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Admissions-specific wrapper around get_structured_response.
-        Uses ADMISSIONS_TOPIC_PATTERNS and Admissions_info.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.admissions_info,
-            topic_patterns=ADMISSIONS_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your admissions question. Could you please rephrase it?"
-        )
-
-    def get_classroom_policy_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Classroom Policy-specific wrapper around get_structured_response.
-        Uses CLASSROOM_TOPICS_PATTERNS and Classroom_policy.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.classroom_policy,
-            topic_patterns=CLASSROOM_TOPICS_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your classroom policy question. Could you please rephrase it?"
-        )
-
-    def get_clinic_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Clinic Info-specific wrapper around get_structured_response.
-        Uses CLINIC_TOPIC_PATTERNS and Clinic_info.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.clinic_info,
-            topic_patterns=CLINIC_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your clinic question. Could you please rephrase it?"
-        )
-
-    def get_courses_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Courses Info-specific wrapper around get_structured_response.
-        Uses COURSES_TOPIC_PATTERNS and Courses_info.json.
-        """
-        # SAFE MECHANISM: Normalize board vs non-board to prevent routing collisions
-        # This protected token mapping happens before the actual inference.
-        safe_message = normalize_board_phrases(user_message)
-        
-        return self.get_structured_response(
-            user_message=safe_message,
-            data_source=self.courses_info,
-            topic_patterns=COURSES_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your course question. Could you please rephrase it?"
-        )
-
-    def get_departamentals_faculty_staff_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Departamentals Faculty Staff-specific wrapper around get_structured_response.
-        Uses DEPARTMENTS_FACULTY_STAFF_TOPIC_PATTERNS and Departamentals_facultystaff.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.departamentals_faculty_staff,
-            topic_patterns=DEPARTMENTS_FACULTY_STAFF_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your question about faculty or staff. Could you please rephrase it?"
-        )
-
-    def get_department_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Department Info-specific wrapper around get_structured_response.
-        Uses DEPARTMENT_INFO_TOPIC_PATTERNS and Department_info.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.department_info,
-            topic_patterns=DEPARTMENT_INFO_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your department question. Could you please rephrase it?"
-        )
-
-    def get_enrollment_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Enrollment Info-specific wrapper around get_structured_response.
-        Uses ENROLLMENT_INFO_TOPIC_PATTERNS and Enrollment_info.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.enrollment_info,
-            topic_patterns=ENROLLMENT_INFO_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your enrollment question. Could you please rephrase it?"
-        )
-
-    def get_ict_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        ICT Info-specific wrapper around get_structured_response.
-        Uses ICT_TOPIC_PATTERNS and Ict_info.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.ict_info,
-            topic_patterns=ICT_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your ICT question. Could you please rephrase it?"
-        )
-
-    def get_oss_services_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        OSS Services-specific wrapper around get_structured_response.
-        Uses OSS_SERVICES_TOPIC_PATTERNS and Oss_services.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.oss_services,
-            topic_patterns=OSS_SERVICES_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your OSS services question. Could you please rephrase it?"
-        )
-
-    def get_university_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        University Info-specific wrapper around get_structured_response.
-        Uses UNIVERSITY_TOPIC_PATTERNS and University_info.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.university_info,
-            topic_patterns=UNIVERSITY_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your university question. Could you please rephrase it?"
-        )
-
-    def get_dormitory_response(self, user_message: str) -> Dict[str, Any]:
-        """
-        Dormitory Info-specific wrapper around get_structured_response.
-        Uses DORMITORY_INFO_TOPIC_PATTERNS and Dormitory_info.json.
-        """
-        return self.get_structured_response(
-            user_message=user_message,
-            data_source=self.dormitory_info,
-            topic_patterns=DORMITORY_INFO_TOPIC_PATTERNS,
-            topic_mapping=None,
-            fallback_message="I'm sorry, I didn't understand your dormitory question. Could you please rephrase it?"
-        )
-
-    def get_structured_response_with_topic(
-        self,
-        topic: str,
-        data_source: Dict[str, Any],
-        fallback_message: str = "I'm sorry, I don't have information about that topic."
-    ) -> Dict[str, Any]:
-        """
-        Get structured response using a pre-determined topic (from entity).
-        Skips topic detection since topic is already known.
-        
-        Args:
-            topic: The topic key to look up (e.g., "online_enrollment_steps")
-            data_source: The JSON data source containing topics and responses
-            fallback_message: Message to return when topic not found
-        
-        Returns:
-            Dict with "text" key containing the response
-        """
-        if not data_source:
-            return {"text": fallback_message}
-        
-        # Direct topic lookup from data_source
-        topics = data_source.get("topics", [])
-        topic_entry = next((t for t in topics if t.get("topic") == topic), None)
-        
-        if not topic_entry:
-            return {"text": fallback_message}
-        
-        # Get responses for the topic
-        responses_data = topic_entry.get("responses", {})
-        
-        # Default to English
-        responses = responses_data.get("en")
-        if not responses:
-            responses = responses_data.get("en", [])
-        
-        # Combine all response lines
-        if isinstance(responses, list):
-            response_text = "\n".join(responses)
-        else:
-            response_text = str(responses)
-        
-        # Build result with text
-        result = {"text": response_text}
-        
-        # Extract images from topic entry if available
-        images = None
-        if isinstance(topic_entry.get("images"), list):
-            images = [str(x) for x in topic_entry.get("images") if x]
-        elif topic_entry.get("image"):
-            images = [str(topic_entry.get("image"))]
-        
-        if images:
-            result["images"] = images
-            result["image"] = images[0]  # backward compatibility
         
         return result
 
