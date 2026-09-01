@@ -37,7 +37,7 @@ Rules:
         self.timeout_seconds = self._float_env("RASA_LLM_TIMEOUT_SECONDS", 4.0)
         self.top_k = max(2, min(10, self._int_env("RASA_LLM_TOP_K", 7)))  # Issue 4 Fix: increased default from 5 to 7
         self.max_prompt_chars = max(1200, self._int_env("RASA_LLM_MAX_PROMPT_CHARS", 7000))
-        self.max_tokens = max(80, min(600, self._int_env("RASA_LLM_MAX_TOKENS", 160)))
+        self.max_tokens = max(80, min(1000, self._int_env("RASA_LLM_MAX_TOKENS", 500)))
         self.client = LLMApiClient(
             provider=self.provider or None,
             model=self.model,

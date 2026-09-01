@@ -1126,6 +1126,130 @@
         "weak_keywords": []
       },
       "display_name": "Library Thesis Availability"
+    },
+    {
+      "topic": "summer_classes_policy",
+      "responses": {
+        "en": [
+          "Yes, BukSU offers summer (midyear) classes. For specific subject offerings, schedules, and eligibility requirements, please coordinate directly with the Office of the University Registrar:",
+          "• **Facebook Page**: https://www.facebook.com/BSURegistrar\n• **Mobile / Contact**: 0975 758 3157\n• **Email**: registrar@buksu.edu.ph",
+          "You may also visit the Registrar's Office onsite at the Main Campus for in-person inquiries."
+        ],
+        "ceb": [
+          "Oo, ang BukSU nagtanyag og summer (midyear) classes. Para sa eksaktong mga subject nga abli, schedule, ug rekisitos, palihog pakig-alayon sa Office of the University Registrar:",
+          "• **Facebook Page**: https://www.facebook.com/BSURegistrar\n• **Mobile / Contact**: 0975 758 3157\n• **Email**: registrar@buksu.edu.ph",
+          "Mahimo usab kang moadto sa Registrar's Office onsite sa Main Campus para sa personal nga mga pangutana."
+        ]
+      },
+      "intent": "summer_classes_policy",
+      "context_topic": "Summer classes policy",
+      "metadata": {
+        "phrases": [
+          "naa bay summer classes sa buksu",
+          "summer classes in buksu",
+          "midyear classes buksu",
+          "can i take summer class",
+          "summer class rules",
+          "summer term enrollment",
+          "how many units in summer class",
+          "summer class requirements",
+          "pwede ba mag summer class",
+          "summer class registrar contact",
+          "does buksu offer summer classes"
+        ],
+        "strong_keywords": [
+          "summer",
+          "midyear",
+          "classes"
+        ],
+        "weak_keywords": [
+          "enroll",
+          "units",
+          "offer"
+        ]
+      },
+      "display_name": "Summer Classes Policy"
+    },
+    {
+      "topic": "academic_calendar_exam_schedules",
+      "responses": {
+        "en": [
+          "Unfortunately, we do not have official information regarding the academic calendar and examination dates for School Year 2026–2027 yet. Please wait for further official university announcements.",
+          "You may also request a soft copy of the latest approved academic calendar from the Office of the University Registrar or monitor updates via their official Facebook page: https://www.facebook.com/BSURegistrar"
+        ],
+        "ceb": [
+          "Sa pagkakaron, wala pa kitay opisyal nga impormasyon bahin sa academic calendar ug exam schedules alang sa School Year 2026–2027. Palihog paghulat sa dugang opisyal nga mga pahibalo.",
+          "Mahimo usab kang mangayo og soft copy sa pinakabag-ong academic calendar gikan sa Registrar's Office o mag-monitor sa ilang opisyal nga Facebook page: https://www.facebook.com/BSURegistrar"
+        ]
+      },
+      "intent": "academic_calendar_exam_schedules",
+      "context_topic": "Academic calendar exam schedules",
+      "metadata": {
+        "phrases": [
+          "kanus-a ang midterm exams",
+          "when is the midterm exam",
+          "midterm exam schedule buksu",
+          "final exam schedule buksu",
+          "when are finals exams",
+          "kanus-a ang final exam",
+          "examination schedule buksu",
+          "exam week buksu",
+          "academic calendar 2026 2027",
+          "school year calendar buksu",
+          "soft copy academic calendar"
+        ],
+        "strong_keywords": [
+          "midterm",
+          "finals",
+          "exam",
+          "calendar"
+        ],
+        "weak_keywords": [
+          "schedule",
+          "dates",
+          "week"
+        ]
+      },
+      "display_name": "Academic Calendar Exam Schedules"
+    },
+    {
+      "topic": "inc_grade_rules",
+      "responses": {
+        "en": [
+          "An **Incomplete (INC)** grade is given to a student who has passing class standing throughout the semester but fails to take the final examination or submit a final course requirement due to valid reasons.",
+          "Students must remove the 'INC' grade within **one (1) school year** by submitting the required work or taking the completion exam. Otherwise, the INC grade automatically becomes a failing grade of **5.0**."
+        ],
+        "ceb": [
+          "Ang **Incomplete (INC)** nga grado gihatag sa estudyante nga adunay pasar nga class standing apan napakyas sa pagkuha sa final examination o pagsumite sa final requirement tungod sa balidong rason.",
+          "Kinahanglan makumpleto o ma-remove ang 'INC' sulod sa **usa (1) ka tuig**. Kung dili kini makumpleto sulod sa maong panahon, ang INC awtomatikong mahimong **5.0** (Failed)."
+        ]
+      },
+      "intent": "inc_grade_rules",
+      "context_topic": "Incomplete grade policy",
+      "metadata": {
+        "phrases": [
+          "unsay buot ipasabot sa inc grade",
+          "unsay buot ipasabot sa inc",
+          "what is an inc grade",
+          "incomplete grade policy buksu",
+          "inc grade meaning",
+          "how to remove inc grade",
+          "inc grade rules"
+        ],
+        "strong_keywords": [
+          "inc",
+          "incomplete",
+          "grade",
+          "rules",
+          "policy"
+        ],
+        "weak_keywords": [
+          "meaning",
+          "pasabot",
+          "grado"
+        ]
+      },
+      "display_name": "Incomplete (INC) Grade Policy"
     }
   ]
 }

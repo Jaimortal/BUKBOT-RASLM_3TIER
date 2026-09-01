@@ -187,6 +187,8 @@ class KnowledgeRouter:
                 "__id_clarification__": {"procedures", "services"},
                 "__passing_grade_clarification__": {"procedures", "academics"},
                 "__contact_clarification__": {"services", "others", "university"},
+                "__private_student_records_guardrail__": {"academics", "procedures", "services", "university", "others"},
+                "__out_of_scope_guardrail__": {"academics", "procedures", "services", "university", "others"},
             }
             allowed = menu_allowed_domains.get(str(raw_intent))
             if allowed is not None and active_domain not in allowed:
@@ -214,6 +216,139 @@ class KnowledgeRouter:
         raw_tokens = set(re.findall(r"\b[\w'-]+\b", raw_normalized))
         facility_availability_intent = self._facility_availability_route(text) if not active_domain or active_domain == "location" else None
 
+        # 1. Grade 12 / Senior High School Admission Application (Checked BEFORE Privacy to avoid "grade" collision)
+        if self._has_any(text, [
+            "grade 12", "shs", "senior high", "graduating grade 12", "kung grade 12", "pag grade 12", "grade 12 pa ko", "grade 12 student"
+        ]) and self._has_any(text, [
+            "apply", "admission", "enroll", "unsaon", "how", "pwede ba", "requirements"
+        ]):
+            return "freshman_admission_requirements"
+
+        # 2. Privacy Guardrail for Personal Records, Grades, GPA, and Financial Balance
+        is_grade_level = any(k in text for k in ["grade 12", "grade 11", "grade 10", "grade 7", "grade 8", "grade 9"])
+        has_private_metric = any(k in text for k in [
+            "grado", "gpa", "gwa", "balance sa tuition", "tuition balance", "tuition fee balance", "akong balance", "my balance"
+        ]) or (
+            not is_grade_level and any(k in text for k in ["grade", "grades"])
+        )
+        has_personal_pronoun = any(w in text for w in [
+            "my", "akong", "akoang", "nako", "current", "this semester", "karon", "ako bang"
+        ]) or any(phrase in text for phrase in [
+            "what is my", "what's my", "unsa akong", "unsa akoang", "pila akong", "pila akoang", "pila akong balance", "unsa akong balance"
+        ])
+        if has_private_metric and has_personal_pronoun:
+            return "__private_student_records_guardrail__"
+
+        # 3. Out-of-Scope Guardrail for External City/Weather/Transit Queries
+        if any(p in text for p in [
+            "weather sa malaybalay", "weather in malaybalay", "panahon sa malaybalay", "current weather", "weather today",
+            "boarding house near buksu", "boarding house duol buksu", "average cost of a boarding house", "safe ba mag-inarkila",
+            "last jeepney", "jeepney trip", "jeepney route", "jeepney", "terminal padulong sa buksu", "terminal padulong buksu"
+        ]):
+            return "__out_of_scope_guardrail__"
+
+        # 4. Late Enrollment & Late Penalty
+        if self._has_any(text, [
+            "enroll late", "late enroll", "late enrollment", "late mag-enroll", "late mo-enroll", "mag late enroll",
+            "penalty for late enrollment", "penalty sa late enroll", "multa sa late enroll", "late mag enroll"
+        ]) and not self._has_any(text, ["evening", "working", "night"]):
+            return "late_enrollment"
+
+        # 5. Incomplete (INC) Grade Policy
+        if self._has_any(text, [
+            "inc grade", "incomplete grade", "unsay buot ipasabot sa inc", "meaning of inc", "what is inc grade", "inc nga grado", "inc rules", "inc policy"
+        ]) or (
+            "inc" in raw_tokens and any(w in text for w in ["grade", "meaning", "pasabot", "rules", "policy", "grado"])
+        ):
+            return "inc_grade_rules"
+
+        # 6. Laptop / Gadget Financial Assistance & CHED Student Loans
+        if self._has_any(text, [
+            "laptop assistance", "gadget assistance", "tabang para gadget", "gadget para online class", "laptop para klase", "gadget assistance para",
+            "ched student loan", "student loan", "ched loan", "ched program"
+        ]):
+            return "available_scholarships_buksu"
+
+        # 7. Form 138 / Senior High School Report Card Submission -> Enrollment Documents
+        if self._has_any(text, [
+            "form 138", "form138", "report card submission", "mopadala sa akong form 138", "asa ihatag ang form 138", "asa ko mopadala sa akong form 138", "where to submit form 138"
+        ]):
+            return "enrollment_documents"
+
+        # 8. Summer / Midyear Classes Policy
+        if self._has_any(text, [
+            "summer class", "summer classes", "midyear class", "midyear classes", "summer term", "naa bay summer classes"
+        ]):
+            return "summer_classes_policy"
+
+        # 9. Returning Student / Balik-Aral Readmission
+        if self._has_any(text, [
+            "stopped studying", "stopped studying at buksu", "years ago can i come back", "balik aral", "returning student",
+            "mobalik og eskwela", "undong unya mobalik", "readmission process", "readmission requirements"
+        ]):
+            return "returning_student_readmission_process"
+
+        # 10. After Freshman Orientation Next Steps
+        if self._has_any(text, [
+            "human sa orientation", "human orientation", "after orientation", "after the orientation", "where to go after orientation", "welcome event", "freshman welcome"
+        ]):
+            return "orientation_next_steps"
+
+        # 11. Student Organizations & SSC
+        if self._has_any(text, [
+            "join the student council", "join student council", "student council", "apil sa student council", "supreme student council", "join supreme student council", "ssc election"
+        ]):
+            return "supreme_student_council_joining_info"
+        if self._has_any(text, [
+            "mga org nga pwede sundan", "join sa org", "maka-join sa org", "student organizations", "accredited orgs", "org fair", "extracurricular activities"
+        ]):
+            return "student_organizations_application_process"
+
+        # 12. Kaugmaon Official Student Publication
+        if self._has_any(text, [
+            "kaugmaon", "school publication", "school newspaper", "student publication"
+        ]):
+            return "kaugmaon_student_publication_application"
+
+        # 13. Varsity & Sports Teams
+        if self._has_any(text, [
+            "varsity team", "varsity", "basketball team", "sports varsity", "varsity tryout", "varsity sports"
+        ]):
+            return "buksu_varsity_and_sports_teams"
+
+        # 14. Student Grievances, Anti-Bullying, & Faculty Reports
+        if self._has_any(text, [
+            "bullying sa campus", "bullying", "problema sa akong professor", "problema sa professor", "report a professor", "reklamo sa maestro", "student grievance", "report harassment", "problema sa akong maestro"
+        ]):
+            return "student_grievance_and_complaints_process"
+
+        # 15. BukSU Satellite Campuses
+        if self._has_any(text, [
+            "how many campuses", "pila ka campus", "satellite campuses", "branches of buksu", "mga satellite campus"
+        ]):
+            return "buksu_satellite_campuses"
+
+        # 16. Campus Gates & Entrances
+        if self._has_any(text, [
+            "pinakaduol nga gate", "which gate", "closest gate", "main gate buksu", "campus gate"
+        ]):
+            return "campus_gates_and_entrances"
+
+        # 17. Examination Calendar Schedules
+        if self._has_any(text, [
+            "midterm exam", "midterm exams", "midterm", "final exam", "finals exam", "kanus-a ang midterm", "when is the midterm"
+        ]):
+            return "academic_calendar_exam_schedules"
+
+        # 18. BukSU General Overview / History
+        if "unsa diay ang buksu" in text or "unsa ang buksu" in text or "what is buksu" in text:
+            return "about_buksu"
+
+        # 19. Guidance Counseling & Mental Health
+        if self._has_any(text, [
+            "guidance counselor", "guidance counseling", "mental health", "counseling service", "kausagon", "mangayo ug counseling"
+        ]):
+            return "guidance_counseling_services_buksu"
 
         # Password Management & Reset Clarification
         is_password_query = any(k in text for k in [
@@ -3709,8 +3844,10 @@ class KnowledgeRouter:
             "what services can you give",
             "what services do you have",
             "what are your services",
-            "services",
-            "service",
+            "list of services",
+            "available services",
+            "unsa inyong mga serbisyo",
+            "mga serbisyo",
         ]
         bot_terms = [
             "chatbot services", "bot services", "chatbot help menu",
@@ -3730,7 +3867,7 @@ class KnowledgeRouter:
             return self._buksu_services_menu()
         if self._has_any(text, bot_terms):
             return self._bot_services_menu()
-        if self._has_any(text, generic_service_terms) or (("service" in tokens or "services" in tokens) and tokens.issubset({"service", "services", "list", "what", "are", "the", "available", "can", "provide", "you", "do", "have", "your"})):
+        if self._has_any(text, generic_service_terms) or (tokens.issubset({"service", "services", "list", "what", "are", "the", "available", "can", "provide", "you", "do", "have", "your"})):
             return self._choice_response(
                 "Which services do you want to view?",
                 [
@@ -4309,6 +4446,8 @@ class KnowledgeRouter:
                     {"label": "BukSU CAT passing rate", "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"},
                 ],
             )
+        if direct_intent:
+            self.last_selected_intent = direct_intent
         if direct_intent == "__clinic_services_menu__":
             return self._clinic_services_menu()
         if direct_intent == "__dormitory_services_menu__":
@@ -4317,8 +4456,25 @@ class KnowledgeRouter:
             return self._classroom_policy_menu()
         if direct_intent == "__contact_clarification__":
             return self.contact_clarification_response(intent, user_message) or self.data_loader.fallback()
+        if direct_intent == "__private_student_records_guardrail__":
+            lang = self.data_loader.helper.detect_language(user_message) if self.data_loader.helper else "en"
+            if lang == "ceb":
+                return {
+                    "text": "Usa lamang ako ka automated information assistant ug **dili ako maka-access sa imong personal nga student records, grado, GPA, o account balance**.\n\nPalihog pag-log in sa imong opisyal nga **BukSU SIAS Portal** sa: https://sias.buksu.edu.ph/sias/ aron makita ang imong opisyal nga mga grado ug financial ledger, o bisitaha ang Accounting Office sa Finance Building."
+                }
+            return {
+                "text": "I am an automated informational assistant and **cannot access your private student records, grades, GPA, or tuition balance**.\n\nPlease log in to your official **BukSU SIAS Portal** at: https://sias.buksu.edu.ph/sias/ to view your official grades and financial ledger, or visit the Accounting Office in the Finance Building."
+            }
+        if direct_intent == "__out_of_scope_guardrail__":
+            lang = self.data_loader.helper.detect_language(user_message) if self.data_loader.helper else "en"
+            if lang == "ceb":
+                return {
+                    "text": "Pasensya, ang maong pangutana naa sa gawas sa akong sakop. Ako usa ka BukSU campus assistant nga gitagana alang sa mga academic policies, admissions, enrollment procedures, campus facilities, ug student services sulod sa Bukidnon State University."
+                }
+            return {
+                "text": "I apologize, but that inquiry is outside the scope of this campus chatbot. I am specialized in providing information regarding BukSU academic policies, admissions, enrollment procedures, campus facilities, and student services within Bukidnon State University."
+            }
         if direct_intent:
-            self.last_selected_intent = direct_intent
             return self.data_loader.get_response(direct_intent, user_message=user_message, domain=active_domain)
 
         validation_choice = self.validation_clarification_response(intent, user_message)

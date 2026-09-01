@@ -1753,50 +1753,6 @@
       "display_name": "Alumni"
     },
     {
-      "topic": "buksu_satellite_campuses",
-      "responses": {
-        "en": [
-          "BukSU operates several satellite campuses in different municipalities across Bukidnon and nearby provinces.",
-          "These campuses provide accessible education for students living in remote areas."
-        ],
-        "ceb": [
-          "Ang BukSU adunay daghang satellite campuses sa nagkalain laing lungsod sa Bukidnon ug silingang probinsya.",
-          "Gihimo kini aron mahatagan og accessible nga edukasyon ang mga estudyante sa layo nga lugar."
-        ]
-      },
-      "intent": "buksu_satellite_campuses",
-      "context_topic": "campus_system",
-      "metadata": {
-        "phrases": [
-          "Asa nahimutang ang BukSU satellite campuses",
-          "Ngano nag operate ang BukSU og campuses sa lain nga municipalities",
-          "Giunsa pag tabang sa satellite campuses ang mga estudyante",
-          "Para ba sa remote students ang satellite campuses",
-          "Pila ka satellite campuses ang naa sa BukSU",
-          "Unsang education services ang gi offer sa satellite campuses",
-          "Pwede ba mo attend ang students sa satellite campuses",
-          "Does BukSU have satellite campuses",
-          "Where are BukSU satellite campuses located",
-          "Why does BukSU operate campuses in other municipalities"
-        ],
-        "strong_keywords": [
-          "campuses",
-          "satellite",
-          "buksu",
-          "operate",
-          "municipalities"
-        ],
-        "weak_keywords": [
-          "students",
-          "does",
-          "nahimutang",
-          "lain",
-          "giunsa"
-        ]
-      },
-      "display_name": "Campus System"
-    },
-    {
       "topic": "buksu_hymn",
       "responses": {
         "en": [
@@ -2042,6 +1998,56 @@
         ]
       },
       "display_name": "Visitors"
+    },
+    {
+      "topic": "buksu_satellite_campuses",
+      "responses": {
+        "en": [
+          "Bukidnon State University currently has a total of **16 campuses** (the **Main Campus** in Malaybalay City plus **15 Satellite Campuses**):",
+          "• **Within Bukidnon Province (12 campuses)**: Baungon, Cabanglasan, Damulog, Impasug-ong, Kadingilan, Kalilangan, Kitaotao, Libona, Malitbog, Quezon, San Fernando, and Talakag campuses.",
+          "• **In Misamis Oriental Province (3 campuses)**: Alubijid, Medina, and Talisayan campuses.",
+          "For more details and program offerings across satellite campuses, visit: https://buksu.edu.ph/satellite_campus/"
+        ],
+        "ceb": [
+          "Ang Bukidnon State University kasamtangang adunay kinatibuk-ang **16 ka campuses** (ang **Main Campus** sa Malaybalay City kauban ang **15 ka Satellite Campuses**):",
+          "• **Sulod sa Probinsya sa Bukidnon (12 ka campus)**: Baungon, Cabanglasan, Damulog, Impasug-ong, Kadingilan, Kalilangan, Kitaotao, Libona, Malitbog, Quezon, San Fernando, ug Talakag campuses.",
+          "• **Sa Probinsya sa Misamis Oriental (3 ka campus)**: Alubijid, Medina, ug Talisayan campuses.",
+          "Para sa dugang impormasyon bahin sa mga satellite campus, bisitaha ang: https://buksu.edu.ph/satellite_campus/"
+        ]
+      },
+      "intent": "buksu_satellite_campuses",
+      "context_topic": "Satellite campuses",
+      "metadata": {
+        "phrases": [
+          "how many campuses does buksu have",
+          "pila ka campus ang buksu",
+          "how many satellite campuses does buksu have",
+          "buksu satellite campuses list",
+          "branches of buksu",
+          "mga satellite campus sa buksu",
+          "where are the buksu campuses",
+          "where are buksu satellite campuses located",
+          "how many branches does buksu have",
+          "Asa nahimutang ang BukSU satellite campuses",
+          "Ngano nag operate ang BukSU og campuses sa lain nga municipalities",
+          "Does BukSU have satellite campuses"
+        ],
+        "strong_keywords": [
+          "campuses",
+          "satellite",
+          "branches",
+          "pila",
+          "many"
+        ],
+        "weak_keywords": [
+          "how",
+          "have",
+          "where",
+          "list",
+          "located"
+        ]
+      },
+      "display_name": "Satellite Campuses"
     }
   ]
 }

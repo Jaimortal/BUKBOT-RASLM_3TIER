@@ -1,0 +1,502 @@
+[
+  {
+    "num": 1,
+    "category": "Campus Basics / Facilities",
+    "query": "Where is the main library located?",
+    "responder": "RASA / Location Map Router (Location: Library Building)",
+    "matched_intent": "location",
+    "has_map": true,
+    "response_preview": "Library is located on the left side of museum facing front, you can easily find it sinse its has a signage on the front of the bui",
+    "full_response": "Library is located on the left side of museum facing front, you can easily find it sinse its has a signage on the front of the building, but i will provide some map to help you navigate\nThere's also other offices can be found in Library Building."
+  },
+  {
+    "num": 2,
+    "category": "Campus Basics / Facilities",
+    "query": "Unsa'y oras sa library sa Lunes hangtod Biyernes?",
+    "responder": "RASA / Knowledge Router (Intent: library_hours)",
+    "matched_intent": "library_hours",
+    "has_map": false,
+    "response_preview": "Ang University Library kasagaran bukas gikan Lunes hangtod Biyernes gikan alas 8 sa buntag hangtod alas 5 sa hapon, apan mahimong ",
+    "full_response": "Ang University Library kasagaran bukas gikan Lunes hangtod Biyernes gikan alas 8 sa buntag hangtod alas 5 sa hapon, apan mahimong ma extend ang oras inig panahon sa exam."
+  },
+  {
+    "num": 3,
+    "category": "Campus Basics / Facilities",
+    "query": "Naa bay wifi sa campus nga pwede gamiton sa students?",
+    "responder": "RASA / Location Map Router (Location: ICT Office)",
+    "matched_intent": "get_wifi_access",
+    "has_map": true,
+    "response_preview": "Ani ang paagi aron makakuha ka og bisan unsang wifi connection nga gi-offer sa ICT. Adto sa ikatulong andana (3rd floor) sa Financ",
+    "full_response": "Ani ang paagi aron makakuha ka og bisan unsang wifi connection nga gi-offer sa ICT.\nAdto sa ikatulong andana (3rd floor) sa Finance Building.\nAtubangan sa Audio Laboratory, makit-an nimo ang ICT office.\nMakita nimo ang tanan nga numero sa mga computer laboratory? Kung makita nimo ang ComLab 6 (Computer Laboratory 6), dapat makita nimo ang ICT office nga nahimutang sa tuo nga bahin sa ComLab 6."
+  },
+  {
+    "num": 4,
+    "category": "Campus Basics / Facilities",
+    "query": "Is there a clinic inside the campus for emergencies?",
+    "responder": "RASA / Knowledge Router (Intent: __clinic_services_menu__)",
+    "matched_intent": "__clinic_services_menu__",
+    "has_map": false,
+    "response_preview": "Here are the clinic services I can help with. Choose the service you need.",
+    "full_response": "Here are the clinic services I can help with. Choose the service you need."
+  },
+  {
+    "num": 5,
+    "category": "Campus Basics / Facilities",
+    "query": "Asa ang Registrar's Office dapit?",
+    "responder": "RASA / Location Map Router (Location: Registrar Office)",
+    "matched_intent": "location",
+    "has_map": true,
+    "response_preview": "Ang Registrar’s Office nahimutang sa tunga sa CPAG Building ug sa Finance Building. Adunay gihatag nga mapa aron matabangan ka sa ",
+    "full_response": "Ang Registrar’s Office nahimutang sa tunga sa CPAG Building ug sa Finance Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate."
+  },
+  {
+    "num": 6,
+    "category": "Campus Basics / Facilities",
+    "query": "How many campuses does BukSU have?",
+    "responder": "RASA / Knowledge Router (Intent: buksu_satellite_campuses)",
+    "matched_intent": "buksu_satellite_campuses",
+    "has_map": false,
+    "response_preview": "Bukidnon State University currently has a total of **16 campuses** (the **Main Campus** in Malaybalay City plus **15 Satellite Cam",
+    "full_response": "Bukidnon State University currently has a total of **16 campuses** (the **Main Campus** in Malaybalay City plus **15 Satellite Campuses**):\n• **Within Bukidnon Province (12 campuses)**: Baungon, Cabanglasan, Damulog, Impasug-ong, Kadingilan, Kalilangan, Kitaotao, Libona, Malitbog, Quezon, San Fernando, and Talakag campuses.\n• **In Misamis Oriental Province (3 campuses)**: Alubijid, Medina, and Talisayan campuses.\nFor more details and program offerings across satellite campuses, visit: https://buksu.edu.ph/satellite_campus/"
+  },
+  {
+    "num": 7,
+    "category": "Campus Basics / Facilities",
+    "query": "Unsa'y pinakaduol nga gate padulong sa main building?",
+    "responder": "RASA / Direct Intent Override",
+    "matched_intent": "",
+    "has_map": false,
+    "response_preview": "Ang BukSU Main Campus adunay 3 ka gates (2 ka Entrance ug 1 ka Exit): 1. **Main Pedestrian Entrance (Walking Entrance)**: Nahimuta",
+    "full_response": "Ang BukSU Main Campus adunay 3 ka gates (2 ka Entrance ug 1 ka Exit):\n1. **Main Pedestrian Entrance (Walking Entrance)**: Nahimutang sa atubangan, kini ang pultahan nga para lamang sa mga estudyante nga mosulod pinaagi sa paglakaw. *Pahibalo: Ang mga examinees para sa BukSU-CAT kinahanglan mosulod sa Exit Gate tungod kay kini ang pinakapaspas nga agianan padulong sa main examination building (College of Business / COB Building).*\n2. **Vehicle Entrance Gate**: Nahimutang sa ibabaw nga bahin sa BukSU, para lamang sa mga sakyanan. Kinahanglan og balidong gate pass aron makasulod ang imong sakyanan sa campus.\n3. **Campus Exit Gate**: Ang nag-inusarang pultahan para sa paggawas sa mga tawo ug mga sakyanan."
+  },
+  {
+    "num": 8,
+    "category": "Campus Basics / Facilities",
+    "query": "Does BukSU have a gym or sports facility?",
+    "responder": "RASA / Knowledge Router (Intent: gym_facility_availability)",
+    "matched_intent": "gym_facility_availability",
+    "has_map": false,
+    "response_preview": "Yes, BukSU has sports-related facilities such as the Gymnasium and Fitness Gym. Availability may depend on schedules, events, and ",
+    "full_response": "Yes, BukSU has sports-related facilities such as the Gymnasium and Fitness Gym.\nAvailability may depend on schedules, events, and university rules for student use."
+  },
+  {
+    "num": 9,
+    "category": "ID / Documents",
+    "query": "Unsaon nako pagkuha sa akong student ID?",
+    "responder": "RASA / Location Map Router (Location: Student Id Process)",
+    "matched_intent": "student_id_process",
+    "has_map": true,
+    "response_preview": "Niara ang prosiso sapag kuha og student ID Kinahanglan ka nga moadto sa University Press building dala ang imong validated COR ug ",
+    "full_response": "Niara ang prosiso sapag kuha og student ID\nKinahanglan ka nga moadto sa University Press building dala ang imong validated COR ug digital 1x1 picture. <b> Note: </b> kini para sa freshmen o bag-ong estudyante sa BukSU, walay bayad sa unang ID nga imong makuha.\nPara sa mga nakawala sa ilang ID:\nStep 1: Adto sa <b> OVPCAS </b> ipresent ang </b> affidavit of loss </b> para sa nawala nga ID\nStep 2: Mopirma sa Logbook\nStep 3: Moadto sa Cashier's Office para sa bayad\nStep 4: Moadto sa University Press para sa pag-print sa ID\nAng gasto kay 200 Pesos, ang oras sa proseso kay 30 minutos. Hatagan tika og kompleto nga mapa sa navigation para nimo."
+  },
+  {
+    "num": 10,
+    "category": "ID / Documents",
+    "query": "What do I do if I lost my school ID?",
+    "responder": "RASA / Location Map Router (Location: Student Id Process)",
+    "matched_intent": "student_id_process",
+    "has_map": true,
+    "response_preview": "Here is the process of getting student ID: You need to go to the University Press building bring your validated COR and a digital ",
+    "full_response": "Here is the process of getting student ID:\nYou need to go to the University Press building bring your validated COR and a digital 1x1 picture. <b> Note: </b>  this is for freshmen or new students of BukSU, there is no payment for the first ID you will get.\nFor those who have lost their ID:\nStep 1: Go to <b> OVPCAS </b> Present </b> affidavit of loss </b> for lost ID\nStep 2: Sign the Logbook\nStep 3: Proceed to the Cashiers Office for payment\nStep 4: Proceed to University Press for ID printing\ncost will be 200 Pesos, process time will be 30 minutes. I will provide a complete Map navigation for you."
+  },
+  {
+    "num": 11,
+    "category": "ID / Documents",
+    "query": "Pila ka adlaw bag-o mahuman ang ID processing?",
+    "responder": "RASA / Knowledge Router (Intent: pending_id_clarification)",
+    "matched_intent": "pending_id_clarification",
+    "has_map": false,
+    "response_preview": "Which ID do you mean, student ID or library ID?",
+    "full_response": "Which ID do you mean, student ID or library ID?"
+  },
+  {
+    "num": 12,
+    "category": "ID / Documents",
+    "query": "What documents do I need to bring on the first day of classes?",
+    "responder": "RASA / Knowledge Router (Intent: enrollment_documents)",
+    "matched_intent": "enrollment_documents",
+    "has_map": false,
+    "response_preview": "Here are the enrollment requirements, remember the data we have is general, so if your looking for spacific requirements for spaci",
+    "full_response": "Here are the enrollment requirements, remember the data we have is general, so if your looking for spacific requirements for spacific course, you may directly ask the department, or look for their FB page update"
+  },
+  {
+    "num": 13,
+    "category": "ID / Documents",
+    "query": "Asa ko mopadala sa akong Form 138?",
+    "responder": "RASA / Knowledge Router (Intent: enrollment_documents)",
+    "matched_intent": "enrollment_documents",
+    "has_map": false,
+    "response_preview": "Mao kini ang mga enrollment requirements. Hinumdumi nga general ang datos nga ania kanato, busa kung nangita ka og espesipikong mg",
+    "full_response": "Mao kini ang mga enrollment requirements. Hinumdumi nga general ang datos nga ania kanato, busa kung nangita ka og espesipikong mga requirements para sa espesipikong kurso, mahimo kang direktang mangutana sa inyong departamento o magtan-aw sa updates sa ilang FB page."
+  },
+  {
+    "num": 14,
+    "category": "ID / Documents",
+    "query": "Do freshmen need a barangay clearance for enrollment?",
+    "responder": "RASA / Knowledge Router (Intent: enrollment_documents)",
+    "matched_intent": "enrollment_documents",
+    "has_map": false,
+    "response_preview": "Here are the enrollment requirements, remember the data we have is general, so if your looking for spacific requirements for spaci",
+    "full_response": "Here are the enrollment requirements, remember the data we have is general, so if your looking for spacific requirements for spacific course, you may directly ask the department, or look for their FB page update"
+  },
+  {
+    "num": 15,
+    "category": "ID / Documents",
+    "query": "Unsay laing gikinahanglan human sa CAT exam?",
+    "responder": "RASA / Knowledge Router (Intent: exam_requirements)",
+    "matched_intent": "exam_requirements",
+    "has_map": false,
+    "response_preview": "Unsa ang dad-on sa adlaw sa examination Kinahanglan dad-on sa mga test takers ang mosunod: 1. Test Permit (ma-download gikan sa Bu",
+    "full_response": "Unsa ang dad-on sa adlaw sa examination\nKinahanglan dad-on sa mga test takers ang mosunod:\n1. Test Permit (ma-download gikan sa BukSU admission website)\n2. Application Form (ma-download gikan sa BukSU admission website)\n3. Pen\n4. Pencil No. 2, eraser, ug sharpener\nPalihog hinumdumi nga kini para sa Admission examination, dili para sa mga college course examinations. Para sa mga college course examinations, palihog tan-awa ang espesipikong mga requirements nga gihatag sa inyong mga respective colleges."
+  },
+  {
+    "num": 16,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "Kanus-a ang start sa classes this school year?",
+    "responder": "RASA / Knowledge Router (Intent: school_year_class_start_schedule)",
+    "matched_intent": "school_year_class_start_schedule",
+    "has_map": false,
+    "response_preview": "Pasensya, wala koy eksaktong petsa kung kanus-a magsugod ang school year kay mahimong mausab kini matag tuig. Kasagaran, magsugod ",
+    "full_response": "Pasensya, wala koy eksaktong petsa kung kanus-a magsugod ang school year kay mahimong mausab kini matag tuig.\nKasagaran, magsugod ang school year around sa <b>1st week sa August</b>.\nPara sa accurate nga announcements, i-follow ang BukSU Registrar Facebook page: https://www.facebook.com/BSURegistrar\nI-follow pud ang official BukSU Facebook page: https://www.facebook.com/officialbuksu"
+  },
+  {
+    "num": 17,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "When is the add/drop period for subjects?",
+    "responder": "RASA / Knowledge Router (Intent: add_drop_subject)",
+    "matched_intent": "add_drop_subject",
+    "has_map": false,
+    "response_preview": "Adding subjects is allowed during the first two weeks of the semester. Dropping subjects is allowed until the midterm period with ",
+    "full_response": "Adding subjects is allowed during the first two weeks of the semester.\nDropping subjects is allowed until the midterm period with proper approval.\nTo add/drop, you must secure an Add/Drop Form from the Registrar's Office. or download it right here:\nAdding: https://drive.google.com/uc?export=download&id=1Gkc7oLA-gfrRNiO0eTYjfBdy51PqD7Ou\nDropping: https://drive.google.com/uc?export=download&id=1Zobe5O1IRoXXl4UBcCS_UI_R2YqRdczU\nYou can also see other forms that you can download in this link: https://buksu.edu.ph/downloadable-forms/\nThe form must be signed by your program coordinator and the instructor of the subject.\nLate dropping (after midterms) will result in a failing grade of 5.0."
+  },
+  {
+    "num": 18,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "Unsa'y schedule sa freshman orientation?",
+    "responder": "RASA / Knowledge Router (Intent: new_student_orientation_purpose)",
+    "matched_intent": "new_student_orientation_purpose",
+    "has_map": false,
+    "response_preview": "Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang",
+    "full_response": "Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.\nSa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa."
+  },
+  {
+    "num": 19,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "Naa bay summer classes sa BukSU?",
+    "responder": "RASA / Knowledge Router (Intent: summer_classes_policy)",
+    "matched_intent": "summer_classes_policy",
+    "has_map": false,
+    "response_preview": "Oo, ang BukSU nagtanyag og summer (midyear) classes. Para sa eksaktong mga subject nga abli, schedule, ug rekisitos, palihog pakig",
+    "full_response": "Oo, ang BukSU nagtanyag og summer (midyear) classes. Para sa eksaktong mga subject nga abli, schedule, ug rekisitos, palihog pakig-alayon sa Office of the University Registrar:\n• **Facebook Page**: https://www.facebook.com/BSURegistrar\n• **Mobile / Contact**: 0975 758 3157\n• **Email**: registrar@buksu.edu.ph\nMahimo usab kang moadto sa Registrar's Office onsite sa Main Campus para sa personal nga mga pangutana."
+  },
+  {
+    "num": 20,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "What is the grading system used at BukSU?",
+    "responder": "RASA / Knowledge Router (Intent: buksu_grading_system)",
+    "matched_intent": "buksu_grading_system",
+    "has_map": false,
+    "response_preview": "BukSU uses a numerical grading system where 1.0 is the highest grade and 3.0 is the passing mark. A grade of 5.0 means a failing m",
+    "full_response": "BukSU uses a numerical grading system where 1.0 is the highest grade and 3.0 is the passing mark.\nA grade of 5.0 means a failing mark while INC means the requirements for the subject are incomplete."
+  },
+  {
+    "num": 21,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "Unsay buot ipasabot sa \"INC\" grade?",
+    "responder": "RASA / Knowledge Router (Intent: inc_grade_rules)",
+    "matched_intent": "inc_grade_rules",
+    "has_map": false,
+    "response_preview": "Ang **Incomplete (INC)** nga grado gihatag sa estudyante nga adunay pasar nga class standing apan napakyas sa pagkuha sa final exa",
+    "full_response": "Ang **Incomplete (INC)** nga grado gihatag sa estudyante nga adunay pasar nga class standing apan napakyas sa pagkuha sa final examination o pagsumite sa final requirement tungod sa balidong rason.\nKinahanglan makumpleto o ma-remove ang 'INC' sulod sa **usa (1) ka tuig**. Kung dili kini makumpleto sulod sa maong panahon, ang INC awtomatikong mahimong **5.0** (Failed)."
+  },
+  {
+    "num": 22,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "How many units can a freshman take in one semester?",
+    "responder": "RASA / Knowledge Router (Intent: freshman_maximum_units_policy)",
+    "matched_intent": "freshman_maximum_units_policy",
+    "has_map": false,
+    "response_preview": "What is the maximum number of units a first-year student can take in their first semester? For incoming first-year students, your ",
+    "full_response": "What is the maximum number of units a first-year student can take in their first semester?\nFor incoming first-year students, your course load is fixed and block-enrolled according to your degree program's approved curriculum/prospectus.\nA regular first-year first-semester load typically ranges from **21 to 24 units** (including NSTP and PE).\nFirst-year students are not permitted to take unit overloads or advance subjects, as overloads are strictly reserved for graduating students in their final academic year."
+  },
+  {
+    "num": 23,
+    "category": "Class Schedule / Academic Calendar",
+    "query": "Kanus-a ang midterm exams?",
+    "responder": "RASA / Direct Intent Override",
+    "matched_intent": "",
+    "has_map": false,
+    "response_preview": "Sa pagkakaron, wala pa kitay opisyal nga impormasyon bahin sa academic calendar ug exam schedules alang sa School Year 2026–2027. ",
+    "full_response": "Sa pagkakaron, wala pa kitay opisyal nga impormasyon bahin sa academic calendar ug exam schedules alang sa School Year 2026–2027. Palihog paghulat sa dugang opisyal nga mga pahibalo.\nMahimo usab kang mangayo og soft copy sa pinakabag-ong academic calendar gikan sa Registrar's Office o mag-monitor sa ilang opisyal nga Facebook page: https://www.facebook.com/BSURegistrar"
+  },
+  {
+    "num": 24,
+    "category": "Organizations / Student Life",
+    "query": "Unsay mga org nga pwede sundan sa mga freshman?",
+    "responder": "RASA / Knowledge Router (Intent: student_organizations_application_process)",
+    "matched_intent": "student_organizations_application_process",
+    "has_map": false,
+    "response_preview": "Ang BukSU adunay nagkadaiyang accredited student organizations, academic clubs, ug interest groups ubos sa Office of Student Servi",
+    "full_response": "Ang BukSU adunay nagkadaiyang accredited student organizations, academic clubs, ug interest groups ubos sa Office of Student Services (OSS).\nAng mga freshmen makasulod sa mga organisasyon panahon sa tinuig nga University Orientation / Org Fair o pinaagi sa pagbisita sa Student Development Unit sa OSS Building.\nAng mga rekisitos kasagaran naglakip sa pagka-bonafide nga enrolled student, pagpuno sa membership form, ug pag-attend sa orientation sa organisasyon."
+  },
+  {
+    "num": 25,
+    "category": "Organizations / Student Life",
+    "query": "How do I join the student council?",
+    "responder": "RASA / Direct Intent Override",
+    "matched_intent": "",
+    "has_map": false,
+    "response_preview": "The Supreme Student Council (SSC) is the highest governing student body at BukSU, along with Local College Student Councils (LSC).",
+    "full_response": "The Supreme Student Council (SSC) is the highest governing student body at BukSU, along with Local College Student Councils (LSC).\nStudents can participate by running as candidates during the annual campus-wide student elections, serving as volunteer committee members, or representing their class as program representatives.\nFor inquiries and election guidelines, visit the SSC Office or the Office of Student Services (OSS)."
+  },
+  {
+    "num": 26,
+    "category": "Organizations / Student Life",
+    "query": "Naa bay varsity team para sa basketball?",
+    "responder": "RASA / Direct Intent Override",
+    "matched_intent": "",
+    "has_map": false,
+    "response_preview": "Ang BukSU adunay mga varsity teams sa basketball, volleyball, athletics, badminton, ug uban pang paugnat sa kusog ubos sa Institut",
+    "full_response": "Ang BukSU adunay mga varsity teams sa basketball, volleyball, athletics, badminton, ug uban pang paugnat sa kusog ubos sa Institute of Sports, Physical Education and Recreation (ISPER).\nAng mga tryout ipahigayon sa pagsugod sa school year. Ang mga kwalipikadong student-athletes mahimo usab makadawat og athletic scholarship.\nPara sa schedule sa tryouts ug rekisitos, bisitaha ang ISPER / PE Department sa BukSU Gymnasium."
+  },
+  {
+    "num": 27,
+    "category": "Organizations / Student Life",
+    "query": "What extracurricular activities are open to first-year students?",
+    "responder": "RASA / Knowledge Router (Intent: student_organizations_application_process)",
+    "matched_intent": "student_organizations_application_process",
+    "has_map": false,
+    "response_preview": "BukSU has various accredited student organizations, academic clubs, and interest-based groups managed under the Office of Student ",
+    "full_response": "BukSU has various accredited student organizations, academic clubs, and interest-based groups managed under the Office of Student Services (OSS).\nFreshmen can join organizations during the annual University Orientation / Org Fair or by visiting the Student Development Unit in the OSS Building.\nRequirements usually include being a bona fide enrolled student, filling out the membership form, and attending the organization's orientation."
+  },
+  {
+    "num": 28,
+    "category": "Organizations / Student Life",
+    "query": "Asa mag-apply para sa school publication (Kaugmaon or similar)?",
+    "responder": "RASA / Knowledge Router (Intent: kaugmaon_student_publication_application)",
+    "matched_intent": "kaugmaon_student_publication_application",
+    "has_map": false,
+    "response_preview": "Ang **Kaugmaon** mao ang opisyal nga student publication sa Bukidnon State University. Ang mga estudyante nga gusto moapil isip ne",
+    "full_response": "Ang **Kaugmaon** mao ang opisyal nga student publication sa Bukidnon State University.\nAng mga estudyante nga gusto moapil isip news writers, feature writers, columnists, photojournalists, layout artists, o cartoonists kinahanglan moagi sa tinuig nga Kaugmaon Competitive Editorial Examination.\nAng mga pahibalo ug screening ipahibalo sa opisyal nga Kaugmaon Facebook Page ug sa Kaugmaon Office sa Student Services Building."
+  },
+  {
+    "num": 29,
+    "category": "Organizations / Student Life",
+    "query": "Is there a freshman welcome event?",
+    "responder": "RASA / Direct Intent Override",
+    "matched_intent": "",
+    "has_map": false,
+    "response_preview": "After attending the University and College Freshman Orientation, proceed to your respective **College Department** to: 1. Meet you",
+    "full_response": "After attending the University and College Freshman Orientation, proceed to your respective **College Department** to:\n1. Meet your Department Chairperson and academic advisers.\n2. Verify your block section, classroom room numbers, and final class schedule.\n3. Secure your department-specific syllabus and orientation materials before the official first day of classes."
+  },
+  {
+    "num": 30,
+    "category": "Organizations / Student Life",
+    "query": "Unsay mga requirements para maka-join sa org?",
+    "responder": "RASA / Knowledge Router (Intent: student_organizations_application_process)",
+    "matched_intent": "student_organizations_application_process",
+    "has_map": false,
+    "response_preview": "Ang BukSU adunay nagkadaiyang accredited student organizations, academic clubs, ug interest groups ubos sa Office of Student Servi",
+    "full_response": "Ang BukSU adunay nagkadaiyang accredited student organizations, academic clubs, ug interest groups ubos sa Office of Student Services (OSS).\nAng mga freshmen makasulod sa mga organisasyon panahon sa tinuig nga University Orientation / Org Fair o pinaagi sa pagbisita sa Student Development Unit sa OSS Building.\nAng mga rekisitos kasagaran naglakip sa pagka-bonafide nga enrolled student, pagpuno sa membership form, ug pag-attend sa orientation sa organisasyon."
+  },
+  {
+    "num": 31,
+    "category": "Dorm / Housing / Transportation",
+    "query": "Naa bay dorm sa sulod sa campus?",
+    "responder": "RASA / Knowledge Router (Intent: campus_dormitories)",
+    "matched_intent": "campus_dormitories",
+    "has_map": false,
+    "response_preview": "Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante. Adunay separate dormitories alang sa lalaki ug babae.",
+    "full_response": "Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.\nAdunay separate dormitories alang sa lalaki ug babae.\nAng dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.\nMas maayo nga mangutana sa dormitory office alang sa availability ug requirements."
+  },
+  {
+    "num": 32,
+    "category": "Dorm / Housing / Transportation",
+    "query": "How much is the average cost of a boarding house near BukSU?",
+    "responder": "RASA / Knowledge Router (Intent: __out_of_scope_guardrail__)",
+    "matched_intent": "__out_of_scope_guardrail__",
+    "has_map": false,
+    "response_preview": "I apologize, but that inquiry is outside the scope of this campus chatbot. I am specialized in providing information regarding Buk",
+    "full_response": "I apologize, but that inquiry is outside the scope of this campus chatbot. I am specialized in providing information regarding BukSU academic policies, admissions, enrollment procedures, campus facilities, and student services within Bukidnon State University."
+  },
+  {
+    "num": 33,
+    "category": "Dorm / Housing / Transportation",
+    "query": "Unsa'y pinakaduol nga terminal padulong sa BukSU?",
+    "responder": "RASA / Knowledge Router (Intent: __out_of_scope_guardrail__)",
+    "matched_intent": "__out_of_scope_guardrail__",
+    "has_map": false,
+    "response_preview": "Pasensya, ang maong pangutana naa sa gawas sa akong sakop. Ako usa ka BukSU campus assistant nga gitagana alang sa mga academic po",
+    "full_response": "Pasensya, ang maong pangutana naa sa gawas sa akong sakop. Ako usa ka BukSU campus assistant nga gitagana alang sa mga academic policies, admissions, enrollment procedures, campus facilities, ug student services sulod sa Bukidnon State University."
+  },
+  {
+    "num": 34,
+    "category": "Dorm / Housing / Transportation",
+    "query": "Is there a jeepney route that passes directly by the campus?",
+    "responder": "RASA / Knowledge Router (Intent: __out_of_scope_guardrail__)",
+    "matched_intent": "__out_of_scope_guardrail__",
+    "has_map": false,
+    "response_preview": "I apologize, but that inquiry is outside the scope of this campus chatbot. I am specialized in providing information regarding Buk",
+    "full_response": "I apologize, but that inquiry is outside the scope of this campus chatbot. I am specialized in providing information regarding BukSU academic policies, admissions, enrollment procedures, campus facilities, and student services within Bukidnon State University."
+  },
+  {
+    "num": 35,
+    "category": "Dorm / Housing / Transportation",
+    "query": "Safe ba mag-inarkila duol sa campus?",
+    "responder": "RASA / Knowledge Router (Intent: __out_of_scope_guardrail__)",
+    "matched_intent": "__out_of_scope_guardrail__",
+    "has_map": false,
+    "response_preview": "Pasensya, ang maong pangutana naa sa gawas sa akong sakop. Ako usa ka BukSU campus assistant nga gitagana alang sa mga academic po",
+    "full_response": "Pasensya, ang maong pangutana naa sa gawas sa akong sakop. Ako usa ka BukSU campus assistant nga gitagana alang sa mga academic policies, admissions, enrollment procedures, campus facilities, ug student services sulod sa Bukidnon State University."
+  },
+  {
+    "num": 36,
+    "category": "Dorm / Housing / Transportation",
+    "query": "What time does the last jeepney trip back to town leave?",
+    "responder": "RASA / Knowledge Router (Intent: __out_of_scope_guardrail__)",
+    "matched_intent": "__out_of_scope_guardrail__",
+    "has_map": false,
+    "response_preview": "I apologize, but that inquiry is outside the scope of this campus chatbot. I am specialized in providing information regarding Buk",
+    "full_response": "I apologize, but that inquiry is outside the scope of this campus chatbot. I am specialized in providing information regarding BukSU academic policies, admissions, enrollment procedures, campus facilities, and student services within Bukidnon State University."
+  },
+  {
+    "num": 37,
+    "category": "Fees / Financial",
+    "query": "Unsay miscellaneous fees bayran sa freshman?",
+    "responder": "RASA / Knowledge Router (Intent: student_fees)",
+    "matched_intent": "student_fees",
+    "has_map": false,
+    "response_preview": "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees. **Libre ang tuition sa Bukidnon State Universit",
+    "full_response": "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees. **Libre ang tuition sa Bukidnon State University depende sa programa nga imong gi-enrollan.**\nApan, ang ubang mga kurso posibleng adunay dugang nga bayad para sa laboratory equipment ug required textbooks. **Ang imong college department posibleng maghatag og mga instruksyon kung unsaon pagbayad sa mga fees** , mao nga girekomenda nga moadto ka sa imong department para makuha nimo ang ubang detalye.\nPero pwede pud nimo adtuhon ang accounting office, sa Finance building kay sila makahatag og dugang impormasyon bahin sa mga fees ug proseso sa pagbayad."
+  },
+  {
+    "num": 38,
+    "category": "Fees / Financial",
+    "query": "Is there an installment plan for fees not covered by free tuition?",
+    "responder": "RASA / Knowledge Router (Intent: student_fees)",
+    "matched_intent": "student_fees",
+    "has_map": false,
+    "response_preview": "Students are required to pay for laboratory, ID, and miscellaneous fees. **Tuition is free at Bukidnon State University depending ",
+    "full_response": "Students are required to pay for laboratory, ID, and miscellaneous fees. **Tuition is free at Bukidnon State University depending on the program you are enrolled in.**\nHowever, some courses may have additional charges for laboratory equipment and required textbooks. **Your college department may provide some instructions on how you pay and how much you will pay** , so it is recommended to visit your department for more details.\nBut you can also ask the accounting office, on the Finance building since they can give you more information about the fees and payment process."
+  },
+  {
+    "num": 39,
+    "category": "Fees / Financial",
+    "query": "Naa bay laptop or gadget assistance para sa online classes?",
+    "responder": "RASA / Location Map Router (Location: Scholarships And Financial Grants Available Scholarships Buksu)",
+    "matched_intent": "available_scholarships_buksu",
+    "has_map": true,
+    "response_preview": "Alang sa mga pangutana bahin sa scholarship labi na sa mga available nga programa sa scholarship sa BukSU, **direkta nga pangutana",
+    "full_response": "Alang sa mga pangutana bahin sa scholarship labi na sa mga available nga programa sa scholarship sa BukSU, **direkta nga pangutana sa BukSU Scholarship and Financial Grants Unit,** maghatag ako og mapa para sa mas paspas nga pag-navigate sa ilang opisina.\n​\nMahimo usab kang direktang mangutana sa ilang Facebook page: https://www.facebook.com/BukSUSFGU\n**makita nimo ang** Scholarship and Financial Grants Unit **kilid rajud sa Academic Mentoring unit office**"
+  },
+  {
+    "num": 40,
+    "category": "Fees / Financial",
+    "query": "What is the CHED student loan program and does BukSU offer it?",
+    "responder": "RASA / Location Map Router (Location: Scholarships And Financial Grants Available Scholarships Buksu)",
+    "matched_intent": "available_scholarships_buksu",
+    "has_map": true,
+    "response_preview": "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, **direct",
+    "full_response": "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, **directly ask to the BukSU Scholarship and Financial Grants Unit,** i'll provide you some map for faster navigation of their office. \n​\n you can also directly ask to their Facebook page: https://www.facebook.com/BukSUSFGU\nYou can **locate the** Scholarship and Financial Grants Unit **beside the Academic Mentoring unit office**"
+  },
+  {
+    "num": 41,
+    "category": "Fees / Financial",
+    "query": "Pila ang bayad sa ID replacement?",
+    "responder": "RASA / Knowledge Router (Intent: pending_id_clarification)",
+    "matched_intent": "pending_id_clarification",
+    "has_map": false,
+    "response_preview": "Which ID do you mean, student ID or library ID?",
+    "full_response": "Which ID do you mean, student ID or library ID?"
+  },
+  {
+    "num": 42,
+    "category": "Fees / Financial",
+    "query": "Do working students get any fee discount?",
+    "responder": "RASA / Knowledge Router (Intent: evening_classes_working_students)",
+    "matched_intent": "evening_classes_working_students",
+    "has_map": false,
+    "response_preview": "Yes BukSU offers evening programs specifically for working individuals particularly in the Graduate School including Masters and D",
+    "full_response": "Yes BukSU offers evening programs specifically for working individuals particularly in the Graduate School including Masters and Doctorate degrees and in the College of Law.\nSome undergraduate programs may also offer late afternoon or evening schedules depending on the department."
+  },
+  {
+    "num": 43,
+    "category": "Support Services",
+    "query": "Naa bay guidance counselor nga pwede kausagon?",
+    "responder": "RASA / Knowledge Router (Intent: guidance_counseling_services_buksu)",
+    "matched_intent": "guidance_counseling_services_buksu",
+    "has_map": false,
+    "response_preview": "Oo ang University Guidance and Counseling Unit naghatag og serbisyo sama sa individual counseling career guidance ug psychological",
+    "full_response": "Oo ang University Guidance and Counseling Unit naghatag og serbisyo sama sa individual counseling career guidance ug psychological testing.\nKini nga serbisyo nagasuporta sa mental health ug kaayohan sa mga estudyante."
+  },
+  {
+    "num": 44,
+    "category": "Support Services",
+    "query": "Is there a mental health or counseling service on campus?",
+    "responder": "RASA / Knowledge Router (Intent: guidance_counseling_services_buksu)",
+    "matched_intent": "guidance_counseling_services_buksu",
+    "has_map": false,
+    "response_preview": "Yes the University Guidance and Counseling Unit provides services such as individual counseling career guidance and psychological ",
+    "full_response": "Yes the University Guidance and Counseling Unit provides services such as individual counseling career guidance and psychological testing.\nThese services support the mental health and well being of students."
+  },
+  {
+    "num": 45,
+    "category": "Support Services",
+    "query": "Unsay buhaton kung naay bullying sa campus?",
+    "responder": "RASA / Knowledge Router (Intent: student_grievance_and_complaints_process)",
+    "matched_intent": "student_grievance_and_complaints_process",
+    "has_map": false,
+    "response_preview": "Kung makasinati ka og bullying, harassment, o naay reklamo bahin sa academic concerns o pamatasan sa faculty, ang BukSU adunay por",
+    "full_response": "Kung makasinati ka og bullying, harassment, o naay reklamo bahin sa academic concerns o pamatasan sa faculty, ang BukSU adunay pormal nga proseso:\n1. Para sa bullying o personal nga problema: Bisitaha ang **Guidance and Counseling Center** sa Student Services Center alang sa kompidensyal nga tabang.\n2. Para sa pormal nga reklamo batok sa propesor o subject: Pagsumite og pormal nga suwat sa **Department Chairperson** o sa **College Dean**.\n3. Mahimo usab kang mokonsulta sa **Office of Student Services (OSS)** alang sa tabang sa katungod sa estudyante subay sa BukSU Student Handbook."
+  },
+  {
+    "num": 46,
+    "category": "Support Services",
+    "query": "Does BukSU have a job placement office for OJT or graduates?",
+    "responder": "RASA / Knowledge Router (Intent: on_the_job_training)",
+    "matched_intent": "on_the_job_training",
+    "has_map": false,
+    "response_preview": "On-the-job training (OJT) provides students with real-world work experience related to their course.",
+    "full_response": "On-the-job training (OJT) provides students with real-world work experience related to their course."
+  },
+  {
+    "num": 47,
+    "category": "Support Services",
+    "query": "Asa ko mo-report kung naay problema sa akong professor?",
+    "responder": "RASA / Direct Intent Override",
+    "matched_intent": "",
+    "has_map": false,
+    "response_preview": "Kung makasinati ka og bullying, harassment, o naay reklamo bahin sa academic concerns o pamatasan sa faculty, ang BukSU adunay por",
+    "full_response": "Kung makasinati ka og bullying, harassment, o naay reklamo bahin sa academic concerns o pamatasan sa faculty, ang BukSU adunay pormal nga proseso:\n1. Para sa bullying o personal nga problema: Bisitaha ang **Guidance and Counseling Center** sa Student Services Center alang sa kompidensyal nga tabang.\n2. Para sa pormal nga reklamo batok sa propesor o subject: Pagsumite og pormal nga suwat sa **Department Chairperson** o sa **College Dean**.\n3. Mahimo usab kang mokonsulta sa **Office of Student Services (OSS)** alang sa tabang sa katungod sa estudyante subay sa BukSU Student Handbook."
+  },
+  {
+    "num": 48,
+    "category": "Mixed / Stress-test",
+    "query": "pwede paba mag shift ug course pag 2nd sem naa koy dokumento na kailangan i-submit",
+    "responder": "RASA / Knowledge Router (Intent: course_shifting)",
+    "matched_intent": "course_shifting",
+    "has_map": false,
+    "response_preview": "Oo, pwede ra mag-shift og course sa BukSU, labi na kung first year pa. Apan palihog timan-i nga kasagaran mga minor subjects ra an",
+    "full_response": "Oo, pwede ra mag-shift og course sa BukSU, labi na kung first year pa.\nApan palihog timan-i nga kasagaran mga minor subjects ra ang ma-credit.\nPasabot niini nga dili na nimo kinahanglan kuhaon balik ang mga maong subject sa imong bag-ong kurso.\nTalagsa ra kaayo nga ma-credit ang major subjects, mao nga mas maayo mangutana ka sa Registrar’s Office para sa mas klaro nga detalye.\nPalihog hinumdumi usab nga para sa pipila ka espesipikong kurso, dili tugotan ang pag-shift sa ikaduhang semester. Sa ing-ani nga mga kaso, kinahanglan nimo tapuson ang tibuok first year sa imong current nga programa usa ka pa mahimong eligible nga mobalhin sa lain nga kurso."
+  },
+  {
+    "num": 49,
+    "category": "Mixed / Stress-test",
+    "query": "hoy chatbot kabalo ka asa dapit ang covid vaccination center sa BukSU",
+    "responder": "RASA / Knowledge Router (Intent: bukus_location)",
+    "matched_intent": "bukus_location",
+    "has_map": false,
+    "response_preview": "Bukidnon State University (BukSU) nahimutang sa Malaybalay City, Bukidnon, Philippines. Pasensya, dili ko makahatag og mapa kay ki",
+    "full_response": "Bukidnon State University (BukSU) nahimutang sa Malaybalay City, Bukidnon, Philippines. Pasensya, dili ko makahatag og mapa kay kini naa sa gawas sa akong datos; ang akong mapa gi-design ug magigamit sulod sa Bukidnon State University Main Campus."
+  },
+  {
+    "num": 50,
+    "category": "Mixed / Stress-test",
+    "query": "Unsa akong balance sa tuition fee karon?",
+    "responder": "RASA / Knowledge Router (Intent: __private_student_records_guardrail__)",
+    "matched_intent": "__private_student_records_guardrail__",
+    "has_map": false,
+    "response_preview": "Usa lamang ako ka automated information assistant ug **dili ako maka-access sa imong personal nga student records, grado, GPA, o a",
+    "full_response": "Usa lamang ako ka automated information assistant ug **dili ako maka-access sa imong personal nga student records, grado, GPA, o account balance**.\n\nPalihog pag-log in sa imong opisyal nga **BukSU SIAS Portal** sa: https://sias.buksu.edu.ph/sias/ aron makita ang imong opisyal nga mga grado ug financial ledger, o bisitaha ang Accounting Office sa Finance Building."
+  }
+]

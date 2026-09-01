@@ -3045,6 +3045,58 @@
         ]
       },
       "display_name": "Admission Schedule"
+    },
+    {
+      "topic": "returning_student_readmission_process",
+      "responses": {
+        "en": [
+          "Here is the readmission and enrollment process for Returning Students (Balik-Aral):",
+          "• **Important Policies**:\n- Students who were under the **old curriculum** must re-enter the course as a first-year student.\n- If it has been **more than 5 years** since your last semester of attendance, university policy dictates that you must retake the BukSU College Admission Test (BukSU-CAT) and pay a ₱300 testing fee to be reintegrated.",
+          "• **Step-by-Step Readmission Procedure**:\n1. Register online at: https://admissions.buksu.edu.ph\n2. Activate your account via email (click the activation link).\n3. Update your Account Information.\n4. Click 'Proceed to Account Migration' and use your previous student number to migrate your account.\n5. Apply for Enrollment.\n6. Steps 1–5: Complete all required information.\n7. Step 6: Verify, sign, and confirm your Enrollment Application.\n8. Submit and wait for your Evaluator to process your Enrollment Application.\n9. Retrieve and review your Certificate of Registration (COR).",
+          "For the complete official guide, visit: https://admissions.buksu.edu.ph/posts/12/"
+        ],
+        "ceb": [
+          "Ania ang proseso sa readmission ug enrollment alang sa mga Returning Students (Balik-Aral):",
+          "• **Importanteng mga Polisiya**:\n- Ang mga estudyante nga naa ubos sa **daan nga curriculum (old curriculum)** kinahanglan mosulod pag-usab isip first year student.\n- Kung nilabay na og **sobra 5 ka tuig** sukad sa imong kataposang semestre sa pag-eskwela, gikinahanglan sumala sa polisiya nga mokuha ka pag-usab sa BukSU College Admission Test (BukSU-CAT) ug mobayad og ₱300 testing fee aron ma-reintegrate.",
+          "• **Step-by-Step Readmission Procedure**:\n1. Pag-register online sa: https://admissions.buksu.edu.ph\n2. I-activate ang imong account pinaagi sa email (i-click ang activation link).\n3. I-update ang imong Account Information.\n4. I-click ang 'Proceed to Account Migration' gamit ang imong student number aron ma-migrate ang imong account.\n5. Pag-apply para sa Enrollment.\n6. Kompletoha ang tanang gikinahanglang impormasyon (Steps 1–5 sa portal).\n7. Step 6: I-verify, pirmahi, ug kumpirmaha ang imong Enrollment Application.\n8. I-submit ug hulata ang Evaluator nga moproseso sa imong Enrollment Application.\n9. Kuhaa ug susiha ang imong Certificate of Registration (COR).",
+          "Para sa opisyal nga giya sa readmission, bisitaha ang: https://admissions.buksu.edu.ph/posts/12/"
+        ]
+      },
+      "intent": "returning_student_readmission_process",
+      "context_topic": "Returning student readmission",
+      "metadata": {
+        "phrases": [
+          "what if i already stopped studying at buksu years ago can i come back",
+          "how to return to buksu after stopping",
+          "returning student process buksu",
+          "balik aral buksu",
+          "readmission process buksu",
+          "unsaon pagbalik eskwela sa buksu",
+          "stopped studying can i return",
+          "re admission requirements buksu",
+          "come back to study in buksu",
+          "old curriculum returning student buksu",
+          "stopped studying 5 years ago buksu",
+          "account migration returning student"
+        ],
+        "strong_keywords": [
+          "stopped",
+          "readmission",
+          "balik",
+          "aral",
+          "returning",
+          "migration"
+        ],
+        "weak_keywords": [
+          "studying",
+          "return",
+          "come",
+          "back",
+          "years",
+          "curriculum"
+        ]
+      },
+      "display_name": "Returning Student Readmission"
     }
   ]
 }

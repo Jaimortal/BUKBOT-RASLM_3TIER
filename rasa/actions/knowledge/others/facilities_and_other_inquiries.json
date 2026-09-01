@@ -1635,6 +1635,57 @@
         ]
       },
       "display_name": "Who Created You"
+    },
+    {
+      "topic": "campus_gates_and_entrances",
+      "responses": {
+        "en": [
+          "BukSU Main Campus has 3 designated campus gates (2 Entrances and 1 Exit):",
+          "1. **Main Pedestrian Entrance (Walking Entrance)**: Located along the front perimeter, this entrance is strictly used for students entering BukSU on foot. *Note: Examinees taking the BukSU College Admission Test (BukSU-CAT) must enter through the Exit Gate instead, as it provides the quickest route to the main examination building (College of Business / COB Building).*",
+          "2. **Vehicle Entrance Gate**: Located on the upper side of BukSU, strictly for vehicle entry only. A valid university gate pass is required to enter BukSU with a vehicle.",
+          "3. **Campus Exit Gate**: Serves as the designated common exit for both pedestrians and vehicles."
+        ],
+        "ceb": [
+          "Ang BukSU Main Campus adunay 3 ka gates (2 ka Entrance ug 1 ka Exit):",
+          "1. **Main Pedestrian Entrance (Walking Entrance)**: Nahimutang sa atubangan, kini ang pultahan nga para lamang sa mga estudyante nga mosulod pinaagi sa paglakaw. *Pahibalo: Ang mga examinees para sa BukSU-CAT kinahanglan mosulod sa Exit Gate tungod kay kini ang pinakapaspas nga agianan padulong sa main examination building (College of Business / COB Building).*",
+          "2. **Vehicle Entrance Gate**: Nahimutang sa ibabaw nga bahin sa BukSU, para lamang sa mga sakyanan. Kinahanglan og balidong gate pass aron makasulod ang imong sakyanan sa campus.",
+          "3. **Campus Exit Gate**: Ang nag-inusarang pultahan para sa paggawas sa mga tawo ug mga sakyanan."
+        ]
+      },
+      "intent": "campus_gates_and_entrances",
+      "context_topic": "Campus gates",
+      "metadata": {
+        "phrases": [
+          "unsa'y pinakaduol nga gate padulong sa main building",
+          "which gate is closest to the main building",
+          "campus gates buksu",
+          "main gate buksu location",
+          "entrance gate buksu",
+          "vehicle entrance buksu",
+          "where to enter for buksu cat",
+          "asa mosulod para sa cat exam",
+          "pinakaduol nga gate sa admin",
+          "how many gates does buksu have",
+          "where to enter buksu main campus",
+          "gate pass for vehicle buksu"
+        ],
+        "strong_keywords": [
+          "gate",
+          "entrance",
+          "pultahan",
+          "exit",
+          "gates"
+        ],
+        "weak_keywords": [
+          "pinakaduol",
+          "closest",
+          "vehicle",
+          "pedestrian",
+          "which",
+          "where"
+        ]
+      },
+      "display_name": "Campus Gates & Entrances"
     }
   ]
 }

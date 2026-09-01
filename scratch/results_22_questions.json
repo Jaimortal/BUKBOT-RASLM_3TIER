@@ -1,0 +1,200 @@
+[
+  {
+    "num": 1,
+    "category": "Admissions / Entry",
+    "query": "What are the requirements for BukSU-CAT?",
+    "responder": "RASA / Knowledge Router (Intent: exam_requirements)",
+    "matched_intent": "exam_requirements",
+    "response_preview": "What to bring on the examination day Test takers must bring the following items: 1. Test Permit (can be downloaded from the BukSU ",
+    "full_response": "What to bring on the examination day\nTest takers must bring the following items:\n1. Test Permit (can be downloaded from the BukSU admission website)\n2. Application Form (can be downloaded from the BukSU admission website)\n3. Pen\n4. Pencil No. 2, eraser, and sharpener\nPlease be reminded that this is for Admission examination, not for college course examinations. For college course examinations, please refer to the specific requirements provided by your respective colleges."
+  },
+  {
+    "num": 2,
+    "category": "Admissions / Entry",
+    "query": "Unsaon nako pag-apply sa BukSU kung Grade 12 pa ko?",
+    "responder": "RASA / Knowledge Router (Intent: freshman_admission_requirements)",
+    "matched_intent": "freshman_admission_requirements",
+    "response_preview": "Ania ang mga kinahanglanon nga imong andamon sa dili pa mag-apply para sa BukSU Admission Testing: 1. Kinahanglan naa kay personal",
+    "full_response": "Ania ang mga kinahanglanon nga imong andamon sa dili pa mag-apply para sa BukSU Admission Testing:\n1. Kinahanglan naa kay personal nga Gmail account aron makahimo og account sa BukSU Admissions: https://admissions.buksu.edu.ph/\n2. Kinahanglan pud ka og digital copy sa imong 2x2 nga litrato. Siguroa nga ang imong litrato mosunod sa mosunod nga specifications: puti nga background, nagsul-ob og puti nga T-shirt, walay accessories, ug sakto nga 2x2 nga size.\nPara sa documentary requirements:\nReport card, Transcript of Records, Principal’s Certification, GWA, ug Diploma. Optional ra kini basta naa kay Principal’s Certification. Siguroa nga pirmado kini sa imong principal ug sakto ang pag-seal.\nHuman ka mag-apply para sa BukSU Admission, palihog hulata ang approval.\nNote: Siguroa nga ma-access nimo ang imong Gmail, kay didto ipadala ang tanang verification codes."
+  },
+  {
+    "num": 3,
+    "category": "Admissions / Entry",
+    "query": "Do I need to take an entrance exam even if I'm a transferee?",
+    "responder": "RASA / Knowledge Router (Intent: transferee_enrollment)",
+    "matched_intent": "transferee_enrollment",
+    "response_preview": "For transferees, you must first take and pass the BukSU Admission process before you can enroll. After passing admission, proceed ",
+    "full_response": "For transferees, you must first take and pass the BukSU Admission process before you can enroll.\nAfter passing admission, proceed to the college or department where you plan to enroll so your academic records can be evaluated.\nPrepare transferee-related documents such as Honorable Dismissal, Transcript of Records or informative copy, Subject Equivalency Form if required, and the other enrollment documentary requirements listed for undergraduate first year/transferee applicants.\nOnce your documents are evaluated, follow the online enrollment application steps through https://admissions.buksu.edu.ph and wait for your department or evaluator instructions.\nFor private school transferees, expect possible delays because previously taken subjects may need additional evaluation and may not all be credited."
+  },
+  {
+    "num": 4,
+    "category": "Admissions / Entry",
+    "query": "Unsay buot ipasabot sa 80% percentile rank sa Report of Rating?",
+    "responder": "RASA / Knowledge Router (Intent: program_cutoff_scores)",
+    "matched_intent": "program_cutoff_scores",
+    "response_preview": "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score. Ang board courses kasag",
+    "full_response": "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score.\nAng board courses kasagaran nagkinahanglan og 80% pataas nga CAT score.\nMahimo gihapon kini mausab depende sa opisyal nga admission guidelines sa current academic year, busa mas maayo nga i-confirm sa BukSU Admission and Testing Unit kung kinahanglan nimo ang final qualification details."
+  },
+  {
+    "num": 5,
+    "category": "Admissions / Entry",
+    "query": "Pwede pa ko mo-enroll bisan ubos akong ROR sa cutoff?",
+    "responder": "RASA / Knowledge Router (Intent: cat_exam_result)",
+    "matched_intent": "cat_exam_result",
+    "response_preview": "Ang pinakasayon nga paagi aron mahibal-an kung nakapasar ka sa BukSU Admission CAT Examination mao ang pag-log in sa imong BukSU A",
+    "full_response": "Ang pinakasayon nga paagi aron mahibal-an kung nakapasar ka sa BukSU Admission CAT Examination mao ang pag-log in sa imong BukSU Admission account ug adto sa Admission tab. Pwede pud nimo dali nga ma-access kini pinaagi sa notifications gikan sa BukSU Admissions. Kung makita nimo ang imong Report of Ratings, sama sa litrato nga akong gihatag, i-click ang ‘Show Exam Result’ aron tan-awon kung nakapasar o napakyas ka.\nPwede pud nimo tan-awon kini nga video para sa step by step guide:\nhttps://www.facebook.com/share/v/1CRFdU3vM5/"
+  },
+  {
+    "num": 6,
+    "category": "Enrollment process",
+    "query": "How do I enroll after passing the BukSU-CAT?",
+    "responder": "RASA / Knowledge Router (Intent: enrollment_general_process)",
+    "matched_intent": "enrollment_general_process",
+    "response_preview": "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**: Step",
+    "full_response": "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**:\nStep 1. You may look on the picture provided below for the requirements needed.\nStep 2: Login to https://admissions.buksu.edu.ph\n• Click on **Admission**\n• Click **Show Exam Result** then proceed to enrollment\n• Click **Apply Enrollment**\n- **Campus Selection**: Select **Main Campus**\n- **Course Selection**: Select your **Preferred Course**\n- **Documentary Requirements**: Scan and upload the documentary requirements as specified in Step 1\n*(NOTE: All documents uploaded as part of the admission process must be duly marked with a \"RECEIVED\" stamp by the University Registrar's Office)*\n- **Learning Modality Preference**: Select your **Preferred Learning Modality**\n- **Academic Information**: Fill in the necessary information\nStep 3: Approval of Enrollment Application\nWait for the evaluator's approval of your application. Once your application is approved, download your Certificate of Registration (COR) through https://admissions.buksu.edu.ph\n*(Click 'Report Incorrect COR' if you find any errors)*\nStep 4: Validation of Enrollment, you may look on the image provided below."
+  },
+  {
+    "num": 7,
+    "category": "Enrollment process",
+    "query": "Unsay Certificate of Registration ug asa nako kini makuha?",
+    "responder": "RASA / Knowledge Router (Intent: where_get_cor)",
+    "matched_intent": "where_get_cor",
+    "response_preview": "Makakuha ka sa imong COR sa Admission website, ania ang step by step process sa pagkuha sa imong COR https://admissions.buksu.edu.",
+    "full_response": "Makakuha ka sa imong COR sa Admission website, ania ang step by step process sa pagkuha sa imong COR\nhttps://admissions.buksu.edu.ph/login\nStep1: Adto sa imong BukSU admission, Login gamit ang imong credentials\nStep2: I-click ang Enrollment tab, sa mobile kasagaran makit-an nimo kini pinaagi sa pag-klik sa 3 line menu tab sa ibabaw nga wala nga bahin sa imong screen\nStep3: I-click ang <b>Application History</b> aron makita ang tanan nga History sa imong mga aplikasyon\nStep4: I-click ang Details button nga nahimutang sa ubos nga tuo nga suok sa matag application history\nStep5: Mahimo na nimo kini i-download pinaagi sa pag-klik sa <b>Certificate of Registration (COR)</b>\npwede ka na magpadayon sa imong validation kung wala ka pa na-validate."
+  },
+  {
+    "num": 8,
+    "category": "Enrollment process",
+    "query": "What happens if I enroll late? Is there a penalty?",
+    "responder": "RASA / Knowledge Router (Intent: late_enrollment)",
+    "matched_intent": "late_enrollment",
+    "response_preview": "Late enrollment is still allowed at Bukidnon State University, but it is subject to specific conditions. According to the official",
+    "full_response": "Late enrollment is still allowed at Bukidnon State University, but it is subject to specific conditions.\nAccording to the official policy of the University Registrar, late enrollment is permitted only during the first week of classes.\nFor more details about enrollment click this link:<div>https://buksu.edu.ph/office-of-the-registrar/registration/</div>"
+  },
+  {
+    "num": 9,
+    "category": "Enrollment process",
+    "query": "asa ko mo-adto human sa orientation",
+    "responder": "RASA / Direct Intent Override",
+    "matched_intent": "",
+    "response_preview": "Human sa University ug College Freshman Orientation, adto sa imong **College Department** aron: 1. Maila-ila ang imong Department ",
+    "full_response": "Human sa University ug College Freshman Orientation, adto sa imong **College Department** aron:\n1. Maila-ila ang imong Department Chairperson ug academic advisers.\n2. Masusi ang imong block section, room assignments, ug pinal nga schedule sa klase.\n3. Makuha ang mga espesipikong pahimangno ug syllabus sa imong kurso sa dili pa magsugod ang pormal nga klase."
+  },
+  {
+    "num": 10,
+    "category": "Programs/Courses",
+    "query": "Unsa'y \"board courses\"?",
+    "responder": "RASA / Knowledge Router (Intent: buksu_board_courses)",
+    "matched_intent": "buksu_board_courses",
+    "response_preview": "here are the board courses that BukSU Offers. <b>COLLEGE OF BUSINESS</b> Bachelor of Science in Accountancy <b>COLLEGE OF EDUCATIO",
+    "full_response": "here are the board courses that BukSU Offers.\n<b>COLLEGE OF BUSINESS</b>\nBachelor of Science in Accountancy\n<b>COLLEGE OF EDUCATION</b>\nBachelor of Early Childhood Education\nBachelor of Elementary Education\nBachelor of Physical Education\nBachelor of Secondary Education Major in English\nBachelor of Secondary Education Major in Filipino\nBachelor of Secondary Education Major in Mathematics\nBachelor of Secondary Education Major in Social Studies\nBachelor of Secondary Education Major in Science\n<b>COLLEGE OF TECHNOLOGIES</b>\nBachelor of Science in Food Technology\n<b>COLLEGE OF NURSING</b>\nBachelor of Science in Nursing"
+  },
+  {
+    "num": 11,
+    "category": "Programs/Courses",
+    "query": "Does BukSU offer a Nursing program and is it hard to get in?",
+    "responder": "RASA / Knowledge Router (Intent: buksu_BSN_program)",
+    "matched_intent": "buksu_BSN_program",
+    "response_preview": "Yes, BukSU offers a Bachelor of Science in Nursing focusing on clinical patient care, health promotion, and disease prevention thr",
+    "full_response": "Yes, BukSU offers a Bachelor of Science in Nursing focusing on clinical patient care, health promotion, and disease prevention through intensive classroom and hospital training."
+  },
+  {
+    "num": 12,
+    "category": "Programs/Courses",
+    "query": "What's the difference between board and non-board courses?",
+    "responder": "RASA / Knowledge Router (Intent: buksu_non_board_courses)",
+    "matched_intent": "buksu_non_board_courses",
+    "response_preview": "Here are the non-board courses that BukSU Offers. <b>COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE</b> Bachelor of Public Admini",
+    "full_response": "Here are the non-board courses that BukSU Offers.\n<b>COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE</b>\nBachelor of Public Administration\n<b>COLLEGE OF ARTS AND SCIENCES</b>\nBachelor of Arts in Economics\nBachelor of Arts in English Language\nBachelor of Arts in Philosophy\nBachelor of Arts in Sociology\nBachelor of Science in Community Development\nBachelor of Science in Development Communication\nBachelor of Science in Mathematics\nBachelor of Science in Biology major in Biotechnology\nBachelor of Science in Environmental Science major in Environmental Heritage Studies\n<b>COLLEGE OF BUSINESS</b>\nBachelor of Science in Business Administration major in Financial Management\nBachelor of Science in Hospitality Management\n<b>COLLEGE OF TECHNOLOGIES</b>\nBachelor of Science in Automotive Technology\nBachelor of Science in Electronics Technology\nBachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology\nBachelor of Science in Information Technology"
+  },
+  {
+    "num": 13,
+    "category": "Tuition/Scholarships",
+    "query": "Libre gyud ba ang tuition sa BukSU?",
+    "responder": "RASA / Knowledge Router (Intent: student_fees)",
+    "matched_intent": "student_fees",
+    "response_preview": "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees. **Libre ang tuition sa Bukidnon State Universit",
+    "full_response": "Mga estudyante kinahanglan magbayad para sa laboratory, ID, ug miscellaneous fees. **Libre ang tuition sa Bukidnon State University depende sa programa nga imong gi-enrollan.**\nApan, ang ubang mga kurso posibleng adunay dugang nga bayad para sa laboratory equipment ug required textbooks. **Ang imong college department posibleng maghatag og mga instruksyon kung unsaon pagbayad sa mga fees** , mao nga girekomenda nga moadto ka sa imong department para makuha nimo ang ubang detalye.\nPero pwede pud nimo adtuhon ang accounting office, sa Finance building kay sila makahatag og dugang impormasyon bahin sa mga fees ug proseso sa pagbayad."
+  },
+  {
+    "num": 14,
+    "category": "Tuition/Scholarships",
+    "query": "What scholarships are available for incoming freshmen?",
+    "responder": "RASA / Knowledge Router (Intent: available_scholarships_buksu)",
+    "matched_intent": "available_scholarships_buksu",
+    "response_preview": "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, **direct",
+    "full_response": "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, **directly ask to the BukSU Scholarship and Financial Grants Unit,** i'll provide you some map for faster navigation of their office. \n​\n you can also directly ask to their Facebook page: https://www.facebook.com/BukSUSFGU\nYou can **locate the** Scholarship and Financial Grants Unit **beside the Academic Mentoring unit office**"
+  },
+  {
+    "num": 15,
+    "category": "Ambiguous / Low-confidence",
+    "query": "Nakalimtan nako akong password sa admissions account, unsaon nako pag-recover?",
+    "responder": "RASA / Knowledge Router (Intent: Change_Pass_admission)",
+    "matched_intent": "Change_Pass_admission",
+    "response_preview": "Para usbon ang imong admission password, sunda kini nga mga steps: Adto sa <b>https://admissions.buksu.edu.ph/login</b> Login sa i",
+    "full_response": "Para usbon ang imong admission password, sunda kini nga mga steps:\nAdto sa <b>https://admissions.buksu.edu.ph/login</b>\nLogin sa imong credentials ug adto sa imong dashboard\ni-click ang imong Profile icon para makita ang choices logout o My Account, ug pilia ang <b>My Account</b>\npwede na nimo usbon ang imong password pinaagi lang sa pag-click sa <b>Change Password</b> button"
+  },
+  {
+    "num": 16,
+    "category": "Ambiguous / Low-confidence",
+    "query": "What if I already stopped studying at BukSU years ago, can I come back?",
+    "responder": "RASA / Knowledge Router (Intent: returning_student_readmission_process)",
+    "matched_intent": "returning_student_readmission_process",
+    "response_preview": "Here is the readmission and enrollment process for Returning Students (Balik-Aral): • **Important Policies**: - Students who were ",
+    "full_response": "Here is the readmission and enrollment process for Returning Students (Balik-Aral):\n• **Important Policies**:\n- Students who were under the **old curriculum** must re-enter the course as a first-year student.\n- If it has been **more than 5 years** since your last semester of attendance, university policy dictates that you must retake the BukSU College Admission Test (BukSU-CAT) and pay a ₱300 testing fee to be reintegrated.\n• **Step-by-Step Readmission Procedure**:\n1. Register online at: https://admissions.buksu.edu.ph\n2. Activate your account via email (click the activation link).\n3. Update your Account Information.\n4. Click 'Proceed to Account Migration' and use your previous student number to migrate your account.\n5. Apply for Enrollment.\n6. Steps 1–5: Complete all required information.\n7. Step 6: Verify, sign, and confirm your Enrollment Application.\n8. Submit and wait for your Evaluator to process your Enrollment Application.\n9. Retrieve and review your Certificate of Registration (COR).\nFor the complete official guide, visit: https://admissions.buksu.edu.ph/posts/12/"
+  },
+  {
+    "num": 17,
+    "category": "Ambiguous / Low-confidence",
+    "query": "asdkjasnd unsa diay ang buksu",
+    "responder": "RASA / Knowledge Router (Intent: about_buksu)",
+    "matched_intent": "about_buksu",
+    "response_preview": "Bukidnon State University is a state university located in Malaybalay City, Bukidnon, Philippines. The school was formerly known a",
+    "full_response": "Bukidnon State University is a state university located in Malaybalay City, Bukidnon, Philippines. The school was formerly known as Bukidnon State College. It is the only university in the Province of Bukidnon that carries the name of Bukidnon in its official name.\nBukidnon State University is currently TOP 400 World University Rankings for Innovation (WURI) 2025"
+  },
+  {
+    "num": 18,
+    "category": "Mixed Bisaya-English",
+    "query": "Pwede ba mag-late enroll pero naa akoy valid reason?",
+    "responder": "RASA / Knowledge Router (Intent: late_enrollment)",
+    "matched_intent": "late_enrollment",
+    "response_preview": "Ang late enrollment gitugotan gihapon sa Bukidnon State University apan naa kini sa espesipikong mga kondisyon. Sumala sa opisyal ",
+    "full_response": "Ang late enrollment gitugotan gihapon sa Bukidnon State University apan naa kini sa espesipikong mga kondisyon.\nSumala sa opisyal nga polisiya sa University Registrar, ang late enrollment gitugotan lamang sulod sa unang semana sa klase.\nPara sa dugang detalye bahin sa enrollment, i-klik kini nga link:<div>https://buksu.edu.ph/office-of-the-registrar/registration/</div>"
+  },
+  {
+    "num": 19,
+    "category": "Mixed Bisaya-English",
+    "query": "Ma'am unsay requirements sa transferee kay naa koy transcript na?",
+    "responder": "RASA / Knowledge Router (Intent: transferee_enrollment)",
+    "matched_intent": "transferee_enrollment",
+    "response_preview": "Para sa transferees, kinahanglan una ka moagi ug mopasar sa BukSU Admission process bago ka maka-enroll. Human makapasar sa admiss",
+    "full_response": "Para sa transferees, kinahanglan una ka moagi ug mopasar sa BukSU Admission process bago ka maka-enroll.\nHuman makapasar sa admission, adto sa college o department kung asa ka gusto mo-enroll aron ma-evaluate ang imong academic records.\nPag-andam og transferee-related documents sama sa Honorable Dismissal, Transcript of Records o informative copy, Subject Equivalency Form kung required, ug uban pang enrollment documentary requirements para sa undergraduate first year/transferee applicants.\nKung ma-evaluate na ang documents, sundon ang online enrollment application steps sa https://admissions.buksu.edu.ph ug hulata ang instructions sa department o evaluator.\nPara sa private school transferees, posible nga naay delay kay kinahanglan pa i-evaluate ang previous subjects ug dili tanan subject automatic ma-credit."
+  },
+  {
+    "num": 20,
+    "category": "Out-of-scope (Refuse)",
+    "query": "Unsa akong grades this semester?",
+    "responder": "RASA / Knowledge Router (Intent: __private_student_records_guardrail__)",
+    "matched_intent": "__private_student_records_guardrail__",
+    "response_preview": "Usa lamang ako ka automated information assistant ug **dili ako maka-access sa imong personal nga student records, grado, GPA, o a",
+    "full_response": "Usa lamang ako ka automated information assistant ug **dili ako maka-access sa imong personal nga student records, grado, GPA, o account balance**.\n\nPalihog pag-log in sa imong opisyal nga **BukSU SIAS Portal** sa: https://sias.buksu.edu.ph/sias/ aron makita ang imong opisyal nga mga grado ug financial ledger, o bisitaha ang Accounting Office sa Finance Building."
+  },
+  {
+    "num": 21,
+    "category": "Out-of-scope (Refuse)",
+    "query": "What's my current GPA?",
+    "responder": "RASA / Knowledge Router (Intent: __private_student_records_guardrail__)",
+    "matched_intent": "__private_student_records_guardrail__",
+    "response_preview": "I am an automated informational assistant and **cannot access your private student records, grades, GPA, or tuition balance**.  Pl",
+    "full_response": "I am an automated informational assistant and **cannot access your private student records, grades, GPA, or tuition balance**.\n\nPlease log in to your official **BukSU SIAS Portal** at: https://sias.buksu.edu.ph/sias/ to view your official grades and financial ledger, or visit the Accounting Office in the Finance Building."
+  },
+  {
+    "num": 22,
+    "category": "Out-of-scope (Refuse)",
+    "query": "Unsa ang weather sa Malaybalay karon?",
+    "responder": "RASA / Knowledge Router (Intent: __out_of_scope_guardrail__)",
+    "matched_intent": "__out_of_scope_guardrail__",
+    "response_preview": "Pasensya, ang maong pangutana naa sa gawas sa akong sakop. Ako usa ka BukSU campus assistant nga gitagana alang sa mga academic po",
+    "full_response": "Pasensya, ang maong pangutana naa sa gawas sa akong sakop. Ako usa ka BukSU campus assistant nga gitagana alang sa mga academic policies, admissions, enrollment procedures, campus facilities, ug student services sulod sa Bukidnon State University."
+  }
+]

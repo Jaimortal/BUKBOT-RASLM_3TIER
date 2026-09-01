@@ -8840,6 +8840,981 @@
         }
       ]
     },
+    "A3-1-01": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "1st Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-1-01 is located on the first floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-1-01 makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-1-01 (Old CAS 1st Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-1-01",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-1-02": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "1st Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-1-02 is located on the first floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-1-02 makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-1-02 (Old CAS 1st Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-1-02",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "College of Arts and Sciences Records Office": {
+      "type": "office",
+      "building": "Old CAS Building",
+      "floor": "1st Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The College of Arts and Sciences Records Office is located on the first floor of the Old CAS Building (Building A3). Please refer to the map for navigation."
+        ],
+        "ceb": [
+          "Ang College of Arts and Sciences Records Office makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "CAS Records Office (Old CAS)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to CAS Records Office",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "Accreditation Room Mathematics Departments Faculty Room 2": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "1st Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The Accreditation Room and Mathematics Department Faculty Room 2 is located on the first floor of the Old CAS Building (Building A3). Please refer to the map for navigation."
+        ],
+        "ceb": [
+          "Ang Accreditation Room ug Mathematics Department Faculty Room 2 makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "Math Faculty Room 2 & Accreditation Room",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to Math Faculty Room 2 & Accreditation Room",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-1-05": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "1st Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-1-05 is located on the first floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-1-05 makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-1-05 (Old CAS 1st Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-1-05",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-1-06": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "1st Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-1-06 is located on the first floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-1-06 makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-1-06 (Old CAS 1st Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-1-06",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "SSD Research Room": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "1st Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The Social Sciences Department (SSD) Research Room is located on the first floor of the Old CAS Building (Building A3). Please refer to the map for navigation."
+        ],
+        "ceb": [
+          "Ang Social Sciences Department (SSD) Research Room makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "SSD Research Room (Old CAS)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to SSD Research Room",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-2-01": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "2nd Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-2-01 (A3-02-01) is located on the second floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-2-01 (A3-02-01) makita sa ikaduhang andana (2nd floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-2-01 (Old CAS 2nd Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-2-01",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-2-02": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "2nd Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-2-02 (A3-02-02) is located on the second floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-2-02 (A3-02-02) makita sa ikaduhang andana (2nd floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-2-02 (Old CAS 2nd Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-2-02",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-2-03": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "2nd Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-2-03 is located on the second floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-2-03 makita sa ikaduhang andana (2nd floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-2-03 (Old CAS 2nd Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-2-03",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-2-04": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "2nd Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-2-04 is located on the second floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-2-04 makita sa ikaduhang andana (2nd floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-2-04 (Old CAS 2nd Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-2-04",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-2-05": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "2nd Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-2-05 is located on the second floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-2-05 makita sa ikaduhang andana (2nd floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-2-05 (Old CAS 2nd Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-2-05",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A3-2-06": {
+      "type": "room",
+      "building": "Old CAS Building",
+      "floor": "2nd Floor",
+      "coordinates": [
+        468,
+        641
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A3-2-06 is located on the second floor of the Old CAS Building (Building A3). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A3-2-06 makita sa ikaduhang andana (2nd floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            878,
+            634
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A3-2-06 (Old CAS 2nd Floor)",
+          "coordinates": [
+            468,
+            641
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "You are here! to A3-2-06",
+          "points": [
+            [
+              878,
+              634
+            ],
+            [
+              789,
+              635
+            ],
+            [
+              789,
+              676
+            ],
+            [
+              585,
+              677
+            ],
+            [
+              563,
+              646
+            ],
+            [
+              476,
+              653
+            ],
+            [
+              468,
+              641
+            ]
+          ],
+          "color": "#00b0ff",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
     "College of Nursing Building": {
       "type": "building",
       "building": "CON Building",
@@ -9353,6 +10328,77 @@
       "routes": [
         {
           "name": "You are here! to OSS",
+          "points": [
+            [
+              886,
+              632
+            ],
+            [
+              784,
+              632
+            ],
+            [
+              781,
+              673
+            ],
+            [
+              590,
+              675
+            ],
+            [
+              586,
+              654
+            ],
+            [
+              577,
+              632
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "Matigda": {
+      "type": "office",
+      "building": "OSS",
+      "floor": "Ground Floor",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Matigda is located just beside the IP Museum, Map is provided"
+        ],
+        "ceb": [
+          "Ang Matigda nahimutang tupad sa IP Museum, naghatag ko og mapa aron matabangan ka sa pag-navigate."
+        ]
+      },
+      "imageUrls": [],
+      "coordinates": [
+        577,
+        632
+      ],
+      "pins": [
+        {
+          "name": "Matigda",
+          "coordinates": [
+            577,
+            632
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "You are here!",
+          "coordinates": [
+            886,
+            632
+          ],
+          "floor": "GF"
+        }
+      ],
+      "routes": [
+        {
+          "name": "You are here! to Matigda",
           "points": [
             [
               886,

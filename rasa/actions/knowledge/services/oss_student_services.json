@@ -882,6 +882,275 @@
         "weak_keywords": []
       },
       "display_name": "Evening Greater"
+    },
+    {
+      "topic": "student_organizations_application_process",
+      "responses": {
+        "en": [
+          "BukSU has various accredited student organizations, academic clubs, and interest-based groups managed under the Office of Student Services (OSS).",
+          "Freshmen can join organizations during the annual University Orientation / Org Fair or by visiting the Student Development Unit in the OSS Building.",
+          "Requirements usually include being a bona fide enrolled student, filling out the membership form, and attending the organization's orientation."
+        ],
+        "ceb": [
+          "Ang BukSU adunay nagkadaiyang accredited student organizations, academic clubs, ug interest groups ubos sa Office of Student Services (OSS).",
+          "Ang mga freshmen makasulod sa mga organisasyon panahon sa tinuig nga University Orientation / Org Fair o pinaagi sa pagbisita sa Student Development Unit sa OSS Building.",
+          "Ang mga rekisitos kasagaran naglakip sa pagka-bonafide nga enrolled student, pagpuno sa membership form, ug pag-attend sa orientation sa organisasyon."
+        ]
+      },
+      "intent": "student_organizations_application_process",
+      "context_topic": "Student organizations",
+      "metadata": {
+        "phrases": [
+          "unsay mga org nga pwede sundan sa mga freshman",
+          "how to join student organizations in buksu",
+          "what student organizations can freshmen join",
+          "how do i join student clubs in buksu",
+          "how to apply for student organizations",
+          "what are the requirements to join a club or org",
+          "student org fair buksu",
+          "extracurricular activities for first year students",
+          "what extracurricular activities are open to first-year students",
+          "where is the student development unit in buksu",
+          "list of accredited student organizations in buksu",
+          "how to register for student clubs",
+          "unsay mga requirements para maka-join sa org",
+          "student clubs in buksu",
+          "organizations for first year students",
+          "how to apply for student org",
+          "buksu org fair",
+          "extracurricular clubs buksu"
+        ],
+        "strong_keywords": [
+          "org",
+          "organizations",
+          "clubs",
+          "extracurricular",
+          "fair"
+        ],
+        "weak_keywords": [
+          "requirements",
+          "freshmen",
+          "student",
+          "join",
+          "apply",
+          "sundan",
+          "unsa"
+        ]
+      },
+      "display_name": "Student Organizations"
+    },
+    {
+      "topic": "supreme_student_council_joining_info",
+      "responses": {
+        "en": [
+          "The Supreme Student Council (SSC) is the highest governing student body at BukSU, along with Local College Student Councils (LSC).",
+          "Students can participate by running as candidates during the annual campus-wide student elections, serving as volunteer committee members, or representing their class as program representatives.",
+          "For inquiries and election guidelines, visit the SSC Office or the Office of Student Services (OSS)."
+        ],
+        "ceb": [
+          "Ang Supreme Student Council (SSC) mao ang pinakataas nga panggamhanan sa mga estudyante sa BukSU, kauban ang mga Local College Student Councils (LSC).",
+          "Ang mga estudyante mahimong moapil pinaagi sa pagdagan sa tinuig nga eleksyon sa unibersidad, pagserbisyo isip volunteer committee members, o pagka-class representative.",
+          "Para sa mga pangutana ug sumbanan sa eleksyon, bisitaha ang SSC Office o ang Office of Student Services (OSS)."
+        ]
+      },
+      "intent": "supreme_student_council_joining_info",
+      "context_topic": "Student council",
+      "metadata": {
+        "phrases": [
+          "how do i join the student council",
+          "unsaon pag apil sa student council",
+          "supreme student council buksu",
+          "how to run for ssc",
+          "student government buksu",
+          "join supreme student council",
+          "ssc buksu election"
+        ],
+        "strong_keywords": [
+          "student",
+          "council",
+          "ssc",
+          "join",
+          "government"
+        ],
+        "weak_keywords": [
+          "how",
+          "unsaon",
+          "apil"
+        ]
+      },
+      "display_name": "Supreme Student Council"
+    },
+    {
+      "topic": "kaugmaon_student_publication_application",
+      "responses": {
+        "en": [
+          "**Kaugmaon** is the official tertiary student publication of Bukidnon State University.",
+          "Students interested in joining as news writers, feature writers, opinion columnists, photojournalists, layout artists, or cartoonists must undergo the annual Kaugmaon Competitive Editorial Examination.",
+          "Announcements and submission calls are posted on the official Kaugmaon Facebook Page and at the Kaugmaon Office in the Student Services Building."
+        ],
+        "ceb": [
+          "Ang **Kaugmaon** mao ang opisyal nga student publication sa Bukidnon State University.",
+          "Ang mga estudyante nga gusto moapil isip news writers, feature writers, columnists, photojournalists, layout artists, o cartoonists kinahanglan moagi sa tinuig nga Kaugmaon Competitive Editorial Examination.",
+          "Ang mga pahibalo ug screening ipahibalo sa opisyal nga Kaugmaon Facebook Page ug sa Kaugmaon Office sa Student Services Building."
+        ]
+      },
+      "intent": "kaugmaon_student_publication_application",
+      "context_topic": "Student publication",
+      "metadata": {
+        "phrases": [
+          "asa mag-apply para sa school publication kaugmaon or similar",
+          "how to join kaugmaon",
+          "school publication buksu",
+          "kaugmaon student publication exam",
+          "unsaon pagsulod sa kaugmaon",
+          "apply for school newspaper buksu",
+          "kaugmaon writers exam"
+        ],
+        "strong_keywords": [
+          "kaugmaon",
+          "publication",
+          "newspaper",
+          "writers",
+          "journalism"
+        ],
+        "weak_keywords": [
+          "apply",
+          "school",
+          "join",
+          "asa"
+        ]
+      },
+      "display_name": "Kaugmaon Student Publication"
+    },
+    {
+      "topic": "buksu_varsity_and_sports_teams",
+      "responses": {
+        "en": [
+          "BukSU has active varsity teams in basketball, volleyball, athletics, badminton, and other sports under the Institute of Sports, Physical Education and Recreation (ISPER).",
+          "Tryouts for varsity sports are announced at the beginning of the academic year. Qualified student-athletes may also be eligible for athletic scholarships.",
+          "For tryout schedules and requirements, visit the ISPER / PE Department at the BukSU Gymnasium."
+        ],
+        "ceb": [
+          "Ang BukSU adunay mga varsity teams sa basketball, volleyball, athletics, badminton, ug uban pang paugnat sa kusog ubos sa Institute of Sports, Physical Education and Recreation (ISPER).",
+          "Ang mga tryout ipahigayon sa pagsugod sa school year. Ang mga kwalipikadong student-athletes mahimo usab makadawat og athletic scholarship.",
+          "Para sa schedule sa tryouts ug rekisitos, bisitaha ang ISPER / PE Department sa BukSU Gymnasium."
+        ]
+      },
+      "intent": "buksu_varsity_and_sports_teams",
+      "context_topic": "Varsity sports teams",
+      "metadata": {
+        "phrases": [
+          "naa bay varsity team para sa basketball",
+          "varsity teams in buksu",
+          "sports varsity buksu",
+          "how to join buksu basketball team",
+          "athletic tryouts buksu",
+          "what extracurricular activities are open to first-year students",
+          "varsity tryout schedule"
+        ],
+        "strong_keywords": [
+          "varsity",
+          "sports",
+          "basketball",
+          "tryouts",
+          "athletes"
+        ],
+        "weak_keywords": [
+          "team",
+          "join",
+          "extracurricular"
+        ]
+      },
+      "display_name": "Varsity & Sports Teams"
+    },
+    {
+      "topic": "student_grievance_and_complaints_process",
+      "responses": {
+        "en": [
+          "If you experience bullying, harassment, or have grievances regarding academic concerns or faculty conduct, BukSU provides structured grievance channels:",
+          "1. For bullying, peer conflicts, or mental health distress: Visit the **Guidance and Counseling Center** in the Student Services Center for confidential support and mediation.",
+          "2. For formal complaints regarding a professor or academic matter: Submit an official written complaint to the **Department Chairperson** or the **College Dean**.",
+          "3. You may also consult the **Office of Student Services (OSS)** for student welfare and rights assistance under the BukSU Student Handbook."
+        ],
+        "ceb": [
+          "Kung makasinati ka og bullying, harassment, o naay reklamo bahin sa academic concerns o pamatasan sa faculty, ang BukSU adunay pormal nga proseso:",
+          "1. Para sa bullying o personal nga problema: Bisitaha ang **Guidance and Counseling Center** sa Student Services Center alang sa kompidensyal nga tabang.",
+          "2. Para sa pormal nga reklamo batok sa propesor o subject: Pagsumite og pormal nga suwat sa **Department Chairperson** o sa **College Dean**.",
+          "3. Mahimo usab kang mokonsulta sa **Office of Student Services (OSS)** alang sa tabang sa katungod sa estudyante subay sa BukSU Student Handbook."
+        ]
+      },
+      "intent": "student_grievance_and_complaints_process",
+      "context_topic": "Student grievances and anti bullying",
+      "metadata": {
+        "phrases": [
+          "unsay buhaton kung naay bullying sa campus",
+          "asa ko mo report kung naay problema sa akong professor",
+          "how to report a professor in buksu",
+          "bullying complaint buksu",
+          "student grievance procedure",
+          "report harassment buksu",
+          "complain against teacher buksu",
+          "unsaon pag reklamo sa maestro"
+        ],
+        "strong_keywords": [
+          "bullying",
+          "professor",
+          "reklamo",
+          "report",
+          "complaint",
+          "grievance"
+        ],
+        "weak_keywords": [
+          "problema",
+          "buhaton",
+          "campus",
+          "teacher"
+        ]
+      },
+      "display_name": "Student Grievance & Anti-Bullying"
+    },
+    {
+      "topic": "orientation_next_steps",
+      "responses": {
+        "en": [
+          "After attending the University and College Freshman Orientation, proceed to your respective **College Department** to:",
+          "1. Meet your Department Chairperson and academic advisers.",
+          "2. Verify your block section, classroom room numbers, and final class schedule.",
+          "3. Secure your department-specific syllabus and orientation materials before the official first day of classes."
+        ],
+        "ceb": [
+          "Human sa University ug College Freshman Orientation, adto sa imong **College Department** aron:",
+          "1. Maila-ila ang imong Department Chairperson ug academic advisers.",
+          "2. Masusi ang imong block section, room assignments, ug pinal nga schedule sa klase.",
+          "3. Makuha ang mga espesipikong pahimangno ug syllabus sa imong kurso sa dili pa magsugod ang pormal nga klase."
+        ]
+      },
+      "intent": "orientation_next_steps",
+      "context_topic": "After orientation next steps",
+      "metadata": {
+        "phrases": [
+          "asa ko mo adto human sa orientation",
+          "what to do after freshman orientation",
+          "where to go after orientation buksu",
+          "human sa orientation asa moadto",
+          "next steps after orientation",
+          "is there a freshman welcome event"
+        ],
+        "strong_keywords": [
+          "orientation",
+          "human",
+          "after",
+          "adto",
+          "steps"
+        ],
+        "weak_keywords": [
+          "what",
+          "where",
+          "welcome",
+          "event"
+        ]
+      },
+      "display_name": "Orientation Next Steps"
     }
   ]
 }

@@ -109,7 +109,11 @@ class EntityResolver:
             "Microbiology Laboratory", "Biotechnology Laboratory",
             "Plant Tissue Culture Laboratory", "Kalatungan Learning Space",
             "Sociology Department", "Economics Department", "ODeL Office",
-            "language and literature department", "NC4-A4-401", "NC4-A4-402"
+            "language and literature department", "NC4-A4-401", "NC4-A4-402",
+            "A3-1-01", "A3-1-02", "College of Arts and Sciences Records Office",
+            "Accreditation Room Mathematics Departments Faculty Room 2",
+            "A3-1-05", "A3-1-06", "SSD Research Room",
+            "A3-2-01", "A3-2-02", "A3-2-03", "A3-2-04", "A3-2-05", "A3-2-06"
         ]
         if any(has(r) for r in cas_specific_rooms):
             drop("CAS Buildings")

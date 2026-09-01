@@ -345,7 +345,12 @@ class MainRouterService:
         ):
             return None
 
-        college_terms = ["cot", "cob", "cas", "con", "cpag", "coa", "coe", "bsn", "pe", "philo", "electronics", "electronic", "automotive", "hospitality", "business", "accountancy", "foodtech", "food tech", "food technology"]
+        college_terms = [
+            "cot", "cob", "cas", "con", "cpag", "coa", "coe", "bsn", "pe",
+            "philo", "philosophy", "math", "mathematics", "ssd", "social science", "social sciences",
+            "electronics", "electronic", "automotive", "hospitality", "business", "accountancy",
+            "foodtech", "food tech", "food technology"
+        ]
         if any(re.search(rf"(?<!\w){re.escape(term)}(?!\w)", text) for term in college_terms):
             return None
 
@@ -360,7 +365,8 @@ class MainRouterService:
                     {"label": "PE Faculty Room", "payload": "where is PE Faculty Room"},
                     {"label": "Electronics Faculty Room", "payload": "where is Electronics Faculty Room"},
                     {"label": "Food Tech Faculty Room", "payload": "where is Food Technology Faculty Room"},
-                    {"label": "Philosophy Faculty Office", "payload": "where is Philosophy Faculty Office"},
+                    {"label": "Philosophy Faculty Office (2nd Floor)", "payload": "where is Philosophy Faculty Office"},
+                    {"label": "Math Faculty Room 2 (Old CAS 1st Floor)", "payload": "where is Mathematics Department Faculty Room 2"},
                     {"label": "Automotive Faculty Office", "payload": "where is Automotive Faculty Office"},
                 ]
             },

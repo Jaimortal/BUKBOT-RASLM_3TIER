@@ -3,6 +3,10 @@ import { botResponses, locationResponses, superIntentResponses, migrationTrackin
 import { eq, and } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Production-ready path resolution
 function resolveJsonPath(relativePath: string): string | null {
@@ -31,7 +35,7 @@ function resolveJsonPath(relativePath: string): string | null {
 
 const RESPONSES_JSON_PATH = resolveJsonPath("responses.json");
 const LOCATIONS_JSON_PATH = resolveJsonPath("responses_location.json");
-const SUPER_INTENTS_DIR = resolveJsonPath("Supper Saiyan");
+const KNOWLEDGE_DIR = resolveJsonPath("knowledge");
 
 export interface MigrationResult {
   success: boolean;
@@ -228,6 +232,22 @@ export async function migrateLocationsFromJSON(force: boolean = false): Promise<
   }
 }
 
+function getAllJsonFiles(dir: string): string[] {
+  let results: string[] = [];
+  if (!fs.existsSync(dir)) return results;
+  const list = fs.readdirSync(dir);
+  for (const file of list) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getAllJsonFiles(filePath));
+    } else if (file.endsWith('.json')) {
+      results.push(filePath);
+    }
+  }
+  return results;
+}
+
 /**
  * Migrate all Super Intent JSON files to PostgreSQL
  */
@@ -238,15 +258,15 @@ export async function migrateSuperIntentsFromJSON(force: boolean = false): Promi
   let filesSkipped = 0;
 
   try {
-    if (!SUPER_INTENTS_DIR || !fs.existsSync(SUPER_INTENTS_DIR)) {
-      return { success: false, message: "Supper Saiyan directory not found", imported: 0, errors: ["Missing directory"] };
+    if (!KNOWLEDGE_DIR || !fs.existsSync(KNOWLEDGE_DIR)) {
+      return { success: false, message: "knowledge directory not found", imported: 0, errors: ["Missing directory"] };
     }
 
-    const files = fs.readdirSync(SUPER_INTENTS_DIR).filter(f => f.endsWith('.json'));
+    const files = getAllJsonFiles(KNOWLEDGE_DIR);
     
-    for (const file of files) {
+    for (const filePath of files) {
+      const file = path.basename(filePath);
       try {
-        const filePath = path.join(SUPER_INTENTS_DIR, file);
         const check = await shouldMigrate(filePath);
         
         if (!check.should && !force) {

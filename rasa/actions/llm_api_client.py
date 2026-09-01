@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -54,7 +55,7 @@ class LLMApiClient:
         provider: Optional[str] = None,
         model: Optional[str] = None,
         timeout_seconds: float = 3.5,
-        max_tokens: int = 160,
+        max_tokens: int = 500,
     ) -> None:
         load_project_env()
         self.primary_provider = (provider or os.getenv("RASA_LLM_PROVIDER") or self._default_provider()).strip().lower()
@@ -128,12 +129,7 @@ class LLMApiClient:
         logger.warning("LLM API key [%s] placed on cooldown for %.0f seconds.", masked, secs)
 
     def _get_active_key(self, provider: str) -> Tuple[Optional[str], Optional[int]]:
-        """Finds the current active sticky key for the provider.
-
-        Sticks to the current index as long as it is not cooling down.
-        If current index is on cooldown, scans forward sequentially until an available key is found.
-        Returns (key_string, key_index) or (None, None) if all keys are currently cooling down.
-        """
+        """Finds the current active sticky key for the provider."""
         if provider == "groq":
             keys = self._get_groq_keys()
             if not keys:
@@ -161,7 +157,7 @@ class LLMApiClient:
         return None, None
 
     def generate_json(self, prompt: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
-        """Generate JSON using sticky multi-key pool with 1-minute cooldown and automatic failover."""
+        """Generate JSON using sticky multi-key pool with smart cooldown and automatic failover."""
         providers_to_try = [self.primary_provider]
         if self.fallback_provider and self.fallback_provider != self.primary_provider:
             providers_to_try.append(self.fallback_provider)
@@ -186,16 +182,23 @@ class LLMApiClient:
                         return self._generate_groq_json_with_key(prompt, key, system_prompt=system_prompt)
                     except urllib.error.HTTPError as http_err:
                         last_error = http_err
-                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        if http_err.code in (429, 401, 403, 402):
+                            self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                            print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code} (Quota/Auth). Placed on 1-minute cooldown.")
+                        else:
+                            print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code}. Rotating key without cooldown.")
                         next_idx = (key_idx + 1) % len(keys)
-                        print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code}. Placed on 1-minute cooldown. Proceeding to GROQ Key #{next_idx + 1}...")
                         self._groq_index = next_idx
                         continue
+                    except (RuntimeError, ValueError, json.JSONDecodeError) as format_err:
+                        # Output format or truncation error from model: Do NOT penalize the healthy API key.
+                        last_error = format_err
+                        print(f"[LLM API] -> GROQ model returned unparseable output ({format_err}). Failing over to backup provider without key penalty.")
+                        break  # Break out to next provider immediately to avoid wasting time retrying the same broken prompt format across all keys
                     except Exception as err:
                         last_error = err
-                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        print(f"[LLM API] -> GROQ Key #{key_idx + 1} unexpected error: {err}. Rotating to next key.")
                         next_idx = (key_idx + 1) % len(keys)
-                        print(f"[LLM API] -> GROQ Key #{key_idx + 1} ({masked}) failed: {err}. Placed on 1-minute cooldown. Proceeding to GROQ Key #{next_idx + 1}...")
                         self._groq_index = next_idx
                         continue
 
@@ -216,16 +219,22 @@ class LLMApiClient:
                         return self._generate_gemini_json_with_key(prompt, key, system_prompt=system_prompt)
                     except urllib.error.HTTPError as http_err:
                         last_error = http_err
-                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        if http_err.code in (429, 401, 403, 402):
+                            self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                            print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code} (Quota/Auth). Placed on 1-minute cooldown.")
+                        else:
+                            print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code}. Rotating key without cooldown.")
                         next_idx = (key_idx + 1) % len(keys)
-                        print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) hit HTTP {http_err.code}. Placed on 1-minute cooldown. Proceeding to GEMINI Key #{next_idx + 1}...")
                         self._gemini_index = next_idx
                         continue
+                    except (RuntimeError, ValueError, json.JSONDecodeError) as format_err:
+                        last_error = format_err
+                        print(f"[LLM API] -> GEMINI model returned unparseable output ({format_err}).")
+                        break
                     except Exception as err:
                         last_error = err
-                        self._mark_key_cooldown(key, self.COOLDOWN_SECONDS)
+                        print(f"[LLM API] -> GEMINI Key #{key_idx + 1} unexpected error: {err}.")
                         next_idx = (key_idx + 1) % len(keys)
-                        print(f"[LLM API] -> GEMINI Key #{key_idx + 1} ({masked}) failed: {err}. Placed on 1-minute cooldown. Proceeding to GEMINI Key #{next_idx + 1}...")
                         self._gemini_index = next_idx
                         continue
 
@@ -246,7 +255,7 @@ class LLMApiClient:
             "model": model,
             "messages": messages,
             "temperature": 0,
-            "max_tokens": max(350, self.max_tokens),
+            "max_tokens": max(500, self.max_tokens),
             "response_format": {"type": "json_object"},
         }
         headers = {
@@ -262,7 +271,11 @@ class LLMApiClient:
             body = self._post_json(self.GROQ_URL, payload, headers)
 
         try:
-            raw_text = body["choices"][0]["message"]["content"]
+            msg = body["choices"][0]["message"]
+            raw_text = msg.get("content") or ""
+            # If content is empty (e.g. Reasoning model), fallback to reasoning field
+            if not raw_text.strip() and msg.get("reasoning"):
+                raw_text = msg["reasoning"]
         except (KeyError, IndexError, TypeError) as exc:
             raise RuntimeError(f"Groq returned an unexpected response: {str(body)[:220]}") from exc
         return self._parse_json_text(raw_text, "Groq")
@@ -270,7 +283,7 @@ class LLMApiClient:
     def _generate_gemini_json_with_key(
         self, prompt: str, api_key: str, system_prompt: Optional[str] = None
     ) -> Dict[str, Any]:
-        model = self.model or os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
+        model = self.model or os.getenv("GEMINI_MODEL", "gemini-flash-latest")
         url = self.GEMINI_URL_TEMPLATE.format(model=urllib.parse.quote(model, safe=""))
         url = f"{url}?key={urllib.parse.quote(api_key, safe='')}"
 
@@ -284,7 +297,7 @@ class LLMApiClient:
             "contents": contents,
             "generationConfig": {
                 "temperature": 0,
-                "maxOutputTokens": max(350, self.max_tokens),
+                "maxOutputTokens": max(500, self.max_tokens),
                 "responseMimeType": "application/json",
             },
         }
@@ -299,7 +312,7 @@ class LLMApiClient:
     def _post_json(self, url: str, payload: Dict[str, Any], headers: Dict[str, str]) -> Dict[str, Any]:
         request_headers = {
             "Accept": "application/json",
-            "User-Agent": "BukSU-Chatbot-LLM-Reranker/1.0",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             **headers,
         }
         request = urllib.request.Request(
@@ -313,7 +326,7 @@ class LLMApiClient:
                 return json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
             error_text = exc.read().decode("utf-8", errors="replace")
-            raise RuntimeError(f"API request failed ({exc.code}): {error_text[:300]}") from exc
+            raise urllib.error.HTTPError(exc.url, exc.code, f"API request failed ({exc.code}): {error_text[:300]}", exc.hdrs, None)
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
             raise RuntimeError(f"API request failed: {exc}") from exc
 
@@ -326,8 +339,15 @@ class LLMApiClient:
                 text = text[4:].strip()
         try:
             return json.loads(text)
-        except json.JSONDecodeError as exc:
-            raise RuntimeError(f"{provider_label} returned non-JSON response: {text[:220]}") from exc
+        except json.JSONDecodeError:
+            # Robust fallback: extract outermost JSON block via regex
+            match = re.search(r"\{[\s\S]*\}", text)
+            if match:
+                try:
+                    return json.loads(match.group(0))
+                except json.JSONDecodeError:
+                    pass
+            raise RuntimeError(f"{provider_label} returned non-JSON response: {text[:220]}")
 
     @staticmethod
     def _default_provider() -> str:
