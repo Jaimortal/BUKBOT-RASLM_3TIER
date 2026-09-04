@@ -44,36 +44,19 @@
           "topic": "enrollment_general_process",
           "responses": {
             "en": [
-              "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**:",
+              "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**. Please note that all the data we provided are **General**. If you are finding a specific process, you should directly ask any of the faculty staff in your department.",
               "Step 1. You may look on the picture provided below for the requirements needed.",
-              "Step 2: Login to https://admissions.buksu.edu.ph",
-              "• Click on **Admission**",
-              "• Click **Show Exam Result** then proceed to enrollment",
-              "• Click **Apply Enrollment**",
-              "- **Campus Selection**: Select **Main Campus**",
-              "- **Course Selection**: Select your **Preferred Course**",
-              "- **Documentary Requirements**: Scan and upload the documentary requirements as specified in Step 1",
-              "*(NOTE: All documents uploaded as part of the admission process must be duly marked with a \"RECEIVED\" stamp by the University Registrar's Office)*",
-              "- **Learning Modality Preference**: Select your **Preferred Learning Modality**",
-              "- **Academic Information**: Fill in the necessary information",
+              "Step 2: Login to https://admissions.buksu.edu.ph \n• Click on **Admission**\n• Click **Show Exam Result** then proceed to enrollment\n• Click **Apply Enrollment** \n- **Campus Selection**: Select **Main Campus** \n- **Course Selection**: Select your **Preferred Course** \n- **Documentary Requirements**: Scan and upload the documentary requirements as specified in Step 1 \n*(NOTE: All documents uploaded as part of the admission process must be duly marked with a \"RECEIVED\" stamp by the University Registrar's Office)* \n- **Learning Modality Preference**: Select your **Preferred Learning Modality** \n- **Academic Information**: Fill in the necessary information",
               "Step 3: Approval of Enrollment Application",
               "Wait for the evaluator's approval of your application. Once your application is approved, download your Certificate of Registration (COR) through https://admissions.buksu.edu.ph",
               "*(Click 'Report Incorrect COR' if you find any errors)*",
               "Step 4: Validation of Enrollment, you may look on the image provided below."
             ],
             "ceb": [
-              "Mao kini ang step-by-step enrollment process para sa **Undergraduate Programs, Law & Graduate Programs, ug College of Medicine**:",
+              "Mao kini ang step-by-step enrollment process para sa **Undergraduate Programs, Law & Graduate Programs, ug College of Medicine**. Palihog hinumdomi nga ang tanan namong gihatag nga datos kay **General** ra. Kon nangita ka og spacific nga proseso, kinahanglan nimong direktang pangutan-on ang bisan kinsa sa mga faculty staff sa inyong departamento.",
               "Step 1. Mahimo nimong tan-awon ang litrato nga gihatag sa ubos para sa gikinahanglan nga mga requirements.",
-              "Step 2: Pag-log in sa https://admissions.buksu.edu.ph",
-              "• I-click ang **Admission**",
-              "• I-click ang **Show Exam Result** dayon proceed to enrollment",
-              "• I-click ang **Apply Enrollment**",
-              "- **Campus Selection**: Pilia ang *Main Campus*",
-              "- **Course Selection**: Pilia ang imong *Preferred Course*",
-              "- **Documentary Requirements**: I-scan ug i-upload ang documentary requirements sumala sa Step 1",
-              "*(PAHINUMDOM: Ang tanang dokumento nga gi-upload kinahanglan adunay \"RECEIVED\" stamp gikan sa University Registrar's Office)*",
-              "- **Learning Modality Preference**: Pilia ang imong *Preferred Learning Modality*",
-              "- **Academic Information**: Pun-a ang gikinahanglan nga impormasyon",
+              "Step 2: Pag-log in sa https://admissions.buksu.edu.ph \n• I-click ang **Admission**\n• I-click ang **Show Exam Result** dayon proceed to enrollment\n• I-click ang **Apply Enrollment**\n- **Campus Selection**: Pilia ang *Main Campus*\n- **Course Selection**: Pilia ang imong *Preferred Course*\n- **Documentary Requirements**: I-scan ug i-upload ang documentary requirements sumala sa Step 1",
+              "*(PAHINUMDOM: Ang tanang dokumento nga gi-upload kinahanglan adunay \"RECEIVED\" stamp gikan sa University Registrar's Office)*\n- **Learning Modality Preference**: Pilia ang imong *Preferred Learning Modality*\n- **Academic Information**: Pun-a ang gikinahanglan nga impormasyon",
               "Step 3: Pag-apruba sa Enrollment Application",
               "Hulata ang approval sa evaluator sa imong application. Kung ma-aprubahan na, i-download ang imong Certificate of Registration (COR) sa https://admissions.buksu.edu.ph",
               "*(I-click ang 'Report Incorrect COR' kung adunay sayop)*",
@@ -124,12 +107,36 @@
               "enrollment on admission",
               "how to apply for enrollment in admission",
               "process of enrollment on admission",
-              "admission enrollment process",
-              "admission enrollment application",
-              "unsaon pag enroll sa admission",
-              "proseso sa enrollment sa admission portal",
-              "unsaon pag apply og enrollment sa admission",
-              "unsaon pag apply para enrollment sa admission"
+              "how to enroll in BSA",
+              "how to enroll in BSIT",
+              "how to enroll in nursing",
+              "how to enroll in accountancy",
+              "unsaon pag enroll sa BSA",
+              "unsaon pag enroll sa BSIT",
+              "how to enroll freshman",
+              "freshman enroll how",
+              "freshman enrollment process",
+              "incoming freshman enrollment process",
+              "how can freshman enroll",
+              "unsaon pag enroll freshman",
+              "enrollment steps for beed",
+              "how to enroll bsed english",
+              "send enrollment guide for bs accountancy",
+              "bs criminology enrollment process please",
+              "can you help me how to enroll im first year taking bachelor of science in agri business",
+              "do you have the process of enrollment can you send to me im taking bs hospitality management",
+              "hey help me enroll step by step im incoming freshman in bachelor of science in psychology",
+              "can you send me full process of the enrollment for my course bs in computer science",
+              "how to enroll in buksu im taking bachelor of science in social work",
+              "do you know how to enroll i am first year student taking bachelor of science in tourism management",
+              "help me to enroll please im new student course is bachelor of science in office administration",
+              "can i ask the enrollment process for bachelor of arts in english",
+              "what to do to enroll in bs economics im fresh student",
+              "guide me through enrolling as a first year in bachelor of science in community development",
+              "step by step enrollment guide for bachelor of science in environmental science im a new student",
+              "first time enrolling at buksu taking bachelor of science in food technology what should i do",
+              "help me with the enrollment for bachelor of science in industrial technology im an incoming freshman",
+              "full enrollment process for bachelor of science in library and information science"
             ],
             "strong_keywords": [
               "enrollment",
@@ -322,14 +329,12 @@
           "topic": "enrollment_time_schedule",
           "responses": {
             "en": [
-              "There is no exact fixed enrollment time or day because Bukidnon State University may adjust the enrollment schedule every academic year.",
-              "Usually, enrollment announcements are posted around June or July, but students should always wait for the official schedule from the University Registrar.",
-              "For official updates, follow the BukSU Registrar page: https://www.facebook.com/BSURegistrar"
+              "**Enrollment Schedule for SY 2026-2027** \n\n**First year & Transferees:** July 1 - 31, 2026\n**Second Year, Third year & Fourth Year:** July 20 - 31, 2026\n**Irregular & Shiftees Students:** July 27 - 31, 2026\n**Adding/Changing of Subjects:** August 3 - 6, 2026\n**Validation of Enrollment:** July 1 - August 31, 2026",
+              "For more info follow the Registrar Facebook page: https://www.facebook.com/BSURegistrar"
             ],
             "ceb": [
-              "Walay eksaktong pirmi nga oras o adlaw sa enrollment kay mahimong mausab ang schedule sa Bukidnon State University matag academic year.",
-              "Kasagaran, ang enrollment announcements ipahibalo around June or July, pero mas maayo nga hulaton gyud ang opisyal nga schedule gikan sa University Registrar.",
-              "Para sa opisyal nga updates, i-follow ang BukSU Registrar page: https://www.facebook.com/BSURegistrar"
+              "**Enrollment Schedule para sa SY 2026-2027** \n\n**First year & Transferees:** July 1 - 31, 2026\n**Second Year, Third year & Fourth Year:** July 20 - 31, 2026\n**Irregular & Shiftees Students:** July 27 - 31, 2026\n**Adding/Changing of Subjects:** August 3 - 6, 2026\n**Validation of Enrollment:** July 1 - August 31, 2026",
+              "Alang sa dugang impormasyon, i-follow ang Registrar Facebook page: https://www.facebook.com/BSURegistrar"
             ]
           },
           "intent": "enrollment_time_schedule",
@@ -369,16 +374,12 @@
           "topic": "school_year_class_start_schedule",
           "responses": {
             "en": [
-              "Unfortunately, I do not have an exact date for when the school year starts because this may change every year.",
-              "By default, the school year usually starts around the <b>1st week of August</b>.",
-              "For accurate announcements, follow the BukSU Registrar Facebook page: https://www.facebook.com/BSURegistrar",
-              "Also follow the official BukSU Facebook page: https://www.facebook.com/officialbuksu"
+              "School year 2026 - 2027 starts on <b>AUGUST 3, 2026</b>.",
+              "Follow the BukSU Registrar Facebook page & Official BukSU Facebook Page for more info:\nhttps://www.facebook.com/BSURegistrar\nhttps://www.facebook.com/officialbuksu"
             ],
             "ceb": [
-              "Pasensya, wala koy eksaktong petsa kung kanus-a magsugod ang school year kay mahimong mausab kini matag tuig.",
-              "Kasagaran, magsugod ang school year around sa <b>1st week sa August</b>.",
-              "Para sa accurate nga announcements, i-follow ang BukSU Registrar Facebook page: https://www.facebook.com/BSURegistrar",
-              "I-follow pud ang official BukSU Facebook page: https://www.facebook.com/officialbuksu"
+              "Ang School year 2026 - 2027 magsugod sa <b>AUGUST 3, 2026</b>.",
+              "Follow ang BukSU Registrar Facebook page & Official BukSU Facebook Page para sa dugang impormasyon:\nhttps://www.facebook.com/BSURegistrar\nhttps://www.facebook.com/officialbuksu"
             ]
           },
           "intent": "school_year_class_start_schedule",
@@ -456,6 +457,68 @@
           ]
         },
         {
+          "topic": "school_year_end_schedule",
+          "responses": {
+            "en": [
+              "Unfortunately, I do not have data on the exact date when this school year ends. You can directly inquire with the BukSU University Registrar for official academic calendar updates:",
+              "https://www.facebook.com/BSURegistrar"
+            ],
+            "ceb": [
+              "Ikasubo, apan wala akoy data kung kanus-a mahuman kining school year. Mahimo nimong direktang pangutan-on ang BukSU University Registrar alang sa opisyal nga updates sa academic calendar:",
+              "https://www.facebook.com/BSURegistrar"
+            ]
+          },
+          "intent": "school_year_end_schedule",
+          "context_topic": "schedule",
+          "metadata": {
+            "phrases": [
+              "When is the school year ends",
+              "When do the SY end",
+              "tell me what month do school year ends",
+              "kanusa mahuman ang klasi",
+              "when does the school year end",
+              "when do classes end in buksu",
+              "end of classes buksu",
+              "kanus-a mahuman ang klase",
+              "kanus-a mahuman ang school year",
+              "when does sy end",
+              "when does class end",
+              "when do classes end",
+              "what month do classes end",
+              "what month does the school year end",
+              "end of school year date",
+              "kanusa mahuman ang klase sa buksu",
+              "kanus-a mahuman ang klase sa buksu",
+              "kanus-a ang human sa klase",
+              "kanusa ang human sa klase"
+            ],
+            "strong_keywords": [
+              "school year",
+              "sy",
+              "classes end",
+              "class end",
+              "end of classes",
+              "mahuman",
+              "human sa klase"
+            ],
+            "weak_keywords": [
+              "end",
+              "ends",
+              "finish",
+              "mahuman",
+              "klase",
+              "klasi"
+            ]
+          },
+          "display_name": "School Year End Schedule",
+          "suggestions": [
+            {
+              "label": "Registrar location",
+              "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
+            }
+          ]
+        },
+        {
           "topic": "freshman_enrollment_process",
           "responses": {
             "en": [
@@ -474,15 +537,9 @@
           "pins": [],
           "routes": [],
           "intent": "freshman_enrollment_process",
-          "context_topic": "process",
+          "context_topic": "requirements",
           "metadata": {
             "phrases": [
-              "how to enroll freshman",
-              "freshman enroll how",
-              "freshman enrollment process",
-              "incoming freshman enrollment",
-              "how can freshman enroll",
-              "unsaon pag enroll freshman",
               "undergraduate enrollment requirements",
               "freshman documentary requirements",
               "transferee documentary requirements",
@@ -490,66 +547,44 @@
               "what documents do first year need for enrollment",
               "what documents do transferees need for enrollment",
               "envelope requirements for enrollment",
-              "can you help me to enroll im first incoming first year student taking bachelor of arts in philosophy",
-              "help me enroll bs biology",
-              "enrollment steps for beed",
-              "how to enroll bsed english",
-              "send enrollment guide for bs accountancy",
-              "bs criminology enrollment process please",
-              "can you help me how to enroll im first year taking bachelor of science in agri business",
-              "do you have the process of enrollment can you send to me im taking bs hospitality management",
-              "hey help me enroll step by step im incoming freshman in bachelor of science in psychology",
-              "can you send me full process of the enrollment for my course bs in computer science",
-              "how to enroll in buksu im taking bachelor of science in social work",
-              "do you know how to enroll i am first year student taking bachelor of science in tourism management",
-              "help me to enroll please im new student course is bachelor of science in office administration",
-              "can i ask the enrollment process for bachelor of arts in english",
-              "what to do to enroll in bs economics im fresh student",
-              "you have enrollment guide i take bachelor of science in agricultural education",
-              "guide me through enrolling as a first year in bachelor of science in community development",
-              "step by step enrollment guide for bachelor of science in environmental science im a new student",
-              "first time enrolling at buksu taking bachelor of science in food technology what should i do",
-              "help me with the enrollment for bachelor of science in industrial technology im an incoming freshman",
-              "full enrollment process for bachelor of science in library and information science",
               "what documents do i need to bring on enrollment day",
               "enrollment document list",
               "documents needed on enrollment day",
               "is the medical exam required before enrollment",
               "medical exam required before enrollment",
               "medical certificate required for enrollment",
-              "incoming first year enrollment guide",
-              "first year student enrollment steps",
-              "new student enrollment process",
-              "freshman step by step enrollment",
-              "how to enroll as incoming first year",
-              "help me enroll as first year student",
-              "unsaon pag enroll isip first year",
-              "bag-o nga student enrollment process"
+              "requirements for bsa enrollment",
+              "what are the requirements to enroll in bsa",
+              "bsit enrollment requirements",
+              "nursing enrollment documentary requirements",
+              "unsa ang mga requirements para mag-enroll sa first year",
+              "unsa ang mga dokumento nga kinahanglan para enrollment",
+              "brown envelope registrar copy student copy",
+              "medical certificate and parental consent requirements",
+              "first year documentary requirements",
+              "undergraduate freshman requirements",
+              "unsa ang mga kinahanglan i-submit sa enrollment"
             ],
             "strong_keywords": [
-              "freshman",
-              "transferee",
-              "first year",
-              "new student",
-              "incoming freshman",
-              "enrollment",
-              "enroll",
-              "guide",
-              "envelope",
-              "program acceptance slip",
-              "buksu-cat",
-              "medical certificate"
-            ],
-            "weak_keywords": [
               "requirements",
               "documents",
+              "envelope",
+              "program acceptance slip",
+              "medical certificate",
+              "freshman requirements",
+              "transferee requirements",
+              "undergraduate requirements"
+            ],
+            "weak_keywords": [
+              "first year",
               "registrar",
               "good moral",
               "report card",
-              "birth certificate"
+              "birth certificate",
+              "consent form"
             ]
           },
-          "display_name": "Freshman Enrollment Process"
+          "display_name": "Freshman Enrollment Requirements"
         },
         {
           "topic": "enrollment_online_system",
@@ -1748,7 +1783,14 @@
               "is original psa required for enrollment",
               "can i submit photocopy of birth certificate",
               "psa birth certificate requirements buksu",
-              "kinahanglan ba original psa sa enrollment"
+              "kinahanglan ba original psa sa enrollment",
+              "Okay ra kaha nga photocopy sa birth certificate ang gamiton sapag enroll",
+              "Okay ra kaha nga photocopy sa birthcertificate ang gamiton sapag enroll",
+              "okay ra ba photocopy sa birth certificate gamiton sa pag enroll",
+              "photocopy sa birth certificate para mag enroll",
+              "photocopy sa birth certificate gamiton sapag enroll",
+              "can i use photocopy of birth certificate for enrollment",
+              "is photocopy of birth certificate okay for enrollment"
             ]
           },
           "display_name": "PSA Birth Certificate Requirement"

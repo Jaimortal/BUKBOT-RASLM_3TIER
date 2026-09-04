@@ -1,5 +1,1230 @@
 [
   {
+    "id": "log_1788517377405_wik7p7a",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Matigda",
+    "targetTitle": "Matigda",
+    "targetId": "Matigda",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:22:57.405Z"
+  },
+  {
+    "id": "log_1788517127630_dvn1h8e",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Research Extension",
+    "targetTitle": "Research Extension",
+    "targetId": "Research Extension",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:18:47.630Z"
+  },
+  {
+    "id": "log_1788517126908_srrjezj",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_153826_592.webp\" (81.8 KB)",
+    "targetTitle": "IMG_20260904_153826_592.webp",
+    "targetId": "7c4ae8c1-72e4-460c-8f55-6066223d7f36",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_153826_592.webp\" (81.8 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:18:46.908Z"
+  },
+  {
+    "id": "log_1788517112651_3oqi4ha",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_153826_592.webp\" (81.8 KB)",
+    "targetTitle": "IMG_20260904_153826_592.webp",
+    "targetId": "7dc8c869-e3f0-420b-8c6e-f14005d22102",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_153826_592.webp\" (81.8 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:18:32.651Z"
+  },
+  {
+    "id": "log_1788517089671_v4z9ejj",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Oval",
+    "targetTitle": "Oval",
+    "targetId": "Oval",
+    "changes": [
+      {
+        "field": "Location Details",
+        "changeType": "modified",
+        "details": "Updated location settings and metadata"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:18:09.670Z"
+  },
+  {
+    "id": "log_1788517071664_a1d89df",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Oval",
+    "targetTitle": "Oval",
+    "targetId": "Oval",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 3 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:17:51.664Z"
+  },
+  {
+    "id": "log_1788517070975_pepzen2",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_154217_504.webp\" (149.2 KB)",
+    "targetTitle": "IMG_20260904_154217_504.webp",
+    "targetId": "2f6d0bbb-1642-46ff-b6a4-008306ef395f",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_154217_504.webp\" (149.2 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:17:50.975Z"
+  },
+  {
+    "id": "log_1788517067915_r9x9ogf",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_154130_073.webp\" (127.9 KB)",
+    "targetTitle": "IMG_20260904_154130_073.webp",
+    "targetId": "901a9307-e57d-4879-813e-5125bd613a59",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_154130_073.webp\" (127.9 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:17:47.915Z"
+  },
+  {
+    "id": "log_1788517055000_v5e1c7c",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_154101_745.webp\" (93.6 KB)",
+    "targetTitle": "IMG_20260904_154101_745.webp",
+    "targetId": "a3b587d3-8c7b-4cc2-bff3-3f082170a28b",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_154101_745.webp\" (93.6 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:17:35.000Z"
+  },
+  {
+    "id": "log_1788516604212_r5ivvut",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Old COT Building",
+    "targetTitle": "Old COT Building",
+    "targetId": "Old COT Building",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:10:04.212Z"
+  },
+  {
+    "id": "log_1788516601929_rzrey9p",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_154730_632.webp\" (134.0 KB)",
+    "targetTitle": "IMG_20260904_154730_632.webp",
+    "targetId": "206faa42-26f2-4b82-80d1-18a3cefa84ba",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_154730_632.webp\" (134.0 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:10:01.929Z"
+  },
+  {
+    "id": "log_1788516588582_1es9vb5",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_154730_632.webp\" (134.0 KB)",
+    "targetTitle": "IMG_20260904_154730_632.webp",
+    "targetId": "749618d0-0ead-477b-a8c1-7c90a820ef8b",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_154730_632.webp\" (134.0 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:09:48.582Z"
+  },
+  {
+    "id": "log_1788516327287_nscrsbv",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Cafeteria",
+    "targetTitle": "Cafeteria",
+    "targetId": "Cafeteria",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:05:27.287Z"
+  },
+  {
+    "id": "log_1788516321153_jyy31rb",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_155106_222.webp\" (65.1 KB)",
+    "targetTitle": "IMG_20260904_155106_222.webp",
+    "targetId": "27162bcb-d8ca-493c-8418-72cc5f27b3a3",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_155106_222.webp\" (65.1 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:05:21.153Z"
+  },
+  {
+    "id": "log_1788516042531_0jid32a",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Law Office",
+    "targetTitle": "Law Office",
+    "targetId": "Law Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:00:42.531Z"
+  },
+  {
+    "id": "log_1788516042218_7l0djp5",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_155832_983.webp\" (62.1 KB)",
+    "targetTitle": "IMG_20260904_155832_983.webp",
+    "targetId": "d46e4729-6830-4fae-bbd9-c3fe13cbb509",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_155832_983.webp\" (62.1 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:00:42.218Z"
+  },
+  {
+    "id": "log_1788516028150_vzlyrbi",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_155845_333.webp\" (62.8 KB)",
+    "targetTitle": "IMG_20260904_155845_333.webp",
+    "targetId": "58d3fed7-393a-4207-9809-16ee7b548fe1",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_155845_333.webp\" (62.8 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T10:00:28.150Z"
+  },
+  {
+    "id": "log_1788515700854_ovo47qe",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Health and Services Building",
+    "targetTitle": "Health and Services Building",
+    "targetId": "Health and Services Building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:55:00.854Z"
+  },
+  {
+    "id": "log_1788515655440_9pgqfzc",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: CPAG building",
+    "targetTitle": "CPAG building",
+    "targetId": "CPAG building",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:54:15.440Z"
+  },
+  {
+    "id": "log_1788515649862_0n4nk8f",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_160244_699.webp\" (83.8 KB)",
+    "targetTitle": "IMG_20260904_160244_699.webp",
+    "targetId": "1bdf7b55-f044-4d97-8fce-f8bb83b7670d",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_160244_699.webp\" (83.8 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:54:09.862Z"
+  },
+  {
+    "id": "log_1788515624326_cqx1pcw",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: CPAG building",
+    "targetTitle": "CPAG building",
+    "targetId": "CPAG building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:53:44.326Z"
+  },
+  {
+    "id": "log_1788515350757_lnv1709",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: pink building",
+    "targetTitle": "pink building",
+    "targetId": "pink building",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:49:10.757Z"
+  },
+  {
+    "id": "log_1788515341920_pf4deiz",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_154614_176.webp\" (79.0 KB)",
+    "targetTitle": "IMG_20260904_154614_176.webp",
+    "targetId": "8d0394b9-63e3-43db-8313-f43ee577c854",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_154614_176.webp\" (79.0 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:49:01.920Z"
+  },
+  {
+    "id": "log_1788515335935_2qcgawh",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_154529_297.webp\" (83.3 KB)",
+    "targetTitle": "IMG_20260904_154529_297.webp",
+    "targetId": "9c034bf8-0fc1-4519-a0bb-8e58fe2df28a",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_154529_297.webp\" (83.3 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:48:55.935Z"
+  },
+  {
+    "id": "log_1788515297911_4ej0eck",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: College of Medicine Building",
+    "targetTitle": "College of Medicine Building",
+    "targetId": "College of Medicine Building",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:48:17.911Z"
+  },
+  {
+    "id": "log_1788515295283_ow6fhal",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_155021_292.webp\" (61.9 KB)",
+    "targetTitle": "IMG_20260904_155021_292.webp",
+    "targetId": "8b796814-1fd8-4e90-b89e-2adaee09393b",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_155021_292.webp\" (61.9 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:48:15.283Z"
+  },
+  {
+    "id": "log_1788515270259_xtflc78",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"IMG_20260904_155021_292.webp\" (61.9 KB)",
+    "targetTitle": "IMG_20260904_155021_292.webp",
+    "targetId": "04c0ccff-62ae-4328-9ac7-f2b5438c0dfc",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"IMG_20260904_155021_292.webp\" (61.9 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:47:50.259Z"
+  },
+  {
+    "id": "log_1788513052076_sszvhxp",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: College of Medicine Building",
+    "targetTitle": "College of Medicine Building",
+    "targetId": "College of Medicine Building",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-04T09:10:52.076Z"
+  },
+  {
+    "id": "log_1788359787942_za01z5m",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: CPAG SBO Office",
+    "targetTitle": "CPAG SBO Office",
+    "targetId": "CPAG SBO Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (3 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:36:27.942Z"
+  },
+  {
+    "id": "log_1788359784757_co8jic0",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"SBO cpag 2.webp\" (32.6 KB)",
+    "targetTitle": "SBO cpag 2.webp",
+    "targetId": "2d3a9454-7d81-4680-bbb7-2b4e90218a56",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"SBO cpag 2.webp\" (32.6 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:36:24.757Z"
+  },
+  {
+    "id": "log_1788359764369_9svi02j",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"SBO cpag 1.webp\" (22.4 KB)",
+    "targetTitle": "SBO cpag 1.webp",
+    "targetId": "2f14e0b5-d1de-44ec-a2d1-08ea4c6371ba",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"SBO cpag 1.webp\" (22.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:36:04.369Z"
+  },
+  {
+    "id": "log_1788358642014_1y9uev1",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: CPAG Deans Office",
+    "targetTitle": "CPAG Deans Office",
+    "targetId": "CPAG Deans Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:17:22.014Z"
+  },
+  {
+    "id": "log_1788358641428_oxo3r03",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"CPAG Dean.webp\" (27.3 KB)",
+    "targetTitle": "CPAG Dean.webp",
+    "targetId": "4f3e864a-be84-4e31-bf6f-a9751e3a846d",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"CPAG Dean.webp\" (27.3 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:17:21.428Z"
+  },
+  {
+    "id": "log_1788358624605_sbaas8r",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"CPAG Dean.webp\" (27.3 KB)",
+    "targetTitle": "CPAG Dean.webp",
+    "targetId": "f6754826-1cf3-443e-867e-b9c84435389f",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"CPAG Dean.webp\" (27.3 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:17:04.605Z"
+  },
+  {
+    "id": "log_1788358354265_h1tttpq",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: GE Department",
+    "targetTitle": "GE Department",
+    "targetId": "GE Department",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:12:34.265Z"
+  },
+  {
+    "id": "log_1788358351511_vyhn7lu",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"GE dep2.webp\" (24.8 KB)",
+    "targetTitle": "GE dep2.webp",
+    "targetId": "63021de2-08bc-49ab-afdc-5776c317dda5",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"GE dep2.webp\" (24.8 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:12:31.511Z"
+  },
+  {
+    "id": "log_1788358339032_9susutx",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"GE dep1.webp\" (23.7 KB)",
+    "targetTitle": "GE dep1.webp",
+    "targetId": "d5214bb9-05d8-497d-9849-8688f2a2b406",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"GE dep1.webp\" (23.7 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:12:19.032Z"
+  },
+  {
+    "id": "log_1788358218207_6q0jf0p",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Admission Office",
+    "targetTitle": "Admission Office",
+    "targetId": "Admission Office",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:10:18.207Z"
+  },
+  {
+    "id": "log_1788358217525_1bvdnrs",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"ATU.webp\" (28.7 KB)",
+    "targetTitle": "ATU.webp",
+    "targetId": "8f0bddd8-2c5a-4a2c-9c7a-4d32dc6304e7",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"ATU.webp\" (28.7 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:10:17.525Z"
+  },
+  {
+    "id": "log_1788358171869_fpla2cc",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Guidance Office",
+    "targetTitle": "Guidance Office",
+    "targetId": "Guidance Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:09:31.869Z"
+  },
+  {
+    "id": "log_1788358168841_1epip3u",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"Guidance Office.webp\" (64.0 KB)",
+    "targetTitle": "Guidance Office.webp",
+    "targetId": "a82e68b2-cfe4-4d1e-805f-28a181c8c654",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"Guidance Office.webp\" (64.0 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:09:28.841Z"
+  },
+  {
+    "id": "log_1788358150017_za3cjz7",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"Guidance Office.webp\" (64.0 KB)",
+    "targetTitle": "Guidance Office.webp",
+    "targetId": "a7324086-f52f-42ed-a389-4bf125ed6b11",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"Guidance Office.webp\" (64.0 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:09:10.017Z"
+  },
+  {
+    "id": "log_1788358080594_6ml3y7e",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Guidance Office",
+    "targetTitle": "Guidance Office",
+    "targetId": "Guidance Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:08:00.594Z"
+  },
+  {
+    "id": "log_1788357751534_sliwce1",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Admission Office",
+    "targetTitle": "Admission Office",
+    "targetId": "Admission Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:02:31.534Z"
+  },
+  {
+    "id": "log_1788357737573_we9l6s4",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"ATU.webp\" (28.7 KB)",
+    "targetTitle": "ATU.webp",
+    "targetId": "6d2640d3-d2bb-45ac-acac-23261596e136",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"ATU.webp\" (28.7 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-02T14:02:17.573Z"
+  },
+  {
+    "id": "log_1788263348311_k01cnrq",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: AVC",
+    "targetTitle": "AVC",
+    "targetId": "AVC",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:49:08.311Z"
+  },
+  {
+    "id": "log_1788263290685_ue5sdwx",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: AVC",
+    "targetTitle": "AVC",
+    "targetId": "AVC",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:48:10.685Z"
+  },
+  {
+    "id": "log_1788263285123_ldvix49",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"AVC altimage.webp\" (35.4 KB)",
+    "targetTitle": "AVC altimage.webp",
+    "targetId": "ab67ce53-701d-4feb-b40a-8e329f372216",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"AVC altimage.webp\" (35.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:48:05.123Z"
+  },
+  {
+    "id": "log_1788262284016_h0rozt3",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: AVC",
+    "targetTitle": "AVC",
+    "targetId": "AVC",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:31:24.016Z"
+  },
+  {
+    "id": "log_1788262251528_f9zc9xc",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"AVC altimage.webp\" (35.4 KB)",
+    "targetTitle": "AVC altimage.webp",
+    "targetId": "ef4f29a5-b0f2-46c4-a5f4-ebedd139e548",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"AVC altimage.webp\" (35.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:30:51.528Z"
+  },
+  {
+    "id": "log_1788261320655_xihi314",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: AVC",
+    "targetTitle": "AVC",
+    "targetId": "AVC",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:15:20.655Z"
+  },
+  {
+    "id": "log_1788261319674_5tir07i",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"AVC altimage.webp\" (35.4 KB)",
+    "targetTitle": "AVC altimage.webp",
+    "targetId": "4e3abf2d-fa8f-438f-b98e-7a901e521e13",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"AVC altimage.webp\" (35.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:15:19.674Z"
+  },
+  {
+    "id": "log_1788261317158_ducdwxy",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"AVC altimage.webp\" (35.4 KB)",
+    "targetTitle": "AVC altimage.webp",
+    "targetId": "e4a678a9-706a-4feb-8115-c4a81b344207",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"AVC altimage.webp\" (35.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:15:17.158Z"
+  },
+  {
+    "id": "log_1788261131669_ss42f0z",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: AVC",
+    "targetTitle": "AVC",
+    "targetId": "AVC",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 2 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:12:11.669Z"
+  },
+  {
+    "id": "log_1788261130687_ce6ns5o",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"AVC ima2.webp\" (58.7 KB)",
+    "targetTitle": "AVC ima2.webp",
+    "targetId": "e9877620-26ec-4456-bfff-11ba3026cfa5",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"AVC ima2.webp\" (58.7 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:12:10.687Z"
+  },
+  {
+    "id": "log_1788261124213_36rtjdf",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"AVC ima1.webp\" (62.7 KB)",
+    "targetTitle": "AVC ima1.webp",
+    "targetId": "90c4f1cf-537e-4e11-8a3b-4e3a576dc70a",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"AVC ima1.webp\" (62.7 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:12:04.213Z"
+  },
+  {
+    "id": "log_1788261111839_nwe5zbh",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: AVC",
+    "targetTitle": "AVC",
+    "targetId": "AVC",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:11:51.839Z"
+  },
+  {
+    "id": "log_1788261084095_e2wedvd",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"AVC altimage.webp\" (35.4 KB)",
+    "targetTitle": "AVC altimage.webp",
+    "targetId": "bf7fc2e9-0199-41c5-99ff-9106c66fb593",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"AVC altimage.webp\" (35.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-01T11:11:24.094Z"
+  },
+  {
     "id": "log_1788091407307_r94f35g",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

@@ -111,7 +111,7 @@ class EntityResolver:
             "Sociology Department", "Economics Department", "ODeL Office",
             "language and literature department", "NC4-A4-401", "NC4-A4-402",
             "A3-1-01", "A3-1-02", "College of Arts and Sciences Records Office",
-            "Accreditation Room Mathematics Departments Faculty Room 2",
+            "Mathematics Department Faculty Room 2",
             "A3-1-05", "A3-1-06", "SSD Research Room",
             "A3-2-01", "A3-2-02", "A3-2-03", "A3-2-04", "A3-2-05", "A3-2-06"
         ]
@@ -123,7 +123,7 @@ class EntityResolver:
             drop("COT Buildings")
             drop("New COT Building")
             drop("Old COT Building")
-        if has("CPAG Faculty Room") or has("CPAG Deans Office") or has("GE Department"):
+        if has("CPAG Faculty Room") or has("CPAG Deans Office") or has("GE Department") or has("CPAG SBO Office"):
             drop("CPAG building")
         if has("Window 8 Payroll Regular and Casual"):
             drop("Window 7 Payroll Regular")

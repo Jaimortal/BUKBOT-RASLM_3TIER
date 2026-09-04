@@ -221,6 +221,11 @@ export async function upsertLocation(location: Location): Promise<ApiResponse> {
       pins: (location.pins || []).map(p => ({
         name: p.name,
         coordinates: p.coordinates,
+        ...(p.floor ? { floor: p.floor } : {}),
+        ...(p.access ? { access: p.access } : {}),
+        ...(p.pinType ? { pinType: p.pinType } : {}),
+        ...(p.pinImageUrl ? { pinImageUrl: p.pinImageUrl } : {}),
+        ...(p.pinImageAlt ? { pinImageAlt: p.pinImageAlt } : {}),
       })),
       imageUrls: location.imageUrls || [],
     };

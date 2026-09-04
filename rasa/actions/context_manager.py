@@ -472,13 +472,15 @@ class ContextManager:
         text = self.interpreter.normalize(text)
         if any(term in text for term in ["library id", "library card"]):
             return "library_id_card"
-        if any(term in text for term in ["student id", "school id"]):
+        if any(term in text for term in ["student id", "school id", "university id", "campus id", "college id"]):
+            return "student_id"
+        if any(term in text for term in ["lost", "nawala", "affidavit", "gate", "guard", "security", "photo capturing", "picture", "cashier", "nakalimtan", "nabilin", "jeep"]):
             return "student_id"
 
         tokens = set(self._word_tokens(text))
-        if "student" in tokens or "school" in tokens:
+        if "student" in tokens or "school" in tokens or "university" in tokens or "campus" in tokens:
             return "student_id"
-        if "library" in tokens or "card" in tokens:
+        if "library" in tokens:
             return "library_id_card"
         return None
 

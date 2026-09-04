@@ -44,8 +44,8 @@
     "responder": "Knowledge Router (program_cutoff_scores)",
     "matched_intent": "program_cutoff_scores",
     "has_map": false,
-    "response_preview": "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score. Ang board courses kasagaran nagki",
-    "full_response": "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score.\nAng board courses kasagaran nagkinahanglan og 80% pataas nga CAT score.\nMahimo gihapon kini mausab depende sa opisyal nga admission guidelines sa current academic year, busa mas maayo nga i-confirm sa BukSU Admission and Testing Unit kung kinahanglan nimo ang final qualification details."
+    "response_preview": "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score, samtang ang board courses nagkina",
+    "full_response": "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score, samtang ang board courses nagkinahanglan og 80% pataas nga CAT score.\n**Hinumdumi nga general data lamang ang akong mahatag**. Alang sa piho nga passing scores o cutoff sa imong napiling kurso, palihog direktang pakisayod sa opisyal nga FB page sa imong department, o bisitaha ang Admission and Testing Unit (ATU) ug Office of the Registrar alang sa dugang impormasyon."
   },
   {
     "num": 5,
@@ -53,11 +53,11 @@
     "category": "Admissions / Entry",
     "query": "Pwede pa ko mo-enroll bisan ubos akong ROR sa cutoff?",
     "status": "PASS",
-    "responder": "Knowledge Router (cat_exam_result)",
-    "matched_intent": "cat_exam_result",
+    "responder": "Knowledge Router (non_passer_enrollment_affirmative_action)",
+    "matched_intent": "non_passer_enrollment_affirmative_action",
     "has_map": false,
-    "response_preview": "Ang pinakasayon nga paagi aron mahibal-an kung nakapasar ka sa BukSU Admission CAT Examination mao ang pag-log in sa imong BukSU Admission a",
-    "full_response": "Ang pinakasayon nga paagi aron mahibal-an kung nakapasar ka sa BukSU Admission CAT Examination mao ang pag-log in sa imong BukSU Admission account ug adto sa Admission tab. Pwede pud nimo dali nga ma-access kini pinaagi sa notifications gikan sa BukSU Admissions. Kung makita nimo ang imong Report of Ratings, sama sa litrato nga akong gihatag, i-click ang ‘Show Exam Result’ aron tan-awon kung nakapasar o napakyas ka.\nPwede pud nimo tan-awon kini nga video para sa step by step guide:\nhttps://www.facebook.com/share/v/1CRFdU3vM5/"
+    "response_preview": "Oo, basta ang imong ROR (Report of Rating) makaabot pa sa cutoff alang sa non-board courses. Kung ubos pa kini sa non-board courses, adunay ",
+    "full_response": "Oo, basta ang imong ROR (Report of Rating) makaabot pa sa cutoff alang sa non-board courses.\nKung ubos pa kini sa non-board courses, adunay ubang alternatibong paagi aron maka-enroll sa BukSU depende sa bakanteng slots sa mga kolehiyo (sama sa Affirmative Action Program).\nAlang sa dugang giya sa bakanteng slots, mahimo usab kang direktang mangutana sa Admission and Testing Unit (ATU) o sa Dean's Office sa inyong kolehiyo."
   },
   {
     "num": 6,
@@ -69,7 +69,7 @@
     "matched_intent": "enrollment_general_process",
     "has_map": false,
     "response_preview": "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**: Step 1. You ma",
-    "full_response": "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**:\nStep 1. You may look on the picture provided below for the requirements needed.\nStep 2: Login to https://admissions.buksu.edu.ph\n• Click on **Admission**\n• Click **Show Exam Result** then proceed to enrollment\n• Click **Apply Enrollment**\n- **Campus Selection**: Select **Main Campus**\n- **Course Selection**: Select your **Preferred Course**\n- **Documentary Requirements**: Scan and upload the documentary requirements as specified in Step 1\n*(NOTE: All documents uploaded as part of the admission process must be duly marked with a \"RECEIVED\" stamp by the University Registrar's Office)*\n- **Learning Modality Preference**: Select your **Preferred Learning Modality**\n- **Academic Information**: Fill in the necessary information\nStep 3: Approval of Enrollment Application\nWait for the evaluator's approval of your application. Once your application is approved, download your Certificate of Registration (COR) through https://admissions.buksu.edu.ph\n*(Click 'Report Incorrect COR' if you find any errors)*\nStep 4: Validation of Enrollment, you may look on the image provided below."
+    "full_response": "Here is the step-by-step enrollment process for **Undergraduate Programs, Law & Graduate Programs, and College of Medicine**:\nStep 1. You may look on the picture provided below for the requirements needed.\nStep 2: Login to https://admissions.buksu.edu.ph \n• Click on **Admission**\n• Click **Show Exam Result** then proceed to enrollment\n• Click **Apply Enrollment** \n- **Campus Selection**: Select **Main Campus** \n- **Course Selection**: Select your **Preferred Course** \n- **Documentary Requirements**: Scan and upload the documentary requirements as specified in Step 1 \n*(NOTE: All documents uploaded as part of the admission process must be duly marked with a \"RECEIVED\" stamp by the University Registrar's Office)* \n- **Learning Modality Preference**: Select your **Preferred Learning Modality** \n- **Academic Information**: Fill in the necessary information\nStep 3: Approval of Enrollment Application\nWait for the evaluator's approval of your application. Once your application is approved, download your Certificate of Registration (COR) through https://admissions.buksu.edu.ph\n*(Click 'Report Incorrect COR' if you find any errors)*\nStep 4: Validation of Enrollment, you may look on the image provided below."
   },
   {
     "num": 7,
@@ -137,11 +137,11 @@
     "category": "Programs / Courses",
     "query": "What's the difference between board and non-board courses?",
     "status": "PASS",
-    "responder": "Knowledge Router (buksu_non_board_courses)",
-    "matched_intent": "buksu_non_board_courses",
+    "responder": "Knowledge Router (difference_board_nonboard_courses)",
+    "matched_intent": "difference_board_nonboard_courses",
     "has_map": false,
-    "response_preview": "Here are the non-board courses that BukSU Offers. <b>COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE</b> Bachelor of Public Administration <",
-    "full_response": "Here are the non-board courses that BukSU Offers.\n<b>COLLEGE OF PUBLIC ADMINISTRATION AND GOVERNANCE</b>\nBachelor of Public Administration\n<b>COLLEGE OF ARTS AND SCIENCES</b>\nBachelor of Arts in Economics\nBachelor of Arts in English Language\nBachelor of Arts in Philosophy\nBachelor of Arts in Sociology\nBachelor of Science in Community Development\nBachelor of Science in Development Communication\nBachelor of Science in Mathematics\nBachelor of Science in Biology major in Biotechnology\nBachelor of Science in Environmental Science major in Environmental Heritage Studies\n<b>COLLEGE OF BUSINESS</b>\nBachelor of Science in Business Administration major in Financial Management\nBachelor of Science in Hospitality Management\n<b>COLLEGE OF TECHNOLOGIES</b>\nBachelor of Science in Automotive Technology\nBachelor of Science in Electronics Technology\nBachelor of Science in Entertainment and Multimedia Computing Major in Digital Animation Technology\nBachelor of Science in Information Technology"
+    "response_preview": "Here is the key difference between board and non-board courses at BukSU: • **Board Courses:** Degree programs that require graduates to take",
+    "full_response": "Here is the key difference between board and non-board courses at BukSU:\n• **Board Courses:** Degree programs that require graduates to take and pass a national licensure examination (Board Exam) administered by the Professional Regulation Commission (PRC) or government regulatory body (e.g., Nursing, Teacher Education, Accountancy) before they can legally practice their profession.\n• **Non-Board Courses:** Degree programs that do not require a national board examination. Graduates are fully qualified to enter their chosen professional careers upon receiving their college diploma (e.g., Information Technology, Public Administration, Development Communication)."
   },
   {
     "num": 13,
@@ -452,8 +452,8 @@
     "responder": "Knowledge Router (school_year_class_start_schedule)",
     "matched_intent": "school_year_class_start_schedule",
     "has_map": false,
-    "response_preview": "Pasensya, wala koy eksaktong petsa kung kanus-a magsugod ang school year kay mahimong mausab kini matag tuig. Kasagaran, magsugod ang school",
-    "full_response": "Pasensya, wala koy eksaktong petsa kung kanus-a magsugod ang school year kay mahimong mausab kini matag tuig.\nKasagaran, magsugod ang school year around sa <b>1st week sa August</b>.\nPara sa accurate nga announcements, i-follow ang BukSU Registrar Facebook page: https://www.facebook.com/BSURegistrar\nI-follow pud ang official BukSU Facebook page: https://www.facebook.com/officialbuksu"
+    "response_preview": "Ang School year 2026 - 2027 magsugod sa <b>AUGUST 3, 2026</b>. Follow ang BukSU Registrar Facebook page & Official BukSU Facebook Page para ",
+    "full_response": "Ang School year 2026 - 2027 magsugod sa <b>AUGUST 3, 2026</b>.\nFollow ang BukSU Registrar Facebook page & Official BukSU Facebook Page para sa dugang impormasyon:\nhttps://www.facebook.com/BSURegistrar\nhttps://www.facebook.com/officialbuksu"
   },
   {
     "num": 39,

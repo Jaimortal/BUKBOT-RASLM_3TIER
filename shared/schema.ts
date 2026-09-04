@@ -44,7 +44,7 @@ export const locationResponses = pgTable("location_responses", {
   responsesEn: jsonb("responses_en").$type<string[]>().default([]),
   responsesCeb: jsonb("responses_ceb").$type<string[]>().default([]),
   // Additional map data
-  pins: jsonb("pins").$type<{name: string, coordinates: number[]}[]>().default([]),
+  pins: jsonb("pins").$type<{name: string, coordinates: number[], floor?: string, access?: string, pinType?: string, pinImageUrl?: string, pinImageAlt?: string}[]>().default([]),
   routes: jsonb("routes").$type<{name: string, points: [number, number][], color?: string, isDefault?: boolean}[]>().default([]),
   imageUrls: jsonb("image_urls").$type<string[]>().default([]),
   createdAt: timestamp("created_at").defaultNow(),

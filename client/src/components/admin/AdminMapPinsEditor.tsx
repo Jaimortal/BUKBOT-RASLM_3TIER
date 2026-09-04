@@ -21,7 +21,13 @@ import {
   Navigation,
   Move,
   Check,
-  Edit2
+  Edit2,
+  ImagePlus,
+  Upload,
+  Eye,
+  Loader2,
+  X,
+  Camera
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -54,6 +60,8 @@ export interface AdminPin {
   floor?: string;
   access?: "staircase" | "elevator_staircase" | string;
   pinType?: "normal" | "staircase" | "elevator" | string;
+  pinImageUrl?: string;
+  pinImageAlt?: string;
 }
 
 export interface AdminRoute {
@@ -221,6 +229,60 @@ export function AdminMapPinsEditor({
   // Connection selection
   const [connStart, setConnStart] = useState("");
   const [connEnd, setConnEnd] = useState("");
+
+  // Pin photo upload & preview states
+  const [uploadingPinIdx, setUploadingPinIdx] = useState<number | null>(null);
+  const [adminPreviewUrl, setAdminPreviewUrl] = useState<{ url: string; title: string } | null>(null);
+  const pinFileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  const handlePinFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, pinIdx: number) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please upload an image file.");
+      return;
+    }
+
+    const maxFileSize = 10 * 1024 * 1024;
+    if (file.size > maxFileSize) {
+      toast.error("Image must be under 10MB.");
+      return;
+    }
+
+    setUploadingPinIdx(pinIdx);
+    try {
+      const token = localStorage.getItem("adminToken");
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const response = await fetch("/api/admin/upload-image", {
+        method: "POST",
+        headers: {
+          ...(token && { "Authorization": `Bearer ${token}` }),
+        },
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success && data.url) {
+        const nextPins = [...pins];
+        nextPins[pinIdx] = {
+          ...nextPins[pinIdx],
+          pinImageUrl: data.url,
+        };
+        onPinsChange(nextPins);
+        toast.success(`Photo attached to ${nextPins[pinIdx].name || "Pin"}!`);
+      } else {
+        toast.error(data.message || "Failed to upload image.");
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Upload error occurred.");
+    } finally {
+      setUploadingPinIdx(null);
+      if (e.target) e.target.value = "";
+    }
+  };
 
   const emitRoutes = (nextRoutes: AdminRoute[]) => {
     onRoutesChange?.(withRouteMetadata(nextRoutes));
@@ -640,9 +702,9 @@ export function AdminMapPinsEditor({
 
           <div className="border-t pt-3">
             <Label className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 block">Pins ({pins.length})</Label>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {pins.map((pin, i) => (
-                <div key={i} className={`bg-gray-50 border rounded-lg p-2 flex flex-col gap-1.5 ${selectedPinIdx === i ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
+                <div key={i} className={`bg-gray-50 border rounded-lg p-2.5 flex flex-col gap-1.5 ${selectedPinIdx === i ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
                   <div className="flex items-center justify-between">
                     <Input value={pin.name} onChange={e => { const n = [...pins]; n[i].name = e.target.value; onPinsChange(n); }} className="h-6 text-xs border-none bg-transparent p-0 font-bold" />
                     <div className="flex gap-1">
@@ -651,27 +713,120 @@ export function AdminMapPinsEditor({
                     </div>
                   </div>
                   <div className="flex gap-2 text-[9px] text-gray-400 italic"><span>Y: {pin.coordinates[0]}</span><span>X: {pin.coordinates[1]}</span></div>
-                  {pin.pinType !== "staircase" && pin.pinType !== "elevator" && <div className="flex items-center gap-2">
-                    <span className="text-[9px] font-semibold text-gray-500">Floor:</span>
-                    <select 
-                      value={pin.floor || ""} 
-                      onChange={e => { const n = [...pins]; n[i].floor = (e.target.value as any) || undefined; onPinsChange(n); }}
-                      className="h-5 text-xs px-2 py-0.5 border border-gray-300 rounded bg-white"
-                    >
-                      <option value="">None</option>
-                      <option value="GF">Ground Floor (GF)</option>
-                      <option value="1F">1st Floor (1F)</option>
-                      <option value="2F">2nd Floor (2F)</option>
-                      <option value="3F">3rd Floor (3F)</option>
-                      <option value="4F">4th Floor (4F)</option>
-                      <option value="5F">5th Floor (5F)</option>
-                      <option value="BS">Basement (BS)</option>
-                    </select>
-                    {pin.floor && <span className="ml-auto text-[10px] font-bold text-white bg-yellow-500 px-1.5 py-0.5 rounded">{pin.floor}</span>}
-                  </div>}
+                  
+                  {pin.pinType !== "staircase" && pin.pinType !== "elevator" && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-[9px] font-semibold text-gray-500">Floor:</span>
+                      <select 
+                        value={pin.floor || ""} 
+                        onChange={e => { const n = [...pins]; n[i].floor = (e.target.value as any) || undefined; onPinsChange(n); }}
+                        className="h-5 text-xs px-2 py-0.5 border border-gray-300 rounded bg-white"
+                      >
+                        <option value="">None</option>
+                        <option value="GF">Ground Floor (GF)</option>
+                        <option value="1F">1st Floor (1F)</option>
+                        <option value="2F">2nd Floor (2F)</option>
+                        <option value="3F">3rd Floor (3F)</option>
+                        <option value="4F">4th Floor (4F)</option>
+                        <option value="5F">5th Floor (5F)</option>
+                        <option value="BS">Basement (BS)</option>
+                      </select>
+                      {pin.floor && <span className="ml-auto text-[10px] font-bold text-white bg-yellow-500 px-1.5 py-0.5 rounded">{pin.floor}</span>}
+                    </div>
+                  )}
+
                   {(pin.pinType === "staircase" || pin.pinType === "elevator") && (
                     <div className="text-[10px] font-bold text-gray-600">
                       {pin.pinType === "staircase" ? "Staircase indicator pin" : "Elevator indicator pin"}
+                    </div>
+                  )}
+
+                  {/* Pin Detail Photo Upload & Preview Section */}
+                  {pin.pinType !== "staircase" && pin.pinType !== "elevator" && (
+                    <div className="mt-1 pt-1.5 border-t border-gray-200/70 flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1">
+                          <Camera className="h-3 w-3 text-sky-600" /> Pin Detail Photo
+                        </span>
+                        {pin.pinImageUrl && (
+                          <span className="text-[8px] font-semibold bg-sky-100 text-sky-700 px-1 py-0.2 rounded">Attached</span>
+                        )}
+                      </div>
+
+                      {pin.pinImageUrl ? (
+                        <div className="flex items-center gap-2 bg-white p-1.5 rounded-md border border-slate-200 shadow-xs">
+                          <img 
+                            src={pin.pinImageUrl} 
+                            alt={pin.name} 
+                            className="h-10 w-10 rounded object-cover border border-slate-200 cursor-pointer hover:opacity-80 transition-opacity"
+                            onClick={() => setAdminPreviewUrl({ url: pin.pinImageUrl!, title: pin.name })}
+                          />
+                          <div className="flex-1 min-w-0">
+                            <Input 
+                              placeholder="Photo description/caption..." 
+                              value={pin.pinImageAlt || ""} 
+                              onChange={e => {
+                                const n = [...pins];
+                                n[i].pinImageAlt = e.target.value;
+                                onPinsChange(n);
+                              }} 
+                              className="h-5 text-[10px] px-1.5 py-0 border-gray-200 placeholder:text-gray-300"
+                            />
+                          </div>
+                          <div className="flex items-center gap-0.5">
+                            <button
+                              type="button"
+                              onClick={() => setAdminPreviewUrl({ url: pin.pinImageUrl!, title: pin.name })}
+                              className="p-1 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded transition-colors"
+                              title="Preview Photo"
+                            >
+                              <Eye className="h-3.5 w-3.5" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const n = [...pins];
+                                delete n[i].pinImageUrl;
+                                delete n[i].pinImageAlt;
+                                onPinsChange(n);
+                                toast.success("Pin photo removed.");
+                              }}
+                              className="p-1 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                              title="Remove Photo"
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1.5">
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            className="hidden" 
+                            ref={el => { pinFileInputRefs.current[i] = el; }} 
+                            onChange={e => handlePinFileUpload(e, i)}
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            disabled={uploadingPinIdx === i}
+                            onClick={() => pinFileInputRefs.current[i]?.click()}
+                            className="h-6 text-[9px] w-full border-dashed border-sky-300 text-sky-700 bg-sky-50/50 hover:bg-sky-100 flex items-center justify-center gap-1"
+                          >
+                            {uploadingPinIdx === i ? (
+                              <>
+                                <Loader2 className="h-3 w-3 animate-spin text-sky-600" /> Uploading...
+                              </>
+                            ) : (
+                              <>
+                                <Upload className="h-3 w-3" /> Upload Door / Room Photo
+                              </>
+                            )}
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -680,6 +835,32 @@ export function AdminMapPinsEditor({
           </div>
         </div>
       </div>
+
+      {/* Admin Photo Preview Modal */}
+      {adminPreviewUrl && (
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm animate-in fade-in duration-150"
+          onClick={() => setAdminPreviewUrl(null)}
+        >
+          <div 
+            className="relative max-h-[85vh] max-w-[85vw] overflow-hidden rounded-xl bg-slate-900 shadow-2xl border border-white/20 flex flex-col"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-3 py-2 bg-black/50 border-b border-white/10 text-white">
+              <span className="font-bold text-xs">{adminPreviewUrl.title} - Pin Photo Preview</span>
+              <button 
+                onClick={() => setAdminPreviewUrl(null)} 
+                className="p-1 rounded hover:bg-white/20 text-slate-300 hover:text-white"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="p-2 flex items-center justify-center bg-black/60">
+              <img src={adminPreviewUrl.url} alt={adminPreviewUrl.title} className="max-h-[70vh] w-auto max-w-full rounded object-contain" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

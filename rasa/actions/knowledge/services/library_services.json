@@ -203,14 +203,25 @@
           "context_topic": "process",
           "responses": {
             "en": [
-              "Students can access BukSU library resources by presenting a valid Library ID."
+              "Yes! You can enter and use the BukSU Library by presenting your **valid School ID (Student ID)** or your **validated Certificate of Registration (COR)** at the entrance.",
+              "To borrow books or take materials home, you will also need a **barcoded Library ID Card**, which you can obtain on the 2nd floor of the library building."
             ],
             "ceb": [
-              "Mahimong magamit sa estudyante ang library resources pinaagi sa pagpakita sa valid Library ID."
+              "Oo! Mahimo kang mosulod ug mogamit sa BukSU Library pinaagi sa pagpakita sa imong **valid School ID (Student ID)** o ang imong **validated Certificate of Registration (COR)** sa entrance.",
+              "Aron makahulam og mga libro o magdala og libro sa gawas, kinahanglan usab nimo ang **barcoded Library ID Card**, nga makuha sa 2nd floor sa building sa library."
             ]
           },
           "metadata": {
             "phrases": [
+              "can i use my school id to enter inside the library",
+              "can i use my student id to enter inside the library",
+              "can i enter library with student id",
+              "can i enter library with school id",
+              "school id to enter library",
+              "student id to enter library",
+              "pwede ba school id mosulod sa library",
+              "pwede ba student id gamiton pagsulod sa library",
+              "pwede ba school id gamiton pagsulod sa library",
               "how to access buksu library resources",
               "access library resources",
               "what id is needed for library resources",
@@ -225,10 +236,12 @@
               "unsaon pag access library resources",
               "buksu library resources login",
               "digital library resources",
-              "library online resources"
+              "library online resources",
+              "can i enter the library using student id",
+              "is student id allowed to enter library"
             ]
           },
-          "display_name": "Access BukSU Library Resources"
+          "display_name": "Library Entry and Resource Access"
         }
       ],
       "display_name": "Library Borrowing"

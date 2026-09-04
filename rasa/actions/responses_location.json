@@ -808,12 +808,14 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "At present, ComLab 10 does not exist.",
-          "The available computer laboratories are currently numbered from ComLab 1 up to ComLab 12, with no designated ComLab 10."
+          "Located on the 1st floor of the Secondary School Laboratory Building.",
+          "This building is situated beside the University Press (UP) Building and directly in front of the parking area along P.A. Ramos Street.",
+          "Once you reach the building, ComLab 10 can be easily found on the ground floor."
         ],
         "ceb": [
-          "Karon, wala ang ComLab 10.",
-          "Ang anaa nga mga computer laboratory karon gikan sa ComLab 1 hangtod sa ComLab 12, walay designated ComLab 10."
+          "Nahimutang sa 1st floor sa Secondary School Laboratory Building.",
+          "Kining bilding nahimutang tapad sa University Press (UP) Building ug diretso sa atubangan sa parking area sa P.A. Ramos Street.",
+          "Kung moabot ka sa bilding, sayon makita ang ComLab 10 sa ground floor."
         ]
       },
       "pins": [
@@ -1501,7 +1503,9 @@
             630,
             547
           ],
-          "floor": "2F"
+          "floor": "2F",
+          "pinImageUrl": "/api/images/ef4f29a5-b0f2-46c4-a5f4-ebedd139e548",
+          "pinImageAlt": "Audio Visual Center"
         },
         {
           "name": "You are here!",
@@ -1512,7 +1516,10 @@
           "floor": "2F"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/90c4f1cf-537e-4e11-8a3b-4e3a576dc70a",
+        "/api/images/e9877620-26ec-4456-bfff-11ba3026cfa5"
+      ],
       "routes": [
         {
           "name": "You are here! to AVC",
@@ -1562,7 +1569,7 @@
     },
     "Fitness Gym": {
       "type": "building",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "N/A",
       "coordinates": [
         453,
@@ -1807,7 +1814,7 @@
     },
     "Oval": {
       "type": "building",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "N/A",
       "coordinates": [
         363,
@@ -1838,7 +1845,11 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/a3b587d3-8c7b-4cc2-bff3-3f082170a28b",
+        "/api/images/901a9307-e57d-4879-813e-5125bd613a59",
+        "/api/images/2f6d0bbb-1642-46ff-b6a4-008306ef395f"
+      ],
       "routes": [
         {
           "name": "Your are here! to Oval",
@@ -2331,7 +2342,9 @@
             736,
             496
           ],
-          "floor": "1F"
+          "floor": "1F",
+          "pinImageUrl": "/api/images/f6754826-1cf3-443e-867e-b9c84435389f",
+          "pinImageAlt": "Deans office CPAG"
         },
         {
           "name": "You ae here!",
@@ -2342,7 +2355,9 @@
           "floor": "1F"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/4f3e864a-be84-4e31-bf6f-a9751e3a846d"
+      ],
       "routes": [
         {
           "name": "You ae here! to CPAG Deans Office",
@@ -2397,7 +2412,9 @@
           "coordinates": [
             877,
             937
-          ]
+          ],
+          "pinImageUrl": "/api/images/58d3fed7-393a-4207-9809-16ee7b548fe1",
+          "pinImageAlt": "LAW BUILDING"
         },
         {
           "name": "You are here!",
@@ -2407,7 +2424,9 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/d46e4729-6830-4fae-bbd9-c3fe13cbb509"
+      ],
       "routes": [
         {
           "name": "You are here! to Law Office",
@@ -2524,7 +2543,9 @@
             643,
             499
           ],
-          "floor": "GF"
+          "floor": "GF",
+          "pinImageUrl": "/api/images/6d2640d3-d2bb-45ac-acac-23261596e136",
+          "pinImageAlt": "Admission And Testing Office"
         },
         {
           "name": "You are here!",
@@ -2535,7 +2556,9 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/8f0bddd8-2c5a-4a2c-9c7a-4d32dc6304e7"
+      ],
       "routes": [
         {
           "name": "You are here! to Admission Office",
@@ -2573,7 +2596,7 @@
     },
     "Cafeteria": {
       "type": "facility",
-      "building": "Dorm",
+      "building": "Others",
       "floor": "N/A",
       "coordinates": [
         884,
@@ -2594,7 +2617,9 @@
           "coordinates": [
             884,
             632
-          ]
+          ],
+          "pinImageUrl": "/api/images/27162bcb-d8ca-493c-8418-72cc5f27b3a3",
+          "pinImageAlt": "Cafeteria"
         },
         {
           "name": "NEW CAFETERIA",
@@ -3049,7 +3074,7 @@
     },
     "Research Extension": {
       "type": "building",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "N/A",
       "coordinates": [
         522,
@@ -3070,7 +3095,9 @@
           "coordinates": [
             522,
             502
-          ]
+          ],
+          "pinImageUrl": "/api/images/7dc8c869-e3f0-420b-8c6e-f14005d22102",
+          "pinImageAlt": "Research Extension"
         },
         {
           "name": "You are here!",
@@ -3080,7 +3107,9 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/7c4ae8c1-72e4-460c-8f55-6066223d7f36"
+      ],
       "routes": [
         {
           "name": "You are here! to Research Extension",
@@ -3367,7 +3396,7 @@
     },
     "NSTP Office": {
       "type": "office",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "N/A",
       "coordinates": [
         611,
@@ -3376,10 +3405,22 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "The NSTP Office is located within the COA Building and is easily accessible if you are walking toward the Old COT area. A map is provided below to assist you with more accurate navigation."
+          "The NSTP, ROTC, and CWTS Office is located beside the Old COT building.",
+          "",
+          "• NSTP - National Service Training Program",
+          "• ROTC - Reserve Officers' Training Corps",
+          "• CWTS - Civic Welfare Training Service",
+          "",
+          "A map is provided below to assist you with accurate navigation."
         ],
         "ceb": [
-          "Ang NSTP Office nahimutang kilid sa COA Building ug sayon ra maadto kung maglakaw ka paingon sa Old COT area. Adunay gihatag nga mapa sa ubos aron mas tukma ang imong pag-navigate."
+          "Ang NSTP, ROTC, ug CWTS Office nahimutang kilid sa Old COT building.",
+          "",
+          "• NSTP - National Service Training Program",
+          "• ROTC - Reserve Officers' Training Corps",
+          "• CWTS - Civic Welfare Training Service",
+          "",
+          "Adunay gihatag nga mapa sa ubos aron mas tukma ang imong pag-navigate."
         ]
       },
       "pins": [
@@ -8618,7 +8659,9 @@
             599,
             761
           ],
-          "floor": "GF"
+          "floor": "GF",
+          "pinImageUrl": "/api/images/749618d0-0ead-477b-a8c1-7c90a820ef8b",
+          "pinImageAlt": "Old COT"
         },
         {
           "name": "You are here!",
@@ -8629,7 +8672,9 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/206faa42-26f2-4b82-80d1-18a3cefa84ba"
+      ],
       "routes": [
         {
           "name": "You are here! to Old COT building",
@@ -9065,7 +9110,7 @@
         }
       ]
     },
-    "Accreditation Room Mathematics Departments Faculty Room 2": {
+    "Mathematics Department Faculty Room 2": {
       "type": "room",
       "building": "Old CAS Building",
       "floor": "1st Floor",
@@ -9076,10 +9121,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "The Accreditation Room and Mathematics Department Faculty Room 2 is located on the first floor of the Old CAS Building (Building A3). Please refer to the map for navigation."
+          "The Mathematics Department Faculty Room 2 is located on the first floor of the Old CAS Building (Building A3). Please refer to the map for navigation."
         ],
         "ceb": [
-          "Ang Accreditation Room ug Mathematics Department Faculty Room 2 makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
+          "Ang Mathematics Department Faculty Room 2 makita sa unang andana (1st floor) sa Old CAS Building (Building A3). Palihog tan-awa ang mapa alang sa pag-navigate."
         ]
       },
       "pins": [
@@ -9092,7 +9137,7 @@
           "floor": "GF"
         },
         {
-          "name": "Math Faculty Room 2 & Accreditation Room",
+          "name": "Math Faculty Room 2 (Old CAS)",
           "coordinates": [
             468,
             641
@@ -9103,7 +9148,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "You are here! to Math Faculty Room 2 & Accreditation Room",
+          "name": "You are here! to Math Faculty Room 2",
           "points": [
             [
               878,
@@ -9961,7 +10006,9 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "https://www.timeshighereducation.com/cms-academic/sites/default/files/styles/profile_gallery_image/public/2026-08/a5e07a1a-be75-4dc7-8423-0f96211a7e30.jpg?itok=ijCfv1Z1"
+      ],
       "routes": [
         {
           "name": "You are here! to Health and Services Building",
@@ -10084,7 +10131,7 @@
     },
     "Alumni Building": {
       "type": "building",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "Ground Floor",
       "coordinates": [
         517,
@@ -10155,7 +10202,7 @@
     },
     "Power Building": {
       "type": "building",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "Ground Floor",
       "coordinates": [
         484,
@@ -10291,7 +10338,7 @@
     },
     "OSS": {
       "type": "office",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "Ground Floor",
       "map_id": "main_map",
       "responses": {
@@ -10375,15 +10422,15 @@
       },
       "imageUrls": [],
       "coordinates": [
-        577,
-        632
+        573,
+        563
       ],
       "pins": [
         {
           "name": "Matigda",
           "coordinates": [
-            577,
-            632
+            573,
+            563
           ],
           "floor": "GF"
         },
@@ -10417,12 +10464,20 @@
               675
             ],
             [
-              586,
-              654
+              573,
+              664
             ],
             [
-              577,
-              632
+              568,
+              647
+            ],
+            [
+              566,
+              566
+            ],
+            [
+              572,
+              565
             ]
           ],
           "color": "#ff1744",
@@ -10942,7 +10997,7 @@
           "floor": "2F"
         },
         {
-          "name": "RMU",
+          "name": "EHSO",
           "coordinates": [
             825,
             664
@@ -10961,7 +11016,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to RMU",
+          "name": "Start From Here to EHSO",
           "points": [
             [
               886,
@@ -11013,7 +11068,7 @@
           "floor": "2F"
         },
         {
-          "name": "RMU",
+          "name": "CAO-ADMIN",
           "coordinates": [
             825,
             664
@@ -11032,7 +11087,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to RMU",
+          "name": "Start From Here to CAO-ADMIN",
           "points": [
             [
               886,
@@ -11155,7 +11210,7 @@
           "floor": "2F"
         },
         {
-          "name": "RMU",
+          "name": "Office of the Board Secretary",
           "coordinates": [
             825,
             664
@@ -11174,7 +11229,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to RMU",
+          "name": "Start From Here to Office of the Board Secretary",
           "points": [
             [
               886,
@@ -11245,7 +11300,7 @@
       "imageUrls": [],
       "routes": [
         {
-          "name": "Start From Here to RMU",
+          "name": "Start From Here to Legal Unit Office",
           "points": [
             [
               886,
@@ -13317,7 +13372,9 @@
             742,
             552
           ],
-          "floor": "GF"
+          "floor": "GF",
+          "pinImageUrl": "/api/images/d5214bb9-05d8-497d-9849-8688f2a2b406",
+          "pinImageAlt": "GE Department"
         },
         {
           "name": "You are here!",
@@ -13328,7 +13385,9 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/63021de2-08bc-49ab-afdc-5776c317dda5"
+      ],
       "routes": [
         {
           "name": "You are here! to GE Department",
@@ -13417,32 +13476,34 @@
     },
     "Guidance Office": {
       "type": "office",
-      "building": "CPAG Building",
+      "building": "Others",
       "floor": "Ground Floor",
       "coordinates": [
-        716,
-        519
+        567,
+        613
       ],
       "map_id": "main_map",
       "responses": {
         "en": [
-          "The Guidance Office is located on the ground floor of the CPAG building, just above the canteen and in front of the CPAG Dean’s Office. Don’t worry, I will provide some maps."
+          "Guidance office is located just infront of the Old CAS pink building, bellow the Overpass"
         ],
         "ceb": [
-          "Ang Guidance Office nahimutang sa ground floor sa CPAG building, ibabaw sa canteen ug atbang sa CPAG Dean’s Office. Ayaw kabalaka, hatagan tika og mga mapa."
+          "Ang Guidance office nahimutang atbang ra sa daan nga pink nga building sa CAS, ubos sa Overpass"
         ]
       },
       "pins": [
         {
           "name": "Guidance Office",
           "coordinates": [
-            716,
-            519
+            567,
+            613
           ],
-          "floor": "GF"
+          "floor": "GF",
+          "pinImageUrl": "/api/images/a7324086-f52f-42ed-a389-4bf125ed6b11",
+          "pinImageAlt": "Guidance Office"
         },
         {
-          "name": "You are here!",
+          "name": "Start From Here",
           "coordinates": [
             883,
             633
@@ -13450,34 +13511,40 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/a82e68b2-cfe4-4d1e-805f-28a181c8c654"
+      ],
       "routes": [
         {
-          "name": "You are here! to  Guidance Office",
+          "name": "Start From Here to Guidance Office",
           "points": [
             [
               883,
               633
             ],
             [
-              785,
-              632
+              781,
+              634
             ],
             [
-              782,
-              494
+              776,
+              672
             ],
             [
-              750,
-              507
+              590,
+              674
             ],
             [
-              741,
-              518
+              570,
+              663
             ],
             [
-              716,
-              519
+              566,
+              648
+            ],
+            [
+              567,
+              613
             ]
           ],
           "color": "#ff1744",
@@ -13748,7 +13815,9 @@
           "coordinates": [
             674,
             501
-          ]
+          ],
+          "pinImageUrl": "/api/images/1bdf7b55-f044-4d97-8fce-f8bb83b7670d",
+          "pinImageAlt": "CPAG Building"
         },
         {
           "name": "You are here!",
@@ -13758,7 +13827,9 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "https://www.timeshighereducation.com/cms-academic/sites/default/files/styles/profile_gallery_image/public/2026-08/1c1cad43-5d80-417d-bf72-8374b80c93da.jpg?itok=a1SrguMW"
+      ],
       "routes": [
         {
           "name": "You are here! to CPAG building",
@@ -14134,7 +14205,7 @@
     },
     "I Love BukSU": {
       "type": "facility",
-      "building": "Campus Building & Area",
+      "building": "Others",
       "floor": "Ground",
       "map_id": "main_map",
       "responses": {
@@ -14870,16 +14941,112 @@
         ]
       }
     },
-    "COA SBO Office (no data)": {
+    "CPAG SBO Office": {
       "type": "sbo_office",
       "building": "CPAG Building",
+      "floor": "2nd Floor",
       "map_id": "main_map",
       "responses": {
         "en": [
-          "Sorry to inform you that I don’t have any information about the COA SBO office, but you can ask any staff or student."
+          "CPAG SBO office is located on the 2nd floor of the CPAG building."
         ],
         "ceb": [
-          "Pasensya, wala ko’y datos bahin ana, apan pwede ka mangutana sa bisan kinsang staff o estudyante."
+          "Ang CPAG SBO office nahimutang sa 2nd floor sa CPAG building."
+        ]
+      },
+      "coordinates": [
+        876,
+        632
+      ],
+      "pins": [
+        {
+          "name": "Start From Here",
+          "coordinates": [
+            876,
+            632
+          ],
+          "floor": "2F"
+        },
+        {
+          "name": "CPAG SBO",
+          "coordinates": [
+            739,
+            554
+          ],
+          "floor": "2F",
+          "pinImageUrl": "/api/images/2f14e0b5-d1de-44ec-a2d1-08ea4c6371ba",
+          "pinImageAlt": "SBO CPAG"
+        },
+        {
+          "name": "Staircase",
+          "coordinates": [
+            749,
+            523
+          ],
+          "pinType": "staircase"
+        }
+      ],
+      "imageUrls": [
+        "/api/images/2d3a9454-7d81-4680-bbb7-2b4e90218a56"
+      ],
+      "routes": [
+        {
+          "name": "Start From Here to CPAG SBO",
+          "points": [
+            [
+              876,
+              632
+            ],
+            [
+              786,
+              631
+            ],
+            [
+              781,
+              488
+            ],
+            [
+              742,
+              503
+            ],
+            [
+              742,
+              519
+            ],
+            [
+              751,
+              520
+            ],
+            [
+              752,
+              527
+            ],
+            [
+              738,
+              527
+            ],
+            [
+              739,
+              554
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "COA SBO Office (no data)": {
+      "type": "sbo_office",
+      "building": "CPAG Building",
+      "floor": "2nd Floor",
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "CPAG (formerly COA) SBO office is located on the 2nd floor of the CPAG building."
+        ],
+        "ceb": [
+          "Ang CPAG (kanhi COA) SBO office nahimutang sa 2nd floor sa CPAG building."
         ]
       }
     },
@@ -16510,7 +16677,9 @@
           "coordinates": [
             869,
             634
-          ]
+          ],
+          "pinImageUrl": "/api/images/9c034bf8-0fc1-4519-a0bb-8e58fe2df28a",
+          "pinImageAlt": "Pink Building"
         },
         {
           "name": "Pink Building",
@@ -16520,7 +16689,9 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/8d0394b9-63e3-43db-8313-f43ee577c854"
+      ],
       "routes": [
         {
           "name": "Start From Here to Pink Building",
@@ -17968,6 +18139,83 @@
             [
               430,
               833
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "College of Medicine Building": {
+      "type": "building",
+      "building": "College of Medicine",
+      "floor": "Ground Floor",
+      "coordinates": [
+        336,
+        923
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "College of medicine building is located in front of the gymnasium Facility. Please use the map provided for your navigation."
+        ],
+        "ceb": [
+          "Ang College of Medicine building nahimutang sa atubangan sa Gymnasium Facility. Palihug gamita ang mapa nga gihatag aron matabangan ka sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "College of Medicine",
+          "coordinates": [
+            336,
+            923
+          ],
+          "pinImageUrl": "/api/images/04c0ccff-62ae-4328-9ac7-f2b5438c0dfc",
+          "pinImageAlt": "College of Medicine"
+        },
+        {
+          "name": "You are here!",
+          "coordinates": [
+            885,
+            631
+          ]
+        }
+      ],
+      "imageUrls": [
+        "/api/images/8b796814-1fd8-4e90-b89e-2adaee09393b"
+      ],
+      "routes": [
+        {
+          "name": "You are here! to College of Medicine",
+          "points": [
+            [
+              885,
+              631
+            ],
+            [
+              802,
+              633
+            ],
+            [
+              802,
+              694
+            ],
+            [
+              301,
+              703
+            ],
+            [
+              302,
+              850
+            ],
+            [
+              303,
+              922
+            ],
+            [
+              342,
+              922
             ]
           ],
           "color": "#ff1744",

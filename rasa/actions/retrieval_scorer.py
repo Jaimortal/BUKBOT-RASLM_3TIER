@@ -26,7 +26,8 @@ class RetrievalScorer:
         "wi-fi": ["wifi", "internet access", "campus wifi"],
         "cat": ["college admission test", "admission test"],
         "college admission test": ["cat", "admission test"],
-        "clearance": ["graduation clearance", "university clearance"],
+        "graduating clearance": ["graduation clearance", "university clearance"],
+        "grad clearance": ["graduation clearance", "university clearance"],
         "graduating": ["graduation"],
         "grad": ["graduation", "graduation application"],
         "papers": ["requirements", "documents"],
@@ -148,7 +149,7 @@ class RetrievalScorer:
         elif candidate.purpose == intent and not (intent == "ask_general_info" and inferred_purposes):
             score += 12.0
             reasons.append("purpose")
-        elif candidate.purpose and candidate.purpose != intent:
+        elif candidate.purpose and candidate.purpose != intent and intent not in {"ask_knowledge", "knowledge", "nlu_fallback", "default", ""}:
             score -= 8.0
             reasons.append("purpose_mismatch")
 

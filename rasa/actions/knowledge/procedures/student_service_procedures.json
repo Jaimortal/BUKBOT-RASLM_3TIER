@@ -425,12 +425,12 @@
           "context_topic": "process",
           "responses": {
             "en": [
-              "To validate your School ID, you can go to the **Registrar's Office, Window 4**, and ask the staff for ID validation. Please bring your Validated COR. **Again, VALIDATED COR.**",
+              "To validate your School ID, you can go to the **Registrar's Office, Window 4**, and ask the staff for ID validation. Please bring your Validated COR (Photocopy or Original). **Again, VALIDATED COR.**",
               "To **claim your School ID, go to Window 5** on your specific time schedule.",
               "Make sure to **remove your ID from the case**, ensure your **previous ID validation sticker is removed**, and **clean the specific area where the validation sticker will be placed.**"
             ],
             "ceb": [
-              "Aron ma-validate ang imong School ID, adto sa **Registrar's Office, Window 4**, ug pangutan-a ang staff bahin sa ID validation. Palihug dad-a ang imong Validated COR. **Balik-balikon ta, VALIDATED COR.**",
+              "Aron ma-validate ang imong School ID, adto sa **Registrar's Office, Window 4**, ug pangutan-a ang staff bahin sa ID validation. Palihug dad-a ang imong Validated COR (Photocopy or Original). **Balik-balikon ta, VALIDATED COR.**",
               "Aron **makuha ang imong School ID, adto sa Window 5** sumala sa imong piho nga oras nga iskedyul.",
               "Siguroha nga **kuhaa ang imong ID gikan sa case**, siguroha nga **kuhaa ang imong naunang ID validation sticker**, ug **limpyohan ang partikular nga bahin diin ibutang ang validation sticker.**"
             ]
@@ -450,7 +450,18 @@
               "unsaon pag validate id",
               "asa mag validate sa student id",
               "validated id process",
-              "id validation steps"
+              "id validation steps",
+              "Okay raba nga Photocopy sa validated COR akong gamiton pag pavalidate sa ID",
+              "okay ra ba photocopy sa validated cor akong gamiton pag pavalidate sa id",
+              "okay raba photocopy sa validated cor para mag validate sa id",
+              "photocopy sa validated cor pag pavalidate sa id",
+              "pwede ba photocopy sa validated cor gamiton pag validate sa id",
+              "pwede ra photocopy sa cor para id validation",
+              "is it okay to use a photocopy of cor to validate my id",
+              "can i use photocopy of validated cor to validate id",
+              "can i use photocopy of cor to validate student id",
+              "photocopy of validated cor for id validation",
+              "validate id using photocopy of cor"
             ]
           },
           "display_name": "ID Validation Process",
@@ -828,9 +839,142 @@
           },
           "display_name": "Old PE Uniform & Attire Policy",
           "items": []
+        },
+        {
+          "topic": "pe_uniform_store_schedule",
+          "intent": "pe_uniform_store_schedule",
+          "context_topic": "schedule",
+          "responses": {
+            "en": [
+              "The University Press is open from Monday to Friday during regular office hours, unless it is a declared holiday or there is a specific university activity affecting office operations."
+            ],
+            "ceb": [
+              "Ang University Press abli gikan Lunes hangtod Biyernes sa regular office hours, gawas kon kini holiday o adunay kalihokan sa unibersidad nga makaapekto sa ilang operasyon."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "PE uniform process",
+              "payload": "/direct_intent{\"intent\":\"pe_uniform_process\"}"
+            },
+            {
+              "label": "University Press location",
+              "payload": "/direct_intent{\"intent\":\"location_University_Press\"}"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "open ang palitanan sa p.e todeee",
+              "open ang palitanan sa pe today",
+              "open ba ang palitanan sa pe karon",
+              "abli ba ang palitanan sa pe uniform",
+              "abli ba ang university press",
+              "is university press open today",
+              "is the university press open",
+              "when is university press open",
+              "university press office hours",
+              "is the pe uniform store open",
+              "is pe uniform store open today",
+              "pe uniform selling schedule",
+              "kanus-a abli ang palitanan og pe uniform",
+              "kanusa abli ang palitanan sa pe uniform",
+              "what time does university press open",
+              "schedule sa pagpalit og pe uniform"
+            ]
+          },
+          "display_name": "PE Uniform Store & University Press Schedule",
+          "items": []
         }
       ],
       "display_name": "PE Uniform"
+    },
+    {
+      "topic": "college_shirt",
+      "subject_key": "college_shirt",
+      "subject_type": "service",
+      "subject_terms": [
+        "college shirt",
+        "college t-shirt",
+        "college tshirt",
+        "college t shirt",
+        "department shirt",
+        "department t-shirt",
+        "department tshirt",
+        "org shirt",
+        "sbo shirt",
+        "organization shirt",
+        "buy college shirt"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "intent": "buy_college_shirt",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "You can only buy it on the SBO office of your specific College department, Please be inform that we dont have any specific data for every organization, we only give generalized Data."
+            ],
+            "ceb": [
+              "Makapalit ka lamang niini sa SBO office sa imong espesipikong College department. Palihug hinumdumi nga wala kami espesipikong datos para sa matag organisasyon, naghatag lamang kami og generalized data."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "COT SBO Office",
+              "payload": "/direct_intent{\"intent\":\"location_COT_SBO_Office\"}"
+            },
+            {
+              "label": "CAS SBO Office",
+              "payload": "/direct_intent{\"intent\":\"location_CAS_SBO_Office\"}"
+            },
+            {
+              "label": "COB SBO Office",
+              "payload": "/direct_intent{\"intent\":\"location_COB_SBO_Office\"}"
+            },
+            {
+              "label": "CPAG SBO Office",
+              "payload": "/direct_intent{\"intent\":\"location_CPAG_SBO_Office\"}"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how can i buy my college shirt",
+              "where can i buy my college t-shirt",
+              "tell me how to buy a college shirt",
+              "where to buy college shirt",
+              "how to buy college shirt",
+              "how can i buy my cob college shirt",
+              "how can i buy my cot college shirt",
+              "how can i buy my cas college shirt",
+              "how can i buy my con college shirt",
+              "how can i buy my cpag college shirt",
+              "how can i buy my coe college shirt",
+              "where can i buy cob shirt",
+              "where can i buy cot shirt",
+              "where can i buy cas shirt",
+              "where can i buy con shirt",
+              "where can i buy cpag shirt",
+              "where can i buy department shirt",
+              "how to buy department shirt",
+              "how to buy org shirt",
+              "where to buy org shirt",
+              "unsaon pagpalit og college shirt",
+              "asa makapalit ug college shirt",
+              "asa makapalit ug department shirt",
+              "unsaon pagpalit ug org shirt",
+              "asa mapalit ang college shirt",
+              "asa paliton ang college shirt",
+              "college shirt",
+              "college t-shirt",
+              "department shirt",
+              "org shirt"
+            ]
+          },
+          "display_name": "College Shirt Purchase",
+          "items": []
+        }
+      ],
+      "display_name": "College Shirt"
     },
     {
       "topic": "good_moral_certificate",

@@ -5,6 +5,7 @@ import re
 from typing import Any, Dict, List, Optional
 
 from domain_registry import DOMAIN_REGISTRY, normalize_domain
+from language_detector import detect_language
 
 
 class KnowledgeDataLoader:
@@ -101,6 +102,8 @@ class KnowledgeDataLoader:
         
         if intent in self._all_structured_by_intent:
             return self._format_entry_response(self._all_structured_by_intent[intent], user_message)
+        if self.helper and hasattr(self.helper, "get_location_response") and hasattr(self.helper, "responses_location") and intent in self.helper.responses_location:
+            return self.helper.get_location_response(intent, user_message)
         if self.helper and hasattr(self.helper, "get_response"):
             return self.helper.get_response(intent, user_message=user_message)
         return self.fallback()
@@ -487,7 +490,7 @@ class KnowledgeDataLoader:
 
         answer = responses_data.get("answer", {})
 
-        detector = getattr(self.helper, "detect_language", None)
+        detector = getattr(self.helper, "detect_language", None) or detect_language
         preferred_lang = detector(user_message) if callable(detector) else "en"
         selected = answer.get(preferred_lang) if isinstance(answer, dict) else answer
         if not selected and isinstance(answer, dict):
@@ -530,7 +533,7 @@ class KnowledgeDataLoader:
         items = [item for item in responses_data.get("items") or [] if isinstance(item, dict)]
         item_groups = responses_data.get("itemGroups") or {}
         disclaimer = str(responses_data.get("itemDisclaimer") or "").strip()
-        detector = getattr(self.helper, "detect_language", None)
+        detector = getattr(self.helper, "detect_language", None) or detect_language
         preferred_lang = detector(user_message) if callable(detector) else "en"
         selected_answer = answer.get(preferred_lang) if isinstance(answer, dict) else answer
         if not selected_answer and isinstance(answer, dict):

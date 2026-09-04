@@ -22,6 +22,8 @@ export interface Location {
     floor?: string;
     access?: string;
     pinType?: string;
+    pinImageUrl?: string;
+    pinImageAlt?: string;
   }>;
   routes?: Array<{
     name: string;
@@ -48,13 +50,29 @@ export interface ResponseData {
     mapData?: {
       locationName: string;
       coordinates?: [number, number];
-      pins?: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
+      pins?: Array<{
+        name: string;
+        coordinates: [number, number];
+        floor?: string;
+        access?: string;
+        pinType?: string;
+        pinImageUrl?: string;
+        pinImageAlt?: string;
+      }>;
       routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
       mapId: string;
     } | Array<{
       locationName: string;
       coordinates?: [number, number];
-      pins?: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
+      pins?: Array<{
+        name: string;
+        coordinates: [number, number];
+        floor?: string;
+        access?: string;
+        pinType?: string;
+        pinImageUrl?: string;
+        pinImageAlt?: string;
+      }>;
       routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
       mapId: string;
     }>;

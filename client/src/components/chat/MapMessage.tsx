@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, ImageOverlay, Marker, Popup, useMap, Polyline, CircleMarker } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { ArrowUpDown, Maximize2, Minimize2 } from "lucide-react";
+import { ArrowUpDown, Maximize2, Minimize2, X, MapPin } from "lucide-react";
 import { useMapSettings } from "@/hooks/useMapSettings";
 
 // Fix for default marker icon in React Leaflet
@@ -27,13 +27,22 @@ type RoutePayload = { name: string; points: [number, number][]; color?: string; 
 interface MapMessageProps {
   locationName: string;
   coordinates: CoordArray | CoordObject | null | undefined;
-  pins?: Array<{ name: string; coordinates: CoordArray | CoordObject; floor?: string; access?: string; pinType?: string }>;
+  pins?: Array<{
+    name: string;
+    coordinates: CoordArray | CoordObject;
+    floor?: string;
+    access?: string;
+    pinType?: string;
+    pinImageUrl?: string;
+    pinImageAlt?: string;
+  }>;
   imageBounds?: L.LatLngBoundsExpression;
   maxClamp?: number;
   // fullscreen props
   isFullscreen?: boolean;
   onToggleFullscreen?: () => void;
   routes?: RoutePayload[];
+  onOpenLightbox?: (data: { url: string; title: string; alt?: string }) => void;
 }
 
 const DefaultBounds: L.LatLngBoundsExpression = [
@@ -262,6 +271,7 @@ export default function MapMessage({
   isFullscreen = false,
   onToggleFullscreen,
   routes,
+  onOpenLightbox,
 }: MapMessageProps) {
   // Extract dynamic image height from bounds (Default: 1000)
   const imageHeight = useMemo(() => {
@@ -279,6 +289,8 @@ export default function MapMessage({
     return 1000;
   }, [imageBounds]);
 
+  const [activeLightbox, setActiveLightbox] = useState<{ url: string; title: string; alt?: string } | null>(null);
+
   const normalizedPins = useMemo(() => {
     if (Array.isArray(pins) && pins.length > 0) {
       const result = pins
@@ -287,9 +299,18 @@ export default function MapMessage({
           const name = String((p as any)?.name || "").trim() || "Pin";
           const floor = (p as any)?.floor;
           const pinType = normalizeIndicatorKind({ name, access: (p as any)?.access, pinType: (p as any)?.pinType });
-          return tuple ? { name, coordinates: tuple as CoordArray, floor, pinType } : null;
+          const pinImageUrl = (p as any)?.pinImageUrl || (p as any)?.altImageUrl;
+          const pinImageAlt = (p as any)?.pinImageAlt;
+          return tuple ? { name, coordinates: tuple as CoordArray, floor, pinType, pinImageUrl, pinImageAlt } : null;
         })
-        .filter(Boolean) as Array<{ name: string; coordinates: CoordArray; floor?: string; pinType?: IndicatorKind | null }>;
+        .filter(Boolean) as Array<{
+          name: string;
+          coordinates: CoordArray;
+          floor?: string;
+          pinType?: IndicatorKind | null;
+          pinImageUrl?: string;
+          pinImageAlt?: string;
+        }>;
       return result;
     }
     const tuple = normalizeToTuple(coordinates, maxClamp);
@@ -302,6 +323,8 @@ export default function MapMessage({
       coordinates: [imageHeight - p.coordinates[0], p.coordinates[1]] as CoordArray,
       floor: p.floor,
       pinType: p.pinType,
+      pinImageUrl: p.pinImageUrl,
+      pinImageAlt: p.pinImageAlt,
     })).filter((p) => Array.isArray(p.coordinates) && p.coordinates.length === 2);
 
     return markers;
@@ -494,17 +517,17 @@ export default function MapMessage({
           </div>
         );
       })()}
-      {onToggleFullscreen && (
+      {!isFullscreen && onToggleFullscreen && (
         <button
           onClick={onToggleFullscreen}
           className="absolute top-2 right-2 z-[1000] bg-white/90 hover:bg-white text-gray-700 p-1.5 rounded-md shadow-md transition-all duration-200 backdrop-blur-sm"
-          title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+          title="Enter Fullscreen"
         >
-          {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          <Maximize2 className="h-4 w-4" />
         </button>
       )}
       {isFullscreen && normalizedRoutes.length > 0 && (
-        <div className="absolute top-12 right-2 z-[1000] max-w-[150px] rounded-lg border border-white/50 bg-white/85 p-1.5 text-[10px] text-slate-800 shadow-md backdrop-blur sm:max-w-[180px] sm:p-2 sm:text-xs">
+        <div className="absolute top-2 right-2 z-[1000] max-w-[150px] rounded-lg border border-white/50 bg-white/85 p-1.5 text-[10px] text-slate-800 shadow-md backdrop-blur sm:max-w-[180px] sm:p-2 sm:text-xs">
           <div className="mb-1 font-bold">Routes</div>
           <div className="space-y-1">
             {normalizedRoutes.map((route, index) => (
@@ -558,11 +581,97 @@ export default function MapMessage({
 
         {flippedMarkers.map((p, idx) => (
           <Marker key={`pin-${idx}`} position={p.coordinates} icon={labeledIcon(p.name, p.pinType)}>
-            <Popup>{p.name}</Popup>
+            <Popup className="custom-pin-popup" minWidth={180} maxWidth={260}>
+              <div className="flex flex-col gap-1.5 p-1 text-slate-800">
+                <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-1">
+                  <span className="font-bold text-xs text-[#003B63] truncate">{p.name}</span>
+                  {p.floor && (
+                    <span className="text-[9px] font-black uppercase tracking-wider bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded shadow-xs">
+                      {p.floor}
+                    </span>
+                  )}
+                </div>
+
+                {p.pinImageUrl ? (
+                  <div 
+                    className="relative group mt-1 cursor-pointer overflow-hidden rounded-lg border border-slate-200 shadow-sm bg-slate-50 transition-all hover:border-sky-500 hover:shadow-md"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onOpenLightbox) {
+                        onOpenLightbox({ url: p.pinImageUrl!, title: p.name, alt: p.pinImageAlt });
+                      } else {
+                        setActiveLightbox({ url: p.pinImageUrl!, title: p.name, alt: p.pinImageAlt });
+                      }
+                    }}
+                  >
+                    <img 
+                      src={p.pinImageUrl} 
+                      alt={p.pinImageAlt || p.name} 
+                      className="h-28 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-[1px]">
+                      <span className="flex items-center gap-1 rounded-full bg-black/75 px-2.5 py-1 text-[10px] font-semibold text-white shadow-md">
+                        <Maximize2 className="h-3 w-3" /> View Full Image
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-slate-500 my-0.5">
+                    {p.floor ? `Located on ${p.floor}` : "Location Pinpoint"}
+                  </p>
+                )}
+              </div>
+            </Popup>
           </Marker>
         ))}
         <MapController coords={center} />
       </MapContainer>
+
+      {/* Pin Photo Lightbox Modal - Contained within Chatbox Area */}
+      {activeLightbox && (
+        <div 
+          className="absolute inset-0 z-50 flex items-center justify-center bg-black/90 p-2 sm:p-4 backdrop-blur-sm animate-in fade-in duration-150"
+          onClick={() => setActiveLightbox(null)}
+        >
+          <div 
+            className="relative max-h-[92%] max-w-[94%] overflow-hidden rounded-2xl bg-slate-900 shadow-2xl border border-white/15 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-3.5 py-2.5 bg-black/50 border-b border-white/10">
+              <div className="flex items-center gap-2 text-white min-w-0">
+                <MapPin className="h-4 w-4 text-amber-400 shrink-0" />
+                <span className="font-bold text-xs sm:text-sm tracking-wide truncate">{activeLightbox.title}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveLightbox(null)}
+                className="rounded-full p-1 text-slate-300 hover:text-white hover:bg-white/20 transition-colors ml-2"
+                title="Close"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Photo Container */}
+            <div className="flex-1 overflow-auto flex items-center justify-center p-2 bg-black/70">
+              <img 
+                src={activeLightbox.url} 
+                alt={activeLightbox.alt || activeLightbox.title} 
+                className="max-h-[65vh] w-auto max-w-full rounded-lg object-contain shadow-xl"
+              />
+            </div>
+
+            {/* Optional Footer Caption */}
+            {activeLightbox.alt && (
+              <div className="px-3 py-1.5 bg-black/50 text-center text-[11px] text-slate-300 border-t border-white/10">
+                {activeLightbox.alt}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

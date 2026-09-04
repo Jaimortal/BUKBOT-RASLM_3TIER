@@ -127,6 +127,8 @@ export type LocationFileShape = {
         floor?: string;
         access?: string;
         pinType?: string;
+        pinImageUrl?: string;
+        pinImageAlt?: string;
       }>;
       imageUrls?: string[];
       images?: string[];
@@ -216,7 +218,15 @@ export async function getLocations(): Promise<Location[]> {
           : (Array.isArray(coordsRaw) && coordsRaw.length === 0 ? [] : [500, 500]);
 
       const pinsRaw: any = (value as any)?.pins;
-      const pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }> = Array.isArray(pinsRaw)
+      const pins: Array<{
+        name: string;
+        coordinates: [number, number];
+        floor?: string;
+        access?: string;
+        pinType?: string;
+        pinImageUrl?: string;
+        pinImageAlt?: string;
+      }> = Array.isArray(pinsRaw)
         ? pinsRaw
             .map((p: any, idx: number) => {
               const c: any = p?.coordinates;
@@ -227,7 +237,17 @@ export async function getLocations(): Promise<Location[]> {
               const floor = p?.floor ? String(p.floor) : undefined;
               const access = p?.access ? String(p.access) : undefined;
               const pinType = p?.pinType ? String(p.pinType) : undefined;
-              return { name: n, coordinates: tuple, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
+              const pinImageUrl = p?.pinImageUrl ? String(p.pinImageUrl) : (p?.altImageUrl ? String(p.altImageUrl) : undefined);
+              const pinImageAlt = p?.pinImageAlt ? String(p.pinImageAlt) : undefined;
+              return {
+                name: n,
+                coordinates: tuple,
+                ...(floor ? { floor } : {}),
+                ...(access ? { access } : {}),
+                ...(pinType ? { pinType } : {}),
+                ...(pinImageUrl ? { pinImageUrl } : {}),
+                ...(pinImageAlt ? { pinImageAlt } : {})
+              };
             })
             .filter((p: any) => Array.isArray(p.coordinates) && p.coordinates.length === 2)
         : [];
@@ -271,7 +291,15 @@ export async function getMapLocationsList(): Promise<Array<{
   name: string;
   coordinates: [number, number] | [];
   building: string;
-  pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
+  pins: Array<{
+    name: string;
+    coordinates: [number, number];
+    floor?: string;
+    access?: string;
+    pinType?: string;
+    pinImageUrl?: string;
+    pinImageAlt?: string;
+  }>;
   routes: Array<{ name: string; points: [number, number][]; color?: string }>;
 }>> {
   try {
@@ -296,9 +324,27 @@ export async function getMapLocationsList(): Promise<Array<{
               const floor = p?.floor ? String(p.floor) : undefined;
               const access = p?.access ? String(p.access) : undefined;
               const pinType = p?.pinType ? String(p.pinType) : undefined;
-              return { name: String(p?.name || "").trim() || `Pin ${idx + 1}`, coordinates: tuple, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
+              const pinImageUrl = p?.pinImageUrl ? String(p.pinImageUrl) : (p?.altImageUrl ? String(p.altImageUrl) : undefined);
+              const pinImageAlt = p?.pinImageAlt ? String(p.pinImageAlt) : undefined;
+              return {
+                name: String(p?.name || "").trim() || `Pin ${idx + 1}`,
+                coordinates: tuple,
+                ...(floor ? { floor } : {}),
+                ...(access ? { access } : {}),
+                ...(pinType ? { pinType } : {}),
+                ...(pinImageUrl ? { pinImageUrl } : {}),
+                ...(pinImageAlt ? { pinImageAlt } : {})
+              };
             })
-            .filter(Boolean) as Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>
+            .filter(Boolean) as Array<{
+              name: string;
+              coordinates: [number, number];
+              floor?: string;
+              access?: string;
+              pinType?: string;
+              pinImageUrl?: string;
+              pinImageAlt?: string;
+            }>
         : [];
 
       const routes = normalizeRoutes((value as any)?.routes);
@@ -403,7 +449,17 @@ export async function upsertLocation(location: Location): Promise<ApiResponse> {
             const floor = p?.floor ? String(p.floor) : undefined;
             const access = p?.access ? String(p.access) : undefined;
             const pinType = p?.pinType ? String(p.pinType) : undefined;
-            return { name, coordinates: coords, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
+            const pinImageUrl = p?.pinImageUrl ? String(p.pinImageUrl) : (p?.altImageUrl ? String(p.altImageUrl) : undefined);
+            const pinImageAlt = p?.pinImageAlt ? String(p.pinImageAlt) : undefined;
+            return {
+              name,
+              coordinates: coords,
+              ...(floor ? { floor } : {}),
+              ...(access ? { access } : {}),
+              ...(pinType ? { pinType } : {}),
+              ...(pinImageUrl ? { pinImageUrl } : {}),
+              ...(pinImageAlt ? { pinImageAlt } : {})
+            };
           })
           .filter(Boolean)
       : (Array.isArray(existing.pins) ? existing.pins : []);

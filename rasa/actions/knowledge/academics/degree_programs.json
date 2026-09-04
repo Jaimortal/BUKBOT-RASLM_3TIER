@@ -3433,6 +3433,67 @@
           "display_name": "Meaning Of Board Course"
         },
         {
+          "topic": "difference_board_nonboard_courses",
+          "responses": {
+            "en": [
+              "Here is the key difference between board and non-board courses at BukSU:",
+              "• **Board Courses:** Degree programs that require graduates to take and pass a national licensure examination (Board Exam) administered by the Professional Regulation Commission (PRC) or government regulatory body (e.g., Nursing, Teacher Education, Accountancy) before they can legally practice their profession.",
+              "• **Non-Board Courses:** Degree programs that do not require a national board examination. Graduates are fully qualified to enter their chosen professional careers upon receiving their college diploma (e.g., Information Technology, Public Administration, Development Communication)."
+            ],
+            "ceb": [
+              "Ania ang nag-unang kalainan tali sa board ug non-board courses sa BukSU:",
+              "• **Board Courses:** Mga degree program nga nagkinahanglan nga makapasar ang mga graduate sa PRC Licensure Examination o Board Exam (sama sa Nursing, Teacher Education, Accountancy) aron legal nga makapraktis sa ilang propesyon.",
+              "• **Non-Board Courses:** Mga degree program nga dili na nagkinahanglan og board exam. Ang mga graduate kwalipikado na nga direktang manarbaho human makadawat sa ilang diploma sa kolehiyo (sama sa Information Technology, Public Administration, Development Communication)."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "Board courses list",
+              "payload": "/direct_intent{\"intent\":\"buksu_board_courses\"}"
+            },
+            {
+              "label": "Non-board courses list",
+              "payload": "/direct_intent{\"intent\":\"buksu_non_board_courses\"}"
+            }
+          ],
+          "intent": "difference_board_nonboard_courses",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "What's the difference between board and non-board courses",
+              "What is the difference between board and non-board courses",
+              "whats the difference between board and non board courses",
+              "difference between board and non board courses",
+              "difference of board and non board courses",
+              "board vs non board courses",
+              "board course vs non board course",
+              "what makes board course different from non board",
+              "unsa ang kalainan sa board ug non board courses",
+              "unsa may difference sa board ug non-board",
+              "unsa ang difference sa board ug non board",
+              "difference sa board ug non board courses",
+              "board ug non board unsa may kalahian",
+              "unsay kalahian sa board ug non board courses"
+            ],
+            "strong_keywords": [
+              "difference",
+              "kalainan",
+              "kalahian",
+              "board vs non board",
+              "board and non board",
+              "board ug non board"
+            ],
+            "weak_keywords": [
+              "course",
+              "courses",
+              "program",
+              "programs",
+              "kurso"
+            ]
+          },
+          "display_name": "Difference Between Board and Non-Board Courses"
+        },
+        {
           "topic": "evening_classes_working_students",
           "responses": {
             "en": [
@@ -3570,10 +3631,12 @@
           "topic": "minor_subject",
           "responses": {
             "en": [
-              "A minor subject supports your major field of study and helps build general knowledge."
+              "A minor subject supports your major field of study and helps build general knowledge.",
+              "Now if you failed to pass a minor subject, you must retake it the following semester. Only if your actual GWA is affected, or it is a prerequisite for your other subjects, will it affect your course program."
             ],
             "ceb": [
-              "Ang minor subject kay support sa imong major ug naghatag ug dugang kahibalo."
+              "Ang minor subject kay support sa imong major ug naghatag ug dugang kahibalo.",
+              "Kon mapakyas ka pag pasar og minor subject, kinahanglan nimo kini iretake sa sunod nga semester. Kon affected ang GWA nimo, o dili kini ma-prerequisite sa ubang subject, then dili kini makaapekto sa imong course program."
             ]
           },
           "intent": "minor_subject",
@@ -4804,14 +4867,12 @@
           "topic": "program_cutoff_scores",
           "responses": {
             "en": [
-              "For BukSU-CAT qualification, non-board courses usually require at least 50% CAT score.",
-              "Board courses usually require 80% and above CAT score.",
-              "This may still change depending on the official admission guidelines for the current academic year, so always confirm with the BukSU Admission and Testing Unit if you need final qualification details."
+              "For BukSU-CAT qualification, non-board courses usually require at least 50% CAT score, while board courses usually require 80% and above CAT score.",
+              "**Remember that I only provide general data**. For specific passing scores and cutoff criteria for your chosen course, kindly inquire directly with your department's official FB page, or visit the Admission and Testing Unit (ATU) and Office of the Registrar for more information."
             ],
             "ceb": [
-              "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score.",
-              "Ang board courses kasagaran nagkinahanglan og 80% pataas nga CAT score.",
-              "Mahimo gihapon kini mausab depende sa opisyal nga admission guidelines sa current academic year, busa mas maayo nga i-confirm sa BukSU Admission and Testing Unit kung kinahanglan nimo ang final qualification details."
+              "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score, samtang ang board courses nagkinahanglan og 80% pataas nga CAT score.",
+              "**Hinumdumi nga general data lamang ang akong mahatag**. Alang sa piho nga passing scores o cutoff sa imong napiling kurso, palihog direktang pakisayod sa opisyal nga FB page sa imong department, o bisitaha ang Admission and Testing Unit (ATU) ug Office of the Registrar alang sa dugang impormasyon."
             ]
           },
           "intent": "program_cutoff_scores",
@@ -4889,6 +4950,14 @@
           },
           "display_name": "BukSU CAT Cutoff Scores",
           "suggestions": [
+            {
+              "label": "ATU location",
+              "payload": "/direct_intent{\"intent\":\"location_Admission_Office\"}"
+            },
+            {
+              "label": "Registrar location",
+              "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
+            },
             {
               "label": "Non-board courses",
               "payload": "/direct_intent{\"intent\":\"Cat_score_for_nonboard\"}"

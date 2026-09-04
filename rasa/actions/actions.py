@@ -89,6 +89,12 @@ def normalize_map_pin(pin: Any, index: int = 0) -> Optional[Dict[str, Any]]:
         pin_data["access"] = str(pin.get("access"))
     if pin.get("pinType"):
         pin_data["pinType"] = str(pin.get("pinType"))
+    if pin.get("pinImageUrl"):
+        pin_data["pinImageUrl"] = str(pin.get("pinImageUrl"))
+    elif pin.get("altImageUrl"):
+        pin_data["pinImageUrl"] = str(pin.get("altImageUrl"))
+    if pin.get("pinImageAlt"):
+        pin_data["pinImageAlt"] = str(pin.get("pinImageAlt"))
     return pin_data
 
 

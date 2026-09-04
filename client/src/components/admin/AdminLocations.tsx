@@ -75,6 +75,8 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
       floor: (p as any)?.floor as AdminPin["floor"],
       access: (p as any)?.access as AdminPin["access"],
       pinType: (p as any)?.pinType as AdminPin["pinType"],
+      pinImageUrl: (p as any)?.pinImageUrl || (p as any)?.altImageUrl,
+      pinImageAlt: (p as any)?.pinImageAlt,
     }))
   );
   const [routes, setRoutes] = useState<any[]>(location.routes ?? []);
@@ -93,6 +95,8 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
       floor: p.floor as AdminPin["floor"],
       access: (p as any).access as AdminPin["access"],
       pinType: (p as any).pinType as AdminPin["pinType"],
+      pinImageUrl: (p as any)?.pinImageUrl || (p as any)?.altImageUrl,
+      pinImageAlt: (p as any)?.pinImageAlt,
     })));
     setRoutes(location.routes ?? []);
     const hasCoordinates = Array.isArray(location.coordinates) && location.coordinates.length === 2;
@@ -104,13 +108,15 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
       const payload: Location = {
         ...location,
         coordinates: mapEnabled ? coords : [],
-        // Convert AdminPin back to Location pin format, preserving floor data
+        // Convert AdminPin back to Location pin format, preserving floor & photo data
         pins: mapEnabled ? pins.filter(p => p.name.trim()).map(p => ({
           name: p.name,
           coordinates: p.coordinates,
           ...(p.floor && { floor: p.floor }),
           ...(p.access && { access: p.access }),
           ...(p.pinType && { pinType: p.pinType }),
+          ...(p.pinImageUrl && { pinImageUrl: p.pinImageUrl }),
+          ...(p.pinImageAlt && { pinImageAlt: p.pinImageAlt }),
         } as any)) : [],
         routes: mapEnabled ? routes : [],
         responses: {

@@ -1255,7 +1255,21 @@
           "Pwede ba magsul-ob sa college shirts kung walay permiso",
           "When can students wear their college shirts",
           "Are there official days for wearing college shirts",
-          "Can students wear their shirts on certain weekdays"
+          "Can students wear their shirts on certain weekdays",
+          "Can i still use my college shirt right now",
+          "can i still use my college shirt on the friday",
+          "can i use my college shirt",
+          "can i wear college shirt on friday",
+          "can i wear college shirt",
+          "is college shirt allowed on friday",
+          "is college shirt allowed on thursday",
+          "pwedi pabako mag suot og college shirt karon",
+          "pwede paba mag suot og college shirt",
+          "do we allowed to use our college shirt arround the campus",
+          "allowed to use college shirt around campus",
+          "pwede ba mag gamit ug college shirt",
+          "pwede pa ba gamiton ang college shirt karon",
+          "pwede ba magsul-ob og college shirt sa friday"
         ],
         "strong_keywords": [
           "shirts",
@@ -1278,11 +1292,11 @@
       "topic": "campus_dress_code_policy",
       "responses": {
         "en": [
-          "Dress code policy: Under the application of the policy on access to persons, the **wearing of the complete school/PE uniform and school ID shall be observed**. This **means you are required to wear a uniform**, unless there is a memorandum stating that students can wear casual attire on a specific day. **wearing of shorts and sando shall not be allowed to enter the school premises during class days and office hours** except during legitimate school activities with permission from the authorities. **However,** you may wear your casual attire on Wednesday, since this is wash day.",
-          "You can also read other BukSU Policy through this link: https://buksu.edu.ph/security-services-unit/"
+          "**University Memorandum No. 01, s. 2026 — Prescribed University Uniform Policy:**\n\nPlease be informed that all students are required to wear the complete prescribed university uniform every **Monday**, **Tuesday**, **Thursday**, and **Friday**, effective on their respective dates:\n\n• **2ND YEAR - 4TH YEAR STUDENTS:** Effective **September 7, 2026**\n• **1ST YEAR STUDENTS:** Effective **September 14, 2026**\n\nStudents are expected to **strictly observe the prescribed university uniform policy** on the indicated days.\n\n*(Note: **Wednesday** remains the official university **Wash Day** where casual/civilian attire is permitted. Wearing of shorts, sandos/sleeveless shirts, ripped clothes, and rubber slippers is strictly prohibited on campus during class days and office hours).*",
+          "You can also read other BukSU Policies through this link: https://buksu.edu.ph/security-services-unit/"
         ],
         "ceb": [
-          "Dress code policy: Ubos sa implementasyon sa polisiya sa access sa mga tawo, ang **pagsul-ob sa kompleto nga school/PE uniform ug school ID kinahanglan sundon**. Kini **nagpasabot nga gikinahanglan gayod nga mag-uniporme**, gawas kon adunay memorandum nga nagtugot sa mga estudyante nga makasul-ob og casual attire sa espesipikong adlaw. Ang **pagsul-ob og shorts ug sando dili tugotan nga makasulod sa premises sa eskwelahan panahon sa class days ug office hours** gawas lang sa mga lehitimong kalihokan sa tunghaan nga adunay pagtugot gikan sa mga awtoridad. **Apan,** mahimo kang magsul-ob og casual attire matag Miyerkules kay kini ang wash day.",
+          "**University Memorandum No. 01, s. 2026 — Polisiya sa Opisyal nga Uniporme:**\n\nPalihog pahibalo nga ang tanang estudyante gikinahanglan nga magsul-ob sa kompleto nga prescribed university uniform matag **Lunes**, **Martes**, **Huwebes**, ug **Biyernes**, sugod sa mosunod nga mga petsa:\n\n• **2ND YEAR - 4TH YEAR STUDENTS:** Epektibo **September 7, 2026**\n• **1ST YEAR STUDENTS:** Epektibo **September 14, 2026**\n\nAng mga estudyante gilauman nga **hugot nga mosunod sa prescribed university uniform policy** sa maong mga adlaw.\n\n*(Pahinumdom: Ang **Miyerkules** nagpabilin nga opisyal nga **Wash Day** diin gitugotan ang casual/civilian attire. Ang pagsul-ob og shorts, sando/sleeveless, gisi-gisi nga sinina, ug tsinelas hugot nga gidili sulod sa campus panahon sa klase ug office hours).*",
           "Mabasa usab nimo ang uban pang BukSU Policies pinaagi niini nga link: https://buksu.edu.ph/security-services-unit/"
         ]
       },
@@ -1301,6 +1315,15 @@
           "are slippers allowed inside buksu",
           "are shorts allowed inside campus",
           "what should students wear in buksu",
+          "when do the used of uniform is mandatory",
+          "when is the use of uniform mandatory",
+          "when is uniform mandatory",
+          "what date is not allowed to use civilian",
+          "what day is not allowed to use civilian",
+          "memorandum no 01 s 2026",
+          "memo no 01 s 2026",
+          "effective date of uniform",
+          "when is uniform required",
           "Unsa ang dress code policy para sa mga estudyante sa BukSU",
           "Kinahanglan ba magsul ob ang estudyante sa opisyal nga uniporme",
           "Unsa ang mga rules sa pamesti panahon sa civilian days",
@@ -1312,7 +1335,9 @@
           "What is the dress code policy for students at BukSU",
           "What clothes are allowed inside the BukSU campus",
           "Are students required to wear the official university uniform",
-          "school uniform or dress code policy"
+          "school uniform or dress code policy",
+          "unsa nga petsa bawal na mag civilian",
+          "kanus-a mandatory ang uniform"
         ],
         "strong_keywords": [
           "buksu",

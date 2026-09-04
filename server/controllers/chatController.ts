@@ -196,7 +196,17 @@ export class ChatController {
                 const floor = typeof p?.floor === "string" ? p.floor.trim() : "";
                 const access = typeof p?.access === "string" ? p.access.trim() : "";
                 const pinType = typeof p?.pinType === "string" ? p.pinType.trim() : "";
-                return { name, coordinates: tuple, ...(floor ? { floor } : {}), ...(access ? { access } : {}), ...(pinType ? { pinType } : {}) };
+                const pinImageUrl = typeof p?.pinImageUrl === "string" && p.pinImageUrl.trim() ? p.pinImageUrl.trim() : undefined;
+                const pinImageAlt = typeof p?.pinImageAlt === "string" && p.pinImageAlt.trim() ? p.pinImageAlt.trim() : undefined;
+                return {
+                  name,
+                  coordinates: tuple,
+                  ...(floor ? { floor } : {}),
+                  ...(access ? { access } : {}),
+                  ...(pinType ? { pinType } : {}),
+                  ...(pinImageUrl ? { pinImageUrl } : {}),
+                  ...(pinImageAlt ? { pinImageAlt } : {})
+                };
               })
               .filter(Boolean)
           : null;

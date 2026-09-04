@@ -155,6 +155,10 @@ class ResponseBuilder:
                     coordinate_pin["access"] = map_data.get("access")
                 if map_data.get("pinType"):
                     coordinate_pin["pinType"] = map_data.get("pinType")
+                if map_data.get("pinImageUrl"):
+                    coordinate_pin["pinImageUrl"] = map_data.get("pinImageUrl")
+                if map_data.get("pinImageAlt"):
+                    coordinate_pin["pinImageAlt"] = map_data.get("pinImageAlt")
                 map_data = {**map_data, "pins": [coordinate_pin]}
             for pin in map_data.get("pins") or []:
                 key = (

@@ -37,7 +37,7 @@ export interface ChatMessage {
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
-    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
+    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string; pinImageUrl?: string; pinImageAlt?: string }>;
     routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
   };
   faqs?: import("../types/admin").FaqConfig[];
@@ -54,14 +54,14 @@ interface BackendResponse {
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
-    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
+    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string; pinImageUrl?: string; pinImageAlt?: string }>;
     routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
   };
   mapDataList?: Array<{
     locationName: string;
     coordinates: { lat: number; lng: number };
     mapId?: string;
-    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string }>;
+    pins?: Array<{ name: string; coordinates: { lat: number; lng: number }; floor?: string; access?: string; pinType?: string; pinImageUrl?: string; pinImageAlt?: string }>;
     routes?: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
   }>;
   suggestions?: ChatSuggestion[];
@@ -187,13 +187,17 @@ class RasaBackend {
                           const floor = p?.floor;
                           const access = p?.access;
                           const pinType = p?.pinType;
+                          const pinImageUrl = p?.pinImageUrl || p?.altImageUrl;
+                          const pinImageAlt = p?.pinImageAlt;
                           if (Array.isArray(c) && c.length === 2) {
                             return {
                               name: String(p?.name || "").trim() || "Pin",
                               coordinates: { lat: c[0], lng: c[1] },
                               floor,
                               access,
-                              pinType
+                              pinType,
+                              pinImageUrl,
+                              pinImageAlt,
                             };
                           }
                           if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
@@ -202,7 +206,9 @@ class RasaBackend {
                               coordinates: c,
                               floor,
                               access,
-                              pinType
+                              pinType,
+                              pinImageUrl,
+                              pinImageAlt,
                             };
                           }
                           return null;
@@ -233,13 +239,17 @@ class RasaBackend {
                     const floor = p?.floor;
                     const access = p?.access;
                     const pinType = p?.pinType;
+                    const pinImageUrl = p?.pinImageUrl || p?.altImageUrl;
+                    const pinImageAlt = p?.pinImageAlt;
                     if (Array.isArray(c) && c.length === 2) {
                       return {
                         name: String(p?.name || "").trim() || "Pin",
                         coordinates: { lat: c[0], lng: c[1] },
                         floor,
                         access,
-                        pinType
+                        pinType,
+                        pinImageUrl,
+                        pinImageAlt,
                       };
                     }
                     if (c && typeof c === "object" && ("lat" in c || "lng" in c)) {
@@ -248,7 +258,9 @@ class RasaBackend {
                         coordinates: c,
                         floor,
                         access,
-                        pinType
+                        pinType,
+                        pinImageUrl,
+                        pinImageAlt,
                       };
                     }
                     return null;

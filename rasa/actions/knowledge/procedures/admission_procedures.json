@@ -1705,14 +1705,12 @@
           "topic": "program_cutoff_scores",
           "responses": {
             "en": [
-              "For BukSU-CAT qualification, non-board courses usually require at least 50% CAT score.",
-              "Board courses usually require 80% and above CAT score.",
-              "This may still change depending on the official admission guidelines for the current academic year, so always confirm with the BukSU Admission and Testing Unit if you need final qualification details."
+              "For BukSU-CAT qualification, non-board courses usually require at least 50% CAT score, while board courses usually require 80% and above CAT score.",
+              "**Remember that I only provide general data**. For specific passing scores and cutoff criteria for your chosen course, kindly inquire directly with your department's official FB page, or visit the Admission and Testing Unit (ATU) and Office of the Registrar for more information."
             ],
             "ceb": [
-              "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score.",
-              "Ang board courses kasagaran nagkinahanglan og 80% pataas nga CAT score.",
-              "Mahimo gihapon kini mausab depende sa opisyal nga admission guidelines sa current academic year, busa mas maayo nga i-confirm sa BukSU Admission and Testing Unit kung kinahanglan nimo ang final qualification details."
+              "Para sa BukSU-CAT qualification, ang non-board courses kasagaran nagkinahanglan og at least 50% CAT score, samtang ang board courses nagkinahanglan og 80% pataas nga CAT score.",
+              "**Hinumdumi nga general data lamang ang akong mahatag**. Alang sa piho nga passing scores o cutoff sa imong napiling kurso, palihog direktang pakisayod sa opisyal nga FB page sa imong department, o bisitaha ang Admission and Testing Unit (ATU) ug Office of the Registrar alang sa dugang impormasyon."
             ]
           },
           "intent": "program_cutoff_scores",
@@ -1790,6 +1788,14 @@
           },
           "display_name": "BukSU CAT Cutoff Scores",
           "suggestions": [
+            {
+              "label": "ATU location",
+              "payload": "/direct_intent{\"intent\":\"location_Admission_Office\"}"
+            },
+            {
+              "label": "Registrar location",
+              "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
+            },
             {
               "label": "Non-board courses",
               "payload": "/direct_intent{\"intent\":\"Cat_score_for_nonboard\"}"
@@ -2642,30 +2648,37 @@
           "topic": "non_passer_enrollment_affirmative_action",
           "responses": {
             "en": [
-              "Yes. BukSU has a program called the Affirmative Action Program (AAP), which may allow applicants who did not pass or did not meet the required admission examination score to be considered for enrollment.",
-              "For this concern, visit the Diversity and Inclusion Unit (DIU), because they handle AAP assessment and guidance.",
-              "As of now, I do not have a confirmed update if BukSU has opened AAP for this school year. Please ask DIU directly or follow official BukSU announcements for the latest status."
+              "Yes, as long as your ROR (Report of Rating) meets the cutoff score for non-board courses.",
+              "If your score is below non-board courses, there may still be alternative ways to enroll in BukSU depending on available college slots and programs (such as the Affirmative Action Program).",
+              "For specific guidance on available slots, you may also inquire directly with the Admission and Testing Unit (ATU) or the respective College Dean's Office."
             ],
             "ceb": [
-              "Oo. Ang BukSU adunay program nga gitawag og Affirmative Action Program (AAP), nga mahimong makatabang sa applicants nga wala nakapasar o wala nakaabot sa required admission examination score aron ma-consider for enrollment.",
-              "Para ani nga concern, adtoa ang Diversity and Inclusion Unit (DIU), kay sila ang nag-handle sa AAP assessment ug guidance.",
-              "Sa pagkakaron, wala koy confirmed update kung gi-open na ba sa BukSU ang AAP para ani nga school year. Mas maayo nga mangutana diretso sa DIU o mosunod sa official BukSU announcements."
+              "Oo, basta ang imong ROR (Report of Rating) makaabot pa sa cutoff alang sa non-board courses.",
+              "Kung ubos pa kini sa non-board courses, adunay ubang alternatibong paagi aron maka-enroll sa BukSU depende sa bakanteng slots sa mga kolehiyo (sama sa Affirmative Action Program).",
+              "Alang sa dugang giya sa bakanteng slots, mahimo usab kang direktang mangutana sa Admission and Testing Unit (ATU) o sa Dean's Office sa inyong kolehiyo."
             ]
           },
           "suggestions": [
             {
-              "label": "AAP process",
+              "label": "Affirmative Action Program",
               "payload": "/direct_intent{\"intent\":\"affirmative_action\"}"
             },
             {
-              "label": "DIU location",
-              "payload": "/direct_intent{\"intent\":\"location_CAS_Deans_Office\"}"
+              "label": "ATU location",
+              "payload": "/direct_intent{\"intent\":\"location_Admission_Office\"}"
             }
           ],
           "intent": "non_passer_enrollment_affirmative_action",
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
+              "pwede pa ko mo-enroll bisan ubos akong ror sa cutoff",
+              "pwede pa ba mo enroll bisan ubos akong ror sa cutoff",
+              "pwede pa ba mo-enroll bisan ubos akong ror sa cutoff",
+              "pwede pa ba ko mo-enroll bisan ubos akong ror",
+              "pwede pa ba ko mo-enroll bisan ubos akong cutoff",
+              "can i enroll if my ror is below cutoff",
+              "can i still enroll if my ror is below the cutoff score",
               "do buksu allow non passer to enroll",
               "does buksu allow non passers to enroll",
               "can non passers enroll in buksu",

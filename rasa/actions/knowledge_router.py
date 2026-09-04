@@ -24,31 +24,31 @@ class KnowledgeRouter:
     }
 
     COURSE_ROUTES = [
-        (["bsit", "information technology"], "buksu_IT", "buksu_bsit_program"),
-        (["bsft", "ft", "food technology"], "buksu_FT", "buksu_BSFT_program"),
-        (["bset", "et", "electronics technology"], "buksu_ET", "buksu_BSET_program"),
+        (["bsit", "information technology", "information tech"], "buksu_IT", "buksu_bsit_program"),
+        (["bsft", "ft", "food technology", "food processing", "food tech"], "buksu_FT", "buksu_BSFT_program"),
+        (["bset", "et", "electronics technology", "electronics tech"], "buksu_ET", "buksu_BSET_program"),
         (["bsemc", "bsemc dat", "emc", "digital animation", "multimedia computing", "entertainment and multimedia"], "buksu_EMC", "buksu_BSEMC-DAT_program"),
         (["bs bio", "bsbio", "biology", "biotechnology"], "buksu_BS-BIO", "buksu_BS-BIO_program"),
         (["ab socsci", "ba socsci", "ab social science", "ba social science", "social science"], "buksu_AB_SocSci", "buksu_AB SocSci_program"),
         (["bsed fil", "bsed filipino", "filipino education"], "buksu_BSED_FIL", "buksu_BSED-FIL_program"),
-        (["bsed math", "mathematics education"], "buksu_BSED_MATH", "buksu_BSED-MATH_program"),
-        (["beed", "elementary education"], "buksu_BEED_program", "buksu_BEED_program"),
+        (["bsed math", "mathematics education", "mathematics teaching"], "buksu_BSED_MATH", "buksu_BSED-MATH_program"),
+        (["beed", "elementary education", "elementary school kids", "elementary teaching"], "buksu_BEED_program", "buksu_BEED_program"),
         (["bsn", "nursing"], "buksu_BSN", "buksu_BSN_program"),
         (["bsap", "ab philo", "ba philo", "ab philosophy", "ba philosophy", "philo", "philosophy"], "buksu_AB_PHILO", "buksu_AB-PHILO_program"),
-        (["bs es", "bses", "environmental science", "environmental heritage"], "buksu_BS_ES", "buksu_BS-ES_program"),
+        (["bs es", "bses", "environmental science", "environmental conservation", "environmental heritage", "ecology degree"], "buksu_BS_ES", "buksu_BS-ES_program"),
         (["ab socio", "ba socio", "ab sociology", "ba sociology", "sociology"], "buksu_AB_SOCIO", "buksu_AB-SOCIO_program"),
-        (["ab eng", "ba eng", "ab english", "ba english", "english language"], "buksu_AB_ENG", "buksu_AB-ENG_program"),
-        (["bped", "physical education"], "buksu_BPED", "buksu_BPED_program"),
-        (["bs comdev", "bscomdev", "comdev", "community development"], "buksu_BS_COMDEV", "buksu_BS COMDEV_program"),
-        (["ab econ", "ba econ", "ab economics", "ba economics", "economics"], "buksu_AB_ECON", "buksu_AB-ECON_program"),
+        (["ab eng", "ba eng", "ab english", "ba english", "english language", "english literature"], "buksu_AB_ENG", "buksu_AB-ENG_program"),
+        (["bped", "physical education", "sports coaches", "sports teachers"], "buksu_BPED", "buksu_BPED_program"),
+        (["bs comdev", "bscomdev", "comdev", "community development", "community organizing"], "buksu_BS_COMDEV", "buksu_BS COMDEV_program"),
+        (["ab econ", "ba econ", "ab economics", "ba economics", "economics", "market analysis degree"], "buksu_AB_ECON", "buksu_AB-ECON_program"),
         (["beced", "early childhood education"], "buksu_BECED", "buksu_BECED_program"),
         (["bsdc", "development communication", "devcom"], "buksu_BSDC", "buksu_BSDC_program"),
-        (["bshm", "hospitality management"], "buksu_BSHM", "buksu_BSHM_program"),
-        (["bsat", "automotive technology"], "buksu_BSAT", "buksu_BSAT_program"),
-        (["bpa", "public administration"], "buksu_BPA", "buksu_BPA_program"),
+        (["bshm", "hospitality management", "hotel and restaurant"], "buksu_BSHM", "buksu_BSHM_program"),
+        (["bsat", "automotive technology", "automotive engine", "vehicle repair"], "buksu_BSAT", "buksu_BSAT_program"),
+        (["bpa", "public administration", "public governance", "government management"], "buksu_BPA", "buksu_BPA_program"),
         (["bs math", "bsmath", "mathematics"], "buksu_BS_MATH", "buksu_BS-MATH_program"),
-        (["bsa", "accountancy", "bs accountancy"], "buksu_BSA", "buksu_BSA_program"),
-        (["bsba fm", "bsbafm", "bsba", "financial management", "business administration"], "buksu_BSBA_FM", "buksu_BSBA-FM_program"),
+        (["bsa", "accountancy", "bs accountancy", "aspiring cpas"], "buksu_BSA", "buksu_BSA_program"),
+        (["bsba fm", "bsbafm", "bsba", "financial management", "corporate banking", "business administration"], "buksu_BSBA_FM", "buksu_BSBA-FM_program"),
         (["bsed eng", "bsed english", "english education"], "buksu_BSED_ENG", "buksu_BSED-ENG_program"),
         (["bsed sci", "bsed science", "science education"], "buksu_BSED_SCI", "buksu_BSED-SCI_program"),
         (["bsed socstud", "bsed social studies", "social studies education"], "buksu_BSED_SOCSTUD", "buksu_BSED-SOCSTUD_program"),
@@ -85,7 +85,13 @@ class KnowledgeRouter:
 
     def _has_any(self, text: str, terms: List[str]) -> bool:
         normalized = self.interpreter.normalize(text)
-        return any(term in normalized for term in terms)
+        for term in terms:
+            norm_term = self.interpreter.normalize(term).strip()
+            if not norm_term:
+                continue
+            if re.search(rf"(?<!\w){re.escape(norm_term)}(?!\w)", normalized):
+                return True
+        return False
 
     def _has_any_token(self, text: str, terms: List[str]) -> bool:
         tokens = set(self.interpreter.tokens(text))
@@ -334,11 +340,13 @@ class KnowledgeRouter:
         ]):
             return "campus_gates_and_entrances"
 
-        # 17. Examination Calendar Schedules
-        if self._has_any(text, [
-            "midterm exam", "midterm exams", "midterm", "final exam", "finals exam", "kanus-a ang midterm", "when is the midterm"
-        ]):
-            return "academic_calendar_exam_schedules"
+        # 17. Examination Rules & Calendar Schedules
+        if self._has_any(text, ["midterm", "final exam", "finals exam", "final examination", "midterm examination", "exam rules", "examination rules"]):
+            if self._has_any(text, ["rule", "rules", "guideline", "guidelines", "policy", "policies", "slip", "slipt", "permit", "what do i need", "kailangan", "kinahanglan", "patakaran"]):
+                return "midterm_and_final_exam_rules"
+            if self._has_any(text, ["when", "schedule", "date", "dates", "calendar", "kanus-a", "kanusa", "oras", "week", "when are"]):
+                return "academic_calendar_exam_schedules"
+            return "midterm_and_final_exam_rules"
 
         # 18. BukSU General Overview / History
         if "unsa diay ang buksu" in text or "unsa ang buksu" in text or "what is buksu" in text:
@@ -350,8 +358,109 @@ class KnowledgeRouter:
         ]):
             return "guidance_counseling_services_buksu"
 
+        # Academics & Policies Direct Intent Routing
+        if self._has_any(text, [
+            "how long do i have to clear", "how long to complete inc", "complete an incomplete inc", "inc mark", "inc completion period", "inc expiration", "inc time limit"
+        ]):
+            return "inc_grade_rules"
+
+        if self._has_any(text, [
+            "numerical grade", "numerical grades", "grading system", "grades from 1.0", "converted into numerical", "percentage scores converted", "grading scale", "1.0 to 5.0"
+        ]):
+            return "buksu_grading_system"
+
+        if self._has_any(text, [
+            "general education subjects", "general curriculum", "mandatory general education", "ge subjects", "general education curriculum"
+        ]):
+            return "buksu_courses_offered"
+
+        if self._has_any(text, [
+            "failing grade", "failing a course", "failing grade of 5.0", "receives a failing grade", "5.0 in a course", "fail a subject", "failed a subject", "bagsak sa subject", "failing subject policy", "failing subject rules"
+        ]):
+            return "failed_subject_policy"
+
+        if self._has_any(text, [
+            "snacking", "drinking", "permitted inside regular classrooms", "food in classroom", "eating inside", "eating in class", "eating and drinking in classroom", "snacking and drinking"
+        ]):
+            return "eating_in_classroom"
+
+        # Procedures Direct Intent Routing
+        if self._has_any(text, [
+            "senior high graduates", "shs graduates", "college entrance", "freshman admission", "freshmen admission", "apply for college entrance", "freshman documents", "paperwork and documents do senior high"
+        ]):
+            return "freshman_admission_requirements"
+
+        if self._has_any(text, [
+            "apply online as an applicant", "apply online for admission", "how to apply as an applicant", "step by step instructions to apply online"
+        ]):
+            return "online_application_schedule"
+
+        if self._has_any(text, [
+            "admission status is still pending", "application pending", "admission pending", "status is pending", "pending validation", "status is still pending"
+        ]):
+            return "application_pending"
+
+        if self._has_any(text, [
+            "typo in my name", "wrong name", "typo on the printed", "error in name", "test permit name error", "typo on test permit", "typo in name"
+        ]):
+            return "test_permit_name_error"
+
+        if self._has_any(text, [
+            "uploading my 2x2", "upload 2x2", "2x2 picture", "2x2 photo", "uploading photo error", "cannot upload 2x2", "cannot upload photo", "error when uploading my 2x2"
+        ]):
+            return "cannot_upload_2x2_picture"
+
+        if self._has_any(text, [
+            "failed to show up on my scheduled", "missed my scheduled", "missed entrance exam", "reschedule entrance exam", "missed buksu cat", "reschedule my cat", "failed to show up on my scheduled entrance"
+        ]):
+            return "missed_buksu_cat_schedule"
+
+        if self._has_any(text, [
+            "transferring from another college", "transferee admission", "transfer student admission", "transferee requirements", "students transferring from another"
+        ]):
+            return "transferee_admission_requirements"
+
+        if self._has_any(text, [
+            "returning students apply for readmission", "leave of absence", "returning student readmission", "readmission after taking a leave"
+        ]):
+            return "returning_student_readmission_process"
+
+        if self._has_any(text, [
+            "verify on sias", "enrolled subjects are officially confirmed", "check enrollment status on sias", "verify enrollment on sias", "check portal enrollment status"
+        ]):
+            return "check_portal_enrollment_status"
+
+        if self._has_any(text, [
+            "gate pass", "gatepass", "forgot my student id", "campus entry without", "temporary gate pass", "forgot my student id and need a"
+        ]):
+            if self._has_any(text, ["bike", "bicycle"]):
+                return "bike_gate_pass"
+            return "general_gate_pass"
+
+        if self._has_any(text, [
+            "activate or register for library borrowing", "library borrowing privileges", "register for library borrowing", "activate library card", "library id card registration"
+        ]):
+            return "library_id_card_requirements"
+
+        # Services Direct Intent Routing
+        if self._has_any(text, [
+            "oral checkups", "oral examination", "dental checkup", "dental consultation", "dental services", "dentist provide", "school dentist provide"
+        ]):
+            return "buksu_medical_dental_services"
+
+        if self._has_any(text, [
+            "scholarships and financial grants unit", "financial grants unit", "grants unit located", "scholarship unit located", "scholarships unit", "what grants do they handle"
+        ]):
+            return "available_scholarships_buksu"
+
+        if self._has_any(text, [
+            "campus dress code", "clothing policy", "wash days", "civilian attire", "proper campus dress code", "clothing policy on non-uniform"
+        ]):
+            return "wear_civilian_attire"
+
         # Password Management & Reset Clarification
-        is_password_query = any(k in text for k in [
+        _is_gate_pass_query = self._has_any(text, ["gate pass", "gatepass", "forgot my student id", "temporary gate pass"])
+        is_password_query = (not _is_gate_pass_query) and (any(k in text for k in [
             "password", "passcode", "reset password", "change password", "forgot password",
             "recover password", "update password", "ilis sa password", "ilis og password",
             "usab sa password", "usbon ang password", "nakalimot kos password", "nakalimot ko sa password",
@@ -359,7 +468,7 @@ class KnowledgeRouter:
         ]) or (
             ("password" in tokens or "pass" in tokens or "pwd" in tokens) and 
             any(w in text for w in ["change", "reset", "forgot", "forget", "recover", "update", "ilis", "usab", "nakalimot", "lost"])
-        )
+        ))
 
         if is_password_query:
             if any(w in text for w in ["admission", "cat", "applicant", "application", "testing"]):
@@ -427,6 +536,18 @@ class KnowledgeRouter:
         has_cor_signal = self._has_any_token(text, ["cor"]) or self._has_any(text, [
             "certificate of registration", "cert of registration", "registration certificate",
         ])
+        _is_id_validation_query = (
+            ("id" in raw_tokens or "student id" in text or "school id" in text or "akong id" in text or "sa id" in text) and
+            self._has_any(text, ["validate", "validation", "pavalidate", "pa-validate", "pa validate", "pag-validate", "ma-validate", "mavalidate", "pavalidate sa id"])
+        )
+        if _is_id_validation_query:
+            word_tokens = set(re.findall(r"\b[\w'-]+\b", text))
+            if bool(word_tokens.intersection({"when", "date", "day", "time", "schedule", "month", "period", "kanus-a", "kanusa"})) or self._has_any(
+                text, ["validation day", "validation date", "validation schedule", "how long", "kanus-a"]
+            ):
+                return "id_validation_day"
+            return "id_validation_process"
+
         if has_cor_signal:
             if self._has_any(text, ["validate", "validation", "pa-validate", "pa validate", "pag-validate", "ma-validate", "mavalidate"]):
                 if self._has_any(text, ["where", "asa", "location", "place", "hain", "diin", "asa dapit", "where do i go", "where can i", "where should i", "which window", "unsa nga window", "asa moadto"]):
@@ -558,7 +679,7 @@ class KnowledgeRouter:
             if intent == "ask_contact" or _has_explicit_contact_phrase or _has_contact_verb:
                 if not self._has_any(text, ["dean", "faculty", "tor", "transcript", "cashier", "clinic", "guidance",
                                             "citl", "ictu", "apply", "requirement", "process", "where", "location",
-                                            "located", "room", "building"]):
+                                            "located", "room", "building", "email", "institutional email", "problema", "problem"]):
                     return "__contact_clarification__"
 
 
@@ -863,6 +984,12 @@ class KnowledgeRouter:
                 "did not reach",
                 "wala nakaabot",
                 "wala kaabot",
+                "ubos",
+                "ubos akong ror",
+                "ubos ror",
+                "ubos ang ror",
+                "ubos sa cutoff",
+                "ubos sa cut-off",
             ]) and
             (
                 self._has_any(text, [
@@ -886,6 +1013,11 @@ class KnowledgeRouter:
                     "percentage score",
                     "cutoff score",
                     "cut off score",
+                    "cutoff",
+                    "cut off",
+                    "ror",
+                    "rating",
+                    "report of rating",
                     "non passer",
                     "nonpasser",
                     "non-passer",
@@ -1000,6 +1132,38 @@ class KnowledgeRouter:
             ) and
             not has_enrollment
         )
+        has_school_year_end = (
+            self._has_any(text, ["end", "ends", "ending", "human", "mahuman", "maghuman", "mahoman", "last day", "finish", "done", "what month do school year ends", "when is the school year ends", "when do the sy end"]) and
+            self._has_any(
+                text,
+                [
+                    "school year",
+                    "sy",
+                    "academic year",
+                    "class",
+                    "classes",
+                    "klase",
+                    "klasi",
+                ],
+            ) and
+            not has_enrollment
+        )
+        has_difference_board_nonboard = (
+            self._has_any(text, ["difference", "kalainan", "kalahian", "differ", "distinction", "versus", "vs", "unsa may difference", "unsay kalahian"]) and
+            ("board" in text) and
+            ("non-board" in text or "non board" in text or "nonboard" in text)
+        )
+        has_pe_uniform_store_schedule = (
+            self._has_any(text, ["open", "abli", "schedule", "hours", "time", "todeee", "today", "karon", "kanus-a", "kanusa", "what time"]) and
+            (
+                (self._has_any(text, ["pe", "p.e", "physical education"]) and self._has_any(text, ["palitanan", "store", "buy", "palit", "uniform"])) or
+                ("university press" in text)
+            )
+        )
+        has_excuse_letter_submit = (
+            ("excuse" in text or "absence" in text or "absent" in text) and
+            self._has_any(text, ["kinsa", "kinsay", "who", "whom", "hatag", "ihatag", "e hatag", "ipasa", "pasa", "give", "submit", "kanino"])
+        )
         has_enrollment_process = has_enrollment and self._has_any(
             text,
             [
@@ -1109,8 +1273,10 @@ class KnowledgeRouter:
         raw_has_student_id = self._has_any(raw_normalized, ["student id", "school id"])
         raw_has_library_id = self._has_any(raw_normalized, ["library id", "library card"])
         raw_has_cor = self._has_any(raw_normalized, ["cor", "certificate of registration"])
-        has_id_validation = has_validation and not has_dental and (
-            "id" in raw_tokens or raw_has_student_id
+        has_id_validation = (
+            (has_validation or self._has_any(text, ["pavalidate", "pa-validate", "validate", "validation"])) and
+            not has_dental and
+            ("id" in raw_tokens or raw_has_student_id or self._has_any(text, ["student id", "school id", "akong id", "sa id"]))
         )
         has_cor_validation = has_validation and raw_has_cor
         has_generic_validation_question = (
@@ -1585,7 +1751,7 @@ class KnowledgeRouter:
         has_freshman_enrollment_question = (
             self._has_any(text, ["incoming freshmen", "incoming freshman", "freshman", "freshmen"]) and
             has_enrollment and
-            self._has_any(text, ["online ba tanan", "online ba o", "mo-adto sa campus", "adto sa campus", "how to enroll", "unsaon pag-enroll", "unsaon pag enroll"])
+            self._has_any(text, ["how to enroll", "unsaon pag-enroll", "unsaon pag enroll", "freshman enrollment process", "enrollment steps"])
         )
         has_office_hours = self._has_any(text, ["office hours", "office schedule", "buksu office", "university office"])
         has_calendar = self._has_any(text, ["academic calendar", "university calendar", "official calendar", "semester calendar", "school calendar"]) or (
@@ -1647,7 +1813,8 @@ class KnowledgeRouter:
         has_uniform_policy = (
             self._has_any(text, [
                 "uniform", "dress code", "dresscode", "not wearing uniform", "without uniform", "wearing uniform", "school uniform",
-                "attire", "dress", "outfit", "pamesti", "uniporme"
+                "attire", "dress", "outfit", "pamesti", "uniporme", "memorandum no 01", "memo no 01", "memorandum no. 01", "memo no. 01",
+                "memorandum on uniform", "memo on uniform", "no. 01, s.2026", "no. 01, s. 2026", "no 01 s 2026"
             ]) or
             has_civilian_attire or
             (has_campus_entry_wording and self._has_any(text, ["t-shirt", "t shirt", "tshirt", "pants", "shirt", "wear", "wearing", "using", "isuot", "sul-ob"]))
@@ -1770,7 +1937,7 @@ class KnowledgeRouter:
                     "inside campus",
                 ])
             )
-        )
+        ) and not self._has_any(text, ["library", "laib", "clinic", "dorm", "dormitory", "gym", "canteen", "cafeteria"])
         has_library_books = self._has_any(text, [
             "borrow books", "borrow book", "return books", "return book",
             "get books", "get book", "getting books", "getting book",
@@ -1783,6 +1950,11 @@ class KnowledgeRouter:
         has_library_resources_query = (
             self._has_any(text, ["library resources", "library resource", "buksu library resources", "digital library resources"]) or
             (self._has_any(text, ["library"]) and self._has_any(text, ["resource", "resources"]))
+        )
+        has_library_entry_query = (
+            self._has_any(text, ["library", "laib"]) and
+            self._has_any(text, ["enter", "inside", "sulod", "makasulod", "mosulod", "access", "use", "gamiton", "gamit", "bring", "allowed"]) and
+            (has_student_id or "id" in raw_tokens or has_cor or "cor" in raw_tokens or "school id" in text)
         )
         has_library_hours = (
             not has_library_id and
@@ -2053,9 +2225,10 @@ class KnowledgeRouter:
         )
         has_course_slot_query = has_slot_word and has_course_slot_subject
         has_dormitory = self._has_any(text, ["dormitory", "dormitories", "dorm", "dorms", "mahogany", "rubia", "kilala"])
-        has_classroom_food = (
-            bool(raw_tokens.intersection({"eat", "eating", "food", "snack", "kaon", "mokaon", "mukaon", "pagkaon"})) or
-            self._has_any(text, ["can i eat", "eat inside", "eating inside"])
+        is_food_tech = self._has_any(text, ["food tech", "foodtech", "food technology", "food processing", "manufacturing", "degree", "bachelor", "course", "program"])
+        has_classroom_food = not is_food_tech and (
+            bool(raw_tokens.intersection({"eat", "eating", "snack", "snacks", "kaon", "mokaon", "mukaon", "pagkaon"})) or
+            self._has_any(text, ["can i eat", "eat inside", "eating inside", "eating in class", "eat in classroom", "snacking in class", "drinking in class"])
         )
         has_classroom = (
             self._has_any(
@@ -2297,6 +2470,14 @@ class KnowledgeRouter:
             return "after_admission_application"
         if has_school_year_class_start:
             return "school_year_class_start_schedule"
+        if has_school_year_end:
+            return "school_year_end_schedule"
+        if has_difference_board_nonboard:
+            return "difference_board_nonboard_courses"
+        if has_pe_uniform_store_schedule:
+            return "pe_uniform_store_schedule"
+        if has_excuse_letter_submit:
+            return "absence_excuse_requirements"
         if has_test_permit_name_error:
             return "test_permit_name_error"
         if has_test_permit_issue:
@@ -2345,9 +2526,30 @@ class KnowledgeRouter:
         if has_official_website:
             return "buksu_official_website"
 
+        has_library_penalty = (
+            self._has_any(text, ["penalty", "fine", "fines", "overdue", "late return", "unreturned", "late returned", "overdue fine"]) and
+            self._has_any(text, ["library", "book", "books", "libro"])
+        )
+        if has_library_penalty:
+            return "library_late_return_penalty"
+
+        has_library_available = (
+            self._has_any(text, ["available books", "books available", "reference collections", "dissertations", "textbooks", "library hold", "library collection", "reference collection"]) or
+            (self._has_any(text, ["library", "laib"]) and self._has_any(text, ["available to borrow", "collections", "textbook", "textbooks", "materials"]))
+        )
+        if has_library_available:
+            return "library_available_books_info"
+
+        has_library_borrow_rules = (
+            self._has_any(text, ["how many books", "how many days", "borrowing rules", "book limit", "borrow limit", "maximum books", "undergraduate student take home"]) and
+            self._has_any(text, ["library", "borrow", "book", "books"])
+        )
+        if has_library_borrow_rules:
+            return "library_book_borrowing_rules"
+
         has_library_return = (
             self._has_any(text, ["library", "libro", "book", "books"]) and
-            self._has_any(text, ["return", "ibalik", "pag-uli", "iuli", "pag uli", "deadline", "human na ang deadline"])
+            self._has_any(text, ["return", "hand back", "ibalik", "pag-uli", "iuli", "pag uli", "deadline", "human na ang deadline"])
         )
         if has_library_return:
             return "library_return_books_process"
@@ -2359,15 +2561,21 @@ class KnowledgeRouter:
         if has_library_borrow:
             return "library_borrow_books_process"
 
-        has_clinic_services = self._has_any(text, ["clinic", "dental", "medical checkup", "checkup", "dentista", "dentist", "medical consult", "dental consult"])
+        has_clinic_services = self._has_any(text, ["clinic", "dental", "medical checkup", "checkup", "dentista", "dentist", "medical consult", "dental consult", "health services"])
         if has_clinic_services:
-            if self._has_any(text, ["dental", "ngipon", "tooth", "teeth", "pasta", "ibot"]):
+            if self._has_any(text, ["tooth extraction", "extract tooth", "extract a tooth", "tooth removal", "remove tooth", "paibot ngipon", "ibot ngipon", "tooth pulled", "pulled at the dental"]):
+                return "request_tooth_extraction"
+            if self._has_any(text, ["hours", "operating hours", "opening hours", "open", "close", "schedule"]):
+                return "health_services_unit_location_hours"
+            if self._has_any(text, ["first aid", "emergency consultations", "emergency", "consultations are available"]):
+                return "buksu_clinic_services"
+            if self._has_any(text, ["dental", "ngipon", "tooth", "teeth", "pasta", "oral checkup", "checkups"]):
                 return "request_dental_consult"
             if self._has_any(text, ["medical", "checkup", "check up", "doctor", "doktor", "tambal", "medicine"]):
                 return "buksu_medical_dental_services"
             return "__clinic_services_menu__"
 
-        has_institutional_email = self._has_any(text, ["institutional email", "ms teams", "teams account", "office 365", "student email"])
+        has_institutional_email = self._has_any(text, ["institutional email", "ms teams", "teams account", "office 365", "student email", "google workspace"])
         if has_institutional_email:
             return "institutional_email_info"
 
@@ -2387,14 +2595,62 @@ class KnowledgeRouter:
                 "unsa nga mga scholarship available", "unsa ang mga scholarship available", "unsa nga scholarship available",
                 "unsa ang mga scholarship sa buksu", "unsa nga mga scholarship sa buksu", "unsa nga scholarship naa sa buksu",
                 "naa bay scholarship sa buksu", "naa bay available nga scholarship", "available scholarships in buksu",
-                "available scholarships", "available scholarship", "scholarship programs", "scholarship program"
+                "available scholarships", "available scholarship", "scholarship programs", "scholarship program",
+                "apply for institutional and government educational scholarships", "educational scholarships",
             ]) or (
                 self._has_any(text, ["scholarship", "scholarships", "sfgu", "financial grants", "financial grant"]) and
-                self._has_any(text, ["available", "offer", "offered", "offers", "list", "programs", "options", "types", "unsa", "what", "naa", "aduna"])
+                self._has_any(text, ["available", "offer", "offered", "offers", "list", "programs", "options", "types", "unsa", "what", "naa", "aduna", "apply", "application"])
             )
-        ) and not has_dual_scholarship and not self._has_any(text, ["where", "location", "asa dapit", "hain", "diin", "room", "a1-1-02", "contact", "email", "phone", "number", "how to apply", "unsaon pag apply"])
+        ) and not has_dual_scholarship and not self._has_any(text, ["where", "location", "asa dapit", "hain", "diin", "room", "a1-1-02", "contact", "email", "phone", "number"])
         if has_available_scholarships:
             return "available_scholarships_buksu"
+
+        has_scholarship_unit = self._has_any(text, ["scholarships and financial grants unit", "financial grants unit", "sfgu", "scholarships unit", "scholarship unit"])
+        if has_scholarship_unit:
+            return "scholarships_and_financial_grants"
+
+        has_free_tuition = self._has_any(text, ["universal access", "tertiary education act", "free tuition", "ra 10931", "cover my tuition", "quality tertiary education"])
+        if has_free_tuition:
+            return "free_tuition_undergraduate_buksu"
+
+        has_guidance_inquiry = self._has_any(text, ["guidance", "counseling", "counselor", "psychological", "personality testing", "stress support", "mental wellness"])
+        if has_guidance_inquiry and not self._has_any(text, ["where is", "location of", "asa dapit", "room"]):
+            if self._has_any(text, ["fee", "fees", "payment", "pay", "charge", "charged", "cost", "free", "bayad", "pila"]):
+                return "ask_guidance_fee"
+            if self._has_any(text, ["stress", "mental", "depressed", "anxious", "wellness"]):
+                return "student_stress_support"
+            return "guidance_counseling_services_buksu"
+
+        has_lost_found = self._has_any(text, ["lost and found", "claim items", "valuables lost", "misplaced inside", "misplaced on campus", "nawala nga gamit", "lost item", "lost or misplaced"])
+        if has_lost_found:
+            return "lost_and_found_buksu"
+
+        has_gate_pass = self._has_any(text, ["gate pass", "temporary gate pass", "forgot my student id and need a temporary gate pass", "forgot my id and need", "no id enter campus"])
+        if has_gate_pass:
+            return "general_gate_pass"
+
+        has_college_shirt = self._has_any(text, ["college shirt", "college shirts", "department shirt", "department shirts", "course shirt", "org shirt", "sbo shirt"])
+        if has_college_shirt:
+            has_buy_query = self._has_any(text, ["buy", "purchase", "palit", "order", "avail", "how to get", "where to get", "where can i buy", "where to buy", "how much", "price", "pila", "tagpila", "asa makapalit", "unsaon pagpalit"])
+            if has_buy_query:
+                return "buy_college_shirt"
+            return "college_shirt_allowed"
+
+        has_join_org = self._has_any(text, ["sign up to become a member", "join student organization", "join student organizations", "join a club", "join campus club", "become a member of an accredited campus club"])
+        if has_join_org:
+            return "join_student_organizations_process"
+
+        has_orientation_query = self._has_any(text, ["freshman orientation", "new student orientation", "orientation mandatory", "freshman student orientation", "attending the freshman student orientation"])
+        if has_orientation_query:
+            return "new_student_orientation_purpose"
+
+        has_freshmen_intramurals_query = self._has_any(text, ["freshman intramurals", "freshmen intramurals", "first-year freshman students allowed to join sports", "freshmen join intramurals"])
+        if has_freshmen_intramurals_query:
+            return "freshmen_intramurals"
+
+        has_dress_code_query = self._has_any(text, ["dress code", "clothing policy", "wash day", "wash days", "civilian attire", "non-uniform wash days", "proper campus dress code"])
+        if has_dress_code_query and not self._has_any(text, ["pe uniform", "physical education uniform"]):
+            return "campus_dress_code"
 
         if has_buksu_general_policy:
             return "buksu_general_policies"
@@ -2402,13 +2658,18 @@ class KnowledgeRouter:
         if has_uniform_policy:
             return "campus_dress_code_policy"
         if has_dormitory:
+            if self._has_any(text, ["mahogany", "male", "boys", "men", "lalaki"]):
+                return "male_dorm"
+            if self._has_any(text, ["rubia", "female", "babae", "women", "girls"]):
+                return "female_dorm"
             if self._has_any(text, ["bayad", "curfew", "rate", "rates", "fee", "fees", "monthly", "binuwan", "pila", "tagpila"]):
                 return "campus_dormitories"
-            if self._has_any(text, ["rubia", "female", "babae", "women"]):
-                return "female_dorm"
             return "campus_dormitories"
-        if not has_id_validation and (has_student_id or self._has_any_token(text, ["id"]) or self._has_any(text, ["student id", "school id", "id card", "akong id"])) and self._has_any(text, ["unsaon", "how", "process", "picture", "pa-picture", "papicture", "pagkuha", "apply", "kuha", "claim", "get", "pag-process", "pag process", "nawala", "lost", "replacement", "magpa-himo", "bag-o"]):
-            return "student_id_process"
+        if not has_library_id and not has_id_validation and (has_student_id or self._has_any_token(text, ["id"]) or self._has_any(text, ["student id", "school id", "id card", "akong id"])):
+            if self._has_any(text, ["replace a lost", "lost buksu student id", "lost student id", "replace lost", "replacement"]):
+                return "lost_student_id_replacement_process"
+            if self._has_any(text, ["unsaon", "how", "process", "picture", "pa-picture", "papicture", "pagkuha", "apply", "kuha", "claim", "get", "pag-process", "pag process", "magpa-himo", "bag-o"]):
+                return "student_id_process"
         if (has_pe_uniform_mention or self._has_any(text, ["pe uniform", "school uniform", "uniform"])) and self._has_any(text, ["palit", "makapalit", "buy", "where to get", "asa dapit", "asa makapalit", "asa makuha", "how to get", "unsaon pagkuha", "request"]):
             return "pe_uniform_process"
         if has_psa_birth_certificate:
@@ -2435,17 +2696,31 @@ class KnowledgeRouter:
             "shifting to another course", "shift ug programa", "shift sa lain course", "shift ug lain course",
             "mag-shift ug course", "mag shift ug course", "mag-shift og course", "mag shift og course",
         ])
-        has_requirement_or_admission_intent = (
+        has_enrollment_req_intent = (
             self._has_any(text, [
                 "requirement", "requirements", "document", "documents", "needed",
                 "kinahanglan", "gikinahanglan", "dokumento", "papeles", "unsa kinahanglan",
                 "unsa ang requirements", "what are the requirements", "what are the documents",
-                "what do i need", "what documents", "what documents do", "unsaon pag enroll", "how to enroll",
-                "unsaon pag apply", "how to apply", "qualify", "qualifying", "qualification",
+                "what do i need", "what documents", "what documents do", "what to prepare",
+                "qualify", "qualifying", "qualification", "envelope", "envelopes",
                 "admission requirements", "enrollment requirements", "documentary requirements",
-                "unsa ang mga papeles", "unsa ang mga dokumento", "enroll", "enrollment"
+                "unsa ang mga papeles", "unsa ang mga dokumento", "papers to bring", "documents to bring",
+                "what papers", "unsa akong dad-on", "unsa akong dalhon", "ipasa", "submit",
+                "requirements for enrollment", "enrollment documentary requirements"
             ])
         )
+        has_enrollment_proc_intent = (
+            self._has_any(text, [
+                "how to enroll", "how do i enroll", "how can i enroll", "how to enroll in",
+                "unsaon pag enroll", "unsaon pag-enroll", "unsaon pagpa enroll", "unsaon pagpa-enroll",
+                "enrollment process", "process of enrollment", "steps for enrollment", "steps to enroll",
+                "enrollment steps", "paagi sa pag enroll", "unsa ang proseso sa pag enroll",
+                "how does enrollment work", "walk me through enrollment", "guide for enrollment",
+                "how student enroll", "unsa ang enrollment process", "unsaon pag enroll sa mga estudyante",
+                "how to apply for enrollment", "unsaon pag apply para enrollment", "unsaon pag apply og enrollment"
+            ])
+        )
+        has_requirement_or_admission_intent = has_enrollment_req_intent
 
         # 1. Specific Law & Graduate Program Requirements
         has_law_or_graduate_req = (
@@ -2462,13 +2737,15 @@ class KnowledgeRouter:
         # 2. Specific College of Medicine Requirements
         has_medicine_program_req = (
             self._has_any(text, [
-                "medicine enrollment", "medicine requirements", "college of medicine",
-                "doctor of medicine", "medicine documentary", "med school requirements",
+                "medicine enrollment", "medicine requirements",
+                "doctor of medicine requirements", "doctor of medicine enrollment",
+                "medicine documentary", "med school requirements",
                 "medicine course requirements", "nmat result"
             ]) or
-            (self._has_any_token(text, ["medicine", "nmat"]) and has_requirement_or_admission_intent)
+            (self._has_any_token(text, ["medicine", "nmat"]) and has_requirement_or_admission_intent) or
+            (self._has_any(text, ["college of medicine", "doctor of medicine", "med school"]) and has_requirement_or_admission_intent)
         )
-        if has_medicine_program_req and active_domain != "location" and not self._has_any(text, ["where is", "location of", "asa dapit", "asa ang"]):
+        if has_medicine_program_req and active_domain != "location" and not self._has_any(text, ["where is", "where", "location of", "location", "asa dapit", "asa ang", "asa", "how to go", "how to find", "building", "bldg"]):
             return "medicine_enrollment_requirements"
 
         # 3. General / Broad Enrollment Requirements (No specific single program specified)
@@ -2490,8 +2767,8 @@ class KnowledgeRouter:
         ) and active_domain != "location":
             return "enrollment_documents"
 
-        # 4. Undergraduate Course-Aware Admission & Enrollment Requirement Routing:
-        # Detects when a student asks about requirements, documents, or enrollment for a specific undergraduate course.
+        # 4. Undergraduate Course-Aware Admission & Enrollment Routing:
+        # Distinguishes when a student asks how to enroll vs documentary requirements for a specific course.
         has_undergrad_course_mention = (
             self._has_any(text, [
                 # COT
@@ -2531,8 +2808,11 @@ class KnowledgeRouter:
             ])
         )
 
-        if has_undergrad_course_mention and has_requirement_or_admission_intent and active_domain != "location" and not self._has_any(text, ["where is", "location of", "asa dapit", "asa ang", "how to go to", "how to find", "building", "asa dapit ang"]):
-            return "freshman_enrollment_process"
+        if has_undergrad_course_mention and active_domain != "location" and not self._has_any(text, ["where is", "location of", "asa dapit", "asa ang", "how to go to", "how to find", "building", "asa dapit ang"]):
+            if has_enrollment_req_intent:
+                return "freshman_enrollment_process"
+            if has_enrollment_proc_intent or self._has_any(text, ["enroll", "enrollment", "enrolling", "mag-enroll", "mag enroll", "magpa-enroll", "magpa enroll"]):
+                return "enrollment_general_process"
 
         # Enrollment Onboarding — "I want to enroll but don't know where to start"
         # Must be checked BEFORE generic enrollment and BEFORE location routing.
@@ -2807,7 +3087,7 @@ class KnowledgeRouter:
             self._has_any(text, ["cor", "certificate of registration"]) and
             self._has_any(text, ["validate", "pa-validate", "pa validate", "validation", "pag-validate", "ma-validate", "mavalidate", "asa magpa validate", "asa i-validate"])
         )
-        if has_cor_validation:
+        if has_cor_validation and not _is_id_validation_query:
             # 1. Location intent (Where to validate)
             if self._has_any(text, ["where", "asa", "location", "place", "hain", "diin", "asa dapit", "where do i go", "where can i", "where should i", "which window", "unsa nga window", "asa moadto"]):
                 return "cor_validation_location"
@@ -2856,9 +3136,18 @@ class KnowledgeRouter:
         if has_thesis_defense:
             return "thesis_defense"
 
-        has_prerequisite = self._has_any(text, ["prerequisite", "prereq", "pre requisite", "pre-requisite"])
+        has_prerequisite = self._has_any(text, ["prerequisite", "prerequisites", "prerequisit", "prereq", "pre requisite", "pre-requisite"])
         if has_prerequisite:
+            if self._has_any(text, ["fail", "failed", "failing", "bagsak", "hagbong", "retake", "advance", "dependent", "take again"]):
+                return "failed_prerequisite_subject"
             return "prerequisite_subjects_purpose"
+
+        has_exam_query = self._has_any(text, ["midterm", "final exam", "finals exam", "final examination", "midterm examination", "exam rules", "examination rules"])
+        if has_exam_query:
+            if self._has_any(text, ["rule", "rules", "guideline", "guidelines", "policy", "policies", "slip", "slipt", "permit", "what do i need", "kailangan", "kinahanglan", "patakaran"]):
+                return "midterm_and_final_exam_rules"
+            if self._has_any(text, ["when", "schedule", "date", "dates", "calendar", "kanus-a", "kanusa", "oras", "week"]):
+                return "academic_calendar_exam_schedules"
 
         has_lost_and_found = self._has_any(text, [
             "lost and found", "lost item", "lost items", "lose something", "lost something",
@@ -3012,7 +3301,7 @@ class KnowledgeRouter:
         if has_enrollment and self._has_any(text, ["online ba tanan", "online ba o", "adto sa campus", "mo-adto sa campus", "onsite"]):
             return "mixed_enrollment_process"
         if has_freshman_enrollment_question:
-            return "freshman_enrollment_process"
+            return "enrollment_general_process"
         if has_transferee and (has_enrollment or self._has_any(text, ["enroll", "enrol", "delayed"])):
             return "transferee_enrollment"
         if has_cutoff_score or has_cat_score_requirement:
@@ -3059,7 +3348,7 @@ class KnowledgeRouter:
             self._has_any(text, ["book", "books", "library", "book center", "materials"])
         ):
             return "library_late_return_penalty"
-        if has_library_resources_query:
+        if has_library_entry_query or has_library_resources_query:
             return "access_buksu_library_resources"
         if has_library_books or (
             self._has_any(text, ["book", "books"]) and
@@ -3384,11 +3673,17 @@ class KnowledgeRouter:
         if has_enrollment_application_approval:
             return "enrollment_application_approval"
         if has_freshman and (has_enrollment_process or has_course_specific_enrollment_help):
-            return "freshman_enrollment_process"
+            if self._has_any(text, ["requirement", "requirements", "document", "documents", "papeles", "needed", "kinahanglan", "envelope", "envelopes"]):
+                return "freshman_enrollment_process"
+            return "enrollment_general_process"
         if has_course_specific_enrollment_help and has_enrollment_process:
-            return "freshman_enrollment_process"
+            if self._has_any(text, ["requirement", "requirements", "document", "documents", "papeles", "needed", "kinahanglan", "envelope", "envelopes"]):
+                return "freshman_enrollment_process"
+            return "enrollment_general_process"
         if has_school_year_class_start:
             return "school_year_class_start_schedule"
+        if has_school_year_end:
+            return "school_year_end_schedule"
         if has_enrollment_time and not has_late_enrollment:
             return "enrollment_time_schedule"
         if has_late_enrollment:
@@ -3424,7 +3719,7 @@ class KnowledgeRouter:
             if self._has_any(text, ["cost", "fee", "payment", "how much", "pay", "bayad", "free", "pila", "naay bayad"]):
                 return "clinic_medical_certificate_cost"
             return "clinic_medical_certificate_process"
-        if has_clinic or has_dental:
+        if has_clinic or has_dental or has_dental_referral_medicine:
             if has_dental and has_location_wording:
                 return None
             if self._has_any(text, ["mission"]):
@@ -3632,6 +3927,8 @@ class KnowledgeRouter:
         if intent == "ask_schedule":
             if has_school_year_class_start:
                 return "school_year_class_start_schedule"
+            if has_school_year_end:
+                return "school_year_end_schedule"
             if has_office_hours:
                 return "all_office_schedule"
             if has_admission:
@@ -3658,7 +3955,9 @@ class KnowledgeRouter:
             if has_transferee and has_enrollment:
                 return "transferee_enrollment"
             if has_freshman and has_enrollment:
-                return "freshman_enrollment_process"
+                if self._has_any(text, ["requirement", "requirements", "document", "documents", "papeles", "needed", "kinahanglan", "envelope", "envelopes"]):
+                    return "freshman_enrollment_process"
+                return "enrollment_general_process"
             if has_sias:
                 if has_password_wording:
                     return "sias_forgot_password"
@@ -3796,7 +4095,7 @@ class KnowledgeRouter:
         raw_tokens = set(re.findall(r"\b[\w'-]+\b", text))
         if not self._has_any(text, ["validate", "validation"]):
             return None
-        if self._has_any(text, ["enrollment", "enroll"]):
+        if self._has_any(text, ["enrollment", "enroll", "subject", "subjects", "kurso", "course", "courses", "credit", "crediting", "medical", "clinic", "doktor", "doctor", "advising"]):
             return None
         has_specific_validation_target = (
             bool(raw_tokens.intersection({"id", "cor"})) or
@@ -4333,6 +4632,8 @@ class KnowledgeRouter:
             return None
         if "uniform" in tokens or "uniforms" in tokens:
             return None
+        if self._has_any(text, ["faculty room", "faculty office", "room", "department", "building", "office", "dapit", "asa", "where"]):
+            return None
         if self._has_any(text, ["old", "daan", "previous", "jogging", "white", "allowed", "pwede", "pwedi", "gamiton", "isuot", "sul-ob"]):
             return None
         if self._has_any(text, ["pe clothes", "pe clothing"]) and self._has_any(text, ["where", "get", "request", "buy", "kuha", "asa"]):
@@ -4517,6 +4818,24 @@ class KnowledgeRouter:
 
         # Issue 2 Fix: Pass active_domain so LLM cache key is domain-scoped
         llm_candidate = self.llm_reranker.choose(user_message, retrieval_result, domain=active_domain)
+        if not llm_candidate and not retrieval_result.ranked_candidates and active_domain:
+            domain_candidates = self.retrieval_scorer.index.candidates_for_domain(active_domain)
+            if domain_candidates:
+                from retrieval_result import RetrievalResult
+                query_tokens = set(self.interpreter.tokens(user_message))
+                scored_domain = []
+                for cand in domain_candidates:
+                    tok_overlap = len(query_tokens.intersection(set(cand.tokens)))
+                    scored_domain.append((tok_overlap, cand))
+                scored_domain.sort(key=lambda x: x[0], reverse=True)
+                fallback_result = RetrievalResult(
+                    candidate=scored_domain[0][1] if scored_domain else None,
+                    score=10.0,
+                    confidence="low",
+                    ranked_candidates=[(cand, float(sc)) for sc, cand in scored_domain[:10]],
+                )
+                llm_candidate = self.llm_reranker.choose(user_message, fallback_result, domain=active_domain)
+
         if llm_candidate:
             print(f"[LLM MATCH - TAKEOVER] Query: '{user_message}' -> Selected: '{llm_candidate.intent}' (LLM took over)")
             self.last_selected_intent = llm_candidate.intent
@@ -4764,7 +5083,7 @@ class KnowledgeRouter:
         return None
 
     def _course_route(self, text: str, intent: str, has_it_program: bool = False) -> Optional[str]:
-        if self._has_any(text, ["master", "masters", "masteral", "graduate program"]):
+        if self._has_any(text, ["master", "masters", "masteral", "graduate program", "doctor of medicine", "medicine course", "medicine program"]):
             return "buksu_masters_courses"
         if has_it_program:
             return self._course_answer_intent(intent, text, "buksu_IT", "buksu_bsit_program")
@@ -4809,13 +5128,16 @@ class KnowledgeRouter:
             return "internship_requirement"
         if self._has_any(text, ["ojt", "on the job"]):
             return "on_the_job_training"
-        if self._has_any(text, ["prerequisite"]):
+        if self._has_any(text, ["prerequisite", "prerequisites", "prerequisit", "prereq", "pre requisite", "pre-requisite"]):
+            if self._has_any(text, ["fail", "failed", "failing", "bagsak", "hagbong", "retake", "advance", "dependent", "take again"]):
+                return "failed_prerequisite_subject"
             return "prerequisite_subjects_purpose"
-        if self._has_any(text, ["nstp"]):
+        is_loc_query = self._has_any(text, ["where", "location", "located", "find", "office", "faculty", "room", "building", "asa", "hain", "diin", "dapit", "makita", "locate"])
+        if self._has_any(text, ["nstp"]) and not is_loc_query:
             return "about_nstp"
-        if self._has_any(text, ["rotc"]):
+        if self._has_any(text, ["rotc"]) and not is_loc_query:
             return "rotc_meaning"
-        if self._has_any_token(text, ["pe"]) or self._has_any(text, ["physical education"]):
+        if (self._has_any_token(text, ["pe"]) or self._has_any(text, ["physical education"])) and not is_loc_query:
             return "about_pe"
         return None
 

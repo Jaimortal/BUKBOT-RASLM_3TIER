@@ -170,6 +170,7 @@ class MainRouterService:
             "need", "process", "steps", "how much", "service", "services",
             "course", "courses", "program", "programs", "offer", "offers",
             "contact", "phone", "email", "number", "facebook", "call",
+            "checkup", "check up", "check-up", "consult", "consultation", "treatment", "extraction",
         ]
         if any(term in text for term in non_location_followups):
             return False
@@ -349,7 +350,7 @@ class MainRouterService:
             "cot", "cob", "cas", "con", "cpag", "coa", "coe", "bsn", "pe",
             "philo", "philosophy", "math", "mathematics", "ssd", "social science", "social sciences",
             "electronics", "electronic", "automotive", "hospitality", "business", "accountancy",
-            "foodtech", "food tech", "food technology"
+            "foodtech", "food tech", "food technology", "nstp", "rotc", "cwts", "lts"
         ]
         if any(re.search(rf"(?<!\w){re.escape(term)}(?!\w)", text) for term in college_terms):
             return None
@@ -895,6 +896,19 @@ class MainRouterService:
 
         services_response = self.knowledge_router.services_response(intent, user_message)
         if services_response:
+            if isinstance(services_response, str):
+                if services_response.startswith("__"):
+                    response = self.knowledge_router.find_best_response(intent, user_message, resolved.values)
+                else:
+                    response = self.data_loader.get_response(services_response, user_message=user_message)
+                memory = self.context_manager.build_memory(
+                    intent=intent,
+                    user_message=user_message,
+                    resolved=resolved,
+                    response_intent=services_response,
+                    response=response,
+                )
+                return response, self._context_updates(memory, slots)
             return services_response, self.context_manager.decay_slot_values(slots)
 
         course_clarification = self.knowledge_router.course_clarification_response(intent, user_message)

@@ -8,7 +8,7 @@ interface MapLocation {
   name: string;
   coordinates: [number, number];
   building: string;
-  pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string }>;
+  pins: Array<{ name: string; coordinates: [number, number]; floor?: string; access?: string; pinType?: string; pinImageUrl?: string; pinImageAlt?: string }>;
   routes: Array<{ name: string; points: [number, number][]; color?: string; route_order?: number; route_label?: string }>;
 }
 
@@ -121,22 +121,21 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
   return (
     <div className="absolute inset-0 z-40 bg-white flex flex-col">
       {/* Matched Header */}
-      <div className="bg-primary p-4 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{ backgroundColor: '#001C38' }}>
-        <div className="flex items-center gap-4" >
-          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse mt-1" />
+      <div className="bg-primary px-4 py-3 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{ backgroundColor: '#001C38' }}>
+        <div className="flex items-center gap-3">
+          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <div className="flex flex-col leading-tight">
-            <h3 className="font-semibold text-sm text-white">Buksu Chatbot</h3>
-            <p className="text-xs text-white/90 font-light flex items-center gap-1">
-              <MapIcon className="h-3 w-3" /> Campus Map
-            </p>
+            <h3 className="font-semibold text-sm text-white">Buksu Chatbot Guide</h3>
           </div>
         </div>
-        <div className="flex gap-1">
+        <div className="flex gap-1 items-center">
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
             className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+            title="Exit Map View"
+            aria-label="Close Map"
           >
             <X className="h-4 w-4" />
           </Button>

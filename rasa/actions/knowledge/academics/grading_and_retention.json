@@ -484,22 +484,38 @@
           "context_topic": "policy",
           "responses": {
             "en": [
-              "If you are absent from class, you must submit the following supporting documents to your subject instructor upon your return:",
-              "1. Excuse Letter: Signed by you and your parent or guardian explaining the valid reason for the absence.",
-              "2. Medical Certificate: If the absence is due to illness, secure a medical certificate from a physician or verified by the University Clinic.",
-              "3. Official Endorsement: If absent due to an official school competition, seminar, or university-sanctioned activity.",
-              "Always present these documents immediately upon your return to excuse your absence and request special make-up activities or quizzes if permitted."
+              "Submit your excuse letter (signed by your parent or guardian) directly to all of your subject instructors for the specific classes you missed.",
+              "If your absence is due to illness, you can also provide a medical certificate, which you can secure or have validated at the University Clinic (located near Freedom Park).",
+              "Always present these documents immediately upon your return to class so your instructors can excuse your absence and allow any make-up activities or quizzes."
             ],
             "ceb": [
-              "Kung naka-absent ka sa klase, kinahanglan nimo ipasa ang mga mosunod nga supporting documents sa imong subject instructor inig balik nimo:",
-              "1. Excuse Letter: Pinirmahan nimo ug sa imong ginikanan o guardian nga nagpatin-aw sa balidong rason sa imong pag-absent.",
-              "2. Medical Certificate: Kung tungod sa sakit ang rason, pagkuha og medical certificate gikan sa doktor o gipamatud-an sa University Clinic.",
-              "3. Official Endorsement: Kung ang pag-absent tungod sa opisyal nga kalihokan sa unibersidad, seminar, o kompetisyon.",
-              "Ipresentar dayon kini sa imong magtutudlo aron ma-excuse ang imong absence ug makapangayo og special make-up quiz o activity kung gitugot."
+              "Ihatag ang imong excuse letter (nga pinirmahan sa imong ginikanan o guardian) ngadto sa tanan nimong subject instructors sa mga klase diin ikaw na-absent.",
+              "Kung tungod sa sakit ang imong pag-absent, mahimo usab kang maghatag og medical certificate nga makuha o mapamatud-an sa University Clinic (duol sa Freedom Park area).",
+              "Ipresentar dayon kini sa imong mga magtutudlo inig balik nimo sa klase aron ma-excuse ang imong absence ug matugotan ka sa mga make-up activities o quizzes."
             ]
           },
+          "suggestions": [
+            {
+              "label": "Clinic location",
+              "payload": "/direct_intent{\"intent\":\"location_Clinic\"}"
+            },
+            {
+              "label": "Absence limit (FDA)",
+              "payload": "/direct_intent{\"intent\":\"student_failure_due_to_absences\"}"
+            }
+          ],
           "metadata": {
             "phrases": [
+              "kay kinsa e hatag ang excuse letter if absent kos akong klasi",
+              "kay kinsa e hatag ang excuse letter if absent kos akong klasi?",
+              "kay kinsa ihatag ang excuse letter kung absent",
+              "kinsa hatagan sa excuse letter",
+              "kinsa akong hatagan sa excuse letter",
+              "who to give excuse letter if absent",
+              "to whom do i submit my excuse letter",
+              "to whom should i give the excuse letter",
+              "where to give excuse letter for absence",
+              "kanino ibibigay ang excuse letter",
               "what do i need to pass if i have some absences",
               "what do i need to pass if i have some absentcess",
               "what to pass if absent",
@@ -526,7 +542,9 @@
               "excuse",
               "ipasa",
               "pass",
-              "submit"
+              "submit",
+              "ihatag",
+              "hatagan"
             ],
             "weak_keywords": [
               "class",
@@ -1250,6 +1268,122 @@
         ]
       },
       "display_name": "Incomplete (INC) Grade Policy"
+    },
+    {
+      "topic": "failed_prerequisite_subject",
+      "responses": {
+        "en": [
+          "Prerequisite subjects **must be successfully completed before enrolling in advanced or dependent courses** in your curriculum program.",
+          "If you failed that specific prerequisite subject, you cannot enroll in advanced subjects. As much as possible, do your best to pass all your subjects."
+        ],
+        "ceb": [
+          "Ang mga prerequisite subject **kinahanglan mapasar sa dili pa maka-enroll sa mas advanced o dependent nga mga kurso** sa imong kurikulum.",
+          "Kung nabagsak nimo ang maong specific nga prerequisite subject, dili ka maka-enroll sa mga advanced subjects. Kutob sa mahimo, buhata ang imong pinakamaayo nga makapasar sa tanang subjects."
+        ]
+      },
+      "intent": "failed_prerequisite_subject",
+      "context_topic": "Failed prerequisite subject policy",
+      "metadata": {
+        "phrases": [
+          "what happens if a freshman fails a prerequisite subject",
+          "what happens if i fail a prerequisite subject",
+          "what happened if i failed the specific prerequisite subject",
+          "what happened if i failed the spacific prerequisit subject",
+          "do i need to retake the prerequisite subject",
+          "do i need to retake the prerequisit subject",
+          "failed prerequisite subject",
+          "failed prerequisite",
+          "fail prerequisite",
+          "if i fail prerequisite can i enroll advance subject",
+          "can i enroll major subject if i failed prerequisite",
+          "what if i failed a prerequisite subject as a freshman",
+          "freshman failed prerequisite",
+          "bagsak sa prerequisite subject",
+          "unsa mahitabo kung mabagsak sa prerequisite",
+          "unsa mahitabo kung mahagbong sa prerequisite subject",
+          "pwede ba maka enroll advance subject kung bagsak prerequisite",
+          "retake prerequisite subject"
+        ],
+        "strong_keywords": [
+          "prerequisite",
+          "prereq",
+          "failed",
+          "fail",
+          "freshman",
+          "advance",
+          "retake",
+          "bagsak",
+          "hagbong"
+        ],
+        "weak_keywords": [
+          "subject",
+          "curriculum",
+          "program",
+          "enroll",
+          "courses"
+        ]
+      },
+      "display_name": "Failed Prerequisite Subject Policy"
+    },
+    {
+      "topic": "midterm_and_final_exam_rules",
+      "responses": {
+        "en": [
+          "For the rules, guidelines, and policies regarding **Midterm and Final Examinations**, **please refer to your respective college department** for official announcements, as examination requirements and guidelines are specific per college/department."
+        ],
+        "ceb": [
+          "Para sa mga patakaran, guidelines, ug polisiya sa **Midterm ug Final Examination**, **palihog pakisayod sa inyong tagsa-tagsa ka college department** para sa opisyal nga pahibalo, tungod kay ang mga patakaran sa eksam espesipiko matag kolehiyo o departamento."
+        ]
+      },
+      "intent": "midterm_and_final_exam_rules",
+      "context_topic": "Midterm and final examination rules",
+      "metadata": {
+        "phrases": [
+          "what are the rules and guidelines for midterm and final examinations",
+          "what are the rules and guidelines for midterm and final exam",
+          "rules and guidelines for midterm and final examinations",
+          "rules and guidelines for midterm and final exam",
+          "what do i need for midterm exam",
+          "what do i need for final exam",
+          "do i need a slip for final examination",
+          "do i need a slip for midterm examination",
+          "do i need a slipt for final examination",
+          "midterm exam rules",
+          "final exam rules",
+          "midterm examination guidelines",
+          "final examination guidelines",
+          "exam rules and guidelines",
+          "examination policy buksu",
+          "exam permit for finals",
+          "exam permit for midterms",
+          "exam slip needed",
+          "unsa ang rules sa midterm exam",
+          "unsa ang rules sa final exam",
+          "patakaran sa midterm ug final examination",
+          "guidelines para sa midterm exam",
+          "kinahanglan ba ug exam slip sa finals",
+          "requirements para sa midterm exam"
+        ],
+        "strong_keywords": [
+          "midterm",
+          "final",
+          "finals",
+          "examination",
+          "exam",
+          "rules",
+          "guidelines",
+          "slip",
+          "permit",
+          "policy"
+        ],
+        "weak_keywords": [
+          "need",
+          "department",
+          "college",
+          "announcement"
+        ]
+      },
+      "display_name": "Midterm and Final Examination Rules"
     }
   ]
 }

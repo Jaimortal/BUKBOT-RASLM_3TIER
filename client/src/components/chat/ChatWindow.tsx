@@ -68,16 +68,16 @@ function lightweightMessagesForStorage(items: ChatMessage[]): ChatMessage[] {
   });
 }
 
- async function fetchUserPrivileges(): Promise<UserPrivileges> {
-   try {
-     const res = await fetch("/api/privileges");
-     const json = await res.json();
-     if (json?.success && json?.data) return json.data as UserPrivileges;
-   } catch (err) {
-     // ignore
-   }
-   return { chatEnabled: true, audioInputEnabled: true, mapAccessEnabled: true, autoTranslateEnabled: true };
- }
+async function fetchUserPrivileges(): Promise<UserPrivileges> {
+  try {
+    const res = await fetch("/api/privileges");
+    const json = await res.json();
+    if (json?.success && json?.data) return json.data as UserPrivileges;
+  } catch (err) {
+    // ignore
+  }
+  return { chatEnabled: true, audioInputEnabled: true, mapAccessEnabled: true, autoTranslateEnabled: true };
+}
 
 function escapeHtml(value: string): string {
   return value
@@ -126,7 +126,7 @@ function convertResponseToMessages(response: any): ChatMessage[] {
   const fullText = answerParts.join(" ");
   let filteredMapData = response.mapData;
   let filteredMapDataList = response.mapDataList;
-  
+
   if (
     !fullText ||
     fullText.includes("cannot understand") ||
@@ -142,7 +142,7 @@ function convertResponseToMessages(response: any): ChatMessage[] {
   const nonEmptyParts = answerParts.filter(text => text && text.trim());
   nonEmptyParts.forEach((text, index) => {
     const isLastTextPart = index === nonEmptyParts.length - 1;
-    
+
     messages.push({
       id: generateId() + "-t-" + index,
       text: text.trim(),
@@ -152,13 +152,13 @@ function convertResponseToMessages(response: any): ChatMessage[] {
       choiceGroups: isLastTextPart ? response.choiceGroups : undefined,
       timestamp: new Date(),
       // Hide timestamp if it's not the last message in the sequence
-      hideTimestamp: true 
+      hideTimestamp: true
     });
   });
 
   // Collect images as standalone chat cards instead of embedding them in text/map bubbles.
   const allImages = response.imageUrls?.length ? response.imageUrls : (response.imageUrl ? [response.imageUrl] : []);
-  
+
   // Map message(s) - use filtered data
   if (Array.isArray(filteredMapDataList) && filteredMapDataList.length > 0) {
     filteredMapDataList.forEach((md: any, idx: number) => {
@@ -250,7 +250,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
   // Fullscreen map state - stores the message ID of the map currently in fullscreen
   const [fullscreenMapId, setFullscreenMapId] = useState<string | null>(null);
-  
+
   // Gallery modal & Fullscreen image state
   const [galleryModalImages, setGalleryModalImages] = useState<string[] | null>(null);
   const [fullscreenImageUrl, setFullscreenImageUrl] = useState<string | null>(null);
@@ -260,7 +260,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   const [imagePan, setImagePan] = useState({ x: 0, y: 0 });
   const [isDraggingImage, setIsDraggingImage] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  
+
   // Category State
   const [activeCategory, setActiveCategory] = useState<CategoryId | null>(() => {
     try {
@@ -273,7 +273,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
   // Map Quick Access modal state
   const [showMapQuickAccess, setShowMapQuickAccess] = useState(false);
-  
+
   const [showQuickAccess, setShowQuickAccess] = useState(false);
   const [choiceModal, setChoiceModal] = useState<ChatChoiceGroup | null>(null);
   const [stickyChoiceMessageId, setStickyChoiceMessageId] = useState<string | null>(null);
@@ -603,22 +603,6 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     speakBotResponseAt(messageIndex);
   }, [audioFeatureAvailable, audioResponseEnabled, isTyping, latestReportableBotMessageId, messages]);
 
-  // Test backend on mount
-  useEffect(() => {
-    const testBackend = async () => {
-      try {
-        console.log("Testing backend connection...");
-        const testResponse = await rasaBackend.sendMessage("test");
-        console.log("Backend response:", testResponse);
-      } catch (error) {
-        console.error("Backend test failed:", error);
-      }
-    };
-    
-    if (isOpen) {
-      testBackend();
-    }
-  }, [isOpen]);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -711,7 +695,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       recognition.onresult = (event: any) => {
         const current = event.resultIndex;
         const transcript = event.results[current][0].transcript;
-        
+
         if (event.results[current].isFinal) {
           // Final result - set input and auto-send
           setInputValue(transcript);
@@ -727,7 +711,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       recognition.onerror = (event: any) => {
         console.error("Speech recognition error:", event.error);
         setIsListening(false);
-        
+
         // Handle specific errors
         if (event.error === 'not-allowed') {
           alert('Microphone access was denied. Please allow microphone access to use voice input.');
@@ -739,7 +723,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           alert(`Speech recognition error: ${event.error}`);
         }
       };
-      
+
       recognition.onend = () => {
         setIsListening(false);
       };
@@ -756,7 +740,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       alert("Voice input is not supported in this browser. Please try using Chrome, Edge, or Safari.");
       return;
     }
-    
+
     if (isListening) {
       recognitionRef.current?.stop();
       setIsListening(false);
@@ -765,10 +749,10 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         stream.getTracks().forEach(track => track.stop()); // Stop the stream immediately
-        
+
         setIsListening(true);
         setInputValue(""); // Clear previous input
-        
+
         try {
           recognitionRef.current?.start();
         } catch (error) {
@@ -809,19 +793,19 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
     try {
       const response = await rasaBackend.sendMessage(payloadToSend, sessionId, activeCategory);
-      
+
       // Convert bot response to correct message types
       const botMessages = convertResponseToMessages(response);
-      
+
       // Add a small delay to simulate typing
       setTimeout(() => {
         setMessages((prev) => trimChatMessages([...prev, ...botMessages]));
         setIsTyping(false);
       }, 800);
-      
+
     } catch (error) {
       console.error("Failed to get response", error);
-      
+
       const errorMsg: ChatMessage = {
         id: generateId(),
         text: "Oops! Something went wrong. Please try again.",
@@ -829,7 +813,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         type: "text",
         timestamp: new Date(),
       };
-      
+
       setMessages((prev) => trimChatMessages([...prev, errorMsg]));
       setIsTyping(false);
     }
@@ -959,16 +943,20 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     ? messages.find((message) => message.id === stickyChoiceMessageId)
     : null;
 
+  const isMapFullscreen = !!fullscreenMapMessage;
+
   return (
     <div className="flex flex-col h-full bg-background relative overflow-hidden">
       {/* Header */}
-      <div className="bg-primary px-4 py-3 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{backgroundColor: '#001C38'}}>
+      <div className="bg-primary px-4 py-3 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{ backgroundColor: '#001C38' }}>
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <div className="flex flex-col leading-tight">
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-sm text-white">Buksu Chatbot</h3>
-              {activeCategory && CATEGORY_DEFINITIONS[activeCategory] && (
+              <h3 className="font-semibold text-sm text-white">
+                {isMapFullscreen ? "Buksu Chatbot Guide" : "Buksu Chatbot"}
+              </h3>
+              {!isMapFullscreen && activeCategory && CATEGORY_DEFINITIONS[activeCategory] && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-[10.5px] font-semibold text-sky-200 border border-white/20">
                   <CategoryIcon id={activeCategory} className="h-3 w-3 text-sky-300" />
                   <span>{CATEGORY_DEFINITIONS[activeCategory].shortTitle}</span>
@@ -978,53 +966,68 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           </div>
         </div>
         <div className="flex gap-1 items-center">
-          {privileges.mapAccessEnabled && (
+          {isMapFullscreen ? (
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setShowMapQuickAccess(true)}
+              onClick={() => setFullscreenMapId(null)}
               className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
-              title="Campus Map"
-              aria-label="Map"
+              title="Exit Map View"
+              aria-label="Close Map"
             >
-              <MapIcon className="h-4 w-4" />
+              <X className="h-4 w-4" />
             </Button>
+          ) : (
+            <>
+              {privileges.mapAccessEnabled && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setShowMapQuickAccess(true)}
+                  className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+                  title="Campus Map"
+                  aria-label="Map"
+                >
+                  <MapIcon className="h-4 w-4" />
+                </Button>
+              )}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowManualModal(true)}
+                className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+                title="Manual & Guide"
+                aria-label="Manual"
+              >
+                <BookOpen className="h-4 w-4" />
+              </Button>
+              {audioFeatureAvailable && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleAudioResponse}
+                  className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+                  title={audioResponseEnabled ? "Disable audio response" : "Enable audio response"}
+                >
+                  {audioResponseEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+                </Button>
+              )}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onClose}
+                className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
+                title="Minimize"
+              >
+                <Minimize2 className="h-4 w-4" />
+              </Button>
+            </>
           )}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setShowManualModal(true)}
-            className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
-            title="Manual & Guide"
-            aria-label="Manual"
-          >
-            <BookOpen className="h-4 w-4" />
-          </Button>
-          {audioFeatureAvailable && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleAudioResponse}
-              className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
-              title={audioResponseEnabled ? "Disable audio response" : "Enable audio response"}
-            >
-              {audioResponseEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-            </Button>
-          )}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onClose}
-            className="h-8 w-8 text-primary-foreground/80 hover:text-white hover:bg-white/10"
-            title="Minimize"
-          >
-            <Minimize2 className="h-4 w-4" />
-          </Button>
         </div>
       </div>
 
-      {/* Sub-Header Strip (Outside Header) - Only shown when in active category */}
-      {activeCategory && CATEGORY_DEFINITIONS[activeCategory] && (
+      {/* Sub-Header Strip (Outside Header) - Only shown when in active category and not in fullscreen map */}
+      {!isMapFullscreen && activeCategory && CATEGORY_DEFINITIONS[activeCategory] && (
         <div className="flex items-center justify-between px-4 py-2 bg-slate-100/95 border-b border-slate-200/90 shadow-2xs shrink-0 backdrop-blur-xs">
           <div className="flex items-center gap-1.5 min-w-0 pr-2">
             <CategoryIcon id={activeCategory} className="h-3.5 w-3.5 text-blue-900 shrink-0" />
@@ -1044,7 +1047,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         </div>
       )}
 
-      {stickyChoiceMessage && renderChoiceGroupBoard(stickyChoiceMessage, true)}
+      {!isMapFullscreen && stickyChoiceMessage && renderChoiceGroupBoard(stickyChoiceMessage, true)}
 
       {/* Fullscreen Map View - Only visible when a map is in fullscreen */}
       {fullscreenMapMessage && fullscreenMapMessage.mapData && (
@@ -1056,6 +1059,13 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             routes={(fullscreenMapMessage.mapData as any).routes}
             isFullscreen={true}
             onToggleFullscreen={() => setFullscreenMapId(null)}
+            onOpenLightbox={(img) => {
+              setFullscreenImageUrl(img.url);
+              setFullscreenImageGallery(null);
+              setFullscreenImageIndex(0);
+              setImageZoom(0.75);
+              setImagePan({ x: 0, y: 0 });
+            }}
           />
         </div>
       )}
@@ -1081,300 +1091,307 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             className="h-full overflow-x-hidden p-4 [&_[data-radix-scroll-area-viewport]]:!overflow-x-hidden [&_[data-radix-scroll-area-viewport]>div]:!block [&_[data-radix-scroll-area-viewport]>div]:!w-full [&_[data-radix-scroll-area-viewport]>div]:!min-w-0"
             ref={scrollRef}
           >
-          <div
-            className={cn(
-              "w-full max-w-full min-w-0 overflow-x-hidden pb-4 transition duration-200",
-              choiceModal && "pointer-events-none blur-[2px]"
-            )}
-          >
-            {activeCategory && (
-              <CategoryScopeBanner
-                categoryId={activeCategory}
-                onTopicClick={(payload, label) => handleSend(label, payload)}
-              />
-            )}
-            {messages.map((msg, msgIndex) => {
-              const previousMessage = messages[msgIndex - 1];
-              const nextMessage = messages[msgIndex + 1];
-              const isMapMessage = msg.type === "map";
-              const isImageMessage = msg.type === "image";
-              const isMediaMessage = isMapMessage || isImageMessage;
-              const isTextMessage = msg.type === "text";
-              const isSameSenderGroup = previousMessage?.sender === msg.sender && previousMessage?.type === msg.type;
-              const isBotTextBubble = msg.sender === "bot" && isTextMessage;
-              const isPreviousBotTextBubble = previousMessage?.sender === "bot" && previousMessage?.type === "text";
-              const isNextBotTextBubble = nextMessage?.sender === "bot" && nextMessage?.type === "text";
-              const isSingleBotBubble = isBotTextBubble && !isPreviousBotTextBubble && !isNextBotTextBubble;
-              return (
-                <motion.div
-                  key={msg.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={cn(
-                    "flex w-full max-w-full min-w-0 flex-col overflow-visible",
-                    msgIndex === 0 ? "mt-0" : isSameSenderGroup ? "mt-1" : "mt-4",
-                    msg.sender === "user" ? "items-end" : "items-start pl-1",
-                    isBotTextBubble && "pt-0.5"
-                  )}
-                >
-                <div
-                  className={cn(
-                    isMediaMessage
-                      ? "w-[94%] max-w-[94%] min-w-0 overflow-hidden rounded-2xl text-sm"
-                      : "max-w-[80%] min-w-0 overflow-hidden rounded-2xl px-4 py-2.5 text-sm shadow-sm",
-                    msg.sender === "user" && !isMediaMessage
-                      ? "bg-primary text-primary-foreground rounded-br-none"
-                      : !isMediaMessage && cn(
-                        "bg-white text-foreground shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5",
-                        (isNextBotTextBubble || isSingleBotBubble) && "rounded-bl-none",
-                        isPreviousBotTextBubble && "rounded-tl-none"
-                      )
-                  )}
-                >
-                  {/* Normal text */}
-                  {msg.type === "text" && (
-                    <div>
-                      <p
-                        className="break-words leading-relaxed whitespace-pre-line"
-                        dangerouslySetInnerHTML={{
-                          __html: renderSafeMessageHtml(msg.text),
-                        }}
-                      />
-
-                    </div>
-                  )}
-
-                  {/* Image message */}
-                  {msg.type === "image" && (msg.imageUrls?.length || msg.imageUrl) && (() => {
-                    const validImages = (msg.imageUrls?.length ? msg.imageUrls : [msg.imageUrl]).filter((u): u is string => Boolean(u));
-                    if (validImages.length === 0) return null;
-
-                    // Single image: Uniform Gallery Cube UI (opens fullscreen directly)
-                    if (validImages.length === 1) {
-                      return (
-                        <div className="w-full max-w-full min-w-0">
-                          <button
-                            key={`${msg.id}-image-single`}
-                            type="button"
-                            onClick={() => {
-                              setFullscreenImageUrl(validImages[0]);
-                              setFullscreenImageGallery(null);
-                              setFullscreenImageIndex(0);
-                              setImageZoom(0.75);
-                              setImagePan({ x: 0, y: 0 });
+            <div
+              className={cn(
+                "w-full max-w-full min-w-0 overflow-x-hidden pb-4 transition duration-200",
+                choiceModal && "pointer-events-none blur-[2px]"
+              )}
+            >
+              {activeCategory && (
+                <CategoryScopeBanner
+                  categoryId={activeCategory}
+                  onTopicClick={(payload, label) => handleSend(label, payload)}
+                />
+              )}
+              {messages.map((msg, msgIndex) => {
+                const previousMessage = messages[msgIndex - 1];
+                const nextMessage = messages[msgIndex + 1];
+                const isMapMessage = msg.type === "map";
+                const isImageMessage = msg.type === "image";
+                const isMediaMessage = isMapMessage || isImageMessage;
+                const isTextMessage = msg.type === "text";
+                const isSameSenderGroup = previousMessage?.sender === msg.sender && previousMessage?.type === msg.type;
+                const isBotTextBubble = msg.sender === "bot" && isTextMessage;
+                const isPreviousBotTextBubble = previousMessage?.sender === "bot" && previousMessage?.type === "text";
+                const isNextBotTextBubble = nextMessage?.sender === "bot" && nextMessage?.type === "text";
+                const isSingleBotBubble = isBotTextBubble && !isPreviousBotTextBubble && !isNextBotTextBubble;
+                return (
+                  <motion.div
+                    key={msg.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={cn(
+                      "flex w-full max-w-full min-w-0 flex-col overflow-visible",
+                      msgIndex === 0 ? "mt-0" : isSameSenderGroup ? "mt-1" : "mt-4",
+                      msg.sender === "user" ? "items-end" : "items-start pl-1",
+                      isBotTextBubble && "pt-0.5"
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        isMediaMessage
+                          ? "w-[94%] max-w-[94%] min-w-0 overflow-hidden rounded-2xl text-xs"
+                          : "max-w-[80%] min-w-0 overflow-hidden rounded-2xl px-4 py-2.5 text-xs shadow-sm",
+                        msg.sender === "user" && !isMediaMessage
+                          ? "bg-primary text-primary-foreground rounded-br-none"
+                          : !isMediaMessage && cn(
+                            "bg-white text-foreground shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5",
+                            (isNextBotTextBubble || isSingleBotBubble) && "rounded-bl-none",
+                            isPreviousBotTextBubble && "rounded-tl-none"
+                          )
+                      )}
+                    >
+                      {/* Normal text */}
+                      {msg.type === "text" && (
+                        <div>
+                          <p
+                            className="break-words leading-relaxed whitespace-pre-line"
+                            dangerouslySetInnerHTML={{
+                              __html: renderSafeMessageHtml(msg.text),
                             }}
-                            className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-slate-900 border border-slate-700/60 p-2 text-left shadow-[0_4px_16px_rgba(0,0,0,0.20)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(14,74,122,0.35)] hover:border-sky-400/70 focus:outline-none focus:ring-2 focus:ring-sky-300"
-                          >
-                            {/* Single Image Aspect Box */}
-                            <div className="relative w-full rounded-xl overflow-hidden bg-slate-950 aspect-[4/3]">
-                              <img
-                                src={validImages[0]}
-                                alt="Photo preview"
-                                loading="lazy"
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                              />
-                              <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/25 flex items-center justify-center pointer-events-none">
-                                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/75 text-white text-[11px] font-medium px-2.5 py-1 rounded-full backdrop-blur-sm shadow-md">
-                                  Click to view
-                                </span>
-                              </div>
-                            </div>
+                          />
 
-                            {/* Gallery Bottom Bar */}
-                            <div className="mt-2 flex items-center justify-between px-1 text-xs">
-                              <div className="flex items-center gap-1.5 text-slate-200 font-medium">
-                                <Images className="h-3.5 w-3.5 text-sky-400" />
-                                <span>1 Photo</span>
-                              </div>
-                              <span className="text-[11px] font-semibold text-sky-400 group-hover:text-sky-300 transition-colors">
-                                View Photo &rarr;
-                              </span>
-                            </div>
-                          </button>
                         </div>
-                      );
-                    }
+                      )}
 
-                    // 2 or more images: Compact Gallery Cube
-                    return (
-                      <div className="w-full max-w-full min-w-0">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setGalleryModalImages(validImages);
-                          }}
-                          className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-slate-900 border border-slate-700/60 p-2 text-left shadow-[0_4px_16px_rgba(0,0,0,0.20)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(14,74,122,0.35)] hover:border-sky-400/70 focus:outline-none focus:ring-2 focus:ring-sky-300"
-                        >
-                          {/* Collage Grid */}
-                          <div className={cn(
-                            "grid gap-1 w-full rounded-xl overflow-hidden bg-slate-950 aspect-[4/3]",
-                            validImages.length === 2 ? "grid-cols-2" : "grid-cols-2 grid-rows-2"
-                          )}>
-                            {validImages.slice(0, 4).map((url, idx) => {
-                              const isLastSlot = idx === 3 && validImages.length > 4;
-                              const remaining = validImages.length - 4;
-                              return (
-                                <div key={idx} className="relative w-full h-full overflow-hidden bg-slate-800">
+                      {/* Image message */}
+                      {msg.type === "image" && (msg.imageUrls?.length || msg.imageUrl) && (() => {
+                        const validImages = (msg.imageUrls?.length ? msg.imageUrls : [msg.imageUrl]).filter((u): u is string => Boolean(u));
+                        if (validImages.length === 0) return null;
+
+                        // Single image: Uniform Gallery Cube UI (opens fullscreen directly)
+                        if (validImages.length === 1) {
+                          return (
+                            <div className="w-full max-w-full min-w-0">
+                              <button
+                                key={`${msg.id}-image-single`}
+                                type="button"
+                                onClick={() => {
+                                  setFullscreenImageUrl(validImages[0]);
+                                  setFullscreenImageGallery(null);
+                                  setFullscreenImageIndex(0);
+                                  setImageZoom(0.75);
+                                  setImagePan({ x: 0, y: 0 });
+                                }}
+                                className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-slate-900 border border-slate-700/60 p-2 text-left shadow-[0_4px_16px_rgba(0,0,0,0.20)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(14,74,122,0.35)] hover:border-sky-400/70 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                              >
+                                {/* Single Image Aspect Box */}
+                                <div className="relative w-full rounded-xl overflow-hidden bg-slate-950 aspect-[4/3]">
                                   <img
-                                    src={url}
-                                    alt={`Preview ${idx + 1}`}
+                                    src={validImages[0]}
+                                    alt="Photo preview"
                                     loading="lazy"
                                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                   />
-                                  {isLastSlot && (
-                                    <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px] flex items-center justify-center text-white font-bold text-base">
-                                      +{remaining + 1}
-                                    </div>
-                                  )}
+                                  <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/25 flex items-center justify-center pointer-events-none">
+                                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/75 text-white text-[11px] font-medium px-2.5 py-1 rounded-full backdrop-blur-sm shadow-md">
+                                      Click to view
+                                    </span>
+                                  </div>
                                 </div>
-                              );
-                            })}
-                          </div>
 
-                          {/* Gallery Bottom Bar */}
-                          <div className="mt-2 flex items-center justify-between px-1 text-xs">
-                            <div className="flex items-center gap-1.5 text-slate-200 font-medium">
-                              <Images className="h-3.5 w-3.5 text-sky-400" />
-                              <span>{validImages.length} Photos</span>
+                                {/* Gallery Bottom Bar */}
+                                <div className="mt-2 flex items-center justify-between px-1 text-xs">
+                                  <div className="flex items-center gap-1.5 text-slate-200 font-medium">
+                                    <Images className="h-3.5 w-3.5 text-sky-400" />
+                                    <span>1 Photo</span>
+                                  </div>
+                                  <span className="text-[11px] font-semibold text-sky-400 group-hover:text-sky-300 transition-colors">
+                                    View Photo &rarr;
+                                  </span>
+                                </div>
+                              </button>
                             </div>
-                            <span className="text-[11px] font-semibold text-sky-400 group-hover:text-sky-300 transition-colors">
-                              View Gallery &rarr;
-                            </span>
-                          </div>
-                        </button>
-                      </div>
-                    );
-                  })()}
+                          );
+                        }
 
-                  {/* Map message */}
-                  {msg.type === "map" && msg.mapData && (
-                    privileges.mapAccessEnabled ? (
-                      <>
-                        {liveInlineMapIds.has(msg.id) ? (
-                          <div className="w-full max-w-full min-w-0 overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(14,74,122,0.24)] transition-all duration-200 hover:shadow-[0_8px_22px_rgba(14,74,122,0.30)]">
-                            <MapMessage
-                              locationName={msg.mapData.locationName}
-                              coordinates={(msg.mapData as any).coordinates}
-                              pins={(msg.mapData as any).pins}
-                              routes={(msg.mapData as any).routes}
-                              isFullscreen={false}
-                              onToggleFullscreen={() => {
-                                setFullscreenMapId(msg.id);
+                        // 2 or more images: Compact Gallery Cube
+                        return (
+                          <div className="w-full max-w-full min-w-0">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setGalleryModalImages(validImages);
                               }}
-                            />
+                              className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-slate-900 border border-slate-700/60 p-2 text-left shadow-[0_4px_16px_rgba(0,0,0,0.20)] transition-all duration-200 hover:shadow-[0_8px_24px_rgba(14,74,122,0.35)] hover:border-sky-400/70 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                            >
+                              {/* Collage Grid */}
+                              <div className={cn(
+                                "grid gap-1 w-full rounded-xl overflow-hidden bg-slate-950 aspect-[4/3]",
+                                validImages.length === 2 ? "grid-cols-2" : "grid-cols-2 grid-rows-2"
+                              )}>
+                                {validImages.slice(0, 4).map((url, idx) => {
+                                  const isLastSlot = idx === 3 && validImages.length > 4;
+                                  const remaining = validImages.length - 4;
+                                  return (
+                                    <div key={idx} className="relative w-full h-full overflow-hidden bg-slate-800">
+                                      <img
+                                        src={url}
+                                        alt={`Preview ${idx + 1}`}
+                                        loading="lazy"
+                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                      />
+                                      {isLastSlot && (
+                                        <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px] flex items-center justify-center text-white font-bold text-base">
+                                          +{remaining + 1}
+                                        </div>
+                                      )}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+
+                              {/* Gallery Bottom Bar */}
+                              <div className="mt-2 flex items-center justify-between px-1 text-xs">
+                                <div className="flex items-center gap-1.5 text-slate-200 font-medium">
+                                  <Images className="h-3.5 w-3.5 text-sky-400" />
+                                  <span>{validImages.length} Photos</span>
+                                </div>
+                                <span className="text-[11px] font-semibold text-sky-400 group-hover:text-sky-300 transition-colors">
+                                  View Gallery &rarr;
+                                </span>
+                              </div>
+                            </button>
                           </div>
+                        );
+                      })()}
+
+                      {/* Map message */}
+                      {msg.type === "map" && msg.mapData && (
+                        privileges.mapAccessEnabled ? (
+                          <>
+                            {liveInlineMapIds.has(msg.id) ? (
+                              <div className="w-full max-w-full min-w-0 overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(14,74,122,0.24)] transition-all duration-200 hover:shadow-[0_8px_22px_rgba(14,74,122,0.30)]">
+                                <MapMessage
+                                  locationName={msg.mapData.locationName}
+                                  coordinates={(msg.mapData as any).coordinates}
+                                  pins={(msg.mapData as any).pins}
+                                  routes={(msg.mapData as any).routes}
+                                  isFullscreen={false}
+                                  onToggleFullscreen={() => {
+                                    setFullscreenMapId(msg.id);
+                                  }}
+                                  onOpenLightbox={(img) => {
+                                    setFullscreenImageUrl(img.url);
+                                    setFullscreenImageGallery(null);
+                                    setFullscreenImageIndex(0);
+                                    setImageZoom(0.75);
+                                    setImagePan({ x: 0, y: 0 });
+                                  }}
+                                />
+                              </div>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => setFullscreenMapId(msg.id)}
+                                className="flex w-full max-w-full min-w-0 items-center justify-between rounded-2xl border border-sky-100 bg-sky-50/70 px-3 py-2 text-left text-xs font-semibold text-[#003B63] shadow-sm transition-colors hover:bg-sky-100"
+                              >
+                                <span className="min-w-0 truncate">{msg.mapData.locationName || "Open map"}</span>
+                                <span className="ml-2 shrink-0 text-[11px] font-bold">Open map</span>
+                              </button>
+                            )}
+                          </>
                         ) : (
-                          <button
-                            type="button"
-                            onClick={() => setFullscreenMapId(msg.id)}
-                            className="flex w-full max-w-full min-w-0 items-center justify-between rounded-2xl border border-sky-100 bg-sky-50/70 px-3 py-2 text-left text-xs font-semibold text-[#003B63] shadow-sm transition-colors hover:bg-sky-100"
-                          >
-                            <span className="min-w-0 truncate">{msg.mapData.locationName || "Open map"}</span>
-                            <span className="ml-2 shrink-0 text-[11px] font-bold">Open map</span>
-                          </button>
-                        )}
-                      </>
-                    ) : (
-                      <div className="mt-2 rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-xs font-medium text-destructive">
-                        Map access is disabled by the administrator.
-                      </div>
-                    )
-                  )}
-                </div>
+                          <div className="mt-2 rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-xs font-medium text-destructive">
+                            Map access is disabled by the administrator.
+                          </div>
+                        )
+                      )}
+                    </div>
 
-                {msg.sender === "bot" && (
-                  <>
-                    {(!msg.choiceGroups || msg.choiceGroups.length === 0) && renderSuggestionBoard(msg.id, msg.suggestions)}
-                    {renderChoiceGroupBoard(msg)}
-                  </>
-                )}
-
-                {!msg.hideTimestamp && (
-                  <div className="mt-1 flex items-center justify-center gap-1.5 text-xs opacity-60">
-                    {msg.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                    {msg.sender === "bot" && msg.id === latestReportableBotMessageId && (
+                    {msg.sender === "bot" && (
                       <>
-                        {audioFeatureAvailable && (
-                          <button
-                            type="button"
-                            onClick={() => speakBotResponseAt(msgIndex)}
-                            className="rounded-full p-0.5 transition hover:bg-slate-200 hover:opacity-100"
-                            title={speakingMessageId === msg.id ? "Stop reading" : "Read this response"}
-                          >
-                            {speakingMessageId === msg.id ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
-                          </button>
-                        )}
-                        <button
-                          type="button"
-                          onClick={() => openResponseReport(msgIndex)}
-                          className="rounded-full p-0.5 transition hover:bg-slate-200 hover:opacity-100"
-                          title="Report this response"
-                        >
-                          <Flag className="h-3.5 w-3.5" />
-                        </button>
+                        {(!msg.choiceGroups || msg.choiceGroups.length === 0) && renderSuggestionBoard(msg.id, msg.suggestions)}
+                        {renderChoiceGroupBoard(msg)}
                       </>
                     )}
-                  </div>
-                )}
-                </motion.div>
-              );
-            })}
 
-            {isTyping && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="flex justify-start w-full"
-              >
-                <div className="rounded-2xl rounded-bl-none bg-white px-4 py-3 shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5 flex gap-1.5 items-center">
-                  <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                  <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                  <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" />
-                </div>
-              </motion.div>
-            )}
-          </div>
-        </ScrollArea>
+                    {!msg.hideTimestamp && (
+                      <div className="mt-1 flex items-center justify-center gap-1.5 text-xs opacity-60">
+                        {msg.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                        {msg.sender === "bot" && msg.id === latestReportableBotMessageId && (
+                          <>
+                            {audioFeatureAvailable && (
+                              <button
+                                type="button"
+                                onClick={() => speakBotResponseAt(msgIndex)}
+                                className="rounded-full p-0.5 transition hover:bg-slate-200 hover:opacity-100"
+                                title={speakingMessageId === msg.id ? "Stop reading" : "Read this response"}
+                              >
+                                {speakingMessageId === msg.id ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
+                              </button>
+                            )}
+                            <button
+                              type="button"
+                              onClick={() => openResponseReport(msgIndex)}
+                              className="rounded-full p-0.5 transition hover:bg-slate-200 hover:opacity-100"
+                              title="Report this response"
+                            >
+                              <Flag className="h-3.5 w-3.5" />
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
 
-        {choiceModal && (
-          <div
-            className="absolute inset-0 z-20 flex items-start justify-center bg-slate-900/10 px-4 pb-4 pt-12 backdrop-blur-[1px]"
-            onClick={() => setChoiceModal(null)}
-          >
-            <div
-              className="flex max-h-full w-full flex-col overflow-hidden rounded-2xl bg-background shadow-2xl ring-1 ring-black/10"
-              onClick={(event) => event.stopPropagation()}
-            >
-              <div className="flex shrink-0 items-center justify-between bg-[#001C38] px-4 py-3 text-white shadow-sm">
-                <h4 className="text-sm font-semibold">{choiceModal.title}</h4>
-                <button
-                  type="button"
-                  onClick={() => setChoiceModal(null)}
-                  className="rounded-full p-1 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-                  aria-label="Close choices"
+              {isTyping && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex justify-start w-full"
                 >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-              <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain p-3">
-                <div className="grid grid-cols-2 gap-1.5">
-                  {choiceModal.items.map((item, idx) => (
-                    <button
-                      key={`${choiceModal.title}-${idx}`}
-                      type="button"
-                      disabled={isTyping || !privileges.chatEnabled}
-                      onClick={() => handleSend(item.label, item.payload || item.label)}
-                      className={regularChoiceButtonClass}
-                    >
-                      <span className="min-w-0 break-words line-clamp-2">{item.label}</span>
-                      <ChevronRight className="h-3.5 w-3.5 shrink-0 text-sky-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-700 dark:text-sky-400" />
-                    </button>
-                  ))}
+                  <div className="rounded-2xl rounded-bl-none bg-white px-4 py-3 shadow-[0_3px_10px_rgba(14,74,122,0.10)] ring-1 ring-black/5 flex gap-1.5 items-center">
+                    <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                    <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                    <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" />
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          </ScrollArea>
+
+          {choiceModal && (
+            <div
+              className="absolute inset-0 z-20 flex items-start justify-center bg-slate-900/10 px-4 pb-4 pt-12 backdrop-blur-[1px]"
+              onClick={() => setChoiceModal(null)}
+            >
+              <div
+                className="flex max-h-full w-full flex-col overflow-hidden rounded-2xl bg-background shadow-2xl ring-1 ring-black/10"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <div className="flex shrink-0 items-center justify-between bg-[#001C38] px-4 py-3 text-white shadow-sm">
+                  <h4 className="text-sm font-semibold">{choiceModal.title}</h4>
+                  <button
+                    type="button"
+                    onClick={() => setChoiceModal(null)}
+                    className="rounded-full p-1 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                    aria-label="Close choices"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+                <div className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain p-3">
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {choiceModal.items.map((item, idx) => (
+                      <button
+                        key={`${choiceModal.title}-${idx}`}
+                        type="button"
+                        disabled={isTyping || !privileges.chatEnabled}
+                        onClick={() => handleSend(item.label, item.payload || item.label)}
+                        className={regularChoiceButtonClass}
+                      >
+                        <span className="min-w-0 break-words line-clamp-2">{item.label}</span>
+                        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-sky-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-700 dark:text-sky-400" />
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
       )}
 
@@ -1424,8 +1441,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                       !activeCategory
                         ? "Select a category above to start chatting..."
                         : isListening
-                        ? "Listening..."
-                        : `Ask a direct question about ${CATEGORY_DEFINITIONS[activeCategory].shortTitle.toLowerCase()}...`
+                          ? "Listening..."
+                          : `Ask a direct question about ${CATEGORY_DEFINITIONS[activeCategory].shortTitle.toLowerCase()}...`
                     }
                     className={cn(
                       "rounded-full bg-muted/50 border-transparent focus-visible:bg-background focus-visible:border-primary/20 transition-all text-sm h-10",
@@ -1518,7 +1535,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 <Textarea
                   value={reportText}
                   onChange={(event) => setReportText(event.target.value.slice(0, 1000))}
-                className="min-h-32 resize-none"
+                  className="min-h-32 resize-none"
                   disabled={isSubmittingReport}
                   maxLength={1000}
                 />

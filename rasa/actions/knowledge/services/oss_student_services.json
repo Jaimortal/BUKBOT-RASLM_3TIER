@@ -368,16 +368,18 @@
           "context_topic": "policy",
           "responses": {
             "en": [
-              "The official school uniform is required for undergraduate students during regular class days (Mondays, Tuesdays, Thursdays, and Fridays).",
-              "Civilian attire (such as decent T-shirts and long pants/jeans) is permitted on Wednesdays (Wash Days), Saturdays, Sundays, and during official university wash-day announcements or enrollment periods.",
-              "Incoming first-year students and freshmen who do not have their official school uniforms yet are granted a temporary grace period to wear modest and decent civilian clothes (e.g. plain T-shirt and pants) by presenting their validated Certificate of Registration (COR) at the entrance guard.",
-              "Note: Sandos/sleeveless shirts, short shorts, ripped/revealing clothing, and rubber slippers are strictly prohibited on campus."
+              "**University Memorandum No. 01, s. 2026 — Prescribed University Uniform Policy:**",
+              "Please be informed that all students are required to wear the complete prescribed university uniform every **Monday**, **Tuesday**, **Thursday**, and **Friday**, effective on their respective dates:\n\n• **2ND YEAR - 4TH YEAR STUDENTS:** Effective **September 7, 2026**\n• **1ST YEAR STUDENTS:** Effective **September 14, 2026**",
+              "Students are expected to **strictly observe the prescribed university uniform policy** on the indicated days.",
+              "Civilian attire (such as decent T-shirts and long pants/jeans) is permitted on **Wednesdays (Wash Days)**, Saturdays, Sundays, and during official university wash-day announcements or enrollment periods.",
+              "Note: Sandos/sleeveless shirts, short shorts, ripped/revealing clothing, and rubber slippers are strictly prohibited on campus during class days and office hours."
             ],
             "ceb": [
-              "Ang opisyal nga school uniform required para sa mga undergraduate students panahon sa regular class days (Lunes, Martes, Huwebes, ug Biyernes).",
-              "Ang civilian attire (sama sa desente nga T-shirt ug long pants/maong) gitugotan matag Miyerkules (Wash Day), Sabado, Domingo, ug sa panahon sa opisyal nga enrollment o university events.",
-              "Ang mga incoming first-year students ug freshmen nga wala pa nakakuha sa ilang opisyal nga uniform gihatagan og temporaryong grace period nga makasul-ob og disente nga civilian clothes (sama sa T-shirt ug karsones) pinaagi sa pagpakita sa ilang validated Certificate of Registration (COR) sa security guard.",
-              "Hinumdomi: Ang sando/sleeveless, mugbo kaayo nga shorts, gisi-gisi nga sinina, ug tsinelas hugot nga gidili sulod sa campus."
+              "**University Memorandum No. 01, s. 2026 — Polisiya sa Opisyal nga Uniporme:**",
+              "Palihog pahibalo nga ang tanang estudyante gikinahanglan nga magsul-ob sa kompleto nga prescribed university uniform matag **Lunes**, **Martes**, **Huwebes**, ug **Biyernes**, sugod sa mosunod nga mga petsa:\n\n• **2ND YEAR - 4TH YEAR STUDENTS:** Epektibo **September 7, 2026**\n• **1ST YEAR STUDENTS:** Epektibo **September 14, 2026**",
+              "Ang mga estudyante gilauman nga **hugot nga mosunod sa prescribed university uniform policy** sa maong mga adlaw.",
+              "Ang civilian attire (sama sa desente nga T-shirt ug long pants/maong) gitugotan matag **Miyerkules (Wash Day)**, Sabado, Domingo, ug sa panahon sa opisyal nga enrollment o university events.",
+              "Hinumdomi: Ang sando/sleeveless, mugbo kaayo nga shorts, gisi-gisi nga sinina, ug tsinelas hugot nga gidili sulod sa campus panahon sa klase ug office hours."
             ]
           },
           "metadata": {
@@ -405,7 +407,22 @@
               "bawal ba mag civilian",
               "pwede ba mag sanina ug civilian",
               "pwede ba mag civilian attire",
-              "dress code policy in buksu"
+              "dress code policy in buksu",
+              "allowed paba mag civilian sa buksu",
+              "pwede pa ba mag civilian",
+              "allowed paba mag civilian",
+              "what date is not allowed to use civilian",
+              "what day is not allowed to use civilian",
+              "when do the used of uniform is mandatory",
+              "when is the uniform mandatory",
+              "when is uniform required",
+              "what days are civilian not allowed",
+              "is civilian allowed on friday",
+              "can i wear civilian on friday",
+              "until when can students wear civilian",
+              "kutob kanus-a pwede mag civilian",
+              "unsa nga mga adlaw bawal mag civilian",
+              "unsa nga adlaw kinahanglan mag uniform"
             ]
           },
           "display_name": "Civilian Attire & Dress Code Policy",
