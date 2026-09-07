@@ -143,20 +143,38 @@
           "topic": "specific_course_passing_retention_grade",
           "responses": {
             "en": [
-              "Passing grade, culling grade, and retention grade for a specific course are usually discussed during your department assembly meeting.",
-              "Sorry, I do not have official data for the specific passing or retention grade of every department and course.",
-              "Please ask your department, program chair, or enrollment adviser for the exact grade requirement for your course."
+              "Passing grade, culling grade, and retention grade are announced during your department assembly and classroom orientation. For your specific course, directly ask your department about the grades you need to maintain. And I advise that you do your best and aim for Cum Laude as much as possible! 😁"
             ],
             "ceb": [
-              "Ang passing grade, culling grade, ug retention grade para sa specific nga course kasagaran i-discuss during department assembly meeting.",
-              "Pasensya, wala koy official data para sa specific passing o retention grade sa matag department ug course.",
-              "Palihog pangutana sa inyong department, program chair, o enrollment adviser para sa eksaktong grade requirement sa imong course."
+              "Ang passing grade, culling grade, ug retention grade ginapahibalo sa inyong department assembly ug classroom orientation. Para sa imong specific nga kurso, direktang pangutana sa inyong departamento bahin sa mga grado nga kinahanglan nimong i-maintain. Ug gitambagan tika nga buhata ang imong pinakamaayo ug paningkamot nga maka-Cum Laude kutob sa mahimo! 😁"
             ]
           },
           "intent": "specific_course_passing_retention_grade",
           "context_topic": "general_info",
           "metadata": {
             "phrases": [
+              "what is the maintaining grades required for bsit",
+              "what is the maintaining grades required for bsemc",
+              "what is the maintaining grades required for bset",
+              "what is the maintaining grades required for bsn",
+              "what is the maintaining grades required for bsa",
+              "what is the maintaining grades required for bsba",
+              "what is the maintaining grades required for bpa",
+              "what is the maintaining grades required for cot",
+              "what is the maintaining grades required for cob",
+              "what is the maintaining grades required for cas",
+              "what is the maintaining grades required for con",
+              "what is the maintaining grades required for cpag",
+              "what is the maintaining grades required for coe",
+              "what is the retention grades for course bsit",
+              "what is the retention grades for course bsemc",
+              "what is the retention grades for course bset",
+              "what is the retention grades for course bsn",
+              "what is the retention grades for course bsa",
+              "maintaining grade for bsit",
+              "maintaining grade for nursing",
+              "maintaining grade for accountancy",
+              "maintaining grade required for my course",
               "what is the passing grade for my course",
               "what is the passing grade for bsit",
               "what is the passing grade for nursing",
@@ -167,13 +185,19 @@
               "passing grade for bachelor of science in accountancy",
               "what is the retention grade for my course",
               "retention grade for specific course",
+              "retention grade for bsit",
+              "retention grade for bsn",
+              "retention grade for bsa",
               "culling grade for my course",
               "culling grade for nursing",
               "culling grade for accountancy",
+              "culling grade for bsit",
               "passing grade in every department",
               "department passing grade",
               "course passing grade",
               "specific course passing grade",
+              "pila maintaining grade sa bsit",
+              "pila retention grade sa bsn",
               "pila passing grade sa akong course",
               "unsa passing grade sa bsit",
               "unsa passing grade sa nursing",
@@ -194,11 +218,67 @@
           "subject_terms": [
             "specific course passing grade",
             "course passing grade",
+            "maintaining grade",
             "retention grade",
             "culling grade",
             "department passing grade"
           ],
           "display_name": "Specific Course Passing And Retention Grade"
+        },
+        {
+          "topic": "department_grade_computation",
+          "responses": {
+            "en": [
+              "Unfortunately, this is specific data from your college department. **This will be discussed during your department assembly and classroom orientation.** If you were absent during the orientation, you may ask your department faculty staff."
+            ],
+            "ceb": [
+              "Ikasubo, kini usa ka piho nga impormasyon gikan sa inyong college department. **Kini pagahisgutan sa inyong department assembly and classroom orientation.** Kung wala ka nakatambong sa orientation, mahimo kang mangutana sa faculty staff sa inyong department."
+            ]
+          },
+          "intent": "department_grade_computation",
+          "context_topic": "general_info",
+          "metadata": {
+            "phrases": [
+              "how do my instructor calculate my entire grades?",
+              "how do my instructor calculate my grades?",
+              "how do instructor calculate our grades?",
+              "how do teachers calculate our grades?",
+              "How are grades computed across Quizzes, Major Exams, and Class Participation?",
+              "How do instructor compute our grades?",
+              "what is the grading system of COB department",
+              "what is the grading system of COT department",
+              "what is the grading system of CAS department",
+              "what is the grading system of CON department",
+              "what is the grading system of CPAG department",
+              "what is the grading system of COE department",
+              "whats the process of the grades computation in buksu?",
+              "tell me the grading system of course BSIT",
+              "tell me the grading system of course BSEMC",
+              "tell me the grading system of course BSET",
+              "tell me the grading system of course BSN",
+              "tell me the grading system of course BSA",
+              "how are grades computed in quizzes and exams",
+              "grade computation for quizzes major exams and participation",
+              "how do teachers compute grades in buksu",
+              "how do professors calculate grades in my department",
+              "grading computation process in buksu",
+              "unsaon pag compute sa grades sa quizzes exams ug class participation",
+              "giunsa pag kwenta sa maestro ang among grado",
+              "unsa ang grading system sa COT department",
+              "unsa ang grading system sa BSIT",
+              "unsa ang computation sa grado sa among kurso"
+            ]
+          },
+          "subject_key": "department_grade_computation",
+          "subject_type": "policy",
+          "subject_terms": [
+            "grade computation",
+            "grading computation",
+            "compute grades",
+            "quizzes exams participation",
+            "department grading system"
+          ],
+          "display_name": "Department Grade Computation"
         },
         {
           "topic": "process",
@@ -1017,34 +1097,6 @@
       "display_name": "Thesis Capstone"
     },
     {
-      "topic": "buksu_courses_offered_list",
-      "responses": {
-        "en": [
-          "The list of undergraduate and graduate programs can be found on the official BukSU website under the Academics section.",
-          "You may also inquire directly at the Admission and Testing Unit for the list of available courses."
-        ],
-        "ceb": [
-          "Ang listahan sa mga kurso makita sa opisyal nga website sa BukSU sa Academics nga section.",
-          "Mahimo usab mangutana diretso sa Admission and Testing Unit para sa listahan sa mga kurso."
-        ]
-      },
-      "intent": "buksu_courses_offered_list",
-      "context_topic": "courses",
-      "metadata": {
-        "phrases": [
-          "buksu courses offered list"
-        ],
-        "strong_keywords": [
-          "buksu",
-          "courses",
-          "offered",
-          "list"
-        ],
-        "weak_keywords": []
-      },
-      "display_name": "Courses"
-    },
-    {
       "topic": "buksu_graduation_honors",
       "responses": {
         "en": [
@@ -1119,31 +1171,6 @@
         "weak_keywords": []
       },
       "display_name": "Deans Lister Rule"
-    },
-    {
-      "topic": "library_thesis_availability",
-      "responses": {
-        "en": [
-          "Library has thesis research and capstone papers for different colleges. Some are not displayed on shelves so you should ask a library staff member for assistance in finding them."
-        ],
-        "ceb": [
-          "Ang Librarya adunay thesis research ug capstone papers para sa nagkalain laing kolehiyo. Ang uban wala gipahimutang sa estante busa pangutan a ang staff sa librarya para matabangan ka sa pagpangita."
-        ]
-      },
-      "intent": "library_thesis_availability",
-      "context_topic": "Library thesis availability",
-      "metadata": {
-        "phrases": [
-          "library thesis availability"
-        ],
-        "strong_keywords": [
-          "library",
-          "thesis",
-          "availability"
-        ],
-        "weak_keywords": []
-      },
-      "display_name": "Library Thesis Availability"
     },
     {
       "topic": "summer_classes_policy",

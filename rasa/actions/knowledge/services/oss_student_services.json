@@ -342,6 +342,153 @@
           ],
           "images": [],
           "items": []
+        },
+        {
+          "topic": "tes_release_delay",
+          "intent": "tes_release_delay",
+          "context_topic": "TES",
+          "responses": {
+            "en": [
+              "TES allowance release may take time due to multiple verification and approval processes.",
+              "This includes fund release, eligibility validation, and billing verification.",
+              "The process involves coordination between DBM, CHED, and the university.",
+              "Any missing documents or strict auditing procedures may further delay the release.",
+              "I recommend regularly checking with your scholarship coordinator for updates."
+            ],
+            "ceb": [
+              "Ang pag-release sa TES allowance mahimong modugay tungod sa daghang proseso sa verification ug approval.",
+              "Lakip niini ang pag-release sa pondo, pag-validate sa eligibility, ug pag-verify sa billing documents.",
+              "Ang proseso naglakip sa koordinasyon tali sa DBM, CHED, ug sa unibersidad.",
+              "Ang kulang nga dokumento o hugot nga auditing mahimong makapahinay sa pag-release sa allowance.",
+              "Mas maayo nga mangutana sa inyong scholarship coordinator para sa updates."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "Ngano wala pa na release ang akong TES allowance",
+              "Wala pa nako nadawat ang TES allowance ug gusto ko mahibal an ngano",
+              "Kanus a ma release ang TES allowance",
+              "Unsa ang hinungdan sa delay sa TES allowance",
+              "Naghulat gihapon ko sa TES allowance ug wala pay update",
+              "Pila ka adlaw o semana bago ma release ang TES allowance",
+              "Ngano dugay ang proseso sa TES allowance release",
+              "Na delay ang akong TES allowance ug gusto ko mahibal an ngano",
+              "Why is my TES allowance not released yet",
+              "My TES allowance has not been received and I want to know why",
+              "When will the TES allowance be released"
+            ],
+            "strong_keywords": [
+              "allowance",
+              "release",
+              "wala",
+              "akong",
+              "gusto"
+            ],
+            "weak_keywords": [
+              "mahibal",
+              "delay",
+              "released",
+              "nadawat",
+              "kanus"
+            ]
+          },
+          "display_name": "Tes Release Delay"
+        },
+        {
+          "topic": "tes_with_other_scholarships",
+          "intent": "tes_with_other_scholarships",
+          "context_topic": "TES",
+          "responses": {
+            "en": [
+              "Students may apply for TES even if they are applicants of other scholarship programs such as REAP or TABUK.",
+              "However, TES qualification policies generally do not allow students to receive multiple government-funded educational assistance benefits simultaneously.",
+              "Final eligibility is subject to scholarship guidelines and official verification.",
+              "I recommend consulting the Scholarship Office for accurate confirmation regarding your eligibility."
+            ],
+            "ceb": [
+              "Ang mga estudyante pwede mag-apply sa TES bisan applicant sila sa ubang scholarship programs sama sa REAP o TABUK.",
+              "Apan, base sa scholarship policies, dili kasagaran tugotan nga makadawat og daghang government-funded educational assistance sa parehas nga panahon.",
+              "Ang final eligibility magdepende sa scholarship guidelines ug official verification.",
+              "Mas maayo nga mangutana sa Scholarship Office aron makakuha og eksaktong impormasyon."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "Pwede ba ko mag apply sa TES scholarship bisan naa koy lain nga scholarship",
+              "Tugotan ba nga makadawat ug TES ug lain nga scholarship sa parehas nga panahon",
+              "Posible ba nga ma qualify sa TES kung naa nakoy lain nga scholarship",
+              "Pwede ba makadawat ug TES allowance bisan naa nay existing scholarship",
+              "Gusto nako mahibal an kung pwede ba ang TES ug lain nga scholarship",
+              "Pwede ba ko mag apply sa TES kung scholarship applicant nako daan",
+              "Tugotan ba sa TES ang students nga adunay lain nga scholarship",
+              "Ma approve ba sa TES ang students nga naa nay scholarship",
+              "Can I apply for TES scholarship while applying for another scholarship program",
+              "Am I allowed to receive TES and another scholarship at the same time",
+              "Is it possible to qualify for TES if I already have another scholarship"
+            ],
+            "strong_keywords": [
+              "scholarship",
+              "lain",
+              "pwede",
+              "apply",
+              "kung"
+            ],
+            "weak_keywords": [
+              "another",
+              "bisan",
+              "tugotan",
+              "makadawat",
+              "qualify"
+            ]
+          },
+          "display_name": "Tes With Other Scholarships"
+        },
+        {
+          "topic": "cancel_tabuk_assistance",
+          "intent": "cancel_tabuk_assistance",
+          "context_topic": "TABUK",
+          "responses": {
+            "en": [
+              "Unfortunately, I do not have information on how to cancel your TABUK assistance, as that program is not managed by BukSU.",
+              "Regarding your concerns about eligibility: being in one program does not automatically disqualify you from others.",
+              "However, to avoid disqualification from the TES program or other programs, you must ensure you are not actively receiving funds from two different government subsidies at the same time."
+            ],
+            "ceb": [
+              "Kasubo, wala ko’y impormasyon kung unsaon pag-cancel sa imong TABUK assistance, kay ang maong programa dili gi-manage sa BukSU.",
+              "Bahin sa imong kabalaka bahin sa eligibility: ang pagka-apil sa usa ka programa dili pasabot nga dili na ka pwede moapil sa lain.",
+              "Apan, aron malikayan ang disqualification sa TES program o uban pang programa, siguroa nga dili ka simultaneous nga nakadawat ug pondo gikan sa duha ka lain-laing government subsidies."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "Unsaon nako pag-cancel sa akong TABUK assistance",
+              "Gusto nako undangon ang akong TABUK scholarship support",
+              "Pwede ba nimo isulti ang proseso sa pag-cancel sa TABUK assistance",
+              "Posible ba nga mo-withdraw sa TABUK program",
+              "Unsang mga lakang ang kinahanglan aron dili na madawat ang TABUK funding",
+              "Nanginahanglan ko og tabang sa pag-cancel sa TABUK financial aid",
+              "Unsaon nako pagkuha sa akong kaugalingon gikan sa TABUK scholarship program",
+              "Pwede ba nga mo-undang sa pagdawat sa TABUK funds samtang naa pa sa TES",
+              "How can I cancel my TABUK assistance",
+              "I want to stop my TABUK scholarship support",
+              "Can you tell me the process for cancelling TABUK assistance"
+            ],
+            "strong_keywords": [
+              "tabuk",
+              "cancel",
+              "assistance",
+              "akong",
+              "scholarship"
+            ],
+            "weak_keywords": [
+              "support",
+              "pwede",
+              "program",
+              "gusto",
+              "undangon"
+            ]
+          },
+          "display_name": "Tabuk"
         }
       ],
       "display_name": "Scholarships and Financial Grants Unit"
@@ -434,6 +581,51 @@
             "t-shirt",
             "pants"
           ]
+        },
+        {
+          "topic": "haircut_and_hair_color_policy",
+          "intent": "haircut_and_hair_color_policy",
+          "context_topic": "policy",
+          "responses": {
+            "en": [
+              "What is BukSU's policy on haircut and colored hair?",
+              "According to the BukSU Student Handbook guidelines on grooming and campus decorum:",
+              "1. Students are expected to maintain neat, clean, and respectable hairstyles while on campus.",
+              "2. For male students in general undergraduate programs, modest and well-groomed haircuts are expected. Extreme or unkempt styles are discouraged.",
+              "3. **Board Courses & Clinical Programs**: Programs such as the **College of Nursing (CON)** and **College of Education (COE)** during teaching internships enforce strict professional grooming rules — including natural hair color (no loud/unnatural hair dye) and standard military/prescribed hair cuts for males.",
+              "4. Modest hair highlights are generally permitted in non-board programs as long as they adhere to general university decorum."
+            ],
+            "ceb": [
+              "Unsa ang patakaran sa BukSU bahin sa haircut ug colored hair?",
+              "Sumala sa BukSU Student Handbook guidelines sa grooming ug campus decorum:",
+              "1. Ang mga estudyante gilauman nga magmintinar og hapsay, limpyo, ug desente nga estilo sa buhok sulod sa campus.",
+              "2. Para sa mga lalaki sa regular nga undergraduate programs, gikinahanglan ang disente ug hapsay nga tupi. Ang sobra o unkempt nga estilo dili girekomenda.",
+              "3. **Board Courses & Clinical Programs**: Ang mga kurso sama sa **College of Nursing (CON)** ug **College of Education (COE)** panahon sa internship nagpatuman og estrikto nga grooming rules — lakip ang natural nga kolor sa buhok (bawal ang hayag/unnatural nga hair dye) ug standard prescribed haircut para sa mga lalaki.",
+              "4. Ang natural o modest nga hair highlights kasagarang gitugotan sa mga non-board programs basta subay sa kinatibuk-ang university decorum."
+            ]
+          },
+          "metadata": {
+            "phrases": [
+              "bawal ba ang colored hair o naay strict haircut policy para sa mga lalaki",
+              "bawal ba colored hair sa buksu",
+              "haircut policy for male students buksu",
+              "strict haircut policy buksu",
+              "pwede ba magpakolor sa buhok sa buksu",
+              "hair color policy bukidnon state university",
+              "hair grooming policy buksu",
+              "is colored hair allowed in buksu",
+              "haircut rules for boys buksu"
+            ]
+          },
+          "display_name": "Haircut and Hair Color Policy",
+          "subject_terms": [
+            "haircut",
+            "hair color",
+            "grooming",
+            "dress code"
+          ],
+          "images": [],
+          "items": []
         }
       ],
       "display_name": "Campus Dress Code & Uniform Policy"
@@ -829,78 +1021,6 @@
       "display_name": "Services Offered By Guidance"
     },
     {
-      "topic": "mroning_greater",
-      "responses": {
-        "en": [
-          "Good morning! How can I assist you today?"
-        ],
-        "ceb": [
-          "Maayong buntag! Unsa akong matabang nimo karon?"
-        ]
-      },
-      "intent": "mroning_greater",
-      "context_topic": "fees",
-      "metadata": {
-        "phrases": [
-          "mroning greater"
-        ],
-        "strong_keywords": [
-          "mroning",
-          "greater"
-        ],
-        "weak_keywords": []
-      },
-      "display_name": "Mroning Greater"
-    },
-    {
-      "topic": "afternoon_greater",
-      "responses": {
-        "en": [
-          "Good afternoon! How may I help you?"
-        ],
-        "ceb": [
-          "Maayong hapon! Unsa akong ikatabang nimo?"
-        ]
-      },
-      "intent": "afternoon_greater",
-      "context_topic": "fees",
-      "metadata": {
-        "phrases": [
-          "afternoon greater"
-        ],
-        "strong_keywords": [
-          "afternoon",
-          "greater"
-        ],
-        "weak_keywords": []
-      },
-      "display_name": "Afternoon Greater"
-    },
-    {
-      "topic": "evening_greater",
-      "responses": {
-        "en": [
-          "Good evening! How can I help you today?"
-        ],
-        "ceb": [
-          "Maayong gabii! Unsa akong matabang nimo karon?"
-        ]
-      },
-      "intent": "evening_greater",
-      "context_topic": "fees",
-      "metadata": {
-        "phrases": [
-          "evening greater"
-        ],
-        "strong_keywords": [
-          "evening",
-          "greater"
-        ],
-        "weak_keywords": []
-      },
-      "display_name": "Evening Greater"
-    },
-    {
       "topic": "student_organizations_application_process",
       "responses": {
         "en": [
@@ -1168,6 +1288,398 @@
         ]
       },
       "display_name": "Orientation Next Steps"
+    },
+    {
+      "topic": "campus_safety",
+      "responses": {
+        "en": [
+          "Yes, Bukidnon State University has campus security personnel on duty to help ensure student safety."
+        ],
+        "ceb": [
+          "Oo, adunay campus security personnel ang Bukidnon State University nga nagbantay aron masiguro ang kaluwasan sa mga estudyante."
+        ]
+      },
+      "intent": "campus_safety",
+      "context_topic": "safety",
+      "metadata": {
+        "phrases": [
+          "Aduna ba campus security sa BukSU aron masiguro ang kaluwasan sa mga estudyante",
+          "Giunsa pagpanalipod sa Bukidnon State University ang mga estudyante sa campus",
+          "Aduna ba mga security personnel nga nagbantay sa grounds sa BukSU",
+          "Pwede ba mag-report ang mga estudyante og safety concerns sa campus security",
+          "Aduna ba emergency services nga magamit sa campus alang sa mga estudyante",
+          "Aduna ba security hotline para sa mga estudyante sa BukSU",
+          "Giunsa pag-handle sa BukSU ang mga insidente nga may kalabotan sa kaluwasan sa estudyante",
+          "Aduna ba mga security guards sa panahon sa klase sa BukSU",
+          "Is there campus security at BukSU to ensure student safety",
+          "How does Bukidnon State University provide safety for students on campus",
+          "Are there security personnel patrolling BukSU grounds"
+        ],
+        "strong_keywords": [
+          "security",
+          "buksu",
+          "campus",
+          "estudyante",
+          "aduna"
+        ],
+        "weak_keywords": [
+          "safety",
+          "kaluwasan",
+          "giunsa",
+          "bukidnon",
+          "state"
+        ]
+      },
+      "display_name": "Safety"
+    },
+    {
+      "topic": "shorts_on_campus",
+      "responses": {
+        "en": [
+          "Wearing shorts is permitted only during intramural sports competitions, such as wearing a jersey to allow for better movement.",
+          "Shorts are also allowed if required for specific academic activities, such as P.E. presentations.",
+          "Outside of these specific instances, wearing shorts on campus is strictly prohibited."
+        ],
+        "ceb": [
+          "Ang pagsul-ob og shorts gitugotan ra panahon sa intramural sports competitions, sama sa pagsul-ob og jersey aron mas sayon ang lihok.",
+          "Gitugotan usab kini kung kinahanglan para sa espesipikong academic activities, sama sa mga P.E. presentations.",
+          "Gawas ani nga mga sitwasyon, hugot nga bawal ang pagsul-ob og shorts sulod sa campus."
+        ]
+      },
+      "intent": "shorts_on_campus",
+      "context_topic": "uniform",
+      "metadata": {
+        "phrases": [
+          "Gitugotan ba ang students nga magsul-ob og shorts sulod sa campus",
+          "Kanus-a pwede magsul-ob og shorts sa unibersidad",
+          "Pwede ba ko magsul-ob og shorts panahon sa klase o activities",
+          "Unsay mga rules sa pagsul-ob og shorts sa sulod sa campus",
+          "Ang shorts ba gitugotan ra sa sports o P.E. activities",
+          "Pwede ba magsul-ob og shorts gawas sa sports events",
+          "Pwede ba ko magsul-ob og shorts para sa official university events",
+          "Aduna bay specific days o events nga gitugotan ang shorts",
+          "Are students allowed to wear shorts on campus",
+          "When is it acceptable to wear shorts while at the university",
+          "Can I wear shorts during class or activities"
+        ],
+        "strong_keywords": [
+          "shorts",
+          "magsul",
+          "pwede",
+          "gitugotan",
+          "campus"
+        ],
+        "weak_keywords": [
+          "activities",
+          "events",
+          "wear",
+          "students",
+          "sulod"
+        ]
+      },
+      "display_name": "Shorts On Campus"
+    },
+    {
+      "topic": "college_shirt_allowed",
+      "responses": {
+        "en": [
+          "Students may sometimes be allowed to wear their college shirts depending on official announcements.",
+          "In some cases, this is permitted on Thursdays or Fridays.",
+          "It is best to stay updated by following the official Bukidnon State University Facebook page for announcements."
+        ],
+        "ceb": [
+          "Usahay tugotan ang mga estudyante nga magsul-ob sa ilang college shirt depende sa opisyal nga announcements.",
+          "Sa ubang kaso, gitugotan kini kada Huwebes o Biyernes.",
+          "Mas maayo nga magpabiling updated pinaagi sa pagsunod sa opisyal nga Facebook page sa Bukidnon State University."
+        ]
+      },
+      "intent": "college_shirt_allowed",
+      "context_topic": "uniform",
+      "metadata": {
+        "phrases": [
+          "Kanus-a pwede magsul-ob ang estudyante sa ilang college shirts",
+          "Aduna ba opisyal nga adlaw para magsul-ob og college shirts",
+          "Pwede ba magsul-ob ang estudyante sa ilang shirts sa pipila ka weekdays",
+          "Unsay mga announcements nga naggiya sa pagsul-ob sa shirt",
+          "Gitugotan ba ang shirts panahon sa special academic activities",
+          "Giunsa pagsayran sa estudyante ang rules para sa college shirts",
+          "Aduna bay schedule para sa college shirt days",
+          "Pwede ba magsul-ob sa college shirts kung walay permiso",
+          "When can students wear their college shirts",
+          "Are there official days for wearing college shirts",
+          "Can students wear their shirts on certain weekdays",
+          "Can i still use my college shirt right now",
+          "can i still use my college shirt on the friday",
+          "can i use my college shirt",
+          "can i wear college shirt on friday",
+          "can i wear college shirt",
+          "is college shirt allowed on friday",
+          "is college shirt allowed on thursday",
+          "pwedi pabako mag suot og college shirt karon",
+          "pwede paba mag suot og college shirt",
+          "do we allowed to use our college shirt arround the campus",
+          "allowed to use college shirt around campus",
+          "pwede ba mag gamit ug college shirt",
+          "pwede pa ba gamiton ang college shirt karon",
+          "pwede ba magsul-ob og college shirt sa friday"
+        ],
+        "strong_keywords": [
+          "shirts",
+          "college",
+          "magsul",
+          "pwede",
+          "estudyante"
+        ],
+        "weak_keywords": [
+          "ilang",
+          "aduna",
+          "weekdays",
+          "shirt",
+          "days"
+        ]
+      },
+      "display_name": "College Shirt Allowed"
+    },
+    {
+      "topic": "campus_dress_code_policy",
+      "responses": {
+        "en": [
+          "**University Memorandum No. 01, s. 2026 — Prescribed University Uniform Policy:**\n\nPlease be informed that all students are required to wear the complete prescribed university uniform every **Monday**, **Tuesday**, **Thursday**, and **Friday**, effective on their respective dates:\n\n• **2ND YEAR - 4TH YEAR STUDENTS:** Effective **September 7, 2026**\n• **1ST YEAR STUDENTS:** Effective **September 14, 2026**\n\nStudents are expected to **strictly observe the prescribed university uniform policy** on the indicated days.\n\n*(Note: **Wednesday** remains the official university **Wash Day** where casual/civilian attire is permitted. Wearing of shorts, sandos/sleeveless shirts, ripped clothes, and rubber slippers is strictly prohibited on campus during class days and office hours).*",
+          "You can also read other BukSU Policies through this link: https://buksu.edu.ph/security-services-unit/"
+        ],
+        "ceb": [
+          "**University Memorandum No. 01, s. 2026 — Polisiya sa Opisyal nga Uniporme:**\n\nPalihog pahibalo nga ang tanang estudyante gikinahanglan nga magsul-ob sa kompleto nga prescribed university uniform matag **Lunes**, **Martes**, **Huwebes**, ug **Biyernes**, sugod sa mosunod nga mga petsa:\n\n• **2ND YEAR - 4TH YEAR STUDENTS:** Epektibo **September 7, 2026**\n• **1ST YEAR STUDENTS:** Epektibo **September 14, 2026**\n\nAng mga estudyante gilauman nga **hugot nga mosunod sa prescribed university uniform policy** sa maong mga adlaw.\n\n*(Pahinumdom: Ang **Miyerkules** nagpabilin nga opisyal nga **Wash Day** diin gitugotan ang casual/civilian attire. Ang pagsul-ob og shorts, sando/sleeveless, gisi-gisi nga sinina, ug tsinelas hugot nga gidili sulod sa campus panahon sa klase ug office hours).*",
+          "Mabasa usab nimo ang uban pang BukSU Policies pinaagi niini nga link: https://buksu.edu.ph/security-services-unit/"
+        ]
+      },
+      "intent": "campus_dress_code_policy",
+      "context_topic": "dress_code",
+      "metadata": {
+        "phrases": [
+          "what is the dress code policy",
+          "Can you tell me whats the dresscode policy of Bukidnon state university",
+          "Dress code policy",
+          "unsa may dress code policy sa buksu",
+          "campus dress code policy",
+          "what is the dress code in buksu",
+          "what is the school uniform policy",
+          "what clothes are not allowed inside campus",
+          "are slippers allowed inside buksu",
+          "are shorts allowed inside campus",
+          "what should students wear in buksu",
+          "when do the used of uniform is mandatory",
+          "when is the use of uniform mandatory",
+          "when is uniform mandatory",
+          "what date is not allowed to use civilian",
+          "what day is not allowed to use civilian",
+          "memorandum no 01 s 2026",
+          "memo no 01 s 2026",
+          "effective date of uniform",
+          "when is uniform required",
+          "Unsa ang dress code policy para sa mga estudyante sa BukSU",
+          "Kinahanglan ba magsul ob ang estudyante sa opisyal nga uniporme",
+          "Unsa ang mga rules sa pamesti panahon sa civilian days",
+          "Gitugotan ba ang shorts o sleeveless nga sinina sa campus",
+          "Unsang mga pamesti ang dili tugotan sulod sa university",
+          "Unsa ka strikto ang dress code policy sa BukSU",
+          "Unsang sakto nga pamesti ang angay sul obon sa estudyante",
+          "Pwede ba magsul ob og tsinelas o gisi nga karsones sa campus",
+          "What is the dress code policy for students at BukSU",
+          "What clothes are allowed inside the BukSU campus",
+          "Are students required to wear the official university uniform",
+          "school uniform or dress code policy",
+          "unsa nga petsa bawal na mag civilian",
+          "kanus-a mandatory ang uniform"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "campus",
+          "dress",
+          "code",
+          "dresscode",
+          "uniform",
+          "uniporme",
+          "pamesti",
+          "policy"
+        ],
+        "weak_keywords": [
+          "allowed",
+          "inside",
+          "students",
+          "estudyante",
+          "pamesti"
+        ]
+      },
+      "display_name": "Dress Code Policy"
+    },
+    {
+      "topic": "buksu_general_policies",
+      "responses": {
+        "en": [
+          "Here are some of the Bukidnon State University policies, you can also visit this BukSU official Website for more information about the policies of Bukidnon State University:\n https://buksu.edu.ph/security-services-unit/",
+          "**Dress Code and Personal Access**\n• Prohibited Attire: The security manual explicitly states: Proper and decent attire upon entering the BUKSU premises, offices shall be observed. Thus, **wearing of shorts and sando shall not be allowed to enter the school premises during class days and office hours** except during legitimate school activities with permission from the authorities.\n• \"No ID, No Entry\" Policy: All students across all levels and employees must wear or present their official school ID upon entering the campus.",
+          "**Campus Curfew Policy**\n• College Students: Not allowed to stay inside the campus **beyond 9:30 PM** (unless attending official school evening activities).\n• General Campus Lockout: No **persons are allowed inside the campus beyond 10:00 PM** (including dorm residents, with exceptions for school officials and graduate students/DepEd Fellows logged by security).",
+          "**Vehicle and Traffic Regulations**\n• Motorcycle Mufflers: Motorcycles with **modified mufflers that produce annoying or loud sounds are strictly banned** from entering the campus, even with a valid gate pass.\n• Minors / Students: A **No Driver's License, No Entry** policy is strictly enforced for elementary and high school student drivers from Monday to Sunday.\n• Vehicle Passes: Regular vehicles entering the campus must display a **valid Vehicle Gate Pass Sticker issued by the Office of the Chief Administrative Officer.** Visitors must leave a valid ID at the gate in exchange for a visitor’s pass."
+        ],
+        "ceb": [
+          "Ania ang pipila sa mga nag-unang polisiya sa Bukidnon State University, mahimo usab nimong bisitahon ang opisyal nga website sa BukSU alang sa dugang impormasyon: https://buksu.edu.ph/security-services-unit/",
+          "**Dress Code ug Personal Access**\n• Gidili nga Pamesti: Ang security manual klarong nag-ingon: Kinahanglan ang husto ug desente nga pamesti pagsulod sa BUKSU premises ug mga opisina. Busa, ang **pagsul-ob og shorts ug sando dili tugotan nga makasulod sa eskwelahan sa mga adlaw sa klase ug office hours** gawas lang kon adunay lehitimong kalihokan nga gitugotan sa awtoridad.\n• \"No ID, No Entry\" Policy: Ang tanang estudyante sa tanang ang-ang ug mga empleyado kinahanglang magsul-ob o magpakita sa ilang opisyal nga school ID sa pagsulod sa campus.",
+          "**Curfew sa Campus**\n• College Students: Dili tugotan nga magpabilin sulod sa campus **lapas sa 9:30 PM** (gawas kon motambong og opisyal nga kalihokan sa eskwelahan sa gabii).\n• General Campus Lockout: **Walay gitugotan sulod sa campus lapas sa 10:00 PM** (lakip ang mga nag-dorm, gawas sa mga school officials ug graduate students/DepEd Fellows nga na-log sa security).",
+          "**Regulasyon sa Sakyanan ug Trapiko**\n• Tambutso sa Motor: Ang mga motorsiklo nga adunay **bora-bora o modified mufflers nga saba ug makadisturbo hugot nga gidili** sa pagsulod sa campus, bisan pa kon adunay valid gate pass.\n• Minors / Estudyante: Ang **No Driver's License, No Entry** nga polisiya hugot nga gipatuman alang sa mga estudyante gikan Lunes hangtod Domingo.\n• Vehicle Passes: Ang mga regular nga sakyanan kinahanglang magpakita og **valid Vehicle Gate Pass Sticker gikan sa Office of the Chief Administrative Officer.** Ang mga bisita kinahanglang magbilin og valid ID sa gate baylo sa visitor's pass."
+        ]
+      },
+      "intent": "buksu_general_policies",
+      "context_topic": "general_info",
+      "metadata": {
+        "phrases": [
+          "what is the policy of buksu",
+          "whats the policy of Bukidnon state university",
+          "unsay policy sa buksu",
+          "what are the policies of buksu",
+          "what are the policies in buksu",
+          "unsa ang mga polisiya sa buksu",
+          "unsa ang policy sa buksu",
+          "buksu policies",
+          "buksu policy",
+          "university policies of buksu",
+          "university policy in buksu",
+          "school policy of buksu",
+          "mga polisiya sa buksu",
+          "rules and regulations in buksu",
+          "what is the general policy of buksu"
+        ],
+        "strong_keywords": [
+          "policy",
+          "policies",
+          "polisiya",
+          "buksu",
+          "bukidnon",
+          "university",
+          "regulations",
+          "rules"
+        ],
+        "weak_keywords": [
+          "general",
+          "campus",
+          "mga",
+          "school"
+        ]
+      },
+      "display_name": "BukSU General Policies"
+    },
+    {
+      "topic": "no_noon_break_policy",
+      "responses": {
+        "en": [
+          "Yes frontline offices such as the Registrar Cashier and Office of Student Services follow a No Noon Break policy to ensure continuous service to students."
+        ],
+        "ceb": [
+          "Oo ang mga frontline office sama sa Registrar Cashier ug Office of Student Services nagpatuman og No Noon Break nga polisiya aron masiguro ang padayon nga serbisyo sa mga estudyante."
+        ]
+      },
+      "intent": "no_noon_break_policy",
+      "context_topic": "No noon break policy",
+      "metadata": {
+        "phrases": [
+          "Bukas ba ang Registrar sa oras sa paniudto sa BukSU",
+          "Mosira ba ang Cashier sa lunch break sa BukSU",
+          "Bukas ba ang Office of Student Services panahon sa tanghalian",
+          "Nag follow ba ang mga frontline offices sa no noon break policy sa BukSU",
+          "Pwede ba moadto sa Registrar panahon sa oras sa tanghalian",
+          "Bukas ba ang Registrar ug Cashier sa noon",
+          "Bukas ba ang OSS sa oras sa paniudto",
+          "Pwede ba makakuha og serbisyo sa frontline offices panahon sa lunch",
+          "Do BukSU frontline offices stay open during lunchtime",
+          "Is the Registrar open during lunch break at BukSU",
+          "Does the Cashier close during noon at BukSU"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "bukas",
+          "registrar",
+          "oras",
+          "cashier"
+        ],
+        "weak_keywords": [
+          "lunch",
+          "break",
+          "panahon",
+          "frontline",
+          "offices"
+        ]
+      },
+      "display_name": "No Noon Break Policy"
+    },
+    {
+      "topic": "oss_no_noon_break_policy",
+      "responses": {
+        "en": [
+          "The Office of Student Services practices a No Noon Break Policy.",
+          "This means staff members remain available even during lunch time to provide continuous frontline services to students."
+        ],
+        "ceb": [
+          "Ang Office of Student Services nagpatuman og No Noon Break Policy.",
+          "Nagpasabot kini nga adunay staff nga available bisan sa oras sa paniudto aron mapadayon ang serbisyo sa mga estudyante."
+        ]
+      },
+      "intent": "oss_no_noon_break_policy",
+      "context_topic": "office_policy",
+      "metadata": {
+        "phrases": [
+          "oss no noon break policy"
+        ],
+        "strong_keywords": [
+          "noon",
+          "break",
+          "policy"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Office Policy"
+    },
+    {
+      "topic": "office_schedule",
+      "responses": {
+        "en": [
+          "What are the office hours of Bukidnon State University?",
+          "Bukidnon State University offices, including the Registrar’s Office and the Accounting Office, operate only from Monday to Friday.",
+          "Office hours are 8:00 AM to 12:00 NN and 1:00 PM to 5:00 PM.",
+          "They are closed on Saturdays and Sundays.",
+          " ",
+          "Make sure to plan your visits during the official office hours.",
+          "For urgent matters, you can check if services are available online or contact the offices directly.",
+          "📱 Contact Number: 0975 758 3157",
+          "✉️ Email: registrar@buksu.edu.ph",
+          "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+          "📞 BukSU Contact Number: 088-813-5661"
+        ],
+        "ceb": [
+          "Unsa ang oras sa opisina sa Bukidnon State University?",
+          "Ang mga opisina sa Bukidnon State University, lakip na ang Registrar’s Office ug Accounting Office, bukas lang gikan Lunes hangtod Biyernes.",
+          "Ang oras sa opisina kay 8:00 AM hangtod 12:00 NN ug 1:00 PM hangtod 5:00 PM.",
+          "Sirado kini sa Sabado ug Domingo.",
+          " ",
+          "Siguroha nga imong i-plan ang imong pagbisita sa opisyal nga oras sa opisina.",
+          "Para sa mga urgent nga butang, pwede nimo tan-awon kung available ang serbisyo online o kontaka diretso ang opisina.",
+          "📱 Contact Number: 0975 758 3157",
+          "✉️ Email: registrar@buksu.edu.ph",
+          "🖥️ Facebook Page: https://www.facebook.com/BSURegistrar",
+          "📞 BukSU Contact Number: 088-813-5661"
+        ]
+      },
+      "intent": "office_schedule",
+      "context_topic": "office_hours",
+      "metadata": {
+        "phrases": [
+          "office schedule"
+        ],
+        "strong_keywords": [
+          "office",
+          "schedule"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Office Hours"
     }
   ]
 }

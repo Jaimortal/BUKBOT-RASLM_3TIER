@@ -3632,11 +3632,11 @@
           "responses": {
             "en": [
               "A minor subject supports your major field of study and helps build general knowledge.",
-              "Now if you failed to pass a minor subject, you must retake it the following semester. Only if your actual GWA is affected, or it is a prerequisite for your other subjects, will it affect your course program."
+              "Now if you **failed to pass a minor subject**, you must retake it the following semester. Only if your actual GWA is affected, or it is a prerequisite for your other subjects, will it affect your course program."
             ],
             "ceb": [
               "Ang minor subject kay support sa imong major ug naghatag ug dugang kahibalo.",
-              "Kon mapakyas ka pag pasar og minor subject, kinahanglan nimo kini iretake sa sunod nga semester. Kon affected ang GWA nimo, o dili kini ma-prerequisite sa ubang subject, then dili kini makaapekto sa imong course program."
+              "Kon **mapakyas ka pag pasar og minor subject**, kinahanglan nimo kini iretake sa sunod nga semester. Kon affected ang GWA nimo, o dili kini ma-prerequisite sa ubang subject, then dili kini makaapekto sa imong course program."
             ]
           },
           "intent": "minor_subject",
@@ -5278,6 +5278,34 @@
         }
       ],
       "display_name": "Board Exam Information"
+    },
+    {
+      "topic": "buksu_courses_offered_list",
+      "responses": {
+        "en": [
+          "The list of undergraduate and graduate programs can be found on the official BukSU website under the Academics section.",
+          "You may also inquire directly at the Admission and Testing Unit for the list of available courses."
+        ],
+        "ceb": [
+          "Ang listahan sa mga kurso makita sa opisyal nga website sa BukSU sa Academics nga section.",
+          "Mahimo usab mangutana diretso sa Admission and Testing Unit para sa listahan sa mga kurso."
+        ]
+      },
+      "intent": "buksu_courses_offered_list",
+      "context_topic": "courses",
+      "metadata": {
+        "phrases": [
+          "buksu courses offered list"
+        ],
+        "strong_keywords": [
+          "buksu",
+          "courses",
+          "offered",
+          "list"
+        ],
+        "weak_keywords": []
+      },
+      "display_name": "Courses"
     }
   ]
 }

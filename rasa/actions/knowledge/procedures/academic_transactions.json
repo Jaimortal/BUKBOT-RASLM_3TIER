@@ -26,24 +26,22 @@
           "topic": "process",
           "responses": {
             "en": [
-              "Adding subjects is allowed during the first two weeks of the semester.",
-              "Dropping subjects is allowed until the midterm period with proper approval.",
+              "Adding and Changing Subject is allowed during August 3 - 6, 2026 ",
               "To add/drop, you must secure an Add/Drop Form from the Registrar's Office. or download it right here:",
               "Adding: https://drive.google.com/uc?export=download&id=1Gkc7oLA-gfrRNiO0eTYjfBdy51PqD7Ou",
               "Dropping: https://drive.google.com/uc?export=download&id=1Zobe5O1IRoXXl4UBcCS_UI_R2YqRdczU",
               "You can also see other forms that you can download in this link: https://buksu.edu.ph/downloadable-forms/",
-              "The form must be signed by your program coordinator and the instructor of the subject.",
-              "Late dropping (after midterms) will result in a failing grade of 5.0."
+              "For the **process you may directly ask the Registrar office** or message them on their facebook page: https://www.facebook.com/BSURegistrar",
+              "Late changing subjects are not allowed."
             ],
             "ceb": [
-              "Ang pag-add og subjects gitugotan sa unang duha ka semana sa semester.",
-              "Ang pag-drop og subjects gitugotan hangtod sa midterm period nga adunay proper approval.",
+              "Ang pag dungag or pag ilis sa subject gitugotan lamang kini sa August 3 - 6, 2026",
               "Aron mag-add/drop, kinahanglan nimong kuhaon ang Add/Drop Form sa Opisina sa Registrar, or i download kini pinagi ani nga mga links",
               "Adding: https://drive.google.com/uc?export=download&id=1Gkc7oLA-gfrRNiO0eTYjfBdy51PqD7Ou",
               "Dropping: https://drive.google.com/uc?export=download&id=1Zobe5O1IRoXXl4UBcCS_UI_R2YqRdczU",
               "Makit nimo usab ang ubang form na pwedi nimo ma download diri nga link: https://buksu.edu.ph/downloadable-forms/",
               "Ang form kinahanglan pirmaan sa imong program coordinator ug sa instructor sa subject.",
-              "Ang late dropping (human sa midterms) maresulta sa failing grade nga 5.0."
+              "Ang pag usab sa maong subject kay dili tugotan."
             ]
           },
           "metadata": {
@@ -656,6 +654,177 @@
         }
       ],
       "display_name": "Graduation Clearance"
+    },
+    {
+      "topic": "graduation_rehearsal_attendance",
+      "subject_key": "graduation_rehearsal_attendance",
+      "subject_type": "academic_process",
+      "subject_terms": [
+        "Kinahanglan ba mo-attend sa graduation rehearsal",
+        "Kailangan ba ang estudyante mo-apil sa rehearsal",
+        "Obligado ba ko moadto sa graduation rehearsal",
+        "Mandatory ba ang attendance sa rehearsal",
+        "Pwede ba skipon sa estudyante ang rehearsal"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "Yes, attendance during the graduation rehearsal is usually mandatory."
+            ],
+            "ceb": [
+              "Oo, kasagaran required ang attendance sa graduation rehearsal."
+            ]
+          },
+          "intent": "graduation_rehearsal_attendance",
+          "metadata": {
+            "phrases": [
+              "Kinahanglan ba mo-attend sa graduation rehearsal",
+              "Kailangan ba ang estudyante mo-apil sa rehearsal",
+              "Obligado ba ko moadto sa graduation rehearsal",
+              "Mandatory ba ang attendance sa rehearsal",
+              "Pwede ba skipon sa estudyante ang rehearsal",
+              "Pwede ba ko dili moapil sa graduation rehearsal",
+              "Kinahanglan ba tanan graduates moapil sa rehearsal",
+              "Required ba ang rehearsal session para sa mga graduates",
+              "Is it required to attend the graduation rehearsal",
+              "Do students need to be present during graduation rehearsal",
+              "Must I go to the graduation rehearsal"
+            ],
+            "strong_keywords": [
+              "rehearsal",
+              "graduation",
+              "kinahanglan",
+              "attend",
+              "estudyante"
+            ],
+            "weak_keywords": [
+              "pwede",
+              "moapil",
+              "graduates",
+              "required",
+              "kailangan"
+            ]
+          },
+          "display_name": "Graduation Rehearsal Attendance"
+        }
+      ],
+      "display_name": "Graduation Rehearsal Attendance"
+    },
+    {
+      "topic": "graduation_attendance",
+      "subject_key": "graduation_attendance",
+      "subject_type": "academic_process",
+      "subject_terms": [
+        "Pwede ba mo-attend ang mga ginikanan sa graduation ceremony",
+        "Ang mga bisita ba puwede moapil sa graduation",
+        "Gusto nako mahibalo kung pwede ang family members moanhi sa graduation",
+        "Gi-permit ba nga motan-aw ang ginikanan sa graduation",
+        "Pwede ba ko magdala og paryente sa graduation program"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "Yes, parents and guests are allowed to attend graduation ceremonies."
+            ],
+            "ceb": [
+              "Oo, pwede mo-attend ang parents ug mga bisita sa graduation ceremonies."
+            ]
+          },
+          "intent": "graduation_attendance",
+          "metadata": {
+            "phrases": [
+              "Pwede ba mo-attend ang mga ginikanan sa graduation ceremony",
+              "Ang mga bisita ba puwede moapil sa graduation",
+              "Gusto nako mahibalo kung pwede ang family members moanhi sa graduation",
+              "Gi-permit ba nga motan-aw ang ginikanan sa graduation",
+              "Pwede ba ko magdala og paryente sa graduation program",
+              "Ang mga visitor ba allowed sa graduation ceremonies",
+              "Pila ka bisita ang pwede mo-attend sa graduation",
+              "Pwede ba ang alumni mo-apil sa graduation sa current students",
+              "Can parents attend the graduation ceremony",
+              "Are guests allowed to join the graduation",
+              "I want to know if family members can come to graduation"
+            ],
+            "strong_keywords": [
+              "graduation",
+              "pwede",
+              "attend",
+              "ginikanan",
+              "ceremony"
+            ],
+            "weak_keywords": [
+              "bisita",
+              "family",
+              "members",
+              "allowed",
+              "puwede"
+            ]
+          },
+          "display_name": "Graduation Attendance"
+        }
+      ],
+      "display_name": "Graduation Attendance"
+    },
+    {
+      "topic": "tracer_study",
+      "subject_key": "tracer_study",
+      "subject_type": "academic_process",
+      "subject_terms": [
+        "Unsa man ang tracer study",
+        "Pwede nimo i-explain unsa ang tracer study",
+        "Gusto nako makabalo bahin sa tracer study",
+        "Unsay gi-track sa tracer study",
+        "Required ba ang tracer study para sa mga graduate"
+      ],
+      "subtopics": [
+        {
+          "topic": "process",
+          "responses": {
+            "en": [
+              "A tracer study tracks graduates’ employment status and is usually required."
+            ],
+            "ceb": [
+              "Ang tracer study nag-track sa employment status sa mga graduate, ug kasagaran required gyud ni."
+            ]
+          },
+          "intent": "tracer_study",
+          "metadata": {
+            "phrases": [
+              "Unsa man ang tracer study",
+              "Pwede nimo i-explain unsa ang tracer study",
+              "Gusto nako makabalo bahin sa tracer study",
+              "Unsay gi-track sa tracer study",
+              "Required ba ang tracer study para sa mga graduate",
+              "Kinahanglan ba tanan alumni moapil sa tracer study",
+              "Ngano importante ang tracer study",
+              "Unsang impormasyon ang gina-kuha sa tracer study",
+              "What is a tracer study",
+              "Can you explain what a tracer study is",
+              "I want to know about tracer studies"
+            ],
+            "strong_keywords": [
+              "tracer",
+              "study",
+              "explain",
+              "pwede",
+              "nimo"
+            ],
+            "weak_keywords": [
+              "gusto",
+              "makabalo",
+              "bahin",
+              "unsay",
+              "track"
+            ]
+          },
+          "display_name": "Graduate Tracking"
+        }
+      ],
+      "display_name": "Graduate Tracking"
     }
   ]
 }

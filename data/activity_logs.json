@@ -1,5 +1,115 @@
 [
   {
+    "id": "log_1788693879308_ub72qf4",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Library ID Card Location",
+    "targetTitle": "Library ID Card Location",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 2 image(s)"
+      },
+      {
+        "field": "Images",
+        "changeType": "removed",
+        "details": "Removed 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-06T11:24:39.308Z"
+  },
+  {
+    "id": "log_1788693878309_bnrlr44",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"2.webp\" (13.7 KB)",
+    "targetTitle": "2.webp",
+    "targetId": "b4a06b4e-7c01-4471-a1f5-47744e81903d",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"2.webp\" (13.7 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-06T11:24:38.309Z"
+  },
+  {
+    "id": "log_1788693872366_0lnt03w",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"760434458_1476179117875674_7105067591648267777_n.webp\" (59.4 KB)",
+    "targetTitle": "760434458_1476179117875674_7105067591648267777_n.webp",
+    "targetId": "6834edee-133b-4bd3-be19-82858cdaecbe",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"760434458_1476179117875674_7105067591648267777_n.webp\" (59.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-06T11:24:32.365Z"
+  },
+  {
+    "id": "log_1788693603762_i7zglr1",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Library ID Card Requirements",
+    "targetTitle": "Library ID Card Requirements",
+    "targetId": "procedures/student_service_procedures.json",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      },
+      {
+        "field": "Images",
+        "changeType": "removed",
+        "details": "Removed 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-06T11:20:03.762Z"
+  },
+  {
+    "id": "log_1788693602541_7o65a57",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"760434458_1476179117875674_7105067591648267777_n.webp\" (59.4 KB)",
+    "targetTitle": "760434458_1476179117875674_7105067591648267777_n.webp",
+    "targetId": "d8784a0b-9f46-4e6f-b93c-ba9c36de20fe",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"760434458_1476179117875674_7105067591648267777_n.webp\" (59.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-06T11:20:02.540Z"
+  },
+  {
     "id": "log_1788517377405_wik7p7a",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

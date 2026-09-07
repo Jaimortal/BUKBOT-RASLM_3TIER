@@ -232,17 +232,27 @@ class KnowledgeRouter:
 
         # 2. Privacy Guardrail for Personal Records, Grades, GPA, and Financial Balance
         is_grade_level = any(k in text for k in ["grade 12", "grade 11", "grade 10", "grade 7", "grade 8", "grade 9"])
-        has_private_metric = any(k in text for k in [
+        has_private_metric = any(re.search(rf"\b{re.escape(k)}\b", text) for k in [
             "grado", "gpa", "gwa", "balance sa tuition", "tuition balance", "tuition fee balance", "akong balance", "my balance"
         ]) or (
-            not is_grade_level and any(k in text for k in ["grade", "grades"])
+            not is_grade_level and any(re.search(rf"\b{re.escape(k)}\b", text) for k in ["grade", "grades"])
         )
-        has_personal_pronoun = any(w in text for w in [
+        has_personal_pronoun = any(re.search(rf"\b{re.escape(w)}\b", text) for w in [
             "my", "akong", "akoang", "nako", "current", "this semester", "karon", "ako bang"
         ]) or any(phrase in text for phrase in [
             "what is my", "what's my", "unsa akong", "unsa akoang", "pila akong", "pila akoang", "pila akong balance", "unsa akong balance"
         ])
-        if has_private_metric and has_personal_pronoun:
+        is_policy_inquiry = any(re.search(rf"\b{re.escape(p)}\b", text) for p in [
+            "inc", "incomplete", "convert", "conversion", "deadline", "allowed period", "requirement", "requirements",
+            "rule", "rules", "policy", "policies", "passing", "fail", "failing", "failed", "retention", "probation",
+            "dean's list", "latin honor", "latin honors", "cum laude", "summa", "magna", "shift", "shifting", "drop",
+            "dropped", "dropping", "scale", "meaning", "system", "passing grade", "passing rate", "5.0", "3.0", "1.0",
+            "what does a grade of", "unsa ang 5.0", "unsa ang 3.0", "unsa ang 1.0", "gwa calculated",
+            "compute", "computed", "computation", "computing", "calculate", "calculated", "calculation", "calculating",
+            "instructor", "instructors", "teacher", "teachers", "professor", "professors", "faculty", "maestro",
+            "quizzes", "quiz", "exam", "exams", "participation", "criteria", "kwenta", "pamaagi"
+        ])
+        if has_private_metric and has_personal_pronoun and not is_policy_inquiry:
             return "__private_student_records_guardrail__"
 
         # 3. Out-of-Scope Guardrail for External City/Weather/Transit Queries
@@ -336,9 +346,184 @@ class KnowledgeRouter:
 
         # 16. Campus Gates & Entrances
         if self._has_any(text, [
-            "pinakaduol nga gate", "which gate", "closest gate", "main gate buksu", "campus gate"
+            "how many gates", "pila ka gate", "walking students", "naglakaw mosulod", "examinees enter", "mag-exam sa buksu-cat",
+            "vehicle entrance", "entrance para sa mga sakyanan", "exit gate", "entrance gate", "pinakaduol nga gate", "which gate", "closest gate", "main gate buksu", "campus gate", "gates and entrances"
         ]):
             return "campus_gates_and_entrances"
+
+        # 16b. Computer Laboratories & Floors
+        if self._has_any(text, [
+            "computer lab", "computer labs", "comlab", "com lab", "comlabs", "all comlab", "comlab 8", "comlab 9", "comlab 11",
+            "floor sa computer lab", "computer laboratory", "computer laboratories"
+        ]):
+            return "all_comlab_locations"
+
+        # 16c. Accounting Office & Window 9
+        if self._has_any(text, [
+            "accounting office", "where is accounting", "asa ang accounting", "window 9 inside the finance", "window 9 sa finance", "floor of the finance building is the accounting", "floor sa finance building ang accounting", "settle tuition fees at the accounting", "accounting office location"
+        ]):
+            return "accounting_office_location"
+
+        # 16d. Sports Facilities
+        if self._has_any(text, [
+            "sports facilities", "sports facility", "basketball court", "varsity teams usually hold their practices", "varsity teams nagpraktis", "intramural events and competitions", "sports facilities for students"
+        ]):
+            return "sports_facilities_for_students"
+
+        # 16e. Office Hours & Noon Break
+        if self._has_any(text, [
+            "noon break", "no noon break", "lunch hour", "lunchbreak", "lunch break", "during lunchtime", "oras sa paniudto", "panahon sa tanghalian", "oras sa lunch break", "open at noon"
+        ]):
+            if self._has_any(text, ["oss", "student services"]):
+                return "oss_no_noon_break_policy"
+            return "no_noon_break_policy"
+        if self._has_any(text, [
+            "office schedule", "office hours", "offices open", "offices close", "oras nga bukas ug sirado ang mga opisina", "schedule sa tanang opisina", "offices open on weekends", "naa ba sa weekend"
+        ]):
+            return "office_schedule"
+
+        # 16f. Graduation Clearance, Attendance, & Tracer Study
+        if self._has_any(text, ["graduation rehearsal", "rehearsal attendance", "attendance sa graduation rehearsal", "rehearsal mandatory"]):
+            return "graduation_rehearsal_attendance"
+        if self._has_any(text, ["parents attend graduation", "relatives attend graduation", "family attend graduation", "ginikanan moadto sa graduation", "parents and relatives"]):
+            return "graduation_attendance"
+        if self._has_any(text, ["tracer study", "answer tracer study", "motubag sa tracer study"]):
+            return "tracer_study"
+        if self._has_any(text, ["apply for graduation", "graduation clearance", "clearance system", "clearance for graduation", "apply sa graduation"]):
+            return "graduation_clearance"
+
+        # 16g. ICT / WiFi / Portal Accounts
+        if self._has_any(text, ["locked out", "account locked", "portal locked", "na-lock ang akong portal", "locked out of my portal", "na-lock", "too many wrong attempts"]):
+            return "portal_account_locked_issue"
+        if self._has_any(text, ["update address", "update home address", "update student portal", "update personal information", "update sa akong address sa student portal"]):
+            return "update_student_portal_information"
+
+        # Where / How to GET WiFi credentials (ICT Office)
+        if (
+            self._has_any(text, [
+                "get wifi credentials", "where to get wifi credentials", "how to get wifi credentials",
+                "asa manko mag kuha og wifi credentials", "asa mag kuha og wifi credentials", "asa magkuha og wifi credentials",
+                "mag kuha og wifi credentials", "magkuha og wifi credentials", "where can i get wifi credentials",
+                "how to get wifi access", "where to get wifi access", "asa makakuha og wifi access", "asa makakuha wifi access",
+                "unsaon pagkuha og wifi credentials", "unsaon pagkuha og wifi account", "where is ict office for wifi",
+                "get my wifi credentials", "get my wifi account", "kuha ug wifi credentials", "kuha og wifi account",
+                "asa ko moadto para sa wifi credentials", "asa dapit magkuha og wifi credentials"
+            ]) or (
+                self._has_any(text, ["wifi credentials", "wifi account", "wifi access"]) and
+                self._has_any(text, ["get", "kuha", "where", "asa", "claim", "request", "mangayo", "obtain", "process"])
+            )
+        ):
+            return "get_wifi_access"
+
+        # How to CONNECT to campus student Wi-Fi
+        if self._has_any(text, [
+            "connect to the campus wi-fi", "connect sa campus wifi", "wi-fi login",
+            "connect to campus wi-fi", "connect to campus wifi", "connect to school wifi", "connect to student wifi",
+            "connect on student wifi", "how to connect to wifi", "how do students connect to the campus wi-fi",
+            "how do i connect to school wifi", "can you tell me on how to connect on student wifi",
+            "unsaon pag connect sa student wifi", "unsaon pag-connect sa student wifi", "unsaon pag connect sa wifi",
+            "student_wifi", "how to connect to student wifi", "connect to wifi"
+        ]):
+            return "campus_wifi_access"
+
+        # 16h. Department Grade Computation
+        if (
+            self._has_any(text, [
+                "computed across quizzes", "compute our grades", "instructor compute", "teachers compute grades",
+                "process of the grades computation", "process of grades computation", "quizzes, major exams",
+                "quizzes major exams", "unsaon pag compute sa grades sa quizzes", "giunsa pag kwenta sa maestro",
+                "grading computation process", "how are grades computed", "computation sa grado",
+                "calculate my entire grades", "calculate our grades", "calculate grades", "how do instructor calculate",
+                "how do my instructor calculate", "instructor calculate", "teacher calculate", "professor calculate"
+            ]) or (
+                self._has_any(text, ["compute", "computed", "computation", "calculate", "calculated", "calculation", "kwenta"]) and
+                self._has_any(text, ["grade", "grades", "grading", "grado"]) and
+                self._has_any(text, ["instructor", "teacher", "professor", "faculty", "maestro", "quizzes", "exam", "exams", "participation", "how", "unsaon", "giunsa"])
+            ) or (
+                self._has_any(text, ["grading system of", "grading system sa", "grading process sa", "tell me the grading system of"]) and
+                (
+                    self._has_any(text, ["cob", "cot", "cas", "con", "cpag", "coe", "bsit", "bsemc", "bset", "bsn", "bsa", "bsba", "bpa", "department", "college", "course"]) or
+                    self._has_any_token(text, ["cob", "cot", "cas", "con", "cpag", "coe", "bsit", "bsemc", "bset", "bsn", "bsa", "bsba", "bpa"])
+                )
+            )
+        ):
+            return "department_grade_computation"
+
+        # 16i. Specific Course Maintaining & Retention Grade
+        if (
+            self._has_any(text, [
+                "maintaining grade", "maintaining grades", "retention grade", "retention grades",
+                "culling grade", "culling grades", "grades you need to maintain", "grades to maintain",
+                "mentain", "pila maintaining grade", "pila retention grade"
+            ]) and (
+                self._has_any(text, ["bsit", "bsemc", "bset", "bsn", "bsa", "bsba", "bpa", "cot", "cob", "cas", "con", "cpag", "coe", "course", "program", "department", "college", "nursing", "accountancy"]) or
+                self._has_any_token(text, ["bsit", "bsemc", "bset", "bsn", "bsa", "bsba", "bpa", "cot", "cob", "cas", "con", "cpag", "coe"])
+            )
+        ):
+            return "specific_course_passing_retention_grade"
+
+        # 16j. Change Class Section / Schedule Request
+        if self._has_any(text, [
+            "transfer to another section", "transfer section", "change class section", "change my section",
+            "change section", "change my class section", "transfer to another section or change class",
+            "balhin og section", "balhin ug section", "mag-ilis og section", "mag ilis ug section",
+            "move to another section", "change my section this semester"
+        ]):
+            return "change_section_schedule_conflict"
+
+        # 16l. Library ID Card Process & Location
+        if (
+            self._has_any(text, [
+                "process of getting library card", "where can i get library id card", "how to get library card",
+                "where to get library id", "tell me where to get library id", "where can i get my library id",
+                "where do i go for library id", "where to claim library id", "where to process library card",
+                "asa makuha ang library id", "asa makakuha ug library id", "unsaon pagkuha og library id",
+                "unsaon pagkuha og library card", "unsaon pag process sa library id card", "library id asa makuha",
+                "asa kuhaon ang library card", "asa ko makakuha og library id", "library card application process",
+                "library id location", "library card location", "library orientation and tour library card"
+            ]) or (
+                self._has_any(text, ["library id", "library card", "barcoded library card"]) and
+                self._has_any(text, ["where", "asa", "get", "kuha", "claim", "process", "apply", "application", "unsaon", "how", "release", "makuha", "hain"]) and
+                not self._has_any(text, ["lost", "nawala", "replacement", "replace", "fee", "pay", "bayad", "pila", "requirement", "requirements", "cor", "bring", "dalhon"])
+            )
+        ):
+            return "library_id_card_location"
+
+        # 16k. Scholarships (TES delay, Free tuition, Tabuk+TES)
+        if self._has_any(text, ["tes allowance", "tes release", "delayed for weeks", "tes delay", "dugay na ang akong tes", "dugay ang tes"]):
+            return "tes_release_delay"
+        if self._has_any(text, ["tabuk scholar", "tes with other", "apply for tes without losing", "tabuk scholar usab ko"]):
+            return "tes_with_other_scholarships"
+        if self._has_any(text, ["free tuition for undergraduate", "free tuition undergraduate", "libre ba ang tuition para sa mga undergraduate", "tuition at buksu free"]):
+            return "free_tuition_undergraduate_buksu"
+
+        # 16l. Library Thesis Availability
+        if self._has_any(text, ["capstone and thesis", "thesis papers in the buksu library", "previous thesis", "naunang capstone ug thesis", "thesis availability"]):
+            return "library_thesis_availability"
+
+        # 16j. University History & Key Milestones
+        if self._has_any(text, ["original name of buksu", "name before it became a university", "previous name", "orihinal nga ngalan sa buksu"]):
+            return "previous_name_buksu_college"
+        if self._has_any(text, ["year did the institution convert", "convert from a college into a full university", "convert to university", "nahimo kining unibersidad gikan sa kolehiyo", "unsang tuig nahimo kining unibersidad"]):
+            return "buksu_become_university"
+        if self._has_any(text, ["president during the time it became a university", "president the time university", "presidente sa dihang nahimo kining unibersidad"]):
+            return "Pres_thetime_university"
+        if self._has_any(text, ["law or legislation", "law that gave buksu", "balaod ang naghatag sa buksu", "conversion law"]):
+            return "law_author_buksu_university_conversion"
+        if self._has_any(text, ["vice president for academic affairs", "vp for academic affairs", "vpaa", "vice president para sa academic affairs"]):
+            return "vicepres_academic_affairs"
+        if self._has_any(text, ["vice president", "vpsas", "culture arts sports student services", "sports sa vp level", "student services and sports at the vp level"]):
+            return "vicepres_culture_arts_sports_student_services"
+        if self._has_any(text, ["university secretary", "secretary sa buksu"]):
+            return "buksu_university_secretary"
+        if self._has_any(text, ["past presidents", "multiple presidents", "presidents over the years", "presidents list", "nauna nga presidente"]):
+            return "buksu_presidents_list"
+        if self._has_any(text, ["head of the bsit", "head of bsit", "head sa bsit department"]):
+            return "Head_of_BSIT"
+        if self._has_any(text, ["dean managing the college of arts and sciences", "dean of cas", "dean sa college of arts and sciences"]):
+            return "Dean_0f_CAS"
+        if self._has_any(text, ["all the academic colleges", "colleges available in buksu", "kolehiyo nga naa sa buksu"]):
+            return "buksu_academic_colleges"
 
         # 17. Examination Rules & Calendar Schedules
         if self._has_any(text, ["midterm", "final exam", "finals exam", "final examination", "midterm examination", "exam rules", "examination rules"]):
@@ -721,6 +906,10 @@ class KnowledgeRouter:
             self._has_any(text, [
                 "adding and dropping", "adding & dropping", "add and drop", "add & drop",
                 "add drop", "adding dropping", "mag add drop", "mag-add drop",
+                "remove a subject", "remove subject", "removing a subject", "drop a subject", "dropping a subject",
+                "change my subject load", "change subject load", "form needed for adding", "form for adding or removing",
+                "who signs the form", "form para sa add/drop", "mo-sign sa form para ma-drop", "mawala ang usa ka subject",
+                "magdugang og subject", "magdugang ug subject", "dropped a subject after", "drop og subject human"
             ]) or (
                 self._has_any(text, ["add subject", "adding subject", "drop subject", "dropping subject"]) and
                 not self._has_any(text, ["how to pay", "cashier"])
@@ -5083,6 +5272,14 @@ class KnowledgeRouter:
         return None
 
     def _course_route(self, text: str, intent: str, has_it_program: bool = False) -> Optional[str]:
+        if self._has_any(text, [
+            "shift", "shifting", "mag-shift", "mag shift", "change course", "change my course",
+            "change my program", "change program", "transfer program", "transfer to a different program",
+            "mag-ilis og kurso", "mag-ilis ug kurso", "pag-shift", "shift ug course", "shift og course",
+            "shift to another", "shift to a different", "shift to a board", "shift padulong", "shifting request"
+        ]):
+            return "course_shifting"
+
         if self._has_any(text, ["master", "masters", "masteral", "graduate program", "doctor of medicine", "medicine course", "medicine program"]):
             return "buksu_masters_courses"
         if has_it_program:

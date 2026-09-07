@@ -412,18 +412,20 @@
           "context_topic": "process",
           "responses": {
             "en": [
-              "You can only request a section change during the enrollment period, so make sure to check your schedule right after enrollment and report any unwanted schedule conflict as early as possible.",
-              "For schedule conflict or section change concerns, directly ask the faculty staff or enrollment officer handling your year level enrollment.",
-              "Any requirements for transferring to another section will be discussed by your enrollment officer, so make sure to ask them for the exact process."
+              "Once you are enrolled, you cannot change your section, as this may conflict on the slots. However, directly ask any faculty staff in your department, as each college department has their own college rules."
             ],
             "ceb": [
-              "Pwede ra ka mangayo og section change during enrollment period, busa siguroa nga ma-check nimo dayon ang imong schedule human sa enrollment ug i-report dayon kung naay unwanted schedule conflict.",
-              "Para sa schedule conflict o section change concern, pangutana diretso sa faculty staff o enrollment officer nga nag-handle sa enrollment sa imong year level.",
-              "Ang bisan unsang requirements para sa pagbalhin og section i-discuss sa imong enrollment officer, busa pangutana gyud nila para sa eksaktong proseso."
+              "Kung naka-enroll na ka, dili na nimo mabag-o ang imong section, tungod kay makamugna kini og conflict sa mga slots. Apan direktang mangutana sa mga faculty staff sa inyong departamento tungod kay ang matag college department adunay kaugalingong mga patakaran."
             ]
           },
           "metadata": {
             "phrases": [
+              "Can a freshman request to transfer to another section or change class schedules?",
+              "can i change my class section?",
+              "i want to change my section this semester is that possible?",
+              "can a freshman request to transfer section",
+              "can freshman change section",
+              "change my section this semester",
               "how do i change my section if my schedule conflicts",
               "how do i change my section",
               "change section",
@@ -431,6 +433,8 @@
               "section change",
               "section transfer",
               "transfer section",
+              "transfer to another section",
+              "can i move to another section",
               "change section because schedule conflict",
               "change section due to schedule conflict",
               "my schedule has conflict can i change section",
@@ -446,13 +450,14 @@
               "section change schedule conflict",
               "transfer section because of conflict",
               "my schedule conflicts can i change section",
-              "can i move to another section",
               "balhin section tungod conflict",
               "schedule conflict section transfer",
               "who handles section change",
               "section conflict during enrollment",
               "can freshman change section if conflict",
-              "change section enrollment period"
+              "change section enrollment period",
+              "pwede ba magbalhin og section ang freshman",
+              "gusto ko mag-ilis og section karon nga semester posible ba"
             ]
           },
           "subject_key": "section_change_schedule_conflict",
