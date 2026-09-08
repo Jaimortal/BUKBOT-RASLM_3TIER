@@ -489,6 +489,38 @@ class KnowledgeRouter:
         ):
             return "library_id_card_location"
 
+        # 16m. Apply / Take BukSU-CAT / Admission Examination
+        if (
+            self._has_any(text, [
+                "tell me how to apply for buksu-cat examination", "tell me how to apply for buksu cat examination",
+                "tell me how to apply for buksu-cat", "tell me how to apply for buksu cat",
+                "how to apply for buksu-cat examination", "how to apply for buksu cat examination",
+                "how to apply for buksu-cat", "how to apply for buksu cat",
+                "how to apply for cat exam", "how to apply for cat examination", "how to apply for cat testing",
+                "how to apply for admission testing", "how to apply for entrance examination",
+                "how to apply for entrance exam", "process of applying for buksu-cat", "process of applying for buksu cat",
+                "process of applying for entrance exam", "process of applying for admission testing",
+                "unsaon pag apply sa buksu-cat examination", "unsaon pag apply sa buksu cat examination",
+                "unsaon pag apply sa entrance examination", "unsaon pag apply sa admission testing",
+                "unsaon pag-apply sa buksu-cat", "unsaon pag-apply sa buksu cat",
+                "unsaon pag-apply sa entrance exam", "unsaon pag-apply sa entrance examination",
+                "take buksu cat", "how to take buksu cat", "how can i take the buksu college admission test",
+                "steps to apply for buksu cat", "steps to apply for buksu-cat", "register for buksu cat exam",
+                "mag register ko para buksu cat"
+            ]) or (
+                self._has_any(text, ["apply", "application", "register", "registration", "take", "schedule", "unsaon pag apply", "unsaon pag-apply", "unsaon pag take", "unsaon pag-take", "how can i take", "process", "steps", "guide", "how to", "unsaon"]) and
+                self._has_any(text, ["buksu cat", "buksu-cat", "buksucat", "cat exam", "cat testing", "cat examination", "admission test", "admission testing", "entrance exam", "entrance examination", "college admission test"]) and
+                not self._has_any(text, [
+                    "after", "sunod", "human", "next step", "what next", "pagkahuman",
+                    "result", "results", "score", "scores", "cutoff", "cut-off", "passing score", "rating", "passed", "fail", "failed",
+                    "fee", "fees", "pay", "payment", "bayad", "pila", "cost", "free", "libre",
+                    "requirement", "requirements", "dalhon", "bring", "dala", "papers", "documents",
+                    "calculator", "reschedule", "missed", "retake", "walk in", "walk-in", "online ba", "definition", "meaning", "unsa ang", "what is"
+                ])
+            )
+        ):
+            return "take_exam"
+
         # 16k. Scholarships (TES delay, Free tuition, Tabuk+TES)
         if self._has_any(text, ["tes allowance", "tes release", "delayed for weeks", "tes delay", "dugay na ang akong tes", "dugay ang tes"]):
             return "tes_release_delay"
@@ -979,7 +1011,7 @@ class KnowledgeRouter:
             text,
             ["accept", "accepted", "admit", "admitted", "allow", "allowed", "modawat", "dawat"],
         )
-        has_second_courser = self._has_any(text, ["second courser", "second course"])
+        has_second_courser = self._has_any(text, ["second courser", "second coursers", "second-courser", "second-coursers", "second course", "second degree"])
         has_law = self._has_any(text, ["law", "juris doctor"])
         has_medicine = self._has_any(text, ["medicine", "college of medicine"])
         has_graduate_enrollment = has_enrollment and (
@@ -987,6 +1019,33 @@ class KnowledgeRouter:
             self._has_any(text, ["post graduate", "post-graduate"])
         )
         has_gpat = self._has_any(text, ["gpat", "graduate program admission test"])
+        has_exam_day_requirement_wording = (
+            self._has_any(text, [
+                "what to bring on the examination day", "what to bring on exam day",
+                "what should i bring on buksu cat examination day", "what should i bring on exam day",
+                "what to bring during exam", "what to bring to exam", "what to bring for exam",
+                "what to bring in exam", "what to bring in the examination", "what to bring during the exam",
+                "what are the test day requirements", "test day requirements", "exam day requirements",
+                "examination day requirements", "what do i need to bring for exam", "what do i need to bring to exam",
+                "what do i need to bring on exam day", "what do i need to bring during exam",
+                "do i need pencil for buksu cat", "do i need pencil for exam", "items to bring for exam",
+                "materials to bring for exam", "things to bring for exam", "what to bring on test day",
+                "what to bring for entrance exam", "what to bring for buksu cat",
+                "unsa akong kinahanglan dad-on para sa exam", "unsa akong kinahanglan dad on para sa exam",
+                "unsa ang kinahanglan nako dalhon sa adlaw sa exam", "unsa kinahanglan dalhon sa exam",
+                "unsa ang dad-on sa exam", "unsa ang dad on sa exam", "unsa ang dad-on sa adlaw sa exam",
+                "unsa ang dad on sa adlaw sa exam", "unsa dalhon sa exam", "unsa dalhon sa adlaw sa exam",
+                "unsa akong dad-on sa exam", "unsa akong dad on sa exam", "unsa akong dalhon sa exam",
+                "dad on para sa buksu cat exam", "dad-on para sa buksu cat exam", "dad on para sa exam",
+                "dad-on para sa exam", "dalhon para sa exam", "dalhon para sa buksu cat exam",
+                "mga gamit nga dad-on sa exam", "mga gamit nga dad on sa exam", "mga gamit nga dalhon sa exam",
+                "unsa mga gamit dad-on sa exam", "unsa mga gamit dad on sa exam",
+            ]) or (
+                self._has_any(text, ["bring", "dalhon", "dad-on", "dad on", "dala", "dal-on", "gamit", "materials", "pencil", "sharpener", "eraser", "ballpen"]) and
+                self._has_any(text, ["exam", "examination", "test day", "exam day", "buksu cat", "cat exam", "entrance exam", "adlaw sa exam"]) and
+                not self._has_any(text, ["how to apply", "unsaon pag apply", "register", "step by step", "requirements for admission application", "after applying"])
+            )
+        )
         has_deadline = self._has_any(text, ["deadline", "until when", "last day"])
         has_result = (
             self._has_any(text, ["result", "results", "ror", "rating"]) or
@@ -2892,7 +2951,7 @@ class KnowledgeRouter:
                 "unsa ang requirements", "what are the requirements", "what are the documents",
                 "what do i need", "what documents", "what documents do", "what to prepare",
                 "qualify", "qualifying", "qualification", "envelope", "envelopes",
-                "admission requirements", "enrollment requirements", "documentary requirements",
+                "enrollment requirements", "documentary requirements",
                 "unsa ang mga papeles", "unsa ang mga dokumento", "papers to bring", "documents to bring",
                 "what papers", "unsa akong dad-on", "unsa akong dalhon", "ipasa", "submit",
                 "requirements for enrollment", "enrollment documentary requirements"
@@ -2914,11 +2973,11 @@ class KnowledgeRouter:
         # 1. Specific Law & Graduate Program Requirements
         has_law_or_graduate_req = (
             self._has_any(text, [
-                "law enrollment", "law requirements", "graduate enrollment", "graduate requirements",
-                "law school", "college of law", "juris doctor", "graduate school", "graduate studies",
-                "masteral", "doctorate", "law program", "graduate program"
+                "law enrollment", "graduate enrollment", "graduate enrollment requirements", "law enrollment requirements",
+                "law school enrollment", "college of law enrollment", "juris doctor enrollment", "graduate school enrollment",
+                "graduate studies enrollment", "masteral enrollment", "doctorate enrollment",
             ]) or
-            (self._has_any_token(text, ["law", "jd"]) and has_requirement_or_admission_intent)
+            (self._has_any(text, ["law", "juris doctor", "graduate school", "graduate studies", "masteral", "doctorate"]) and has_enrollment and self._has_any(text, ["requirement", "requirements", "document", "documents"]))
         )
         if has_law_or_graduate_req and active_domain != "location" and not self._has_any(text, ["where is", "location of", "asa dapit", "asa ang"]):
             return "graduate_law_enrollment_requirements"
@@ -3189,25 +3248,112 @@ class KnowledgeRouter:
             return "after_admission_application"
 
         has_take_cat_exam = (
-            self._has_any(text, [
-                "take exam", "apply exam", "apply for cat", "apply cat", "cat application",
-                "how to apply for cat", "how to take exam", "how to take buksu cat",
-                "how to apply for admission test", "schedule buksu cat", "register for admission test",
-                "register for cat", "buksu cat steps", "unsaon pag take sa cat", "unsaon pag apply sa cat",
-                "unsaon pag apply sa entrance exam", "steps to schedule my buksu cat", "take buksu cat",
-                "steps para maka exam", "how can i take the buksu college admission test",
-                "process of applying for the buksu admission test", "apply for admission testing",
-                "apply for admission exam", "apply admission test", "entrance exam application"
-            ]) and not (
-                self._has_any(text, ["enroll", "enrollment", "enrolling", "enrol"]) and
-                not (
-                    self._has_any(text, ["exam", "test", "permit", "schedule", "buksu cat", "cat exam", "cat test"]) or
-                    self._has_any_token(text, ["cat"])
+            (
+                self._has_any(text, [
+                    "take exam", "apply exam", "apply for cat", "apply cat",
+                    "how to apply for cat", "how to take exam", "how to take buksu cat",
+                    "how to apply for admission test", "schedule buksu cat", "register for admission test",
+                    "register for cat", "buksu cat steps", "unsaon pag take sa cat", "unsaon pag apply sa cat",
+                    "unsaon pag apply sa entrance exam", "steps to schedule my buksu cat", "take buksu cat",
+                    "steps para maka exam", "how can i take the buksu college admission test",
+                    "process of applying for the buksu admission test", "apply for admission testing",
+                    "apply for admission exam", "apply admission test", "entrance exam application",
+                    "tell me how to apply for buksu-cat examination", "tell me how to apply for buksu cat examination",
+                    "how to apply for buksu-cat examination", "how to apply for buksu cat examination",
+                    "how to apply for buksu-cat", "how to apply for buksu cat",
+                    "how to apply for cat exam", "how to apply for cat examination", "how to apply for cat testing",
+                    "how to apply for admission testing", "how to apply for entrance examination",
+                    "how to apply for entrance exam", "process of applying for buksu-cat", "process of applying for buksu cat",
+                    "process of applying for entrance exam", "process of applying for admission testing",
+                    "unsaon pag apply sa buksu-cat examination", "unsaon pag apply sa buksu cat examination",
+                    "unsaon pag apply sa entrance examination", "unsaon pag apply sa admission testing",
+                    "unsaon pag-apply sa buksu-cat", "unsaon pag-apply sa buksu cat",
+                    "unsaon pag-apply sa entrance exam", "unsaon pag-apply sa entrance examination"
+                ]) or (
+                    self._has_any(text, ["apply", "application", "register", "registration", "take", "schedule", "unsaon pag apply", "unsaon pag-apply", "unsaon pag take", "unsaon pag-take", "how can i take", "process", "steps", "guide", "how to", "unsaon"]) and
+                    self._has_any(text, ["buksu cat", "buksu-cat", "buksucat", "cat exam", "cat testing", "cat examination", "admission test", "admission testing", "entrance exam", "entrance examination", "college admission test"])
                 )
-            )
+            ) and
+            not has_cat_online_vs_walkin and
+            not self._has_any(text, [
+                "after", "sunod", "human", "next step", "what next", "pagkahuman",
+                "result", "results", "score", "scores", "cutoff", "cut-off", "passing score", "rating", "passed", "fail", "failed",
+                "fee", "fees", "pay", "payment", "bayad", "pila", "cost", "free", "libre",
+                "requirement", "requirements", "dalhon", "bring", "dala", "papers", "documents",
+                "calculator", "reschedule", "missed", "retake", "walk in", "walk-in", "walkin", "online ba", "definition", "meaning", "unsa ang", "what is"
+            ])
         )
         if has_take_cat_exam and active_domain != "location" and not self._has_any(text, ["where is", "location of", "asa dapit", "asa ang", "how to go to", "how to find"]):
             return "take_exam"
+
+        if has_exam_day_requirement_wording and not has_missed_cat_schedule:
+            return "exam_requirements"
+
+        has_admission_requirements = (
+            (
+                self._has_any(text, [
+                    "admission requirement", "admission requirements",
+                    "requirements for admission", "requirement for admission",
+                    "requirements for the admission", "requirements for the admission application",
+                    "requirements of admission", "requirements of admission application",
+                    "admission application requirements", "admission application requirement",
+                    "requirements for admission testing", "requirements for buksu admission",
+                    "what are the requirements for admission", "what are the requirements for the admission application",
+                    "what are the requirements for admission application",
+                    "what documents need for admission", "what documents are needed for admission",
+                    "what documents are required for admission", "documents needed for admission",
+                    "documents need for admission", "documents for admission", "documents for admission application",
+                    "documentary requirements for admission", "admission documents", "admission documentary requirements",
+                    "requirements to apply for admission", "requirements to apply admission",
+                    "requirements to create admission account", "requirements for first year application",
+                    "freshman admission requirements", "freshmen admission requirements",
+                    "incoming first year admission requirements", "first year admission requirements",
+                    "what are the requirements for transferees", "requirements for transferees", "requirements for transferee",
+                    "transferee requirements", "transferee admission requirements", "transferee application details",
+                    "documents needed for transferee admission",
+                    "second courser requirements", "requirements for second courser", "what are the requirements for second coursers",
+                    "law admission requirements", "juris doctor admission requirements", "requirements for law admission",
+                    "masters degree admission requirements", "gpat admission requirements", "masters admission requirements",
+                    "unsa ang requirements para sa admission", "unsa ang requirements para sa admission application",
+                    "unsa ang requirements para maka apply sa admission", "unsa kailangan para mo apply sa buksu admission",
+                    "unsa ang kailangan para mo apply sa buksu admission testing", "unsa kailangan para mo apply sa buksu admission testing",
+                    "unsa kailangan para maghimo ug account", "requirements sa incoming first year",
+                    "mga kinahanglanon para sa admission", "mga kinahanglanon para sa admission application",
+                    "mga kinahanglanon sa admission application",
+                    "papeles para sa admission", "papeles para maka apply sa admission",
+                    "what does a freshman need for admission", "requirements for new student admission",
+                    "unsa rules sa pag transfer sa buksu", "unsa ang gikinahanglan sa second courser",
+                ]) or
+                (
+                    self._has_any(text, [
+                        "admission", "admissions", "admission application", "admission test application",
+                        "apply admission", "apply for admission", "pag-apply sa admission", "mag-apply sa admission",
+                        "mag apply sa admission", "mo apply sa admission", "mo-apply sa admission",
+                        "transferee", "transferees", "second courser", "second coursers", "gpat", "masters", "juris doctor"
+                    ]) and
+                    self._has_any(text, ["requirement", "requirements", "document", "documents", "papeles", "papers", "needed", "need", "kinahanglanon", "kailangan", "kinahanglan", "gikinahanglan"]) and
+                    not has_exam_day_requirement_wording and
+                    not has_enrollment and
+                    not self._has_any(text, [
+                        "after", "sunod", "human", "result", "results", "score", "scores",
+                        "fee", "fees", "pay", "payment", "bayad", "deadline", "schedule", "when", "kanus",
+                        "test permit corrupted", "corrupted", "change course", "preferred course"
+                    ])
+                )
+            )
+        )
+        if has_admission_requirements and active_domain != "location" and not self._has_any(text, ["where is", "location of", "asa dapit", "asa ang", "how to go to", "how to find"]):
+            if has_transferee or self._has_any(text, ["transferee", "transferees", "transfer"]):
+                return "transferee_admission_requirements"
+            if has_second_courser or self._has_any(text, ["second courser", "second coursers", "second-courser", "second-coursers", "second course", "second degree"]):
+                return "second_courser_requirements"
+            if has_law or self._has_any(text, ["law", "juris doctor"]):
+                return "law_admission_requirements"
+            if has_gpat or has_masters or self._has_any(text, ["masters", "master", "master's", "gpat"]):
+                return "masters_degree_admission_requirements"
+            if self._has_any(text, ["als", "alternative learning"]):
+                return "als_graduate_buksu_cat_application"
+            return "freshman_admission_requirements"
 
         has_admission_approval_time = (
             self._has_any(text, [
@@ -3528,8 +3674,10 @@ class KnowledgeRouter:
             return "missing_admission_documents"
         if has_second_courser and self._has_any(text, ["requirement", "requirements", "document", "documents", "papeles", "papers", "ipasa", "submit", "need", "needed"]):
             return "second_courser_requirements"
-        if has_transferee and (has_enrollment or self._has_any(text, ["enroll", "enrol", "requirement", "requirements", "document", "documents", "papeles", "papers", "modawat", "accept", "needed", "need", "bring"])):
+        if has_transferee and (has_enrollment or self._has_any(text, ["enroll", "enrol"])):
             return "transferee_enrollment"
+        if has_transferee and self._has_any(text, ["requirement", "requirements", "document", "documents", "papeles", "papers", "modawat", "accept", "needed", "need", "bring"]):
+            return "transferee_admission_requirements"
         if has_freshman and has_admission and self._has_any(text, ["requirement", "requirements", "document", "documents", "needed", "need", "bring", "apply"]):
             return "freshman_admission_requirements"
         if (
@@ -3754,8 +3902,18 @@ class KnowledgeRouter:
             return "missing_admission_documents"
         if has_admission_preferred_course_change:
             return "change_preferred_course_admission_application"
-        if (has_cat or has_admission) and self._has_any(text, ["requirement", "requirements", "need", "needed", "bring", "document", "documents", "kailangan", "kinahanglan"]):
-            return "exam_requirements"
+        if (has_cat or has_admission) and self._has_any(text, ["requirement", "requirements", "need", "needed", "bring", "document", "documents", "kailangan", "kinahanglan", "gikinahanglan"]):
+            if has_exam_day_requirement_wording or self._has_any(text, ["bring", "dad-on", "dad on", "dalhon", "dala", "dal-on", "adlaw"]):
+                return "exam_requirements"
+            if has_transferee or self._has_any(text, ["transferee", "transferees", "transfer"]):
+                return "transferee_admission_requirements"
+            if has_second_courser or self._has_any(text, ["second courser", "second course"]):
+                return "second_courser_requirements"
+            if has_law or self._has_any(text, ["law", "juris doctor"]):
+                return "law_admission_requirements"
+            if has_gpat or has_masters or self._has_any(text, ["masters", "master", "master's", "gpat"]):
+                return "masters_degree_admission_requirements"
+            return "freshman_admission_requirements"
         if has_letter_of_intent or has_admission_first_requirement:
             return "admission_letter_of_intent_meaning"
         if has_admission_certificate_copy:
@@ -4040,7 +4198,7 @@ class KnowledgeRouter:
             if has_freshman and (has_admission or self._has_any(text, ["document", "documents", "requirements", "papeles", "papers", "needed", "need"])):
                 return "freshman_admission_requirements"
             if has_cat or has_admission:
-                return "exam_requirements"
+                return "exam_requirements" if (has_exam_day_requirement_wording or self._has_any(text, ["bring", "dad-on", "dad on", "dalhon", "dala", "dal-on", "adlaw"])) else "freshman_admission_requirements"
         if has_college_honors:
             return "College_Honors_gpa"
         if has_college and intent != "ask_location":
@@ -4215,13 +4373,13 @@ class KnowledgeRouter:
             if has_freshman and has_admission:
                 return "freshman_admission_requirements"
             if has_cat or has_admission:
-                return "exam_requirements"
+                return "exam_requirements" if (has_exam_day_requirement_wording or self._has_any(text, ["bring", "dad-on", "dad on", "dalhon", "dala", "dal-on", "adlaw"])) else "freshman_admission_requirements"
             if has_library_id:
                 return "library_id_card_requirements"
             if has_student_id:
                 return "student_id_requirements"
             if has_admission:
-                return "exam_requirements"
+                return "exam_requirements" if (has_exam_day_requirement_wording or self._has_any(text, ["bring", "dad-on", "dad on", "dalhon", "dala", "dal-on", "adlaw"])) else "freshman_admission_requirements"
         if intent == "ask_fee" and (has_cat or has_admission):
             return "exam_fees"
         if intent == "ask_fee" and has_enrollment and self._has_any(text, ["pay", "payment", "paying", "cashier", "accounting", "lbp", "landbank", "ofbank", "online"]):

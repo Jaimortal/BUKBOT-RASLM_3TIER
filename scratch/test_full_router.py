@@ -1,10 +1,14 @@
 import os
 import sys
-
-# Add rasa/actions to python path
-sys.path.insert(0, os.path.join(os.getcwd(), "rasa", "actions"))
-
 import importlib.util
+
+if sys.stdout.encoding != 'utf-8':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
+sys.path.insert(0, os.path.join(os.getcwd(), "rasa", "actions"))
 
 from main_router import MainRouterService
 from actions import ActionReplyFromJsonHelper
@@ -20,8 +24,7 @@ def main():
     helper = ActionReplyFromJsonHelper()
     router = MainRouterService(helper, LOCATION_ALIASES)
 
-    test_queries = [
-        # User's exact queries from prompt
+    queries = [
         "pwedi rakaha gamiton ang daan nga PE uniform",
         "am i allowed to use the old pe uniform",
         "can i still use my old pe uniform",
@@ -33,44 +36,37 @@ def main():
         "uniform PE daan okay ra ba",
         "Buksu PE uniform old pwede ba",
         "what if i wear jogging pants in pe class",
-        "white upper for physical education",
-        # Control queries to make sure buying/requesting PE uniform still routes to process
-        "how to get pe uniform",
-        "where to buy pe uniform",
-        "where to pay pe uniform",
-        "unsaon pagkuha og pe uniform",
+        "pe unifrom not available yet what to wear",
+        "unsay suoton kung walay pe uniform",
+        "pwede ba mag t-shirt sa PE",
+        "what to wear if no pe uniform yet"
     ]
 
     print("=" * 70)
     print("TESTING FULL ROUTING ENGINE WITH PE UNIFORM QUERIES")
     print("=" * 70)
 
-    for query in test_queries:
-        response, _ = router.route_with_context("ask_process", {"text": query}, query, {})
+    for q in queries:
+        resp, _ = router.route_with_context("ask_general_info", {"text": q}, q, {})
         text_resp = ""
-        if isinstance(response, dict):
-            # Check for structured or text responses
-            if "text" in response:
-                text_resp = response["text"]
-            elif "response" in response:
-                text_resp = str(response["response"])
-            else:
-                text_resp = str(response)
-        elif isinstance(response, str):
-            text_resp = response
+        if isinstance(resp, dict):
+            text_resp = resp.get("text") or str(resp.get("response")) or str(resp)
         else:
-            text_resp = str(response)
+            text_resp = str(resp)
 
-        is_old_pe = "Under BukSU guidelines" in text_resp or "Ubos sa mga lagda sa BukSU" in text_resp or "jogging pants" in text_resp or "daan nga PE" in text_resp
-        is_process = "University Press" in text_resp or "Finance Office" in text_resp
+        clean_text = text_resp.encode('ascii', 'replace').decode('ascii')
+        route_label = "[OTHER/FALLBACK]"
+        if "walay gipahayag nga gidili" in text_resp or "no rule prohibiting" in text_resp:
+            route_label = "[OLD PE POLICY]"
+        elif "white shirt" in text_resp.lower() or "jogging pants" in text_resp.lower():
+            route_label = "[TEMPORARY PE ATTIRE]"
 
-        category = "OLD PE POLICY" if is_old_pe else ("BUY/PROCESS" if is_process else "OTHER/FALLBACK")
-        print(f"\n[QUERY]: '{query}'")
-        print(f"  -> ROUTED TO: [{category}]")
-        print(f"  -> PREVIEW: {text_resp[:160]}...")
+        print(f"\n[QUERY]: '{q}'")
+        print(f"  -> ROUTED TO: {route_label}")
+        print(f"  -> PREVIEW: {clean_text[:120]}...")
 
     print("\n" + "=" * 70)
-    print("ROUTING TEST FINISHED")
+    print("PE UNIFORM ROUTING TEST COMPLETE")
     print("=" * 70)
 
 if __name__ == "__main__":

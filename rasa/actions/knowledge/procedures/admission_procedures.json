@@ -73,10 +73,40 @@
             ]
           },
           "intent": "take_exam",
-          "context_topic": "general_info",
+          "context_topic": "process",
           "metadata": {
             "phrases": [
               "take exam",
+              "tell me how to apply for buksu-cat examination",
+              "tell me how to apply for buksu cat examination",
+              "how to apply for buksu-cat examination",
+              "how to apply for buksu cat examination",
+              "how to apply for buksu-cat",
+              "how to apply for buksu cat",
+              "how to apply for cat exam",
+              "how to apply for cat examination",
+              "how to apply for cat testing",
+              "how to apply for admission testing",
+              "how to apply for admission test",
+              "how to apply for entrance exam",
+              "how to apply for entrance examination",
+              "process of applying for buksu cat",
+              "process of applying for buksu-cat",
+              "process of applying for admission testing",
+              "process of applying for entrance exam",
+              "process of applying for entrance examination",
+              "steps to apply for buksu cat",
+              "steps to apply for buksu-cat",
+              "unsaon pag apply sa buksu-cat examination",
+              "unsaon pag apply sa buksu cat examination",
+              "unsaon pag apply sa buksu cat",
+              "unsaon pag apply sa buksu-cat",
+              "unsaon pag apply sa entrance examination",
+              "unsaon pag apply sa admission testing",
+              "unsaon pag-apply sa buksu cat",
+              "unsaon pag-apply sa buksu-cat",
+              "unsaon pag-apply sa entrance exam",
+              "unsaon pag-apply sa entrance examination",
               "unsa ang mga steps para maka-apply sa buksu cat",
               "step by step nga proseso unsaon pag-take sa admission test sa buksu",
               "unsaon nako pag-register sa buksu entrance exam online",
@@ -167,7 +197,6 @@
               "unsa sunod buhaton human maka apply sa cat",
               "what happens after admission application is submitted",
               "what next after applying for entrance exam",
-              "after apply admission",
               "next steps after admission application"
             ],
             "strong_keywords": [
@@ -216,29 +245,29 @@
           "metadata": {
             "phrases": [
               "exam requirements",
+              "what to bring on exam day",
+              "what should i bring on examination day",
+              "what should i bring on buksu cat examination day",
+              "what to bring during exam",
+              "what to bring during entrance exam",
+              "what are the test day requirements",
+              "what do i need to bring for exam",
+              "list of items to bring during the buksu admission examination",
+              "requirements on buksu cat examination day",
+              "admission exam things to bring",
+              "do i need pencil for buksu cat",
+              "pwede ba magdala og ballpen sa cat",
+              "kinahanglan ba ang test permit sa exam day",
               "unsa ang kinahanglan nako dalhon sa adlaw sa exam",
               "pwede nimo isulti unsa ang mga requirements nga akong dad-on para sa exam",
               "unsa akong kinahanglan dad-on para sa exam",
               "lista sa mga kinahanglan dad-on sa buksu admission exam",
-              "what do i need to bring for exam",
-              "list of items to bring during the buksu admission examination",
               "unsa akong dad on sa exam",
-              "pwede ba magdala og ballpen sa cat",
-              "unsa mga requirements sa admission exam",
               "unsa dad on sa buksu cat",
-              "what should I bring on examination day",
-              "what do i need for admission test",
-              "what documents do i need for buksu cat",
-              "unsa kinahanglan para sa admission test",
-              "what should i bring for buksu cat",
-              "requirements on buksu cat examination day",
-              "what to bring during entrance exam",
-              "what are the test day requirements",
-              "do i need pencil for buksu cat",
               "dad on para sa buksu cat exam",
               "unsa dalhon sa entrance exam",
-              "kinahanglan ba ang test permit sa exam day",
-              "admission exam things to bring"
+              "unsa ang dad-on sa adlaw sa exam",
+              "mga gamit nga dad-on sa exam"
             ]
           },
           "display_name": "Exam Requirements"
@@ -464,15 +493,17 @@
           "responses": {
             "en": [
               "Are there fees for the College Admission Test?",
-              "College Admission Tests are offered for FREE at Bukidnon State University.",
-              "However, applicants who have already completed a bachelors degree (second course takers) need to pay 300 Php for the Admission Test.",
-              "They are not qualified to avail of the benefits of the Free Higher Education."
+              "The BukSU College Admission Test **(BukSU-CAT) is FREE for all Grade 12 students and SHS graduates who have not yet enrolled in college.**",
+              "However, applicants who have already completed a bachelors degree or at least enrolled college in BukSU need to pay 300 Php for the Admission Test.",
+              "They are not qualified to avail of the benefits of the Free Higher Education.",
+              "🔔 REMINDERS\n**No onsite applications** will be accepted on the test day. Only those with approved schedules can take the test.\n**You can only take the BukSU-CAT once every school year.**\n**DO NOT CREATE MULTIPLE ACCOUNTS**"
             ],
             "ceb": [
               "Naay bayad ang College Admission Test?",
-              "Ang College Admission Tests libre ra sa Bukidnon State University.",
-              "Apan, ang mga aplikante nga nakakompleto na og bachelor's degree (second course takers) kinahanglan magbayad og 300 Php para sa Admission Test.",
-              "Dili sila kwalipikado sa mga benepisyo sa Free Higher Education."
+              "Ang College Admission Test kay libre ra para sa mga Grade 12 students ug SHS graduates nga wala pa maka-enroll sa kolehiyo.",
+              "Apan, ang mga aplikante nga nakakompleto na og bachelor's degree o at least naka-enroll na sa kolehiyo sa BukSU kinahanglan magbayad og 300 Php para sa Admission Test.",
+              "Dili sila kwalipikado sa mga benepisyo sa Free Higher Education.",
+              "🔔PAHINUMDOM\n**DILI MODWAT OG ONSITE APPLICATIONS** sa test day. Ang mga may approval schedules lamang ang pwede mo-take sa exam.\n**Pwede ra kuhaan og usa ka higayon lang ang BukSU-CAT matag tuig.**\n**AYAW PagHimo OG DAGHANG ACCOUNTS**"
             ]
           },
           "intent": "exam_fees",
@@ -1442,40 +1473,84 @@
             "en": [
               "Here are the requirements you need before applying for BukSU Admission Testing:",
               "1. You need to have your own personal Gmail account to create an account on BukSU Admissions: https://admissions.buksu.edu.ph/",
-              "2. You need a digital copy of your 2x2 photo. Please make sure your photo meets the following specifications: plain white background, wearing a white T-shirt, no accessories, and the correct 2x2 size.",
+              "2. You need a digital copy of your 2x2 photo. Please make sure your photo meets the following **specifications: plain white background, wearing a white T-shirt, no accessories, and the correct 2x2 size.**",
               "For documentary requirements:",
-              "Report card, Transcript of Records, Principal’s Certification, GWA, and Diploma. These are optional as long as you have the Principal’s Certification. Make sure it is signed by your principal and properly sealed.",
+              "**For current Grade 12 students:** A certification from your school principal that you are currently enrolled in Grade 12",
+              "**For SHS graduates:** Copy of your Report Card or High School Diploma",
+              "**For Transferees:** Transcript of Records or Honorable Dismissal, or a certification from your current school’s Registrar",
+              "**For Returnees** (stopped studying in BukSU before 2018): Request a certification from the Registrar through this link: https://forms.gle/aKoX7zTJmnTSBNNFA",
+              "**For Second Courser:** Transcript of Records. (If it has been more than five years since your last school attendance, you must take the College Admission Test and pay 300 testing fee)",
               "After applying for BukSU Admission, please wait for approval.",
               "Note: Your Gmail should be accessible, as all verification codes will be sent there."
             ],
             "ceb": [
-              "Ania ang mga kinahanglanon nga imong andamon sa dili pa mag-apply para sa BukSU Admission Testing:",
-              "1. Kinahanglan naa kay personal nga Gmail account aron makahimo og account sa BukSU Admissions: https://admissions.buksu.edu.ph/",
-              "2. Kinahanglan pud ka og digital copy sa imong 2x2 nga litrato. Siguroa nga ang imong litrato mosunod sa mosunod nga specifications: puti nga background, nagsul-ob og puti nga T-shirt, walay accessories, ug sakto nga 2x2 nga size.",
+              "Kini ang mga requirements nga imong gikinahanglan sa dili pa mag-apply para sa BukSU Admission Testing:",
+              "1. Kinahanglan nga aduna kay kaugalingong personal nga Gmail account aron makahimo og account sa BukSU Admissions: https://admissions.buksu.edu.ph/",
+              "2. Kinahanglan nimo og digital copy sa imong 2x2 picture. Palihug siguroha nga ang imong litrato mosubay sa mosunod nga **mga detalye: plain white background, nagsul-ob og puti nga T-shirt, walay accessories, ug sakto nga 2x2 nga gidak-on.**",
               "Para sa documentary requirements:",
-              "Report card, Transcript of Records, Principal’s Certification, GWA, ug Diploma. Optional ra kini basta naa kay Principal’s Certification. Siguroa nga pirmado kini sa imong principal ug sakto ang pag-seal.",
-              "Human ka mag-apply para sa BukSU Admission, palihog hulata ang approval.",
-              "Note: Siguroa nga ma-access nimo ang imong Gmail, kay didto ipadala ang tanang verification codes."
+              "**Para sa mga kasamtangang Grade 12 nga estudyante:** Sertipikasyon gikan sa inyong principal nga ikaw kasamtangang na-enroll sa Grade 12",
+              "**Para sa mga SHS graduates:** Kopya sa imong Report Card o High School Diploma",
+              "**Para sa mga Transferee:** Transcript of Records o Honorable Dismissal, o sertipikasyon gikan sa Registrar sa imong kasamtangang eskwelahan",
+              "**Para sa mga Returnee** (niundang og eskwela sa BukSU sa wala pa ang 2018): Pangayo og sertipikasyon gikan sa Registrar pinaagi niini nga link: https://forms.gle/aKoX7zTJmnTSBNNFA",
+              "**Para sa mga Second Courser:** Transcript of Records. (Kung sobra na sa lima ka tuig sukad sa imong kataposang pag-eskwela, kinahanglan kang mokuha sa College Admission Test ug magbayad og 300 nga testing fee)",
+              "Human makapa-rehistro sa BukSU Admission, palihug paghulat sa pag-apruba.",
+              "Pahinumdom: Siguroha nga ma-access nimo ang imong Gmail, tungod kay ang tanang verification code ipadala didto."
             ]
           },
           "intent": "freshman_admission_requirements",
           "context_topic": "requirements",
           "metadata": {
             "phrases": [
+              "admission requirements",
+              "requirements for admission",
+              "requirements for the admission application",
+              "what are the requirements for the admission application",
+              "what are the requirements for admission application",
+              "what are the requirements for admission",
+              "what documents need for admission",
+              "what documents are needed for admission",
+              "what documents are required for admission application",
+              "documents needed for admission",
+              "documents need for admission",
+              "documentary requirements for admission",
+              "admission application requirements",
+              "requirements to apply for admission",
+              "requirements to apply admission",
               "freshman admission requirements",
-              "unsa ang dad on para mag apply ang incoming freshman",
-              "unsa kailangan para maghimo ug account",
-              "unsa ang requirements para maka apply sa admission examination",
-              "unsa ang kailangan para mo apply sa buksu admission testing",
-              "what are the requirements for first year application",
               "freshmen admission requirements",
               "incoming first year admission requirements",
-              "freshman buksu cat requirements",
+              "first year admission requirements",
               "requirements for new student admission",
               "what does a freshman need for admission",
-              "requirements sa incoming first year"
+              "what are the requirements for first year application",
+              "freshman buksu cat requirements",
+              "unsa ang requirements para sa admission application",
+              "unsa ang requirements para sa admission",
+              "unsa nga requirements para maka apply sa admission",
+              "unsa ang requirements para maka apply sa admission examination",
+              "unsa ang kailangan para mo apply sa buksu admission testing",
+              "unsa kailangan para maghimo ug account",
+              "unsa ang dad on para mag apply ang incoming freshman",
+              "requirements sa incoming first year",
+              "mga kinahanglanon para sa admission application",
+              "mga papeles para sa admission",
+              "papeles para maka apply sa admission"
             ]
           },
+          "suggestions": [
+            {
+              "label": "Admission Contact Info",
+              "payload": "/direct_intent{\"intent\":\"buksu_admission_contact\"}"
+            },
+            {
+              "label": "Exam Day Requirements",
+              "payload": "/direct_intent{\"intent\":\"exam_requirements\"}"
+            },
+            {
+              "label": "How to Apply",
+              "payload": "/direct_intent{\"intent\":\"take_exam\"}"
+            }
+          ],
           "display_name": "Freshman Admission Requirements"
         },
         {

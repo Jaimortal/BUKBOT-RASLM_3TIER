@@ -113,10 +113,16 @@ class EntityResolver:
             "A3-1-01", "A3-1-02", "College of Arts and Sciences Records Office",
             "Mathematics Department Faculty Room 2",
             "A3-1-05", "A3-1-06", "SSD Research Room",
-            "A3-2-01", "A3-2-02", "A3-2-03", "A3-2-04", "A3-2-05", "A3-2-06"
+            "A3-2-01", "A3-2-02", "A3-2-03", "A3-2-04", "A3-2-05", "A3-2-06",
+            "A1-3-01", "A1-3-02", "A1-3-03", "A1-3-04",
+            "DevCom Department Faculty Room", "Natural Science Faculty Room",
+            "Mathematics Faculty Room (Pink Building)", "CAS Guidance Office",
+            "CAS Research Extension Unit", "Scholarship and Financial Grants Unit",
+            "Academic Mentoring Unit"
         ]
         if any(has(r) for r in cas_specific_rooms):
             drop("CAS Buildings")
+            drop("pink building")
         if has("COB SBO Office"):
             drop("COB Building")
         if has("COT SBO Office"):

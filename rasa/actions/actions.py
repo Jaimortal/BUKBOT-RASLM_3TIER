@@ -569,18 +569,25 @@ class ActionReplyFromJsonHelper:
                 matches.append((m.start(), m.end(), len(alias), canonical))
 
         # Also try room code patterns
-        matches_room = re.finditer(r"\b(c\d+)\s+(\d+)\s+(\d{1,2})\b", text)
+        matches_room = re.finditer(r"\b([a-zA-Z]\d*)\s+(\d+)\s+(\d{1,2})\b", text)
         for match in matches_room:
             building, floor, room = match.group(1), match.group(2), match.group(3)
             room_padded = room.zfill(2)
             canonical = f"{building}-{floor}-{room_padded}".upper()
             matches.append((match.start(), match.end(), match.end() - match.start(), canonical))
 
-        matches_room2 = re.finditer(r"\b(c\d+)-(\d+)-(\d{1,2})\b", text)
+        matches_room2 = re.finditer(r"\b([a-zA-Z]\d*)-(\d+)-(\d{1,2})\b", text)
         for match in matches_room2:
             building, floor, room = match.group(1), match.group(2), match.group(3)
             room_padded = room.zfill(2)
             canonical = f"{building}-{floor}-{room_padded}".upper()
+            matches.append((match.start(), match.end(), match.end() - match.start(), canonical))
+
+        matches_room3 = re.finditer(r"\b([a-zA-Z])[- ]*(\d)[- ]*(\d)[- ]*(\d{1,2})\b", text)
+        for match in matches_room3:
+            b_prefix, b_num, floor, room = match.group(1), match.group(2), match.group(3), match.group(4)
+            room_padded = room.zfill(2)
+            canonical = f"{b_prefix.upper()}{b_num}-{floor}-{room_padded}"
             matches.append((match.start(), match.end(), match.end() - match.start(), canonical))
 
         # Sort matches: start index ascending, length descending (longest phrase prioritized)
@@ -615,18 +622,24 @@ class ActionReplyFromJsonHelper:
         if best_alias:
             return LOCATION_ALIASES.get(best_alias)
 
-        # Try to reconstruct room codes like "c2 2 01" even if entity extraction is partial
-        match = re.search(r"\b(c\d+)\s+(\d+)\s+(\d{1,2})\b", text)
+        # Try to reconstruct room codes like "a1 3 03" or "a1303"
+        match = re.search(r"\b([a-zA-Z]\d*)\s+(\d+)\s+(\d{1,2})\b", text)
         if match:
             building, floor, room = match.group(1), match.group(2), match.group(3)
             room_padded = room.zfill(2)
             return f"{building}-{floor}-{room_padded}".upper()
 
-        match2 = re.search(r"\b(c\d+)-(\d+)-(\d{1,2})\b", text)
+        match2 = re.search(r"\b([a-zA-Z]\d*)-(\d+)-(\d{1,2})\b", text)
         if match2:
             building, floor, room = match2.group(1), match2.group(2), match2.group(3)
             room_padded = room.zfill(2)
             return f"{building}-{floor}-{room_padded}".upper()
+
+        match3 = re.search(r"\b([a-zA-Z])[- ]*(\d)[- ]*(\d)[- ]*(\d{1,2})\b", text)
+        if match3:
+            b_prefix, b_num, floor, room = match3.group(1), match3.group(2), match3.group(3), match3.group(4)
+            room_padded = room.zfill(2)
+            return f"{b_prefix.upper()}{b_num}-{floor}-{room_padded}"
 
         return None
 

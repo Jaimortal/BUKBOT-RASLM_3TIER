@@ -158,7 +158,7 @@ class MainRouterService:
             "where", "location", "located", "find", "go to", "get to",
             "direction", "directions", "how to go", "how do i get",
             "room", "building", "office", "campus", "inside", "desk", "window", "gate",
-            "park", "parking", "parking area",
+            "park", "parking", "parking area", "faculty", "lab", "laboratory", "unit",
             "asa", "hain", "diin", "dapit", "makita", "makit-an", "locate",
         ]
         if any(term in text for term in location_terms):
@@ -175,7 +175,7 @@ class MainRouterService:
         if any(term in text for term in non_location_followups):
             return False
 
-        return len(self.interpreter.tokens(text)) <= 3
+        return len(text.split()) <= 4 or len(self.interpreter.tokens(text)) <= 3
 
     def _should_prioritize_location(self, intent: str, user_message: str, resolved: Any) -> bool:
         """Use location data early only for clearly location-shaped requests.
@@ -218,12 +218,13 @@ class MainRouterService:
             "direction", "directions", "how to go", "how do i get",
             "room", "building", "office", "campus", "inside", "desk",
             "window", "gate", "classroom", "park", "parking", "parking area",
+            "faculty", "lab", "laboratory", "unit",
             "asa", "hain", "diin", "dapit", "makita", "makit-an", "locate",
         ]
         if any(term in text for term in strong_location_terms):
             return True
 
-        return len(self.interpreter.tokens(text)) <= 3 and bool(resolved.locations)
+        return (len(text.split()) <= 4 or len(self.interpreter.tokens(text)) <= 3) and bool(resolved.locations)
 
     def _looks_like_library_service_request(self, user_message: str) -> bool:
         text = self.interpreter.normalize_for_search(user_message)
@@ -340,37 +341,99 @@ class MainRouterService:
 
     def _generic_faculty_office_response(self, user_message: str) -> Any:
         text = self.interpreter.normalize(user_message)
-        if not (
-            re.search(r"\bfaculty\s+(office|offices|room|rooms)\b", text) or
-            re.search(r"\bfaculty\b", text) and len(self.interpreter.tokens(text)) <= 3
-        ):
+        
+        # Match general faculty office inquiries
+        patterns = [
+            r"\bfaculty\s+(office|offices|room|rooms|dept|department)\b",
+            r"\b(office|offices|room|rooms)\s+(sa\s+|of\s+)?faculty\b",
+            r"\b(where|find|locate|location|asa|aha|hain|diin|dapit|makita|makit-an)\b.*\bfaculty\b",
+            r"\bfaculty\b.*\b(where|find|locate|location|asa|aha|hain|diin|dapit|makita|makit-an)\b",
+            r"^(where\s+is\s+)?(the\s+)?faculty(\s+room|\s+office)?$",
+            r"^(asa|aha|hain|diin)\s+(dapit\s+)?(ang\s+)?faculty(\s+room|\s+office)?$",
+            r"^faculty(\s+room|\s+office)?$",
+        ]
+        if not any(re.search(p, text) for p in patterns) and "faculty" not in text:
             return None
 
+        # Exclude specific colleges/departments so direct queries route directly
         college_terms = [
             "cot", "cob", "cas", "con", "cpag", "coa", "coe", "bsn", "pe",
             "philo", "philosophy", "math", "mathematics", "ssd", "social science", "social sciences",
-            "electronics", "electronic", "automotive", "hospitality", "business", "accountancy",
-            "foodtech", "food tech", "food technology", "nstp", "rotc", "cwts", "lts"
+            "electronics", "electronic", "automotive", "auto", "hospitality", "business", "accountancy",
+            "foodtech", "food tech", "food technology", "nstp", "rotc", "cwts", "lts",
+            "devcom", "development communication", "natural science", "natural sciences", "natsci",
+            "sociology", "economics", "nursing", "old cas", "new cas", "pink building", "pink",
+            "a1-2-03", "a1203", "a3-1-04", "a3104", "b-1-02", "b-1-03", "b-1-04", "b-1-05", "b-1-06", "b-1-08",
+            "who is", "who are", "kinsa", "dean", "chairperson", "program chair"
         ]
         if any(re.search(rf"(?<!\w){re.escape(term)}(?!\w)", text) for term in college_terms):
             return None
 
-        return {
-            "text": "Which faculty office or faculty room do you want to locate?",
-            "custom": {
-                "suggestions": [
-                    {"label": "COT/IT Faculty Room", "payload": "where is COT Faculty Room"},
-                    {"label": "COB Faculty Room", "payload": "where is COB Faculty Room"},
-                    {"label": "BSN Faculty Room", "payload": "where is BSN Faculty Room"},
-                    {"label": "CPAG Faculty Room", "payload": "where is CPAG Faculty Room"},
-                    {"label": "PE Faculty Room", "payload": "where is PE Faculty Room"},
-                    {"label": "Electronics Faculty Room", "payload": "where is Electronics Faculty Room"},
-                    {"label": "Food Tech Faculty Room", "payload": "where is Food Technology Faculty Room"},
-                    {"label": "Philosophy Faculty Office (2nd Floor)", "payload": "where is Philosophy Faculty Office"},
-                    {"label": "Math Faculty Room 2 (Old CAS 1st Floor)", "payload": "where is Mathematics Department Faculty Room 2"},
+        detector = getattr(self.data_loader.helper, "detect_language", None)
+        lang = str(detector(user_message)) if callable(detector) else "en"
+        
+        if lang == "ceb":
+            text_msg = "Unsa nga faculty ang imong gipasabot? Mahimo nimong pilion ang tanang lokasyon sa faculty nga anaa sa atong campus karon:"
+        else:
+            text_msg = "What faculty are you referring to? You can choose all the faculty locations available on our campus right now:"
+
+        choice_groups = [
+            {
+                "title": "College of Arts & Sciences (CAS / Pink Building / Old & New CAS):",
+                "items": [
+                    {"label": "DevCom Faculty (Pink Building 2F)", "payload": "where is DevCom Department Faculty Room"},
+                    {"label": "Natural Science Faculty (Pink Building 2F)", "payload": "where is Natural Science Faculty Room"},
+                    {"label": "Math Faculty (Pink Building 2F)", "payload": "where is Mathematics Faculty Room (Pink Building)"},
+                    {"label": "Math Faculty Room 2 (Old CAS 1F)", "payload": "where is Mathematics Department Faculty Room 2"},
+                    {"label": "Philosophy Faculty Office (New CAS 2F)", "payload": "where is Philosophy Faculty Office"},
+                    {"label": "Sociology Department (New CAS 2F)", "payload": "where is Sociology Department"},
+                    {"label": "Economics Department (New CAS 2F)", "payload": "where is Economics Department"},
+                ]
+            },
+            {
+                "title": "College of Technologies (COT):",
+                "items": [
+                    {"label": "COT/IT Faculty Room (New COT 3F)", "payload": "where is COT Faculty Room"},
+                    {"label": "Electronics Faculty Room (New COT 3F)", "payload": "where is Electronics Faculty Room"},
+                    {"label": "Food Tech Faculty Room (New COT 3F)", "payload": "where is Food Technology Faculty Room"},
                     {"label": "Automotive Faculty Office", "payload": "where is Automotive Faculty Office"},
                 ]
             },
+            {
+                "title": "Other Colleges (COB, CON, CPAG, PE):",
+                "items": [
+                    {"label": "COB Faculty Room (COB 2F)", "payload": "where is COB Faculty Room"},
+                    {"label": "Accountancy Faculty (COB 1F)", "payload": "where is Accountancy Faculty Department Room"},
+                    {"label": "Business Admin Faculty (COB 1F)", "payload": "where is Business Administration Faculty Room"},
+                    {"label": "Hospitality Management Faculty (COB 1F)", "payload": "where is Hospitality Management Faculty Room"},
+                    {"label": "BSN Faculty Room (CON Ground Floor)", "payload": "where is BSN Faculty Room"},
+                    {"label": "CPAG Faculty Room (CPAG 2F)", "payload": "where is CPAG Faculty Room"},
+                    {"label": "PE Faculty Room (Gymnasium)", "payload": "where is PE Faculty Room"},
+                ]
+            }
+        ]
+
+        flat_suggestions = [
+            {"label": "COT Faculty Room", "payload": "where is COT Faculty Room"},
+            {"label": "COB Faculty Room", "payload": "where is COB Faculty Room"},
+            {"label": "BSN Faculty Room", "payload": "where is BSN Faculty Room"},
+            {"label": "CPAG Faculty Room", "payload": "where is CPAG Faculty Room"},
+            {"label": "DevCom Faculty (Pink Building)", "payload": "where is DevCom Department Faculty Room"},
+            {"label": "Natural Science Faculty (Pink Building)", "payload": "where is Natural Science Faculty Room"},
+            {"label": "Math Faculty (Pink Building)", "payload": "where is Mathematics Faculty Room (Pink Building)"},
+            {"label": "Math Faculty Room 2 (Old CAS)", "payload": "where is Mathematics Department Faculty Room 2"},
+            {"label": "Philosophy Faculty (New CAS)", "payload": "where is Philosophy Faculty Office"},
+            {"label": "Electronics Faculty Room", "payload": "where is Electronics Faculty Room"},
+            {"label": "Food Tech Faculty Room", "payload": "where is Food Technology Faculty Room"},
+            {"label": "PE Faculty Room", "payload": "where is PE Faculty Room"},
+        ]
+
+        return {
+            "text": text_msg,
+            "custom": {
+                "suggestions": flat_suggestions,
+                "choiceGroups": choice_groups
+            }
         }
 
     def _generic_deans_office_response(self, user_message: str) -> Any:
@@ -574,6 +637,162 @@ class MainRouterService:
             }
         }
 
+    def _generic_research_extension_response(self, user_message: str) -> Optional[Dict[str, Any]]:
+        text = self.interpreter.normalize(user_message)
+        
+        # Check for research extension phrases
+        patterns = [
+            r"\bresearch\s+extension\b",
+            r"\bresearch\s+and\s+extension\b",
+            r"\bextension\s+office\b",
+            r"\bextension\s+unit\b",
+            r"\bresearch\s+office\b",
+            r"\bresearch\s+unit\b",
+            r"\bwhere\s+(is|are|can\s+i\s+find)\s+(the\s+)?research\s+extension\b",
+            r"\basa\s+(dapit\s+)?ang\s+research\s+extension\b",
+        ]
+        if not any(re.search(p, text) for p in patterns):
+            return None
+        
+        # Exclude specific non-general queries
+        specific_exclusions = [
+            "cas", "cob", "cot", "con", "cpag", "coa", "building", "bldg", "museum", "pink",
+            "a1-3-05", "a1305", "a1 305", "a1-1-05", "a1105", "a1 105",
+            "vice president", "vp", "director", "staff", "head", "paper", "papers", "thesis"
+        ]
+        if any(term in text for term in specific_exclusions):
+            return None
+        
+        detector = getattr(self.data_loader.helper, "detect_language", None)
+        lang = str(detector(user_message)) if callable(detector) else "en"
+        
+        if lang == "ceb":
+            text_msg = "Unsa nga research extension ang imong gipasabot?"
+        else:
+            text_msg = "What research extension are you referring to?"
+            
+        items = [
+            {"label": "CAS Research Extension Unit", "payload": "where is CAS Research Extension Unit"},
+            {"label": "COB Research Extension", "payload": "where is COB Research Extension"},
+            {"label": "Research Extension Building", "payload": "where is Research Extension Building"},
+        ]
+        
+        return {
+            "text": text_msg,
+            "custom": {
+                "suggestions": items,
+                "choiceGroups": [
+                    {
+                        "title": "Available Research Extension locations:",
+                        "items": items
+                    }
+                ]
+            }
+        }
+
+    def _generic_guidance_office_response(self, user_message: str) -> Optional[Dict[str, Any]]:
+        text = self.interpreter.normalize(user_message)
+        
+        # Check for guidance phrases
+        patterns = [
+            r"\bguidance\s+office\b",
+            r"\bguidance\s+department\b",
+            r"\bguidance\s+unit\b",
+            r"\bguidance\s+counselor\b",
+            r"\bguidance\s+counseling\b",
+            r"\bwhere\s+(is|are|can\s+i\s+find)\s+(the\s+)?guidance\b",
+            r"\basa\s+(dapit\s+)?ang\s+guidance\b",
+            r"^guidance\s*(office|dept|department)?$",
+            r"^office\s+of\s+the\s+guidance$",
+        ]
+        if not any(re.search(p, text) for p in patterns):
+            return None
+            
+        # Exclude specific non-general queries
+        specific_exclusions = [
+            "cas", "cpag", "pink", "main", "overpass", "bellow", "below",
+            "a1-3-06", "a1306", "a1-1-06", "a1106", "a1 306",
+            "counseling procedure", "counseling process", "appointment", "schedule"
+        ]
+        if any(term in text for term in specific_exclusions):
+            return None
+            
+        detector = getattr(self.data_loader.helper, "detect_language", None)
+        lang = str(detector(user_message)) if callable(detector) else "en"
+        
+        if lang == "ceb":
+            text_msg = "Unsa nga guidance office ang imong gipasabot?"
+        else:
+            text_msg = "What guidance office are you referring to?"
+            
+        items = [
+            {"label": "CAS Guidance Office", "payload": "where is CAS Guidance Office"},
+            {"label": "Main Guidance Office (Below Overpass)", "payload": "where is Main Guidance Office"},
+            {"label": "CPAG Guidance Office", "payload": "where is CPAG Guidance Office"},
+        ]
+        
+        return {
+            "text": text_msg,
+            "custom": {
+                "suggestions": items,
+                "choiceGroups": [
+                    {
+                        "title": "Available Guidance Office locations:",
+                        "items": items
+                    }
+                ]
+            }
+        }
+
+    def _generic_mathematics_faculty_response(self, user_message: str) -> Optional[Dict[str, Any]]:
+        text = self.interpreter.normalize(user_message)
+        
+        # Check for math faculty / department phrases
+        patterns = [
+            r"\b(math|mathematics)\s+(faculty|department|dept|office|room|rooms)\b",
+            r"\b(faculty|dept|department|office)\s+(sa\s+)?(math|mathematics)\b",
+            r"\bwhere\s+(is|are|can\s+i\s+find)\s+(the\s+)?(math|mathematics)\s+(faculty|department|dept|office|room)?\b",
+            r"\basa\s+(dapit\s+)?ang\s+(math|mathematics)\s*(faculty|department|dept|office)?\b",
+            r"^(math|mathematics)\s*(faculty|dept|department|office|room)?$",
+        ]
+        if not any(re.search(p, text) for p in patterns):
+            return None
+            
+        # Exclude specific non-general queries
+        specific_exclusions = [
+            "old cas", "building a3", "room 2", "room2", "faculty room 2", "pink", "cas", "a1",
+            "a1-2-03", "a1203", "a1 203", "a3-1-04", "a3104", "a3",
+            "curriculum", "grade", "grading", "subject", "subjects", "retention"
+        ]
+        if any(term in text for term in specific_exclusions):
+            return None
+            
+        detector = getattr(self.data_loader.helper, "detect_language", None)
+        lang = str(detector(user_message)) if callable(detector) else "en"
+        
+        if lang == "ceb":
+            text_msg = "Unsa nga mathematics department o faculty room ang imong gipasabot?"
+        else:
+            text_msg = "What mathematics department or faculty room are you referring to?"
+            
+        items = [
+            {"label": "Mathematics Department Faculty Room 2 (Old CAS)", "payload": "where is Mathematics Department Faculty Room 2"},
+            {"label": "Mathematics Faculty Room (Pink Building)", "payload": "where is Mathematics Faculty Room (Pink Building)"},
+        ]
+        
+        return {
+            "text": text_msg,
+            "custom": {
+                "suggestions": items,
+                "choiceGroups": [
+                    {
+                        "title": "Available Mathematics Faculty locations:",
+                        "items": items
+                    }
+                ]
+            }
+        }
+
     def _route_locations(
         self,
         intent: str,
@@ -694,6 +913,24 @@ class MainRouterService:
         # DOMAIN ISOLATION MODE: LOCATION
         # ==============================================================
         if active_domain == "location":
+            research_ext_menu = self._generic_research_extension_response(user_message)
+            if research_ext_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return research_ext_menu, ctx
+
+            guidance_menu = self._generic_guidance_office_response(user_message)
+            if guidance_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return guidance_menu, ctx
+
+            math_faculty_menu = self._generic_mathematics_faculty_response(user_message)
+            if math_faculty_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return math_faculty_menu, ctx
+
             electronics_lab_menu = self._generic_electronics_lab_response(user_message)
             if electronics_lab_menu:
                 ctx = self.context_manager.decay_slot_values(slots)
@@ -705,6 +942,18 @@ class MainRouterService:
                 ctx = self.context_manager.decay_slot_values(slots)
                 ctx["active_category"] = "location"
                 return foodtech_lab_menu, ctx
+
+            faculty_office_menu = self._generic_faculty_office_response(user_message)
+            if faculty_office_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return faculty_office_menu, ctx
+
+            deans_office_menu = self._generic_deans_office_response(user_message)
+            if deans_office_menu:
+                ctx = self.context_manager.decay_slot_values(slots)
+                ctx["active_category"] = "location"
+                return deans_office_menu, ctx
 
             if resolved.locations:
                 loc_res, loc_slots = self._route_locations(intent, user_message, resolved, slots)
@@ -720,18 +969,6 @@ class MainRouterService:
                 ctx = self.context_manager.decay_slot_values(slots)
                 ctx["active_category"] = "location"
                 return it_dept_menu, ctx
-
-            faculty_office_menu = self._generic_faculty_office_response(user_message)
-            if faculty_office_menu:
-                ctx = self.context_manager.decay_slot_values(slots)
-                ctx["active_category"] = "location"
-                return faculty_office_menu, ctx
-
-            deans_office_menu = self._generic_deans_office_response(user_message)
-            if deans_office_menu:
-                ctx = self.context_manager.decay_slot_values(slots)
-                ctx["active_category"] = "location"
-                return deans_office_menu, ctx
 
             # Search in location domain index
             loc_res = self.knowledge_router.find_best_response(
@@ -873,6 +1110,18 @@ class MainRouterService:
             directory_response, directory_slots = self._route_building_directory(user_message, slots)
             if directory_response:
                 return directory_response, directory_slots
+
+        research_ext_menu = self._generic_research_extension_response(user_message)
+        if research_ext_menu:
+            return research_ext_menu, self.context_manager.decay_slot_values(slots)
+
+        guidance_menu = self._generic_guidance_office_response(user_message)
+        if guidance_menu:
+            return guidance_menu, self.context_manager.decay_slot_values(slots)
+
+        math_faculty_menu = self._generic_mathematics_faculty_response(user_message)
+        if math_faculty_menu:
+            return math_faculty_menu, self.context_manager.decay_slot_values(slots)
 
         electronics_lab_menu = self._generic_electronics_lab_response(user_message)
         if electronics_lab_menu:

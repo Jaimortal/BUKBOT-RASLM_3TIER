@@ -18223,6 +18223,909 @@
           "route_label": "Route 1"
         }
       ]
+    },
+    "A1-3-01": {
+      "type": "room",
+      "building": "Pink Building",
+      "floor": "3rd Floor",
+      "room_number": "A1-3-01",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A1-3-01 is a classroom located on the 3rd floor of the Pink Building (CAS). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A1-3-01 usa ka classroom nga nahimutang sa ika-3 nga andana (3rd floor) sa Pink Building (CAS). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A1-3-01 (Pink Building 3F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "3F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to A1-3-01",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A1-3-02": {
+      "type": "room",
+      "building": "Pink Building",
+      "floor": "3rd Floor",
+      "room_number": "A1-3-02",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A1-3-02 is a classroom located on the 3rd floor of the Pink Building (CAS). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A1-3-02 usa ka classroom nga nahimutang sa ika-3 nga andana (3rd floor) sa Pink Building (CAS). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A1-3-02 (Pink Building 3F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "3F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to A1-3-02",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A1-3-03": {
+      "type": "room",
+      "building": "Pink Building",
+      "floor": "3rd Floor",
+      "room_number": "A1-3-03",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A1-3-03 is a classroom located on the 3rd floor of the Pink Building (CAS). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A1-3-03 usa ka classroom nga nahimutang sa ika-3 nga andana (3rd floor) sa Pink Building (CAS). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A1-3-03 (Pink Building 3F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "3F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to A1-3-03",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "A1-3-04": {
+      "type": "room",
+      "building": "Pink Building",
+      "floor": "3rd Floor",
+      "room_number": "A1-3-04",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "Room A1-3-04 is a classroom located on the 3rd floor of the Pink Building (CAS). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang kwarto nga A1-3-04 usa ka classroom nga nahimutang sa ika-3 nga andana (3rd floor) sa Pink Building (CAS). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "A1-3-04 (Pink Building 3F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "3F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to A1-3-04",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "DevCom Department Faculty Room": {
+      "type": "office",
+      "building": "Pink Building",
+      "floor": "2nd Floor",
+      "room_number": "A1-2-03",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The Development Communication (DevCom) Department Faculty Room is located in Room A1-2-03 on the 2nd floor of the Pink Building (CAS). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang Development Communication (DevCom) Department Faculty Room nahimutang sa Room A1-2-03 sa ika-2 nga andana (2nd floor) sa Pink Building (CAS). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "DevCom Faculty (Pink Building 2F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to DevCom Faculty",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "Natural Science Faculty Room": {
+      "type": "office",
+      "building": "Pink Building",
+      "floor": "2nd Floor",
+      "room_number": "A1-2-03",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The Natural Science Faculty Room is located in Room A1-2-03 on the 2nd floor of the Pink Building (CAS). Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang Natural Science Faculty Room nahimutang sa Room A1-2-03 sa ika-2 nga andana (2nd floor) sa Pink Building (CAS). Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "Natural Science Faculty (Pink Building 2F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to Natural Science Faculty",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "Mathematics Faculty Room (Pink Building)": {
+      "type": "office",
+      "building": "Pink Building",
+      "floor": "2nd Floor",
+      "room_number": "A1-2-03",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The Mathematics Faculty Room (CAS) is located in Room A1-2-03 on the 2nd floor of the Pink Building. Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang Mathematics Faculty Room (CAS) nahimutang sa Room A1-2-03 sa ika-2 nga andana (2nd floor) sa Pink Building. Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "Math Faculty (Pink Building 2F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "2F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to Math Faculty",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "CAS Guidance Office": {
+      "type": "office",
+      "building": "Pink Building",
+      "floor": "1st Floor",
+      "room_number": "A1-3-06",
+      "coordinates": [
+        882,
+        635
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The CAS Guidance Office is located on the 1st floor (Room A1-3-06) of the Pink Building. Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang CAS Guidance Office nahimutang sa 1st floor (Room A1-3-06) sa Pink Building. Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "CAS Guidance Office (Pink Building 1F)",
+          "coordinates": [
+            503,
+            567
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to CAS Guidance Office",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              558
+            ],
+            [
+              511,
+              558
+            ],
+            [
+              511,
+              568
+            ],
+            [
+              504,
+              567
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "CAS Research Extension Unit": {
+      "type": "office",
+      "building": "Pink Building",
+      "floor": "1st Floor",
+      "room_number": "A1-3-05",
+      "coordinates": [
+        526,
+        558
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The CAS Research and Extension Unit is located on the 1st floor (Room A1-3-05) of the Pink Building. Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang CAS Research and Extension Unit nahimutang sa 1st floor (Room A1-3-05) sa Pink Building. Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "Entrance",
+          "coordinates": [
+            882,
+            635
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "CAS Research Extension (Pink Building 1F)",
+          "coordinates": [
+            526,
+            558
+          ],
+          "floor": "1F"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Start From Here to CAS Research Extension",
+          "points": [
+            [
+              883,
+              637
+            ],
+            [
+              781,
+              635
+            ],
+            [
+              784,
+              673
+            ],
+            [
+              590,
+              677
+            ],
+            [
+              572,
+              664
+            ],
+            [
+              570,
+              646
+            ],
+            [
+              545,
+              647
+            ],
+            [
+              544,
+              600
+            ],
+            [
+              534,
+              591
+            ],
+            [
+              533,
+              564
+            ],
+            [
+              526,
+              558
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
+    },
+    "COB Research Extension": {
+      "type": "office",
+      "building": "COB Building",
+      "floor": "Ground Floor",
+      "coordinates": [
+        885,
+        643
+      ],
+      "map_id": "main_map",
+      "responses": {
+        "en": [
+          "The COB Research and Extension Unit is located in the College of Business (COB) Building. Please refer to the campus map for navigation."
+        ],
+        "ceb": [
+          "Ang COB Research and Extension Unit nahimutang sa College of Business (COB) Building. Palihog tan-awa ang mapa alang sa pag-navigate."
+        ]
+      },
+      "pins": [
+        {
+          "name": "COB Entrance",
+          "coordinates": [
+            885,
+            643
+          ],
+          "floor": "GF"
+        },
+        {
+          "name": "COB Research & Extension",
+          "coordinates": [
+            627,
+            390
+          ],
+          "floor": "GF"
+        }
+      ],
+      "imageUrls": [],
+      "routes": [
+        {
+          "name": "Entrance to COB Research Extension",
+          "points": [
+            [
+              885,
+              643
+            ],
+            [
+              792,
+              636
+            ],
+            [
+              787,
+              443
+            ],
+            [
+              639,
+              452
+            ],
+            [
+              627,
+              390
+            ]
+          ],
+          "color": "#ff1744",
+          "route_order": 1,
+          "route_label": "Route 1"
+        }
+      ]
     }
   }
 }

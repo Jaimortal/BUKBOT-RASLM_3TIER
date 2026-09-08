@@ -1,5 +1,70 @@
 [
   {
+    "id": "log_1788867460828_fpxpf3g",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: CAS Guidance Office",
+    "targetTitle": "CAS Guidance Office",
+    "targetId": "CAS Guidance Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Map Routes",
+        "changeType": "modified",
+        "details": "Updated navigation routes (1 route(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-08T11:37:40.828Z"
+  },
+  {
+    "id": "log_1788783457852_l4l17sw",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Dress Code Policy",
+    "targetTitle": "Dress Code Policy",
+    "targetId": "services/oss_student_services.json",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-07T12:17:37.852Z"
+  },
+  {
+    "id": "log_1788783456345_iwpard5",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"uniform.webp\" (28.4 KB)",
+    "targetTitle": "uniform.webp",
+    "targetId": "731e2bcc-b7bc-401b-b8a8-adabb5484409",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"uniform.webp\" (28.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-07T12:17:36.345Z"
+  },
+  {
     "id": "log_1788693879308_ub72qf4",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

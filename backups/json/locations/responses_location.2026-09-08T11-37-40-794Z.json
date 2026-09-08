@@ -18874,8 +18874,8 @@
       "floor": "1st Floor",
       "room_number": "A1-3-06",
       "coordinates": [
-        882,
-        635
+        526,
+        558
       ],
       "map_id": "main_map",
       "responses": {
@@ -18898,8 +18898,8 @@
         {
           "name": "CAS Guidance Office (Pink Building 1F)",
           "coordinates": [
-            503,
-            567
+            526,
+            558
           ],
           "floor": "1F"
         }
@@ -18947,19 +18947,11 @@
             ],
             [
               533,
+              564
+            ],
+            [
+              526,
               558
-            ],
-            [
-              511,
-              558
-            ],
-            [
-              511,
-              568
-            ],
-            [
-              504,
-              567
             ]
           ],
           "color": "#ff1744",

@@ -1278,10 +1278,10 @@
           "topic": "enrollment_documents",
           "responses": {
             "en": [
-              "Here are the enrollment requirements, remember the data we have is general, so if your looking for spacific requirements for spacific course, you may directly ask the department, or look for their FB page update"
+              "Here are the enrollment requirements, remember the **data we have is general,** so if your looking for spacific requirements for spacific course, you may directly ask the department, or look for their FB page update"
             ],
             "ceb": [
-              "Mao kini ang mga enrollment requirements. Hinumdumi nga general ang datos nga ania kanato, busa kung nangita ka og espesipikong mga requirements para sa espesipikong kurso, mahimo kang direktang mangutana sa inyong departamento o magtan-aw sa updates sa ilang FB page."
+              "Mao kini ang mga enrollment requirements. Hinumdumi nga **general ang datos nga ania kanato,** busa kung nangita ka og espesipikong mga requirements para sa espesipikong kurso, mahimo kang direktang mangutana sa inyong departamento o magtan-aw sa updates sa ilang FB page."
             ]
           },
           "intent": "enrollment_documents",
