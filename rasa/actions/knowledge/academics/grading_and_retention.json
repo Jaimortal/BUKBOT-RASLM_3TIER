@@ -1411,6 +1411,77 @@
         ]
       },
       "display_name": "Midterm and Final Examination Rules"
+    },
+    {
+      "topic": "teacher_evaluation_privacy",
+      "responses": {
+        "en": [
+          "Apparently, I do not have specific data regarding whether student evaluations are kept private or if teachers can view them. I would suggest asking directly with your department faculty regarding this issue."
+        ],
+        "ceb": [
+          "Sa pagkakaron, wala koy espesipikong datos bahin niana nga isyu. Gitambagan ka nga direktang mangutana sa inyong department faculty bahin niini nga concern."
+        ]
+      },
+      "intent": "teacher_evaluation_privacy",
+      "context_topic": "Teacher evaluation privacy and visibility",
+      "metadata": {
+        "phrases": [
+          "are students evaluations kept private or can teachers actually see them",
+          "are students evaluations kept private, or can teachers actually see them",
+          "if we do evaluate the teacher evaluation do the teacher can see it",
+          "makita ba sa teacher ang evaluation namo sa iyaha",
+          "do teacher evaluation keep private or teacher can see them",
+          "can teachers see my evaluation",
+          "can teacher see my evaluation",
+          "can professors see student evaluation",
+          "can teachers see student evaluations",
+          "is teacher evaluation anonymous",
+          "is faculty evaluation anonymous",
+          "are teacher evaluations confidential",
+          "are faculty evaluations confidential",
+          "makita ba sa maestro ang akong evaluation",
+          "makita ba sa maestra ang akong evaluation",
+          "makita ba sa instructor ang evaluation",
+          "anonymous ba ang evaluation sa teacher",
+          "confidential ba ang teacher evaluation",
+          "teacher evaluation privacy",
+          "faculty evaluation privacy",
+          "pwede ba makita sa teacher ang akong rating sa iyaha",
+          "can instructors see our evaluation comments",
+          "who can see teacher evaluation",
+          "student evaluation of teachers privacy"
+        ],
+        "strong_keywords": [
+          "teacher evaluation",
+          "faculty evaluation",
+          "evaluation",
+          "private",
+          "see",
+          "makita",
+          "anonymous",
+          "confidential",
+          "privacy"
+        ],
+        "weak_keywords": [
+          "teacher",
+          "faculty",
+          "instructor",
+          "professor",
+          "maestro",
+          "maestra"
+        ]
+      },
+      "display_name": "Teacher Evaluation Privacy",
+      "suggestions": [
+        {
+          "label": "Deans & Faculty",
+          "payload": "/direct_intent{\"intent\":\"deans_of_colleges_list\"}"
+        },
+        {
+          "label": "Grading System",
+          "payload": "/direct_intent{\"intent\":\"buksu_grading_system\"}"
+        }
+      ]
     }
   ]
 }

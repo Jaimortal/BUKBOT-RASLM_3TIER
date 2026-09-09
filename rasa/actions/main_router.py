@@ -197,6 +197,8 @@ class MainRouterService:
             return False
         if self._looks_like_enrollment_service_request(user_message):
             return False
+        if self._looks_like_contact_request(user_message):
+            return False
         tokens = set(self.interpreter.tokens(text))
         asks_person_role = (
             any(word in tokens for word in ["who", "whos", "kinsa"]) and
@@ -272,6 +274,14 @@ class MainRouterService:
         if has_specific_place:
             return False
         return True
+
+    def _looks_like_contact_request(self, user_message: str) -> bool:
+        text = self.interpreter.normalize_for_search(user_message)
+        has_contact_term = any(term in text for term in [
+            "contact", "phone", "telephone", "email", "number", "facebook", "fb page", "call",
+            "chat", "kontak", "numero"
+        ])
+        return has_contact_term and not any(term in text for term in ["where", "location", "located", "asa", "hain", "diin", "dapit"])
 
     def _looks_like_unresolved_location_request(self, user_message: str) -> bool:
         text = self.interpreter.normalize_for_search(user_message)
@@ -998,6 +1008,7 @@ class MainRouterService:
             )
             if direct_intent:
                 self.knowledge_router.last_selected_intent = direct_intent
+                self.knowledge_router.last_answering_source = "RASA (Direct Rule)"
                 print(f"[ROUTER - LAYER 1: Direct Rule Override] Domain: '{active_domain}' | Query: '{user_message}' -> Matched Intent: '{direct_intent}'")
                 if str(direct_intent).startswith("__"):
                     response = self.knowledge_router.find_best_response(

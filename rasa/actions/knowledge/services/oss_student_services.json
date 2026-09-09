@@ -118,95 +118,26 @@
             882,
             635
           ],
-          "map_id": "main_map",
           "responses": {
             "en": [
-              "For Scholarship related inqueries specially about the availabilty of the scholarship program that BukSU can offer to you, **directly ask to the BukSU Scholarship and Financial Grants Unit,** i'll provide you some map for faster navigation of their office. \n\n you can also directly ask to their Facebook page: https://www.facebook.com/BukSUSFGU",
-              "You can **locate the** Scholarship and Financial Grants Unit **beside the Academic Mentoring unit office**"
+              "The current scholarship available is the Tertiary Education Subsidy, you can directly check the BukSU Scholarship and Financial Grant Unit's Official Facebook Page: https://www.facebook.com/BukSUSFGU/ for more information."
             ],
             "ceb": [
-              "Alang sa mga pangutana bahin sa scholarship labi na sa mga available nga programa sa scholarship sa BukSU, **direkta nga pangutana sa BukSU Scholarship and Financial Grants Unit,** maghatag ako og mapa para sa mas paspas nga pag-navigate sa ilang opisina.\n\nMahimo usab kang direktang mangutana sa ilang Facebook page: https://www.facebook.com/BukSUSFGU",
-              "**makita nimo ang** Scholarship and Financial Grants Unit **kilid rajud sa Academic Mentoring unit office**"
+              "Ang kasamtangang scholarship nga anaa karon mao ang Tertiary Education Subsidy (TES), mahimo nimong direktang susihon ang opisyal nga Facebook Page sa BukSU Scholarship and Financial Grant Unit: https://www.facebook.com/BukSUSFGU/ alang sa dugang impormasyon."
             ]
           },
-          "pins": [
-            {
-              "name": "Start From here",
-              "coordinates": [
-                882,
-                635
-              ]
-            },
-            {
-              "name": "Scholarship and Financial Grants Unit",
-              "coordinates": [
-                529,
-                565
-              ],
-              "floor": "GF"
-            }
-          ],
-          "routes": [
-            {
-              "name": "Start From here to Scholarship and Financial Grants Unit",
-              "points": [
-                [
-                  883,
-                  637
-                ],
-                [
-                  781,
-                  635
-                ],
-                [
-                  784,
-                  673
-                ],
-                [
-                  590,
-                  677
-                ],
-                [
-                  572,
-                  664
-                ],
-                [
-                  570,
-                  646
-                ],
-                [
-                  545,
-                  647
-                ],
-                [
-                  544,
-                  600
-                ],
-                [
-                  534,
-                  591
-                ],
-                [
-                  533,
-                  564
-                ],
-                [
-                  529,
-                  565
-                ]
-              ],
-              "color": "#ff1744",
-              "route_order": 1,
-              "route_label": "Route 1"
-            }
-          ],
-          "images": [
-            "/api/images/a8628874-f618-400e-b747-95994678501e",
-            "/api/images/0052af0e-71b0-4606-b0fa-1d92a6891a23"
-          ],
+          "pins": [],
+          "routes": [],
+          "images": [],
           "items": [],
           "metadata": {
             "phrases": [
+              "What are the scholarships I can avail of",
+              "what scholarship do student can avail",
+              "what scholarship can students avail",
+              "what scholarship can i avail",
+              "what scholarships can i avail of",
+              "what scholarships can students avail of",
               "What scholarships are available",
               "What scholarships are available in buksu",
               "what scholarships are offered in buksu",
@@ -223,25 +154,35 @@
               "naa bay scholarship sa buksu",
               "naa bay available nga scholarship sa buksu",
               "are there scholarships available in buksu",
-              "is there any scholarship available in buksu"
+              "is there any scholarship available in buksu",
+              "unsa nga scholarship ang pwede ma avail",
+              "unsa nga scholarship ang pwede ma avail sa mga estudyante"
             ],
             "strong_keywords": [
               "scholarship",
               "scholarships",
               "available",
+              "avail",
               "offered",
-              "sfgu",
-              "grants"
+              "tertiary",
+              "subsidy"
             ],
             "weak_keywords": [
               "buksu",
               "list",
               "what",
               "unsa",
-              "naa"
+              "naa",
+              "student",
+              "students"
             ]
           },
-          "subject_terms": []
+          "subject_terms": [
+            "scholarship",
+            "scholarships",
+            "available scholarships",
+            "avail scholarship"
+          ]
         },
         {
           "topic": "scholarship_application",
@@ -306,7 +247,7 @@
               "Need to get in touch with the Scholarships and Financial Grants Unit?",
               "To ensure a quicker response, please contact the appropriate office directly.",
               "Here are the contact details for the Scholarships and Financial Grants Unit:",
-              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU/",
               "✉️ Email: sfgu@buksu.edu.ph",
               "📞 BukSU Contact Number: 088-813-5661"
             ],
@@ -314,7 +255,7 @@
               "Need to get in touch with the Scholarships and Financial Grants Unit?",
               "To ensure a quicker response, please contact the appropriate office directly.",
               "Here are the contact details for the Scholarships and Financial Grants Unit:",
-              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU",
+              "🖥️ Facebook Page: https://www.facebook.com/BukSUSFGU/",
               "✉️ Email: sfgu@buksu.edu.ph",
               "📞 BukSU Contact Number: 088-813-5661"
             ]
@@ -489,6 +430,262 @@
             ]
           },
           "display_name": "Tabuk"
+        },
+        {
+          "topic": "tes_application_process",
+          "intent": "tes_application_process",
+          "context_topic": "process",
+          "display_name": "TES Application Process",
+          "responses": {
+            "en": [
+              "Applications for TES is done and facilitated by the school. Students who are enrolled are automatically submitted as applicants to the UniFAST Portal. Always check their official FB page https://www.facebook.com/BukSUSFGU/ for more information"
+            ],
+            "ceb": [
+              "Ang pag-apply alang sa TES gihimo ug gi-facilitate sa eskwelahan. Ang mga estudyante nga naka-enroll awtomatikong isumite isip mga aplikante sa UniFAST Portal. Kanunay nga susiha ang ilang opisyal nga FB page https://www.facebook.com/BukSUSFGU/ alang sa dugang impormasyon."
+            ]
+          },
+          "pins": [],
+          "routes": [],
+          "images": [],
+          "items": [],
+          "metadata": {
+            "phrases": [
+              "How do I apply for the TES",
+              "unsaon mani pag apil sa tes",
+              "application process for tes",
+              "how to avail tes",
+              "send me the tes process of application",
+              "how to apply for tes",
+              "how can i apply for tes",
+              "how do students apply for tes",
+              "tes application process",
+              "unsaon pag apply sa tes",
+              "unsaon pag apil sa tertiary education subsidy",
+              "how to apply tertiary education subsidy",
+              "pamaagi sa pag-apply sa tes",
+              "apply for tes",
+              "apply tes",
+              "process of tes application",
+              "unsaon pag apply og tes",
+              "unsaon pag avail sa tes"
+            ],
+            "strong_keywords": [
+              "tes",
+              "apply",
+              "application",
+              "process",
+              "avail",
+              "unifast",
+              "apil",
+              "unsaon"
+            ],
+            "weak_keywords": [
+              "portal",
+              "how",
+              "school",
+              "subsidy",
+              "facebook",
+              "page"
+            ]
+          },
+          "subject_terms": [
+            "tes application",
+            "apply for tes",
+            "tes process",
+            "apply tertiary education subsidy"
+          ]
+        },
+        {
+          "topic": "tes_requirements",
+          "intent": "tes_requirements",
+          "context_topic": "requirements",
+          "display_name": "TES Requirements",
+          "responses": {
+            "en": [
+              "For the requirements, always check their official Facebook page (https://www.facebook.com/BukSUSFGU/), as they may post updated guidelines. Make sure to follow their page, since requirements may change each year. For reference, the previous requirements for TES can be found here:\nhttps://www.facebook.com/BukSUSFGU//posts/pfbid02hgfKBUdWqawVMa5jkwQhyEGQc2Z57wusNUh5R8rEsqwFeJpibfFCBPgag5uXKTcTl"
+            ],
+            "ceb": [
+              "Alang sa mga rekisitos, kanunay susiha ang ilang opisyal nga Facebook page (https://www.facebook.com/BukSUSFGU/), tungod kay mahimo silang mag-post og updated nga mga giya. Siguroha nga mosunod sa ilang page, tungod kay ang mga rekisitos mahimong mag-usab matag tuig. Alang sa pakisayran, ang miaging mga rekisitos alang sa TES makita dinhi:\nhttps://www.facebook.com/BukSUSFGU//posts/pfbid02hgfKBUdWqawVMa5jkwQhyEGQc2Z57wusNUh5R8rEsqwFeJpibfFCBPgag5uXKTcTl"
+            ]
+          },
+          "pins": [],
+          "routes": [],
+          "images": [],
+          "items": [],
+          "metadata": {
+            "phrases": [
+              "what are the requirements for the student who are qualified for tes",
+              "documents need for tes",
+              "tes requirements",
+              "requirements for tes",
+              "what are the requirements for tes",
+              "what documents do i need for tes",
+              "documents needed for tes",
+              "unsa ang requirements sa tes",
+              "unsay kinahanglan nga dokumento para sa tes",
+              "unsa ang rekisitos para sa tes",
+              "mga dokumento para sa tes",
+              "requirements if qualified for tes",
+              "tertiary education subsidy requirements",
+              "unsa ang rekisitos sa tes",
+              "requirements sa tes",
+              "unsay kinahanglan para sa tes"
+            ],
+            "strong_keywords": [
+              "tes",
+              "requirements",
+              "requirement",
+              "documents",
+              "document",
+              "rekisitos",
+              "dokumento",
+              "needed"
+            ],
+            "weak_keywords": [
+              "qualified",
+              "student",
+              "unsa",
+              "what",
+              "need",
+              "guidelines"
+            ]
+          },
+          "subject_terms": [
+            "tes requirements",
+            "tes documents",
+            "tertiary education subsidy requirements"
+          ]
+        },
+        {
+          "topic": "tes_grantee_selection_process",
+          "intent": "tes_grantee_selection_process",
+          "context_topic": "selection",
+          "display_name": "TES Grantee Selection Process",
+          "responses": {
+            "en": [
+              "The assessment of applications is centralized and managed only by UniFAST."
+            ],
+            "ceb": [
+              "Ang pagsusi ug pagpili sa mga aplikasyon sentralisado ug gidumala lamang sa UniFAST."
+            ]
+          },
+          "pins": [],
+          "routes": [],
+          "images": [],
+          "items": [],
+          "metadata": {
+            "phrases": [
+              "How is the selection of the grantees done",
+              "how are tes grantees selected",
+              "who selects the tes grantees",
+              "unsaon pagpili sa mga tes grantees",
+              "selection process of tes grantees",
+              "how does unifast select tes grantees",
+              "kinsay magpili sa mga grantee sa tes",
+              "how is the selection of grantees conducted",
+              "how does the selection of tes grantees work",
+              "assessment of tes applications",
+              "how are grantees chosen for tes",
+              "who evaluates tes applications",
+              "unsaon pag assess sa tes",
+              "unsaon pagpili sa unifast sa mga grantee"
+            ],
+            "strong_keywords": [
+              "selection",
+              "grantees",
+              "grantee",
+              "selected",
+              "pagpili",
+              "magpili",
+              "assessment",
+              "unifast",
+              "chosen"
+            ],
+            "weak_keywords": [
+              "tes",
+              "how",
+              "done",
+              "who",
+              "unsaon",
+              "kinsay"
+            ]
+          },
+          "subject_terms": [
+            "tes selection",
+            "tes grantees selection",
+            "unifast selection",
+            "tes evaluation"
+          ]
+        },
+        {
+          "topic": "tes_qualified_grantees_eligibility",
+          "intent": "tes_qualified_grantees_eligibility",
+          "context_topic": "eligibility",
+          "display_name": "TES Qualified Grantees Eligibility",
+          "responses": {
+            "en": [
+              "The priority beneficiaries are those students who are part of households included in the Listahanan 2.0, ranked according to the estimated per capita household income; and students not part of the Listahanan 2.0, ranked according to estimate per capita household income based on submitted documentation of proof of income to be determined by the UniFAST Board **NOT BY BUKSU**;"
+            ],
+            "ceb": [
+              "Ang mga prayoridad nga benepisyaryo mao kadtong mga estudyante nga sakop sa mga panimalay nga nalakip sa Listahanan 2.0, nga giranggo sumala sa gibanabana nga per capita income sa panimalay; ug mga estudyante nga dili sakop sa Listahanan 2.0, nga giranggo sumala sa gibanabana nga per capita income sa panimalay base sa gisumite nga dokumento sa pruweba sa kita nga pagadesisyunan sa UniFAST Board **DILI SA BUKSU**;"
+            ]
+          },
+          "pins": [],
+          "routes": [],
+          "images": [],
+          "items": [],
+          "metadata": {
+            "phrases": [
+              "Who are qualified to be TES grantees",
+              "kinsay pwedi maka apil sa TES",
+              "who are valid to join tes",
+              "who can avail tes",
+              "can i avail tes",
+              "who is eligible for tes",
+              "who are qualified for tes",
+              "am i qualified for tes",
+              "pwede ba ko moapil sa tes",
+              "can students join tes",
+              "who can be a grantee of tes",
+              "kinsay qualified nga mahimong grantee sa tes",
+              "kinsa ang eligible para sa tes",
+              "kinsay pwede maka avail sa tes",
+              "eligibility for tes",
+              "who can join tes",
+              "are other students allowed to join tes",
+              "who are the priority beneficiaries for tes",
+              "pwede ba ko maka avail sa tes",
+              "kinsay pwede ma qualify sa tes"
+            ],
+            "strong_keywords": [
+              "qualified",
+              "qualify",
+              "eligible",
+              "eligibility",
+              "avail",
+              "join",
+              "apil",
+              "pwedi",
+              "pwede",
+              "valid",
+              "beneficiaries",
+              "listahanan"
+            ],
+            "weak_keywords": [
+              "tes",
+              "who",
+              "kinsay",
+              "can",
+              "grantees",
+              "grantee"
+            ]
+          },
+          "subject_terms": [
+            "tes eligibility",
+            "qualified for tes",
+            "tes beneficiaries",
+            "tes grantees eligibility"
+          ]
         }
       ],
       "display_name": "Scholarships and Financial Grants Unit"

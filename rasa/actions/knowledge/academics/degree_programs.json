@@ -5053,6 +5053,75 @@
           "display_name": "CAT Score For Nonboard"
         },
         {
+          "topic": "cat_requirement_doctors_masteral",
+          "responses": {
+            "en": [
+              "We only provide general data and the most frequently asked questions for incoming first-year undergraduate students. For doctor and masteral programs, please visit the Admission and Testing Unit (ATU) to assist with your concern."
+            ],
+            "ceb": [
+              "General data lamang ug mga impormasyon nga kasagarang gipangutana sa mga first-year undergraduate students ang among gihatag. Alang sa mga doctor ug masteral nga programa, palihog bisitaha ang Admission and Testing Unit (ATU) aron matabangan ang inyong concern."
+            ]
+          },
+          "intent": "cat_requirement_doctors_masteral",
+          "context_topic": "requirements",
+          "metadata": {
+            "phrases": [
+              "cat requirement for doctors",
+              "cat requirement for masteral",
+              "what is the required cat for doctors",
+              "what is the required cat for masteral",
+              "cat score required for doctors",
+              "cat score required for masteral",
+              "required cat for doctors",
+              "required cat for masteral",
+              "cat score for doctor",
+              "cat score for masteral",
+              "cat score for doctorate",
+              "cat score for masters",
+              "cat requirement for doctorate",
+              "cat requirement for masters",
+              "cat requirement for doctor of medicine",
+              "cat score for medicine",
+              "cat score for phd",
+              "is cat required for masteral",
+              "is cat required for doctors",
+              "do doctors take cat",
+              "do masteral students take cat",
+              "unsa ang required cat para sa doctors",
+              "unsa ang required cat para sa masteral",
+              "pila ang cat score sa masteral",
+              "pila ang cat score sa doctors",
+              "pila ang passing cat score sa masteral",
+              "kinahanglan ba ug cat ang masteral",
+              "kinahanglan ba ug cat ang doctors",
+              "naa bay cat ang doctorate",
+              "cat exam para masteral",
+              "cat exam para doctors",
+              "buksu cat for doctors",
+              "buksu cat for masteral"
+            ]
+          },
+          "display_name": "CAT Requirement for Doctors and Masteral",
+          "suggestions": [
+            {
+              "label": "ATU location",
+              "payload": "/direct_intent{\"intent\":\"location_Admission_Office\"}"
+            },
+            {
+              "label": "ATU contact",
+              "payload": "/direct_intent{\"intent\":\"contact_atu\"}"
+            },
+            {
+              "label": "Masters requirements",
+              "payload": "/direct_intent{\"intent\":\"masters_degree_admission_requirements\"}"
+            },
+            {
+              "label": "GPAT requirements",
+              "payload": "/direct_intent{\"intent\":\"gpat_admission_requirements\"}"
+            }
+          ]
+        },
+        {
           "topic": "exam_location_vs_campus",
           "responses": {
             "en": [
