@@ -5,7 +5,7 @@ This folder is a dry-run LLM interpreter for testing external API reranking befo
 Purpose:
 
 - Read answers from the existing JSON knowledge base.
-- Retrieve candidate records from `rasa/actions/Supper Saiyan`, `responses.json`, and `responses_location.json`.
+- Retrieve candidate records from structured knowledge, `responses.json`, and `knowledge/location/responses_location_core.json`.
 - Optionally ask Groq or Gemini to choose the best candidate.
 - Return only the selected JSON/database answer. The LLM is not allowed to invent BukSU facts.
 

@@ -2477,7 +2477,8 @@
           "coordinates": [
             682,
             559
-          ]
+          ],
+          "pinImageUrl": "/api/images/e9013fb6-6a76-4b79-a965-f3a6853aafc2"
         },
         {
           "name": "You are here!",
@@ -2487,7 +2488,10 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/988314fb-24d4-4163-bb69-94efd29c26ec",
+        "/api/images/a7e72774-4427-4379-9eb5-aca5d1d8ae04"
+      ],
       "routes": [
         {
           "name": "You are here! to  Registrar Office",
@@ -8725,10 +8729,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "There are multiple CAS buildings, and I will help you locate them. The New CAS building, where most CAS faculty offices are located, is behind the new COT building. The Old CAS building is located beside the New CAS building. There is also a Pink Building that belongs to CAS, which is located beside the Research Extension building. I have pinned all these locations on the map to help you with navigation."
+          "There are multiple CAS buildings, and I will help you locate them.\nThe **New CAS building,** where the other CAS faculty offices are located, it is behind the new COT building.\nThe **Old CAS building** is located beside the New CAS building which also other faculty offices located. \n\nThere is also a Pink Building that belongs to CAS which you can also found the:\n**Deans office** of the CAS\n**SBO office** of the CAS\n**Guidance office** of the CAS\n\nI have pinned all these locations on the map to help you with navigation."
         ],
         "ceb": [
-          "Adunay daghang CAS buildings, ug tabangan tika sa pagpangita niini. Ang New CAS building, diin kasagaran makita ang mga opisina sa CAS faculty, naa sa likod sa bag-ong COT building. Ang Old CAS building naa sa kilid sa New CAS building. Aduna pud Pink Building nga sakop sa CAS, nga naa sa kilid sa Research Extension building. Gi-pin nako ang tanang lokasyon sa mapa aron makatabang sa imong pag-navigate."
+          "Daghan og edipisyo ang CAS, ug tabangan tika sa pagpangita niini.\nAng **Bag-ong CAS building**, diin nahimutang ang uban nga mga faculty office sa CAS, naa sa luyo sa bag-ong COT building.\nAng **Daan nga CAS building** nahimutang ra sa tapad sa Bag-ong CAS building, diin\n\nNaa pod ang uban pang mga faculty office. Naa pod silay Pink Building nga iyaha sa CAS diin nimo makita ang:\n**Deans office** sa CAS\n**SBO office** sa CAS\n**Guidance office** sa CAS\nGipinn na nako kining tanan nga mga lokasyon sa mapa para makatabang nimo sa pag-navigate."
         ]
       },
       "pins": [
@@ -9903,7 +9907,10 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "https://www.timeshighereducation.com/cms-academic/sites/default/files/styles/profile_gallery_image/public/2026-08/a5e07a1a-be75-4dc7-8423-0f96211a7e30.jpg?itok=ijCfv1Z1",
+        "https://buksu.edu.ph/wp-content/uploads/2020/11/DSC_6459.jpg"
+      ],
       "routes": [
         {
           "name": "Start From Here - Main Entrance to Health & Service bldg",
@@ -16746,10 +16753,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "You can find the TBA Classroom when your instructor announce where your class facilitate, TBA has alot of meaning <b>TO BE ANNOUNCED</b>, <b>TO BE ARRANGED, TO BE ADVISED</b>. Meaning you still dont have&nbsp;designated classroom, just wait until your instructor announced the classroom location. Okay?😁"
+          "You can find the TBA Classroom when your instructor announce where your class facilitate, TBA has alot of meaning **TO BE ANNOUNCED**, **TO BE ARRANGED, TO BE ADVISED**. Meaning you still dont have designated classroom, just wait until your instructor announced the classroom location. Okay?😁"
         ],
         "ceb": [
-          "Makita nimo ang TBA Classroom kung magsaba na ang imong instructor kung asa mo mag klasi, ang TBA daghan kaynag meaning. <b>TO BE ANNOUNCED, TO BE ARRANGED, TO BE ADVISED</b>. meaning wala pamoy spacific classroom and mag hulat og kanusa mo ignan sa inyo instructor kong asa mo dapita. Okay?😁"
+          "Makita nimo ang TBA Classroom kung magsaba na ang imong instructor kung asa mo mag klasi, ang TBA daghan kaynag meaning. **TO BE ANNOUNCED, TO BE ARRANGED, TO BE ADVISED**. meaning wala pamoy spacific classroom and mag hulat og kanusa mo ignan sa inyo instructor kong asa mo dapita. Okay?😁"
         ]
       },
       "coordinates": [],
@@ -17214,7 +17221,7 @@
           "NC4-A4-401 is located on the 4th floor of the New CAS Building"
         ],
         "ceb": [
-          "<span style=\"color: rgb(15, 23, 41);\">NC4-A4-401 kay makita sa ikaupat nga floor sa bagong CAS building</span>"
+          "NC4-A4-401 kay makita sa ikaupat nga floor sa bagong CAS building"
         ]
       },
       "coordinates": [
@@ -17294,10 +17301,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "<span style=\"color: rgb(15, 23, 41);\">NC4-A4-402 Is located on the <b>4th floor of new CAS building</b></span>"
+          "NC4-A4-402 Is located on the **4th floor of new CAS building**"
         ],
         "ceb": [
-          "<span style=\"color: rgb(15, 23, 41);\">NC4-A4-402 makita kini sa <b>ikaupat nga andana sa ba-ong CAS Building</b></span>"
+          "NC4-A4-402 makita kini sa **ikaupat nga andana sa ba-ong CAS Building**"
         ]
       },
       "coordinates": [
@@ -17381,10 +17388,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "The Philosophy faculty office is located in the New CAS building, which is behind the new COT building. The <b>office is on the second floor</b>, and you can reach it using either the elevator or the staircase. Please use the map for navigation."
+          "The Philosophy faculty office is located in the New CAS building, which is behind the new COT building. The **office is on the second floor**, and you can reach it using either the elevator or the staircase. Please use the map for navigation."
         ],
         "ceb": [
-          "Ang Philosophy faculty office makita sa New CAS building nga naa sa likod sa bag-ong COT building. Ang <b>opisina naa sa ikaduhang andana</b>, ug mahimo nimo gamiton ang elevator o ang hagdanan aron makaabot didto. Gamita ang mapa alang sa imong pag-navigate."
+          "Ang Philosophy faculty office makita sa New CAS building nga naa sa likod sa bag-ong COT building. Ang **opisina naa sa ikaduhang andana**, ug mahimo nimo gamiton ang elevator o ang hagdanan aron makaabot didto. Gamita ang mapa alang sa imong pag-navigate."
         ]
       },
       "pins": [
@@ -17492,10 +17499,10 @@
       ],
       "responses": {
         "en": [
-          "The Sociology Department (Faculty Office)<b> is located on the 2nd floor of the New CAS Building</b>, behind the New COT Building. You can reach it via the elevator or staircase. Please use the map for navigation."
+          "The Sociology Department (Faculty Office)** is located on the 2nd floor of the New CAS Building**, behind the New COT Building. You can reach it via the elevator or staircase. Please use the map for navigation."
         ],
         "ceb": [
-          "Ang Sociology Department (Faculty Office) <b>nahimutang sa 2nd floor sa New CAS Building</b>, sa luyo sa New COT Building. Mahimo nimo kining maabot pinaagi sa elevator o hagdanan. Palihug gamita ang mapa alang sa pag-navigate."
+          "Ang Sociology Department (Faculty Office) **nahimutang sa 2nd floor sa New CAS Building**, sa luyo sa New COT Building. Mahimo nimo kining maabot pinaagi sa elevator o hagdanan. Palihug gamita ang mapa alang sa pag-navigate."
         ]
       },
       "pins": [
@@ -17603,10 +17610,10 @@
       ],
       "responses": {
         "en": [
-          "The Economics Department (Faculty Office) is <b>located on the 2nd floor of the New CAS Building</b>, situated behind the New COT Building. You can reach the 2nd floor using the elevator or staircase. A map is provided to assist your navigation."
+          "The Economics Department (Faculty Office) is **located on the 2nd floor of the New CAS Building**, situated behind the New COT Building. You can reach the 2nd floor using the elevator or staircase. A map is provided to assist your navigation."
         ],
         "ceb": [
-          "Ang Economics Department (Faculty Office) <b>nahimutang sa 2nd floor sa New CAS Building</b>, sa luyo sa New COT Building. Mahimo nimong maabot ang ika-duhang andana gamit ang elevator o hagdanan. Adunay gihatag nga mapa alang sa imong pag-navigate."
+          "Ang Economics Department (Faculty Office) **nahimutang sa 2nd floor sa New CAS Building**, sa luyo sa New COT Building. Mahimo nimong maabot ang ika-duhang andana gamit ang elevator o hagdanan. Adunay gihatag nga mapa alang sa imong pag-navigate."
         ]
       },
       "pins": [
@@ -17714,10 +17721,10 @@
       ],
       "responses": {
         "en": [
-          "The Plant Tissue Culture Laboratory is <b>located on the 3rd floor of the New CAS Building</b>, behind the New COT Building. You can reach the 3rd floor using the elevator or staircase. Please refer to the map for directions."
+          "The Plant Tissue Culture Laboratory is **located on the 3rd floor of the New CAS Building**, behind the New COT Building. You can reach the 3rd floor using the elevator or staircase. Please refer to the map for directions."
         ],
         "ceb": [
-          "Ang Plant Tissue Culture Laboratory <b>nahimutang sa 3rd floor sa New CAS Building</b>, sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ikatulo nga andana. Palihug tan-awa ang mapa alang sa giya."
+          "Ang Plant Tissue Culture Laboratory **nahimutang sa 3rd floor sa New CAS Building**, sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ikatulo nga andana. Palihug tan-awa ang mapa alang sa giya."
         ]
       },
       "pins": [
@@ -17825,10 +17832,10 @@
       ],
       "responses": {
         "en": [
-          "The Kalatungan Learning Space is l<b>ocated on the 3rd floor of the New CAS Building</b>, situated behind the New COT Building. Use the staircase or elevator to reach the 3rd floor. A map is provided to guide your way."
+          "The Kalatungan Learning Space is l**ocated on the 3rd floor of the New CAS Building**, situated behind the New COT Building. Use the staircase or elevator to reach the 3rd floor. A map is provided to guide your way."
         ],
         "ceb": [
-          "Ang Kalatungan Learning Space <b>nahimutang sa 3rd floor sa New CAS Building</b>, sa luyo sa New COT Building. Gamita ang hagdanan o elevator paingon sa ikatulo nga andana. Adunay mapa nga gihatag alang sa imong giya."
+          "Ang Kalatungan Learning Space **nahimutang sa 3rd floor sa New CAS Building**, sa luyo sa New COT Building. Gamita ang hagdanan o elevator paingon sa ikatulo nga andana. Adunay mapa nga gihatag alang sa imong giya."
         ]
       },
       "pins": [
@@ -17936,10 +17943,10 @@
       ],
       "responses": {
         "en": [
-          "The Microbiology Laboratory (A4-404) is <b>located on the 4th floor of the New CAS Building,</b> situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
+          "The Microbiology Laboratory (A4-404) is **located on the 4th floor of the New CAS Building,** situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
         ],
         "ceb": [
-          "Ang Microbiology Laboratory (A4-404) <b>nahimutang sa 4th floor sa New CAS Building,</b> nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
+          "Ang Microbiology Laboratory (A4-404) **nahimutang sa 4th floor sa New CAS Building,** nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
         ]
       },
       "pins": [
@@ -18047,10 +18054,10 @@
       ],
       "responses": {
         "en": [
-          "The Biotechnology Laboratory (A4-405) <b>is located on the 4th floor of the New CAS Building</b>, situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
+          "The Biotechnology Laboratory (A4-405) **is located on the 4th floor of the New CAS Building**, situated behind the New COT Building. You can access the 4th floor via the elevator or staircase. A map is provided to assist your navigation."
         ],
         "ceb": [
-          "Ang Biotechnology Laboratory (A4-405) <b>nahimutang sa 4th floor sa New CAS Building</b>, nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
+          "Ang Biotechnology Laboratory (A4-405) **nahimutang sa 4th floor sa New CAS Building**, nga anaa sa luyo sa New COT Building. Mahimo nimong gamiton ang elevator o hagdanan paingon sa ika-upat nga andana. Adunay gihatag nga mapa alang sa imong pag-navigate."
         ]
       },
       "pins": [

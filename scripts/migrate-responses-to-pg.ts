@@ -1,12 +1,12 @@
 /**
- * Migration script to import data from responses.json and responses_location.json to PostgreSQL
+ * Migration script to import responses and canonical location knowledge to PostgreSQL.
  * 
  * Usage:
  *   npx tsx scripts/migrate-responses-to-pg.ts
  * 
  * This script will:
  * 1. Read responses.json and import to bot_responses table
- * 2. Read responses_location.json and import to location_responses table
+ * 2. Read responses_location_core.json and import to location_responses table
  */
 
 import { drizzle } from "drizzle-orm/node-postgres";
@@ -145,8 +145,8 @@ async function migrateLocationResponses() {
   console.log("🚀 Starting location migration...");
   
   try {
-    // Read responses_location.json
-    const locationsPath = path.join(__dirname, "../rasa/actions/responses_location.json");
+    // Read the canonical location knowledge source.
+    const locationsPath = path.join(__dirname, "../rasa/actions/knowledge/location/responses_location_core.json");
     console.log(`Reading from: ${locationsPath}`);
     
     if (!fs.existsSync(locationsPath)) {
@@ -159,7 +159,7 @@ async function migrateLocationResponses() {
     const locations = locationData.locations;
     const locationNames = Object.keys(locations);
 
-    console.log(`📄 Loaded ${locationNames.length} locations from responses_location.json`);
+    console.log(`📄 Loaded ${locationNames.length} locations from responses_location_core.json`);
 
     // Clear existing data
     console.log("Clearing existing location_responses data...");
@@ -221,7 +221,7 @@ async function main() {
     console.log("\n🎉 Migration completed successfully!");
     console.log("\nYou can now view the data in pgAdmin:");
     console.log("  - Table: bot_responses (data from responses.json)");
-    console.log("  - Table: location_responses (data from responses_location.json)");
+    console.log("  - Table: location_responses (data from responses_location_core.json)");
 
   } catch (error) {
     console.error("\n❌ Migration failed:", error);

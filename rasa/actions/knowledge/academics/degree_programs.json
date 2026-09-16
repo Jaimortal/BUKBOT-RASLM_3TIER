@@ -5056,10 +5056,10 @@
           "topic": "cat_requirement_doctors_masteral",
           "responses": {
             "en": [
-              "We only provide general data and the most frequently asked questions for incoming first-year undergraduate students. For doctor and masteral programs, please visit the Admission and Testing Unit (ATU) to assist with your concern."
+              "The **BukSU-CAT** (College Admission Test) is only for incoming undergraduate first-year applicants. For **Graduate Studies (Master's and Doctorate)**, applicants take the **Graduate Program Admission Test (GPAT)**. Please check the GPAT admission requirements and schedules for application details."
             ],
             "ceb": [
-              "General data lamang ug mga impormasyon nga kasagarang gipangutana sa mga first-year undergraduate students ang among gihatag. Alang sa mga doctor ug masteral nga programa, palihog bisitaha ang Admission and Testing Unit (ATU) aron matabangan ang inyong concern."
+              "Ang **BukSU-CAT** alang lamang sa mga incoming undergraduate first-year applicants. Alang sa **Graduate Studies (Master's ug Doctorate)**, ang mga aplikante mokuha sa **Graduate Program Admission Test (GPAT)**. Palihug tan-awa ang GPAT admission requirements ug schedules alang sa mga detalye sa pag-apply."
             ]
           },
           "intent": "cat_requirement_doctors_masteral",

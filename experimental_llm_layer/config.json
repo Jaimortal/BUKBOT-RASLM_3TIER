@@ -7,6 +7,6 @@
   "knowledge_sources": [
     "rasa/actions/Supper Saiyan",
     "rasa/actions/responses.json",
-    "rasa/actions/responses_location.json"
+    "rasa/actions/knowledge/location/responses_location_core.json"
   ]
 }

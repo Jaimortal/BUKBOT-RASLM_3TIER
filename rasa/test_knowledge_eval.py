@@ -475,7 +475,7 @@ TEST_CASES = [
     },
     {
         "category": "procedures",
-        "expected_topics": {"gate_pass_policy", "general_gate_pass", "bike_gate_pass", "campus_entry_without_student_id"},
+        "expected_topics": {"gate_pass_policy", "general_gate_pass", "gate_pass_process", "bike_gate_pass", "campus_entry_without_student_id"},
         "query": "What should I do if I forgot my student ID and need a temporary gate pass to enter",
         "desc": "Gate pass policy"
     },

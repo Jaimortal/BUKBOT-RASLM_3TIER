@@ -434,8 +434,8 @@ export class AdminBotTopicsController {
         }
       }
       
-      // 2. Parse responses_location.json if exists
-      const locationFile = path.join(process.cwd(), 'rasa', 'actions', 'responses_location.json');
+      // 2. Parse the canonical location knowledge file if it exists.
+      const locationFile = path.join(process.cwd(), 'rasa', 'actions', 'knowledge', 'location', 'responses_location_core.json');
       if (fs.existsSync(locationFile)) {
         try {
           const content = fs.readFileSync(locationFile, 'utf-8');
@@ -460,14 +460,14 @@ export class AdminBotTopicsController {
             }
             
             categories.push({
-              id: 'responses_location.json',
+              id: 'location/responses_location_core.json',
               displayName: 'Locations & Mapping',
-              sourceFile: 'responses_location.json',
+              sourceFile: 'location/responses_location_core.json',
               topics: locTopics
             });
           }
         } catch (err) {
-          console.error("Error parsing responses_location.json:", err);
+          console.error("Error parsing responses_location_core.json:", err);
         }
       }
       

@@ -1,0 +1,10 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+K301-EN-01:open,TOPIC_MISMATCH_REVIEW,procedures,open,en,I can't remember the password for the admissions website. What now?,change_portal_password_buksu,Change_Pass_admission,"To change your admission password, follow these steps:
+
+Go to <b>https://admissions.buksu.edu.ph/login</b>
+
+Login your credentials and proceed to your dashboard
+
+click your <b>Profile icon</b> to view the choices logout or My Account, and choose <b>My Account</b>
+
+you can now change your password by just clicking the <b>Change Password button</b>",490.15,RASA (Direct Rule),procedures/student_service_procedures.json,/topics/6/subtopics/5,"[""Different ID; review possible equivalent records before treating this as a bug.""]",

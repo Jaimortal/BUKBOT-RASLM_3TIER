@@ -1,0 +1,75 @@
+# BukSU Campus Chatbot - Missing Aliases & Expansion List (v1.1s)
+Document Path: docs/aliases new/aliases1.1s
+Generated Date: September 16, 2026
+
+=== 1. SUMMARY OF DISCREPANCIES & CASING MISMATCHES ===
+- mahogany dorm, mahogany dormitory, mahogany girls dorm -> Mahogany dorm (casing mismatch in aliases.py)
+- rubia dorm, rubia dormitory, rubia boys dorm -> Rubia dorm (casing mismatch in aliases.py)
+- coa sbo, coa sbo office, college of administration sbo -> COA SBO Office (no data) (missing 0 aliases)
+- library, buksu library, main library, campus library -> Library (generic library target missing)
+- ictu, ictu office, ict office, ict service -> ictu office / ICT Service Unit
+
+=== 2. ADMINISTRATIVE OFFICES, WINDOWS & SERVICE DESKS ===
+- Registrar Windows:
+  * registrar window 1, registrar window 2, registrar window 3, registrar window 4, registrar window 5, registrar window 6
+  * window 1 registrar, window 2 registrar, window 3 registrar, window 4 registrar, window 5 registrar
+  * ro window, ro counter, registrar releasing window, registrar evaluation window, transcript window, tor releasing window, enrollment window, grades inquiry window, records window
+- Cashier & Finance Windows:
+  * cashier window 1, cashier window 2, cashier window 3, cashier window 4, cashier window 5
+  * finance window 1, finance window 2, finance window 3, finance window 4, finance window 5
+  * bayad tuition, bayadanan sa tuition, bayranan, payment window, tuition payment counter, assessment counter, cashiers office, cashiers booth, finance assessment desk
+- Student Government & Publications:
+  * ssc, ssc office, supreme student council, supreme student council office
+  * usg, usg office, university student government, student council room
+  * kaugmaon, kaugmaon office, kaugmaon publication, student publication office, school paper office
+- Guidance, Health & Security Services:
+  * gcu, guidance and counseling unit, guidance office buksu, counseling center, guidance counselor
+  * ssu, ssu office, security services unit, campus security office, guard station, security post
+  * gso, general services office, motorpool, maintenance office, property and supply office, drrmo, safety unit, alumni affairs
+- Executive Offices:
+  * op, office of the president, buksu president office, university president
+  * vpaa, office of the vpaa, vice president for academic affairs, vp academic affairs
+  * vpa, office of the vpa, vice president for administration, vp administration
+  * cao, cao office, chief administrative officer, campus admin office
+
+=== 3. ACADEMIC BUILDINGS & COLLEGES ===
+- CAS: cas bldg, cas building, college of arts and sciences building, new cas bldg, old cas bldg, cas main, cas complex
+- COT: cot bldg, cot building, college of technologies building, college of tech, cit bldg, college of information technology
+- COED: coed bldg, coed building, college of education building, educ bldg, education building, coe bldg
+- COB: cob bldg, cob building, college of business building, business bldg, cba bldg, college of business and accountancy
+- CON: con bldg, con building, college of nursing building, nursing bldg, cn bldg
+- CPAG: cpag bldg, cpag building, college of public administration building, public admin bldg
+- Law: law bldg, col bldg, law school building, college of law building
+- Grad School: grad school bldg, gs bldg, graduate education bldg, postgrad bldg
+- Finance: finance bldg, accounting bldg, cashier bldg, business affairs bldg
+- Admin: admin bldg, old admin bldg, new admin bldg, executive bldg
+
+=== 4. FACILITIES, STUDENT SPACES, PARKING & GATES ===
+- Sports & Gym: gym, buksu gym, university gym, buksu gymnasium, covered court, gym covered court, basketball court, oval, buksu oval, track and field, running oval, athletic oval, sports oval, dulaanan sa buksu
+- Food & Dining: canteen buksu, main canteen buksu, food court, snack bar, university food hall, tambayan sa buksu, kaonan, kainan
+- Dormitories: mahogany girls dorm, mahogany dormitory, rubia boys dorm, rubia dormitory, campus dorm, dormitoryo, sulod nga boarding house
+- Campus Gates: gate 1, gate 2, main entrance gate, admin gate, fortich gate, gym gate, exit gate, pultahan sa buksu, gawasang gate
+- Parking: motor parking, car parking, faculty parking area, student motorcycle parking, parkingan sa motor, parkingan sa sakyanan, butanganan sa motor
+- CR & Medical: cr lalaki, cr babae, male restroom, female restroom, pwd cr, kasilyas, kalibangan, tambalanan sa buksu, dentista sa buksu, first aid station, medical station
+
+=== 5. ROOM NUMBERING, LAB & DOT-SEPARATED VARIATIONS ===
+- Dotted room codes: b.1.01, b.2.04, b.3.01, c.1.2.01, c.2.2.04, hs.2.01, cpag.2.01, cpag.3.06
+- Prefixed codes: rm b-1-01, rm b-2-04, rm c-1-2-01, rm hs-2-01, classroom b-2-04, classroom c2-2-01, room b101, rm b101
+- Building + Room: cas rm 101, cas rm 204, cot rm 101, cot rm 201, bldg b rm 101, bldg c rm 201
+- ComLabs: cl 1, cl 2, cl 3, cl 4, cl 5, cl 6, cl 7, cl 8, cl 9, cl 10, cl 11, cl 12, comp lab 1-12, computer lab 1-12
+- Specialized Labs: microbio lab, biotech lab, tissue culture lab, foodtech lab, food tech lab 1, electronics lab 1-2, el1, el2, speech lab, multimedia lab
+
+=== 6. COLLOQUIAL CEBUANO / BISAYA CAMPUS QUERIES ===
+- basahonon, tulunghaan sa libro -> Library
+- bayadanan, bayad tuition, bayranan sa skwela -> Cashier Window 1-5 / Finance Building
+- enrolan, enrollan, kuhaan ug grado, evaluation sa grado -> Registrar Office / Admission Office
+- tambalanan, adhaan kung hilanat, adhaan kung magsakit -> Buksu Clinic
+- dentista, ibtanay ug ngipon -> Dental Clinic
+- kaonan, kan-anan, palitanan ug pagkaon -> Cafeteria
+- parkinganan sa motor, butanganan sa motor -> Motorcycle Parking Area
+- parkinganan sa sakyanan, butanganan sa sakyanan -> Car Parking Area / Vehicle Parking Area
+- kasilyas, kalibangan, pangi-an -> Comfort Room
+- opisina sa gwardya, guardhouse, estasyon sa gwardya -> Guard House
+- dulaanan, daganon, ovalanan -> Oval / Fitness Gym
+- tulogan sa studyante, dorm sa sulod -> Mahogany dorm / Rubia dorm
+

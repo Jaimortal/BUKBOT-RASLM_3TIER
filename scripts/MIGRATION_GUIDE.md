@@ -1,12 +1,12 @@
 # Database Migration Guide for Chatbot Responses
 
-This guide explains how to migrate data from `responses.json` and `responses_location.json` to PostgreSQL.
+This guide explains how to migrate data from `responses.json` and `rasa/actions/knowledge/location/responses_location_core.json` to PostgreSQL.
 
 ## Files Created
 
 1. **shared/schema.ts** - Updated with new tables:
    - `bot_responses` - Stores data from `responses.json`
-   - `location_responses` - Stores data from `responses_location.json`
+   - `location_responses` - Stores data from `responses_location_core.json`
 
 2. **scripts/create_response_tables.sql** - SQL file to create tables directly in pgAdmin
 
@@ -84,7 +84,7 @@ After migration, you should see:
 1. **bot_responses** - Contains all responses from responses.json
    - Columns: id, intent, category, sub_category, answer_en, answer_ceb, answer, follow_up, context_slots, image_url, image_urls, map_data, metadata, created_at, updated_at
 
-2. **location_responses** - Contains all locations from responses_location.json
+2. **location_responses** - Contains all locations from responses_location_core.json
    - Columns: id, name, type, building, floor, coordinates, map_id, responses_en, responses_ceb, pins, image_urls, created_at, updated_at
 
 ### Views (Optional):
@@ -152,7 +152,7 @@ DROP TABLE IF EXISTS location_responses CASCADE;
 Then re-run the SQL script.
 
 ### Issue: JSON parsing errors
-**Solution:** Check that responses.json and responses_location.json are valid JSON files.
+**Solution:** Check that responses.json and responses_location_core.json are valid JSON files.
 
 ---
 
@@ -192,7 +192,7 @@ Then re-run the SQL script.
 
 ## Re-migrating After JSON Changes
 
-If you modify `responses.json` or `responses_location.json` and want to update the database:
+If you modify `responses.json` or `responses_location_core.json` and want to update the database:
 
 ### Quick Re-migration Command
 

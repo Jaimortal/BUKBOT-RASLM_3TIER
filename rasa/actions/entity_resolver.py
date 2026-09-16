@@ -131,6 +131,10 @@ class EntityResolver:
             drop("Old COT Building")
         if has("CPAG Faculty Room") or has("CPAG Deans Office") or has("GE Department") or has("CPAG SBO Office"):
             drop("CPAG building")
+        if has("NC4-A4-401"):
+            drop("A4-4-01")
+        if has("NC4-A4-402"):
+            drop("A4-4-02")
         if has("Window 8 Payroll Regular and Casual"):
             drop("Window 7 Payroll Regular")
         if has("Windows 3 Assessment") or has("Windows 4 Assessment") or has("Windows 5 Assessment") or has("Window 8 Payroll Regular and Casual"):

@@ -31,7 +31,7 @@ export const botResponses = pgTable("bot_responses", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
-// Table for responses_location.json data
+// Table for canonical responses_location_core.json data
 export const locationResponses = pgTable("location_responses", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),

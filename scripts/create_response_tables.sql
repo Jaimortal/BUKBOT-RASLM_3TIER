@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS bot_responses (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Table for responses_location.json data
+-- Table for canonical responses_location_core.json data
 CREATE TABLE IF NOT EXISTS location_responses (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
@@ -81,7 +81,7 @@ FROM location_responses;
 
 -- Comments for documentation
 COMMENT ON TABLE bot_responses IS 'Stores chatbot responses data migrated from rasa/actions/responses.json';
-COMMENT ON TABLE location_responses IS 'Stores location-based responses data migrated from rasa/actions/responses_location.json';
+COMMENT ON TABLE location_responses IS 'Stores location-based responses migrated from rasa/actions/knowledge/location/responses_location_core.json';
 COMMENT ON COLUMN bot_responses.intent IS 'The intent identifier for the response (e.g., about_ict, buksu_IT)';
 COMMENT ON COLUMN bot_responses.answer_en IS 'English answers stored as JSON array';
 COMMENT ON COLUMN bot_responses.answer_ceb IS 'Cebuano answers stored as JSON array';

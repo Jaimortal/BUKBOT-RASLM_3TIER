@@ -1,5 +1,165 @@
 [
   {
+    "id": "log_1789528736666_voveos9",
+    "userEmail": "2301106910@student.buksu.edu.ph",
+    "userName": "Jaime Perez",
+    "userRole": "co-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: CAS Buildings",
+    "targetTitle": "CAS Buildings",
+    "targetId": "CAS Buildings",
+    "changes": [
+      {
+        "field": "Location Responses",
+        "changeType": "modified",
+        "details": "Updated English/Cebuano descriptions"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-16T03:18:56.666Z"
+  },
+  {
+    "id": "log_1789458271443_kdrxy4c",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: College of Nursing Building",
+    "targetTitle": "College of Nursing Building",
+    "targetId": "College of Nursing Building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-15T07:44:31.443Z"
+  },
+  {
+    "id": "log_1789458194571_1nt6tld",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: College of Nursing Building",
+    "targetTitle": "College of Nursing Building",
+    "targetId": "College of Nursing Building",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-15T07:43:14.571Z"
+  },
+  {
+    "id": "log_1789397897488_ylvvffm",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Registrar Office",
+    "targetTitle": "Registrar Office",
+    "targetId": "Registrar Office",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-14T14:58:17.488Z"
+  },
+  {
+    "id": "log_1789397896645_s8ixakw",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"registrar validation.webp\" (89.4 KB)",
+    "targetTitle": "registrar validation.webp",
+    "targetId": "e9013fb6-6a76-4b79-a965-f3a6853aafc2",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"registrar validation.webp\" (89.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-14T14:58:16.645Z"
+  },
+  {
+    "id": "log_1789397885856_c9ga0lm",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Registrar Office",
+    "targetTitle": "Registrar Office",
+    "targetId": "Registrar Office",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 2 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-14T14:58:05.856Z"
+  },
+  {
+    "id": "log_1789397884523_ksvlbxn",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"registrar 2.webp\" (25.1 KB)",
+    "targetTitle": "registrar 2.webp",
+    "targetId": "a7e72774-4427-4379-9eb5-aca5d1d8ae04",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"registrar 2.webp\" (25.1 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-14T14:58:04.523Z"
+  },
+  {
+    "id": "log_1789397877799_fi0fp32",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"registrar validation.webp\" (89.4 KB)",
+    "targetTitle": "registrar validation.webp",
+    "targetId": "988314fb-24d4-4163-bb69-94efd29c26ec",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"registrar validation.webp\" (89.4 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-14T14:57:57.799Z"
+  },
+  {
     "id": "log_1788867460828_fpxpf3g",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

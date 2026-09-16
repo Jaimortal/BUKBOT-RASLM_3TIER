@@ -10,6 +10,7 @@ type JsonObject = Record<string, any>;
 
 const KNOWLEDGE_ROOT = path.join(process.cwd(), "rasa", "actions", "knowledge");
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
+let knowledgeListCache: { signature: string; records: JsonObject[]; files: { file: string; count: number }[] } | null = null;
 
 function getKnowledgeFiles(): { file: string; fullPath: string; domain?: string }[] {
   const result: { file: string; fullPath: string; domain?: string }[] = [];
@@ -17,6 +18,9 @@ function getKnowledgeFiles(): { file: string; fullPath: string; domain?: string 
     const entries = fs.readdirSync(KNOWLEDGE_ROOT, { withFileTypes: true });
     for (const entry of entries) {
       if (entry.isDirectory()) {
+        // Locations have a dedicated admin endpoint and must never be parsed by
+        // the Knowledge Manager scanner.
+        if (entry.name === "location") continue;
         const domainDir = path.join(KNOWLEDGE_ROOT, entry.name);
         const subFiles = fs.readdirSync(domainDir).filter((f) => f.endsWith(".json"));
         for (const subFile of subFiles) {
@@ -50,6 +54,84 @@ function getKnowledgeFiles(): { file: string; fullPath: string; domain?: string 
   }
 
   return result;
+}
+
+function knowledgeFilesSignature(files: { fullPath: string }[]): string {
+  return files
+    .map((item) => {
+      const stat = fs.statSync(item.fullPath);
+      return `${item.fullPath}:${stat.size}:${stat.mtimeMs}`;
+    })
+    .join("|");
+}
+
+async function loadKnowledgeRecords() {
+  const allFiles = getKnowledgeFiles();
+  const signature = knowledgeFilesSignature(allFiles);
+  if (knowledgeListCache?.signature === signature) return knowledgeListCache;
+
+  const records: JsonObject[] = [];
+  await Promise.all(allFiles.map(async (item) => {
+    try {
+      const data = JSON.parse(await fsPromises.readFile(item.fullPath, "utf-8"));
+      if (!Array.isArray(data.topics)) return;
+      data.topics.forEach((topic: JsonObject, index: number) => collectRecords(item.file, topic, [index], null, records));
+    } catch (err) {
+      console.error(`Error reading knowledge file ${item.file}:`, err);
+    }
+  }));
+
+  const files = allFiles.map((item) => ({
+    file: item.file,
+    count: records.filter((record) => record.file === item.file).length,
+  }));
+  knowledgeListCache = { signature, records, files };
+  return knowledgeListCache;
+}
+
+function knowledgeSummary(record: JsonObject): JsonObject {
+  const en = stringArray(record.responses?.en);
+  const ceb = stringArray(record.responses?.ceb);
+  const phrases = stringArray(record.phrases);
+  const images = stringArray(record.images);
+  const preview = en.find(Boolean) || ceb.find(Boolean) || "";
+  const searchIndex = [
+    record.displayName,
+    record.file,
+    record.parentTopic,
+    record.topic,
+    record.intent,
+    record.contextTopic,
+    record.subjectKey,
+    record.subjectType,
+    preview.slice(0, 240),
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  return {
+    ...record,
+    responses: { en: [], ceb: [] },
+    phrases: [],
+    images: [],
+    map: null,
+    mapData: null,
+    pins: [],
+    routes: [],
+    items: [],
+    itemGroups: {},
+    itemDisclaimer: "",
+    ownSubjectTerms: [],
+    subjectTerms: [],
+    preview: preview.slice(0, 240),
+    searchIndex,
+    phraseCount: phrases.length,
+    imageCount: images.length,
+    subjectTermCount: stringArray(record.subjectTerms).length,
+    isSummary: true,
+  };
+}
+
+function parentAtPath(data: JsonObject, pathParts: number[]): JsonObject | null {
+  return pathParts.length > 1 ? topicAtPath(data, pathParts.slice(0, -1)) : null;
 }
 
 function resolveKnowledgeFilePath(filePathOrName: string): string | null {
@@ -327,31 +409,43 @@ function validateCreateSubtopic(body: JsonObject): string[] {
 export class AdminKnowledgeController {
   static async list(req: Request, res: Response) {
     try {
-      const allFiles = getKnowledgeFiles();
-      if (allFiles.length === 0) {
+      const loaded = await loadKnowledgeRecords();
+      if (loaded.files.length === 0) {
         return res.status(404).json({ success: false, message: "Knowledge directory not found" });
       }
-
-      const records: JsonObject[] = [];
-
-      for (const item of allFiles) {
-        try {
-          const data = JSON.parse(fs.readFileSync(item.fullPath, "utf-8"));
-          if (!Array.isArray(data.topics)) continue;
-          data.topics.forEach((topic: JsonObject, index: number) => collectRecords(item.file, topic, [index], null, records));
-        } catch (err) {
-          console.error(`Error reading knowledge file ${item.file}:`, err);
-        }
-      }
-
-      const filesSummary = allFiles.map((item) => ({
-        file: item.file,
-        count: records.filter((record) => record.file === item.file).length,
-      }));
-
-      return res.json({ success: true, records, files: filesSummary });
+      const summaryOnly = req.query.view === "summary";
+      return res.json({
+        success: true,
+        records: summaryOnly ? loaded.records.map(knowledgeSummary) : loaded.records,
+        files: loaded.files,
+      });
     } catch (error) {
       console.error("Error listing knowledge records:", error);
+      return res.status(500).json({ success: false, message: "Internal server error" });
+    }
+  }
+
+  static async detail(req: Request, res: Response) {
+    try {
+      const { file } = req.params;
+      if (!isSafeJsonFile(file)) return res.status(400).json({ success: false, message: "Invalid file name" });
+      const pathParts = String(req.query.path || "")
+        .split(".")
+        .filter(Boolean)
+        .map(Number);
+      if (!pathParts.length || pathParts.some((part) => !Number.isInteger(part) || part < 0)) {
+        return res.status(400).json({ success: false, message: "A valid topic path is required" });
+      }
+      const filePath = resolveKnowledgeFilePath(file);
+      if (!filePath) return res.status(404).json({ success: false, message: "File not found" });
+      const data = JSON.parse(await fsPromises.readFile(filePath, "utf-8"));
+      const target = topicAtPath(data, pathParts);
+      if (!target) return res.status(404).json({ success: false, message: "Topic path not found" });
+      const records: JsonObject[] = [];
+      collectRecords(file, target, pathParts, parentAtPath(data, pathParts), records);
+      return res.json({ success: true, data: records[0] });
+    } catch (error) {
+      console.error("Error loading knowledge record:", error);
       return res.status(500).json({ success: false, message: "Internal server error" });
     }
   }
@@ -489,6 +583,7 @@ export class AdminKnowledgeController {
 
       await backupJsonFile(filePath, "knowledge");
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
+      knowledgeListCache = null;
 
       // Log activity
       const changes = computeKnowledgeDiff(prevTopic, req.body);
@@ -502,7 +597,9 @@ export class AdminKnowledgeController {
         changes,
       }).catch((err) => console.error("Failed to log knowledge update:", err));
 
-      return res.json({ success: true, message: "Knowledge record updated", topic: target });
+      const updatedRecords: JsonObject[] = [];
+      collectRecords(file, target, req.body.path, parentAtPath(data, req.body.path), updatedRecords);
+      return res.json({ success: true, message: "Knowledge record updated", topic: target, data: updatedRecords[0] });
     } catch (error) {
       console.error("Error updating knowledge record:", error);
       return res.status(500).json({ success: false, message: "Internal server error" });
@@ -553,6 +650,7 @@ export class AdminKnowledgeController {
       data.topics.push(parentTopic);
       await backupJsonFile(filePath, "knowledge");
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
+      knowledgeListCache = null;
 
       const title = parentTopic.display_name || parentTopic.topic;
       await logActivity(req, {
@@ -640,6 +738,7 @@ export class AdminKnowledgeController {
       const pathParts = [...req.body.parentPath, parent.subtopics.length - 1];
       await backupJsonFile(filePath, "knowledge");
       await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf-8");
+      knowledgeListCache = null;
 
       const title = subtopic.display_name || subtopic.topic;
       await logActivity(req, {

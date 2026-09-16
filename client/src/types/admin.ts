@@ -37,6 +37,11 @@ export interface Location {
     ceb?: string[];
   };
   imageUrls?: string[];
+  responsePreview?: string;
+  imageCount?: number;
+  pinCount?: number;
+  routeCount?: number;
+  hasMap?: boolean;
 }
 
 export interface ResponseData {

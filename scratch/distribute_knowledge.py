@@ -263,19 +263,8 @@ create_domain_file(
     admission_dir_topics
 )
 
-# ==========================================
-# 5. LOCATION (Map Navigation & Building Directory)
-# ==========================================
-# Load responses_location.json
-resp_loc_path = os.path.join("rasa", "actions", "responses_location.json")
-if os.path.exists(resp_loc_path):
-    with open(resp_loc_path, "r", encoding="utf-8") as fp:
-        loc_data = json.load(fp)
-    
-    # Write location domain core
-    loc_target = os.path.join(knowledge_dir, "location", "responses_location_core.json")
-    with open(loc_target, "w", encoding="utf-8") as fp:
-        json.dump(loc_data, fp, indent=2, ensure_ascii=False)
-    print(f"Created: location/responses_location_core.json ({len(loc_data.get('locations', []))} locations)")
+# Location knowledge is maintained directly in
+# knowledge/location/responses_location_core.json. Do not overwrite it from a
+# legacy duplicate when redistributing the other knowledge domains.
 
 print("\nAll knowledge files successfully generated!")

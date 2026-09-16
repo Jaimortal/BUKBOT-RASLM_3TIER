@@ -248,6 +248,7 @@ export async function registerRoutes(
 
   // Get all locations
   app.get("/api/admin/locations", requireAuth, AdminController.getLocations);
+  app.get("/api/admin/locations/:id", requireAuth, AdminController.getLocation);
 
   // Create or update a location
   app.post("/api/admin/locations", requireAuth, AdminController.createOrUpdateLocation);
@@ -283,6 +284,7 @@ export async function registerRoutes(
 
   // KNOWLEDGE MANAGER (ADMIN) - structured nested JSON browser/editor
   app.get("/api/admin/knowledge", requireAuth, AdminKnowledgeController.list);
+  app.get("/api/admin/knowledge/:file(*)/topic", requireAuth, AdminKnowledgeController.detail);
   app.post("/api/admin/knowledge/:file(*)/parent", requireAuth, AdminKnowledgeController.createParent);
   app.post("/api/admin/knowledge/:file(*)/subtopic", requireAuth, AdminKnowledgeController.createSubtopic);
   app.post("/api/admin/knowledge/:file(*)/topic", requireAuth, AdminKnowledgeController.update);

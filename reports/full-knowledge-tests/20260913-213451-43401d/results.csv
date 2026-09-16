@@ -1,0 +1,11 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+K225-EN-01:category,ANSWER_MATCH,procedures,category,en,How can I log in to SIAS using the Student option at BukSU?,sias_login_process,sias_login_process,"To log in to SIAS, open <b>https://sias.buksu.edu.ph/sias/</b>.
+
+Click <b>Student</b> if you are a student. Choose the correct role if you are an instructor or another user type.
+
+Type your Student ID and password, then click <b>Login</b>.",1112.83,RASA (Direct Rule),procedures/admission_procedures.json,/topics/4/subtopics/6,[],
+K225-EN-01:open,ANSWER_MATCH,procedures,open,en,How can I log in to SIAS using the Student option at BukSU?,sias_login_process,sias_login_process,"To log in to SIAS, open <b>https://sias.buksu.edu.ph/sias/</b>.
+
+Click <b>Student</b> if you are a student. Choose the correct role if you are an instructor or another user type.
+
+Type your Student ID and password, then click <b>Login</b>.",1035.23,RASA (Direct Rule),procedures/admission_procedures.json,/topics/4/subtopics/6,[],

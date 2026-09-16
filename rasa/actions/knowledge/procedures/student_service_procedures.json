@@ -859,7 +859,7 @@
             },
             {
               "label": "University Press location",
-              "payload": "/direct_intent{\"intent\":\"location_University_Press\"}"
+              "payload": "/direct_intent{\"intent\":\"location_university_press\"}"
             }
           ],
           "metadata": {
@@ -2379,12 +2379,119 @@
               "need ba gate pass ang sakyanan",
               "kinahanglan bag gate pass ang motor ug awto",
               "gate pass sa sakyanan",
-              "unsaon pagsulod nga naay sakyanan gate pass",
               "kinsay kinahanglan og gate pass",
               "gate pass requirement sa buksu"
             ]
           },
           "display_name": "Gate Pass Policy (General)",
+          "subject_terms": [],
+          "images": [],
+          "items": []
+        },
+        {
+          "topic": "process",
+          "intent": "gate_pass_process",
+          "context_topic": "process",
+          "responses": {
+            "en": [
+              "Unfortunately, I don't have detailed step-by-step data for that, but as far as I know, the **Vehicle Gate Pass Sticker is issued by the Office of the Chief Administrative Officer.** You can ask them regarding that matter. A map is provided for your navigation.\nFor contact details, sorry to inform you that I don't have one."
+            ],
+            "ceb": [
+              "Ikasubo, wala koy detalyadong datos para ana, apan sa akong nahibaloan, ang **Vehicle Gate Pass Sticker gi-isyu sa Office of the Chief Administrative Officer.** Pwede ka mangutana sa ilaha bahin ana nga butang. Naghatag ko og mapa para sa imong pag-navigate.\nPara sa contact details, pasayloa ko nga wala koy impormasyon bahin ana."
+            ]
+          },
+          "pins": [
+            {
+              "name": "Start From Here",
+              "coordinates": [
+                886,
+                635
+              ],
+              "floor": "2F"
+            },
+            {
+              "name": "CAO-ADMIN",
+              "coordinates": [
+                825,
+                664
+              ],
+              "floor": "2F"
+            },
+            {
+              "name": "Staircase",
+              "coordinates": [
+                839,
+                657
+              ],
+              "pinType": "staircase"
+            }
+          ],
+          "routes": [
+            {
+              "name": "Start From Here to CAO-ADMIN",
+              "points": [
+                [
+                  886,
+                  635
+                ],
+                [
+                  839,
+                  637
+                ],
+                [
+                  839,
+                  664
+                ],
+                [
+                  825,
+                  664
+                ]
+              ],
+              "color": "#ff1744",
+              "route_order": 1,
+              "route_label": "Route 1"
+            }
+          ],
+          "metadata": {
+            "phrases": [
+              "how to get gate pass",
+              "how to get a gate pass",
+              "process of getting gate pass",
+              "process of getting a gate pass",
+              "process of getting gatepass",
+              "tell me where do i get some gate pass",
+              "tell me where to get gate pass",
+              "aha ta maka kuhag gate pass",
+              "aha ta makakuha ug gate pass",
+              "aha ta makakuha og gate pass",
+              "asa mana makuha si gate pass",
+              "asa mana makuha ang gate pass",
+              "asa makuha ang gate pass",
+              "gate pass acquiring process",
+              "gate pass acquisition process",
+              "step by step process for get pass acquirment",
+              "step by step process for gate pass acquirment",
+              "step by step process for gate pass acquisition",
+              "how do i apply for gate pass",
+              "how to apply for gate pass",
+              "how to apply for a gate pass",
+              "how to apply vehicle gate pass",
+              "unsaon pagkuha og gate pass",
+              "unsaon pagkuha ug gate pass",
+              "unsaon pagkuha sa gate pass",
+              "unsaon pag apply og gate pass",
+              "unsaon pag-apply og gate pass",
+              "unsaon pagkuha og vehicle gate pass",
+              "where to get gate pass",
+              "where do i get gate pass",
+              "where can i get gate pass",
+              "how to get gatepass",
+              "where to acquire gate pass",
+              "how to acquire vehicle gate pass",
+              "steps to get gate pass"
+            ]
+          },
+          "display_name": "Gate Pass Process",
           "subject_terms": [],
           "images": [],
           "items": []

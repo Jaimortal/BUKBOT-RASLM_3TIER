@@ -577,7 +577,7 @@
           "suggestions": [
             {
               "label": "Clinic location",
-              "payload": "/direct_intent{\"intent\":\"location_Clinic\"}"
+              "payload": "/direct_intent{\"intent\":\"location_Buksu_Clinic\"}"
             },
             {
               "label": "Absence limit (FDA)",

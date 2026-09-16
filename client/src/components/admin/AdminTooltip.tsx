@@ -2,7 +2,6 @@ import React from "react";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -15,7 +14,6 @@ interface AdminTooltipProps {
   align?: "start" | "center" | "end";
   className?: string;
   sideOffset?: number;
-  delayDuration?: number;
 }
 
 export function AdminTooltip({
@@ -26,11 +24,9 @@ export function AdminTooltip({
   align = "center",
   className,
   sideOffset = 6,
-  delayDuration = 120,
 }: AdminTooltipProps) {
   return (
-    <TooltipProvider delayDuration={delayDuration}>
-      <Tooltip>
+    <Tooltip>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
         <TooltipContent
           side={side}
@@ -51,8 +47,7 @@ export function AdminTooltip({
             </p>
           )}
         </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    </Tooltip>
   );
 }
 

@@ -151,6 +151,10 @@
               "payload": "/direct_intent{\"intent\":\"enrollment_general_process\"}"
             },
             {
+              "label": "Admission requirements",
+              "payload": "/direct_intent{\"intent\":\"freshman_admission_requirements\"}"
+            },
+            {
               "label": "Exam Day Requirements",
               "payload": "/direct_intent{\"intent\":\"exam_requirements\"}"
             }
@@ -1647,16 +1651,14 @@
           "topic": "gpat_admission_requirements",
           "responses": {
             "en": [
-              "Requirements for the Graduate Program Admission Test include a soft copy of a 2x2 ID picture.",
-              "You must also submit a scanned copy of your transcript of records.",
-              "Non BukSU graduates must submit an honorable dismissal.",
-              "A payment receipt is also required."
+              "Bukidnon State University – Graduate Studies is pleased to announce Admission Examination schedules for the First Semester of SY 2026–2027. \nInterested applicants may apply online at:\n https://admissions.buksu.edu.ph/",
+              "**Important Note:** Online application is ongoing until June 6, 2026.\n**Test Schedule:** April 26, 2026 and June 6, 2026\nWe also accept walk-in. Make sure to bring requirements to be accommodated.",
+              "**Requirements:**\n• Soft copy of a 2×2 ID picture\n• Scanned copy of Transcript of Records (TOR)\n• Scanned copy of Honorable Dismissal\n• Proof of payment of admission exam fee (₱675.00)\n\n(Note: This announcement applies to all BukSU Graduate Programs)"
             ],
             "ceb": [
-              "Ang mga kinahanglanon sa GPAT naglakip sa soft copy sa 2x2 ID picture.",
-              "Kinahanglan usab ang scanned copy sa transcript of records.",
-              "Para sa dili BukSU graduates kinahanglan ang honorable dismissal.",
-              "Kinahanglan usab ang payment receipt."
+              "Ang Bukidnon State University – Graduate Studies malipayong nagpahibalo sa Admission Examination schedules alang sa Unang Semestre sa SY 2026–2027.\nAng mga interesado mahimong mag-apply online sa:\n https://admissions.buksu.edu.ph/",
+              "**Important Note:** Ang online application nagpadayon hangtod Hunyo 6, 2026.\n**Test Schedule:** Abril 26, 2026 ug Hunyo 6, 2026\nModawat usab kami og walk-in. Siguroha nga magdala sa mga requirements aron ma-accommodate.",
+              "**Requirements:**\n• Soft copy sa 2×2 ID picture\n• Scanned copy sa Transcript of Records (TOR)\n• Scanned copy sa Honorable Dismissal\n• Proof of payment sa admission exam fee (₱675.00)\n\n(Pahibalo: Kining anunsyo magamit alang sa tanang BukSU Graduate Programs)"
             ]
           },
           "intent": "gpat_admission_requirements",
@@ -1664,6 +1666,17 @@
           "metadata": {
             "phrases": [
               "gpat admission requirements",
+              "tell me what do i need for admission testing graduate program",
+              "what do i need for the admission testing for graduate program",
+              "How do I apply for the Graduate Program Admission Test (GPAT) at Bukidnon State University?",
+              "What are the application requirements for BukSU graduate school admissions?",
+              "How much is the admission testing fee for BukSU graduate studies?",
+              "unsa may mga kinahanglan sa pag apply sa admission testing graduate program",
+              "what do i need for admission testing application graduate program",
+              "requirements need for admission testing spacific for Graduate programs/law",
+              "requirements need for admission testing specific for graduate programs",
+              "requirements for admission testing graduate program",
+              "what do i need for admission testing graduate program",
               "unsa requirements for gpat",
               "unsa kailangan sa gpat",
               "what are the requirements for graduate admission test",
@@ -1671,7 +1684,17 @@
               "graduate admission test requirements",
               "gpat requirements",
               "requirements for graduate program admission test",
-              "masteral admission test requirements"
+              "masteral admission test requirements",
+              "how to apply for gpat",
+              "how to apply for graduate program admission test",
+              "graduate school admission exam fee",
+              "how much is gpat fee",
+              "pila bayad sa gpat",
+              "unsaon pag apply sa gpat",
+              "when is the graduate admission exam schedule",
+              "admission exam for graduate studies",
+              "graduate admission examination schedule",
+              "admission testing fee for graduate studies"
             ]
           },
           "display_name": "GPAT Admission Requirements"
@@ -1969,10 +1992,10 @@
           "topic": "cat_requirement_doctors_masteral",
           "responses": {
             "en": [
-              "We only provide general data and the most frequently asked questions for incoming first-year undergraduate students. For doctor and masteral programs, please visit the Admission and Testing Unit (ATU) to assist with your concern."
+              "The **BukSU-CAT** (College Admission Test) is only for incoming undergraduate first-year applicants. For **Graduate Studies (Master's and Doctorate)**, applicants take the **Graduate Program Admission Test (GPAT)**. Please check the GPAT admission requirements and schedules for application details."
             ],
             "ceb": [
-              "General data lamang ug mga impormasyon nga kasagarang gipangutana sa mga first-year undergraduate students ang among gihatag. Alang sa mga doctor ug masteral nga programa, palihog bisitaha ang Admission and Testing Unit (ATU) aron matabangan ang inyong concern."
+              "Ang **BukSU-CAT** alang lamang sa mga incoming undergraduate first-year applicants. Alang sa **Graduate Studies (Master's ug Doctorate)**, ang mga aplikante mokuha sa **Graduate Program Admission Test (GPAT)**. Palihug tan-awa ang GPAT admission requirements ug schedules alang sa mga detalye sa pag-apply."
             ]
           },
           "intent": "cat_requirement_doctors_masteral",

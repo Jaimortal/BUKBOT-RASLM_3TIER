@@ -183,6 +183,30 @@ export async function saveMapSettings(settings: MapSettings): Promise<ApiRespons
   }
 }
 
+export async function fetchLocationSummaries(): Promise<Location[]> {
+  try {
+    const response = await fetch(`${API_BASE}/locations?view=summary`, {
+      headers: getAuthHeaders(),
+    });
+    const result: ApiResponse = await response.json();
+    return result.success ? result.data : [];
+  } catch (error) {
+    console.error('Error fetching location summaries:', error);
+    return [];
+  }
+}
+
+export async function fetchLocation(id: string): Promise<Location> {
+  const response = await fetch(`${API_BASE}/locations/${encodeURIComponent(id)}`, {
+    headers: getAuthHeaders(),
+  });
+  const result: ApiResponse = await response.json();
+  if (!response.ok || !result.success || !result.data) {
+    throw new Error(result.message || 'Failed to fetch location');
+  }
+  return result.data;
+}
+
 export interface ChatbotReportGroup {
   ipHash: string;
   ipAddress: string;
@@ -556,6 +580,12 @@ export interface KnowledgeRecord {
   hasMap: boolean;
   hasMapRef: boolean;
   subtopicCount: number;
+  preview?: string;
+  searchIndex?: string;
+  phraseCount?: number;
+  imageCount?: number;
+  subjectTermCount?: number;
+  isSummary?: boolean;
 }
 
 export interface KnowledgeChildItem {
@@ -585,6 +615,31 @@ export async function fetchKnowledgeRecords(): Promise<KnowledgeListResult> {
     console.error('Error fetching knowledge records:', error);
     return { records: [], files: [] };
   }
+}
+
+export async function fetchKnowledgeSummaries(): Promise<KnowledgeListResult> {
+  try {
+    const response = await fetch(`${API_BASE}/knowledge?view=summary`, {
+      headers: getAuthHeaders(),
+    });
+    const result = await response.json();
+    return result.success ? { records: result.records || [], files: result.files || [] } : { records: [], files: [] };
+  } catch (error) {
+    console.error('Error fetching knowledge summaries:', error);
+    return { records: [], files: [] };
+  }
+}
+
+export async function fetchKnowledgeRecord(file: string, path: number[]): Promise<KnowledgeRecord> {
+  const response = await fetch(
+    `${API_BASE}/knowledge/${encodeURIComponent(file)}/topic?path=${encodeURIComponent(path.join('.'))}`,
+    { headers: getAuthHeaders() },
+  );
+  const result = await response.json();
+  if (!response.ok || !result.success || !result.data) {
+    throw new Error(result.message || 'Failed to fetch knowledge record');
+  }
+  return result.data;
 }
 
 export async function updateKnowledgeRecord(

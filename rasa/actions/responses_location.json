@@ -2477,7 +2477,8 @@
           "coordinates": [
             682,
             559
-          ]
+          ],
+          "pinImageUrl": "/api/images/e9013fb6-6a76-4b79-a965-f3a6853aafc2"
         },
         {
           "name": "You are here!",
@@ -2487,7 +2488,10 @@
           ]
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "/api/images/988314fb-24d4-4163-bb69-94efd29c26ec",
+        "/api/images/a7e72774-4427-4379-9eb5-aca5d1d8ae04"
+      ],
       "routes": [
         {
           "name": "You are here! to  Registrar Office",
@@ -8725,10 +8729,10 @@
       "map_id": "main_map",
       "responses": {
         "en": [
-          "There are multiple CAS buildings, and I will help you locate them. The New CAS building, where most CAS faculty offices are located, is behind the new COT building. The Old CAS building is located beside the New CAS building. There is also a Pink Building that belongs to CAS, which is located beside the Research Extension building. I have pinned all these locations on the map to help you with navigation."
+          "There are multiple CAS buildings, and I will help you locate them.\nThe **New CAS building,** where the other CAS faculty offices are located, it is behind the new COT building.\nThe **Old CAS building** is located beside the New CAS building which also other faculty offices located. \n\nThere is also a Pink Building that belongs to CAS which you can also found the:\n**Deans office** of the CAS\n**SBO office** of the CAS\n**Guidance office** of the CAS\n\nI have pinned all these locations on the map to help you with navigation."
         ],
         "ceb": [
-          "Adunay daghang CAS buildings, ug tabangan tika sa pagpangita niini. Ang New CAS building, diin kasagaran makita ang mga opisina sa CAS faculty, naa sa likod sa bag-ong COT building. Ang Old CAS building naa sa kilid sa New CAS building. Aduna pud Pink Building nga sakop sa CAS, nga naa sa kilid sa Research Extension building. Gi-pin nako ang tanang lokasyon sa mapa aron makatabang sa imong pag-navigate."
+          "Daghan og edipisyo ang CAS, ug tabangan tika sa pagpangita niini.\nAng **Bag-ong CAS building**, diin nahimutang ang uban nga mga faculty office sa CAS, naa sa luyo sa bag-ong COT building.\nAng **Daan nga CAS building** nahimutang ra sa tapad sa Bag-ong CAS building, diin\n\nNaa pod ang uban pang mga faculty office. Naa pod silay Pink Building nga iyaha sa CAS diin nimo makita ang:\n**Deans office** sa CAS\n**SBO office** sa CAS\n**Guidance office** sa CAS\nGipinn na nako kining tanan nga mga lokasyon sa mapa para makatabang nimo sa pag-navigate."
         ]
       },
       "pins": [
@@ -9903,7 +9907,10 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [],
+      "imageUrls": [
+        "https://www.timeshighereducation.com/cms-academic/sites/default/files/styles/profile_gallery_image/public/2026-08/a5e07a1a-be75-4dc7-8423-0f96211a7e30.jpg?itok=ijCfv1Z1",
+        "https://buksu.edu.ph/wp-content/uploads/2020/11/DSC_6459.jpg"
+      ],
       "routes": [
         {
           "name": "Start From Here - Main Entrance to Health & Service bldg",

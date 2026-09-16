@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo, useDeferredValue, memo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { fetchLocations, saveLocation } from "@/lib/adminApi";
+import { fetchLocation, fetchLocationSummaries, saveLocation } from "@/lib/adminApi";
 import type { Location } from "@/types/admin";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle,
@@ -18,10 +18,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { AdminMapPinsEditor, type AdminPin } from "@/components/admin/AdminMapPinsEditor";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
-import { AdminRichTextEditor } from "@/components/admin/AdminRichTextEditor";
+import {
+  AdminResponseBubblesEditor,
+  normalizeRichBubble,
+} from "@/components/admin/AdminResponseBubblesEditor";
 import {
   Save, Loader2, ImagePlus, Trash2, MapPin,
-  MessageSquareText, ChevronRight,
+  MessageSquareText, ChevronRight, RefreshCw,
 } from "lucide-react";
 import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
@@ -38,11 +41,28 @@ function groupByBuilding(locations: Location[]): Record<string, Location[]> {
 }
 
 function previewText(loc: Location): string {
+  if (loc.responsePreview) return loc.responsePreview;
   const lines = loc.responses?.en ?? [];
   const first = lines.find(l => l.trim());
   if (!first) return "No response yet";
   const plain = first.replace(/<[^>]+>/g, "");
   return plain.length > 85 ? plain.slice(0, 85) + "…" : plain;
+}
+
+function summarizeLocation(location: Location): Location {
+  return {
+    id: location.id,
+    name: location.name,
+    mapImage: location.mapImage,
+    type: location.type,
+    building: location.building,
+    floor: location.floor,
+    responsePreview: previewText(location),
+    imageCount: location.imageUrls?.length ?? 0,
+    pinCount: location.pins?.length ?? 0,
+    routeCount: location.routes?.length ?? 0,
+    hasMap: location.coordinates?.length === 2 || !!location.pins?.length || !!location.routes?.length,
+  };
 }
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
@@ -51,7 +71,7 @@ interface LocationModalProps {
   location: Location;
   open: boolean;
   onClose: () => void;
-  onSaved: () => void;
+  onSaved: (location: Location) => void;
 }
 
 function LocationModal({ location, open, onClose, onSaved }: LocationModalProps) {
@@ -120,8 +140,8 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
         } as any)) : [],
         routes: mapEnabled ? routes : [],
         responses: {
-          en: enLines.filter(l => l.trim()),
-          ceb: cebLines.filter(l => l.trim()),
+          en: enLines.map(normalizeRichBubble).filter(l => l.trim()),
+          ceb: cebLines.map(normalizeRichBubble).filter(l => l.trim()),
         },
         imageUrls: images.filter(u => u.trim()),
       };
@@ -129,9 +149,26 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
     },
     onSuccess: (result) => {
       if (result.success) {
+        const savedLocation = (result.data as Location | undefined) ?? {
+          ...location,
+          coordinates: mapEnabled ? coords : [],
+          pins: mapEnabled ? pins : [],
+          routes: mapEnabled ? routes : [],
+          responses: {
+            en: enLines.map(normalizeRichBubble).filter(l => l.trim()),
+            ceb: cebLines.map(normalizeRichBubble).filter(l => l.trim()),
+          },
+          imageUrls: images.filter(u => u.trim()),
+        } as Location;
         toast({ title: "Saved", description: `"${location.name}" updated.` });
-        queryClient.invalidateQueries({ queryKey: ["locations"] });
-        onSaved();
+        queryClient.setQueryData(["location", savedLocation.id], savedLocation);
+        queryClient.setQueryData<Location[]>(["locationSummaries"], (current) =>
+          current?.map((item) => item.id === savedLocation.id ? summarizeLocation(savedLocation) : item)
+        );
+        queryClient.setQueryData<Location[]>(["locations"], (current) =>
+          current?.map((item) => item.id === savedLocation.id ? savedLocation : item)
+        );
+        onSaved(savedLocation);
         onClose();
       } else {
         toast({ title: "Save Failed", description: result.message, variant: "destructive" });
@@ -166,55 +203,18 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
 
               {/* Responses */}
               <TabsContent value="responses" className="p-3 space-y-4 mt-0">
-                {/* EN */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <Label className="font-semibold text-sm flex items-center gap-2"><span className="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-mono">EN</span>English</Label>
-                    <AdminTooltip title="Add English Message" description="Add a new conversational response bubble in English" side="top">
-                      <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setEnLines([...enLines, ""])}>+ Add message</Button>
-                    </AdminTooltip>
-                  </div>
-                  {enLines.map((l, i) => (
-                    <div key={i} className="flex gap-2">
-                      <div className="flex-1 min-w-0">
-                        <AdminRichTextEditor
-                          value={l}
-                          onChange={(v) => { const n = [...enLines]; n[i] = v; setEnLines(n); }}
-                          placeholder={`Bubble ${i + 1}…`}
-                        />
-                      </div>
-                      {enLines.length > 1 && (
-                        <AdminTooltip title="Remove Message" description="Delete this response bubble" side="left">
-                          <button onClick={() => setEnLines(enLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>
-                        </AdminTooltip>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                {/* CEB */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <Label className="font-semibold text-sm flex items-center gap-2"><span className="bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded font-mono">CEB</span>Cebuano</Label>
-                    <AdminTooltip title="Add Cebuano Message" description="Add a new conversational response bubble in Cebuano" side="top">
-                      <Button variant="outline" size="sm" className="h-7 text-xs" onClick={() => setCebLines([...cebLines, ""])}>+ Add message</Button>
-                    </AdminTooltip>
-                  </div>
-                  {cebLines.map((l, i) => (
-                    <div key={i} className="flex gap-2">
-                      <div className="flex-1 min-w-0">
-                        <AdminRichTextEditor
-                          value={l}
-                          onChange={(v) => { const n = [...cebLines]; n[i] = v; setCebLines(n); }}
-                          placeholder={`Bubble ${i + 1}…`}
-                        />
-                      </div>
-                      {cebLines.length > 1 && (
-                        <AdminTooltip title="Remove Message" description="Delete this response bubble" side="left">
-                          <button onClick={() => setCebLines(cebLines.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-600 mt-1 shrink-0"><Trash2 className="h-4 w-4" /></button>
-                        </AdminTooltip>
-                      )}
-                    </div>
-                  ))}
+                <AdminResponseBubblesEditor
+                  label="English Responses"
+                  bubbles={enLines}
+                  onChange={setEnLines}
+                />
+                <AdminResponseBubblesEditor
+                  label="Cebuano/Bisaya Responses"
+                  bubbles={cebLines}
+                  onChange={setCebLines}
+                />
+                <div className="rounded-md border border-blue-100 bg-blue-50/70 px-3 py-2 text-xs text-blue-900">
+                  <strong>Tip:</strong> Each box represents <strong>1 chatbot bubble</strong>. Press <strong>Enter</strong> to add a line break inside the bubble. Select text and press <strong>Ctrl + B</strong> to bold.
                 </div>
               </TabsContent>
 
@@ -270,7 +270,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
           </div>
 
           <div className="px-5 py-3 border-t bg-gray-50 flex items-center justify-between rounded-b-lg">
-            <p className="text-xs text-muted-foreground">Saves to <code className="font-mono">responses_location.json</code></p>
+            <p className="text-xs text-muted-foreground">Saves to <code className="font-mono">responses_location_core.json</code></p>
             <div className="flex items-center gap-2">
               {activeTab === "map" && (
                 <div className="flex items-center gap-2 mr-2 px-2.5 py-1 bg-white rounded-md border shadow-xs">
@@ -320,10 +320,10 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
 
 const LocationCard = memo(function LocationCard({ location, onClick }: { location: Location; onClick: () => void }) {
   const preview = previewText(location);
-  const hasImg = !!(location.imageUrls?.length);
-  const hasPins = !!(location.pins?.length);
+  const hasImg = !!location.imageUrls?.length;
+  const hasPins = !!location.pins?.length;
   const hasCoordinates = !!(location.coordinates?.length === 2);
-  const hasMapData = hasPins || hasCoordinates;
+  const hasMapData = location.hasMap ?? (hasPins || hasCoordinates);
 
   return (
     <AdminTooltip
@@ -364,7 +364,6 @@ function BuildingPanel({ building, locations }: { building: string; locations: L
   const [selected, setSelected] = useState<Location | null>(null);
   const [search, setSearch] = useState("");
   const deferredSearch = useDeferredValue(search);
-  const qc = useQueryClient();
 
   const filtered = useMemo(() => {
     return deferredSearch
@@ -395,29 +394,59 @@ function BuildingPanel({ building, locations }: { building: string; locations: L
         </div>}
 
       {selected && (
-        <LocationModal key={`${selected.id}_${selected.coordinates?.length || 0}`} location={selected} open={!!selected} onClose={() => setSelected(null)}
-          onSaved={() => { qc.invalidateQueries({ queryKey: ["locations"] }); setSelected(null); }} />
+        <LocationEditorLoader summary={selected} onClose={() => setSelected(null)} />
       )}
     </div>
   );
 }
 
+function LocationEditorLoader({ summary, onClose }: { summary: Location; onClose: () => void }) {
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["location", summary.id],
+    queryFn: () => fetchLocation(summary.id),
+    staleTime: 5 * 60 * 1000,
+  });
+
+  if (isLoading || isError || !data) {
+    return (
+      <Dialog open onOpenChange={(open) => !open && onClose()}>
+        <DialogContent className="max-w-md">
+          <DialogHeader><DialogTitle>{summary.name}</DialogTitle></DialogHeader>
+          <div className="flex items-center justify-center gap-2 py-10 text-sm text-muted-foreground">
+            {isLoading ? <><Loader2 className="h-5 w-5 animate-spin" /> Loading location...</> : (
+              <div className="space-y-3 text-center"><p>Could not load this location.</p><Button variant="outline" onClick={() => refetch()}>Try again</Button></div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  return <LocationModal location={data} open onClose={onClose} onSaved={() => onClose()} />;
+}
+
 // ─── Main Export ──────────────────────────────────────────────────────────────
 
 export function AdminLocations() {
-  const { data: allLocations = [], isLoading } = useQuery({
-    queryKey: ["locations"],
-    queryFn: fetchLocations,
-    staleTime: 30000,
+  const queryClient = useQueryClient();
+  const { data: allLocations = [], isLoading, isFetching, refetch } = useQuery({
+    queryKey: ["locationSummaries"],
+    queryFn: fetchLocationSummaries,
+    staleTime: 5 * 60 * 1000,
   });
 
-  const grouped = groupByBuilding(allLocations);
-  const buildings = Object.keys(grouped).sort();
+  const grouped = useMemo(() => groupByBuilding(allLocations), [allLocations]);
+  const buildings = useMemo(() => Object.keys(grouped).sort(), [grouped]);
   const [activeBuilding, setActiveBuilding] = useState<string>("");
 
   useEffect(() => {
     if (buildings.length > 0 && !activeBuilding) setActiveBuilding(buildings[0]);
-  }, [buildings.join(",")]);
+  }, [buildings, activeBuilding]);
+
+  const refreshLocations = useCallback(async () => {
+    await queryClient.invalidateQueries({ queryKey: ["location"] });
+    await refetch();
+  }, [queryClient, refetch]);
 
   if (isLoading) return (
     <div className="flex items-center justify-center py-24">
@@ -429,12 +458,21 @@ export function AdminLocations() {
   if (allLocations.length === 0) return (
     <div className="text-center py-20 text-muted-foreground text-sm">
       <MapPin className="h-8 w-8 mx-auto mb-3 opacity-40" />
-      No locations found in <code className="font-mono">responses_location.json</code>.
+      No locations found in <code className="font-mono">responses_location_core.json</code>.
     </div>
   );
 
   return (
-    <div className="flex h-[540px] rounded-xl border bg-white overflow-hidden shadow-sm">
+    <div className="space-y-3">
+      <div className="flex justify-end">
+        <AdminTooltip title="Refresh Locations" description="Reload location summaries from the server" side="bottom">
+          <Button variant="outline" size="sm" onClick={refreshLocations} disabled={isFetching}>
+            <RefreshCw className={`mr-1.5 h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} />
+            Refresh
+          </Button>
+        </AdminTooltip>
+      </div>
+      <div className="flex h-[540px] rounded-xl border bg-white overflow-hidden shadow-sm">
       {/* LEFT: Building nav */}
       <div className="w-56 shrink-0 border-r bg-gray-50 flex flex-col">
         <div className="px-4 py-3 border-b shrink-0" style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}>
@@ -463,6 +501,7 @@ export function AdminLocations() {
         {activeBuilding && grouped[activeBuilding]
           ? <BuildingPanel building={activeBuilding} locations={grouped[activeBuilding]} />
           : <div className="flex items-center justify-center h-full text-muted-foreground text-sm">Select a building from the left.</div>}
+      </div>
       </div>
     </div>
   );

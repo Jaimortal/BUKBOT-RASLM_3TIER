@@ -34,7 +34,7 @@ function resolveJsonPath(relativePath: string): string | null {
 }
 
 const RESPONSES_JSON_PATH = resolveJsonPath("responses.json");
-const LOCATIONS_JSON_PATH = resolveJsonPath("responses_location.json");
+const LOCATIONS_JSON_PATH = resolveJsonPath("knowledge/location/responses_location_core.json");
 const KNOWLEDGE_DIR = resolveJsonPath("knowledge");
 
 export interface MigrationResult {
@@ -177,7 +177,7 @@ export async function migrateResponsesFromJSON(force: boolean = false): Promise<
 }
 
 /**
- * Migrate locations from responses_location.json to PostgreSQL
+ * Migrate locations from the canonical location knowledge JSON to PostgreSQL.
  */
 export async function migrateLocationsFromJSON(force: boolean = false): Promise<MigrationResult> {
   const errors: string[] = [];
@@ -185,7 +185,7 @@ export async function migrateLocationsFromJSON(force: boolean = false): Promise<
 
   try {
     if (!LOCATIONS_JSON_PATH || !fs.existsSync(LOCATIONS_JSON_PATH)) {
-      return { success: false, message: "responses_location.json not found", imported: 0, errors: ["Missing file"] };
+      return { success: false, message: "responses_location_core.json not found", imported: 0, errors: ["Missing file"] };
     }
 
     const check = await shouldMigrate(LOCATIONS_JSON_PATH);

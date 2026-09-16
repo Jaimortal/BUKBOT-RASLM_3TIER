@@ -43,7 +43,7 @@
 | File | Written by |
 |------|-----------|
 | `rasa/data/responses.json` | `adminController → upsertResponse` |
-| `rasa/data/responses_location.json` | `adminController → upsertLocation` |
+| `rasa/actions/knowledge/location/responses_location_core.json` | `adminController -> upsertLocation` |
 | `rasa/actions/Supper Saiyan/*.json` | `adminBotTopicsController → updateTopic` |
 | `rasa/data/faq_configs.json` | `faqController` |
 | `rasa/data/user_privileges.json` | `adminController.updateUserPrivileges` |

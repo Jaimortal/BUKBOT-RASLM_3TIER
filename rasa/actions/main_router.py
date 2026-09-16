@@ -1,3 +1,4 @@
+import json
 import re
 import time
 from copy import deepcopy
@@ -45,8 +46,8 @@ class MainRouterService:
 
     def _cache_key(self, purpose: str, subject: str, user_message: str) -> str:
         language = self._cache_language(user_message)
-        normalized_subject = self.interpreter.normalize_for_search(subject)
-        return f"{purpose}|{language}|{normalized_subject}"
+        # Preserve the question and resolved subject; normalization can erase intent differences.
+        return json.dumps([purpose, language, subject, user_message], ensure_ascii=True)
 
     def _cache_get(self, key: str) -> Any:
         entry = self._response_cache.get(key)
@@ -1188,6 +1189,8 @@ class MainRouterService:
 
         direct_intent = self.knowledge_router.direct_intent_override(intent, user_message, resolved.values)
         if direct_intent:
+            self.knowledge_router.last_selected_intent = direct_intent
+            self.knowledge_router.last_answering_source = "RASA (Direct Rule)"
             if str(direct_intent).startswith("__"):
                 response = self.knowledge_router.find_best_response(intent, user_message, resolved.values)
             else:
@@ -1257,21 +1260,8 @@ class MainRouterService:
             )
             return response, self._context_updates(memory, slots)
 
-        cache_key = self._cache_key("knowledge", intent, user_message)
-        cached_response = self._cache_get(cache_key)
-        if cached_response is not None:
-            memory = self.context_manager.build_memory(
-                intent=intent,
-                user_message=user_message,
-                resolved=resolved,
-                response_intent=intent,
-                response=cached_response,
-            )
-            return cached_response, self._context_updates(memory, slots)
-
+        # General retrieval must select a topic each turn, including its follow-up context.
         response = self.knowledge_router.find_best_response(intent, user_message, resolved.values)
-        if response:
-            self._cache_set(cache_key, response)
 
         memory = self.context_manager.build_memory(
             intent=intent,

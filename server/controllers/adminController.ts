@@ -10,6 +10,8 @@ import jwt from "jsonwebtoken";
 import {
   getResponses,
   getLocations,
+  getLocationSummaries,
+  getLocationById,
   upsertLocation,
   deleteLocation,
   getUserPrivileges,
@@ -243,11 +245,22 @@ export class AdminController {
   // Location management
   static async getLocations(req: Request, res: Response) {
     try {
-      const locations = await getLocations();
+      const locations = req.query.view === "summary" ? await getLocationSummaries() : await getLocations();
       res.json({ success: true, data: locations });
     } catch (error) {
       console.error("Error fetching locations:", error);
       res.status(500).json({ success: false, message: "Failed to fetch locations" });
+    }
+  }
+
+  static async getLocation(req: Request, res: Response) {
+    try {
+      const location = await getLocationById(req.params.id);
+      if (!location) return res.status(404).json({ success: false, message: "Location not found" });
+      return res.json({ success: true, data: location });
+    } catch (error) {
+      console.error("Error fetching location:", error);
+      return res.status(500).json({ success: false, message: "Failed to fetch location" });
     }
   }
 

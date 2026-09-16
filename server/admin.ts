@@ -11,11 +11,11 @@ const PROJECT_ROOT = process.cwd();
 
 const DATA_DIR = path.join(PROJECT_ROOT, 'data');
 const RESPONSES_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses.json');
-const RESPONSES_LOCATION_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'responses_location.json');
 const RESPONSES_LOCATION_CORE_FILE = path.join(PROJECT_ROOT, 'rasa', 'actions', 'knowledge', 'location', 'responses_location_core.json');
 const PRIVILEGES_FILE = path.join(DATA_DIR, 'user_privileges.json');
 const MAP_SETTINGS_FILE = path.join(DATA_DIR, 'map_settings.json');
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
+let locationFileCache: { mtimeMs: number; size: number; data: LocationFileShape } | null = null;
 
 export interface MapData {
   id: string;
@@ -154,16 +154,19 @@ function normalizeRoutes(routes: any[]): Array<{ name: string; points: [number, 
 }
 
 async function readLocationFile(): Promise<LocationFileShape> {
-  for (const targetPath of [RESPONSES_LOCATION_CORE_FILE, RESPONSES_LOCATION_FILE]) {
-    try {
-      const data = await fs.readFile(targetPath, 'utf-8');
-      const parsed = JSON.parse(data);
-      if (parsed && typeof parsed === 'object' && parsed.locations && typeof parsed.locations === 'object') {
-        return parsed as LocationFileShape;
-      }
-    } catch {
-      // try next
+  try {
+    const stat = await fs.stat(RESPONSES_LOCATION_CORE_FILE);
+    if (locationFileCache?.mtimeMs === stat.mtimeMs && locationFileCache.size === stat.size) {
+      return locationFileCache.data;
     }
+    const data = await fs.readFile(RESPONSES_LOCATION_CORE_FILE, 'utf-8');
+    const parsed = JSON.parse(data);
+    if (parsed && typeof parsed === 'object' && parsed.locations && typeof parsed.locations === 'object') {
+      locationFileCache = { mtimeMs: stat.mtimeMs, size: stat.size, data: parsed as LocationFileShape };
+      return locationFileCache.data;
+    }
+  } catch (error) {
+    console.error(`Error reading location file ${RESPONSES_LOCATION_CORE_FILE}:`, error);
   }
   return { locations: {} };
 }
@@ -171,17 +174,14 @@ async function readLocationFile(): Promise<LocationFileShape> {
 async function writeLocationFile(next: LocationFileShape): Promise<boolean> {
   try {
     let base: any = {};
-    for (const targetPath of [RESPONSES_LOCATION_CORE_FILE, RESPONSES_LOCATION_FILE]) {
-      try {
-        const current = await fs.readFile(targetPath, 'utf-8');
-        const parsed = JSON.parse(current);
-        if (parsed && typeof parsed === 'object') {
-          base = parsed;
-          break;
-        }
-      } catch {
-        // try next
+    try {
+      const current = await fs.readFile(RESPONSES_LOCATION_CORE_FILE, 'utf-8');
+      const parsed = JSON.parse(current);
+      if (parsed && typeof parsed === 'object') {
+        base = parsed;
       }
+    } catch {
+      // A valid location payload can initialize the core file if it is missing.
     }
 
     const merged = {
@@ -189,23 +189,17 @@ async function writeLocationFile(next: LocationFileShape): Promise<boolean> {
       locations: next.locations || {},
     };
 
-    const targets = [RESPONSES_LOCATION_CORE_FILE, RESPONSES_LOCATION_FILE];
-    for (const targetPath of targets) {
-      try {
-        await backupJsonFile(targetPath, 'locations');
-        await fs.writeFile(targetPath, JSON.stringify(merged, null, 2), 'utf-8');
-      } catch (err) {
-        console.error(`Error saving location file ${targetPath}:`, err);
-      }
-    }
+    await backupJsonFile(RESPONSES_LOCATION_CORE_FILE, 'locations');
+    await fs.writeFile(RESPONSES_LOCATION_CORE_FILE, JSON.stringify(merged, null, 2), 'utf-8');
+    locationFileCache = null;
     return true;
   } catch (error) {
-    console.error('Error saving location files:', error);
+    console.error('Error saving location core file:', error);
     return false;
   }
 }
 
-// Read locations from responses_location.json
+// Read locations from the canonical structured knowledge source.
 export async function getLocations(): Promise<Location[]> {
   try {
     const file = await readLocationFile();
@@ -284,6 +278,35 @@ export async function getLocations(): Promise<Location[]> {
     console.error('Error reading locations:', error);
     return [];
   }
+}
+
+export async function getLocationSummaries(): Promise<Array<Location & {
+  responsePreview: string;
+  imageCount: number;
+  pinCount: number;
+  routeCount: number;
+  hasMap: boolean;
+}>> {
+  const locations = await getLocations();
+  return locations.map((location) => ({
+    id: location.id,
+    name: location.name,
+    mapImage: location.mapImage,
+    type: location.type,
+    building: location.building,
+    floor: location.floor,
+    responsePreview: (location.responses?.en?.find(Boolean) || location.responses?.ceb?.find(Boolean) || '').slice(0, 240),
+    imageCount: location.imageUrls?.length || 0,
+    pinCount: location.pins?.length || 0,
+    routeCount: location.routes?.length || 0,
+    hasMap: Boolean((location.coordinates?.length === 2) || location.pins?.length || location.routes?.length),
+  }));
+}
+
+export async function getLocationById(id: string): Promise<Location | null> {
+  const locations = await getLocations();
+  const normalized = String(id || '').trim().toLowerCase();
+  return locations.find((location) => location.id.toLowerCase() === normalized || location.name.toLowerCase() === normalized) || null;
 }
 
 // Lightweight public version — returns only name, coordinates, pins, routes, building (no response text)

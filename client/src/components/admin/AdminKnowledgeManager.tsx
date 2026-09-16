@@ -3,13 +3,19 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   createKnowledgeParent,
   createKnowledgeSubtopic,
-  fetchKnowledgeRecords,
+  fetchKnowledgeRecord,
+  fetchKnowledgeSummaries,
   updateKnowledgeRecord,
   type KnowledgeChildItem,
+  type KnowledgeListResult,
   type KnowledgeRecord,
 } from "@/lib/adminApi";
 import { AdminMapPinsEditor, ROUTE_COLORS, type AdminPin, type AdminRoute } from "@/components/admin/AdminMapPinsEditor";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
+import {
+  AdminResponseBubblesEditor as ResponseBubblesEditor,
+  normalizeRichBubble,
+} from "@/components/admin/AdminResponseBubblesEditor";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -37,6 +43,7 @@ import {
   ShieldCheck,
   Trash2,
   AlertTriangle,
+  RefreshCw,
 } from "lucide-react";
 
 function toLines(value: string): string[] {
@@ -84,6 +91,10 @@ function parentPath(path: number[]): number[] {
 }
 
 function recordPreview(record: KnowledgeRecord): string {
+  if (record.preview?.trim()) {
+    const cleanPreview = record.preview.replace(/<[^>]+>/g, "");
+    return cleanPreview.length > 155 ? `${cleanPreview.slice(0, 155)}...` : cleanPreview;
+  }
   const first = record.responses.en.find((line) => line.trim()) || record.responses.ceb.find((line) => line.trim());
   if (!first) return "No response content yet.";
   const clean = first.replace(/<[^>]+>/g, "");
@@ -323,6 +334,7 @@ function WarningList({ warnings }: { warnings: string[] }) {
 }
 
 function searchText(record: KnowledgeRecord): string {
+  if (record.searchIndex) return record.searchIndex;
   return [
     record.displayName,
     record.file,
@@ -346,6 +358,42 @@ function searchText(record: KnowledgeRecord): string {
       (item.aliases || []).join(" "),
     ].join(" ")).join(" "),
   ].join(" ").toLowerCase();
+}
+
+function summarizeKnowledgeRecord(record: KnowledgeRecord): KnowledgeRecord {
+  const preview = record.responses.en.find(Boolean) || record.responses.ceb.find(Boolean) || "";
+  const searchIndex = [
+    record.displayName,
+    record.file,
+    record.parentTopic,
+    record.topic,
+    record.intent,
+    record.contextTopic,
+    record.subjectKey,
+    record.subjectType,
+    preview.slice(0, 240),
+  ].filter(Boolean).join(" ").toLowerCase();
+  return {
+    ...record,
+    responses: { en: [], ceb: [] },
+    phrases: [],
+    images: [],
+    map: null,
+    mapData: null,
+    pins: [],
+    routes: [],
+    items: [],
+    itemGroups: {},
+    itemDisclaimer: "",
+    ownSubjectTerms: [],
+    subjectTerms: [],
+    preview: preview.slice(0, 240),
+    searchIndex,
+    phraseCount: record.phrases.length,
+    imageCount: record.images.length,
+    subjectTermCount: record.subjectTerms.length,
+    isSummary: true,
+  };
 }
 
 function statusPill(label: string, active: boolean) {
@@ -379,233 +427,6 @@ function breadcrumb(record: KnowledgeRecord, byId: Map<string, KnowledgeRecord>)
   crumbs.push(record.displayName);
   return crumbs;
 }
-
-function splitEditableLines(value: string): string[] {
-  const lines = value.split("\n");
-  return lines.length ? lines : [""];
-}
-
-function escapeHtml(value: string): string {
-  return String(value || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function safeHtmlBoldToMarkdown(value: string): string {
-  return String(value || "")
-    .replace(/<\s*(b|strong)\s*>/gi, "**")
-    .replace(/<\s*\/\s*(b|strong)\s*>/gi, "**");
-}
-
-function renderMarkdownBoldHtml(value: string): string {
-  const markdown = safeHtmlBoldToMarkdown(value || "");
-  const escaped = escapeHtml(markdown);
-  return escaped
-    .replace(/\*\*([^*\n]+?)\*\*/g, "<b>$1</b>")
-    .replace(/\n/g, "<br>");
-}
-
-function normalizeRichBubble(value: string): string {
-  if (!value) return "";
-  const wrapper = document.createElement("div");
-  wrapper.innerHTML = value;
-
-  function walk(node: Node): string {
-    if (node.nodeType === Node.TEXT_NODE) {
-      return node.textContent || "";
-    }
-    const tag = node.nodeName.toLowerCase();
-    if (tag === "br") {
-      return "\n";
-    }
-
-    const children = Array.from(node.childNodes).map(walk).join("");
-    const isBold =
-      tag === "b" ||
-      tag === "strong" ||
-      (node instanceof HTMLElement && (
-        node.style?.fontWeight === "bold" ||
-        parseInt(node.style?.fontWeight || "0", 10) >= 700 ||
-        node.classList?.contains("font-bold")
-      ));
-
-    if (isBold) {
-      const leadingSpace = /^\s+/.test(children) ? " " : "";
-      const trailingSpace = /\s+$/.test(children) ? " " : "";
-      const content = children.trim();
-      if (!content) return leadingSpace || trailingSpace;
-      if (/^\*\*([^*]+)\*\*$/.test(content)) {
-        return `${leadingSpace}${content}${trailingSpace}`;
-      }
-      return `${leadingSpace}**${content}**${trailingSpace}`;
-    }
-
-    if (tag === "div" || tag === "p") {
-      return children ? `${children}\n` : "\n";
-    }
-
-    return children;
-  }
-
-  const text = Array.from(wrapper.childNodes).map(walk).join("");
-  return text
-    .replace(/&nbsp;/g, " ")
-    .replace(/\u00a0/g, " ")
-    .replace(/[ \t]+/g, " ")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
-}
-
-function SingleBubbleBox({
-  initialValue,
-  index,
-  canRemove,
-  onRemove,
-  onChange,
-}: {
-  initialValue: string;
-  index: number;
-  canRemove: boolean;
-  onRemove: () => void;
-  onChange: (normalizedContent: string) => void;
-}) {
-  const contentRef = useRef<HTMLDivElement | null>(null);
-
-  // Set initial HTML and only update if initialValue changes externally while NOT focused
-  useEffect(() => {
-    if (contentRef.current && document.activeElement !== contentRef.current) {
-      contentRef.current.innerHTML = renderMarkdownBoldHtml(initialValue);
-    }
-  }, [initialValue]);
-
-  function syncChanges() {
-    if (!contentRef.current) return;
-    const normalized = normalizeRichBubble(contentRef.current.innerHTML);
-    onChange(normalized);
-  }
-
-  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-    // Ctrl + B: Bold selected text
-    if (event.ctrlKey && event.key.toLowerCase() === "b") {
-      event.preventDefault();
-      document.execCommand("bold");
-      syncChanges();
-      return;
-    }
-
-    // Shift + Enter or Enter: Insert line break at exact caret position
-    if (event.key === "Enter") {
-      event.preventDefault();
-      document.execCommand("insertLineBreak");
-      syncChanges();
-    }
-  }
-
-  return (
-    <div className="rounded-md border bg-white p-2.5 shadow-xs">
-      <div className="mb-1.5 flex items-center justify-between gap-2">
-        <span className="text-[10.5px] font-bold uppercase tracking-wider text-blue-900/80 bg-blue-50 px-2 py-0.5 rounded">
-          Bubble {index + 1}
-        </span>
-        {canRemove && (
-          <AdminTooltip
-            title="Remove Bubble"
-            description="Delete this response bubble"
-            side="left"
-          >
-            <button
-              type="button"
-              onClick={onRemove}
-              className="text-[11px] font-medium text-red-500 hover:text-red-700 flex items-center gap-1 cursor-pointer"
-            >
-              <Trash2 className="h-3 w-3" />
-              Remove
-            </button>
-          </AdminTooltip>
-        )}
-      </div>
-      <div
-        ref={contentRef}
-        contentEditable
-        suppressContentEditableWarning
-        className="min-h-16 rounded border border-slate-200 bg-white px-3 py-2 text-sm leading-relaxed outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 [&_b]:font-bold whitespace-pre-wrap"
-        onInput={syncChanges}
-        onBlur={syncChanges}
-        onKeyDown={handleKeyDown}
-        onPaste={(event) => {
-          event.preventDefault();
-          const text = event.clipboardData.getData("text/plain");
-          document.execCommand("insertText", false, text);
-          syncChanges();
-        }}
-      />
-    </div>
-  );
-}
-
-function ResponseBubblesEditor({
-  label,
-  bubbles,
-  onChange,
-}: {
-  label: string;
-  bubbles: string[];
-  onChange: (bubbles: string[]) => void;
-}) {
-  const safeBubbles = bubbles.length > 0 ? bubbles : [""];
-
-  function updateBubble(index: number, nextContent: string) {
-    const next = [...safeBubbles];
-    next[index] = nextContent;
-    onChange(next);
-  }
-
-  function addBubble() {
-    const next = [...safeBubbles, ""];
-    onChange(next);
-  }
-
-  function removeBubble(index: number) {
-    const next = safeBubbles.filter((_, i) => i !== index);
-    onChange(next.length ? next : [""]);
-  }
-
-  return (
-    <div className="space-y-2">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <Label className="text-xs font-semibold text-slate-700">{label}</Label>
-        <Button
-          type="button"
-          size="sm"
-          variant="outline"
-          onClick={addBubble}
-          className="h-7 text-xs border-blue-200 text-blue-700 hover:bg-blue-50"
-        >
-          <PlusCircle className="mr-1 h-3.5 w-3.5" />
-          Add Bubble
-        </Button>
-      </div>
-
-      <div className="max-h-80 space-y-2 overflow-y-auto rounded-md border bg-slate-50 p-2">
-        {safeBubbles.map((bubble, index) => (
-          <SingleBubbleBox
-            key={`${label}-bubble-${index}`}
-            initialValue={bubble}
-            index={index}
-            canRemove={safeBubbles.length > 1}
-            onRemove={() => removeBubble(index)}
-            onChange={(content) => updateBubble(index, content)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-
 
 function KnowledgeEditor({
   record,
@@ -688,7 +509,20 @@ function KnowledgeEditor({
         return;
       }
       toast({ title: "Knowledge record saved", description: displayName || record.displayName });
-      queryClient.invalidateQueries({ queryKey: ["knowledgeRecords"] });
+      const savedRecord = result.data as KnowledgeRecord | undefined;
+      if (savedRecord?.id) {
+        queryClient.setQueryData(["knowledgeRecord", savedRecord.id], savedRecord);
+        queryClient.setQueryData<KnowledgeListResult>(["knowledgeSummaries"], (current) => current ? {
+          ...current,
+          records: current.records.map((item) => item.id === savedRecord.id ? summarizeKnowledgeRecord(savedRecord) : item),
+        } : current);
+        queryClient.setQueryData<KnowledgeListResult>(["knowledgeRecords"], (current) => current ? {
+          ...current,
+          records: current.records.map((item) => item.id === savedRecord.id ? savedRecord : item),
+        } : current);
+      } else {
+        queryClient.invalidateQueries({ queryKey: ["knowledgeSummaries"] });
+      }
       onClose();
     },
     onError: (error: any) => {
@@ -848,6 +682,37 @@ function KnowledgeEditor({
   );
 }
 
+function KnowledgeEditorLoader({
+  summary,
+  onClose,
+  recordsById,
+}: {
+  summary: KnowledgeRecord;
+  onClose: () => void;
+  recordsById: Map<string, KnowledgeRecord>;
+}) {
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["knowledgeRecord", summary.id],
+    queryFn: () => fetchKnowledgeRecord(summary.file, summary.path),
+    staleTime: 5 * 60 * 1000,
+  });
+
+  if (isLoading || isError || !data) {
+    return (
+      <Dialog open onOpenChange={(open) => !open && onClose()}>
+        <DialogContent className="max-w-md">
+          <DialogHeader><DialogTitle>{summary.displayName}</DialogTitle></DialogHeader>
+          <div className="flex items-center justify-center gap-2 py-10 text-sm text-muted-foreground">
+            {isLoading ? <><Loader2 className="h-5 w-5 animate-spin" /> Loading record...</> : <div className="space-y-3 text-center"><p>Could not load this record.</p><Button variant="outline" onClick={() => refetch()}>Try again</Button></div>}
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  return <KnowledgeEditor record={data} open onClose={onClose} recordsById={recordsById} />;
+}
+
 function CreateParentSubjectDialog({
   open,
   onClose,
@@ -927,6 +792,7 @@ function CreateParentSubjectDialog({
         return;
       }
       toast({ title: "Parent subject created", description: displayName || topic });
+      queryClient.invalidateQueries({ queryKey: ["knowledgeSummaries"] });
       queryClient.invalidateQueries({ queryKey: ["knowledgeRecords"] });
       resetAndClose();
     },
@@ -1127,6 +993,7 @@ function CreateSubtopicDialog({
         return;
       }
       toast({ title: "Subtopic created", description: displayName || topic });
+      queryClient.invalidateQueries({ queryKey: ["knowledgeSummaries"] });
       queryClient.invalidateQueries({ queryKey: ["knowledgeRecords"] });
       close();
     },
@@ -1246,20 +1113,28 @@ function CreateSubtopicDialog({
 }
 
 export function AdminKnowledgeManager() {
+  const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const deferredSearch = useDeferredValue(search);
   const [fileFilter, setFileFilter] = useState("all");
   const [selected, setSelected] = useState<KnowledgeRecord | null>(null);
   const [collapsedFiles, setCollapsedFiles] = useState<Set<string>>(new Set());
+  const initializedCollapse = useRef(false);
 
-  const { data, isLoading, refetch } = useQuery({
-    queryKey: ["knowledgeRecords"],
-    queryFn: fetchKnowledgeRecords,
-    staleTime: 30000,
+  const { data, isLoading, isFetching, refetch } = useQuery({
+    queryKey: ["knowledgeSummaries"],
+    queryFn: fetchKnowledgeSummaries,
+    staleTime: 5 * 60 * 1000,
   });
 
   const records = data?.records || [];
   const files = data?.files || [];
+
+  useEffect(() => {
+    if (initializedCollapse.current || files.length === 0) return;
+    initializedCollapse.current = true;
+    setCollapsedFiles(new Set(files.map((file) => file.file)));
+  }, [files]);
 
   const recordsById = useMemo(() => {
     const map = new Map<string, KnowledgeRecord>();
@@ -1280,11 +1155,14 @@ export function AdminKnowledgeManager() {
   const visibleIds = useMemo(() => {
     const term = deferredSearch.trim().toLowerCase();
     const matchesFile = (record: KnowledgeRecord) => fileFilter === "all" || record.file === fileFilter;
+    if (!term) {
+      return new Set(records.filter(matchesFile).map((record) => record.id));
+    }
     const directMatches = new Set<string>();
 
     records.forEach((record) => {
       if (!matchesFile(record)) return;
-      if (!term || searchText(record).includes(term)) directMatches.add(record.id);
+      if (searchText(record).includes(term)) directMatches.add(record.id);
     });
 
     const visible = new Set<string>(directMatches);
@@ -1356,6 +1234,11 @@ export function AdminKnowledgeManager() {
     }
   }, [collapsedFiles.size, files]);
 
+  const refreshKnowledge = useCallback(async () => {
+    await queryClient.invalidateQueries({ queryKey: ["knowledgeRecord"] });
+    await refetch();
+  }, [queryClient, refetch]);
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20 text-sm text-muted-foreground">
@@ -1378,7 +1261,7 @@ export function AdminKnowledgeManager() {
             <Input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search label, answer, intent, phrase..."
+              placeholder="Search label, answer preview, or intent..."
               className="w-full pl-8 sm:w-80"
             />
           </div>
@@ -1407,7 +1290,10 @@ export function AdminKnowledgeManager() {
             description="Reload all knowledge topics, categories, and answers from server"
             side="bottom"
           >
-            <Button variant="outline" size="sm" onClick={() => refetch()} className="text-xs">Refresh</Button>
+            <Button variant="outline" size="sm" onClick={refreshKnowledge} className="text-xs" disabled={isFetching}>
+              <RefreshCw className={`mr-1.5 h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} />
+              Refresh
+            </Button>
           </AdminTooltip>
         </div>
       </div>
@@ -1459,7 +1345,7 @@ export function AdminKnowledgeManager() {
       </div>
 
       {selected && (
-        <KnowledgeEditor record={selected} open={!!selected} onClose={() => setSelected(null)} recordsById={recordsById} />
+        <KnowledgeEditorLoader summary={selected} onClose={() => setSelected(null)} recordsById={recordsById} />
       )}
     </div>
   );
@@ -1505,8 +1391,8 @@ const KnowledgeRow = memo(function KnowledgeRow({
       <div className="col-span-4 min-w-0 text-xs text-slate-600">
         <p className="line-clamp-3 leading-relaxed">{preview}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-          <Braces className="h-3.5 w-3.5" /> {record.phrases.length} example(s)
-          <Image className="h-3.5 w-3.5" /> {record.images.length} image(s)
+          <Braces className="h-3.5 w-3.5" /> {record.phraseCount ?? record.phrases.length} example(s)
+          <Image className="h-3.5 w-3.5" /> {record.imageCount ?? record.images.length} image(s)
         </div>
         <div className="mt-1 text-[11px] text-muted-foreground">
           Source: <span className="font-mono">{record.file}</span>
@@ -1519,7 +1405,7 @@ const KnowledgeRow = memo(function KnowledgeRow({
         {statusPill("Images", record.images.length > 0)}
         {statusPill("Map", record.hasMap)}
         {statusPill("MapRef", record.hasMapRef)}
-        {statusValue("Terms", record.subjectTerms.length)}
+        {statusValue("Terms", record.subjectTermCount ?? record.subjectTerms.length)}
         {record.subtopicCount > 0 && statusPill(`${record.subtopicCount} answers`, true)}
       </div>
       <div className="col-span-1 text-right">

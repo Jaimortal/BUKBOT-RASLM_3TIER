@@ -285,9 +285,50 @@ class KnowledgeRouter:
 
         has_any_course_target = has_it_course or has_nursing_course or has_education_course or has_other_course or has_graduate_or_doctor_course
 
-        # Check CAT / Admission requirement for Doctor / Masteral programs first
+        has_gpat = (
+            self._has_any(text, [
+                "gpat", "graduate program admission test", "graduate admission test",
+                "graduate school admission test", "graduate admission exam", "graduate admission testing",
+                "admission testing graduate", "admission test graduate", "admission exam graduate",
+                "testing graduate program", "test graduate program", "exam graduate program",
+                "graduate studies admission test", "graduate studies admission exam",
+                "graduate school admission exam", "graduate entrance exam",
+                "masteral admission test", "masters admission test", "doctorate admission test",
+                "admission testing application graduate", "admission testing fee for buksu graduate",
+                "application requirements for buksu graduate",
+            ]) or (
+                self._has_any(text, ["admission test", "admission testing", "admission exam", "entrance exam", "testing", "gpat"]) and
+                self._has_any(text, ["graduate program", "graduate programs", "graduate studies", "graduate school", "masteral", "masters", "doctorate"])
+            ) or (
+                self._has_any(text, ["graduate", "graduates", "graduate studies", "graduate school", "masteral", "masters"]) and
+                self._has_any(text, ["apply", "application", "requirements", "requirement", "fee", "pila", "unsa kailangan", "unsa kinahanglan", "kinahanglan"]) and
+                self._has_any(text, ["admission", "test", "testing", "exam", "gpat"])
+            )
+        )
+
+        # Check Graduate Program Admission Test (GPAT) first for graduate/doctor/masteral testing or requirements
+        has_gpat_testing_query = (
+            has_gpat or
+            self._has_any(text, [
+                "gpat", "graduate program admission test", "graduate admission test", "graduate admission testing",
+                "admission testing graduate", "admission test graduate", "admission exam graduate",
+                "testing graduate program", "test graduate program", "exam graduate program",
+                "graduate studies admission test", "graduate studies admission exam",
+                "graduate school admission exam", "graduate entrance exam",
+            ]) or (
+                has_graduate_or_doctor_course and self._has_any(text, [
+                    "admission testing", "admission test", "admission exam", "testing", "entrance exam",
+                    "apply", "application", "fee", "schedule", "requirements", "requirement",
+                    "need", "needed", "kinahanglan", "kailangan", "unsaon", "how to apply"
+                ]) and not self._has_any(text, ["buksu cat", "cat score", "cat requirement", "cat cutoff", "cat passing"])
+            )
+        )
+        if has_gpat_testing_query:
+            return "gpat_admission_requirements"
+
+        # Check CAT / Admission requirement for Doctor / Masteral programs (specifically asking if CAT applies to them)
         if (
-            (is_cat_term and has_graduate_or_doctor_course) or
+            (is_cat_term and has_graduate_or_doctor_course and self._has_any(text, ["cat", "buksu cat", "buksucat"])) or
             (self._has_any(text, ["score", "scores", "cutoff", "cut-off", "cut off", "passing", "makasulod", "makapasar", "qualify", "qualification"]) and has_graduate_or_doctor_course and not self._has_any(text, ["gpat", "lsat", "nmat"])) or
             (self._has_any(text, ["required cat", "cat required", "cat score required", "cat requirement", "cat cutoff", "cat passing"]) and has_graduate_or_doctor_course)
         ):
@@ -454,9 +495,16 @@ class KnowledgeRouter:
             return "campus_gates_and_entrances"
 
         # 16a. Gate Pass Policy, Office, Validity, and Coverage
-        if self._has_any(text, ["gate pass", "gatepass", "vehicle pass", "pass sa motor", "pass sa sakyanan"]):
-            if self._has_any(text, ["bicycle", "bisekleta"]):
+        if self._has_any(text, ["gate pass", "gatepass", "vehicle pass", "get pass", "pass sa motor", "pass sa sakyanan"]):
+            if self._has_any(text, ["bicycle", "bicycles", "bike", "bikes", "bisekleta", "bisikleta"]):
                 return "bike_gate_pass"
+            if self._has_any(text, [
+                "get", "getting", "apply", "applying", "application", "acquire", "acquiring", "acquisition", "acquirment",
+                "obtain", "secure", "securing", "claim", "request", "process", "procedure", "step", "steps",
+                "kuha", "kuhaon", "makakuha", "pagkuha", "mokuha", "mukuha", "kuhag", "mangayo", "pangayo",
+                "where", "asa", "aha", "unsaon", "pamaagi", "how do", "how can", "how to", "how"
+            ]):
+                return "gate_pass_process"
             return "general_gate_pass"
 
         # 16b. Computer Laboratories & Floors
@@ -989,8 +1037,15 @@ class KnowledgeRouter:
         if self._has_any(text, [
             "gate pass", "gatepass", "forgot my student id", "campus entry without", "temporary gate pass", "forgot my student id and need a"
         ]):
-            if self._has_any(text, ["bike", "bicycle"]):
+            if self._has_any(text, ["bicycle", "bicycles", "bike", "bikes", "bisekleta", "bisikleta"]):
                 return "bike_gate_pass"
+            if self._has_any(text, [
+                "get", "getting", "apply", "applying", "application", "acquire", "acquiring", "acquisition", "acquirment",
+                "obtain", "secure", "securing", "claim", "request", "process", "procedure", "step", "steps",
+                "kuha", "kuhaon", "makakuha", "pagkuha", "mokuha", "mukuha", "kuhag", "mangayo", "pangayo",
+                "where", "asa", "aha", "unsaon", "pamaagi", "how do", "how can", "how to", "how"
+            ]):
+                return "gate_pass_process"
             return "general_gate_pass"
 
         if self._has_any(text, [
@@ -1270,6 +1325,13 @@ class KnowledgeRouter:
         if _has_gate_pass:
             if _has_bike:
                 return "bike_gate_pass"
+            if self._has_any(text, [
+                "get", "getting", "apply", "applying", "application", "acquire", "acquiring", "acquisition", "acquirment",
+                "obtain", "secure", "securing", "claim", "request", "process", "procedure", "step", "steps",
+                "kuha", "kuhaon", "makakuha", "pagkuha", "mokuha", "mukuha", "kuhag", "mangayo", "pangayo",
+                "where", "asa", "aha", "unsaon", "pamaagi", "how do", "how can", "how to", "how"
+            ]):
+                return "gate_pass_process"
             return "general_gate_pass"
 
         # Add and Drop Subjects Routing
@@ -1357,7 +1419,26 @@ class KnowledgeRouter:
             bool(tokens.intersection({"graduate", "graduates", "law"})) or
             self._has_any(text, ["post graduate", "post-graduate"])
         )
-        has_gpat = self._has_any(text, ["gpat", "graduate program admission test"])
+        has_gpat = (
+            self._has_any(text, [
+                "gpat", "graduate program admission test", "graduate admission test",
+                "graduate school admission test", "graduate admission exam", "graduate admission testing",
+                "admission testing graduate", "admission test graduate", "admission exam graduate",
+                "testing graduate program", "test graduate program", "exam graduate program",
+                "graduate studies admission test", "graduate studies admission exam",
+                "graduate school admission exam", "graduate entrance exam",
+                "masteral admission test", "masters admission test", "doctorate admission test",
+                "admission testing application graduate", "admission testing fee for buksu graduate",
+                "application requirements for buksu graduate",
+            ]) or (
+                self._has_any(text, ["admission test", "admission testing", "admission exam", "entrance exam", "testing", "gpat"]) and
+                self._has_any(text, ["graduate program", "graduate programs", "graduate studies", "graduate school", "masteral", "masters", "doctorate"])
+            ) or (
+                self._has_any(text, ["graduate", "graduates", "graduate studies", "graduate school", "masteral", "masters"]) and
+                self._has_any(text, ["apply", "application", "requirements", "requirement", "fee", "pila", "unsa kailangan", "unsa kinahanglan", "kinahanglan"]) and
+                self._has_any(text, ["admission", "test", "testing", "exam", "gpat"])
+            )
+        )
         has_exam_day_requirement_wording = (
             self._has_any(text, [
                 "what to bring on the examination day", "what to bring on exam day",
@@ -3214,6 +3295,13 @@ class KnowledgeRouter:
 
         has_gate_pass = self._has_any(text, ["gate pass", "temporary gate pass", "forgot my student id and need a temporary gate pass", "forgot my id and need", "no id enter campus"])
         if has_gate_pass:
+            if self._has_any(text, [
+                "get", "getting", "apply", "applying", "application", "acquire", "acquiring", "acquisition", "acquirment",
+                "obtain", "secure", "securing", "claim", "request", "process", "procedure", "step", "steps",
+                "kuha", "kuhaon", "makakuha", "pagkuha", "mokuha", "mukuha", "kuhag", "mangayo", "pangayo",
+                "where", "asa", "aha", "unsaon", "pamaagi", "how do", "how can", "how to", "how"
+            ]):
+                return "gate_pass_process"
             return "general_gate_pass"
 
         has_college_shirt = self._has_any(text, ["college shirt", "college shirts", "department shirt", "department shirts", "course shirt", "org shirt", "sbo shirt"])
@@ -3688,7 +3776,7 @@ class KnowledgeRouter:
                 return "second_courser_requirements"
             if has_law or self._has_any(text, ["law", "juris doctor"]):
                 return "law_admission_requirements"
-            if has_gpat or self._has_any(text, ["gpat", "graduate program admission test"]):
+            if has_gpat or self._has_any(text, ["gpat", "graduate program admission test", "graduate admission test", "graduate admission testing"]):
                 return "gpat_admission_requirements"
             if has_masters or self._has_any(text, ["masters", "master", "master's"]):
                 return "masters_degree_admission_requirements"
@@ -4260,7 +4348,9 @@ class KnowledgeRouter:
                 return "second_courser_requirements"
             if has_law or self._has_any(text, ["law", "juris doctor"]):
                 return "law_admission_requirements"
-            if has_gpat or has_masters or self._has_any(text, ["masters", "master", "master's", "gpat"]):
+            if has_gpat or self._has_any(text, ["gpat", "graduate program admission test", "graduate admission test", "graduate admission testing"]):
+                return "gpat_admission_requirements"
+            if has_masters or self._has_any(text, ["masters", "master", "master's"]):
                 return "masters_degree_admission_requirements"
             return "freshman_admission_requirements"
         if has_letter_of_intent or has_admission_first_requirement:
@@ -4390,6 +4480,8 @@ class KnowledgeRouter:
             return "online_enrollment_steps"
         if has_enrollment_process:
             return "enrollment_general_process"
+        if (has_gpat or self._has_any(text, ["gpat", "graduate program admission test", "graduate admission test", "graduate admission testing"])) and self._has_any(text, ["requirement", "requirements", "admission", "apply", "application", "needed", "documents", "test", "testing", "exam", "fee"]):
+            return "gpat_admission_requirements"
         if has_masters and self._has_any(text, ["requirement", "requirements", "admission", "apply", "application", "needed", "documents"]):
             return "masters_degree_admission_requirements"
         if has_masters:
@@ -4709,10 +4801,10 @@ class KnowledgeRouter:
                 if has_freshman or has_transferee:
                     return "freshman_enrollment_process"
                 return "enrollment_documents"
+            if has_gpat or self._has_any(text, ["gpat", "graduate program admission test", "graduate admission test", "graduate admission testing"]):
+                return "gpat_admission_requirements"
             if has_masters:
                 return "masters_degree_admission_requirements"
-            if has_gpat:
-                return "gpat_admission_requirements"
             if has_law:
                 return "law_admission_requirements"
             if has_second_courser:
@@ -4729,6 +4821,8 @@ class KnowledgeRouter:
                 return "student_id_requirements"
             if has_admission:
                 return "exam_requirements" if (has_exam_day_requirement_wording or self._has_any(text, ["bring", "dad-on", "dad on", "dalhon", "dala", "dal-on", "adlaw"])) else "freshman_admission_requirements"
+        if intent == "ask_fee" and (has_gpat or (has_graduate_or_doctor_course and (has_cat or has_admission or has_fee))):
+            return "gpat_admission_requirements"
         if intent == "ask_fee" and (has_cat or has_admission):
             return "exam_fees"
         if intent == "ask_fee" and has_enrollment and self._has_any(text, ["pay", "payment", "paying", "cashier", "accounting", "lbp", "landbank", "ofbank", "online"]):

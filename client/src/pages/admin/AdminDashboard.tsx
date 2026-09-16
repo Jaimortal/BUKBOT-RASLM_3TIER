@@ -1,11 +1,6 @@
 import { useState, useEffect, useId, useRef } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { 
-  fetchResponses, 
-  saveResponse as saveResponseApi, 
-  fetchLocations,
-  saveLocation as saveLocationApi,
-  deleteLocationApi,
+import {
   fetchUserPrivilegesAdmin,
   saveUserPrivilegesAdmin,
   fetchAutoTranslateStatus,
@@ -70,7 +65,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import InteractiveMap from "@/components/InteractiveMap";
-import { AdminGeneralResponses } from "@/components/admin/AdminGeneralResponses";
 import { AdminKnowledgeManager } from "@/components/admin/AdminKnowledgeManager";
 import { AdminLocations } from "@/components/admin/AdminLocations";
 import { AdminMapSettings } from "@/components/admin/AdminMapSettings";
@@ -99,24 +93,6 @@ export default function AdminDashboard() {
     autoTranslateEnabled: true
   };
   
-  // --- Filter States ---
-  const [categoryFilter, setCategoryFilter] = useState<string>("all");
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [locationSearchTerm, setLocationSearchTerm] = useState<string>("");
-  const [buildingFilter, setBuildingFilter] = useState<string>("all");
-  
-  // --- Responses Query ---
-  const { data: responses = [] } = useQuery({
-    queryKey: ["responses"],
-    queryFn: fetchResponses
-  });
-
-  // --- Locations Query ---
-  const { data: locations = [] } = useQuery({
-    queryKey: ["locations"],
-    queryFn: fetchLocations
-  });
-
   // --- User Privileges Query ---
   const { data: fetchedPrivileges } = useQuery({
     queryKey: ["userPrivileges"],
@@ -124,12 +100,13 @@ export default function AdminDashboard() {
     staleTime: 60000, // Consider data fresh for 1 minute
     refetchInterval: 60000, // Only poll every minute
     refetchOnWindowFocus: false,
+    enabled: activeTab === "privileges",
   });
 
   const { data: autoTranslateStatus } = useQuery({
     queryKey: ["autoTranslateStatus"],
     queryFn: fetchAutoTranslateStatus,
-    refetchInterval: 10000, // Poll every 10 seconds instead of 1.5s (6.6x reduction)
+    refetchInterval: (query) => query.state.data?.status === "running" ? 10000 : false,
     staleTime: 5000, // Consider data fresh for 5 seconds
   });
 
@@ -137,6 +114,7 @@ export default function AdminDashboard() {
     queryKey: ["chatWidgetSettings"],
     queryFn: fetchChatWidgetSettings,
     staleTime: 60000,
+    enabled: activeTab === "privileges",
   });
 
   const mountedAtRef = useRef<number>(Date.now());
@@ -208,55 +186,7 @@ export default function AdminDashboard() {
     });
   }, [autoTranslateStatus, queryClient, toast]);
 
-  // --- Filter Logic ---
-  const filteredResponses = responses.filter(response => {
-    const matchesCategory = categoryFilter === "all" || response.category === categoryFilter;
-    const matchesSearch = searchTerm === "" || 
-      (response.intent && response.intent.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (response.category && response.category.toLowerCase().includes(searchTerm.toLowerCase()));
-    return matchesCategory && matchesSearch;
-  });
-
-  // --- Get Unique Categories ---
-  const categories = Array.from(new Set(responses.map(r => r.category).filter(Boolean)));
-
-  // --- Get Unique Buildings ---
-  const buildings = Array.from(new Set(locations.map(l => l.building).filter(Boolean))) as string[];
-
-  const filteredLocations = locations.filter((l) => {
-    const matchesSearch = !locationSearchTerm.trim() || 
-      (l.name && l.name.toLowerCase().includes(locationSearchTerm.toLowerCase())) ||
-      (l.type && l.type.toLowerCase().includes(locationSearchTerm.toLowerCase())) ||
-      (l.building && l.building.toLowerCase().includes(locationSearchTerm.toLowerCase()));
-    
-    const matchesBuilding = buildingFilter === "all" || l.building === buildingFilter;
-    
-    return matchesSearch && matchesBuilding;
-  });
-
   // --- Mutations ---
-  const saveResponseMutation = useMutation({
-    mutationFn: async (response: ResponseData) => {
-      const result: any = await saveResponseApi(response);
-      if (!result?.success) {
-        throw new Error(result?.message || "Failed to save response");
-      }
-      return result;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["responses"] });
-      toast({ title: "Response Saved", description: "The chatbot response has been updated." });
-    },
-  });
-
-  const saveLocationMutation = useMutation({
-    mutationFn: (location: Location) => saveLocationApi(location),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["locations"] });
-      toast({ title: "Location Saved" });
-    }
-  });
-
   const saveSettingsMutation = useMutation({
     mutationFn: async (payload: { privileges: UserPrivileges; widgetSettings: ChatWidgetSettings }) => {
       const [privilegeResult, widgetResult] = await Promise.all([
@@ -286,8 +216,10 @@ export default function AdminDashboard() {
     onSuccess: (result: MigrationResult) => {
       queryClient.invalidateQueries({ queryKey: ["responses"] });
       queryClient.invalidateQueries({ queryKey: ["locations"] });
+      queryClient.invalidateQueries({ queryKey: ["locationSummaries"] });
       queryClient.invalidateQueries({ queryKey: ["super-intent-meta"] });
       queryClient.invalidateQueries({ queryKey: ["knowledgeRecords"] });
+      queryClient.invalidateQueries({ queryKey: ["knowledgeSummaries"] });
       queryClient.invalidateQueries({ queryKey: ["migration-status"] });
       const description = result.message + (result.errors?.length ? ` (${result.errors.length} errors)` : "");
       toast({ 

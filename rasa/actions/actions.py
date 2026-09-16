@@ -145,11 +145,12 @@ class ActionReplyFromJsonHelper:
             responses_path = os.path.join(current_dir, "responses.json")
         self.responses_path = responses_path
         self.responses = self._load_responses()
-        core_loc_path = os.path.join(os.path.dirname(responses_path), "knowledge", "location", "responses_location_core.json")
-        if os.path.isfile(core_loc_path):
-            self.location_responses_path = core_loc_path
-        else:
-            self.location_responses_path = os.path.join(os.path.dirname(responses_path), "responses_location.json")
+        self.location_responses_path = os.path.join(
+            os.path.dirname(responses_path),
+            "knowledge",
+            "location",
+            "responses_location_core.json",
+        )
         self.location_responses = self._load_location_responses()
         # Load structured knowledge bases from knowledge directory
         self.knowledge_dir = os.path.join(os.path.dirname(responses_path), "knowledge")
@@ -334,10 +335,10 @@ class ActionReplyFromJsonHelper:
             with open(self.location_responses_path, "r", encoding="utf-8") as f:
                 return json.load(f)
         except FileNotFoundError:
-            print(f"Error: responses_location.json not found at {self.location_responses_path}")
+            print(f"Error: responses_location_core.json not found at {self.location_responses_path}")
             return {}
         except json.JSONDecodeError as e:
-            print(f"Error: Invalid JSON in responses_location.json - {e}")
+            print(f"Error: Invalid JSON in responses_location_core.json - {e}")
             return {}
 
     def _load_responses(self) -> List[Dict[str, Any]]:
@@ -648,7 +649,7 @@ class ActionReplyFromJsonHelper:
         locations = self.location_responses.get("locations", {})
         location_info = locations.get(normalized_name)
         if not location_info and isinstance(normalized_name, str):
-            # Fallback: try case-insensitive match against keys in responses_location.json
+            # Fallback: try a case-insensitive match against canonical location keys.
             for k, v in locations.items():
                 if isinstance(k, str) and k.strip().lower() == normalized_name.strip().lower():
                     normalized_name = k
@@ -961,7 +962,7 @@ class ActionReplyFromJsonHelper:
     def _get_lab_location_response(self, lab_number: str, user_message: str) -> dict:
         """Get location response for specific ComLab from the new JSON structure"""
 
-        # First, try to get it from the unified responses_location.json managed by the admin panel
+        # First, try the canonical location knowledge managed by the admin panel.
         location_name = f"ComLab {lab_number}"
         location_dict = self.location_responses.get("locations", {})
         
@@ -1026,7 +1027,7 @@ class ActionReplyFromJsonHelper:
     def _get_faculty_room_response(self, college: str, user_message: str) -> dict:
         """Get location response for specific faculty room from JSON structure"""
         
-        # First, try to get it from the unified responses_location.json managed by the admin panel
+        # First, try the canonical location knowledge managed by the admin panel.
         location_name = f"{college.upper()} Faculty Room"
         location_dict = self.location_responses.get("locations", {})
         

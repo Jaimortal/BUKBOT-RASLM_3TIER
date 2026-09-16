@@ -1,0 +1,3 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+K001-CEB-01:open,ERROR,academics,open,ceb,"Nag-lecture among maestra, okay ra motan-aw og message sa cp?",phone_use_in_class,,,20000.0,,academics/classroom_policies.json,/topics/0/subtopics/0,[],Router query timed out
+K001-EN-01:open,ERROR,academics,open,en,Our teacher is lecturing. Can I check a message on my phone?,phone_use_in_class,,,20000.0,,academics/classroom_policies.json,/topics/0/subtopics/0,[],Router query timed out

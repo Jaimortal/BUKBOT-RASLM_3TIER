@@ -1,5 +1,5 @@
 /**
- * Script to add floor information to all location pins in responses_location.json
+ * Script to add floor information to all canonical location pins.
  * Converts floor descriptions (e.g., "3rd Floor") to short codes (e.g., "3F")
  */
 
@@ -33,7 +33,7 @@ async function fixLocationFloors() {
   try {
     const filePath = path.join(
       process.cwd(),
-      "rasa/actions/responses_location.json"
+      "rasa/actions/knowledge/location/responses_location_core.json"
     );
 
     console.log(`Reading ${filePath}...`);
