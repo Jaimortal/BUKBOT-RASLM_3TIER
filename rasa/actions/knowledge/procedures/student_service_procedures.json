@@ -1263,7 +1263,13 @@
               "need medical certificate from buksu clinic"
             ]
           },
-          "display_name": "Clinic Medical Certificate Process"
+          "display_name": "Clinic Medical Certificate Process",
+          "suggestions": [
+            {
+              "label": "Clinic Location",
+              "payload": "/direct_intent{\"intent\":\"location_Medical_clinic\"}"
+            }
+          ]
         },
         {
           "topic": "payment",
@@ -1294,7 +1300,13 @@
               "medical certificate zero cost"
             ]
           },
-          "display_name": "Clinic Medical Certificate Cost"
+          "display_name": "Clinic Medical Certificate Cost",
+          "suggestions": [
+            {
+              "label": "Clinic Location",
+              "payload": "/direct_intent{\"intent\":\"location_Medical_clinic\"}"
+            }
+          ]
         },
         {
           "topic": "duration",
@@ -1325,7 +1337,13 @@
               "how fast can i get medical certificate"
             ]
           },
-          "display_name": "Clinic Medical Certificate Duration"
+          "display_name": "Clinic Medical Certificate Duration",
+          "suggestions": [
+            {
+              "label": "Clinic Location",
+              "payload": "/direct_intent{\"intent\":\"location_Medical_clinic\"}"
+            }
+          ]
         }
       ],
       "display_name": "Medical Certificate"

@@ -1235,7 +1235,10 @@ export function AdminKnowledgeManager() {
   }, [collapsedFiles.size, files]);
 
   const refreshKnowledge = useCallback(async () => {
-    await queryClient.invalidateQueries({ queryKey: ["knowledgeRecord"] });
+    // Invalidate stale detail-record caches (prefix matches ["knowledgeRecord", id]).
+    // Not awaited — this fires background refetches independently.
+    queryClient.invalidateQueries({ queryKey: ["knowledgeRecord"] });
+    // Explicitly refetch the summary list.
     await refetch();
   }, [queryClient, refetch]);
 

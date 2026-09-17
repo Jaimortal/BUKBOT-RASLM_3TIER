@@ -2030,10 +2030,12 @@
       "topic": "request_tor_process",
       "responses": {
         "en": [
-          "Here how could you get your TOR from Registrar office.\n\n**1.** Present accomplished Clearance Form (for first time TOR issuances) and ID in **window 1-6**\n-Wait while the requested documents are being retrieved and assessed\n\n**2.** Proceed to the Accounting Unit window 7-9 for verification of clients accounts\n\n**3.** Proceed to payment in the Cashiering Unit\n**-P100.00/page, P30.00/s et (DST** \n\n**4.** Present the official receipt back to OUR at window 1-6\n- **Duration** for this part will be **(2 working days)** \n\n**5.** Approval and Finalization\n\n**8.** Present **claim slip, ID, and authorization letter** in window 1-6 (if representative)\n\nThe total duration of the entire process will be **3 working days,** and the total amount you will pay is **P30.00/s et (DST).**"
+          "Request your Transcript of Records at the Registrar’s Office.",
+          "Bring a valid ID and fill out the request form."
         ],
         "ceb": [
-          "Mao kini kon unsaon nimo pagkuha ang imong TOR gikan sa opisina sa Registrar.\n\n**1.** Ipakita ang nahuman nga Clearance Form (para sa unang higayon nga pagkuha og TOR) ug ID sa **window 1-6**\n-Paghulat samtang ginakuha ug ginasusi ang gipangayong mga dokumento\n\n**2.** Adto sa Accounting Unit window 7-9 para sa beripikasyon sa mga account sa kliyente\n\n**3.** Adto sa Cashiering Unit para sa pagbayad\n**-P100.00/page, P30.00/s et (DST** \n\n**4.** Ipakita pagbalik ang official receipt sa OUR sa window 1-6\n- **Gidugayon** para niini nga bahin kay **(2 ka working days)**\n\n**5.** Pag-apruba ug Pag-finalize\n\n**8.** Ipakita ang **claim slip, ID, ug authorization letter** sa window 1-6 (kung representante)\n\nAng kinatibuk-ang gidugayon sa tibuok proseso kay **3 ka working days,** ug ang kinatibuk-ang kantidad nga imong bayran kay **P30.00/s et (DST).**"
+          "Mangayo og TOR sa Registrar.",
+          "Dad-a ang valid ID ug pun-a ang request form."
         ]
       },
       "intent": "request_tor_process",
@@ -2048,16 +2050,7 @@
         ],
         "weak_keywords": []
       },
-      "display_name": "TOR Request",
-      "suggestions": [
-        {
-          "label": "Registrar Location",
-          "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
-        }
-      ],
-      "subject_terms": [],
-      "images": [],
-      "items": []
+      "display_name": "TOR Request"
     }
   ]
 }

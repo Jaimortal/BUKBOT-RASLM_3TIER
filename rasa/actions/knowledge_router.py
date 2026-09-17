@@ -206,6 +206,15 @@ class KnowledgeRouter:
         if self.data_loader.is_intent_in_domain(raw_intent, active_domain):
             return raw_intent
 
+        # Specific cross-domain bridges (e.g., student service procedures relevant to services domain)
+        service_procedure_intents = {
+            "clinic_medical_certificate_process",
+            "clinic_medical_certificate_cost",
+            "clinic_medical_certificate_duration",
+        }
+        if active_domain == "services" and raw_intent in service_procedure_intents:
+            return raw_intent
+
         # Reject out-of-domain match to prevent cross-domain leak
         return None
 
@@ -603,7 +612,7 @@ class KnowledgeRouter:
             "fda", "failure due to absences", "how many absences", "pila ka absent", "automatically fail a subject",
             "dili ko mabagsak sa subject", "sick for a week", "masakit ko og usa ka semana", "absent tungod sa sakit",
             "late 3 times", "tulo ka tardy", "pag-tardy", "tardiness", "keeps track of attendance", "track sa attendance",
-            "excuse an absence", "medical certificate", "excuse sa professor", "marked me absent", "gi-mark absent"
+            "excuse an absence", "medical certificate for absence", "medical certificate for absent", "medical certificate for excused absence", "medical certificate for sickness", "excuse sa professor", "marked me absent", "gi-mark absent"
         ]):
             return "fda_meaning"
 
@@ -618,6 +627,24 @@ class KnowledgeRouter:
             if self._has_any(text, ["fee", "payment", "bayad", "pila ang bayad"]):
                 return "good_moral_certificate_fee"
             return "request_good_moral_certificate_oss"
+
+        # 16k2. Medical Certificate (Process, Cost, Duration)
+        if self._has_any(text, [
+            "medical certificate", "medical cert", "clinic certificate", "clinic cert",
+            "certificate for ojt", "certificate for intramural", "certificate for field trip",
+            "med cert", "med certificate"
+        ]):
+            if self._has_any(text, [
+                "duration", "how long", "how many minutes", "how many hours", "pila ka minutes", "pila ka oras",
+                "dugay", "processing time", "transaction time", "fast", "time needed", "time required"
+            ]):
+                return "clinic_medical_certificate_duration"
+            if self._has_any(text, [
+                "how much", "fee", "fees", "cost", "price", "pay", "payment", "bayad",
+                "pila ang bayad", "pila bayad", "pila ang medical", "free", "zero cost", "mubayad", "walay bayad", "naay bayad"
+            ]):
+                return "clinic_medical_certificate_cost"
+            return "clinic_medical_certificate_process"
 
         # 16l. Course Shifting
         if self._has_any(text, ["shift", "shifting", "mag-shift", "change course", "balhin og kurso"]):
