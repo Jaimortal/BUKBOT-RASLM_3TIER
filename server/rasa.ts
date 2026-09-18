@@ -5,7 +5,8 @@ import * as dbLocations from "./db/locations.js";
 import * as dbSuperIntents from "./db/superIntents.js";
 
 const responsesPath = path.join(process.cwd(), "rasa", "actions", "responses.json");
-const RASA_API_URL = "http://127.0.0.1:5005/webhooks/rest/webhook";
+const RASA_BASE_URL = (process.env.RASA_BASE_URL || "http://127.0.0.1:5005").replace(/\/$/, "");
+const RASA_API_URL = `${RASA_BASE_URL}/webhooks/rest/webhook`;
 
 // Query responses from database (primary source)
 export async function loadResponses(): Promise<any[]> {
@@ -61,14 +62,16 @@ export async function findIntent(intent: string): Promise<any | null> {
 // Call actual Rasa API
 export async function callRasaAPI(message: string, language?: string, sessionId?: string, activeCategory?: string | null) {
   try {
-    console.log(`[Rasa] Calling Rasa API: "${message}" (Category: ${activeCategory || "all"})`);
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`[Rasa] Calling Rasa API: "${message}" (Category: ${activeCategory || "all"})`);
+    }
     
     const sender = sessionId || "user";
 
     // Synchronize active_category slot to Rasa tracker
     if (activeCategory !== undefined) {
       try {
-        await fetch(`http://127.0.0.1:5005/conversations/${encodeURIComponent(sender)}/tracker/events`, {
+        await fetch(`${RASA_BASE_URL}/conversations/${encodeURIComponent(sender)}/tracker/events`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify([{
@@ -105,7 +108,7 @@ export async function callRasaAPI(message: string, language?: string, sessionId?
     }
 
     const data = await response.json();
-    console.log(`[Rasa] Rasa response:`, data);
+    if (process.env.NODE_ENV !== "production") console.log(`[Rasa] Rasa response:`, data);
     return data;
   } catch (error) {
     console.error("[Rasa] Error calling Rasa API:", error);

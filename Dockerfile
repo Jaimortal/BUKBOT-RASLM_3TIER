@@ -1,5 +1,6 @@
-# Multi-stage Dockerfile for BukSU Chatbot
-# Optimized for production deployment
+# LEGACY: not validated for the current Node + Rasa + PostgreSQL pilot.
+# Use docs/PILOT_DEPLOYMENT.md instead. This file expects a missing root
+# requirements.txt and does not build the Node frontend/backend.
 
 # Build stage
 FROM python:3.9-slim as builder

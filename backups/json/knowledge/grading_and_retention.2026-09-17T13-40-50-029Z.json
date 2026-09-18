@@ -494,12 +494,14 @@
           "topic": "requirements",
           "responses": {
             "en": [
-              "Regular attendance is required and strictly recorded. If you need to be absent, you must provide a valid reason and supporting documentation for approval.",
-              "**Please remember that accumulating 7 absences will result in an FDA** (Failure Due to Absences). However, it depends on your subject policy; by default, 7 absences will be considered an FDA."
+              "Regular attendance is required and strictly recorded.",
+              "If you need to be absent, you must provide a valid reason and supporting documentation for approval.",
+              "Please remember that accumulating 7 absences will result in an FDA (Failure Due to Absences)."
             ],
             "ceb": [
-              "Gikinahanglan ang regular nga pagtambong ug estrikto kini nga girekord. Kung kinahanglan nimo nga mo-absent, kinahanglan kang maghatag og balido nga rason ug supporting documentation para maaprobahan.",
-              "**Palihug timan-i nga ang pagtigom og 7 ka absences moresulta sa FDA** (Failure Due to Absences). Apan, nagdepende kini sa polisiya sa imong subject; by default, ang 7 ka absences ikonsiderar nga FDA."
+              "kinahanglan gyud ang regular nga pag-attend ug strictly kining ginarecord.",
+              "Kung kinahanglan ka mag-absent, kinahanglan maghatag ka ug valid nga rason ug supporting documents para ma-approve.",
+              "Timan-i nga kung maka-accumulate ka ug 7 ka absences, moresulta kini sa FDA (Failure Due to Absences)."
             ]
           },
           "intent": "attendance_requirement",
@@ -554,10 +556,7 @@
               "policy"
             ]
           },
-          "display_name": "Attendance Requirement",
-          "subject_terms": [],
-          "images": [],
-          "items": []
+          "display_name": "Attendance Requirement"
         },
         {
           "topic": "absence_excuse_requirements",
@@ -803,21 +802,17 @@
         "college honors",
         "university scholar",
         "academic honors",
-        "gwa honors",
-        "honor list",
-        "honors list",
-        "list of honors",
-        "honor release"
+        "gwa honors"
       ],
       "subtopics": [
         {
           "topic": "requirements",
           "responses": {
             "en": [
-              "To qualify for the Dean's Honor List at Bukidnon State University, a student must meet these main requirements: \n- A General Weighted Average **(GWA) of 1.75 or better**\n- No grade **lower than 2.00**, a semestral load of at least 18 units,\n- No **dropped subjects after the registration period**, and exemplary conduct (no disciplinary or substance‑abuse disqualifications). \n\nThese are the standard guidelines published by the Office of the Registrar."
+              "To qualify for the Dean's Honor List at Bukidnon State University, a student must meet these main requirements: a General Weighted Average (GWA) of 1.75 or better, no grade lower than 2.00, a semestral load of at least 18 units, no dropped subjects after the registration period, and exemplary conduct (no disciplinary or substance‑abuse disqualifications). These are the standard guidelines published by the Office of the Registrar.."
             ],
             "ceb": [
-              "Aron maka qualify sa Dean's Honor List sa Bukidnon State University, kinahanglan nimo ang mosunod: \n**-GWA nga 1.75** o mas maayo pa\n**-Walay grado nga ubos sa 2.00**, nag‑carry og labing menos 18 ka units sa semestral\n- **Wala mag‑drop og subject human sa registratiol period**, ug maayong pamatasan (walay disciplinary case o substance‑abuse nga makapawala sa kwalipikasyon)."
+              "Aron maka qualify sa Dean's Honor List sa Bukidnon State University, kinahanglan nimo ang mosunod: GWA nga 1.75 o mas maayo pa, walay grado nga ubos sa 2.00, nag‑carry og labing menos 18 ka units sa semestro, wala mag‑drop og subject human sa registration period, ug maayong pamatasan (walay disciplinary case o substance‑abuse nga makapawala sa kwalipikasyon).."
             ]
           },
           "intent": "deans_list",
@@ -903,68 +898,6 @@
             ]
           },
           "display_name": "University Scholar Gpa"
-        },
-        {
-          "topic": "release_schedule",
-          "responses": {
-            "en": [
-              "Unfortunately, I **do not have a specific release date** for the Honor list (Dean's Lister, Departmental Honors, University Honors), as the Registrar does not announce the exact date of releasing the honor list.",
-              "However, the Registrar posts official memos for Honor Aspirants, so make sure your grades are already completed for that specific semester."
-            ],
-            "ceb": [
-              "Sa pagkakaron, **wala akoy espesipikong petsa sa pag-release** sa Honor list (Dean's Lister, Departmental Honors, University Honors), tungod kay ang Registrar wala nag-anunsyo sa eksaktong petsa sa pagpagawas sa honor list.",
-              "Apan ang Registrar nag-post og memo alang sa mga Honor Aspirants, busa siguroha nga kompleto na ang imong mga grado sa maong semestre."
-            ]
-          },
-          "suggestions": [
-            {
-              "label": "Dean's List Requirements",
-              "payload": "/direct_intent{\"intent\":\"deans_list\"}"
-            },
-            {
-              "label": "Registrar Location",
-              "payload": "/direct_intent{\"intent\":\"location_Registrar_Office\"}"
-            }
-          ],
-          "intent": "honor_list_release_schedule",
-          "context_topic": "release_schedule",
-          "metadata": {
-            "phrases": [
-              "when do the registrar release the list of honors",
-              "kanusa mo gawas ang list sa honors",
-              "when man mo gawas ang dl list",
-              "kanosa man ma display ang dl",
-              "when do the honor list will be release",
-              "when will the honor list be released",
-              "when will the deans list be released",
-              "release date of honor list",
-              "kanus-a i-release ang deans list",
-              "when will honor list be posted",
-              "honor list release date",
-              "deans list release date",
-              "posting of honor list",
-              "when will deans list come out",
-              "kanus a mugawas ang deans list",
-              "kanus a i post ang deans list",
-              "kanus a i display ang dl list",
-              "when is the honor list release date",
-              "when will dean's list be released",
-              "kanus a mo gawas ang honors list",
-              "when do they release the deans list",
-              "when will the honors be posted",
-              "when is deans list out",
-              "kanusa ma post ang honor list",
-              "honor list posting date",
-              "when to expect honor list",
-              "kanus-a mogawas ang honor list"
-            ]
-          },
-          "display_name": "Honor List Release Schedule",
-          "subject_terms": [],
-          "images": [
-            "/api/images/27e1bcbf-ef19-4f23-9cb6-38556e9af06c"
-          ],
-          "items": []
         }
       ],
       "display_name": "Academic Honors"

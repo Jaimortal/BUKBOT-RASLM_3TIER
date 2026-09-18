@@ -48,6 +48,7 @@ export function AdminActivityLogs() {
 
   const [search, setSearch] = useState("");
   const [selectedModule, setSelectedModule] = useState("all");
+  const [page, setPage] = useState(1);
   const [selectedLog, setSelectedLog] = useState<ActivityLog | null>(null);
   const [isClearAllDialogOpen, setIsClearAllDialogOpen] = useState(false);
 
@@ -63,6 +64,10 @@ export function AdminActivityLogs() {
   });
 
   const logs = data?.logs || [];
+  const pageSize = 10;
+  const pageCount = Math.max(1, Math.ceil(logs.length / pageSize));
+  const currentPage = Math.min(page, pageCount);
+  const visibleLogs = logs.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
@@ -275,12 +280,18 @@ export function AdminActivityLogs() {
               <Input
                 placeholder="Search by topic, summary, admin name or email..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setPage(1);
+                }}
                 className="pl-9 bg-slate-50/50 border-slate-200 focus:bg-white text-sm"
               />
             </div>
             <div className="w-full sm:w-56">
-              <Select value={selectedModule} onValueChange={setSelectedModule}>
+              <Select value={selectedModule} onValueChange={(value) => {
+                setSelectedModule(value);
+                setPage(1);
+              }}>
                 <SelectTrigger className="bg-slate-50/50 border-slate-200 focus:bg-white text-sm">
                   <SelectValue placeholder="All Modules" />
                 </SelectTrigger>
@@ -324,7 +335,7 @@ export function AdminActivityLogs() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 bg-white">
-                  {logs.map((log) => {
+                  {visibleLogs.map((log) => {
                     const timeInfo = formatLogTime(log.createdAt);
                     return (
                       <tr
@@ -426,6 +437,16 @@ export function AdminActivityLogs() {
                   })}
                 </tbody>
               </table>
+              {pageCount > 1 && (
+                <div className="flex items-center justify-between gap-3 border-t border-slate-200 px-4 py-3 text-sm text-slate-600">
+                  <span>Showing {(currentPage - 1) * pageSize + 1}-{Math.min(currentPage * pageSize, logs.length)} of {logs.length}</span>
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="sm" disabled={currentPage === 1} onClick={() => setPage(currentPage - 1)}>Previous</Button>
+                    <span className="min-w-12 text-center">{currentPage} / {pageCount}</span>
+                    <Button variant="outline" size="sm" disabled={currentPage === pageCount} onClick={() => setPage(currentPage + 1)}>Next</Button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </CardContent>

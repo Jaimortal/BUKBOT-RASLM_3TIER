@@ -814,10 +814,10 @@
           "topic": "requirements",
           "responses": {
             "en": [
-              "To qualify for the Dean's Honor List at Bukidnon State University, a student must meet these main requirements: \n- A General Weighted Average **(GWA) of 1.75 or better**\n- No grade **lower than 2.00**, a semestral load of at least 18 units,\n- No **dropped subjects after the registration period**, and exemplary conduct (no disciplinary or substance‑abuse disqualifications). \n\nThese are the standard guidelines published by the Office of the Registrar."
+              "To qualify for the Dean's Honor List at Bukidnon State University, a student must meet these main requirements: a General Weighted Average (GWA) of 1.75 or better, no grade lower than 2.00, a semestral load of at least 18 units, no dropped subjects after the registration period, and exemplary conduct (no disciplinary or substance‑abuse disqualifications). These are the standard guidelines published by the Office of the Registrar.."
             ],
             "ceb": [
-              "Aron maka qualify sa Dean's Honor List sa Bukidnon State University, kinahanglan nimo ang mosunod: \n**-GWA nga 1.75** o mas maayo pa\n**-Walay grado nga ubos sa 2.00**, nag‑carry og labing menos 18 ka units sa semestral\n- **Wala mag‑drop og subject human sa registratiol period**, ug maayong pamatasan (walay disciplinary case o substance‑abuse nga makapawala sa kwalipikasyon)."
+              "Aron maka qualify sa Dean's Honor List sa Bukidnon State University, kinahanglan nimo ang mosunod: GWA nga 1.75 o mas maayo pa, walay grado nga ubos sa 2.00, nag‑carry og labing menos 18 ka units sa semestro, wala mag‑drop og subject human sa registration period, ug maayong pamatasan (walay disciplinary case o substance‑abuse nga makapawala sa kwalipikasyon).."
             ]
           },
           "intent": "deans_list",

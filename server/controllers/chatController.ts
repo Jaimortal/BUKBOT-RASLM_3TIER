@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { callRasaAPI } from "../rasa";
 import { storage } from "../storage";
 import type { InsertConversationLog } from "@shared/schema";
+import { beginChatTiming, finishChatTiming } from "../services/performanceTelemetry";
 
 type AnswerValue = string | string[] | Record<string, unknown> | undefined;
 const ROUTE_COLORS = ["#ff1744", "#ffea00", "#00b0ff", "#00e676", "#d500f9", "#ff9100", "#00e5ff", "#76ff03"];
@@ -74,13 +75,21 @@ export class ChatController {
   static async handleChat(req: Request, res: Response) {
     const startTime = Date.now();
     const userMessageTimestamp = new Date();
+    const timing = beginChatTiming(req.body?.sessionId);
+    let rasaMs: number | null = null;
     
     try {
       const { intent, language, lang, sessionId = "default", activeCategory, category } = req.body;
       const preferredLanguage: string | undefined = language || lang;
       const domainCategory = activeCategory || category;
 
-      const result = await callRasaAPI(intent, preferredLanguage, sessionId, domainCategory);
+      const rasaStarted = Date.now();
+      let result;
+      try {
+        result = await callRasaAPI(intent, preferredLanguage, sessionId, domainCategory);
+      } finally {
+        rasaMs = Date.now() - rasaStarted;
+      }
 
       let answerText = "I cannot understand your question.";
       let answerParts: string[] = ["I cannot understand your question."];
@@ -229,6 +238,7 @@ export class ChatController {
       // Use first map for backward compatibility, but include all maps
       const formattedMapData = formattedMapDataList.length > 0 ? formattedMapDataList[0] : null;
 
+      finishChatTiming(timing, 200, rasaMs, isFallback);
       return res.json({
         answer: answerParts,
         follow_up: result?.[0]?.custom?.follow_up ?? [],
@@ -240,6 +250,7 @@ export class ChatController {
         choiceGroups: allChoiceGroups.length > 0 ? allChoiceGroups : undefined
       });
     } catch (error) {
+      finishChatTiming(timing, 500, rasaMs, false);
       console.error("Chat controller error:", error);
       
       // Log the error conversation

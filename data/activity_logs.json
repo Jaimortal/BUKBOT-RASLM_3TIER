@@ -1,5 +1,90 @@
 [
   {
+    "id": "log_1789654038850_v60pykr",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Deans List",
+    "targetTitle": "Deans List",
+    "targetId": "academics/grading_and_retention.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (1 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (1 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-17T14:07:18.850Z"
+  },
+  {
+    "id": "log_1789653742811_ljh4p16",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Honor List Release Schedule",
+    "targetTitle": "Honor List Release Schedule",
+    "targetId": "academics/grading_and_retention.json",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-17T14:02:22.811Z"
+  },
+  {
+    "id": "log_1789653740402_3g2varg",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"honor aspi.webp\" (44.9 KB)",
+    "targetTitle": "honor aspi.webp",
+    "targetId": "27e1bcbf-ef19-4f23-9cb6-38556e9af06c",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"honor aspi.webp\" (44.9 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-17T14:02:20.402Z"
+  },
+  {
+    "id": "log_1789652450040_arbnfjj",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Attendance Requirement",
+    "targetTitle": "Attendance Requirement",
+    "targetId": "academics/grading_and_retention.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (2 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-17T13:40:50.040Z"
+  },
+  {
     "id": "log_1789564148643_ka9gi5a",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

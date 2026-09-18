@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Mail, ShieldAlert, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { AdminTooltip } from "@/components/admin/AdminTooltip";
+import { AdminPerformance } from "@/components/admin/AdminPerformance";
 
 export function AdminReports() {
   const queryClient = useQueryClient();
@@ -59,6 +60,7 @@ export function AdminReports() {
 
   return (
     <div className="space-y-6">
+      <AdminPerformance />
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">

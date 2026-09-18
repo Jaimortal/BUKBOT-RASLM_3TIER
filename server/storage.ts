@@ -13,6 +13,9 @@ import {
   type InsertConversationLog
 } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { db } from "./db";
+import { conversationLogs as conversationLogsTable } from "@shared/schema";
+import { between, eq } from "drizzle-orm";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -326,4 +329,22 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+class ProductionStorage extends MemStorage {
+  async createConversationLog(log: Omit<InsertConversationLog, 'id' | 'createdAt'>): Promise<ConversationLog> {
+    const [saved] = await db.insert(conversationLogsTable).values(log).returning();
+    return saved;
+  }
+
+  async getConversationLogs(sessionId?: string): Promise<ConversationLog[]> {
+    if (sessionId) {
+      return db.select().from(conversationLogsTable).where(eq(conversationLogsTable.sessionId, sessionId));
+    }
+    return db.select().from(conversationLogsTable);
+  }
+
+  async getConversationLogsByDateRange(startDate: Date, endDate: Date): Promise<ConversationLog[]> {
+    return db.select().from(conversationLogsTable).where(between(conversationLogsTable.createdAt, startDate, endDate));
+  }
+}
+
+export const storage = process.env.NODE_ENV === "production" ? new ProductionStorage() : new MemStorage();

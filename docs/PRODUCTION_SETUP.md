@@ -1,4 +1,6 @@
-# Production Setup Guide - PostgreSQL as Primary Data Source
+# Legacy Production Setup Guide - Not for the Current Pilot
+
+This document describes an older PostgreSQL-primary architecture and outdated paths. For the current first-year pilot, use [PILOT_DEPLOYMENT.md](PILOT_DEPLOYMENT.md). Do not follow the commands below without a separate migration review.
 
 This guide explains how to switch the chatbot from JSON files to PostgreSQL as the main data source in production.
 

@@ -3,10 +3,6 @@ import { botResponses, locationResponses, superIntentResponses, migrationTrackin
 import { eq, and } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Production-ready path resolution
 function resolveJsonPath(relativePath: string): string | null {
@@ -21,9 +17,6 @@ function resolveJsonPath(relativePath: string): string | null {
   const possiblePaths = [
     path.join(process.cwd(), "rasa/actions", relativePath),
     path.join("/app", "rasa/actions", relativePath),
-    path.join(__dirname, "../../rasa/actions", relativePath),
-    path.join(__dirname, "../../../rasa/actions", relativePath),
-    path.join(__dirname, "../../../../rasa/actions", relativePath),
   ];
 
   for (const testPath of possiblePaths) {

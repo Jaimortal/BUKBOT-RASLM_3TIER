@@ -1,3 +1,5 @@
+# LEGACY: not validated for the current Node + Rasa + PostgreSQL pilot.
+# Use docs/PILOT_DEPLOYMENT.md instead. This compose file omits the Node app.
 version: '3.8'
 
 services:

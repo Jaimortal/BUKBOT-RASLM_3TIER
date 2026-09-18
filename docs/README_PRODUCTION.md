@@ -1,4 +1,6 @@
-# BukSU Chatbot - Production Ready System
+# Legacy Production Notes - Not for the Current Pilot
+
+This document and the checked-in Docker Compose setup describe an older architecture. For the current first-year pilot, use [PILOT_DEPLOYMENT.md](PILOT_DEPLOYMENT.md). The Docker path is not validated.
 
 A comprehensive, production-ready chatbot system for Bukidnon State University built with Rasa framework, featuring generalized entity handling with metadata support.
 

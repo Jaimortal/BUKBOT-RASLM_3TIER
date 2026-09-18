@@ -12,12 +12,14 @@ import { ChatWidgetSettingsController } from "./controllers/chatWidgetSettingsCo
 import { NormalizationRulesController } from "./controllers/normalizationRulesController";
 import { ActivityLogController } from "./controllers/activityLogController";
 import { logActivity } from "./services/activityLogService";
+import { getPerformanceReport, startPerformanceSampler } from "./services/performanceTelemetry";
 import emailRoutes from "./routes/emailRoutes";
 import adminMigrationRoutes from "./routes/admin-migration.js";
 import jwt from "jsonwebtoken";
 import multer from "multer";
 import sharp from "sharp";
 import * as dbImages from "./db/images.js";
+import { query as databaseQuery } from "./db.js";
 
 // Configure multer for memory storage (to save to PostgreSQL)
 const storage = multer.memoryStorage();
@@ -32,6 +34,23 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  startPerformanceSampler();
+
+  app.get("/api/health", async (_req, res) => {
+    const rasaBaseUrl = (process.env.RASA_BASE_URL || "http://127.0.0.1:5005").replace(/\/$/, "");
+    const [database, rasa] = await Promise.allSettled([
+      databaseQuery("SELECT 1 FROM conversation_logs LIMIT 1"),
+      fetch(`${rasaBaseUrl}/status`, { signal: AbortSignal.timeout(3000) }).then((response) => {
+        if (!response.ok) throw new Error("Rasa unavailable");
+      }),
+    ]);
+    const ready = database.status === "fulfilled" && rasa.status === "fulfilled";
+    return res.status(ready ? 200 : 503).json({
+      status: ready ? "ready" : "degraded",
+      database: database.status === "fulfilled" ? "ready" : "unavailable",
+      rasa: rasa.status === "fulfilled" ? "ready" : "unavailable",
+    });
+  });
 
   const requireAdmin = (req: Request, res: Response, next: NextFunction) => {
     const expectedKey = process.env.ADMIN_KEY;
@@ -278,6 +297,9 @@ export async function registerRoutes(
 
   // REPORTS (ADMIN)
   app.get("/api/admin/reports", requireAuth, ReportController.list);
+  app.get("/api/admin/performance", requireAuth, async (_req, res) => {
+    res.json({ success: true, data: await getPerformanceReport() });
+  });
 
   // BOT TOPICS (ADMIN)
   app.get("/api/admin/bot-topics", requireAuth, AdminBotTopicsController.getTopics);

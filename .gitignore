@@ -26,3 +26,4 @@ tool/__pycache__/
 
 .env
 client/.env
+reports/performance/

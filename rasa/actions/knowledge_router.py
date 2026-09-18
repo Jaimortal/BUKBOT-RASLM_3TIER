@@ -38,7 +38,7 @@ class KnowledgeRouter:
         (["bs es", "bses", "environmental science", "environmental conservation", "environmental heritage", "ecology degree"], "buksu_BS_ES", "buksu_BS-ES_program"),
         (["ab socio", "ba socio", "ab sociology", "ba sociology", "sociology"], "buksu_AB_SOCIO", "buksu_AB-SOCIO_program"),
         (["ab eng", "ba eng", "ab english", "ba english", "english language", "english literature"], "buksu_AB_ENG", "buksu_AB-ENG_program"),
-        (["bped", "physical education", "sports coaches", "sports teachers"], "buksu_BPED", "buksu_BPED_program"),
+        (["bped", "bachelor of physical education", "bachelor in physical education", "physical education coaches", "sports coaches", "sports teachers"], "buksu_BPED", "buksu_BPED_program"),
         (["bs comdev", "bscomdev", "comdev", "community development", "community organizing"], "buksu_BS_COMDEV", "buksu_BS COMDEV_program"),
         (["ab econ", "ba econ", "ab economics", "ba economics", "economics", "market analysis degree"], "buksu_AB_ECON", "buksu_AB-ECON_program"),
         (["beced", "early childhood education"], "buksu_BECED", "buksu_BECED_program"),
@@ -206,13 +206,18 @@ class KnowledgeRouter:
         if self.data_loader.is_intent_in_domain(raw_intent, active_domain):
             return raw_intent
 
-        # Specific cross-domain bridges (e.g., student service procedures relevant to services domain)
-        service_procedure_intents = {
+        # Universal cross-domain bridges (e.g., student-wide campus entry, uniform, health services)
+        universal_policy_intents = {
+            "campus_dress_code_policy",
+            "wear_civilian_attire",
+            "pe_uniform_process",
+            "pe_uniform_old_allowed",
+            "campus_entry_without_student_id",
             "clinic_medical_certificate_process",
             "clinic_medical_certificate_cost",
             "clinic_medical_certificate_duration",
         }
-        if active_domain == "services" and raw_intent in service_procedure_intents:
+        if raw_intent in universal_policy_intents:
             return raw_intent
 
         # Reject out-of-domain match to prevent cross-domain leak
@@ -265,7 +270,10 @@ class KnowledgeRouter:
             bool(re.search(r"\bIT\b", raw_text))
         )
         has_nursing_course = self._has_any(text, ["nursing", "bsn", "bs-n", "bs n", "nurse", "nurses"])
-        has_education_course = self._has_any(text, ["education", "beed", "bsed", "beced", "bped", "teacher education", "educ"])
+        has_education_course = (
+            self._has_any(text, ["education", "beed", "bsed", "beced", "bped", "teacher education", "educ"]) and
+            not self._has_any(text, ["pe uniform", "physical education uniform", "uniform", "uniporme", "attire", "dress code", "jogging", "sando", "shorts", "tsinelas"])
+        )
         has_other_course = (
             self._has_any(text, [
                 "emc", "bsemc", "bs-emc", "bs emc", "digital animation", "multimedia",
@@ -351,7 +359,11 @@ class KnowledgeRouter:
         ]) and not has_any_course_target and not self._has_any(text, ["score", "cutoff", "cut-off", "cut off", "passing", "rating", "percentage", "qualify", "qualification"]):
             return "buksu_cat_definition"
 
-        if (
+        is_attire_entry_query = self._has_any(text, [
+            "uniform", "uniporme", "pe uniform", "civilian", "dress code", "attire",
+            "sando", "shorts", "tsinelas", "slippers", "jogging", "jogging pants"
+        ])
+        if not is_attire_entry_query and (
             (is_cat_term and is_score_or_cutoff_or_req and has_any_course_target) or
             (self._has_any(text, ["score", "scores", "cutoff", "cut-off", "cut off", "passing", "makasulod", "makapasar", "rate", "rating"]) and has_any_course_target) or
             (self._has_any(text, ["pila ang cat", "unsa ang cat", "pila ang score", "unsa ang score", "pila ang passing", "unsa ang passing", "pila score", "unsa score", "pila cutoff", "unsa cutoff"]) and has_any_course_target) or
@@ -622,6 +634,28 @@ class KnowledgeRouter:
                 return "latin_honors_graduation_requirements"
             return "latin_honors_average_gpa"
 
+        # 16j2. Honor List / Dean's List Release Schedule
+        is_honor_query = (
+            self._has_any(text, [
+                "honor list", "honors list", "list of honor", "list of honors",
+                "list sa honor", "list sa honors", "honor's list", "honors", "honor",
+                "deans list", "dean's list", "dean honor list", "dean lister", "deans lister",
+                "departmental honors", "university honors", "academic honors", "college honors"
+            ]) or
+            bool(re.search(r"\b(dl|dean list|deans list)\b", text))
+        )
+        is_release_query = self._has_any(text, [
+            "release", "released", "releasing", "when", "when man", "kanus-a", "kanus a", "kanusa", "kanosa",
+            "gawas", "mugawas", "mo gawas", "display", "ma display", "ma-display", "post", "posted", "posting",
+            "ma post", "ma-post", "ipost", "i-post", "schedule", "date", "petsa", "adlaw", "come out", "out",
+            "announcement", "announce", "announced", "ipagawas", "i-release"
+        ])
+        if is_honor_query and is_release_query and not self._has_any(text, [
+            "how to qualify", "qualify", "requirements", "requirement", "gwa", "grade", "grades",
+            "what is the gwa", "unsa ang gwa", "latin honor", "cum laude", "magna", "summa"
+        ]):
+            return "honor_list_release_schedule"
+
         # 16k. Good Moral Certificate
         if self._has_any(text, ["good moral", "good moral certificate", "certificate of good moral", "good moral cert"]):
             if self._has_any(text, ["fee", "payment", "bayad", "pila ang bayad"]):
@@ -683,6 +717,71 @@ class KnowledgeRouter:
 
         # 16q. Dress Code Slippers
         if self._has_any(text, ["tsinelas", "slippers", "flip-flops", "flip flops"]):
+            return "campus_dress_code_policy"
+
+        # 16q2. PE Uniform Buying / Process / Cost vs Old PE Uniform
+        if (
+            self._has_any(text, ["pe uniform", "pe attire", "physical education uniform"]) and
+            self._has_any(text, [
+                "how to get", "where to get", "where to buy", "buy", "palit", "makapalit", "asa makapalit",
+                "asa makuha", "unsaon pagkuha", "request", "payment", "bayad", "price", "pila", "how much", "cost", "university press"
+            ])
+        ):
+            return "pe_uniform_process"
+
+        if (
+            self._has_any(text, [
+                "old pe uniform", "old pe", "daan nga pe", "daan na pe", "previous pe",
+                "pwede ba daan nga pe", "pwede ba daan na pe", "gamit og daan nga pe", "gamiton daan nga pe",
+                "can i wear old pe uniform", "is old pe uniform accepted", "pwede ba mag jogging pants sa pe",
+                "mag jogging pants sa pe", "jogging pants sa pe", "jogging pants during pe", "jogging pants for pe",
+                "white shirt for pe", "white shirt sa pe"
+            ]) or (
+                (self._has_any(text, ["pe uniform", "physical education uniform"]) or (self._has_any_token(text, ["pe"]) and self._has_any(text, ["jogging", "jogging pants", "white shirt", "daan", "old"]))) and
+                self._has_any(text, [
+                    "old", "daan", "previous", "jogging pants", "jogging", "plain white", "white shirt",
+                    "wala pay pe", "walay pe", "no pe uniform", "dont have pe uniform", "don't have pe uniform",
+                    "wala pa koy pe", "pwede ba mag jogging", "allowed to wear jogging", "pwede ba mag jogging pants"
+                ])
+            )
+        ):
+            return "pe_uniform_old_allowed"
+
+        # 16q3. Campus Entry with/without Uniform or PE / Wash Day / Civilian Attire
+        is_campus_entry_uniform_query = (
+            (
+                self._has_any(text, [
+                    "maka sulod", "makasulod", "sulod sa campus", "enter campus", "entry to campus",
+                    "admit to campus", "enter inside the campus", "makasulod sa eskwelahan",
+                    "masulod sa campus", "makasulod sa buksu", "allowed to enter", "permitted to enter"
+                ]) and
+                self._has_any(text, [
+                    "uniform", "uniporme", "no uniform", "without uniform", "dili mag uniform",
+                    "walay uniform", "dili mag-uniform", "pe", "pe uniform", "civilian", "civilian attire",
+                    "t-shirt", "pants", "shorts", "sando", "slippers", "tsinelas"
+                ])
+            ) or
+            self._has_any(text, [
+                "maka sulod pakaha sa campus bisan dili mag uniform or pe",
+                "makasulod ba sa campus bisan walay uniform o pe",
+                "pwede ba makasulod sa campus nga walay uniform o pe uniform",
+                "can i enter campus without uniform or pe",
+                "can i enter campus without uniform",
+                "can i enter campus without pe uniform",
+                "can students enter campus wearing civilian",
+                "pwede ba mag civilian sa buksu",
+                "wash day policy",
+                "when is uniform mandatory",
+                "unsa nga adlaw kinahanglan mag uniform",
+                "unsa nga mga adlaw bawal mag civilian",
+                "unsa adlaw pwede mag civilian",
+                "kutob kanus-a pwede mag civilian",
+                "until when can students wear civilian",
+                "pwede pa ba mag civilian",
+                "allowed paba mag civilian"
+            ])
+        )
+        if is_campus_entry_uniform_query and not self._has_any(text, ["buy", "palit", "pila ang pe", "how much is pe", "where to get pe", "asa paliton ang pe"]):
             return "campus_dress_code_policy"
 
         # 16r. COR Validation
@@ -2711,6 +2810,28 @@ class KnowledgeRouter:
         has_deans_list = self._has_any(text, ["deans list", "dean's list", "dean honor list", "dean lister", "deans lister"])
         has_college_honors = self._has_any(text, ["college honors", "college honor", "college honor grades", "college honors grades"])
         has_university_scholar = self._has_any(text, ["university scholar"])
+        has_honor_list_schedule = (
+            (
+                has_deans_list or
+                has_college_honors or
+                has_university_scholar or
+                self._has_any(text, [
+                    "honor list", "honors list", "list of honor", "list of honors",
+                    "list sa honor", "list sa honors", "honor's list", "honors", "honor"
+                ]) or
+                bool(re.search(r"\b(dl|dean list|deans list)\b", text))
+            ) and
+            self._has_any(text, [
+                "release", "released", "releasing", "when", "when man", "kanus-a", "kanus a", "kanusa", "kanosa",
+                "gawas", "mugawas", "mo gawas", "display", "ma display", "ma-display", "post", "posted", "posting",
+                "ma post", "ma-post", "ipost", "i-post", "schedule", "date", "petsa", "adlaw", "come out", "out",
+                "announcement", "announce", "announced", "ipagawas", "i-release"
+            ]) and
+            not self._has_any(text, [
+                "how to qualify", "qualify", "requirements", "requirement", "gwa", "grade", "grades",
+                "what is the gwa", "unsa ang gwa", "latin honor", "cum laude", "magna", "summa"
+            ])
+        )
         has_graduation = self._has_any(text, ["graduation", "graduating", "graduate clearance", "grad application", "grad clearance"])
         has_withdraw_enrollment = self._has_any(text, ["withdraw enrollment", "withdraw my enrollment", "voluntary withdrawal", "cancel enrollment", "drop enrollment", "withdrawal form", "enrollment withdrawal"])
         has_tor = self._has_any_token(text, ["tor"]) or self._has_any(text, ["transcript of records", "transcript"])
@@ -3912,12 +4033,17 @@ class KnowledgeRouter:
         if has_grading_computation:
             return "buksu_grading_system"
 
-        has_latin_honors = self._has_any(text, [
-            "latin honors", "latin honor", "summa cum laude", "magna cum laude",
-            "cum laude", "graduate with honors", "honor graduate", "latin honors average",
-            "minimum gpa for latin honors", "gpa for latin honors", "latin honors requirements",
-            "honors", "naay honors", "cum laude honors"
-        ])
+        has_latin_honors = (
+            self._has_any(text, [
+                "latin honors", "latin honor", "summa cum laude", "magna cum laude",
+                "cum laude", "graduate with honors", "honor graduate", "latin honors average",
+                "minimum gpa for latin honors", "gpa for latin honors", "latin honors requirements",
+                "naay honors", "cum laude honors"
+            ]) or (
+                self._has_any(text, ["honors", "honor"]) and
+                not (has_college_honors or has_deans_list or has_university_scholar or has_honor_list_schedule)
+            )
+        ) and not (has_college_honors or has_deans_list or has_university_scholar or has_honor_list_schedule)
         if has_latin_honors:
             if self._has_any(text, ["gpa", "average", "grade", "cutoff", "pila ang gpa", "pila ka gwa", "gwa", "minimum grade"]):
                 return "latin_honors_average_gpa"
@@ -4261,6 +4387,8 @@ class KnowledgeRouter:
             return "overload_units_policy"
         if has_subject_overload:
             return "subject_overload"
+        if has_honor_list_schedule:
+            return "honor_list_release_schedule"
         if has_college_honors:
             return "College_Honors_gpa"
         if has_university_scholar:
@@ -4667,6 +4795,8 @@ class KnowledgeRouter:
                 return "freshman_admission_requirements"
             if has_cat or has_admission:
                 return "exam_requirements" if (has_exam_day_requirement_wording or self._has_any(text, ["bring", "dad-on", "dad on", "dalhon", "dala", "dal-on", "adlaw"])) else "freshman_admission_requirements"
+        if has_honor_list_schedule:
+            return "honor_list_release_schedule"
         if has_college_honors:
             return "College_Honors_gpa"
         if has_college and intent != "ask_location":
@@ -4694,6 +4824,8 @@ class KnowledgeRouter:
                 return "exam_results"
             return "buksu_cat_definition"
         if intent in {"ask_general_info", "ask_requirement"}:
+            if has_honor_list_schedule:
+                return "honor_list_release_schedule"
             if has_deans_list:
                 return "deans_list"
             if has_college_honors:
@@ -5969,7 +6101,13 @@ class KnowledgeRouter:
             return "about_nstp"
         if self._has_any(text, ["rotc"]) and not is_loc_query:
             return "rotc_meaning"
-        if (self._has_any_token(text, ["pe"]) or self._has_any(text, ["physical education"])) and not is_loc_query:
+        is_attire_or_uniform_query = self._has_any(text, [
+            "uniform", "uniforms", "uniporme", "attire", "dress code", "civilian", "clothing",
+            "pants", "t-shirt", "shirt", "jogging", "jogging pants", "white shirt", "shoes", "slippers",
+            "tsinelas", "old", "daan", "buy", "palit", "maka sulod", "makasulod", "sulod sa campus",
+            "enter campus", "entry", "wear", "wearing", "isuot", "sul-ob", "wash day"
+        ])
+        if (self._has_any_token(text, ["pe"]) or self._has_any(text, ["physical education"])) and not is_loc_query and not is_attire_or_uniform_query:
             return "about_pe"
         return None
 
