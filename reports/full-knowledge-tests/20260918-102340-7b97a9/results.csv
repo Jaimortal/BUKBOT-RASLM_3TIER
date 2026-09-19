@@ -1,0 +1,51 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+G03-CEB-01:open,GAP_REVIEW,,open,ceb,Unsay buhaton kung kaduha nakuhaan sa enrollment payment?,,,"Ang Step 4 mao ang Validation of Enrollment gikan July 1 hangtod August 31, 2026.
+
+Para sa on-site payment: i-print ang imong Certificate of Registration (COR), dayon adto sa Accounting Office, Windows 3 to 5, para sa account verification. Applicable kini sa paying ug non-paying students.
+
+Para sa paying students, pagbayad sa Cashier's Office Window 10.
+
+Human sa account verification o payment, adto sa University Registrar's Office para sa enrollment validation. Applicable kini sa paying ug non-paying students.
+
+Para sa online payment: access imong COR sa https://admissions.buksu.edu.ph aron makita ang required down payment para sa official enrollment.
+
+Adto sa https://www.lbp-eservices.com/egps/portal/index.jsp, i-click ang Pay Now, pangitaa ug pili-a ang Merchant Name: Bukidnon State University, dayon click Continue.
+
+Pili-a ang transaction type nga Tuition and Other School Fees, dayon click Continue. Pun-a ang transaction details, pili-a ang preferred payment mode, input captcha, agree sa Terms and Conditions, ug i-submit ang payment details apil ang OTP ug ATM PIN kung required.
+
+Makita nimo ang enrollment status sa SIAS Online 10 working days after payment.",3542.29,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-02:open,GAP_REVIEW,,open,ceb,Unsaon pagpailis sa nawala nga official payment receipt?,,,Do you mean Student ID Process or Take Exam?,28847.25,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-03:open,GAP_REVIEW,,open,ceb,Igo na bang screenshot isip pamatuod sa school payment?,,,Do you mean About BukSU or BukSU Official Website?,25682.98,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-04:open,GAP_REVIEW,,open,ceb,Unsay proseso sa refund kung nadoble ang school payment?,,,Do you mean About BukSU or BukSU Official Website?,49265.28,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-05:open,GAP_REVIEW,,open,ceb,Pwede ba ginikanan ang mobayad sa assessed school fees para sa estudyante?,,,Do you mean About BukSU or BukSU Official Website?,27893.39,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-06:open,GAP_REVIEW,,open,ceb,Unsay buhaton kung sayop ang student number nga na-type sa online payment?,,,"Ang BukSU naggamit og numerical grading system diin ang 1.0 ang pinakataas ug 3.0 ang passing mark.
+
+Ang grado nga 5.0 nagpasabot nga wala kapasar samtang ang INC nagpasabot nga kulang ang requirements sa subject.",28156.18,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-07:open,GAP_REVIEW,,open,ceb,Unsaon pag-request og correction sa ngalan sa payment receipt?,,,Do you mean Lost Student ID Replacement Process or Take Exam?,29401.85,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-08:open,GAP_REVIEW,,open,ceb,Kinsay mo-check sa successful bank payment nga unpaid gihapon sa school system?,,,Do you mean About BukSU or BukSU Official Website?,52908.04,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-09:open,GAP_REVIEW,,open,ceb,Naa bay installment para sa fees nga dili covered sa free tuition?,,,Ubos sa balaod nga Universal Access to Quality Tertiary Education Act libre ang tuition ug miscellaneous fees para sa mga kwalipikadong Filipino nga estudyante sa undergraduate programs sa BukSU.,2787.55,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-CEB-10:open,GAP_REVIEW,,open,ceb,Unsaon pagpahibalo sa estudyante kung na-reconcile na ang online payment?,,,Do you mean Student Fees or Transferee Enrollment?,29556.94,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-02:open,GAP_REVIEW,,open,en,How can a lost official payment receipt be replaced?,,,Do you mean Exam Fees or Library ID Card Replacement?,24882.74,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-01:open,GAP_REVIEW,,open,en,What should students do if an enrollment payment was deducted twice?,,,"Step 4 is Validation of Enrollment from July 1 to August 31, 2026.
+
+For on-site payment: print your Certificate of Registration (COR), then proceed to the Accounting Office, Windows 3 to 5, for account verification. This applies to both paying and non-paying students.
+
+For paying students, pay at the Cashier's Office Window 10.
+
+After account verification or payment, proceed to the University Registrar's Office for enrollment validation. This applies to both paying and non-paying students.
+
+For online payment: access your COR through https://admissions.buksu.edu.ph to determine the required down payment for official enrollment.
+
+Go to https://www.lbp-eservices.com/egps/portal/index.jsp, click Pay Now, search and select Merchant Name: Bukidnon State University, then click Continue.
+
+Select the transaction type Tuition and Other School Fees, then click Continue. Fill out the transaction details, choose your preferred payment mode, input the captcha, agree to the Terms and Conditions, and submit the payment details including OTP and ATM PIN if required.
+
+You can view your enrollment status through SIAS Online 10 working days after payment.",25899.36,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-03:open,GAP_REVIEW,,open,en,Is a screenshot enough proof of a successful school payment?,,,Do you mean About BukSU or BukSU Official Website?,24486.15,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-04:open,GAP_REVIEW,,open,en,What is the refund process after an accidental duplicate school payment?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",49552.22,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-06:open,GAP_REVIEW,,open,en,What should I do if I typed the wrong student number when paying online?,,,Do you mean Paying Student Definition or Freshman Enrollment Requirements?,24153.74,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-05:open,GAP_REVIEW,,open,en,Can a parent pay assessed school fees on a student's behalf?,,,Do you mean About BukSU or BukSU Official Website?,45618.12,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-07:open,GAP_REVIEW,,open,en,How can students request a correction to the name on a payment receipt?,,,Do you mean Student Fees or Exam Fees?,26571.98,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-08:open,GAP_REVIEW,,open,en,Who checks a successful bank payment that the school system still marks unpaid?,,,Do you mean About BukSU or BukSU Official Website?,49205.87,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-10:open,GAP_REVIEW,,open,en,How are students notified when an online payment has been reconciled?,,,Do you mean Student Fees or Exam Fees?,25654.48,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G03-EN-09:open,GAP_REVIEW,,open,en,Are installment arrangements available for fees that are not covered by free tuition?,,,Under the Universal Access to Quality Tertiary Education Act tuition and miscellaneous fees are free for qualified Filipino students in undergraduate programs at BukSU.,26434.8,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",

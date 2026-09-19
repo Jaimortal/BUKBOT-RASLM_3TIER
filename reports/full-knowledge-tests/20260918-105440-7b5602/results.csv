@@ -1,0 +1,73 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+G08-CEB-01:open,GAP_REVIEW,,open,ceb,Unsa ka sayo ang pag-request og extra time para sa entrance examination?,,,"Unsaon nako pagkuha sa BukSU College Admission Test?
+
+Sunod kining mga lakang aron mag-apply sa BukSU College Admission Test:
+
+Step 1: Bisitaha ang http://admissions.buksu.edu.ph. Mag-register gamit ang imong active nga Gmail account. Himoa ang imong password ug i-type pag-usab para sa verification.
+
+Step 2: Human makahimo og account, usa ka email nga adunay confirmation link ipadala sa imong Gmail. Tan-awa ang imong inbox ug i-klik ang link aron ma-activate ang imong account.
+
+Step 3: Pun-a ang tanan nga kinahanglan nga impormasyon ug i-upload ang mga documentary requirements.
+
+Step 4: Pilia ang imong preferred schedule (venue, petsa, ug oras) base sa available nga slots.
+
+Step 5: Makadawat ka og notifications kung gi-accept ang imong aplikasyon. Kung ma-accept, i-download ug i-print ang imong Test Permit.",3012.61,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-02:open,GAP_REVIEW,,open,ceb,Naa bay sign-language interpreter para sa freshman orientation?,,,"Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.
+
+Sa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa.",3693.98,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-03:open,GAP_REVIEW,,open,ceb,Pwede mangayo ang estudyante og large-print exam papers?,,,Do you mean Exam Requirements or Second Courser Requirements?,27454.57,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-04:open,GAP_REVIEW,,open,ceb,Unsay dokumento para makarequest og accessible classroom assignment?,,,"Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:
+
+**1**. Ablihi ang specific nga subject nga naay pending nga assignment.
+
+**2**. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.
+
+**3**. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.
+
+**4**. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission.",28289.15,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-06:open,GAP_REVIEW,,open,ceb,Naa bay proseso sa pag-request og rest breaks panahon sa taas nga exam?,,,Do you mean Library Available Books or Cafeteria Availability?,24603.25,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-05:open,GAP_REVIEW,,open,ceb,Pwede mangayo og digital handouts nga magamit sa screen reader?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",48235.21,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-07:open,GAP_REVIEW,,open,ceb,Naghatag ba ang unibersidad og assistive listening equipment sa lectures?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",26233.23,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-08:open,GAP_REVIEW,,open,ceb,Pwede mouban ang support person sa aplikante nga nagkinahanglan og tabang sa registration?,,,Do you mean CON Nursing Medical Requirements Guidance or Freshman Enrollment Requirements?,54519.38,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-09:open,GAP_REVIEW,,open,ceb,Unsaon pag-request og temporary classroom adjustment human ma-injure?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",3049.95,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-CEB-10:open,GAP_REVIEW,,open,ceb,Naa bay standard nga oras sa pagresponde sa accessibility accommodation requests?,,,"Oo ang BukSU naghatag og importansya sa inclusivity ug naghatag og tabang para sa mga estudyante nga adunay disability.
+
+Ang mga PWD nga aplikante o estudyante mahimong makig coordinate sa Office of Student Services para sa tabang ug espesyal nga accommodation sa exam o klase.",26717.97,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-02:open,GAP_REVIEW,,open,en,Is a sign-language interpreter available for freshman orientation?,,,"The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.
+
+During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program.",2850.24,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-01:open,GAP_REVIEW,,open,en,How early should an applicant request extra time for an entrance examination?,,,"How can I take the BukSU College Admission Test?
+
+Follow these steps to apply for the BukSU College Admission Test:
+
+Step 1: Access http://admissions.buksu.edu.ph. Register using your active Gmail account. Create your password and re-type it for verification.
+
+Step 2: After creating an account, an email containing a confirmation link will be sent to your Gmail. Check your inbox and click the link to activate your account.
+
+Step 3: Fill out all the necessary information and upload the documentary requirements.
+
+Step 4: Select your preferred schedule (venue, date, and time) based on the availability of slots.
+
+Step 5: You will get notifications when your application is accepted. Once accepted, download and print your Test Permit.",3970.47,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-04:open,GAP_REVIEW,,open,en,What documents are needed to request an accessible classroom assignment?,,,"Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:
+
+**1**. Open the specific subject with the pending assignment.
+
+**2**. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'
+
+**3**. Select the assignment, attach your file, and click 'Turn in.
+
+**4**. Once the status changes to 'Turned in,' your submission is complete.",3063.91,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-03:open,GAP_REVIEW,,open,en,Can students request large-print examination papers?,,,Do you mean Freshman Admission Requirements or CON Nursing Medical Requirements Guidance?,28729.96,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-05:open,GAP_REVIEW,,open,en,Can a student request digital handouts compatible with a screen reader?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",25971.19,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-06:open,GAP_REVIEW,,open,en,Is there a process for requesting rest breaks during a long exam?,,,"Continuing students must log in to the admissions portal.
+
+Click proceed to account migration using the student number.
+
+Fill in the required information verify the details and submit the application for evaluation.",47610.79,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-07:open,GAP_REVIEW,,open,en,Does the university provide assistive listening equipment in lectures?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",25159.05,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-08:open,GAP_REVIEW,,open,en,Can a support person accompany an applicant who needs assistance during registration?,,,Do you mean Services Offered By Guidance or Accessibility?,53737.87,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-10:open,GAP_REVIEW,,open,en,Is there a standard response time for accessibility accommodation requests?,,,"Yes BukSU supports inclusivity and provides assistance for students with disabilities.
+
+PWD applicants and students may coordinate with the Office of Student Services for assistance and reasonable accommodations during exams and classes.",23671.6,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G08-EN-09:open,GAP_REVIEW,,open,en,How can students request a temporary classroom adjustment after an injury?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",24715.45,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",

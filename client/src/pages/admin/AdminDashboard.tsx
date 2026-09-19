@@ -72,6 +72,7 @@ import { AdminGallery } from "@/components/admin/AdminGallery";
 import { AdminReports } from "@/components/admin/AdminReports";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
 import { AdminActivityLogs } from "@/components/admin/AdminActivityLogs";
+import { AdminFaqGapReport } from "@/components/admin/AdminFaqGapReport";
 import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
 export default function AdminDashboard() {
@@ -789,7 +790,10 @@ export default function AdminDashboard() {
             <div className="space-y-6">
               <AdminReports />
               {(isMainAdmin || user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com') && (
-                <AdminActivityLogs />
+                <>
+                  <AdminFaqGapReport />
+                  <AdminActivityLogs />
+                </>
               )}
             </div>
           )}

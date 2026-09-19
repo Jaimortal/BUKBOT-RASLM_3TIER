@@ -255,6 +255,8 @@ class MainRouterService:
             "closing", "slots", "slot", "puno", "requirements", "documents",
             "papeles", "reschedule", "missed", "walk in", "walkin", "test permit",
             "error", "mobile", "phone", "cellphone", "calculator", "fee", "bayad",
+            "schedule", "date", "when", "kanus-a", "kanus a", "kanusa", "unsang adlawa", "see",
+            "makuha", "tan-awon", "view", "check", "examination date", "exam date", "test date",
         ])
         return has_admission_context and has_admission_action
 

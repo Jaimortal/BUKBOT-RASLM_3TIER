@@ -1,0 +1,141 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+G10-CEB-01:open,GAP_REVIEW,,open,ceb,Unsay dad-on sa incoming dorm resident sa adlaw sa pagbalhin?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",3083.44,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-02:open,GAP_REVIEW,,open,ceb,Naay gihatag nga bedding ug unlan sa university dormitories?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",3788.79,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-04:open,GAP_REVIEW,,open,ceb,Naa bay refundable deposit sa dili pa mopuyo sa campus dorm?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",2837.11,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-03:open,GAP_REVIEW,,open,ceb,Pwede ba mopili og roommate ang dorm resident?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",3524.92,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-06:open,GAP_REVIEW,,open,ceb,Pwede ba maulahi og balik ang first-year dorm resident tungod sa approved class activity?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",2808.75,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-05:open,GAP_REVIEW,,open,ceb,Pwede ba ang electric kettle sulod sa dorm room?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",3345.82,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-07:open,GAP_REVIEW,,open,ceb,Unsaon pag-request og permiso nga dili matulog sa dorm sa usa ka gabii?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",2804.0,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-08:open,GAP_REVIEW,,open,ceb,Apil ba ang laundry service sa dormitory fee?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",3472.51,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-10:open,GAP_REVIEW,,open,ceb,Unsay mahitabo sa dorm reservation kung malangan ang enrollment approval?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",2745.33,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-CEB-09:open,GAP_REVIEW,,open,ceb,Pwede motabang ang ginikanan sa pagdala sa gamit sulod sa dorm sa move-in day?,,,"Naghatag ang BukSU og on-campus dormitory facilities para sa mga estudyante.
+
+Adunay separate dormitories alang sa lalaki ug babae.
+
+Ang dormitory policies hugot nga ginapatuman aron masiguro ang safety ug proper accommodation.
+
+Mas maayo nga mangutana sa dormitory office alang sa availability ug requirements.",3616.95,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-02:open,GAP_REVIEW,,open,en,Are bedding and pillows provided in university dormitories?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",2853.25,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-01:open,GAP_REVIEW,,open,en,What should an incoming dorm resident bring on move-in day?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",3612.46,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-03:open,GAP_REVIEW,,open,en,Can dorm residents choose their roommate?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",2757.37,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-04:open,GAP_REVIEW,,open,en,Is there a refundable deposit before moving into a campus dorm?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",3485.87,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-06:open,GAP_REVIEW,,open,en,Can first-year dorm residents return late because of an approved class activity?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",2677.15,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-05:open,GAP_REVIEW,,open,en,Are electric kettles allowed in dorm rooms?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",3447.43,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-08:open,GAP_REVIEW,,open,en,Is laundry service included in the dormitory fee?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",2859.26,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-07:open,GAP_REVIEW,,open,en,How does a resident request permission to stay away from the dorm overnight?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",3655.75,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-10:open,GAP_REVIEW,,open,en,What happens to a dorm reservation if enrollment approval is delayed?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",2876.38,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G10-EN-09:open,GAP_REVIEW,,open,en,Can parents help carry belongings into the dorm on move-in day?,,,"BukSU provides on-campus dormitory facilities for students.
+
+Separate dormitories are available for male and female students.
+
+Dormitory policies are strictly implemented to ensure safety and proper accommodation.
+
+I recommend contacting the dormitory office for availability and application requirements.",3654.55,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",

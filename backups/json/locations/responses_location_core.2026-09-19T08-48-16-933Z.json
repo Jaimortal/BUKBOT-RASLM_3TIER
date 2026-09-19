@@ -1432,9 +1432,7 @@
             632,
             554
           ],
-          "floor": "1F",
-          "pinImageUrl": "/api/images/65c3a71f-3c23-46ae-89a0-29fe9c831a54",
-          "pinImageAlt": "Auditorium"
+          "floor": "1F"
         },
         {
           "name": "You are here!",
@@ -1445,9 +1443,7 @@
           "floor": "1F"
         }
       ],
-      "imageUrls": [
-        "/api/images/c4c0f69b-97d3-46a4-aed6-d0695b331567"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Auditorium",
@@ -10319,9 +10315,7 @@
           "floor": "GF"
         }
       ],
-      "imageUrls": [
-        "/api/images/d97d0e05-612d-4a2f-a7d1-7d9eb88dbc26"
-      ],
+      "imageUrls": [],
       "routes": [
         {
           "name": "You are here! to Information Unit",

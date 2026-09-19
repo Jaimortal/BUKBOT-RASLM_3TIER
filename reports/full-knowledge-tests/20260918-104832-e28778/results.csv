@@ -1,0 +1,65 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+G07-CEB-01:open,GAP_REVIEW,,open,ceb,Unsang opisyal nga channel ang moannounce sa class suspension tungod sa panahon?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",25957.8,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-02:open,GAP_REVIEW,,open,ceb,Apil dayon ba ang university classes kung naay city class suspension?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",48415.38,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-03:open,GAP_REVIEW,,open,ceb,Apil ba og suspend ang online classes kung gikansela ang on-campus classes?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",2954.43,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-04:open,GAP_REVIEW,,open,ceb,Unsay buhaton sa commuters kung dili kaabot sa klase tungod sa baha?,,,"Kung makadawat ka og FDA, kinahanglan nimo dayon duolon ang imong instructor ug istoryahan ang imong sitwasyon.
+
+Pangutan-a sila kung unsa ang posible nimong mahimo bahin sa imong subject.
+
+Ang ubang instructor mahimong mohatag og tambag o guidance depende sa sitwasyon.",24890.3,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-06:open,GAP_REVIEW,,open,ceb,Ibalhin ba sa laing petsa ang unang adlaw sa klase kung makansela?,,,"Ang School year 2026 - 2027 magsugod sa **AUGUST 3, 2026**.
+
+Follow ang BukSU Registrar Facebook page & Official BukSU Facebook Page para sa dugang impormasyon:
+https://www.facebook.com/BSURegistrar
+https://www.facebook.com/officialbuksu",24722.84,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-05:open,GAP_REVIEW,,open,ceb,Unsaon pagbalhin sa exams kung kalit mosuspend og klase ang unibersidad?,,,"Oo, modawat ang BukSU og transferees depende sa available nga slots sa imong pilion nga kurso. Kinahanglan una ka mopasar sa BukSU Admission bago ka maka-enroll isip transferee.
+
+Human nimo makapasar sa admission, adto sa BukSU main campus ug diretso sa college department nga imong gustong enrollan.
+
+Ang transferees kinahanglan mo-submit og Honorable Dismissal ug Informative Copy sa ilang Transcript of Records para sa evaluation, maabot ang required GWA, ug mopasar sa admission interview o exam.
+
+Tungod kay ang matag department adunay kaugalingong mga patakaran para sa transferees, mas maayo nga mangutana diretso sa faculty o staff sa opisina para sa hustong giya ug tabang.",25789.22,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-08:open,GAP_REVIEW,,open,ceb,Kinahanglan gihapon mopasa og online work kung walay internet sa tibuok siyudad?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",3196.97,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-07:open,GAP_REVIEW,,open,ceb,Kinsay moannounce kung ipadayon ang laboratory session kung brownout?,,,Do you mean C-1-4-06 or C-1-2-01?,25790.82,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-09:open,GAP_REVIEW,,open,ceb,Unsaon pagkumpirma nga tinuod ang suspension notice sa group chat?,,,Do you mean Take Exam or Submit Assignments Online?,23246.75,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-CEB-10:open,GAP_REVIEW,,open,ceb,Abli ba ang mga opisina sa unibersidad kung klase ra ang gi-suspend?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",45690.99,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-01:open,GAP_REVIEW,,open,en,Which official channel announces weather-related class suspensions?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",25323.74,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-02:open,GAP_REVIEW,,open,en,Does a city class suspension automatically include university classes?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",48678.12,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-04:open,GAP_REVIEW,,open,en,What should commuters do if flooding prevents them from reaching class?,,,"Submit your excuse letter (signed by your parent or guardian) directly to all of your subject instructors for the specific classes you missed.
+
+If your absence is due to illness, you can also provide a medical certificate, which you can secure or have validated at the University Clinic (located near Freedom Park).
+
+Always present these documents immediately upon your return to class so your instructors can excuse your absence and allow any make-up activities or quizzes.",24898.59,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-03:open,GAP_REVIEW,,open,en,Are online classes also suspended when on-campus classes are cancelled?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",25728.61,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-05:open,GAP_REVIEW,,open,en,How are exams moved when the university suspends classes unexpectedly?,,,Do you mean About BukSU or Meaning of BukSU?,25252.75,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-06:open,GAP_REVIEW,,open,en,Will a cancelled first day of classes be moved to another date?,,,Do you mean School Year Class Start Schedule or BukSU Foundation Day?,47164.79,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-08:open,GAP_REVIEW,,open,en,Do students have to submit online work during a citywide internet outage?,,,"Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:
+
+**1**. Open the specific subject with the pending assignment.
+
+**2**. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'
+
+**3**. Select the assignment, attach your file, and click 'Turn in.
+
+**4**. Once the status changes to 'Turned in,' your submission is complete.",24931.53,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-07:open,GAP_REVIEW,,open,en,Who announces whether laboratory sessions continue during a power outage?,,,Do you mean C-1-4-06 or C-1-2-01?,48849.81,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-09:open,GAP_REVIEW,,open,en,How can students confirm that a suspension notice circulating in a group chat is real?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",26322.47,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G07-EN-10:open,GAP_REVIEW,,open,en,Are university offices open when only classes have been suspended?,,,"What are the office hours of Bukidnon State University?
+
+Bukidnon State University offices, including the Registrar’s Office and the Accounting Office, operate only from Monday to Friday.
+
+Office hours are 8:00 AM to 12:00 NN and 1:00 PM to 5:00 PM.
+
+They are closed on Saturdays and Sundays.
+
+Make sure to plan your visits during the official office hours.
+
+For urgent matters, you can check if services are available online or contact the offices directly.
+
+📱 Contact Number: 0975 758 3157
+
+✉️ Email: registrar@buksu.edu.ph
+
+🖥️ Facebook Page: https://www.facebook.com/BSURegistrar
+
+📞 BukSU Contact Number: 088-813-5661",26605.08,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",

@@ -1,0 +1,39 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+G09-CEB-01:open,GAP_REVIEW,,open,ceb,Naa bay drinking-water refill station nga libre gamiton sa estudyante?,,,Ang pagkaon sulod sa classroom depende sa rules sa instructor.,2477.46,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-02:open,GAP_REVIEW,,open,ceb,Pwede magdala og packed lunch sa lingkoranan sa cafeteria?,,,"Oo, naa ang BukSU og main Cafeteria nga nahimutang atubangan sa New CAS Building.
+
+Pwede moadto ang students didto during available hours para mopalit og pagkaon o mopahuway.",2769.21,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-03:open,GAP_REVIEW,,open,ceb,Modawat ba og cashless payment ang campus cafeteria?,,,"Adunay usa ka bag-ong cafeteria sa campus, kini nahimutang atubangan sa New Cas Building. Adunay gihatag nga mapa aron matabangan ka sa pag-navigate.",2340.24,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-04:open,GAP_REVIEW,,open,ceb,Naa bay vegetarian meals nga regular sa cafeteria?,,,"Oo, naa ang BukSU og main Cafeteria nga nahimutang atubangan sa New CAS Building.
+
+Pwede moadto ang students didto during available hours para mopalit og pagkaon o mopahuway.",2613.35,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-05:open,GAP_REVIEW,,open,ceb,Naa bay gipatik nga allergy information sa pagkaon sa cafeteria?,,,"Oo, naa ang BukSU og main Cafeteria nga nahimutang atubangan sa New CAS Building.
+
+Pwede moadto ang students didto during available hours para mopalit og pagkaon o mopahuway.",2325.85,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-06:open,GAP_REVIEW,,open,ceb,Pwede magrefill sa kaugalingong water bottle sulod sa campus buildings?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",3429.73,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-08:open,GAP_REVIEW,,open,ceb,Naa bay microwave nga magamit sa estudyante sa pag-init sa baon?,,,Do you mean Library Available Books or Library Facility Availability?,24859.44,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-07:open,GAP_REVIEW,,open,ceb,Required ba ang reusable utensils kung mopalit og pagkaon sa campus?,,,Ang pagkaon sulod sa classroom depende sa rules sa instructor.,25773.34,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-10:open,GAP_REVIEW,,open,ceb,Kinsay moasikaso sa reklamo bahin sa napalit sa cafeteria?,,,"Oo, naa ang BukSU og main Cafeteria nga nahimutang atubangan sa New CAS Building.
+
+Pwede moadto ang students didto during available hours para mopalit og pagkaon o mopahuway.",2309.91,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-CEB-09:open,GAP_REVIEW,,open,ceb,Pwede ba mamaligya og snacks sa classmates sulod sa campus?,,,Ang pagkaon sulod sa classroom depende sa rules sa instructor.,3004.1,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-01:open,GAP_REVIEW,,open,en,Are there drinking-water refill stations students can use for free?,,,Eating inside classrooms depends on the rules set by the instructor.,2417.27,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-02:open,GAP_REVIEW,,open,en,Can students bring packed lunches into the cafeteria seating area?,,,"Yes, BukSU has a main Cafeteria located in front of the New CAS Building.
+
+Students may go there during available hours to buy food or take a break.",2798.97,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-03:open,GAP_REVIEW,,open,en,Does the campus cafeteria accept cashless payments?,,,"Yes, BukSU has a main Cafeteria located in front of the New CAS Building.
+
+Students may go there during available hours to buy food or take a break.",2355.13,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-04:open,GAP_REVIEW,,open,en,Are vegetarian meals regularly available in the cafeteria?,,,"Yes, BukSU has a main Cafeteria located in front of the New CAS Building.
+
+Students may go there during available hours to buy food or take a break.",2630.33,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-05:open,GAP_REVIEW,,open,en,Is there a published allergy-information list for cafeteria food?,,,"Yes, BukSU has a main Cafeteria located in front of the New CAS Building.
+
+Students may go there during available hours to buy food or take a break.",2296.15,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-06:open,GAP_REVIEW,,open,en,Can students refill their own water bottles inside campus buildings?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",3338.54,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-07:open,GAP_REVIEW,,open,en,Are reusable utensils required when buying food on campus?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",2889.57,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-08:open,GAP_REVIEW,,open,en,Is there a microwave students can use to heat a packed meal?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",24522.99,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-10:open,GAP_REVIEW,,open,en,Who handles complaints about a cafeteria purchase?,,,"Yes, BukSU has a main Cafeteria located in front of the New CAS Building.
+
+Students may go there during available hours to buy food or take a break.",2304.57,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G09-EN-09:open,GAP_REVIEW,,open,en,Are students allowed to sell snacks to classmates on campus?,,,Eating inside classrooms depends on the rules set by the instructor.,3212.92,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",

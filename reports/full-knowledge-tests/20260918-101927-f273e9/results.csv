@@ -1,0 +1,89 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+G02-CEB-01:open,GAP_REVIEW,,open,ceb,Unsay buhaton kung invalid ang join code sa Google Classroom?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",4128.32,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-02:open,GAP_REVIEW,,open,ceb,Naa bay opisyal nga maximum file size sa online assignments?,,,"Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:
+
+**1**. Ablihi ang specific nga subject nga naay pending nga assignment.
+
+**2**. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.
+
+**3**. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.
+
+**4**. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission.",5053.9,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-04:open,GAP_REVIEW,,open,ceb,Unsay buhaton kung napakyas ang upload hapit na sa deadline?,,,Do you mean FDA Solution or Gate Pass Process?,24793.34,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-03:open,GAP_REVIEW,,open,ceb,PDF ba o Word ang ipasa nga assignment?,,,"Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:
+
+**1**. Ablihi ang specific nga subject nga naay pending nga assignment.
+
+**2**. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.
+
+**3**. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.
+
+**4**. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission.",25654.67,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-06:open,GAP_REVIEW,,open,ceb,Naa bay university rule sa naulahi nga buluhaton tungod sa brownout?,,,"Oo, kasagaran ang SBO sa imong espesipikong departamento nagdumala og campus tours aron matabangan ka nga mahibaloan ang importante nga mga building locations. Apan hinumdumi nga kini nagdepende sa imong college department.",25228.65,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-05:open,GAP_REVIEW,,open,ceb,Pwede ba ipasa pag-usab ang assignment human mapindot ang Turn in?,,,"Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:
+
+**1**. Ablihi ang specific nga subject nga naay pending nga assignment.
+
+**2**. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.
+
+**3**. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.
+
+**4**. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission.",26402.39,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-08:open,GAP_REVIEW,,open,ceb,Pwede ba motan-aw sa recorded lecture kung maabsent sa online meeting?,,,Do you mean Application Next Step or Change Preferred Course In Admission Application?,27314.45,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-07:open,GAP_REVIEW,,open,ceb,Required ba ang camera sa tanang online class?,,,Do you mean Attendance Requirement or Graduating Clearance Requirements?,49421.51,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-09:open,GAP_REVIEW,,open,ceb,Unsay proseso kung nasayop og attach sa laing klase ang file?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",2958.67,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-CEB-10:open,GAP_REVIEW,,open,ceb,Dawaton ba ang screenshots gikan sa phone isip assignment?,,,"Ang mga assignment pwede ipasa pinaagi sa email o sa mga platform sama sa Google Classroom, depende sa gusto sa inyong instructor. Para mopasa gamit ang Google Classroom:
+
+**1**. Ablihi ang specific nga subject nga naay pending nga assignment.
+
+**2**. Kung dili nimo makita, i-tap ang Menu (tulo ka linya) sa ibabaw nga wala ug pilia ang 'To-do'.
+
+**3**. Pilia ang assignment, i-attach ang imong file, ug i-click ang 'Turn in'.
+
+**4**. Kung mausab na ang status ngadto sa 'Turned in', kumpleto na ang imong submission.",3911.63,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-01:open,GAP_REVIEW,,open,en,What should students do when the Google Classroom join code is invalid?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",3967.14,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-02:open,GAP_REVIEW,,open,en,Is there an official maximum file size for online assignments?,,,"Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:
+
+**1**. Open the specific subject with the pending assignment.
+
+**2**. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'
+
+**3**. Select the assignment, attach your file, and click 'Turn in.
+
+**4**. Once the status changes to 'Turned in,' your submission is complete.",4978.8,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-04:open,GAP_REVIEW,,open,en,What should I do if an upload failed just before the submission deadline?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",27881.57,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-03:open,GAP_REVIEW,,open,en,Should assignments be submitted as PDF or Word files?,,,"Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:
+
+**1**. Open the specific subject with the pending assignment.
+
+**2**. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'
+
+**3**. Select the assignment, attach your file, and click 'Turn in.
+
+**4**. Once the status changes to 'Turned in,' your submission is complete.",29104.91,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-05:open,GAP_REVIEW,,open,en,Can an assignment be resubmitted after clicking Turn in?,,,"Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:
+
+**1**. Open the specific subject with the pending assignment.
+
+**2**. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'
+
+**3**. Select the assignment, attach your file, and click 'Turn in.
+
+**4**. Once the status changes to 'Turned in,' your submission is complete.",3209.39,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-06:open,GAP_REVIEW,,open,en,Is there a university rule for late work caused by a power outage?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",27015.94,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-08:open,GAP_REVIEW,,open,en,Can students watch recorded lectures if they miss an online meeting?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",28105.43,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-07:open,GAP_REVIEW,,open,en,Are cameras required for every online class?,,,Do you mean Attendance Requirement or Freshman Enrollment Requirements?,51215.25,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-10:open,GAP_REVIEW,,open,en,Are phone screenshots accepted as assignment submissions?,,,"Assignments may be submitted via email or through platforms like Google Classroom, depending on your instructor's preference. To submit via Google Classroom:
+
+**1**. Open the specific subject with the pending assignment.
+
+**2**. If you can't find it, tap the Menu (three lines) on the top left and select 'To-do.'
+
+**3**. Select the assignment, attach your file, and click 'Turn in.
+
+**4**. Once the status changes to 'Turned in,' your submission is complete.",3172.47,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G02-EN-09:open,GAP_REVIEW,,open,en,What is the process for correcting an attachment sent to the wrong class?,,,"Continuing students must log in to the admissions portal.
+
+Click proceed to account migration using the student number.
+
+Fill in the required information verify the details and submit the application for evaluation.",29885.17,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",

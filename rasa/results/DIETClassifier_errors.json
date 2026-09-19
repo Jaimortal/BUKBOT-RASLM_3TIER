@@ -1,0 +1,87 @@
+[
+  {
+    "text": "where is clinic",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 9,
+        "end": 15,
+        "confidence_entity": 0.8153783679008484,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "kanus-a ang enrollment",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 12,
+        "end": 22,
+        "confidence_entity": 0.6652949452400208,
+        "value": "enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how to apply for admission",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 17,
+        "end": 26,
+        "confidence_entity": 0.6709993481636047,
+        "value": "admission",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does buksu have masters",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 16,
+        "end": 23,
+        "confidence_entity": 0.5597653985023499,
+        "value": "masters",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does buksu have dormitory",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 25,
+        "confidence_entity": 0.6995033025741577,
+        "value": "dormitory",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

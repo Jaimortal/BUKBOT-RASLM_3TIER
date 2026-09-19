@@ -138,7 +138,6 @@
               "register for cat",
               "register for admission test",
               "apply for admission test",
-              "schedule buksu cat",
               "take buksu cat",
               "unsaon pag take sa cat",
               "unsaon pag apply sa cat",
@@ -160,6 +159,69 @@
             }
           ],
           "display_name": "Take Exam"
+        },
+        {
+          "topic": "admission_examination_date",
+          "responses": {
+            "en": [
+              "Your examination date will be displayed on your account **after your admission application is approved**, so make sure to review again your admission account and download all the needs to be downloaded, such as your Test Permit."
+            ],
+            "ceb": [
+              "Ang imong petsa sa eksaminasyon (examination date) makita sa imong account **human maaprobahan ang imong admission application**, busa siguroha nga susihon pag-usab ang imong admission account ug i-download ang tanang gikinahanglan sama sa imong Test Permit."
+            ]
+          },
+          "suggestions": [
+            {
+              "label": "Application Schedule",
+              "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}"
+            },
+            {
+              "label": "How to Apply (Take Exam)",
+              "payload": "/direct_intent{\"intent\":\"take_exam\"}"
+            },
+            {
+              "label": "Test Permit Guide",
+              "payload": "/direct_intent{\"intent\":\"after_admission_application\"}"
+            }
+          ],
+          "intent": "admission_examination_date",
+          "context_topic": "schedule",
+          "metadata": {
+            "phrases": [
+              "admission examination date",
+              "kanusa man akong buksu cat examination",
+              "When do my Admission testing examination happened?",
+              "admission examination date start",
+              "when is my buksu cat exam schedule",
+              "kanus-a ang akong exam date sa buksu cat",
+              "when is my admission test date",
+              "where can i see my examination date",
+              "how will i know my exam date",
+              "when will i take the buksu cat",
+              "unsang adlawa akong buksu cat exam",
+              "kanus a akong schedule sa exam",
+              "when is my entrance exam schedule",
+              "my cat examination date",
+              "my admission test schedule",
+              "kanus a nako makuha akong exam date",
+              "when will my exam date be posted",
+              "date of my admission examination",
+              "when is the actual examination day for buksu cat",
+              "when is the entrance examination date",
+              "kanus-a ang examination day sa buksu cat",
+              "kanus-a ko mag-exam sa buksu cat",
+              "when do i take my admission test",
+              "unsa nga adlaw akong admission test",
+              "when is the schedule of my cat exam",
+              "examination schedule in buksu cat",
+              "when will the cat examination take place",
+              "kanus a ang adlaw sa exam sa admission",
+              "how to know when is my exam date",
+              "when is my cat exam",
+              "kanus-a akong exam sa admission"
+            ]
+          },
+          "display_name": "Admission Examination Date"
         },
         {
           "topic": "after_admission_application",
@@ -1141,21 +1203,40 @@
           "topic": "online_application_schedule",
           "responses": {
             "en": [
-              "We cannot provide one fixed exact date for the BukSU admission and testing application because the schedule may change every academic year.",
+              "We cannot provide one fixed exact date for the BukSU admission application because the schedule may change every academic year.",
               "Usually, the admission application period starts around November and may continue until March.",
               "Please check the BukSU Admission and Testing Unit page for official announcements, especially for the exact admission application date: https://www.facebook.com/BukSUATU"
             ],
             "ceb": [
-              "Dili mi makahatag og usa ka pirmi nga eksaktong petsa sa BukSU admission and testing application kay mahimong mausab ang schedule matag academic year.",
+              "Dili kami makahatag og usa ka pirmi nga eksaktong petsa sa BukSU admission application kay mahimong mausab ang schedule matag academic year.",
               "Kasagaran, magsugod ang admission application period around November ug mahimong mopadayon hangtod March.",
               "Palihog tan-awa ang BukSU Admission and Testing Unit page para sa opisyal nga announcements, labi na sa eksaktong admission application date: https://www.facebook.com/BukSUATU"
             ]
           },
+          "suggestions": [
+            {
+              "label": "Examination Date Info",
+              "payload": "/direct_intent{\"intent\":\"admission_examination_date\"}"
+            },
+            {
+              "label": "How to Apply (Take Exam)",
+              "payload": "/direct_intent{\"intent\":\"take_exam\"}"
+            },
+            {
+              "label": "Application Deadline",
+              "payload": "/direct_intent{\"intent\":\"admission_application_deadline\"}"
+            }
+          ],
           "intent": "online_application_schedule",
           "context_topic": "schedule",
           "metadata": {
             "phrases": [
               "online application schedule",
+              "Can you tell me when is the admission testing happened?",
+              "when is the admission application happened",
+              "start date of Buksu cat application",
+              "kanusa man sugod ang cat application sa buksu",
+              "when is the application for the buksu cat exam happened?",
               "when is the admission application testing schedule",
               "admission application testing schedule",
               "admission testing application date",
@@ -1164,7 +1245,6 @@
               "asa nako makita ang schedule sa buksu cat online application",
               "kanus-a mag-open ang online application sa buksu cat para next school year",
               "pwede nimo isulti ang schedule sa online application sa buksu admission test",
-              "i finished my online application so what should i do after",
               "where can i find the buksu cat online application schedule",
               "when is the online application for buksu cat open for next school year",
               "can you tell me the online application schedule for buksu admission test",
@@ -1176,7 +1256,12 @@
               "when can i apply for admission test",
               "schedule for admission application",
               "when is online admission application open",
-              "kanus-a mag open ang buksu cat application"
+              "kanus-a mag open ang buksu cat application",
+              "when does buksu cat application start",
+              "start date of admission application",
+              "kanus-a magsugod ang application sa buksu cat",
+              "when do admission applications start",
+              "when will admission portal open"
             ]
           },
           "display_name": "Online Application Schedule"
@@ -3193,6 +3278,20 @@
           "Para sa updates ug pahibalo, bisitaha: https://www.facebook.com/BukSUATU"
         ]
       },
+      "suggestions": [
+        {
+          "label": "Examination Date Info",
+          "payload": "/direct_intent{\"intent\":\"admission_examination_date\"}"
+        },
+        {
+          "label": "How to Apply (Take Exam)",
+          "payload": "/direct_intent{\"intent\":\"take_exam\"}"
+        },
+        {
+          "label": "Application Deadline",
+          "payload": "/direct_intent{\"intent\":\"admission_application_deadline\"}"
+        }
+      ],
       "intent": "freshmen_application_period",
       "context_topic": "Admission schedule",
       "metadata": {

@@ -1,0 +1,71 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+G05-CEB-01:open,GAP_REVIEW,,open,ceb,Naa bay makeup session para sa freshman nga wala katunga sa orientation?,,,"Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.
+
+Sa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa.",25484.37,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-02:open,GAP_REVIEW,,open,ceb,Naay livestream sa freshman orientation para sa dili makabiyahe?,,,"Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.
+
+Sa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa.",26031.51,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-04:open,GAP_REVIEW,,open,ceb,Mangayo ba ang matag kolehiyo og proof nga niattend sa university orientation?,,,"Ang BukSU gilangkuban sa pipila ka mga kolehiyo lakip ang:
+
+- College of Arts and Sciences
+
+- College of Education
+
+- College of Business
+
+- College of Nursing
+
+- College of Technologies
+
+- College of Public Administration and Governance
+
+- College of Law",2869.72,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-03:open,GAP_REVIEW,,open,ceb,Pwede ba mouban ang guardian sa freshman orientation?,,,"Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.
+
+Sa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa.",3585.05,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-05:open,GAP_REVIEW,,open,ceb,Pwede mangayo ang estudyante og recording sa freshman orientation?,,,"Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.
+
+Sa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa.",2749.75,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-06:open,GAP_REVIEW,,open,ceb,Unsaon sa freshmen pagpangita sa official group chat sa ilang block?,,,Do you mean Student ID Process or Intent to Enroll Confirmation?,28603.09,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-08:open,GAP_REVIEW,,open,ceb,Unsay buhaton sa freshman kung magdungan ang duha ka required orientation?,,,"Ang Orientation Program gihimo aron ipaila sa mga bag-ong estudyante ang mission, vision, ug academic policies sa unibersidad. Ang pangunang tumong niini mao ang pagtabang kanimo nga maka-adjust sa campus life ug masabtan ang mga importanteng academic expectations sa Bukidnon State University.
+
+Sa maong session, makakat-on ka bahin sa mga importanteng patakaran sa unibersidad, sama sa Incomplete (INC) rules ug Failure Due to Absences (FDA) counts. Palihog hinumdumi nga importante kaayo ang pag-attend sa inyong Departmental Orientation, kay didto ihatag ang mga espesipikong giya para sa imong napiling programa.",24751.27,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-07:open,GAP_REVIEW,,open,ceb,Kinsay mokumpirma nga official ang group chat sa klase?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",45872.97,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-10:open,GAP_REVIEW,,open,ceb,Unsaon pagpahibalo sa freshmen kung mausab kalit ang venue sa orientation?,,,Do you mean Orientation or Student ID Process?,25744.74,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-CEB-09:open,GAP_REVIEW,,open,ceb,Naa bay accessible digital format sa orientation handouts?,,,Do you mean Orientation or Library Available Books?,49661.21,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-02:open,GAP_REVIEW,,open,en,Is the freshman orientation livestreamed for students who cannot travel?,,,"The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.
+
+During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program.",2862.08,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-01:open,GAP_REVIEW,,open,en,Is there a makeup session for freshmen who miss orientation?,,,"The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.
+
+During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program.",25127.48,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-04:open,GAP_REVIEW,,open,en,Does every college require proof of attending university orientation?,,,"BukSU is composed of several colleges including the:
+
+- College of Arts and Sciences
+
+- College of Education
+
+- College of Business
+
+- College of Nursing
+
+- College of Technologies
+
+- College of Public Administration and Governance
+
+- College of Law",2938.48,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-03:open,GAP_REVIEW,,open,en,Can a guardian attend freshman orientation with the student?,,,"The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.
+
+During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program.",3639.42,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-06:open,GAP_REVIEW,,open,en,How do freshmen find the official group chat for their block?,,,"Sorry, I don't have location information for that place yet. Please try a more specific building or office name. If the response is still not found, you can use the map located on the top of mic button.",2989.29,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-05:open,GAP_REVIEW,,open,en,Can students request a recording of freshman orientation?,,,"The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.
+
+During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program.",3745.93,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-07:open,GAP_REVIEW,,open,en,Who confirms that a class group chat is officially recognized?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",23894.11,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-08:open,GAP_REVIEW,,open,en,What should a freshman do if two required orientation sessions overlap?,,,"The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.
+
+During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program.",46077.03,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-09:open,GAP_REVIEW,,open,en,Are orientation handouts available in an accessible digital format?,,,"I’m not sure I fully understand, and please consider that there is other data I’m not allowed to share. You can try rephrasing your question, or I may not have an answer to that specific question.",25849.41,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",
+G05-EN-10:open,GAP_REVIEW,,open,en,How are freshmen told about a last-minute orientation venue change?,,,"The Orientation Program is designed to introduce new students to the university’s mission, vision, and academic policies. Its primary goal is to help you adjust to campus life and understand the essential academic expectations of Bukidnon State University.
+
+During this session, you will learn about critical university policies, such as Incomplete (INC) rules and Failure Due to Absences (FDA) counts. Please note that attending your Departmental Orientation is highly required, as it provides specific guidance for your chosen program.",48668.98,API: topic not exposed,,,"[""Missing-detail test: a human must assess the limitation/referral.""]",

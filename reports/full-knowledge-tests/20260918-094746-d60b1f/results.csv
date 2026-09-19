@@ -1,0 +1,25 @@
+﻿run_id,status,category,context,language,query,expected_intent,actual_intent,answer,latency_ms,resolver,source,pointer,notes,error
+K097-CEB-01:open,ANSWER_MATCH,academics,open,ceb,"Karon pa ko nahagbong og subject, pwede ra nako balikon?",failed_subject_policy,,"Sumala sa academic policies sa BukSU, pwede ka mokuha balik og subject kung first time pa nimo nga nabagsak.
+
+Apan palihog timan-i nga kung mabagsak nimo ang usa ka subject ug makadaghang beses, hangtod tulo ka attempts, mahimo kini magdala og seryosong mga resulta.
+
+Lakip niini ang posibilidad nga marekomenda ka nga mobalhin og laing eskwelahan.
+
+Mas maayo nga mokonsulta ka sa imong college faculty para sa mas klaro nga detalye ug hustong giya.",25248.22,API: topic not exposed,academics/grading_and_retention.json,/topics/0/subtopics/0,[],
+K097-EN-01:open,ANSWER_MATCH,academics,open,en,First time failing a subject. Am I allowed to take it again?,failed_subject_policy,,"According to BukSU academic policies, you may retake a subject if it is your first time failing it.
+
+However, please note that failing a subject multiple times, up to three total attempts, may lead to serious consequences.
+
+In some cases, this may include being advised to transfer to another school.
+
+For more specific details and proper guidance, it is recommended to consult your college faculty.",23924.67,API: topic not exposed,academics/grading_and_retention.json,/topics/0/subtopics/0,[],
+K098-CEB-01:open,ANSWER_MATCH,academics,open,ceb,Unsay pasabot sa academic probation sa BukSU?,academic_probation,,Ang academic probation ihatag sa students nga ubos ug performance.,3606.61,API: topic not exposed,academics/grading_and_retention.json,/topics/0/subtopics/1,[],
+K098-EN-01:open,ANSWER_MATCH,academics,open,en,What does academic probation mean at BukSU?,academic_probation,,Academic probation is given to students with low academic performance.,2741.76,API: topic not exposed,academics/grading_and_retention.json,/topics/0/subtopics/1,[],
+K099-CEB-01:open,ANSWER_REVIEW,academics,open,ceb,Pasar ba o hagbong ang 3.0 sa grado sa BukSU?,buksu_grading_system,,"Unsaon ug kanus-a nako makuha ang resulta sa akong examination?
+
+Ang schedule sa pag-release sa examination results ipost sa BukSU Admission and Testing Facebook page.
+
+Ang resulta sa examination ipost usab sa imong admission account mga bulan sa Mayo hangtod Hunyo.
+
+Para mahibal-an kung nakapasar ka, login sa imong BukSU Admission account ug ablihi ang Admission tab o Show Exam Result kung available na.",2887.93,API: topic not exposed,academics/grading_and_retention.json,/topics/1/subtopics/0,[],
+K099-EN-01:open,ANSWER_REVIEW,academics,open,en,Is 3.0 a pass or a fail on a BukSU grade sheet?,buksu_grading_system,,"Sorry, I don't have location information for 3.0.",3032.37,API: topic not exposed,academics/grading_and_retention.json,/topics/1/subtopics/0,[],

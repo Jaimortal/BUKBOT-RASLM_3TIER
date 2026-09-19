@@ -1,5 +1,110 @@
 [
   {
+    "id": "log_1789808120280_70nw6eq",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Auditorium",
+    "targetTitle": "Auditorium",
+    "targetId": "Auditorium",
+    "changes": [
+      {
+        "field": "Map Pins",
+        "changeType": "modified",
+        "details": "Updated pins (2 pin(s))"
+      },
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-19T08:55:20.280Z"
+  },
+  {
+    "id": "log_1789808111673_pd052oz",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"Auditorium6-2048x1536.webp\" (24.1 KB)",
+    "targetTitle": "Auditorium6-2048x1536.webp",
+    "targetId": "65c3a71f-3c23-46ae-89a0-29fe9c831a54",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"Auditorium6-2048x1536.webp\" (24.1 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-19T08:55:11.673Z"
+  },
+  {
+    "id": "log_1789808105564_s0tgavv",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"Auditorium6-2048x1536.webp\" (24.1 KB)",
+    "targetTitle": "Auditorium6-2048x1536.webp",
+    "targetId": "c4c0f69b-97d3-46a4-aed6-d0695b331567",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"Auditorium6-2048x1536.webp\" (24.1 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-19T08:55:05.564Z"
+  },
+  {
+    "id": "log_1789807696942_zlrz410",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Locations",
+    "summary": "Modified Location: Information Unit Office",
+    "targetTitle": "Information Unit Office",
+    "targetId": "Information Unit Office",
+    "changes": [
+      {
+        "field": "Images",
+        "changeType": "added",
+        "details": "Added 1 image(s)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-19T08:48:16.942Z"
+  },
+  {
+    "id": "log_1789807695272_bhihink",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "upload",
+    "module": "Images",
+    "summary": "Uploaded image: \"1.webp\" (25.2 KB)",
+    "targetTitle": "1.webp",
+    "targetId": "d97d0e05-612d-4a2f-a7d1-7d9eb88dbc26",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "added",
+        "details": "Uploaded image \"1.webp\" (25.2 KB)"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-19T08:48:15.272Z"
+  },
+  {
     "id": "log_1789654038850_v60pykr",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

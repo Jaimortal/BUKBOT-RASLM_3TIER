@@ -1,0 +1,3482 @@
+[
+  {
+    "text": "where is registrar",
+    "entities": [
+      {
+        "start": 9,
+        "end": 18,
+        "value": "registrar",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 9,
+        "end": 18,
+        "confidence_entity": 0.9934248924255371,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where is the registrar office",
+    "entities": [
+      {
+        "start": 13,
+        "end": 29,
+        "value": "registrar office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 13,
+        "end": 29,
+        "confidence_entity": 0.9890029430389404,
+        "value": "registrar office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa ang registrar",
+    "entities": [
+      {
+        "start": 8,
+        "end": 17,
+        "value": "registrar",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 8,
+        "end": 17,
+        "confidence_entity": 0.9917534589767456,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa dapit ang registrar office",
+    "entities": [
+      {
+        "start": 14,
+        "end": 30,
+        "value": "registrar office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 14,
+        "end": 30,
+        "confidence_entity": 0.9772281050682068,
+        "value": "registrar office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where can I find CAS",
+    "entities": [
+      {
+        "start": 17,
+        "end": 20,
+        "value": "CAS",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 17,
+        "end": 20,
+        "confidence_entity": 0.9941490888595581,
+        "value": "CAS",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa dapit ang COT",
+    "entities": [
+      {
+        "start": 14,
+        "end": 17,
+        "value": "COT",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 14,
+        "end": 17,
+        "confidence_entity": 0.9914558529853821,
+        "value": "COT",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "locate library",
+    "entities": [
+      {
+        "start": 7,
+        "end": 14,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 7,
+        "end": 14,
+        "confidence_entity": 0.9987801909446716,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa ang library",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 8,
+        "end": 15,
+        "confidence_entity": 0.9910861849784851,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where is the clinic",
+    "entities": [
+      {
+        "start": 13,
+        "end": 19,
+        "value": "clinic",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 13,
+        "end": 19,
+        "confidence_entity": 0.8202227354049683,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa ang clinic",
+    "entities": [
+      {
+        "start": 8,
+        "end": 14,
+        "value": "clinic",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 8,
+        "end": 14,
+        "confidence_entity": 0.9856083393096924,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where is the accounting office",
+    "entities": [
+      {
+        "start": 13,
+        "end": 30,
+        "value": "accounting office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 13,
+        "end": 30,
+        "confidence_entity": 0.9978906512260437,
+        "value": "accounting office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa ang accounting office",
+    "entities": [
+      {
+        "start": 8,
+        "end": 25,
+        "value": "accounting office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 8,
+        "end": 25,
+        "confidence_entity": 0.9959067106246948,
+        "value": "accounting office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where is ICT office",
+    "entities": [
+      {
+        "start": 9,
+        "end": 19,
+        "value": "ICT office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 9,
+        "end": 19,
+        "confidence_entity": 0.9955524802207947,
+        "value": "ICT office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa dapit ang ICT office",
+    "entities": [
+      {
+        "start": 14,
+        "end": 24,
+        "value": "ICT office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 14,
+        "end": 24,
+        "confidence_entity": 0.9928435683250427,
+        "value": "ICT office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "ComLab 1 location",
+    "entities": [
+      {
+        "start": 0,
+        "end": 8,
+        "value": "ComLab 1",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 0,
+        "end": 8,
+        "confidence_entity": 0.9940452575683594,
+        "value": "ComLab 1",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa ang ComLab 6",
+    "entities": [
+      {
+        "start": 8,
+        "end": 16,
+        "value": "ComLab 6",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 8,
+        "end": 16,
+        "confidence_entity": 0.992180347442627,
+        "value": "ComLab 6",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "find C2-2-01",
+    "entities": [
+      {
+        "start": 5,
+        "end": 12,
+        "value": "C2-2-01",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 5,
+        "end": 12,
+        "confidence_entity": 0.9978079199790955,
+        "value": "C2-2-01",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa ko moadto para sa COR validation",
+    "entities": [
+      {
+        "start": 22,
+        "end": 36,
+        "value": "COR validation",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 22,
+        "end": 36,
+        "confidence_entity": 0.996357262134552,
+        "value": "COR validation",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where do I go for student ID",
+    "entities": [
+      {
+        "start": 18,
+        "end": 28,
+        "value": "student ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 18,
+        "end": 28,
+        "confidence_entity": 0.9970878958702087,
+        "value": "student ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where is dormitory",
+    "entities": [
+      {
+        "start": 9,
+        "end": 18,
+        "value": "dormitory",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 9,
+        "end": 18,
+        "confidence_entity": 0.893644392490387,
+        "value": "dormitory",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "when is enrollment",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "enrollment",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 8,
+        "end": 18,
+        "confidence_entity": 0.9670531749725342,
+        "value": "enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "kanus-a ang enrollment",
+    "entities": [
+      {
+        "start": 12,
+        "end": 22,
+        "value": "enrollment",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 12,
+        "end": 22,
+        "confidence_entity": 0.6652949452400208,
+        "value": "enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "when is the deadline for admission",
+    "entities": [
+      {
+        "start": 25,
+        "end": 34,
+        "value": "admission",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 25,
+        "end": 34,
+        "confidence_entity": 0.985248327255249,
+        "value": "admission",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "schedule for COR validation",
+    "entities": [
+      {
+        "start": 13,
+        "end": 27,
+        "value": "COR validation",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 13,
+        "end": 27,
+        "confidence_entity": 0.994917631149292,
+        "value": "COR validation",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "kanus-a pwede mag add and drop",
+    "entities": [
+      {
+        "start": 18,
+        "end": 30,
+        "value": "add and drop",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 18,
+        "end": 30,
+        "confidence_entity": 0.9794528484344482,
+        "value": "add and drop",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what time does library open",
+    "entities": [
+      {
+        "start": 15,
+        "end": 22,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 15,
+        "end": 22,
+        "confidence_entity": 0.9954379200935364,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsa oras mag open ang library",
+    "entities": [
+      {
+        "start": 23,
+        "end": 30,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 23,
+        "end": 30,
+        "confidence_entity": 0.9967195391654968,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "office hours of registrar",
+    "entities": [
+      {
+        "start": 16,
+        "end": 25,
+        "value": "registrar",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 16,
+        "end": 25,
+        "confidence_entity": 0.9860687255859375,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsa oras mag open ang registrar",
+    "entities": [
+      {
+        "start": 23,
+        "end": 32,
+        "value": "registrar",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 23,
+        "end": 32,
+        "confidence_entity": 0.9969133138656616,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "when is freshmen application",
+    "entities": [
+      {
+        "start": 8,
+        "end": 28,
+        "value": "freshmen application",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 8,
+        "end": 28,
+        "confidence_entity": 0.997445821762085,
+        "value": "freshmen application",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how much is the library ID card",
+    "entities": [
+      {
+        "start": 16,
+        "end": 31,
+        "value": "library ID card",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 16,
+        "end": 31,
+        "confidence_entity": 0.9820643663406372,
+        "value": "library ID card",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "pila bayad sa library ID",
+    "entities": [
+      {
+        "start": 14,
+        "end": 24,
+        "value": "library ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 14,
+        "end": 24,
+        "confidence_entity": 0.9932310581207275,
+        "value": "library ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay bayad ang enrollment",
+    "entities": [
+      {
+        "start": 18,
+        "end": 28,
+        "value": "enrollment",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 18,
+        "end": 28,
+        "confidence_entity": 0.8885598182678223,
+        "value": "enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a fee for COR",
+    "entities": [
+      {
+        "start": 19,
+        "end": 22,
+        "value": "COR",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 19,
+        "end": 22,
+        "confidence_entity": 0.981204628944397,
+        "value": "COR",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how much do I pay for student ID",
+    "entities": [
+      {
+        "start": 22,
+        "end": 32,
+        "value": "student ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 22,
+        "end": 32,
+        "confidence_entity": 0.9965715408325195,
+        "value": "student ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "pila ang bayad sa student ID",
+    "entities": [
+      {
+        "start": 18,
+        "end": 28,
+        "value": "student ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 18,
+        "end": 28,
+        "confidence_entity": 0.9950671195983887,
+        "value": "student ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "payment for test permit",
+    "entities": [
+      {
+        "start": 12,
+        "end": 23,
+        "value": "test permit",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 12,
+        "end": 23,
+        "confidence_entity": 0.9982112646102905,
+        "value": "test permit",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how much is admission",
+    "entities": [
+      {
+        "start": 12,
+        "end": 21,
+        "value": "admission",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 12,
+        "end": 21,
+        "confidence_entity": 0.9965099692344666,
+        "value": "admission",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay bayad sa admission",
+    "entities": [
+      {
+        "start": 17,
+        "end": 26,
+        "value": "admission",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 17,
+        "end": 26,
+        "confidence_entity": 0.9965364933013916,
+        "value": "admission",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "requirements for enrollment",
+    "entities": [
+      {
+        "start": 17,
+        "end": 27,
+        "value": "enrollment",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 17,
+        "end": 27,
+        "confidence_entity": 0.5603711009025574,
+        "value": "enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsay requirements sa enrollment",
+    "entities": [
+      {
+        "start": 22,
+        "end": 32,
+        "value": "enrollment",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 22,
+        "end": 32,
+        "confidence_entity": 0.9105665683746338,
+        "value": "enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsay requirements sa admission",
+    "entities": [
+      {
+        "start": 22,
+        "end": 31,
+        "value": "admission",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 22,
+        "end": 31,
+        "confidence_entity": 0.9967029690742493,
+        "value": "admission",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what do I need for student ID",
+    "entities": [
+      {
+        "start": 19,
+        "end": 29,
+        "value": "student ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 19,
+        "end": 29,
+        "confidence_entity": 0.9968934059143066,
+        "value": "student ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "requirements for library ID card",
+    "entities": [
+      {
+        "start": 17,
+        "end": 32,
+        "value": "library ID card",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 17,
+        "end": 32,
+        "confidence_entity": 0.9903081059455872,
+        "value": "library ID card",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what should I bring for COR validation",
+    "entities": [
+      {
+        "start": 24,
+        "end": 38,
+        "value": "COR validation",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 24,
+        "end": 38,
+        "confidence_entity": 0.9850122928619385,
+        "value": "COR validation",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "documents needed for transferee enrollment",
+    "entities": [
+      {
+        "start": 21,
+        "end": 42,
+        "value": "transferee enrollment",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 21,
+        "end": 42,
+        "confidence_entity": 0.9513813257217407,
+        "value": "transferee enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what are the requirements for INC form",
+    "entities": [
+      {
+        "start": 30,
+        "end": 38,
+        "value": "INC form",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 30,
+        "end": 38,
+        "confidence_entity": 0.9958782196044922,
+        "value": "INC form",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "requirements for CAT application",
+    "entities": [
+      {
+        "start": 17,
+        "end": 32,
+        "value": "CAT application",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 17,
+        "end": 32,
+        "confidence_entity": 0.9910334944725037,
+        "value": "CAT application",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "process for online enrollment",
+    "entities": [
+      {
+        "start": 12,
+        "end": 29,
+        "value": "online enrollment",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 12,
+        "end": 29,
+        "confidence_entity": 0.8683955669403076,
+        "value": "online enrollment",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how do I get student ID",
+    "entities": [
+      {
+        "start": 13,
+        "end": 23,
+        "value": "student ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 13,
+        "end": 23,
+        "confidence_entity": 0.9977559447288513,
+        "value": "student ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsaon pagkuha sa student ID",
+    "entities": [
+      {
+        "start": 18,
+        "end": 28,
+        "value": "student ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 18,
+        "end": 28,
+        "confidence_entity": 0.9961793422698975,
+        "value": "student ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsaon pagkuha sa library ID",
+    "entities": [
+      {
+        "start": 18,
+        "end": 28,
+        "value": "library ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 18,
+        "end": 28,
+        "confidence_entity": 0.9966793060302734,
+        "value": "library ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "steps for COR validation",
+    "entities": [
+      {
+        "start": 10,
+        "end": 24,
+        "value": "COR validation",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 10,
+        "end": 24,
+        "confidence_entity": 0.9896225929260254,
+        "value": "COR validation",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how to apply for admission",
+    "entities": [
+      {
+        "start": 17,
+        "end": 26,
+        "value": "admission",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 17,
+        "end": 26,
+        "confidence_entity": 0.6709993481636047,
+        "value": "admission",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how can I reset my portal password",
+    "entities": [
+      {
+        "start": 19,
+        "end": 34,
+        "value": "portal password",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 19,
+        "end": 34,
+        "confidence_entity": 0.9975910186767578,
+        "value": "portal password",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsaon nako pag reset sa portal password",
+    "entities": [
+      {
+        "start": 25,
+        "end": 40,
+        "value": "portal password",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 25,
+        "end": 40,
+        "confidence_entity": 0.9969394207000732,
+        "value": "portal password",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how do I request COR",
+    "entities": [
+      {
+        "start": 17,
+        "end": 20,
+        "value": "COR",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 17,
+        "end": 20,
+        "confidence_entity": 0.9896814227104187,
+        "value": "COR",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsaon nako pag request og COR",
+    "entities": [
+      {
+        "start": 27,
+        "end": 30,
+        "value": "COR",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 27,
+        "end": 30,
+        "confidence_entity": 0.9879064559936523,
+        "value": "COR",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how to complete INC grade",
+    "entities": [
+      {
+        "start": 16,
+        "end": 25,
+        "value": "INC grade",
+        "entity": "topic"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "topic",
+        "start": 16,
+        "end": 25,
+        "confidence_entity": 0.996778666973114,
+        "value": "INC grade",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "process for withdrawal",
+    "entities": [
+      {
+        "start": 12,
+        "end": 22,
+        "value": "withdrawal",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 12,
+        "end": 22,
+        "confidence_entity": 0.9966123700141907,
+        "value": "withdrawal",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what is BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 13,
+        "value": "BukSU",
+        "entity": "organization"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "organization",
+        "start": 8,
+        "end": 13,
+        "confidence_entity": 0.9899661540985107,
+        "value": "BukSU",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "tell me about BukSU",
+    "entities": [
+      {
+        "start": 14,
+        "end": 19,
+        "value": "BukSU",
+        "entity": "organization"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "organization",
+        "start": 14,
+        "end": 19,
+        "confidence_entity": 0.9765302538871765,
+        "value": "BukSU",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "about library",
+    "entities": [
+      {
+        "start": 6,
+        "end": 13,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 6,
+        "end": 13,
+        "confidence_entity": 0.9895050525665283,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "about ICT",
+    "entities": [
+      {
+        "start": 6,
+        "end": 9,
+        "value": "ICT",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 6,
+        "end": 9,
+        "confidence_entity": 0.9724019169807434,
+        "value": "ICT",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what is academic probation",
+    "entities": [
+      {
+        "start": 8,
+        "end": 26,
+        "value": "academic probation",
+        "entity": "topic"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "topic",
+        "start": 8,
+        "end": 26,
+        "confidence_entity": 0.9961192607879639,
+        "value": "academic probation",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "explain FDA grade",
+    "entities": [
+      {
+        "start": 8,
+        "end": 17,
+        "value": "FDA grade",
+        "entity": "topic"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "topic",
+        "start": 8,
+        "end": 17,
+        "confidence_entity": 0.9927903413772583,
+        "value": "FDA grade",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what is Dean's List",
+    "entities": [
+      {
+        "start": 8,
+        "end": 19,
+        "value": "Dean's List",
+        "entity": "topic"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "topic",
+        "start": 8,
+        "end": 19,
+        "confidence_entity": 0.9796894788742065,
+        "value": "Dean's List",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "information about dormitory",
+    "entities": [
+      {
+        "start": 18,
+        "end": 27,
+        "value": "dormitory",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 18,
+        "end": 27,
+        "confidence_entity": 0.9266631603240967,
+        "value": "dormitory",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsay pasabot sa INC grade",
+    "entities": [
+      {
+        "start": 17,
+        "end": 26,
+        "value": "INC grade",
+        "entity": "topic"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "topic",
+        "start": 17,
+        "end": 26,
+        "confidence_entity": 0.99549400806427,
+        "value": "INC grade",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsay pasabot sa academic probation",
+    "entities": [
+      {
+        "start": 17,
+        "end": 35,
+        "value": "academic probation",
+        "entity": "topic"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "topic",
+        "start": 17,
+        "end": 35,
+        "confidence_entity": 0.9971469044685364,
+        "value": "academic probation",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how to contact registrar",
+    "entities": [
+      {
+        "start": 15,
+        "end": 24,
+        "value": "registrar",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 15,
+        "end": 24,
+        "confidence_entity": 0.9941940903663635,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "contact admission",
+    "entities": [
+      {
+        "start": 8,
+        "end": 17,
+        "value": "admission",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 8,
+        "end": 17,
+        "confidence_entity": 0.9968908429145813,
+        "value": "admission",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "contact number of clinic",
+    "entities": [
+      {
+        "start": 18,
+        "end": 24,
+        "value": "clinic",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 18,
+        "end": 24,
+        "confidence_entity": 0.9906294941902161,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "email of ICT office",
+    "entities": [
+      {
+        "start": 9,
+        "end": 19,
+        "value": "ICT office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 9,
+        "end": 19,
+        "confidence_entity": 0.9851419925689697,
+        "value": "ICT office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsaon pag contact sa registrar",
+    "entities": [
+      {
+        "start": 22,
+        "end": 31,
+        "value": "registrar",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 22,
+        "end": 31,
+        "confidence_entity": 0.9921985268592834,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa ko pwede mo contact sa scholarship office",
+    "entities": [
+      {
+        "start": 27,
+        "end": 45,
+        "value": "scholarship office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 27,
+        "end": 45,
+        "confidence_entity": 0.978935718536377,
+        "value": "scholarship office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "contact details for library",
+    "entities": [
+      {
+        "start": 20,
+        "end": 27,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 20,
+        "end": 27,
+        "confidence_entity": 0.9957166314125061,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have masters",
+    "entities": [
+      {
+        "start": 16,
+        "end": 23,
+        "value": "masters",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 16,
+        "end": 23,
+        "confidence_entity": 0.6042769551277161,
+        "value": "masters",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay masteral sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 16,
+        "value": "masteral",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 8,
+        "end": 16,
+        "confidence_entity": 0.9732185006141663,
+        "value": "masteral",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "are there graduate programs",
+    "entities": [
+      {
+        "start": 10,
+        "end": 27,
+        "value": "graduate programs",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 10,
+        "end": 27,
+        "confidence_entity": 0.9649043083190918,
+        "value": "graduate programs",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU offer BSIT",
+    "entities": [
+      {
+        "start": 17,
+        "end": 21,
+        "value": "BSIT",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 17,
+        "end": 21,
+        "confidence_entity": 0.9891353845596313,
+        "value": "BSIT",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is library open today",
+    "entities": [
+      {
+        "start": 3,
+        "end": 10,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 3,
+        "end": 10,
+        "confidence_entity": 0.9965977072715759,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "do you have scholarships",
+    "entities": [
+      {
+        "start": 12,
+        "end": 24,
+        "value": "scholarships",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 12,
+        "end": 24,
+        "confidence_entity": 0.9950002431869507,
+        "value": "scholarships",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay scholarship",
+    "entities": [
+      {
+        "start": 8,
+        "end": 19,
+        "value": "scholarship",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 8,
+        "end": 19,
+        "confidence_entity": 0.9900721311569214,
+        "value": "scholarship",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have nursing",
+    "entities": [
+      {
+        "start": 16,
+        "end": 23,
+        "value": "nursing",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 16,
+        "end": 23,
+        "confidence_entity": 0.9933445453643799,
+        "value": "nursing",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay education",
+    "entities": [
+      {
+        "start": 8,
+        "end": 17,
+        "value": "education",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 8,
+        "end": 17,
+        "confidence_entity": 0.9957199692726135,
+        "value": "education",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have a library",
+    "entities": [
+      {
+        "start": 18,
+        "end": 25,
+        "value": "library",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 18,
+        "end": 25,
+        "confidence_entity": 0.9956364035606384,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "do buksu has a library",
+    "entities": [
+      {
+        "start": 15,
+        "end": 22,
+        "value": "library",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 15,
+        "end": 22,
+        "confidence_entity": 0.9971983432769775,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does Bukidnon State University have a library",
+    "entities": [
+      {
+        "start": 38,
+        "end": 45,
+        "value": "library",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 38,
+        "end": 45,
+        "confidence_entity": 0.9958515167236328,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a library in BukSU",
+    "entities": [
+      {
+        "start": 11,
+        "end": 18,
+        "value": "library",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 18,
+        "confidence_entity": 0.98589026927948,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a museum in BukSU",
+    "entities": [
+      {
+        "start": 11,
+        "end": 17,
+        "value": "museum",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 17,
+        "confidence_entity": 0.9970115423202515,
+        "value": "museum",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is the Bukidnon State University has museum",
+    "entities": [
+      {
+        "start": 37,
+        "end": 43,
+        "value": "museum",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 37,
+        "end": 43,
+        "confidence_entity": 0.9982956051826477,
+        "value": "museum",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have a clinic",
+    "entities": [
+      {
+        "start": 18,
+        "end": 24,
+        "value": "clinic",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 18,
+        "end": 24,
+        "confidence_entity": 0.5914725661277771,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have health services",
+    "entities": [
+      {
+        "start": 16,
+        "end": 31,
+        "value": "health services",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 31,
+        "confidence_entity": 0.991014301776886,
+        "value": "health services",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a dental clinic in BukSU",
+    "entities": [
+      {
+        "start": 11,
+        "end": 24,
+        "value": "dental clinic",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 24,
+        "confidence_entity": 0.9195060729980469,
+        "value": "dental clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have dental services",
+    "entities": [
+      {
+        "start": 16,
+        "end": 31,
+        "value": "dental services",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 31,
+        "confidence_entity": 0.9893903136253357,
+        "value": "dental services",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have a gym",
+    "entities": [
+      {
+        "start": 18,
+        "end": 21,
+        "value": "gym",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 18,
+        "end": 21,
+        "confidence_entity": 0.9964784979820251,
+        "value": "gym",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a gymnasium on campus",
+    "entities": [
+      {
+        "start": 11,
+        "end": 20,
+        "value": "gymnasium",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 20,
+        "confidence_entity": 0.9992232322692871,
+        "value": "gymnasium",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have cafeteria",
+    "entities": [
+      {
+        "start": 16,
+        "end": 25,
+        "value": "cafeteria",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 25,
+        "confidence_entity": 0.9979550838470459,
+        "value": "cafeteria",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a canteen in BukSU",
+    "entities": [
+      {
+        "start": 11,
+        "end": 18,
+        "value": "canteen",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 18,
+        "confidence_entity": 0.9964922070503235,
+        "value": "canteen",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have an ATM",
+    "entities": [
+      {
+        "start": 19,
+        "end": 22,
+        "value": "ATM",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 19,
+        "end": 22,
+        "confidence_entity": 0.9957958459854126,
+        "value": "ATM",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there parking in BukSU",
+    "entities": [
+      {
+        "start": 9,
+        "end": 16,
+        "value": "parking",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 9,
+        "end": 16,
+        "confidence_entity": 0.7397946715354919,
+        "value": "parking",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have motorcycle parking",
+    "entities": [
+      {
+        "start": 16,
+        "end": 34,
+        "value": "motorcycle parking",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 34,
+        "confidence_entity": 0.9655963778495789,
+        "value": "motorcycle parking",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have car parking",
+    "entities": [
+      {
+        "start": 16,
+        "end": 27,
+        "value": "car parking",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 27,
+        "confidence_entity": 0.915797770023346,
+        "value": "car parking",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have dormitory",
+    "entities": [
+      {
+        "start": 16,
+        "end": 25,
+        "value": "dormitory",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 25,
+        "confidence_entity": 0.8475934863090515,
+        "value": "dormitory",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a student dorm in BukSU",
+    "entities": [
+      {
+        "start": 11,
+        "end": 23,
+        "value": "student dorm",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 23,
+        "confidence_entity": 0.900314450263977,
+        "value": "student dorm",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have an oval",
+    "entities": [
+      {
+        "start": 19,
+        "end": 23,
+        "value": "oval",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 19,
+        "end": 23,
+        "confidence_entity": 0.9957202076911926,
+        "value": "oval",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have open field",
+    "entities": [
+      {
+        "start": 16,
+        "end": 26,
+        "value": "open field",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 26,
+        "confidence_entity": 0.9906638860702515,
+        "value": "open field",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there an auditorium in BukSU",
+    "entities": [
+      {
+        "start": 12,
+        "end": 22,
+        "value": "auditorium",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 12,
+        "end": 22,
+        "confidence_entity": 0.9983685612678528,
+        "value": "auditorium",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have guidance office",
+    "entities": [
+      {
+        "start": 16,
+        "end": 31,
+        "value": "guidance office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 31,
+        "confidence_entity": 0.9943829774856567,
+        "value": "guidance office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a registrar office in BukSU",
+    "entities": [
+      {
+        "start": 11,
+        "end": 27,
+        "value": "registrar office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 27,
+        "confidence_entity": 0.8142195343971252,
+        "value": "registrar office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have finance office",
+    "entities": [
+      {
+        "start": 16,
+        "end": 30,
+        "value": "finance office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 30,
+        "confidence_entity": 0.9931246638298035,
+        "value": "finance office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there a cashier in BukSU",
+    "entities": [
+      {
+        "start": 11,
+        "end": 18,
+        "value": "cashier",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 18,
+        "confidence_entity": 0.9958795309066772,
+        "value": "cashier",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have ICT office",
+    "entities": [
+      {
+        "start": 16,
+        "end": 26,
+        "value": "ICT office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 26,
+        "confidence_entity": 0.981069028377533,
+        "value": "ICT office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there an admission office in BukSU",
+    "entities": [
+      {
+        "start": 12,
+        "end": 28,
+        "value": "admission office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 12,
+        "end": 28,
+        "confidence_entity": 0.9859994053840637,
+        "value": "admission office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have guard house",
+    "entities": [
+      {
+        "start": 16,
+        "end": 27,
+        "value": "guard house",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 16,
+        "end": 27,
+        "confidence_entity": 0.9953075051307678,
+        "value": "guard house",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "do students have access to the library",
+    "entities": [
+      {
+        "start": 31,
+        "end": 38,
+        "value": "library",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 31,
+        "end": 38,
+        "confidence_entity": 0.9978905320167542,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "are there parking areas for students",
+    "entities": [
+      {
+        "start": 10,
+        "end": 23,
+        "value": "parking areas",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 10,
+        "end": 23,
+        "confidence_entity": 0.6773019433021545,
+        "value": "parking areas",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is museum available in BukSU",
+    "entities": [
+      {
+        "start": 3,
+        "end": 9,
+        "value": "museum",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 3,
+        "end": 9,
+        "confidence_entity": 0.9988058805465698,
+        "value": "museum",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is clinic available on campus",
+    "entities": [
+      {
+        "start": 3,
+        "end": 9,
+        "value": "clinic",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 3,
+        "end": 9,
+        "confidence_entity": 0.894244372844696,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay library sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "library",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 15,
+        "confidence_entity": 0.9959425330162048,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa ba ang BukSU og library",
+    "entities": [
+      {
+        "start": 20,
+        "end": 27,
+        "value": "library",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 20,
+        "end": 27,
+        "confidence_entity": 0.9963594079017639,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "aduna bay museum sa BukSU",
+    "entities": [
+      {
+        "start": 10,
+        "end": 16,
+        "value": "museum",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 10,
+        "end": 16,
+        "confidence_entity": 0.9983008503913879,
+        "value": "museum",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay clinic sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 14,
+        "value": "clinic",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 14,
+        "confidence_entity": 0.786187469959259,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay dental clinic sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 21,
+        "value": "dental clinic",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 21,
+        "confidence_entity": 0.7837011814117432,
+        "value": "dental clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay gym sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 11,
+        "value": "gym",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 11,
+        "confidence_entity": 0.9977363348007202,
+        "value": "gym",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay canteen sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "canteen",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 15,
+        "confidence_entity": 0.9987885355949402,
+        "value": "canteen",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay ATM duol sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 11,
+        "value": "ATM",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 11,
+        "confidence_entity": 0.9952238202095032,
+        "value": "ATM",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay parking sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "parking",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 15,
+        "confidence_entity": 0.8768238425254822,
+        "value": "parking",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay dorm sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 12,
+        "value": "dorm",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 12,
+        "confidence_entity": 0.8965141177177429,
+        "value": "dorm",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay oval sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 12,
+        "value": "oval",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 12,
+        "confidence_entity": 0.9968569278717041,
+        "value": "oval",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay auditorium sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "auditorium",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 18,
+        "confidence_entity": 0.9992985725402832,
+        "value": "auditorium",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay guidance office sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 23,
+        "value": "guidance office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 23,
+        "confidence_entity": 0.993172824382782,
+        "value": "guidance office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay registrar sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 17,
+        "value": "registrar",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 17,
+        "confidence_entity": 0.7389188408851624,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay cashier sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "cashier",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 15,
+        "confidence_entity": 0.9987757802009583,
+        "value": "cashier",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay ICT office sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "ICT office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 18,
+        "confidence_entity": 0.9634617567062378,
+        "value": "ICT office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay admission office sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 24,
+        "value": "admission office",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 24,
+        "confidence_entity": 0.9772058725357056,
+        "value": "admission office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay guard house sa BukSU",
+    "entities": [
+      {
+        "start": 8,
+        "end": 19,
+        "value": "guard house",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 19,
+        "confidence_entity": 0.986700713634491,
+        "value": "guard house",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where can I get INC form",
+    "entities": [
+      {
+        "start": 16,
+        "end": 24,
+        "value": "INC form",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 16,
+        "end": 24,
+        "confidence_entity": 0.996345579624176,
+        "value": "INC form",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa makakuha og INC form",
+    "entities": [
+      {
+        "start": 16,
+        "end": 24,
+        "value": "INC form",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 16,
+        "end": 24,
+        "confidence_entity": 0.9965397119522095,
+        "value": "INC form",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "can I download COR",
+    "entities": [
+      {
+        "start": 15,
+        "end": 18,
+        "value": "COR",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 15,
+        "end": 18,
+        "confidence_entity": 0.9922652244567871,
+        "value": "COR",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where to request COR",
+    "entities": [
+      {
+        "start": 17,
+        "end": 20,
+        "value": "COR",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 17,
+        "end": 20,
+        "confidence_entity": 0.9901829361915588,
+        "value": "COR",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "I need test permit",
+    "entities": [
+      {
+        "start": 7,
+        "end": 18,
+        "value": "test permit",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 7,
+        "end": 18,
+        "confidence_entity": 0.9982205033302307,
+        "value": "test permit",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how to get certificate of registration",
+    "entities": [
+      {
+        "start": 11,
+        "end": 38,
+        "value": "certificate of registration",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 11,
+        "end": 38,
+        "confidence_entity": 0.9652714133262634,
+        "value": "certificate of registration",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where can I get library ID",
+    "entities": [
+      {
+        "start": 16,
+        "end": 26,
+        "value": "library ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 16,
+        "end": 26,
+        "confidence_entity": 0.9970109462738037,
+        "value": "library ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

@@ -20,6 +20,8 @@ import multer from "multer";
 import sharp from "sharp";
 import * as dbImages from "./db/images.js";
 import { query as databaseQuery } from "./db.js";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 // Configure multer for memory storage (to save to PostgreSQL)
 const storage = multer.memoryStorage();
@@ -297,6 +299,22 @@ export async function registerRoutes(
 
   // REPORTS (ADMIN)
   app.get("/api/admin/reports", requireAuth, ReportController.list);
+  app.get("/api/admin/faq-gap-report", requireAuth, async (req, res) => {
+    if ((req as any).user?.role !== "main-admin") {
+      return res.status(403).json({ success: false, message: "Main admin access required" });
+    }
+    try {
+      const file = path.resolve(process.cwd(), "docs/Testing/FULL TESTING TOPICS/result/02FAQ_1.1_Report.json");
+      const report = JSON.parse(await readFile(file, "utf8"));
+      return res.json({ success: true, data: report });
+    } catch (error: any) {
+      if (error?.code === "ENOENT") {
+        return res.status(404).json({ success: false, message: "FAQ gap report has not been generated yet" });
+      }
+      console.error("Could not read FAQ gap report", error);
+      return res.status(500).json({ success: false, message: "Could not load FAQ gap report" });
+    }
+  });
   app.get("/api/admin/performance", requireAuth, async (_req, res) => {
     res.json({ success: true, data: await getPerformanceReport() });
   });

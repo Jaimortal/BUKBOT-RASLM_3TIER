@@ -216,6 +216,8 @@ class KnowledgeRouter:
             "clinic_medical_certificate_process",
             "clinic_medical_certificate_cost",
             "clinic_medical_certificate_duration",
+            "online_application_schedule",
+            "admission_examination_date",
         }
         if raw_intent in universal_policy_intents:
             return raw_intent
@@ -655,6 +657,76 @@ class KnowledgeRouter:
             "what is the gwa", "unsa ang gwa", "latin honor", "cum laude", "magna", "summa"
         ]):
             return "honor_list_release_schedule"
+
+        # 16j3. Admission Schedule & Examination Date Disambiguation
+        is_admission_or_cat_query = self._has_any(raw_normalized, [
+            "admission", "admissions", "buksu admission", "buksu admissions",
+            "buksu cat", "buksu-cat", "buksucat", "cat exam", "cat examination",
+            "admission testing", "admission test", "admission exam", "admission examination",
+            "entrance exam", "entrance examination", "buksu entrance exam",
+            "examination date", "exam date", "exam schedule", "examination schedule",
+            "actual examination", "actual exam", "test permit", "cat"
+        ])
+        is_schedule_or_date_query = self._has_any(raw_normalized, [
+            "when", "when do", "when is", "when does", "when will", "kanus-a", "kanus a", "kanusa", "kanosa",
+            "schedule", "date", "petsa", "adlaw", "happened", "happen", "start", "magsugod", "sugod",
+            "open", "mo open", "mag open", "opening", "take place", "posted", "time", "oras", "month", "bulan",
+            "unsa nga adlaw", "unsang adlawa", "where can i see", "see", "how will i know", "makuha", "tan-awon"
+        ])
+        is_application_marker = self._has_any(raw_normalized, [
+            "application", "applications", "apply", "applying", "mag-apply", "mag apply",
+            "pag-apply", "pag apply", "portal open", "application start", "application date",
+            "online application", "cat application", "admission application"
+        ])
+        is_exam_date_marker = (
+            self._has_any(raw_normalized, [
+                "my exam", "akong exam", "examination date", "exam date", "actual examination",
+                "test permit", "taking the exam", "take my exam", "take the exam", "examination day",
+                "adlaw sa exam", "petsa sa exam", "exam schedule", "examination schedule",
+                "akong buksu cat examination", "akong buksu cat exam", "akong cat exam", "my buksu cat exam",
+                "my admission test", "my cat exam", "my entrance exam",
+                "my admission testing examination", "admission testing examination", "when do i take",
+                "where can i see my examination date", "how will i know my exam date", "akong schedule sa exam",
+                "actual exam", "actual testing date", "examination date start", "my examination",
+                "when will i take", "when is my cat exam", "when is my admission test",
+                "when is my buksu cat exam schedule", "when is my entrance exam schedule",
+                "when is the actual examination day", "when is the entrance examination date",
+                "unsang adlawa akong buksu cat exam", "kanus a nako makuha akong exam date",
+                "kanus-a ang akong exam date sa buksu cat", "kanusa man akong buksu cat examination",
+                "when do i take my admission test"
+            ]) or (
+                ("akong" in raw_normalized or "my" in raw_normalized or "nako" in raw_normalized or "i take" in raw_normalized) and
+                any(term in raw_normalized for term in ["exam", "examination", "cat", "test"])
+            )
+        )
+        is_how_to_apply_process = self._has_any(raw_normalized, [
+            "how to apply", "unsaon pag apply", "unsaon pag-apply", "unsaon pag take",
+            "how can i take", "steps to apply", "process of applying", "step by step"
+        ])
+        is_deadline_query = self._has_any(raw_normalized, [
+            "deadline", "last day", "end date", "closing", "kutob", "mahuman", "matapos", "closing date"
+        ])
+        is_non_schedule_admission = self._has_any(raw_normalized, [
+            "requirement", "requirements", "document", "documents", "score", "scores",
+            "cutoff", "cut-off", "pass", "passing", "login", "password", "fee", "fees",
+            "letter of intent", "2x2", "photo", "picture", "als", "second courser", "transferee", "freshman",
+            "non-passer", "non passer", "fail", "failed"
+        ])
+
+        if is_admission_or_cat_query and is_schedule_or_date_query and not is_how_to_apply_process and not is_deadline_query and not is_non_schedule_admission:
+            # 1. Specific Personal Examination Date Query
+            if is_exam_date_marker:
+                return "admission_examination_date"
+
+            # 2. Specific Application Schedule Query (e.g. "when is the admission application happened", "start date of BukSU CAT application", "Can you tell me when is the admission testing happened?")
+            if is_application_marker or self._has_any(raw_normalized, [
+                "admission testing happened", "admission testing start", "admission testing open",
+                "admission testing schedule", "cat testing schedule", "testing application", "portal open"
+            ]):
+                return "online_application_schedule"
+
+            # 3. Ambiguous General Admission Schedule -> Trigger Clarification Choices Modal
+            return "__admission_schedule_clarification__"
 
         # 16k. Good Moral Certificate
         if self._has_any(text, ["good moral", "good moral certificate", "certificate of good moral", "good moral cert"]):
@@ -5358,37 +5430,36 @@ class KnowledgeRouter:
         text = self.interpreter.normalize(user_message)
         if intent not in {"ask_schedule", "ask_general_info"}:
             return None
-        if not self._has_any(text, ["admission"]):
+        if not self._has_any(text, ["admission", "buksu admission"]):
             return None
-        if not self._has_any(text, ["when", "schedule", "kanus", "kanusa"]):
+        if not self._has_any(text, ["when", "schedule", "kanus", "kanusa", "happened", "happen", "start", "magsugod", "sugod"]):
             return None
 
         specific_terms = [
-            "application", "deadline", "cat", "test", "testing", "exam",
-            "result", "passed", "pass", "enrollment", "freshman", "transferee",
+            "application", "deadline", "result", "passed", "pass", "enrollment",
+            "freshman", "transferee", "score", "cutoff", "cut-off", "requirement",
+            "fee", "my exam", "akong exam", "examination date", "actual exam",
+            "portal", "testing", "test", "exam", "examination", "cat", "buksu cat", "buksu-cat"
         ]
         if self._has_any(text, specific_terms):
             return None
 
-        return {
-            "text": "What admission are you referring to?",
-            "custom": {
-                "suggestions": [
-                    {
-                        "label": "Admission application/testing",
-                        "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}",
-                    },
-                    {
-                        "label": "Admission enrollment",
-                        "payload": "/direct_intent{\"intent\":\"enrollment_time_schedule\"}",
-                    },
-                    {
-                        "label": "Admission testing result",
-                        "payload": "/direct_intent{\"intent\":\"exam_results\"}",
-                    },
-                ]
-            },
-        }
+        lang = self.data_loader.helper.detect_language(user_message) if self.data_loader.helper else "en"
+        if lang == "ceb":
+            return self._choice_response(
+                "Unsang admission schedule ang imong gipasabot?",
+                [
+                    {"label": "Admission Application Schedule", "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}"},
+                    {"label": "Admission Examination Date", "payload": "/direct_intent{\"intent\":\"admission_examination_date\"}"},
+                ],
+            )
+        return self._choice_response(
+            "Which admission schedule do you mean?",
+            [
+                {"label": "Admission Application Schedule", "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}"},
+                {"label": "Admission Examination Date", "payload": "/direct_intent{\"intent\":\"admission_examination_date\"}"},
+            ],
+        )
 
     def _extract_mentioned_course_or_dept(self, text: str) -> Optional[str]:
         course_dept_map = [
@@ -5694,6 +5765,23 @@ class KnowledgeRouter:
                 "Do you mean the BukSU CAT passing percentage?",
                 [
                     {"label": "BukSU CAT passing rate", "payload": "/direct_intent{\"intent\":\"board_course_cutoff_score\"}"},
+                ],
+            )
+        if direct_intent == "__admission_schedule_clarification__":
+            lang = self.data_loader.helper.detect_language(user_message) if self.data_loader.helper else "en"
+            if lang == "ceb":
+                return self._choice_response(
+                    "Unsang admission schedule ang imong gipasabot?",
+                    [
+                        {"label": "Admission Application Schedule", "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}"},
+                        {"label": "Admission Examination Date", "payload": "/direct_intent{\"intent\":\"admission_examination_date\"}"},
+                    ],
+                )
+            return self._choice_response(
+                "Which admission schedule do you mean?",
+                [
+                    {"label": "Admission Application Schedule", "payload": "/direct_intent{\"intent\":\"online_application_schedule\"}"},
+                    {"label": "Admission Examination Date", "payload": "/direct_intent{\"intent\":\"admission_examination_date\"}"},
                 ],
             )
         if direct_intent:
