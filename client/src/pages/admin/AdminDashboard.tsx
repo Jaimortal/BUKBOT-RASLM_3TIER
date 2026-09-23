@@ -23,6 +23,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -38,6 +39,7 @@ import {
   Shield, 
   HelpCircle,
   Database,
+  BookOpen,
   Image as ImageIcon,
   CheckCircle2,
   AlertCircle,
@@ -60,7 +62,24 @@ import {
   Lock,
   Eye,
   EyeOff,
-  RefreshCw
+  RefreshCw,
+  Activity,
+  Zap,
+  FileText,
+  Mic,
+  MapPin,
+  Volume2,
+  Palette,
+  SlidersHorizontal,
+  Bot,
+  GraduationCap,
+  Sparkles,
+  ChevronDown,
+  Check,
+  ShieldCheck,
+  KeyRound,
+  Info,
+  Minimize2
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
@@ -73,6 +92,7 @@ import { AdminReports } from "@/components/admin/AdminReports";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
 import { AdminActivityLogs } from "@/components/admin/AdminActivityLogs";
 import { AdminFaqGapReport } from "@/components/admin/AdminFaqGapReport";
+import { AdminPerformance } from "@/components/admin/AdminPerformance";
 import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
 export default function AdminDashboard() {
@@ -86,6 +106,8 @@ export default function AdminDashboard() {
   const [showUnsavedSettingsDialog, setShowUnsavedSettingsDialog] = useState(false);
   const [pendingTab, setPendingTab] = useState<string | null>(null);
   const [responsesSubTab, setResponsesSubTab] = useState<"knowledge" | "locations">("knowledge");
+  const [reportsSubTab, setReportsSubTab] = useState<"user-reports" | "activity-logs" | "performance" | "faq-gaps">("user-reports");
+  const isEffectiveMainAdmin = Boolean(isMainAdmin || user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com');
   
   const DEFAULT_PRIVILEGES: UserPrivileges = {
     chatEnabled: true,
@@ -150,6 +172,8 @@ export default function AdminDashboard() {
   });
   const [avatarDeleteMode, setAvatarDeleteMode] = useState(false);
   const [previewAvatarMode, setPreviewAvatarMode] = useState<"inactive" | "active">("inactive");
+  const [settingsSubTab, setSettingsSubTab] = useState<"features" | "chathead" | "maps" | "account">("features");
+  const [chatheadTarget, setChatheadTarget] = useState<"inactive" | "active">("inactive");
 
   useEffect(() => {
     if (fetchedPrivileges) {
@@ -250,7 +274,59 @@ export default function AdminDashboard() {
   const settingsDirty =
     JSON.stringify(privileges) !== JSON.stringify(savedPrivileges) ||
     JSON.stringify(widgetSettings) !== JSON.stringify(savedWidgetSettings);
-  const presetAvatarIcons = ["💬", "🤖", "🎓", "✕", "?", "i"];
+  const PRESET_AVATAR_ICONS = [
+    { id: "message-square", label: "Chat", icon: MessageSquare },
+    { id: "bot", label: "Assistant", icon: Bot },
+    { id: "graduation-cap", label: "University", icon: GraduationCap },
+    { id: "sparkles", label: "AI Smart", icon: Sparkles },
+    { id: "help-circle", label: "Help Desk", icon: HelpCircle },
+    { id: "info", label: "Information", icon: Info },
+    { id: "x", label: "Close Cross", icon: X },
+    { id: "chevron-down", label: "Minimize", icon: ChevronDown },
+  ];
+
+  const BUKSU_COLOR_PRESETS = [
+    { name: "BukSU Deep Navy", hex: "#001C38" },
+    { name: "BukSU Royal Blue", hex: "#002b54" },
+    { name: "BukSU Classic Blue", hex: "#0356a9" },
+    { name: "BukSU University Gold", hex: "#F59E0B" },
+    { name: "BukSU Dark Amber", hex: "#D97706" },
+  ];
+
+  const renderAvatarGraphic = (val: string, className: string = "h-5 w-5") => {
+    if (!val) return <MessageSquare className={className} />;
+    if (val.startsWith("/api/images/") || /^https?:\/\//i.test(val) || val.startsWith("/")) {
+      return <img src={val} alt="Avatar" className="h-full w-full object-cover" />;
+    }
+    switch (val) {
+      case "message-square":
+      case "message-circle":
+      case "💬":
+        return <MessageSquare className={className} />;
+      case "bot":
+      case "🤖":
+        return <Bot className={className} />;
+      case "graduation-cap":
+      case "🎓":
+        return <GraduationCap className={className} />;
+      case "sparkles":
+        return <Sparkles className={className} />;
+      case "help-circle":
+      case "?":
+        return <HelpCircle className={className} />;
+      case "info":
+      case "i":
+        return <Info className={className} />;
+      case "x":
+      case "✕":
+        return <X className={className} />;
+      case "chevron-down":
+        return <ChevronDown className={className} />;
+      default:
+        return <span className="font-bold text-sm">{val}</span>;
+    }
+  };
+
   const customAvatarImages = Array.from(new Set([
     ...widgetSettings.inactiveCustomImages,
     ...widgetSettings.activeCustomImages,
@@ -272,6 +348,24 @@ export default function AdminDashboard() {
     setWidgetSettings(mode === "inactive"
       ? { ...widgetSettings, inactiveIcon: value, inactiveImageUrl: "" }
       : { ...widgetSettings, activeIcon: value, activeImageUrl: "" });
+  };
+
+  const applyAvatarToBoth = (value: string) => {
+    if (value.startsWith("/api/images/") || /^https?:\/\//i.test(value) || value.startsWith("/")) {
+      setWidgetSettings({
+        ...widgetSettings,
+        inactiveImageUrl: value,
+        activeImageUrl: value,
+      });
+      return;
+    }
+    setWidgetSettings({
+      ...widgetSettings,
+      inactiveIcon: value,
+      inactiveImageUrl: "",
+      activeIcon: value,
+      activeImageUrl: "",
+    });
   };
 
   const addCustomAvatar = (url: string) => {
@@ -335,158 +429,271 @@ export default function AdminDashboard() {
 
   // --- UI ---
   const menuItems = [
-    { id: "responses", label: "Responses", icon: MessageSquare },
-    { id: "reports", label: "Reports", icon: Shield },
-    { id: "gallery", label: "Gallery", icon: ImageIcon },
-    { id: "privileges", label: "Settings", icon: Settings },
-    { id: "logout", label: "Logout", icon: LogOut, isLogout: true },
+    { id: "responses", label: "Responses", description: "Manage bot responses, topics, and campus maps", icon: MessageSquare },
+    { id: "reports", label: "Reports", description: "Feedback, activity logs, and performance metrics", icon: Shield },
+    { id: "gallery", label: "Gallery", description: "Campus photos and landmark gallery", icon: ImageIcon },
+    { id: "privileges", label: "Settings", description: "Privileges, chathead customization, and map settings", icon: Settings },
   ];
 
   return (
-    <div className="min-h-screen bg-muted/30 flex">
-      {/* Mobile Sidebar Overlay */}
-      {isMobileSidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
-          onClick={() => setIsMobileSidebarOpen(false)}
-        />
-      )}
-      
-      {/* mobile hamburger menu */}
-      <div className="lg:hidden fixed top-8 right-4 z-50">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-          className="bg-white"
-        >
-          {isMobileSidebarOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-        </Button>
-      </div>
-
-      {/* Sidebar Navigation — always fixed, never scrolls with page */}
-      <div className={`
-        fixed top-0 left-0 w-64 bg-white shadow-lg z-50
-        flex flex-col h-screen
-        transform transition-transform duration-300 ease-in-out
-        ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-      `}>
-        <div className="p-6 shrink-0">
-          <div className="flex items-center gap-3 mb-2">
-            <img 
-              src="/LOGO.png" 
-              alt="Admin Logo" 
-              className="w-10 h-10 rounded-lg"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-            <div>
-              <h1 className="text-xl font-bold ">Admin Panel</h1>
-              <p className="text-muted-foreground text-xs text-dark/80">Manage chatbot settings</p>
-            </div>
+    <div className="min-h-screen bg-slate-50/60 flex">
+      {/* Mobile Top Header (visible on screens < lg) */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-30 h-16 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 flex items-center justify-between shadow-2xs">
+        <div className="flex items-center gap-2.5">
+          <img 
+            src="/LOGO.png" 
+            alt="BukSU Logo" 
+            className="w-8 h-8 rounded-lg object-contain shadow-xs shrink-0"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+          />
+          <div>
+            <h1 className="text-sm font-bold text-[#001C38] leading-tight">Admin Panel</h1>
+            <p className="text-[10px] text-slate-500">BukSU AI Assistant</p>
           </div>
         </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+          aria-label="Toggle navigation drawer"
+          className="text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+        >
+          {isMobileSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
+      </header>
 
-        {user && (
-          <div className="mx-4 mb-3 p-2.5 rounded-lg bg-slate-50 border border-slate-200/80 text-xs">
-            <div className="flex items-center justify-between gap-1 mb-1">
-              <span className="font-semibold text-slate-800 truncate">{user.name || "Admin"}</span>
-              <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
-                user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com'
-                  ? 'bg-blue-100 text-blue-800 border border-blue-200'
-                  : 'bg-amber-100 text-amber-800 border border-amber-200'
-              }`}>
-                {user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'main-admin' : 'co-admin'}
+      {/* Mobile Backdrop Overlay */}
+      <AnimatePresence>
+        {isMobileSidebarOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setIsMobileSidebarOpen(false)}
+            className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-xs lg:hidden"
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Left Sidebar (Desktop Fixed, Mobile Slide-over) */}
+      <aside
+        aria-label="Sidebar Navigation"
+        className={`fixed top-0 bottom-0 left-0 z-50 w-72 max-w-[85vw] lg:w-64 bg-white border-r border-slate-200/80 shadow-xl lg:shadow-xs flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+          isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {/* Top: Brand Header */}
+        <div>
+          <div className="h-16 lg:h-18 px-5 border-b border-slate-200/80 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img 
+                src="/LOGO.png" 
+                alt="BukSU Logo" 
+                className="w-9 h-9 rounded-xl object-contain shadow-xs shrink-0"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+              <div>
+                <h1 className="text-base font-bold text-[#001C38] tracking-tight leading-tight">
+                  Admin Panel
+                </h1>
+                <p className="text-[11px] text-slate-500 font-medium">
+                  BukSU AI Assistant
+                </p>
+              </div>
+            </div>
+            {/* Close button inside drawer for mobile */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileSidebarOpen(false)}
+              className="lg:hidden text-slate-500 hover:text-slate-800"
+              aria-label="Close navigation drawer"
+            >
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="p-3 space-y-1.5">
+            <div className="px-3 pb-1.5 pt-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                Management
               </span>
             </div>
-            <p className="text-slate-500 font-mono text-[11px] truncate">{user.email}</p>
-          </div>
-        )}
-        
-        <nav className="px-4 gap-2 flex flex-col flex-1 overflow-y-auto pb-6">
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <button
-                key={item.id}
-                onClick={() => {
-                  if (item.isLogout) {
-                    setShowLogoutConfirmation(true);
-                    setIsMobileSidebarOpen(false);
-                  } else {
-                    handleNavigate(item.id);
-                  }
-                }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
-                  item.isLogout
-                    ? "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                    : activeTab === item.id
-                    ? " text-white "
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                }`}
-                style={
-                  !item.isLogout && activeTab === item.id
-                    ? { background: "linear-gradient(to right, #001C38, #0356a9ff)" }
-                    : undefined
-                }
-              >
-                <Icon className="w-5 h-5" />
-                <span className="font-medium">{item.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
 
-      {/* Main Content — offset by sidebar width on desktop */}
-      <div className="flex-1 p-4 lg:p-8 mt-5 lg:ml-64">
-        <div className="max-w-6xl mx-auto">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => handleNavigate(item.id)}
+                  aria-label={item.label}
+                  className={`group w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                    isActive
+                      ? "bg-[#001C38] text-white shadow-sm shadow-[#001C38]/20"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/80"
+                  }`}
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className={`p-1 rounded-lg transition-colors shrink-0 ${
+                      isActive ? "text-amber-400" : "text-slate-400 group-hover:text-slate-700"
+                    }`}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="text-left min-w-0">
+                      <div className="leading-tight truncate">{item.label}</div>
+                      <div className={`text-[10px] font-normal truncate max-w-[130px] hidden sm:block ${
+                        isActive ? "text-blue-200/80" : "text-slate-400"
+                      }`}>
+                        {item.description}
+                      </div>
+                    </div>
+                  </div>
+                  {isActive ? (
+                    <span className="w-1.5 h-6 rounded-full bg-amber-400 shadow-xs shrink-0" />
+                  ) : (
+                    <ChevronRight className="h-4 w-4 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* Bottom Section: Profile Card & Logout */}
+        <div className="p-3 border-t border-slate-200/80 bg-slate-50/50 space-y-2.5">
+          {/* Admin User Profile */}
+          {user && (
+            <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-[#001C38] text-amber-400 flex items-center justify-center font-bold text-xs shadow-2xs shrink-0">
+                {(user.name || user.email || "A").charAt(0).toUpperCase()}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-xs font-bold text-slate-900 truncate">
+                    {user.name || "Administrator"}
+                  </span>
+                  <span className={`px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider shrink-0 ${
+                    user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com'
+                      ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                      : 'bg-amber-50 text-amber-700 border border-amber-200'
+                  }`}>
+                    {user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'Main' : 'Co'}
+                  </span>
+                </div>
+                <p className="text-[10px] text-slate-500 truncate font-mono mt-0.5">
+                  {user.email}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Logout Button */}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => setShowLogoutConfirmation(true)}
+            className="w-full justify-center gap-2 border-red-200 bg-red-50/60 hover:bg-red-100/80 text-red-600 hover:text-red-700 font-semibold text-xs h-9 rounded-xl transition-all shadow-2xs"
+          >
+            <LogOut className="h-4 w-4" />
+            <span>Sign Out</span>
+          </Button>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className="flex-1 min-w-0 lg:ml-64 p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8 pb-12 w-full max-w-7xl mx-auto">
+        <div className="w-full">
           {activeTab === "responses" && (
             <div className="space-y-6">
-              <Card className="border-0 shadow-lg overflow-hidden bg-white/80 backdrop-blur-sm">
-                <div className="p-4 border-b bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div className="flex items-center justify-between w-full">
-                    <Tabs value={responsesSubTab} onValueChange={(v) => setResponsesSubTab(v as any)} className="w-full sm:w-auto">
-                      <TabsList className="bg-slate-100 p-1">
-                        <AdminTooltip
-                          title="Knowledge Manager"
-                          description="Browse, filter, and edit structured knowledge categories, topics, and responses"
-                          side="top"
-                        >
-                          <TabsTrigger value="knowledge" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Knowledge Manager</TabsTrigger>
-                        </AdminTooltip>
-                        <AdminTooltip
-                          title="Locations & Maps"
-                          description="Manage campus buildings, room coordinates, map pins, and navigational routes"
-                          side="top"
-                        >
-                          <TabsTrigger value="locations" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Locations</TabsTrigger>
-                        </AdminTooltip>
-                      </TabsList>
-                    </Tabs>
-                    
-                    <AdminTooltip
-                      title="Sync Knowledge Base"
-                      description="Synchronize and persist all knowledge files with the database and refresh caches"
-                      side="bottom"
-                    >
-                      <Button 
-                        onClick={() => setShowSyncDialog(true)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center gap-2 shadow-sm"
-                      >
-                        <RefreshCw className={`w-4 h-4 ${syncKnowledgeBaseMutation.isPending ? "animate-spin" : ""}`} />
-                        Sync Knowledge Base
-                      </Button>
-                    </AdminTooltip>
+              {/* Header & Sub-Navigation matching BukSU Admin Theme */}
+              <div className="flex flex-col gap-4">
+                <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#001C38] text-white shadow-sm shrink-0">
+                      <Database className="h-6 w-6 text-amber-400" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h2 className="text-xl font-bold text-slate-900 tracking-tight">Responses & Knowledge Base</h2>
+                        <Badge variant="outline" className="bg-blue-50 text-[#001C38] border-blue-200 text-[11px] font-semibold">
+                          BukSU AI Responses
+                        </Badge>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        Browse, filter, and edit structured chatbot responses, topics, multi-language dialogue, campus building coordinates, pins, and routes.
+                      </p>
+                    </div>
                   </div>
+
+                  <AdminTooltip
+                    title="Sync Records"
+                    description="Synchronize and persist all knowledge and location records with the database"
+                    side="bottom"
+                  >
+                    <Button 
+                      onClick={() => setShowSyncDialog(true)}
+                      className="bg-[#001C38] hover:bg-[#032f5d] text-white font-semibold flex items-center gap-2 shadow-sm border border-blue-900/30 self-start md:self-center"
+                    >
+                      <RefreshCw className={`w-4 h-4 text-amber-400 ${syncKnowledgeBaseMutation.isPending ? "animate-spin" : ""}`} />
+                      <span>Sync Records</span>
+                    </Button>
+                  </AdminTooltip>
                 </div>
 
-                <CardContent className="p-0">
+                {/* Sub-Tabs Navigation (straight, prominent layout matching Settings and Reports tabs) */}
+                <div className="grid grid-cols-2 gap-2 bg-slate-200/70 p-1.5 rounded-xl border border-slate-200/80">
+                  <AdminTooltip
+                    title="Knowledge Manager"
+                    description="Browse, filter, and edit structured knowledge categories, topics, and responses"
+                    side="top"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setResponsesSubTab("knowledge")}
+                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                        responsesSubTab === "knowledge"
+                          ? "bg-[#001C38] text-white shadow-sm"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                      }`}
+                    >
+                      <BookOpen className={`h-4 w-4 ${responsesSubTab === "knowledge" ? "text-amber-400" : "text-slate-500"}`} />
+                      <span>Knowledge Manager</span>
+                    </button>
+                  </AdminTooltip>
+
+                  <AdminTooltip
+                    title="Locations & Maps"
+                    description="Manage campus buildings, room coordinates, map pins, and navigational routes"
+                    side="top"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setResponsesSubTab("locations")}
+                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                        responsesSubTab === "locations"
+                          ? "bg-[#001C38] text-white shadow-sm"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                      }`}
+                    >
+                      <MapPin className={`h-4 w-4 ${responsesSubTab === "locations" ? "text-amber-400" : "text-slate-500"}`} />
+                      <span>Campus Locations & Maps</span>
+                    </button>
+                  </AdminTooltip>
+                </div>
+              </div>
+
+              {/* Main Content Area */}
+              <Card className="border border-slate-200/80 shadow-md overflow-hidden bg-white/90 backdrop-blur-sm rounded-2xl">
+                <CardContent className="p-4 sm:p-6">
                   {responsesSubTab === "knowledge" ? (
-                    <div className="p-4"><AdminKnowledgeManager /></div>
+                    <AdminKnowledgeManager />
                   ) : (
-                    <div className="p-4"><AdminLocations /></div>
+                    <AdminLocations />
                   )}
                 </CardContent>
               </Card>
@@ -495,304 +702,1066 @@ export default function AdminDashboard() {
 
           {activeTab === "privileges" && (
             <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg sm:text-xl">Chatbox Settings</CardTitle>
-                  <CardDescription className="text-sm">Enable or disable user features in the chat widget</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 gap-4">
-                    <div className="space-y-1">
-                      <Label className="text-sm sm:text-base">User Chat</Label>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Allow users to send messages</p>
+              {/* Header & Sub-Navigation */}
+              <div className="flex flex-col gap-4">
+                <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#001C38] text-white shadow-sm shrink-0">
+                      <Settings className="h-6 w-6 text-amber-400" />
                     </div>
-                    <Switch
-                      checked={privileges.chatEnabled}
-                      onCheckedChange={(checked) => handlePrivilegeToggle("chatEnabled", checked)}
-                      disabled={saveSettingsMutation.isPending}
-                    />
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h2 className="text-xl font-bold text-slate-900 tracking-tight">System & Widget Settings</h2>
+                        <Badge variant="outline" className="bg-blue-50 text-[#001C38] border-blue-200 text-[11px] font-semibold">
+                          BukSU AI System
+                        </Badge>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        Configure student chat privileges, customize the avatar & branding colors, manage campus maps, and manage administrator credentials.
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 gap-4">
-                    <div className="space-y-1">
-                      <Label className="text-sm sm:text-base">Audio Input</Label>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Show or hide the microphone input</p>
+                  {settingsDirty && (
+                    <div className="flex items-center gap-2 bg-amber-50 border border-amber-300 text-amber-900 px-3.5 py-1.5 rounded-xl text-xs font-semibold self-start md:self-center shadow-sm animate-pulse">
+                      <AlertCircle className="h-4 w-4 text-amber-600 shrink-0" />
+                      <span>Unsaved modifications pending</span>
                     </div>
-                    <Switch
-                      checked={privileges.audioInputEnabled}
-                      onCheckedChange={(checked) => handlePrivilegeToggle("audioInputEnabled", checked)}
-                      disabled={saveSettingsMutation.isPending}
-                    />
-                  </div>
+                  )}
+                </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 gap-4">
-                    <div className="space-y-1">
-                      <Label className="text-sm sm:text-base">Map Access</Label>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Allow users to view maps in responses</p>
-                    </div>
-                    <Switch
-                      checked={privileges.mapAccessEnabled}
-                      onCheckedChange={(checked) => handlePrivilegeToggle("mapAccessEnabled", checked)}
-                      disabled={saveSettingsMutation.isPending}
-                    />
-                  </div>
+                {/* Sub-Tabs Navigation (straight, prominent layout matching Reports tab) */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 bg-slate-200/70 p-1.5 rounded-xl border border-slate-200/80">
+                  <button
+                    type="button"
+                    onClick={() => setSettingsSubTab("features")}
+                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                      settingsSubTab === "features"
+                        ? "bg-[#001C38] text-white shadow-sm"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                    }`}
+                  >
+                    <SlidersHorizontal className="h-4 w-4 text-amber-400" />
+                    Chatbox Controls
+                  </button>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 gap-4">
-                    <div className="space-y-1">
-                      <Label className="text-sm sm:text-base">Audio Response</Label>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Show text-to-speech controls and allow automatic audio replies when users enable them</p>
-                    </div>
-                    <Switch
-                      checked={widgetSettings.audioResponseEnabled !== false}
-                      onCheckedChange={(checked) => setWidgetSettings({ ...widgetSettings, audioResponseEnabled: checked })}
-                      disabled={saveSettingsMutation.isPending}
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-              <div className="grid gap-6 lg:grid-cols-2">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg sm:text-xl">Chathead Avatar</CardTitle>
-                    <CardDescription>Choose one avatar library, then assign each icon or image to the closed or open chathead.</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-5">
-                    <div className="grid grid-cols-2 gap-3 rounded-xl border bg-slate-50 p-3">
-                      <div className="rounded-lg bg-white p-3 shadow-sm">
-                        <p className="text-xs font-semibold text-slate-700">Closed avatar</p>
-                        <div className="mt-2 flex items-center gap-2">
-                          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full text-xl text-white shadow" style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}>
-                            {widgetSettings.inactiveImageUrl ? <img src={widgetSettings.inactiveImageUrl} alt="Closed avatar" className="h-full w-full object-cover" /> : <span>{widgetSettings.inactiveIcon}</span>}
-                          </div>
-                          <span className="text-[11px] text-muted-foreground">When chatbox is closed</span>
-                        </div>
-                      </div>
-                      <div className="rounded-lg bg-white p-3 shadow-sm">
-                        <p className="text-xs font-semibold text-slate-700">Open avatar</p>
-                        <div className="mt-2 flex items-center gap-2">
-                          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full text-xl text-white shadow" style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}>
-                            {widgetSettings.activeImageUrl ? <img src={widgetSettings.activeImageUrl} alt="Open avatar" className="h-full w-full object-cover" /> : <span>{widgetSettings.activeIcon}</span>}
-                          </div>
-                          <span className="text-[11px] text-muted-foreground">When chatbox is open</span>
-                        </div>
-                      </div>
-                    </div>
+                  <button
+                    type="button"
+                    onClick={() => setSettingsSubTab("chathead")}
+                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                      settingsSubTab === "chathead"
+                        ? "bg-[#001C38] text-white shadow-sm"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                    }`}
+                  >
+                    <Palette className="h-4 w-4 text-amber-400" />
+                    Chathead Studio
+                  </button>
 
-                    <div className="space-y-3 rounded-xl border bg-slate-50 p-3">
-                      <div className="flex items-center justify-between gap-2">
-                        <div>
-                          <h3 className="text-sm font-semibold">Avatar library</h3>
-                          <p className="text-xs text-muted-foreground">Click an avatar to assign it. Turn on delete mode to remove custom images.</p>
-                        </div>
-                        <Button
-                          size="sm"
-                          variant={avatarDeleteMode ? "destructive" : "outline"}
-                          onClick={() => setAvatarDeleteMode(!avatarDeleteMode)}
-                        >
-                          Delete
-                        </Button>
-                      </div>
+                  <button
+                    type="button"
+                    onClick={() => setSettingsSubTab("maps")}
+                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                      settingsSubTab === "maps"
+                        ? "bg-[#001C38] text-white shadow-sm"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                    }`}
+                  >
+                    <MapIcon className="h-4 w-4 text-amber-400" />
+                    Campus Maps
+                  </button>
 
-                      <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
-                        {presetAvatarIcons.map((icon) => {
-                          const isClosed = getAvatarValue("inactive") === icon;
-                          const isOpen = getAvatarValue("active") === icon;
-                          return (
-                            <DropdownMenu key={`preset-${icon}`}>
-                              <DropdownMenuTrigger asChild>
-                                <button
-                                  type="button"
-                                  className={`relative flex h-12 items-center justify-center rounded-xl border bg-white text-xl shadow-sm transition hover:border-blue-300 ${(isClosed || isOpen) ? "border-blue-500 ring-2 ring-blue-100" : "border-slate-200"}`}
-                                >
-                                  {icon}
-                                  {isClosed && <span className="absolute bottom-1 left-1 rounded bg-blue-600 px-1 text-[9px] text-white">Closed</span>}
-                                  {isOpen && <span className="absolute bottom-1 right-1 rounded bg-emerald-600 px-1 text-[9px] text-white">Open</span>}
-                                </button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent align="start" className="w-44">
-                                <DropdownMenuItem onClick={() => selectAvatar("inactive", icon)}>Use when closed</DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => selectAvatar("active", icon)}>Use when open</DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
-                          );
-                        })}
-
-                        {customAvatarImages.map((url) => {
-                          const isClosed = getAvatarValue("inactive") === url;
-                          const isOpen = getAvatarValue("active") === url;
-                          if (avatarDeleteMode) {
-                            return (
-                              <button
-                                key={`custom-delete-${url}`}
-                                type="button"
-                                onClick={() => deleteCustomAvatar(url)}
-                                className="relative flex h-12 items-center justify-center overflow-hidden rounded-xl border border-red-300 bg-white shadow-sm ring-2 ring-red-100"
-                              >
-                                <span className="absolute right-1 top-1 z-10 rounded-full bg-red-600 px-1 text-[10px] text-white">x</span>
-                                <img src={url} alt="Custom avatar" className="h-full w-full object-cover opacity-80" />
-                              </button>
-                            );
-                          }
-
-                          return (
-                            <DropdownMenu key={`custom-${url}`}>
-                              <DropdownMenuTrigger asChild>
-                                <button
-                                  type="button"
-                                  className={`relative flex h-12 items-center justify-center overflow-hidden rounded-xl border bg-white shadow-sm transition hover:border-blue-300 ${(isClosed || isOpen) ? "border-blue-500 ring-2 ring-blue-100" : "border-slate-200"}`}
-                                >
-                                  <img src={url} alt="Custom avatar" className="h-full w-full object-cover" />
-                                  {isClosed && <span className="absolute bottom-1 left-1 rounded bg-blue-600 px-1 text-[9px] text-white">Closed</span>}
-                                  {isOpen && <span className="absolute bottom-1 right-1 rounded bg-emerald-600 px-1 text-[9px] text-white">Open</span>}
-                                </button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent align="start" className="w-44">
-                                <DropdownMenuItem onClick={() => selectAvatar("inactive", url)}>Use when closed</DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => selectAvatar("active", url)}>Use when open</DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
-                          );
-                        })}
-                      </div>
-
-                      <AdminImageUploader onAddImage={addCustomAvatar} />
-                      <p className="text-[11px] text-muted-foreground">Limit: 6 uploaded images and 12 URL images total. Preset icons cannot be deleted.</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg sm:text-xl">Actual Preview</CardTitle>
-                    <CardDescription>Preview the chathead color and icon before saving.</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-5">
-                    <div className="flex min-h-40 flex-col items-center justify-center gap-3 rounded-xl border bg-slate-50">
-                      <button
-                        type="button"
-                        className="flex h-16 w-16 cursor-pointer items-center justify-center overflow-hidden rounded-full text-3xl text-white shadow-xl"
-                        style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}
-                        onClick={() => setPreviewAvatarMode(previewAvatarMode === "inactive" ? "active" : "inactive")}
-                      >
-                        <AnimatePresence mode="wait">
-                          {(previewAvatarMode === "inactive" ? widgetSettings.inactiveImageUrl : widgetSettings.activeImageUrl) ? (
-                            <motion.img
-                              key={`preview-image-${previewAvatarMode}-${previewAvatarMode === "inactive" ? widgetSettings.inactiveImageUrl : widgetSettings.activeImageUrl}`}
-                              src={previewAvatarMode === "inactive" ? widgetSettings.inactiveImageUrl : widgetSettings.activeImageUrl}
-                              alt="Chathead preview"
-                              className="h-full w-full object-cover"
-                              initial={{ rotate: 90, opacity: 0 }}
-                              animate={{ rotate: 0, opacity: 1 }}
-                              exit={{ rotate: -90, opacity: 0 }}
-                            />
-                          ) : (
-                            <motion.span
-                              key={`preview-icon-${previewAvatarMode}-${previewAvatarMode === "inactive" ? widgetSettings.inactiveIcon : widgetSettings.activeIcon}`}
-                              initial={{ rotate: 90, opacity: 0 }}
-                              animate={{ rotate: 0, opacity: 1 }}
-                              exit={{ rotate: -90, opacity: 0 }}
-                            >
-                              {previewAvatarMode === "inactive" ? widgetSettings.inactiveIcon : widgetSettings.activeIcon}
-                            </motion.span>
-                          )}
-                        </AnimatePresence>
-                      </button>
-                      <p className="text-xs text-muted-foreground">Click preview to switch between closed and open.</p>
-                    </div>
-                    <div className="space-y-2">
-                      <Label>Chathead background color and transparency</Label>
-                      <div className="flex items-center gap-3">
-                        <Input
-                          type="color"
-                          value={widgetSettings.chatheadBgColor || "#001C38"}
-                          onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadBgColor: event.target.value })}
-                          className="h-10 w-16 cursor-pointer overflow-hidden rounded-md border-0 p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-md [&::-webkit-color-swatch]:border-0"
-                        />
-                        <Input
-                          value={widgetSettings.chatheadBgColor || "#001C38"}
-                          onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadBgColor: event.target.value })}
-                          className="font-mono text-xs"
-                        />
-                      </div>
-                      <Input
-                        type="range"
-                        min="0.35"
-                        max="1"
-                        step="0.05"
-                        value={widgetSettings.chatheadOpacity ?? 1}
-                        onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadOpacity: Number(event.target.value) })}
-                      />
-                      <p className="text-xs text-muted-foreground">Transparency: {Math.round((widgetSettings.chatheadOpacity ?? 1) * 100)}%</p>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <button
+                    type="button"
+                    onClick={() => setSettingsSubTab("account")}
+                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                      settingsSubTab === "account"
+                        ? "bg-[#001C38] text-white shadow-sm"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                    }`}
+                  >
+                    <ShieldCheck className="h-4 w-4 text-amber-400" />
+                    Account & Security
+                  </button>
+                </div>
               </div>
 
-              <Card className="hidden">
-                <CardHeader>
-                  <CardTitle className="text-lg sm:text-xl">Translation Settings</CardTitle>
-                  <CardDescription className="text-sm">Manage translation and content settings</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border rounded-lg p-4 gap-4">
-                    <div className="space-y-1">
-                      <Label className="text-sm sm:text-base">Auto Translate</Label>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Auto-fill Cebuano when admin leaves it empty</p>
-                    </div>
-                    <Switch
-                      checked={privileges.autoTranslateEnabled}
-                      onCheckedChange={(checked) => handlePrivilegeToggle("autoTranslateEnabled", checked)}
-                      disabled={saveSettingsMutation.isPending}
-                    />
+              {/* 1. CHATBOX CONTROLS SUB-TAB */}
+              {settingsSubTab === "features" && (
+                <div className="space-y-5">
+                  <Card className="border-slate-200/80 shadow-sm overflow-hidden">
+                    <div className="h-1.5 w-full bg-gradient-to-r from-[#001C38] via-[#0356a9] to-[#F59E0B]" />
+                    <CardHeader className="p-5 sm:p-6 bg-slate-50/50 border-b border-slate-100">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div>
+                          <CardTitle className="text-lg font-bold text-slate-900">Student Feature Privileges</CardTitle>
+                          <CardDescription className="text-xs sm:text-sm text-slate-500">
+                            Control which interactive capabilities are available in the public chatbot window.
+                          </CardDescription>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="text-xs font-semibold"
+                            onClick={() => {
+                              setPrivileges({
+                                chatEnabled: true,
+                                audioInputEnabled: true,
+                                mapAccessEnabled: true,
+                                autoTranslateEnabled: true
+                              });
+                              setWidgetSettings({ ...widgetSettings, audioResponseEnabled: true });
+                            }}
+                          >
+                            <Check className="h-3.5 w-3.5 mr-1 text-emerald-600" />
+                            Enable All Features
+                          </Button>
+                        </div>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent className="p-5 sm:p-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Feature 1: User Chat */}
+                        <div className={`p-4 rounded-xl border transition-all ${
+                          privileges.chatEnabled 
+                            ? "border-blue-200 bg-blue-50/20 shadow-sm" 
+                            : "border-slate-200 bg-slate-50/50 opacity-80"
+                        }`}>
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start gap-3">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#001C38] text-white shadow-sm mt-0.5">
+                                <MessageSquare className="h-5 w-5 text-amber-400" />
+                              </div>
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2">
+                                  <Label className="text-sm font-bold text-slate-800 cursor-pointer" onClick={() => handlePrivilegeToggle("chatEnabled", !privileges.chatEnabled)}>
+                                    User Chat & Inquiries
+                                  </Label>
+                                  <Badge className={privileges.chatEnabled ? "bg-emerald-100 text-emerald-800 text-[10px]" : "bg-slate-200 text-slate-600 text-[10px]"}>
+                                    {privileges.chatEnabled ? "Live / Active" : "Disabled"}
+                                  </Badge>
+                                </div>
+                                <p className="text-xs text-slate-500 leading-relaxed">
+                                  Permits students and website visitors to type questions and communicate with BukSU AI in real-time.
+                                </p>
+                              </div>
+                            </div>
+                            <Switch
+                              checked={privileges.chatEnabled}
+                              onCheckedChange={(checked) => handlePrivilegeToggle("chatEnabled", checked)}
+                              disabled={saveSettingsMutation.isPending}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Feature 2: Audio Microphone */}
+                        <div className={`p-4 rounded-xl border transition-all ${
+                          privileges.audioInputEnabled 
+                            ? "border-blue-200 bg-blue-50/20 shadow-sm" 
+                            : "border-slate-200 bg-slate-50/50 opacity-80"
+                        }`}>
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start gap-3">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#001C38] text-white shadow-sm mt-0.5">
+                                <Mic className="h-5 w-5 text-amber-400" />
+                              </div>
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2">
+                                  <Label className="text-sm font-bold text-slate-800 cursor-pointer" onClick={() => handlePrivilegeToggle("audioInputEnabled", !privileges.audioInputEnabled)}>
+                                    Voice / Audio Input
+                                  </Label>
+                                  <Badge className={privileges.audioInputEnabled ? "bg-emerald-100 text-emerald-800 text-[10px]" : "bg-slate-200 text-slate-600 text-[10px]"}>
+                                    {privileges.audioInputEnabled ? "Live / Active" : "Disabled"}
+                                  </Badge>
+                                </div>
+                                <p className="text-xs text-slate-500 leading-relaxed">
+                                  Shows speech-to-text microphone button in the input bar so students can dictate spoken inquiries.
+                                </p>
+                              </div>
+                            </div>
+                            <Switch
+                              checked={privileges.audioInputEnabled}
+                              onCheckedChange={(checked) => handlePrivilegeToggle("audioInputEnabled", checked)}
+                              disabled={saveSettingsMutation.isPending}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Feature 3: Map Access */}
+                        <div className={`p-4 rounded-xl border transition-all ${
+                          privileges.mapAccessEnabled 
+                            ? "border-blue-200 bg-blue-50/20 shadow-sm" 
+                            : "border-slate-200 bg-slate-50/50 opacity-80"
+                        }`}>
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start gap-3">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#001C38] text-white shadow-sm mt-0.5">
+                                <MapPin className="h-5 w-5 text-amber-400" />
+                              </div>
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2">
+                                  <Label className="text-sm font-bold text-slate-800 cursor-pointer" onClick={() => handlePrivilegeToggle("mapAccessEnabled", !privileges.mapAccessEnabled)}>
+                                    Campus Map & Pin Navigation
+                                  </Label>
+                                  <Badge className={privileges.mapAccessEnabled ? "bg-emerald-100 text-emerald-800 text-[10px]" : "bg-slate-200 text-slate-600 text-[10px]"}>
+                                    {privileges.mapAccessEnabled ? "Live / Active" : "Disabled"}
+                                  </Badge>
+                                </div>
+                                <p className="text-xs text-slate-500 leading-relaxed">
+                                  Enables interactive campus blueprints and pin coordinates when students ask for building or office directions.
+                                </p>
+                              </div>
+                            </div>
+                            <Switch
+                              checked={privileges.mapAccessEnabled}
+                              onCheckedChange={(checked) => handlePrivilegeToggle("mapAccessEnabled", checked)}
+                              disabled={saveSettingsMutation.isPending}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Feature 4: Audio Response */}
+                        <div className={`p-4 rounded-xl border transition-all ${
+                          widgetSettings.audioResponseEnabled !== false 
+                            ? "border-blue-200 bg-blue-50/20 shadow-sm" 
+                            : "border-slate-200 bg-slate-50/50 opacity-80"
+                        }`}>
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start gap-3">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#001C38] text-white shadow-sm mt-0.5">
+                                <Volume2 className="h-5 w-5 text-amber-400" />
+                              </div>
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2">
+                                  <Label className="text-sm font-bold text-slate-800 cursor-pointer" onClick={() => setWidgetSettings({ ...widgetSettings, audioResponseEnabled: !(widgetSettings.audioResponseEnabled !== false) })}>
+                                    Text-to-Speech Spoken Audio
+                                  </Label>
+                                  <Badge className={widgetSettings.audioResponseEnabled !== false ? "bg-emerald-100 text-emerald-800 text-[10px]" : "bg-slate-200 text-slate-600 text-[10px]"}>
+                                    {widgetSettings.audioResponseEnabled !== false ? "Live / Active" : "Disabled"}
+                                  </Badge>
+                                </div>
+                                <p className="text-xs text-slate-500 leading-relaxed">
+                                  Provides audio playback buttons on answers and automatically reads messages aloud if the user turns on TTS.
+                                </p>
+                              </div>
+                            </div>
+                            <Switch
+                              checked={widgetSettings.audioResponseEnabled !== false}
+                              onCheckedChange={(checked) => setWidgetSettings({ ...widgetSettings, audioResponseEnabled: checked })}
+                              disabled={saveSettingsMutation.isPending}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+
+              {/* 2. CHATHEAD STUDIO SUB-TAB */}
+              {settingsSubTab === "chathead" && (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  {/* Left Column: Studio Controls */}
+                  <div className="lg:col-span-7 space-y-6">
+                    {/* Step 1: Target Selector Card */}
+                    <Card className="border-slate-200/80 shadow-sm overflow-hidden">
+                      <div className="h-1.5 w-full bg-gradient-to-r from-[#001C38] to-[#0356a9]" />
+                      <CardHeader className="p-4 sm:p-5 bg-slate-50/50 border-b border-slate-100">
+                        <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
+                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#001C38] text-white text-xs font-bold">1</span>
+                          Select Chathead State to Customize
+                        </CardTitle>
+                        <CardDescription className="text-xs text-slate-500">
+                          Click either state below to select which avatar you are assigning icons, images, or colors to.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="p-4 sm:p-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {/* Closed Target Selector */}
+                          <div
+                            onClick={() => {
+                              setChatheadTarget("inactive");
+                              setPreviewAvatarMode("inactive");
+                            }}
+                            className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all duration-200 flex items-center gap-3 ${
+                              chatheadTarget === "inactive"
+                                ? "border-[#001C38] bg-blue-50/30 ring-2 ring-[#001C38]/10 shadow-sm"
+                                : "border-slate-200 hover:border-slate-300 bg-white"
+                            }`}
+                          >
+                            <div
+                              className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full text-white shadow-md transition-transform"
+                              style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}
+                            >
+                              {renderAvatarGraphic(getAvatarValue("inactive"), "h-6 w-6")}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center justify-between gap-1">
+                                <span className="text-xs font-bold text-slate-800">Closed Chathead</span>
+                                {chatheadTarget === "inactive" && (
+                                  <Badge className="bg-[#001C38] text-white text-[9px] px-1.5 py-0">Editing</Badge>
+                                )}
+                              </div>
+                              <p className="text-[11px] text-slate-500 truncate mt-0.5">Floating bubble when chatbox is collapsed</p>
+                            </div>
+                          </div>
+
+                          {/* Open Target Selector */}
+                          <div
+                            onClick={() => {
+                              setChatheadTarget("active");
+                              setPreviewAvatarMode("active");
+                            }}
+                            className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all duration-200 flex items-center gap-3 ${
+                              chatheadTarget === "active"
+                                ? "border-[#001C38] bg-blue-50/30 ring-2 ring-[#001C38]/10 shadow-sm"
+                                : "border-slate-200 hover:border-slate-300 bg-white"
+                            }`}
+                          >
+                            <div
+                              className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full text-white shadow-md transition-transform"
+                              style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}
+                            >
+                              {renderAvatarGraphic(getAvatarValue("active") || "x", "h-6 w-6")}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center justify-between gap-1">
+                                <span className="text-xs font-bold text-slate-800">Open Chathead</span>
+                                {chatheadTarget === "active" && (
+                                  <Badge className="bg-[#001C38] text-white text-[9px] px-1.5 py-0">Editing</Badge>
+                                )}
+                              </div>
+                              <p className="text-[11px] text-slate-500 truncate mt-0.5">Floating button when chatbox is open</p>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Step 2: Icon & Avatar Library Card */}
+                    <Card className="border-slate-200/80 shadow-sm overflow-hidden">
+                      <div className="h-1.5 w-full bg-gradient-to-r from-[#0356a9] to-[#F59E0B]" />
+                      <CardHeader className="p-4 sm:p-5 bg-slate-50/50 border-b border-slate-100">
+                        <div className="flex items-center justify-between gap-2">
+                          <div>
+                            <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
+                              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#001C38] text-white text-xs font-bold">2</span>
+                              Avatar Library
+                            </CardTitle>
+                            <CardDescription className="text-xs text-slate-500">
+                              Click any icon or image below to apply it to the <strong className="text-slate-800 font-semibold">{chatheadTarget === "inactive" ? "Closed Chathead" : "Open Chathead"}</strong>.
+                            </CardDescription>
+                          </div>
+
+                          <Button
+                            size="sm"
+                            variant={avatarDeleteMode ? "destructive" : "outline"}
+                            onClick={() => setAvatarDeleteMode(!avatarDeleteMode)}
+                            className="text-xs font-semibold"
+                          >
+                            <Trash2 className="h-3.5 w-3.5 mr-1" />
+                            {avatarDeleteMode ? "Done Deleting" : "Delete Images"}
+                          </Button>
+                        </div>
+                      </CardHeader>
+
+                      <CardContent className="p-4 sm:p-5 space-y-5">
+                        {/* Section: Vector Icons */}
+                        <div>
+                          <p className="text-xs font-semibold text-slate-600 mb-2.5">Preset Vector Icons</p>
+                          <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
+                            {PRESET_AVATAR_ICONS.map((item) => {
+                              const IconComponent = item.icon;
+                              const isClosed = getAvatarValue("inactive") === item.id;
+                              const isOpen = getAvatarValue("active") === item.id;
+                              const isTargetSelected = chatheadTarget === "inactive" ? isClosed : isOpen;
+
+                              return (
+                                <DropdownMenu key={`preset-icon-${item.id}`}>
+                                  <DropdownMenuTrigger asChild>
+                                    <button
+                                      type="button"
+                                      className={`group relative flex flex-col items-center justify-center p-2 h-16 rounded-xl border transition-all text-slate-700 bg-white hover:border-[#001C38] hover:shadow-sm ${
+                                        isTargetSelected
+                                          ? "border-[#001C38] ring-2 ring-[#001C38]/20 bg-blue-50/20"
+                                          : (isClosed || isOpen)
+                                          ? "border-slate-300"
+                                          : "border-slate-200"
+                                      }`}
+                                    >
+                                      <IconComponent className="h-5 w-5 group-hover:scale-110 transition-transform text-[#001C38]" />
+                                      <span className="text-[10px] text-slate-500 font-medium mt-1 truncate max-w-full">{item.label}</span>
+
+                                      {/* Visual status pills */}
+                                      {isClosed && (
+                                        <span className="absolute -top-1 -left-1 rounded-full bg-[#001C38] text-amber-300 text-[8px] px-1 py-0.2 shadow">
+                                          C
+                                        </span>
+                                      )}
+                                      {isOpen && (
+                                        <span className="absolute -top-1 -right-1 rounded-full bg-emerald-600 text-white text-[8px] px-1 py-0.2 shadow">
+                                          O
+                                        </span>
+                                      )}
+                                    </button>
+                                  </DropdownMenuTrigger>
+                                  <DropdownMenuContent align="center" className="w-48">
+                                    <DropdownMenuItem onClick={() => selectAvatar(chatheadTarget, item.id)}>
+                                      <Check className="mr-2 h-4 w-4 text-blue-600" />
+                                      Apply to {chatheadTarget === "inactive" ? "Closed Chathead" : "Open Chathead"}
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => applyAvatarToBoth(item.id)}>
+                                      <Sparkles className="mr-2 h-4 w-4 text-amber-500" />
+                                      Apply to Both States
+                                    </DropdownMenuItem>
+                                  </DropdownMenuContent>
+                                </DropdownMenu>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Section: Custom Images */}
+                        <div>
+                          <div className="flex items-center justify-between mb-2.5">
+                            <p className="text-xs font-semibold text-slate-600">Custom Uploaded Images & Logos</p>
+                            <span className="text-[11px] text-slate-400">
+                              {customAvatarImages.length} images registered
+                            </span>
+                          </div>
+
+                          <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                            {customAvatarImages.map((url) => {
+                              const isClosed = getAvatarValue("inactive") === url;
+                              const isOpen = getAvatarValue("active") === url;
+                              const isTargetSelected = chatheadTarget === "inactive" ? isClosed : isOpen;
+
+                              if (avatarDeleteMode) {
+                                return (
+                                  <button
+                                    key={`custom-delete-${url}`}
+                                    type="button"
+                                    onClick={() => deleteCustomAvatar(url)}
+                                    className="relative flex h-14 items-center justify-center overflow-hidden rounded-xl border border-red-300 bg-white shadow-sm ring-2 ring-red-100 group"
+                                  >
+                                    <div className="absolute inset-0 bg-red-600/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                      <Trash2 className="h-4 w-4 text-white" />
+                                    </div>
+                                    <img src={url} alt="Custom avatar" className="h-full w-full object-cover" />
+                                  </button>
+                                );
+                              }
+
+                              return (
+                                <DropdownMenu key={`custom-img-${url}`}>
+                                  <DropdownMenuTrigger asChild>
+                                    <button
+                                      type="button"
+                                      className={`group relative flex h-14 items-center justify-center overflow-hidden rounded-xl border bg-white shadow-sm transition-all hover:border-[#001C38] ${
+                                        isTargetSelected
+                                          ? "border-[#001C38] ring-2 ring-[#001C38]/20"
+                                          : (isClosed || isOpen)
+                                          ? "border-slate-300"
+                                          : "border-slate-200"
+                                      }`}
+                                    >
+                                      <img src={url} alt="Custom avatar" className="h-full w-full object-cover" />
+                                      {isClosed && (
+                                        <span className="absolute -top-1 -left-1 rounded-full bg-[#001C38] text-amber-300 text-[8px] px-1 py-0.2 shadow">
+                                          C
+                                        </span>
+                                      )}
+                                      {isOpen && (
+                                        <span className="absolute -top-1 -right-1 rounded-full bg-emerald-600 text-white text-[8px] px-1 py-0.2 shadow">
+                                          O
+                                        </span>
+                                      )}
+                                    </button>
+                                  </DropdownMenuTrigger>
+                                  <DropdownMenuContent align="center" className="w-48">
+                                    <DropdownMenuItem onClick={() => selectAvatar(chatheadTarget, url)}>
+                                      <Check className="mr-2 h-4 w-4 text-blue-600" />
+                                      Apply to {chatheadTarget === "inactive" ? "Closed Chathead" : "Open Chathead"}
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => applyAvatarToBoth(url)}>
+                                      <Sparkles className="mr-2 h-4 w-4 text-amber-500" />
+                                      Apply to Both States
+                                    </DropdownMenuItem>
+                                  </DropdownMenuContent>
+                                </DropdownMenu>
+                              );
+                            })}
+                          </div>
+
+                          <div className="mt-3">
+                            <AdminImageUploader onAddImage={addCustomAvatar} />
+                            <p className="text-[11px] text-slate-400 mt-1.5">
+                              Capacity: max 6 file uploads and 12 URL references. Formats: PNG, JPG, WebP.
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Step 3: Color & Opacity Card */}
+                    <Card className="border-slate-200/80 shadow-sm overflow-hidden">
+                      <div className="h-1.5 w-full bg-gradient-to-r from-[#F59E0B] to-[#001C38]" />
+                      <CardHeader className="p-4 sm:p-5 bg-slate-50/50 border-b border-slate-100">
+                        <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
+                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#001C38] text-white text-xs font-bold">3</span>
+                          Brand Color & Transparency
+                        </CardTitle>
+                        <CardDescription className="text-xs text-slate-500">
+                          Select official BukSU university brand colors or customize hex color and opacity.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="p-4 sm:p-5 space-y-4">
+                        {/* Official BukSU Presets */}
+                        <div>
+                          <Label className="text-xs font-semibold text-slate-700 block mb-2">Official BukSU Brand Swatches</Label>
+                          <div className="flex flex-wrap items-center gap-2.5">
+                            {BUKSU_COLOR_PRESETS.map((color) => {
+                              const isSelected = (widgetSettings.chatheadBgColor || "#001C38").toLowerCase() === color.hex.toLowerCase();
+                              return (
+                                <button
+                                  key={color.hex}
+                                  type="button"
+                                  onClick={() => setWidgetSettings({ ...widgetSettings, chatheadBgColor: color.hex })}
+                                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${
+                                    isSelected 
+                                      ? "border-[#001C38] bg-slate-100 ring-2 ring-[#001C38]/20 shadow-sm font-bold" 
+                                      : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
+                                  }`}
+                                >
+                                  <span className="h-4 w-4 rounded-full border shadow-sm shrink-0 flex items-center justify-center text-white" style={{ backgroundColor: color.hex }}>
+                                    {isSelected && <Check className="h-2.5 w-2.5" />}
+                                  </span>
+                                  <span>{color.name}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Custom Color Input */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
+                          <div>
+                            <Label className="text-xs font-semibold text-slate-700 mb-1.5 block">Custom Color Picker</Label>
+                            <div className="flex items-center gap-2.5">
+                              <Input
+                                type="color"
+                                value={widgetSettings.chatheadBgColor || "#001C38"}
+                                onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadBgColor: event.target.value })}
+                                className="h-10 w-14 cursor-pointer overflow-hidden rounded-lg border border-slate-300 p-0.5 shadow-sm"
+                              />
+                              <Input
+                                value={widgetSettings.chatheadBgColor || "#001C38"}
+                                onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadBgColor: event.target.value })}
+                                className="font-mono text-xs uppercase"
+                                placeholder="#001C38"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <div className="flex items-center justify-between mb-1.5">
+                              <Label className="text-xs font-semibold text-slate-700">Opacity / Transparency</Label>
+                              <Badge variant="outline" className="text-[10px] font-mono">
+                                {Math.round((widgetSettings.chatheadOpacity ?? 1) * 100)}%
+                              </Badge>
+                            </div>
+                            <Input
+                              type="range"
+                              min="0.35"
+                              max="1"
+                              step="0.05"
+                              value={widgetSettings.chatheadOpacity ?? 1}
+                              onChange={(event) => setWidgetSettings({ ...widgetSettings, chatheadOpacity: Number(event.target.value) })}
+                              className="cursor-pointer"
+                            />
+                            <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+                              <span>35% (Subtle)</span>
+                              <span>100% (Solid)</span>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                </CardContent>
-              </Card>
 
-              <AdminMapSettings />
+                  {/* Right Column: Live Interactive Widget Simulator */}
+                  <div className="lg:col-span-5 sticky top-6">
+                    <Card className="border-slate-200/80 shadow-md overflow-hidden bg-white">
+                      <div className="h-1.5 w-full bg-gradient-to-r from-[#001C38] via-[#0356a9] to-[#F59E0B]" />
+                      <CardHeader className="p-4 sm:p-5 bg-slate-50/60 border-b border-slate-100">
+                        <div className="flex items-center justify-between gap-2">
+                          <div>
+                            <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
+                              <Sparkles className="h-4 w-4 text-amber-500" />
+                              Interactive Live Simulator
+                            </CardTitle>
+                            <CardDescription className="text-xs text-slate-500">
+                              Real-time interactive preview of your chathead configuration.
+                            </CardDescription>
+                          </div>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg sm:text-xl">Account Settings</CardTitle>
-                  <CardDescription className="text-sm">Manage your admin account credentials</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <ChangeEmailDialog />
-                  <ChangePasswordDialog />
-                </CardContent>
-              </Card>
+                          <div className="flex items-center p-1 bg-slate-100 rounded-lg border border-slate-200">
+                            <button
+                              type="button"
+                              onClick={() => setPreviewAvatarMode("inactive")}
+                              className={`text-xs px-2.5 py-1 rounded-md font-semibold transition-all ${
+                                previewAvatarMode === "inactive"
+                                  ? "bg-white text-[#001C38] shadow-xs"
+                                  : "text-slate-500 hover:text-slate-800"
+                              }`}
+                            >
+                              Closed View
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setPreviewAvatarMode("active")}
+                              className={`text-xs px-2.5 py-1 rounded-md font-semibold transition-all ${
+                                previewAvatarMode === "active"
+                                  ? "bg-white text-[#001C38] shadow-xs"
+                                  : "text-slate-500 hover:text-slate-800"
+                              }`}
+                            >
+                              Open View
+                            </button>
+                          </div>
+                        </div>
+                      </CardHeader>
 
-              <div className="sticky bottom-4 z-10 flex justify-end gap-3 rounded-xl border bg-white/95 p-4 shadow-lg backdrop-blur">
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setPrivileges(savedPrivileges);
-                    setWidgetSettings(savedWidgetSettings);
-                    setActiveTab("responses");
-                  }}
-                  disabled={saveSettingsMutation.isPending}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  onClick={() => saveSettingsMutation.mutate({ privileges, widgetSettings })}
-                  disabled={!settingsDirty || saveSettingsMutation.isPending}
-                  className="text-white"
-                  style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}
-                >
-                  {saveSettingsMutation.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
-                  Save update
-                </Button>
+                      <CardContent className="p-4 sm:p-5 space-y-4">
+                        {/* Simulated Browser Web Viewport */}
+                        <div className="relative rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-100 via-slate-100/90 to-slate-200/60 p-4 min-h-[460px] flex flex-col justify-between overflow-hidden shadow-inner">
+                          {/* Mock Browser Header Bar */}
+                          <div className="flex items-center gap-2 pb-3 border-b border-slate-200/70 shrink-0">
+                            <div className="flex gap-1.5">
+                              <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                              <div className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                              <div className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                            </div>
+                            <div className="flex-1 bg-white/80 rounded-md text-[10px] text-slate-500 px-2 py-0.5 font-mono truncate text-center shadow-2xs">
+                              buksu.edu.ph/ai-assistant
+                            </div>
+                          </div>
+
+                          {/* Campus Mockup Background Content */}
+                          <div className={`text-center transition-all ${previewAvatarMode === "active" ? "py-2 mb-1" : "my-auto py-6"} px-4`}>
+                            <div className="inline-block p-2 rounded-2xl bg-white/80 shadow-sm border border-slate-200/60 mb-1.5">
+                              <img 
+                                src="/LOGO.png" 
+                                alt="BukSU Logo" 
+                                className="w-8 h-8 object-contain mx-auto" 
+                                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                              />
+                            </div>
+                            <h5 className="text-xs font-bold text-slate-700">Bukidnon State University</h5>
+                            <p className="text-[11px] text-slate-500 max-w-xs mx-auto mt-0.5">
+                              {previewAvatarMode === "inactive" 
+                                ? "Click the floating chathead bubble below to preview opening the chatbox."
+                                : "The chatbox sits above while the floating chathead below displays the open-state toggle."}
+                            </p>
+                          </div>
+
+                          {/* Live Chathead / Window Simulator Component */}
+                          {previewAvatarMode === "inactive" ? (
+                            /* CLOSED STATE SIMULATION */
+                            <div className="flex flex-col items-end gap-2 pt-4">
+                              <div className="flex items-end justify-end gap-3">
+                                <div className="bg-white text-slate-800 text-xs py-2 px-3 rounded-2xl rounded-br-sm shadow-md border border-slate-200/80 max-w-[200px] animate-bounce">
+                                  <p className="font-semibold text-[11px] text-[#001C38]">Hi BukSU Student!</p>
+                                  <p className="text-[10px] text-slate-500 mt-0.5">Need campus info? Click to chat.</p>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  onClick={() => setPreviewAvatarMode("active")}
+                                  className="h-14 w-14 rounded-full text-white shadow-xl flex items-center justify-center relative overflow-hidden group cursor-pointer transition-transform hover:scale-105 active:scale-95 ring-4 ring-white/60"
+                                  style={{
+                                    backgroundColor: widgetSettings.chatheadBgColor || "#001C38",
+                                    opacity: widgetSettings.chatheadOpacity ?? 1,
+                                  }}
+                                  title="Click to open chatbox preview"
+                                >
+                                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                  <AnimatePresence mode="wait">
+                                    <motion.div
+                                      key={`preview-inactive-${getAvatarValue("inactive")}`}
+                                      className="flex items-center justify-center text-white"
+                                      initial={{ rotate: 90, opacity: 0 }}
+                                      animate={{ rotate: 0, opacity: 1 }}
+                                      exit={{ rotate: -90, opacity: 0 }}
+                                    >
+                                      {renderAvatarGraphic(getAvatarValue("inactive"), "h-6 w-6")}
+                                    </motion.div>
+                                  </AnimatePresence>
+                                </button>
+                              </div>
+
+                              <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-medium pr-1">
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                                <span>Closed Chathead (Click bubble to open)</span>
+                              </div>
+                            </div>
+                          ) : (
+                            /* OPEN STATE SIMULATION */
+                            <div className="flex flex-col items-end gap-2.5 w-full pt-1">
+                              {/* Simulated Chatbox Window */}
+                              <div className="w-full max-w-[340px] bg-white rounded-2xl shadow-xl border border-slate-200/90 overflow-hidden flex flex-col transition-all">
+                                {/* Window Header */}
+                                <div 
+                                  className="px-3.5 py-2.5 text-white flex items-center justify-between shadow-xs"
+                                  style={{ backgroundColor: widgetSettings.chatheadBgColor || "#001C38", opacity: widgetSettings.chatheadOpacity ?? 1 }}
+                                >
+                                  <div className="flex items-center gap-2.5">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                                    <div>
+                                      <h6 className="text-xs font-bold leading-tight text-white flex items-center gap-1.5">
+                                        BukSU AI Chatbot
+                                      </h6>
+                                      <p className="text-[10px] text-amber-300 font-medium">Online • Smart Assistant</p>
+                                    </div>
+                                  </div>
+
+                                  <div className="flex items-center gap-1">
+                                    <button
+                                      type="button"
+                                      onClick={() => setPreviewAvatarMode("inactive")}
+                                      className="h-6 w-6 rounded-md hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-colors"
+                                      title="Minimize chatbox"
+                                    >
+                                      <Minimize2 className="h-3.5 w-3.5" />
+                                    </button>
+                                  </div>
+                                </div>
+
+                                {/* Sample Chat Message Body */}
+                                <div className="p-3 bg-slate-50/70 space-y-2">
+                                  <div className="bg-white p-2.5 rounded-xl rounded-tl-sm border border-slate-200/80 text-[11px] text-slate-700 shadow-xs max-w-[90%] leading-relaxed">
+                                    Maayong adlaw! Welcome to Bukidnon State University AI. How can I help you today?
+                                  </div>
+                                  <div className="text-[9px] text-slate-400 font-medium px-1 flex items-center gap-1">
+                                    <span>Just now</span>
+                                    <span>•</span>
+                                    <span className="text-emerald-600 font-semibold">Active Session</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Floating Chathead in OPEN state */}
+                              <div className="flex items-center justify-end gap-2.5 pr-0.5">
+                                <div className="bg-white/95 backdrop-blur-xs text-slate-700 text-[10px] font-medium py-1 px-2.5 rounded-lg shadow-sm border border-slate-200/80 flex items-center gap-1.5">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse" />
+                                  <span>Open Chathead (Click to close)</span>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  onClick={() => setPreviewAvatarMode("inactive")}
+                                  className="h-12 w-12 sm:h-14 sm:w-14 rounded-full text-white shadow-xl flex items-center justify-center relative overflow-hidden group cursor-pointer transition-transform hover:scale-105 active:scale-95 ring-4 ring-white/60"
+                                  style={{
+                                    backgroundColor: widgetSettings.chatheadBgColor || "#001C38",
+                                    opacity: widgetSettings.chatheadOpacity ?? 1,
+                                  }}
+                                  title="Click to close chatbox preview (Chathead in Open State)"
+                                >
+                                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                  <AnimatePresence mode="wait">
+                                    <motion.div
+                                      key={`preview-active-${getAvatarValue("active") || "x"}`}
+                                      className="flex items-center justify-center text-white"
+                                      initial={{ rotate: 90, opacity: 0 }}
+                                      animate={{ rotate: 0, opacity: 1 }}
+                                      exit={{ rotate: -90, opacity: 0 }}
+                                    >
+                                      {renderAvatarGraphic(getAvatarValue("active") || "x", "h-5 w-5 sm:h-6 sm:w-6")}
+                                    </motion.div>
+                                  </AnimatePresence>
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Technical Readout */}
+                        <div className="grid grid-cols-2 gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-[11px]">
+                          <div>
+                            <span className="text-slate-400 block font-medium">Closed Chathead</span>
+                            <span className="font-semibold text-slate-800 truncate block">
+                              {getAvatarValue("inactive") || "Default"}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-slate-400 block font-medium">Open Chathead</span>
+                            <span className="font-semibold text-slate-800 truncate block">
+                              {getAvatarValue("active") || "Close Cross (x)"}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-slate-400 block font-medium">Background Color</span>
+                            <span className="font-mono font-semibold text-slate-800">
+                              {widgetSettings.chatheadBgColor || "#001C38"}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-slate-400 block font-medium">Opacity Level</span>
+                            <span className="font-semibold text-slate-800">
+                              {Math.round((widgetSettings.chatheadOpacity ?? 1) * 100)}%
+                            </span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              )}
+
+              {/* 3. CAMPUS MAPS SUB-TAB */}
+              {settingsSubTab === "maps" && (
+                <div>
+                  <AdminMapSettings />
+                </div>
+              )}
+
+              {/* 4. ACCOUNT & SECURITY SUB-TAB */}
+              {settingsSubTab === "account" && (
+                <div className="space-y-6">
+                  {/* Administrator Profile Card */}
+                  <Card className="border-slate-200/80 shadow-sm overflow-hidden">
+                    <div className="h-1.5 w-full bg-gradient-to-r from-[#001C38] via-[#0356a9] to-[#F59E0B]" />
+                    <CardHeader className="p-5 sm:p-6 bg-slate-50/50 border-b border-slate-100">
+                      <div className="flex items-center gap-3.5">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#001C38] text-white font-bold text-lg shadow-sm">
+                          {user?.name ? user.name.slice(0, 2).toUpperCase() : "AD"}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <CardTitle className="text-lg font-bold text-slate-900">{user?.name || "Administrator"}</CardTitle>
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                              user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com'
+                                ? 'bg-blue-100 text-[#001C38] border border-blue-200'
+                                : 'bg-amber-100 text-amber-800 border border-amber-200'
+                            }`}>
+                              {user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'Main-Admin' : 'Co-Admin'}
+                            </span>
+                          </div>
+                          <CardDescription className="text-xs text-slate-500 font-mono mt-0.5">
+                            {user?.email || "admin@buksu.edu.ph"}
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                  </Card>
+
+                  {/* Security Credentials Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* Email Management Panel */}
+                    <Card className="border-slate-200/80 shadow-sm hover:shadow transition-shadow">
+                      <CardHeader className="p-5">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#001C38]">
+                            <Mail className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <CardTitle className="text-base font-bold text-slate-900">Email Address</CardTitle>
+                            <CardDescription className="text-xs text-slate-500">Account login & verification</CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-5 pt-0 space-y-4">
+                        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                          <span className="text-slate-400 block font-medium">Registered Address</span>
+                          <span className="text-slate-800 font-mono font-semibold text-sm truncate block mt-0.5">
+                            {user?.email || "admin@buksu.edu.ph"}
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-500 leading-relaxed">
+                          Updating your email requires 2-step verification sent to your current and new addresses.
+                        </p>
+                        <ChangeEmailDialog
+                          trigger={
+                            <Button className="w-full bg-[#001C38] hover:bg-[#002b54] text-white font-semibold text-xs shadow-sm">
+                              <Mail className="mr-2 h-4 w-4" />
+                              Change Email Address
+                            </Button>
+                          }
+                        />
+                      </CardContent>
+                    </Card>
+
+                    {/* Password Management Panel */}
+                    <Card className="border-slate-200/80 shadow-sm hover:shadow transition-shadow">
+                      <CardHeader className="p-5">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#001C38]">
+                            <KeyRound className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <CardTitle className="text-base font-bold text-slate-900">Password & Security</CardTitle>
+                            <CardDescription className="text-xs text-slate-500">Authentication credentials</CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-5 pt-0 space-y-4">
+                        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                          <span className="text-slate-400 block font-medium">Security Status</span>
+                          <div className="flex items-center gap-1.5 text-emerald-700 font-semibold text-sm mt-0.5">
+                            <CheckCircle2 className="h-4 w-4" />
+                            Password Protected (Strong)
+                          </div>
+                        </div>
+                        <p className="text-xs text-slate-500 leading-relaxed">
+                          Keep your account secure by choosing a unique password with a minimum of 8 characters.
+                        </p>
+                        <ChangePasswordDialog
+                          trigger={
+                            <Button className="w-full bg-[#001C38] hover:bg-[#002b54] text-white font-semibold text-xs shadow-sm">
+                              <KeyRound className="mr-2 h-4 w-4" />
+                              Change Password
+                            </Button>
+                          }
+                        />
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              )}
+
+              {/* PERSISTENT FLOATING SAVE BAR */}
+              <div className="sticky bottom-4 z-20 flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-[#001C38]/20 bg-white/95 p-4 shadow-xl backdrop-blur">
+                <div className="flex items-center gap-2.5">
+                  <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${settingsDirty ? "bg-amber-100 text-amber-700" : "bg-blue-50 text-blue-700"}`}>
+                    {settingsDirty ? <AlertCircle className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
+                  </div>
+                  <div>
+                    <h6 className="text-xs sm:text-sm font-bold text-slate-800">
+                      {settingsDirty ? "Unsaved settings changes detected" : "All settings are currently up to date"}
+                    </h6>
+                    <p className="text-[11px] text-slate-500">
+                      {settingsDirty ? "Click 'Save Changes' to apply your updates to the live chatbot." : "Modifications in Chatbox Controls or Chathead Studio can be saved here."}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 self-end sm:self-center">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setPrivileges(savedPrivileges);
+                      setWidgetSettings(savedWidgetSettings);
+                    }}
+                    disabled={!settingsDirty || saveSettingsMutation.isPending}
+                    className="text-xs font-semibold"
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={() => saveSettingsMutation.mutate({ privileges, widgetSettings })}
+                    disabled={!settingsDirty || saveSettingsMutation.isPending}
+                    className="text-white text-xs font-semibold shadow-md px-4"
+                    style={{ background: "linear-gradient(to right, #001C38, #0356a9)" }}
+                  >
+                    {saveSettingsMutation.isPending ? (
+                      <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+                    ) : (
+                      <Save className="mr-2 h-3.5 w-3.5" />
+                    )}
+                    Save Changes
+                  </Button>
+                </div>
               </div>
             </div>
           )}
 
           {activeTab === "reports" && (
             <div className="space-y-6">
-              <AdminReports />
+              {/* Header Banner */}
+              <div className="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex items-center gap-3.5">
+                  <div className="p-3 rounded-xl bg-[#001C38] text-amber-400 shadow-sm shrink-0">
+                    <Shield className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-xl font-bold text-slate-900 tracking-tight">
+                        Reports & Audit Center
+                      </h2>
+                      {isEffectiveMainAdmin && (
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#001C38]/10 text-[#001C38] border border-[#001C38]/20">
+                          Main-Admin Access
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Monitor user feedback, inspect administrative audit trails, and evaluate chatbot accuracy & performance
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Prominent, Straight, Bigger Sub-Tabs Bar */}
+              <div className="w-full bg-white p-1.5 rounded-xl border border-slate-200/80 shadow-sm">
+                <Tabs
+                  value={
+                    !isEffectiveMainAdmin && (reportsSubTab === "performance" || reportsSubTab === "faq-gaps")
+                      ? "user-reports"
+                      : reportsSubTab
+                  }
+                  onValueChange={(v) => setReportsSubTab(v as any)}
+                  className="w-full"
+                >
+                  <TabsList className={`w-full bg-slate-100/80 p-1.5 h-auto grid gap-2 ${isEffectiveMainAdmin ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2"}`}>
+                    <TabsTrigger
+                      value="user-reports"
+                      className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                    >
+                      <MessageSquare className="w-4.5 h-4.5 shrink-0" />
+                      <span>Chatbot Reports</span>
+                    </TabsTrigger>
+
+                    <TabsTrigger
+                      value="activity-logs"
+                      className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                    >
+                      <Activity className="w-4.5 h-4.5 shrink-0" />
+                      <span>Active Log (Audit Trail)</span>
+                    </TabsTrigger>
+
+                    {isEffectiveMainAdmin && (
+                      <>
+                        <TabsTrigger
+                          value="performance"
+                          className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                        >
+                          <Zap className="w-4.5 h-4.5 shrink-0 text-amber-400 data-[state=inactive]:text-amber-500" />
+                          <span>System Performance</span>
+                        </TabsTrigger>
+
+                        <TabsTrigger
+                          value="faq-gaps"
+                          className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                        >
+                          <FileText className="w-4.5 h-4.5 shrink-0 text-sky-300 data-[state=inactive]:text-blue-600" />
+                          <span>FAQ Gap Evaluation</span>
+                        </TabsTrigger>
+                      </>
+                    )}
+                  </TabsList>
+                </Tabs>
+              </div>
+              {/* Sub-Tab Content Rendering */}
+              {reportsSubTab === "user-reports" && <AdminReports />}
+              {reportsSubTab === "activity-logs" && <AdminActivityLogs />}
               {(isMainAdmin || user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com') && (
                 <>
-                  <AdminFaqGapReport />
-                  <AdminActivityLogs />
+                  {reportsSubTab === "performance" && <AdminPerformance />}
+                  {reportsSubTab === "faq-gaps" && <AdminFaqGapReport />}
                 </>
               )}
             </div>
@@ -802,7 +1771,7 @@ export default function AdminDashboard() {
             <AdminGallery />
           )}
         </div>
-      </div>
+      </main>
       
       {/* Logout Confirmation Dialog */}
       <AlertDialog open={showLogoutConfirmation} onOpenChange={setShowLogoutConfirmation}>
@@ -1809,7 +2778,7 @@ function LocationDialog({ location, onSave, trigger }: {
   );
 }
 
-function ChangeEmailDialog() {
+function ChangeEmailDialog({ trigger }: { trigger?: React.ReactNode } = {}) {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(1); // 1: current email + password, 2: verify current email, 3: new email + verification
   const [currentEmail, setCurrentEmail] = useState("");
@@ -2012,28 +2981,50 @@ function ChangeEmailDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button 
-          variant="outline" 
-          className="w-full justify-start border-none hover:bg-muted/50"
-          onClick={() => {
-            console.log("Change Email button clicked!");
-            setOpen(true);
-          }}
-        >
-          <Mail className="mr-2 h-4 w-4" />
-          Change Email
-        </Button>
+        {trigger || (
+          <Button 
+            variant="outline" 
+            className="w-full justify-start border-none hover:bg-muted/50"
+            onClick={() => setOpen(true)}
+          >
+            <Mail className="mr-2 h-4 w-4" />
+            Change Email
+          </Button>
+        )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] ">
-        <DialogHeader>
-          <DialogTitle>Change Email Address</DialogTitle>
-        </DialogHeader>
-        
+      <DialogContent className="sm:max-w-[440px] p-0 overflow-hidden">
+        {/* BukSU Header */}
+        <div className="bg-[#001C38] text-white p-5 flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-amber-400">
+            <Mail className="h-5 w-5" />
+          </div>
+          <div>
+            <DialogTitle className="text-base font-bold text-white">Change Email Address</DialogTitle>
+            <p className="text-xs text-slate-300 mt-0.5">Verify your credentials to update admin login email</p>
+          </div>
+        </div>
+
+        {/* Step indicator pills */}
+        <div className="px-5 pt-4">
+          <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-slate-100 text-xs font-semibold text-center">
+            <div className={`py-1.5 px-2 rounded-lg transition-colors ${step === 1 ? "bg-white text-[#001C38] shadow-sm font-bold" : step > 1 ? "text-emerald-700 font-medium" : "text-slate-400"}`}>
+              1. Credentials
+            </div>
+            <div className={`py-1.5 px-2 rounded-lg transition-colors ${step === 2 ? "bg-white text-[#001C38] shadow-sm font-bold" : step > 2 ? "text-emerald-700 font-medium" : "text-slate-400"}`}>
+              2. Verify Code
+            </div>
+            <div className={`py-1.5 px-2 rounded-lg transition-colors ${step === 3 ? "bg-white text-[#001C38] shadow-sm font-bold" : "text-slate-400"}`}>
+              3. New Email
+            </div>
+          </div>
+        </div>
+
+        <div className="p-5 pt-2">
         {/* Step 1: Current Email + Password */}
         {step === 1 && (
-          <div className="grid gap-4 py-4">
-            <div className="text-center mb-4">
-              <p className="text-sm text-muted-foreground">
+          <div className="grid gap-4 py-2">
+            <div className="text-center mb-2">
+              <p className="text-xs text-slate-500">
                 Enter your current email and password to start:
               </p>
             </div>
@@ -2180,12 +3171,13 @@ function ChangeEmailDialog() {
             )}
           </div>
         )}
+        </div>
       </DialogContent>
     </Dialog>
   );
 }
 
-function ChangePasswordDialog() {
+function ChangePasswordDialog({ trigger }: { trigger?: React.ReactNode } = {}) {
   const [open, setOpen] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -2253,18 +3245,28 @@ function ChangePasswordDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-full justify-start border-none">
-          <Lock className="mr-2 h-4 w-4" />
-          Change Password
-        </Button>
+        {trigger || (
+          <Button variant="outline" className="w-full justify-start border-none">
+            <Lock className="mr-2 h-4 w-4" />
+            Change Password
+          </Button>
+        )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Change Password</DialogTitle>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
+      <DialogContent className="sm:max-w-[440px] p-0 overflow-hidden">
+        {/* BukSU Header */}
+        <div className="bg-[#001C38] text-white p-5 flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-amber-400">
+            <KeyRound className="h-5 w-5" />
+          </div>
+          <div>
+            <DialogTitle className="text-base font-bold text-white">Change Admin Password</DialogTitle>
+            <p className="text-xs text-slate-300 mt-0.5">Set a new secure password for your administrator account</p>
+          </div>
+        </div>
+
+        <div className="p-5 space-y-4">
           <div className="grid gap-2">
-            <Label htmlFor="current-password">Current Password</Label>
+            <Label htmlFor="current-password" className="text-xs font-semibold">Current Password</Label>
             <div className="relative">
               <Input
                 id="current-password"
@@ -2282,15 +3284,15 @@ function ChangePasswordDialog() {
                 onClick={() => setShowCurrentPassword(!showCurrentPassword)}
               >
                 {showCurrentPassword ? (
-                  <EyeOff className="h-4 w-4" />
+                  <EyeOff className="h-4 w-4 text-slate-400" />
                 ) : (
-                  <Eye className="h-4 w-4" />
+                  <Eye className="h-4 w-4 text-slate-400" />
                 )}
               </Button>
             </div>
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="new-password">New Password</Label>
+            <Label htmlFor="new-password" className="text-xs font-semibold">New Password</Label>
             <div className="relative">
               <Input
                 id="new-password"
@@ -2308,15 +3310,15 @@ function ChangePasswordDialog() {
                 onClick={() => setShowNewPassword(!showNewPassword)}
               >
                 {showNewPassword ? (
-                  <EyeOff className="h-4 w-4" />
+                  <EyeOff className="h-4 w-4 text-slate-400" />
                 ) : (
-                  <Eye className="h-4 w-4" />
+                  <Eye className="h-4 w-4 text-slate-400" />
                 )}
               </Button>
             </div>
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="confirm-password">Confirm New Password</Label>
+            <Label htmlFor="confirm-password" className="text-xs font-semibold">Confirm New Password</Label>
             <div className="relative">
               <Input
                 id="confirm-password"
@@ -2334,21 +3336,46 @@ function ChangePasswordDialog() {
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
                 {showConfirmPassword ? (
-                  <EyeOff className="h-4 w-4" />
+                  <EyeOff className="h-4 w-4 text-slate-400" />
                 ) : (
-                  <Eye className="h-4 w-4" />
+                  <Eye className="h-4 w-4 text-slate-400" />
                 )}
               </Button>
             </div>
           </div>
-        </div>
-        <div className="flex justify-end gap-2">
-          <Button variant="outline" onClick={() => setOpen(false)}>
-            Cancel
-          </Button>
-          <Button onClick={handleSubmit} disabled={changePasswordMutation.isPending}>
-            {changePasswordMutation.isPending ? "Changing..." : "Change Password"}
-          </Button>
+
+          {/* Password Validation Checklist */}
+          <div className="rounded-xl border border-slate-200/80 bg-slate-50 p-3 text-[11px] text-slate-500 space-y-1.5">
+            <div className="font-semibold text-slate-700">Security Criteria:</div>
+            <div className="flex items-center gap-1.5">
+              <span className={`h-1.5 w-1.5 rounded-full ${newPassword.length >= 8 ? "bg-emerald-500" : "bg-slate-300"}`} />
+              <span className={newPassword.length >= 8 ? "text-emerald-700 font-medium" : ""}>
+                At least 8 characters in length
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className={`h-1.5 w-1.5 rounded-full ${newPassword && confirmPassword && newPassword === confirmPassword ? "bg-emerald-500" : "bg-slate-300"}`} />
+              <span className={newPassword && confirmPassword && newPassword === confirmPassword ? "text-emerald-700 font-medium" : ""}>
+                New password and confirmation must match
+              </span>
+            </div>
+          </div>
+
+          <div className="flex justify-end gap-2 pt-2">
+            <Button variant="outline" size="sm" onClick={() => setOpen(false)}>
+              Cancel
+            </Button>
+            <Button 
+              size="sm"
+              onClick={handleSubmit} 
+              disabled={changePasswordMutation.isPending || !currentPassword || newPassword.length < 8 || newPassword !== confirmPassword}
+              className="text-white"
+              style={{ background: "linear-gradient(to right, #001C38, #0356a9)" }}
+            >
+              {changePasswordMutation.isPending ? <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" /> : null}
+              {changePasswordMutation.isPending ? "Updating..." : "Update Password"}
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>

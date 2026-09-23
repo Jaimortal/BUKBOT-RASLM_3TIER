@@ -43,6 +43,7 @@ interface MapMessageProps {
   onToggleFullscreen?: () => void;
   routes?: RoutePayload[];
   onOpenLightbox?: (data: { url: string; title: string; alt?: string }) => void;
+  primaryColor?: string;
 }
 
 const DefaultBounds: L.LatLngBoundsExpression = [
@@ -272,6 +273,7 @@ export default function MapMessage({
   onToggleFullscreen,
   routes,
   onOpenLightbox,
+  primaryColor = "#001C38",
 }: MapMessageProps) {
   // Extract dynamic image height from bounds (Default: 1000)
   const imageHeight = useMemo(() => {
@@ -639,7 +641,10 @@ export default function MapMessage({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-3.5 py-2.5 bg-black/50 border-b border-white/10">
+            <div 
+              className="flex items-center justify-between px-3.5 py-2.5 border-b border-white/10"
+              style={{ backgroundColor: primaryColor }}
+            >
               <div className="flex items-center gap-2 text-white min-w-0">
                 <MapPin className="h-4 w-4 text-amber-400 shrink-0" />
                 <span className="font-bold text-xs sm:text-sm tracking-wide truncate">{activeLightbox.title}</span>

@@ -22,9 +22,10 @@ import { CATEGORY_DEFINITIONS, type CategoryId } from "@/lib/categoryConfig";
 interface CategoryManualModalProps {
   activeCategory: CategoryId | null;
   onClose: () => void;
+  primaryColor?: string;
 }
 
-export function CategoryManualModal({ activeCategory, onClose }: CategoryManualModalProps) {
+export function CategoryManualModal({ activeCategory, onClose, primaryColor = "#001C38" }: CategoryManualModalProps) {
   const isStartingManual = activeCategory === null;
   const category = activeCategory ? CATEGORY_DEFINITIONS[activeCategory] : null;
 
@@ -33,8 +34,8 @@ export function CategoryManualModal({ activeCategory, onClose }: CategoryManualM
       <div className="w-full max-w-sm max-h-[92%] flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10 animate-in zoom-in-95 duration-150">
         {/* Header */}
         <div
-          className="flex items-center justify-between px-4 py-3 text-white shrink-0 shadow-sm"
-          style={{ backgroundColor: "#001C38" }}
+          className="flex items-center justify-between px-4 py-3 text-white shrink-0 shadow-sm transition-colors duration-200"
+          style={{ backgroundColor: primaryColor }}
         >
           <div className="flex items-center gap-2">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-500/20 text-blue-300 border border-blue-400/30">
@@ -253,8 +254,8 @@ export function CategoryManualModal({ activeCategory, onClose }: CategoryManualM
           <Button
             type="button"
             onClick={onClose}
-            className="w-full text-white text-xs font-semibold h-9 shadow-xs cursor-pointer"
-            style={{ backgroundColor: "#001C38" }}
+            className="w-full text-white text-xs font-semibold h-9 shadow-xs cursor-pointer hover:opacity-90 transition-opacity"
+            style={{ backgroundColor: primaryColor }}
           >
             Close Guide
           </Button>

@@ -1,17 +1,50 @@
 import { useState } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { MessageSquare, MessageCircle, X, Bot, GraduationCap, Sparkles, HelpCircle, Info, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import ChatWindow from "./ChatWindow";
 import { useQuery } from "@tanstack/react-query";
 import { fetchChatWidgetSettings } from "@/lib/adminApi";
 
+export function renderWidgetIcon(iconKey: string, isOpen: boolean) {
+  switch (iconKey) {
+    case "message-square":
+    case "message-circle":
+    case "💬":
+      return <MessageSquare className="h-5 w-5 sm:h-6 sm:w-6" />;
+    case "bot":
+    case "🤖":
+      return <Bot className="h-5 w-5 sm:h-6 sm:w-6" />;
+    case "graduation-cap":
+    case "🎓":
+      return <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6" />;
+    case "sparkles":
+      return <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />;
+    case "help-circle":
+    case "?":
+      return <HelpCircle className="h-5 w-5 sm:h-6 sm:w-6" />;
+    case "info":
+    case "i":
+      return <Info className="h-5 w-5 sm:h-6 sm:w-6" />;
+    case "x":
+    case "✕":
+      return <X className="h-5 w-5 sm:h-6 sm:w-6" />;
+    case "chevron-down":
+      return <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6" />;
+    default:
+      if (!iconKey) {
+        return isOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <MessageSquare className="h-5 w-5 sm:h-6 sm:w-6" />;
+      }
+      return <span className="text-xl sm:text-2xl font-bold">{iconKey}</span>;
+  }
+}
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const { data: widgetSettings = {
-    inactiveIcon: "💬",
+    inactiveIcon: "message-square",
     inactiveImageUrl: "",
-    activeIcon: "✕",
+    activeIcon: "x",
     activeImageUrl: "",
     inactiveCustomImages: [],
     activeCustomImages: [],
@@ -39,7 +72,11 @@ export default function ChatWidget() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="mb-3 h-[calc(100dvh-5.5rem)] max-h-[calc(100dvh-5.5rem)] w-[calc(100vw-1.5rem)] sm:w-[400px] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border/50 pointer-events-auto origin-bottom-center sm:origin-bottom-right sm:mr-0 mr-auto"
             >
-              <ChatWindow onClose={() => setIsOpen(false)} isOpen={isOpen} />
+              <ChatWindow 
+                onClose={() => setIsOpen(false)} 
+                isOpen={isOpen} 
+                primaryColor={widgetSettings.chatheadBgColor || "#001C38"} 
+              />
             </motion.div>
           </>
         )}
@@ -64,33 +101,15 @@ export default function ChatWidget() {
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
             />
-          ) : currentIcon ? (
-            <motion.span
-              key={`chat-icon-${isOpen ? "active" : "inactive"}-${currentIcon}`}
-              className="text-xl sm:text-2xl"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-            >
-              {currentIcon}
-            </motion.span>
-          ) : isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-            >
-              <X className="h-5 w-5" />
-            </motion.div>
           ) : (
             <motion.div
-              key="chat"
+              key={`chat-icon-${isOpen ? "active" : "inactive"}-${currentIcon}`}
+              className="flex items-center justify-center text-white"
               initial={{ rotate: 90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
             >
-              <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
+              {renderWidgetIcon(currentIcon, isOpen)}
             </motion.div>
           )}
         </AnimatePresence>

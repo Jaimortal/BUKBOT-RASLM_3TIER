@@ -29,6 +29,7 @@ function groupByBuilding(locations: MapLocation[]): Record<string, MapLocation[]
 
 interface MapQuickAccessProps {
   onClose: () => void;
+  primaryColor?: string;
 }
 
 // Fetch lightweight location data from public API
@@ -46,7 +47,7 @@ async function fetchMapLocations(): Promise<MapLocation[]> {
   }
 }
 
-export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
+export function MapQuickAccess({ onClose, primaryColor = "#001C38" }: MapQuickAccessProps) {
   const [locations, setLocations] = useState<MapLocation[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
   const [selectedBuilding, setSelectedBuilding] = useState<string | null>(null);
@@ -121,7 +122,10 @@ export function MapQuickAccess({ onClose }: MapQuickAccessProps) {
   return (
     <div className="absolute inset-0 z-40 bg-white flex flex-col">
       {/* Matched Header */}
-      <div className="bg-primary px-4 py-3 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{ backgroundColor: '#001C38' }}>
+      <div 
+        className="px-4 py-3 flex items-center justify-between text-white shadow-sm shrink-0 transition-colors duration-200" 
+        style={{ backgroundColor: primaryColor }}
+      >
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <div className="flex flex-col leading-tight">

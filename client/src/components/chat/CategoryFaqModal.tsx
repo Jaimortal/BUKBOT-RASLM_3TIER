@@ -8,12 +8,14 @@ interface CategoryFaqModalProps {
   activeCategory: CategoryId;
   onSelectTopic: (topic: CategoryFaqItem) => void;
   onClose: () => void;
+  primaryColor?: string;
 }
 
 export function CategoryFaqModal({
   activeCategory,
   onSelectTopic,
   onClose,
+  primaryColor = "#001C38",
 }: CategoryFaqModalProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -50,8 +52,8 @@ export function CategoryFaqModal({
       >
         {/* Header */}
         <div
-          className="flex items-center justify-between px-4 py-3 text-white shrink-0 shadow-sm"
-          style={{ backgroundColor: "#001C38" }}
+          className="flex items-center justify-between px-4 py-3 text-white shrink-0 shadow-sm transition-colors duration-200"
+          style={{ backgroundColor: primaryColor }}
         >
           <div className="flex items-center gap-2">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20">

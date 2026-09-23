@@ -1,5 +1,25 @@
 [
   {
+    "id": "log_1790146873623_0mwnk1g",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "delete",
+    "module": "Images",
+    "summary": "Deleted image ID: \"b4eec9fa-dcc4-471b-80bd-4a0109c00ae2\"",
+    "targetTitle": "Image ID: b4eec9fa-dcc4-471b-80bd-4a0109c00ae2",
+    "targetId": "b4eec9fa-dcc4-471b-80bd-4a0109c00ae2",
+    "changes": [
+      {
+        "field": "Image",
+        "changeType": "removed",
+        "details": "Deleted image ID b4eec9fa-dcc4-471b-80bd-4a0109c00ae2"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-09-23T07:01:13.623Z"
+  },
+  {
     "id": "log_1789808120280_70nw6eq",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

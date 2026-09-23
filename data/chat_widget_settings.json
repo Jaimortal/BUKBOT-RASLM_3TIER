@@ -1,7 +1,7 @@
 {
-  "inactiveIcon": "💬",
+  "inactiveIcon": "message-square",
   "inactiveImageUrl": "",
-  "activeIcon": "✕",
+  "activeIcon": "x",
   "activeImageUrl": "",
   "inactiveCustomImages": [
     "/api/images/b4eec9fa-dcc4-471b-80bd-4a0109c00ae2"

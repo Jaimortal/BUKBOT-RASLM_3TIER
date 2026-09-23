@@ -28,6 +28,7 @@ const SpeechRecognition =
 interface ChatWindowProps {
   onClose: () => void;
   isOpen: boolean;
+  primaryColor?: string;
 }
 
 const MAX_CHAT_MESSAGES = 80;
@@ -220,7 +221,7 @@ function convertResponseToMessages(response: any): ChatMessage[] {
   return messages;
 }
 
-export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
+export default function ChatWindow({ onClose, isOpen, primaryColor }: ChatWindowProps) {
   const { toast } = useToast();
   const { data: privileges = { chatEnabled: true, audioInputEnabled: true, mapAccessEnabled: true, autoTranslateEnabled: true } } = useQuery({
     queryKey: ["privileges"],
@@ -247,6 +248,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
     refetchOnWindowFocus: false,
     enabled: isOpen
   });
+
+  const themeColor = primaryColor || widgetSettings?.chatheadBgColor || "#001C38";
 
   // Fullscreen map state - stores the message ID of the map currently in fullscreen
   const [fullscreenMapId, setFullscreenMapId] = useState<string | null>(null);
@@ -948,7 +951,10 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
   return (
     <div className="flex flex-col h-full bg-background relative overflow-hidden">
       {/* Header */}
-      <div className="bg-primary px-4 py-3 flex items-center justify-between text-primary-foreground shadow-sm shrink-0" style={{ backgroundColor: '#001C38' }}>
+      <div 
+        className="px-4 py-3 flex items-center justify-between text-white shadow-sm shrink-0 transition-colors duration-200" 
+        style={{ backgroundColor: themeColor }}
+      >
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <div className="flex flex-col leading-tight">
@@ -1058,6 +1064,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
             pins={(fullscreenMapMessage.mapData as any).pins}
             routes={(fullscreenMapMessage.mapData as any).routes}
             isFullscreen={true}
+            primaryColor={themeColor}
             onToggleFullscreen={() => setFullscreenMapId(null)}
             onOpenLightbox={(img) => {
               setFullscreenImageUrl(img.url);
@@ -1073,14 +1080,14 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       {/* Map Quick Access Modal - Fills the chatbox area */}
       {showMapQuickAccess && (
         <div className="absolute inset-0 z-40 flex flex-col">
-          <MapQuickAccess onClose={() => setShowMapQuickAccess(false)} />
+          <MapQuickAccess onClose={() => setShowMapQuickAccess(false)} primaryColor={themeColor} />
         </div>
       )}
 
       {/* Welcome Screen Overlay when no category is active */}
       <AnimatePresence>
         {!activeCategory && (
-          <WelcomeScreen onSelectCategory={handleSelectCategory} />
+          <WelcomeScreen onSelectCategory={handleSelectCategory} primaryColor={themeColor} />
         )}
       </AnimatePresence>
 
@@ -1268,6 +1275,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                                   pins={(msg.mapData as any).pins}
                                   routes={(msg.mapData as any).routes}
                                   isFullscreen={false}
+                                  primaryColor={themeColor}
                                   onToggleFullscreen={() => {
                                     setFullscreenMapId(msg.id);
                                   }}
@@ -1362,7 +1370,10 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 className="flex max-h-full w-full flex-col overflow-hidden rounded-2xl bg-background shadow-2xl ring-1 ring-black/10"
                 onClick={(event) => event.stopPropagation()}
               >
-                <div className="flex shrink-0 items-center justify-between bg-[#001C38] px-4 py-3 text-white shadow-sm">
+                <div 
+                  className="flex shrink-0 items-center justify-between px-4 py-3 text-white shadow-sm transition-colors duration-200"
+                  style={{ backgroundColor: themeColor }}
+                >
                   <h4 className="text-sm font-semibold">{choiceModal.title}</h4>
                   <button
                     type="button"
@@ -1405,7 +1416,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                 type="button"
                 disabled={isTyping || !privileges.chatEnabled}
                 onClick={() => setShowCategoryFaqModal(true)}
-                className="flex items-center gap-1.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 text-xs font-semibold shadow-xs transition-all duration-150 disabled:opacity-50 cursor-pointer"
+                className="flex items-center gap-1.5 rounded-full text-white px-3 py-1 text-xs font-semibold shadow-xs transition-all duration-150 disabled:opacity-50 cursor-pointer hover:opacity-90"
+                style={{ backgroundColor: themeColor }}
               >
                 <HelpCircle className="h-3.5 w-3.5" />
                 <span>FAQs & Topics ({CATEGORY_DEFINITIONS[activeCategory].faqs.length})</span>
@@ -1456,7 +1468,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
                     onClick={() => handleSend(inputValue)}
                     size="icon"
                     disabled={!inputValue.trim() || isTyping || isListening || !activeCategory}
-                    className="rounded-full shrink-0 h-10 w-10 bg-[#001C38] hover:bg-[#002d5a] text-white"
+                    className="rounded-full shrink-0 h-10 w-10 text-white transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: themeColor }}
                   >
                     <Send className="h-4 w-4" />
                   </Button>
@@ -1484,7 +1497,10 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
       {isReportOpen && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-transparent px-4">
           <div className="w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10">
-            <div className="flex items-center justify-between px-4 py-3 text-white" style={{ backgroundColor: "#001C38" }}>
+            <div 
+              className="flex items-center justify-between px-4 py-3 text-white transition-colors duration-200" 
+              style={{ backgroundColor: themeColor }}
+            >
               <div>
                 <h3 className="text-sm font-semibold">{responseReportContext ? "Report this response" : "Report chatbot issue"}</h3>
                 <p className="text-[11px] text-white/70">
@@ -1572,6 +1588,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
           activeCategory={activeCategory}
           onSelectTopic={(faq) => handleSend(faq.label, faq.payload)}
           onClose={() => setShowCategoryFaqModal(false)}
+          primaryColor={themeColor}
         />
       )}
 
@@ -1580,6 +1597,7 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         <CategoryManualModal
           activeCategory={activeCategory}
           onClose={() => setShowManualModal(false)}
+          primaryColor={themeColor}
         />
       )}
 
@@ -1591,8 +1609,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         >
           {/* Modal Header */}
           <div
-            className="flex items-center justify-between px-4 py-3 shrink-0 border-b border-white/10"
-            style={{ backgroundColor: "#001C38" }}
+            className="flex items-center justify-between px-4 py-3 shrink-0 border-b border-white/10 transition-colors duration-200"
+            style={{ backgroundColor: themeColor }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-2">
@@ -1671,8 +1689,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
         >
           {/* Header with back-to-gallery and close buttons */}
           <div
-            className="flex items-center justify-between px-4 py-3 shrink-0 border-b border-white/10"
-            style={{ backgroundColor: "#001C38" }}
+            className="flex items-center justify-between px-4 py-3 shrink-0 border-b border-white/10 transition-colors duration-200"
+            style={{ backgroundColor: themeColor }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-2">
@@ -1796,8 +1814,8 @@ export default function ChatWindow({ onClose, isOpen }: ChatWindowProps) {
 
           {/* Zoom controls at bottom */}
           <div
-            className="flex items-center justify-center gap-2 px-4 py-3 shrink-0 border-t border-white/10"
-            style={{ backgroundColor: "#001C38" }}
+            className="flex items-center justify-center gap-2 px-4 py-3 shrink-0 border-t border-white/10 transition-colors duration-200"
+            style={{ backgroundColor: themeColor }}
             onClick={(e) => e.stopPropagation()}
           >
             <button

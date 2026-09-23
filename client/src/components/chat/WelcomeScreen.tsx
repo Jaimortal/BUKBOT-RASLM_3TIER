@@ -16,9 +16,11 @@ import {
   Info,
   Compass,
 } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface WelcomeScreenProps {
   onSelectCategory: (categoryId: CategoryId) => void;
+  primaryColor?: string;
 }
 
 const ICON_MAP: Record<string, any> = {
@@ -33,8 +35,8 @@ const ICON_MAP: Record<string, any> = {
 interface TourStepInfo {
   id: CategoryId;
   title: string;
-  shortTitle: string;
-  badge: string;
+  shortTitle?: string;
+  badge?: string;
   icon: any;
   overview: string;
   sampleQuestions: string[];
@@ -93,6 +95,7 @@ const TOUR_STEPS: TourStepInfo[] = [
   {
     id: "services",
     title: "Student Services & Facilities",
+    shortTitle: "Services",
     badge: "Campus Support & Amenities",
     icon: Building2,
     overview:
@@ -100,7 +103,7 @@ const TOUR_STEPS: TourStepInfo[] = [
     sampleQuestions: [
       "How to get a Medical Certificate?",
       "What are the Library borrowing rules?",
-      "Where to inquire about OSAS scholarships?",
+      "what are the scholarship available right now?",
       "How to request guidance counseling?",
     ],
     tip: "Find student support service requirements, operating hours, and office contacts.",
@@ -108,6 +111,7 @@ const TOUR_STEPS: TourStepInfo[] = [
   {
     id: "university",
     title: "University Info, Offices & Contacts",
+    shortTitle: "University",
     badge: "Directory & Administration",
     icon: Landmark,
     overview:
@@ -123,6 +127,7 @@ const TOUR_STEPS: TourStepInfo[] = [
   {
     id: "others",
     title: "Campus Life & General Inquiries",
+    shortTitle: "Others",
     badge: "Campus Guidelines & Dress Code",
     icon: LayoutGrid,
     overview:
@@ -137,7 +142,7 @@ const TOUR_STEPS: TourStepInfo[] = [
   },
 ];
 
-export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
+export function WelcomeScreen({ onSelectCategory, primaryColor = "#001C38" }: WelcomeScreenProps) {
   const [tourActive, setTourActive] = useState(false);
   const [tourStep, setTourStep] = useState(0);
   const [subPhase, setSubPhase] = useState<0 | 1>(0); // 0 = Overview, 1 = What you can ask
@@ -238,199 +243,200 @@ export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
   }, [tourActive, isHighlighting]);
 
   return (
-    <div
-      ref={containerRef}
-      className={`absolute inset-0 z-30 flex flex-col items-center justify-between p-3.5 sm:p-4 bg-slate-950/75 backdrop-blur-md animate-in fade-in-0 duration-300 ${
-        tourActive && !isHighlighting ? "overflow-hidden" : "overflow-y-auto"
-      }`}
-    >
-      <div className="w-full max-w-md my-auto flex flex-col items-center gap-3.5 text-center relative pb-2">
-        {/* Welcome Logo */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center justify-center"
-        >
-          <img
-            src="/LOGO.png"
-            alt="BukSU Logo"
-            className="h-14 w-14 sm:h-16 sm:w-16 object-contain drop-shadow-md select-none"
-            draggable={false}
-          />
-        </motion.div>
-
-        {/* Welcoming Typography */}
-        <motion.div
-          initial={{ y: 8, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.35, delay: 0.05 }}
-          className="space-y-1"
-        >
-          <h2 className="text-lg font-extrabold tracking-tight text-white sm:text-xl drop-shadow-sm">
-            Hello, BukSUan!
-          </h2>
-          <p className="text-xs sm:text-sm font-medium text-slate-200 leading-relaxed max-w-xs mx-auto">
-            What would you like me to assist you with today?
-          </p>
-          <p className="text-[11px] text-slate-300 font-light pt-0.5">
-            Select a category below or take a quick guided tour:
-          </p>
-        </motion.div>
-
-        {/* Marketing / Help Banner: "Don't know where to start?" */}
-        <motion.div
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.38, delay: 0.08 }}
-          className="w-full"
-        >
-          <motion.button
-            type="button"
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              setTourActive(true);
-              transitionToStep(0);
-            }}
-            className="relative w-full overflow-hidden rounded-2xl border-2 border-amber-400/60 bg-gradient-to-r from-amber-500 via-orange-500 to-indigo-700 p-3 text-left text-white shadow-lg shadow-orange-500/25 transition-all hover:border-amber-300 hover:shadow-orange-500/40 cursor-pointer group"
+    <div className="absolute inset-0 z-30 flex flex-col bg-slate-950/75 backdrop-blur-md animate-in fade-in-0 duration-300 overflow-hidden">
+      <ScrollArea
+        ref={containerRef}
+        className="h-full w-full overflow-x-hidden p-3.5 sm:p-4 [&_[data-radix-scroll-area-viewport]]:!overflow-x-hidden [&_[data-radix-scroll-area-viewport]>div]:!flex [&_[data-radix-scroll-area-viewport]>div]:!flex-col [&_[data-radix-scroll-area-viewport]>div]:!min-h-full [&_[data-radix-scroll-area-viewport]>div]:!justify-between [&_[data-radix-scroll-area-thumb]]:!bg-white/30 [&_[data-radix-scroll-area-thumb]:hover]:!bg-white/50"
+      >
+        <div className="w-full max-w-md my-auto flex flex-col items-center gap-3.5 text-center relative pb-2 mx-auto">
+          {/* Welcome Logo */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center justify-center"
           >
-            {/* Shimmer Stripe */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <img
+              src="/LOGO.png"
+              alt="BukSU Logo"
+              className="h-14 w-14 sm:h-16 sm:w-16 object-contain drop-shadow-md select-none"
+              draggable={false}
+            />
+          </motion.div>
 
-            <div className="flex items-center justify-between gap-2.5 relative z-10">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/20 backdrop-blur-md text-amber-200 border border-white/30 shadow-inner group-hover:scale-110 transition-transform">
-                  <Compass className="h-5 w-5 text-amber-200" />
-                </div>
-                <div className="flex flex-col min-w-0 text-left">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[9.5px] font-black uppercase tracking-wider bg-black/35 text-amber-200 px-2 py-0.5 rounded-full border border-amber-300/40 shadow-xs">
-                      Quick Guide
-                    </span>
-                  </div>
-                  <span className="text-xs sm:text-[13px] font-black text-white truncate drop-shadow-sm pt-0.5">
-                    Don't know where to start?
-                  </span>
-                  <span className="text-[10.5px] text-amber-100 font-medium line-clamp-1">
-                    Tap here for an interactive step-by-step tour
-                  </span>
-                </div>
-              </div>
+          {/* Welcoming Typography */}
+          <motion.div
+            initial={{ y: 8, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.35, delay: 0.05 }}
+            className="space-y-1"
+          >
+            <h2 className="text-lg font-extrabold tracking-tight text-white sm:text-xl drop-shadow-sm">
+              Hello, BukSUan!
+            </h2>
+            <p className="text-xs sm:text-sm font-medium text-slate-200 leading-relaxed max-w-xs mx-auto">
+              What would you like me to assist you with today?
+            </p>
+            <p className="text-[11px] text-slate-300 font-light pt-0.5">
+              Select a category below or take a quick guided tour:
+            </p>
+          </motion.div>
 
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md border border-white/30 group-hover:bg-white group-hover:text-orange-600 group-hover:translate-x-0.5 transition-all shadow-sm">
-                <ChevronRight className="h-4 w-4" />
-              </div>
-            </div>
-          </motion.button>
-        </motion.div>
-
-        {/* Standard Category Choice Cards */}
-        <motion.div
-          initial={{ y: 12, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="w-full space-y-2 pt-0.5 relative"
-        >
-          {/* Floating Bouncy Pointing Indicator (Pops up once, larger size, moved upwards, auto-dismisses after 2s) */}
-          <AnimatePresence>
-            {!tourActive && showPointingIndicator && (
-              <motion.div
-                key="pointing-indicator"
-                initial={{ scale: 0, opacity: 0, y: 20, rotate: -15 }}
-                animate={{ scale: [0, 1.25, 0.94, 1], opacity: 1, y: [20, -6, 2, 0], rotate: [-15, 5, -2, 0] }}
-                exit={{ scale: 0.5, opacity: 0, y: -10, transition: { duration: 0.35, ease: "easeOut" } }}
-                transition={{
-                  duration: 0.65,
-                  ease: [0.175, 0.885, 0.32, 1.275],
-                  delay: 0.25,
-                }}
-                className="absolute -top-14 sm:-top-16 -left-2 sm:-left-3 z-30 pointer-events-none select-none filter drop-shadow-2xl"
-              >
-                <img
-                  src="/pointing_right2.png"
-                  alt="Quick Guide Pointer"
-                  className="h-20 w-20 sm:h-24 sm:w-24 object-contain"
-                  draggable={false}
-                  onError={(e) => {
-                    (e.target as HTMLElement).style.display = "none";
+          {/* Marketing / Help Banner: "Don't know where to start?" */}
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.38, delay: 0.08 }}
+            className="w-full relative"
+          >
+            {/* Floating Bouncy Pointing Indicator (Pops up higher pointing at Quick Guide, auto-dismisses after 2s) */}
+            <AnimatePresence>
+              {!tourActive && showPointingIndicator && (
+                <motion.div
+                  key="pointing-indicator"
+                  initial={{ scale: 0, opacity: 0, y: 20, rotate: -15 }}
+                  animate={{ scale: [0, 1.25, 0.94, 1], opacity: 1, y: [20, -6, 2, 0], rotate: [-15, 5, -2, 0] }}
+                  exit={{ scale: 0.5, opacity: 0, y: -10, transition: { duration: 0.35, ease: "easeOut" } }}
+                  transition={{
+                    duration: 0.65,
+                    ease: [0.175, 0.885, 0.32, 1.275],
+                    delay: 0.25,
                   }}
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {ALL_CATEGORIES.map((cat) => {
-            const IconComponent = ICON_MAP[cat.iconName] || Landmark;
-            const isTourCurrent = tourActive && currentTour?.id === cat.id;
-
-            return (
-              <motion.button
-                key={cat.id}
-                ref={(el) => {
-                  categoryRefs.current[cat.id] = el;
-                }}
-                type="button"
-                whileHover={!tourActive ? { scale: 1.015, y: -1 } : undefined}
-                whileTap={!tourActive ? { scale: 0.985 } : undefined}
-                onClick={() => onSelectCategory(cat.id)}
-                className={`group relative flex w-full items-center justify-between overflow-hidden rounded-2xl border p-3 text-left shadow-md transition-all duration-300 backdrop-blur-sm cursor-pointer ${
-                  isTourCurrent
-                    ? isHighlighting
-                      ? "z-30 bg-white border-amber-400 ring-4 ring-amber-400 shadow-2xl shadow-amber-500/50 scale-[1.03] animate-pulse"
-                      : "z-10 bg-white border-amber-400 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/20 scale-[1.01]"
-                    : tourActive
-                    ? "opacity-25 blur-[0.6px] border-white/10 bg-white/40 pointer-events-none scale-[0.98]"
-                    : "border-white/15 bg-white/90 hover:bg-white hover:border-white hover:shadow-xl hover:shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-sky-400/40"
-                }`}
-              >
-                {/* Left Icon Badge */}
-                <div
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-xs transition-all duration-200 ${
-                    isTourCurrent
-                      ? "bg-[#001C38] text-amber-300"
-                      : "bg-slate-100 text-blue-950 group-hover:bg-[#001C38] group-hover:text-white"
-                  }`}
+                  className="absolute -top-0 sm:-top-1 -left-3 sm:-left-4 z-30 pointer-events-none select-none filter drop-shadow-2xl"
                 >
-                  <IconComponent className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
-                </div>
+                  <img
+                    src="/pointing_right2.png"
+                    alt="Quick Guide Pointer"
+                    className="h-20 w-20 sm:h-24 sm:w-24 object-contain"
+                    draggable={false}
+                    onError={(e) => {
+                      (e.target as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-                {/* Content */}
-                <div className="flex-1 min-w-0 px-3">
-                  <div className="flex items-center gap-1.5">
-                    <span
-                      className={`text-xs sm:text-[13px] font-bold truncate ${
-                        isTourCurrent ? "text-blue-950" : "text-slate-900 group-hover:text-blue-950"
-                      }`}
-                    >
-                      {cat.title}
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                setTourActive(true);
+                transitionToStep(0);
+              }}
+              style={{ backgroundColor: primaryColor }}
+              className="relative w-full overflow-hidden rounded-2xl border-2 border-amber-400/50 p-3 text-left text-white shadow-lg transition-all hover:border-amber-300 cursor-pointer group"
+            >
+              {/* Shimmer Stripe */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+              <div className="flex items-center justify-between gap-2.5 relative z-10">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 backdrop-blur-md text-amber-300 border border-white/20 shadow-inner group-hover:scale-110 group-hover:bg-amber-400/20 transition-all">
+                    <Compass className="h-5 w-5 text-amber-300" />
+                  </div>
+                  <div className="flex flex-col min-w-0 text-left">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[9.5px] font-black uppercase tracking-wider bg-black/40 text-amber-300 px-2 py-0.5 rounded-full border border-amber-400/30 shadow-xs">
+                        Quick Guide
+                      </span>
+                    </div>
+                    <span className="text-xs sm:text-[13px] font-black text-white truncate drop-shadow-sm pt-0.5">
+                      Don't know where to start?
+                    </span>
+                    <span className="text-[10.5px] text-slate-300 font-medium line-clamp-1">
+                      Tap here for an interactive step-by-step tour
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500 line-clamp-1 group-hover:text-slate-600">
-                    {cat.description}
-                  </p>
                 </div>
 
-                {/* Right Arrow */}
-                <div
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-200 ${
-                    isTourCurrent
-                      ? "bg-amber-500 text-white shadow-sm"
-                      : "bg-slate-100/80 text-slate-400 group-hover:bg-blue-600 group-hover:text-white group-hover:translate-x-0.5"
-                  }`}
-                >
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 group-hover:bg-amber-400 group-hover:text-[#001C38] group-hover:translate-x-0.5 transition-all shadow-sm">
                   <ChevronRight className="h-4 w-4" />
                 </div>
-              </motion.button>
-            );
-          })}
-        </motion.div>
-      </div>
+              </div>
+            </motion.button>
+          </motion.div>
 
-      {/* Footer Info */}
-      <div className="w-full text-center text-[10.5px] text-slate-400 pt-2">
-        Bukidnon State University AI Chatbot • Direct FAQ Knowledge
-      </div>
+          {/* Standard Category Choice Cards */}
+          <motion.div
+            initial={{ y: 12, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="w-full space-y-2 pt-0.5 relative"
+          >
+            {ALL_CATEGORIES.map((cat) => {
+              const IconComponent = ICON_MAP[cat.iconName] || Landmark;
+              const isTourCurrent = tourActive && currentTour?.id === cat.id;
+
+              return (
+                <motion.button
+                  key={cat.id}
+                  ref={(el) => {
+                    categoryRefs.current[cat.id] = el;
+                  }}
+                  type="button"
+                  whileHover={!tourActive ? { scale: 1.015, y: -1 } : undefined}
+                  whileTap={!tourActive ? { scale: 0.985 } : undefined}
+                  onClick={() => onSelectCategory(cat.id)}
+                  className={`group relative flex w-full items-center justify-between overflow-hidden rounded-2xl border p-3 text-left shadow-md transition-all duration-300 backdrop-blur-sm cursor-pointer ${
+                    isTourCurrent
+                      ? isHighlighting
+                        ? "z-30 bg-white border-amber-400 ring-4 ring-amber-400 shadow-2xl shadow-amber-500/50 scale-[1.03] animate-pulse"
+                        : "z-10 bg-white border-amber-400 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/20 scale-[1.01]"
+                      : tourActive
+                      ? "opacity-25 blur-[0.6px] border-white/10 bg-white/40 pointer-events-none scale-[0.98]"
+                      : "border-white/15 bg-white/90 hover:bg-white hover:border-white hover:shadow-xl hover:shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-sky-400/40"
+                  }`}
+                >
+                  {/* Left Icon Badge */}
+                  <div
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-xs transition-all duration-200 ${
+                      isTourCurrent
+                        ? "bg-[#001C38] text-amber-300"
+                        : "bg-slate-100 text-blue-950 group-hover:bg-[#001C38] group-hover:text-white"
+                    }`}
+                  >
+                    <IconComponent className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0 px-3">
+                    <div className="flex items-center gap-1.5">
+                      <span
+                        className={`text-xs sm:text-[13px] font-bold truncate ${
+                          isTourCurrent ? "text-blue-950" : "text-slate-900 group-hover:text-blue-950"
+                        }`}
+                      >
+                        {cat.title}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 line-clamp-1 group-hover:text-slate-600">
+                      {cat.description}
+                    </p>
+                  </div>
+
+                  {/* Right Arrow */}
+                  <div
+                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-200 ${
+                      isTourCurrent
+                        ? "bg-amber-500 text-white shadow-sm"
+                        : "bg-slate-100/80 text-slate-400 group-hover:bg-blue-600 group-hover:text-white group-hover:translate-x-0.5"
+                    }`}
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </div>
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        {/* Footer Info */}
+        <div className="w-full text-center text-[10.5px] text-slate-400 pt-2 shrink-0">
+          Bukidnon State University AI Chatbot • Direct FAQ Knowledge
+        </div>
+      </ScrollArea>
 
       {/* Guided Tour Modal: Copied Category Button Flashed on Top (OUTSIDE) + Instruction Modal Below with Pointer Arrow */}
       <AnimatePresence>
@@ -506,7 +512,10 @@ export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
                 {/* Floating Modal Header */}
                 <div className="flex items-center justify-between pb-1">
                   <div className="flex items-center gap-2">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-amber-400 text-slate-950 font-black text-xs shadow-md shadow-amber-400/30">
+                    <div 
+                      className="flex h-7 w-7 items-center justify-center rounded-xl text-amber-300 border border-amber-400/40 font-black text-xs shadow-md"
+                      style={{ backgroundColor: primaryColor }}
+                    >
                       <Compass className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col text-left leading-tight">
@@ -593,8 +602,11 @@ export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
                         </span>
                       </div>
 
-                      {/* Rotating Sample Query Showcase (Floating Glass Card) */}
-                      <div className="relative h-13 w-full overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-amber-400/40 px-3.5 py-2 flex items-center shadow-lg shadow-black/20">
+                      {/* Rotating Sample Query Showcase (Floating BukSU Glass Card) */}
+                      <div 
+                        className="relative h-13 w-full overflow-hidden rounded-2xl backdrop-blur-md border border-amber-400/40 px-3.5 py-2 flex items-center shadow-lg shadow-black/30"
+                        style={{ backgroundColor: primaryColor }}
+                      >
                         <AnimatePresence mode="wait">
                           <motion.div
                             key={`query-${tourStep}-${activeQuestionIdx}`}
@@ -604,7 +616,10 @@ export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
                             transition={{ duration: 0.28 }}
                             className="flex items-center gap-2.5 w-full"
                           >
-                            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-slate-950 font-bold shadow-xs">
+                            <div 
+                              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl text-amber-300 border border-amber-400/40 font-bold shadow-xs"
+                              style={{ backgroundColor: primaryColor }}
+                            >
                               <MessageSquare className="h-3.5 w-3.5" />
                             </div>
                             <span className="text-xs sm:text-[13px] font-bold text-white tracking-wide truncate drop-shadow-sm">
@@ -623,7 +638,7 @@ export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
                             onClick={() => setActiveQuestionIdx(qIdx)}
                             className={`text-[10.5px] px-2.5 py-1 rounded-xl border transition-all cursor-pointer backdrop-blur-sm ${
                               qIdx === activeQuestionIdx
-                                ? "bg-amber-400 text-slate-950 font-bold border-amber-300 shadow-md shadow-amber-400/30"
+                                ? "bg-[#001C38] text-amber-300 font-bold border-amber-400 shadow-md shadow-[#001C38]/50"
                                 : "bg-white/10 text-slate-200 border-white/20 hover:bg-white/20 hover:text-white"
                             }`}
                           >
@@ -662,7 +677,8 @@ export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
                     <button
                       type="button"
                       onClick={() => onSelectCategory(currentTour.id)}
-                      className="flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 border border-blue-400/60 px-3 py-2 text-xs font-bold text-white shadow-lg shadow-blue-600/30 backdrop-blur-md transition-all cursor-pointer hover:scale-102 active:scale-98"
+                      className="flex items-center gap-1.5 rounded-xl border border-sky-400/40 hover:border-sky-300 px-3 py-2 text-xs font-bold text-white shadow-lg backdrop-blur-md transition-all cursor-pointer hover:scale-102 active:scale-98"
+                      style={{ backgroundColor: primaryColor }}
                       title={`Open ${currentTour.title}`}
                     >
                       <span>Start Here</span>
@@ -672,7 +688,8 @@ export function WelcomeScreen({ onSelectCategory }: WelcomeScreenProps) {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 px-3.5 py-2 text-xs font-black shadow-lg shadow-amber-500/35 transition-all hover:scale-102 active:scale-98 cursor-pointer"
+                      className="flex items-center gap-1.5 rounded-xl text-amber-300 border-2 border-amber-400 hover:border-amber-300 px-3.5 py-2 text-xs font-extrabold shadow-lg transition-all hover:scale-102 active:scale-98 cursor-pointer"
+                      style={{ backgroundColor: primaryColor }}
                     >
                       <span>
                         {subPhase === 0

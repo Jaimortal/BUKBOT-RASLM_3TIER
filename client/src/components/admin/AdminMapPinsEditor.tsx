@@ -1,12 +1,13 @@
 /**
  * AdminMapPinsEditor
  * ──────────────────
- * A reusable map+pins editor component for admin modals.
- * Supports placing pins, drawing routes, and EDITING everything interactively.
+ * A modern, user-friendly interactive map+pins editor component for admin modals.
+ * Supports placing pins, drawing routes with live waypoints, quick connecting,
+ * floor assignment, door photo attachments, and interactive waypoint editing.
  *
  * Coordinates use [y, x] format in 0–1000 scale.
  */
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -27,9 +28,19 @@ import {
   Eye,
   Loader2,
   X,
-  Camera
+  Camera,
+  Layers,
+  Sparkles,
+  MousePointer,
+  HelpCircle,
+  ChevronRight,
+  Search,
+  CheckCircle2,
+  Compass
 } from "lucide-react";
 import { toast } from "sonner";
+import { AdminTooltip } from "@/components/admin/AdminTooltip";
+import { useMapSettings } from "@/hooks/useMapSettings";
 
 function StairIcon({ className = "" }: { className?: string }) {
   return (
@@ -80,6 +91,7 @@ interface AdminMapPinsEditorProps {
   onPinsChange: (pins: AdminPin[]) => void;
   onRoutesChange?: (routes: AdminRoute[]) => void;
   mapSize?: number;
+  mapImage?: string;
 }
 
 // ─── Colour helpers ───────────────────────────────────────────────────────────
@@ -204,19 +216,29 @@ export function AdminMapPinsEditor({
   onPinsChange,
   onRoutesChange,
   mapSize = 420,
+  mapImage,
 }: AdminMapPinsEditorProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mapImgRef = useRef<HTMLImageElement | null>(null);
   const [imgLoaded, setImgLoaded] = useState(false);
 
+  // Fetch active map settings from server
+  const { data: mapSettings } = useMapSettings();
+  const activeMapUrl = mapImage || mapSettings?.maps?.find(m => m.active)?.url || mapSettings?.maps?.[0]?.url || "/nobackHD.png";
+
   const [zoom, setZoom] = useState(1);
   const [tx, setTx] = useState(0);
   const [ty, setTy] = useState(0);
+
+  // Sub-panel navigation state
+  const [panelTab, setPanelTab] = useState<"pins" | "routes">("pins");
+  const [pinSearch, setPinSearch] = useState("");
 
   // Interaction State
   const [mode, setMode] = useState<"view" | "place-pin" | "place-staircase" | "place-elevator" | "draw-route" | "edit-route" | "edit-pin">("view");
   const [pendingPinName, setPendingPinName] = useState("");
   const [activeRoutePoints, setActiveRoutePoints] = useState<[number, number][]>([]);
+  const [newRouteName, setNewRouteName] = useState("");
   const [selectedRouteId, setSelectedRouteId] = useState<string | number | null>(null);
   const [selectedPinIdx, setSelectedPinIdx] = useState<number | null>(null);
 
@@ -259,58 +281,80 @@ export function AdminMapPinsEditor({
       const response = await fetch("/api/admin/upload-image", {
         method: "POST",
         headers: {
-          ...(token && { "Authorization": `Bearer ${token}` }),
+          ...(token && { Authorization: `Bearer ${token}` }),
         },
         body: formData,
       });
 
       const data = await response.json();
-      if (data.success && data.url) {
-        const nextPins = [...pins];
-        nextPins[pinIdx] = {
-          ...nextPins[pinIdx],
-          pinImageUrl: data.url,
-        };
-        onPinsChange(nextPins);
-        toast.success(`Photo attached to ${nextPins[pinIdx].name || "Pin"}!`);
-      } else {
-        toast.error(data.message || "Failed to upload image.");
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Failed to upload image");
       }
+
+      const nextPins = [...pins];
+      nextPins[pinIdx] = {
+        ...nextPins[pinIdx],
+        pinImageUrl: data.imageUrl,
+        pinImageAlt: nextPins[pinIdx].pinImageAlt || `${nextPins[pinIdx].name} door photo`,
+      };
+      onPinsChange(nextPins);
+      toast.success("Door/room photo attached successfully!");
     } catch (err: any) {
-      toast.error(err.message || "Upload error occurred.");
+      console.error("Photo upload error:", err);
+      toast.error(err.message || "Upload failed. Please try again.");
     } finally {
       setUploadingPinIdx(null);
       if (e.target) e.target.value = "";
     }
   };
 
-  const emitRoutes = (nextRoutes: AdminRoute[]) => {
-    onRoutesChange?.(withRouteMetadata(nextRoutes));
-  };
+  const emitRoutes = useCallback((nextRoutes: AdminRoute[]) => {
+    if (!onRoutesChange) return;
+    onRoutesChange(withRouteMetadata(nextRoutes));
+  }, [onRoutesChange]);
 
+  // Load map background image dynamically from active map settings or fallback
   useEffect(() => {
+    if (!activeMapUrl) return;
     const img = new Image();
-    img.onload = () => { mapImgRef.current = img; setImgLoaded(true); };
-    img.src = "/nobackHD.png";
-  }, []);
-
-  const toScreen = useCallback((coords: [number, number]) => ({
-    sx: tx + (coords[1] / 1000) * mapSize * zoom,
-    sy: ty + (coords[0] / 1000) * mapSize * zoom,
-  }), [tx, ty, zoom, mapSize]);
-
-  const [dashOffset, setDashOffset] = useState(0);
-
-  useEffect(() => {
-    let frameId: number;
-    const animate = () => {
-      setDashOffset(prev => (prev - 0.5) % 20);
-      frameId = requestAnimationFrame(animate);
+    img.onload = () => {
+      mapImgRef.current = img;
+      setImgLoaded(true);
     };
-    frameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameId);
+    img.onerror = () => {
+      // If active URL fails, try fallback to /nobackHD.png
+      if (activeMapUrl !== "/nobackHD.png") {
+        const fb = new Image();
+        fb.onload = () => {
+          mapImgRef.current = fb;
+          setImgLoaded(true);
+        };
+        fb.src = "/nobackHD.png";
+      }
+    };
+    img.src = activeMapUrl;
+  }, [activeMapUrl]);
+
+  const toScreen = useCallback((coords: [number, number]): { sx: number; sy: number } => {
+    return {
+      sx: (coords[1] / 1000) * mapSize * zoom + tx,
+      sy: (coords[0] / 1000) * mapSize * zoom + ty,
+    };
+  }, [mapSize, zoom, tx, ty]);
+
+  // Animation loop for route dash offset
+  const [dashOffset, setDashOffset] = useState(0);
+  useEffect(() => {
+    let animId: number;
+    const animate = () => {
+      setDashOffset(prev => (prev + 0.35) % 30);
+      animId = requestAnimationFrame(animate);
+    };
+    animId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animId);
   }, []);
 
+  // Main Canvas Render
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -318,35 +362,33 @@ export function AdminMapPinsEditor({
     if (!ctx) return;
 
     ctx.clearRect(0, 0, mapSize, mapSize);
-    ctx.save();
-    ctx.translate(tx, ty);
-    ctx.scale(zoom, zoom);
-    if (mapImgRef.current) { ctx.drawImage(mapImgRef.current, 0, 0, mapSize, mapSize); }
-    ctx.restore();
+
+    // Draw Map Image
+    if (mapImgRef.current && imgLoaded) {
+      ctx.save();
+      ctx.drawImage(mapImgRef.current, tx, ty, mapSize * zoom, mapSize * zoom);
+      ctx.restore();
+    } else {
+      ctx.fillStyle = "#f8fafc";
+      ctx.fillRect(0, 0, mapSize, mapSize);
+    }
 
     // Draw Routes
-    routes.forEach(route => {
-      if (!route.points || route.points.length < 2) return;
+    routes.forEach((route, index) => {
+      if (route.points.length < 2) return;
+      const routeColor = getRouteColor(route, index);
       const isSelected = selectedRouteId === route.id;
-
-      // Mobile-friendly route styling: thin foreground with a subtle transparent glow.
       const isZoomedOut = zoom < 0.5;
-      const lineWidth = (isSelected ? (isZoomedOut ? 1.6 : 2.4) : (isZoomedOut ? 1.4 : 2.2)) * zoom;
-      const glowWidth = lineWidth + (6.2 * zoom);
-      const dashPattern = isZoomedOut ? [5, 7] : [7, 9];
-      const routeColor = getRouteColor(route, routes.indexOf(route));
-      const pts = route.points.map(p => toScreen(p));
-      const radius = 1 * zoom;
+      const lineWidth = (isZoomedOut ? 1.6 : 2.5) * zoom;
+      const glowWidth = lineWidth + (isZoomedOut ? 3.5 : 5.5 * zoom);
+      const dashPattern = isZoomedOut ? [4, 6] : [6, 8];
 
       const drawRoutePath = () => {
-        if (pts.length < 2) return;
-        ctx.moveTo(pts[0].sx, pts[0].sy);
-        for (let i = 1; i < pts.length - 1; i++) {
-          const p1 = pts[i];
-          const p2 = pts[i + 1];
-          ctx.arcTo(p1.sx, p1.sy, p2.sx, p2.sy, radius);
-        }
-        ctx.lineTo(pts[pts.length - 1].sx, pts[pts.length - 1].sy);
+        route.points.forEach((p, i) => {
+          const { sx, sy } = toScreen(p);
+          if (i === 0) ctx.moveTo(sx, sy);
+          else ctx.lineTo(sx, sy);
+        });
       };
 
       ctx.save();
@@ -377,7 +419,7 @@ export function AdminMapPinsEditor({
         route.points.forEach((p, i) => {
           const { sx, sy } = toScreen(p);
           ctx.fillStyle = draggingPointIdx === i ? "#ef4444" : "#ffffff";
-          ctx.strokeStyle = "#3b82f6"; ctx.lineWidth = 2;
+          ctx.strokeStyle = "#0284c7"; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.arc(sx, sy, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
         });
       }
@@ -429,7 +471,7 @@ export function AdminMapPinsEditor({
       }
 
       if (isDragging || isSelected) {
-        ctx.strokeStyle = isSelected ? "#3b82f6" : "#ffffff"; ctx.lineWidth = 2;
+        ctx.strokeStyle = isSelected ? "#0284c7" : "#ffffff"; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(sx, sy - 7, 12, 0, Math.PI * 2); ctx.stroke();
       }
     });
@@ -500,23 +542,20 @@ export function AdminMapPinsEditor({
 
   const handleMouseWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
     e.preventDefault();
-    e.stopPropagation(); // Prevent wheel events from bubbling to parent modal
+    e.stopPropagation();
     const rect = canvasRef.current!.getBoundingClientRect();
     const mouseScreenX = e.clientX - rect.left;
     const mouseScreenY = e.clientY - rect.top;
-    
-    // Calculate map coordinates before zoom
+
     const mapXBefore = (mouseScreenX - tx) / zoom / mapSize;
     const mapYBefore = (mouseScreenY - ty) / zoom / mapSize;
-    
-    // Apply zoom (deltaY < 0 means scroll up = zoom in)
+
     const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
     const newZoom = Math.max(0.2, Math.min(8, zoom * zoomFactor));
-    
-    // Calculate new translation to keep cursor in same position
+
     const newTx = mouseScreenX - mapXBefore * newZoom * mapSize;
     const newTy = mouseScreenY - mapYBefore * newZoom * mapSize;
-    
+
     setZoom(newZoom);
     setTx(newTx);
     setTy(newTy);
@@ -527,6 +566,7 @@ export function AdminMapPinsEditor({
     if (mode === "place-pin") {
       onPinsChange([...pins, { name: pendingPinName || `Pin ${pins.length + 1}`, coordinates: coords }]);
       setPendingPinName(""); setMode("view");
+      toast.success("Pin placed on map!");
     } else if (mode === "place-staircase") {
       onPinsChange([...pins, { name: "Staircase", coordinates: coords, pinType: "staircase" }]);
       setMode("view");
@@ -553,9 +593,28 @@ export function AdminMapPinsEditor({
           return dist < (10 / zoom);
         });
       });
-      if (nearRoute) { setSelectedRouteId(nearRoute.id); setMode("edit-route"); }
+      if (nearRoute) { setSelectedRouteId(nearRoute.id); setMode("edit-route"); setPanelTab("routes"); }
       else { setSelectedRouteId(null); setMode("view"); }
     }
+  };
+
+  const handleSaveDrawnRoute = () => {
+    if (activeRoutePoints.length < 2 || !onRoutesChange) {
+      toast.error("Please place at least 2 points on the map");
+      return;
+    }
+    const finalName = newRouteName.trim() || `Route ${routes.length + 1}`;
+    emitRoutes([...routes, {
+      name: finalName,
+      points: activeRoutePoints,
+      color: getNextRouteColor(routes),
+      id: Date.now()
+    }]);
+    setActiveRoutePoints([]);
+    setNewRouteName("");
+    setMode("view");
+    setPanelTab("routes");
+    toast.success(`Route "${finalName}" created!`);
   };
 
   const addWaypoint = () => {
@@ -583,28 +642,241 @@ export function AdminMapPinsEditor({
         color: newColor,
         id: Date.now() 
       }]);
-      toast.success("Connected!");
-    } else toast.error("Select both pins");
+      setConnStart("");
+      setConnEnd("");
+      toast.success("Direct route path connected!");
+    } else {
+      toast.error("Select both start and end pins to connect");
+    }
   };
 
   const setAsMain = (id: string | number) => {
     if (!onRoutesChange) return;
     const nextRoutes = routes.map((r, index) => ({ ...r, isDefault: r.id === id, color: getRouteColor(r, index) }));
     emitRoutes(nextRoutes);
-    toast.success("Set as Main Route");
+    toast.success("Set as primary default route");
   };
 
+  const filteredPins = useMemo(() => {
+    if (!pinSearch.trim()) return pins;
+    return pins.filter(p => p.name.toLowerCase().includes(pinSearch.toLowerCase()) || p.floor?.toLowerCase().includes(pinSearch.toLowerCase()));
+  }, [pins, pinSearch]);
+
   return (
-    <div className="flex gap-4 h-full">
-      <div className="relative rounded-lg overflow-hidden border border-gray-200 bg-gray-100 shrink-0 shadow-lg" style={{ width: mapSize, height: mapSize }}>
-        <div className="pointer-events-none absolute bottom-2 left-2 z-20 rounded-md bg-white/90 px-2 py-1 text-[10px] font-semibold text-blue-700 shadow-sm ring-1 ring-black/10">
-          Hold Shift + Scroll to zoom in & out
+    <div className="flex flex-col lg:flex-row gap-4 h-full">
+      {/* ── Left Map Canvas Container ── */}
+      <div 
+        className="relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-950/5 shrink-0 shadow-md group select-none" 
+        style={{ width: mapSize, height: mapSize }}
+      >
+        {/* Helper bottom overlay */}
+        <div className="pointer-events-none absolute bottom-2.5 left-2.5 z-20 rounded-md bg-white/95 backdrop-blur-xs px-2.5 py-1 text-[10px] font-semibold text-slate-700 shadow-sm ring-1 ring-slate-900/10">
+          Scroll to zoom · Drag map to pan
         </div>
+
+        {/* Floating Glassmorphic HUD Toolbar */}
+        <div className="absolute left-2.5 top-2.5 z-20 flex items-center gap-1 bg-white/95 backdrop-blur-md p-1 rounded-xl shadow-md border border-slate-200">
+          <AdminTooltip title="Pan & Select Mode" description="Click pins or routes to select, or drag canvas to navigate" side="bottom">
+            <button
+              type="button"
+              onClick={() => setMode("view")}
+              className={`p-1.5 rounded-lg text-xs transition-colors ${
+                mode === "view" ? "bg-[#001C38] text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"
+              }`}
+            >
+              <Move className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+
+          <div className="h-4 w-px bg-slate-200 mx-0.5" />
+
+          <AdminTooltip title="Drop Room Pin" description="Click to drop a room or location pin on the map" side="bottom">
+            <button
+              type="button"
+              onClick={() => setMode(mode === "place-pin" ? "view" : "place-pin")}
+              className={`p-1.5 rounded-lg text-xs transition-colors ${
+                mode === "place-pin" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"
+              }`}
+            >
+              <MapPin className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+
+          <AdminTooltip title="Drop Staircase Node" description="Click to mark a staircase indicator node on the map" side="bottom">
+            <button
+              type="button"
+              onClick={() => setMode(mode === "place-staircase" ? "view" : "place-staircase")}
+              className={`p-1.5 rounded-lg text-xs transition-colors ${
+                mode === "place-staircase" ? "bg-purple-600 text-white shadow-xs" : "text-purple-700 hover:bg-purple-50"
+              }`}
+            >
+              <StairIcon className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+
+          <AdminTooltip title="Drop Elevator Node" description="Click to mark an elevator indicator node on the map" side="bottom">
+            <button
+              type="button"
+              onClick={() => setMode(mode === "place-elevator" ? "view" : "place-elevator")}
+              className={`p-1.5 rounded-lg text-xs transition-colors ${
+                mode === "place-elevator" ? "bg-teal-600 text-white shadow-xs" : "text-teal-700 hover:bg-teal-50"
+              }`}
+            >
+              <ArrowUpDown className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+
+          <div className="h-4 w-px bg-slate-200 mx-0.5" />
+
+          <AdminTooltip title="Draw Route" description="Click points on map to draw a walkable path" side="bottom">
+            <button
+              type="button"
+              onClick={() => {
+                if (mode === "draw-route") {
+                  setActiveRoutePoints([]);
+                  setMode("view");
+                } else {
+                  setMode("draw-route");
+                }
+              }}
+              className={`p-1.5 rounded-lg text-xs transition-colors ${
+                mode === "draw-route" ? "bg-emerald-600 text-white shadow-xs" : "text-emerald-700 hover:bg-emerald-50"
+              }`}
+            >
+              <Navigation className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+
+          <div className="h-4 w-px bg-slate-200 mx-0.5" />
+
+          <AdminTooltip title="Zoom In" description="Zoom closer into map" side="bottom">
+            <button
+              type="button"
+              onClick={() => setZoom(z => Math.min(8, z * 1.25))}
+              className="p-1.5 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+            >
+              <ZoomIn className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+
+          <AdminTooltip title="Zoom Out" description="Zoom out of map" side="bottom">
+            <button
+              type="button"
+              onClick={() => setZoom(z => Math.max(0.2, z / 1.25))}
+              className="p-1.5 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+            >
+              <ZoomOut className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+
+          <AdminTooltip title="Reset Map" description="Reset zoom and center position" side="bottom">
+            <button
+              type="button"
+              onClick={() => { setZoom(1); setTx(0); setTy(0); }}
+              className="p-1.5 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+            >
+              <RotateCcw className="h-4 w-4" />
+            </button>
+          </AdminTooltip>
+        </div>
+
+        {/* Dynamic Contextual Action Banners */}
+        {mode === "draw-route" && (
+          <div className="absolute top-14 left-2.5 right-2.5 z-30 flex items-center justify-between gap-2 bg-[#001C38]/95 text-white text-xs p-2 rounded-xl shadow-xl border border-blue-400/40 backdrop-blur-md animate-in fade-in">
+            <div className="flex items-center gap-2 min-w-0">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+              <span className="font-semibold truncate">
+                Drawing Route: {activeRoutePoints.length} pt{activeRoutePoints.length !== 1 ? "s" : ""}
+              </span>
+            </div>
+            <div className="flex items-center gap-1 shrink-0">
+              <Input
+                value={newRouteName}
+                onChange={e => setNewRouteName(e.target.value)}
+                placeholder={`Route ${routes.length + 1}`}
+                className="h-6 w-24 sm:w-32 text-[11px] bg-white/10 border-white/20 text-white placeholder:text-slate-400"
+              />
+              <Button
+                size="sm"
+                disabled={activeRoutePoints.length < 2}
+                onClick={handleSaveDrawnRoute}
+                className="h-6 px-2 text-[10.5px] bg-emerald-600 hover:bg-emerald-700 text-white font-semibold"
+              >
+                <Check className="h-3 w-3 mr-1" /> Save
+              </Button>
+              <button
+                type="button"
+                onClick={() => { setActiveRoutePoints([]); setNewRouteName(""); setMode("view"); }}
+                className="p-1 text-slate-300 hover:text-white rounded"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {mode === "place-pin" && (
+          <div className="absolute top-14 left-2.5 right-2.5 z-30 flex items-center justify-between gap-2 bg-blue-900/95 text-white text-xs p-2 rounded-xl shadow-xl border border-blue-400/40 backdrop-blur-md animate-in fade-in">
+            <div className="flex items-center gap-2">
+              <MapPin className="h-3.5 w-3.5 text-amber-300" />
+              <span className="font-semibold text-[11px]">Click anywhere on map to drop pin</span>
+            </div>
+            <Button size="sm" variant="ghost" onClick={() => setMode("view")} className="h-6 px-2 text-[11px] text-white hover:bg-white/20">
+              Cancel
+            </Button>
+          </div>
+        )}
+
+        {mode === "place-staircase" && (
+          <div className="absolute top-14 left-2.5 right-2.5 z-30 flex items-center justify-between gap-2 bg-purple-900/95 text-white text-xs p-2 rounded-xl shadow-xl border border-purple-400/40 backdrop-blur-md animate-in fade-in">
+            <div className="flex items-center gap-2">
+              <StairIcon className="h-3.5 w-3.5 text-purple-300" />
+              <span className="font-semibold text-[11px]">Click map to place staircase node</span>
+            </div>
+            <Button size="sm" variant="ghost" onClick={() => setMode("view")} className="h-6 px-2 text-[11px] text-white hover:bg-white/20">
+              Cancel
+            </Button>
+          </div>
+        )}
+
+        {mode === "place-elevator" && (
+          <div className="absolute top-14 left-2.5 right-2.5 z-30 flex items-center justify-between gap-2 bg-teal-900/95 text-white text-xs p-2 rounded-xl shadow-xl border border-teal-400/40 backdrop-blur-md animate-in fade-in">
+            <div className="flex items-center gap-2">
+              <ArrowUpDown className="h-3.5 w-3.5 text-teal-300" />
+              <span className="font-semibold text-[11px]">Click map to place elevator node</span>
+            </div>
+            <Button size="sm" variant="ghost" onClick={() => setMode("view")} className="h-6 px-2 text-[11px] text-white hover:bg-white/20">
+              Cancel
+            </Button>
+          </div>
+        )}
+
+        {(mode === "edit-route" || mode === "edit-pin") && (
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 bg-[#001C38] text-white text-[11px] px-3.5 py-1.5 rounded-full shadow-2xl font-bold border border-blue-400/40">
+            <Edit2 className="w-3.5 h-3.5 text-amber-400" />
+            <span>{mode === "edit-route" ? "Drag waypoints to adjust route" : `Repositioning: ${pins[selectedPinIdx!]?.name}`}</span>
+            <button 
+              onClick={() => { setMode("view"); setSelectedPinIdx(null); setSelectedRouteId(null); }} 
+              className="ml-1 bg-white/20 hover:bg-white/30 p-1 rounded-full text-white"
+            >
+              <Check className="h-3 w-3" />
+            </button>
+          </div>
+        )}
+
+        {/* Map Canvas */}
         <canvas
           ref={canvasRef}
-          width={mapSize} height={mapSize}
+          width={mapSize}
+          height={mapSize}
           className="block touch-none"
-          style={{ cursor: mode === "draw-route" || mode === "place-pin" || mode === "place-staircase" || mode === "place-elevator" ? "crosshair" : mode === "edit-route" || mode === "edit-pin" ? "move" : "grab" }}
+          style={{ 
+            cursor: mode === "draw-route" || mode === "place-pin" || mode === "place-staircase" || mode === "place-elevator" 
+              ? "crosshair" 
+              : mode === "edit-route" || mode === "edit-pin" 
+              ? "move" 
+              : "grab" 
+          }}
           onClick={handleClick}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
@@ -612,228 +884,416 @@ export function AdminMapPinsEditor({
           onMouseLeave={handleMouseUp}
           onWheel={handleMouseWheel}
         />
-
-        <div className="absolute left-2 top-2 flex flex-col gap-1.5 HUD">
-          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => { setZoom(z => Math.min(8, z * 1.2)) }}><ZoomIn className="h-4 w-4" /></Button>
-          <Button size="icon" variant="secondary" className="w-8 h-8 rounded-full shadow" onClick={() => { setZoom(z => Math.max(0.2, z / 1.2)) }}><ZoomOut className="h-4 w-4" /></Button>
-          <div className="h-px bg-gray-300 mx-1" />
-          <button
-            type="button"
-            title="Place staircase indicator"
-            className={`w-8 h-8 rounded-full shadow border text-[10px] font-black ${mode === "place-staircase" ? "bg-purple-600 text-white border-purple-700" : "bg-white/90 text-purple-700 border-purple-200 hover:bg-purple-50"}`}
-            onClick={() => setMode(mode === "place-staircase" ? "view" : "place-staircase")}
-          >
-            <StairIcon className="h-4 w-4 mx-auto" />
-          </button>
-          <button
-            type="button"
-            title="Place elevator indicator"
-            className={`w-8 h-8 rounded-full shadow border text-[10px] font-black ${mode === "place-elevator" ? "bg-teal-600 text-white border-teal-700" : "bg-white/90 text-teal-700 border-teal-200 hover:bg-teal-50"}`}
-            onClick={() => setMode(mode === "place-elevator" ? "view" : "place-elevator")}
-          >
-            <ArrowUpDown className="h-4 w-4 mx-auto" />
-          </button>
-          <Button
-            size="icon"
-            variant={mode === "place-pin" ? "default" : "secondary"}
-            className="w-8 h-8 rounded-full shadow"
-            title="Place normal pin"
-            onClick={() => setMode(mode === "place-pin" ? "view" : "place-pin")}
-          >
-            <MapPin className="h-4 w-4" />
-          </Button>
-          <Button size="icon" variant={mode === "draw-route" ? "default" : "secondary"} className="w-8 h-8 rounded-full shadow" onClick={() => {
-            if (mode === "draw-route") { if (activeRoutePoints.length >= 2) { const name = prompt("Name:"); if (name && onRoutesChange) emitRoutes([...routes, { name, points: activeRoutePoints, color: getNextRouteColor(routes), id: Date.now() }]); } setActiveRoutePoints([]); setMode("view"); }
-            else setMode("draw-route");
-          }}>
-            <Navigation className="h-4 w-4" />
-          </Button>
-        </div>
-
-        <button onClick={() => { setZoom(1); setTx(0); setTy(0); }} className="absolute top-2 right-2 p-1.5 bg-white/80 rounded-full border shadow hover:bg-white"><RotateCcw className="h-3.5 w-3.5" /></button>
-
-        {(mode === "edit-route" || mode === "edit-pin") && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-blue-600 text-white text-[10px] px-4 py-2 rounded-full shadow-xl font-bold">
-            <Edit2 className="w-3 h-3" /> {mode === "edit-route" ? "Editing Route: DRAG waypoints" : `Relocating: ${pins[selectedPinIdx!]?.name}`}
-            <button onClick={() => { setMode("view"); setSelectedPinIdx(null); setSelectedRouteId(null); }} className="ml-2 bg-white/20 p-1 rounded-full"><Check className="h-3 w-3" /></button>
-          </div>
-        )}
       </div>
 
-      <div className="flex-1 flex flex-col gap-3 min-w-0 overflow-hidden pr-1">
-        <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3 space-y-2 shadow-sm">
-          <Label className="text-[10px] uppercase font-bold text-emerald-700 tracking-wider">Connect Two Pins</Label>
-          <div className="grid grid-cols-2 gap-2">
-            <select className="text-[10px] border p-1 rounded bg-white" value={connStart} onChange={e => setConnStart(e.target.value)}>
-              <option value="">Start...</option>
-              {pins.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
-            </select>
-            <select className="text-[10px] border p-1 rounded bg-white" value={connEnd} onChange={e => setConnEnd(e.target.value)}>
-              <option value="">End...</option>
-              {pins.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
-            </select>
-          </div>
-          <Button size="sm" className="w-full text-[10px] h-7 bg-emerald-600 hover:bg-emerald-700" onClick={quickConnect}>Create Route</Button>
+      {/* ── Right Workspace Panel ── */}
+      <div className="flex-1 flex flex-col gap-3 min-w-0 overflow-hidden pr-0.5">
+        {/* Workspace Segmented Sub-Tabs */}
+        <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200">
+          <button
+            type="button"
+            onClick={() => setPanelTab("pins")}
+            className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
+              panelTab === "pins"
+                ? "bg-[#001C38] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+            }`}
+          >
+            <MapPin className={`h-3.5 w-3.5 ${panelTab === "pins" ? "text-amber-400" : "text-slate-500"}`} />
+            <span>Pins & Markers ({pins.length})</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setPanelTab("routes")}
+            className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
+              panelTab === "routes"
+                ? "bg-[#001C38] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+            }`}
+          >
+            <Navigation className={`h-3.5 w-3.5 ${panelTab === "routes" ? "text-amber-400" : "text-slate-500"}`} />
+            <span>Routes & Paths ({routes.length})</span>
+          </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto space-y-4" style={{ scrollbarWidth: "thin" }}>
-          <div>
-            <Label className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 block">Connections ({routes.length})</Label>
-            <div className="space-y-1.5">
-              {routes.map((r, i) => (
-                <div key={r.id} className={`flex flex-col gap-1 bg-white border rounded-lg p-2 hover:border-blue-300 transition-all ${selectedRouteId === r.id ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 min-w-0 flex-1 text-xs font-semibold">
-                      <span className="h-2.5 w-2.5 rounded-full border border-white shadow" style={{ backgroundColor: getRouteColor(r, i) }} />
-                      <span className="truncate">{r.route_label || `Route ${i + 1}`}: {r.name}</span>
-                      {r.isDefault && <span className="bg-blue-100 text-blue-700 text-[8px] px-1 rounded">MAIN</span>}
-                    </div>
-                    <div className="flex gap-1">
-                      <button onClick={() => setAsMain(r.id)} className={`p-1 rounded ${r.isDefault ? 'text-blue-600 bg-blue-50' : 'text-gray-400'}`}><Check className="h-3 w-3" /></button>
-                      <button onClick={() => { setSelectedRouteId(r.id); setMode("edit-route"); }} className="p-1 text-blue-500"><Edit2 className="h-3 w-3" /></button>
-                      <button onClick={() => emitRoutes(routes.filter((_, j) => j !== i))} className="p-1 text-red-400"><Trash2 className="h-3 w-3" /></button>
-                    </div>
-                  </div>
-                  {selectedRouteId === r.id && <Button variant="outline" size="sm" className="h-6 text-[9px] w-full border-dashed" onClick={addWaypoint}>+ Add Waypoint</Button>}
-                </div>
-              ))}
+        {/* Tab 1: Pins & Markers */}
+        {panelTab === "pins" && (
+          <div className="flex-1 flex flex-col gap-2.5 overflow-hidden">
+            <div className="flex items-center gap-2">
+              <div className="relative flex-1">
+                <Search className="pointer-events-none absolute left-2.5 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                <Input
+                  value={pinSearch}
+                  onChange={e => setPinSearch(e.target.value)}
+                  placeholder="Filter pins by name or floor..."
+                  className="h-8 pl-8 text-xs bg-white border-slate-200"
+                />
+              </div>
+              <Button
+                type="button"
+                size="sm"
+                onClick={() => setMode("place-pin")}
+                className="h-8 text-xs bg-[#001C38] hover:bg-[#032f5d] text-white font-medium shrink-0"
+              >
+                <PlusCircle className="mr-1 h-3.5 w-3.5 text-amber-400" />
+                Add Pin
+              </Button>
             </div>
-          </div>
 
-          <div className="border-t pt-3">
-            <Label className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 block">Pins ({pins.length})</Label>
-            <div className="space-y-2">
-              {pins.map((pin, i) => (
-                <div key={i} className={`bg-gray-50 border rounded-lg p-2.5 flex flex-col gap-1.5 ${selectedPinIdx === i ? 'border-blue-500 ring-2 ring-blue-100' : ''}`}>
-                  <div className="flex items-center justify-between">
-                    <Input value={pin.name} onChange={e => { const n = [...pins]; n[i].name = e.target.value; onPinsChange(n); }} className="h-6 text-xs border-none bg-transparent p-0 font-bold" />
-                    <div className="flex gap-1">
-                      <button onClick={() => { setSelectedPinIdx(i); setMode("edit-pin"); }} className={`p-1 ${selectedPinIdx === i ? 'text-blue-600' : 'text-gray-300'}`}><Edit2 className="h-3 w-3" /></button>
-                      <button onClick={() => onPinsChange(pins.filter((_, j) => j !== i))} className="p-1 text-red-300"><Trash2 className="h-3 w-3" /></button>
-                    </div>
-                  </div>
-                  <div className="flex gap-2 text-[9px] text-gray-400 italic"><span>Y: {pin.coordinates[0]}</span><span>X: {pin.coordinates[1]}</span></div>
-                  
-                  {pin.pinType !== "staircase" && pin.pinType !== "elevator" && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-[9px] font-semibold text-gray-500">Floor:</span>
-                      <select 
-                        value={pin.floor || ""} 
-                        onChange={e => { const n = [...pins]; n[i].floor = (e.target.value as any) || undefined; onPinsChange(n); }}
-                        className="h-5 text-xs px-2 py-0.5 border border-gray-300 rounded bg-white"
-                      >
-                        <option value="">None</option>
-                        <option value="GF">Ground Floor (GF)</option>
-                        <option value="1F">1st Floor (1F)</option>
-                        <option value="2F">2nd Floor (2F)</option>
-                        <option value="3F">3rd Floor (3F)</option>
-                        <option value="4F">4th Floor (4F)</option>
-                        <option value="5F">5th Floor (5F)</option>
-                        <option value="BS">Basement (BS)</option>
-                      </select>
-                      {pin.floor && <span className="ml-auto text-[10px] font-bold text-white bg-yellow-500 px-1.5 py-0.5 rounded">{pin.floor}</span>}
-                    </div>
-                  )}
-
-                  {(pin.pinType === "staircase" || pin.pinType === "elevator") && (
-                    <div className="text-[10px] font-bold text-gray-600">
-                      {pin.pinType === "staircase" ? "Staircase indicator pin" : "Elevator indicator pin"}
-                    </div>
-                  )}
-
-                  {/* Pin Detail Photo Upload & Preview Section */}
-                  {pin.pinType !== "staircase" && pin.pinType !== "elevator" && (
-                    <div className="mt-1 pt-1.5 border-t border-gray-200/70 flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1">
-                          <Camera className="h-3 w-3 text-sky-600" /> Pin Detail Photo
-                        </span>
-                        {pin.pinImageUrl && (
-                          <span className="text-[8px] font-semibold bg-sky-100 text-sky-700 px-1 py-0.2 rounded">Attached</span>
-                        )}
-                      </div>
-
-                      {pin.pinImageUrl ? (
-                        <div className="flex items-center gap-2 bg-white p-1.5 rounded-md border border-slate-200 shadow-xs">
-                          <img 
-                            src={pin.pinImageUrl} 
-                            alt={pin.name} 
-                            className="h-10 w-10 rounded object-cover border border-slate-200 cursor-pointer hover:opacity-80 transition-opacity"
-                            onClick={() => setAdminPreviewUrl({ url: pin.pinImageUrl!, title: pin.name })}
+            <div className="flex-1 overflow-y-auto space-y-2 pr-1" style={{ scrollbarWidth: "thin" }}>
+              {filteredPins.length === 0 ? (
+                <div className="py-8 text-center text-xs text-slate-500 border border-dashed rounded-xl bg-slate-50/50">
+                  <MapPin className="h-6 w-6 mx-auto mb-1.5 text-slate-400" />
+                  {pinSearch ? "No pins match your search filter." : "No pins added yet. Click 'Add Pin' above to drop one on the map."}
+                </div>
+              ) : (
+                filteredPins.map((pin, i) => {
+                  const actualIdx = pins.findIndex(p => p === pin);
+                  const isSelected = selectedPinIdx === actualIdx;
+                  return (
+                    <div
+                      key={actualIdx}
+                      className={`bg-white border rounded-xl p-3 flex flex-col gap-2 transition-all shadow-xs ${
+                        isSelected ? "border-blue-500 ring-2 ring-blue-100" : "border-slate-200 hover:border-slate-300"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2 min-w-0 flex-1">
+                          <span 
+                            className="h-3 w-3 rounded-full shrink-0 shadow-xs border border-white"
+                            style={{ backgroundColor: pinColour(actualIdx + 1) }}
                           />
-                          <div className="flex-1 min-w-0">
-                            <Input 
-                              placeholder="Photo description/caption..." 
-                              value={pin.pinImageAlt || ""} 
-                              onChange={e => {
-                                const n = [...pins];
-                                n[i].pinImageAlt = e.target.value;
-                                onPinsChange(n);
-                              }} 
-                              className="h-5 text-[10px] px-1.5 py-0 border-gray-200 placeholder:text-gray-300"
-                            />
-                          </div>
-                          <div className="flex items-center gap-0.5">
-                            <button
-                              type="button"
-                              onClick={() => setAdminPreviewUrl({ url: pin.pinImageUrl!, title: pin.name })}
-                              className="p-1 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded transition-colors"
-                              title="Preview Photo"
-                            >
-                              <Eye className="h-3.5 w-3.5" />
-                            </button>
+                          <Input
+                            value={pin.name}
+                            onChange={e => {
+                              const n = [...pins];
+                              n[actualIdx].name = e.target.value;
+                              onPinsChange(n);
+                            }}
+                            className="h-7 text-xs font-bold border-transparent hover:border-slate-200 focus:border-blue-500 bg-transparent px-1.5"
+                          />
+                        </div>
+
+                        <div className="flex items-center gap-1 shrink-0">
+                          <AdminTooltip title="Reposition on Map" description="Drag this pin on the canvas to update its position" side="top">
                             <button
                               type="button"
                               onClick={() => {
-                                const n = [...pins];
-                                delete n[i].pinImageUrl;
-                                delete n[i].pinImageAlt;
-                                onPinsChange(n);
-                                toast.success("Pin photo removed.");
+                                setSelectedPinIdx(actualIdx);
+                                setMode("edit-pin");
                               }}
-                              className="p-1 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                              title="Remove Photo"
+                              className={`p-1.5 rounded-md text-xs transition-colors ${
+                                isSelected ? "bg-blue-100 text-blue-700" : "text-slate-400 hover:text-blue-600 hover:bg-slate-100"
+                              }`}
+                            >
+                              <Edit2 className="h-3.5 w-3.5" />
+                            </button>
+                          </AdminTooltip>
+
+                          <AdminTooltip title="Delete Pin" description="Remove this pin from the map" side="top">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                onPinsChange(pins.filter((_, j) => j !== actualIdx));
+                                if (selectedPinIdx === actualIdx) setSelectedPinIdx(null);
+                                toast.success("Pin removed.");
+                              }}
+                              className="p-1.5 rounded-md text-xs text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
                             </button>
+                          </AdminTooltip>
+                        </div>
+                      </div>
+
+                      {/* Floor & Coordinates row */}
+                      <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100 text-[10px]">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-semibold text-slate-500">Floor:</span>
+                          <select
+                            value={pin.floor || ""}
+                            onChange={e => {
+                              const n = [...pins];
+                              n[actualIdx].floor = (e.target.value as any) || undefined;
+                              onPinsChange(n);
+                            }}
+                            className="h-5 text-[11px] px-1.5 py-0 border border-slate-200 rounded-md bg-white text-slate-700 font-medium"
+                          >
+                            <option value="">None</option>
+                            <option value="GF">Ground Floor (GF)</option>
+                            <option value="1F">1st Floor (1F)</option>
+                            <option value="2F">2nd Floor (2F)</option>
+                            <option value="3F">3rd Floor (3F)</option>
+                            <option value="4F">4th Floor (4F)</option>
+                            <option value="5F">5th Floor (5F)</option>
+                            <option value="BS">Basement (BS)</option>
+                          </select>
+                          {pin.floor && (
+                            <span className="rounded bg-amber-100 text-amber-800 px-1 py-0.2 text-[9px] font-bold">
+                              {pin.floor}
+                            </span>
+                          )}
+                        </div>
+
+                        <span className="font-mono text-slate-400">
+                          [{pin.coordinates[0]}, {pin.coordinates[1]}]
+                        </span>
+                      </div>
+
+                      {/* Pin Door Photo Upload & Lightbox Preview */}
+                      {pin.pinType !== "staircase" && pin.pinType !== "elevator" && (
+                        <div className="mt-1 pt-1.5 border-t border-slate-100 flex flex-col gap-1.5">
+                          {pin.pinImageUrl ? (
+                            <div className="flex items-center gap-2 bg-slate-50 p-1.5 rounded-lg border border-slate-200">
+                              <img
+                                src={pin.pinImageUrl}
+                                alt={pin.name}
+                                className="h-10 w-10 rounded-md object-cover border border-slate-200 cursor-pointer hover:opacity-85 transition-opacity"
+                                onClick={() => setAdminPreviewUrl({ url: pin.pinImageUrl!, title: pin.name })}
+                              />
+                              <div className="flex-1 min-w-0">
+                                <Input
+                                  placeholder="Door photo caption / description..."
+                                  value={pin.pinImageAlt || ""}
+                                  onChange={e => {
+                                    const n = [...pins];
+                                    n[actualIdx].pinImageAlt = e.target.value;
+                                    onPinsChange(n);
+                                  }}
+                                  className="h-6 text-[10px] px-1.5 py-0 border-slate-200 bg-white"
+                                />
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <button
+                                  type="button"
+                                  onClick={() => setAdminPreviewUrl({ url: pin.pinImageUrl!, title: pin.name })}
+                                  className="p-1 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded"
+                                  title="View photo"
+                                >
+                                  <Eye className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const n = [...pins];
+                                    delete n[actualIdx].pinImageUrl;
+                                    delete n[actualIdx].pinImageAlt;
+                                    onPinsChange(n);
+                                    toast.success("Photo removed");
+                                  }}
+                                  className="p-1 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded"
+                                  title="Remove photo"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="flex items-center">
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                ref={el => { pinFileInputRefs.current[actualIdx] = el; }}
+                                onChange={e => handlePinFileUpload(e, actualIdx)}
+                              />
+                              <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                disabled={uploadingPinIdx === actualIdx}
+                                onClick={() => pinFileInputRefs.current[actualIdx]?.click()}
+                                className="h-6 text-[10px] w-full border-dashed border-sky-300 text-sky-700 bg-sky-50/50 hover:bg-sky-100 flex items-center justify-center gap-1.5"
+                              >
+                                {uploadingPinIdx === actualIdx ? (
+                                  <>
+                                    <Loader2 className="h-3 w-3 animate-spin text-sky-600" /> Uploading...
+                                  </>
+                                ) : (
+                                  <>
+                                    <Camera className="h-3 w-3 text-sky-600" /> Attach Door / Room Photo
+                                  </>
+                                )}
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Tab 2: Routes & Paths */}
+        {panelTab === "routes" && (
+          <div className="flex-1 flex flex-col gap-3 overflow-hidden">
+            {/* BukSU Styled Quick Route Connector */}
+            <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-3 space-y-2 shadow-xs">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold text-[#001C38] uppercase tracking-wider flex items-center gap-1.5">
+                  <Compass className="h-3.5 w-3.5 text-blue-600" /> Quick Route Connector
+                </span>
+                <span className="text-[10px] text-slate-400">Direct pin-to-pin</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <Label className="text-[9.5px] text-slate-500 font-semibold mb-0.5 block">Start Pin</Label>
+                  <select
+                    className="w-full text-xs border border-slate-200 p-1.5 rounded-lg bg-white font-medium"
+                    value={connStart}
+                    onChange={e => setConnStart(e.target.value)}
+                  >
+                    <option value="">Select start pin...</option>
+                    {pins.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <Label className="text-[9.5px] text-slate-500 font-semibold mb-0.5 block">End Pin</Label>
+                  <select
+                    className="w-full text-xs border border-slate-200 p-1.5 rounded-lg bg-white font-medium"
+                    value={connEnd}
+                    onChange={e => setConnEnd(e.target.value)}
+                  >
+                    <option value="">Select destination...</option>
+                    {pins.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
+                  </select>
+                </div>
+              </div>
+              <Button
+                size="sm"
+                className="w-full text-xs h-7.5 bg-[#001C38] hover:bg-[#032f5d] text-white font-semibold shadow-xs"
+                onClick={quickConnect}
+              >
+                <Navigation className="h-3.5 w-3.5 mr-1.5 text-amber-400" /> Connect Direct Path
+              </Button>
+            </div>
+
+            {/* Routes List */}
+            <div className="flex-1 overflow-y-auto space-y-2 pr-1" style={{ scrollbarWidth: "thin" }}>
+              <div className="flex items-center justify-between mb-1">
+                <Label className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">
+                  Configured Routes ({routes.length})
+                </Label>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => setMode("draw-route")}
+                  className="h-6 text-[10.5px] border-emerald-300 text-emerald-700 bg-emerald-50/50 hover:bg-emerald-100"
+                >
+                  <PlusCircle className="h-3 w-3 mr-1" /> Draw Route
+                </Button>
+              </div>
+
+              {routes.length === 0 ? (
+                <div className="py-8 text-center text-xs text-slate-500 border border-dashed rounded-xl bg-slate-50/50">
+                  <Navigation className="h-6 w-6 mx-auto mb-1.5 text-slate-400" />
+                  No routes configured. Connect pins above or click 'Draw Route' to trace paths on the canvas.
+                </div>
+              ) : (
+                routes.map((r, i) => {
+                  const isSelected = selectedRouteId === r.id;
+                  return (
+                    <div
+                      key={r.id}
+                      className={`bg-white border rounded-xl p-2.5 flex flex-col gap-2 transition-all shadow-xs ${
+                        isSelected ? "border-blue-500 ring-2 ring-blue-100" : "border-slate-200 hover:border-slate-300"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2 min-w-0 flex-1">
+                          <span
+                            className="h-3 w-3 rounded-full shrink-0 shadow-xs border border-white"
+                            style={{ backgroundColor: getRouteColor(r, i) }}
+                          />
+                          <div className="min-w-0">
+                            <span className="text-xs font-bold text-slate-900 truncate block">
+                              {r.route_label || `Route ${i + 1}`}: {r.name}
+                            </span>
+                            <span className="text-[10px] text-slate-400">
+                              {r.points.length} waypoints
+                            </span>
                           </div>
                         </div>
-                      ) : (
-                        <div className="flex items-center gap-1.5">
-                          <input 
-                            type="file" 
-                            accept="image/*" 
-                            className="hidden" 
-                            ref={el => { pinFileInputRefs.current[i] = el; }} 
-                            onChange={e => handlePinFileUpload(e, i)}
-                          />
+
+                        <div className="flex items-center gap-1 shrink-0">
+                          {r.isDefault ? (
+                            <span className="bg-amber-100 text-amber-900 text-[9px] font-bold px-1.5 py-0.5 rounded shadow-xs">
+                              DEFAULT
+                            </span>
+                          ) : (
+                            <AdminTooltip title="Set as Default Route" description="Make this route the primary path shown to students" side="top">
+                              <button
+                                type="button"
+                                onClick={() => setAsMain(r.id)}
+                                className="p-1 rounded text-slate-400 hover:text-amber-600 hover:bg-amber-50"
+                              >
+                                <Check className="h-3.5 w-3.5" />
+                              </button>
+                            </AdminTooltip>
+                          )}
+
+                          <AdminTooltip title="Edit Waypoints on Map" description="Reposition points by dragging on the canvas" side="top">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setSelectedRouteId(r.id);
+                                setMode("edit-route");
+                              }}
+                              className={`p-1 rounded ${isSelected ? "text-blue-600 bg-blue-50" : "text-slate-400 hover:text-blue-600"}`}
+                            >
+                              <Edit2 className="h-3.5 w-3.5" />
+                            </button>
+                          </AdminTooltip>
+
+                          <AdminTooltip title="Delete Route" description="Remove this route from the map" side="top">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                emitRoutes(routes.filter((_, j) => j !== i));
+                                if (selectedRouteId === r.id) setSelectedRouteId(null);
+                                toast.success("Route removed.");
+                              }}
+                              className="p-1 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded"
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </button>
+                          </AdminTooltip>
+                        </div>
+                      </div>
+
+                      {isSelected && (
+                        <div className="pt-1.5 border-t border-slate-100 flex items-center gap-2">
                           <Button
-                            type="button"
                             variant="outline"
                             size="sm"
-                            disabled={uploadingPinIdx === i}
-                            onClick={() => pinFileInputRefs.current[i]?.click()}
-                            className="h-6 text-[9px] w-full border-dashed border-sky-300 text-sky-700 bg-sky-50/50 hover:bg-sky-100 flex items-center justify-center gap-1"
+                            className="h-6 text-[10px] flex-1 border-dashed border-blue-300 text-blue-700 bg-blue-50/50 hover:bg-blue-100"
+                            onClick={addWaypoint}
                           >
-                            {uploadingPinIdx === i ? (
-                              <>
-                                <Loader2 className="h-3 w-3 animate-spin text-sky-600" /> Uploading...
-                              </>
-                            ) : (
-                              <>
-                                <Upload className="h-3 w-3" /> Upload Door / Room Photo
-                              </>
-                            )}
+                            + Add Waypoint In-Between
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="h-6 text-[10px] bg-slate-800 text-white hover:bg-slate-900"
+                            onClick={() => {
+                              setSelectedRouteId(null);
+                              setMode("view");
+                            }}
+                          >
+                            Done
                           </Button>
                         </div>
                       )}
                     </div>
-                  )}
-                </div>
-              ))}
+                  );
+                })
+              )}
             </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Admin Photo Preview Modal */}
@@ -843,20 +1303,20 @@ export function AdminMapPinsEditor({
           onClick={() => setAdminPreviewUrl(null)}
         >
           <div 
-            className="relative max-h-[85vh] max-w-[85vw] overflow-hidden rounded-xl bg-slate-900 shadow-2xl border border-white/20 flex flex-col"
+            className="relative max-h-[85vh] max-w-[85vw] overflow-hidden rounded-2xl bg-slate-900 shadow-2xl border border-white/20 flex flex-col"
             onClick={e => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-3 py-2 bg-black/50 border-b border-white/10 text-white">
-              <span className="font-bold text-xs">{adminPreviewUrl.title} - Pin Photo Preview</span>
+            <div className="flex items-center justify-between px-4 py-2.5 bg-black/50 border-b border-white/10 text-white">
+              <span className="font-bold text-xs">{adminPreviewUrl.title} - Door Photo Preview</span>
               <button 
                 onClick={() => setAdminPreviewUrl(null)} 
-                className="p-1 rounded hover:bg-white/20 text-slate-300 hover:text-white"
+                className="p-1 rounded hover:bg-white/20 text-slate-300 hover:text-white transition-colors"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="p-2 flex items-center justify-center bg-black/60">
-              <img src={adminPreviewUrl.url} alt={adminPreviewUrl.title} className="max-h-[70vh] w-auto max-w-full rounded object-contain" />
+            <div className="p-3 flex items-center justify-center bg-black/60">
+              <img src={adminPreviewUrl.url} alt={adminPreviewUrl.title} className="max-h-[70vh] w-auto max-w-full rounded-lg object-contain" />
             </div>
           </div>
         </div>

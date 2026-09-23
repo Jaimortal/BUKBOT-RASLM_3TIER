@@ -17,6 +17,7 @@ import {
   normalizeRichBubble,
 } from "@/components/admin/AdminResponseBubblesEditor";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -44,6 +45,17 @@ import {
   Trash2,
   AlertTriangle,
   RefreshCw,
+  Globe,
+  Compass,
+  HelpCircle,
+  FolderPlus,
+  FilePlus,
+  Edit2,
+  Sparkles,
+  ChevronsUpDown,
+  X,
+  MessageSquare,
+  MessageSquareText,
 } from "lucide-react";
 
 function toLines(value: string): string[] {
@@ -396,20 +408,30 @@ function summarizeKnowledgeRecord(record: KnowledgeRecord): KnowledgeRecord {
   };
 }
 
-function statusPill(label: string, active: boolean) {
+function statusPill(label: string, active: boolean, icon?: React.ReactNode) {
   return (
-    <span className={`rounded-full border px-2 py-0.5 text-[11px] ${active ? "border-emerald-200 bg-emerald-50 text-emerald-700" : "border-slate-200 bg-slate-50 text-slate-500"}`}>
-      {label}
+    <span
+      className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10.5px] font-medium transition-colors ${
+        active ? "border-blue-200 bg-blue-50/90 text-blue-900" : "border-slate-200 bg-slate-50 text-slate-400"
+      }`}
+    >
+      {icon}
+      <span>{label}</span>
     </span>
   );
 }
 
-function statusValue(label: string, value: string | number | null | undefined) {
+function statusValue(label: string, value: string | number | null | undefined, icon?: React.ReactNode) {
   const text = value === null || value === undefined ? "" : String(value).trim();
   const hasValue = text !== "" && text !== "0";
   return (
-    <span className={`rounded-full border px-2 py-0.5 text-[11px] ${hasValue ? "border-blue-200 bg-blue-50 text-blue-700" : "border-slate-200 bg-slate-50 text-slate-500"}`}>
-      {label}: {hasValue ? text : "None"}
+    <span
+      className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10.5px] font-medium transition-colors ${
+        hasValue ? "border-blue-200 bg-blue-50/90 text-blue-900" : "border-slate-200 bg-slate-50 text-slate-400"
+      }`}
+    >
+      {icon}
+      <span>{label}: {hasValue ? text : "None"}</span>
     </span>
   );
 }
@@ -449,6 +471,7 @@ function KnowledgeEditor({
   const [hasMapEditor, setHasMapEditor] = useState(record.hasMap);
   const [pins, setPins] = useState<AdminPin[]>(normalizePins(record.pins));
   const [routes, setRoutes] = useState<AdminRoute[]>(normalizeRoutes(record.routes));
+  const [activeModalTab, setActiveModalTab] = useState<"responses" | "images" | "map">("responses");
 
   useEffect(() => {
     setDisplayName(record.displayName || "");
@@ -459,6 +482,7 @@ function KnowledgeEditor({
     setHasMapEditor(record.hasMap);
     setPins(normalizePins(record.pins));
     setRoutes(normalizeRoutes(record.routes));
+    setActiveModalTab("responses");
   }, [record]);
 
   const saveMutation = useMutation({
@@ -534,145 +558,295 @@ function KnowledgeEditor({
 
   return (
     <Dialog open={open} onOpenChange={(value) => !value && onClose()}>
-      <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col p-0">
-        <DialogHeader className="border-b bg-gradient-to-r from-[#001C38] to-[#0356a9] px-5 pb-3 pt-4 rounded-t-lg">
-          <DialogTitle className="text-lg font-bold leading-tight text-white">{record.displayName}</DialogTitle>
-          <div className="flex flex-wrap items-center gap-1 text-xs text-blue-200">
-            {crumbs.map((crumb, index) => (
-              <span key={`${crumb}-${index}`} className="inline-flex items-center gap-1">
-                {index > 0 && <ChevronRight className="h-3 w-3" />}
-                {crumb}
-              </span>
-            ))}
+      <DialogContent className="w-[94vw] max-w-6xl xl:max-w-7xl h-[88vh] max-h-[92vh] overflow-hidden flex flex-col p-0 rounded-2xl border border-slate-200/80 shadow-2xl [&>button.absolute]:hidden">
+        <DialogHeader className="border-b bg-gradient-to-r from-[#001C38] via-[#002b54] to-[#0356a9] px-6 py-3.5 sm:py-4 rounded-t-2xl text-white shrink-0">
+          <div className="flex items-center justify-between w-full gap-4">
+            <div className="min-w-0 flex-1 flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3">
+              <div className="flex items-center gap-1.5 text-xs text-blue-200 font-medium truncate">
+                <span className="text-blue-100 font-semibold">{crumbs.join(" > ")}</span>
+              </div>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <Badge className="bg-white/15 text-white hover:bg-white/20 border-white/25 text-[10px] font-semibold px-2 py-0.5 uppercase tracking-wider">
+                  {record.subjectType || "Topic Answer"}
+                </Badge>
+                <Badge className="bg-amber-400/20 text-amber-300 hover:bg-amber-400/25 border-amber-400/30 text-[10px] font-semibold px-2 py-0.5">
+                  {categoryLabel(record.file)}
+                </Badge>
+                {record.topic && (
+                  <span className="text-[10px] font-mono text-blue-200/80 bg-white/10 px-2 py-0.5 rounded border border-white/15 truncate max-w-[200px]" title={record.topic}>
+                    {record.topic}
+                  </span>
+                )}
+              </div>
+              <DialogTitle className="sr-only">{record.displayName}</DialogTitle>
+            </div>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex items-center justify-center h-8 w-8 rounded-lg text-white/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40 shrink-0"
+              title="Close"
+            >
+              <X className="h-5 w-5 stroke-[2.5]" />
+              <span className="sr-only">Close</span>
+            </button>
           </div>
         </DialogHeader>
 
-        <div className="flex-1 overflow-y-auto">
-          <Tabs defaultValue="responses" className="w-full">
-            <TabsList className="h-10 w-full justify-start gap-1 rounded-none border-b bg-gray-50 px-4">
-              <TabsTrigger value="responses" className="text-xs">Responses</TabsTrigger>
-              <TabsTrigger value="media" className="text-xs">Images</TabsTrigger>
-              <TabsTrigger value="map" className="text-xs">Map & Pins</TabsTrigger>
-            </TabsList>
+        {/* Modal Body with Left Navigation Tabs */}
+        <div className="flex-1 flex overflow-hidden">
+          {/* Left Navigation Sidebar */}
+          <div className="w-60 sm:w-64 shrink-0 border-r border-slate-200/80 bg-slate-50/70 p-3.5 flex flex-col">
+            <div className="space-y-3">
+              {/* Data Title at top of navigation bar (ONLY the title/name) */}
+              <div className="pb-3 border-b border-slate-200/80">
+                <h3 className="text-sm font-bold text-slate-900 leading-snug line-clamp-2" title={record.displayName}>
+                  {record.displayName}
+                </h3>
+              </div>
 
-            <TabsContent value="responses" className="m-0 grid gap-4 p-4">
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Display name</Label>
-                <Input value={displayName} onChange={(event) => setDisplayName(event.target.value)} />
-                <p className="text-[11px] text-muted-foreground">This label helps admins find the answer. It does not change chatbot routing.</p>
+              <div className="px-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                Navigation
               </div>
-              <div className="grid gap-4 md:grid-cols-2">
-                <ResponseBubblesEditor label="English Responses" bubbles={en} onChange={setEn} />
-                <ResponseBubblesEditor label="Cebuano/Bisaya Responses" bubbles={ceb} onChange={setCeb} />
-              </div>
-              <div className="mt-1 flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50/90 px-4 py-2.5 text-center text-xs text-slate-600 shadow-xs">
-                <span className="text-sm">💡</span>
-                <span>
-                  <strong>Tip:</strong> Each box represents <strong>1 chatbot bubble</strong>. Press <strong>Shift + Enter</strong> (or Enter) to add a line break inside the bubble. Click <strong>+ Add Bubble</strong> for another bubble. Select text and press <strong>Ctrl + B</strong> to bold.
-                </span>
-              </div>
-            </TabsContent>
 
-            <TabsContent value="media" className="m-0 space-y-4 p-5">
-              <AdminImageUploader onAddImage={(url) => setImages([...images, url])} />
-              {images.length === 0 ? (
-                <div className="rounded-lg border-2 border-dashed py-10 text-center text-sm text-muted-foreground">
-                  <Image className="mx-auto mb-2 h-8 w-8 opacity-30" />
-                  No images yet. Upload an image or paste a URL above.
+              <button
+                type="button"
+                onClick={() => setActiveModalTab("responses")}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                  activeModalTab === "responses"
+                    ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <MessageSquareText className={`h-4 w-4 ${activeModalTab === "responses" ? "text-amber-400" : "text-blue-600"}`} />
+                  <span>Responses</span>
                 </div>
-              ) : (
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {images.map((url, index) => (
-                    <div key={`${url}-${index}`} className="group relative overflow-hidden rounded-lg border bg-white shadow-sm">
-                      <img
-                        src={url}
-                        alt={`Knowledge image ${index + 1}`}
-                        className="h-32 w-full object-cover"
-                        onError={(event) => {
-                          event.currentTarget.style.background = "#f3f4f6";
-                        }}
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/30">
-                        <button
-                          type="button"
-                          onClick={() => setImages(images.filter((_, itemIndex) => itemIndex !== index))}
-                          className="rounded-full bg-red-500 p-1.5 text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100"
-                          title="Remove image"
-                        >
-                          <Trash2 className="h-3.5 w-3.5" />
-                        </button>
+                <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "responses" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                  {en.filter(b => b.trim()).length + ceb.filter(b => b.trim()).length}
+                </Badge>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveModalTab("images")}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                  activeModalTab === "images"
+                    ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <Image className={`h-4 w-4 ${activeModalTab === "images" ? "text-amber-400" : "text-amber-600"}`} />
+                  <span>Images</span>
+                </div>
+                <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "images" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                  {images.length}
+                </Badge>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveModalTab("map")}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                  activeModalTab === "map"
+                    ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <MapPin className={`h-4 w-4 ${activeModalTab === "map" ? "text-amber-400" : "text-purple-600"}`} />
+                  <span>Map & Navigation</span>
+                </div>
+                <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "map" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                  {hasMapEditor ? `${pins.length} Pins` : "Off"}
+                </Badge>
+              </button>
+            </div>
+          </div>
+
+          {/* Right Main Content Area */}
+          <div className="flex-1 flex flex-col min-h-0 bg-slate-50/40">
+            <div className="flex-1 overflow-y-auto p-5 sm:p-6">
+            {activeModalTab === "responses" && (
+              <div className="space-y-4 w-full">
+                {/* Display name */}
+                <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs space-y-1">
+                  <Label className="text-xs font-bold text-slate-800">Display name</Label>
+                  <Input 
+                    value={displayName} 
+                    onChange={(event) => setDisplayName(event.target.value)} 
+                    className="bg-white border-slate-200 text-sm font-medium"
+                  />
+                  <p className="text-[11px] text-muted-foreground">This label helps admins find the answer. It does not change chatbot routing.</p>
+                </div>
+
+                {/* English & Bisaya side by side */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+                  {/* English Responses Column */}
+                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col">
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
+                          <Globe className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">English Responses</h4>
+                          <p className="text-[11px] text-slate-500">Primary bot answer in English</p>
+                        </div>
                       </div>
-                      <p className="truncate px-1.5 py-1 text-[10px] text-gray-400">{url}</p>
+                      <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200 text-[10px] font-semibold">
+                        {en.filter(b => b.trim()).length} Bubbles
+                      </Badge>
                     </div>
-                  ))}
-                </div>
-              )}
-            </TabsContent>
+                    <div className="flex-1">
+                      <ResponseBubblesEditor label="" bubbles={en} onChange={setEn} />
+                    </div>
+                  </div>
 
-            <TabsContent value="map" className="m-0 space-y-4 p-4">
-              <div className="rounded-lg border bg-slate-50 p-4 text-sm">
-                <div className="mb-2 flex items-center gap-2 font-medium">
-                  <MapPin className="h-4 w-4 text-blue-600" />
-                  Current map data
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                  <span>Map payload</span><span>{record.hasMap ? "Available" : "None"}</span>
-                  <span>Map reference</span><span>{mapRef || "None"}</span>
-                  <span>Pins</span><span>{pins.length}</span>
-                  <span>Routes</span><span>{routes.length}</span>
+                  {/* Bisaya / Cebuano Responses Column */}
+                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col">
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50 text-amber-700">
+                          <Globe className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">Bisaya / Cebuano Responses</h4>
+                          <p className="text-[11px] text-slate-500">Localized answer in Sinugbuanong Binisaya</p>
+                        </div>
+                      </div>
+                      <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-200 text-[10px] font-semibold">
+                        {ceb.filter(b => b.trim()).length} Bubbles
+                      </Badge>
+                    </div>
+                    <div className="flex-1">
+                      <ResponseBubblesEditor label="" bubbles={ceb} onChange={setCeb} />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="space-y-2">
-                <Label>Map reference</Label>
-                <Input value={mapRef} onChange={(event) => setMapRef(event.target.value)} placeholder="Optional map reference key" />
-                <p className="text-[11px] text-muted-foreground">Use this only when this record should reuse a known map reference. Leave blank if pins and routes are stored directly.</p>
+            )}
+
+            {activeModalTab === "images" && (
+              <div className="space-y-4 w-full">
+                <AdminImageUploader onAddImage={(url) => setImages([...images, url])} />
+                {images.length === 0 ? (
+                  <div className="rounded-xl border-2 border-dashed border-slate-200 py-12 text-center text-sm text-muted-foreground bg-white/70">
+                    <Image className="mx-auto mb-2 h-8 w-8 opacity-30 text-slate-400" />
+                    No images yet. Upload an image or paste a URL above.
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {images.map((url, index) => (
+                      <div key={`${url}-${index}`} className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
+                        <img
+                          src={url}
+                          alt={`Knowledge image ${index + 1}`}
+                          className="h-32 w-full object-cover"
+                          onError={(event) => {
+                            event.currentTarget.style.background = "#f3f4f6";
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/35">
+                          <button
+                            type="button"
+                            onClick={() => setImages(images.filter((_, itemIndex) => itemIndex !== index))}
+                            className="rounded-full bg-red-500 p-1.5 text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 hover:bg-red-600"
+                            title="Remove image"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                        <p className="truncate px-2 py-1 text-[10px] text-slate-400 font-mono">{url}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              <label className="flex items-center gap-2 text-sm font-medium">
-                <input
-                  type="checkbox"
-                  checked={hasMapEditor}
-                  onChange={(event) => setHasMapEditor(event.target.checked)}
-                  className="h-4 w-4 accent-blue-600"
-                />
-                Enable editable map pins/routes for this answer
-              </label>
-              {hasMapEditor ? (
-                <AdminMapPinsEditor
-                  pins={pins}
-                  routes={routes}
-                  onPinsChange={setPins}
-                  onRoutesChange={setRoutes}
-                  mapSize={420}
-                />
-              ) : (
-                <div className="rounded-lg border-2 border-dashed p-8 text-center text-sm text-muted-foreground">
-                  Enable map editing above to add pins and routes. Existing map references are preserved.
+            )}
+
+            {activeModalTab === "map" && (
+              <div className="space-y-4 w-full">
+                <div className="rounded-xl border border-slate-200 bg-white p-4 text-sm shadow-xs">
+                  <div className="mb-2 flex items-center gap-2 font-bold text-slate-800">
+                    <MapPin className="h-4 w-4 text-blue-600" />
+                    Current Map Configuration
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-600">
+                    <span>Map Payload: <strong className="text-slate-900">{record.hasMap ? "Configured" : "None"}</strong></span>
+                    <span>Map Reference: <strong className="text-slate-900">{mapRef || "None"}</strong></span>
+                    <span>Pins: <strong className="text-slate-900">{pins.length}</strong></span>
+                    <span>Routes: <strong className="text-slate-900">{routes.length}</strong></span>
+                  </div>
                 </div>
-              )}
-              <div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-xs text-blue-800">
-                This editor saves pins and routes without exposing raw JSON. Older map data stays compatible.
+                <div className="space-y-1.5 bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
+                  <Label className="text-xs font-bold text-slate-800">Map reference key</Label>
+                  <Input value={mapRef} onChange={(event) => setMapRef(event.target.value)} placeholder="Optional map reference key" className="bg-white border-slate-200" />
+                  <p className="text-[11px] text-muted-foreground">Use this only when this record should reuse a known map reference. Leave blank if pins and routes are stored directly.</p>
+                </div>
+                <label className="flex items-center gap-2.5 text-sm font-semibold text-slate-800 cursor-pointer p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition-colors shadow-xs">
+                  <input
+                    type="checkbox"
+                    checked={hasMapEditor}
+                    onChange={(event) => setHasMapEditor(event.target.checked)}
+                    className="h-4 w-4 rounded border-slate-300 accent-[#001C38]"
+                  />
+                  Enable interactive campus map & routes for this response
+                </label>
+                {hasMapEditor ? (
+                  <div className="rounded-xl border border-slate-200 p-2 bg-white shadow-xs">
+                    <AdminMapPinsEditor
+                      pins={pins}
+                      routes={routes}
+                      onPinsChange={setPins}
+                      onRoutesChange={setRoutes}
+                      mapSize={440}
+                      mapImage={(record as any).mapImage || (typeof (record as any).map === 'string' ? (record as any).map : undefined)}
+                    />
+                  </div>
+                ) : (
+                  <div className="rounded-xl border-2 border-dashed border-slate-200 p-8 text-center text-sm text-muted-foreground bg-white/70">
+                    <MapPin className="h-8 w-8 mx-auto mb-2 text-slate-400 opacity-40" />
+                    Enable map editing above to add pins and walkable routes. Existing map references are preserved.
+                  </div>
+                )}
               </div>
-            </TabsContent>
-          </Tabs>
+            )}
+            </div>
+
+            {/* Tip docked at bottom above footer line */}
+            {activeModalTab === "responses" && (
+              <div className="px-5 sm:px-6 pb-3 pt-1 bg-slate-50/40 shrink-0">
+                <div className="flex items-center gap-2.5 rounded-xl border border-blue-100 bg-blue-50/80 p-3 text-xs text-blue-900 shadow-xs">
+                  <Sparkles className="h-4 w-4 text-amber-500 shrink-0" />
+                  <span>
+                    <strong>Tip:</strong> Each box represents <strong>1 chatbot bubble</strong>. Press <strong>Enter</strong> to add a line break inside the bubble. Click <strong>+ Add Bubble</strong> for another bubble. Select text and press <strong>Ctrl + B</strong> to bold.
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
-        <div className="flex items-center justify-between border-t bg-gray-50 px-5 py-3 rounded-b-lg">
+        <div className="flex items-center justify-between border-t border-slate-200 bg-slate-50 px-6 py-3.5 rounded-b-2xl shrink-0">
           <div className="text-xs text-muted-foreground">
-            Saves this selected record only. Unknown JSON fields are preserved.
+            Saves this topic record only. Other responses remain untouched.
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2.5">
             <AdminTooltip title="Cancel" description="Discard all unsaved edits and close editor" side="top">
-              <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>Cancel</Button>
+              <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending} className="border-slate-300">
+                Cancel
+              </Button>
             </AdminTooltip>
             <AdminTooltip title="Save Changes" description="Save all responses, maps, pins, and retrieval terms" side="top">
               <Button
                 onClick={() => saveMutation.mutate()}
                 disabled={saveMutation.isPending}
-                className="text-white"
-                style={{ background: "linear-gradient(to right, #001C38, #0356a9ff)" }}
+                className="bg-[#001C38] hover:bg-[#032f5d] text-white font-semibold shadow-sm"
               >
-                {saveMutation.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
-                Save
+                {saveMutation.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin text-amber-400" /> : <Save className="mr-2 h-4 w-4 text-amber-400" />}
+                Save Record
               </Button>
             </AdminTooltip>
           </div>
@@ -1235,17 +1409,14 @@ export function AdminKnowledgeManager() {
   }, [collapsedFiles.size, files]);
 
   const refreshKnowledge = useCallback(async () => {
-    // Invalidate stale detail-record caches (prefix matches ["knowledgeRecord", id]).
-    // Not awaited — this fires background refetches independently.
     queryClient.invalidateQueries({ queryKey: ["knowledgeRecord"] });
-    // Explicitly refetch the summary list.
     await refetch();
   }, [queryClient, refetch]);
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20 text-sm text-muted-foreground">
-        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+        <Loader2 className="mr-2 h-5 w-5 animate-spin text-blue-600" />
         Loading knowledge records...
       </div>
     );
@@ -1253,88 +1424,132 @@ export function AdminKnowledgeManager() {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+      {/* Top Header & Search Bar */}
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <h2 className="text-lg font-semibold">Knowledge Manager</h2>
-          <p className="text-xs text-muted-foreground">Browse by Knowledge Category, Topic Group, and Answer Topic. Routing fields are protected.</p>
+          <h2 className="text-lg font-bold text-slate-900 tracking-tight">Knowledge Manager Tab</h2>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="rounded-full bg-blue-50 border border-blue-200/80 px-2 py-0.5 text-[11px] font-semibold text-blue-800">
+              {records.length} Topics · {files.length} Categories
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+
+        {/* Action Controls */}
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Search Box */}
+          <div className="relative flex-1 sm:flex-initial">
+            <Search className="pointer-events-none absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
             <Input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search label, answer preview, or intent..."
-              className="w-full pl-8 sm:w-80"
+              placeholder="Search labels, answers, phrases..."
+              className="w-full pl-8 pr-8 sm:w-72 h-8.5 text-xs bg-white border-slate-200"
             />
+            {search && (
+              <button
+                type="button"
+                onClick={() => setSearch("")}
+                className="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600"
+                title="Clear search"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            )}
           </div>
+
+          {/* Category Filter */}
           <Select value={fileFilter} onValueChange={setFileFilter}>
-            <SelectTrigger className="w-full sm:w-64">
+            <SelectTrigger className="w-full sm:w-56 h-8.5 text-xs bg-white border-slate-200">
               <SelectValue placeholder="Filter category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All knowledge categories</SelectItem>
+              <SelectItem value="all">All Knowledge Categories ({records.length})</SelectItem>
               {files.map((file) => (
-                <SelectItem key={file.file} value={file.file}>{categoryLabel(file.file)} ({file.count})</SelectItem>
+                <SelectItem key={file.file} value={file.file}>
+                  {categoryLabel(file.file)} ({file.count})
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
+
+          {/* Expand / Collapse All */}
           <AdminTooltip
-            title={collapsedFiles.size > 0 ? "Expand button" : "Collapse button"}
-            description={collapsedFiles.size > 0 ? "Expand all categorized knowledge dropdown data" : "Collapse all in to categorized dropdown data"}
+            title={collapsedFiles.size > 0 ? "Expand All Categories" : "Collapse All Categories"}
+            description="Toggle expand state for all category dropdown sections"
             side="bottom"
           >
-            <Button variant="outline" size="sm" onClick={toggleAllCollapse} className="text-xs">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={toggleAllCollapse} 
+              className="h-8.5 text-xs border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-xs"
+            >
+              <ChevronsUpDown className="mr-1.5 h-3.5 w-3.5 text-slate-500" />
               {collapsedFiles.size > 0 ? "Expand All" : "Collapse All"}
-            </Button>
-          </AdminTooltip>
-          <AdminTooltip
-            title="Refresh Knowledge"
-            description="Reload all knowledge topics, categories, and answers from server"
-            side="bottom"
-          >
-            <Button variant="outline" size="sm" onClick={refreshKnowledge} className="text-xs" disabled={isFetching}>
-              <RefreshCw className={`mr-1.5 h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} />
-              Refresh
             </Button>
           </AdminTooltip>
         </div>
       </div>
 
-      <div className="rounded-lg border bg-white shadow-xs">
-        <div className="border-b bg-slate-50 px-4 py-3">
-          <div className="grid grid-cols-12 gap-2 text-xs font-semibold text-slate-600">
-            <div className="col-span-4">Knowledge Category / Topic</div>
+      {/* Main Category Accordion Table */}
+      <div className="rounded-xl border border-slate-200/90 bg-white shadow-xs overflow-hidden">
+        <div className="border-b border-slate-200 bg-slate-50/80 px-4 py-3">
+          <div className="grid grid-cols-12 gap-2 text-xs font-bold text-slate-600 uppercase tracking-wider">
+            <div className="col-span-4">Topic & Path</div>
             <div className="col-span-4">Answer Preview</div>
-            <div className="col-span-3">Status</div>
-            <div className="col-span-1 text-right">Edit</div>
+            <div className="col-span-3">Coverage Badges</div>
+            <div className="col-span-1 text-right">Actions</div>
           </div>
         </div>
-        <div className="max-h-[620px] overflow-y-auto divide-y">
+
+        <div className="max-h-[620px] overflow-y-auto divide-y divide-slate-100" style={{ scrollbarWidth: "thin" }}>
           {fileTreeData.map(({ file, rootsWithChildren }) => {
             const isCollapsed = collapsedFiles.has(file.file);
             return (
-              <div key={file.file} className="border-b last:border-b-0">
+              <div key={file.file} className="border-b border-slate-200/60 last:border-b-0">
                 <button
                   type="button"
                   onClick={() => toggleFileCollapse(file.file)}
-                  className="w-full flex items-center justify-between bg-blue-50/80 hover:bg-blue-100/80 transition-colors px-4 py-2.5 text-sm font-semibold text-blue-950 select-none text-left"
+                  className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100/80 transition-colors px-4 py-2.5 text-sm font-bold text-slate-900 select-none text-left border-l-4 border-l-[#001C38]"
                 >
                   <div className="flex items-center gap-2">
-                    {isCollapsed ? <ChevronRight className="h-4 w-4 text-blue-700 shrink-0" /> : <ChevronDown className="h-4 w-4 text-blue-700 shrink-0" />}
-                    <FolderTree className="h-4 w-4 text-blue-700 shrink-0" />
+                    {isCollapsed ? (
+                      <ChevronRight className="h-4 w-4 text-[#001C38] shrink-0" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-[#001C38] shrink-0" />
+                    )}
+                    <FolderTree className="h-4 w-4 text-blue-600 shrink-0" />
                     <span>{categoryLabel(file.file)}</span>
                   </div>
-                  <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-blue-700 shadow-xs">{file.count} records</span>
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-full bg-white border border-slate-200 px-2.5 py-0.5 text-[11px] font-semibold text-[#001C38] shadow-xs">
+                      {file.count} records
+                    </span>
+                  </div>
                 </button>
+
                 {!isCollapsed && rootsWithChildren.map(({ root, crumbs: rootCrumbs, children }) => (
                   <div key={root.id}>
-                    <KnowledgeRow record={root} crumbs={rootCrumbs} onOpen={handleOpen} depth={0} />
+                    <KnowledgeRow 
+                      record={root} 
+                      crumbs={rootCrumbs} 
+                      onOpen={handleOpen} 
+                      depth={0} 
+                    />
                     {children.map(({ child, crumbs: childCrumbs }) => (
-                      <KnowledgeRow key={child.id} record={child} crumbs={childCrumbs} onOpen={handleOpen} depth={1} />
+                      <KnowledgeRow 
+                        key={child.id} 
+                        record={child} 
+                        crumbs={childCrumbs} 
+                        onOpen={handleOpen} 
+                        depth={1} 
+                      />
                     ))}
                     {children.length === 0 && root.subtopicCount > 0 && (
-                      <div className="border-t px-10 py-2 text-xs text-muted-foreground bg-slate-50/50">No answer topics matched your current search.</div>
+                      <div className="border-t border-slate-100 px-10 py-2.5 text-xs text-muted-foreground bg-slate-50/50">
+                        No answer topics matched your current search in this group.
+                      </div>
                     )}
                   </div>
                 ))}
@@ -1342,11 +1557,14 @@ export function AdminKnowledgeManager() {
             );
           })}
           {fileTreeData.length === 0 && (
-            <div className="py-14 text-center text-sm text-muted-foreground">No knowledge records matched your filters.</div>
+            <div className="py-16 text-center text-sm text-muted-foreground">
+              No knowledge records matched your search or category filter.
+            </div>
           )}
         </div>
       </div>
 
+      {/* Knowledge Detail & Edit Modal */}
       {selected && (
         <KnowledgeEditorLoader summary={selected} onClose={() => setSelected(null)} recordsById={recordsById} />
       )}
@@ -1369,62 +1587,90 @@ const KnowledgeRow = memo(function KnowledgeRow({
   const preview = recordPreview(record);
 
   return (
-    <div className="grid grid-cols-12 gap-2 border-t px-4 py-3 text-sm hover:bg-slate-50/70 transition-colors">
+    <div className="grid grid-cols-12 gap-2 border-t border-slate-100 px-4 py-3 text-sm hover:bg-slate-50/70 transition-colors group">
+      {/* Col 1: Topic Name & Breadcrumb */}
       <div className="col-span-4 min-w-0">
         <div className="flex items-start gap-2">
           <div className={`mt-0.5 shrink-0 ${depth ? "ml-6" : ""}`}>
-            {depth ? <FileText className="h-4 w-4 text-emerald-600" /> : <Layers className="h-4 w-4 text-blue-600" />}
+            {depth ? (
+              <FileText className="h-4 w-4 text-emerald-600" />
+            ) : (
+              <Layers className="h-4 w-4 text-blue-600" />
+            )}
           </div>
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-medium text-slate-900">{record.displayName}</span>
-              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-600">{technicalLabel(record)}</span>
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="font-semibold text-slate-900 group-hover:text-blue-900 transition-colors">
+                {record.displayName}
+              </span>
+              <span className="rounded-md bg-slate-100 px-1.5 py-0.2 text-[10px] font-semibold text-slate-600 border border-slate-200">
+                {technicalLabel(record)}
+              </span>
             </div>
             <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px] text-muted-foreground">
               {crumbs.map((crumb, index) => (
                 <span key={`${record.id}-${crumb}-${index}`} className="inline-flex items-center gap-1">
-                  {index > 0 && <ChevronRight className="h-3 w-3" />}
-                  {crumb}
+                  {index > 0 && <ChevronRight className="h-3 w-3 text-slate-300" />}
+                  <span>{crumb}</span>
                 </span>
               ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Col 2: Answer Preview & Metadata */}
       <div className="col-span-4 min-w-0 text-xs text-slate-600">
-        <p className="line-clamp-3 leading-relaxed">{preview}</p>
-        <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-          <Braces className="h-3.5 w-3.5" /> {record.phraseCount ?? record.phrases.length} example(s)
-          <Image className="h-3.5 w-3.5" /> {record.imageCount ?? record.images.length} image(s)
+        <p className="line-clamp-2 leading-relaxed text-slate-700 italic">
+          "{preview}"
+        </p>
+        <div className="mt-1.5 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
+          <span className="inline-flex items-center gap-1">
+            <Braces className="h-3 w-3 text-blue-500" />
+            <span>{record.phraseCount ?? record.phrases.length} training phrases</span>
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <Image className="h-3 w-3 text-amber-500" />
+            <span>{record.imageCount ?? record.images.length} image(s)</span>
+          </span>
         </div>
-        <div className="mt-1 text-[11px] text-muted-foreground">
-          Source: <span className="font-mono">{record.file}</span>
-          {record.parentTopic && <> · Parent: <span className="font-mono">{record.parentTopic}</span></>}
+        <div className="mt-0.5 text-[10.5px] text-muted-foreground font-mono">
+          <span>{record.file}</span>
+          {record.parentTopic && <> · parent: {record.parentTopic}</>}
         </div>
       </div>
+
+      {/* Col 3: Status & Coverage Badges with Lucide Icons */}
       <div className="col-span-3 flex flex-wrap content-start gap-1">
-        {statusPill("EN", record.responses.en.length > 0)}
-        {statusPill("CEB", record.responses.ceb.length > 0)}
-        {statusPill("Images", record.images.length > 0)}
-        {statusPill("Map", record.hasMap)}
-        {statusPill("MapRef", record.hasMapRef)}
+        {statusPill("EN", record.responses.en.length > 0, <Globe className="h-3 w-3 text-blue-600" />)}
+        {statusPill("CEB", record.responses.ceb.length > 0, <Globe className="h-3 w-3 text-emerald-600" />)}
+        {record.images.length > 0 && statusPill(`${record.images.length} Images`, true, <Image className="h-3 w-3 text-amber-600" />)}
+        {statusPill("Map", record.hasMap, <MapPin className="h-3 w-3 text-purple-600" />)}
+        {record.hasMapRef && statusPill("MapRef", true, <Compass className="h-3 w-3 text-sky-600" />)}
+        {record.subtopicCount > 0 && statusPill(`${record.subtopicCount} subtopics`, true, <Layers className="h-3 w-3 text-indigo-600" />)}
         {statusValue("Terms", record.subjectTermCount ?? record.subjectTerms.length)}
-        {record.subtopicCount > 0 && statusPill(`${record.subtopicCount} answers`, true)}
       </div>
+
+      {/* Col 4: Action Buttons */}
       <div className="col-span-1 text-right">
-        <div className="flex justify-end gap-1">
+        <div className="flex justify-end gap-1.5">
           {isTopicGroup ? (
-            <span className="inline-flex rounded-full bg-slate-100 px-2 py-1 text-[11px] font-medium text-slate-600">
-              Group
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700 border border-slate-200">
+              <FolderTree className="h-3 w-3 text-blue-600" /> Group
             </span>
           ) : (
             <AdminTooltip
-              title="Open Knowledge Record"
+              title="Edit Knowledge Record"
               description="Open topic editor to modify responses, maps, pins, and images"
               side="left"
             >
-              <Button size="sm" variant="outline" onClick={() => onOpen(record)} className="h-7 text-xs">
-                Open
+              <Button
+                size="sm"
+                onClick={() => onOpen(record)}
+                className="h-7 px-2.5 text-xs bg-[#001C38] hover:bg-[#032f5d] text-white font-semibold shadow-xs flex items-center gap-1 transition-all"
+              >
+                <Edit2 className="h-3 w-3 text-amber-400" />
+                <span>Edit</span>
               </Button>
             </AdminTooltip>
           )}

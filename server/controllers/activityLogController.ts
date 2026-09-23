@@ -18,15 +18,9 @@ export function isMainAdminUser(req: Request | string): boolean {
 }
 
 export class ActivityLogController {
-  // GET /api/admin/activity-logs
+  // GET /api/admin/activity-logs (Available to all authenticated admins for audit transparency; delete actions remain strictly main-admin only)
   static async list(req: Request, res: Response) {
     try {
-      if (!isMainAdminUser(req)) {
-        return res.status(403).json({
-          success: false,
-          message: "Access denied. Only the main administrator has access to the activity logs."
-        });
-      }
 
       const module = req.query.module as string | undefined;
       const search = req.query.search as string | undefined;
