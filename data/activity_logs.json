@@ -1,5 +1,55 @@
 [
   {
+    "id": "log_1791196686482_j1vtxpx",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Exam Location Vs Campus",
+    "targetTitle": "Exam Location Vs Campus",
+    "targetId": "academics/degree_programs.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (9 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (9 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-10-05T10:38:06.482Z"
+  },
+  {
+    "id": "log_1791196614302_k9qpn9e",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Exam Location Vs Campus",
+    "targetTitle": "Exam Location Vs Campus",
+    "targetId": "academics/degree_programs.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (10 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (10 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-10-05T10:36:54.302Z"
+  },
+  {
     "id": "log_1790146873623_0mwnk1g",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

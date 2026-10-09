@@ -239,6 +239,92 @@ class KnowledgeRouter:
         raw_tokens = set(re.findall(r"\b[\w'-]+\b", raw_normalized))
         facility_availability_intent = self._facility_availability_route(text) if not active_domain or active_domain == "location" else None
 
+        # Exam Location vs Preferred Campus (e.g. Taking exam in satellite campus vs enrolling/studying in main campus or vice-versa)
+        is_exam_location_campus_query = False
+
+        # 1. Direct key phrases
+        if self._has_any(text, [
+            "exam location vs campus", "testing site vs campus", "testing site vs preferred campus",
+            "exam location determine campus", "does exam location mean preferred campus",
+            "same ba ang testing site ug campus", "kung asa ko mag exam adto pud ko mag skwela",
+            "kung asa mag exam adto mag skwela", "lahi raba ang testing site ug ang campus",
+            "lahi raba ang testing site ug campus", "testing center vs campus",
+            "location of entrance exam determine", "location of exam determine",
+            "does the location of my entrance exam determine",
+            "does testing center affect campus", "does exam venue determine campus",
+            "same ba ang testing center ug preferred campus",
+            "testing site determine preferred campus"
+        ]):
+            is_exam_location_campus_query = True
+
+        # 2. Semantic pattern: Exam/CAT taking + Campus contrast (satellite vs main, or across campuses) + Enrollment/Studying
+        if not is_exam_location_campus_query:
+            has_exam_taking_term = (
+                self._has_any(text, [
+                    "exam", "entrance exam", "admission exam", "admission test", "entrance examination",
+                    "cat", "buksu cat", "buksucat", "take the exam", "take entrance exam", "take exam",
+                    "take an exam", "take cat", "nag take", "mag take", "mo take", "mukuha og exam",
+                    "mokuha ug exam", "nag exam", "mag exam", "mo exam", "took the exam", "taking the exam",
+                    "taking exam"
+                ]) or
+                bool(re.search(r"\b(take|nag\s*take|mag\s*take|mo\s*take|took)\b.*(baungon|cabanglasan|damulog|impasug-ong|impasugong|kadingilan|kalilangan|kitaotao|lantapan|libona|malitbog|quezon|san fernando|talakag|satellite|main)\b", text))
+            )
+
+            satellite_campus_names = [
+                "baungon", "cabanglasan", "damulog", "impasug-ong", "impasugong",
+                "kadingilan", "kalilangan", "kitaotao", "lantapan", "libona",
+                "malitbog", "quezon", "san fernando", "talakag"
+            ]
+            has_satellite_mention = self._has_any(text, ["satellite", "satellite campus", "satellite campuses"] + satellite_campus_names)
+            has_main_campus_mention = self._has_any(text, ["main campus", "main", "malaybalay", "malaybalay campus"])
+            has_different_campus_mention = self._has_any(text, [
+                "different campus", "another campus", "other campus", "lain nga campus",
+                "laing campus", "ubang campus", "lain campus"
+            ])
+
+            has_multi_campus_contrast = (
+                (has_satellite_mention and has_main_campus_mention) or
+                (has_different_campus_mention and (has_main_campus_mention or has_satellite_mention or "campus" in text)) or
+                (self._has_any(text, [
+                    "even though", "even if", "biskan", "bisan", "bisag", "pero",
+                    "lahi nga", "instead of", "bahala", "versus", " vs "
+                ]) and (has_satellite_mention or has_main_campus_mention or has_different_campus_mention))
+            )
+
+            has_enroll_or_study_term = self._has_any(text, [
+                "enroll", "enrolling", "enrol", "magpa enroll", "magpa-enroll", "magpaenroll",
+                "mo enroll", "mo-enroll", "maka enroll", "maka-enroll", "pwede mag enroll",
+                "pwedi mag enroll", "pwede magpa enroll", "pwedi magpa enroll", "study",
+                "pursue", "pursue my studies", "skwela", "mag skwela", "mag-skwela", "magskwela",
+                "magtuon", "eskwela", "take my course", "take course", "kuha og course",
+                "kuha ug course", "preferred campus"
+            ])
+
+            is_pure_transfer = (
+                self._has_any(text, ["transfer to another campus", "mobalhin sa lain nga campus", "campus transfer policy"]) and
+                not has_exam_taking_term
+            )
+
+            if has_exam_taking_term and has_multi_campus_contrast and has_enroll_or_study_term and not is_pure_transfer:
+                is_exam_location_campus_query = True
+
+        if is_exam_location_campus_query:
+            return "exam_location_vs_campus"
+
+        # Campus Transfer routing
+        if (
+            self._has_any(text, [
+                "campus transfer", "transfer to another campus", "transfer campus",
+                "transfer to different campus", "move to a different campus", "move to another campus",
+                "transfer from satellite campus to main campus", "transfer from satellite to main",
+                "transfer from main campus to satellite", "transfer to main campus",
+                "transfer to satellite campus", "mobalhin sa lain nga campus", "mobalhin og campus",
+                "mobalhin ug campus", "balhin campus", "campus transfer policy"
+            ]) and
+            not is_exam_location_campus_query
+        ):
+            return "campus_transfer"
+
         # 0. CAT Requirements / Cutoff Score / Passing Score for Courses (including IT, EMC, FT, Nursing, Education, Doctors, Masteral, etc.)
         is_cat_term = self._has_any(text, [
             "cat", "buksu-cat", "buksucat", "entrance exam", "admission test", "admission exam",
@@ -1382,13 +1468,7 @@ class KnowledgeRouter:
             if has_cor_location_signal:
                 return "request_cor"
 
-        # Exam Location vs Preferred Campus
-        if self._has_any(text, [
-            "exam location vs campus", "testing site vs campus",
-            "exam location determine campus", "does exam location mean preferred campus",
-            "same ba ang testing site ug campus", "kung asa ko mag exam adto pud ko mag skwela",
-        ]):
-            return "exam_location_vs_campus"
+
 
         # Deans of Colleges List Routing (University Administrators)
         _is_deans_list_academic_award = self._has_any(text, [
@@ -4050,8 +4130,11 @@ class KnowledgeRouter:
                 "maka enroll bisan late", "mo enroll bisan late", "ma late og enroll",
                 "human sa deadline", "after deadline", "na-abtan sa deadline",
                 "na lapse ang deadline", "missed deadline", "missed the deadline",
-                "can i still enroll", "enroll after deadline"
-            ])
+                "enroll after deadline", "still enroll late"
+            ]) or (
+                self._has_any(text, ["can i still enroll", "can still enroll", "still enroll"]) and
+                self._has_any(text, ["late", "deadline", "after", "closed", "lapse", "missed", "human", "past"])
+            )
         )
         if has_late_enrollment:
             return "late_enrollment"

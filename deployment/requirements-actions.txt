@@ -1,0 +1,3 @@
+# Direct versions from the working environment; not a transitive lockfile.
+rasa-sdk==3.6.2
+requests==2.33.1

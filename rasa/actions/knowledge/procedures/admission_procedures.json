@@ -2146,10 +2146,10 @@
           "topic": "exam_location_vs_campus",
           "responses": {
             "en": [
-              "Does the location of my entrance exam determine my preferred campus?",
               "The **location of your entrance exam** does not automatically indicate the **preferred campus** where you wish to pursue your studies.",
               "Your **preferred campus is clearly indicated in your admission account,** based on the information you provided during your application.",
-              "For further clarification or assistance, you may contact the Admissions and Testing Unit (ATU).",
+              "**However, due to the high volume of applicants** for the Bukidnon State University College Admission Test (BukSU-CAT), it is **strongly advised that your chosen course or program is offered at that specific campus to avoid rejections,** as campuses prioritize examinees who intend to enroll directly in that specific main or satellite campus.",
+              "For further clarification or assistance, you may contact the Admissions and Testing Unit (ATU):",
               "📱 Contact Number: 0968 568 1435",
               "🖥️ Facebook Page: https://www.facebook.com/BukSUATU",
               "✉️ Email: admissionandtesting@buksu.edu.ph",
@@ -2157,10 +2157,10 @@
               "📞 BukSU Contact Number: 088-813-5661"
             ],
             "ceb": [
-              "Does the location of my entrance exam determine my preferred campus?",
-              "The **location of your entrance exam** does not automatically indicate the **preferred campus** where you wish to pursue your studies.",
-              "Your **preferred campus is clearly indicated in your admission account,** based on the information you provided during your application.",
-              "For further clarification or assistance, you may contact the Admissions and Testing Unit (ATU).",
+              "Ang **lokasyon sa imong entrance exam** dili awtomatikong nagpasabot sa **preferred campus** kung asa nimo gusto magpadayon sa imong pagtuon.",
+              "Ang imong **preferred campus makita sa imong admission account,** base sa impormasyon nga imong gihatag panahon sa imong aplikasyon.",
+              "**Apan, tungod kay daghan kaayo ang mga aplikante** alang sa Bukidnon State University College Admission Test (BukSU-CAT), **gisugyot nga ang imong kurso anaa gayod sa maong gipili nga campus aron malikayan ang rejection,** tungod gi-prioritize man ang mga examinees nga gustong mag-enroll sa maong pili nga main o satellite campus.",
+              "Para sa dugang pangutana o tabang, pwede nimo kontakon ang Admissions and Testing Unit (ATU):",
               "📱 Contact Number: 0968 568 1435",
               "🖥️ Facebook Page: https://www.facebook.com/BukSUATU",
               "✉️ Email: admissionandtesting@buksu.edu.ph",
@@ -2173,10 +2173,34 @@
           "metadata": {
             "phrases": [
               "exam location vs campus",
+              "testing site vs campus",
               "same ba ang testing site ug campus",
               "kung asa ko mag exam adto pud ko mag skwela",
               "does exam location mean preferred campus",
-              "lahi raba ang testing site ug ang campus"
+              "lahi raba ang testing site ug ang campus",
+              "can i still enroll in main campus even though i take the exam on the satellite campus",
+              "can i still enroll on the main campus even though i take an entrance exam on satellite campus",
+              "can i still enroll in main campus if i took exam in satellite campus",
+              "can i take my course on main campus even though i take entrance exam on different campus",
+              "can i still take my course on main campus even though i take entrance exam on different campus",
+              "pwedi kaha ko magpa enroll sa talakag campus biskan sa main campus ko nag take",
+              "pwede ba magpa enroll sa satellite campus bisan sa main nag exam",
+              "pwede ba magpa enroll sa main campus bisan sa satellite nag exam",
+              "can i take on damulog and pursue my studies on the main campus",
+              "can i take exam in satellite campus and study in main campus",
+              "can i take exam in main campus and study in satellite campus",
+              "mag exam sa satellite pero sa main mag skwela",
+              "mag exam sa main pero sa satellite mag enroll",
+              "pwede ba mag exam sa libona unya sa main mag skwela",
+              "what if i take the exam in baungon can i enroll in malaybalay main campus",
+              "can i take cat in impasug-ong campus and study in main campus",
+              "take exam on different campus enroll in main campus",
+              "take cat on different campus",
+              "exam venue different from enrolled campus",
+              "does testing center affect campus enrollment",
+              "does the location of my entrance exam determine my preferred campus",
+              "pwede ba lahi ang testing site ug ang preferred campus",
+              "lahi ang testing center ug ang campus nga skwelahan"
             ]
           },
           "display_name": "Exam Location Vs Campus"

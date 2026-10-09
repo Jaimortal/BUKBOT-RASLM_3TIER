@@ -1702,7 +1702,11 @@ LOCATION_ALIASES = {
     'accounting': 'Finance Building',
     'bayad sa cashier': 'Window 03 Cashiers Office',
     'bayad sa accounting': 'Finance Building',
+
     'scholarship office': 'Scholarship and Financial Grants Unit',
+    'sfgu office': 'Scholarship and Financial Grants Unit',
+    'sfgu': 'Scholarship and Financial Grants Unit',
+    'sfg unit': 'Scholarship and Financial Grants Unit',
     'scholarship grants office': 'Scholarship and Financial Grants Unit',
     'scholarship financial grants office': 'Scholarship and Financial Grants Unit',
     'scholarship and financial grants office': 'Scholarship and Financial Grants Unit',
@@ -1777,6 +1781,8 @@ LOCATION_ALIASES = {
     'rm a1102': 'Scholarship and Financial Grants Unit',
     'where is room a1-1-02': 'Scholarship and Financial Grants Unit',
     'where is room a1102': 'Scholarship and Financial Grants Unit',
+
+    'amu office': 'Academic Mentoring Unit',
     'academic mentoring unit': 'Academic Mentoring Unit',
     'academic mentoring unit office': 'Academic Mentoring Unit',
     'academic mentoring units': 'Academic Mentoring Unit',

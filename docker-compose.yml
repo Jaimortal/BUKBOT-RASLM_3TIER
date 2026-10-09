@@ -1,83 +1,211 @@
-# LEGACY: not validated for the current Node + Rasa + PostgreSQL pilot.
-# Use docs/PILOT_DEPLOYMENT.md instead. This compose file omits the Node app.
-version: '3.8'
-
+# Single-host deployment. Always use --env-file deployment/.env.
+name: buksu-chatbot
 services:
-  # Rasa Core Service
-  rasa:
-    build: .
-    container_name: buksu-chatbot-rasa
-    ports:
-      - "5005:5005"
-    environment:
-      - NODE_ENV=production
-      - LOG_LEVEL=INFO
-      - PORT=5005
-    volumes:
-      - ./logs:/app/logs
-      - ./models:/app/models
-      - ./uploads:/app/uploads
-    networks:
-      - chatbot-network
+  db:
     restart: unless-stopped
+    init: true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: ${PGUSER:?Run deployment/prepare.py first}
+      POSTGRES_PASSWORD: ${PGPASSWORD:?Run deployment/prepare.py first}
+      POSTGRES_DB: ${PGDATABASE:?Run deployment/prepare.py first}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5005/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
-  # Action Server Service
-  rasa-actions:
-    build: .
-    container_name: buksu-chatbot-actions
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  web:
+    restart: unless-stopped
+    init: true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    build:
+      context: .
+      target: web
+      args:
+        VITE_GOOGLE_CLIENT_ID: ${VITE_GOOGLE_CLIENT_ID:-}
+    env_file:
+      - deployment/.env
     environment:
-      - NODE_ENV=production
-      - LOG_LEVEL=INFO
-    volumes:
-      - ./logs:/app/logs
-      - ./rasa/actions:/app/rasa/actions
-    networks:
-      - chatbot-network
-    restart: unless-stopped
-    depends_on:
-      - rasa
-    command: ["python", "scripts/start.py", "--env", "production", "--mode", "actions"]
-
-  # Redis for caching (optional)
-  redis:
-    image: redis:7-alpine
-    container_name: buksu-chatbot-redis
+      PGHOST: db
+      PGPORT: '5432'
+      PGUSER: ${PGUSER:?Run deployment/prepare.py first}
+      PGPASSWORD: ${PGPASSWORD:?Run deployment/prepare.py first}
+      PGDATABASE: ${PGDATABASE:?Run deployment/prepare.py first}
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: '5000'
+      RASA_BASE_URL: http://rasa:5005
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET}
     ports:
-      - "6379:6379"
+      - 127.0.0.1:${WEB_PORT:-5000}:5000
     volumes:
-      - redis_data:/data
-    networks:
-      - chatbot-network
-    restart: unless-stopped
-    command: redis-server --appendonly yes
-
-  # Nginx reverse proxy (optional)
-  nginx:
-    image: nginx:alpine
-    container_name: buksu-chatbot-nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl:/etc/nginx/ssl
-    networks:
-      - chatbot-network
-    restart: unless-stopped
+      - type: bind
+        source: ./deployment/runtime/actions/knowledge
+        target: /app/rasa/actions/knowledge
+        read_only: false
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/actions/responses.json
+        target: /app/rasa/actions/responses.json
+        read_only: false
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/actions/normalization_rules.json
+        target: /app/rasa/actions/normalization_rules.json
+        read_only: false
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/data
+        target: /app/data
+        read_only: false
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/account
+        target: /app/server/account
+        read_only: false
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/backups
+        target: /app/backups/json
+        read_only: false
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/performance
+        target: /app/reports/performance
+        read_only: false
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/faq-report
+        target: /app/docs/Testing/FULL TESTING TOPICS/result
+        read_only: true
+        bind:
+          create_host_path: false
     depends_on:
-      - rasa
+      db:
+        condition: service_healthy
+      rasa:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - '-e'
+        - fetch('http://127.0.0.1:5000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  actions:
+    restart: unless-stopped
+    init: true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    platform: linux/amd64
+    build:
+      context: .
+      target: actions
+    env_file:
+      - deployment/.env
+    environment:
+      CHATBOT_API_URL: http://web:5000/api/rasa
+    volumes:
+      - type: bind
+        source: ./deployment/runtime/actions/knowledge
+        target: /app/rasa/actions/knowledge
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/actions/responses.json
+        target: /app/rasa/actions/responses.json
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./deployment/runtime/actions/normalization_rules.json
+        target: /app/rasa/actions/normalization_rules.json
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - '-c'
+        - import urllib.request; urllib.request.urlopen('http://127.0.0.1:5055/health', timeout=4)
+      interval: 20s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+  rasa:
+    restart: unless-stopped
+    init: true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    platform: linux/amd64
+    build:
+      context: .
+      target: rasa
+    volumes:
+      - type: bind
+        source: ./deployment/runtime/model.tar.gz
+        target: /app/model.tar.gz
+        read_only: true
+        bind:
+          create_host_path: false
+    depends_on:
+      actions:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - '-c'
+        - import urllib.request; urllib.request.urlopen('http://127.0.0.1:5005/status', timeout=4)
+      interval: 20s
+      timeout: 5s
+      retries: 15
+      start_period: 120s
+  migrate:
     profiles:
-      - production
-
+      - tools
+    build:
+      context: .
+      target: migrate
+    environment:
+      PGHOST: db
+      PGPORT: '5432'
+      PGUSER: ${PGUSER:?Run deployment/prepare.py first}
+      PGPASSWORD: ${PGPASSWORD:?Run deployment/prepare.py first}
+      PGDATABASE: ${PGDATABASE:?Run deployment/prepare.py first}
+    depends_on:
+      db:
+        condition: service_healthy
 volumes:
-  redis_data:
-
-networks:
-  chatbot-network:
-    driver: bridge
+  postgres-data: {}

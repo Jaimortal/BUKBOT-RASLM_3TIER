@@ -27,3 +27,7 @@ tool/__pycache__/
 .env
 client/.env
 reports/performance/
+
+# Docker runtime state and generated secrets stay on the deployment host.
+deployment/runtime/
+deployment/.env

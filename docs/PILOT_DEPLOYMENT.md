@@ -1,6 +1,12 @@
 # First-Year Pilot Deployment (Single Host)
 
-This is the supported pilot path for the **current** code: Node/Express + React, Rasa API, Rasa action server, PostgreSQL, and the JSON knowledge tree in `rasa/actions/knowledge`. The older `docs/PRODUCTION_SETUP.md`, `docs/README_PRODUCTION.md`, `Dockerfile`, `docker-compose.yml`, and `scripts/deploy.py` describe an earlier architecture. **Do not use those as deployment commands for this pilot.**
+This is the manual single-host pilot path for the **current** code: Node/Express + React, Rasa API, Rasa action server, PostgreSQL, and the JSON knowledge tree in `rasa/actions/knowledge`. The older `docs/PRODUCTION_SETUP.md`, `docs/README_PRODUCTION.md`, and `scripts/deploy.py` describe an earlier architecture. **Do not use those as deployment commands for this pilot.**
+
+A new Docker path is documented in [deployment/README.md](../deployment/README.md).
+It uses explicit build inputs and separately staged persistent data, preserving local
+debugging files. The Docker images still require a real build and smoke test on a
+Docker host before release; do not mix the manual localhost settings below with
+the container service addresses in that guide.
 
 Use a host with enough memory for Node, PostgreSQL, Rasa and the action server. A 4 GB host has not been validated for this stack. Keep Rasa (5005), actions (5055), and PostgreSQL private; expose only HTTPS through a reverse proxy to Node (5000). Ask the host operator to set TLS and backups. Never commit `.env`.
 
@@ -48,7 +54,7 @@ Classify COT failures before editing. Apply only confirmed fixes, run `python ra
 
 ## Known deployment limits
 
-- Docker and the old production guides are **not** validated with the present Rasa + Node architecture.
+- The new Docker configuration needs a real container build and smoke test; the old production guides remain unvalidated for this architecture.
 - No pinned Python dependency file exists, so reproducing a new server environment is a remaining deployment risk.
 - The health endpoint checks Rasa API and the PostgreSQL conversation log table. It does not verify every map image, action response, or the exact deployed Rasa model.
 - Uploaded images and some admin data use PostgreSQL. Test backup and restore before relying on the pilot for evaluation data.

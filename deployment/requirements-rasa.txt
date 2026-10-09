@@ -1,0 +1,5 @@
+# Match the local trained-model environment. Linux AMD64.
+# Retain tested image digests: transitive packages still resolve during build.
+rasa==3.6.21
+tensorflow==2.12.0
+numpy==1.23.5

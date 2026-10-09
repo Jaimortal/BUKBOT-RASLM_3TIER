@@ -1,59 +1,66 @@
-# LEGACY: not validated for the current Node + Rasa + PostgreSQL pilot.
-# Use docs/PILOT_DEPLOYMENT.md instead. This file expects a missing root
-# requirements.txt and does not build the Node frontend/backend.
-
-# Build stage
-FROM python:3.9-slim as builder
-
-# Set working directory
+# syntax=docker/dockerfile:1
+# Explicit copies only; .dockerignore denies everything not allowlisted.
+FROM node:22-bookworm-slim AS node-build
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY tsconfig.json vite.config.ts vite-plugin-meta-images.ts postcss.config.js ./
+COPY build-scripts/build.ts ./build-scripts/build.ts
+COPY client/index.html ./client/index.html
+COPY client/src ./client/src
+COPY client/public ./client/public
+COPY server ./server
+COPY shared ./shared
+COPY rulebaseTranslation/phraseTranslator.ts ./rulebaseTranslation/phraseTranslator.ts
+ARG VITE_GOOGLE_CLIENT_ID=""
+ENV VITE_GOOGLE_CLIENT_ID=$VITE_GOOGLE_CLIENT_ID
+RUN npm run build
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
+FROM node-build AS migrate
+COPY drizzle.config.ts ./
+CMD ["npm", "run", "db:push"]
+
+FROM node:22-bookworm-slim AS node-deps
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && npm cache clean --force
+
+FROM node:22-bookworm-slim AS web
+RUN apt-get update && apt-get install -y --no-install-recommends python3 ca-certificates \
     && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements and install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Production stage
-FROM python:3.9-slim
-
-# Create non-root user for security
-RUN groupadd -r rasa && useradd -r -g rasa rasa
-
-# Set working directory
 WORKDIR /app
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=5000 PYTHONDONTWRITEBYTECODE=1
+COPY --from=node-deps /app/node_modules ./node_modules
+COPY --from=node-build /app/dist ./dist
+COPY package.json package-lock.json ./
+COPY rulebaseTranslation/phraseTranslator.py rulebaseTranslation/phrase_rules.json ./rulebaseTranslation/
+RUN mkdir -p /app/rasa/actions /app/data /app/server/account /app/reports/performance /app/backups/json \
+    "/app/docs/Testing/FULL TESTING TOPICS/result" && chown -R node:node /app
+USER node
+EXPOSE 5000
+CMD ["node", "dist/index.cjs"]
 
-# Copy Python dependencies from builder stage
-COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
+FROM python:3.10-slim-bookworm AS actions
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+WORKDIR /app/rasa
+COPY deployment/requirements-actions.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt \
+    && useradd --uid 1000 --create-home chatbot
+COPY rasa/actions/*.py ./actions/
+COPY ["rasa/actions/Magical Aliases/aliases.py", "./actions/Magical Aliases/aliases.py"]
+USER chatbot
+EXPOSE 5055
+CMD ["python", "-m", "rasa_sdk", "--actions", "actions.actions", "--port", "5055"]
 
-# Copy application code
-COPY . .
-
-# Create necessary directories
-RUN mkdir -p logs uploads models data/backup
-
-# Set ownership
-RUN chown -R rasa:rasa /app
-
-# Switch to non-root user
-USER rasa
-
-# Expose port
+# Match the trained model environment; Linux AMD64, not ARM.
+FROM python:3.10-slim-bookworm AS rasa
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 RASA_TELEMETRY_ENABLED=false
+WORKDIR /app/rasa
+COPY deployment/requirements-rasa.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt \
+    && useradd --uid 1000 --create-home chatbot && chown chatbot:chatbot /app/rasa
+COPY deployment/endpoints.yml ./endpoints.yml
+COPY deployment/credentials.yml ./credentials.yml
+USER chatbot
 EXPOSE 5005
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5005/ || exit 1
-
-# Default command
-CMD ["python", "scripts/start.py", "--env", "production", "--mode", "both"]
-
-# Labels for metadata
-LABEL maintainer="BukSU ICT Team"
-LABEL version="1.0.0"
-LABEL description="BukSU Chatbot with Rasa"
+CMD ["python", "-m", "rasa", "run", "--enable-api", "--interface", "0.0.0.0", "--port", "5005", "--model", "/app/model.tar.gz", "--endpoints", "endpoints.yml", "--credentials", "credentials.yml"]
