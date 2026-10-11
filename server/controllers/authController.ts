@@ -4,6 +4,9 @@ import jwt from "jsonwebtoken";
 import fs from "fs";
 import path from "path";
 import { verifyPassword } from "../utils/passwordUtils.js";
+import { sendVerificationCode, verifyCode } from "../services/emailService.js";
+import { RbacService, DEFAULT_ADMIN_PERMISSIONS, FULL_ADMIN_PERMISSIONS, sanitizePermissions } from "../services/rbacService.js";
+import { logActivity } from "../services/activityLogService.js";
 
 const SERVER_DIR = path.join(process.cwd(), "server");
 
@@ -27,8 +30,19 @@ function loadAdminUsers() {
 // Load admin users on startup
 loadAdminUsers();
 
-// Simple in-memory session storage (in production, use Redis or database)
+// Simple in-memory session storage and revoked tokens tracking
 const sessions = new Map<string, { token: string; expires: number }>();
+const revokedTokens = new Map<string, number>(); // token -> expiry timestamp
+
+export function isTokenRevoked(token: string): boolean {
+  const exp = revokedTokens.get(token);
+  if (!exp) return false;
+  if (exp < Date.now()) {
+    revokedTokens.delete(token);
+    return false;
+  }
+  return true;
+}
 
 // Rate limiting for failed login attempts
 const loginAttempts = new Map<string, { count: number; lastAttempt: number; lockedUntil?: number }>();
@@ -123,7 +137,7 @@ function cleanupExpiredSessions() {
 }
 
 // Generate JWT token
-function generateToken(username: string, role: string = "co-admin"): string {
+function generateToken(username: string, role: string = "admin"): string {
   return jwt.sign(
     { username, role },
     JWT_SECRET,
@@ -143,7 +157,8 @@ function verifyToken(token: string): any {
 export class AuthController {
   static async login(req: Request, res: Response) {
     try {
-      const { username, password } = req.body;
+      const username = (req.body.username || req.body.email || "").trim();
+      const { password } = req.body;
       
       // Use a more reliable identifier for rate limiting
       const clientIP = (req as any).connection?.remoteAddress || 
@@ -172,14 +187,52 @@ export class AuthController {
         loadAdminUsers();
         
         const user = adminUsers.development.users.find((u: any) => 
-          u.email === username && u.enabled && u.password // Only check users with passwords
+          u.email?.toLowerCase() === username?.trim().toLowerCase() && u.password // Only check users with passwords
         );
         
         if (user) {
           const passwordValid = await verifyPassword(password, user.password);
           
           if (passwordValid) {
-            const role = user.role || (user.email === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin");
+            // 1. Check if pending Main Admin approval FIRST
+            if (user.status === "pending_approval") {
+              return res.status(403).json({
+                success: false,
+                message: "Wait for the main admin to allow your sign in, as of now always check your email",
+                pending: true
+              });
+            }
+
+            // 2. Check if disabled by Main Admin
+            if (user.status === "disabled" || user.enabled === false) {
+              await logActivity(req, {
+                actionType: "update",
+                module: "Rules & RBAC",
+                summary: `Blocked login attempt by disabled admin account: ${user.name || user.email} (${user.email})`,
+                targetTitle: `${user.name || "Admin"} (${user.email})`,
+                targetId: user.id || user.email,
+                actor: {
+                  email: user.email,
+                  name: user.name || "Disabled Admin",
+                  role: "admin",
+                },
+                changes: [
+                  {
+                    field: "Security Alert",
+                    changeType: "modified",
+                    details: "Rejected password login attempt because account is disabled by Main Administrator",
+                  },
+                ],
+              }).catch(() => {});
+
+              return res.status(403).json({
+                success: false,
+                message: "you are not allowed to login since your account is disabled by the Main-Admin, please contact your Main Administrator to enable your account",
+                disabled: true
+              });
+            }
+
+            const role = user.role === "main-admin" || user.email?.toLowerCase() === "thepersonaljaime@gmail.com" ? "main-admin" : "admin";
             const token = generateToken(user.email, role);
             const sessionId = `session_${Date.now()}_${Math.random()}`;
             
@@ -191,6 +244,10 @@ export class AuthController {
             // Clear failed attempts on successful login
             clearFailedAttempts(identifier);
 
+            const permissions = role === "main-admin"
+              ? FULL_ADMIN_PERMISSIONS
+              : sanitizePermissions(user.permissions, DEFAULT_ADMIN_PERMISSIONS);
+
             return res.json({
               success: true,
               token,
@@ -198,7 +255,9 @@ export class AuthController {
               user: {
                 email: user.email,
                 name: user.name,
-                role: role
+                role: role,
+                status: user.status || "active",
+                permissions: permissions
               }
             });
           }
@@ -209,6 +268,26 @@ export class AuthController {
       const failedResult = recordFailedAttempt(identifier);
       
       if (failedResult.locked) {
+        await logActivity(req, {
+          actionType: "update",
+          module: "Rules & RBAC",
+          summary: `Account temporarily locked after ${MAX_ATTEMPTS} failed login attempts: ${username || "unknown"}`,
+          targetTitle: username || "Unknown User",
+          targetId: username || "unknown",
+          actor: {
+            email: username || "unauthenticated",
+            name: username || "Unauthenticated",
+            role: "admin",
+          },
+          changes: [
+            {
+              field: "Rate Limit Lockout",
+              changeType: "modified",
+              details: `Locked login for ${failedResult.remainingTime} minutes after repeated invalid credentials`,
+            },
+          ],
+        }).catch(() => {});
+
         return res.status(429).json({
           success: false,
           message: `Account locked due to too many failed attempts. Please try again in ${failedResult.remainingTime} minutes.`,
@@ -278,8 +357,8 @@ export class AuthController {
         });
       }
 
-      const adminUser = adminUsers.development.users.find((adminUser: any) => 
-        adminUser.email === effectiveEmail && adminUser.enabled
+      const adminUser = adminUsers.development.users.find((u: any) => 
+        u.email?.toLowerCase() === effectiveEmail?.toLowerCase()
       );
       
       if (!adminUser) {
@@ -288,8 +367,47 @@ export class AuthController {
           message: "User not authorized as admin"
         });
       }
+
+      // Check if account is still pending Main Admin approval FIRST
+      if (adminUser.status === "pending_approval") {
+        return res.status(403).json({
+          success: false,
+          message: "Wait for the main admin to allow your sign in, as of now always check your email",
+          pending: true
+        });
+      }
+
+      // Check if account was disabled by Main Admin
+      if (adminUser.status === "disabled" || adminUser.enabled === false) {
+        logActivity(req, {
+          actionType: "update",
+          module: "Rules & RBAC",
+          summary: `Blocked Google login attempt on disabled account: ${adminUser.email}`,
+          targetTitle: `${adminUser.name || "Admin"} (${adminUser.email})`,
+          targetId: adminUser.id || adminUser.email,
+          actor: {
+            email: adminUser.email,
+            name: adminUser.name || "Admin",
+            role: adminUser.role === "main-admin" ? "main-admin" : "admin",
+          },
+          changes: [
+            {
+              field: "Security Event",
+              changeType: "modified",
+              details: "Attempted Google sign-in while account status is disabled",
+              oldValue: "disabled",
+              newValue: "blocked",
+            },
+          ],
+        }).catch(() => {});
+        return res.status(403).json({
+          success: false,
+          message: "you are not allowed to login since your account is disabled by the Main-Admin, please contact your Main Administrator to enable your account",
+          disabled: true
+        });
+      }
       
-      const role = adminUser.role || (adminUser.email === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin");
+      const role = adminUser.role === "main-admin" || adminUser.email?.toLowerCase() === "thepersonaljaime@gmail.com" ? "main-admin" : "admin";
       console.log(`Google login successful for authorized [${role}]: ${effectiveEmail}`);
 
       // Generate JWT token with role
@@ -301,6 +419,10 @@ export class AuthController {
         expires: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
       });
 
+      const permissions = role === "main-admin"
+        ? FULL_ADMIN_PERMISSIONS
+        : sanitizePermissions(adminUser.permissions);
+
       return res.json({
         success: true,
         token: jwtToken,
@@ -308,7 +430,9 @@ export class AuthController {
           email: payload.email,
           name: adminUser.name || payload.name,
           picture: payload.picture,
-          role: role
+          role: role,
+          status: adminUser.status || "active",
+          permissions: permissions
         },
         message: "Google login successful"
       });
@@ -332,9 +456,15 @@ export class AuthController {
       }
 
       const token = authHeader.substring(7);
-      const decoded = verifyToken(token);
+      if (isTokenRevoked(token)) {
+        return res.status(401).json({
+          success: false,
+          message: "Session expired"
+        });
+      }
 
-      if (!decoded) {
+      const decoded = verifyToken(token);
+      if (!decoded || !decoded.username) {
         return res.status(401).json({
           success: false,
           message: "Invalid token"
@@ -344,35 +474,46 @@ export class AuthController {
       // Clean up expired sessions
       cleanupExpiredSessions();
 
-      // Check if session exists
-      let sessionExists = false;
-      Array.from(sessions.values()).forEach((session) => {
-        if (session.token === token && session.expires > Date.now()) {
-          sessionExists = true;
-        }
-      });
+      loadAdminUsers();
+      const matchedUser = RbacService.getAdminByEmail(decoded.username);
 
-      if (!sessionExists) {
+      if (!matchedUser) {
         return res.status(401).json({
           success: false,
-          message: "Session expired"
+          message: "User not found"
         });
       }
 
-      loadAdminUsers();
-      const matchedUser = adminUsers?.development?.users?.find(
-        (u: any) => u.email === decoded.username
-      );
+      if (matchedUser.status === "pending_approval") {
+        return res.status(403).json({
+          success: false,
+          message: "Wait for the main admin to allow your sign in, as of now always check your email",
+          pending: true
+        });
+      }
 
-      const role = matchedUser?.role || decoded.role || (decoded.username === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin");
+      if (matchedUser.status === "disabled" || matchedUser.enabled === false) {
+        return res.status(403).json({
+          success: false,
+          message: "you are not allowed to login since your account is disabled by the Main-Admin, please contact your Main Administrator to enable your account",
+          disabled: true
+        });
+      }
+
+      const role = matchedUser.role === "main-admin" || matchedUser.email?.toLowerCase() === "thepersonaljaime@gmail.com" ? "main-admin" : "admin";
+      const permissions = role === "main-admin"
+        ? FULL_ADMIN_PERMISSIONS
+        : sanitizePermissions(matchedUser.permissions);
 
       return res.json({
         success: true,
         message: "Token valid",
         user: {
-          email: decoded.username,
+          email: matchedUser.email,
           name: matchedUser?.name || "Admin",
-          role: role
+          role: role,
+          status: matchedUser.status || "active",
+          permissions: permissions
         }
       });
     } catch (error) {
@@ -381,6 +522,102 @@ export class AuthController {
         success: false,
         message: "Internal server error"
       });
+    }
+  }
+
+  static async signupSendOtp(req: Request, res: Response) {
+    try {
+      const { email } = req.body;
+      if (!email || typeof email !== "string" || !email.includes("@")) {
+        return res.status(400).json({ success: false, message: "A valid email address is required" });
+      }
+
+      loadAdminUsers();
+      const signupSettings = RbacService.getSignupSettings();
+      if (!signupSettings.signupEnabled) {
+        return res.status(403).json({
+          success: false,
+          message: "Admin sign-up is currently disabled by the Main Administrator."
+        });
+      }
+
+      const existing = RbacService.getAdminByEmail(email.trim().toLowerCase());
+      if (existing) {
+        if (existing.status === "pending_approval") {
+          return res.status(400).json({
+            success: false,
+            message: "Wait for the main admin to allow your sign in, as of now always check your email"
+          });
+        }
+        return res.status(400).json({
+          success: false,
+          message: "An administrator account with this email already exists"
+        });
+      }
+
+      const result = await sendVerificationCode(email.trim().toLowerCase());
+      const statusCode = result.success ? 200 : (result.retryAfterSeconds ? 429 : 400);
+      return res.status(statusCode).json(result);
+    } catch (error: any) {
+      console.error("signupSendOtp error:", error);
+      return res.status(500).json({ success: false, message: error?.message || "Failed to send verification code" });
+    }
+  }
+
+  static async signupRegister(req: Request, res: Response) {
+    try {
+      const { name, email, password } = req.body;
+      const code = req.body.code || req.body.otp;
+      if (!name || !email || !password || !code) {
+        return res.status(400).json({
+          success: false,
+          message: "Full name, email, password, and verification code are required"
+        });
+      }
+
+      if (String(password).length < 8) {
+        return res.status(400).json({
+          success: false,
+          message: "Password must be at least 8 characters long"
+        });
+      }
+
+      // Verify OTP code
+      const verifyResult = verifyCode(email.trim().toLowerCase(), String(code).trim());
+      if (!verifyResult.success) {
+        return res.status(400).json(verifyResult);
+      }
+
+      // Register with pending status
+      const registerResult = await RbacService.registerPendingAdmin(
+        {
+          name: String(name).trim(),
+          email: email.trim().toLowerCase(),
+          password: String(password)
+        },
+        req
+      );
+
+      // Reload admin users in memory
+      loadAdminUsers();
+
+      if (!registerResult.success) {
+        return res.status(400).json(registerResult);
+      }
+
+      return res.json(registerResult);
+    } catch (error: any) {
+      console.error("signupRegister error:", error);
+      return res.status(500).json({ success: false, message: error?.message || "Failed to register account" });
+    }
+  }
+
+  static async getSignupStatus(_req: Request, res: Response) {
+    try {
+      const status = RbacService.getSignupSettings();
+      return res.json({ success: true, ...status });
+    } catch (error: any) {
+      return res.status(500).json({ success: false, message: "Failed to fetch sign-up status" });
     }
   }
 
@@ -395,6 +632,7 @@ export class AuthController {
       }
 
       const token = authHeader.substring(7);
+      revokedTokens.set(token, Date.now() + 24 * 60 * 60 * 1000);
 
       // Remove session
       Array.from(sessions.entries()).forEach(([sessionId, session]) => {

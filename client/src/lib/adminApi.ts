@@ -394,7 +394,7 @@ export async function sendVerificationCode(email: string): Promise<ApiResponse> 
   try {
     const response = await fetch('/api/email/send-verification', {
       method: 'POST',
-      headers: getAuthHeaders(),
+      headers: getJsonAuthHeaders(),
       body: JSON.stringify({ email }),
     });
     return await response.json();
@@ -413,7 +413,7 @@ export async function verifyCodeAndUpdateEmail(
   try {
     const response = await fetch('/api/email/verify-and-update', {
       method: 'POST',
-      headers: getAuthHeaders(),
+      headers: getJsonAuthHeaders(),
       body: JSON.stringify({
         newEmail,
         verificationCode,
@@ -436,7 +436,7 @@ export async function changePassword(
   try {
     const response = await fetch(`${API_BASE}/change-password`, {
       method: 'POST',
-      headers: getAuthHeaders(),
+      headers: getJsonAuthHeaders(),
       body: JSON.stringify({
         currentPassword,
         newPassword,
@@ -1100,5 +1100,171 @@ export async function clearActivityLogsApi(): Promise<ApiResponse> {
   } catch (error) {
     console.error('Error clearing activity logs:', error);
     return { success: false, message: 'Network error' };
+  }
+}
+
+
+// ─── RBAC & RULES MODIFICATION API ──────────────────────────────────────────
+
+export interface AdminAccount {
+  id: string;
+  email: string;
+  name: string;
+  role: "main-admin" | "admin";
+  status: "active" | "disabled" | "pending_approval";
+  googleId?: string | null;
+  enabled: boolean;
+  permissions: import("@/contexts/AuthContext").AdminPermissions;
+  createdAt: string;
+  updatedAt?: string;
+}
+
+export async function fetchAdminAccountsApi(): Promise<{ success: boolean; data: AdminAccount[]; message?: string }> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/users`, {
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching admin accounts:', error);
+    return { success: false, data: [], message: 'Network error fetching accounts' };
+  }
+}
+
+export async function updateAdminPermissionsApi(
+  email: string,
+  permissions: Partial<import("@/contexts/AuthContext").AdminPermissions>
+): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/permissions`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify({ email, permissions }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error updating admin permissions:', error);
+    return { success: false, message: 'Network error updating permissions' };
+  }
+}
+
+export async function toggleAdminStatusApi(
+  email: string,
+  status: "active" | "disabled"
+): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/status`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify({ email, status }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error toggling admin status:', error);
+    return { success: false, message: 'Network error updating status' };
+  }
+}
+
+export async function fetchPendingSignupsApi(): Promise<{ success: boolean; data: AdminAccount[]; message?: string }> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/pending`, {
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching pending signups:', error);
+    return { success: false, data: [], message: 'Network error fetching pending signups' };
+  }
+}
+
+export async function approvePendingSignupApi(
+  email: string,
+  permissions: import("@/contexts/AuthContext").AdminPermissions,
+  customMessage?: string
+): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/approve`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify({ email, permissions, customMessage }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error approving admin signup:', error);
+    return { success: false, message: 'Network error approving sign-up' };
+  }
+}
+
+export async function rejectPendingSignupApi(
+  email: string,
+  reason?: string
+): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/reject`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify({ email, reason }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error rejecting admin signup:', error);
+    return { success: false, message: 'Network error rejecting sign-up' };
+  }
+}
+
+export async function fetchSignupSettingsApi(): Promise<{ success: boolean; signupEnabled: boolean }> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/signup-settings`);
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching signup settings:', error);
+    return { success: false, signupEnabled: true };
+  }
+}
+
+export async function updateSignupSettingsApi(enabled: boolean): Promise<ApiResponse & { signupEnabled?: boolean }> {
+  try {
+    const response = await fetch(`${API_BASE}/rbac/signup-settings`, {
+      method: 'POST',
+      headers: getJsonAuthHeaders(),
+      body: JSON.stringify({ enabled }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error updating signup settings:', error);
+    return { success: false, message: 'Network error updating sign-up setting' };
+  }
+}
+
+export async function sendSignupOtpApi(email: string): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/signup/send-otp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error sending signup OTP:', error);
+    return { success: false, message: 'Network error sending OTP' };
+  }
+}
+
+export async function registerPendingAdminApi(data: {
+  name: string;
+  email: string;
+  password: string;
+  code: string;
+}): Promise<ApiResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/signup/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error registering admin account:', error);
+    return { success: false, message: 'Network error registering account' };
   }
 }

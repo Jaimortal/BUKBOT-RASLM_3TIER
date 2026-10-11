@@ -4,6 +4,7 @@ import { toast } from '@/hooks/use-toast';
 
 interface GoogleAuthButtonProps {
   onGoogleLogin?: (token: string, user: GoogleUser) => void;
+  onAuthError?: (message: string) => void;
   isLoading?: boolean;
 }
 
@@ -25,7 +26,7 @@ function decodeJwtPayload<T = any>(token: string): T {
   return JSON.parse(atob(padded));
 }
 
-export default function GoogleAuthButton({ onGoogleLogin, isLoading = false }: GoogleAuthButtonProps) {
+export default function GoogleAuthButton({ onGoogleLogin, onAuthError, isLoading = false }: GoogleAuthButtonProps) {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const hasHandledCallbackRef = useRef(false);
 
@@ -146,6 +147,7 @@ export default function GoogleAuthButton({ onGoogleLogin, isLoading = false }: G
         }
       } catch (error) {
         console.error('Google auth error:', error);
+        const errMessage = error instanceof Error ? error.message : 'Authentication failed';
 
         localStorage.removeItem("adminToken");
         localStorage.removeItem("adminAuthenticated");
@@ -153,9 +155,12 @@ export default function GoogleAuthButton({ onGoogleLogin, isLoading = false }: G
 
         toast({
           title: "Google Login Failed",
-          description: error instanceof Error ? error.message : 'Authentication failed',
+          description: errMessage,
           variant: "destructive"
         });
+        if (onAuthError) {
+          onAuthError(errMessage);
+        }
         
         // Ensure hash is cleared even on error
         window.history.replaceState({}, document.title, window.location.pathname);
@@ -165,7 +170,7 @@ export default function GoogleAuthButton({ onGoogleLogin, isLoading = false }: G
     };
 
     handleOAuthCallback();
-  }, [onGoogleLogin]);
+  }, [onGoogleLogin, onAuthError]);
 
   const handleGoogleLogin = async () => {
     try {

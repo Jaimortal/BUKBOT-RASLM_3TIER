@@ -42,6 +42,35 @@ router.post('/send-verification', async (req, res) => {
   }
 });
 
+// Verify current email OTP code (Step 2 of Change Email)
+router.post('/verify-code', async (req, res) => {
+  try {
+    const { email, verificationCode } = req.body;
+    if (!email || !verificationCode) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email and verification code are required',
+      });
+    }
+
+    const verificationResult = verifyCode(email, verificationCode);
+    if (!verificationResult.success) {
+      return res.status(400).json(verificationResult);
+    }
+
+    return res.json({
+      success: true,
+      message: 'Verification code confirmed.',
+    });
+  } catch (error) {
+    console.error('Error in verify-code endpoint:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to verify code',
+    });
+  }
+});
+
 // Verify code and update email
 router.post('/verify-and-update', async (req, res) => {
   try {
@@ -54,32 +83,47 @@ router.post('/verify-and-update', async (req, res) => {
       });
     }
     
-    // Verify the code first
+    // Verify the code sent to the new email first
     const verificationResult = verifyCode(newEmail, verificationCode);
     
     if (!verificationResult.success) {
       return res.status(400).json(verificationResult);
     }
     
-    // TODO: Verify current email and password against your authentication system
-    // For now, we'll proceed with updating the email
-    
     // Update email in admin-users.json
     const adminUsersPath = path.join(process.cwd(), 'server', 'account', 'admin-users.json');
     const adminData = JSON.parse(fs.readFileSync(adminUsersPath, 'utf8'));
     
-    // Find and update the user
     let userUpdated = false;
     const environment = process.env.NODE_ENV || 'development';
+    const normalizedCurrent = currentEmail.trim().toLowerCase();
+    const normalizedNew = newEmail.trim().toLowerCase();
     
     if (adminData[environment] && adminData[environment].users) {
       const userIndex = adminData[environment].users.findIndex(
-        (user: any) => user.email === currentEmail
+        (user: any) => String(user.email || '').toLowerCase() === normalizedCurrent
       );
       
       if (userIndex !== -1) {
-        adminData[environment].users[userIndex].email = newEmail;
+        adminData[environment].users[userIndex].email = normalizedNew;
         userUpdated = true;
+      }
+    }
+
+    // Also update in admin-rbac.json if present
+    const rbacPath = path.join(process.cwd(), 'server', 'account', 'admin-rbac.json');
+    if (fs.existsSync(rbacPath)) {
+      const rbacData = JSON.parse(fs.readFileSync(rbacPath, 'utf8'));
+      if (Array.isArray(rbacData.users)) {
+        const rbacIdx = rbacData.users.findIndex(
+          (u: any) => String(u.email || '').toLowerCase() === normalizedCurrent
+        );
+        if (rbacIdx !== -1) {
+          rbacData.users[rbacIdx].email = normalizedNew;
+          rbacData.users[rbacIdx].updatedAt = new Date().toISOString();
+          fs.writeFileSync(rbacPath, JSON.stringify(rbacData, null, 2));
+          userUpdated = true;
+        }
       }
     }
     
@@ -90,7 +134,7 @@ router.post('/verify-and-update', async (req, res) => {
       });
     }
     
-    // Save the updated data
+    // Save the updated admin-users.json data
     fs.writeFileSync(adminUsersPath, JSON.stringify(adminData, null, 2));
     
     res.json({ 

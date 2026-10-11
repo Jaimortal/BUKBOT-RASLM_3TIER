@@ -15,6 +15,7 @@ declare module "http" {
 
 app.use(
   express.json({
+    type: ["application/json", "text/plain", "application/*+json"],
     verify: (req, _res, buf) => {
       req.rawBody = buf;
     },
@@ -87,25 +88,9 @@ app.use((req, res, next) => {
   // It is the only port that is not firewalled.
 
   const port = parseInt(process.env.PORT || "5000", 10);
-  // safer for Windows
-  
-  // const host = process.env.HOST || "0.0.0.0"; //binding for all acccess
   const host = process.env.HOST || "127.0.0.1";
 
   httpServer.listen(port, host, () => {
     log(`serving on http://${host}:${port}`);
   });
-
-
-  // const port = parseInt(process.env.PORT || "5000", 10);
-  // httpServer.listen(
-  //   {
-  //     port,
-  //     host: "127.0.0.1",
-  //     reusePort: true,
-  //   },
-  //   () => {
-  //     log(`serving on port ${port}`);
-  //   },
-  // );
 })();

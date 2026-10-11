@@ -20,6 +20,7 @@ import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 import { AdminMapPinsEditor, type AdminPin } from "@/components/admin/AdminMapPinsEditor";
 import { AdminImageUploader } from "@/components/admin/AdminImageUploader";
 import {
@@ -47,6 +48,8 @@ import {
   Globe,
   Layers,
   Compass,
+  HelpCircle,
+  PlusCircle,
 } from "lucide-react";
 import { AdminTooltip } from "@/components/admin/AdminTooltip";
 
@@ -113,7 +116,19 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
+  const { hasPermission } = useAuth();
   const [activeTab, setActiveTab] = useState<string>("responses");
+
+  useEffect(() => {
+    const allowedTabs: string[] = [];
+    if (hasPermission("modal_responses")) allowedTabs.push("responses");
+    if (hasPermission("modal_images")) allowedTabs.push("images");
+    if (hasPermission("modal_map")) allowedTabs.push("map");
+
+    if (allowedTabs.length > 0 && !allowedTabs.includes(activeTab)) {
+      setActiveTab(allowedTabs[0]);
+    }
+  }, [hasPermission, activeTab]);
   const isCoordsPresent = Array.isArray(location.coordinates) && location.coordinates.length === 2;
   const [mapEnabled, setMapEnabled] = useState<boolean>(isCoordsPresent || !!location.pins?.length || !!location.routes?.length);
   const [enLines, setEnLines] = useState<string[]>(location.responses?.en?.length ? location.responses.en : [""]);
@@ -136,9 +151,49 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
   );
   const [routes, setRoutes] = useState<any[]>(location.routes ?? []);
   const [deleteImg, setDeleteImg] = useState<number | null>(null);
+  const [showHelpTip, setShowHelpTip] = useState(false);
+  const helpTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleCloseHelp = useCallback(() => {
+    if (helpTimerRef.current) {
+      clearTimeout(helpTimerRef.current);
+      helpTimerRef.current = null;
+    }
+    setShowHelpTip(false);
+  }, []);
+
+  const handleToggleHelp = useCallback(() => {
+    if (helpTimerRef.current) {
+      clearTimeout(helpTimerRef.current);
+      helpTimerRef.current = null;
+    }
+    setShowHelpTip(true);
+    helpTimerRef.current = setTimeout(() => {
+      setShowHelpTip(false);
+      helpTimerRef.current = null;
+    }, 5000);
+  }, []);
+
+  const handleModalClose = useCallback(() => {
+    handleCloseHelp();
+    onClose();
+  }, [handleCloseHelp, onClose]);
+
+  useEffect(() => {
+    if (!open) {
+      handleCloseHelp();
+    }
+    return () => {
+      if (helpTimerRef.current) {
+        clearTimeout(helpTimerRef.current);
+        helpTimerRef.current = null;
+      }
+    };
+  }, [open, handleCloseHelp]);
 
   useEffect(() => {
     if (!open) return;
+    handleCloseHelp();
     setActiveTab("responses");
     setEnLines(location.responses?.en?.length ? location.responses.en : [""]);
     setCebLines(location.responses?.ceb?.length ? location.responses.ceb : [""]);
@@ -156,7 +211,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
     setRoutes(location.routes ?? []);
     const hasCoordinates = Array.isArray(location.coordinates) && location.coordinates.length === 2;
     setMapEnabled(hasCoordinates || !!location.pins?.length || !!location.routes?.length);
-  }, [open, location]);
+  }, [open, location, handleCloseHelp]);
 
   const saveMutation = useMutation({
     mutationFn: async () => {
@@ -204,7 +259,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
           current?.map((item) => item.id === savedLocation.id ? savedLocation : item)
         );
         onSaved(savedLocation);
-        onClose();
+        handleModalClose();
       } else {
         toast({ title: "Save Failed", description: result.message, variant: "destructive" });
       }
@@ -215,7 +270,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
 
   return (
     <>
-      <Dialog open={open} onOpenChange={v => !v && onClose()}>
+      <Dialog open={open} onOpenChange={v => !v && handleModalClose()}>
         <DialogContent className="w-[94vw] max-w-6xl xl:max-w-7xl h-[88vh] max-h-[92vh] overflow-hidden flex flex-col p-0 rounded-2xl border border-slate-200/80 shadow-2xl [&>button.absolute]:hidden">
           <DialogHeader className="border-b bg-gradient-to-r from-[#001C38] via-[#002b54] to-[#0356a9] px-6 py-3.5 sm:py-4 rounded-t-2xl text-white shrink-0">
             <div className="flex items-center justify-between w-full gap-4">
@@ -249,7 +304,7 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
 
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleModalClose}
                 className="flex items-center justify-center h-8 w-8 rounded-lg text-white/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40 shrink-0"
                 title="Close"
               >
@@ -275,72 +330,78 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                   Navigation
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("responses")}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                    activeTab === "responses"
-                      ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <MessageSquareText className={`h-4 w-4 ${activeTab === "responses" ? "text-amber-400" : "text-blue-600"}`} />
-                    <span>Responses</span>
-                  </div>
-                  <Badge className={`text-[10px] px-1.5 py-0 ${activeTab === "responses" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
-                    {enLines.filter(l => l.trim()).length + cebLines.filter(l => l.trim()).length}
-                  </Badge>
-                </button>
+                {hasPermission("modal_responses") && (
+                  <button
+                    type="button"
+                    onClick={() => { handleCloseHelp(); setActiveTab("responses"); }}
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                      activeTab === "responses"
+                        ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <MessageSquareText className={`h-4 w-4 ${activeTab === "responses" ? "text-amber-400" : "text-blue-600"}`} />
+                      <span>Responses</span>
+                    </div>
+                    <Badge className={`text-[10px] px-1.5 py-0 ${activeTab === "responses" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                      {enLines.filter(l => l.trim()).length + cebLines.filter(l => l.trim()).length}
+                    </Badge>
+                  </button>
+                )}
 
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("images")}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                    activeTab === "images"
-                      ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <ImageIcon className={`h-4 w-4 ${activeTab === "images" ? "text-amber-400" : "text-amber-600"}`} />
-                    <span>Images</span>
-                  </div>
-                  <Badge className={`text-[10px] px-1.5 py-0 ${activeTab === "images" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
-                    {images.length}
-                  </Badge>
-                </button>
+                {hasPermission("modal_images") && (
+                  <button
+                    type="button"
+                    onClick={() => { handleCloseHelp(); setActiveTab("images"); }}
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                      activeTab === "images"
+                        ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <ImageIcon className={`h-4 w-4 ${activeTab === "images" ? "text-amber-400" : "text-amber-600"}`} />
+                      <span>Images</span>
+                    </div>
+                    <Badge className={`text-[10px] px-1.5 py-0 ${activeTab === "images" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                      {images.length}
+                    </Badge>
+                  </button>
+                )}
 
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("map")}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                    activeTab === "map"
-                      ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <MapPin className={`h-4 w-4 ${activeTab === "map" ? "text-amber-400" : "text-purple-600"}`} />
-                    <span>Map & Navigation</span>
-                  </div>
-                  <Badge className={`text-[10px] px-1.5 py-0 ${activeTab === "map" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
-                    {mapEnabled ? `${pins.length} Pins` : "Off"}
-                  </Badge>
-                </button>
+                {hasPermission("modal_map") && (
+                  <button
+                    type="button"
+                    onClick={() => { handleCloseHelp(); setActiveTab("map"); }}
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                      activeTab === "map"
+                        ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <MapPin className={`h-4 w-4 ${activeTab === "map" ? "text-amber-400" : "text-purple-600"}`} />
+                      <span>Map & Navigation</span>
+                    </div>
+                    <Badge className={`text-[10px] px-1.5 py-0 ${activeTab === "map" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                      {mapEnabled ? `${pins.length} Pins` : "Off"}
+                    </Badge>
+                  </button>
+                )}
               </div>
             </div>
 
             {/* Right Main Content Area */}
             <div className="flex-1 flex flex-col min-h-0 bg-slate-50/40">
-              <div className="flex-1 overflow-y-auto p-5 sm:p-6">
+              <div className={`flex-1 overflow-y-auto p-5 sm:p-6 ${activeTab === "responses" ? "flex flex-col min-h-0" : ""}`}>
                 {activeTab === "responses" && (
-                <div className="space-y-4 w-full">
+                <div className="space-y-4 w-full flex-1 flex flex-col min-h-0">
                   {/* English & Bisaya side by side */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full flex-1 min-h-0">
                     {/* Row 1 / Column 1: English Responses */}
-                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col">
-                      <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col min-h-0">
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 shrink-0">
                         <div className="flex items-center gap-2">
                           <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
                             <Globe className="h-4 w-4" />
@@ -350,11 +411,23 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                             <p className="text-[11px] text-slate-500">Location directions in English</p>
                           </div>
                         </div>
-                        <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200 text-[10px] font-semibold">
-                          {enLines.filter(l => l.trim()).length} Bubbles
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200 text-[10px] font-semibold">
+                            {enLines.filter(l => l.trim()).length} Bubbles
+                          </Badge>
+                          <Button
+                            type="button"
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setEnLines(prev => [...(prev.length ? prev : [""]), ""])}
+                            className="h-7 border-blue-200 bg-blue-50/70 text-xs font-semibold text-blue-800 hover:bg-blue-100 hover:text-blue-900 transition-colors shadow-xs"
+                          >
+                            <PlusCircle className="mr-1.5 h-3.5 w-3.5 text-blue-600" />
+                            Add Bubble
+                          </Button>
+                        </div>
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 flex flex-col min-h-0">
                         <AdminResponseBubblesEditor
                           label=""
                           bubbles={enLines}
@@ -364,8 +437,8 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                     </div>
 
                     {/* Row 2 / Column 2: Bisaya / Cebuano Responses */}
-                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col">
-                      <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col min-h-0">
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 shrink-0">
                         <div className="flex items-center gap-2">
                           <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50 text-amber-700">
                             <Globe className="h-4 w-4" />
@@ -375,11 +448,23 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                             <p className="text-[11px] text-slate-500">Location directions in Sinugbuanong Binisaya</p>
                           </div>
                         </div>
-                        <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-200 text-[10px] font-semibold">
-                          {cebLines.filter(l => l.trim()).length} Bubbles
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-200 text-[10px] font-semibold">
+                            {cebLines.filter(l => l.trim()).length} Bubbles
+                          </Badge>
+                          <Button
+                            type="button"
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setCebLines(prev => [...(prev.length ? prev : [""]), ""])}
+                            className="h-7 border-amber-200 bg-amber-50/70 text-xs font-semibold text-amber-800 hover:bg-amber-100 hover:text-amber-900 transition-colors shadow-xs"
+                          >
+                            <PlusCircle className="mr-1.5 h-3.5 w-3.5 text-amber-600" />
+                            Add Bubble
+                          </Button>
+                        </div>
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 flex flex-col min-h-0">
                         <AdminResponseBubblesEditor
                           label=""
                           bubbles={cebLines}
@@ -489,28 +574,78 @@ function LocationModal({ location, open, onClose, onSaved }: LocationModalProps)
                 </div>
               )}
               </div>
-
-              {/* Tip docked at bottom above footer line */}
-              {activeTab === "responses" && (
-                <div className="px-5 sm:px-6 pb-3 pt-1 bg-slate-50/40 shrink-0">
-                  <div className="flex items-center gap-2.5 rounded-xl border border-blue-100 bg-blue-50/80 p-3 text-xs text-blue-900 shadow-xs">
-                    <Sparkles className="h-4 w-4 text-amber-500 shrink-0" />
-                    <span>
-                      <strong>Tip:</strong> Each box represents <strong>1 chatbot bubble</strong>. Press <strong>Enter</strong> to add a line break inside the bubble. Select text and press <strong>Ctrl + B</strong> to bold.
-                    </span>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 
-          <div className="px-6 py-3.5 border-t border-slate-200 bg-slate-50 flex items-center justify-between rounded-b-2xl shrink-0">
+          <div className="px-6 py-3.5 border-t border-slate-200 bg-slate-50 flex items-center justify-between rounded-b-2xl shrink-0 relative">
+            {/* Floating Tips Pop-up */}
+            {showHelpTip && (
+              <div
+                role="tooltip"
+                className="absolute bottom-full right-4 sm:right-6 mb-3 z-50 w-80 sm:w-96 rounded-xl border border-blue-200 bg-white p-4 shadow-2xl ring-1 ring-slate-900/10 animate-in fade-in slide-in-from-bottom-2 duration-150 text-slate-800"
+              >
+                <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 text-blue-700">
+                      <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-900">Response Formatting Tips</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleCloseHelp}
+                    className="flex h-6 w-6 items-center justify-center rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+                    title="Close tips"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                    <span className="sr-only">Close tips</span>
+                  </button>
+                </div>
+
+                <div className="space-y-2 text-xs text-slate-600 leading-relaxed">
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-500 font-bold">•</span>
+                    <span>Each box represents <strong>1 chatbot bubble</strong>.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-500 font-bold">•</span>
+                    <span>Press <strong>Enter</strong> to add a line break inside the bubble.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-500 font-bold">•</span>
+                    <span>Click <strong>+ Add Bubble</strong> to send another sequential bubble.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-500 font-bold">•</span>
+                    <span>
+                      Select text and press <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-semibold bg-slate-100 border border-slate-200 rounded text-slate-700 shadow-2xs">Ctrl + B</kbd> to make it bold.
+                    </span>
+                  </div>
+                </div>
+
+                {/* Tooltip caret pointing down towards the Help button */}
+                <div className="absolute -bottom-1.5 right-48 sm:right-52 h-3 w-3 rotate-45 border-r border-b border-blue-200 bg-white" />
+              </div>
+            )}
+
             <p className="text-xs text-muted-foreground">
               Source file: <code className="font-mono text-slate-700 font-semibold">responses_location_core.json</code>
             </p>
             <div className="flex items-center gap-2.5">
+              <AdminTooltip title="Formatting Help" description="Show response bubble tips and keyboard shortcuts" side="top">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={handleToggleHelp}
+                  className="border-blue-200 bg-blue-50/60 text-blue-800 hover:bg-blue-100 hover:text-blue-900 hover:border-blue-300 font-semibold shadow-xs"
+                >
+                  <HelpCircle className="mr-1.5 h-4 w-4 text-blue-600" />
+                  Help
+                </Button>
+              </AdminTooltip>
               <AdminTooltip title="Cancel" description="Discard edits and close location modal" side="top">
-                <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending} className="border-slate-300">
+                <Button variant="outline" onClick={handleModalClose} disabled={saveMutation.isPending} className="border-slate-300">
                   Cancel
                 </Button>
               </AdminTooltip>

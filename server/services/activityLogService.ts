@@ -28,7 +28,7 @@ export interface ActivityLogEntry {
   userName: string;
   userRole: string; // "main-admin" | "co-admin"
   actionType: "create" | "update" | "delete" | "upload";
-  module: "Knowledge Manager" | "Locations" | "Responses" | "Images" | "Settings" | "FAQs";
+  module: "Knowledge Manager" | "Locations" | "Responses" | "Images" | "Settings" | "FAQs" | "Rules & RBAC";
   summary: string;
   targetTitle?: string;
   targetId?: string;
@@ -76,11 +76,16 @@ export function getAdminUserInfo(emailOrUsername?: string): {
   name: string;
   role: string;
 } {
+  const isMain = emailOrUsername?.toLowerCase() === "thepersonaljaime@gmail.com";
   const defaultInfo = {
-    email: emailOrUsername || "thepersonaljaime@gmail.com",
-    name: "Admin",
-    role: emailOrUsername === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin"
+    email: emailOrUsername || "system@buksu.edu.ph",
+    name: isMain ? "Admin User" : (emailOrUsername ? emailOrUsername.split("@")[0] : "System"),
+    role: isMain ? "main-admin" : "admin"
   };
+
+  if (!emailOrUsername) {
+    return defaultInfo;
+  }
 
   try {
     if (fs.existsSync(ADMIN_USERS_PATH)) {
@@ -91,7 +96,7 @@ export function getAdminUserInfo(emailOrUsername?: string): {
         return {
           email: matched.email,
           name: matched.name || "Admin",
-          role: matched.role || (matched.email === "thepersonaljaime@gmail.com" ? "main-admin" : "co-admin")
+          role: matched.role === "main-admin" || matched.email?.toLowerCase() === "thepersonaljaime@gmail.com" ? "main-admin" : "admin"
         };
       }
     }
@@ -350,15 +355,16 @@ export async function logActivity(
   req: Request,
   entry: {
     actionType: "create" | "update" | "delete" | "upload";
-    module: "Knowledge Manager" | "Locations" | "Responses" | "Images" | "Settings" | "FAQs";
+    module: "Knowledge Manager" | "Locations" | "Responses" | "Images" | "Settings" | "FAQs" | "Rules & RBAC";
     summary: string;
     targetTitle?: string;
     targetId?: string;
     changes?: LogChangeItem[];
+    actor?: { email: string; name: string; role: string };
   }
 ): Promise<ActivityLogEntry> {
-  const userTokenEmail = (req as any).user?.username || (req as any).user?.email;
-  const adminInfo = getAdminUserInfo(userTokenEmail);
+  const userTokenEmail = (req as any)?.user?.username || (req as any)?.user?.email;
+  const adminInfo = entry.actor || getAdminUserInfo(userTokenEmail);
   const ipAddress = getClientIp(req);
   const timestamp = new Date().toISOString();
   const id = `log_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;

@@ -94,11 +94,12 @@ import { AdminActivityLogs } from "@/components/admin/AdminActivityLogs";
 import { AdminFaqGapReport } from "@/components/admin/AdminFaqGapReport";
 import { AdminPerformance } from "@/components/admin/AdminPerformance";
 import { AdminTooltip } from "@/components/admin/AdminTooltip";
+import { AdminRBAC } from "@/components/admin/AdminRBAC";
 
 export default function AdminDashboard() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
-  const { logout, user, isMainAdmin } = useAuth();
+  const { logout, user, isMainAdmin, hasPermission } = useAuth();
   const [activeTab, setActiveTab] = useState("responses");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
@@ -428,12 +429,54 @@ export default function AdminDashboard() {
   };
 
   // --- UI ---
-  const menuItems = [
-    { id: "responses", label: "Responses", description: "Manage bot responses, topics, and campus maps", icon: MessageSquare },
-    { id: "reports", label: "Reports", description: "Feedback, activity logs, and performance metrics", icon: Shield },
-    { id: "gallery", label: "Gallery", description: "Campus photos and landmark gallery", icon: ImageIcon },
-    { id: "privileges", label: "Settings", description: "Privileges, chathead customization, and map settings", icon: Settings },
+  const rawMenuItems = [
+    { id: "responses", label: "Responses", description: "Manage bot responses, topics, and campus maps", icon: MessageSquare, perm: "nav_responses" as const },
+    { id: "reports", label: "Reports", description: "Feedback, activity logs, and performance metrics", icon: Shield, perm: "nav_reports" as const },
+    { id: "gallery", label: "Gallery", description: "Campus photos and landmark gallery", icon: ImageIcon, perm: "nav_gallery" as const },
+    { id: "privileges", label: "Settings", description: "Privileges, chathead customization, and map settings", icon: Settings, perm: "nav_settings" as const },
+    { id: "rbac", label: "Rules Modification", description: "Admin roles, permissions & signup controls", icon: SlidersHorizontal, perm: "nav_rbac" as const },
   ];
+
+  const menuItems = rawMenuItems.filter((item) => hasPermission(item.perm));
+
+  // Fallback to first available allowed tab if currently selected tab is disabled
+  useEffect(() => {
+    if (menuItems.length > 0 && !menuItems.some((item) => item.id === activeTab)) {
+      setActiveTab(menuItems[0].id);
+    }
+  }, [menuItems, activeTab]);
+
+  // Auto-switch sub-tabs if the currently active sub-tab is disabled for this admin
+  useEffect(() => {
+    const allowed: Array<"knowledge" | "locations"> = [];
+    if (hasPermission("responses_knowledge")) allowed.push("knowledge");
+    if (hasPermission("responses_locations")) allowed.push("locations");
+    if (allowed.length > 0 && !allowed.includes(responsesSubTab)) {
+      setResponsesSubTab(allowed[0]);
+    }
+  }, [user, responsesSubTab]);
+
+  useEffect(() => {
+    const allowed: Array<"user-reports" | "activity-logs" | "performance" | "faq-gaps"> = [];
+    if (hasPermission("reports_chatbot")) allowed.push("user-reports");
+    if (hasPermission("reports_activity_logs")) allowed.push("activity-logs");
+    if (hasPermission("reports_performance")) allowed.push("performance");
+    if (hasPermission("reports_faq_gaps")) allowed.push("faq-gaps");
+    if (allowed.length > 0 && !allowed.includes(reportsSubTab)) {
+      setReportsSubTab(allowed[0]);
+    }
+  }, [user, reportsSubTab]);
+
+  useEffect(() => {
+    const allowed: Array<"features" | "chathead" | "maps" | "account"> = [];
+    if (hasPermission("settings_chatbox_controls")) allowed.push("features");
+    if (hasPermission("settings_chathead_studio")) allowed.push("chathead");
+    if (hasPermission("settings_maps")) allowed.push("maps");
+    if (hasPermission("settings_credentials")) allowed.push("account");
+    if (allowed.length > 0 && !allowed.includes(settingsSubTab)) {
+      setSettingsSubTab(allowed[0]);
+    }
+  }, [user, settingsSubTab]);
 
   return (
     <div className="min-h-screen bg-slate-50/60 flex">
@@ -582,7 +625,7 @@ export default function AdminDashboard() {
                       ? 'bg-blue-50 text-blue-700 border border-blue-200'
                       : 'bg-amber-50 text-amber-700 border border-amber-200'
                   }`}>
-                    {user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'Main' : 'Co'}
+                    {user.role === 'main-admin' || user.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'Main-Admin' : 'Admin'}
                   </span>
                 </div>
                 <p className="text-[10px] text-slate-500 truncate font-mono mt-0.5">
@@ -608,7 +651,7 @@ export default function AdminDashboard() {
       {/* Main Content Area */}
       <main className="flex-1 min-w-0 lg:ml-64 p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8 pb-12 w-full max-w-7xl mx-auto">
         <div className="w-full">
-          {activeTab === "responses" && (
+          {activeTab === "responses" && hasPermission("nav_responses") && (
             <div className="space-y-6">
               {/* Header & Sub-Navigation matching BukSU Admin Theme */}
               <div className="flex flex-col gap-4">
@@ -630,77 +673,91 @@ export default function AdminDashboard() {
                     </div>
                   </div>
 
-                  <AdminTooltip
-                    title="Sync Records"
-                    description="Synchronize and persist all knowledge and location records with the database"
-                    side="bottom"
-                  >
-                    <Button 
-                      onClick={() => setShowSyncDialog(true)}
-                      className="bg-[#001C38] hover:bg-[#032f5d] text-white font-semibold flex items-center gap-2 shadow-sm border border-blue-900/30 self-start md:self-center"
+                  {hasPermission("responses_sync") && (
+                    <AdminTooltip
+                      title="Sync Records"
+                      description="Synchronize and persist all knowledge and location records with the database"
+                      side="bottom"
                     >
-                      <RefreshCw className={`w-4 h-4 text-amber-400 ${syncKnowledgeBaseMutation.isPending ? "animate-spin" : ""}`} />
-                      <span>Sync Records</span>
-                    </Button>
-                  </AdminTooltip>
+                      <Button 
+                        onClick={() => setShowSyncDialog(true)}
+                        className="bg-[#001C38] hover:bg-[#032f5d] text-white font-semibold flex items-center gap-2 shadow-sm border border-blue-900/30 self-start md:self-center"
+                      >
+                        <RefreshCw className={`w-4 h-4 text-amber-400 ${syncKnowledgeBaseMutation.isPending ? "animate-spin" : ""}`} />
+                        <span>Sync Records</span>
+                      </Button>
+                    </AdminTooltip>
+                  )}
                 </div>
 
                 {/* Sub-Tabs Navigation (straight, prominent layout matching Settings and Reports tabs) */}
-                <div className="grid grid-cols-2 gap-2 bg-slate-200/70 p-1.5 rounded-xl border border-slate-200/80">
-                  <AdminTooltip
-                    title="Knowledge Manager"
-                    description="Browse, filter, and edit structured knowledge categories, topics, and responses"
-                    side="top"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setResponsesSubTab("knowledge")}
-                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-                        responsesSubTab === "knowledge"
-                          ? "bg-[#001C38] text-white shadow-sm"
-                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                      }`}
-                    >
-                      <BookOpen className={`h-4 w-4 ${responsesSubTab === "knowledge" ? "text-amber-400" : "text-slate-500"}`} />
-                      <span>Knowledge Manager</span>
-                    </button>
-                  </AdminTooltip>
+                {(hasPermission("responses_knowledge") || hasPermission("responses_locations")) && (
+                  <div className={`grid gap-2 bg-slate-200/70 p-1.5 rounded-xl border border-slate-200/80 ${
+                    hasPermission("responses_knowledge") && hasPermission("responses_locations") ? "grid-cols-2" : "grid-cols-1"
+                  }`}>
+                    {hasPermission("responses_knowledge") && (
+                      <AdminTooltip
+                        title="Knowledge Manager"
+                        description="Browse, filter, and edit structured knowledge categories, topics, and responses"
+                        side="top"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setResponsesSubTab("knowledge")}
+                          className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                            responsesSubTab === "knowledge"
+                              ? "bg-[#001C38] text-white shadow-sm"
+                              : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                          }`}
+                        >
+                          <BookOpen className={`h-4 w-4 ${responsesSubTab === "knowledge" ? "text-amber-400" : "text-slate-500"}`} />
+                          <span>Knowledge Manager</span>
+                        </button>
+                      </AdminTooltip>
+                    )}
 
-                  <AdminTooltip
-                    title="Locations & Maps"
-                    description="Manage campus buildings, room coordinates, map pins, and navigational routes"
-                    side="top"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setResponsesSubTab("locations")}
-                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-                        responsesSubTab === "locations"
-                          ? "bg-[#001C38] text-white shadow-sm"
-                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                      }`}
-                    >
-                      <MapPin className={`h-4 w-4 ${responsesSubTab === "locations" ? "text-amber-400" : "text-slate-500"}`} />
-                      <span>Campus Locations & Maps</span>
-                    </button>
-                  </AdminTooltip>
-                </div>
+                    {hasPermission("responses_locations") && (
+                      <AdminTooltip
+                        title="Locations & Maps"
+                        description="Manage campus buildings, room coordinates, map pins, and navigational routes"
+                        side="top"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setResponsesSubTab("locations")}
+                          className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                            responsesSubTab === "locations"
+                              ? "bg-[#001C38] text-white shadow-sm"
+                              : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                          }`}
+                        >
+                          <MapPin className={`h-4 w-4 ${responsesSubTab === "locations" ? "text-amber-400" : "text-slate-500"}`} />
+                          <span>Campus Locations & Maps</span>
+                        </button>
+                      </AdminTooltip>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Main Content Area */}
               <Card className="border border-slate-200/80 shadow-md overflow-hidden bg-white/90 backdrop-blur-sm rounded-2xl">
                 <CardContent className="p-4 sm:p-6">
-                  {responsesSubTab === "knowledge" ? (
+                  {responsesSubTab === "knowledge" && hasPermission("responses_knowledge") ? (
                     <AdminKnowledgeManager />
-                  ) : (
+                  ) : responsesSubTab === "locations" && hasPermission("responses_locations") ? (
                     <AdminLocations />
+                  ) : (
+                    <div className="py-12 text-center text-sm text-slate-500">
+                      No sub-tabs are enabled for your account under Responses.
+                    </div>
                   )}
                 </CardContent>
               </Card>
             </div>
           )}
 
-          {activeTab === "privileges" && (
+          {activeTab === "privileges" && hasPermission("nav_settings") && (
             <div className="space-y-6">
               {/* Header & Sub-Navigation */}
               <div className="flex flex-col gap-4">
@@ -732,62 +789,70 @@ export default function AdminDashboard() {
 
                 {/* Sub-Tabs Navigation (straight, prominent layout matching Reports tab) */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 bg-slate-200/70 p-1.5 rounded-xl border border-slate-200/80">
-                  <button
-                    type="button"
-                    onClick={() => setSettingsSubTab("features")}
-                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-                      settingsSubTab === "features"
-                        ? "bg-[#001C38] text-white shadow-sm"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                    }`}
-                  >
-                    <SlidersHorizontal className="h-4 w-4 text-amber-400" />
-                    Chatbox Controls
-                  </button>
+                  {hasPermission("settings_chatbox_controls") && (
+                    <button
+                      type="button"
+                      onClick={() => setSettingsSubTab("features")}
+                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                        settingsSubTab === "features"
+                          ? "bg-[#001C38] text-white shadow-sm"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                      }`}
+                    >
+                      <SlidersHorizontal className="h-4 w-4 text-amber-400" />
+                      Chatbox Controls
+                    </button>
+                  )}
 
-                  <button
-                    type="button"
-                    onClick={() => setSettingsSubTab("chathead")}
-                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-                      settingsSubTab === "chathead"
-                        ? "bg-[#001C38] text-white shadow-sm"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                    }`}
-                  >
-                    <Palette className="h-4 w-4 text-amber-400" />
-                    Chathead Studio
-                  </button>
+                  {hasPermission("settings_chathead_studio") && (
+                    <button
+                      type="button"
+                      onClick={() => setSettingsSubTab("chathead")}
+                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                        settingsSubTab === "chathead"
+                          ? "bg-[#001C38] text-white shadow-sm"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                      }`}
+                    >
+                      <Palette className="h-4 w-4 text-amber-400" />
+                      Chathead Studio
+                    </button>
+                  )}
 
-                  <button
-                    type="button"
-                    onClick={() => setSettingsSubTab("maps")}
-                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-                      settingsSubTab === "maps"
-                        ? "bg-[#001C38] text-white shadow-sm"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                    }`}
-                  >
-                    <MapIcon className="h-4 w-4 text-amber-400" />
-                    Campus Maps
-                  </button>
+                  {hasPermission("settings_maps") && (
+                    <button
+                      type="button"
+                      onClick={() => setSettingsSubTab("maps")}
+                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                        settingsSubTab === "maps"
+                          ? "bg-[#001C38] text-white shadow-sm"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                      }`}
+                    >
+                      <MapIcon className="h-4 w-4 text-amber-400" />
+                      Campus Maps
+                    </button>
+                  )}
 
-                  <button
-                    type="button"
-                    onClick={() => setSettingsSubTab("account")}
-                    className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-                      settingsSubTab === "account"
-                        ? "bg-[#001C38] text-white shadow-sm"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                    }`}
-                  >
-                    <ShieldCheck className="h-4 w-4 text-amber-400" />
-                    Account & Security
-                  </button>
+                  {hasPermission("settings_credentials") && (
+                    <button
+                      type="button"
+                      onClick={() => setSettingsSubTab("account")}
+                      className={`flex items-center justify-center gap-2.5 py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                        settingsSubTab === "account"
+                          ? "bg-[#001C38] text-white shadow-sm"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                      }`}
+                    >
+                      <ShieldCheck className="h-4 w-4 text-amber-400" />
+                      Account & Security
+                    </button>
+                  )}
                 </div>
               </div>
 
               {/* 1. CHATBOX CONTROLS SUB-TAB */}
-              {settingsSubTab === "features" && (
+              {settingsSubTab === "features" && hasPermission("settings_chatbox_controls") && (
                 <div className="space-y-5">
                   <Card className="border-slate-200/80 shadow-sm overflow-hidden">
                     <div className="h-1.5 w-full bg-gradient-to-r from-[#001C38] via-[#0356a9] to-[#F59E0B]" />
@@ -961,7 +1026,7 @@ export default function AdminDashboard() {
               )}
 
               {/* 2. CHATHEAD STUDIO SUB-TAB */}
-              {settingsSubTab === "chathead" && (
+              {settingsSubTab === "chathead" && hasPermission("settings_chathead_studio") && (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   {/* Left Column: Studio Controls */}
                   <div className="lg:col-span-7 space-y-6">
@@ -1521,14 +1586,14 @@ export default function AdminDashboard() {
               )}
 
               {/* 3. CAMPUS MAPS SUB-TAB */}
-              {settingsSubTab === "maps" && (
+              {settingsSubTab === "maps" && hasPermission("settings_maps") && (
                 <div>
                   <AdminMapSettings />
                 </div>
               )}
 
               {/* 4. ACCOUNT & SECURITY SUB-TAB */}
-              {settingsSubTab === "account" && (
+              {settingsSubTab === "account" && hasPermission("settings_credentials") && (
                 <div className="space-y-6">
                   {/* Administrator Profile Card */}
                   <Card className="border-slate-200/80 shadow-sm overflow-hidden">
@@ -1546,7 +1611,7 @@ export default function AdminDashboard() {
                                 ? 'bg-blue-100 text-[#001C38] border border-blue-200'
                                 : 'bg-amber-100 text-amber-800 border border-amber-200'
                             }`}>
-                              {user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'Main-Admin' : 'Co-Admin'}
+                              {user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com' ? 'Main-Admin' : 'Admin'}
                             </span>
                           </div>
                           <CardDescription className="text-xs text-slate-500 font-mono mt-0.5">
@@ -1632,54 +1697,57 @@ export default function AdminDashboard() {
               )}
 
               {/* PERSISTENT FLOATING SAVE BAR */}
-              <div className="sticky bottom-4 z-20 flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-[#001C38]/20 bg-white/95 p-4 shadow-xl backdrop-blur">
-                <div className="flex items-center gap-2.5">
-                  <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${settingsDirty ? "bg-amber-100 text-amber-700" : "bg-blue-50 text-blue-700"}`}>
-                    {settingsDirty ? <AlertCircle className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
+              {((settingsSubTab === "features" && hasPermission("settings_chatbox_controls")) ||
+                (settingsSubTab === "chathead" && hasPermission("settings_chathead_studio"))) && (
+                <div className="sticky bottom-4 z-20 flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-[#001C38]/20 bg-white/95 p-4 shadow-xl backdrop-blur">
+                  <div className="flex items-center gap-2.5">
+                    <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${settingsDirty ? "bg-amber-100 text-amber-700" : "bg-blue-50 text-blue-700"}`}>
+                      {settingsDirty ? <AlertCircle className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
+                    </div>
+                    <div>
+                      <h6 className="text-xs sm:text-sm font-bold text-slate-800">
+                        {settingsDirty ? "Unsaved settings changes detected" : "All settings are currently up to date"}
+                      </h6>
+                      <p className="text-[11px] text-slate-500">
+                        {settingsDirty ? "Click 'Save Changes' to apply your updates to the live chatbot." : "Modifications in Chatbox Controls or Chathead Studio can be saved here."}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h6 className="text-xs sm:text-sm font-bold text-slate-800">
-                      {settingsDirty ? "Unsaved settings changes detected" : "All settings are currently up to date"}
-                    </h6>
-                    <p className="text-[11px] text-slate-500">
-                      {settingsDirty ? "Click 'Save Changes' to apply your updates to the live chatbot." : "Modifications in Chatbox Controls or Chathead Studio can be saved here."}
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-center gap-2 self-end sm:self-center">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      setPrivileges(savedPrivileges);
-                      setWidgetSettings(savedWidgetSettings);
-                    }}
-                    disabled={!settingsDirty || saveSettingsMutation.isPending}
-                    className="text-xs font-semibold"
-                  >
-                    Reset
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => saveSettingsMutation.mutate({ privileges, widgetSettings })}
-                    disabled={!settingsDirty || saveSettingsMutation.isPending}
-                    className="text-white text-xs font-semibold shadow-md px-4"
-                    style={{ background: "linear-gradient(to right, #001C38, #0356a9)" }}
-                  >
-                    {saveSettingsMutation.isPending ? (
-                      <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
-                    ) : (
-                      <Save className="mr-2 h-3.5 w-3.5" />
-                    )}
-                    Save Changes
-                  </Button>
+                  <div className="flex items-center gap-2 self-end sm:self-center">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setPrivileges(savedPrivileges);
+                        setWidgetSettings(savedWidgetSettings);
+                      }}
+                      disabled={!settingsDirty || saveSettingsMutation.isPending}
+                      className="text-xs font-semibold"
+                    >
+                      Reset
+                    </Button>
+                    <Button
+                      size="sm"
+                      onClick={() => saveSettingsMutation.mutate({ privileges, widgetSettings })}
+                      disabled={!settingsDirty || saveSettingsMutation.isPending}
+                      className="text-white text-xs font-semibold shadow-md px-4"
+                      style={{ background: "linear-gradient(to right, #001C38, #0356a9)" }}
+                    >
+                      {saveSettingsMutation.isPending ? (
+                        <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+                      ) : (
+                        <Save className="mr-2 h-3.5 w-3.5" />
+                      )}
+                      Save Changes
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           )}
 
-          {activeTab === "reports" && (
+          {activeTab === "reports" && hasPermission("nav_reports") && (
             <div className="space-y-6">
               {/* Header Banner */}
               <div className="bg-white p-5 rounded-xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -1708,67 +1776,67 @@ export default function AdminDashboard() {
               {/* Prominent, Straight, Bigger Sub-Tabs Bar */}
               <div className="w-full bg-white p-1.5 rounded-xl border border-slate-200/80 shadow-sm">
                 <Tabs
-                  value={
-                    !isEffectiveMainAdmin && (reportsSubTab === "performance" || reportsSubTab === "faq-gaps")
-                      ? "user-reports"
-                      : reportsSubTab
-                  }
+                  value={reportsSubTab}
                   onValueChange={(v) => setReportsSubTab(v as any)}
                   className="w-full"
                 >
-                  <TabsList className={`w-full bg-slate-100/80 p-1.5 h-auto grid gap-2 ${isEffectiveMainAdmin ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2"}`}>
-                    <TabsTrigger
-                      value="user-reports"
-                      className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
-                    >
-                      <MessageSquare className="w-4.5 h-4.5 shrink-0" />
-                      <span>Chatbot Reports</span>
-                    </TabsTrigger>
+                  <TabsList className="w-full bg-slate-100/80 p-1.5 h-auto flex flex-wrap gap-2">
+                    {hasPermission("reports_chatbot") && (
+                      <TabsTrigger
+                        value="user-reports"
+                        className="flex-1 py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                      >
+                        <MessageSquare className="w-4.5 h-4.5 shrink-0" />
+                        <span>Chatbot Reports</span>
+                      </TabsTrigger>
+                    )}
 
-                    <TabsTrigger
-                      value="activity-logs"
-                      className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
-                    >
-                      <Activity className="w-4.5 h-4.5 shrink-0" />
-                      <span>Active Log (Audit Trail)</span>
-                    </TabsTrigger>
+                    {hasPermission("reports_activity_logs") && (
+                      <TabsTrigger
+                        value="activity-logs"
+                        className="flex-1 py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                      >
+                        <Activity className="w-4.5 h-4.5 shrink-0" />
+                        <span>Active Log (Audit Trail)</span>
+                      </TabsTrigger>
+                    )}
 
-                    {isEffectiveMainAdmin && (
-                      <>
-                        <TabsTrigger
-                          value="performance"
-                          className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
-                        >
-                          <Zap className="w-4.5 h-4.5 shrink-0 text-amber-400 data-[state=inactive]:text-amber-500" />
-                          <span>System Performance</span>
-                        </TabsTrigger>
+                    {hasPermission("reports_performance") && (
+                      <TabsTrigger
+                        value="performance"
+                        className="flex-1 py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                      >
+                        <Zap className="w-4.5 h-4.5 shrink-0 text-amber-400 data-[state=inactive]:text-amber-500" />
+                        <span>System Performance</span>
+                      </TabsTrigger>
+                    )}
 
-                        <TabsTrigger
-                          value="faq-gaps"
-                          className="py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
-                        >
-                          <FileText className="w-4.5 h-4.5 shrink-0 text-sky-300 data-[state=inactive]:text-blue-600" />
-                          <span>FAQ Gap Evaluation</span>
-                        </TabsTrigger>
-                      </>
+                    {hasPermission("reports_faq_gaps") && (
+                      <TabsTrigger
+                        value="faq-gaps"
+                        className="flex-1 py-3 px-4 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2.5 data-[state=active]:bg-[#001C38] data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-slate-600 data-[state=inactive]:hover:bg-white data-[state=inactive]:hover:text-slate-900"
+                      >
+                        <FileText className="w-4.5 h-4.5 shrink-0 text-sky-300 data-[state=inactive]:text-blue-600" />
+                        <span>FAQ Gap Evaluation</span>
+                      </TabsTrigger>
                     )}
                   </TabsList>
                 </Tabs>
               </div>
               {/* Sub-Tab Content Rendering */}
-              {reportsSubTab === "user-reports" && <AdminReports />}
-              {reportsSubTab === "activity-logs" && <AdminActivityLogs />}
-              {(isMainAdmin || user?.role === 'main-admin' || user?.email?.toLowerCase() === 'thepersonaljaime@gmail.com') && (
-                <>
-                  {reportsSubTab === "performance" && <AdminPerformance />}
-                  {reportsSubTab === "faq-gaps" && <AdminFaqGapReport />}
-                </>
-              )}
+              {reportsSubTab === "user-reports" && hasPermission("reports_chatbot") && <AdminReports />}
+              {reportsSubTab === "activity-logs" && hasPermission("reports_activity_logs") && <AdminActivityLogs />}
+              {reportsSubTab === "performance" && hasPermission("reports_performance") && <AdminPerformance />}
+              {reportsSubTab === "faq-gaps" && hasPermission("reports_faq_gaps") && <AdminFaqGapReport />}
             </div>
           )}
 
-          {activeTab === "gallery" && (
+          {activeTab === "gallery" && hasPermission("nav_gallery") && (
             <AdminGallery />
+          )}
+
+          {activeTab === "rbac" && hasPermission("nav_rbac") && (
+            <AdminRBAC />
           )}
         </div>
       </main>
@@ -2859,8 +2927,6 @@ function ChangeEmailDialog({ trigger }: { trigger?: React.ReactNode } = {}) {
 
   // Step 2: Verify current email code
   const handleVerifyCurrentEmail = async () => {
-    console.log("Verify current email clicked, code:", currentVerificationCode);
-    
     if (currentVerificationCode.length !== 6) {
       toast({
         title: "Invalid code",
@@ -2872,10 +2938,34 @@ function ChangeEmailDialog({ trigger }: { trigger?: React.ReactNode } = {}) {
 
     setIsVerifying(true);
     try {
-      // For now, we'll just move to step 3
-      // In a real implementation, you'd verify the code first
-      console.log("Current email verified, moving to step 3");
-      setStep(3);
+      const response = await fetch("/api/email/verify-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: currentEmail,
+          verificationCode: currentVerificationCode,
+        }),
+      });
+      const result = await response.json();
+      if (response.ok && result.success) {
+        toast({
+          title: "Email verified",
+          description: "Current email verified. Please enter your new email address.",
+        });
+        setStep(3);
+      } else {
+        toast({
+          title: "Verification failed",
+          description: result.message || "Invalid or expired verification code",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Verification error",
+        description: "Could not verify the code. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setIsVerifying(false);
     }

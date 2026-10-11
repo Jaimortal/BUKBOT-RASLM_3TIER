@@ -671,16 +671,22 @@
           "topic": "reschedule_entrance_exam",
           "responses": {
             "en": [
-              "The BukSU Entrance Examination cannot be rescheduled once your exam date has been assigned.",
+              "The **BukSU Entrance Examination (BukSU-CAT) date and testing site cannot be changed or rescheduled** once your application is approved and your exam date or testing venue has been assigned.",
+              "Testing sites, room assignments, and examination batches are strictly locked to manage room capacity and allocate test materials across main and satellite campuses. Unauthorized switching of testing centers and walk-in examinations are strictly prohibited.",
               "If you are unable to attend your scheduled exam, you may need to wait for the next admission cycle.",
-              "I recommend ensuring your availability on your assigned exam date to avoid delays in your admission.",
-              "Remember also that walk-in entrance examination is not allowed."
+              "For urgent or unavoidable examination concerns regarding your approved testing site or schedule, please coordinate directly with the **Admissions and Testing Unit (ATU)**:",
+              "📱 Mobile:\n0968 568 1435",
+              "🖥️ Facebook:\nhttps://www.facebook.com/BukSUATU",
+              "✉️ Email:\nadmissionandtesting@buksu.edu.ph"
             ],
             "ceb": [
-              "Dili ma-reschedule ang BukSU Entrance Examination kung naa na kay assigned exam date.",
-              "Kung dili ka makatunga sa imong scheduled exam, mahimo nga kinahanglan ka maghulat sa sunod nga admission cycle.",
-              "Mas maayo nga siguroon ang imong availability sa imong exam date aron malikayan ang delay sa imong admission.",
-              "Hinumdomi usab nga dili pwede ang walk-in entrance examination."
+              "Ang **petsa sa BukSU Entrance Examination (BukSU-CAT) ug ang testing site dili na pwede usbon o ilisan** kung approved na ang imong aplikasyon ug aduna na kay assigned exam schedule o venue.",
+              "Naka-lock na ang mga testing sites, assignment sa kwarto, ug examination batches base sa kapasidad ug gidaghanon sa test materials sa matag campus. Dili usab gitugotan ang pagbalhin-balhin og testing center ug ang walk-in examination.",
+              "Kung dili ka makatunga sa imong scheduled exam, posibleng maghulat ka sa sunod nga admission cycle.",
+              "Alang sa mga dinalian o importanteng pangutana bahin sa imong approved nga testing site o exam schedule, pakig-alayon dayon sa **Admissions and Testing Unit (ATU)**:",
+              "📱 Mobile:\n0968 568 1435",
+              "🖥️ Facebook:\nhttps://www.facebook.com/BukSUATU",
+              "✉️ Email:\nadmissionandtesting@buksu.edu.ph"
             ]
           },
           "intent": "reschedule_entrance_exam",
@@ -688,6 +694,36 @@
           "metadata": {
             "phrases": [
               "reschedule entrance exam",
+              "can i still change my testing site even though its approved",
+              "can i still change my testing site even though it is approved",
+              "can i change my testing site",
+              "can i change my testing center",
+              "can i change my testing site after approval",
+              "pwedi bakaha nako ni i change akong schedule sa admission",
+              "pwede ba nako i change akong schedule sa admission",
+              "am i allowed to modify my schedule for examination testing date",
+              "gusto nako i modify ning akoang mga schedule sa admission, pwedi pa kaha ni",
+              "gusto nako i modify ning akoang mga schedule sa admission pwedi pa kaha ni",
+              "allowed ba i change atong testing date kong wala nahumana kog approved",
+              "allowed ba i change atong testing date kung approved na",
+              "pwede pa ba usbon akong testing site",
+              "pwede ba ilisan ang testing center kung approved na",
+              "pwedi ba usbon ang testing center bisan approved na",
+              "change testing site after approval",
+              "change testing center after approval",
+              "change testing venue once approved",
+              "modify testing site buksu cat",
+              "modify examination testing date",
+              "modify admission schedule",
+              "change admission exam schedule",
+              "pwede ba i change akong schedule sa admission",
+              "pwedi ba ilisan akong testing date",
+              "allowed ba i modify akong exam schedule",
+              "gusto nako i change akong testing site",
+              "gusto nako i change akong schedule sa admission",
+              "pwede ba magbalhin og testing center",
+              "pwede ba magbalhin og testing site kung approved na",
+              "switch testing site after approval",
               "walkin entrance exam is allowed",
               "walk in entrance exam is allowed",
               "walk-in entrance exam",
@@ -707,7 +743,10 @@
               "unsaon pag reschedule sa buksu cat"
             ]
           },
-          "display_name": "Reschedule Entrance Exam"
+          "display_name": "Reschedule Entrance Exam",
+          "subject_terms": [],
+          "images": [],
+          "items": []
         },
         {
           "topic": "missed_buksu_cat_schedule",

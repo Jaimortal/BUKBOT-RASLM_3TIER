@@ -744,6 +744,35 @@ class KnowledgeRouter:
         ]):
             return "honor_list_release_schedule"
 
+        # 16j2b. Reschedule Entrance Exam / Change Testing Site or Exam Schedule
+        is_change_or_modify_keyword = self._has_any(raw_normalized, [
+            "reschedule", "re-schedule", "change", "modify", "switch", "alter", "adjust", "move",
+            "usab", "usbon", "ilis", "ilisan", "balhin", "ibalhin", "mabalhin", "bag-ohon", "mailisan", "mausab"
+        ])
+        is_exam_target_keyword = self._has_any(raw_normalized, [
+            "testing site", "testing center", "testing venue", "exam venue", "examination venue",
+            "testing date", "examination testing date", "examination date", "exam date", "exam schedule",
+            "examination schedule", "admission schedule", "admission test", "admission exam",
+            "entrance exam", "cat exam", "schedule sa admission", "petsa sa exam", "adlaw sa exam",
+            "testing", "buksu cat", "buksu-cat", "buksucat"
+        ])
+        is_excluded_from_reschedule = self._has_any(raw_normalized, [
+            "program", "course", "kurso", "degree", "password", "pass", "login",
+            "miss", "missed", "wala nakatunga", "nakaligtaan"
+        ])
+        if not is_excluded_from_reschedule and (
+            (is_change_or_modify_keyword and is_exam_target_keyword) or
+            self._has_any(raw_normalized, [
+                "reschedule entrance exam", "change testing site", "change testing center",
+                "change exam date", "modify schedule for examination", "move my exam schedule",
+                "change schedule sa admission", "modify ning akoang mga schedule",
+                "pwede ma reschedule", "pwedi ma reschedule", "pwede pa usbon ang petsa sa cat",
+                "pwede ba ilisan akong exam schedule", "pwedi ba ilisan akong testing date",
+                "change testing venue", "modify testing date", "modify testing center"
+            ])
+        ):
+            return "reschedule_entrance_exam"
+
         # 16j3. Admission Schedule & Examination Date Disambiguation
         is_admission_or_cat_query = self._has_any(raw_normalized, [
             "admission", "admissions", "buksu admission", "buksu admissions",
@@ -796,10 +825,16 @@ class KnowledgeRouter:
             "requirement", "requirements", "document", "documents", "score", "scores",
             "cutoff", "cut-off", "pass", "passing", "login", "password", "fee", "fees",
             "letter of intent", "2x2", "photo", "picture", "als", "second courser", "transferee", "freshman",
-            "non-passer", "non passer", "fail", "failed"
+            "non-passer", "non passer", "fail", "failed",
+            "change", "modify", "reschedule", "usab", "usbon", "ilis", "ilisan", "balhin", "ibalhin",
+            "testing site", "testing center"
         ])
 
         if is_admission_or_cat_query and is_schedule_or_date_query and not is_how_to_apply_process and not is_deadline_query and not is_non_schedule_admission:
+            # 0. Missed exam schedule query
+            if self._has_any(raw_normalized, ["miss", "missed", "wala nakatunga", "nakaligtaan", "wala nakaadto"]):
+                return "missed_buksu_cat_schedule"
+
             # 1. Specific Personal Examination Date Query
             if is_exam_date_marker:
                 return "admission_examination_date"
@@ -2563,8 +2598,11 @@ class KnowledgeRouter:
             )
         )
         has_reschedule_entrance_exam = (
-            self._has_any(text, ["reschedule", "change schedule", "change exam schedule"]) and
-            self._has_any(text, ["entrance exam", "admission test", "buksu cat", "cat", "exam", "examination", "test"])
+            (is_change_or_modify_keyword and is_exam_target_keyword and not is_excluded_from_reschedule) or
+            (
+                self._has_any(text, ["reschedule", "change schedule", "change exam schedule", "change testing site", "change testing center", "modify schedule", "modify testing date"]) and
+                self._has_any(text, ["entrance exam", "admission test", "buksu cat", "cat", "exam", "examination", "test", "admission"])
+            )
         )
         has_cat_definition_query = (
             (has_cat or self._has_any(text, ["college admission test"])) and
@@ -2607,11 +2645,20 @@ class KnowledgeRouter:
             has_second_courser and
             self._has_any(text, ["fee", "fees", "payment", "pay", "bayad", "bayaran", "cat", "exam", "test"])
         )
-        has_application_next_step = self._has_any(text, [
-            "after submit", "after submitting", "human nako submit", "nahuman na nako submit",
-            "submitted my application", "what next after application", "next step after applying",
-            "application next step", "online application unsa", "akong online application unsa",
-        ])
+        has_change_program_after_submitting = (
+            self._has_any(text, ["change", "modify", "switch", "usab", "ilis"]) and
+            self._has_any(text, ["program", "course", "kurso", "degree"]) and
+            self._has_any(text, ["after submit", "after submitting", "human submit", "human nako submit", "post application", "submitted"])
+        )
+        has_application_next_step = (
+            not has_change_program_after_submitting and
+            not self._has_any(text, ["change", "modify", "switch", "program", "course", "kurso"]) and
+            self._has_any(text, [
+                "after submit", "after submitting", "human nako submit", "nahuman na nako submit",
+                "submitted my application", "what next after application", "next step after applying",
+                "application next step", "online application unsa", "akong online application unsa",
+            ])
+        )
         has_intent_to_enroll_confirm = (
             self._has_any(text, [
                 "intent to enroll", "confirm intent to enroll", "intent to enroll button",
@@ -3434,6 +3481,8 @@ class KnowledgeRouter:
             return "change_preferred_course_admission_application"
         if has_intent_to_enroll_confirm:
             return "intent_to_enroll_confirm"
+        if has_change_program_after_submitting:
+            return "change_program_after_application"
         if has_application_next_step:
             return "after_admission_application"
         if has_school_year_class_start:

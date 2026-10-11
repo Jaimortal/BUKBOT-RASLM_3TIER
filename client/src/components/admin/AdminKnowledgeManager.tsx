@@ -25,6 +25,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 import type { ApiResponse } from "@/types/admin";
 import { AdminTooltip } from "@/components/admin/AdminTooltip";
 import {
@@ -463,7 +464,6 @@ function KnowledgeEditor({
 }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [displayName, setDisplayName] = useState(record.displayName || "");
   const [en, setEn] = useState<string[]>(record.responses?.en?.length ? record.responses.en : [""]);
   const [ceb, setCeb] = useState<string[]>(record.responses?.ceb?.length ? record.responses.ceb : [""]);
   const [images, setImages] = useState<string[]>(record.images || []);
@@ -471,10 +471,61 @@ function KnowledgeEditor({
   const [hasMapEditor, setHasMapEditor] = useState(record.hasMap);
   const [pins, setPins] = useState<AdminPin[]>(normalizePins(record.pins));
   const [routes, setRoutes] = useState<AdminRoute[]>(normalizeRoutes(record.routes));
+  const { hasPermission } = useAuth();
   const [activeModalTab, setActiveModalTab] = useState<"responses" | "images" | "map">("responses");
+  const [showHelpTip, setShowHelpTip] = useState(false);
+  const helpTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    setDisplayName(record.displayName || "");
+    const allowedTabs: Array<"responses" | "images" | "map"> = [];
+    if (hasPermission("modal_responses")) allowedTabs.push("responses");
+    if (hasPermission("modal_images")) allowedTabs.push("images");
+    if (hasPermission("modal_map")) allowedTabs.push("map");
+
+    if (allowedTabs.length > 0 && !allowedTabs.includes(activeModalTab)) {
+      setActiveModalTab(allowedTabs[0]);
+    }
+  }, [hasPermission, activeModalTab]);
+
+  const handleCloseHelp = useCallback(() => {
+    if (helpTimerRef.current) {
+      clearTimeout(helpTimerRef.current);
+      helpTimerRef.current = null;
+    }
+    setShowHelpTip(false);
+  }, []);
+
+  const handleToggleHelp = useCallback(() => {
+    if (helpTimerRef.current) {
+      clearTimeout(helpTimerRef.current);
+      helpTimerRef.current = null;
+    }
+    setShowHelpTip(true);
+    helpTimerRef.current = setTimeout(() => {
+      setShowHelpTip(false);
+      helpTimerRef.current = null;
+    }, 5000);
+  }, []);
+
+  const handleModalClose = useCallback(() => {
+    handleCloseHelp();
+    onClose();
+  }, [handleCloseHelp, onClose]);
+
+  useEffect(() => {
+    if (!open) {
+      handleCloseHelp();
+    }
+    return () => {
+      if (helpTimerRef.current) {
+        clearTimeout(helpTimerRef.current);
+        helpTimerRef.current = null;
+      }
+    };
+  }, [open, handleCloseHelp]);
+
+  useEffect(() => {
+    handleCloseHelp();
     setEn(record.responses?.en?.length ? record.responses.en : [""]);
     setCeb(record.responses?.ceb?.length ? record.responses.ceb : [""]);
     setImages(record.images || []);
@@ -483,7 +534,7 @@ function KnowledgeEditor({
     setPins(normalizePins(record.pins));
     setRoutes(normalizeRoutes(record.routes));
     setActiveModalTab("responses");
-  }, [record]);
+  }, [record, handleCloseHelp]);
 
   const saveMutation = useMutation({
     mutationFn: async (): Promise<ApiResponse> => {
@@ -491,7 +542,7 @@ function KnowledgeEditor({
       const cleanCeb = ceb.map(normalizeRichBubble).filter((b) => b.trim().length > 0);
 
       const errors = validateEditorDraft({
-        displayName,
+        displayName: record.displayName || record.topic || "",
         en: cleanEn,
         ceb: cleanCeb,
         images,
@@ -507,7 +558,7 @@ function KnowledgeEditor({
       const payload: Partial<KnowledgeRecord> & { path: number[]; topic: string } = {
         path: record.path,
         topic: record.topic,
-        displayName: displayName.trim(),
+        displayName: (record.displayName || "").trim(),
         responses: {
           en: cleanEn.length ? cleanEn : [""],
           ceb: cleanCeb.length ? cleanCeb : [""],
@@ -532,7 +583,7 @@ function KnowledgeEditor({
         toast({ title: "Save failed", description: result.message, variant: "destructive" });
         return;
       }
-      toast({ title: "Knowledge record saved", description: displayName || record.displayName });
+      toast({ title: "Knowledge record saved", description: record.displayName });
       const savedRecord = result.data as KnowledgeRecord | undefined;
       if (savedRecord?.id) {
         queryClient.setQueryData(["knowledgeRecord", savedRecord.id], savedRecord);
@@ -547,7 +598,7 @@ function KnowledgeEditor({
       } else {
         queryClient.invalidateQueries({ queryKey: ["knowledgeSummaries"] });
       }
-      onClose();
+      handleModalClose();
     },
     onError: (error: any) => {
       toast({ title: "Save failed", description: error?.message || "Invalid data", variant: "destructive" });
@@ -557,7 +608,7 @@ function KnowledgeEditor({
   const crumbs = breadcrumb(record, recordsById);
 
   return (
-    <Dialog open={open} onOpenChange={(value) => !value && onClose()}>
+    <Dialog open={open} onOpenChange={(value) => !value && handleModalClose()}>
       <DialogContent className="w-[94vw] max-w-6xl xl:max-w-7xl h-[88vh] max-h-[92vh] overflow-hidden flex flex-col p-0 rounded-2xl border border-slate-200/80 shadow-2xl [&>button.absolute]:hidden">
         <DialogHeader className="border-b bg-gradient-to-r from-[#001C38] via-[#002b54] to-[#0356a9] px-6 py-3.5 sm:py-4 rounded-t-2xl text-white shrink-0">
           <div className="flex items-center justify-between w-full gap-4">
@@ -583,7 +634,7 @@ function KnowledgeEditor({
 
             <button
               type="button"
-              onClick={onClose}
+              onClick={handleModalClose}
               className="flex items-center justify-center h-8 w-8 rounded-lg text-white/80 hover:text-white hover:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40 shrink-0"
               title="Close"
             >
@@ -609,83 +660,78 @@ function KnowledgeEditor({
                 Navigation
               </div>
 
-              <button
-                type="button"
-                onClick={() => setActiveModalTab("responses")}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                  activeModalTab === "responses"
-                    ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <MessageSquareText className={`h-4 w-4 ${activeModalTab === "responses" ? "text-amber-400" : "text-blue-600"}`} />
-                  <span>Responses</span>
-                </div>
-                <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "responses" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
-                  {en.filter(b => b.trim()).length + ceb.filter(b => b.trim()).length}
-                </Badge>
-              </button>
+              {hasPermission("modal_responses") && (
+                <button
+                  type="button"
+                  onClick={() => { handleCloseHelp(); setActiveModalTab("responses"); }}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                    activeModalTab === "responses"
+                      ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <MessageSquareText className={`h-4 w-4 ${activeModalTab === "responses" ? "text-amber-400" : "text-blue-600"}`} />
+                    <span>Responses</span>
+                  </div>
+                  <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "responses" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                    {en.filter(b => b.trim()).length + ceb.filter(b => b.trim()).length}
+                  </Badge>
+                </button>
+              )}
 
-              <button
-                type="button"
-                onClick={() => setActiveModalTab("images")}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                  activeModalTab === "images"
-                    ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Image className={`h-4 w-4 ${activeModalTab === "images" ? "text-amber-400" : "text-amber-600"}`} />
-                  <span>Images</span>
-                </div>
-                <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "images" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
-                  {images.length}
-                </Badge>
-              </button>
+              {hasPermission("modal_images") && (
+                <button
+                  type="button"
+                  onClick={() => { handleCloseHelp(); setActiveModalTab("images"); }}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                    activeModalTab === "images"
+                      ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <Image className={`h-4 w-4 ${activeModalTab === "images" ? "text-amber-400" : "text-amber-600"}`} />
+                    <span>Images</span>
+                  </div>
+                  <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "images" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                    {images.length}
+                  </Badge>
+                </button>
+              )}
 
-              <button
-                type="button"
-                onClick={() => setActiveModalTab("map")}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                  activeModalTab === "map"
-                    ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <MapPin className={`h-4 w-4 ${activeModalTab === "map" ? "text-amber-400" : "text-purple-600"}`} />
-                  <span>Map & Navigation</span>
-                </div>
-                <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "map" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
-                  {hasMapEditor ? `${pins.length} Pins` : "Off"}
-                </Badge>
-              </button>
+              {hasPermission("modal_map") && (
+                <button
+                  type="button"
+                  onClick={() => { handleCloseHelp(); setActiveModalTab("map"); }}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                    activeModalTab === "map"
+                      ? "bg-[#001C38] text-white shadow-sm ring-1 ring-[#001C38]/20"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <MapPin className={`h-4 w-4 ${activeModalTab === "map" ? "text-amber-400" : "text-purple-600"}`} />
+                    <span>Map & Navigation</span>
+                  </div>
+                  <Badge className={`text-[10px] px-1.5 py-0 ${activeModalTab === "map" ? "bg-white/20 text-white border-transparent" : "bg-slate-200 text-slate-700"}`}>
+                    {hasMapEditor ? `${pins.length} Pins` : "Off"}
+                  </Badge>
+                </button>
+              )}
             </div>
           </div>
 
           {/* Right Main Content Area */}
           <div className="flex-1 flex flex-col min-h-0 bg-slate-50/40">
-            <div className="flex-1 overflow-y-auto p-5 sm:p-6">
+            <div className={`flex-1 overflow-y-auto p-5 sm:p-6 ${activeModalTab === "responses" ? "flex flex-col min-h-0" : ""}`}>
             {activeModalTab === "responses" && (
-              <div className="space-y-4 w-full">
-                {/* Display name */}
-                <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs space-y-1">
-                  <Label className="text-xs font-bold text-slate-800">Display name</Label>
-                  <Input 
-                    value={displayName} 
-                    onChange={(event) => setDisplayName(event.target.value)} 
-                    className="bg-white border-slate-200 text-sm font-medium"
-                  />
-                  <p className="text-[11px] text-muted-foreground">This label helps admins find the answer. It does not change chatbot routing.</p>
-                </div>
-
+              <div className="space-y-4 w-full flex-1 flex flex-col min-h-0">
                 {/* English & Bisaya side by side */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full flex-1 min-h-0">
                   {/* English Responses Column */}
-                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col">
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col min-h-0">
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 shrink-0">
                       <div className="flex items-center gap-2">
                         <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
                           <Globe className="h-4 w-4" />
@@ -695,18 +741,30 @@ function KnowledgeEditor({
                           <p className="text-[11px] text-slate-500">Primary bot answer in English</p>
                         </div>
                       </div>
-                      <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200 text-[10px] font-semibold">
-                        {en.filter(b => b.trim()).length} Bubbles
-                      </Badge>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200 text-[10px] font-semibold">
+                          {en.filter(b => b.trim()).length} Bubbles
+                        </Badge>
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          onClick={() => setEn((prev) => [...(prev.length ? prev : [""]), ""])}
+                          className="h-7 border-blue-200 bg-blue-50/70 text-xs font-semibold text-blue-800 hover:bg-blue-100 hover:text-blue-900 transition-colors shadow-xs"
+                        >
+                          <PlusCircle className="mr-1.5 h-3.5 w-3.5 text-blue-600" />
+                          Add Bubble
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 flex flex-col min-h-0">
                       <ResponseBubblesEditor label="" bubbles={en} onChange={setEn} />
                     </div>
                   </div>
 
                   {/* Bisaya / Cebuano Responses Column */}
-                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col">
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                  <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3 flex flex-col min-h-0">
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 shrink-0">
                       <div className="flex items-center gap-2">
                         <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-50 text-amber-700">
                           <Globe className="h-4 w-4" />
@@ -716,11 +774,23 @@ function KnowledgeEditor({
                           <p className="text-[11px] text-slate-500">Localized answer in Sinugbuanong Binisaya</p>
                         </div>
                       </div>
-                      <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-200 text-[10px] font-semibold">
-                        {ceb.filter(b => b.trim()).length} Bubbles
-                      </Badge>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-200 text-[10px] font-semibold">
+                          {ceb.filter(b => b.trim()).length} Bubbles
+                        </Badge>
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          onClick={() => setCeb((prev) => [...(prev.length ? prev : [""]), ""])}
+                          className="h-7 border-amber-200 bg-amber-50/70 text-xs font-semibold text-amber-800 hover:bg-amber-100 hover:text-amber-900 transition-colors shadow-xs"
+                        >
+                          <PlusCircle className="mr-1.5 h-3.5 w-3.5 text-amber-600" />
+                          Add Bubble
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 flex flex-col min-h-0">
                       <ResponseBubblesEditor label="" bubbles={ceb} onChange={setCeb} />
                     </div>
                   </div>
@@ -814,28 +884,78 @@ function KnowledgeEditor({
               </div>
             )}
             </div>
-
-            {/* Tip docked at bottom above footer line */}
-            {activeModalTab === "responses" && (
-              <div className="px-5 sm:px-6 pb-3 pt-1 bg-slate-50/40 shrink-0">
-                <div className="flex items-center gap-2.5 rounded-xl border border-blue-100 bg-blue-50/80 p-3 text-xs text-blue-900 shadow-xs">
-                  <Sparkles className="h-4 w-4 text-amber-500 shrink-0" />
-                  <span>
-                    <strong>Tip:</strong> Each box represents <strong>1 chatbot bubble</strong>. Press <strong>Enter</strong> to add a line break inside the bubble. Click <strong>+ Add Bubble</strong> for another bubble. Select text and press <strong>Ctrl + B</strong> to bold.
-                  </span>
-                </div>
-              </div>
-            )}
           </div>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-200 bg-slate-50 px-6 py-3.5 rounded-b-2xl shrink-0">
+        <div className="flex items-center justify-between border-t border-slate-200 bg-slate-50 px-6 py-3.5 rounded-b-2xl shrink-0 relative">
+          {/* Floating Tips Pop-up */}
+          {showHelpTip && (
+            <div
+              role="tooltip"
+              className="absolute bottom-full right-4 sm:right-6 mb-3 z-50 w-80 sm:w-96 rounded-xl border border-blue-200 bg-white p-4 shadow-2xl ring-1 ring-slate-900/10 animate-in fade-in slide-in-from-bottom-2 duration-150 text-slate-800"
+            >
+              <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 text-blue-700">
+                    <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-900">Response Formatting Tips</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCloseHelp}
+                  className="flex h-6 w-6 items-center justify-center rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+                  title="Close tips"
+                >
+                  <X className="h-3.5 w-3.5" />
+                  <span className="sr-only">Close tips</span>
+                </button>
+              </div>
+
+              <div className="space-y-2 text-xs text-slate-600 leading-relaxed">
+                <div className="flex items-start gap-2">
+                  <span className="text-blue-500 font-bold">•</span>
+                  <span>Each box represents <strong>1 chatbot bubble</strong>.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-blue-500 font-bold">•</span>
+                  <span>Press <strong>Enter</strong> to add a line break inside the bubble.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-blue-500 font-bold">•</span>
+                  <span>Click <strong>+ Add Bubble</strong> to send another sequential bubble.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-blue-500 font-bold">•</span>
+                  <span>
+                    Select text and press <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-semibold bg-slate-100 border border-slate-200 rounded text-slate-700 shadow-2xs">Ctrl + B</kbd> to make it bold.
+                  </span>
+                </div>
+              </div>
+
+              {/* Tooltip caret pointing down towards the Help button */}
+              <div className="absolute -bottom-1.5 right-48 sm:right-52 h-3 w-3 rotate-45 border-r border-b border-blue-200 bg-white" />
+            </div>
+          )}
+
           <div className="text-xs text-muted-foreground">
             Saves this topic record only. Other responses remain untouched.
           </div>
-          <div className="flex gap-2.5">
+          <div className="flex items-center gap-2.5">
+            <AdminTooltip title="Formatting Help" description="Show response bubble tips and keyboard shortcuts" side="top">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={handleToggleHelp}
+                className="border-blue-200 bg-blue-50/60 text-blue-800 hover:bg-blue-100 hover:text-blue-900 hover:border-blue-300 font-semibold shadow-xs"
+              >
+                <HelpCircle className="mr-1.5 h-4 w-4 text-blue-600" />
+                Help
+              </Button>
+            </AdminTooltip>
             <AdminTooltip title="Cancel" description="Discard all unsaved edits and close editor" side="top">
-              <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending} className="border-slate-300">
+              <Button variant="outline" onClick={handleModalClose} disabled={saveMutation.isPending} className="border-slate-300">
                 Cancel
               </Button>
             </AdminTooltip>
