@@ -1,0 +1,165 @@
+# REVIEW ONLY. Outside active Rasa training inputs. See README.md for actual counts.
+version: '3.1'
+nlu:
+  - intent: ask_location
+    examples: |
+      - where is the [Finance Building](location_name) on the map
+      - asa makita ang [Alumni Building](location_name)
+      - asa dapit ang [Law Office](office) building
+      - location of [Microbiology Laboratory](location_name)
+      - wher can i find [ComLab 11](location_name)
+      - asa dapit ang [Public Assistance Desk](office) sa main entrance
+  - intent: ask_schedule
+    examples: |
+      - how long is the validity of an [INC](document) grade before it becomes 5.0
+      - pila ka buwan o tuig ang tagal sa pag kompleto sa [INC](document)
+      - what are the office hours of [OSS](office)
+      - unsa nga oras abli ang [ICT office](office) para magpa reset password
+      - when is the release of [stipend](service) for scholars
+      - kanus-a ma release ang [TES](service) allowance
+      - how many days before [CAV](document) is ready for pickup
+      - when is the deadline for [clearance signing](service) this semester
+      - open ba ang [library](location_name) during noon break
+      - wen is the start of [1st semester](time_period) enrollment
+      - pila ka oras o adlaw makuha ang [medical certificate](document)
+      - kanus-a kutob pwede magpa [validate sa COR](service)
+  - intent: ask_fee
+    examples: |
+      - how much do transferees pay for [enrollment](service) if covered by RA 10931
+      - libre ba gihapon ang tuition sa mga [transferee](topic) sa BukSU
+      - is there a fee for [Form 137](document) request from registrar
+      - pila ang bayad sa [INC completion form](document) sa cashier
+      - do we need to pay for [campus Wi-Fi](facility_name) access
+      - libre ba ang [Wi-Fi](facility_name) sa sulod sa campus
+      - how much is the application fee for [Law School](organization)
+      - are utilities like water and electricity included in the [dormitory](facility_name) fee
+      - apil na ba ang kuryente ug tubig sa monthly rate sa [dorm](facility_name)
+      - is there a fee for borrowing books at the [University Library](location_name)
+      - pila ang bayad sa [midyear](time_period) enrollment
+      - is there any fee to join [student organizations](organization) or clubs
+      - is tuition free for [foreign students](topic) at BukSU
+      - how mch is [good moral](document) cert
+  - intent: ask_requirement
+    examples: |
+      - what is the lowest grade allowed to still qualify for [Latin honors](topic)
+      - pwede ba ma [Latin honors](topic) kung naay 2.25 o INC sauna
+      - what do I need to present at ICT to recover my [SIAS account](service)
+      - unsa ang ipakita sa [ICT office](office) kung magpa reset sa institucional email
+      - what are the requirements to request a [Certificate of Grades](document)
+      - unsa ang kinahanglan dad-on sa [clinic](office) para sa medical certificate
+      - are there grade requirements to maintain a [university scholarship](service)
+      - what are the requirements to change my [class schedule](service) due to conflict
+      - requriements for [transferee](service) admission in buksu
+      - unsa ang requirements para sa [international students](topic) nga gusto mag study sa BukSU
+  - intent: ask_process
+    examples: |
+      - how do I reserve the [Gymnasium](facility_name) or [Auditorium](facility_name) for an event
+      - unsaon pag book sa [Auditorium](facility_name) para sa school activity
+      - how do I apply for [College of Medicine](organization) at BukSU
+      - what should I do if I am waitlisted in the [BukSU CAT](service)
+      - unsay buhaton kung [waitlisted](topic) ko sa entrance exam result
+      - how to check my grades online in the [SIAS student portal](service)
+      - unsaon pag tan-aw sa grado sa [student portal](service)
+      - how to apply for a [vehicle gate pass sticker](document)
+      - how do I avail of [dental extraction or prophylaxis](service) at the clinic
+      - unsaon pag apply isip [second courser](topic) sa BukSU
+      - how do I request an [overload of units](service) as a graduating student
+      - how to get [Honorable Dismissal](document) for transferring out
+  - intent: ask_general_info
+    examples: |
+      - what Republic Act converted Bukidnon State College into [Bukidnon State University](organization)
+      - unsa nga tuig nahimong university ang [Bukidnon State College](organization)
+      - what does a grade of [1.00](topic) vs [5.00](topic) mean in BukSU
+      - unsay pasabot sa grado nga [1.0](topic) ug [3.0](topic) sa BukSU
+      - what services does the [ICT Service Unit](office) provide to students
+      - unsa ang mga benefits sa [Student Assistantship Program](service)
+      - what is the [BukSU](organization) policy on anti-bullying and student grievances
+      - what is [DXBU 104.5 FM](location_name) at BukSU
+      - unsa ang lyrics sa [BukSU Hymn](topic)
+      - who is [Dr. Joy M. Mirasol](topic)
+      - what is the [Kalatungan Learning Space](location_name) in the library
+      - unsa ang protocol kung naay bagyo o [suspension of classes](topic)
+      - wat are the [coleges](topic) in buksu
+  - intent: ask_contact
+    examples: |
+      - how can I contact the [Gender and Development](office) or GAD office
+      - unsaon pag contact sa [GAD office](office) o grievance committee
+      - what is the contact email for [TOR](document) follow-up at the registrar
+      - asa ko pwede mag email para mag follow up sa akong [TOR](document)
+      - what is the official Facebook page of the [Admissions and Testing Unit](office)
+      - how to contact the [Botanical Gardens and Herbarium](location_name) coordinator
+      - naa bay hotline o email ang [ICT Service Unit](office)
+      - how can an alumnus contact the [Registrar](office) from abroad
+      - what is the contact number of the [Medical and Dental Clinic](office)
+      - emial address of [scholarship unit](office)
+      - unsa ang FB page sa [Office of Student Services](office)
+      - where can I send an email inquiry to [Bukidnon State University](organization)
+  - intent: ask_availability
+    examples: |
+      - does BukSU have a [Laboratory Elementary School](program)
+      - is [cross-enrollment](service) allowed at BukSU
+      - pwede ba maka [cross-enroll](service) ang BukSU student sa laing school
+      - are [evening classes](service) or weekend classes available for undergraduate students
+      - modawat ba ang BukSU ug [foreign students](topic) o international applicants
+      - is [free dental extraction](service) available for enrolled students
+      - is [BS Information Techology](program) ofered in buksu
+  - intent: ask_facility_availability
+    examples: |
+      - naa bay [tennis court](facility_name) o [basketball court](facility_name) sa BukSU
+      - does BukSU have a [Mini Theater](facility_name) or audio-visual room
+      - naa bay [dental clinic](facility_name) sa sulod sa skwelahan
+      - does BukSU have an [ICT building](facility_name) or server office
+      - is there a [car parking space](facility_name) inside the main campus
+      - does buksu hav a [museum](facility_name)
+      - is there an [elevator](facility_name) or ramp in the new academic buildings
+  - intent: ask_document
+    examples: |
+      - where do I request a [Certificate of No Pending Case](document) or discipline clearance
+      - how do I get a [Transfer Credential](document) from BukSU
+      - asa makuha ang [change of schedule form](document) kung conflict ang subject
+      - where do I claim my [TES NOA](document) or Notice of Award
+      - where do I get the [health examination form](document) for incoming freshmen
+      - where can I get the [organization accreditation form](document)
+      - wher to claim [honorable dismisal](document)
+  - intent: smalltalk
+    examples: |
+      - hey good evening
+      - hello maayong gabii
+      - thank you for assisting me today
+      - thanks kaayo sa pag assist nako
+      - hope you are having a great day
+      - salamat kaayo
+      - greetings
+      - gud morning
+      - got it salamat
+  - intent: goodbye
+    examples: |
+      - im heading out now bye
+      - pananghid nako babay
+      - peace out goodbye
+      - okay thats all babay
+      - see u later
+      - sige babay na
+  - intent: bot_challenge
+    examples: |
+      - are you a real human being or an AI assistant
+      - dili ka tawo noh chatbot ka?
+      - is this an AI answering my questions
+      - chatbot ba ni sa BukSU
+      - am i talking to a machine
+      - robot ba ka?
+  - intent: set_category
+    examples: |
+      - can you switch the category to [academics](active_category)
+      - pilia ang [university](active_category) nga category
+      - go to the [location](active_category) category
+      - switch to [services](active_category) please
+      - ibalhin ko sa [procedures](active_category)
+      - select [others](active_category) category
+  - intent: reset_category
+    examples: |
+      - please reset the active category
+      - pili ko ug laing category
+      - balik ta sa main menu palihug
+      - switch to another category
+      - clear category selection

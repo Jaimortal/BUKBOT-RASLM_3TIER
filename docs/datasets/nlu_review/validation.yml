@@ -1,0 +1,175 @@
+# REVIEW ONLY. Outside active Rasa training inputs. See README.md for actual counts.
+version: '3.1'
+nlu:
+  - intent: ask_location
+    examples: |
+      - show me the map location for [College of Medicine Building](location_name)
+      - asa dapit ang [Client Care Center](office) near main gate
+      - unsaon pag adto sa [Cafeteria](location_name)
+      - asa nga building ang [CITL](office) office
+      - where is [Car Parking Area](location_name) inside BukSU
+      - whre is [Multimedia Laboratory](location_name)
+      - where are the campus gates and entrances located
+  - intent: ask_schedule
+    examples: |
+      - is the [university clinic](office) open on Saturdays and Sundays
+      - abli ba ang [clinic](office) sa BukSU pag weekend
+      - what time are [dental clinic](office) consultations available
+      - unsa ang schedule sa [dental checkup](service) sa clinic
+      - when is the curfew hour at the [university dormitory](facility_name)
+      - unsang orasa ang curfew sa [dormitory](facility_name)
+      - how long does [Honorable Dismissal](document) processing take
+      - kanus-a ang schedule sa [medical exam](service) for freshmen
+      - when is the application period for the [College of Medicine](organization)
+      - how many days can I borrow a book from the [library](location_name)
+      - kanus-a mahibal-an ang resulta sa [BukSU CAT](service)
+      - wat time does [registar](office) close
+      - until what time open ang [Guidance Office](office)
+      - kanus-a ang deadline sa [shifting](service) application
+  - intent: ask_fee
+    examples: |
+      - is there any charge for resetting my [SIAS portal](service) password at ICT
+      - pila ang bayad kung magpa [tooth extraction](service) sa dental clinic
+      - how much do I pay to replace a damaged [student ID](document)
+      - pila bayad pa ilis sa nawala nga [ID](document)
+      - are laboratory fees covered by the [Free Tuition Law](service)
+      - apil ba sa [free tuition](service) ang lab fees sa BukSU
+      - how much is the dormitory reservation or downpayment fee
+      - is there a fee for filing a [Leave of Absence](service)
+      - naa bay bayad magkuha ug [test permit](document) para sa CAT
+      - how much is [certified true copy](document) of COR
+      - hw much is [dorm](facility_name) per month
+      - naa bay bayad ang [freshman medical exam](service) sa clinic
+  - intent: ask_requirement
+    examples: |
+      - what are the requirements to borrow books from the [university library](location_name)
+      - unsa ang kinahanglan ipakita para makahulam ug libro sa [library](location_name)
+      - what are the requirements to claim my [diploma](document) via an authorized representative
+      - unsay requirements kung ipakuha lang sa representative ang [TOR](document) o [diploma](document)
+      - what is required to request an [overload of units](service) for graduating students
+      - what are the requirements for [subject crediting](service) for transferees
+      - unsa ang requirements para ma credit ang minor subjects sa [transferee](topic)
+      - what do I need to bring for [ID validation](service) at OSS
+      - unsa ang dad-on pagpa [validate sa ID](service) kada semester
+      - what are the requirements for [ALS passers](topic) enrolling as freshmen
+      - what are the requirements to avail of the [First-Time Jobseeker](topic) free TOR
+      - unsay requirements para maka shift sa laing kurso
+      - wat are the reqs for [BukSU CAT](service) registration
+  - intent: ask_process
+    examples: |
+      - how do I correct a misspelled name on my [school records](document) at the registrar
+      - unsaon pagpa correction sa sayop nga spelling sa pangalan sa [registrar](office)
+      - how to apply as a [student assistant](service) at BukSU
+      - unsaon pag apply isip [student assistant](service) sa opisina
+      - what is the process for [cross-enrollment](service) to another university
+      - how do I appeal or protest an unfair grade from my instructor
+      - unsay buhaton kung sayop ang na encode nga grado sa [SIAS portal](service)
+      - where and how do I report a lost item on campus
+      - asa ug unsaon pag report sa nawala nga gamit sa [lost and found](service)
+      - how to file a bullying or harassment complaint at BukSU
+      - how do I borrow a book from the [main library](location_name)
+      - unsaon pag bayad sa [miscellaneous fee](service) sa cashier
+      - hw to apply for [LOA](service)
+      - unsaon pag join sa mga [student organizations](organization) ug clubs
+  - intent: ask_general_info
+    examples: |
+      - who are the members of the [Board of Regents](organization) and university vice presidents
+      - kinsa ang mga vice presidents ug opisyales sa [BukSU](organization)
+      - what are the official [university colors](topic) and what do they symbolize
+      - unsay meaning sa [seal ug colors](topic) sa BukSU
+      - what is the difference between [ROTC](service), [CWTS](service), and [LTS](service) under NSTP
+      - what is the [BukSU](organization) motto and institutional mandate
+      - unsa ang mahitabo kung ma [academic probation](topic) ang estudyante
+      - what is the [Learning Management System](service) or BukSU LMS used for
+      - what are the rules and curfews inside the [BukSU dormitories](facility_name)
+      - unsa ang policy sa [No ID No Entry](topic) sa main gate
+      - wht is the [gradng system](topic) in buksu
+      - asa dapit ang mga [satellite campuses](topic) sa BukSU sa Bukidnon ug Misamis Oriental
+  - intent: ask_contact
+    examples: |
+      - does the [University Registrar](office) have an official Facebook page
+      - unsa ang FB page sa [Registrar](office) sa BukSU
+      - what is the link to the [BukSU LMS](service) or BukSU Step website
+      - how can I reach the [Disaster Risk Reduction and Management](office) or DRRM office
+      - unsay contact number o email sa [Information Unit](office) sa BukSU
+      - how do I contact the [Office of Distance e-Learning](office) or ODeL
+      - who can I email regarding delayed [TES](service) stipend
+      - unsaon pag contact sa [Clinic](office) kung naay pangutana sa medical clearance
+      - how to contact the [Publication Office](office) or Collegianer
+      - cntact number of [buksu](organization)
+      - unsa ang email address sa [Data Privacy Officer](office) o BukSU admin
+      - what is the official website domain of [Bukidnon State University](organization)
+  - intent: ask_availability
+    examples: |
+      - is [AB Philosophy](program) or [AB Sociology](program) offered at BukSU
+      - ginatanyag ba ang [BA English Language](program) ug [BA Economics](program) sa CAS
+      - does BukSU offer [free mental health counseling](service) for students
+      - naa bay [guidance counseling service](service) para sa stressed nga students
+      - are [varsity athletic scholarships](service) or cultural grants available at BukSU
+      - naa bay [summer class](service) o midyear term sa BukSU
+      - is [BS Hospitality Management](program) open for freshmen this year
+      - does buksu haf [nursing](program) course
+      - is [Master in Public Administration](program) or [MBA](program) offered at BukSU
+      - naa bay [Master of Arts in Education](program) sa BukSU Graduate School
+  - intent: ask_facility_availability
+    examples: |
+      - is there a [Public Assistance Desk](facility_name) or [Client Care Center](facility_name) at the entrance
+      - naa bay [assistance desk](facility_name) pag sulod sa main gate
+      - does BukSU have a separate building for the [College of Medicine](facility_name)
+      - naa bay kaugalingong building ang [College of Medicine](facility_name)
+      - is there an [isolation room](facility_name) or holding area at the university clinic
+      - does buksu have [comlab](facility_name) for IT students
+      - naa bay [gym](facility_name) para sa PE classes
+      - is there a [water refilling station](facility_name) or drinking fountain on campus
+  - intent: ask_document
+    examples: |
+      - where do I request a [Certificate of Units Earned](document) at BukSU
+      - asa magkuha ug [Certificate of Units Earned](document) sa registrar
+      - unsaon pagkuha ug [medical clearance slip](document) sa clinic
+      - where do I request an [NSTP Serial Number Certificate](document)
+      - how to get a [lost ID replacement form](document) from OSS
+      - where can I get the [facility reservation form](document) for the auditorium
+      - asa makuha ang [prospectus](document) o curriculum checklist sa akong kurso
+  - intent: smalltalk
+    examples: |
+      - hi there good afternoon
+      - hello maayong hapon
+      - many thanks for the information
+      - daghang salamat sa impormasyon
+      - how are you doing today
+      - salamat kaayo that answered my question
+      - good noon
+      - thnk you very much
+      - kumusta man ka
+  - intent: goodbye
+    examples: |
+      - I am logging off now goodbye
+      - sige mo out nako babay
+      - see you around
+      - no more questions bye
+      - have a good one bye
+      - babye amping
+  - intent: bot_challenge
+    examples: |
+      - are you an automated chatbot
+      - tawo ba akong ka chat o AI
+      - am I speaking with a real person right now
+      - robot ba ka nga tig tubag diri
+      - are you human or computer
+      - r u a bot
+  - intent: set_category
+    examples: |
+      - please switch to the [procedures](active_category) category
+      - ibalhin ang category sa [location](active_category)
+      - select [university](active_category) category please
+      - change active category to [academics](active_category)
+      - adto sa [services](active_category) category
+      - open [others](active_category) section
+  - intent: reset_category
+    examples: |
+      - take me back to the category menu
+      - ibalik ko sa tanan categories
+      - I want to select a different category
+      - exit na ko aning category balik sa menu
+      - remove category filter
+      - show the main categories

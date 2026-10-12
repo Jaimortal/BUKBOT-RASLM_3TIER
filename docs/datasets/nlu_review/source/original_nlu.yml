@@ -1,0 +1,464 @@
+version: "3.1"
+
+nlu:
+
+- intent: ask_location
+  examples: |
+    - where is [registrar](office)
+    - where is the [registrar office](office)
+    - asa ang [registrar](office)
+    - asa dapit ang [registrar office](office)
+    - where can I find [CAS](location_name)
+    - asa dapit ang [COT](location_name)
+    - locate [library](location_name)
+    - asa ang [library](location_name)
+    - where is the [clinic](office)
+    - where is clinic
+    - where can I find the clinic
+    - asa ang [clinic](office)
+    - where is the [accounting office](office)
+    - asa ang [accounting office](office)
+    - where is [ICT office](office)
+    - asa dapit ang [ICT office](office)
+    - [ComLab 1](location_name) location
+    - asa ang [ComLab 6](location_name)
+    - find [C2-2-01](location_name)
+    - asa ko moadto para sa [COR validation](service)
+    - where do I go for [student ID](document)
+    - where is [dormitory](location_name)
+    - motorcycle parking area
+    - where can I park my motorcycle
+    - is there an ATM inside the campus
+    - ATM location
+    - parking area
+
+- intent: ask_schedule
+  examples: |
+    - when is [enrollment](service)
+    - enrollment when
+    - enrollment time
+    - enrollment day
+    - enrollment date
+    - schedule of enrollment
+    - kanus-a ang [enrollment](service)
+    - kanus-a ang enrollment
+    - when is admission
+    - when is the deadline for [admission](service)
+    - admission deadline
+    - when is admission deadline
+    - admission until when
+    - deadline for CAT
+    - kanus-a ang deadline sa admission
+    - kanus-a taman ang CAT application
+    - schedule for [COR validation](service)
+    - kanus-a pwede mag [add and drop](service)
+    - when can I add and drop subjects
+    - what time does [library](location_name) open
+    - unsa oras mag open ang [library](location_name)
+    - office hours of [registrar](office)
+    - unsa oras mag open ang [registrar](office)
+    - when is [freshmen application](service)
+    - kanus-a ang application period
+    - when is ID validation
+    - date of ID validation
+    - time for ID validation
+    - ID validation day
+    - student ID validation schedule
+    - when is the COR validation
+    - when is COR validation
+    - COR validation day
+    - COR validation schedule
+    - when is the admission application testing schedule
+    - admission testing application date
+
+- intent: ask_fee
+  examples: |
+    - how much is the [library ID card](document)
+    - pila bayad sa [library ID](document)
+    - fees?
+    - fee?
+    - enrollment fee
+    - naa bay bayad ang [enrollment](service)
+    - is there a fee for [COR](document)
+    - how much do I pay for [student ID](document)
+    - pila ang bayad sa [student ID](document)
+    - payment for [test permit](document)
+    - how much is [admission](service)
+    - naa bay bayad sa [admission](service)
+    - admission test fee
+    - CAT fee
+    - how much is CAT
+    - pila ang CAT
+    - pila ang admission test
+    - is dental consultation free
+    - how much is dental consultation
+
+- intent: ask_requirement
+  examples: |
+    - requirements for [enrollment](service)
+    - enrollment requirements
+    - unsay requirements sa [enrollment](service)
+    - unsay requirements sa [admission](service)
+    - what do I need for [student ID](document)
+    - requirements for [library ID card](document)
+    - what should I bring for [COR validation](service)
+    - documents needed for [transferee enrollment](service)
+    - requirements for CAT
+    - requirements?
+    - unsay kailangan
+    - unsay kailangan para maka enroll
+    - what are the requirements for [INC form](document)
+    - requirements for [CAT application](service)
+    - what do I need for admission test
+    - unsay requirements sa CAT
+    - requirements for masters admission
+    - masters admission requirements
+    - GPAT requirements
+    - requirements for GPAT
+    - dental consultation requirements
+    - requirements for dental consultation
+    - dental oral examination requirements
+    - what papers for oral exam
+    - what papers are needed for dental consult
+    - documents needed for oral examination
+    - what documents should I bring for dental consultation
+
+- intent: ask_process
+  examples: |
+    - how to enroll
+    - what is the process of enrollment
+    - enrollment process
+    - how to enroll freshman
+    - freshman enroll how
+    - how can a freshman enroll
+    - how can a transferee enroll
+    - transferee enrollment process
+    - what is the process for returning students
+    - am i allowed to enroll even if its late
+    - can i still enroll late
+    - unsaon pag enroll
+    - process for [online enrollment](service)
+    - how do I get [student ID](document)
+    - unsaon pagkuha sa [student ID](document)
+    - unsaon pagkuha sa [library ID](document)
+    - steps for [COR validation](service)
+    - how to apply for [admission](service)
+    - how to apply for admission
+    - how can I apply for admission
+    - how do I apply for CAT
+    - how to take CAT
+    - how can I reset my [portal password](service)
+    - unsaon nako pag reset sa [portal password](service)
+    - how do I request [COR](document)
+    - unsaon nako pag request og [COR](document)
+    - where to get COR
+    - where can I get COR
+    - asa makuha ang COR
+    - how to get COR
+    - how to complete [INC grade](topic)
+    - process for [withdrawal](service)
+    - how to shift course
+    - can i shift course
+    - can i shift program
+    - course shifting process
+    - how to get wifi access
+    - how can i access campus wifi
+    - how to request dental consultation
+    - how to request dental oral examination
+    - how to validate
+    - how to validate ID
+    - ID validation process
+    - process of ID validation
+    - how do I validate my student ID
+    - how to validate COR
+    - COR validation process
+    - what are the student services
+    - services that buksu can provide
+    - services list
+    - unsay mga services ni buksu
+    - can I enroll online
+    - walkin entrance exam is allowed
+    - walk in entrance exam allowed
+
+- intent: ask_general_info
+  examples: |
+    - what is [BukSU](organization)
+    - tell me about [BukSU](organization)
+    - about [library](location_name)
+    - about [ICT](office)
+    - what is [academic probation](topic)
+    - master courses
+    - masters courses
+    - masteral programs
+    - does BukSU offer masters
+    - courses
+    - courses offered
+    - courses offerd by buksu
+    - do buksu offer BSAP
+    - tell me about BSA
+    - kinsa ang head sa BSIT
+    - whos dean of bsit
+    - whos dean bachelor of arts in philosophy
+    - whos head bachelor of arts in philosophy
+    - who is the head of COT
+    - services
+    - what can you provide
+    - what can you help me
+    - services that chatbot can provide
+    - list of all you can help
+    - chatbot services
+    - bot services
+    - explain [FDA grade](topic)
+    - what is [Dean's List](topic)
+    - what is board course
+    - what is non board course
+    - what is prerequisite
+    - what is prerequisite subject
+    - information about [dormitory](service)
+    - unsay pasabot sa [INC grade](topic)
+    - unsay pasabot sa [academic probation](topic)
+    - what is the grading system
+    - tell me about university code
+    - what is BukSU vision
+    - what is BukSU mission
+    - who is the president of BukSU
+    - who is the president
+    - current buksu president
+    - who was the first president of buksu
+    - list of buksu presidents
+    - former presidents of buksu
+    - who is the dean of COT
+    - who is the dean of CAS
+    - who is the dean of COB
+    - who is the dean of CON
+    - who is the dean of COE
+    - who is the dean of LAW
+    - who is the head of BSIT
+    - who is the head of CPAG
+    - who are the vice presidents of buksu
+    - vice president for academic affairs
+    - vice president for administration and finance
+    - who is the board secretary
+    - pass notice how
+    - how do I know if I passed admission
+    - major in English program
+    - what is GPAT
+    - tell me about GPAT
+    - unsa ang GPAT
+    - can i use phone in class
+    - can i eat in classroom
+    - can i submit assignments online
+    - classroom concerns
+
+- intent: ask_contact
+  examples: |
+    - how to contact [registrar](office)
+    - contact [admission](service)
+    - contact number of [clinic](office)
+    - email of [ICT office](office)
+    - unsaon pag contact sa [registrar](office)
+    - asa ko pwede mo contact sa [scholarship office](office)
+    - contact details for [library](location_name)
+
+- intent: ask_availability
+  examples: |
+    - does BukSU have [masters](program)
+    - masters?
+    - masters
+    - masteral?
+    - do buksu has masters
+    - does buksu have masters
+    - naa bay [masteral](program) sa BukSU
+    - are there [graduate programs](program)
+    - does BukSU offer [BSIT](program)
+    - does BukSU have IT
+    - does BukSU offer IT
+    - do buksu offer IT
+    - do buksu offer BA philo
+    - does BukSU offer BSAP
+    - do you have BSA
+    - does BukSU offer BSBA FM
+    - do buksu offer BSN
+    - do buksu offer BSHM
+    - does BukSU offer BSFT
+    - does BukSU offer BSET
+    - do you offer BSEMC
+    - does BukSU offer AB English
+    - does BukSU offer AB Economics
+    - do you offer AB Sociology
+    - does BukSU offer BS Biology
+    - do you have BS Environmental Science
+    - does BukSU offer BEED
+    - do you offer BECED
+    - does BukSU offer BSED English
+    - does BukSU offer BSED Math
+    - does BukSU offer BSED Science
+    - does BukSU offer BSED Social Studies
+    - do buksu offer BPA
+    - does BukSU offer BPED
+    - does BukSU offer MPA
+    - available courses
+    - what courses are offered
+    - courses offered in BukSU
+    - what courses in CAS
+    - courses in COT
+    - courses in COB
+    - courses in CON
+    - courses in COE
+    - courses in CPAG
+    - courses in LAW
+    - unsay available courses
+    - naa bay dormitory
+    - does buksu have dormitory
+    - does buksu have dormitories
+    - dormitory availability
+    - is [library](location_name) open today
+    - do you have [scholarships](service)
+    - naa bay [scholarship](service)
+    - does BukSU have [nursing](program)
+    - naa bay [education](program)
+
+- intent: ask_facility_availability
+  examples: |
+    - does BukSU have a [library](facility_name)
+    - do buksu has a [library](facility_name)
+    - does Bukidnon State University have a [library](facility_name)
+    - is there a [library](facility_name) in BukSU
+    - is there a [museum](facility_name) in BukSU
+    - is the Bukidnon State University has [museum](facility_name)
+    - does BukSU have a [clinic](facility_name)
+    - does BukSU have [health services](facility_name)
+    - is there a [dental clinic](facility_name) in BukSU
+    - does BukSU have [dental services](facility_name)
+    - does BukSU have a [gym](facility_name)
+    - is there a [gymnasium](facility_name) on campus
+    - does BukSU have [cafeteria](facility_name)
+    - is there a [canteen](facility_name) in BukSU
+    - does BukSU have an [ATM](facility_name)
+    - is there [parking](facility_name) in BukSU
+    - does BukSU have [motorcycle parking](facility_name)
+    - does BukSU have [car parking](facility_name)
+    - does BukSU have [dormitory](facility_name)
+    - is there a [student dorm](facility_name) in BukSU
+    - does BukSU have an [oval](facility_name)
+    - does BukSU have [open field](facility_name)
+    - is there an [auditorium](facility_name) in BukSU
+    - does BukSU have [guidance office](facility_name)
+    - is there a [registrar office](facility_name) in BukSU
+    - does BukSU have [finance office](facility_name)
+    - is there a [cashier](facility_name) in BukSU
+    - does BukSU have [ICT office](facility_name)
+    - is there an [admission office](facility_name) in BukSU
+    - does BukSU have [guard house](facility_name)
+    - do students have access to the [library](facility_name)
+    - are there [parking areas](facility_name) for students
+    - is [museum](facility_name) available in BukSU
+    - is [clinic](facility_name) available on campus
+    - naa bay [library](facility_name) sa BukSU
+    - naa ba ang BukSU og [library](facility_name)
+    - aduna bay [museum](facility_name) sa BukSU
+    - naa bay [clinic](facility_name) sa BukSU
+    - naa bay [dental clinic](facility_name) sa BukSU
+    - naa bay [gym](facility_name) sa BukSU
+    - naa bay [canteen](facility_name) sa BukSU
+    - naa bay [ATM](facility_name) duol sa BukSU
+    - naa bay [parking](facility_name) sa BukSU
+    - naa bay [dorm](facility_name) sa BukSU
+    - naa bay [oval](facility_name) sa BukSU
+    - naa bay [auditorium](facility_name) sa BukSU
+    - naa bay [guidance office](facility_name) sa BukSU
+    - naa bay [registrar](facility_name) sa BukSU
+    - naa bay [cashier](facility_name) sa BukSU
+    - naa bay [ICT office](facility_name) sa BukSU
+    - naa bay [admission office](facility_name) sa BukSU
+    - naa bay [guard house](facility_name) sa BukSU
+
+- intent: ask_document
+  examples: |
+    - where can I get [INC form](document)
+    - asa makakuha og [INC form](document)
+    - can I download [COR](document)
+    - where to request [COR](document)
+    - I need [test permit](document)
+    - how to get [certificate of registration](document)
+    - where can I get [library ID](document)
+    - student ID form
+    - where do I submit my missing admission documents
+    - incomplete admission documents
+    - enrollment document list
+    - what documents do I need to bring on enrollment day
+
+- intent: ask_follow_up
+  examples: |
+    - tell me more
+    - more
+    - more info
+    - explain more
+    - continue
+    - unsa pa
+    - dugangi pa
+    - naa pa?
+
+- intent: smalltalk
+  examples: |
+    - hi
+    - hello
+    - hey
+    - good morning
+    - good afternoon
+    - good evening
+    - maayong buntag
+    - maayong hapon
+    - maayong gabii
+    - thanks
+    - thank you
+    - salamat
+    - who made you
+    - who created you
+    - what can you do
+    - kinsa naghimo nimo
+
+- intent: goodbye
+  examples: |
+    - goodbye
+    - bye
+    - see you
+    - thank you bye
+    - sige bye
+    - babye
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you human?
+    - bot ka?
+    - chatbot ka?
+    - am I talking to a bot?
+
+- intent: nlu_fallback
+  examples: |
+    - asdfgh
+    - qwerty
+    - blah blah
+
+- intent: set_category
+  examples: |
+    - /set_category{"active_category": "location"}
+    - /set_category{"active_category": "procedures"}
+    - /set_category{"active_category": "academics"}
+    - /set_category{"active_category": "services"}
+    - /set_category{"active_category": "university"}
+    - switch to location category
+    - select procedures category
+    - choose academics category
+    - go to services category
+    - open university category
+
+- intent: reset_category
+  examples: |
+    - /reset_category
+    - back to category
+    - back to categories
+    - change category
+    - reset category
+    - return to category selection

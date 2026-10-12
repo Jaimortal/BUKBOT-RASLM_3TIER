@@ -1,0 +1,920 @@
+# REVIEW ONLY. Outside active Rasa training inputs. See README.md for actual counts.
+version: '3.1'
+nlu:
+  - intent: ask_location
+    examples: |
+      - where is [registrar](office)
+      - where is the [registrar office](office)
+      - asa ang [registrar](office)
+      - asa dapit ang [registrar office](office)
+      - where can I find [CAS](location_name)
+      - asa dapit ang [COT](location_name)
+      - locate [library](location_name)
+      - asa ang [library](location_name)
+      - where is the [clinic](office)
+      - where is clinic
+      - where can I find the clinic
+      - asa ang [clinic](office)
+      - where is the [accounting office](office)
+      - asa ang [accounting office](office)
+      - where is [ICT office](office)
+      - asa dapit ang [ICT office](office)
+      - [ComLab 1](location_name) location
+      - asa ang [ComLab 6](location_name)
+      - find [C2-2-01](location_name)
+      - asa ko moadto para sa [COR validation](service)
+      - where do I go for [student ID](document)
+      - where is [dormitory](location_name)
+      - motorcycle parking area
+      - where can I park my motorcycle
+      - ATM location
+      - parking area
+      - where is [Admission Office](office) located
+      - asa dapit ang [Admission Office](office) sa main campus
+      - how do I get to [Auditorium](location_name) from main gate
+      - unsaon pag adto sa [Auditorium](location_name) gikan sa gate
+      - what building is [Room B-2-04](location_name) in
+      - asa nga building makita ang [B-2-04](location_name)
+      - where is [Window 03 Cashiers Office](office)
+      - asa dapit ang [cashier](office) window for payment
+      - where is [Smart Classroom](location_name)
+      - where is [Scholarship and Financial Grants Unit](office)
+      - asa dapit ang [scholarship office](office)
+      - where can I find the [Dental Clinic](office)
+      - asa dapit ang [dental clinic](office) sa skwelahan
+      - locate [Room A3-2-01](location_name)
+      - asa dapit ang room [A3-2-01](location_name)
+      - where is the [BukSU Museum](location_name)
+      - asa ang [museum](location_name) sa BukSU
+      - where is [Gymnasium](location_name) located
+      - asa dapit ang [gym](location_name) for PE
+      - where is [Mahogany dorm](location_name)
+      - asa dapit ang [Rubia dorm](location_name)
+      - where is [New COT Building](location_name)
+      - where is [College of Business Building](location_name)
+      - asa dapit ang [COB building](location_name)
+      - where is [CPAG building](location_name)
+      - where is [Main Administration Building](location_name)
+      - where is [FoodTech Laboratory First Floor](location_name)
+      - wher is the [reigstrar office](office)
+      - asa ang [NSTP Office](office)
+      - where is [Speech Laboratory](location_name)
+      - where can I find [ComLab 8](location_name) on campus
+      - asa dapit ang [ComLab 8](location_name)
+      - where is [Room HS-2-03](location_name) located
+      - where is the [BUKSU President Office](office)
+      - asa dapit ang [Kilala Dorm](location_name)
+      - asa dapit ang [COT Deans Office](office)
+      - asa dapit ang [Pink Building](location_name)
+      - how do I get to [Room NC4-A4-401](location_name)
+      - asa dapit ang room [NC4-A4-401](location_name)
+      - where can I find [Electronics Laboratory 1](location_name)
+      - where is [Bukidnon State University](organization) located
+      - asa ang [Oval](location_name) sa BukSU
+      - where is [Kalatungan Learning Space](location_name)
+      - where is [Window 1 Scholarship and Financial Assistance](office)
+  - intent: ask_schedule
+    examples: |
+      - when is [enrollment](service)
+      - enrollment when
+      - enrollment time
+      - enrollment day
+      - enrollment date
+      - schedule of enrollment
+      - kanus-a ang [enrollment](service)
+      - when is admission
+      - when is the deadline for [admission](service)
+      - admission deadline
+      - when is admission deadline
+      - admission until when
+      - deadline for CAT
+      - kanus-a ang deadline sa admission
+      - kanus-a taman ang CAT application
+      - schedule for [COR validation](service)
+      - kanus-a pwede mag [add and drop](service)
+      - when can I add and drop subjects
+      - what time does [library](location_name) open
+      - unsa oras mag open ang [library](location_name)
+      - office hours of [registrar](office)
+      - unsa oras mag open ang [registrar](office)
+      - when is [freshmen application](service)
+      - kanus-a ang application period
+      - when is ID validation
+      - date of ID validation
+      - time for ID validation
+      - ID validation day
+      - student ID validation schedule
+      - when is the COR validation
+      - when is COR validation
+      - COR validation day
+      - COR validation schedule
+      - when is the admission application testing schedule
+      - admission testing application date
+      - when is the [entrance exam](service)
+      - when is the [BukSU CAT](service)
+      - [BukSU CAT](service) schedule
+      - what date is the [entrance exam](service)
+      - kanus-a ang [entrance exam](service)
+      - kanus-a ang [CAT](service)
+      - unsa nga petsa ang [BukSU CAT](service)
+      - [enrollment](service) schedule
+      - when does [enrollment](service) start
+      - what time does [registrar](office) open
+      - [registrar](office) office hours
+      - unsang orasa abli ang [registrar](office)
+      - [clinic](office) schedule
+      - when is the [clinic](office) open
+      - what are the clinic operating hours
+      - what time does the clinic open and close
+      - when is the deadline for [COR validation](service)
+      - when is [summer class](service)
+      - [midyear](time_period) schedule
+      - when does [second semester](time_period) start
+      - when is the start of classes
+      - kanus-a magsugod ang klase
+      - are there classes on weekend
+      - how long does it take to get [TOR](document)
+      - how many days to process [TOR](document)
+      - when is the deadline for [INC completion](service)
+      - how long do I have to complete an [INC](document)
+      - how long does medical clearance take
+      - how many minutes does a clinic consultation take
+      - when will [BukSU CAT](service) results be released
+      - when does the [entrance exam](service) result come out
+      - when can I apply for [shifting](service)
+      - when is the [graduation](service) application deadline
+      - when is the deadline for [late enrollment](service)
+      - until when pwede maka [late enrollment](service) sa BukSU
+  - intent: ask_fee
+    examples: |
+      - how much is the [library ID card](document)
+      - pila bayad sa [library ID](document)
+      - fees?
+      - fee?
+      - enrollment fee
+      - naa bay bayad ang [enrollment](service)
+      - is there a fee for [COR](document)
+      - how much do I pay for [student ID](document)
+      - pila ang bayad sa [student ID](document)
+      - payment for [test permit](document)
+      - how much is [admission](service)
+      - naa bay bayad sa [admission](service)
+      - admission test fee
+      - CAT fee
+      - how much is CAT
+      - pila ang CAT
+      - pila ang admission test
+      - is dental consultation free
+      - how much is dental consultation
+      - is there a fee for [entrance exam](service)
+      - how much is the [BukSU CAT](service)
+      - libre ba ang [entrance exam](service)
+      - naa bay bayad ang [CAT](service)
+      - how much is [tuition](service)
+      - is [tuition](service) free at BukSU
+      - libre ba ang [tuition](service) sa BukSU
+      - pila ang [tuition fee](service)
+      - how much is [TOR](document)
+      - [TOR](document) fee
+      - pila ang bayad sa [TOR](document)
+      - is there a fee for [INC completion](service)
+      - how much to complete an [INC](document)
+      - how much is [student ID](document) replacement
+      - are clinic services free
+      - how much is dental checkup at clinic
+      - is medical consultation free for students
+      - naa bay bayad sa [clinic](office)
+      - how much is [summer class](service) tuition
+      - pila ang bayad sa [midyear](time_period) class per unit
+      - covered ba sa free tuition ang [summer class](service) or naay bayad
+      - how much is the monthly rent at the [BukSU dormitory](facility_name)
+      - pila ang abang kada bulan sa [dormitory](facility_name) sa BukSU
+      - how much is the fee for [Good Moral Certificate](document)
+      - pila ang bayad magkuha ug [good moral](document)
+      - is there a fee for [COR](document) reprinting at the registrar
+      - pila ang bayad pa reprint sa [Certificate of Registration](document)
+      - how much is the tuition fee for [Graduate School](program) per unit
+      - pila ang per unit sa [Masters](program) sa BukSU
+      - how much is the tuition fee for [College of Law](organization)
+      - pila ang tuition sa [Juris Doctor](program) sa BukSU Law
+      - is there a penalty fee for [late enrollment](service)
+      - naa bay fine or penalty kung ma [late enrollment](service)
+      - how much is the fee for [Honorable Dismissal](document)
+      - pila ang bayad sa [transfer credentials](document) sa registrar
+      - how much is the processing fee for [CAV](document)
+      - pila ang bayad pa [CAV authentication](service) sa documents
+      - do we have to pay for the first [student ID](document)
+      - libre ba ang unang kuha sa [student ID](document) para sa freshmen
+      - how much are the miscellaneous fees if not covered by [Free Higher Education](service)
+      - pila ang miscellaneous fee kung dili na covered sa [free tuition](service)
+      - is there an entrance fee to visit the [BukSU Museum](location_name)
+      - naa bay entrance fee sa [museum](location_name) sa BukSU
+      - is there a fee for [COR validation](service)
+      - naa bay bayad magpa [validate sa COR](service)
+      - how much is the [graduation fee](service) at BukSU
+      - naa bay bayaran nga [graduation fee](service) ang graduating students
+      - how much is the overdue book fine at the [library](location_name)
+      - pila ang penalty sa [library](location_name) kung ma overdue ang libro
+      - how much is the [Certificate of Enrollment](document) fee at the registrar
+      - pila ang bayad magkuha ug [Certificate of Enrollment](document)
+  - intent: ask_requirement
+    examples: |
+      - requirements for [enrollment](service)
+      - enrollment requirements
+      - unsay requirements sa [enrollment](service)
+      - unsay requirements sa [admission](service)
+      - what do I need for [student ID](document)
+      - requirements for [library ID card](document)
+      - what should I bring for [COR validation](service)
+      - documents needed for [transferee enrollment](service)
+      - requirements for CAT
+      - requirements?
+      - unsay kailangan
+      - unsay kailangan para maka enroll
+      - what are the requirements for [INC form](document)
+      - requirements for [CAT application](service)
+      - what do I need for admission test
+      - unsay requirements sa CAT
+      - requirements for masters admission
+      - masters admission requirements
+      - GPAT requirements
+      - requirements for GPAT
+      - dental consultation requirements
+      - requirements for dental consultation
+      - dental oral examination requirements
+      - what papers for oral exam
+      - what papers are needed for dental consult
+      - documents needed for oral examination
+      - what documents should I bring for dental consultation
+      - what are the requirements for [enrollment](service)
+      - requirements for [freshman enrollment](service)
+      - unsa ang requirements sa [enrollment](service)
+      - unsay kinahanglanon para [mag-enroll](service)
+      - requirements for [transferee](service)
+      - what do transferees need to bring
+      - unsa ang requirements para sa [transferee](service)
+      - what are the requirements for [BukSU CAT](service)
+      - what to bring on [entrance exam](service) day
+      - unsa ang dad-on sa adlaw sa [CAT](service)
+      - requirements for [scholarship](service)
+      - what do I need to apply for [scholarship](service)
+      - unsa ang requirements sa [scholarship](service)
+      - requirements for [TOR](document)
+      - what do I need to request [TOR](document)
+      - requirements for [shifting](service)
+      - what are the requirements to shift course
+      - what are the clinic walk-in requirements
+      - what should I bring for a clinic consultation
+      - requirements for medical clearance at the clinic
+      - requirements for [COR validation](service)
+      - what is the GWA requirement for [Latin honors](topic)
+      - what are the qualifications for [deans list](topic)
+      - unsa ang grado nga kinahanglan para ma [cum laude](topic)
+      - unsay grade requirement para ma apil sa [Deans List](topic)
+      - what are the requirements for [returning students](topic) or returnees
+      - unsa ang requirements kung [returnee](topic) nga mag enroll balik
+      - what are the requirements for [second courser](topic) admission
+      - what are the requirements for [Graduate School](program) admission
+      - what are the requirements for [lost ID replacement](service)
+      - unsay requirements kung nawala ang [student ID](document) need ba affidavit of loss
+      - what are the requirements for [Good Moral Certificate](document)
+      - unsay kinahanglan dad-on para makakuha ug [good moral](document)
+      - what are the requirements for [Honorable Dismissal](document)
+      - unsa ang requirements sa pagkuha ug [transfer credentials](document)
+      - what are the requirements for [graduation clearance](service)
+      - what are the requirements for [ROTC exemption](service)
+      - what are the requirements for [cross-enrollment](service)
+      - unsa ang requirements sa [Continuing Student Enrollment](service)
+      - what are the requirements for [midyear enrollment](service)
+      - unsay requirements kung mag enroll sa [summer class](service)
+      - what are the requirements for [adding or dropping subjects](service)
+      - unsa ang requirements para sa [Graduation Application](service)
+  - intent: ask_process
+    examples: |
+      - how to enroll
+      - what is the process of enrollment
+      - enrollment process
+      - how to enroll freshman
+      - freshman enroll how
+      - how can a freshman enroll
+      - how can a transferee enroll
+      - transferee enrollment process
+      - what is the process for returning students
+      - am i allowed to enroll even if its late
+      - can i still enroll late
+      - unsaon pag enroll
+      - process for [online enrollment](service)
+      - how to apply for [admission](service)
+      - how can I apply for admission
+      - how do I apply for CAT
+      - how to take CAT
+      - how can I reset my [portal password](service)
+      - unsaon nako pag reset sa [portal password](service)
+      - how to complete [INC grade](topic)
+      - process for [withdrawal](service)
+      - how to shift course
+      - can i shift course
+      - can i shift program
+      - course shifting process
+      - how to get wifi access
+      - how can i access campus wifi
+      - how to request dental consultation
+      - how to request dental oral examination
+      - how to validate
+      - how to validate ID
+      - ID validation process
+      - process of ID validation
+      - can I enroll online
+      - walkin entrance exam is allowed
+      - walk in entrance exam allowed
+      - how do I [enroll](service) at BukSU
+      - steps to [enroll](service)
+      - unsaon [pag-enroll](service)
+      - unsa ang proseso sa [enrollment](service)
+      - how to apply for [BukSU CAT](service)
+      - how to register for [entrance exam](service)
+      - unsaon pag-apply sa [CAT](service)
+      - how to enroll as [transferee](service)
+      - [transferee](service) enrollment steps
+      - how to enroll for [2nd semester](time_period)
+      - continuing student enrollment process
+      - how to complete an [INC](document)
+      - [INC](document) completion process
+      - unsaon pag-kompleto sa [INC](document)
+      - [shifting](service) process
+      - unsaon [pag-shift](service) og kurso
+      - how to apply for [scholarship](service)
+      - unsaon pag-apply sa [scholarship](service)
+      - unsaon pagkuha og [ID](document)
+      - how to avail clinic services
+      - how do I get a medical checkup at the clinic
+      - how to book an appointment at the university clinic
+      - can I walk in at the clinic or do I need an appointment
+      - how to get medical clearance from the clinic
+      - how to request a medical certificate at BukSU clinic
+      - what should I do in a campus medical emergency
+      - how do I get free medicine from the clinic
+      - how to enroll for [summer class](service)
+      - how to reset student portal password
+      - forgot my portal password what to do
+      - how to change class schedule
+      - can I change my section due to schedule conflict
+      - what to do if I failed the [entrance exam](service)
+      - unsaon pag recover sa akong [SIAS account](service) ug institutional email
+  - intent: ask_general_info
+    examples: |
+      - what is [BukSU](organization)
+      - tell me about [BukSU](organization)
+      - about [library](location_name)
+      - about [ICT](office)
+      - what is [academic probation](topic)
+      - tell me about BSA
+      - kinsa ang head sa BSIT
+      - whos dean of bsit
+      - whos dean bachelor of arts in philosophy
+      - whos head bachelor of arts in philosophy
+      - who is the head of COT
+      - services
+      - what can you provide
+      - what can you help me
+      - services that chatbot can provide
+      - list of all you can help
+      - chatbot services
+      - bot services
+      - explain [FDA grade](topic)
+      - what is [Dean's List](topic)
+      - what is board course
+      - what is non board course
+      - what is prerequisite
+      - what is prerequisite subject
+      - information about [dormitory](service)
+      - unsay pasabot sa [INC grade](topic)
+      - unsay pasabot sa [academic probation](topic)
+      - what is the grading system
+      - tell me about university code
+      - what is BukSU vision
+      - what is BukSU mission
+      - who is the president of BukSU
+      - who is the president
+      - current buksu president
+      - who was the first president of buksu
+      - list of buksu presidents
+      - former presidents of buksu
+      - who is the dean of COT
+      - who is the dean of CAS
+      - who is the dean of COB
+      - who is the dean of CON
+      - who is the dean of COE
+      - who is the dean of LAW
+      - who is the head of BSIT
+      - who is the head of CPAG
+      - who are the vice presidents of buksu
+      - vice president for academic affairs
+      - vice president for administration and finance
+      - who is the board secretary
+      - pass notice how
+      - how do I know if I passed admission
+      - major in English program
+      - what is GPAT
+      - tell me about GPAT
+      - unsa ang GPAT
+      - can i use phone in class
+      - can i eat in classroom
+      - can i submit assignments online
+      - classroom concerns
+      - what does [BukSU](organization) stand for
+      - tell me about [Bukidnon State University](organization)
+      - unsa ang [BukSU](organization)
+      - how can you help me
+      - what topics can you answer
+      - what information do you have
+      - what are your features
+      - what is [NSTP](service)
+      - is [NSTP](service) required
+      - what are the satellite campuses of BukSU
+      - what is [Supreme Student Council](organization)
+  - intent: ask_contact
+    examples: |
+      - how to contact [registrar](office)
+      - contact [admission](service)
+      - contact number of [clinic](office)
+      - email of [ICT office](office)
+      - unsaon pag contact sa [registrar](office)
+      - asa ko pwede mo contact sa [scholarship office](office)
+      - contact details for [library](location_name)
+      - what is the email of [registrar](office)
+      - [BukSU](organization) contact number
+      - official website of [BukSU](organization)
+      - [BukSU](organization) facebook page
+      - how to contact [guidance office](office)
+      - emergency hotline in campus
+      - unsa ang email address sa [Registrar Office](office)
+      - unsaon pag contact sa [registrar](office) through email o phone
+      - unsa ang contact number ug email sa [BukSU](organization)
+      - unsa ang official FB page ug website sa [BukSU](organization)
+      - unsa ang email o FB page sa [Guidance Office](office)
+      - kinsa ang tawagan kung naay emergency sa sulod sa campus
+      - what is the email address of [Admissions and Testing Office](office)
+      - unsa ang contact info o email sa [Admission Office](office) para sa CAT
+      - how can I contact the [ICT Service Unit](office) for portal issues
+      - unsa ang email sa [ICT office](office) para magpa reset ug password
+      - what is the contact number or email of the [University Clinic](office)
+      - unsaon pag contact sa [medical clinic](office) sa BukSU
+      - how do I contact the [Scholarship and Financial Grants Unit](office)
+      - unsa ang FB page o email sa [scholarship office](office)
+      - what is the email address of [OSS](office)
+      - unsaon pag reach out sa [Office of Student Services](office)
+      - how to contact the [Accounting Office](office) or [Cashier](office)
+      - unsa ang email sa [accounting office](office) para sa billing inquiry
+      - what is the official email of the [Office of the President](office)
+      - unsa ang email address sa [President Office](office) sa BukSU
+      - what is the URL of the [SIAS student portal](service)
+      - unsa ang official link sa [SIAS portal](service) para mag login
+      - how to contact the [College of Technologies](organization) deans office
+      - unsa ang email o FB page sa [COT](organization) dean office
+      - how can I contact the [College of Arts and Sciences](organization)
+      - unsay contact email sa [CAS](organization) office
+      - what is the contact email of [College of Business](organization)
+      - unsaon pag contact sa [COB](organization) deans office
+      - how to contact the [College of Education](organization)
+      - unsa ang email sa [COE](organization) sa BukSU
+      - what is the contact info for [College of Nursing](organization)
+      - unsa ang email o FB page sa [CON](organization)
+      - how do I contact the [College of Law](organization) office
+      - what is the contact email for [College of Public Administration and Governance](organization)
+      - unsaon pag contact sa [CPAG](organization) office
+      - how can I contact the [University Library](location_name)
+      - unsa ang email o FB page sa [BukSU Library](location_name)
+      - who do I contact for [dormitory](facility_name) inquiries
+      - unsaon pag contact sa [dormitory manager](office) sa BukSU
+      - how to contact the [Supreme Student Council](organization)
+      - unsa ang Facebook page sa [SSC](organization) sa BukSU
+      - what is the mailing address and zip code of [BukSU](organization)
+      - unsa ang kompleto nga address ug zip code sa [BukSU Main Campus](organization)
+      - how to contact the [Client Care Center](office) or Public Assistance Desk
+      - what is the hotline for [campus security](office)
+      - unsaon pag contact sa [security office](office) kung naay nawala o emergency
+      - how to contact [BukSU](organization) human resources or HR office
+      - what is the contact info of [Alumni Relations](office)
+      - how can I message the [Dental Clinic](office)
+      - what is the link to the [online admission portal](service)
+      - unsa ang website link para sa [BukSU CAT registration](service)
+      - how do I contact the [NSTP Office](office)
+      - what is the contact email for [Graduate School](program) inquiries
+      - how to contact [DXBU](location_name) radio station
+      - what is the official contact email of the [College of Medicine](organization)
+      - unsaon pag contact sa [College of Medicine](organization) sa BukSU
+      - how do I contact the [BukSU satellite campuses](topic) office
+  - intent: ask_availability
+    examples: |
+      - does BukSU have [masters](program)
+      - masters?
+      - masteral?
+      - do buksu has masters
+      - naa bay [masteral](program) sa BukSU
+      - are there [graduate programs](program)
+      - does BukSU offer [BSIT](program)
+      - does BukSU have IT
+      - does BukSU offer IT
+      - do buksu offer IT
+      - do buksu offer BA philo
+      - does BukSU offer BSAP
+      - do you have BSA
+      - does BukSU offer BSBA FM
+      - do buksu offer BSN
+      - do buksu offer BSHM
+      - does BukSU offer BSFT
+      - does BukSU offer BSET
+      - do you offer BSEMC
+      - does BukSU offer AB English
+      - does BukSU offer AB Economics
+      - do you offer AB Sociology
+      - does BukSU offer BS Biology
+      - do you have BS Environmental Science
+      - does BukSU offer BEED
+      - do you offer BECED
+      - does BukSU offer BSED English
+      - does BukSU offer BSED Math
+      - does BukSU offer BSED Science
+      - does BukSU offer BSED Social Studies
+      - do buksu offer BPA
+      - does BukSU offer BPED
+      - does BukSU offer MPA
+      - available courses
+      - what courses are offered
+      - courses offered in BukSU
+      - what courses in CAS
+      - courses in COT
+      - courses in COB
+      - courses in CON
+      - courses in COE
+      - courses in CPAG
+      - courses in LAW
+      - unsay available courses
+      - do you have [scholarships](service)
+      - naa bay [scholarship](service)
+      - does BukSU have [nursing](program)
+      - naa bay [education](program)
+      - is there [BS Information Technology](program) in BukSU
+      - naa bay [IT](program) sa BukSU
+      - naa bay [BSN](program) sa BukSU
+      - is [criminology](program) offered at BukSU
+      - naa bay [criminology](program) sa BukSU
+      - does BukSU offer [engineering](program)
+      - is there [civil engineering](program) in BukSU
+      - naa bay [engineering](program) sa BukSU
+      - does BukSU have [architecture](program)
+      - does BukSU have [law school](program)
+      - is there [Juris Doctor](program) at BukSU
+      - does BukSU offer [medicine](program)
+      - is there [Doctor of Medicine](program) in BukSU
+      - does BukSU have [graduate school](program)
+      - are there [masters programs](program) in BukSU
+      - does BukSU offer [accountancy](program)
+      - naa bay [BSA](program) sa BukSU
+      - does BukSU have [psychology](program)
+      - does BukSU offer [hospitality management](program)
+      - naa bay [BSHM](program) sa BukSU
+      - does BukSU have [computer science](program)
+      - naa bay [BSCS](program) sa BukSU
+      - does BukSU have [senior high school](program)
+      - naa bay [SHS](program) sa BukSU
+      - does BukSU have [social work](program)
+      - is [BS Social Work](program) offered in BukSU
+      - naa bay [BSSW](program) sa BukSU
+      - does BukSU offer [pharmacy](program)
+      - is there [BS Pharmacy](program) at BukSU
+      - naa bay [pharmacy](program) sa BukSU
+      - does BukSU have [medical technology](program)
+      - is [medtech](program) offered in BukSU
+      - naa bay [BSMLS](program) sa BukSU
+      - does BukSU offer [tourism](program)
+      - is there [BS Tourism Management](program) in BukSU
+      - naa bay [BSTM](program) sa BukSU
+      - does BukSU have [agriculture](program)
+      - is there [BS Agriculture](program) or [forestry](program) in BukSU
+      - does BukSU offer [veterinary medicine](program)
+      - naa bay [vetmed](program) sa BukSU
+      - does BukSU offer [BS Food Technology](program)
+      - naa bay [Food Tech](program) nga kurso sa BukSU
+      - is [BS Business Administration](program) offered at BukSU
+      - naa bay [BSBA Financial Management](program) sa BukSU
+      - does BukSU offer [BS Environmental Science](program)
+      - does BukSU offer [BS Mathematics](program)
+      - naa bay [Tulong Dunong Program](service) sa BukSU
+  - intent: ask_facility_availability
+    examples: |
+      - does BukSU have a [library](facility_name)
+      - do buksu has a [library](facility_name)
+      - does Bukidnon State University have a [library](facility_name)
+      - is there a [library](facility_name) in BukSU
+      - is there a [museum](facility_name) in BukSU
+      - is the Bukidnon State University has [museum](facility_name)
+      - does BukSU have a [clinic](facility_name)
+      - does BukSU have [health services](facility_name)
+      - is there a [dental clinic](facility_name) in BukSU
+      - does BukSU have [dental services](facility_name)
+      - does BukSU have a [gym](facility_name)
+      - is there a [gymnasium](facility_name) on campus
+      - does BukSU have [cafeteria](facility_name)
+      - is there a [canteen](facility_name) in BukSU
+      - does BukSU have an [ATM](facility_name)
+      - is there [parking](facility_name) in BukSU
+      - does BukSU have [motorcycle parking](facility_name)
+      - does BukSU have [car parking](facility_name)
+      - is there a [student dorm](facility_name) in BukSU
+      - does BukSU have an [oval](facility_name)
+      - does BukSU have [open field](facility_name)
+      - is there an [auditorium](facility_name) in BukSU
+      - does BukSU have [guidance office](facility_name)
+      - is there a [registrar office](facility_name) in BukSU
+      - does BukSU have [finance office](facility_name)
+      - is there a [cashier](facility_name) in BukSU
+      - does BukSU have [ICT office](facility_name)
+      - is there an [admission office](facility_name) in BukSU
+      - does BukSU have [guard house](facility_name)
+      - do students have access to the [library](facility_name)
+      - are there [parking areas](facility_name) for students
+      - is [museum](facility_name) available in BukSU
+      - is [clinic](facility_name) available on campus
+      - naa bay [library](facility_name) sa BukSU
+      - naa ba ang BukSU og [library](facility_name)
+      - aduna bay [museum](facility_name) sa BukSU
+      - naa bay [clinic](facility_name) sa BukSU
+      - naa bay [dental clinic](facility_name) sa BukSU
+      - naa bay [gym](facility_name) sa BukSU
+      - naa bay [canteen](facility_name) sa BukSU
+      - naa bay [ATM](facility_name) duol sa BukSU
+      - naa bay [parking](facility_name) sa BukSU
+      - naa bay [dorm](facility_name) sa BukSU
+      - naa bay [oval](facility_name) sa BukSU
+      - naa bay [auditorium](facility_name) sa BukSU
+      - naa bay [guidance office](facility_name) sa BukSU
+      - naa bay [registrar](facility_name) sa BukSU
+      - naa bay [cashier](facility_name) sa BukSU
+      - naa bay [ICT office](facility_name) sa BukSU
+      - naa bay [admission office](facility_name) sa BukSU
+      - naa bay [guard house](facility_name) sa BukSU
+      - is there a [cafeteria](facility_name) in BukSU
+      - does BukSU have a [canteen](facility_name)
+      - does BukSU have a [gymnasium](facility_name)
+      - is there a [gym](facility_name) on campus
+      - is there a [dorm](facility_name) inside the campus
+      - does BukSU have [swimming pool](facility_name)
+      - is there a [swimming pool](facility_name) in BukSU
+      - does BukSU have [hospital](facility_name)
+      - is there a [hospital](facility_name) inside BukSU
+      - does BukSU have [airport](facility_name)
+      - is there a [mall](facility_name) in BukSU
+      - does BukSU have a [hotel](facility_name)
+      - is there a [chapel](facility_name) or [prayer room](facility_name) in BukSU
+      - does BukSU have [bookstore](facility_name)
+      - is there [free wifi](facility_name) in BukSU
+      - does the campus have [Wi-Fi](facility_name)
+      - does BukSU have a [museum](facility_name)
+      - is there a [dental clinic](facility_name) on campus
+      - does BukSU have [computer laboratories](facility_name)
+      - naa bay [canteen](facility_name) sa sulod sa campus
+      - naa bay [swimming pool](facility_name) sa BukSU
+      - naa bay [wifi](facility_name) sa BukSU
+      - does BukSU have [ATM machine](facility_name)
+      - naa bay [ATM](facility_name) sa BukSU
+      - does BukSU have a [guidance office](facility_name)
+      - is there a [guidance office](facility_name) on campus
+      - does BukSU have a [registrar office](facility_name)
+      - is there a [registrar](facility_name) in BukSU
+      - does BukSU have an [admission office](facility_name)
+      - is there a [speech lab](facility_name) in BukSU
+      - does BukSU have a [moot court](facility_name)
+      - does BukSU have a [nursing arts lab](facility_name)
+      - is there a [subway station](facility_name) or [train station](facility_name) in BukSU
+      - is there a [laundry shop](facility_name) inside BukSU
+      - is there a [Smart Classroom](facility_name) in BukSU
+      - naa bay [Smart Classroom](facility_name) ug [Multimedia Laboratory](facility_name) sa campus
+      - is there a [FoodTech Laboratory](facility_name) on campus
+      - is there a [Microbiology Laboratory](facility_name) or [Chemistry Lab](facility_name) in BukSU
+      - naa bay [Science Lab](facility_name) ug [Microbiology Lab](facility_name) sa campus
+      - does BukSU have an [Electronics Laboratory](facility_name)
+      - naa bay [auditorium](facility_name) sa sulod sa BukSU
+      - is there a [female dormitory](facility_name) and [male dormitory](facility_name) at BukSU
+      - naa bay [Mahogany Dorm](facility_name) ug [Rubia Dorm](facility_name) sa campus
+  - intent: ask_document
+    examples: |
+      - where do I submit my missing admission documents
+      - incomplete admission documents
+      - how to get [honorable dismissal](document)
+      - unsaon pag request ug [Honorable Dismissal](document) ug transfer credentials
+      - where can I get an [INC completion form](document)
+      - asa makuha ang [completion form](document) para sa INC grade
+      - how to request a [Certificate of Grades](document) from the registrar
+      - asa mag request ug [Certificate of Grades](document) para sa scholarship
+      - where can I request a [Certificate of Enrollment](document)
+      - unsaon pagkuha ug [Certificate of Enrollment](document) sa registrar
+      - how do I request a [Certificate of GWA](document) or General Weighted Average
+      - asa magkuha ug [Certificate of GWA](document)
+      - where can I get a [shifting form](document)
+      - asa makuha ang [shifting form](document) kung mobalhin ug kurso
+      - where to get the [adding and dropping form](document)
+      - asa kuhaon ang [dropping form](document) o adding slip
+      - how do I request a [Form 137](document) copy letter from the registrar
+      - asa makuha ang request letter para sa [Form 137](document) o SF10
+      - where do I get a [medical certificate](document) for OJT or internship
+      - asa magkuha ug [medical certificate](document) sa campus clinic
+      - where do I get a [graduation clearance form](document)
+      - asa makuha ang [application for graduation form](document) ug clearance
+      - where can I download the [Student Handbook](document)
+      - naa bay PDF copy sa [BukSU Student Handbook](document)
+      - where to get the [Leave of Absence form](document)
+      - asa makuha ang [LOA form](document)
+      - how to get a [library borrower card](document)
+      - where do I get the [dormitory application form](document)
+      - asa makuha ang [application form](document) para sa BukSU dorm
+      - where to get the [scholarship application form](document)
+      - where do I get a [permit to cross-enroll](document)
+      - how to get an [official receipt](document) for tuition or fee payment
+      - where do I get a [dental clearance certificate](document)
+      - how to get a [Certificate of Latin Honors](document) or class ranking certificate
+      - where can I get a [subject crediting evaluation form](document)
+      - where to get the [readmission form](document) for returning students
+      - how to request a [Certificate of English as Medium of Instruction](document)
+      - where do I get a [temporary gate pass](document) if I forgot my ID
+      - asa makuha ang [temporary pass](document) kung nabilin ang ID
+      - where to get the [overload request form](document)
+      - where do I get the [vehicle sticker application form](document)
+      - how to get my [BukSU CAT result slip](document)
+      - where do I get the [student assistant application form](document)
+      - where can I get a [grade rectification form](document)
+  - intent: ask_follow_up
+    examples: |
+      - tell me more
+      - more
+      - more info
+      - explain more
+      - continue
+      - unsa pa
+      - dugangi pa
+      - naa pa?
+  - intent: smalltalk
+    examples: |
+      - hi
+      - hello
+      - hey
+      - good morning
+      - good afternoon
+      - good evening
+      - maayong buntag
+      - maayong hapon
+      - maayong gabii
+      - thanks
+      - thank you
+      - salamat
+      - who made you
+      - who created you
+      - what can you do
+      - kinsa naghimo nimo
+      - kumusta
+      - how are you
+      - thanks a lot for the help
+      - daghang salamat kaayo
+      - thank you kaayo sa info
+      - hello there
+      - hi maayong adlaw
+      - maayong udto
+      - how is your day going
+      - kumusta ka karon
+      - nice to meet you
+      - glad to chat with you
+      - you are very helpful
+      - ka-nice ug very helpful kaayo ka
+      - good day
+      - whats up
+      - yo
+      - salamat sa pag tubag
+      - appreciate the quick answer
+      - that was super helpful thanks
+      - helo good morning
+      - thx so much
+      - tyvm
+      - ok na salamat kaayo
+      - awesome thank you
+      - hello po maayong buntag
+  - intent: goodbye
+    examples: |
+      - goodbye
+      - bye
+      - see you
+      - thank you bye
+      - sige bye
+      - babye
+      - see you later
+      - have a nice day
+      - babay
+      - amping
+      - bye bye
+      - see ya later
+      - talk to you later
+      - I am done now bye
+      - that is all for now goodbye
+      - kana ra tanan babay
+      - adto nako ha babay
+      - sige bye na
+      - catch you later
+      - good night bye
+      - maayong gabii adto nako
+      - take care goodbye
+      - amping kanunay babay
+      - I have to go now
+      - gotta go bye
+      - sige salamat ug bye
+      - hangtod sa sunod na sab
+      - until next time
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you human?
+      - bot ka?
+      - chatbot ka?
+      - am I talking to a bot?
+      - are you a human?
+      - am I talking to a human?
+      - are you an AI?
+      - robot ba ka o tawo?
+      - tinuod ka nga tawo?
+      - AI chatbot ba ka sa BukSU?
+      - who are you exactly
+      - kinsa diay ka
+      - are you a real person or an automated assistant
+      - live agent ba ka or automated bot lang
+      - are you a virtual assistant
+      - is this a computer program talking to me
+      - computer ra ba akong ka istorya karon
+      - are you a live staff member from BukSU
+      - empleyado ba ka sa BukSU or AI
+      - what is your name are you a bot
+      - are you ChatGPT or a custom BukSU bot
+      - are u a robot
+      - r u human or ai
+      - bot ba ni akong ka chat
+      - am I chatting with an artificial intelligence
+      - tell me if you are a machine or a person
+      - tinuod nga admin ba ka or chatbot
+  - intent: set_category
+    examples: |
+      - switch to location category
+      - select procedures category
+      - choose academics category
+      - go to services category
+      - open university category
+      - switch to [location](active_category)
+      - go to [academics](active_category)
+      - open [services](active_category) category
+      - change category to [university](active_category)
+      - switch category to [others](active_category)
+      - I want to browse [location](active_category)
+      - ibalhin sa [location](active_category) nga category
+      - adto ta sa [map](active_category) ug [navigation](active_category) category
+      - change the topic to [procedures](active_category)
+      - pilia ang [procedures](active_category) category
+      - switch to [academics](active_category) section
+      - ibalhin sa [academics](active_category) palihug
+      - take me to [services](active_category)
+      - ablihi ang [services](active_category) nga category
+      - let us switch to [university](active_category) info
+      - set active category to [university](active_category)
+      - go to [others](active_category) category
+      - ibalhin sa [others](active_category) ug [facilities](active_category)
+      - choose [courses](active_category) category
+      - switch to [buildings](active_category) and [map](active_category)
+      - open the [directory](active_category) category
+      - set category to [policies](active_category)
+      - move to [student services](active_category) category
+  - intent: reset_category
+    examples: |
+      - back to category
+      - back to categories
+      - change category
+      - reset category
+      - return to category selection
+      - switch category
+      - show all categories
+      - main menu
+      - clear active category
+      - return to main menu
+      - go back to main menu
+      - balik sa main menu
+      - ipakita tanan categories
+      - balik ta sa category selection
+      - exit this category
+      - leave current category
+      - choose another category
+      - ilis ta ug category
+      - change ta ug laing category
+      - show category menu again
+      - unselect category
+      - search across all categories
+      - go back to the category list
+      - balik sa listahan sa mga category
+      - pick a different category
+      - reset topic filter
+      - view all categories
+      - return to category selection screen
