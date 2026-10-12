@@ -137,7 +137,7 @@
         "role": "admin",
         "status": "active",
         "enabled": true,
-        "password": "$2b$12$p9LeAozUoaQExXEhVu8gkOBG0bRQxHumYEcsZQ89mlIRnqQXlVoOK",
+        "password": "$2b$12$lgP/rda/2Ka/4Cwz2BI2NuyFzmRitmZRZ4czSN2NcZ3AEAIRNivje",
         "permissions": {
           "nav_responses": true,
           "nav_reports": true,
