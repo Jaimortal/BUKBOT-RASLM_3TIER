@@ -1,70 +1,66 @@
-# Corrected NLU review dataset
+# NLU experiment dataset
 
-Prepared 2026-10-12. These files supersede the Gemini proposal, not the active chatbot. No retraining was performed.
+Dataset preparation and boundary review completed on 2026-10-12. Ready for an isolated training experiment; no claim that model training, final testing or production adoption has occurred.
 
-## Where the splits are
+**Start with [TRAIN_AND_TEST.md](TRAIN_AND_TEST.md).** Do not replace the active rasa/data/nlu.yml.
 
-- [train.yml](train.yml): proposed NLU training examples.
-- [validation.yml](validation.yml): synthetic validation candidates.
-- [test.yml](test.yml): synthetic test candidates; NOT an independent final student test.
-- Matching JSON files contain IDs, provenance, context, grouping and review notes.
-- [manifest.csv](manifest.csv) / [manifest.json](manifest.json): every original and retained generated record, including exclusions.
-- [source/original_nlu.yml](source/original_nlu.yml): byte-for-byte original snapshot, all 410 examples preserved.
-- [review_queue.json](review_queue.json): boundary conflicts, duplicates and whole groups exceeding targets.
-- [challenge_cases.json](challenge_cases.json), [conversation_cases.json](conversation_cases.json), [functional_cases.json](functional_cases.json): separate development suites, excluded from NLU percentages.
-- [verification.json](verification.json): automated checks, hashes, counts and limitations.
+## Prepared files
+
+- [train.yml](train.yml): experiment training examples.
+- [validation.yml](validation.yml): synthetic validation set.
+- [test.yml](test.yml): synthetic test set, not independent student evaluation.
+- Matching JSON files retain context, provenance, grouping and decisions.
+- [manifest.csv](manifest.csv) / [manifest.json](manifest.json): every source record and its final disposition.
+- [source/original_nlu.yml](source/original_nlu.yml): all 410 original examples, byte-for-byte.
+- [LABEL_POLICY.md](LABEL_POLICY.md) and [REVIEW_NOTES.md](REVIEW_NOTES.md): applied labeling decisions and exclusions.
+- challenge_cases.json, conversation_cases.json and functional_cases.json: separate development suites.
+- [verification.json](verification.json): hashes, structural checks and counts.
 
 ## Actual distribution
 
-The intended ratio is 70/15/15; it is NOT claimed as achieved. Preserving source history and preventing group leakage take priority over filling quotas.
+70/15/15 remains a planning target, not an achieved result. Related groups and existing development exposure take priority over forcing percentages.
 
 | Split | Count | Share |
 |---|---:|---:|
-| Training | 885 | 76.36% |
-| Validation | 142 | 12.25% |
-| Synthetic test | 132 | 11.39% |
-| Total | 1159 | 100% |
+| Training | 943 | 75.38% |
+| Validation | 158 | 12.63% |
+| Synthetic testing | 150 | 11.99% |
+| Total | 1251 | 100% |
 
-| Intent | Planning target | Train | Validation | Test | Actual total | Shortfall |
-|---|---:|---:|---:|---:|---:|---:|
-| ask_location | 100 | 70 | 7 | 6 | 83 | 17 |
-| ask_schedule | 100 | 70 | 14 | 12 | 96 | 4 |
-| ask_fee | 100 | 70 | 12 | 14 | 96 | 4 |
-| ask_requirement | 100 | 70 | 13 | 10 | 93 | 7 |
-| ask_process | 100 | 70 | 14 | 12 | 96 | 4 |
-| ask_general_info | 100 | 70 | 12 | 13 | 95 | 5 |
-| ask_contact | 100 | 70 | 12 | 12 | 94 | 6 |
-| ask_availability | 100 | 95 | 10 | 7 | 112 | 0 |
-| ask_facility_availability | 100 | 94 | 8 | 7 | 109 | 0 |
-| ask_document | 100 | 44 | 7 | 7 | 58 | 42 |
-| ask_follow_up | 60 | 8 | 0 | 0 | 8 | 52 |
-| smalltalk | 60 | 42 | 9 | 9 | 60 | 0 |
-| goodbye | 40 | 28 | 6 | 6 | 40 | 0 |
-| bot_challenge | 40 | 28 | 6 | 6 | 40 | 0 |
-| set_category | 40 | 28 | 6 | 6 | 40 | 0 |
-| reset_category | 40 | 28 | 6 | 5 | 39 | 1 |
+| Intent | Planning target | Training | Validation | Test | Actual total |
+|---|---:|---:|---:|---:|---:|
+| ask_location | 100 | 70 | 9 | 7 | 86 |
+| ask_schedule | 100 | 70 | 15 | 13 | 98 |
+| ask_fee | 100 | 70 | 13 | 15 | 98 |
+| ask_requirement | 100 | 70 | 14 | 11 | 95 |
+| ask_process | 100 | 70 | 14 | 12 | 96 |
+| ask_general_info | 100 | 70 | 11 | 13 | 94 |
+| ask_contact | 100 | 70 | 13 | 13 | 96 |
+| ask_availability | 100 | 107 | 11 | 8 | 126 |
+| ask_facility_availability | 100 | 99 | 9 | 8 | 116 |
+| ask_document | 100 | 70 | 13 | 15 | 98 |
+| ask_follow_up | 60 | 23 | 3 | 3 | 29 |
+| smalltalk | 60 | 42 | 9 | 9 | 60 |
+| goodbye | 40 | 28 | 6 | 6 | 40 |
+| bot_challenge | 40 | 28 | 6 | 6 | 40 |
+| set_category | 40 | 28 | 6 | 6 | 40 |
+| reset_category | 40 | 28 | 6 | 5 | 39 |
 
-These are planning shortfalls, not an instruction to pad examples. Collect new independently worded questions, especially for underrepresented validation/test intents. Report the real counts until sufficient reviewed data exists.
+Small per-intent sets provide imprecise estimates. Report support counts, macro F1, per-intent errors and entity results; do not claim that these counts establish real-world accuracy.
 
-## Corrections made
+## Corrections and verification
 
-- Imported the actual original YAML rather than Gemini's handwritten reconstruction. All 410 original rows are accounted for in the manifest/snapshot. Their dispositions: {"train":355,"review":42,"duplicate":4,"challenge":3,"functional":6}.
-- Corrected 324 unmatched records falsely tagged existing_nlu to synthetic candidates. The original claim is retained for audit.
-- Quarantined unresolved intent boundaries rather than silently applying a new taxonomy. No existing labels were silently rewritten. Excluded originals remain in the manifest.
-- Moved fallback challenges and slash commands out of proposed NLU training. The original fallback/slash rows remain in their separate suites and baseline snapshot.
-- Removed exact normalized duplicates from candidate splits and grouped shared source families, exact entity-masked templates and token-Jaccard matches >= 0.8 before splitting. This heuristic does not prove all semantic paraphrases are separated.
-- Locked original, prior-training and exact knowledge-phrase groups to development/training. Source order is deterministic; no random seed is used. Whole groups over target go to reserve.
-- Removed unverified expected-answer claims: claimed topics are retained as provenance, exact references checked against knowledge, but expected_topic_id is null until answer correctness is independently reviewed. Unknown location references are quarantined.
-- Context-dependent cases are separated from standalone NLU cases. Language tags from Gemini are provisional; original language labels are not guessed.
+- All originals accounted for: {"train":396,"duplicate":5,"challenge":3,"functional":6}. No source records silently lost.
+- 324 unmatched Gemini source claims corrected to synthetic provenance.
+- Explicit boundary decisions replace the initial blanket quarantine. The active dataset/router are unchanged.
+- Slash commands, fallback challenges and ambiguous contextual cases are separate.
+- Exact normalized duplicates, supplied families, entity-masked templates and Jaccard >= 0.8 groups are isolated. This is not proof that every semantic paraphrase has been identified.
+- Original and prior-development groups are never treated as unseen evaluation data.
+- Unresolved location references excluded. Other topic references are provenance, not verified answer ground truth.
+- English/Cebuano/mixed examples were reviewed as engineering candidates, not independently certified language data.
 
-## Review boundaries
+## Rebuild
 
-Read review_queue.json reasons before approving training. Main unresolved boundaries are program availability versus general info, document requests versus procedures/requirements, and facility existence versus location/availability. Existing creator/capability questions retain their original labels; greetings are not silently reassigned to bot_challenge. Approval should follow the router's behavior, not just a keyword.
+Run `node tools/prepare_nlu_review.cjs` from the project root. The inputs are source snapshots, current knowledge/domain files and tools/nlu_label_policy.cjs. No random split seed is used: selection follows deterministic source order and whole groups. Start a new experiment after any rebuild; existing experiment input hashes remain frozen.
 
-The NLU YAML evaluates broad intent/entity labels only. It does not establish final-answer accuracy or routing compatibility. Verify proposed labels and entity spans, have a fluent speaker review Cebuano/mixed wording, and independently approve expected answers for full-chatbot evaluation. Nothing here records a successful chatbot test.
-
-## Reproduce and use safely
-
-From the project root: `node tools/prepare_nlu_review.cjs`. This rebuilds only this review directory from source snapshots and current knowledge/domain files. Check verification.json hashes if inputs change. Do not run the old Gemini generator over the corrected artifacts.
-
-Keep this folder outside Rasa training inputs. Do not pass the entire repository or this folder as training data: it also contains validation/test/source files. When a separate experiment is approved, pass only the chosen training file plus the intended rules/stories/domain/config. Do not overwrite rasa/data/nlu.yml until labels and integration regressions have been reviewed.
+Keep this folder outside Rasa's training paths. It contains validation/test/source files. Only the isolated experiment input folder should be passed to rasa train. Never run Gemini's old generator over these corrections.

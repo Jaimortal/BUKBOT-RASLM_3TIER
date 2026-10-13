@@ -110,6 +110,7 @@ nlu:
       - COR validation schedule
       - when is the admission application testing schedule
       - admission testing application date
+      - is [library](location_name) open today
       - when is the [entrance exam](service)
       - when is the [BukSU CAT](service)
       - [BukSU CAT](service) schedule
@@ -142,7 +143,6 @@ nlu:
       - when will [BukSU CAT](service) results be released
       - when does the [entrance exam](service) result come out
       - when can I apply for [shifting](service)
-      - when is the [graduation](service) application deadline
       - when is the deadline for [late enrollment](service)
       - until when pwede maka [late enrollment](service) sa BukSU
   - intent: ask_fee
@@ -246,6 +246,8 @@ nlu:
       - what papers are needed for dental consult
       - documents needed for oral examination
       - what documents should I bring for dental consultation
+      - enrollment document list
+      - what documents do I need to bring on enrollment day
       - what are the requirements for [enrollment](service)
       - requirements for [freshman enrollment](service)
       - unsa ang requirements sa [enrollment](service)
@@ -273,8 +275,6 @@ nlu:
       - unsay grade requirement para ma apil sa [Deans List](topic)
       - what are the requirements for [returning students](topic) or returnees
       - unsa ang requirements kung [returnee](topic) nga mag enroll balik
-      - what are the requirements for [second courser](topic) admission
-      - what are the requirements for [Graduate School](program) admission
       - what are the requirements for [lost ID replacement](service)
       - unsay requirements kung nawala ang [student ID](document) need ba affidavit of loss
       - what are the requirements for [Good Moral Certificate](document)
@@ -304,6 +304,10 @@ nlu:
       - can i still enroll late
       - unsaon pag enroll
       - process for [online enrollment](service)
+      - how do I get [student ID](document)
+      - unsaon pagkuha sa [student ID](document)
+      - unsaon pagkuha sa [library ID](document)
+      - steps for [COR validation](service)
       - how to apply for [admission](service)
       - how can I apply for admission
       - how do I apply for CAT
@@ -324,9 +328,13 @@ nlu:
       - how to validate ID
       - ID validation process
       - process of ID validation
+      - how do I validate my student ID
+      - how to validate COR
+      - COR validation process
       - can I enroll online
       - walkin entrance exam is allowed
       - walk in entrance exam allowed
+      - where can I get [library ID](document)
       - how do I [enroll](service) at BukSU
       - steps to [enroll](service)
       - unsaon [pag-enroll](service)
@@ -345,20 +353,12 @@ nlu:
       - unsaon [pag-shift](service) og kurso
       - how to apply for [scholarship](service)
       - unsaon pag-apply sa [scholarship](service)
+      - how to get [student ID](document)
+      - how to validate [student ID](document)
       - unsaon pagkuha og [ID](document)
-      - how to avail clinic services
-      - how do I get a medical checkup at the clinic
-      - how to book an appointment at the university clinic
-      - can I walk in at the clinic or do I need an appointment
-      - how to get medical clearance from the clinic
-      - how to request a medical certificate at BukSU clinic
-      - what should I do in a campus medical emergency
-      - how do I get free medicine from the clinic
       - how to enroll for [summer class](service)
       - how to reset student portal password
       - forgot my portal password what to do
-      - how to change class schedule
-      - can I change my section due to schedule conflict
       - what to do if I failed the [entrance exam](service)
       - unsaon pag recover sa akong [SIAS account](service) ug institutional email
   - intent: ask_general_info
@@ -507,6 +507,18 @@ nlu:
       - how do I contact the [BukSU satellite campuses](topic) office
   - intent: ask_availability
     examples: |
+      - what are the student services
+      - services that buksu can provide
+      - services list
+      - unsay mga services ni buksu
+      - master courses
+      - masters courses
+      - masteral programs
+      - does BukSU offer masters
+      - courses
+      - courses offered
+      - courses offerd by buksu
+      - do buksu offer BSAP
       - does BukSU have [masters](program)
       - masters?
       - masteral?
@@ -604,6 +616,11 @@ nlu:
       - naa bay [Tulong Dunong Program](service) sa BukSU
   - intent: ask_facility_availability
     examples: |
+      - is there an ATM inside the campus
+      - naa bay dormitory
+      - does buksu have dormitory
+      - does buksu have dormitories
+      - dormitory availability
       - does BukSU have a [library](facility_name)
       - do buksu has a [library](facility_name)
       - does Bukidnon State University have a [library](facility_name)
@@ -700,10 +717,39 @@ nlu:
       - naa bay [Mahogany Dorm](facility_name) ug [Rubia Dorm](facility_name) sa campus
   - intent: ask_document
     examples: |
+      - how do I request [COR](document)
+      - unsaon nako pag request og [COR](document)
+      - where to get COR
+      - where can I get COR
+      - asa makuha ang COR
+      - how to get COR
+      - where can I get [INC form](document)
+      - asa makakuha og [INC form](document)
+      - can I download [COR](document)
+      - where to request [COR](document)
+      - I need [test permit](document)
+      - how to get [certificate of registration](document)
+      - student ID form
       - where do I submit my missing admission documents
       - incomplete admission documents
+      - how to get [TOR](document)
+      - how to request [transcript of records](document)
+      - unsaon pagkuha og [TOR](document)
+      - unsaon pag-validate sa [COR](document)
+      - where to request [TOR](document)
+      - where can I claim my [TOR](document)
+      - can I reprint my [COR](document)
+      - how to get [good moral certificate](document)
+      - where to request [good moral](document)
       - how to get [honorable dismissal](document)
+      - how to request [diploma](document)
+      - how to get [CAV](document)
+      - asa dapit mag request ug mag claim sa [Transcript of Records](document)
+      - pwede ba magpa reprint ug [COR](document) sa registrar kung nawala
+      - asa makuha ang [Certificate of Good Moral Character](document)
       - unsaon pag request ug [Honorable Dismissal](document) ug transfer credentials
+      - asa pwede makuha ang akong [diploma](document) pagkahuman ug graduate
+      - asa magkuha ug [CAV](document) para sa CHED authentication
       - where can I get an [INC completion form](document)
       - asa makuha ang [completion form](document) para sa INC grade
       - how to request a [Certificate of Grades](document) from the registrar
@@ -712,6 +758,10 @@ nlu:
       - unsaon pagkuha ug [Certificate of Enrollment](document) sa registrar
       - how do I request a [Certificate of GWA](document) or General Weighted Average
       - asa magkuha ug [Certificate of GWA](document)
+      - how can I get a [certified true copy](document) of my COR or TOR
+      - asa magpa [certified true copy](document) sa COR ug grades
+      - where do I download or claim my [BukSU CAT test permit](document)
+      - unsaon pag download sa [test permit](document) para sa entrance exam
       - where can I get a [shifting form](document)
       - asa makuha ang [shifting form](document) kung mobalhin ug kurso
       - where to get the [adding and dropping form](document)
@@ -720,29 +770,22 @@ nlu:
       - asa makuha ang request letter para sa [Form 137](document) o SF10
       - where do I get a [medical certificate](document) for OJT or internship
       - asa magkuha ug [medical certificate](document) sa campus clinic
+      - where to claim my [student ID](document) card
+      - asa i-claim ang nahuman nga [student ID](document)
       - where do I get a [graduation clearance form](document)
       - asa makuha ang [application for graduation form](document) ug clearance
       - where can I download the [Student Handbook](document)
       - naa bay PDF copy sa [BukSU Student Handbook](document)
       - where to get the [Leave of Absence form](document)
       - asa makuha ang [LOA form](document)
-      - how to get a [library borrower card](document)
-      - where do I get the [dormitory application form](document)
-      - asa makuha ang [application form](document) para sa BukSU dorm
       - where to get the [scholarship application form](document)
+      - can someone else claim my [TOR](document) with an [authorization letter](document)
+      - pwede ba ipakuha sa ginikanan akong [TOR](document) gamit ang [authorization letter](document)
       - where do I get a [permit to cross-enroll](document)
       - how to get an [official receipt](document) for tuition or fee payment
       - where do I get a [dental clearance certificate](document)
-      - how to get a [Certificate of Latin Honors](document) or class ranking certificate
       - where can I get a [subject crediting evaluation form](document)
-      - where to get the [readmission form](document) for returning students
-      - how to request a [Certificate of English as Medium of Instruction](document)
-      - where do I get a [temporary gate pass](document) if I forgot my ID
-      - asa makuha ang [temporary pass](document) kung nabilin ang ID
       - where to get the [overload request form](document)
-      - where do I get the [vehicle sticker application form](document)
-      - how to get my [BukSU CAT result slip](document)
-      - where do I get the [student assistant application form](document)
       - where can I get a [grade rectification form](document)
   - intent: ask_follow_up
     examples: |
@@ -754,6 +797,21 @@ nlu:
       - unsa pa
       - dugangi pa
       - naa pa?
+      - more details please
+      - what else
+      - can you elaborate
+      - unsa pa ang sunod
+      - naa pa bay lain
+      - can you explain that part more clearly
+      - pwede pasabta ko pag-ayo ana
+      - is there anything else I should know about it
+      - unsa pa ang uban detalye bahin ana
+      - go on please
+      - give me more info about that
+      - can you give me the complete list
+      - pwede ihatag ang tibuok listahan ana
+      - tell me mor about it
+      - keep going
   - intent: smalltalk
     examples: |
       - hi

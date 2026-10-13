@@ -1,0 +1,863 @@
+[
+  {
+    "text": "asa nga building ang CITL office",
+    "entities": [
+      {
+        "start": 21,
+        "end": 25,
+        "value": "CITL",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 21,
+        "end": 32,
+        "confidence_entity": 0.8531803488731384,
+        "value": "CITL office",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "whre is Multimedia Laboratory",
+    "entities": [
+      {
+        "start": 8,
+        "end": 29,
+        "value": "Multimedia Laboratory",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 19,
+        "end": 29,
+        "confidence_entity": 0.4913265109062195,
+        "value": "Laboratory",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "how many days can I borrow a book from the library",
+    "entities": [
+      {
+        "start": 43,
+        "end": 50,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 43,
+        "end": 50,
+        "confidence_entity": 0.9655176997184753,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "until what time open ang Guidance Office",
+    "entities": [
+      {
+        "start": 25,
+        "end": 40,
+        "value": "Guidance Office",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 25,
+        "end": 40,
+        "confidence_entity": 0.66,
+        "value": "guidance office",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "is there any charge for resetting my SIAS portal password at ICT",
+    "entities": [
+      {
+        "start": 37,
+        "end": 48,
+        "value": "SIAS portal",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 42,
+        "end": 57,
+        "confidence_entity": 0.9961789846420288,
+        "value": "portal password",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "office",
+        "start": 61,
+        "end": 64,
+        "confidence_entity": 0.6887412071228027,
+        "value": "ICT",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how much do I pay to replace a damaged student ID",
+    "entities": [
+      {
+        "start": 39,
+        "end": 49,
+        "value": "student ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 39,
+        "end": 49,
+        "confidence_entity": 0.9975517392158508,
+        "value": "student ID",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "pila bayad pa ilis sa nawala nga ID",
+    "entities": [
+      {
+        "start": 33,
+        "end": 35,
+        "value": "ID",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 22,
+        "end": 28,
+        "confidence_entity": 0.6095526218414307,
+        "value": "nawala",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 33,
+        "end": 35,
+        "confidence_entity": 0.9984079003334045,
+        "value": "ID",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "naa bay bayad magkuha ug test permit para sa CAT",
+    "entities": [
+      {
+        "start": 25,
+        "end": 36,
+        "value": "test permit",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 22,
+        "end": 24,
+        "confidence_entity": 0.6588714718818665,
+        "value": "ug",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 25,
+        "end": 36,
+        "confidence_entity": 0.9963016510009766,
+        "value": "test permit",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "how much is certified true copy of COR",
+    "entities": [
+      {
+        "start": 12,
+        "end": 31,
+        "value": "certified true copy",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 12,
+        "end": 21,
+        "confidence_entity": 0.9941015839576721,
+        "value": "certified",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 35,
+        "end": 38,
+        "confidence_entity": 0.9873222708702087,
+        "value": "COR",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "hw much is dorm per month",
+    "entities": [
+      {
+        "start": 11,
+        "end": 15,
+        "value": "dorm",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 11,
+        "end": 15,
+        "confidence_entity": 0.5108658075332642,
+        "value": "dorm",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what are the requirements to borrow books from the university library",
+    "entities": [
+      {
+        "start": 51,
+        "end": 69,
+        "value": "university library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 62,
+        "end": 69,
+        "confidence_entity": 0.9231287837028503,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsa ang kinahanglan ipakita para makahulam ug libro sa library",
+    "entities": [
+      {
+        "start": 56,
+        "end": 63,
+        "value": "library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 56,
+        "end": 63,
+        "confidence_entity": 0.986613929271698,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsaon pagpa correction sa sayop nga spelling sa pangalan sa registrar",
+    "entities": [
+      {
+        "start": 61,
+        "end": 70,
+        "value": "registrar",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 61,
+        "end": 70,
+        "confidence_entity": 0.9954262375831604,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsay buhaton kung sayop ang na encode nga grado sa SIAS portal",
+    "entities": [
+      {
+        "start": 52,
+        "end": 63,
+        "value": "SIAS portal",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 57,
+        "end": 63,
+        "confidence_entity": 0.9577675461769104,
+        "value": "portal",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "how do I borrow a book from the main library",
+    "entities": [
+      {
+        "start": 32,
+        "end": 44,
+        "value": "main library",
+        "entity": "location_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location_name",
+        "start": 37,
+        "end": 44,
+        "confidence_entity": 0.9752473831176758,
+        "value": "library",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "unsa ang mahitabo kung ma academic probation ang estudyante",
+    "entities": [
+      {
+        "start": 26,
+        "end": 44,
+        "value": "academic probation",
+        "entity": "topic"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "topic",
+        "start": 26,
+        "end": 44,
+        "confidence_entity": 0.8478243350982666,
+        "value": "academic probation",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "what is the link to the BukSU LMS or BukSU Step website",
+    "entities": [
+      {
+        "start": 24,
+        "end": 33,
+        "value": "BukSU LMS",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 30,
+        "end": 33,
+        "confidence_entity": 0.49654239416122437,
+        "value": "LMS",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "how do I contact the Office of Distance e-Learning or ODeL",
+    "entities": [
+      {
+        "start": 21,
+        "end": 50,
+        "value": "Office of Distance e-Learning",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 21,
+        "end": 27,
+        "confidence_entity": 0.7619283199310303,
+        "value": "Office",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "office",
+        "start": 54,
+        "end": 58,
+        "confidence_entity": 0.41568219661712646,
+        "value": "ODeL",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "unsaon pag contact sa Clinic kung naay pangutana sa medical clearance",
+    "entities": [
+      {
+        "start": 22,
+        "end": 28,
+        "value": "Clinic",
+        "entity": "office"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "office",
+        "start": 22,
+        "end": 28,
+        "confidence_entity": 0.9177151322364807,
+        "value": "clinic",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "office",
+        "start": 60,
+        "end": 69,
+        "confidence_entity": 0.7166755199432373,
+        "value": "clearance",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "are varsity athletic scholarships or cultural grants available at BukSU",
+    "entities": [
+      {
+        "start": 4,
+        "end": 33,
+        "value": "varsity athletic scholarships",
+        "entity": "service"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "service",
+        "start": 21,
+        "end": 33,
+        "confidence_entity": 0.9346681237220764,
+        "value": "scholarships",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "facility_name",
+        "start": 37,
+        "end": 45,
+        "confidence_entity": 0.4333576560020447,
+        "value": "cultural",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "does buksu haf nursing course",
+    "entities": [
+      {
+        "start": 15,
+        "end": 22,
+        "value": "nursing",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 15,
+        "end": 22,
+        "confidence_entity": 0.9262232184410095,
+        "value": "nursing",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "naa bay Master of Arts in Education sa BukSU Graduate School",
+    "entities": [
+      {
+        "start": 8,
+        "end": 35,
+        "value": "Master of Arts in Education",
+        "entity": "program"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "program",
+        "start": 8,
+        "end": 14,
+        "confidence_entity": 0.8202877044677734,
+        "value": "Master",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "program",
+        "start": 26,
+        "end": 35,
+        "confidence_entity": 0.9882810711860657,
+        "value": "education",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "program",
+        "start": 45,
+        "end": 53,
+        "confidence_entity": 0.9403073787689209,
+        "value": "Graduate",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "is there a Public Assistance Desk or Client Care Center at the entrance",
+    "entities": [
+      {
+        "start": 11,
+        "end": 33,
+        "value": "Public Assistance Desk",
+        "entity": "facility_name"
+      },
+      {
+        "start": 37,
+        "end": 55,
+        "value": "Client Care Center",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 37,
+        "end": 43,
+        "confidence_entity": 0.45285847783088684,
+        "value": "Client",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "service",
+        "start": 63,
+        "end": 71,
+        "confidence_entity": 0.4284091293811798,
+        "value": "entrance",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "does BukSU have a separate building for the College of Medicine",
+    "entities": [
+      {
+        "start": 44,
+        "end": 63,
+        "value": "College of Medicine",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 44,
+        "end": 51,
+        "confidence_entity": 0.3637595772743225,
+        "value": "College",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "facility_name",
+        "start": 55,
+        "end": 63,
+        "confidence_entity": 0.23239953815937042,
+        "value": "Medicine",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "naa bay gym para sa PE classes",
+    "entities": [
+      {
+        "start": 8,
+        "end": 11,
+        "value": "gym",
+        "entity": "facility_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "facility_name",
+        "start": 8,
+        "end": 11,
+        "confidence_entity": 0.9982755184173584,
+        "value": "gym",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "where do I request a Certificate of Units Earned at BukSU",
+    "entities": [
+      {
+        "start": 21,
+        "end": 48,
+        "value": "Certificate of Units Earned",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 21,
+        "end": 35,
+        "confidence_entity": 0.7457769513130188,
+        "value": "Certificate of",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "organization",
+        "start": 52,
+        "end": 57,
+        "confidence_entity": 0.5484211444854736,
+        "value": "BukSU",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "asa magkuha ug Certificate of Units Earned sa registrar",
+    "entities": [
+      {
+        "start": 15,
+        "end": 42,
+        "value": "Certificate of Units Earned",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 15,
+        "end": 29,
+        "confidence_entity": 0.6289548873901367,
+        "value": "Certificate of",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "office",
+        "start": 46,
+        "end": 55,
+        "confidence_entity": 0.9387733936309814,
+        "value": "registrar",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "can I download my Certificate of Registration directly from SIAS",
+    "entities": [
+      {
+        "start": 18,
+        "end": 45,
+        "value": "Certificate of Registration",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 18,
+        "end": 29,
+        "confidence_entity": 0.9981056451797485,
+        "value": "Certificate",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 33,
+        "end": 45,
+        "confidence_entity": 0.9697816371917725,
+        "value": "Registration",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 60,
+        "end": 64,
+        "confidence_entity": 0.6925976276397705,
+        "value": "SIAS",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "where do I request an NSTP Serial Number Certificate",
+    "entities": [
+      {
+        "start": 22,
+        "end": 52,
+        "value": "NSTP Serial Number Certificate",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 22,
+        "end": 33,
+        "confidence_entity": 0.28410717844963074,
+        "value": "NSTP Serial",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 41,
+        "end": 52,
+        "confidence_entity": 0.9720055460929871,
+        "value": "Certificate",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "how to get a lost ID replacement form from OSS",
+    "entities": [
+      {
+        "start": 13,
+        "end": 37,
+        "value": "lost ID replacement form",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 18,
+        "end": 20,
+        "confidence_entity": 0.9228637218475342,
+        "value": "ID",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 33,
+        "end": 37,
+        "confidence_entity": 0.7725423574447632,
+        "value": "form",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "asa mag request ug Red Ribbon / Apostille CAV",
+    "entities": [
+      {
+        "start": 19,
+        "end": 45,
+        "value": "Red Ribbon / Apostille CAV",
+        "entity": "document"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "document",
+        "start": 16,
+        "end": 29,
+        "confidence_entity": 0.22079119086265564,
+        "value": "ug Red Ribbon",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "document",
+        "start": 32,
+        "end": 45,
+        "confidence_entity": 0.4,
+        "value": "Apostille CAV",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

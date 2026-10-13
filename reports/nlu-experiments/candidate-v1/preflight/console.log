@@ -1,0 +1,31 @@
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\core\tracker_store.py:1044: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  Base: DeclarativeMeta = declarative_base()
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\validation.py:134: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  import pkg_resources
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\pkg_resources\__init__.py:3117: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\pkg_resources\__init__.py:3117: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('ruamel')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\tensorflow\lite\python\util.py:52: DeprecationWarning: jax.xla_computation is deprecated. Please use the AOT APIs.
+  from jax import xla_computation as _xla_computation
+2026-10-12 23:10:40 INFO     rasa.validator  - Validating intents...
+[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'direct_intent' is listed in the domain file, but is not found in the NLU training data.
+[0m[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'get_category_suggestions' is listed in the domain file, but is not found in the NLU training data.
+[0m[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'direct_intent' is not used in any story or rule.
+[0m[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'get_category_suggestions' is not used in any story or rule.
+[0m2026-10-12 23:10:40 INFO     rasa.validator  - Validating uniqueness of intents and stories...
+2026-10-12 23:10:40 INFO     rasa.validator  - Validating utterances...
+2026-10-12 23:10:40 INFO     rasa.validator  - Story structure validation...
+
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks: 100%|##########| 6/6 [00:00<00:00, 2006.68it/s, # trackers=1]
+2026-10-12 23:10:40 INFO     rasa.core.training.story_conflict  - Considering all preceding turns for conflict analysis.
+2026-10-12 23:10:40 INFO     rasa.validator  - No story structure conflicts found.

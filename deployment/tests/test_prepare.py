@@ -24,7 +24,7 @@ class StagingTests(unittest.TestCase):
             self.write("data/" + name, {})
         self.write("data/activity_logs.json", [{"development": "do not copy"}])
         self.write("server/account/admin-users.json", {"development": "do not copy"})
-        self.write("production-admin.json", {"users": [{"enabled": True, "role": "main-admin", "password": "$2b$12$test-fixture"}]})
+        self.write("production-admin.json", {"development": {"users": [{"enabled": True, "role": "main-admin", "password": "$2b$12$test-fixture"}]}})
         self.model = self.root / "selected.tar.gz"
         self.model.write_bytes(b"selected model fixture")
         (self.root / "other.tar.gz").write_bytes(b"must not copy")
@@ -59,7 +59,7 @@ class StagingTests(unittest.TestCase):
         self.stage()
         relative = "deployment/runtime/actions/knowledge/academics/classroom.json"
         self.write(relative, {"live": "admin edit"})
-        self.write("production-admin.json", {"users": [{"enabled": True, "role": "main-admin", "password": "$2b$12$new-fixture"}]})
+        self.write("production-admin.json", {"development": {"users": [{"enabled": True, "role": "main-admin", "password": "$2b$12$new-fixture"}]}})
         self.model.write_bytes(b"different model")
         env = (self.root / "deployment/.env").read_bytes()
         self.stage()
@@ -75,7 +75,7 @@ class StagingTests(unittest.TestCase):
         self.assertFalse((self.root / "deployment").exists())
 
     def test_plaintext_admin_password_is_rejected(self):
-        self.write("production-admin.json", {"users": [{"enabled": True, "role": "main-admin", "password": "plaintext"}]})
+        self.write("production-admin.json", {"development": {"users": [{"enabled": True, "role": "main-admin", "password": "plaintext"}]}})
         with self.assertRaises(ValueError):
             self.stage()
         self.assertFalse((self.root / "deployment").exists())

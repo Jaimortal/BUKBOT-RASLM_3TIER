@@ -9,6 +9,7 @@ nlu:
       - location of [Microbiology Laboratory](location_name)
       - wher can i find [ComLab 11](location_name)
       - asa dapit ang [Public Assistance Desk](office) sa main entrance
+      - asa dapit ang building ana?
   - intent: ask_schedule
     examples: |
       - how long is the validity of an [INC](document) grade before it becomes 5.0
@@ -22,6 +23,7 @@ nlu:
       - open ba ang [library](location_name) during noon break
       - wen is the start of [1st semester](time_period) enrollment
       - pila ka oras o adlaw makuha ang [medical certificate](document)
+      - when is the schedule for that?
       - kanus-a kutob pwede magpa [validate sa COR](service)
   - intent: ask_fee
     examples: |
@@ -38,6 +40,7 @@ nlu:
       - pila ang bayad sa [midyear](time_period) enrollment
       - is there any fee to join [student organizations](organization) or clubs
       - is tuition free for [foreign students](topic) at BukSU
+      - pila ang bayad ana?
       - how mch is [good moral](document) cert
   - intent: ask_requirement
     examples: |
@@ -50,6 +53,7 @@ nlu:
       - are there grade requirements to maintain a [university scholarship](service)
       - what are the requirements to change my [class schedule](service) due to conflict
       - requriements for [transferee](service) admission in buksu
+      - what are the requirements?
       - unsa ang requirements para sa [international students](topic) nga gusto mag study sa BukSU
   - intent: ask_process
     examples: |
@@ -92,6 +96,7 @@ nlu:
       - how can an alumnus contact the [Registrar](office) from abroad
       - what is the contact number of the [Medical and Dental Clinic](office)
       - emial address of [scholarship unit](office)
+      - unsa ang contact number nila?
       - unsa ang FB page sa [Office of Student Services](office)
       - where can I send an email inquiry to [Bukidnon State University](organization)
   - intent: ask_availability
@@ -102,6 +107,7 @@ nlu:
       - are [evening classes](service) or weekend classes available for undergraduate students
       - modawat ba ang BukSU ug [foreign students](topic) o international applicants
       - is [free dental extraction](service) available for enrolled students
+      - available ba na sa BukSU?
       - is [BS Information Techology](program) ofered in buksu
   - intent: ask_facility_availability
     examples: |
@@ -111,16 +117,30 @@ nlu:
       - does BukSU have an [ICT building](facility_name) or server office
       - is there a [car parking space](facility_name) inside the main campus
       - does buksu hav a [museum](facility_name)
+      - naa ba ana sa sulod sa campus?
       - is there an [elevator](facility_name) or ramp in the new academic buildings
   - intent: ask_document
     examples: |
+      - how to apply for [CAV](document) authentication at the registrar
+      - unsa ang proseso sa pagkuha ug [CAV](document) sa registrar
       - where do I request a [Certificate of No Pending Case](document) or discipline clearance
+      - asa nga opisina magkuha ug [Good Moral](document) sa OSS ba o sa Registrar
       - how do I get a [Transfer Credential](document) from BukSU
+      - where can I get an [affidavit of undertaking](document) or promissory form for lacking requirements
       - asa makuha ang [change of schedule form](document) kung conflict ang subject
       - where do I claim my [TES NOA](document) or Notice of Award
+      - how to request an [informative copy of TOR](document) for evaluation
+      - pwede ba makakuha ug [informative copy sa TOR](document) sa registrar
       - where do I get the [health examination form](document) for incoming freshmen
+      - asa magpa [CTC sa diploma](document) sa BukSU
       - where can I get the [organization accreditation form](document)
       - wher to claim [honorable dismisal](document)
+      - asa makuha ang form para ana?
+  - intent: ask_follow_up
+    examples: |
+      - can you tell me more about the second option
+      - unsa pa man
+      - elaborate pls
   - intent: smalltalk
     examples: |
       - hey good evening

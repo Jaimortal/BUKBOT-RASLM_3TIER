@@ -26,11 +26,12 @@ def plan_files(root, model, admin):
     if model.is_symlink() or not model.is_file() or not model.name.endswith(".tar.gz"):
         raise ValueError("Select an existing trained Rasa .tar.gz model explicitly")
     accounts = read_json(admin)
-    users = accounts.get("users", []) if isinstance(accounts, dict) else []
+    development = accounts.get("development", {}) if isinstance(accounts, dict) else {}
+    users = development.get("users", []) if isinstance(development, dict) else []
     if not isinstance(users, list) or not all(isinstance(user, dict) for user in users):
-        raise ValueError("Admin users must be a JSON array of objects")
+        raise ValueError("Admin JSON must contain a development.users array of objects")
     if not users or not any(u.get("enabled") and u.get("role") == "main-admin" for u in users):
-        raise ValueError("Admin JSON must contain a users array with an enabled main-admin")
+        raise ValueError("Admin JSON must contain an enabled main-admin in development.users")
     for user in users:
         if not isinstance(user.get("password"), str) or not user["password"].startswith(("$2a$", "$2b$", "$2y$")):
             raise ValueError("Admin passwords must be bcrypt hashes, not plain text")

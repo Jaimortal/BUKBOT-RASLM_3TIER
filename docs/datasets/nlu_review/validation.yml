@@ -10,6 +10,8 @@ nlu:
       - where is [Car Parking Area](location_name) inside BukSU
       - whre is [Multimedia Laboratory](location_name)
       - where are the campus gates and entrances located
+      - where is it located on the campus map?
+      - asa dapit ang mga [satellite campuses](topic) sa BukSU sa Bukidnon ug Misamis Oriental
   - intent: ask_schedule
     examples: |
       - is the [university clinic](office) open on Saturdays and Sundays
@@ -25,6 +27,7 @@ nlu:
       - kanus-a mahibal-an ang resulta sa [BukSU CAT](service)
       - wat time does [registar](office) close
       - until what time open ang [Guidance Office](office)
+      - when is the deadline for submitting it?
       - kanus-a ang deadline sa [shifting](service) application
   - intent: ask_fee
     examples: |
@@ -39,6 +42,7 @@ nlu:
       - naa bay bayad magkuha ug [test permit](document) para sa CAT
       - how much is [certified true copy](document) of COR
       - hw much is [dorm](facility_name) per month
+      - how much does it cost per page?
       - naa bay bayad ang [freshman medical exam](service) sa clinic
   - intent: ask_requirement
     examples: |
@@ -55,6 +59,7 @@ nlu:
       - what are the requirements to avail of the [First-Time Jobseeker](topic) free TOR
       - unsay requirements para maka shift sa laing kurso
       - wat are the reqs for [BukSU CAT](service) registration
+      - what requirements do I need to prepare for that?
   - intent: ask_process
     examples: |
       - how do I correct a misspelled name on my [school records](document) at the registrar
@@ -84,7 +89,6 @@ nlu:
       - what are the rules and curfews inside the [BukSU dormitories](facility_name)
       - unsa ang policy sa [No ID No Entry](topic) sa main gate
       - wht is the [gradng system](topic) in buksu
-      - asa dapit ang mga [satellite campuses](topic) sa BukSU sa Bukidnon ug Misamis Oriental
   - intent: ask_contact
     examples: |
       - does the [University Registrar](office) have an official Facebook page
@@ -97,6 +101,7 @@ nlu:
       - unsaon pag contact sa [Clinic](office) kung naay pangutana sa medical clearance
       - how to contact the [Publication Office](office) or Collegianer
       - cntact number of [buksu](organization)
+      - how can I contact that office directly?
       - unsa ang email address sa [Data Privacy Officer](office) o BukSU admin
       - what is the official website domain of [Bukidnon State University](organization)
   - intent: ask_availability
@@ -108,6 +113,7 @@ nlu:
       - are [varsity athletic scholarships](service) or cultural grants available at BukSU
       - naa bay [summer class](service) o midyear term sa BukSU
       - is [BS Hospitality Management](program) open for freshmen this year
+      - is that program offered in the satellite campuses too?
       - does buksu haf [nursing](program) course
       - is [Master in Public Administration](program) or [MBA](program) offered at BukSU
       - naa bay [Master of Arts in Education](program) sa BukSU Graduate School
@@ -120,16 +126,28 @@ nlu:
       - is there an [isolation room](facility_name) or holding area at the university clinic
       - does buksu have [comlab](facility_name) for IT students
       - naa bay [gym](facility_name) para sa PE classes
+      - does that building have a computer lab inside?
       - is there a [water refilling station](facility_name) or drinking fountain on campus
   - intent: ask_document
     examples: |
       - where do I request a [Certificate of Units Earned](document) at BukSU
       - asa magkuha ug [Certificate of Units Earned](document) sa registrar
       - unsaon pagkuha ug [medical clearance slip](document) sa clinic
+      - can I download my [Certificate of Registration](document) directly from SIAS
+      - ma-download ba ang [COR](document) gikan sa student portal
       - where do I request an [NSTP Serial Number Certificate](document)
       - how to get a [lost ID replacement form](document) from OSS
+      - asa mag request ug [Red Ribbon / Apostille CAV](document)
       - where can I get the [facility reservation form](document) for the auditorium
+      - hw to get [transcript of record](document)
       - asa makuha ang [prospectus](document) o curriculum checklist sa akong kurso
+      - where do I pick up the certificate once it is ready?
+      - unsaon pag claim sa [diploma](document) ug [TOR](document) para sa fresh grad
+  - intent: ask_follow_up
+    examples: |
+      - could you share more details on that
+      - pwede dugangan pa nimo ang detalye ana
+      - naa pa bay dugang nga impormasyon
   - intent: smalltalk
     examples: |
       - hi there good afternoon

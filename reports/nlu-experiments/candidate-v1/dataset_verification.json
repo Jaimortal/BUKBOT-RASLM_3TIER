@@ -1,0 +1,288 @@
+{
+  "metadata": {
+    "status": "PREPARED_FOR_ISOLATED_NLU_EXPERIMENT_NOT_RETRAINED",
+    "intended_ratio": "70/15/15",
+    "split_method": "Deterministic source order; whole groups; existing/development-exposed groups locked to training; no forced target counts.",
+    "source_nlu_sha256": "0031b638f0fc9f75a6245d185fd1a41124ed060cc56bca6c2c93d6f71725e0b5",
+    "active_nlu_matches_snapshot": true,
+    "source_candidates_sha256": "170d81959be73a00b4634d4252c7016abb48ca75b8b39c44b4bda5e680f384a9",
+    "knowledge_sha256": {
+      "rasa/actions/knowledge/academics/classroom_policies.json": "59d896fab882086440e496ddc1613306e067cc0a0e76b0e4795190590b310016",
+      "rasa/actions/knowledge/academics/degree_programs.json": "b5527e866205a1a99876516d6ab8787bdb21285edec64f36040484dc798c66cb",
+      "rasa/actions/knowledge/academics/grading_and_retention.json": "73df73f8ef370880c902fec5af1f3b30aab8837f1080ad042ea009b18ba01148",
+      "rasa/actions/knowledge/location/responses_location_core.json": "79910b2ae7c96f13b22b42a3d31371f1d4a8a673f9c62f5a9b4f0f972c1da785",
+      "rasa/actions/knowledge/others/facilities_and_other_inquiries.json": "aa04fb672d2e184e74a502ca971f20e4799bb9300d0fd96c1288521e7a8eda7a",
+      "rasa/actions/knowledge/procedures/academic_transactions.json": "23d9dc9f428e37a45fec0b72d095347353a99029c87f1fc1a70895d6432a43ff",
+      "rasa/actions/knowledge/procedures/admission_procedures.json": "cdc8ae7bd912dcc4150cefe148ce3f00a0299a3d07fa7232ab0a8581123e1958",
+      "rasa/actions/knowledge/procedures/enrollment_procedures.json": "a8912902cb50681ff536eae851d20e03b38e3fd5bb9c783699fcf55eb253290d",
+      "rasa/actions/knowledge/procedures/student_service_procedures.json": "8655b7b15aa15563ca7bda8d3ddde42a59693f1b2d68379715b0dc62f2cda7ad",
+      "rasa/actions/knowledge/services/clinic_services.json": "5e924ec827e1cb73f9db7d0db990c5eed8022cdb9bc3452f87ad7be6521d9dd7",
+      "rasa/actions/knowledge/services/dormitory_services.json": "6f3fd41646eb098cd332a5a5f0f90227d6670a0976c0a5ae9388259eb5699542",
+      "rasa/actions/knowledge/services/library_services.json": "b526af2434a984e8079ea176e112f691cb1409e9774d5b330fee37bc8503f2a7",
+      "rasa/actions/knowledge/services/oss_student_services.json": "441e0a0ebf845fb107ba8b6cc773c264134cbe96b1f3586b2f51772fd7c4c709",
+      "rasa/actions/knowledge/university/administrators.json": "9a635f716a406080bd5c81473c1fd7608310dc46633a92ebc02029f0ef9e632d",
+      "rasa/actions/knowledge/university/admission_directory.json": "218cea8e13390470885da361f98e8f69bfd13ca156ca64bb7402164a03a6192d",
+      "rasa/actions/knowledge/university/faculty_and_deans.json": "5b94550476783f46d21b5b9ab68ddfbde676e89980aa739dc658629db5b3533e",
+      "rasa/actions/knowledge/university/university_identity.json": "c89af38944ad2c61df52d6ab49bac70081f1103044ccb388f214a71e4c15f6e7"
+    },
+    "evaluation_scope": "Synthetic NLU classification candidates only. Topic references are not verified expected answers. No measured model or chatbot accuracy.",
+    "limitations": [
+      "Agent-reviewed labels are not independent human certification.",
+      "Mechanical grouping does not establish semantic independence.",
+      "Synthetic test candidates are not an independent student final evaluation.",
+      "Answer-ground-truth review is separate from NLU classification."
+    ]
+  },
+  "original_examples": 410,
+  "original_disposition": {
+    "train": 396,
+    "duplicate": 5,
+    "challenge": 3,
+    "functional": 6
+  },
+  "corrected_false_existing_claims": 324,
+  "counts": {
+    "train": 943,
+    "duplicate": 15,
+    "challenge": 48,
+    "functional": 6,
+    "reserve": 280,
+    "validation": 158,
+    "test": 150,
+    "conversation": 43,
+    "excluded": 11
+  },
+  "selected_language_tags": {
+    "not_reannotated": 396,
+    "en": 541,
+    "ceb": 187,
+    "mixed": 127
+  },
+  "per_intent": [
+    {
+      "intent": "ask_location",
+      "target": 100,
+      "total": 86,
+      "train": 70,
+      "validation": 9,
+      "test": 7,
+      "shortfall": 14,
+      "percentages": {
+        "train": 81.4,
+        "validation": 10.47,
+        "test": 8.14
+      }
+    },
+    {
+      "intent": "ask_schedule",
+      "target": 100,
+      "total": 98,
+      "train": 70,
+      "validation": 15,
+      "test": 13,
+      "shortfall": 2,
+      "percentages": {
+        "train": 71.43,
+        "validation": 15.31,
+        "test": 13.27
+      }
+    },
+    {
+      "intent": "ask_fee",
+      "target": 100,
+      "total": 98,
+      "train": 70,
+      "validation": 13,
+      "test": 15,
+      "shortfall": 2,
+      "percentages": {
+        "train": 71.43,
+        "validation": 13.27,
+        "test": 15.31
+      }
+    },
+    {
+      "intent": "ask_requirement",
+      "target": 100,
+      "total": 95,
+      "train": 70,
+      "validation": 14,
+      "test": 11,
+      "shortfall": 5,
+      "percentages": {
+        "train": 73.68,
+        "validation": 14.74,
+        "test": 11.58
+      }
+    },
+    {
+      "intent": "ask_process",
+      "target": 100,
+      "total": 96,
+      "train": 70,
+      "validation": 14,
+      "test": 12,
+      "shortfall": 4,
+      "percentages": {
+        "train": 72.92,
+        "validation": 14.58,
+        "test": 12.5
+      }
+    },
+    {
+      "intent": "ask_general_info",
+      "target": 100,
+      "total": 94,
+      "train": 70,
+      "validation": 11,
+      "test": 13,
+      "shortfall": 6,
+      "percentages": {
+        "train": 74.47,
+        "validation": 11.7,
+        "test": 13.83
+      }
+    },
+    {
+      "intent": "ask_contact",
+      "target": 100,
+      "total": 96,
+      "train": 70,
+      "validation": 13,
+      "test": 13,
+      "shortfall": 4,
+      "percentages": {
+        "train": 72.92,
+        "validation": 13.54,
+        "test": 13.54
+      }
+    },
+    {
+      "intent": "ask_availability",
+      "target": 100,
+      "total": 126,
+      "train": 107,
+      "validation": 11,
+      "test": 8,
+      "shortfall": 0,
+      "percentages": {
+        "train": 84.92,
+        "validation": 8.73,
+        "test": 6.35
+      }
+    },
+    {
+      "intent": "ask_facility_availability",
+      "target": 100,
+      "total": 116,
+      "train": 99,
+      "validation": 9,
+      "test": 8,
+      "shortfall": 0,
+      "percentages": {
+        "train": 85.34,
+        "validation": 7.76,
+        "test": 6.9
+      }
+    },
+    {
+      "intent": "ask_document",
+      "target": 100,
+      "total": 98,
+      "train": 70,
+      "validation": 13,
+      "test": 15,
+      "shortfall": 2,
+      "percentages": {
+        "train": 71.43,
+        "validation": 13.27,
+        "test": 15.31
+      }
+    },
+    {
+      "intent": "ask_follow_up",
+      "target": 60,
+      "total": 29,
+      "train": 23,
+      "validation": 3,
+      "test": 3,
+      "shortfall": 31,
+      "percentages": {
+        "train": 79.31,
+        "validation": 10.34,
+        "test": 10.34
+      }
+    },
+    {
+      "intent": "smalltalk",
+      "target": 60,
+      "total": 60,
+      "train": 42,
+      "validation": 9,
+      "test": 9,
+      "shortfall": 0,
+      "percentages": {
+        "train": 70,
+        "validation": 15,
+        "test": 15
+      }
+    },
+    {
+      "intent": "goodbye",
+      "target": 40,
+      "total": 40,
+      "train": 28,
+      "validation": 6,
+      "test": 6,
+      "shortfall": 0,
+      "percentages": {
+        "train": 70,
+        "validation": 15,
+        "test": 15
+      }
+    },
+    {
+      "intent": "bot_challenge",
+      "target": 40,
+      "total": 40,
+      "train": 28,
+      "validation": 6,
+      "test": 6,
+      "shortfall": 0,
+      "percentages": {
+        "train": 70,
+        "validation": 15,
+        "test": 15
+      }
+    },
+    {
+      "intent": "set_category",
+      "target": 40,
+      "total": 40,
+      "train": 28,
+      "validation": 6,
+      "test": 6,
+      "shortfall": 0,
+      "percentages": {
+        "train": 70,
+        "validation": 15,
+        "test": 15
+      }
+    },
+    {
+      "intent": "reset_category",
+      "target": 40,
+      "total": 39,
+      "train": 28,
+      "validation": 6,
+      "test": 5,
+      "shortfall": 1,
+      "percentages": {
+        "train": 71.79,
+        "validation": 15.38,
+        "test": 12.82
+      }
+    }
+  ],
+  "assertions": "PASS: original row accounting, source-only parsing, split isolation, grouped split isolation, no challenge/payload training, YAML count round-trip. Not a model accuracy test."
+}

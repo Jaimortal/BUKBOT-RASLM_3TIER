@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\rasa\\venv\\Scripts\\python.exe",
+    "-m",
+    "rasa",
+    "test",
+    "nlu",
+    "--model",
+    "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\rasa\\models\\20260825-010246-cheerful-van.tar.gz",
+    "--nlu",
+    "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\reports\\nlu-experiments\\candidate-v2\\validation.yml",
+    "--domain",
+    "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\reports\\nlu-experiments\\candidate-v2\\domain.yml",
+    "--out",
+    "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\reports\\nlu-experiments\\candidate-v2\\baseline\\results",
+    "--successes"
+  ],
+  "cwd": "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot",
+  "started_utc": "2026-10-13T07:46:20.510059+00:00"
+}

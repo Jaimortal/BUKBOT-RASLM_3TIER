@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "status": "REVIEW_ONLY_NOT_RETRAINED",
+    "status": "PREPARED_FOR_ISOLATED_NLU_EXPERIMENT_NOT_RETRAINED",
     "intended_ratio": "70/15/15",
     "split_method": "Deterministic source order; whole groups; existing/development-exposed groups locked to training; no forced target counts.",
     "source_nlu_sha256": "0031b638f0fc9f75a6245d185fd1a41124ed060cc56bca6c2c93d6f71725e0b5",
@@ -27,396 +27,14 @@
     },
     "evaluation_scope": "Synthetic NLU classification candidates only. Topic references are not verified expected answers. No measured model or chatbot accuracy.",
     "limitations": [
-      "Human label/language review remains necessary.",
+      "Agent-reviewed labels are not independent human certification.",
       "Mechanical grouping does not establish semantic independence.",
-      "All previously exposed questions are development data; obtain fresh student questions for final evaluation.",
-      "Conversation/challenge cases require an adjudicated behavior rubric and replay harness."
+      "Synthetic test candidates are not an independent student final evaluation.",
+      "Answer-ground-truth review is separate from NLU classification."
     ]
   },
   "split": "development_conversation_pool_not_final_test",
   "items": [
-    {
-      "id": "gemini_ask_location_070",
-      "intent": "ask_location",
-      "annotated": "asa dapit makita kana nga office?",
-      "text": "asa dapit makita kana nga office?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_location_070",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_LOC_44",
-      "language": "mixed",
-      "claimed_topic": "location.Guidance Office",
-      "context": "active_category=services; prior_user_turn=\"how to avail guidance counseling\"; conversation_subject=\"guidance_counseling_services_buksu\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": {
-        "file": "rasa/actions/knowledge/location/responses_location_core.json",
-        "location_key": "Guidance Office"
-      },
-      "topic_reference_status": "exists_answer_match_not_reviewed",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_location_084",
-      "intent": "ask_location",
-      "annotated": "where is it located on the campus map?",
-      "text": "where is it located on the campus map?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_location_084",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_LOC_V13",
-      "language": "en",
-      "claimed_topic": "clinic_services.buksu_med_loc",
-      "context": "active_category=services; prior_user_turn=\"what services does the university clinic offer\"; conversation_subject=\"university_clinic\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": {
-        "file": "rasa/actions/knowledge/services/clinic_services.json",
-        "topic_path": "buksu_med_loc",
-        "intent": "buksu_med_loc"
-      },
-      "topic_reference_status": "exists_answer_match_not_reviewed",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_location_099",
-      "intent": "ask_location",
-      "annotated": "asa dapit ang building ana?",
-      "text": "asa dapit ang building ana?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_location_099",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_LOC_T13",
-      "language": "ceb",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (unanchored pronoun location query -> should ask which building/office)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_schedule_069",
-      "intent": "ask_schedule",
-      "annotated": "unsang orasa sila mag abre ugma?",
-      "text": "unsang orasa sila mag abre ugma?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_schedule_069",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_SCH_34",
-      "language": "ceb",
-      "claimed_topic": "registrar_and_clinic_schedules.registrar_operating_hours",
-      "context": "active_category=procedures; prior_user_turn=\"where is the registrar office\"; conversation_subject=\"registrar_office\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_schedule_070",
-      "intent": "ask_schedule",
-      "annotated": "how many days until it is released?",
-      "text": "how many days until it is released?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_schedule_070",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_SCH_35",
-      "language": "en",
-      "claimed_topic": "registrar_and_documents.tor.processing_time",
-      "context": "active_category=procedures; prior_user_turn=\"how to request official transcript of records\"; conversation_subject=\"tor\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_schedule_084",
-      "intent": "ask_schedule",
-      "annotated": "when is the deadline for submitting it?",
-      "text": "when is the deadline for submitting it?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_schedule_084",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_SCH_V11",
-      "language": "en",
-      "claimed_topic": "academic_transactions.inc_completion.deadline",
-      "context": "active_category=academics; prior_user_turn=\"how do I complete an INC grade\"; conversation_subject=\"inc_completion\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_schedule_099",
-      "intent": "ask_schedule",
-      "annotated": "when is the schedule for that?",
-      "text": "when is the schedule for that?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_schedule_099",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_SCH_T11",
-      "language": "en",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (ambiguous schedule request without prior subject)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_fee_069",
-      "intent": "ask_fee",
-      "annotated": "pila ang bayad ana sa cashier?",
-      "text": "pila ang bayad ana sa cashier?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_fee_069",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FEE_34",
-      "language": "ceb",
-      "claimed_topic": "registrar_and_documents.tor.fee",
-      "context": "active_category=procedures; prior_user_turn=\"how to request TOR\"; conversation_subject=\"tor\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_fee_070",
-      "intent": "ask_fee",
-      "annotated": "is it free or do I need to pay?",
-      "text": "is it free or do I need to pay?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_fee_070",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FEE_35",
-      "language": "en",
-      "claimed_topic": "admissions_and_enrollment.buksu_cat.fee",
-      "context": "active_category=procedures; prior_user_turn=\"how to register for BukSU CAT\"; conversation_subject=\"buksu_cat\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_fee_084",
-      "intent": "ask_fee",
-      "annotated": "how much does it cost per page?",
-      "text": "how much does it cost per page?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_fee_084",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_FEE_V11",
-      "language": "en",
-      "claimed_topic": "registrar_and_documents.tor.fee",
-      "context": "active_category=procedures; prior_user_turn=\"where do I request my TOR\"; conversation_subject=\"tor\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_fee_099",
-      "intent": "ask_fee",
-      "annotated": "pila ang bayad ana?",
-      "text": "pila ang bayad ana?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_fee_099",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_FEE_T11",
-      "language": "ceb",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (unanchored fee question -> requires clarification of service/document)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_requirement_069",
-      "intent": "ask_requirement",
-      "annotated": "unsa ang mga requirements nga kinahanglan dad-on ana?",
-      "text": "unsa ang mga requirements nga kinahanglan dad-on ana?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_requirement_069",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_REQ_37",
-      "language": "ceb",
-      "claimed_topic": "admissions_and_enrollment.transferee_enrollment.requirements",
-      "context": "active_category=procedures; prior_user_turn=\"how do I transfer to BukSU from another school\"; conversation_subject=\"transferee_enrollment\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_requirement_070",
-      "intent": "ask_requirement",
-      "annotated": "what qualifications do I need to apply for it?",
-      "text": "what qualifications do I need to apply for it?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_requirement_070",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_REQ_38",
-      "language": "en",
-      "claimed_topic": "scholarships_and_financial_aid.scholarship_application_general.requirements",
-      "context": "active_category=services; prior_user_turn=\"what scholarships are available at BukSU\"; conversation_subject=\"scholarship_application_general\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_requirement_084",
-      "intent": "ask_requirement",
-      "annotated": "what requirements do I need to prepare for that?",
-      "text": "what requirements do I need to prepare for that?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_requirement_084",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_REQ_V10",
-      "language": "en",
-      "claimed_topic": "academic_transactions.inc_completion.process",
-      "context": "active_category=academics; prior_user_turn=\"how to complete an INC grade\"; conversation_subject=\"inc_completion\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_requirement_099",
-      "intent": "ask_requirement",
-      "annotated": "what are the requirements?",
-      "text": "what are the requirements?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_requirement_099",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_REQ_T11",
-      "language": "en",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (unanchored requirements question -> must ask which transaction/program)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
     {
       "id": "gemini_ask_process_069",
       "intent": "ask_process",
@@ -433,13 +51,18 @@
       "reasons": [
         "context_requires_replay_not_standalone_nlu"
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "original_intent": "ask_process",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -458,13 +81,18 @@
       "reasons": [
         "context_requires_replay_not_standalone_nlu"
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "original_intent": "ask_process",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -483,13 +111,18 @@
       "reasons": [
         "context_requires_replay_not_standalone_nlu"
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "original_intent": "ask_process",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -508,13 +141,18 @@
       "reasons": [
         "context_requires_replay_not_standalone_nlu"
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "original_intent": "ask_general_info",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -533,445 +171,18 @@
       "reasons": [
         "context_requires_replay_not_standalone_nlu"
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "original_intent": "ask_general_info",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_contact_068",
-      "intent": "ask_contact",
-      "annotated": "what is their email address or phone number?",
-      "text": "what is their email address or phone number?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_contact_068",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_CON_38",
-      "language": "en",
-      "claimed_topic": "contacts_and_directory.university_contact_directory",
-      "context": "active_category=procedures; prior_user_turn=\"where is the registrar office\"; conversation_subject=\"registrar_office\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_contact_069",
-      "intent": "ask_contact",
-      "annotated": "unsaon sila pag contact online?",
-      "text": "unsaon sila pag contact online?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_contact_069",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_CON_39",
-      "language": "ceb",
-      "claimed_topic": "student_support_and_wellness.guidance_counseling_services_buksu",
-      "context": "active_category=services; prior_user_turn=\"is guidance counseling free\"; conversation_subject=\"guidance_counseling_services_buksu\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_contact_083",
-      "intent": "ask_contact",
-      "annotated": "how can I contact that office directly?",
-      "text": "how can I contact that office directly?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_contact_083",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_CON_V11",
-      "language": "en",
-      "claimed_topic": "contacts_and_directory.university_contact_directory",
-      "context": "active_category=procedures; prior_user_turn=\"where is the admission office located\"; conversation_subject=\"admission_office\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_contact_098",
-      "intent": "ask_contact",
-      "annotated": "unsa ang contact number nila?",
-      "text": "unsa ang contact number nila?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_contact_098",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_CON_T11",
-      "language": "ceb",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (unanchored contact inquiry -> must clarify which office)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_availability_069",
-      "intent": "ask_availability",
-      "annotated": "naa ba na nga kurso sa main campus?",
-      "text": "naa ba na nga kurso sa main campus?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_availability_069",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_AVL_37",
-      "language": "ceb",
-      "claimed_topic": "academic_programs.colleges_and_programs",
-      "context": "active_category=academics; prior_user_turn=\"what courses are under College of Arts and Sciences\"; conversation_subject=\"colleges_and_programs\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_availability_084",
-      "intent": "ask_availability",
-      "annotated": "is that program offered in the satellite campuses too?",
-      "text": "is that program offered in the satellite campuses too?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_availability_084",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_AVL_V10",
-      "language": "en",
-      "claimed_topic": "university_identity.satellite_campuses",
-      "context": "active_category=academics; prior_user_turn=\"does BukSU offer BSIT\"; conversation_subject=\"bsit\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_availability_099",
-      "intent": "ask_availability",
-      "annotated": "available ba na sa BukSU?",
-      "text": "available ba na sa BukSU?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_availability_099",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_AVL_T11",
-      "language": "ceb",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (ambiguous availability check without program/service)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_facility_availability_069",
-      "intent": "ask_facility_availability",
-      "annotated": "naa ba pod nay aircon ug wifi sa sulod?",
-      "text": "naa ba pod nay aircon ug wifi sa sulod?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_facility_availability_069",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FAC_44",
-      "language": "ceb",
-      "claimed_topic": "location.Learning Commons",
-      "context": "active_category=location; prior_user_turn=\"where is the Learning Commons\"; conversation_subject=\"Learning Commons\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": {
-        "file": "rasa/actions/knowledge/location/responses_location_core.json",
-        "location_key": "Learning Commons"
-      },
-      "topic_reference_status": "exists_answer_match_not_reviewed",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_facility_availability_084",
-      "intent": "ask_facility_availability",
-      "annotated": "does that building have a computer lab inside?",
-      "text": "does that building have a computer lab inside?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_facility_availability_084",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_FAC_V11",
-      "language": "en",
-      "claimed_topic": "facilities_and_other_inquiries.all_comlab_locations",
-      "context": "active_category=location; prior_user_turn=\"where is the COT building\"; conversation_subject=\"COT Buildings\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": {
-        "file": "rasa/actions/knowledge/others/facilities_and_other_inquiries.json",
-        "topic_path": "all_comlab_locations",
-        "intent": "all_comlab_locations"
-      },
-      "topic_reference_status": "exists_answer_match_not_reviewed",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_facility_availability_099",
-      "intent": "ask_facility_availability",
-      "annotated": "naa ba ana sa sulod sa campus?",
-      "text": "naa ba ana sa sulod sa campus?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_facility_availability_099",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_FAC_T12",
-      "language": "ceb",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (unanchored facility existence question -> must clarify which facility)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_document_069",
-      "intent": "ask_document",
-      "annotated": "asa nga window sa registrar nako i-claim ang document?",
-      "text": "asa nga window sa registrar nako i-claim ang document?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_document_069",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_DOC_40",
-      "language": "ceb",
-      "claimed_topic": "registrar_and_documents.tor.process",
-      "context": "active_category=procedures; prior_user_turn=\"how many days to process TOR\"; conversation_subject=\"tor\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_document_070",
-      "intent": "ask_document",
-      "annotated": "can I download that form from the SIAS portal?",
-      "text": "can I download that form from the SIAS portal?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_document_070",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_DOC_41",
-      "language": "en",
-      "claimed_topic": "registrar_and_documents.cor_reprinting_and_certified_copy",
-      "context": "active_category=procedures; prior_user_turn=\"where to request COR\"; conversation_subject=\"cor_reprinting_and_certified_copy\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_document_083",
-      "intent": "ask_document",
-      "annotated": "where do I pick up the certificate once it is ready?",
-      "text": "where do I pick up the certificate once it is ready?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_document_083",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_DOC_V11",
-      "language": "en",
-      "claimed_topic": "registrar_and_documents.good_moral_certificate",
-      "context": "active_category=procedures; prior_user_turn=\"how many days does good moral certificate release take\"; conversation_subject=\"good_moral_certificate\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_document_098",
-      "intent": "ask_document",
-      "annotated": "asa makuha ang form para ana?",
-      "text": "asa makuha ang form para ana?",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_document_098",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_DOC_T11",
-      "language": "ceb",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (unanchored document/form request -> must ask which document)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_002",
-      "intent": "ask_follow_up",
-      "annotated": "more details please",
-      "text": "more details please",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_002",
-      "gemini_claimed_source": "existing_nlu",
-      "original_split": "train",
-      "original_group": "PG_FOL_01",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=any; prior_user_turn=\"any answered topic\"; conversation_subject=\"inherited_from_prior_turn\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": "Not an exact original example/annotation; treated as synthetic, never as preserved source data.",
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_003",
-      "intent": "ask_follow_up",
-      "annotated": "what else",
-      "text": "what else",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_003",
-      "gemini_claimed_source": "existing_nlu",
-      "original_split": "train",
-      "original_group": "PG_FOL_02",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=any; prior_user_turn=\"any answered topic\"; conversation_subject=\"inherited_from_prior_turn\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": "Not an exact original example/annotation; treated as synthetic, never as preserved source data.",
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_004",
-      "intent": "ask_follow_up",
-      "annotated": "can you elaborate",
-      "text": "can you elaborate",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_004",
-      "gemini_claimed_source": "existing_nlu",
-      "original_split": "train",
-      "original_group": "PG_FOL_01",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=any; prior_user_turn=\"any answered topic\"; conversation_subject=\"inherited_from_prior_turn\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": "Not an exact original example/annotation; treated as synthetic, never as preserved source data.",
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -988,15 +199,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"how to enroll at BukSU\"; conversation_subject=\"freshman_enrollment.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": "Not an exact original example/annotation; treated as synthetic, never as preserved source data.",
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1013,65 +230,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"how to enroll at BukSU\"; conversation_subject=\"freshman_enrollment.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": "Not an exact original example/annotation; treated as synthetic, never as preserved source data.",
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_007",
-      "intent": "ask_follow_up",
-      "annotated": "unsa pa ang sunod",
-      "text": "unsa pa ang sunod",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_007",
-      "gemini_claimed_source": "existing_nlu",
-      "original_split": "train",
-      "original_group": "PG_FOL_03",
-      "language": "ceb",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=procedures; prior_user_turn=\"unsaon pag-enroll\"; conversation_subject=\"freshman_enrollment.process\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": "Not an exact original example/annotation; treated as synthetic, never as preserved source data.",
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_008",
-      "intent": "ask_follow_up",
-      "annotated": "naa pa bay lain",
-      "text": "naa pa bay lain",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_008",
-      "gemini_claimed_source": "existing_nlu",
-      "original_split": "train",
-      "original_group": "PG_FOL_02",
-      "language": "ceb",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=any; prior_user_turn=\"unsa ang requirements sa scholarship\"; conversation_subject=\"scholarship_application_general.requirements\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": "Not an exact original example/annotation; treated as synthetic, never as preserved source data.",
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1088,15 +261,21 @@
       "claimed_topic": "admissions_and_enrollment.transferee_enrollment.requirements",
       "context": "active_category=procedures; prior_user_turn=\"what are the requirements for freshman enrollment\"; conversation_subject=\"freshman_enrollment.requirements\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1113,15 +292,21 @@
       "claimed_topic": "admissions_and_enrollment.transferee_enrollment.requirements",
       "context": "active_category=procedures; prior_user_turn=\"unsa ang requirements sa enrollment\"; conversation_subject=\"freshman_enrollment.requirements\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1138,15 +323,21 @@
       "claimed_topic": "admissions_and_enrollment.freshman_enrollment.process",
       "context": "active_category=procedures; prior_user_turn=\"what are the requirements for enrollment\"; conversation_subject=\"freshman_enrollment\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1163,65 +354,21 @@
       "claimed_topic": "admissions_and_enrollment.freshman_enrollment.process",
       "context": "active_category=procedures; prior_user_turn=\"unsa ang requirements sa enrollment\"; conversation_subject=\"freshman_enrollment\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_013",
-      "intent": "ask_follow_up",
-      "annotated": "can you explain that part more clearly",
-      "text": "can you explain that part more clearly",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_013",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_06",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=academics; prior_user_turn=\"what is the grading system in BukSU\"; conversation_subject=\"grading_system\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_014",
-      "intent": "ask_follow_up",
-      "annotated": "pwede pasabta ko pag-ayo ana",
-      "text": "pwede pasabta ko pag-ayo ana",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_014",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_06",
-      "language": "ceb",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=academics; prior_user_turn=\"unsa ang passing grade sa BukSU\"; conversation_subject=\"grading_system\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1238,15 +385,21 @@
       "claimed_topic": "admissions_and_enrollment.continuing_enrollment.process",
       "context": "active_category=procedures; prior_user_turn=\"how to enroll as a freshman\"; conversation_subject=\"freshman_enrollment.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1263,65 +416,21 @@
       "claimed_topic": "admissions_and_enrollment.continuing_enrollment.process",
       "context": "active_category=procedures; prior_user_turn=\"how to enroll at BukSU\"; conversation_subject=\"freshman_enrollment.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_017",
-      "intent": "ask_follow_up",
-      "annotated": "is there anything else I should know about it",
-      "text": "is there anything else I should know about it",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_017",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_08",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=services; prior_user_turn=\"what is TES scholarship\"; conversation_subject=\"tes_tdp_financial_assistance\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_018",
-      "intent": "ask_follow_up",
-      "annotated": "unsa pa ang uban detalye bahin ana",
-      "text": "unsa pa ang uban detalye bahin ana",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_018",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_08",
-      "language": "ceb",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=services; prior_user_turn=\"what is TES scholarship\"; conversation_subject=\"tes_tdp_financial_assistance\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1338,15 +447,21 @@
       "claimed_topic": "registrar_and_documents.tor.requirements",
       "context": "active_category=procedures; prior_user_turn=\"how to get TOR\"; conversation_subject=\"tor\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1363,40 +478,21 @@
       "claimed_topic": "registrar_and_documents.tor.requirements",
       "context": "active_category=procedures; prior_user_turn=\"where can I claim my TOR\"; conversation_subject=\"tor\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_021",
-      "intent": "ask_follow_up",
-      "annotated": "go on please",
-      "text": "go on please",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_021",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_10",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=university; prior_user_turn=\"tell me the history of BukSU\"; conversation_subject=\"history\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1413,15 +509,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"how to validate COR\"; conversation_subject=\"cor_validation.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1438,15 +540,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"unsaon pag-validate sa COR\"; conversation_subject=\"cor_validation.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1463,15 +571,21 @@
       "claimed_topic": "admissions_and_enrollment.enrollment_schedule_dates",
       "context": "active_category=academics; prior_user_turn=\"when is first semester enrollment\"; conversation_subject=\"enrollment_schedule_dates\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1488,15 +602,21 @@
       "claimed_topic": "academic_transactions.inc_completion.deadline",
       "context": "active_category=academics; prior_user_turn=\"when is the deadline for INC completion\"; conversation_subject=\"inc_completion\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1513,40 +633,21 @@
       "claimed_topic": "academic_transactions.inc_completion.deadline",
       "context": "active_category=academics; prior_user_turn=\"when is the deadline for INC completion\"; conversation_subject=\"inc_completion\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_027",
-      "intent": "ask_follow_up",
-      "annotated": "give me more info about that",
-      "text": "give me more info about that",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_027",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_14",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=services; prior_user_turn=\"does BukSU have dormitory\"; conversation_subject=\"dormitory_application_and_rules\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1563,15 +664,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=services; prior_user_turn=\"what scholarships are available at BukSU\"; conversation_subject=\"scholarship_application_general\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1588,15 +695,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"how to reset student portal password\"; conversation_subject=\"sias_gmail_lms_account_recovery\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1613,15 +726,21 @@
       "claimed_topic": "clinic_services.dental_services_schedule_and_availability",
       "context": "active_category=services; prior_user_turn=\"what are the clinic operating hours\"; conversation_subject=\"clinic_operating_hours\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1638,15 +757,21 @@
       "claimed_topic": "student_life_and_organizations.dress_code_and_uniform_policy",
       "context": "active_category=others; prior_user_turn=\"what is the dress code at BukSU\"; conversation_subject=\"dress_code_and_uniform_policy\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1663,15 +788,21 @@
       "claimed_topic": "student_life_and_organizations.dress_code_and_uniform_policy",
       "context": "active_category=others; prior_user_turn=\"uniform policy\"; conversation_subject=\"dress_code_and_uniform_policy\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1688,65 +819,21 @@
       "claimed_topic": "admissions_and_enrollment.shifting.process",
       "context": "active_category=procedures; prior_user_turn=\"requirements for freshman enrollment\"; conversation_subject=\"freshman_enrollment\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_034",
-      "intent": "ask_follow_up",
-      "annotated": "can you give me the complete list",
-      "text": "can you give me the complete list",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_034",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_19",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=academics; prior_user_turn=\"what are the colleges in BukSU\"; conversation_subject=\"colleges_and_programs\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_035",
-      "intent": "ask_follow_up",
-      "annotated": "pwede ihatag ang tibuok listahan ana",
-      "text": "pwede ihatag ang tibuok listahan ana",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_035",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_19",
-      "language": "ceb",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=academics; prior_user_turn=\"unsa nga mga kurso ang naa sa BukSU\"; conversation_subject=\"colleges_and_programs\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1763,15 +850,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"what to bring on entrance exam day\"; conversation_subject=\"buksu_cat.requirements\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1788,40 +881,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"unsa ang dad-on sa adlaw sa CAT\"; conversation_subject=\"buksu_cat.requirements\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_038",
-      "intent": "ask_follow_up",
-      "annotated": "tell me mor about it",
-      "text": "tell me mor about it",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_038",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_21",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=university; prior_user_turn=\"what is BukSU\"; conversation_subject=\"university_profile\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1838,15 +912,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"how to get student ID\"; conversation_subject=\"student_id.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1863,15 +943,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"unsaon pagkuha og ID\"; conversation_subject=\"student_id.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1888,90 +974,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=academics; prior_user_turn=\"what is the GWA requirement for Latin honors\"; conversation_subject=\"latin_honors_qualifications\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_042",
-      "intent": "ask_follow_up",
-      "annotated": "keep going",
-      "text": "keep going",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_042",
-      "gemini_claimed_source": "synthetic_train_candidate",
-      "original_split": "train",
-      "original_group": "PG_FOL_24",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=any; prior_user_turn=\"any answered topic\"; conversation_subject=\"inherited_from_prior_turn\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_043",
-      "intent": "ask_follow_up",
-      "annotated": "could you share more details on that",
-      "text": "could you share more details on that",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_043",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_FOL_V01",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=services; prior_user_turn=\"what services does the clinic offer\"; conversation_subject=\"clinic_services_overview\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_044",
-      "intent": "ask_follow_up",
-      "annotated": "pwede dugangan pa nimo ang detalye ana",
-      "text": "pwede dugangan pa nimo ang detalye ana",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_044",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_FOL_V01",
-      "language": "ceb",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=services; prior_user_turn=\"what services does the clinic offer\"; conversation_subject=\"clinic_services_overview\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -1988,15 +1005,21 @@
       "claimed_topic": "admissions_and_enrollment.graduate_school_admission",
       "context": "active_category=procedures; prior_user_turn=\"how much is tuition at BukSU\"; conversation_subject=\"free_tuition.overview\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2013,15 +1036,21 @@
       "claimed_topic": "admissions_and_enrollment.freshman_enrollment.process",
       "context": "active_category=procedures; prior_user_turn=\"steps to enroll\"; conversation_subject=\"freshman_enrollment.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2038,15 +1067,21 @@
       "claimed_topic": "registrar_and_documents.tor.requirements",
       "context": "active_category=procedures; prior_user_turn=\"where can I claim my TOR\"; conversation_subject=\"tor\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2063,40 +1098,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"requirements for scholarship\"; conversation_subject=\"scholarship_application_general.requirements\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_049",
-      "intent": "ask_follow_up",
-      "annotated": "naa pa bay dugang nga impormasyon",
-      "text": "naa pa bay dugang nga impormasyon",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_049",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "val",
-      "original_group": "PG_FOL_V06",
-      "language": "ceb",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=university; prior_user_turn=\"who is the president of BukSU\"; conversation_subject=\"leadership_and_governance\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2113,15 +1129,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"how to shift course\"; conversation_subject=\"shifting.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2138,15 +1160,21 @@
       "claimed_topic": "registrar_and_clinic_schedules.registrar_weekend_schedule",
       "context": "active_category=procedures; prior_user_turn=\"what time does registrar open\"; conversation_subject=\"registrar_operating_hours\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2163,15 +1191,21 @@
       "claimed_topic": "admissions_and_enrollment.buksu_cat.results",
       "context": "active_category=procedures; prior_user_turn=\"how to apply for BukSU CAT\"; conversation_subject=\"buksu_cat\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2188,15 +1222,21 @@
       "claimed_topic": "admissions_and_enrollment.buksu_cat.results",
       "context": "active_category=procedures; prior_user_turn=\"unsaon pag-apply sa CAT\"; conversation_subject=\"buksu_cat\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2213,10 +1253,15 @@
       "claimed_topic": "location.Mahogany dorm",
       "context": "active_category=location; prior_user_turn=\"where is Rubia dorm\"; conversation_subject=\"Rubia dorm\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": {
         "file": "rasa/actions/knowledge/location/responses_location_core.json",
         "location_key": "Mahogany dorm"
@@ -2225,6 +1270,7 @@
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2241,40 +1287,21 @@
       "claimed_topic": "clinic_services.clinic_services_overview",
       "context": "active_category=services; prior_user_turn=\"does the clinic provide free medicine\"; conversation_subject=\"free_medicine_dispensing_policy\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_056",
-      "intent": "ask_follow_up",
-      "annotated": "can you tell me more about the second option",
-      "text": "can you tell me more about the second option",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_056",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_FOL_T04",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=academics; prior_user_turn=\"what is NSTP\"; conversation_subject=\"nstp_rotc_cwts_lts_program\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2291,65 +1318,21 @@
       "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
       "context": "active_category=procedures; prior_user_turn=\"how to complete an INC\"; conversation_subject=\"inc_completion.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_058",
-      "intent": "ask_follow_up",
-      "annotated": "unsa pa man",
-      "text": "unsa pa man",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_058",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_FOL_T06",
-      "language": "ceb",
-      "claimed_topic": "AMBIGUOUS_NEEDS_CLARIFICATION",
-      "context": "active_category=None; prior_user_turn=None (follow-up without prior context -> should ask what topic the user wants to explore)",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
-      "partition": "conversation"
-    },
-    {
-      "id": "gemini_ask_follow_up_059",
-      "intent": "ask_follow_up",
-      "annotated": "elaborate pls",
-      "text": "elaborate pls",
-      "provenance": "synthetic_candidate",
-      "source_reference": "source/gemini_candidates.json:ask_follow_up_059",
-      "gemini_claimed_source": "synthetic_eval_candidate",
-      "original_split": "test",
-      "original_group": "PG_FOL_T07",
-      "language": "en",
-      "claimed_topic": "CONTEXT_DEPENDENT_FOLLOW_UP",
-      "context": "active_category=academics; prior_user_turn=\"attendance policy\"; conversation_subject=\"attendance_and_absences_policy\"",
-      "reasons": [
-        "context_requires_replay_not_standalone_nlu"
-      ],
-      "review_status": "synthetic_needs_human_review",
-      "provenance_correction": null,
-      "topic_reference": null,
-      "topic_reference_status": "unresolved_or_behavior_label",
-      "expected_topic_id": null,
-      "expected_behavior": "intent_classification_only",
-      "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     },
     {
@@ -2366,15 +1349,21 @@
       "claimed_topic": "admissions_and_enrollment.returning_student_readmission",
       "context": "active_category=procedures; prior_user_turn=\"how to enroll for 2nd semester\"; conversation_subject=\"continuing_enrollment.process\"",
       "reasons": [
-        "context_requires_replay_not_standalone_nlu"
+        "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label."
       ],
-      "review_status": "synthetic_needs_human_review",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
       "provenance_correction": null,
+      "context_for_answer": true,
+      "nlu_context_independent": false,
+      "exclusion_reason": "Contextual follow-up introduces a new subject/purpose; retained as conversation development case, not a standalone label.",
+      "original_intent": "ask_follow_up",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "unresolved_or_behavior_label",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "conversation"
     }
   ]

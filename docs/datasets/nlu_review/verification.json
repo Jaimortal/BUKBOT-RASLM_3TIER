@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "status": "REVIEW_ONLY_NOT_RETRAINED",
+    "status": "PREPARED_FOR_ISOLATED_NLU_EXPERIMENT_NOT_RETRAINED",
     "intended_ratio": "70/15/15",
     "split_method": "Deterministic source order; whole groups; existing/development-exposed groups locked to training; no forced target counts.",
     "source_nlu_sha256": "0031b638f0fc9f75a6245d185fd1a41124ed060cc56bca6c2c93d6f71725e0b5",
@@ -27,93 +27,92 @@
     },
     "evaluation_scope": "Synthetic NLU classification candidates only. Topic references are not verified expected answers. No measured model or chatbot accuracy.",
     "limitations": [
-      "Human label/language review remains necessary.",
+      "Agent-reviewed labels are not independent human certification.",
       "Mechanical grouping does not establish semantic independence.",
-      "All previously exposed questions are development data; obtain fresh student questions for final evaluation.",
-      "Conversation/challenge cases require an adjudicated behavior rubric and replay harness."
+      "Synthetic test candidates are not an independent student final evaluation.",
+      "Answer-ground-truth review is separate from NLU classification."
     ]
   },
   "original_examples": 410,
   "original_disposition": {
-    "train": 355,
-    "review": 42,
-    "duplicate": 4,
+    "train": 396,
+    "duplicate": 5,
     "challenge": 3,
     "functional": 6
   },
   "corrected_false_existing_claims": 324,
   "counts": {
-    "train": 885,
-    "review": 108,
-    "duplicate": 10,
+    "train": 943,
+    "duplicate": 15,
     "challenge": 48,
     "functional": 6,
-    "reserve": 230,
-    "conversation": 93,
-    "validation": 142,
-    "test": 132
+    "reserve": 280,
+    "validation": 158,
+    "test": 150,
+    "conversation": 43,
+    "excluded": 11
   },
   "selected_language_tags": {
-    "not_reannotated": 355,
-    "en": 520,
-    "ceb": 161,
-    "mixed": 123
+    "not_reannotated": 396,
+    "en": 541,
+    "ceb": 187,
+    "mixed": 127
   },
   "per_intent": [
     {
       "intent": "ask_location",
       "target": 100,
-      "total": 83,
+      "total": 86,
       "train": 70,
-      "validation": 7,
-      "test": 6,
-      "shortfall": 17,
+      "validation": 9,
+      "test": 7,
+      "shortfall": 14,
       "percentages": {
-        "train": 84.34,
-        "validation": 8.43,
-        "test": 7.23
+        "train": 81.4,
+        "validation": 10.47,
+        "test": 8.14
       }
     },
     {
       "intent": "ask_schedule",
       "target": 100,
-      "total": 96,
+      "total": 98,
       "train": 70,
-      "validation": 14,
-      "test": 12,
-      "shortfall": 4,
+      "validation": 15,
+      "test": 13,
+      "shortfall": 2,
       "percentages": {
-        "train": 72.92,
-        "validation": 14.58,
-        "test": 12.5
+        "train": 71.43,
+        "validation": 15.31,
+        "test": 13.27
       }
     },
     {
       "intent": "ask_fee",
       "target": 100,
-      "total": 96,
+      "total": 98,
       "train": 70,
-      "validation": 12,
-      "test": 14,
-      "shortfall": 4,
+      "validation": 13,
+      "test": 15,
+      "shortfall": 2,
       "percentages": {
-        "train": 72.92,
-        "validation": 12.5,
-        "test": 14.58
+        "train": 71.43,
+        "validation": 13.27,
+        "test": 15.31
       }
     },
     {
       "intent": "ask_requirement",
       "target": 100,
-      "total": 93,
+      "total": 95,
       "train": 70,
-      "validation": 13,
-      "test": 10,
-      "shortfall": 7,
+      "validation": 14,
+      "test": 11,
+      "shortfall": 5,
       "percentages": {
-        "train": 75.27,
-        "validation": 13.98,
-        "test": 10.75
+        "train": 73.68,
+        "validation": 14.74,
+        "test": 11.58
       }
     },
     {
@@ -133,85 +132,85 @@
     {
       "intent": "ask_general_info",
       "target": 100,
-      "total": 95,
+      "total": 94,
       "train": 70,
-      "validation": 12,
+      "validation": 11,
       "test": 13,
-      "shortfall": 5,
+      "shortfall": 6,
       "percentages": {
-        "train": 73.68,
-        "validation": 12.63,
-        "test": 13.68
+        "train": 74.47,
+        "validation": 11.7,
+        "test": 13.83
       }
     },
     {
       "intent": "ask_contact",
       "target": 100,
-      "total": 94,
+      "total": 96,
       "train": 70,
-      "validation": 12,
-      "test": 12,
-      "shortfall": 6,
+      "validation": 13,
+      "test": 13,
+      "shortfall": 4,
       "percentages": {
-        "train": 74.47,
-        "validation": 12.77,
-        "test": 12.77
+        "train": 72.92,
+        "validation": 13.54,
+        "test": 13.54
       }
     },
     {
       "intent": "ask_availability",
       "target": 100,
-      "total": 112,
-      "train": 95,
-      "validation": 10,
-      "test": 7,
+      "total": 126,
+      "train": 107,
+      "validation": 11,
+      "test": 8,
       "shortfall": 0,
       "percentages": {
-        "train": 84.82,
-        "validation": 8.93,
-        "test": 6.25
+        "train": 84.92,
+        "validation": 8.73,
+        "test": 6.35
       }
     },
     {
       "intent": "ask_facility_availability",
       "target": 100,
-      "total": 109,
-      "train": 94,
-      "validation": 8,
-      "test": 7,
+      "total": 116,
+      "train": 99,
+      "validation": 9,
+      "test": 8,
       "shortfall": 0,
       "percentages": {
-        "train": 86.24,
-        "validation": 7.34,
-        "test": 6.42
+        "train": 85.34,
+        "validation": 7.76,
+        "test": 6.9
       }
     },
     {
       "intent": "ask_document",
       "target": 100,
-      "total": 58,
-      "train": 44,
-      "validation": 7,
-      "test": 7,
-      "shortfall": 42,
+      "total": 98,
+      "train": 70,
+      "validation": 13,
+      "test": 15,
+      "shortfall": 2,
       "percentages": {
-        "train": 75.86,
-        "validation": 12.07,
-        "test": 12.07
+        "train": 71.43,
+        "validation": 13.27,
+        "test": 15.31
       }
     },
     {
       "intent": "ask_follow_up",
       "target": 60,
-      "total": 8,
-      "train": 8,
-      "validation": 0,
-      "test": 0,
-      "shortfall": 52,
+      "total": 29,
+      "train": 23,
+      "validation": 3,
+      "test": 3,
+      "shortfall": 31,
       "percentages": {
-        "train": 100,
-        "validation": 0,
-        "test": 0
+        "train": 79.31,
+        "validation": 10.34,
+        "test": 10.34
       }
     },
     {

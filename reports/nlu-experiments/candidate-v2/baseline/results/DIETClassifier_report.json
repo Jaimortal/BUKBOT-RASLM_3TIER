@@ -1,0 +1,96 @@
+{
+  "organization": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 14,
+    "confused_with": {}
+  },
+  "service": {
+    "precision": 0.16,
+    "recall": 0.058823529411764705,
+    "f1-score": 0.08602150537634409,
+    "support": 68,
+    "confused_with": {
+      "facility_name": 6
+    }
+  },
+  "program": {
+    "precision": 0.6,
+    "recall": 0.13043478260869565,
+    "f1-score": 0.21428571428571427,
+    "support": 23,
+    "confused_with": {}
+  },
+  "location_name": {
+    "precision": 0.7142857142857143,
+    "recall": 0.3125,
+    "f1-score": 0.43478260869565216,
+    "support": 16,
+    "confused_with": {
+      "facility_name": 3
+    }
+  },
+  "document": {
+    "precision": 0.65625,
+    "recall": 0.4117647058823529,
+    "f1-score": 0.5060240963855422,
+    "support": 51,
+    "confused_with": {
+      "service": 1
+    }
+  },
+  "office": {
+    "precision": 0.2857142857142857,
+    "recall": 0.18181818181818182,
+    "f1-score": 0.2222222222222222,
+    "support": 33,
+    "confused_with": {
+      "facility_name": 6
+    }
+  },
+  "facility_name": {
+    "precision": 0.16129032258064516,
+    "recall": 0.18518518518518517,
+    "f1-score": 0.17241379310344826,
+    "support": 27,
+    "confused_with": {
+      "location_name": 2
+    }
+  },
+  "active_category": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 6,
+    "confused_with": {}
+  },
+  "topic": {
+    "precision": 0.5,
+    "recall": 0.1,
+    "f1-score": 0.16666666666666669,
+    "support": 20,
+    "confused_with": {
+      "facility_name": 2
+    }
+  },
+  "micro avg": {
+    "precision": 0.36507936507936506,
+    "recall": 0.17829457364341086,
+    "f1-score": 0.23958333333333334,
+    "support": 258
+  },
+  "macro avg": {
+    "precision": 0.34194892473118277,
+    "recall": 0.15339182054513115,
+    "f1-score": 0.20026851185951,
+    "support": 258
+  },
+  "weighted avg": {
+    "precision": 0.3618633006465902,
+    "recall": 0.17829457364341086,
+    "f1-score": 0.22815357957137863,
+    "support": 258
+  },
+  "accuracy": 0.7980107115531752
+}

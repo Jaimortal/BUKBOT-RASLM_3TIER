@@ -1,0 +1,830 @@
+{
+  "metadata": {
+    "status": "PREPARED_FOR_ISOLATED_NLU_EXPERIMENT_NOT_RETRAINED",
+    "intended_ratio": "70/15/15",
+    "split_method": "Deterministic source order; whole groups; existing/development-exposed groups locked to training; no forced target counts.",
+    "source_nlu_sha256": "0031b638f0fc9f75a6245d185fd1a41124ed060cc56bca6c2c93d6f71725e0b5",
+    "active_nlu_matches_snapshot": true,
+    "source_candidates_sha256": "170d81959be73a00b4634d4252c7016abb48ca75b8b39c44b4bda5e680f384a9",
+    "knowledge_sha256": {
+      "rasa/actions/knowledge/academics/classroom_policies.json": "59d896fab882086440e496ddc1613306e067cc0a0e76b0e4795190590b310016",
+      "rasa/actions/knowledge/academics/degree_programs.json": "b5527e866205a1a99876516d6ab8787bdb21285edec64f36040484dc798c66cb",
+      "rasa/actions/knowledge/academics/grading_and_retention.json": "73df73f8ef370880c902fec5af1f3b30aab8837f1080ad042ea009b18ba01148",
+      "rasa/actions/knowledge/location/responses_location_core.json": "79910b2ae7c96f13b22b42a3d31371f1d4a8a673f9c62f5a9b4f0f972c1da785",
+      "rasa/actions/knowledge/others/facilities_and_other_inquiries.json": "aa04fb672d2e184e74a502ca971f20e4799bb9300d0fd96c1288521e7a8eda7a",
+      "rasa/actions/knowledge/procedures/academic_transactions.json": "23d9dc9f428e37a45fec0b72d095347353a99029c87f1fc1a70895d6432a43ff",
+      "rasa/actions/knowledge/procedures/admission_procedures.json": "cdc8ae7bd912dcc4150cefe148ce3f00a0299a3d07fa7232ab0a8581123e1958",
+      "rasa/actions/knowledge/procedures/enrollment_procedures.json": "a8912902cb50681ff536eae851d20e03b38e3fd5bb9c783699fcf55eb253290d",
+      "rasa/actions/knowledge/procedures/student_service_procedures.json": "8655b7b15aa15563ca7bda8d3ddde42a59693f1b2d68379715b0dc62f2cda7ad",
+      "rasa/actions/knowledge/services/clinic_services.json": "5e924ec827e1cb73f9db7d0db990c5eed8022cdb9bc3452f87ad7be6521d9dd7",
+      "rasa/actions/knowledge/services/dormitory_services.json": "6f3fd41646eb098cd332a5a5f0f90227d6670a0976c0a5ae9388259eb5699542",
+      "rasa/actions/knowledge/services/library_services.json": "b526af2434a984e8079ea176e112f691cb1409e9774d5b330fee37bc8503f2a7",
+      "rasa/actions/knowledge/services/oss_student_services.json": "441e0a0ebf845fb107ba8b6cc773c264134cbe96b1f3586b2f51772fd7c4c709",
+      "rasa/actions/knowledge/university/administrators.json": "9a635f716a406080bd5c81473c1fd7608310dc46633a92ebc02029f0ef9e632d",
+      "rasa/actions/knowledge/university/admission_directory.json": "218cea8e13390470885da361f98e8f69bfd13ca156ca64bb7402164a03a6192d",
+      "rasa/actions/knowledge/university/faculty_and_deans.json": "5b94550476783f46d21b5b9ab68ddfbde676e89980aa739dc658629db5b3533e",
+      "rasa/actions/knowledge/university/university_identity.json": "c89af38944ad2c61df52d6ab49bac70081f1103044ccb388f214a71e4c15f6e7"
+    },
+    "evaluation_scope": "Synthetic NLU classification candidates only. Topic references are not verified expected answers. No measured model or chatbot accuracy.",
+    "limitations": [
+      "Agent-reviewed labels are not independent human certification.",
+      "Mechanical grouping does not establish semantic independence.",
+      "Synthetic test candidates are not an independent student final evaluation.",
+      "Answer-ground-truth review is separate from NLU classification."
+    ]
+  },
+  "items": [
+    {
+      "id": "original_ask_location_025",
+      "text": "is there an ATM inside the campus",
+      "original_intent": "ask_location",
+      "intent": "ask_facility_availability",
+      "decision": "Facility existence, not directions.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_014",
+      "text": "how do I get student ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Obtaining a physical ID card is an issuance workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_015",
+      "text": "unsaon pagkuha sa student ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Obtaining a physical ID card is an issuance workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_016",
+      "text": "unsaon pagkuha sa library ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Obtaining a physical ID card is an issuance workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_017",
+      "text": "steps for COR validation",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_025",
+      "text": "how do I request COR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_026",
+      "text": "unsaon nako pag request og COR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_027",
+      "text": "where to get COR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_028",
+      "text": "where can I get COR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_029",
+      "text": "asa makuha ang COR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_030",
+      "text": "how to get COR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_045",
+      "text": "how do I validate my student ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_046",
+      "text": "how to validate COR",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_047",
+      "text": "COR validation process",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_048",
+      "text": "what are the student services",
+      "original_intent": "ask_process",
+      "intent": "ask_availability",
+      "decision": "Listing offered services, not completing a transaction.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_049",
+      "text": "services that buksu can provide",
+      "original_intent": "ask_process",
+      "intent": "ask_availability",
+      "decision": "Listing offered services, not completing a transaction.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_050",
+      "text": "services list",
+      "original_intent": "ask_process",
+      "intent": "ask_availability",
+      "decision": "Listing offered services, not completing a transaction.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_process_051",
+      "text": "unsay mga services ni buksu",
+      "original_intent": "ask_process",
+      "intent": "ask_availability",
+      "decision": "Listing offered services, not completing a transaction.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_006",
+      "text": "master courses",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_007",
+      "text": "masters courses",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_008",
+      "text": "masteral programs",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_009",
+      "text": "does BukSU offer masters",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_010",
+      "text": "courses",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_011",
+      "text": "courses offered",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_012",
+      "text": "courses offerd by buksu",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_general_info_013",
+      "text": "do buksu offer BSAP",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_availability_047",
+      "text": "naa bay dormitory",
+      "original_intent": "ask_availability",
+      "intent": "ask_facility_availability",
+      "decision": "Existence of a campus facility.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_availability_048",
+      "text": "does buksu have dormitory",
+      "original_intent": "ask_availability",
+      "intent": "ask_facility_availability",
+      "decision": "Existence of a campus facility.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_availability_049",
+      "text": "does buksu have dormitories",
+      "original_intent": "ask_availability",
+      "intent": "ask_facility_availability",
+      "decision": "Existence of a campus facility.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_availability_050",
+      "text": "dormitory availability",
+      "original_intent": "ask_availability",
+      "intent": "ask_facility_availability",
+      "decision": "Existence of a campus facility.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_availability_051",
+      "text": "is library open today",
+      "original_intent": "ask_availability",
+      "intent": "ask_schedule",
+      "decision": "Opening time/hours.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_001",
+      "text": "where can I get INC form",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_002",
+      "text": "asa makakuha og INC form",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_003",
+      "text": "can I download COR",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_004",
+      "text": "where to request COR",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_005",
+      "text": "I need test permit",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_006",
+      "text": "how to get certificate of registration",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_007",
+      "text": "where can I get library ID",
+      "original_intent": "ask_document",
+      "intent": "ask_process",
+      "decision": "Obtaining a physical ID card is an issuance workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_008",
+      "text": "student ID form",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Specific form/document request; a purpose clause does not make it a requirements checklist.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_011",
+      "text": "enrollment document list",
+      "original_intent": "ask_document",
+      "intent": "ask_requirement",
+      "decision": "Enrollment checklist, not obtaining a specific document.",
+      "partition": "train"
+    },
+    {
+      "id": "original_ask_document_012",
+      "text": "what documents do I need to bring on enrollment day",
+      "original_intent": "ask_document",
+      "intent": "ask_requirement",
+      "decision": "Enrollment checklist, not obtaining a specific document.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_process_014",
+      "text": "how to get TOR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_process_015",
+      "text": "how to request transcript of records",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_process_016",
+      "text": "unsaon pagkuha og TOR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_process_017",
+      "text": "how to validate COR",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "duplicate"
+    },
+    {
+      "id": "gemini_ask_process_022",
+      "text": "COR validation process",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "duplicate"
+    },
+    {
+      "id": "gemini_ask_process_023",
+      "text": "unsaon pag-validate sa COR",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_process_032",
+      "text": "how to get student ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Obtaining a physical ID card is an issuance workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_process_033",
+      "text": "how to validate student ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_process_062",
+      "text": "how to replace a lost student ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_process_063",
+      "text": "unsay buhaton kung nawala akong student ID",
+      "original_intent": "ask_process",
+      "intent": "ask_process",
+      "decision": "Validation/replacement workflow.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_process_089",
+      "text": "how to apply for CAV authentication at the registrar",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "test"
+    },
+    {
+      "id": "gemini_ask_process_090",
+      "text": "unsa ang proseso sa pagkuha ug CAV sa registrar",
+      "original_intent": "ask_process",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "test"
+    },
+    {
+      "id": "gemini_ask_general_info_036",
+      "text": "what courses are offered in BukSU",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_general_info_043",
+      "text": "what day is wash day",
+      "original_intent": "ask_general_info",
+      "intent": "ask_schedule",
+      "decision": "Asks which day wash day occurs.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_general_info_049",
+      "text": "what services does the clinic offer",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_general_info_050",
+      "text": "what medical services are available at the university clinic",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_general_info_052",
+      "text": "what dental services are offered at the clinic",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_general_info_056",
+      "text": "what scholarships are available at BukSU",
+      "original_intent": "ask_general_info",
+      "intent": "ask_availability",
+      "decision": "Available programs or services; not a definition of a particular program.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_general_info_085",
+      "text": "asa dapit ang mga satellite campuses sa BukSU sa Bukidnon ug Misamis Oriental",
+      "original_intent": "ask_general_info",
+      "intent": "ask_location",
+      "decision": "Asks where satellite campuses are located.",
+      "partition": "validation"
+    },
+    {
+      "id": "gemini_ask_document_001",
+      "text": "where to request TOR",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_002",
+      "text": "where can I claim my TOR",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_004",
+      "text": "can I reprint my COR",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_006",
+      "text": "how to get good moral certificate",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_007",
+      "text": "where to request good moral",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_009",
+      "text": "how to request diploma",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_010",
+      "text": "how to get CAV",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_011",
+      "text": "enrollment document list",
+      "original_intent": "ask_document",
+      "intent": "ask_requirement",
+      "decision": "Enrollment checklist, not obtaining a specific document.",
+      "partition": "duplicate"
+    },
+    {
+      "id": "gemini_ask_document_012",
+      "text": "what documents do I need to bring on enrollment day",
+      "original_intent": "ask_document",
+      "intent": "ask_requirement",
+      "decision": "Enrollment checklist, not obtaining a specific document.",
+      "partition": "duplicate"
+    },
+    {
+      "id": "gemini_ask_document_013",
+      "text": "asa dapit mag request ug mag claim sa Transcript of Records",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_014",
+      "text": "pwede ba magpa reprint ug COR sa registrar kung nawala",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_015",
+      "text": "asa makuha ang Certificate of Good Moral Character",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_017",
+      "text": "asa pwede makuha ang akong diploma pagkahuman ug graduate",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_018",
+      "text": "asa magkuha ug CAV para sa CHED authentication",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_027",
+      "text": "how can I get a certified true copy of my COR or TOR",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_028",
+      "text": "asa magpa certified true copy sa COR ug grades",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_029",
+      "text": "where do I download or claim my BukSU CAT test permit",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_030",
+      "text": "unsaon pag download sa test permit para sa entrance exam",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_039",
+      "text": "where to claim my student ID card",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Specific form/document request; a purpose clause does not make it a requirements checklist.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_040",
+      "text": "asa i-claim ang nahuman nga student ID",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Specific form/document request; a purpose clause does not make it a requirements checklist.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_047",
+      "text": "how to get a library borrower card",
+      "original_intent": "ask_document",
+      "intent": "ask_process",
+      "decision": "Obtaining a physical ID card is an issuance workflow.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_document_051",
+      "text": "can someone else claim my TOR with an authorization letter",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_052",
+      "text": "pwede ba ipakuha sa ginikanan akong TOR gamit ang authorization letter",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "train"
+    },
+    {
+      "id": "gemini_ask_document_063",
+      "text": "how to get a second copy of diploma if the original was lost",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_document_066",
+      "text": "wher to request good moral cert",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_document_067",
+      "text": "how to get TOR for board exam application",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_document_068",
+      "text": "unsaon pagkuha ug TOR nga naay remarks for board exam",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_document_075",
+      "text": "can I download my Certificate of Registration directly from SIAS",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "validation"
+    },
+    {
+      "id": "gemini_ask_document_076",
+      "text": "ma-download ba ang COR gikan sa student portal",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "validation"
+    },
+    {
+      "id": "gemini_ask_document_079",
+      "text": "asa mag request ug Red Ribbon / Apostille CAV",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "validation"
+    },
+    {
+      "id": "gemini_ask_document_081",
+      "text": "hw to get transcript of record",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "validation"
+    },
+    {
+      "id": "gemini_ask_document_085",
+      "text": "unsaon pag claim sa diploma ug TOR para sa fresh grad",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "validation"
+    },
+    {
+      "id": "gemini_ask_document_087",
+      "text": "asa nga opisina magkuha ug Good Moral sa OSS ba o sa Registrar",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "test"
+    },
+    {
+      "id": "gemini_ask_document_089",
+      "text": "where can I get an affidavit of undertaking or promissory form for lacking requirements",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Specific form/document request; a purpose clause does not make it a requirements checklist.",
+      "partition": "test"
+    },
+    {
+      "id": "gemini_ask_document_092",
+      "text": "how to request an informative copy of TOR for evaluation",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "test"
+    },
+    {
+      "id": "gemini_ask_document_093",
+      "text": "pwede ba makakuha ug informative copy sa TOR sa registrar",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "test"
+    },
+    {
+      "id": "gemini_ask_document_095",
+      "text": "asa magpa CTC sa diploma sa BukSU",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "test"
+    },
+    {
+      "id": "gemini_ask_document_099",
+      "text": "how do I get my official transcript if I graduated years ago",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "reserve"
+    },
+    {
+      "id": "gemini_ask_document_100",
+      "text": "asa kuhaon ang INC form sa dean ba o sa registrar",
+      "original_intent": "ask_document",
+      "intent": "ask_document",
+      "decision": "Request, claim, download or authenticate a named record/certificate.",
+      "partition": "reserve"
+    }
+  ]
+}

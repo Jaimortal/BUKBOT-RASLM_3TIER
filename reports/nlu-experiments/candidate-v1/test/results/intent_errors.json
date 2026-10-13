@@ -1,0 +1,306 @@
+[
+  {
+    "text": "location of Microbiology Laboratory",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9989787340164185
+    }
+  },
+  {
+    "text": "how long is the validity of an INC grade before it becomes 5.0",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9951981902122498
+    }
+  },
+  {
+    "text": "pila ka buwan o tuig ang tagal sa pag kompleto sa INC",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9906392097473145
+    }
+  },
+  {
+    "text": "pila ka oras o adlaw makuha ang medical certificate",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.7781038880348206
+    }
+  },
+  {
+    "text": "is there a fee for Form 137 request from registrar",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.5687372088432312
+    }
+  },
+  {
+    "text": "do we need to pay for campus Wi-Fi access",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.5651116371154785
+    }
+  },
+  {
+    "text": "libre ba ang Wi-Fi sa sulod sa campus",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9990084767341614
+    }
+  },
+  {
+    "text": "what is the lowest grade allowed to still qualify for Latin honors",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9951714873313904
+    }
+  },
+  {
+    "text": "pwede ba ma Latin honors kung naay 2.25 o INC sauna",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9998037219047546
+    }
+  },
+  {
+    "text": "unsa ang ipakita sa ICT office kung magpa reset sa institucional email",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9993112087249756
+    }
+  },
+  {
+    "text": "how do I reserve the Gymnasium or Auditorium for an event",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999955892562866
+    }
+  },
+  {
+    "text": "unsaon pag book sa Auditorium para sa school activity",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.8745777606964111
+    }
+  },
+  {
+    "text": "what should I do if I am waitlisted in the BukSU CAT",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.9988793730735779
+    }
+  },
+  {
+    "text": "unsay buhaton kung waitlisted ko sa entrance exam result",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.6227299571037292
+    }
+  },
+  {
+    "text": "how do I avail of dental extraction or prophylaxis at the clinic",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.897458553314209
+    }
+  },
+  {
+    "text": "how do I request an overload of units as a graduating student",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9939013719558716
+    }
+  },
+  {
+    "text": "how to get Honorable Dismissal for transferring out",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9995693564414978
+    }
+  },
+  {
+    "text": "what Republic Act converted Bukidnon State College into Bukidnon State University",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9996960163116455
+    }
+  },
+  {
+    "text": "unsa nga tuig nahimong university ang Bukidnon State College",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.44324713945388794
+    }
+  },
+  {
+    "text": "what does a grade of 1.00 vs 5.00 mean in BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9999938011169434
+    }
+  },
+  {
+    "text": "unsay pasabot sa grado nga 1.0 ug 3.0 sa BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9999901056289673
+    }
+  },
+  {
+    "text": "unsa ang mga benefits sa Student Assistantship Program",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.5531632304191589
+    }
+  },
+  {
+    "text": "what is DXBU 104.5 FM at BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9999911785125732
+    }
+  },
+  {
+    "text": "what is the Kalatungan Learning Space in the library",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9918339252471924
+    }
+  },
+  {
+    "text": "wat are the coleges in buksu",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9972575306892395
+    }
+  },
+  {
+    "text": "does BukSU have a Laboratory Elementary School",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999961853027344
+    }
+  },
+  {
+    "text": "is cross-enrollment allowed at BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9833266139030457
+    }
+  },
+  {
+    "text": "pwede ba maka cross-enroll ang BukSU student sa laing school",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.8123893141746521
+    }
+  },
+  {
+    "text": "are evening classes or weekend classes available for undergraduate students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.9996405839920044
+    }
+  },
+  {
+    "text": "modawat ba ang BukSU ug foreign students o international applicants",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.99928879737854
+    }
+  },
+  {
+    "text": "is free dental extraction available for enrolled students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.6583544611930847
+    }
+  },
+  {
+    "text": "available ba na sa BukSU?",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999998807907104
+    }
+  },
+  {
+    "text": "how to apply for CAV authentication at the registrar",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8843885064125061
+    }
+  },
+  {
+    "text": "unsa ang proseso sa pagkuha ug CAV sa registrar",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8983102440834045
+    }
+  },
+  {
+    "text": "where can I get an affidavit of undertaking or promissory form for lacking requirements",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.9990144968032837
+    }
+  },
+  {
+    "text": "thank you for assisting me today",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.6855853199958801
+    }
+  },
+  {
+    "text": "hope you are having a great day",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.4390762448310852
+    }
+  },
+  {
+    "text": "greetings",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "set_category",
+      "confidence": 0.27320706844329834
+    }
+  }
+]

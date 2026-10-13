@@ -1,0 +1,25 @@
+{
+  "status": "PREPARED_TRAINING_ONLY_ITERATION_NOT_ACTIVE",
+  "parent_dataset": "docs/datasets/nlu_review",
+  "parent_manifest_sha256": "5c8f76362392a3dfd05e168e60b983d19ffc5891d329948f9505c552b580ec87",
+  "selection": {
+    "partition": "reserve",
+    "original_split": "train",
+    "intents": [
+      "ask_availability",
+      "ask_facility_availability",
+      "ask_general_info",
+      "ask_process"
+    ],
+    "qualifying_records": 120,
+    "whole_group_records_moved": 134,
+    "selected_groups": 57
+  },
+  "counts": {
+    "train": 1077,
+    "validation": 158,
+    "test": 150
+  },
+  "protection": "Validation and test files are exact copies of the parent dataset. The active rasa/data/nlu.yml and active models are not modified.",
+  "assertions": "PASS: selected reserve groups are training-only, no group crosses splits, validation/test counts and contents preserved."
+}

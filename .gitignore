@@ -10,6 +10,7 @@ attached_assets/
 
 rasa/models/
 rasa/.rasa
+/.rasa/
 rasa/venv/
 **/__pycache__/
 

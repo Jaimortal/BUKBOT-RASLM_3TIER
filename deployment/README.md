@@ -37,7 +37,7 @@ python deployment/prepare.py --model rasa/models/YOUR-TESTED-MODEL.tar.gz --admi
 python deployment/prepare.py --model rasa/models/YOUR-TESTED-MODEL.tar.gz --admin-file /path/to/production-admin-users.json
 ```
 
-On Linux the command may be `python3`. The admin JSON must have a `users` array,
+On Linux the command may be `python3`. The admin JSON must have a `development.users` array,
 bcrypt password hashes and an enabled `main-admin`. It uses the same structure as
 `server/account/admin-users.json`; reuse that file only if you intentionally want
 those accounts in production. No existing accounts are copied automatically.

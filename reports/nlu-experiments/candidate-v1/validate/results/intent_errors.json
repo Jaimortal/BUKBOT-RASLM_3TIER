@@ -1,0 +1,234 @@
+[
+  {
+    "text": "unsaon pag adto sa Cafeteria",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.4038451910018921
+    }
+  },
+  {
+    "text": "whre is Multimedia Laboratory",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "is there any charge for resetting my SIAS portal password at ICT",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.6799519062042236
+    }
+  },
+  {
+    "text": "how much is certified true copy of COR",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.8866857886314392
+    }
+  },
+  {
+    "text": "how do I correct a misspelled name on my school records at the registrar",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9974564909934998
+    }
+  },
+  {
+    "text": "unsaon pagpa correction sa sayop nga spelling sa pangalan sa registrar",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.272093266248703
+    }
+  },
+  {
+    "text": "unsay buhaton kung sayop ang na encode nga grado sa SIAS portal",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9814561605453491
+    }
+  },
+  {
+    "text": "where and how do I report a lost item on campus",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.47150570154190063
+    }
+  },
+  {
+    "text": "asa ug unsaon pag report sa nawala nga gamit sa lost and found",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9663678407669067
+    }
+  },
+  {
+    "text": "how do I borrow a book from the main library",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.19575457274913788
+    }
+  },
+  {
+    "text": "unsaon pag bayad sa miscellaneous fee sa cashier",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999964237213135
+    }
+  },
+  {
+    "text": "unsaon pag join sa mga student organizations ug clubs",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.806318461894989
+    }
+  },
+  {
+    "text": "what are the official university colors and what do they symbolize",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9507091641426086
+    }
+  },
+  {
+    "text": "unsay meaning sa seal ug colors sa BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.29355621337890625
+    }
+  },
+  {
+    "text": "what is the BukSU motto and institutional mandate",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9901330471038818
+    }
+  },
+  {
+    "text": "what are the rules and curfews inside the BukSU dormitories",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999997615814209
+    }
+  },
+  {
+    "text": "unsa ang policy sa No ID No Entry sa main gate",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.7103486061096191
+    }
+  },
+  {
+    "text": "ginatanyag ba ang BA English Language ug BA Economics sa CAS",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.8315640091896057
+    }
+  },
+  {
+    "text": "does BukSU offer free mental health counseling for students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.999981164932251
+    }
+  },
+  {
+    "text": "naa bay guidance counseling service para sa stressed nga students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9942790269851685
+    }
+  },
+  {
+    "text": "naa bay summer class o midyear term sa BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999960660934448
+    }
+  },
+  {
+    "text": "is BS Hospitality Management open for freshmen this year",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.8507787585258484
+    }
+  },
+  {
+    "text": "is there a Public Assistance Desk or Client Care Center at the entrance",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9725931286811829
+    }
+  },
+  {
+    "text": "naa bay assistance desk pag sulod sa main gate",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.8495326042175293
+    }
+  },
+  {
+    "text": "does BukSU have a separate building for the College of Medicine",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.4702027142047882
+    }
+  },
+  {
+    "text": "naa bay kaugalingong building ang College of Medicine",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9428322911262512
+    }
+  },
+  {
+    "text": "is there an isolation room or holding area at the university clinic",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9985467791557312
+    }
+  },
+  {
+    "text": "many thanks for the information",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.5350649356842041
+    }
+  },
+  {
+    "text": "thnk you very much",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9972954392433167
+    }
+  }
+]

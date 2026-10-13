@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "status": "REVIEW_ONLY_NOT_RETRAINED",
+    "status": "PREPARED_FOR_ISOLATED_NLU_EXPERIMENT_NOT_RETRAINED",
     "intended_ratio": "70/15/15",
     "split_method": "Deterministic source order; whole groups; existing/development-exposed groups locked to training; no forced target counts.",
     "source_nlu_sha256": "0031b638f0fc9f75a6245d185fd1a41124ed060cc56bca6c2c93d6f71725e0b5",
@@ -27,10 +27,10 @@
     },
     "evaluation_scope": "Synthetic NLU classification candidates only. Topic references are not verified expected answers. No measured model or chatbot accuracy.",
     "limitations": [
-      "Human label/language review remains necessary.",
+      "Agent-reviewed labels are not independent human certification.",
       "Mechanical grouping does not establish semantic independence.",
-      "All previously exposed questions are development data; obtain fresh student questions for final evaluation.",
-      "Conversation/challenge cases require an adjudicated behavior rubric and replay harness."
+      "Synthetic test candidates are not an independent student final evaluation.",
+      "Answer-ground-truth review is separate from NLU classification."
     ]
   },
   "original_payloads": [
@@ -47,12 +47,17 @@
       "claimed_topic": null,
       "context": null,
       "reasons": [],
-      "review_status": "baseline_retained",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
+      "context_for_answer": false,
+      "nlu_context_independent": true,
+      "original_intent": "set_category",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "not_supplied",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "functional"
     },
     {
@@ -68,12 +73,17 @@
       "claimed_topic": null,
       "context": null,
       "reasons": [],
-      "review_status": "baseline_retained",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
+      "context_for_answer": false,
+      "nlu_context_independent": true,
+      "original_intent": "set_category",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "not_supplied",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "functional"
     },
     {
@@ -89,12 +99,17 @@
       "claimed_topic": null,
       "context": null,
       "reasons": [],
-      "review_status": "baseline_retained",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
+      "context_for_answer": false,
+      "nlu_context_independent": true,
+      "original_intent": "set_category",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "not_supplied",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "functional"
     },
     {
@@ -110,12 +125,17 @@
       "claimed_topic": null,
       "context": null,
       "reasons": [],
-      "review_status": "baseline_retained",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
+      "context_for_answer": false,
+      "nlu_context_independent": true,
+      "original_intent": "set_category",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "not_supplied",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "functional"
     },
     {
@@ -131,12 +151,17 @@
       "claimed_topic": null,
       "context": null,
       "reasons": [],
-      "review_status": "baseline_retained",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
+      "context_for_answer": false,
+      "nlu_context_independent": true,
+      "original_intent": "set_category",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "not_supplied",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "functional"
     },
     {
@@ -152,12 +177,17 @@
       "claimed_topic": null,
       "context": null,
       "reasons": [],
-      "review_status": "baseline_retained",
+      "review_status": "agent_reviewed_for_nlu_experiment_not_human_certified",
+      "context_for_answer": false,
+      "nlu_context_independent": true,
+      "original_intent": "reset_category",
+      "label_decision": "Retained broad intent after dataset boundary review.",
       "topic_reference": null,
       "topic_reference_status": "not_supplied",
       "expected_topic_id": null,
       "expected_behavior": "intent_classification_only",
       "knowledge_phrase_match": false,
+      "previous_boundary_flags": [],
       "partition": "functional"
     }
   ],
