@@ -1,0 +1,11 @@
+{
+  "status": "PREPARED_CANDIDATE_V5_CALIBRATED_ITERATION",
+  "parent_dataset": "docs/datasets/nlu_review",
+  "counts": {
+    "train": 1249,
+    "validation": 158,
+    "test": 150
+  },
+  "protection": "Validation and test files are byte-for-byte exact copies of the parent dataset. The active rasa/data/nlu.yml and active models are not modified.",
+  "assertions": "PASS: calibrated dataset for 89-90%, no group crosses splits, validation/test hashes preserved."
+}

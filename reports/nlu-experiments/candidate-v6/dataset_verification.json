@@ -1,0 +1,11 @@
+{
+  "status": "PREPARED_CANDIDATE_V6_FOCUSED_KNOWLEDGE_ITERATION",
+  "parent_dataset": "docs/datasets/nlu_review",
+  "counts": {
+    "train": 1271,
+    "validation": 158,
+    "test": 150
+  },
+  "protection": "Validation and test files are byte-for-byte exact copies of the parent dataset. The active rasa/data/nlu.yml and active models are not modified.",
+  "assertions": "PASS: focused on sub-85% intents with BukSU knowledge grounding, no group crosses splits, validation/test hashes preserved."
+}

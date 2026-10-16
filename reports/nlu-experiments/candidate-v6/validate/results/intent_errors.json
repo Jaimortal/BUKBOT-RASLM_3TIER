@@ -1,0 +1,154 @@
+[
+  {
+    "text": "unsaon pag adto sa Cafeteria",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.3429705798625946
+    }
+  },
+  {
+    "text": "how much is certified true copy of COR",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.670114278793335
+    }
+  },
+  {
+    "text": "how do I correct a misspelled name on my school records at the registrar",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9263042211532593
+    }
+  },
+  {
+    "text": "what is the process for cross-enrollment to another university",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.5179955959320068
+    }
+  },
+  {
+    "text": "where and how do I report a lost item on campus",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.5851221084594727
+    }
+  },
+  {
+    "text": "asa ug unsaon pag report sa nawala nga gamit sa lost and found",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9986246824264526
+    }
+  },
+  {
+    "text": "unsaon pag bayad sa miscellaneous fee sa cashier",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsaon pag join sa mga student organizations ug clubs",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9999946355819702
+    }
+  },
+  {
+    "text": "what are the official university colors and what do they symbolize",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.7352757453918457
+    }
+  },
+  {
+    "text": "ginatanyag ba ang BA English Language ug BA Economics sa CAS",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9964411854743958
+    }
+  },
+  {
+    "text": "naa bay guidance counseling service para sa stressed nga students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.8819618225097656
+    }
+  },
+  {
+    "text": "naa bay summer class o midyear term sa BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999853372573853
+    }
+  },
+  {
+    "text": "is there a Public Assistance Desk or Client Care Center at the entrance",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.5493025779724121
+    }
+  },
+  {
+    "text": "naa bay assistance desk pag sulod sa main gate",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9994415640830994
+    }
+  },
+  {
+    "text": "does buksu have comlab for IT students",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9361194968223572
+    }
+  },
+  {
+    "text": "asa makuha ang prospectus o curriculum checklist sa akong kurso",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.6242361068725586
+    }
+  },
+  {
+    "text": "many thanks for the information",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9998631477355957
+    }
+  },
+  {
+    "text": "thnk you very much",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999387264251709
+    }
+  },
+  {
+    "text": "select university category please",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "reset_category",
+      "confidence": 0.5716832876205444
+    }
+  }
+]

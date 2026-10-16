@@ -1,0 +1,29 @@
+{
+  "scope": "NLU classification only, not chatbot answer correctness",
+  "metrics": {
+    "baseline": {
+      "accuracy": 0.7278481012658228,
+      "macro_f1": 0.752054557910494,
+      "weighted_f1": 0.7331585474403647,
+      "support": 158,
+      "model": {
+        "path": "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\rasa\\models\\20260825-010246-cheerful-van.tar.gz",
+        "sha256": "77df79865e21113ebcc4c037629f7dbd113e0149c1c488497229b4cf1bff4591",
+        "split": "validation",
+        "input_sha256": "ceb1d482715c5d1843210a4152514db4fb3b3a502bd97f42e26340561dc0219d"
+      }
+    },
+    "validate": {
+      "accuracy": 0.8734177215189873,
+      "macro_f1": 0.8895664793381823,
+      "weighted_f1": 0.8738759869223084,
+      "support": 158,
+      "model": {
+        "path": "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\reports\\nlu-experiments\\candidate-v5\\models\\candidate.tar.gz",
+        "sha256": "a5a53bcb93b2e89b5ce2fea97bf32ba1f2891f0526c8215d08dde3fa9846dfcc",
+        "split": "validation",
+        "input_sha256": "ceb1d482715c5d1843210a4152514db4fb3b3a502bd97f42e26340561dc0219d"
+      }
+    }
+  }
+}

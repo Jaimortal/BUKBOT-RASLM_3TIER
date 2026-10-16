@@ -1,0 +1,118 @@
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\core\tracker_store.py:1044: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  Base: DeclarativeMeta = declarative_base()
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\validation.py:134: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  import pkg_resources
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\pkg_resources\__init__.py:3117: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\pkg_resources\__init__.py:3117: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('ruamel')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\tensorflow\lite\python\util.py:52: DeprecationWarning: jax.xla_computation is deprecated. Please use the AOT APIs.
+  from jax import xla_computation as _xla_computation
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:66: PyparsingDeprecationWarning: 'setParseAction' deprecated - use 'set_parse_action'
+  ).setParseAction(self._family)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:127: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  self._parser.parseString(pattern)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:134: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  self._parser.resetCache()
+2026-10-15 21:16:44 [1;30mINFO    [0m [34mrasa.core.processor[0m  - Loading model C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\models\20260825-010246-cheerful-van.tar.gz...
+2026-10-15 21:17:37 [1;30mWARNING [0m [34mrasa.shared.utils.common[0m  - [33mThe UnexpecTED Intent Policy is currently experimental and might change or be removed in the future \U0001f52c Please share your feedback on it in the forum (https://forum.rasa.com) to help us make this feature ready for production.[0m
+2026-10-15 21:17:50 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Running model for predictions:
+
+  0%|          | 0/158 [00:00<?, ?it/s]
+  1%|          | 1/158 [00:00<01:11,  2.20it/s]
+  4%|4         | 7/158 [00:00<00:09, 15.99it/s]
+  9%|8         | 14/158 [00:00<00:05, 28.64it/s]
+ 13%|#3        | 21/158 [00:00<00:03, 39.11it/s]
+ 18%|#7        | 28/158 [00:00<00:02, 45.98it/s]
+ 22%|##2       | 35/158 [00:00<00:02, 52.00it/s]
+ 27%|##6       | 42/158 [00:01<00:02, 52.97it/s]
+ 30%|###       | 48/158 [00:01<00:02, 48.24it/s]
+ 34%|###4      | 54/158 [00:01<00:02, 46.77it/s]
+ 38%|###7      | 60/158 [00:01<00:01, 49.65it/s]
+ 42%|####1     | 66/158 [00:01<00:01, 50.58it/s]
+ 46%|####5     | 72/158 [00:01<00:01, 52.94it/s]
+ 49%|####9     | 78/158 [00:01<00:01, 52.48it/s]
+ 53%|#####3    | 84/158 [00:01<00:01, 53.12it/s]
+ 58%|#####7    | 91/158 [00:02<00:01, 55.64it/s]
+ 61%|######1   | 97/158 [00:02<00:01, 56.60it/s]
+ 65%|######5   | 103/158 [00:02<00:00, 57.37it/s]
+ 69%|######8   | 109/158 [00:02<00:00, 57.02it/s]
+ 73%|#######2  | 115/158 [00:02<00:00, 56.08it/s]
+ 77%|#######6  | 121/158 [00:02<00:00, 55.76it/s]
+ 80%|########  | 127/158 [00:02<00:00, 56.28it/s]
+ 85%|########5 | 135/158 [00:02<00:00, 61.63it/s]
+ 91%|######### | 143/158 [00:02<00:00, 64.91it/s]
+ 96%|#########5| 151/158 [00:03<00:00, 67.63it/s]
+100%|##########| 158/158 [00:03<00:00, 50.63it/s]
+2026-10-15 21:17:53 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Intent evaluation results:
+2026-10-15 21:17:53 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Intent Evaluation: Only considering those 158 examples that have a defined intent out of 158 examples.
+2026-10-15 21:17:53 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Classification report saved to C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\reports\nlu-experiments\candidate-v6\baseline\results\intent_report.json.
+2026-10-15 21:17:53 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Successful intent predictions saved to C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\reports\nlu-experiments\candidate-v6\baseline\results\intent_successes.json.
+2026-10-15 21:17:53 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Incorrect intent predictions saved to C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\reports\nlu-experiments\candidate-v6\baseline\results\intent_errors.json.
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:30: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+  ParserElement.enablePackrat()
+2026-10-15 21:17:54 [1;30mINFO    [0m [34mrasa.utils.plotting[0m  - Confusion matrix, without normalization: 
+[[ 5  0  0  2  0  0  2  0  1  0  1  0  0  0  0  0]
+ [ 0  7  0  4  0  0  1  0  1  0  0  0  0  0  0  0]
+ [ 0  0  7  0  0  0  1  0  5  0  0  0  0  0  0  0]
+ [ 1  0  0  7  0  0  0  1  0  0  0  0  0  0  0  0]
+ [ 0  0  0  0 12  0  0  0  1  0  0  0  0  0  0  0]
+ [ 0  1  0  0  0  2  0  0  0  0  0  0  0  0  0  0]
+ [ 1  0  0  1  0  0  7  0  0  0  0  0  0  0  0  2]
+ [ 0  0  0  1  0  0  0  6  1  1  0  0  0  0  0  0]
+ [ 0  0  0  0  1  0  0  1 12  0  0  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0 13  1  0  0  0  0  0]
+ [ 0  0  0  1  0  0  1  1  2  0 10  0  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  1  0  0  5  0  0  0  0]
+ [ 0  0  0  0  0  0  0  0  1  0  0  0  5  0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  6  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  1  0  0  0  5  0]
+ [ 1  0  0  0  1  0  0  0  0  0  0  1  0  0  0  6]]
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:127: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  self._parser.parseString(pattern)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:134: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  self._parser.resetCache()
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2022: PyparsingDeprecationWarning: 'setName' deprecated - use 'set_name'
+  val.setName(key)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2033: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+  p.space         <<= oneOf(list(self._space_widths))
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:1878: PyparsingDeprecationWarning: 'setParseAction' deprecated - use 'set_parse_action'
+  empty.setParseAction(raise_error)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2047: PyparsingDeprecationWarning: 'leaveWhitespace' deprecated - use 'leave_whitespace'
+  + Suppress(Regex("(?=[^A-Za-z]|$)").leaveWhitespace())
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2209: PyparsingDeprecationWarning: 'unquoteResults' argument is deprecated, use 'unquote_results'
+  p.math_string   <<= QuotedString('$', '\\', unquoteResults=False)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2237: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  result = self._expression.parseString(s)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2245: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  self._expression.resetCache()
+2026-10-15 21:17:56 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Entity evaluation results:
+2026-10-15 21:17:56 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Evaluation for entity extractor: DIETClassifier 
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+2026-10-15 21:17:56 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Classification report saved to C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\reports\nlu-experiments\candidate-v6\baseline\results\DIETClassifier_report.json.
+2026-10-15 21:17:56 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Successful entity predictions saved to C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\reports\nlu-experiments\candidate-v6\baseline\results\DIETClassifier_successes.json.
+2026-10-15 21:17:56 [1;30mINFO    [0m [34mrasa.nlu.test[0m  - Incorrect entity predictions saved to C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\reports\nlu-experiments\candidate-v6\baseline\results\DIETClassifier_errors.json.
+2026-10-15 21:17:56 [1;30mINFO    [0m [34mrasa.utils.plotting[0m  - Confusion matrix, without normalization: 
+[[  0   0   0   0   6   0   0   0   0   0]
+ [  0  21   1   0  27   1   0   0   1   0]
+ [  0   0   5   2  20   0   0   0   0   0]
+ [  0   0   3   5   8   0   0   0   0   0]
+ [  0   8   8   0 997  14   1   2  17   2]
+ [  0   0   6   0  19   6   0   0   2   0]
+ [  0   0   0   0  14   0   0   0   0   0]
+ [  0   0   0   0  20   0   0   3   0   0]
+ [  0   2   6   0  56   0   0   0   4   0]
+ [  0   1   2   0  14   0   0   0   1   2]]
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2237: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  result = self._expression.parseString(s)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\_mathtext.py:2245: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  self._expression.resetCache()

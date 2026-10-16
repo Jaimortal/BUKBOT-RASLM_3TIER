@@ -94,10 +94,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const hasPermission = (permissionKey: keyof AdminPermissions): boolean => {
     if (isMainAdmin) return true;
     if (!user) return false;
-    if (user.permissions && typeof user.permissions[permissionKey] === 'boolean') {
-      return user.permissions[permissionKey];
+    const resolveKey = (key: keyof AdminPermissions): boolean => {
+      if (user.permissions && typeof user.permissions[key] === 'boolean') {
+        return user.permissions[key];
+      }
+      return DEFAULT_ADMIN_FALLBACK[key] ?? false;
+    };
+
+    if (
+      (permissionKey.startsWith('responses_') || permissionKey.startsWith('modal_')) &&
+      !resolveKey('nav_responses')
+    ) {
+      return false;
     }
-    return DEFAULT_ADMIN_FALLBACK[permissionKey] ?? false;
+    if (permissionKey.startsWith('reports_') && !resolveKey('nav_reports')) {
+      return false;
+    }
+    if (permissionKey.startsWith('settings_') && !resolveKey('nav_settings')) {
+      return false;
+    }
+
+    return resolveKey(permissionKey);
   };
 
   const checkAuth = async (): Promise<boolean> => {

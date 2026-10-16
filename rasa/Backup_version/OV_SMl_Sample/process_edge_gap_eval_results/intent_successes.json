@@ -1,0 +1,698 @@
+[
+  {
+    "text": "What is the process of enrollment at BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999806880950928
+    }
+  },
+  {
+    "text": "Unsaon pag enroll sa BukSU kung magsugod pa lang ko ug wala ko kabalo asa mag una?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9965623021125793
+    }
+  },
+  {
+    "text": "How does the mixed or face-to-face onsite enrollment process work?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999858140945435
+    }
+  },
+  {
+    "text": "Giunsa ang face to face nga proseso sa pag enroll sa campus?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9984015822410583
+    }
+  },
+  {
+    "text": "enrolmnt process step by step",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.999996542930603
+    }
+  },
+  {
+    "text": "What is the process for online enrollment?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999929666519165
+    }
+  },
+  {
+    "text": "Can I enroll online through a specific BukSU enrollment website?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.997664213180542
+    }
+  },
+  {
+    "text": "What are the exact steps to submit my online enrollment application?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9998643398284912
+    }
+  },
+  {
+    "text": "Unsaon nako pag check sa akong enrollment status ug subjects sa BukSU portal?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.999354898929596
+    }
+  },
+  {
+    "text": "How do I verify if my enrollment is already successful in the student portal dashboard?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9997013211250305
+    }
+  },
+  {
+    "text": "Asa nga section sa portal nako ma-confirm kung enrolled na ba ko ug makita akong schedule?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.6328825950622559
+    }
+  },
+  {
+    "text": "How can a freshman enroll at BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.999995231628418
+    }
+  },
+  {
+    "text": "How do continuing students enroll through the admissions portal using account migration?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9982665181159973
+    }
+  },
+  {
+    "text": "Unsa ang enrollment process para sa continuing students ig login sa admissions portal?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9976887702941895
+    }
+  },
+  {
+    "text": "What is the enrollment process for returning students who stopped for a semester?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.999931812286377
+    }
+  },
+  {
+    "text": "How can a transferee student enroll in BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999701976776123
+    }
+  },
+  {
+    "text": "Unsa ang proseso sa pag enroll kung transferee gikan sa laing school?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9991849064826965
+    }
+  },
+  {
+    "text": "Am I allowed to enroll even if it is late, and how do I do late enrollment?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999850988388062
+    }
+  },
+  {
+    "text": "How do I know my enrollment application is approved and how do I download my COR?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.998918890953064
+    }
+  },
+  {
+    "text": "How do I validate my enrollment and settle payment at Finance?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8814955949783325
+    }
+  },
+  {
+    "text": "How do I apply for senior academic overload of units in my final year?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9974986910820007
+    }
+  },
+  {
+    "text": "Pwede ba ko maka enroll sa BukSU samtang nag eskwela pa ko sa lain nga unibersidad?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.5359958410263062
+    }
+  },
+  {
+    "text": "Unsaon nako pag access ug pag login sa akong BukSU SIAS account?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9965031147003174
+    }
+  },
+  {
+    "text": "How do I apply for admission and take the BukSU-CAT examination?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999922513961792
+    }
+  },
+  {
+    "text": "Is walk-in entrance exam application allowed or is BukSU-CAT strictly online?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999680519104004
+    }
+  },
+  {
+    "text": "Pwede ba mag walk-in application sa BukSU CAT o online ra jud tanan?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.6000772714614868
+    }
+  },
+  {
+    "text": "Pwede ba mag apply sa BukSU CAT gamit lang ang cellphone?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9963274598121643
+    }
+  },
+  {
+    "text": "How can an ALS graduate or second courser apply for the BukSU-CAT?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9996258020401001
+    }
+  },
+  {
+    "text": "Nahuman na nako ang online admission application, unsa na ang sunod buhaton?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9870405793190002
+    }
+  },
+  {
+    "text": "Unsaon nako pagkahibalo kung na-accept na ba akong admission application?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9995744824409485
+    }
+  },
+  {
+    "text": "Ngano pending gihapon ang akong admission application status ug unsay buhaton?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.4485170841217041
+    }
+  },
+  {
+    "text": "How do I confirm my intent to enroll in the admission portal after passing?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999017715454102
+    }
+  },
+  {
+    "text": "Can I still reschedule my entrance exam or change my testing site after approval?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9973686933517456
+    }
+  },
+  {
+    "text": "Na-miss nako ang akong BukSU CAT exam schedule, unsa akong pwede buhaton?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.95054692029953
+    }
+  },
+  {
+    "text": "Can I retake the BukSU-CAT examination more than once if I failed?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9990795850753784
+    }
+  },
+  {
+    "text": "Can I still change my preferred course even after passing the BukSU-CAT?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9922696352005005
+    }
+  },
+  {
+    "text": "Dili ma-open ang akong test permit sa akong cellphone kay corrupted, unsaon ni?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9819745421409607
+    }
+  },
+  {
+    "text": "Dili nako ma-upload ang akong 2x2 nga profile picture sa admission portal, unsay buhaton?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9985893368721008
+    }
+  },
+  {
+    "text": "Unsaon pag change sa akong personal info sa admission account?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9358256459236145
+    }
+  },
+  {
+    "text": "Unsaon pag usab sa akong password sa admission portal?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999570846557617
+    }
+  },
+  {
+    "text": "How do I apply for the Affirmative Action Program (AAP) at BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9990787506103516
+    }
+  },
+  {
+    "text": "What if I stopped studying at BukSU years ago, what is the process to come back and readmit?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9997978806495667
+    }
+  },
+  {
+    "text": "What is the adding and dropping subject process at the Registrar?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9802749752998352
+    }
+  },
+  {
+    "text": "What is the process for voluntary withdrawal of enrollment?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999727010726929
+    }
+  },
+  {
+    "text": "Unsaon pag withdraw o pag cancel sa akong enrollment sa Registrar?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9938735961914062
+    }
+  },
+  {
+    "text": "Unsaon nako pag request og COR sa Registrar o online?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.999783456325531
+    }
+  },
+  {
+    "text": "What are the step-by-step procedures for COR validation?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9992917776107788
+    }
+  },
+  {
+    "text": "Naka-print na ko sa akong COR gikan sa admission portal, unsay sunod buhaton para ma-validate?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9896438121795654
+    }
+  },
+  {
+    "text": "What is the step-by-step process to get my TOR from Registrar Window 1-6, Accounting, and Cashier?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.5617779493331909
+    }
+  },
+  {
+    "text": "Unsaon pag request ug TOR sa Registrar ug unsay proseso sa pagbayad sa Cashier?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8520939946174622
+    }
+  },
+  {
+    "text": "How do I apply for graduation and file my application in my final semester?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9980390667915344
+    }
+  },
+  {
+    "text": "Unsaon pag apply para sa graduation sa BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9913529753684998
+    }
+  },
+  {
+    "text": "How do I process my University Clearance online at clearance.buksu.edu.ph?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999638795852661
+    }
+  },
+  {
+    "text": "Unsa man ang tracer study para sa mga graduates ug unsaon pag apil?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9882516264915466
+    }
+  },
+  {
+    "text": "How do I get my student ID and what is the process?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999979734420776
+    }
+  },
+  {
+    "text": "Unsaon pagkuha sa student ID sa BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999955892562866
+    }
+  },
+  {
+    "text": "How do I validate my student ID every semester?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999295473098755
+    }
+  },
+  {
+    "text": "I lost my student ID, what is the process to replace a lost ID?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999748468399048
+    }
+  },
+  {
+    "text": "How do I enter the campus if I don't have my physical student ID yet?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9993342757225037
+    }
+  },
+  {
+    "text": "How can I access campus Wi-Fi and get my Wi-Fi credentials?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999796152114868
+    }
+  },
+  {
+    "text": "Can you tell me how students connect to the school Wi-Fi network?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9991809725761414
+    }
+  },
+  {
+    "text": "How can I reset my portal password if I forgot it?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999873638153076
+    }
+  },
+  {
+    "text": "Nakalimot ko sa akong BukSU admission account password, unsaon nako pag recover?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9995282888412476
+    }
+  },
+  {
+    "text": "How do I reset my SIAS password if I forgot my SIAS login credentials?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9994252920150757
+    }
+  },
+  {
+    "text": "Unsa ang angay buhaton kung ma-lock ang akong BukSU student portal account?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8930100798606873
+    }
+  },
+  {
+    "text": "Ngano dili ko maka-login sa BukSU student portal ug unsa akong angay i-check?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.6780052185058594
+    }
+  },
+  {
+    "text": "Asa ug unsaon nako pag edit o pag usab sa akong profile details sa student portal?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9998791217803955
+    }
+  },
+  {
+    "text": "What is the process for getting a medical certificate at the University Clinic?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.446897953748703
+    }
+  },
+  {
+    "text": "Unsaon pagkuha sa library ID card?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999762773513794
+    }
+  },
+  {
+    "text": "How do I get or buy my PE uniform at BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999202489852905
+    }
+  },
+  {
+    "text": "How and where can I buy my department college t-shirt?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9902685880661011
+    }
+  },
+  {
+    "text": "What is the process of getting a gate pass sticker for my vehicle or motorcycle?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9991698265075684
+    }
+  },
+  {
+    "text": "Unsaon pag apil sa mga accredited student organizations o clubs panahon sa Org Fair?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9921389222145081
+    }
+  },
+  {
+    "text": "How do I check and view my semester grades in the SIAS portal?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9998586177825928
+    }
+  },
+  {
+    "text": "How do I complete an INC (Incomplete) grade and process the INC form?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9998998641967773
+    }
+  },
+  {
+    "text": "Unsaon pag complete sa akong INC nga grado sa subject?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9997698664665222
+    }
+  },
+  {
+    "text": "What is the process if I failed a subject for the first time and need to retake it?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9983935952186584
+    }
+  },
+  {
+    "text": "How do I shift to another course or program next semester?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999532699584961
+    }
+  },
+  {
+    "text": "Pwede ba ko maka-shift og course bisan 3rd year student na ko sa BukSU, ug unsaon?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9997441172599792
+    }
+  },
+  {
+    "text": "Can a freshman request to transfer to another section or change class schedules due to conflict?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.6603149175643921
+    }
+  },
+  {
+    "text": "How do I request a dental consultation at the clinic?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9919399619102478
+    }
+  },
+  {
+    "text": "How do I request a dental oral examination?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9998459815979004
+    }
+  },
+  {
+    "text": "What is the process to request a tooth extraction at the university dental clinic?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9928567409515381
+    }
+  },
+  {
+    "text": "What is the process of borrowing books from the BukSU library?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9982549548149109
+    }
+  },
+  {
+    "text": "How and where do I return borrowed library books?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8813621997833252
+    }
+  },
+  {
+    "text": "How can I apply for a scholarship at BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999850988388062
+    }
+  },
+  {
+    "text": "How is the selection process of TES grantees done?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9997578263282776
+    }
+  }
+]

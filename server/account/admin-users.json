@@ -160,14 +160,14 @@
           "modal_map": true
         },
         "createdAt": "2026-10-11T08:13:53.955Z",
-        "updatedAt": "2026-10-11T08:24:40.054Z"
+        "updatedAt": "2026-10-16T04:13:48.955Z"
       }
     ],
     "settings": {
       "allowGoogleAuth": true,
       "allowLocalAuth": true,
       "developmentMode": true,
-      "signupEnabled": true
+      "signupEnabled": false
     }
   }
 }

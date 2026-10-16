@@ -1,0 +1,162 @@
+[
+  {
+    "text": "unsaon pag adto sa Cafeteria",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9989588260650635
+    }
+  },
+  {
+    "text": "whre is Multimedia Laboratory",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.7061175107955933
+    }
+  },
+  {
+    "text": "what time are dental clinic consultations available",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9266661405563354
+    }
+  },
+  {
+    "text": "unsaon pagpa correction sa sayop nga spelling sa pangalan sa registrar",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.7634252905845642
+    }
+  },
+  {
+    "text": "asa ug unsaon pag report sa nawala nga gamit sa lost and found",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9980435371398926
+    }
+  },
+  {
+    "text": "unsaon pag bayad sa miscellaneous fee sa cashier",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsaon pag join sa mga student organizations ug clubs",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what is the difference between ROTC, CWTS, and LTS under NSTP",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9791016578674316
+    }
+  },
+  {
+    "text": "what is the Learning Management System or BukSU LMS used for",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9999967813491821
+    }
+  },
+  {
+    "text": "how can I reach the Disaster Risk Reduction and Management or DRRM office",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.6538532972335815
+    }
+  },
+  {
+    "text": "ginatanyag ba ang BA English Language ug BA Economics sa CAS",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9989410042762756
+    }
+  },
+  {
+    "text": "does BukSU offer free mental health counseling for students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999353885650635
+    }
+  },
+  {
+    "text": "naa bay guidance counseling service para sa stressed nga students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.8961424827575684
+    }
+  },
+  {
+    "text": "naa bay summer class o midyear term sa BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9998866319656372
+    }
+  },
+  {
+    "text": "is BS Hospitality Management open for freshmen this year",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.6099303364753723
+    }
+  },
+  {
+    "text": "naa bay assistance desk pag sulod sa main gate",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.534920334815979
+    }
+  },
+  {
+    "text": "unsaon pagkuha ug medical clearance slip sa clinic",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9629096388816833
+    }
+  },
+  {
+    "text": "asa makuha ang prospectus o curriculum checklist sa akong kurso",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.7721936106681824
+    }
+  },
+  {
+    "text": "thnk you very much",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999924898147583
+    }
+  },
+  {
+    "text": "open others section",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.9999457597732544
+    }
+  }
+]

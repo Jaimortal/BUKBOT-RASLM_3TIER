@@ -1,0 +1,6 @@
+{
+  "model": "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\reports\\nlu-experiments\\candidate-v3\\models\\candidate.tar.gz",
+  "model_sha256": "553ea064bebf024f6df6713c6afb8e7369c08265bad11a6f7d507339d11df94f",
+  "frozen_utc": "2026-10-13T09:14:09.658810+00:00",
+  "note": "Explicit freeze command records the selected candidate; it does not certify accuracy."
+}

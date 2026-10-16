@@ -1,0 +1,202 @@
+version: "3.1"
+
+intents:
+  - set_category
+  - reset_category
+  - get_category_suggestions
+  - direct_intent
+  - ask_location
+  - ask_schedule
+  - ask_fee
+  - ask_requirement
+  - ask_process
+  - ask_general_info
+  - ask_contact
+  - ask_availability
+  - ask_facility_availability
+  - ask_document
+  - ask_follow_up
+  - smalltalk
+  - out_of_scope
+  - goodbye
+  - bot_challenge
+  - nlu_fallback
+
+entities:
+  - active_category
+  - category
+  - domain
+  - intent
+  - location_name
+  - service
+  - office
+  - document
+  - program
+  - facility_name
+  - organization
+  - time_period
+  - topic
+  - lab_number
+
+slots:
+  active_category:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: active_category
+      - type: from_entity
+        entity: category
+      - type: custom
+
+  category:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: category
+      - type: custom
+
+  domain:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: domain
+      - type: custom
+
+  location_name:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: location_name
+
+  service:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: service
+
+  office:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: office
+
+  document:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: document
+
+  program:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: program
+
+  organization:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: organization
+
+  time_period:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: time_period
+
+  topic:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: topic
+
+  lab_number:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: lab_number
+
+  last_query_subject:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  last_topic:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  conversation_subject:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_subject_type:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_category:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_last_topic:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_last_intent:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_turns_remaining:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_context_updated_at:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+responses:
+  utter_goodbye:
+    - text: "You can ask me anytime."
+
+  utter_iamabot:
+    - text: "I am BukSU's chatbot assistant."
+
+actions:
+  - action_main_router
+  - action_reply_from_json
+  - action_set_dynamic_slot
+  - action_set_active_category
+  - action_reset_active_category
+  - action_get_category_suggestions
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

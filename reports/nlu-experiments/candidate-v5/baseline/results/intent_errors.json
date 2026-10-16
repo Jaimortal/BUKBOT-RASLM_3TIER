@@ -1,0 +1,346 @@
+[
+  {
+    "text": "show me the map location for College of Medicine Building",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.275986909866333
+    }
+  },
+  {
+    "text": "unsaon pag adto sa Cafeteria",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.5520593523979187
+    }
+  },
+  {
+    "text": "asa dapit ang mga satellite campuses sa BukSU sa Bukidnon ug Misamis Oriental",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.5357099771499634
+    }
+  },
+  {
+    "text": "is the university clinic open on Saturdays and Sundays",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.36134523153305054
+    }
+  },
+  {
+    "text": "abli ba ang clinic sa BukSU pag weekend",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9969909191131592
+    }
+  },
+  {
+    "text": "unsang orasa ang curfew sa dormitory",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9503695368766785
+    }
+  },
+  {
+    "text": "how long does Honorable Dismissal processing take",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999938011169434
+    }
+  },
+  {
+    "text": "how many days can I borrow a book from the library",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9502617716789246
+    }
+  },
+  {
+    "text": "is there any charge for resetting my SIAS portal password at ICT",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9698306322097778
+    }
+  },
+  {
+    "text": "unsa ang dad-on pagpa validate sa ID kada semester",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.973724365234375
+    }
+  },
+  {
+    "text": "unsaon pagpa correction sa sayop nga spelling sa pangalan sa registrar",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.38106662034988403
+    }
+  },
+  {
+    "text": "unsaon pag bayad sa miscellaneous fee sa cashier",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9956164360046387
+    }
+  },
+  {
+    "text": "what are the official university colors and what do they symbolize",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.498304545879364
+    }
+  },
+  {
+    "text": "unsay meaning sa seal ug colors sa BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.6987684965133667
+    }
+  },
+  {
+    "text": "what are the rules and curfews inside the BukSU dormitories",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.6746361255645752
+    }
+  },
+  {
+    "text": "unsa ang policy sa No ID No Entry sa main gate",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.18701958656311035
+    }
+  },
+  {
+    "text": "does the University Registrar have an official Facebook page",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9857972264289856
+    }
+  },
+  {
+    "text": "unsa ang FB page sa Registrar sa BukSU",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9723581671714783
+    }
+  },
+  {
+    "text": "what is the link to the BukSU LMS or BukSU Step website",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.6511213183403015
+    }
+  },
+  {
+    "text": "how can I reach the Disaster Risk Reduction and Management or DRRM office",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.2619023621082306
+    }
+  },
+  {
+    "text": "unsa ang email address sa Data Privacy Officer o BukSU admin",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.6794556975364685
+    }
+  },
+  {
+    "text": "what is the official website domain of Bukidnon State University",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.8317597508430481
+    }
+  },
+  {
+    "text": "does BukSU offer free mental health counseling for students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9947819113731384
+    }
+  },
+  {
+    "text": "naa bay guidance counseling service para sa stressed nga students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9995013475418091
+    }
+  },
+  {
+    "text": "naa bay summer class o midyear term sa BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.49788060784339905
+    }
+  },
+  {
+    "text": "is BS Hospitality Management open for freshmen this year",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.4707981050014496
+    }
+  },
+  {
+    "text": "is that program offered in the satellite campuses too?",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.44720137119293213
+    }
+  },
+  {
+    "text": "is Master in Public Administration or MBA offered at BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.8214533925056458
+    }
+  },
+  {
+    "text": "is there an isolation room or holding area at the university clinic",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9778658151626587
+    }
+  },
+  {
+    "text": "does that building have a computer lab inside?",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.2859990894794464
+    }
+  },
+  {
+    "text": "unsaon pagkuha ug medical clearance slip sa clinic",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999151229858398
+    }
+  },
+  {
+    "text": "ma-download ba ang COR gikan sa student portal",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.704778790473938
+    }
+  },
+  {
+    "text": "how to get a lost ID replacement form from OSS",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9935123324394226
+    }
+  },
+  {
+    "text": "hw to get transcript of record",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999121427536011
+    }
+  },
+  {
+    "text": "asa makuha ang prospectus o curriculum checklist sa akong kurso",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9969009160995483
+    }
+  },
+  {
+    "text": "unsaon pag claim sa diploma ug TOR para sa fresh grad",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.46682655811309814
+    }
+  },
+  {
+    "text": "could you share more details on that",
+    "intent": "ask_follow_up",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.5214892029762268
+    }
+  },
+  {
+    "text": "how are you doing today",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9122045040130615
+    }
+  },
+  {
+    "text": "thnk you very much",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9741634130477905
+    }
+  },
+  {
+    "text": "kumusta man ka",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.41525113582611084
+    }
+  },
+  {
+    "text": "sige mo out nako babay",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.5661905407905579
+    }
+  },
+  {
+    "text": "am I speaking with a real person right now",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.29364851117134094
+    }
+  },
+  {
+    "text": "open others section",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.8749836087226868
+    }
+  }
+]

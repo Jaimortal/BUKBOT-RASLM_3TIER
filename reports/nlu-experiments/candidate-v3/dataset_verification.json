@@ -1,0 +1,11 @@
+{
+  "status": "PREPARED_CANDIDATE_V3_TRAINING_ONLY_ITERATION",
+  "parent_dataset": "docs/datasets/nlu_review",
+  "counts": {
+    "train": 1287,
+    "validation": 158,
+    "test": 150
+  },
+  "protection": "Validation and test files are byte-for-byte exact copies of the parent dataset. The active rasa/data/nlu.yml and active models are not modified.",
+  "assertions": "PASS: all reserve groups moved to train, targeted bridge groups added, no group crosses splits, validation/test hashes preserved."
+}

@@ -1,0 +1,3162 @@
+{
+  "model_evaluated": "rasa\\models\\20261015-125505-candidate-v5.tar.gz",
+  "total_questions": 116,
+  "strict_ask_process_correct": 80,
+  "strict_ask_process_accuracy": 0.6897,
+  "strict_ask_process_accuracy_pct": "68.97%",
+  "acceptable_intent_correct": 84,
+  "acceptable_intent_accuracy": 0.7241,
+  "acceptable_intent_accuracy_pct": "72.41%",
+  "knowledge_topic_exact_match": 63,
+  "knowledge_topic_accuracy_pct": "54.31%",
+  "routed_to_action_main_router_count": 112,
+  "routed_to_action_main_router_pct": "96.55%",
+  "average_confidence": 0.9429,
+  "records": [
+    {
+      "id": "ENR-01",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.1 General Enrollment & Where to Start (`enrollment_general_process`, `enrollment_where_to_start`, `mixed_enrollment_process`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "What is the process of enrollment at BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "enrollment_general_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-02",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.1 General Enrollment & Where to Start (`enrollment_general_process`, `enrollment_where_to_start`, `mixed_enrollment_process`)",
+      "edge_type": "Conversational Edge",
+      "text": "I want to enroll in BukSU but I have no idea where to start, what is step 1?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "enrollment_where_to_start"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9989,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "enroll"
+        },
+        {
+          "entity": "document",
+          "value": "BukSU"
+        },
+        {
+          "entity": "location_name",
+          "value": "1"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_where_to_start",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-03",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.1 General Enrollment & Where to Start (`enrollment_general_process`, `enrollment_where_to_start`, `mixed_enrollment_process`)",
+      "edge_type": "Bisaya Edge",
+      "text": "Unsaon pag enroll sa BukSU kung magsugod pa lang ko ug wala ko kabalo asa mag una?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "enrollment_where_to_start"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9989,
+      "entities": [
+        {
+          "entity": "organization",
+          "value": "BukSU"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_where_to_start",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-04",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.1 General Enrollment & Where to Start (`enrollment_general_process`, `enrollment_where_to_start`, `mixed_enrollment_process`)",
+      "edge_type": "Onsite / Walk-in Edge",
+      "text": "How does the mixed or face-to-face onsite enrollment process work?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "mixed_enrollment_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "enrollment"
+        },
+        {
+          "entity": "program",
+          "value": "work"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "mixed_enrollment_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-05",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.1 General Enrollment & Where to Start (`enrollment_general_process`, `enrollment_where_to_start`, `mixed_enrollment_process`)",
+      "edge_type": "Bisaya Conversational",
+      "text": "Giunsa ang face to face nga proseso sa pag enroll sa campus?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "mixed_enrollment_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "enroll"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-06",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.1 General Enrollment & Where to Start (`enrollment_general_process`, `enrollment_where_to_start`, `mixed_enrollment_process`)",
+      "edge_type": "Typo / Short Edge",
+      "text": "enrolmnt process step by step",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "enrollment_general_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-07",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.2 Online Enrollment & Portal Steps (`enrollment_online_system`, `online_enrollment_steps`, `check_portal_enrollment_status`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "What is the process for online enrollment?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "online_enrollment_steps"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "online enrollment"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-08",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.2 Online Enrollment & Portal Steps (`enrollment_online_system`, `online_enrollment_steps`, `check_portal_enrollment_status`)",
+      "edge_type": "Portal Availability Boundary",
+      "text": "Can I enroll online through a specific BukSU enrollment website?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "enrollment_online_system"
+      ],
+      "predicted_nlu_intent": "ask_contact",
+      "predicted_confidence": 0.973,
+      "entities": [
+        {
+          "entity": "program",
+          "value": "specific"
+        },
+        {
+          "entity": "organization",
+          "value": "BukSU enrollment"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "__contact_clarification__",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-09",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.2 Online Enrollment & Portal Steps (`enrollment_online_system`, `online_enrollment_steps`, `check_portal_enrollment_status`)",
+      "edge_type": "Step-by-Step Edge",
+      "text": "What are the exact steps to submit my online enrollment application?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "online_enrollment_steps"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "submit"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-10",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.2 Online Enrollment & Portal Steps (`enrollment_online_system`, `online_enrollment_steps`, `check_portal_enrollment_status`)",
+      "edge_type": "Bisaya Portal Check",
+      "text": "Unsaon nako pag check sa akong enrollment status ug subjects sa BukSU portal?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "check_portal_enrollment_status"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "check"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-11",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.2 Online Enrollment & Portal Steps (`enrollment_online_system`, `online_enrollment_steps`, `check_portal_enrollment_status`)",
+      "edge_type": "Verification Edge",
+      "text": "How do I verify if my enrollment is already successful in the student portal dashboard?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "check_portal_enrollment_status"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9997,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_online_system",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-12",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.2 Online Enrollment & Portal Steps (`enrollment_online_system`, `online_enrollment_steps`, `check_portal_enrollment_status`)",
+      "edge_type": "Mixed Conversational",
+      "text": "Asa nga section sa portal nako ma-confirm kung enrolled na ba ko ug makita akong schedule?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "check_portal_enrollment_status"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.4618,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_online_system",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-13",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.3 Freshman, Continuing, Returning & Transferee Enrollment (`freshman_enrollment_process`, `continuing_students_enrollment_process`, `returning_students_scope_notice`, `transferee_enrollment`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "How can a freshman enroll at BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "freshman_enrollment_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "enroll"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-14",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.3 Freshman, Continuing, Returning & Transferee Enrollment (`freshman_enrollment_process`, `continuing_students_enrollment_process`, `returning_students_scope_notice`, `transferee_enrollment`)",
+      "edge_type": "Continuing Account Migration",
+      "text": "How do continuing students enroll through the admissions portal using account migration?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "continuing_students_enrollment_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "enroll"
+        },
+        {
+          "entity": "service",
+          "value": "portal"
+        },
+        {
+          "entity": "service",
+          "value": "account"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_online_system",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-15",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.3 Freshman, Continuing, Returning & Transferee Enrollment (`freshman_enrollment_process`, `continuing_students_enrollment_process`, `returning_students_scope_notice`, `transferee_enrollment`)",
+      "edge_type": "Bisaya Continuing Edge",
+      "text": "Unsa ang enrollment process para sa continuing students ig login sa admissions portal?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "continuing_students_enrollment_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9999,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "continuing"
+        },
+        {
+          "entity": "service",
+          "value": "admissions portal"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_online_system",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-16",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.3 Freshman, Continuing, Returning & Transferee Enrollment (`freshman_enrollment_process`, `continuing_students_enrollment_process`, `returning_students_scope_notice`, `transferee_enrollment`)",
+      "edge_type": "Returning Student Edge",
+      "text": "What is the enrollment process for returning students who stopped for a semester?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "returning_students_scope_notice"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "time_period",
+          "value": "semester"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "returning_students_scope_notice",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-17",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.3 Freshman, Continuing, Returning & Transferee Enrollment (`freshman_enrollment_process`, `continuing_students_enrollment_process`, `returning_students_scope_notice`, `transferee_enrollment`)",
+      "edge_type": "Transferee Edge",
+      "text": "How can a transferee student enroll in BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "transferee_enrollment"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "topic",
+          "value": "transferee"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "transferee_enrollment",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-18",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.3 Freshman, Continuing, Returning & Transferee Enrollment (`freshman_enrollment_process`, `continuing_students_enrollment_process`, `returning_students_scope_notice`, `transferee_enrollment`)",
+      "edge_type": "Bisaya Transferee",
+      "text": "Unsa ang proseso sa pag enroll kung transferee gikan sa laing school?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "transferee_enrollment"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "transferee"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-19",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.4 Late Enrollment, Approval, Validation & Overload (`late_enrollment`, `enrollment_application_approval`, `enrollment_validation_payment`, `senior_academic_overload`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "Am I allowed to enroll even if it is late, and how do I do late enrollment?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "late_enrollment"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "late"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "late_enrollment",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-20",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.4 Late Enrollment, Approval, Validation & Overload (`late_enrollment`, `enrollment_application_approval`, `enrollment_validation_payment`, `senior_academic_overload`)",
+      "edge_type": "Late Document Submission",
+      "text": "What happens if I submit my enrollment documents late after the schedule?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "late_enrollment_document_submission"
+      ],
+      "predicted_nlu_intent": "ask_general_info",
+      "predicted_confidence": 0.9988,
+      "entities": [],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "late_enrollment_document_submission",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-21",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.4 Late Enrollment, Approval, Validation & Overload (`late_enrollment`, `enrollment_application_approval`, `enrollment_validation_payment`, `senior_academic_overload`)",
+      "edge_type": "Post-Approval Next Step",
+      "text": "How do I know my enrollment application is approved and how do I download my COR?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "enrollment_application_approval"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.9999,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "application"
+        },
+        {
+          "entity": "service",
+          "value": "and"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "where_get_cor",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-22",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.4 Late Enrollment, Approval, Validation & Overload (`late_enrollment`, `enrollment_application_approval`, `enrollment_validation_payment`, `senior_academic_overload`)",
+      "edge_type": "Validation & Payment Step",
+      "text": "How do I validate my enrollment and settle payment at Finance?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "enrollment_validation_payment"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.959,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "enrollment"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_validation_payment",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-23",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.4 Late Enrollment, Approval, Validation & Overload (`late_enrollment`, `enrollment_application_approval`, `enrollment_validation_payment`, `senior_academic_overload`)",
+      "edge_type": "Graduating Overload Edge",
+      "text": "How do I apply for senior academic overload of units in my final year?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "senior_academic_overload"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9996,
+      "entities": [
+        {
+          "entity": "program",
+          "value": "senior"
+        },
+        {
+          "entity": "service",
+          "value": "academic"
+        },
+        {
+          "entity": "document",
+          "value": "overload of"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "overload_units_policy",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-24",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.5 Campus Transfer, Double Enrollment, SIAS Claim & CON Nursing Submission (`campus_transfer`, `double_enrollment_policy`, `sias_first_year_claim`, `access_sias`, `con_nursing_requirements_submission`)",
+      "edge_type": "Satellite to Main Transfer",
+      "text": "Pwede ba ko mobalhin gikan sa satellite campus padulong sa lain nga campus sa BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "campus_transfer"
+      ],
+      "predicted_nlu_intent": "ask_follow_up",
+      "predicted_confidence": 0.4053,
+      "entities": [
+        {
+          "entity": "topic",
+          "value": "satellite campus"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "campus_transfer",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ENR-25",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.5 Campus Transfer, Double Enrollment, SIAS Claim & CON Nursing Submission (`campus_transfer`, `double_enrollment_policy`, `sias_first_year_claim`, `access_sias`, `con_nursing_requirements_submission`)",
+      "edge_type": "Double Enrollment Edge",
+      "text": "Pwede ba ko maka enroll sa BukSU samtang nag eskwela pa ko sa lain nga unibersidad?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "double_enrollment_policy"
+      ],
+      "predicted_nlu_intent": "ask_follow_up",
+      "predicted_confidence": 0.8301,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "enroll"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "enrollment_where_to_start",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-26",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.5 Campus Transfer, Double Enrollment, SIAS Claim & CON Nursing Submission (`campus_transfer`, `double_enrollment_policy`, `sias_first_year_claim`, `access_sias`, `con_nursing_requirements_submission`)",
+      "edge_type": "First-Year SIAS Claim",
+      "text": "Paano po mag-claim ng SIAS account at default password para sa incoming first year?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "sias_first_year_claim"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.6407,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "SIAS account"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "sias_forgot_password",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-27",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.5 Campus Transfer, Double Enrollment, SIAS Claim & CON Nursing Submission (`campus_transfer`, `double_enrollment_policy`, `sias_first_year_claim`, `access_sias`, `con_nursing_requirements_submission`)",
+      "edge_type": "SIAS Access Edge",
+      "text": "Unsaon nako pag access ug pag login sa akong BukSU SIAS account?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "access_sias"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "BukSU"
+        },
+        {
+          "entity": "service",
+          "value": "SIAS account"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "Find_Sias_Account",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ENR-28",
+      "category": "Category 1: Enrollment Procedures (`procedures/enrollment_procedures.json` & `nlu.yml`)",
+      "subcategory": "1.5 Campus Transfer, Double Enrollment, SIAS Claim & CON Nursing Submission (`campus_transfer`, `double_enrollment_policy`, `sias_first_year_claim`, `access_sias`, `con_nursing_requirements_submission`)",
+      "edge_type": "CON Nursing Submission",
+      "text": "What is the process of passing and submitting nursing enrollment requirements in CON?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "con_nursing_requirements_submission"
+      ],
+      "predicted_nlu_intent": "ask_requirement",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "cat_requirement_nursing_program",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-01",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.1 Applying for Admission & BukSU-CAT (`take_exam`, `cat_online_vs_walkin_application`, `apply_cat_using_mobile_phone`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "How do I apply for admission and take the BukSU-CAT examination?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "take_exam"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "BukSU-CAT examination"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "take_exam",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-02",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.1 Applying for Admission & BukSU-CAT (`take_exam`, `cat_online_vs_walkin_application`, `apply_cat_using_mobile_phone`)",
+      "edge_type": "Walk-In vs Online Edge",
+      "text": "Is walk-in entrance exam application allowed or is BukSU-CAT strictly online?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "cat_online_vs_walkin_application"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "entrance"
+        },
+        {
+          "entity": "service",
+          "value": "BukSU-CAT"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "cat_online_vs_walkin_application",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-03",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.1 Applying for Admission & BukSU-CAT (`take_exam`, `cat_online_vs_walkin_application`, `apply_cat_using_mobile_phone`)",
+      "edge_type": "Bisaya Walk-In Edge",
+      "text": "Pwede ba mag walk-in application sa BukSU CAT o online ra jud tanan?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "cat_online_vs_walkin_application"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9771,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "cat_online_vs_walkin_application",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-04",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.1 Applying for Admission & BukSU-CAT (`take_exam`, `cat_online_vs_walkin_application`, `apply_cat_using_mobile_phone`)",
+      "edge_type": "Mobile Phone Application",
+      "text": "Pwede ba mag apply sa BukSU CAT gamit lang ang cellphone?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "apply_cat_using_mobile_phone"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.4987,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "BukSU CAT"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "take_exam",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-05",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.1 Applying for Admission & BukSU-CAT (`take_exam`, `cat_online_vs_walkin_application`, `apply_cat_using_mobile_phone`)",
+      "edge_type": "Second Courser / ALS Application",
+      "text": "How can an ALS graduate or second courser apply for the BukSU-CAT?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "als_graduate_buksu_cat_application",
+        "second_courser_cat_application"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "program",
+          "value": "graduate"
+        },
+        {
+          "entity": "topic",
+          "value": "second courser"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "gpat_admission_requirements",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-06",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.2 Post-Application Workflow, Pending/Denied Status & Intent to Enroll (`after_admission_application`, `status_application`, `application_pending`, `application_always_denied`, `denied_applications`, `intent_to_enroll_confirm`)",
+      "edge_type": "Next Step Edge",
+      "text": "Nahuman na nako ang online admission application, unsa na ang sunod buhaton?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "after_admission_application"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.5381,
+      "entities": [
+        {
+          "entity": "facility_name",
+          "value": "online"
+        },
+        {
+          "entity": "facility_name",
+          "value": "admission"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "after_admission_application",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-07",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.2 Post-Application Workflow, Pending/Denied Status & Intent to Enroll (`after_admission_application`, `status_application`, `application_pending`, `application_always_denied`, `denied_applications`, `intent_to_enroll_confirm`)",
+      "edge_type": "Status Check Edge",
+      "text": "Unsaon nako pagkahibalo kung na-accept na ba akong admission application?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "status_application"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.9435,
+      "entities": [
+        {
+          "entity": "office",
+          "value": "admission"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "status_application",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-08",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.2 Post-Application Workflow, Pending/Denied Status & Intent to Enroll (`after_admission_application`, `status_application`, `application_pending`, `application_always_denied`, `denied_applications`, `intent_to_enroll_confirm`)",
+      "edge_type": "Pending Status Edge",
+      "text": "Ngano pending gihapon ang akong admission application status ug unsay buhaton?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "application_pending"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.5891,
+      "entities": [
+        {
+          "entity": "facility_name",
+          "value": "admission application"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "status_application",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-09",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.2 Post-Application Workflow, Pending/Denied Status & Intent to Enroll (`after_admission_application`, `status_application`, `application_pending`, `application_always_denied`, `denied_applications`, `intent_to_enroll_confirm`)",
+      "edge_type": "Rejected / Denied Edge",
+      "text": "Why is my admission application always denied or rejected in the portal?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "application_always_denied"
+      ],
+      "predicted_nlu_intent": "ask_schedule",
+      "predicted_confidence": 0.9998,
+      "entities": [
+        {
+          "entity": "facility_name",
+          "value": "admission"
+        },
+        {
+          "entity": "facility_name",
+          "value": "denied"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "application_always_denied",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-10",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.2 Post-Application Workflow, Pending/Denied Status & Intent to Enroll (`after_admission_application`, `status_application`, `application_pending`, `application_always_denied`, `denied_applications`, `intent_to_enroll_confirm`)",
+      "edge_type": "Testing Site Denial",
+      "text": "Ngano gi-deny akong admission application sa testing site?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "denied_applications"
+      ],
+      "predicted_nlu_intent": "ask_schedule",
+      "predicted_confidence": 0.9922,
+      "entities": [],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "application_always_denied",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-11",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.2 Post-Application Workflow, Pending/Denied Status & Intent to Enroll (`after_admission_application`, `status_application`, `application_pending`, `application_always_denied`, `denied_applications`, `intent_to_enroll_confirm`)",
+      "edge_type": "Confirm Intent to Enroll",
+      "text": "How do I confirm my intent to enroll in the admission portal after passing?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "intent_to_enroll_confirm"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "intent_to_enroll_confirm",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-12",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.2 Post-Application Workflow, Pending/Denied Status & Intent to Enroll (`after_admission_application`, `status_application`, `application_pending`, `application_always_denied`, `denied_applications`, `intent_to_enroll_confirm`)",
+      "edge_type": "Exam Results Check",
+      "text": "How do I know if I passed the BukSU-CAT admission exam?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "exam_results",
+        "cat_exam_result"
+      ],
+      "predicted_nlu_intent": "ask_general_info",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "BukSU-CAT"
+        },
+        {
+          "entity": "service",
+          "value": "exam"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "cat_exam_result",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-13",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.3 Rescheduling, Missed Exam, Full Slots & Course Change (`reschedule_entrance_exam`, `missed_buksu_cat_schedule`, `no_slots`, `additional_slots`, `main_campus_full`, `change_preferred_course_admission_application`, `change_program_after_application`)",
+      "edge_type": "Reschedule / Site Change",
+      "text": "Can I still reschedule my entrance exam or change my testing site after approval?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "reschedule_entrance_exam"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "entrance exam"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "reschedule_entrance_exam",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-14",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.3 Rescheduling, Missed Exam, Full Slots & Course Change (`reschedule_entrance_exam`, `missed_buksu_cat_schedule`, `no_slots`, `additional_slots`, `main_campus_full`, `change_preferred_course_admission_application`, `change_program_after_application`)",
+      "edge_type": "Missed Exam Edge",
+      "text": "Na-miss nako ang akong BukSU CAT exam schedule, unsa akong pwede buhaton?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "missed_buksu_cat_schedule"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "BukSU CAT exam"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "missed_buksu_cat_schedule",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-15",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.3 Rescheduling, Missed Exam, Full Slots & Course Change (`reschedule_entrance_exam`, `missed_buksu_cat_schedule`, `no_slots`, `additional_slots`, `main_campus_full`, `change_preferred_course_admission_application`, `change_program_after_application`)",
+      "edge_type": "Retake Policy Edge",
+      "text": "Can I retake the BukSU-CAT examination more than once if I failed?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "cat_retake_policy"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "examination"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "affirmative_action",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-16",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.3 Rescheduling, Missed Exam, Full Slots & Course Change (`reschedule_entrance_exam`, `missed_buksu_cat_schedule`, `no_slots`, `additional_slots`, `main_campus_full`, `change_preferred_course_admission_application`, `change_program_after_application`)",
+      "edge_type": "No Slots Available",
+      "text": "What should I do if there are no available slots for the BukSU-CAT exam?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "no_slots"
+      ],
+      "predicted_nlu_intent": "ask_requirement",
+      "predicted_confidence": 0.9831,
+      "entities": [
+        {
+          "entity": "facility_name",
+          "value": "no"
+        },
+        {
+          "entity": "service",
+          "value": "BukSU-CAT exam"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "no_slots",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-17",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.3 Rescheduling, Missed Exam, Full Slots & Course Change (`reschedule_entrance_exam`, `missed_buksu_cat_schedule`, `no_slots`, `additional_slots`, `main_campus_full`, `change_preferred_course_admission_application`, `change_program_after_application`)",
+      "edge_type": "Main Campus Full Edge",
+      "text": "Unsa akong buhaton kung puno na ang slots sa Main Campus?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "main_campus_full"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "organization",
+          "value": "Main Campus"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "main_campus_full",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-18",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.3 Rescheduling, Missed Exam, Full Slots & Course Change (`reschedule_entrance_exam`, `missed_buksu_cat_schedule`, `no_slots`, `additional_slots`, `main_campus_full`, `change_preferred_course_admission_application`, `change_program_after_application`)",
+      "edge_type": "Change Course After Submitting",
+      "text": "Pwede ba usbon ang akong program choice human sa pag submit sa BukSU CAT application?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "change_program_after_application"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9986,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "program"
+        },
+        {
+          "entity": "service",
+          "value": "choice"
+        },
+        {
+          "entity": "service",
+          "value": "submit"
+        },
+        {
+          "entity": "service",
+          "value": "BukSU CAT"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "after_admission_application",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-19",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.3 Rescheduling, Missed Exam, Full Slots & Course Change (`reschedule_entrance_exam`, `missed_buksu_cat_schedule`, `no_slots`, `additional_slots`, `main_campus_full`, `change_preferred_course_admission_application`, `change_program_after_application`)",
+      "edge_type": "Change Course After Passing",
+      "text": "Can I still change my preferred course even after passing the BukSU-CAT?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "change_preferred_course_admission_application"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "program_cutoff_scores",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-20",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.4 Test Permit Errors, 2x2 Photo Upload & Portal Troubleshooting (`test_permit_issue`, `test_permit_corrupted`, `test_permit_name_error`, `cannot_upload_2x2_picture`, `system_error`)",
+      "edge_type": "Corrupted Test Permit",
+      "text": "Dili ma-open ang akong test permit sa akong cellphone kay corrupted, unsaon ni?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "test_permit_corrupted"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.9947,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "test permit"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "admission_examination_date",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-21",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.4 Test Permit Errors, 2x2 Photo Upload & Portal Troubleshooting (`test_permit_issue`, `test_permit_corrupted`, `test_permit_name_error`, `cannot_upload_2x2_picture`, `system_error`)",
+      "edge_type": "Wrong Name on Permit",
+      "text": "What should I do if there is a wrong spelling or error in my name on the test permit?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "test_permit_name_error"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.8894,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "spelling"
+        },
+        {
+          "entity": "document",
+          "value": "test permit"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "test_permit_name_error",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-22",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.4 Test Permit Errors, 2x2 Photo Upload & Portal Troubleshooting (`test_permit_issue`, `test_permit_corrupted`, `test_permit_name_error`, `cannot_upload_2x2_picture`, `system_error`)",
+      "edge_type": "2x2 Photo Upload Error",
+      "text": "Dili nako ma-upload ang akong 2x2 nga profile picture sa admission portal, unsay buhaton?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "cannot_upload_2x2_picture"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "Change_info_admission",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-23",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.4 Test Permit Errors, 2x2 Photo Upload & Portal Troubleshooting (`test_permit_issue`, `test_permit_corrupted`, `test_permit_name_error`, `cannot_upload_2x2_picture`, `system_error`)",
+      "edge_type": "Website Error Edge",
+      "text": "Ngano nag system error ang admission website samtang nag fill up ko?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "system_error"
+      ],
+      "predicted_nlu_intent": "ask_contact",
+      "predicted_confidence": 0.9999,
+      "entities": [],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "buksu_admission_contact",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-24",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.4 Test Permit Errors, 2x2 Photo Upload & Portal Troubleshooting (`test_permit_issue`, `test_permit_corrupted`, `test_permit_name_error`, `cannot_upload_2x2_picture`, `system_error`)",
+      "edge_type": "Missing Admission Docs",
+      "text": "Where and how do I submit my missing admission documents?",
+      "expected_nlu_intents": [
+        "ask_process",
+        "ask_document"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "missing_admission_documents"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "freshman_admission_requirements",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-25",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.5 Admission Accounts, Affirmative Action & Returning Readmission (`admission_account_registration`, `admission_portal_login`, `Change_info_admission`, `Change_Pass_admission`, `affirmative_action`, `non_passer_enrollment_affirmative_action`, `returning_student_readmission_process`)",
+      "edge_type": "Create Admission Account",
+      "text": "How do I create and register a new BukSU admission account?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "admission_account_registration"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "organization",
+          "value": "BukSU"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ADM-26",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.5 Admission Accounts, Affirmative Action & Returning Readmission (`admission_account_registration`, `admission_portal_login`, `Change_info_admission`, `Change_Pass_admission`, `affirmative_action`, `non_passer_enrollment_affirmative_action`, `returning_student_readmission_process`)",
+      "edge_type": "Change Admission Info",
+      "text": "Unsaon pag change sa akong personal info sa admission account?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "Change_info_admission"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "topic",
+          "value": "personal"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "Change_info_admission",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-27",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.5 Admission Accounts, Affirmative Action & Returning Readmission (`admission_account_registration`, `admission_portal_login`, `Change_info_admission`, `Change_Pass_admission`, `affirmative_action`, `non_passer_enrollment_affirmative_action`, `returning_student_readmission_process`)",
+      "edge_type": "Change Admission Password",
+      "text": "Unsaon pag usab sa akong password sa admission portal?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "Change_Pass_admission"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "password"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "Change_Pass_admission",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-28",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.5 Admission Accounts, Affirmative Action & Returning Readmission (`admission_account_registration`, `admission_portal_login`, `Change_info_admission`, `Change_Pass_admission`, `affirmative_action`, `non_passer_enrollment_affirmative_action`, `returning_student_readmission_process`)",
+      "edge_type": "Affirmative Action (AAP)",
+      "text": "How do I apply for the Affirmative Action Program (AAP) at BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "affirmative_action"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "Affirmative Action Program"
+        },
+        {
+          "entity": "organization",
+          "value": "AAP"
+        },
+        {
+          "entity": "service",
+          "value": "BukSU"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "affirmative_action",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-29",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.5 Admission Accounts, Affirmative Action & Returning Readmission (`admission_account_registration`, `admission_portal_login`, `Change_info_admission`, `Change_Pass_admission`, `affirmative_action`, `non_passer_enrollment_affirmative_action`, `returning_student_readmission_process`)",
+      "edge_type": "Non-Passer Cutoff Edge",
+      "text": "Pwede pa ba ko mo-enroll pinaagi sa Affirmative Action bisan ubos akong score sa cutoff?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "non_passer_enrollment_affirmative_action"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9722,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "mo-enroll"
+        },
+        {
+          "entity": "office",
+          "value": "Affirmative Action"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "non_passer_enrollment_affirmative_action",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-30",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.5 Admission Accounts, Affirmative Action & Returning Readmission (`admission_account_registration`, `admission_portal_login`, `Change_info_admission`, `Change_Pass_admission`, `affirmative_action`, `non_passer_enrollment_affirmative_action`, `returning_student_readmission_process`)",
+      "edge_type": "Stopped Years Ago Readmission",
+      "text": "What if I stopped studying at BukSU years ago, what is the process to come back and readmit?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "returning_student_readmission_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9905,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "returning_student_readmission_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ADM-31",
+      "category": "Category 2: Admission & BukSU-CAT Procedures (`procedures/admission_procedures.json` & `nlu.yml`)",
+      "subcategory": "2.5 Admission Accounts, Affirmative Action & Returning Readmission (`admission_account_registration`, `admission_portal_login`, `Change_info_admission`, `Change_Pass_admission`, `affirmative_action`, `non_passer_enrollment_affirmative_action`, `returning_student_readmission_process`)",
+      "edge_type": "Student Assistant Application",
+      "text": "Unsa ang proseso ug asa i-submit ang application para mahimong Student Assistant?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "student_assistant_application_process"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.8872,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "i-submit"
+        },
+        {
+          "entity": "service",
+          "value": "student assistant"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "student_assistant_application_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-01",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.1 Adding / Dropping Subjects & Enrollment Withdrawal (`add_drop_subject`, `withdraw_enrollment_policy`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "What is the adding and dropping subject process at the Registrar?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "add_drop_subject"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "adding"
+        },
+        {
+          "entity": "office",
+          "value": "registrar"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "add_drop_subject",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-02",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.1 Adding / Dropping Subjects & Enrollment Withdrawal (`add_drop_subject`, `withdraw_enrollment_policy`)",
+      "edge_type": "Bisaya Add/Drop Edge",
+      "text": "Unsaon pag add o pag drop ug subject ug kinsay mopirma sa form?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "add_drop_subject"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "add o"
+        },
+        {
+          "entity": "document",
+          "value": "drop"
+        },
+        {
+          "entity": "document",
+          "value": "subject"
+        },
+        {
+          "entity": "document",
+          "value": "form"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "add_drop_subject",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-03",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.1 Adding / Dropping Subjects & Enrollment Withdrawal (`add_drop_subject`, `withdraw_enrollment_policy`)",
+      "edge_type": "Baseline Withdrawal (`nlu.yml`)",
+      "text": "What is the process for voluntary withdrawal of enrollment?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "withdraw_enrollment_policy"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "withdrawal"
+        },
+        {
+          "entity": "service",
+          "value": "enrollment"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "withdraw_enrollment_policy",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-04",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.1 Adding / Dropping Subjects & Enrollment Withdrawal (`add_drop_subject`, `withdraw_enrollment_policy`)",
+      "edge_type": "Bisaya Withdrawal Edge",
+      "text": "Unsaon pag withdraw o pag cancel sa akong enrollment sa Registrar?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "withdraw_enrollment_policy"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "enrollment_general_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-05",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.2 Certificate of Registration (COR) Request & Validation (`request_cor`, `where_get_cor`, `cor_validation_steps`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "How do I request and download my Certificate of Registration (COR)?",
+      "expected_nlu_intents": [
+        "ask_process",
+        "ask_document"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "where_get_cor",
+        "request_cor"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "and"
+        },
+        {
+          "entity": "document",
+          "value": "Certificate of Registration"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "where_get_cor",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-06",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.2 Certificate of Registration (COR) Request & Validation (`request_cor`, `where_get_cor`, `cor_validation_steps`)",
+      "edge_type": "Bisaya COR Request",
+      "text": "Unsaon nako pag request og COR sa Registrar o online?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "request_cor"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.9997,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "COR"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "where_get_cor",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-07",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.2 Certificate of Registration (COR) Request & Validation (`request_cor`, `where_get_cor`, `cor_validation_steps`)",
+      "edge_type": "Baseline COR Validation (`nlu.yml`)",
+      "text": "What are the step-by-step procedures for COR validation?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "cor_validation_steps"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9995,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "COR validation"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "cor_validation_steps",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-08",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.2 Certificate of Registration (COR) Request & Validation (`request_cor`, `where_get_cor`, `cor_validation_steps`)",
+      "edge_type": "Conversational Next-Step Edge",
+      "text": "Naka-print na ko sa akong COR gikan sa admission portal, unsay sunod buhaton para ma-validate?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "cor_validation_steps"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.9782,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "COR"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "cor_validation_steps",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-09",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.2 Certificate of Registration (COR) Request & Validation (`request_cor`, `where_get_cor`, `cor_validation_steps`)",
+      "edge_type": "Window 7 / Finance Edge",
+      "text": "Tabangi ko unsaon pag validate sa akong COR didto sa Finance Window 7 ug Registrar.",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "cor_validation_steps"
+      ],
+      "predicted_nlu_intent": "ask_location",
+      "predicted_confidence": 0.9378,
+      "entities": [
+        {
+          "entity": "location_name",
+          "value": "Window 7"
+        },
+        {
+          "entity": "office",
+          "value": "registrar"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "cor_validation_location",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-10",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.3 Transcript of Records (TOR) & Early Document Request (`tor_request_for_graduates`, `request_tor_process`, `early_document_request`)",
+      "edge_type": "Graduate TOR Request",
+      "text": "How do graduates request their Transcript of Records (TOR) at the Registrar?",
+      "expected_nlu_intents": [
+        "ask_process",
+        "ask_document"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "tor_request_for_graduates"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "graduates"
+        },
+        {
+          "entity": "document",
+          "value": "transcript of records"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "request_tor_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-11",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.3 Transcript of Records (TOR) & Early Document Request (`tor_request_for_graduates`, `request_tor_process`, `early_document_request`)",
+      "edge_type": "Detailed Window 1-6 TOR Process",
+      "text": "What is the step-by-step process to get my TOR from Registrar Window 1-6, Accounting, and Cashier?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "request_tor_process"
+      ],
+      "predicted_nlu_intent": "ask_location",
+      "predicted_confidence": 0.7621,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "TOR"
+        },
+        {
+          "entity": "office",
+          "value": "registrar"
+        },
+        {
+          "entity": "location_name",
+          "value": "Window 1-6"
+        },
+        {
+          "entity": "office",
+          "value": "accounting"
+        },
+        {
+          "entity": "office",
+          "value": "and"
+        },
+        {
+          "entity": "office",
+          "value": "cashier"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "request_tor_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-12",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.3 Transcript of Records (TOR) & Early Document Request (`tor_request_for_graduates`, `request_tor_process`, `early_document_request`)",
+      "edge_type": "Bisaya TOR Process",
+      "text": "Unsaon pag request ug TOR sa Registrar ug unsay proseso sa pagbayad sa Cashier?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "tor_request_for_graduates",
+        "request_tor_process"
+      ],
+      "predicted_nlu_intent": "ask_fee",
+      "predicted_confidence": 0.8711,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "TOR"
+        },
+        {
+          "entity": "office",
+          "value": "cashier"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "request_tor_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-13",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.3 Transcript of Records (TOR) & Early Document Request (`tor_request_for_graduates`, `request_tor_process`, `early_document_request`)",
+      "edge_type": "Undergraduate Early Request",
+      "text": "Pwede ba mag-request ug documents o TOR sa Registrar bisan wala pa ko ka-graduate?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "early_document_request"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.8852,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "TOR"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "request_tor_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-14",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.4 Graduation Application, Online Clearance & Rehearsal (`graduation_application_process`, `graduating_clearance_requirements`, `graduation_rehearsal_attendance`, `graduation_attendance`, `tracer_study`)",
+      "edge_type": "Graduation Application",
+      "text": "How do I apply for graduation and file my application in my final semester?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "graduation_application_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "graduation"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "graduation_clearance",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-15",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.4 Graduation Application, Online Clearance & Rehearsal (`graduation_application_process`, `graduating_clearance_requirements`, `graduation_rehearsal_attendance`, `graduation_attendance`, `tracer_study`)",
+      "edge_type": "Bisaya Graduation Filing",
+      "text": "Unsaon pag apply para sa graduation sa BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "graduation_application_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "graduation"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "graduation_application_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-16",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.4 Graduation Application, Online Clearance & Rehearsal (`graduation_application_process`, `graduating_clearance_requirements`, `graduation_rehearsal_attendance`, `graduation_attendance`, `tracer_study`)",
+      "edge_type": "Online Clearance Steps",
+      "text": "How do I process my University Clearance online at clearance.buksu.edu.ph?",
+      "expected_nlu_intents": [
+        "ask_process",
+        "ask_requirement"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "graduating_clearance_requirements"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "University Clearance"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "graduation_application_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-17",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.4 Graduation Application, Online Clearance & Rehearsal (`graduation_application_process`, `graduating_clearance_requirements`, `graduation_rehearsal_attendance`, `graduation_attendance`, `tracer_study`)",
+      "edge_type": "Graduation Rehearsal Policy",
+      "text": "Obligado ba ko moadto ug mo-attend sa graduation rehearsal?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "graduation_rehearsal_attendance"
+      ],
+      "predicted_nlu_intent": "ask_location",
+      "predicted_confidence": 0.7027,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "graduation"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "graduation_rehearsal_attendance",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACT-18",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.4 Graduation Application, Online Clearance & Rehearsal (`graduation_application_process`, `graduating_clearance_requirements`, `graduation_rehearsal_attendance`, `graduation_attendance`, `tracer_study`)",
+      "edge_type": "Parents at Graduation",
+      "text": "Pwede ba mo-attend ang mga ginikanan ug bisita sa graduation ceremony?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "graduation_attendance"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.7272,
+      "entities": [],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "campus_weekend_visitors",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACT-19",
+      "category": "Category 3: Academic Transactions & Registrar Procedures (`procedures/academic_transactions.json` & `enrollment_procedures.json`)",
+      "subcategory": "3.4 Graduation Application, Online Clearance & Rehearsal (`graduation_application_process`, `graduating_clearance_requirements`, `graduation_rehearsal_attendance`, `graduation_attendance`, `tracer_study`)",
+      "edge_type": "Graduate Tracer Study",
+      "text": "Unsa man ang tracer study para sa mga graduates ug unsaon pag apil?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "tracer_study"
+      ],
+      "predicted_nlu_intent": "nlu_fallback",
+      "predicted_confidence": 0.3,
+      "entities": [
+        {
+          "entity": "program",
+          "value": "graduates"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "tracer_study",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-01",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.1 Student ID Application, Validation, Lost Replacement & No-ID Entry (`student_id_process`, `id_validation_process`, `lost_student_id_replacement_process`, `campus_entry_without_student_id`)",
+      "edge_type": "Baseline (`nlu.yml`)",
+      "text": "How do I get my student ID and what is the process?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "student_id_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "student ID"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "student_id_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-02",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.1 Student ID Application, Validation, Lost Replacement & No-ID Entry (`student_id_process`, `id_validation_process`, `lost_student_id_replacement_process`, `campus_entry_without_student_id`)",
+      "edge_type": "Bisaya Student ID (`nlu.yml`)",
+      "text": "Unsaon pagkuha sa student ID sa BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "student_id_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "student ID"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "student_id_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-03",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.1 Student ID Application, Validation, Lost Replacement & No-ID Entry (`student_id_process`, `id_validation_process`, `lost_student_id_replacement_process`, `campus_entry_without_student_id`)",
+      "edge_type": "Baseline ID Validation (`nlu.yml`)",
+      "text": "How do I validate my student ID every semester?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "id_validation_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "id_validation_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-04",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.1 Student ID Application, Validation, Lost Replacement & No-ID Entry (`student_id_process`, `id_validation_process`, `lost_student_id_replacement_process`, `campus_entry_without_student_id`)",
+      "edge_type": "Lost Student ID Edge",
+      "text": "I lost my student ID, what is the process to replace a lost ID?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "lost_student_id_replacement_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "student ID"
+        },
+        {
+          "entity": "document",
+          "value": "ID"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "lost_student_id_replacement_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-05",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.1 Student ID Application, Validation, Lost Replacement & No-ID Entry (`student_id_process`, `id_validation_process`, `lost_student_id_replacement_process`, `campus_entry_without_student_id`)",
+      "edge_type": "Campus Entry Without ID",
+      "text": "How do I enter the campus if I don't have my physical student ID yet?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "campus_entry_without_student_id"
+      ],
+      "predicted_nlu_intent": "ask_availability",
+      "predicted_confidence": 0.9085,
+      "entities": [
+        {
+          "entity": "program",
+          "value": "physical"
+        },
+        {
+          "entity": "document",
+          "value": "ID"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "student_id_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SSP-06",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "Baseline Wi-Fi (`nlu.yml`)",
+      "text": "How can I access campus Wi-Fi and get my Wi-Fi credentials?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "get_wifi_access",
+        "campus_wifi_access"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9967,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "campus"
+        },
+        {
+          "entity": "document",
+          "value": "and"
+        },
+        {
+          "entity": "document",
+          "value": "credentials"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "campus_wifi_access",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-07",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "Connect to Student Wi-Fi",
+      "text": "Can you tell me how students connect to the school Wi-Fi network?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "campus_wifi_access"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "facility_name",
+          "value": "school Wi-Fi network"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "campus_wifi_access",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-08",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "Baseline Password Reset (`nlu.yml`)",
+      "text": "How can I reset my portal password if I forgot it?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "change_portal_password_buksu"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "portal password"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "sias_forgot_password",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SSP-09",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "Bisaya Forgot Password",
+      "text": "Nakalimot ko sa akong BukSU admission account password, unsaon nako pag recover?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "reset_portal_password_buksu"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "account password"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "Change_Pass_admission",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SSP-10",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "SIAS Forgot Password",
+      "text": "How do I reset my SIAS password if I forgot my SIAS login credentials?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "sias_forgot_password"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9995,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "SIAS password"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "sias_forgot_password",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-11",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "Locked Portal Account",
+      "text": "Unsa ang angay buhaton kung ma-lock ang akong BukSU student portal account?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "portal_account_locked_issue"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9999,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "BukSU student"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "buksu_official_website",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SSP-12",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "Portal Login Failure",
+      "text": "Ngano dili ko maka-login sa BukSU student portal ug unsa akong angay i-check?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "portal_login_problem"
+      ],
+      "predicted_nlu_intent": "ask_contact",
+      "predicted_confidence": 0.812,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "BukSU student"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "__contact_clarification__",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SSP-13",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.2 ICT Services: Wi-Fi Access, Password Reset & Locked Accounts (`get_wifi_access`, `campus_wifi_access`, `change_portal_password_buksu`, `reset_portal_password_buksu`, `portal_account_locked_issue`, `portal_login_problem`, `update_student_portal_information`)",
+      "edge_type": "Update Profile Info",
+      "text": "Asa ug unsaon nako pag edit o pag usab sa akong profile details sa student portal?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "update_student_portal_information"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9991,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "student"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "__clarification__",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SSP-14",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "Good Moral Request",
+      "text": "How do I request a Good Moral Certificate from the Office of Student Services (OSS)?",
+      "expected_nlu_intents": [
+        "ask_process",
+        "ask_document"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "request_good_moral_certificate_oss"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.9987,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "good moral certificate"
+        },
+        {
+          "entity": "document",
+          "value": "Student"
+        },
+        {
+          "entity": "office",
+          "value": "OSS"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "request_good_moral_certificate_oss",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-15",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "Clinic Medical Certificate",
+      "text": "What is the process for getting a medical certificate at the University Clinic?",
+      "expected_nlu_intents": [
+        "ask_process",
+        "ask_document"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "clinic_medical_certificate_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9997,
+      "entities": [
+        {
+          "entity": "office",
+          "value": "university"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "clinic_medical_certificate_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-16",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "Baseline Library ID (`nlu.yml`)",
+      "text": "Unsaon pagkuha sa library ID card?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "library_id_card_location",
+        "library_id_card_requirements"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "library ID card"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "library_id_card_location",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-17",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "Lost Library Card Edge",
+      "text": "What should I do if I lost my library card and need a replacement?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "library_id_card_replacement"
+      ],
+      "predicted_nlu_intent": "ask_requirement",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "lost"
+        },
+        {
+          "entity": "document",
+          "value": "library card and"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "library_id_card_replacement",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-18",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "PE Uniform Process",
+      "text": "How do I get or buy my PE uniform at BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "pe_uniform_process"
+      ],
+      "predicted_nlu_intent": "ask_document",
+      "predicted_confidence": 0.7261,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "buy"
+        },
+        {
+          "entity": "document",
+          "value": "BukSU"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "pe_uniform_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-19",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "College Shirt Purchase",
+      "text": "How and where can I buy my department college t-shirt?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "buy_college_shirt"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9986,
+      "entities": [
+        {
+          "entity": "organization",
+          "value": "department"
+        },
+        {
+          "entity": "organization",
+          "value": "college t-shirt"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "campus_dress_code_policy",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SSP-20",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "Vehicle Gate Pass Process",
+      "text": "What is the process of getting a gate pass sticker for my vehicle or motorcycle?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "gate_pass_process"
+      ],
+      "predicted_nlu_intent": "nlu_fallback",
+      "predicted_confidence": 0.3,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "gate pass sticker"
+        },
+        {
+          "entity": "document",
+          "value": "vehicle"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "gate_pass_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SSP-21",
+      "category": "Category 4: Student Service & ICT Procedures (`procedures/student_service_procedures.json` & `nlu.yml`)",
+      "subcategory": "4.3 Good Moral, Medical Certificate, Library ID, PE Uniform, College Shirt & Gate Pass (`request_good_moral_certificate_oss`, `clinic_medical_certificate_process`, `library_id_card_replacement`, `pe_uniform_process`, `buy_college_shirt`, `gate_pass_process`, `join_student_organizations_process`)",
+      "edge_type": "Join Student Organization",
+      "text": "Unsaon pag apil sa mga accredited student organizations o clubs panahon sa Org Fair?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "join_student_organizations_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9839,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "student_organizations_application_process",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACD-01",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.1 Grades Access, INC Completion & FDA Resolution (`academics/grading_and_retention.json`)",
+      "edge_type": "View Grades in SIAS",
+      "text": "How do I check and view my semester grades in the SIAS portal?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "access_grades"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "access_sias",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACD-02",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.1 Grades Access, INC Completion & FDA Resolution (`academics/grading_and_retention.json`)",
+      "edge_type": "Baseline INC Completion (`nlu.yml`)",
+      "text": "How do I complete an INC (Incomplete) grade and process the INC form?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "inc_grade_solution"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9778,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "INC"
+        },
+        {
+          "entity": "document",
+          "value": "Incomplete"
+        },
+        {
+          "entity": "document",
+          "value": "grade"
+        },
+        {
+          "entity": "document",
+          "value": "INC form"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "inc_grade_rules",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACD-03",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.1 Grades Access, INC Completion & FDA Resolution (`academics/grading_and_retention.json`)",
+      "edge_type": "Bisaya INC Completion",
+      "text": "Unsaon pag complete sa akong INC nga grado sa subject?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "inc_grade_solution"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "INC"
+        },
+        {
+          "entity": "service",
+          "value": "subject"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "inc_grade_rules",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACD-04",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.1 Grades Access, INC Completion & FDA Resolution (`academics/grading_and_retention.json`)",
+      "edge_type": "FDA Grade Resolution",
+      "text": "What should I do if I receive an FDA (Failure Due to Absences) grade?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "fda_solution"
+      ],
+      "predicted_nlu_intent": "ask_general_info",
+      "predicted_confidence": 0.9999,
+      "entities": [
+        {
+          "entity": "office",
+          "value": "receive"
+        },
+        {
+          "entity": "topic",
+          "value": "FDA"
+        },
+        {
+          "entity": "program",
+          "value": "Failure Due"
+        }
+      ],
+      "strict_nlu_pass": false,
+      "acceptable_nlu_pass": false,
+      "selected_knowledge_topic": "fda_meaning",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACD-05",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.1 Grades Access, INC Completion & FDA Resolution (`academics/grading_and_retention.json`)",
+      "edge_type": "Retake Failed Subject",
+      "text": "What is the process if I failed a subject for the first time and need to retake it?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "failed_subject_policy"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "subject"
+        },
+        {
+          "entity": "service",
+          "value": "first time and"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "failed_subject_policy",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACD-06",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.2 Course Shifting & Class Schedule Changes (`academics/degree_programs.json` & `academics/classroom_policies.json`)",
+      "edge_type": "Baseline Course Shifting (`nlu.yml`)",
+      "text": "How do I shift to another course or program next semester?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "course_shifting",
+        "shift_to_another_course_next_school_year"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "course_shifting",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACD-07",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.2 Course Shifting & Class Schedule Changes (`academics/degree_programs.json` & `academics/classroom_policies.json`)",
+      "edge_type": "3rd Year Shifting Edge",
+      "text": "Pwede ba ko maka-shift og course bisan 3rd year student na ko sa BukSU, ug unsaon?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "course_shifting_later_years"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "course_shifting",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "ACD-08",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.2 Course Shifting & Class Schedule Changes (`academics/degree_programs.json` & `academics/classroom_policies.json`)",
+      "edge_type": "Change Class Section / Conflict",
+      "text": "Can a freshman request to transfer to another section or change class schedules due to conflict?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "change_section_schedule_conflict"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "change_section_schedule_conflict",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "ACD-09",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.2 Course Shifting & Class Schedule Changes (`academics/degree_programs.json` & `academics/classroom_policies.json`)",
+      "edge_type": "Check / Adjust Schedule",
+      "text": "How do I check or adjust my class schedule in my department?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "class_schedule_help",
+        "change_class_schedule"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "class_schedule_help",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SRV-01",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "Baseline Dental Consult (`nlu.yml`)",
+      "text": "How do I request a dental consultation at the clinic?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "request_dental_consult"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9992,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "buksu_medical_dental_services",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SRV-02",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "Baseline Dental Oral Exam (`nlu.yml`)",
+      "text": "How do I request a dental oral examination?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "request_dental_oral_examination"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "buksu_medical_dental_services",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SRV-03",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "Tooth Extraction Process",
+      "text": "What is the process to request a tooth extraction at the university dental clinic?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "request_tooth_extraction"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9987,
+      "entities": [
+        {
+          "entity": "facility_name",
+          "value": "extraction"
+        },
+        {
+          "entity": "facility_name",
+          "value": "university"
+        },
+        {
+          "entity": "office",
+          "value": "Dental Clinic"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "request_tooth_extraction",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SRV-04",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "Borrow Library Books",
+      "text": "What is the process of borrowing books from the BukSU library?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "library_borrow_books_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "location_name",
+          "value": "BukSU Library"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "library_borrow_books_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SRV-05",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "Return Library Books",
+      "text": "How and where do I return borrowed library books?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "library_return_books_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "document",
+          "value": "borrowed"
+        },
+        {
+          "entity": "location_name",
+          "value": "library"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "library_return_books_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SRV-06",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "Apply for Scholarship",
+      "text": "How can I apply for a scholarship at BukSU?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "scholarship_application"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "scholarship"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "available_scholarships_buksu",
+      "knowledge_topic_match": false
+    },
+    {
+      "id": "SRV-07",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "Apply for TES Grant",
+      "text": "Unsaon pag apply sa Tertiary Education Subsidy (TES) scholarship?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "tes_application_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 0.9999,
+      "entities": [
+        {
+          "entity": "program",
+          "value": "Tertiary Education Subsidy"
+        },
+        {
+          "entity": "service",
+          "value": "TES"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "tes_application_process",
+      "knowledge_topic_match": true
+    },
+    {
+      "id": "SRV-08",
+      "category": "Category 5: Academic Policies, Grading, Shifting & Clinic/Library/OSS Workflows (Other Production JSONs)",
+      "subcategory": "5.3 Clinic Dental Requests, Library Borrowing & OSS Scholarships (`services/clinic_services.json`, `services/library_services.json`, `services/oss_student_services.json`)",
+      "edge_type": "TES Grantee Selection",
+      "text": "How is the selection process of TES grantees done?",
+      "expected_nlu_intents": [
+        "ask_process"
+      ],
+      "primary_expected_nlu": "ask_process",
+      "expected_knowledge_topics": [
+        "tes_grantee_selection_process"
+      ],
+      "predicted_nlu_intent": "ask_process",
+      "predicted_confidence": 1.0,
+      "entities": [
+        {
+          "entity": "service",
+          "value": "TES"
+        }
+      ],
+      "strict_nlu_pass": true,
+      "acceptable_nlu_pass": true,
+      "selected_knowledge_topic": "tes_grantee_selection_process",
+      "knowledge_topic_match": true
+    }
+  ]
+}

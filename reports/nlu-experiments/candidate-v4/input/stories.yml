@@ -1,0 +1,33 @@
+version: "3.1"
+
+stories:
+
+- story: user asks for a location
+  steps:
+    - intent: ask_location
+    - action: action_main_router
+
+- story: user asks for a schedule
+  steps:
+    - intent: ask_schedule
+    - action: action_main_router
+
+- story: user asks for requirements
+  steps:
+    - intent: ask_requirement
+    - action: action_main_router
+
+- story: user asks for a process
+  steps:
+    - intent: ask_process
+    - action: action_main_router
+
+- story: user asks general school info
+  steps:
+    - intent: ask_general_info
+    - action: action_main_router
+
+- story: user asks smalltalk
+  steps:
+    - intent: smalltalk
+    - action: action_main_router

@@ -1,5 +1,121 @@
 [
   {
+    "id": "log_1792124028958_bvh91un",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Rules & RBAC",
+    "summary": "Updated rules/permissions for admin: moosk (moosko214@gmail.com)",
+    "targetTitle": "moosk (moosko214@gmail.com)",
+    "targetId": "admin-1791706433955-n9nl5",
+    "changes": [
+      {
+        "field": "Rule: nav_gallery",
+        "changeType": "modified",
+        "details": "Changed from Disabled to Enabled",
+        "oldValue": false,
+        "newValue": true
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-10-16T04:13:48.958Z"
+  },
+  {
+    "id": "log_1792123999387_ngq1ye5",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Rules & RBAC",
+    "summary": "Updated rules/permissions for admin: moosk (moosko214@gmail.com)",
+    "targetTitle": "moosk (moosko214@gmail.com)",
+    "targetId": "admin-1791706433955-n9nl5",
+    "changes": [
+      {
+        "field": "Rule: nav_gallery",
+        "changeType": "modified",
+        "details": "Changed from Enabled to Disabled",
+        "oldValue": true,
+        "newValue": false
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-10-16T04:13:19.387Z"
+  },
+  {
+    "id": "log_1792121731376_v55sali",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Admission Application Deadline",
+    "targetTitle": "Admission Application Deadline",
+    "targetId": "procedures/admission_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (2 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (2 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-10-16T03:35:31.376Z"
+  },
+  {
+    "id": "log_1792121619852_lnh981d",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Knowledge Manager",
+    "summary": "Modified: Admission Application Deadline",
+    "targetTitle": "Admission Application Deadline",
+    "targetId": "procedures/admission_procedures.json",
+    "changes": [
+      {
+        "field": "English Responses",
+        "changeType": "modified",
+        "details": "Updated English responses (2 line(s))"
+      },
+      {
+        "field": "Cebuano Responses",
+        "changeType": "modified",
+        "details": "Updated Cebuano responses (2 line(s))"
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-10-16T03:33:39.852Z"
+  },
+  {
+    "id": "log_1792120245730_1nokgvi",
+    "userEmail": "thepersonaljaime@gmail.com",
+    "userName": "Admin User",
+    "userRole": "main-admin",
+    "actionType": "update",
+    "module": "Rules & RBAC",
+    "summary": "Disabled public admin sign-ups",
+    "targetTitle": "Sign-Up System Setting",
+    "targetId": "signupEnabled",
+    "changes": [
+      {
+        "field": "signupEnabled",
+        "changeType": "modified",
+        "details": "Sign-up feature toggled from Enabled to Disabled",
+        "oldValue": true,
+        "newValue": false
+      }
+    ],
+    "ipAddress": "127.0.0.1",
+    "createdAt": "2026-10-16T03:10:45.730Z"
+  },
+  {
     "id": "log_1791707080056_u07vd0r",
     "userEmail": "thepersonaljaime@gmail.com",
     "userName": "Admin User",

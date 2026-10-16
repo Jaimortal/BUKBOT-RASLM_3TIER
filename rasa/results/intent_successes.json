@@ -1,0 +1,1098 @@
+[
+  {
+    "text": "where is the Finance Building on the map",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9999992847442627
+    }
+  },
+  {
+    "text": "asa makita ang Alumni Building",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "asa dapit ang Law Office building",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "location of Microbiology Laboratory",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.5495525002479553
+    }
+  },
+  {
+    "text": "wher can i find ComLab 11",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "asa dapit ang Public Assistance Desk sa main entrance",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.999998927116394
+    }
+  },
+  {
+    "text": "asa dapit ang building ana?",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "how long is the validity of an INC grade before it becomes 5.0",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "pila ka buwan o tuig ang tagal sa pag kompleto sa INC",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what are the office hours of OSS",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsa nga oras abli ang ICT office para magpa reset password",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "when is the release of stipend for scholars",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "kanus-a ma release ang TES allowance",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "how many days before CAV is ready for pickup",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "when is the deadline for clearance signing this semester",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "open ba ang library during noon break",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "wen is the start of 1st semester enrollment",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.9999939203262329
+    }
+  },
+  {
+    "text": "pila ka oras o adlaw makuha ang medical certificate",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "when is the schedule for that?",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "kanus-a kutob pwede magpa validate sa COR",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "how much do transferees pay for enrollment if covered by RA 10931",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "libre ba gihapon ang tuition sa mga transferee sa BukSU",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "is there a fee for Form 137 request from registrar",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9965155124664307
+    }
+  },
+  {
+    "text": "pila ang bayad sa INC completion form sa cashier",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "do we need to pay for campus Wi-Fi access",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "libre ba ang Wi-Fi sa sulod sa campus",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "how much is the application fee for Law School",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "are utilities like water and electricity included in the dormitory fee",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999263286590576
+    }
+  },
+  {
+    "text": "apil na ba ang kuryente ug tubig sa monthly rate sa dorm",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999310970306396
+    }
+  },
+  {
+    "text": "is there a fee for borrowing books at the University Library",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "pila ang bayad sa midyear enrollment",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "is there any fee to join student organizations or clubs",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9996820688247681
+    }
+  },
+  {
+    "text": "is tuition free for foreign students at BukSU",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "pila ang bayad ana?",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what is the lowest grade allowed to still qualify for Latin honors",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.9226328134536743
+    }
+  },
+  {
+    "text": "what do I need to present at ICT to recover my SIAS account",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.9917463064193726
+    }
+  },
+  {
+    "text": "what are the requirements to request a Certificate of Grades",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsa ang kinahanglan dad-on sa clinic para sa medical certificate",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "are there grade requirements to maintain a university scholarship",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what are the requirements to change my class schedule due to conflict",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "requriements for transferee admission in buksu",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what are the requirements?",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsa ang requirements para sa international students nga gusto mag study sa BukSU",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "how do I reserve the Gymnasium or Auditorium for an event",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsaon pag book sa Auditorium para sa school activity",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "how do I apply for College of Medicine at BukSU",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.999998927116394
+    }
+  },
+  {
+    "text": "what should I do if I am waitlisted in the BukSU CAT",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999887943267822
+    }
+  },
+  {
+    "text": "unsay buhaton kung waitlisted ko sa entrance exam result",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999998807907104
+    }
+  },
+  {
+    "text": "how to check my grades online in the SIAS student portal",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9995763897895813
+    }
+  },
+  {
+    "text": "unsaon pag tan-aw sa grado sa student portal",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.999969482421875
+    }
+  },
+  {
+    "text": "how to apply for a vehicle gate pass sticker",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999939203262329
+    }
+  },
+  {
+    "text": "how do I avail of dental extraction or prophylaxis at the clinic",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9999369382858276
+    }
+  },
+  {
+    "text": "unsaon pag apply isip second courser sa BukSU",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what Republic Act converted Bukidnon State College into Bukidnon State University",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9988946318626404
+    }
+  },
+  {
+    "text": "unsa nga tuig nahimong university ang Bukidnon State College",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9595364332199097
+    }
+  },
+  {
+    "text": "what does a grade of 1.00 vs 5.00 mean in BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsay pasabot sa grado nga 1.0 ug 3.0 sa BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what is the BukSU policy on anti-bullying and student grievances",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "what is DXBU 104.5 FM at BukSU",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsa ang lyrics sa BukSU Hymn",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "who is Dr. Joy M. Mirasol",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsa ang protocol kung naay bagyo o suspension of classes",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "wat are the coleges in buksu",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9999978542327881
+    }
+  },
+  {
+    "text": "how can I contact the Gender and Development or GAD office",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999969005584717
+    }
+  },
+  {
+    "text": "unsaon pag contact sa GAD office o grievance committee",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999985694885254
+    }
+  },
+  {
+    "text": "what is the contact email for TOR follow-up at the registrar",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.999998927116394
+    }
+  },
+  {
+    "text": "asa ko pwede mag email para mag follow up sa akong TOR",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9953551292419434
+    }
+  },
+  {
+    "text": "what is the official Facebook page of the Admissions and Testing Unit",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999983310699463
+    }
+  },
+  {
+    "text": "how to contact the Botanical Gardens and Herbarium coordinator",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999958276748657
+    }
+  },
+  {
+    "text": "naa bay hotline o email ang ICT Service Unit",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999967813491821
+    }
+  },
+  {
+    "text": "how can an alumnus contact the Registrar from abroad",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999924898147583
+    }
+  },
+  {
+    "text": "what is the contact number of the Medical and Dental Clinic",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999991655349731
+    }
+  },
+  {
+    "text": "emial address of scholarship unit",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9996957778930664
+    }
+  },
+  {
+    "text": "unsa ang contact number nila?",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999979734420776
+    }
+  },
+  {
+    "text": "unsa ang FB page sa Office of Student Services",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9997615218162537
+    }
+  },
+  {
+    "text": "where can I send an email inquiry to Bukidnon State University",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9999420642852783
+    }
+  },
+  {
+    "text": "is cross-enrollment allowed at BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "pwede ba maka cross-enroll ang BukSU student sa laing school",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9999967813491821
+    }
+  },
+  {
+    "text": "are evening classes or weekend classes available for undergraduate students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "modawat ba ang BukSU ug foreign students o international applicants",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "available ba na sa BukSU?",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "is BS Information Techology ofered in buksu",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "naa bay tennis court o basketball court sa BukSU",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "does BukSU have a Mini Theater or audio-visual room",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "naa bay dental clinic sa sulod sa skwelahan",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "does BukSU have an ICT building or server office",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "is there a car parking space inside the main campus",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999926090240479
+    }
+  },
+  {
+    "text": "does buksu hav a museum",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "naa ba ana sa sulod sa campus?",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9676032066345215
+    }
+  },
+  {
+    "text": "is there an elevator or ramp in the new academic buildings",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999773502349854
+    }
+  },
+  {
+    "text": "unsa ang proseso sa pagkuha ug CAV sa registrar",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9901899695396423
+    }
+  },
+  {
+    "text": "where do I request a Certificate of No Pending Case or discipline clearance",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9999958276748657
+    }
+  },
+  {
+    "text": "asa nga opisina magkuha ug Good Moral sa OSS ba o sa Registrar",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9996784925460815
+    }
+  },
+  {
+    "text": "asa makuha ang change of schedule form kung conflict ang subject",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9999964237213135
+    }
+  },
+  {
+    "text": "where do I claim my TES NOA or Notice of Award",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9993670582771301
+    }
+  },
+  {
+    "text": "how to request an informative copy of TOR for evaluation",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9999885559082031
+    }
+  },
+  {
+    "text": "pwede ba makakuha ug informative copy sa TOR sa registrar",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9999949932098389
+    }
+  },
+  {
+    "text": "where do I get the health examination form for incoming freshmen",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.999990701675415
+    }
+  },
+  {
+    "text": "asa magpa CTC sa diploma sa BukSU",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9993870258331299
+    }
+  },
+  {
+    "text": "where can I get the organization accreditation form",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9999995231628418
+    }
+  },
+  {
+    "text": "wher to claim honorable dismisal",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "asa makuha ang form para ana?",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "can you tell me more about the second option",
+    "intent": "ask_follow_up",
+    "intent_prediction": {
+      "name": "ask_follow_up",
+      "confidence": 0.9133660793304443
+    }
+  },
+  {
+    "text": "unsa pa man",
+    "intent": "ask_follow_up",
+    "intent_prediction": {
+      "name": "ask_follow_up",
+      "confidence": 0.9641045331954956
+    }
+  },
+  {
+    "text": "elaborate pls",
+    "intent": "ask_follow_up",
+    "intent_prediction": {
+      "name": "ask_follow_up",
+      "confidence": 0.9968090653419495
+    }
+  },
+  {
+    "text": "hey good evening",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9996379613876343
+    }
+  },
+  {
+    "text": "hello maayong gabii",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9995123147964478
+    }
+  },
+  {
+    "text": "thank you for assisting me today",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9990904331207275
+    }
+  },
+  {
+    "text": "thanks kaayo sa pag assist nako",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9916350841522217
+    }
+  },
+  {
+    "text": "hope you are having a great day",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9995225667953491
+    }
+  },
+  {
+    "text": "salamat kaayo",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.99982750415802
+    }
+  },
+  {
+    "text": "greetings",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9125576019287109
+    }
+  },
+  {
+    "text": "gud morning",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9956516623497009
+    }
+  },
+  {
+    "text": "got it salamat",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.9862866997718811
+    }
+  },
+  {
+    "text": "im heading out now bye",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.9989206790924072
+    }
+  },
+  {
+    "text": "pananghid nako babay",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.995191216468811
+    }
+  },
+  {
+    "text": "peace out goodbye",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.9928472638130188
+    }
+  },
+  {
+    "text": "okay thats all babay",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.9552019238471985
+    }
+  },
+  {
+    "text": "see u later",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.9980834722518921
+    }
+  },
+  {
+    "text": "sige babay na",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.9986808896064758
+    }
+  },
+  {
+    "text": "are you a real human being or an AI assistant",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.9998224377632141
+    }
+  },
+  {
+    "text": "dili ka tawo noh chatbot ka?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.9993681311607361
+    }
+  },
+  {
+    "text": "is this an AI answering my questions",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.9993384480476379
+    }
+  },
+  {
+    "text": "chatbot ba ni sa BukSU",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.9956881403923035
+    }
+  },
+  {
+    "text": "am i talking to a machine",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.9945979118347168
+    }
+  },
+  {
+    "text": "robot ba ka?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.9990246295928955
+    }
+  },
+  {
+    "text": "can you switch the category to academics",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "set_category",
+      "confidence": 0.9990179538726807
+    }
+  },
+  {
+    "text": "pilia ang university nga category",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "set_category",
+      "confidence": 0.9994059801101685
+    }
+  },
+  {
+    "text": "go to the location category",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "set_category",
+      "confidence": 0.9966179728507996
+    }
+  },
+  {
+    "text": "switch to services please",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "set_category",
+      "confidence": 0.6346113085746765
+    }
+  },
+  {
+    "text": "ibalhin ko sa procedures",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "set_category",
+      "confidence": 0.9997140765190125
+    }
+  },
+  {
+    "text": "select others category",
+    "intent": "set_category",
+    "intent_prediction": {
+      "name": "set_category",
+      "confidence": 0.9973286390304565
+    }
+  },
+  {
+    "text": "please reset the active category",
+    "intent": "reset_category",
+    "intent_prediction": {
+      "name": "reset_category",
+      "confidence": 0.9672800898551941
+    }
+  },
+  {
+    "text": "pili ko ug laing category",
+    "intent": "reset_category",
+    "intent_prediction": {
+      "name": "reset_category",
+      "confidence": 0.992529571056366
+    }
+  },
+  {
+    "text": "balik ta sa main menu palihug",
+    "intent": "reset_category",
+    "intent_prediction": {
+      "name": "reset_category",
+      "confidence": 0.999772846698761
+    }
+  },
+  {
+    "text": "switch to another category",
+    "intent": "reset_category",
+    "intent_prediction": {
+      "name": "reset_category",
+      "confidence": 0.9992103576660156
+    }
+  },
+  {
+    "text": "clear category selection",
+    "intent": "reset_category",
+    "intent_prediction": {
+      "name": "reset_category",
+      "confidence": 0.9996693134307861
+    }
+  }
+]

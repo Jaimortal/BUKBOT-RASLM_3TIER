@@ -54,71 +54,119 @@ import {
   HelpCircle
 } from "lucide-react";
 
-interface PermissionGroupConfig {
+interface PermissionRuleItem {
+  key: keyof AdminPermissions;
+  label: string;
+  description: string;
+}
+
+interface PermissionSubGroupConfig {
   title: string;
   description: string;
   icon: any;
-  items: {
-    key: keyof AdminPermissions;
-    label: string;
-    description: string;
-  }[];
+  items: PermissionRuleItem[];
 }
 
-const PERMISSION_GROUPS: PermissionGroupConfig[] = [
+interface TabPermissionSectionConfig {
+  navKey: keyof AdminPermissions;
+  tabTitle: string;
+  tabBadge: string;
+  tabDescription: string;
+  icon: any;
+  standaloneFeatureTitle?: string;
+  standaloneFeatureDescription?: string;
+  subGroups: PermissionSubGroupConfig[];
+}
+
+const TAB_PERMISSION_SECTIONS: TabPermissionSectionConfig[] = [
   {
-    title: "1. Navigation Tabs Access",
-    description: "Controls which main tabs are visible in the left sidebar navigation",
-    icon: Layers,
-    items: [
-      { key: "nav_responses", label: "Responses Tab", description: "Knowledge base topics and campus location entries" },
-      { key: "nav_reports", label: "Reports Tab", description: "Audit logs, user reports, and system telemetry" },
-      { key: "nav_gallery", label: "Gallery Tab", description: "Campus imagery and landmarks showcase" },
-      { key: "nav_settings", label: "Settings Tab", description: "Student privileges, chathead studio, and system controls" },
-      { key: "nav_rbac", label: "Rules Modification Tab", description: "Admin permissions and sign-up authorization controls" },
-    ],
-  },
-  {
-    title: "2. Responses & Knowledge Features",
-    description: "Controls data management and migration features under Responses",
+    navKey: "nav_responses",
+    tabTitle: "Response",
+    tabBadge: "Responses Tab",
+    tabDescription: "Controls access to the Responses sidebar tab, knowledge base topics, campus locations, and record editor modals.",
     icon: BookOpen,
-    items: [
-      { key: "responses_knowledge", label: "Knowledge Manager Sub-tab", description: "Browse and edit categorized chatbot topics and responses" },
-      { key: "responses_locations", label: "Campus Locations Sub-tab", description: "Browse and edit campus building coordinates and pins" },
-      { key: "responses_sync", label: "Sync Records Button", description: "Synchronize and persist knowledge database records" },
+    subGroups: [
+      {
+        title: "Responses & Knowledge Feature",
+        description: "Controls data management, location pins, and database synchronization under Response",
+        icon: BookOpen,
+        items: [
+          { key: "responses_knowledge", label: "Knowledge Manager Sub-tab", description: "Browse and edit categorized chatbot topics and responses" },
+          { key: "responses_locations", label: "Campus Locations Sub-tab", description: "Browse and edit campus building coordinates and pins" },
+          { key: "responses_sync", label: "Sync Records Button", description: "Synchronize and persist knowledge database records" },
+        ],
+      },
+      {
+        title: "Data Edit Modal Tabs (Knowledge & Locations)",
+        description: "Controls which content tabs can be edited when opening a topic or location record",
+        icon: MessageSquare,
+        items: [
+          { key: "modal_responses", label: "Responses Sub-Tab", description: "Edit English & Cebuano response dialogue bubbles" },
+          { key: "modal_images", label: "Images Sub-Tab", description: "Upload or edit landmark and reference photos" },
+          { key: "modal_map", label: "Map & Navigation Sub-Tab", description: "Place and adjust campus map pins and floor coordinates" },
+        ],
+      },
     ],
   },
   {
-    title: "3. Reports & Telemetry Features",
-    description: "Controls which reporting and audit sections are accessible",
+    navKey: "nav_reports",
+    tabTitle: "Reports",
+    tabBadge: "Reports Tab",
+    tabDescription: "Controls access to the Reports sidebar tab, chatbot user feedback, audit trail logs, and performance telemetry.",
     icon: Activity,
-    items: [
-      { key: "reports_chatbot", label: "Chatbot Reports", description: "View end-user problem reports and flagged interactions" },
-      { key: "reports_activity_logs", label: "Active Log (Audit Trail)", description: "View and trace administrative actions and modifications" },
-      { key: "reports_performance", label: "System Performance", description: "Telemetry, response latencies, and service up-time" },
-      { key: "reports_faq_gaps", label: "FAQ Gap Evaluation", description: "Rasa intent evaluation and unmapped question gap reports" },
+    subGroups: [
+      {
+        title: "Reports & Telemetry Feature",
+        description: "Controls which reporting, evaluation, and audit sections are accessible under Reports",
+        icon: Activity,
+        items: [
+          { key: "reports_chatbot", label: "Chatbot Reports", description: "View end-user problem reports and flagged interactions" },
+          { key: "reports_activity_logs", label: "Active Log (Audit Trail)", description: "View and trace administrative actions and modifications" },
+          { key: "reports_performance", label: "System Performance", description: "Telemetry, response latencies, and service up-time" },
+          { key: "reports_faq_gaps", label: "FAQ Gap Evaluation", description: "Rasa intent evaluation and unmapped question gap reports" },
+        ],
+      },
     ],
   },
   {
-    title: "4. Settings Sub-Tabs",
-    description: "Controls inner configuration tabs under Settings",
+    navKey: "nav_gallery",
+    tabTitle: "Gallery",
+    tabBadge: "Gallery Tab",
+    tabDescription: "Controls access to the Campus Gallery & Landmarks showcase tab in the sidebar.",
+    icon: ImageIcon,
+    standaloneFeatureTitle: "Gallery & Campus Landmarks Feature",
+    standaloneFeatureDescription: "Allows the administrator to view and manage campus building imagery and visual landmark showcases.",
+    subGroups: [],
+  },
+  {
+    navKey: "nav_settings",
+    tabTitle: "Settings",
+    tabBadge: "Settings Tab",
+    tabDescription: "Controls access to the Settings sidebar tab, student chatbox privileges, chathead customization, and account security.",
     icon: SlidersHorizontal,
-    items: [
-      { key: "settings_chatbox_controls", label: "Chatbox Controls", description: "Toggle live chatbox features and audio privileges" },
-      { key: "settings_chathead_studio", label: "Chathead Studio", description: "Customize avatar icons, colors, and live simulator" },
-      { key: "settings_maps", label: "Campus Maps", description: "Campus map layer configurations" },
-      { key: "settings_credentials", label: "Account & Security", description: "Admin password update credentials" },
+    subGroups: [
+      {
+        title: "Settings & System Controls Feature",
+        description: "Controls inner configuration sub-tabs and customization tools under Settings",
+        icon: SlidersHorizontal,
+        items: [
+          { key: "settings_chatbox_controls", label: "Chatbox Controls", description: "Toggle live chatbox features and audio privileges" },
+          { key: "settings_chathead_studio", label: "Chathead Studio", description: "Customize avatar icons, colors, and live simulator" },
+          { key: "settings_maps", label: "Campus Maps", description: "Campus map layer configurations" },
+          { key: "settings_credentials", label: "Account & Security", description: "Admin password update credentials" },
+        ],
+      },
     ],
   },
   {
-    title: "5. Data Edit Modal Tabs (Knowledge & Locations)",
-    description: "Controls what content tabs can be edited inside the record modal",
-    icon: MessageSquare,
-    items: [
-      { key: "modal_responses", label: "Responses Sub-Tab", description: "Edit English & Cebuano response dialogue bubbles" },
-      { key: "modal_images", label: "Images Sub-Tab", description: "Upload or edit landmark and reference photos" },
-      { key: "modal_map", label: "Map & Navigation Sub-Tab", description: "Place and adjust campus map pins and floor coordinates" },
-    ],
+    navKey: "nav_rbac",
+    tabTitle: "Rules Modification",
+    tabBadge: "RBAC Tab",
+    tabDescription: "Controls access to the Rules Modification (RBAC) sidebar tab and Pending Sign-Up authorization queue.",
+    icon: ShieldCheck,
+    standaloneFeatureTitle: "Admin Rules & Sign-Up Authorization Feature",
+    standaloneFeatureDescription: "Grants authority to review pending administrator sign-ups and modify feature rules (Main Admin authority).",
+    subGroups: [],
   },
 ];
 
@@ -296,16 +344,37 @@ export function AdminRBAC() {
     });
   }, [allAccounts, searchQuery, roleFilter, statusFilter]);
 
+  // Ensure child rules are false if their parent navigation tab is false
+  const normalizePermissionsByParentTabs = (perms: AdminPermissions): AdminPermissions => {
+    const next = { ...perms };
+    TAB_PERMISSION_SECTIONS.forEach((section) => {
+      const parentOn = Boolean(next[section.navKey]);
+      if (!parentOn) {
+        section.subGroups.forEach((sg) => {
+          sg.items.forEach((item) => {
+            next[item.key] = false;
+          });
+        });
+      }
+    });
+    return next;
+  };
+
   // Open Edit Modal for existing admin
   const handleOpenEditRules = (admin: AdminAccount) => {
     setEditingAdmin(admin);
-    setSelectedPermissions({ ...DEFAULT_ADMIN_PERMS, ...(admin.permissions || {}) });
+    setSelectedPermissions(
+      normalizePermissionsByParentTabs({
+        ...DEFAULT_ADMIN_PERMS,
+        ...(admin.permissions || {}),
+      })
+    );
   };
 
   // Open Review Modal for pending signup
   const handleOpenReviewSignup = (signup: AdminAccount) => {
     setReviewingSignup(signup);
-    setApprovalPermissions({ ...DEFAULT_ADMIN_PERMS });
+    setApprovalPermissions(normalizePermissionsByParentTabs({ ...DEFAULT_ADMIN_PERMS }));
     setApprovalCustomMessage("");
   };
 
@@ -316,12 +385,56 @@ export function AdminRBAC() {
     return Boolean(currentUser?.permissions?.[key]);
   };
 
-  // Toggle single permission key
-  const handleToggleRule = (
+  // Toggle a parent navigation tab ON or OFF (turning OFF disables and clears all child rules under that tab)
+  const handleToggleParentTab = (
+    section: TabPermissionSectionConfig,
+    target: "edit" | "review"
+  ) => {
+    if (!canActorToggleRule(section.navKey)) return;
+
+    const updater = (prev: AdminPermissions): AdminPermissions => {
+      const nextParentState = !prev[section.navKey];
+      const next: AdminPermissions = { ...prev, [section.navKey]: nextParentState };
+
+      if (!nextParentState) {
+        // Parent tab turned OFF -> disable all child rules inside this tab
+        section.subGroups.forEach((sg) => {
+          sg.items.forEach((item) => {
+            next[item.key] = false;
+          });
+        });
+      } else {
+        // Parent tab turned ON -> if all child rules are currently off, restore default enabled child rules
+        const allChildKeys = section.subGroups.flatMap((sg) => sg.items.map((i) => i.key));
+        const anyChildCurrentlyOn = allChildKeys.some((k) => Boolean(prev[k]));
+        if (!anyChildCurrentlyOn && allChildKeys.length > 0) {
+          allChildKeys.forEach((k) => {
+            if (canActorToggleRule(k)) {
+              next[k] = Boolean(DEFAULT_ADMIN_PERMS[k]);
+            }
+          });
+        }
+      }
+      return next;
+    };
+
+    if (target === "edit") {
+      setSelectedPermissions(updater);
+    } else {
+      setApprovalPermissions(updater);
+    }
+  };
+
+  // Toggle single child permission key (only accessible when parent tab is ON)
+  const handleToggleChildRule = (
+    parentNavKey: keyof AdminPermissions,
     key: keyof AdminPermissions,
     target: "edit" | "review"
   ) => {
+    const activePerms = target === "edit" ? selectedPermissions : approvalPermissions;
+    if (!activePerms[parentNavKey]) return;
     if (!canActorToggleRule(key)) return;
+
     if (target === "edit") {
       setSelectedPermissions((prev) => ({ ...prev, [key]: !prev[key] }));
     } else {
@@ -329,14 +442,18 @@ export function AdminRBAC() {
     }
   };
 
-  // Toggle all permissions in a specific group
-  const handleToggleGroup = (
-    group: PermissionGroupConfig,
+  // Toggle all permissions in a specific feature sub-group (only accessible when parent tab is ON)
+  const handleToggleSubGroup = (
+    parentNavKey: keyof AdminPermissions,
+    subGroup: PermissionSubGroupConfig,
     enable: boolean,
     target: "edit" | "review"
   ) => {
+    const activePerms = target === "edit" ? selectedPermissions : approvalPermissions;
+    if (!activePerms[parentNavKey]) return;
+
     const patch: Partial<AdminPermissions> = {};
-    group.items.forEach((item) => {
+    subGroup.items.forEach((item) => {
       if (canActorToggleRule(item.key)) {
         patch[item.key] = enable;
       }
@@ -349,9 +466,301 @@ export function AdminRBAC() {
   };
 
   // Count active permissions
+  const totalRuleKeysCount = Object.keys(DEFAULT_ADMIN_PERMS).length;
   const countActiveRules = (perms?: AdminPermissions) => {
     if (!perms) return 0;
-    return Object.values(perms).filter(Boolean).length;
+    return Object.values(normalizePermissionsByParentTabs({ ...DEFAULT_ADMIN_PERMS, ...perms })).filter(Boolean).length;
+  };
+
+  // Render categorized Tab -> Feature -> Rules hierarchy
+  const renderCategorizedRuleSections = (
+    perms: AdminPermissions,
+    target: "edit" | "review"
+  ) => {
+    return (
+      <div className="space-y-4">
+        {TAB_PERMISSION_SECTIONS.map((section) => {
+          const TabIcon = section.icon;
+          const isParentTabEnabled = Boolean(perms[section.navKey]);
+          const canToggleParent = canActorToggleRule(section.navKey);
+          const allChildItems = section.subGroups.flatMap((sg) => sg.items);
+          const enabledChildrenCount = allChildItems.filter((i) => Boolean(perms[i.key])).length;
+
+          return (
+            <div
+              key={section.navKey}
+              className={`rounded-2xl border transition-all overflow-hidden shadow-2xs ${
+                isParentTabEnabled
+                  ? "border-[#001C38]/25 bg-white"
+                  : "border-slate-200 bg-slate-50/70"
+              }`}
+            >
+              {/* TOP TAB HEADER BAR WITH MASTER TOGGLE */}
+              <div
+                onClick={() => canToggleParent && handleToggleParentTab(section, target)}
+                className={`p-4 flex items-center justify-between gap-4 border-b transition-colors ${
+                  !canToggleParent
+                    ? "bg-slate-100/80 border-slate-200 cursor-not-allowed"
+                    : isParentTabEnabled
+                    ? "bg-gradient-to-r from-[#001C38]/[0.05] via-blue-50/30 to-white border-slate-200/80 cursor-pointer hover:from-[#001C38]/[0.08]"
+                    : "bg-slate-100/60 border-slate-200/70 cursor-pointer hover:bg-slate-100"
+                }`}
+              >
+                <div className="flex items-start sm:items-center gap-3.5 min-w-0">
+                  <div
+                    className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 transition-colors shadow-2xs ${
+                      isParentTabEnabled
+                        ? "bg-[#001C38] text-amber-400"
+                        : "bg-slate-200 text-slate-500"
+                    }`}
+                  >
+                    <TabIcon className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3
+                        className={`text-sm font-bold tracking-tight ${
+                          isParentTabEnabled ? "text-[#001C38]" : "text-slate-600"
+                        }`}
+                      >
+                        {section.tabTitle}
+                      </h3>
+                      <Badge
+                        variant="outline"
+                        className={`text-[10px] font-semibold px-2 py-0 ${
+                          isParentTabEnabled
+                            ? "bg-blue-50 text-[#001C38] border-blue-200"
+                            : "bg-slate-100 text-slate-500 border-slate-200"
+                        }`}
+                      >
+                        {section.tabBadge}
+                      </Badge>
+                      {allChildItems.length > 0 && (
+                        <span
+                          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                            isParentTabEnabled
+                              ? "bg-amber-50 text-amber-800 border border-amber-200"
+                              : "bg-slate-200/70 text-slate-500"
+                          }`}
+                        >
+                          {isParentTabEnabled
+                            ? `${enabledChildrenCount} of ${allChildItems.length} rules active`
+                            : "All inner rules locked"}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                      {section.tabDescription}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Master Tab Toggle Switch */}
+                <div
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex items-center gap-2.5 shrink-0 pl-2"
+                >
+                  <span
+                    className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
+                      isParentTabEnabled
+                        ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                        : "bg-slate-200/80 text-slate-600 border-slate-300"
+                    }`}
+                  >
+                    {isParentTabEnabled ? "On" : "Off"}
+                  </span>
+                  <Switch
+                    checked={isParentTabEnabled}
+                    disabled={!canToggleParent}
+                    onCheckedChange={() => handleToggleParentTab(section, target)}
+                    className="data-[state=checked]:bg-[#001C38] data-[state=unchecked]:bg-slate-300"
+                    aria-label={`Toggle ${section.tabTitle} tab`}
+                  />
+                </div>
+              </div>
+
+              {/* INNER FEATURE SECTIONS UNDER THIS TAB */}
+              <div
+                className={`p-4 space-y-4 transition-all ${
+                  isParentTabEnabled ? "bg-white" : "bg-slate-50/90"
+                }`}
+              >
+                {!isParentTabEnabled && (
+                  <div className="px-3 py-2 rounded-xl bg-slate-100 border border-slate-200/90 text-[11px] text-slate-600 flex items-center gap-2">
+                    <Lock className="h-3.5 w-3.5 text-slate-500 shrink-0" />
+                    <span>
+                      <strong>{section.tabTitle}</strong> is toggled off. Turn on the{" "}
+                      <strong>{section.tabTitle}</strong> toggle above to unlock and configure its features.
+                    </span>
+                  </div>
+                )}
+
+                {section.subGroups.length > 0 ? (
+                  section.subGroups.map((subGroup) => {
+                    const SubIcon = subGroup.icon;
+                    return (
+                      <div
+                        key={subGroup.title}
+                        className={`rounded-xl border p-3.5 space-y-3 transition-all ${
+                          isParentTabEnabled
+                            ? "border-slate-200/90 bg-slate-50/40"
+                            : "border-slate-200/60 bg-slate-100/50 opacity-60 select-none"
+                        }`}
+                      >
+                        {/* Feature Sub-Group Header */}
+                        <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/70">
+                          <div className="flex items-center gap-2">
+                            <div
+                              className={`h-6 w-6 rounded-lg flex items-center justify-center shrink-0 ${
+                                isParentTabEnabled
+                                  ? "bg-[#001C38]/10 text-[#001C38]"
+                                  : "bg-slate-200 text-slate-500"
+                              }`}
+                            >
+                              <SubIcon className="h-3.5 w-3.5" />
+                            </div>
+                            <div>
+                              <h4
+                                className={`text-xs font-bold ${
+                                  isParentTabEnabled ? "text-slate-900" : "text-slate-500"
+                                }`}
+                              >
+                                {subGroup.title}
+                              </h4>
+                              <p className="text-[10px] text-slate-500">{subGroup.description}</p>
+                            </div>
+                          </div>
+
+                          {/* Select All / Clear controls (disabled when parent tab is OFF) */}
+                          <div className="flex items-center gap-1.5">
+                            <button
+                              type="button"
+                              disabled={!isParentTabEnabled}
+                              onClick={() =>
+                                handleToggleSubGroup(section.navKey, subGroup, true, target)
+                              }
+                              className={`text-[10px] font-semibold px-2 py-0.5 rounded transition-colors ${
+                                isParentTabEnabled
+                                  ? "text-[#001C38] bg-blue-50 hover:bg-blue-100 border border-blue-200/80 cursor-pointer"
+                                  : "text-slate-400 bg-slate-100 border border-slate-200 cursor-not-allowed"
+                              }`}
+                            >
+                              Select All
+                            </button>
+                            <button
+                              type="button"
+                              disabled={!isParentTabEnabled}
+                              onClick={() =>
+                                handleToggleSubGroup(section.navKey, subGroup, false, target)
+                              }
+                              className={`text-[10px] font-semibold px-2 py-0.5 rounded transition-colors ${
+                                isParentTabEnabled
+                                  ? "text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer"
+                                  : "text-slate-400 bg-slate-100 border border-slate-200 cursor-not-allowed"
+                              }`}
+                            >
+                              Clear
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Individual Rules Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-0.5">
+                          {subGroup.items.map((item) => {
+                            const isChecked = isParentTabEnabled && Boolean(perms[item.key]);
+                            const canToggleItem =
+                              isParentTabEnabled && canActorToggleRule(item.key);
+
+                            return (
+                              <div
+                                key={item.key}
+                                onClick={() =>
+                                  canToggleItem &&
+                                  handleToggleChildRule(section.navKey, item.key, target)
+                                }
+                                className={`p-2.5 rounded-xl border text-xs transition-all flex items-start justify-between gap-2.5 ${
+                                  !canToggleItem
+                                    ? "border-slate-200/80 bg-slate-100/70 text-slate-400 cursor-not-allowed"
+                                    : isChecked
+                                    ? "border-[#001C38]/40 bg-blue-50/50 text-slate-900 ring-1 ring-[#001C38]/10 cursor-pointer shadow-2xs"
+                                    : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 cursor-pointer"
+                                }`}
+                              >
+                                <div className="min-w-0 pr-1">
+                                  <span
+                                    className={`font-bold text-xs block leading-tight ${
+                                      !canToggleItem
+                                        ? "text-slate-400"
+                                        : isChecked
+                                        ? "text-[#001C38]"
+                                        : "text-slate-800"
+                                    }`}
+                                  >
+                                    {item.label}
+                                  </span>
+                                  <span className="text-[10px] text-slate-500 line-clamp-2 mt-0.5">
+                                    {item.description}
+                                  </span>
+                                </div>
+                                <div
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="shrink-0 mt-0.5"
+                                >
+                                  <Switch
+                                    checked={isChecked}
+                                    disabled={!canToggleItem}
+                                    onCheckedChange={() =>
+                                      handleToggleChildRule(section.navKey, item.key, target)
+                                    }
+                                    className="data-[state=checked]:bg-[#001C38] data-[state=unchecked]:bg-slate-300"
+                                  />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  /* Standalone Tab Feature Summary (for Gallery & Rules Modification) */
+                  <div
+                    className={`rounded-xl border p-3.5 flex items-center justify-between gap-3 ${
+                      isParentTabEnabled
+                        ? "border-[#001C38]/20 bg-blue-50/30"
+                        : "border-slate-200/70 bg-slate-100/50 opacity-60"
+                    }`}
+                  >
+                    <div className="min-w-0">
+                      <h4
+                        className={`text-xs font-bold ${
+                          isParentTabEnabled ? "text-[#001C38]" : "text-slate-500"
+                        }`}
+                      >
+                        {section.standaloneFeatureTitle}
+                      </h4>
+                      <p className="text-[10px] text-slate-500 mt-0.5">
+                        {section.standaloneFeatureDescription}
+                      </p>
+                    </div>
+                    <Badge
+                      variant="outline"
+                      className={`shrink-0 text-[10px] font-semibold ${
+                        isParentTabEnabled
+                          ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                          : "bg-slate-100 text-slate-500 border-slate-200"
+                      }`}
+                    >
+                      {isParentTabEnabled ? "Accessible" : "Not Accessible"}
+                    </Badge>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
   };
 
   const isSignupGloballyOpen = signupSettings?.signupEnabled ?? true;
@@ -402,6 +811,7 @@ export function AdminRBAC() {
             checked={isSignupGloballyOpen}
             onCheckedChange={(checked) => toggleSignupEnabledMutation.mutate(checked)}
             disabled={!isMainAdmin || toggleSignupEnabledMutation.isPending}
+            className="data-[state=checked]:bg-[#001C38] data-[state=unchecked]:bg-slate-300"
             aria-label="Toggle Global Admin Sign-Up"
           />
         </div>
@@ -573,7 +983,7 @@ export function AdminRBAC() {
                 const isSelf =
                   currentUser?.email?.toLowerCase() === account.email.toLowerCase();
                 const isDisabled = account.status === "disabled" || !account.enabled;
-                const activeRuleCount = isTargetMainAdmin ? 18 : countActiveRules(account.permissions);
+                const activeRuleCount = isTargetMainAdmin ? totalRuleKeysCount : countActiveRules(account.permissions);
 
                 return (
                   <div
@@ -629,7 +1039,9 @@ export function AdminRBAC() {
                         {/* Rules Summary Pill */}
                         <div className="flex items-center gap-2 mt-1.5">
                           <Badge variant="outline" className="text-[10px] font-semibold text-slate-600 border-slate-200 bg-slate-50">
-                            {isTargetMainAdmin ? "All 18 Rules Unrestricted (Main-Admin)" : `${activeRuleCount} of 18 Features Enabled`}
+                            {isTargetMainAdmin
+                              ? `All ${totalRuleKeysCount} Rules Unrestricted (Main-Admin)`
+                              : `${activeRuleCount} of ${totalRuleKeysCount} Features Enabled`}
                           </Badge>
                         </div>
                       </div>
@@ -652,6 +1064,7 @@ export function AdminRBAC() {
                               })
                             }
                             disabled={!isMainAdmin || toggleStatusMutation.isPending}
+                            className="data-[state=checked]:bg-[#001C38] data-[state=unchecked]:bg-slate-300"
                             aria-label={`Toggle account status for ${account.name}`}
                           />
                         </div>
@@ -706,88 +1119,24 @@ export function AdminRBAC() {
             </div>
           </DialogHeader>
 
-          {/* Granular Permission Toggles */}
-          <div className="p-6 overflow-y-auto space-y-6 flex-1">
+          {/* Categorized Tab -> Feature -> Rules Hierarchy */}
+          <div className="p-6 overflow-y-auto space-y-5 flex-1">
             <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-xl text-xs text-blue-900 flex items-start gap-2.5">
-              <AlertCircle className="h-4 w-4 text-blue-600 mt-0.5 shrink-0" />
+              <AlertCircle className="h-4 w-4 text-[#001C38] mt-0.5 shrink-0" />
               <p>
-                Enabling or disabling rules will instantly adjust navigation menus, sub-tabs, and data modal tabs for this administrator.
+                Each section below represents a main navigation tab. Turning <strong>off</strong> a main tab toggle automatically locks and disables all features and sub-rules inside that tab.
               </p>
             </div>
 
-            {PERMISSION_GROUPS.map((group) => {
-              const Icon = group.icon;
-              return (
-                <div key={group.title} className="border border-slate-200 rounded-xl p-4 bg-white space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                    <div className="flex items-center gap-2">
-                      <Icon className="h-4 w-4 text-[#001C38]" />
-                      <div>
-                        <h4 className="text-xs font-bold text-slate-900">{group.title}</h4>
-                        <p className="text-[10px] text-slate-500">{group.description}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        type="button"
-                        onClick={() => handleToggleGroup(group, true, "edit")}
-                        className="text-[10px] text-blue-700 hover:underline font-semibold"
-                      >
-                        Select All
-                      </button>
-                      <span className="text-slate-300">•</span>
-                      <button
-                        type="button"
-                        onClick={() => handleToggleGroup(group, false, "edit")}
-                        className="text-[10px] text-slate-500 hover:underline font-semibold"
-                      >
-                        Clear
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                    {group.items.map((item) => {
-                      const isChecked = Boolean(selectedPermissions[item.key]);
-                      const canToggle = canActorToggleRule(item.key);
-                      return (
-                        <div
-                          key={item.key}
-                          onClick={() => canToggle && handleToggleRule(item.key, "edit")}
-                          className={`p-2.5 rounded-lg border text-xs transition-all flex items-start justify-between gap-2 ${
-                            !canToggle
-                              ? "border-slate-200 bg-slate-50/70 text-slate-400 cursor-not-allowed opacity-70"
-                              : isChecked
-                              ? "border-[#001C38]/40 bg-blue-50/40 text-slate-900 ring-1 ring-[#001C38]/10 cursor-pointer"
-                              : "border-slate-200 bg-white text-slate-500 hover:bg-slate-50 cursor-pointer"
-                          }`}
-                        >
-                          <div className="min-w-0 pr-2">
-                            <span className="font-bold text-xs block text-slate-900 leading-tight">
-                              {item.label}
-                            </span>
-                            <span className="text-[10px] text-slate-500 line-clamp-2 mt-0.5">
-                              {item.description}
-                            </span>
-                          </div>
-                          <div onClick={(e) => e.stopPropagation()} className="shrink-0 mt-0.5">
-                            <Switch
-                              checked={isChecked}
-                              disabled={!canToggle}
-                              onCheckedChange={() => handleToggleRule(item.key, "edit")}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+            {renderCategorizedRuleSections(selectedPermissions, "edit")}
           </div>
 
           <DialogFooter className="p-4 bg-slate-50 border-t border-slate-200/80 flex items-center justify-between">
-            <Button variant="ghost" onClick={() => setEditingAdmin(null)} className="text-xs">
+            <Button
+              variant="outline"
+              onClick={() => setEditingAdmin(null)}
+              className="text-xs border-slate-200 text-slate-700 hover:bg-slate-100 rounded-xl"
+            >
               Cancel
             </Button>
             <Button
@@ -795,7 +1144,7 @@ export function AdminRBAC() {
                 if (editingAdmin) {
                   updatePermissionsMutation.mutate({
                     email: editingAdmin.email,
-                    permissions: selectedPermissions,
+                    permissions: normalizePermissionsByParentTabs(selectedPermissions),
                   });
                 }
               }}
@@ -811,9 +1160,9 @@ export function AdminRBAC() {
       {/* MODAL 2: REVIEW & CONFIGURE RULES FOR PENDING SIGN-UP */}
       <Dialog open={!!reviewingSignup && !showDoubleConfirmationDialog} onOpenChange={(open) => !open && setReviewingSignup(null)}>
         <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col p-0 rounded-2xl overflow-hidden">
-          <DialogHeader className="p-5 bg-amber-50/60 border-b border-amber-200/80">
+          <DialogHeader className="p-5 bg-slate-50 border-b border-slate-200/80">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold">
+              <div className="w-10 h-10 rounded-xl bg-[#001C38] text-amber-400 flex items-center justify-center font-bold">
                 <UserCheck className="h-5 w-5" />
               </div>
               <div>
@@ -827,7 +1176,7 @@ export function AdminRBAC() {
             </div>
           </DialogHeader>
 
-          <div className="p-6 overflow-y-auto space-y-6 flex-1">
+          <div className="p-6 overflow-y-auto space-y-5 flex-1">
             {/* Optional message input for the email */}
             <div className="space-y-1.5 p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
               <Label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
@@ -851,80 +1200,19 @@ export function AdminRBAC() {
                 Select Permissions For New Admin:
               </h4>
               <p className="text-[11px] text-slate-500">
-                Configure which navigation tabs and editing features this administrator can access.
+                Toggle main tabs on or off and configure which inner features this administrator can access.
               </p>
             </div>
 
-            {PERMISSION_GROUPS.map((group) => {
-              const Icon = group.icon;
-              return (
-                <div key={group.title} className="border border-slate-200 rounded-xl p-4 bg-white space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                    <div className="flex items-center gap-2">
-                      <Icon className="h-4 w-4 text-[#001C38]" />
-                      <h4 className="text-xs font-bold text-slate-900">{group.title}</h4>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        type="button"
-                        onClick={() => handleToggleGroup(group, true, "review")}
-                        className="text-[10px] text-blue-700 hover:underline font-semibold"
-                      >
-                        Select All
-                      </button>
-                      <span className="text-slate-300">•</span>
-                      <button
-                        type="button"
-                        onClick={() => handleToggleGroup(group, false, "review")}
-                        className="text-[10px] text-slate-500 hover:underline font-semibold"
-                      >
-                        Clear
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                    {group.items.map((item) => {
-                      const isChecked = Boolean(approvalPermissions[item.key]);
-                      const canToggle = canActorToggleRule(item.key);
-                      return (
-                        <div
-                          key={item.key}
-                          onClick={() => canToggle && handleToggleRule(item.key, "review")}
-                          className={`p-2.5 rounded-lg border text-xs transition-all flex items-start justify-between gap-2 ${
-                            !canToggle
-                              ? "border-slate-200 bg-slate-50/70 text-slate-400 cursor-not-allowed opacity-70"
-                              : isChecked
-                              ? "border-[#001C38]/40 bg-blue-50/40 text-slate-900 ring-1 ring-[#001C38]/10 cursor-pointer"
-                              : "border-slate-200 bg-white text-slate-500 hover:bg-slate-50 cursor-pointer"
-                          }`}
-                        >
-                          <div className="min-w-0 pr-2">
-                            <span className="font-bold text-xs block text-slate-900 leading-tight">
-                              {item.label}
-                            </span>
-                            <span className="text-[10px] text-slate-500 line-clamp-2 mt-0.5">
-                              {item.description}
-                            </span>
-                          </div>
-                          <div onClick={(e) => e.stopPropagation()} className="shrink-0 mt-0.5">
-                            <Switch
-                              checked={isChecked}
-                              disabled={!canToggle}
-                              onCheckedChange={() => handleToggleRule(item.key, "review")}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+            {renderCategorizedRuleSections(approvalPermissions, "review")}
           </div>
 
           <DialogFooter className="p-4 bg-slate-50 border-t border-slate-200/80 flex items-center justify-between">
-            <Button variant="ghost" onClick={() => setReviewingSignup(null)} className="text-xs">
+            <Button
+              variant="outline"
+              onClick={() => setReviewingSignup(null)}
+              className="text-xs border-slate-200 text-slate-700 hover:bg-slate-100 rounded-xl"
+            >
               Cancel
             </Button>
             <Button
@@ -963,7 +1251,7 @@ export function AdminRBAC() {
                 if (reviewingSignup) {
                   approveSignupMutation.mutate({
                     email: reviewingSignup.email,
-                    permissions: approvalPermissions,
+                    permissions: normalizePermissionsByParentTabs(approvalPermissions),
                     customMessage: approvalCustomMessage.trim() || undefined,
                   });
                 }

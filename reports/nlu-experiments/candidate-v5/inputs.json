@@ -1,0 +1,17 @@
+{
+  "prepared_utc": "2026-10-15T12:36:19.901863+00:00",
+  "dataset_dir": "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\docs\\datasets\\nlu_review\\iterations\\candidate-v5",
+  "sha256": {
+    "input/nlu.yml": "48db34564b7a9d513c6fb3a753d26b126e0b9786afd9a3452081e249358152c9",
+    "input/rules.yml": "9eec24926cde0999211d93ed589770d88569ed1c3670d866c836862e3a003947",
+    "input/stories.yml": "3b6d12c0da2ec9babc529407dda244f872494b421471699953013256e12e4373",
+    "config.yml": "033f4ac2d47f72d93b3d8c73bbbc60bb4b40c0408b0f7546bb39b3cc6d15458c",
+    "domain.yml": "368619f792c8c63f0c09686000be61c872020b7335f2b10658c67b41865ac573",
+    "validation.yml": "ceb1d482715c5d1843210a4152514db4fb3b3a502bd97f42e26340561dc0219d",
+    "test.yml": "b62ddffd3d39009803766313842ff955799982a9cfd8ec20a0098ba805984aa7",
+    "dataset_manifest.json": "f155e21cba6e9be39b58da1c0da34de3f5dc2e9555f97aba870ddf6d9f2b599b",
+    "dataset_verification.json": "4de11ef56fc2afb10a79bd9d66004fe4866c559028506ef5839d85f98c618cc4"
+  },
+  "scope": "Synthetic NLU experiment; not independent student end-to-end accuracy",
+  "python": "C:\\School Related File\\3rd year\\Capstone dev\\Chatbot\\CHATBOT V5 merged versions\\Capstone_Project_Artificial_Intelligence_Chatbot\\rasa\\venv\\Scripts\\python.exe"
+}

@@ -1,0 +1,234 @@
+[
+  {
+    "text": "I want to enroll in BukSU but I have no idea where to start, what is step 1?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.6398161053657532
+    }
+  },
+  {
+    "text": "What happens if I submit my enrollment documents late after the schedule?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.6539754271507263
+    }
+  },
+  {
+    "text": "Pwede ba ko mobalhin gikan sa satellite campus padulong sa lain nga campus sa BukSU?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9982061386108398
+    }
+  },
+  {
+    "text": "Paano po mag-claim ng SIAS account at default password para sa incoming first year?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.7188115119934082
+    }
+  },
+  {
+    "text": "What is the process of passing and submitting nursing enrollment requirements in CON?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.6575373411178589
+    }
+  },
+  {
+    "text": "Why is my admission application always denied or rejected in the portal?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.8107341527938843
+    }
+  },
+  {
+    "text": "Ngano gi-deny akong admission application sa testing site?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.9915300607681274
+    }
+  },
+  {
+    "text": "How do I know if I passed the BukSU-CAT admission exam?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9999388456344604
+    }
+  },
+  {
+    "text": "What should I do if there are no available slots for the BukSU-CAT exam?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.6656785011291504
+    }
+  },
+  {
+    "text": "Unsa akong buhaton kung puno na ang slots sa Main Campus?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "smalltalk",
+      "confidence": 0.33613935112953186
+    }
+  },
+  {
+    "text": "Pwede ba usbon ang akong program choice human sa pag submit sa BukSU CAT application?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.6021753549575806
+    }
+  },
+  {
+    "text": "What should I do if there is a wrong spelling or error in my name on the test permit?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.3323497474193573
+    }
+  },
+  {
+    "text": "Ngano nag system error ang admission website samtang nag fill up ko?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.826322615146637
+    }
+  },
+  {
+    "text": "Where and how do I submit my missing admission documents?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.994244396686554
+    }
+  },
+  {
+    "text": "How do I create and register a new BukSU admission account?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "nlu_fallback",
+      "confidence": 0.3
+    }
+  },
+  {
+    "text": "Pwede pa ba ko mo-enroll pinaagi sa Affirmative Action bisan ubos akong score sa cutoff?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "nlu_fallback",
+      "confidence": 0.3
+    }
+  },
+  {
+    "text": "Unsa ang proseso ug asa i-submit ang application para mahimong Student Assistant?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.6778932213783264
+    }
+  },
+  {
+    "text": "Unsaon pag add o pag drop ug subject ug kinsay mopirma sa form?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.39897260069847107
+    }
+  },
+  {
+    "text": "How do I request and download my Certificate of Registration (COR)?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9982665181159973
+    }
+  },
+  {
+    "text": "Tabangi ko unsaon pag validate sa akong COR didto sa Finance Window 7 ug Registrar.",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.8830429911613464
+    }
+  },
+  {
+    "text": "How do graduates request their Transcript of Records (TOR) at the Registrar?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.5553458333015442
+    }
+  },
+  {
+    "text": "Pwede ba mag-request ug documents o TOR sa Registrar bisan wala pa ko ka-graduate?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9136070013046265
+    }
+  },
+  {
+    "text": "Obligado ba ko moadto ug mo-attend sa graduation rehearsal?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.7638252377510071
+    }
+  },
+  {
+    "text": "Pwede ba mo-attend ang mga ginikanan ug bisita sa graduation ceremony?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.4317723512649536
+    }
+  },
+  {
+    "text": "How do I request a Good Moral Certificate from the Office of Student Services (OSS)?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.7940581440925598
+    }
+  },
+  {
+    "text": "What should I do if I lost my library card and need a replacement?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.9992857575416565
+    }
+  },
+  {
+    "text": "What should I do if I receive an FDA (Failure Due to Absences) grade?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.5447654724121094
+    }
+  },
+  {
+    "text": "How do I check or adjust my class schedule in my department?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.8939911723136902
+    }
+  },
+  {
+    "text": "Unsaon pag apply sa Tertiary Education Subsidy (TES) scholarship?",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9550063610076904
+    }
+  }
+]

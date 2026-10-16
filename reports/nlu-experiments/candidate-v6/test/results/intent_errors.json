@@ -1,0 +1,74 @@
+[
+  {
+    "text": "what is the lowest grade allowed to still qualify for Latin honors",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.7071196436882019
+    }
+  },
+  {
+    "text": "pwede ba ma Latin honors kung naay 2.25 o INC sauna",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9999217987060547
+    }
+  },
+  {
+    "text": "unsa ang ipakita sa ICT office kung magpa reset sa institucional email",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9987584352493286
+    }
+  },
+  {
+    "text": "how to get Honorable Dismissal for transferring out",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.7514439225196838
+    }
+  },
+  {
+    "text": "unsa nga tuig nahimong university ang Bukidnon State College",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.4670049548149109
+    }
+  },
+  {
+    "text": "wat are the coleges in buksu",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9691393971443176
+    }
+  },
+  {
+    "text": "is free dental extraction available for enrolled students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.5791796445846558
+    }
+  },
+  {
+    "text": "how to apply for CAV authentication at the registrar",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9982349872589111
+    }
+  },
+  {
+    "text": "asa magpa CTC sa diploma sa BukSU",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.5603947043418884
+    }
+  }
+]

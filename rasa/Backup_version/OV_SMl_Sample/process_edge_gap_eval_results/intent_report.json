@@ -1,0 +1,33 @@
+{
+  "ask_process": {
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1-score": 0.8571428571428571,
+    "support": 116,
+    "confused_with": {
+      "ask_location": 4,
+      "ask_document": 5,
+      "ask_facility_availability": 2,
+      "ask_general_info": 4,
+      "ask_requirement": 4,
+      "ask_schedule": 4,
+      "smalltalk": 1,
+      "nlu_fallback": 2,
+      "ask_availability": 2,
+      "ask_contact": 1
+    }
+  },
+  "accuracy": 0.75,
+  "macro avg": {
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1-score": 0.8571428571428571,
+    "support": 116
+  },
+  "weighted avg": {
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1-score": 0.8571428571428571,
+    "support": 116
+  }
+}

@@ -1,9 +1,82 @@
 {
-  "ask_follow_up": {
+  "ask_availability": {
+    "precision": 0.75,
+    "recall": 0.75,
+    "f1-score": 0.75,
+    "support": 8,
+    "confused_with": {
+      "ask_facility_availability": 2
+    }
+  },
+  "bot_challenge": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 8,
+    "support": 6,
+    "confused_with": {}
+  },
+  "smalltalk": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9,
+    "confused_with": {}
+  },
+  "ask_general_info": {
+    "precision": 0.9090909090909091,
+    "recall": 0.7692307692307693,
+    "f1-score": 0.8333333333333333,
+    "support": 13,
+    "confused_with": {
+      "ask_availability": 2,
+      "ask_location": 1
+    }
+  },
+  "ask_requirement": {
+    "precision": 0.9,
+    "recall": 0.8181818181818182,
+    "f1-score": 0.8571428571428572,
+    "support": 11,
+    "confused_with": {
+      "ask_general_info": 1,
+      "ask_contact": 1
+    }
+  },
+  "ask_contact": {
+    "precision": 0.9285714285714286,
+    "recall": 1.0,
+    "f1-score": 0.962962962962963,
+    "support": 13,
+    "confused_with": {}
+  },
+  "ask_schedule": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 13,
+    "confused_with": {}
+  },
+  "ask_fee": {
+    "precision": 1.0,
+    "recall": 0.9333333333333333,
+    "f1-score": 0.9655172413793104,
+    "support": 15,
+    "confused_with": {
+      "ask_document": 1
+    }
+  },
+  "ask_location": {
+    "precision": 0.875,
+    "recall": 1.0,
+    "f1-score": 0.9333333333333333,
+    "support": 7,
+    "confused_with": {}
+  },
+  "reset_category": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 5,
     "confused_with": {}
   },
   "goodbye": {
@@ -13,132 +86,63 @@
     "support": 6,
     "confused_with": {}
   },
-  "ask_fee": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 19,
-    "confused_with": {}
-  },
-  "ask_availability": {
-    "precision": 1.0,
-    "recall": 0.9818181818181818,
-    "f1-score": 0.9908256880733944,
-    "support": 55,
-    "confused_with": {
-      "ask_facility_availability": 1
-    }
-  },
-  "smalltalk": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 16,
-    "confused_with": {}
-  },
-  "ask_general_info": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 67,
-    "confused_with": {}
-  },
-  "nlu_fallback": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 3,
-    "confused_with": {
-      "reset_category": 3
-    }
-  },
   "ask_document": {
+    "precision": 0.8,
+    "recall": 0.8,
+    "f1-score": 0.8000000000000002,
+    "support": 15,
+    "confused_with": {
+      "ask_process": 2,
+      "ask_requirement": 1
+    }
+  },
+  "ask_follow_up": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 12,
+    "support": 3,
     "confused_with": {}
   },
-  "ask_location": {
-    "precision": 1.0,
+  "ask_facility_availability": {
+    "precision": 0.8,
     "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 27,
-    "confused_with": {}
-  },
-  "bot_challenge": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 5,
+    "f1-score": 0.888888888888889,
+    "support": 8,
     "confused_with": {}
   },
   "set_category": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 10,
-    "confused_with": {}
-  },
-  "reset_category": {
-    "precision": 0.6666666666666666,
-    "recall": 1.0,
-    "f1-score": 0.8,
     "support": 6,
     "confused_with": {}
   },
-  "ask_schedule": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 36,
-    "confused_with": {}
-  },
   "ask_process": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 54,
-    "confused_with": {}
+    "precision": 0.8333333333333334,
+    "recall": 0.8333333333333334,
+    "f1-score": 0.8333333333333334,
+    "support": 12,
+    "confused_with": {
+      "ask_document": 2
+    }
   },
-  "ask_contact": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 7,
-    "confused_with": {}
-  },
-  "ask_requirement": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 27,
-    "confused_with": {}
-  },
-  "ask_facility_availability": {
-    "precision": 0.9811320754716981,
-    "recall": 1.0,
-    "f1-score": 0.9904761904761905,
-    "support": 52,
-    "confused_with": {}
-  },
-  "accuracy": 0.9902439024390244,
+  "accuracy": 0.9133333333333333,
   "macro avg": {
-    "precision": 0.9204587495375509,
-    "recall": 0.9401069518716578,
-    "f1-score": 0.9283118752087991,
-    "support": 410
+    "precision": 0.9247497294372294,
+    "recall": 0.9315049533799533,
+    "f1-score": 0.9265319968983762,
+    "support": 150
   },
   "weighted avg": {
-    "precision": 0.9854118729866544,
-    "recall": 0.9902439024390244,
-    "f1-score": 0.9873174993873137,
-    "support": 410
+    "precision": 0.9154307359307359,
+    "recall": 0.9133333333333333,
+    "f1-score": 0.9127175089703826,
+    "support": 150
   },
   "micro avg": {
-    "precision": 0.9902439024390244,
-    "recall": 0.9902439024390244,
-    "f1-score": 0.9902439024390244,
-    "support": 410
+    "precision": 0.9133333333333333,
+    "recall": 0.9133333333333333,
+    "f1-score": 0.9133333333333333,
+    "support": 150
   }
 }

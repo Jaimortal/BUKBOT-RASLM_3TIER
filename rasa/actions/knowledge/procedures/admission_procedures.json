@@ -1309,12 +1309,12 @@
           "topic": "admission_application_deadline",
           "responses": {
             "en": [
-              "There is no exact deadline, but BukSU admission applications usually end during the last week of March.",
-              "You can visit their official Facebook page for updates: https://www.facebook.com/BukSUATU"
+              "As for 2027 admission application for entrance examination testing will be happened during **October 1, 2026** \n\nAnd will end on **December 2, 2026**. make sure to always check the announcement and always secure some slots",
+              "You can visit their official Facebook page for updates:\nhttps://www.facebook.com/BukSUATU\n\nAlso follow the BukSU official FB page for slots and other updates:\nhttps://www.facebook.com/officialbuksu"
             ],
             "ceb": [
-              "Walay eksaktong petsa, apan kasagaran matapos ang admission sa katapusang semana sa Marso.",
-              "Mahimo nimo bisitahon ang ilang FB page para sa updates: https://www.facebook.com/BukSUATU"
+              "Para sa 2027 admission application, ang entrance examination testing magsugod sa **October 1, 2026** \n\nUg mahuman sa **December 2, 2026.** Siguraduha nga kanunay nga magtan-aw sa mga pahibalo ug mag-secure dayon ug slots.",
+              "Mahimo nimong bisitahon ang ilang opisyal nga Facebook page para sa mga update:\nhttps://www.facebook.com/BukSUATU Ug i-follow \n\nusab ang BukSU official FB page para sa mga slots ug uban pang mga update: https://www.facebook.com/officialbuksu"
             ]
           },
           "intent": "admission_application_deadline",
@@ -1333,7 +1333,10 @@
               "kanus-a deadline sa admission application"
             ]
           },
-          "display_name": "Admission Application Deadline"
+          "display_name": "Admission Application Deadline",
+          "subject_terms": [],
+          "images": [],
+          "items": []
         },
         {
           "topic": "denied_applications",

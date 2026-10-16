@@ -1,0 +1,263 @@
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\core\tracker_store.py:1044: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  Base: DeclarativeMeta = declarative_base()
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\validation.py:134: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  import pkg_resources
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\pkg_resources\__init__.py:3117: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\pkg_resources\__init__.py:3117: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('ruamel')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+2026-10-15 20:15:07 [1;30mINFO    [0m [34mrasa.cli.train[0m  - Started validating domain and training data...
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\tensorflow\lite\python\util.py:52: DeprecationWarning: jax.xla_computation is deprecated. Please use the AOT APIs.
+  from jax import xla_computation as _xla_computation
+2026-10-15 20:15:14 [1;30mINFO    [0m [34mrasa.validator[0m  - Validating intents...
+[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'direct_intent' is listed in the domain file, but is not found in the NLU training data.
+[0m[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'get_category_suggestions' is listed in the domain file, but is not found in the NLU training data.
+[0m[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'direct_intent' is not used in any story or rule.
+[0m[93mC:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\rasa\shared\utils\io.py:100: UserWarning: The intent 'get_category_suggestions' is not used in any story or rule.
+[0m2026-10-15 20:15:14 [1;30mINFO    [0m [34mrasa.validator[0m  - Validating uniqueness of intents and stories...
+2026-10-15 20:15:14 [1;30mINFO    [0m [34mrasa.validator[0m  - Validating utterances...
+2026-10-15 20:15:14 [1;30mINFO    [0m [34mrasa.validator[0m  - Story structure validation...
+
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks:   0%|          | 0/6 [00:00<?, ?it/s, # trackers=1]
+Processed story blocks: 100%|##########| 6/6 [00:00<00:00, 990.12it/s, # trackers=1]
+2026-10-15 20:15:14 [1;30mINFO    [0m [34mrasa.core.training.story_conflict[0m  - Considering all preceding turns for conflict analysis.
+2026-10-15 20:15:14 [1;30mINFO    [0m [34mrasa.validator[0m  - No story structure conflicts found.
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:66: PyparsingDeprecationWarning: 'setParseAction' deprecated - use 'set_parse_action'
+  ).setParseAction(self._family)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:127: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  self._parser.parseString(pattern)
+C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\rasa\venv\lib\site-packages\matplotlib\fontconfig_pattern.py:134: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  self._parser.resetCache()
+2026-10-15 20:15:41 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Starting to train component 'RegexFeaturizer'.
+2026-10-15 20:15:41 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Finished training component 'RegexFeaturizer'.
+2026-10-15 20:15:41 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Starting to train component 'LexicalSyntacticFeaturizer'.
+2026-10-15 20:15:41 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Finished training component 'LexicalSyntacticFeaturizer'.
+2026-10-15 20:15:42 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Starting to train component 'CountVectorsFeaturizer'.
+2026-10-15 20:15:42 [1;30mINFO    [0m [34mrasa.nlu.featurizers.sparse_featurizer.count_vectors_featurizer[0m  - 1047 vocabulary items were created for text attribute.
+2026-10-15 20:15:42 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Finished training component 'CountVectorsFeaturizer'.
+2026-10-15 20:15:43 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Starting to train component 'CountVectorsFeaturizer'.
+2026-10-15 20:15:43 [1;30mINFO    [0m [34mrasa.nlu.featurizers.sparse_featurizer.count_vectors_featurizer[0m  - 5889 vocabulary items were created for text attribute.
+2026-10-15 20:15:43 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Finished training component 'CountVectorsFeaturizer'.
+2026-10-15 20:15:44 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Starting to train component 'DIETClassifier'.
+
+Epochs:   0%|          | 0/100 [00:00<?, ?it/s]
+Epochs:   1%|1         | 1/100 [00:51<1:25:47, 51.99s/it]
+Epochs:   1%|1         | 1/100 [00:51<1:25:47, 51.99s/it, t_loss=13.4, i_acc=0.396, e_f1=0.00857]
+Epochs:   2%|2         | 2/100 [00:59<42:27, 26.00s/it, t_loss=13.4, i_acc=0.396, e_f1=0.00857]  
+Epochs:   2%|2         | 2/100 [00:59<42:27, 26.00s/it, t_loss=8.39, i_acc=0.804, e_f1=0.156]  
+Epochs:   3%|3         | 3/100 [01:06<28:06, 17.39s/it, t_loss=8.39, i_acc=0.804, e_f1=0.156]
+Epochs:   3%|3         | 3/100 [01:06<28:06, 17.39s/it, t_loss=6.76, i_acc=0.912, e_f1=0.405]
+Epochs:   4%|4         | 4/100 [01:14<21:34, 13.49s/it, t_loss=6.76, i_acc=0.912, e_f1=0.405]
+Epochs:   4%|4         | 4/100 [01:14<21:34, 13.49s/it, t_loss=5.8, i_acc=0.958, e_f1=0.535] 
+Epochs:   5%|5         | 5/100 [01:21<17:42, 11.18s/it, t_loss=5.8, i_acc=0.958, e_f1=0.535]
+Epochs:   5%|5         | 5/100 [01:21<17:42, 11.18s/it, t_loss=5.12, i_acc=0.977, e_f1=0.598]
+Epochs:   6%|6         | 6/100 [01:28<15:30,  9.90s/it, t_loss=5.12, i_acc=0.977, e_f1=0.598]
+Epochs:   6%|6         | 6/100 [01:28<15:30,  9.90s/it, t_loss=4.91, i_acc=0.988, e_f1=0.63] 
+Epochs:   7%|7         | 7/100 [01:36<14:06,  9.10s/it, t_loss=4.91, i_acc=0.988, e_f1=0.63]
+Epochs:   7%|7         | 7/100 [01:36<14:06,  9.10s/it, t_loss=4.66, i_acc=0.99, e_f1=0.656]
+Epochs:   8%|8         | 8/100 [01:43<12:57,  8.45s/it, t_loss=4.66, i_acc=0.99, e_f1=0.656]
+Epochs:   8%|8         | 8/100 [01:43<12:57,  8.45s/it, t_loss=4.32, i_acc=0.993, e_f1=0.703]
+Epochs:   9%|9         | 9/100 [01:50<12:15,  8.08s/it, t_loss=4.32, i_acc=0.993, e_f1=0.703]
+Epochs:   9%|9         | 9/100 [01:50<12:15,  8.08s/it, t_loss=4.24, i_acc=0.991, e_f1=0.73] 
+Epochs:  10%|#         | 10/100 [01:58<11:50,  7.89s/it, t_loss=4.24, i_acc=0.991, e_f1=0.73]
+Epochs:  10%|#         | 10/100 [01:58<11:50,  7.89s/it, t_loss=3.98, i_acc=0.997, e_f1=0.78]
+Epochs:  11%|#1        | 11/100 [02:05<11:28,  7.74s/it, t_loss=3.98, i_acc=0.997, e_f1=0.78]
+Epochs:  11%|#1        | 11/100 [02:05<11:28,  7.74s/it, t_loss=3.84, i_acc=0.995, e_f1=0.826]
+Epochs:  12%|#2        | 12/100 [02:13<11:12,  7.64s/it, t_loss=3.84, i_acc=0.995, e_f1=0.826]
+Epochs:  12%|#2        | 12/100 [02:13<11:12,  7.64s/it, t_loss=3.67, i_acc=0.998, e_f1=0.83] 
+Epochs:  13%|#3        | 13/100 [02:20<10:54,  7.52s/it, t_loss=3.67, i_acc=0.998, e_f1=0.83]
+Epochs:  13%|#3        | 13/100 [02:20<10:54,  7.52s/it, t_loss=3.64, i_acc=0.997, e_f1=0.851]
+Epochs:  14%|#4        | 14/100 [02:27<10:40,  7.44s/it, t_loss=3.64, i_acc=0.997, e_f1=0.851]
+Epochs:  14%|#4        | 14/100 [02:27<10:40,  7.44s/it, t_loss=3.53, i_acc=0.997, e_f1=0.878]
+Epochs:  15%|#5        | 15/100 [02:34<10:25,  7.36s/it, t_loss=3.53, i_acc=0.997, e_f1=0.878]
+Epochs:  15%|#5        | 15/100 [02:34<10:25,  7.36s/it, t_loss=3.5, i_acc=0.996, e_f1=0.888] 
+Epochs:  16%|#6        | 16/100 [02:42<10:20,  7.39s/it, t_loss=3.5, i_acc=0.996, e_f1=0.888]
+Epochs:  16%|#6        | 16/100 [02:42<10:20,  7.39s/it, t_loss=3.43, i_acc=0.998, e_f1=0.895]
+Epochs:  17%|#7        | 17/100 [02:50<10:27,  7.56s/it, t_loss=3.43, i_acc=0.998, e_f1=0.895]
+Epochs:  17%|#7        | 17/100 [02:50<10:27,  7.56s/it, t_loss=3.33, i_acc=0.998, e_f1=0.905]
+Epochs:  18%|#8        | 18/100 [02:58<10:48,  7.91s/it, t_loss=3.33, i_acc=0.998, e_f1=0.905]
+Epochs:  18%|#8        | 18/100 [02:58<10:48,  7.91s/it, t_loss=3.3, i_acc=0.998, e_f1=0.904] 
+Epochs:  19%|#9        | 19/100 [03:07<10:52,  8.06s/it, t_loss=3.3, i_acc=0.998, e_f1=0.904]
+Epochs:  19%|#9        | 19/100 [03:07<10:52,  8.06s/it, t_loss=3.27, i_acc=0.998, e_f1=0.9] 
+Epochs:  20%|##        | 20/100 [03:15<10:54,  8.19s/it, t_loss=3.27, i_acc=0.998, e_f1=0.9]
+Epochs:  20%|##        | 20/100 [03:15<10:54,  8.19s/it, t_loss=3.23, i_acc=0.996, e_f1=0.926]
+Epochs:  21%|##1       | 21/100 [03:24<11:03,  8.40s/it, t_loss=3.23, i_acc=0.996, e_f1=0.926]
+Epochs:  21%|##1       | 21/100 [03:24<11:03,  8.40s/it, t_loss=3.17, i_acc=0.998, e_f1=0.929]
+Epochs:  22%|##2       | 22/100 [03:32<10:38,  8.19s/it, t_loss=3.17, i_acc=0.998, e_f1=0.929]
+Epochs:  22%|##2       | 22/100 [03:32<10:38,  8.19s/it, t_loss=3.17, i_acc=0.997, e_f1=0.926]
+Epochs:  23%|##3       | 23/100 [03:40<10:20,  8.05s/it, t_loss=3.17, i_acc=0.997, e_f1=0.926]
+Epochs:  23%|##3       | 23/100 [03:40<10:20,  8.05s/it, t_loss=3.12, i_acc=0.998, e_f1=0.945]
+Epochs:  24%|##4       | 24/100 [03:48<10:10,  8.03s/it, t_loss=3.12, i_acc=0.998, e_f1=0.945]
+Epochs:  24%|##4       | 24/100 [03:48<10:10,  8.03s/it, t_loss=3.1, i_acc=0.998, e_f1=0.941] 
+Epochs:  25%|##5       | 25/100 [03:55<09:49,  7.86s/it, t_loss=3.1, i_acc=0.998, e_f1=0.941]
+Epochs:  25%|##5       | 25/100 [03:55<09:49,  7.86s/it, t_loss=3.1, i_acc=1, e_f1=0.94]     
+Epochs:  26%|##6       | 26/100 [04:03<09:41,  7.85s/it, t_loss=3.1, i_acc=1, e_f1=0.94]
+Epochs:  26%|##6       | 26/100 [04:03<09:41,  7.85s/it, t_loss=3.01, i_acc=0.999, e_f1=0.946]
+Epochs:  27%|##7       | 27/100 [04:11<09:37,  7.92s/it, t_loss=3.01, i_acc=0.999, e_f1=0.946]
+Epochs:  27%|##7       | 27/100 [04:11<09:37,  7.92s/it, t_loss=3, i_acc=0.999, e_f1=0.955]   
+Epochs:  28%|##8       | 28/100 [04:20<09:46,  8.15s/it, t_loss=3, i_acc=0.999, e_f1=0.955]
+Epochs:  28%|##8       | 28/100 [04:20<09:46,  8.15s/it, t_loss=3.01, i_acc=0.997, e_f1=0.954]
+Epochs:  29%|##9       | 29/100 [04:28<09:43,  8.22s/it, t_loss=3.01, i_acc=0.997, e_f1=0.954]
+Epochs:  29%|##9       | 29/100 [04:28<09:43,  8.22s/it, t_loss=2.96, i_acc=1, e_f1=0.959]    
+Epochs:  30%|###       | 30/100 [04:36<09:32,  8.17s/it, t_loss=2.96, i_acc=1, e_f1=0.959]
+Epochs:  30%|###       | 30/100 [04:36<09:32,  8.17s/it, t_loss=2.93, i_acc=0.999, e_f1=0.964]
+Epochs:  31%|###1      | 31/100 [04:44<09:25,  8.20s/it, t_loss=2.93, i_acc=0.999, e_f1=0.964]
+Epochs:  31%|###1      | 31/100 [04:44<09:25,  8.20s/it, t_loss=2.93, i_acc=1, e_f1=0.957]    
+Epochs:  32%|###2      | 32/100 [04:52<09:13,  8.15s/it, t_loss=2.93, i_acc=1, e_f1=0.957]
+Epochs:  32%|###2      | 32/100 [04:52<09:13,  8.15s/it, t_loss=2.94, i_acc=0.999, e_f1=0.956]
+Epochs:  33%|###3      | 33/100 [05:02<09:45,  8.73s/it, t_loss=2.94, i_acc=0.999, e_f1=0.956]
+Epochs:  33%|###3      | 33/100 [05:02<09:45,  8.73s/it, t_loss=2.92, i_acc=0.999, e_f1=0.956]
+Epochs:  34%|###4      | 34/100 [05:10<09:19,  8.48s/it, t_loss=2.92, i_acc=0.999, e_f1=0.956]
+Epochs:  34%|###4      | 34/100 [05:10<09:19,  8.48s/it, t_loss=2.9, i_acc=0.998, e_f1=0.969] 
+Epochs:  35%|###5      | 35/100 [05:18<08:51,  8.17s/it, t_loss=2.9, i_acc=0.998, e_f1=0.969]
+Epochs:  35%|###5      | 35/100 [05:18<08:51,  8.17s/it, t_loss=2.87, i_acc=1, e_f1=0.96]    
+Epochs:  36%|###6      | 36/100 [05:26<08:39,  8.12s/it, t_loss=2.87, i_acc=1, e_f1=0.96]
+Epochs:  36%|###6      | 36/100 [05:26<08:39,  8.12s/it, t_loss=2.85, i_acc=0.999, e_f1=0.961]
+Epochs:  37%|###7      | 37/100 [05:34<08:27,  8.05s/it, t_loss=2.85, i_acc=0.999, e_f1=0.961]
+Epochs:  37%|###7      | 37/100 [05:34<08:27,  8.05s/it, t_loss=2.85, i_acc=0.998, e_f1=0.97] 
+Epochs:  38%|###8      | 38/100 [05:41<08:10,  7.90s/it, t_loss=2.85, i_acc=0.998, e_f1=0.97]
+Epochs:  38%|###8      | 38/100 [05:41<08:10,  7.90s/it, t_loss=2.78, i_acc=0.999, e_f1=0.976]
+Epochs:  39%|###9      | 39/100 [05:49<07:51,  7.74s/it, t_loss=2.78, i_acc=0.999, e_f1=0.976]
+Epochs:  39%|###9      | 39/100 [05:49<07:51,  7.74s/it, t_loss=2.75, i_acc=0.999, e_f1=0.975]
+Epochs:  40%|####      | 40/100 [05:56<07:38,  7.65s/it, t_loss=2.75, i_acc=0.999, e_f1=0.975]
+Epochs:  40%|####      | 40/100 [05:56<07:38,  7.65s/it, t_loss=2.76, i_acc=0.999, e_f1=0.973]
+Epochs:  41%|####1     | 41/100 [06:03<07:27,  7.59s/it, t_loss=2.76, i_acc=0.999, e_f1=0.973]
+Epochs:  41%|####1     | 41/100 [06:03<07:27,  7.59s/it, t_loss=2.72, i_acc=1, e_f1=0.978]    
+Epochs:  42%|####2     | 42/100 [06:11<07:16,  7.52s/it, t_loss=2.72, i_acc=1, e_f1=0.978]
+Epochs:  42%|####2     | 42/100 [06:11<07:16,  7.52s/it, t_loss=2.71, i_acc=1, e_f1=0.968]
+Epochs:  43%|####3     | 43/100 [06:18<07:03,  7.44s/it, t_loss=2.71, i_acc=1, e_f1=0.968]
+Epochs:  43%|####3     | 43/100 [06:18<07:03,  7.44s/it, t_loss=2.69, i_acc=1, e_f1=0.982]
+Epochs:  44%|####4     | 44/100 [06:25<06:55,  7.42s/it, t_loss=2.69, i_acc=1, e_f1=0.982]
+Epochs:  44%|####4     | 44/100 [06:25<06:55,  7.42s/it, t_loss=2.69, i_acc=0.999, e_f1=0.985]
+Epochs:  45%|####5     | 45/100 [06:33<06:47,  7.41s/it, t_loss=2.69, i_acc=0.999, e_f1=0.985]
+Epochs:  45%|####5     | 45/100 [06:33<06:47,  7.41s/it, t_loss=2.63, i_acc=1, e_f1=0.986]    
+Epochs:  46%|####6     | 46/100 [06:40<06:37,  7.36s/it, t_loss=2.63, i_acc=1, e_f1=0.986]
+Epochs:  46%|####6     | 46/100 [06:40<06:37,  7.36s/it, t_loss=2.64, i_acc=1, e_f1=0.978]
+Epochs:  47%|####6     | 47/100 [06:47<06:26,  7.30s/it, t_loss=2.64, i_acc=1, e_f1=0.978]
+Epochs:  47%|####6     | 47/100 [06:47<06:26,  7.30s/it, t_loss=2.6, i_acc=0.998, e_f1=0.987]
+Epochs:  48%|####8     | 48/100 [06:55<06:20,  7.33s/it, t_loss=2.6, i_acc=0.998, e_f1=0.987]
+Epochs:  48%|####8     | 48/100 [06:55<06:20,  7.33s/it, t_loss=2.62, i_acc=1, e_f1=0.988]   
+Epochs:  49%|####9     | 49/100 [07:02<06:10,  7.26s/it, t_loss=2.62, i_acc=1, e_f1=0.988]
+Epochs:  49%|####9     | 49/100 [07:02<06:10,  7.26s/it, t_loss=2.62, i_acc=1, e_f1=0.976]
+Epochs:  50%|#####     | 50/100 [07:10<06:18,  7.57s/it, t_loss=2.62, i_acc=1, e_f1=0.976]
+Epochs:  50%|#####     | 50/100 [07:10<06:18,  7.57s/it, t_loss=2.57, i_acc=1, e_f1=0.987]
+Epochs:  51%|#####1    | 51/100 [07:18<06:11,  7.58s/it, t_loss=2.57, i_acc=1, e_f1=0.987]
+Epochs:  51%|#####1    | 51/100 [07:18<06:11,  7.58s/it, t_loss=2.55, i_acc=0.999, e_f1=0.981]
+Epochs:  52%|#####2    | 52/100 [07:25<06:06,  7.63s/it, t_loss=2.55, i_acc=0.999, e_f1=0.981]
+Epochs:  52%|#####2    | 52/100 [07:25<06:06,  7.63s/it, t_loss=2.53, i_acc=1, e_f1=0.987]    
+Epochs:  53%|#####3    | 53/100 [07:33<05:58,  7.63s/it, t_loss=2.53, i_acc=1, e_f1=0.987]
+Epochs:  53%|#####3    | 53/100 [07:33<05:58,  7.63s/it, t_loss=2.53, i_acc=0.999, e_f1=0.985]
+Epochs:  54%|#####4    | 54/100 [07:41<05:54,  7.71s/it, t_loss=2.53, i_acc=0.999, e_f1=0.985]
+Epochs:  54%|#####4    | 54/100 [07:41<05:54,  7.71s/it, t_loss=2.51, i_acc=0.999, e_f1=0.992]
+Epochs:  55%|#####5    | 55/100 [07:49<05:51,  7.81s/it, t_loss=2.51, i_acc=0.999, e_f1=0.992]
+Epochs:  55%|#####5    | 55/100 [07:49<05:51,  7.81s/it, t_loss=2.47, i_acc=1, e_f1=0.99]     
+Epochs:  56%|#####6    | 56/100 [07:57<05:45,  7.85s/it, t_loss=2.47, i_acc=1, e_f1=0.99]
+Epochs:  56%|#####6    | 56/100 [07:57<05:45,  7.85s/it, t_loss=2.45, i_acc=1, e_f1=0.986]
+Epochs:  57%|#####6    | 57/100 [08:04<05:32,  7.73s/it, t_loss=2.45, i_acc=1, e_f1=0.986]
+Epochs:  57%|#####6    | 57/100 [08:04<05:32,  7.73s/it, t_loss=2.45, i_acc=0.999, e_f1=0.988]
+Epochs:  58%|#####8    | 58/100 [08:12<05:20,  7.63s/it, t_loss=2.45, i_acc=0.999, e_f1=0.988]
+Epochs:  58%|#####8    | 58/100 [08:12<05:20,  7.63s/it, t_loss=2.45, i_acc=0.999, e_f1=0.991]
+Epochs:  59%|#####8    | 59/100 [08:19<05:07,  7.49s/it, t_loss=2.45, i_acc=0.999, e_f1=0.991]
+Epochs:  59%|#####8    | 59/100 [08:19<05:07,  7.49s/it, t_loss=2.46, i_acc=1, e_f1=0.982]    
+Epochs:  60%|######    | 60/100 [08:26<04:58,  7.47s/it, t_loss=2.46, i_acc=1, e_f1=0.982]
+Epochs:  60%|######    | 60/100 [08:26<04:58,  7.47s/it, t_loss=2.5, i_acc=1, e_f1=0.974] 
+Epochs:  61%|######1   | 61/100 [08:34<04:53,  7.54s/it, t_loss=2.5, i_acc=1, e_f1=0.974]
+Epochs:  61%|######1   | 61/100 [08:34<04:53,  7.54s/it, t_loss=2.46, i_acc=1, e_f1=0.988]
+Epochs:  62%|######2   | 62/100 [08:42<04:46,  7.53s/it, t_loss=2.46, i_acc=1, e_f1=0.988]
+Epochs:  62%|######2   | 62/100 [08:42<04:46,  7.53s/it, t_loss=2.44, i_acc=1, e_f1=0.989]
+Epochs:  63%|######3   | 63/100 [08:49<04:35,  7.45s/it, t_loss=2.44, i_acc=1, e_f1=0.989]
+Epochs:  63%|######3   | 63/100 [08:49<04:35,  7.45s/it, t_loss=2.41, i_acc=1, e_f1=0.984]
+Epochs:  64%|######4   | 64/100 [08:56<04:26,  7.40s/it, t_loss=2.41, i_acc=1, e_f1=0.984]
+Epochs:  64%|######4   | 64/100 [08:56<04:26,  7.40s/it, t_loss=2.4, i_acc=0.999, e_f1=0.988]
+Epochs:  65%|######5   | 65/100 [09:03<04:17,  7.37s/it, t_loss=2.4, i_acc=0.999, e_f1=0.988]
+Epochs:  65%|######5   | 65/100 [09:03<04:17,  7.37s/it, t_loss=2.38, i_acc=0.999, e_f1=0.991]
+Epochs:  66%|######6   | 66/100 [09:11<04:16,  7.55s/it, t_loss=2.38, i_acc=0.999, e_f1=0.991]
+Epochs:  66%|######6   | 66/100 [09:11<04:16,  7.55s/it, t_loss=2.35, i_acc=0.998, e_f1=0.991]
+Epochs:  67%|######7   | 67/100 [09:19<04:09,  7.57s/it, t_loss=2.35, i_acc=0.998, e_f1=0.991]
+Epochs:  67%|######7   | 67/100 [09:19<04:09,  7.57s/it, t_loss=2.32, i_acc=0.999, e_f1=0.992]
+Epochs:  68%|######8   | 68/100 [09:27<04:02,  7.57s/it, t_loss=2.32, i_acc=0.999, e_f1=0.992]
+Epochs:  68%|######8   | 68/100 [09:27<04:02,  7.57s/it, t_loss=2.32, i_acc=1, e_f1=0.989]    
+Epochs:  69%|######9   | 69/100 [09:34<03:51,  7.46s/it, t_loss=2.32, i_acc=1, e_f1=0.989]
+Epochs:  69%|######9   | 69/100 [09:34<03:51,  7.46s/it, t_loss=2.32, i_acc=0.999, e_f1=0.989]
+Epochs:  70%|#######   | 70/100 [09:41<03:43,  7.46s/it, t_loss=2.32, i_acc=0.999, e_f1=0.989]
+Epochs:  70%|#######   | 70/100 [09:41<03:43,  7.46s/it, t_loss=2.28, i_acc=1, e_f1=0.991]    
+Epochs:  71%|#######1  | 71/100 [09:48<03:34,  7.40s/it, t_loss=2.28, i_acc=1, e_f1=0.991]
+Epochs:  71%|#######1  | 71/100 [09:48<03:34,  7.40s/it, t_loss=2.29, i_acc=1, e_f1=0.991]
+Epochs:  72%|#######2  | 72/100 [09:56<03:26,  7.36s/it, t_loss=2.29, i_acc=1, e_f1=0.991]
+Epochs:  72%|#######2  | 72/100 [09:56<03:26,  7.36s/it, t_loss=2.29, i_acc=1, e_f1=0.995]
+Epochs:  73%|#######3  | 73/100 [10:04<03:24,  7.58s/it, t_loss=2.29, i_acc=1, e_f1=0.995]
+Epochs:  73%|#######3  | 73/100 [10:04<03:24,  7.58s/it, t_loss=2.35, i_acc=0.998, e_f1=0.988]
+Epochs:  74%|#######4  | 74/100 [10:13<03:27,  7.98s/it, t_loss=2.35, i_acc=0.998, e_f1=0.988]
+Epochs:  74%|#######4  | 74/100 [10:13<03:27,  7.98s/it, t_loss=2.35, i_acc=1, e_f1=0.984]    
+Epochs:  75%|#######5  | 75/100 [10:21<03:22,  8.09s/it, t_loss=2.35, i_acc=1, e_f1=0.984]
+Epochs:  75%|#######5  | 75/100 [10:21<03:22,  8.09s/it, t_loss=2.34, i_acc=1, e_f1=0.984]
+Epochs:  76%|#######6  | 76/100 [10:29<03:14,  8.10s/it, t_loss=2.34, i_acc=1, e_f1=0.984]
+Epochs:  76%|#######6  | 76/100 [10:29<03:14,  8.10s/it, t_loss=2.32, i_acc=0.999, e_f1=0.984]
+Epochs:  77%|#######7  | 77/100 [10:37<03:03,  8.00s/it, t_loss=2.32, i_acc=0.999, e_f1=0.984]
+Epochs:  77%|#######7  | 77/100 [10:37<03:03,  8.00s/it, t_loss=2.3, i_acc=0.999, e_f1=0.984] 
+Epochs:  78%|#######8  | 78/100 [10:45<02:53,  7.88s/it, t_loss=2.3, i_acc=0.999, e_f1=0.984]
+Epochs:  78%|#######8  | 78/100 [10:45<02:53,  7.88s/it, t_loss=2.25, i_acc=0.998, e_f1=0.992]
+Epochs:  79%|#######9  | 79/100 [10:52<02:42,  7.73s/it, t_loss=2.25, i_acc=0.998, e_f1=0.992]
+Epochs:  79%|#######9  | 79/100 [10:52<02:42,  7.73s/it, t_loss=2.24, i_acc=0.999, e_f1=0.993]
+Epochs:  80%|########  | 80/100 [11:00<02:33,  7.69s/it, t_loss=2.24, i_acc=0.999, e_f1=0.993]
+Epochs:  80%|########  | 80/100 [11:00<02:33,  7.69s/it, t_loss=2.23, i_acc=0.998, e_f1=0.991]
+Epochs:  81%|########1 | 81/100 [11:07<02:24,  7.61s/it, t_loss=2.23, i_acc=0.998, e_f1=0.991]
+Epochs:  81%|########1 | 81/100 [11:07<02:24,  7.61s/it, t_loss=2.19, i_acc=1, e_f1=0.99]     
+Epochs:  82%|########2 | 82/100 [11:14<02:16,  7.57s/it, t_loss=2.19, i_acc=1, e_f1=0.99]
+Epochs:  82%|########2 | 82/100 [11:14<02:16,  7.57s/it, t_loss=2.2, i_acc=0.998, e_f1=0.992]
+Epochs:  83%|########2 | 83/100 [11:22<02:07,  7.52s/it, t_loss=2.2, i_acc=0.998, e_f1=0.992]
+Epochs:  83%|########2 | 83/100 [11:22<02:07,  7.52s/it, t_loss=2.17, i_acc=0.999, e_f1=0.992]
+Epochs:  84%|########4 | 84/100 [11:29<01:57,  7.33s/it, t_loss=2.17, i_acc=0.999, e_f1=0.992]
+Epochs:  84%|########4 | 84/100 [11:29<01:57,  7.33s/it, t_loss=2.16, i_acc=1, e_f1=0.991]    
+Epochs:  85%|########5 | 85/100 [11:36<01:50,  7.38s/it, t_loss=2.16, i_acc=1, e_f1=0.991]
+Epochs:  85%|########5 | 85/100 [11:36<01:50,  7.38s/it, t_loss=2.14, i_acc=1, e_f1=0.991]
+Epochs:  86%|########6 | 86/100 [11:44<01:43,  7.40s/it, t_loss=2.14, i_acc=1, e_f1=0.991]
+Epochs:  86%|########6 | 86/100 [11:44<01:43,  7.40s/it, t_loss=2.13, i_acc=0.999, e_f1=0.992]
+Epochs:  87%|########7 | 87/100 [11:51<01:35,  7.34s/it, t_loss=2.13, i_acc=0.999, e_f1=0.992]
+Epochs:  87%|########7 | 87/100 [11:51<01:35,  7.34s/it, t_loss=2.11, i_acc=1, e_f1=0.995]    
+Epochs:  88%|########8 | 88/100 [11:58<01:28,  7.35s/it, t_loss=2.11, i_acc=1, e_f1=0.995]
+Epochs:  88%|########8 | 88/100 [11:58<01:28,  7.35s/it, t_loss=2.09, i_acc=0.999, e_f1=0.99]
+Epochs:  89%|########9 | 89/100 [12:05<01:19,  7.22s/it, t_loss=2.09, i_acc=0.999, e_f1=0.99]
+Epochs:  89%|########9 | 89/100 [12:05<01:19,  7.22s/it, t_loss=2.07, i_acc=1, e_f1=0.995]   
+Epochs:  90%|######### | 90/100 [12:12<01:12,  7.22s/it, t_loss=2.07, i_acc=1, e_f1=0.995]
+Epochs:  90%|######### | 90/100 [12:12<01:12,  7.22s/it, t_loss=2.04, i_acc=1, e_f1=0.994]
+Epochs:  91%|#########1| 91/100 [12:20<01:05,  7.25s/it, t_loss=2.04, i_acc=1, e_f1=0.994]
+Epochs:  91%|#########1| 91/100 [12:20<01:05,  7.25s/it, t_loss=2.05, i_acc=1, e_f1=0.993]
+Epochs:  92%|#########2| 92/100 [12:27<00:58,  7.29s/it, t_loss=2.05, i_acc=1, e_f1=0.993]
+Epochs:  92%|#########2| 92/100 [12:27<00:58,  7.29s/it, t_loss=2.07, i_acc=0.995, e_f1=0.991]
+Epochs:  93%|#########3| 93/100 [12:34<00:50,  7.26s/it, t_loss=2.07, i_acc=0.995, e_f1=0.991]
+Epochs:  93%|#########3| 93/100 [12:34<00:50,  7.26s/it, t_loss=2.04, i_acc=1, e_f1=0.988]    
+Epochs:  94%|#########3| 94/100 [12:42<00:43,  7.32s/it, t_loss=2.04, i_acc=1, e_f1=0.988]
+Epochs:  94%|#########3| 94/100 [12:42<00:43,  7.32s/it, t_loss=2.09, i_acc=0.999, e_f1=0.991]
+Epochs:  95%|#########5| 95/100 [12:49<00:36,  7.31s/it, t_loss=2.09, i_acc=0.999, e_f1=0.991]
+Epochs:  95%|#########5| 95/100 [12:49<00:36,  7.31s/it, t_loss=2.09, i_acc=0.999, e_f1=0.985]
+Epochs:  96%|#########6| 96/100 [12:56<00:28,  7.18s/it, t_loss=2.09, i_acc=0.999, e_f1=0.985]
+Epochs:  96%|#########6| 96/100 [12:56<00:28,  7.18s/it, t_loss=2.11, i_acc=0.999, e_f1=0.984]
+Epochs:  97%|#########7| 97/100 [13:03<00:21,  7.02s/it, t_loss=2.11, i_acc=0.999, e_f1=0.984]
+Epochs:  97%|#########7| 97/100 [13:03<00:21,  7.02s/it, t_loss=2.08, i_acc=1, e_f1=0.988]    
+Epochs:  98%|#########8| 98/100 [13:10<00:14,  7.12s/it, t_loss=2.08, i_acc=1, e_f1=0.988]
+Epochs:  98%|#########8| 98/100 [13:10<00:14,  7.12s/it, t_loss=2.06, i_acc=0.999, e_f1=0.994]
+Epochs:  99%|#########9| 99/100 [13:17<00:07,  7.21s/it, t_loss=2.06, i_acc=0.999, e_f1=0.994]
+Epochs:  99%|#########9| 99/100 [13:17<00:07,  7.21s/it, t_loss=2.04, i_acc=1, e_f1=0.99]     
+Epochs: 100%|##########| 100/100 [13:25<00:00,  7.28s/it, t_loss=2.04, i_acc=1, e_f1=0.99]
+Epochs: 100%|##########| 100/100 [13:25<00:00,  7.28s/it, t_loss=2.02, i_acc=1, e_f1=0.995]
+Epochs: 100%|##########| 100/100 [13:25<00:00,  8.05s/it, t_loss=2.02, i_acc=1, e_f1=0.995]
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Finished training component 'DIETClassifier'.
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Starting to train component 'EntitySynonymMapper'.
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Finished training component 'EntitySynonymMapper'.
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Starting to train component 'ResponseSelector'.
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.nlu.selectors.response_selector[0m  - Retrieval intent parameter was left to its default value. This response selector will be trained on training examples combining all retrieval intents.
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Finished training component 'ResponseSelector'.
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Restored component 'MemoizationPolicy' from cache.
+2026-10-15 20:29:12 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Restored component 'RulePolicy' from cache.
+2026-10-15 20:29:13 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Restored component 'TEDPolicy' from cache.
+2026-10-15 20:29:13 [1;30mINFO    [0m [34mrasa.engine.training.hooks[0m  - Restored component 'UnexpecTEDIntentPolicy' from cache.
+Your Rasa model is trained and saved at 'C:\School Related File\3rd year\Capstone dev\Chatbot\CHATBOT V5 merged versions\Capstone_Project_Artificial_Intelligence_Chatbot\reports\nlu-experiments\candidate-v4\models\candidate.tar.gz'.

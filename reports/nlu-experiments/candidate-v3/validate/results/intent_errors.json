@@ -1,0 +1,106 @@
+[
+  {
+    "text": "abli ba ang clinic sa BukSU pag weekend",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.2561994791030884
+    }
+  },
+  {
+    "text": "what time are dental clinic consultations available",
+    "intent": "ask_schedule",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9929774403572083
+    }
+  },
+  {
+    "text": "how much is certified true copy of COR",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9422310590744019
+    }
+  },
+  {
+    "text": "unsaon pag bayad sa miscellaneous fee sa cashier",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "unsaon pag join sa mga student organizations ug clubs",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.999995231628418
+    }
+  },
+  {
+    "text": "does BukSU offer free mental health counseling for students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9894333481788635
+    }
+  },
+  {
+    "text": "naa bay summer class o midyear term sa BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9999082088470459
+    }
+  },
+  {
+    "text": "does buksu have comlab for IT students",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9999971389770508
+    }
+  },
+  {
+    "text": "how to get a lost ID replacement form from OSS",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8228569030761719
+    }
+  },
+  {
+    "text": "asa makuha ang prospectus o curriculum checklist sa akong kurso",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.5710358023643494
+    }
+  },
+  {
+    "text": "many thanks for the information",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.48816147446632385
+    }
+  },
+  {
+    "text": "how are you doing today",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.9927797913551331
+    }
+  },
+  {
+    "text": "thnk you very much",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9996829032897949
+    }
+  }
+]

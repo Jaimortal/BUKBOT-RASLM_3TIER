@@ -1,0 +1,106 @@
+[
+  {
+    "text": "how mch is good moral cert",
+    "intent": "ask_fee",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.6301663517951965
+    }
+  },
+  {
+    "text": "pwede ba ma Latin honors kung naay 2.25 o INC sauna",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9999954700469971
+    }
+  },
+  {
+    "text": "unsa ang ipakita sa ICT office kung magpa reset sa institucional email",
+    "intent": "ask_requirement",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9997760653495789
+    }
+  },
+  {
+    "text": "how do I request an overload of units as a graduating student",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.7096684575080872
+    }
+  },
+  {
+    "text": "how to get Honorable Dismissal for transferring out",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9999972581863403
+    }
+  },
+  {
+    "text": "what services does the ICT Service Unit provide to students",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.3913295269012451
+    }
+  },
+  {
+    "text": "unsa ang mga benefits sa Student Assistantship Program",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.999997615814209
+    }
+  },
+  {
+    "text": "what is the Kalatungan Learning Space in the library",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9999388456344604
+    }
+  },
+  {
+    "text": "does BukSU have a Laboratory Elementary School",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "is free dental extraction available for enrolled students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9334562420845032
+    }
+  },
+  {
+    "text": "how to apply for CAV authentication at the registrar",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9470298886299133
+    }
+  },
+  {
+    "text": "how do I get a Transfer Credential from BukSU",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.9968127608299255
+    }
+  },
+  {
+    "text": "where can I get an affidavit of undertaking or promissory form for lacking requirements",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_requirement",
+      "confidence": 0.9999998807907104
+    }
+  }
+]

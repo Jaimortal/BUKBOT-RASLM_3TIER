@@ -1,0 +1,170 @@
+[
+  {
+    "text": "unsaon pag adto sa Cafeteria",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.6241011619567871
+    }
+  },
+  {
+    "text": "whre is Multimedia Laboratory",
+    "intent": "ask_location",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.570256769657135
+    }
+  },
+  {
+    "text": "how do I correct a misspelled name on my school records at the registrar",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_document",
+      "confidence": 0.9953599572181702
+    }
+  },
+  {
+    "text": "what is the process for cross-enrollment to another university",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.6026691198348999
+    }
+  },
+  {
+    "text": "unsaon pag bayad sa miscellaneous fee sa cashier",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999996423721313
+    }
+  },
+  {
+    "text": "unsaon pag join sa mga student organizations ug clubs",
+    "intent": "ask_process",
+    "intent_prediction": {
+      "name": "ask_general_info",
+      "confidence": 0.9987154006958008
+    }
+  },
+  {
+    "text": "what are the official university colors and what do they symbolize",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.9217824935913086
+    }
+  },
+  {
+    "text": "what is the BukSU motto and institutional mandate",
+    "intent": "ask_general_info",
+    "intent_prediction": {
+      "name": "ask_schedule",
+      "confidence": 0.9765145778656006
+    }
+  },
+  {
+    "text": "how can I reach the Disaster Risk Reduction and Management or DRRM office",
+    "intent": "ask_contact",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.6479353904724121
+    }
+  },
+  {
+    "text": "ginatanyag ba ang BA English Language ug BA Economics sa CAS",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9478803873062134
+    }
+  },
+  {
+    "text": "does BukSU offer free mental health counseling for students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9712907671928406
+    }
+  },
+  {
+    "text": "naa bay guidance counseling service para sa stressed nga students",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9940842986106873
+    }
+  },
+  {
+    "text": "naa bay summer class o midyear term sa BukSU",
+    "intent": "ask_availability",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.9548853039741516
+    }
+  },
+  {
+    "text": "is there a Public Assistance Desk or Client Care Center at the entrance",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.6550768613815308
+    }
+  },
+  {
+    "text": "naa bay assistance desk pag sulod sa main gate",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_contact",
+      "confidence": 0.7077470421791077
+    }
+  },
+  {
+    "text": "is there an isolation room or holding area at the university clinic",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.9968664050102234
+    }
+  },
+  {
+    "text": "does buksu have comlab for IT students",
+    "intent": "ask_facility_availability",
+    "intent_prediction": {
+      "name": "ask_availability",
+      "confidence": 0.9976309537887573
+    }
+  },
+  {
+    "text": "unsaon pagkuha ug medical clearance slip sa clinic",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_process",
+      "confidence": 0.8859868049621582
+    }
+  },
+  {
+    "text": "where do I pick up the certificate once it is ready?",
+    "intent": "ask_document",
+    "intent_prediction": {
+      "name": "ask_location",
+      "confidence": 0.8486003279685974
+    }
+  },
+  {
+    "text": "thnk you very much",
+    "intent": "smalltalk",
+    "intent_prediction": {
+      "name": "ask_fee",
+      "confidence": 0.9999939203262329
+    }
+  },
+  {
+    "text": "have a good one bye",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "ask_facility_availability",
+      "confidence": 0.870665967464447
+    }
+  }
+]
